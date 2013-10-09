@@ -1,0 +1,121 @@
+/* $Id: inst.css,v 1.22 2004/07/09 01:52:53 jrobbins Exp $
+
+This file contains rules that extend or override the more basic
+formatting defined in readyset.css. Edit it to customize the fonts and
+colors. You are responsible for maintaining your own set of (optional)
+deltas from readyset.css defaults; this file is intended as an
+example.
+
+To make "Company Proprietary" appear on every page footer, uncomment the
+line "display: block !important;" in the legal1 style.
+
+*/
+
+
+.footnote {
+  /* To hide footnotes, change "block" to "none". */
+   display: block;
+}
+
+body {
+ background: #fff;
+ color: #000;
+}
+
+h3, h4 {
+ background-image: none;
+ background: #ccc;
+ color: #000;
+}
+
+h3 {
+ border-left: solid 1.2em #666;
+}
+
+h4 {
+ border-left: solid 0.7em #666;
+}
+
+#bodycol h3, #bodycol h4 { border: 0; }
+
+.readyset td { background: #eee !important; }
+
+.readyset .axial td { background: #fff !important; }
+
+.readyset th { background-color: #ccc; }
+
+body, th, td, input, select {
+ font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+code, pre, textarea {
+ font-family: 'Andale Mono', Courier, monospace;
+}
+
+
+.sticky {
+ background: #ffc;
+ border-right-color: #aaa;
+ border-bottom-color: #aaa;
+}
+
+.tip {
+ background: #ffc;
+ background-image: url(http://www.readysetpro.com/css/tip.gif);
+ background-repeat: no-repeat;
+ background-position: top left;
+ border-right-color: #aaa;
+ border-bottom-color: #aaa;
+ padding-left: 36px;
+ min-width: 30px; min-height: 30px;
+ /* filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='tip.png',sizingMethod='scale'); */
+}
+
+
+.todo {
+ background: #ffc;
+ background-image: url(http://www.readysetpro.com/css/todo.gif);
+ background-repeat: no-repeat;
+ background-position: top left;
+ border-right-color: #aaa;
+ border-bottom-color: #aaa;
+ padding-left: 36px;
+ min-width: 30px; min-height: 30px;
+ /* filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='todo.png',sizingMethod=scale); */
+}
+
+
+
+#processimpact {
+ background: #eee;
+ border-color: #aaa;
+ background-image: url(http://www.readysetpro.com/css/gears.gif);
+ background-repeat: no-repeat;
+ background-position: top left;
+ padding-left: 36px;
+ min-width: 30px; min-height: 30px;
+ /* filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gears.png',sizingMethod='scale'); */
+}
+
+.reusablefragment {
+ background: #eee;
+ border: 2px dashed;
+}
+
+.sample1 { border-right: 4px double #500; }
+.sample2 { border-right: 4px double #050; }
+.sample3 { border-right: 4px double #005; }
+.sample4 { border-right: 4px double #505; }
+
+a.def { 
+ text-decoration: none; 
+ border-bottom: dashed 1px blue;
+ cursor: help;
+}
+
+.legal1 {
+/* display: block !important; */
+ background: #eee;
+ border-color: #aaa;
+
+}

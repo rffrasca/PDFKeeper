@@ -1,0 +1,76 @@
+*******************************************************************************
+*
+* PDFKeeper 3.0.0
+* Copyright (C) 2009-2013 Robert F. Frasca
+*
+* Build Instructions
+*
+*******************************************************************************
+
+ 1. Install neccessary development applications and tools:
+
+    - SharpDevelop 4.3
+	http://www.icsharpcode.net/OpenSource/SD/Download/#SharpDevelop4x
+	
+    - Microsoft Windows SDK for Windows 7 and .NET Framework 4
+	http://www.microsoft.com/en-us/download/details.aspx?id=8279
+	.NET Development Tools are all that need to be installed.
+
+    - Microsoft FxCop 10.0 (used for code analysis)
+	Installer is included with "Microsoft Windows SDK for Windows 7 and
+	.NET Framework 4" and can be found in:
+	C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\FXCop
+
+    - Microsoft HTML Help Workshop 1.32
+	http://www.microsoft.com/en-us/download/details.aspx?id=21138
+
+    - Amaya 11.4.4 (used for editing HTML documents)
+	http://www.w3.org/Amaya/
+
+    - WiX Toolset 3.7
+	http://wixtoolset.org/
+
+ 2. Install and configure Oracle Database Express Edition on any system.
+    See the "Getting Started Guide", located in Documentation\Guides for
+    instructions.
+
+    Note: Step 2 is only required for testing PDFKeeper.
+
+ 3. Install ODP.NET, Managed Driver.  See the "Getting Started Guide", located in
+    Documentation\Guides for instructions.
+
+ 4. Configure the PDFKeeper database schema.  See the "Getting Started Guide",
+    located in Documentation\Guides for instructions.  The "Database Setup"
+    script, DatabaseSetup.cmd is located in "Common\Database Setup".
+
+    Note: Step 4 is only required for testing PDFKeeper.
+
+ 5. Download SumatraPDF-2.1.1.zip from
+    http://blog.kowalczyk.info/software/sumatrapdf/download-free-pdf-viewer.html
+    and extract into "Build"; unblock SumatraPDF.exe.
+
+ 6. Download itextsharp-all-5.3.0.zip from
+    http://sourceforge.net/projects/itextsharp/files/itextsharp/iTextSharp-5.3.0/
+    and extract itextsharp-dll-core-5.3.0.zip from the archive into
+    "Lib" and unblock itextsharp.dll.
+
+ 7. Download Nini-1.1.0.zip from http://nini.sourceforge.net/download.php and
+    extract Nini.dll from Nini-1.1.0.zip\Nini\Bin\DotNet\2.0\Release into
+    "Lib"; unblock Nini.dll.
+
+ 8. Download ghostxps-9.07-win32.zip from
+    http://www.ghostscript.com/download/gxpsdnld.html and extract
+    gxps-9.07-win32.exe into "Build"; unblock gxps-9.07-win32.exe.
+
+ 9. Download wkhtmltox-0.11.0_rc1-installer.exe from
+    http://code.google.com/p/wkhtmltopdf/ and install, select only the
+    "Wkhtmltopdf" component.  Once installed, copy wkhtmltopdf.exe and all DLL
+    files from the folder where wkhtmltopdf was installed into "Build".
+    Wkhtmltopdf is no longer required to be installed and can be uninstalled.
+
+10. In the Documentation\Help\en folder, open PDFKeeper.hhp with HTML Help
+    Workshop and compile the help file.
+
+11. Open PDFKeeper.sln with SharpDevelop and build the solution.
+
+[END OF DOCUMENT]
