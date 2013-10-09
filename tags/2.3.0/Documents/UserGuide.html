@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <title>User Guide</title>
+  <style type="text/css">
+/* <![CDATA[ */ 
+@import "css/readyset.css"; 
+@import "css/inst.css";
+/*  ]]> */
+ </style>
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="readyset">
+<h2>User Guide</h2>
+
+<div id="projectinfo">
+<h3>Product Release Information</h3>
+
+<div class="axial">
+
+<table border="1" cellpadding="3" cellspacing="2">
+  <tbody>
+    <tr>
+      <th>Product:</th>
+      <td><a href="http://code.google.com/p/pdfkeeper/">PDFKeeper</a></td>
+    </tr>
+    <tr>
+      <th>Release Number:</th>
+      <td>2.3.0</td>
+    </tr>
+    <tr>
+      <th>Release Date:</th>
+      <td>2011/09/24</td>
+    </tr>
+    <tr>
+      <th>Customer Support:</th>
+      <td>For more information or support, please visit <a
+        href="http://code.google.com/p/pdfkeeper/">website</a> or send an email
+        to <a href="mailto:rffrasca@gmail.com">rffrasca@gmail.com</a> </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<!-- /projectinfo -->
+
+<div id="toc">
+<h3>Table of Contents</h3>
+<ol>
+  <li><a href="#Introducti">Introduction</a> 
+    <ul>
+      <li><a href="#What">What is PDFKeeper?</a></li>
+      <li><a href="#About">About this user guide</a></li>
+    </ul>
+  </li>
+  <li><a href="#Database">Database Setup</a> 
+    <ul>
+      <li><a href="#Descriptio">Description</a></li>
+      <li><a href="#Table">Table structure</a></li>
+      <li><a href="#Action">Action steps</a></li>
+    </ul>
+  </li>
+  <li><a href="#Database1">Database User Account Management</a> 
+    <ul>
+      <li><a href="#Recommenda">Recommendation</a></li>
+      <li><a href="#Granting">Granting access to the pdfkeeper schema</a></li>
+    </ul>
+  </li>
+  <li><a href="#Starting">Starting and Logging into PDFKeeper</a> 
+    <ul>
+      <li><a href="#Descriptio1">Description</a></li>
+      <li><a href="#start">How to start and login to PDFKeeper</a></li>
+    </ul>
+  </li>
+  <li><a href="#Document">Document Searching</a> 
+    <ul>
+      <li><a href="#Descriptio2">Description</a></li>
+      <li><a href="#search">How to search for documents</a> 
+        <ul>
+          <li><a href="#Search">Search Text examples</a></li>
+          <li><a href="#Sorting">Sorting the results</a></li>
+          <li><a href="#Refreshing">Refreshing the list view</a></li>
+        </ul>
+      </li>
+      <li><a href="#Document2">Document viewing</a></li>
+      <li><a href="#Save">Save a PDF document to disk without viewing</a></li>
+      <li><a href="#Editing1">Editing Document Notes</a></li>
+      <li><a href="#Viewing">Viewing Document Keywords</a></li>
+      <li><a href="#Deleting1">Deleting documents</a></li>
+    </ul>
+  </li>
+  <li><a href="#PDFKeeper">Information Properties Editor</a> 
+    <ul>
+      <li><a href="#Descriptio3">Description</a></li>
+      <li><a href="#edit">How to edit the </a><a href="#Editing">PDF
+        Information Properties</a></li>
+    </ul>
+  </li>
+  <li><a href="#Document1">Document Uploading</a> 
+    <ul>
+      <li><a href="#Descriptio4">Description</a></li>
+      <li><a href="#upload">How to upload documents</a></li>
+      <li><a href="#I">Important Information</a></li>
+    </ul>
+  </li>
+  <li><a href="#Troublesho">Troubleshooting</a></li>
+</ol>
+
+<h3>1. <a name="Introducti" id="Introducti">Introduction</a></h3>
+<dl>
+  <dt><a name="What" id="What">What is PDFKeeper?</a></dt>
+    <dd>It is a free, open source PDF document storage system that provides
+      storage, indexing, and retrieval using the free Oracle Database Express
+      Edition (Oracle Database XE).</dd>
+    <dd>PDFKeeper is perfect for anyone who wants to implement a low cost PDF
+      document storage system in a small or home office. It can be implemented
+      for use on a single user system or in a workgroup.</dd>
+  <dt><a name="About" id="About">About this user guide</a></dt>
+    <dd>This guide provides the steps that need to be performed in order to
+      implement and use PDFKeeper. It is intended to be used by those involved
+      in implementing, administering, and using PDFKeeper. Before proceeding,
+      make sure that all software required by PDFKeeper has been installed.</dd>
+</dl>
+
+<h3>2. <a name="Database" id="Database">Database Setup</a></h3>
+<dl>
+  <dt><a name="Descriptio" id="Descriptio">Description</a></dt>
+    <dd>The Database Setup script creates the following:</dd>
+    <dd><ul>
+        <li><b>pdfkeeper</b> schema account in the <b>users</b> tablespace.</li>
+        <li><b>docs</b> sequence used to generate document ID numbers, in the
+          pdfkeeper schema.</li>
+        <li><b>docs</b> table used to store the documents, in the pdfkeeper
+          schema.</li>
+        <li>Oracle Text, lexer and datastore preferences; and attributes, in
+          the ctxsys schema.</li>
+        <li><b>docs</b> table full-text search index, in the pdfkeeper
+        schema.</li>
+      </ul>
+    </dd>
+  <dt><a name="Table" id="Table">Table structure</a></dt>
+    <dd>Each document is stored in the database as follows:</dd>
+    <dd style="margin-left:6em"><b>ID</b> - Assigned to the document record by
+      the database. 
+      <p><b>Title</b> - Extracted from the PDF summary (InfoDictionary). This
+      column is searchable.</p>
+    </dd>
+    <dd style="margin-left:6em"><b>Author</b> - Extracted from the PDF summary
+      (InfoDictionary). This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Subject</b> - Extracted from the PDF summary
+      (InfoDictionary). This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Keywords</b> - Extracted from the PDF
+      summary (InfoDictionary). This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Added</b> - Date and time the document was
+      added to the database. This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Notes</b> - User editable notes. This column
+      is searchable.</dd>
+    <dd style="margin-left:6em"><b>PDF</b> - The contents of the PDF document.
+      This column is searchable.</dd>
+  <dt><a name="Action" id="Action">Action steps</a></dt>
+    <dd><ol>
+        <li>Select <b>Start</b> | <b>All Programs</b> | <b>PDFKeeper</b> |
+          <b>Tools </b>|<b></b><b>Database Setup</b>.</li>
+        <li>When prompted, enter the database connect string in the format:
+          <b>username@host:port</b> 
+          <ul>
+            <li><b>username</b> is a database account that must be a member of
+              SYSDBA. Note, <b>SYSTEM</b> is a member of SYSDBA. </li>
+            <li><b>host</b> is the host name or IP address of the computer that
+              is running Oracle Database XE Server. Specify <b>localhost</b> or
+              <b>127.0.0.1</b> if logged onto the same system as Oracle
+              Database XE Server.</li>
+            <li><b>port</b> (optional) is the TCP port number on which the
+              Oracle Net listener is listening. If not specified, the default
+              port number 1521 is assumed. </li>
+          </ul>
+        </li>
+        <li>Secure the <b>pdfkeeper</b> database user account by changing the
+          password, the default password is <b>pdfkeeper</b>. Refer to the <a
+          href="http://download.oracle.com/docs/cd/B25329_01/doc/admin.102/b25107/users_secure.htm">Oracle
+          Database 10g Express Edition documentation</a> for assistance.</li>
+      </ol>
+    </dd>
+</dl>
+
+<h3>3. <a name="Database1" id="Database1">Database User Account
+Management</a></h3>
+<dl>
+  <dt><a name="Recommenda" id="Recommenda">Recommendation</a></dt>
+    <dd>It is recommended that each user be assigned a personal database
+      account, with only the required privileges. The <b>pdfkeeper</b> database
+      account should only be used for <b>pdfkeeper</b> schema administration,
+      not for general use.</dd>
+  <dt><a name="Granting" id="Granting">Granting access to the pdfkeeper
+  schema</a></dt>
+    <dd>Perform the following steps for any user that needs access to the
+      <b>pdfkeeper</b> schema: </dd>
+    <dd><ol>
+        <li>If the user does not have a database user account, create one for
+          the user. Refer to the <a
+          href="http://download.oracle.com/docs/cd/B25329_01/doc/admin.102/b25107/users_secure.htm">Oracle
+          Database 10g Express Edition documentation</a> for assistance.</li>
+        <li>Access the Database Home Page, and login as <b>pdfkeeper</b>. Refer
+          to the <a
+          href="http://download.oracle.com/docs/cd/B25329_01/doc/admin.102/b25107/getstart.htm#BABHJAGE">Oracle
+          Database 10g Express Edition documentation</a> for assistance.</li>
+        <li>Select <b>Object Browser</b> | <b>Browse</b> | <b>Tables</b>.</li>
+        <li>Select the <b>DOCS</b> table.</li>
+        <li>Select <b>Grants</b> to Grant and/or Revoke privileges to database
+          user accounts. 
+          <dl>
+            <dt>Guidelines:</dt>
+          </dl>
+          <ul>
+            <li>Always grant <b>Select</b>.</li>
+            <li>Grant <b>Insert</b>, if the user needs to upload documents.</li>
+            <li>Grant <b>Update</b>, if the user needs to edit document
+            notes.</li>
+            <li>Grant <b>Delete</b>, if the user needs to delete documents.</li>
+          </ul>
+        </li>
+        <li>If the user needs to upload documents; select <b>Object Browser</b>
+          | <b>Browse</b> | <b>Sequences</b>, select the <b>DOCS_SEQ</b>
+          sequence, select <b>Grants</b> to Grant and/or Revoke privileges to
+          database user accounts, and grant <b>Select</b>.</li>
+      </ol>
+    </dd>
+</dl>
+
+<h3>4. <a name="Starting" id="Starting">Starting and Logging into
+PDFKeeper</a></h3>
+<dl>
+  <dt><a name="Descriptio1" id="Descriptio1">Description</a></dt>
+    <dd>The PDFKeeper application is used to locate PDF document records in the
+      database by Title, Author, Subject, Keywords, document notes, date and
+      time added to the database, and any text within the PDF document. 
+      <p>The following tasks can be performed on any PDF document record that
+      has been returned during a search: </p>
+      <ul>
+        <li>View the document.</li>
+        <li>Save the document to disk.</li>
+        <li>Edit document notes.</li>
+        <li>View the document keywords.</li>
+        <li>Delete selected database records. </li>
+      </ul>
+    </dd>
+    <dd>In addition, you can edit the Information Properties of PDF documents
+      and upload them to the database. </dd>
+  <dt><a name="start" id="start">How to start and login to PDFKeeper</a></dt>
+    <dd>PDFKeeper will function with <b>User</b> privileges and can be started
+      by either: </dd>
+    <dd><ul>
+        <li>Clicking the <b>PDFKeeper </b>desktop icon.</li>
+        <li><p>Clicking <b>Start</b> | <b>All Programs</b> | <b>PDFKeeper</b> |
+          <b>PDFKeeper</b></p>
+        </li>
+      </ul>
+    </dd>
+    <dd>When prompted; enter the database <b>Username</b>, <b>Password</b>, and
+      <b>Data Source</b>. The Data Source must be specified as follows:
+      <b>host:port</b> 
+      <ul>
+        <li><b>host</b> is the host name or IP address of the computer that is
+          running Oracle Database XE Server. If connecting locally to Oracle
+          Database XE Server, the hostname or IP address must be
+          <b>localhost</b> or <b>127.0.0.1</b></li>
+        <li><b>port</b> (optional) is the TCP port number on which the Oracle
+          Net listener is listening. If not specified, the default port number
+          1521 is assumed.</li>
+      </ul>
+    </dd>
+</dl>
+
+<h3>5. <a name="Document" id="Document">Document Searching</a></h3>
+<dl>
+  <dt><a name="Descriptio2" id="Descriptio2">Description</a></dt>
+    <dd>PDF document records can be searched by Title, Author, Subject,
+      Keywords, document notes, date and time added to the database, and any
+      text within the PDF document. 
+      <p>The following tasks can be performed on any PDF document record that
+      has been returned during a search: </p>
+      <ul>
+        <li>View the document.</li>
+        <li>Save the document to disk.</li>
+        <li>Print document notes.</li>
+        <li>Edit document notes.</li>
+        <li>View document keywords.</li>
+        <li>Delete selected database records.</li>
+      </ul>
+    </dd>
+  <dt><a name="Setting1" id="Setting1">How to search for documents</a></dt>
+    <dd>From the main dialog; enter the <b>Search Text</b> or select a
+      previously entered <b>Search Text</b>, and then click <b>Search</b> or
+      press the <b>Enter</b> key.</dd>
+    <dd><b><a name="Search1" id="Search1">Search Text examples:</a></b></dd>
+    <dd><p style="margin-left:2em;"><b>about(insurance)</b></p>
+    </dd>
+    <dd><p style="margin-left:4em">Will return documents
+      about<i>insurance</i>.</p>
+    </dd>
+    <dd><p style="margin-left:4em">The about operator supports single words,
+      phrases, and can be combined with other operators, such as AND, OR, or
+      NOT. Any query operators included in a phrase will be ignored. However,
+      you can use other operators, such as AND, OR, or NOT; to combine ABOUT
+      queries with word queries.</p>
+    </dd>
+    <dd><p style="margin-left:2em;"><b><b>about(insurance)</b> and
+      banking</b></p>
+    </dd>
+</dl>
+
+<p style="margin-left:8em">Will return documents about<i>insurance</i>, and
+<i>banking</i>.</p>
+
+<p style="margin-left:6em"><b>about(insurance) and about(banking)</b></p>
+
+<p style="margin-left:8em">Will return documents about <i>insurance,</i> and
+about <i>banking</i>.</p>
+
+<p style="margin-left:6em"><b>about(insurance) not about(homeowners)</b></p>
+
+<p style="margin-left:8em">Will return documents about<i>insurance,</i> and not
+about <i>homeowners.</i></p>
+<dl>
+    <dd><p style="margin-left:2em;"><b>auto and home</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>auto &amp; home</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain
+      <i>auto</i> and <i>home</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em"><b>maine=vermont is a new england
+      state</b></p>
+      <p style="margin-left:2em"><b>maine equiv vermont is a new england
+      state</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain either
+      the phrase; <i>maine is a new england state</i>, or <i>vermont is a new
+      england state</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>?product</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that match a fuzzy
+      expansion of <i>product</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>insurance ~ auto</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>insurance not auto</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain
+      <i>insurance</i> and not <i>auto</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>cars | trains</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>cars or trains</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain
+      <i>cars</i> or <i>trains</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>!edgartown</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that sound like
+      <i>edgartown</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>$produce</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain the same
+      root word, as <i>produce</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>grocer%</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain the term,
+      beginning with <i>grocer</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>_rain</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain the term,
+      ending in <i>rain</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><b>Notes on special characters:</b> 
+      <ul>
+        <li><b>% </b>is a multiple wildcard character.</li>
+        <li><b>_</b> is a single wildcard character.</li>
+        <li>Parenthesis characters <b>()</b> can be used to group terms and
+          operators.</li>
+        <li>Braces <b>{}</b> can be used to escape a string of characters or
+          symbols.</li>
+        <li>A backslash <b>\</b> can be used to escape a single character.</li>
+        <li>Common characters, such as <b>-</b> and <b>&amp;</b> that are part
+          of a string, need to be escaped. For example, a string
+          <i>2009-10-01</i> needs to be specified as <i>2009\10\01</i></li>
+      </ul>
+    </dd>
+</dl>
+<dl>
+  <dt style="margin-left:2em;"><a name="Sorting1" id="Sorting1">Sorting the
+  results</a></dt>
+    <dd>When search results are returned, the sort order is by <b>ID</b>.
+      Clicking on a list view column header will sort the results by the column
+      selected, in ascending order; clicking on the same column header a second
+      time will sort the results by the column selected, in descending order.
+    </dd>
+  <dt style="margin-left:2em;"><a name="Refreshing1"
+  id="Refreshing1">Refreshing the list view</a></dt>
+    <dd>To refresh the list view, using the last used sort order and search
+      text; select the <b>View</b> menu, and then <b>Refresh</b>. Note, the
+      <b>F5</b> key will also refresh the list view.</dd>
+  <dt style="margin-left:0em">Document Viewing</dt>
+    <dd>To view the contents of a document returned from a search, double click
+      the document list view record. The document will be opened with the
+      bundled, third-party PDF viewer. Note, the PDF document will remain in
+      the users' <b>TEMP</b> folder, until PDFKeeper is closed out.</dd>
+  <dt style="margin-left:0em">Save a PDF document to disk without viewing</dt>
+    <dd>To save a PDF document that was returned from a search to disk, without
+      having to view it: 
+      <ol>
+        <li>From the list view, select the PDF document record.</li>
+        <li>Select the <b>File</b> menu, and then select <b>Save PDF Document
+          to Disk</b>; or you can use the keyboard shortcut key
+        <b>Ctrl+S</b>.</li>
+        <li>Browse to the desired location.</li>
+        <li>Modify the <b>file name</b>, if necessary.</li>
+        <li>Select <b>Save</b>.</li>
+      </ol>
+    </dd>
+  <dt>Printing Document Notes</dt>
+    <dd>To print document notes for any document record returned from a search: 
+      <ol>
+        <li>From the list view, select the PDF document record.</li>
+        <li>Select the <b>File</b> menu, and then select <b>Print Document
+          Notes</b>; or you can use the keyboard shortcut <b>Ctrl+P</b>.</li>
+        <li>Select the Printer to use, and then select <b>Print</b>.</li>
+      </ol>
+    </dd>
+  <dt style="margin-left:0em">Editing Document Notes</dt>
+    <dd>Document Notes is where you can store information related to a selected
+      document record. To edit document notes for any document record returned
+      from a search: 
+      <ol>
+        <li>From the list view, select the PDF document record.</li>
+        <li>Select the <b>Document Notes</b> tab.</li>
+        <li>If you need to add a Date/Time stamp to the text box: select the
+          <b>Edit</b> menu, and then select <b>Insert Date/Time into Document
+          Notes</b>; or you can use the keyboard shortcut <b>Ctrl+T</b>. </li>
+        <li>Make the necessary edits, and then select <b>Update</b>.</li>
+      </ol>
+    </dd>
+  <dt>Viewing Document Keywords</dt>
+    <dd>To view the document keywords that were extracted from the PDF document
+      InfoDictionary: 
+      <ol>
+        <li>From the list view, select the PDF document record.</li>
+        <li>Select the <b>Document Keywords</b> tab.</li>
+      </ol>
+    </dd>
+  <dt><a name="Deleting1" id="Deleting1">Deleting documents</a></dt>
+    <dd>Any document returned from a search can be deleted from the database
+      by: 
+      <ol>
+        <li>Clicking on the checkbox for each record that you wish to delete;
+          to select all documents in the list: select the <b>Edit</b> menu, and
+          then select <b>Check all Documents</b>; or you can use the keyboard
+          shortcut <b>Ctrl+C</b>.</li>
+        <li>Select the <b>Edit</b> menu, and then select <b>Delete all Checked
+          Documents</b>; or you can use the keyboard shortcut
+        <b>Ctrl+D</b>.</li>
+        <li>When prompted, select <b>Yes</b> or press <b>Enter</b> to perform
+          the delete.</li>
+      </ol>
+    </dd>
+</dl>
+
+<h3>6. <a name="PDFKeeper" id="PDFKeeper">Information Properties Editor</a></h3>
+<dl>
+  <dt><a name="Descriptio3" id="Descriptio3">Description</a></dt>
+    <dd>Information Properties Editor is used to edit the Title, Author,
+      Subject, and Keywords of one or more PDF documents prior to being
+      uploaded to the database. The Author and Subject entry fields are linked
+      to the database, to allow for selecting an existing Author and
+    Subject.</dd>
+    <dd>Note, any PDF document that is protected by an <b>OWNER</b> or
+      <b>USER</b> password cannot be edited. For more information, see the
+      Troubleshooting section in the <a href="faq.html">User FAQ</a>.</dd>
+  <dt><a name="edit" id="edit">How to edit the PDF Information
+  Properties</a></dt>
+    <dd>To edit the PDF Information Properties of one or more PDF documents,
+      perform the following: 
+      <ol>
+        <li>From the main form; select the <b>Tools</b> menu, and then select
+          <b>Information Properties Editor</b>; or you can use the keyboard
+          shortcut <b>Ctrl+I</b>.</li>
+        <li>Browse to the desired location.</li>
+        <li>Select one or more PDF files to be uploaded.</li>
+        <li>Select <b>Open</b>.</li>
+      </ol>
+    </dd>
+    <dd>For each PDF document selected: 
+      <ol>
+        <li>If necessary, view the PDF document by selecting <b>View</b>, which
+          will open it with the bundled, third-party PDF viewer.</li>
+        <li>Enter the document <b>Title</b>.</li>
+        <li>Enter or select the <b>Author</b> of the document.</li>
+        <li>Enter or select the <b>Subject</b> of the document.</li>
+        <li>If necessary, enter document <b>Keywords</b>.</li>
+        <li>If you want the PDF document displayed after saving, check the box
+          labeled <b>After saving, open PDF document in viewer.</b></li>
+        <li>Select <b>Save</b>. Note, the original PDF document will be
+          preserved in its original location. However, the file name will be
+          renamed to include a random 3 digit number as the extension.</li>
+        <li>The updated PDF document is now ready to be uploaded into the
+          database.</li>
+      </ol>
+    </dd>
+</dl>
+
+<h3>7. <a name="Document1" id="Document1">Document Uploading</a></h3>
+<dl>
+  <dt><a name="Descriptio4" id="Descriptio4">Description</a></dt>
+    <dd>PDFKeeper will upload one or more, selected PDF documents, into the
+      <b>docs</b> table. However, any PDF document that does not have a title,
+      author, or subject; specified in the PDF <b>Information Properties</b>
+      (InfoDictionary), will not be uploaded.</dd>
+    <dd>Note, any PDF document that is protected by an <b>OWNER</b> or
+      <b>USER</b> password will not be uploaded. For more information, see the
+      Troubleshooting section in the <a href="faq.html">User FAQ</a>.</dd>
+  <dt><a name="upload" id="upload">How to upload documents</a></dt>
+    <dd>To upload one or more PDF documents, perform the following: 
+      <ol>
+        <li>From the main form; select the <b>Tools</b> menu, and then select
+          <b>Upload</b>; or you can use the keyboard shortcut
+          <b>Ctrl+Shift+U</b>.</li>
+        <li>Browse to the desired location.</li>
+        <li>Select one or more PDF files to be uploaded.</li>
+        <li>Select <b>Open</b>.</li>
+      </ol>
+    </dd>
+  <dt><a name="I" id="I">I</a><a name="Deleting" id="Deleting">mportant
+  Information</a></dt>
+</dl>
+<ul>
+  <li>To prevent data loss, the upload is designed to not delete source PDF
+    files.</li>
+</ul>
+
+<h3>8. <a name="Troublesho" id="Troublesho">Troubleshooting</a></h3>
+<dl>
+    <dd>For troubleshooting information, see the Troubleshooting section in the
+      <a href="faq.html">User FAQ</a>.</dd>
+</dl>
+</div>
+<!-- toc -->
+</div>
+
+<div class="legal1">
+Company Proprietary</div>
+
+<div class="footnote">
+Copyright © 2009-2011 Robert F. Frasca</div>
+</div>
+</body>
+</html>

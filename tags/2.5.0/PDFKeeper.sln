@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+# SharpDevelop 3.2.1.6466
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDFKeeper.Client", "PDFKeeper.Client\PDFKeeper.Client.vbproj", "{089A1E83-59C6-4ED2-B0B2-52AB0C395705}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Setup", "Database Setup", "{330E2ECE-04D0-4DB7-8EEB-529844EFDB58}"
+	ProjectSection(SolutionItems) = postProject
+		Database Setup\DatabaseSetup.sql = Database Setup\DatabaseSetup.sql
+		Database Setup\DatabaseSetup.cmd = Database Setup\DatabaseSetup.cmd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{575BBF71-CEF6-4A8F-ADED-5963619D9FCB}"
+	ProjectSection(SolutionItems) = postProject
+		Documentation\readyset-license.html = Documentation\readyset-license.html
+		Documentation\UserGuide.html = Documentation\UserGuide.html
+		Documentation\GettingStartedGuide.html = Documentation\GettingStartedGuide.html
+		Documentation\ReleaseNotes.html = Documentation\ReleaseNotes.html
+		Documentation\UserFAQ.html = Documentation\UserFAQ.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{DEDE277A-1D6D-470C-B780-1410B44FC9DE}"
+	ProjectSection(SolutionItems) = postProject
+		Installer\PDFKeeper.iss = Installer\PDFKeeper.iss
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icon", "Icon", "{57249065-CF44-453D-95A1-EC616D2A6FCD}"
+	ProjectSection(SolutionItems) = postProject
+		Icon\PDFKeeper.xcf = Icon\PDFKeeper.xcf
+		Icon\PDFKeeper.bmp = Icon\PDFKeeper.bmp
+		Icon\PDFKeeper.ico = Icon\PDFKeeper.ico
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{71371C1A-01A9-4DF0-8097-7BFA4FEF2176}"
+	ProjectSection(SolutionItems) = postProject
+		Build\PostBuild.cmd = Build\PostBuild.cmd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7484C18F-49CB-49B8-8A6C-B9DD64221A5A}"
+	ProjectSection(SolutionItems) = postProject
+		COPYING.txt = COPYING.txt
+		README.txt = README.txt
+		THIRDPARTY.txt = THIRDPARTY.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{BFEFFAA0-DDA2-43D6-8F63-1AAA97AC56FE}"
+	ProjectSection(SolutionItems) = postProject
+		Dependencies\README.txt = Dependencies\README.txt
+		Dependencies\sumatrapdfrestrict.ini = Dependencies\sumatrapdfrestrict.ini
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{089A1E83-59C6-4ED2-B0B2-52AB0C395705}.Debug|x86.Build.0 = Debug|x86
+		{089A1E83-59C6-4ED2-B0B2-52AB0C395705}.Debug|x86.ActiveCfg = Debug|x86
+		{089A1E83-59C6-4ED2-B0B2-52AB0C395705}.Release|x86.Build.0 = Release|x86
+		{089A1E83-59C6-4ED2-B0B2-52AB0C395705}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,58 @@
+**************************************************************************
+
+ PDFKeeper 2.1.0
+ Copyright (C) 2009-2011 Robert F. Frasca
+
+ Build Information (Win32)
+
+**************************************************************************
+
+- Source folder structure:
+
+	<Absolute Path>\PDFKeeper
+	<Absolute Path>\PDFKeeper\Bundled	
+	<Absolute Path>\PDFKeeper\Documents
+	<Absolute Path>\PDFKeeper\Documents\css
+	<Absolute Path>\PDFKeeper\Graphics
+	<Absolute Path>\PDFKeeper\Graphics\MiniIcons
+	<Absolute Path>\PDFKeeper\PDFKeeper
+	<Absolute Path>\PDFKeeper\PDFKeeper\Properties
+	<Absolute Path>\PDFKeeper\Scripts
+
+- PDFKeeper was developed with the following software:
+
+	SharpDevelop 3.2.1
+	http://www.icsharpcode.net/OpenSource/SD/Default.aspx
+
+	Microsoft FxCop 1.36
+	http://www.microsoft.com/downloads/en/details.aspx?displaylang=en&FamilyID=917023f6-d5b7-41bb-bbc0-411a7d66cf3c
+	
+	Inno Setup 5.4.1
+	http://www.jrsoftware.org
+
+	ISTool 5.3.0.1
+	http://www.istool.org
+
+- Oracle Database 10g Express Edition (10.2.0.1) Server (Universal) must
+  be installed and configured to test the application. See the product
+  documentation for instructions.
+
+- Oracle Data Access Components (ODAC) 11.2.0.1.2 must be installed to
+  build PDFKeeper. See the product documentation for instructions.
+
+- PDFKeeper requires third-party software components; see README.txt in
+  the Bundled folder for instructions.
+
+- Prior to compiling the installation package, make sure to perform the
+  following steps from within ISTool:
+
+	1. Select Project | Setup Options | Compiler...
+	2. Modify the absolute path of Output Directory to match your
+	   environment.
+	3. Select the Application tab
+	4. Modify the absolute path of License file to match your
+	   environment.
+	5. Select the Appearance tab
+	6. Modify the absolute path of Setup to match your environment.
+
+**************************************************************************

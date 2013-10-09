@@ -1,0 +1,112 @@
+*********************************************************************
+
+ PDFKeeper 1.1.0 Release Build Procedures (Win32)
+
+*********************************************************************
+
+ Source folder structure:
+
+ <Absolute Path>\PDFKeeper
+ <Absolute Path>\PDFKeeper\Binaries
+ <Absolute Path>\PDFKeeper\Documents
+ <Absolute Path>\PDFKeeper\Graphics
+ <Absolute Path>\PDFKeeper\Help
+ <Absolute Path>\PDFKeeper\Scripts
+ <Absolute Path>\PDFKeeper\Source
+
+*********************************************************************
+
+ Download and install required software
+
+*********************************************************************
+
+ 1. Download and install GIMP 2.6.8 or later from
+    http://www.gimp.org
+ 2. Download and install Open Object Rexx 4.0.0 from
+    http://www.oorexx.org
+ 3. Download and install Inno Setup 5.3.9 or later from
+    http://www.jrsoftware.org
+ 4. Download and install ISTool 5.3.0.1 or later from
+    http://www.istool.org
+
+*********************************************************************
+
+ Download and extract third-party software
+
+*********************************************************************
+
+ 1. Download Rexx/SQL 2.5 or later (ODBC binary zip file) from
+    http://rexxsql.sourceforge.net and extract rexxsql.dll,
+    rexxodbc.dll, and rexxtrans.dll from the archive into the
+    Binaries folder.
+ 2. Download Sumatra PDF 1.0.1 or later (zip file) from
+    http://blog.kowalczyk.info/software/sumatrapdf/index.html
+    and extract SumatraPDF.exe from the archive into the Binaries
+    folder.
+ 3. Download pdftk 1.41 or later (Windows zip file) from
+    http://www.accesspdf.com/pdftk and extract pdftk.exe from the
+    archive into the Binaries folder.
+ 4. Download Xpdf 3.02pl4 or later (Win32 binary zip file) from
+    http://foolabs.com/xpdf and extract pdfinfo.exe from the
+    archive into the Binaries folder.
+
+*********************************************************************
+
+ Export graphics
+
+*********************************************************************
+
+  1. Open the Graphics folder
+  2. Open logo.xcf with GIMP
+  3. Select File | Save a Copy...
+  4. Expand "Select File Type"
+  5. Select "Windows BMP Image"
+  6. Select Save
+  7. Select Export
+  8. Select Save
+  9. Close out of GIMP
+ 10. Open logo.bmp with GIMP
+ 11. Select File | Save a Copy...
+ 12. Expand "Select File Type"
+ 13. Select "Microsoft Windows icon"
+ 14. Select Save
+ 15. Select "32bpp, 8-bit alpha, no palette"
+ 16. Select Save
+ 17. Close out of GIMP
+ 18. Open listicon.xcf with GIMP
+ 19. Select File | Save a Copy...
+ 20. Expand "Select File Type"
+ 21. Select "Windows BMP Image"
+ 22. Select Save
+ 23. Select Export
+ 24. Select Save
+ 25. Close out of GIMP
+
+*********************************************************************
+
+ Tokenize Search and Summary Editor source files
+
+*********************************************************************
+
+ 1. Execute tokenize.cmd (included with PDFKeeper source)
+
+*********************************************************************
+
+ Compile installation package
+
+*********************************************************************
+
+  1. Open pdfkeeper.iss with ISTool
+  2. Select Project | Setup Options | Compiler...
+  3. Modify the absolute path of Output Directory to match your
+     environment.
+  4. Select the Application tab
+  5. Modify the absolute path of License file to match your
+     environment.
+  6. Select the Appearance tab
+  7. Modify the absolute path of Setup to match your environment.
+  8. File | Save
+  9. Project | Compile Setup
+ 10. Testing of the setup is optional
+ 11. Select Close
+ 12. Close out of ISTool

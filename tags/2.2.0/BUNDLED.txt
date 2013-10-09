@@ -1,0 +1,38 @@
+**************************************************************************
+
+ PDFKeeper 2.2.0
+ Copyright (C) 2009-2011 Robert F. Frasca
+
+ Bundled Third-Party Software Components
+
+**************************************************************************
+
+The following third-party software components may be bundled with
+PDFKeeper:
+
+============
+ SumatraPDF
+============
+
+Copyright 2006-2011 all authors
+	
+This software is licensed under the terms of the GNU General Public
+License Version 3.
+
+The binary, source code, and documentation can be found at
+http://blog.kowalczyk.info/software/sumatrapdf/free-pdf-reader.html
+	
+============
+ iTextSharp
+============
+
+Copyright (C) 1999-2011 by Bruno Lowagie and Paulo Soares.
+All Rights Reserved.
+
+This software is licensed under the terms of the GNU Affero General
+Public License Version 3.
+
+The binary, source code, and documentation can be found at
+http://sourceforge.net/projects/itextsharp/
+
+**************************************************************************

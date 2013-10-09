@@ -1,0 +1,222 @@
+/* $Id: readyset.css,v 1.19 2004/07/08 20:34:12 jrobbins Exp $
+
+This file is based on tigris.css, which is available from 
+http://style.tigris.org/.
+	
+This file defines basic default formatting for HTML conforming to
+Tigris application style. 
+
+To extend or override these rules for your instance, edit inst.css
+instead of this file. */
+
+table, th, td {
+ border: none;
+}
+
+.tabs th {
+ border-right: 1px solid #333;
+ background-color: #ddd !important;
+ color: #fff;
+ border-left: 3px solid #fff;
+}
+
+.readyset .tabs td {
+ background-color: #999 !important;
+ border-bottom: 1px solid #fff;
+ border-right: 1px solid #fff;
+ border-left: 3px solid #fff;
+}
+
+.tabs {
+ border-bottom: 6px #ddd solid;
+}
+
+.tabs th, .tabs th a:link, .tabs th a:visited {
+ color: #555;
+}
+
+.tabs td, .tabs td a:link, .tabs td a:visited {
+ color: #fff;
+}
+
+.tabs a {
+ text-decoration: none;
+}
+
+.axial th {
+ background-color: #ddd;
+ color: black;
+}
+
+
+body .grid td {
+ border-top: 1px solid #ccc;
+ border-left: 1px solid #ccc;
+ background-color: transparent;
+}
+
+
+body, textarea, pre, code {
+ font-size: x-small;
+ voice-family: "\"}\"";
+ voice-family: inherit;
+ font-size: small;
+}
+
+small, div.tabs th, div.tabs td, input, select {
+ font-size: xx-small;
+ voice-family: "\"}\"";
+ voice-family: inherit;
+ font-size: x-small;
+}
+
+.tabs td, .tabs th, dt {
+ font-weight: bold;
+}
+
+table {
+ font-size: 1em;
+}
+
+
+/* box properties (exclusive of borders), positioning, alignments,
+list types, text-indent */
+
+p, ul, ol, dl {
+ margin-top: .67em;
+ margin-bottom: .67em;
+}
+
+.readyset h3, .readyset h4 {
+ padding: 3px;
+ padding-left: 5px;
+ margin-right: 2px;
+ margin-left: 2px;
+ margin-bottom: 0;
+ clear: both;
+}
+
+form {
+ margin: 0;
+}
+
+
+ol ol { list-style-type: lower-alpha; }
+ol ol ol { list-style-type: lower-roman; }
+
+td, th {
+ padding: 2px 3px;
+ text-align: left;
+ vertical-align: top;
+}
+
+
+.tabs {
+ margin-top: .67em;
+ margin-right: 2px;
+ margin-left: 2px;
+ padding-left: 8px;
+}
+
+.tabs td, .tabs th {
+ padding: 3px 9px;
+}
+
+
+.right { text-align: right !important; }
+.center { text-align: center !important; }
+
+.readyset .axial th {
+ text-align: right;
+ white-space: nowrap;
+}
+
+
+dd { margin-bottom: .67em; }
+
+.tier1 { margin-left: 0; }
+.tier2 { margin-left: 1.5em; }
+.tier3 { margin-left: 3em; }
+.tier4 { margin-left: 4.5em; }
+
+.level1 { padding-left: 0; }
+.level2 { padding-left: 1em; }
+.level3 { padding-left: 2em; }
+.level4 { padding-left: 3em; }
+
+.alt { display: none; }
+
+
+/* additions specific to ReadySET */
+
+tr ul, tr ol, tr p { margin-top: 0; }
+tr ul { margin-left: 0px; padding-left: 2em; }
+
+
+.sticky {
+ padding: 3px;
+ margin-right: 2px;
+ margin-bottom: 3px;
+ border-right: 1px solid;
+ border-bottom: 1px solid;
+}
+
+.tip {
+ padding: 3px;
+ margin-right: 2px;
+ margin-bottom: 3px;
+ border-right: 1px solid;
+ border-bottom: 1px solid;
+}
+
+.todo {
+ padding: 3px;
+ margin-right: 2px;
+ margin-bottom: 3px;
+ border-right: 1px solid;
+ border-bottom: 1px solid;
+}
+
+
+#processimpact {
+ border: 1px solid;
+ padding: 3px;
+ margin-right: 2px;
+ margin-bottom: 2px;
+}
+
+.footnote {
+   width: 80%;
+   border-top: solid #aaa 1px;
+   font-size: x-small;
+   padding-top: 3px;
+   margin-top: 3em;
+}
+
+.reusablefragment {
+ padding: 6px;
+ margin-top: 3em;
+ margin-bottom: 3em;
+}
+
+.sample1, .sample2, .sample3, .sample4 {
+ padding-right: 2px;
+ margin-bottom: 4px;
+}
+
+.legal1 {
+ border: 2px solid;
+ padding: 3px;
+ text-align: center !important;
+ font-size: xx-large;
+ font-weight: bold;
+ display: none;
+}
+
+.linklist a { display: block; }
+
+.sub { padding-left: 1em;  }
+
+:target {
+  border: 2px solid red; 
+}

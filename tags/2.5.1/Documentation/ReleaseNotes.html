@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <title>PDFKeeper 2.5.1: Release Notes</title>
+  <style type="text/css">
+/* <![CDATA[ */ 
+@import "css/readyset.css"; 
+@import "css/inst.css";
+/*  ]]> */
+ </style>
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+</head>
+
+<body style="font-family: Arial,Helvetica,sans-serif">
+<h2>PDFKeeper 2.5.1: Release Notes</h2>
+
+<div class="app">
+
+<div class="readyset">
+
+<div id="releaseinfo">
+<h3>Product Release Information</h3>
+
+<table border="1" cellpadding="3" cellspacing="2" class="axial">
+  <tbody>
+    <tr>
+      <th>Product:</th>
+      <td><a href="http://code.google.com/p/pdfkeeper/">PDFKeeper</a></td>
+    </tr>
+    <tr>
+      <th>Release Number:</th>
+      <td>2.5.1</td>
+    </tr>
+    <tr>
+      <th>Release Date:</th>
+      <td>2012/04/14</td>
+    </tr>
+    <tr>
+      <th>Customer Support:</th>
+      <td>For more information or support, please visit <a
+        href="http://code.google.com/p/pdfkeeper/">website</a> or send an email
+        to <a href="mailto:rffrasca@gmail.com">rffrasca@gmail.com</a> </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- /releaseinfo -->
+
+<div id="introduction">
+<h3>Introduction</h3>
+
+<p>This document contains the release notes for PDFKeeper version 2.5.1. The
+following sections describe the release in detail and provide late-breaking or
+other information that supplements the main documentation.</p>
+</div>
+<!-- /introduction -->
+
+<div id="whatsnew">
+<h3>What's New?</h3>
+<ul>
+  <li>This is a bug fix release to address critical defects with the
+    Information Properties Editor Folder Watcher.</li>
+  <li>The source code for this release is available at <a
+    href="http://code.google.com/p/pdfkeeper/source/checkout">website</a>.</li>
+  <li>Improvements to the product's quality and reliability. See "Recent
+    Changes" below for details.</li>
+</ul>
+</div>
+<!-- /whatsnew -->
+
+<div id="installation">
+<h3>Recent Changes</h3>
+<ul>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=104">104</a>
+    Information Properties Editor Folder Watcher detecting duplicate
+  events.</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=105">105</a>
+    Information Properties Editor Folder Watcher launching Information
+    Properties Editor while PDF is being written. </li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=106">106</a>
+    Folder Watcher log file only contains the last error logged.</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=107">107</a>
+    Folder Watcher Unhandled Exception: System.ArgumentOutOfRangeException:
+    startIndex can not be less than zero.</li>
+</ul>
+
+<h3>Upgrade Notes</h3>
+<dl>
+  <dt>Deprecated Components Information</dt>
+    <dd><p>Since PDFKeeper 2.0.0, the server-side components have been
+      deprecated. If not upgrading a system that has only the server-side
+      components from PDFKeeper 1.0.0 or 1.1.0 installed, please uninstall
+      PDFKeeper from that system. From the server; remove the Document Loader
+      scheduled task, Document Upload Folder, and delete the PDFKEEPER_UPLOAD
+      environment variable. From each client, remove the shortcut to the
+      Document Upload folder.</p>
+    </dd>
+  <dt>Database Changes</dt>
+    <dd>In PDFKeeper 1.0.0 and 1.1.0, the Oracle Text WORLD_LEXER was used to
+      provide broad language support during PDF document indexing. However, a
+      bug exists with this lexer in the Oracle Database 10g Express Edition,
+      see <a
+      href="http://code.google.com/p/pdfkeeper/issues/detail?id=50">Issue
+      50</a> for details. As a result of this bug, starting with PDFKeeper
+      2.0.0, the BASIC_LEXER is now used. This change will only affect a
+      database schema built in PDFKeeper 2.0.0 or later; an existing database
+      schema will need to be altered if an ORA-03113 error is encountered while
+      uploading documents.</dd>
+    <dd>For more information on the BASIC_LEXER, including the languages
+      supported, please refer to the <a
+      href="http://download.oracle.com/docs/cd/B19306_01/text.102/b14218/cdatadic.htm#i1007615">Oracle
+      Text Documentation</a>.</dd>
+</dl>
+
+<h3>Known Problems and Workarounds</h3>
+</div>
+<!-- /installation -->
+<!-- /recentchanges -->
+
+<div id="knownproblems">
+<ul>
+  <li style="margin-left:0;"><b>ORA-03113: end-of-file on communication
+    channel</b> following the upload of a PDF document and your database schema
+    was built using the Database Setup included with PDFKeeper 1.0.0 or 1.1.0. 
+    <ul>
+      <li>WORKAROUND: Please refer to the <a
+        href="http://code.google.com/p/pdfkeeper/wiki/EndOfFileOnCommunicationChannelAlert">alert</a>
+        for the workaround.</li>
+    </ul>
+  </li>
+</ul>
+</div>
+<!-- /knownproblems -->
+</div>
+
+<div class="legal1">
+Company Proprietary</div>
+
+<div class="footnote">
+Copyright © 2009-2012 Robert F. Frasca</div>
+</div>
+</body>
+</html>

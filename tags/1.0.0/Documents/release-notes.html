@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <title>PDFKeeper 1.0.0: Release Notes</title>
+  <style type="text/css">
+/* <![CDATA[ */ 
+@import "css/readyset.css"; 
+@import "css/inst.css";
+/*  ]]> */
+ </style>
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+</head>
+
+<body>
+<h2>PDFKeeper 1.0.0: Release Notes</h2>
+
+<div class="app">
+
+<div class="readyset">
+
+<div id="releaseinfo">
+<h3>Product Release Information</h3>
+
+<table border="1" cellpadding="3" cellspacing="2" class="axial">
+  <tbody>
+    <tr>
+      <th>Product:</th>
+      <td><a href="http://code.google.com/p/pdfkeeper/">PDFKeeper</a></td>
+    </tr>
+    <tr>
+      <th>Release Number:</th>
+      <td>1.0.0 </td>
+    </tr>
+    <tr>
+      <th>Release Date:</th>
+      <td>2009/10/24 </td>
+    </tr>
+    <tr>
+      <th>Customer Support:</th>
+      <td>For more information or support, please visit <a
+        href="http://code.google.com/p/pdfkeeper/">website</a> or send an email
+        to <a href="mailto:rffrasca@gmail.com">rffrasca@gmail.com</a> </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- /releaseinfo -->
+
+<div id="introduction">
+<h3>Introduction</h3>
+
+<p>This document contains the release notes for PDFKeeper version 1.0.0, the
+first full release of this product. The following sections describe the release
+in detail and provide late-breaking or other information that supplements the
+main documentation.</p>
+</div>
+<!-- /introduction -->
+
+<div id="whatsnew">
+<h3>What's New?</h3>
+<ul>
+  <li>First, full release of this product to the public.</li>
+</ul>
+</div>
+<!-- /whatsnew -->
+
+<div id="installation">
+<h3>Installation Notes</h3>
+<dl>
+  <dt>Installation</dt>
+    <dd>See the <a href="install.html">installation instructions</a> for full
+      details.</dd>
+  <dt>Manifest</dt>
+    <dd>This release consists of the following items: 
+      <ul>
+        <li>Release notes (this file)</li>
+        <li>Installation instructions / Quick start guide</li>
+        <li>Product installer binary</li>
+        <li>User guide</li>
+        <li>For product source code, please visit <a
+          href="http://code.google.com/p/pdfkeeper/source/checkout">website</a></li>
+      </ul>
+    </dd>
+  <dt>Minimum System Requirements</dt>
+    <dd>
+      <table border="1" cellpadding="3" cellspacing="2" class="axial">
+        <tbody>
+          <tr>
+            <th>System Processor:</th>
+            <td>300MHz</td>
+          </tr>
+          <tr>
+            <th>System Memory:</th>
+            <td>256MB for a client, 512MB for a server</td>
+          </tr>
+          <tr>
+            <th>Free Disk Space:</th>
+            <td>5.6MB for the client-side components, 1.5MB for the server-side
+              components; does not include data, temporary files, or
+              prerequisites.</td>
+          </tr>
+          <tr>
+            <th>Operating System:</th>
+            <td>Windows XP (32-bit) SP1, SP2, or SP3</td>
+          </tr>
+          <tr>
+            <th>Networking:</th>
+            <td>TCP/IP, Client for Microsoft Networks, and File and Printer
+              Sharing for Microsoft Networks.</td>
+          </tr>
+          <tr>
+            <th>Existing Software:</th>
+            <td>
+              <div>
+              Popular web browser</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+</dl>
+</div>
+<!-- /installation -->
+<!-- /recentchanges -->
+
+<div id="knownproblems">
+<h3>Known Problems and Workarounds</h3>
+<ul>
+  <li><b>"REXX/SQL-1: Database Error - specified driver could not be loaded due
+    to system error 1114 (Oracle in XEClient)"</b>
+    <ul>
+      <li>WORKAROUND: The Oracle Database 10g Express Client ODBC driver
+        requires MFC71.DLL, but Oracle did not include this file with the
+        Oracle Database 10g Express Client. To correct, obtain a copy of
+        MFC71.DLL from another application, and then copy it into a folder in
+        the PATH. Note, this file is included with the Oracle Database 10g
+        Express Edition Server.</li>
+    </ul>
+  </li>
+  <li>The <b>Title</b>, <b>Author</b>, <b>Subject</b>, and <b>Keywords</b>
+    summary fields in the PDF document cannot contain any "<b>|</b>" vertical
+    bar characters. The Document Loader uses the "<b>|</b>" vertical bar as a
+    separator character. 
+    <ul>
+      <li>WORKAROUND: Remove any "<b>|</b>" vertical bar characters from the
+        <b>Title</b>, <b>Author</b>, <b>Subject</b>, and <b>Keywords</b>
+        summary fields with the PDFKeeper Summary Editor, prior to loading the
+        PDF document into the database.</li>
+    </ul>
+  </li>
+</ul>
+</div>
+<!-- /knownproblems -->
+</div>
+
+<div class="legal1">
+Company Proprietary</div>
+
+<div class="footnote">
+Copyright © 2009 Robert F. Frasca</div>
+</div>
+</body>
+</html>
