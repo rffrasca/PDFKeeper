@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <title>User FAQ</title>
+  <style type="text/css">
+/* <![CDATA[ */ 
+@import "css/readyset.css"; 
+@import "css/inst.css";
+/*  ]]> */
+ </style>
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="readyset">
+<h2>User FAQ</h2>
+
+<div id="general">
+<h3>General Information</h3>
+<dl>
+  <dt>What is PDFKeeper?</dt>
+    <dd>It is a free, open source PDF document storage system that provides
+      storage, indexing, and retrieval using the free Oracle Database Express
+      Edition (Oracle Database XE).</dd>
+  <dt>Who should use PDFKeeper?</dt>
+    <dd>Anyone who wants to implement a low cost PDF document storage system in
+      a small or home office. It can be implemented for use on a single user
+      system or in a workgroup.</dd>
+</dl>
+</div>
+<!-- /general -->
+
+<div id="download">
+
+<div id="install">
+<h3>Download and Install</h3>
+<dl>
+  <dt>How can I obtain PDFKeeper?</dt>
+    <dd>You may <a
+      href="http://code.google.com/p/pdfkeeper/downloads/list">download
+      PDFKeeper</a>.</dd>
+  <dt>What do I need to use PDFKeeper?</dt>
+    <dd>System requirements are described in the <a
+      href="release-notes.html">release notes</a>.</dd>
+    <dd>System requirements are a Intel-compatible PC with a processor speed of
+      at least 300 MHz, 256 MB of RAM for a client, 512 MB of RAM for a server.
+      5.6 MB of free disk space for the client-side components, 1.5 MB of free
+      space for the server-side components; and one of the following operating
+      systems: Windows XP (32-bit) SP1, SP2, or SP3</dd>
+  <dt>How do I install PDFKeeper?</dt>
+    <dd><a href="install.html">Installation instructions</a> are available
+      on-line.</dd>
+</dl>
+</div>
+<!-- /install -->
+</div>
+<!-- /download -->
+
+<div id="gettingstarted">
+<h3>Getting Started</h3>
+<dl>
+  <dt>What are Client-side components?</dt>
+    <dd>The client-side components consist of <b>Search</b> and <b>Summary
+      Editor</b>. These components must be installed on each system that will
+      be accessing the PDF document database. Optionally, these components can
+      be installed on the same system as the database, as would be the case in
+      single system implementations.</dd>
+    <dd><b>Search</b> is used for locating and viewing PDF documents. With
+      Search, you can add notes to any document record. <b>Summary Editor</b>
+      is used to edit the Title, Author, Subject and Keywords of a PDF
+      document; prior to being uploaded into the database.</dd>
+    <dd>Both, <b>Search</b> and <b>Summary Editor</b> will function with
+      <b>User</b> privileges.</dd>
+  <dt>What are Server-side components?</dt>
+    <dd>The server-side components consist of <b>Database Setup</b> and
+      <b>Document Loader</b>. These components must be installed on the same
+      system as Oracle Database 10g Express Server.</dd>
+    <dd><b>Database Setup</b> is used to create the PDFKeeper database schema,
+      which contains the documents table and full-text index. <b>Document
+      Loader</b> is used to upload all PDF documents, that exist in the
+      designated upload folder, into the database.</dd>
+  <dt>How do I implement PDFKeeper?</dt>
+    <dd>PDFKeeper can be implemented for use on a single user system or in a
+      workgroup. If implementing for use in a workgroup, it is recommended that
+      the Oracle XE Database and the PDFKeeper server-side components be
+      installed on a dedicated system.</dd>
+    <dd>Once you have decided on how you will implement PDFKeeper, you should
+      read the <a href="http://www.oracle.com/pls/xe102/">Oracle Database 10g
+      Express Edition documentation</a> for instructions on how to install,
+      configure, and administer an Oracle Express Edition Database.</dd>
+    <dd>At this point, you're ready to begin the installation, please refer to
+      the <a href="install.html">installation guide</a>.</dd>
+</dl>
+</div>
+<!-- /gettingstarted -->
+
+<h3>Software Compatibility</h3>
+<dl>
+  <dt>Does PDFKeeper work on Open Object Rexx 4.0.0?</dt>
+    <dd>Not at this time. However, this will be addressed in a future
+    release.</dd>
+  <dt>Does PDFKeeper work on other Oracle databases?</dt>
+    <dd>No, only Oracle Database 10g Express Edition (Universal). If you are a
+      developer, experienced with both Oracle Database and Open Object Rexx,
+      you should be able to get it to function on any edition of Oracle
+      Database 10g or later.</dd>
+  <dt>Will other databases be supported in the future?</dt>
+    <dd>Yes, provided the database is either free or open source, and it
+      supports full-text search and can index PDF documents. Of course, this
+      will be dictated by available resources and demand.</dd>
+  <dt>What versions of Windows has PDFKeeper been tested on?</dt>
+    <dd>The Application components have been tested on Windows XP Service Pack
+      3 (Professional and Home) 32-bit. The Server-side components have been
+      tested on Windows XP Service Pack 3 (Professional) 32-bit.</dd>
+  <dt>Will more versions of Windows be supported in the future?</dt>
+    <dd>Yes, but which versions will be supported depends on available
+      resources and demand. Open Object Rexx 3.2.0 does not install properly on
+      Windows Vista and does not support 64-bit. On the other hand, Open Object
+      Rexx 4.0.0 supports Windows Vista and includes 64-bit support.</dd>
+</dl>
+
+<div id="troubleshooting">
+<h3>Troubleshooting</h3>
+<dl>
+  <dt>I see an error message "REXX/SQL-1: Database Error - specified driver
+  could not be loaded due to system error 1114 (Oracle in XEClient)". What's
+  wrong?</dt>
+    <dd>The Oracle Database 10g Express Client ODBC driver requires MFC71.DLL,
+      but Oracle did not include this file with the Oracle Database 10g Express
+      Client. To correct, obtain a copy of MFC71.DLL from another application,
+      and then copy it into a folder in the PATH. Note, this file is included
+      with the Oracle Database 10g Express Edition Server.</dd>
+  <dt>I see an error message "Open Object Rexx Interface has encountered a
+  problem and needs to close." when viewing a PDF document. What's wrong?</dt>
+    <dd>This is a known issue with Open Object Rexx 3.2.0, which was fixed in
+      Open Object Rexx 4.0.0. Support for Open Object Rexx 4.0.0 will be
+      addressed in a future release.</dd>
+  <dt>I can't fit PDFKeeper on my screen. What's wrong?</dt>
+    <dd>PDFKeeper requires a minimum screen resolution of 800x600.</dd>
+  <dt>I am unable to resize the PDFKeeper Search dialog. What's wrong?</dt>
+    <dd>Open Object Rexx 3.2.0 supports dynamic resizing of dialogs, however
+      that functionality does not work with tokenized scripts, which is how I
+      distribute them in the binary release. I have opened an issue with the
+      Open Object Rexx development team.</dd>
+  <dt>"User password protected documents are not supported by PDFKeeper. What
+  can I do?</dt>
+    <dd><p>Oracle Text cannot index <b>User</b> password protected, PDF
+      documents. Summary Editor will not be able to update <b>User</b> password
+      protected, PDF documents. You must remove the <b>User</b> password with
+      an application of your choice.</p>
+    </dd>
+  <dt>"PDFKeeper Summary Editor does not support encrypted PDF documents. What
+  can I do?</dt>
+</dl>
+<dl>
+    <dd>You must decrypt the PDF document with an application of your choice.
+      Once you have updated the PDF document with Summary Editor, you can
+      encrypt it with an application of your choice, if necessary, prior to
+      uploading. Remember, <b>User</b> password protected documents are not
+      supported by PDFKeeper.</dd>
+</dl>
+</div>
+<!-- /troubleshooting -->
+
+<div id="other">
+<h3>Other Questions</h3>
+<dl>
+  <dt>My question is not on this page. How do I find the answer?</dt>
+    <dd>First read the <a href="../../Docs/user-guide.html">users' guide</a>
+      and other on-line help. Your question may have already been asked and
+      answered, to find it: search the project <a
+      href="http://code.google.com/p/pdfkeeper/issues">issue tracking
+      system</a>. If you still don't find it, you can <a
+      href="http://code.google.com/p/pdfkeeper/issues/entry">enter an
+      issue</a>. </dd>
+  <dt>Where should I send comments on this FAQ?</dt>
+    <dd>You can write to <a
+      href="mailto:rffrasca@gmail.com">rffrasca@gmail.com</a>.</dd>
+</dl>
+</div>
+<!-- /other -->
+</div>
+
+<div class="legal1">
+Company Proprietary</div>
+
+<div class="footnote">
+Copyright © 2009 Robert F. Frasca</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+*********************************************************************
+
+ PDFKeeper 1.0.0 Release Build Procedures (Win32)
+
+*********************************************************************
+
+Source folder structure:
+
+<Absolute Path>\PDFKeeper
+<Absolute Path>\PDFKeeper\Binaries
+<Absolute Path>\PDFKeeper\Documents
+<Absolute Path>\PDFKeeper\Graphics
+<Absolute Path>\PDFKeeper\Help
+<Absolute Path>\PDFKeeper\Scripts
+<Absolute Path>\PDFKeeper\Source
+
+=====================================================================
+ STEP 1: Create logo.bmp, logo.ico, and listicon.bmp
+=====================================================================
+
+- Download and install GIMP 2.6.7 from http://gimp.org
+- Open the Graphics folder
+- Open logo.xcf with GIMP
+- Select File | Save a Copy...
+- Expand "Select File Type"
+- Select "Windows BMP Image"
+- Select Save
+- Select Export
+- Select Save
+- Close out of GIMP
+- Open logo.bmp with GIMP
+- Select File | Save a Copy...
+- Expand "Select File Type"
+- Select "Microsoft Windows icon"
+- Select Save
+- Select Save
+- Close out of GIMP
+- Open listicon.xcf with GIMP
+- Select File | Save a Copy...
+- Expand "Select File Type"
+- Select "Windows BMP Image"
+- Select Save
+- Select Export
+- Select Save
+- Close out of GIMP
+
+=====================================================================
+ STEP 2: Install rexxsql.dll, rexxodbc.dll, and rexxtrans.dll
+=====================================================================
+
+- Download Rexx/SQL 2.5 (rxsql25_odbc_w32.zip) from
+  http://rexxsql.sourceforge.net/index.html
+- Extract rexxsql.dll, rexxodbc.dll, and rexxtrans.dll from
+  rxsql25_odbc_w32.zip into the Binaries folder.
+
+=====================================================================
+ STEP 3: Install SumatraPDF.exe
+=====================================================================
+
+- Download Sumatra PDF 0.9.4 (SumatraPDF-0.9.4.zip) from
+  http://blog.kowalczyk.info/software/sumatrapdf/index.html
+- Extract SumatraPDF.exe from SumatraPDF-0.9.4.zip into the Binaries
+  folder.
+
+=====================================================================
+ STEP 4: Install pdftk.exe
+=====================================================================
+
+- Download pdftk 1.41 (pdftk-1.41.exe.zip) from
+  http://www.accesspdf.com/pdftk/
+- Extract pdftk.exe from pdftk-1.41.exe.zip into the Binaries
+  folder.
+
+=====================================================================
+ STEP 5: Install pdfinfo.exe
+=====================================================================
+
+- Download Xpdf 3.02pl3 (xpdf-3.02pl3-win32.zip) from
+  http://foolabs.com/xpdf/home.html
+- Extract pdfinfo.exe from xpdf-3.02pl3-win32.zip into the Binaries
+  folder.
+
+=====================================================================
+ STEP 6: Tokenize Search and Summary Editor source files
+=====================================================================
+
+- Download and install Open Object Rexx 3.2.0 from
+  http://www.oorexx.org/. Open Object Rexx 4.0.0 is not supported at
+  this time.
+- Execute tokenize.cmd
+
+=====================================================================
+ STEP 7: Compile PDFKeeper installation package
+=====================================================================
+
+- Download and install Inno Setup 5.3.5 from
+  http://www.jrsoftware.org/isinfo.php
+- Download and install ISTool 5.3.0 from http://www.istool.org/
+- Open pdfkeeper.iss with ISTool.
+- Select Project | Setup Options | Compiler...
+- Modify the absolute path of Output Directory to match your
+  environment.
+- Select the Application tab
+- Modify the absolute path of License file to match your
+  environment.
+- Select the Appearance tab
+- Modify the absolute path of Setup to match your environment.
+- File | Save
+- Project | Compile Setup
+- Testing of the setup is optional
+- Select Close
+- Close out of ISTool

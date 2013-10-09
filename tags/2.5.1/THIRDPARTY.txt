@@ -1,0 +1,118 @@
+**************************************************************************
+*
+* PDFKeeper 2.5.1
+* Copyright (C) 2009-2012 Robert F. Frasca
+*
+* Third-Party Software
+*
+**************************************************************************
+
+The binary version of the following application is used to display PDF
+documents:
+
+Sumatra PDF 1.9 (SumatraPDF.exe)
+Copyright 2006-2011 all authors
+
+This software is distributed under the terms of the GNU General Public
+License Version 3.  See http://www.gnu.org/licenses/gpl.txt for the
+complete text of the license.
+
+The binary, source code, and documentation can be found at
+http://blog.kowalczyk.info/software/sumatrapdf/free-pdf-reader.html
+
+**************************************************************************
+
+The binary version of the following library is used to read and write the
+Title, Author, Subject, and Keywords stored in the PDF document:
+
+iTextSharp 5.2.0 (itextsharp.dll)
+Copyright (C) 1999-2012 by Bruno Lowagie and Paulo Soares.
+All Rights Reserved.
+
+This software is distributed under the terms of the GNU Affero General
+Public License Version 3.  See http://www.gnu.org/licenses/agpl.txt for
+the complete text of the license.
+
+The binary, source code, and documentation can be found at
+http://sourceforge.net/projects/itextsharp/
+
+**************************************************************************
+
+The binary version of the following library is used to read and write
+user settings stored in an XML file:
+
+Nini 1.1.0 (Nini.dll)
+Copyright (C) 2006 Brent R. Matzelle.  All rights reserved.
+
+This software is published under the terms of the MIT X11 license:
+
+<Start of license>
+
+Nini Configuration Project.
+Copyright (c) 2006 Brent R. Matzelle
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+<End of license>
+
+The binary, source code, and documentation can be found at
+http://nini.sourceforge.net/
+
+**************************************************************************
+
+The binary version of the following utility is used to terminate
+PdfKeeper.Client.exe, if in use during an uninstall of PDFKeeper:
+
+CKill 1.0 (ckill.exe)
+Copyright (C) 2007 Colin Finck (www.colinfinck.de)
+
+This software is distributed under the terms of the GNU General Public
+License Version 2.  See http://www.gnu.org/licenses/gpl-2.0.txt for the
+complete text of the license.
+
+The binary, source code, and documentation can be found at
+http://colinfinck.de/en/progs/ckill/
+
+**************************************************************************
+
+The corresponding templates from the following package was used to create
+the Getting Started Guide, Release Notes, User FAQ, and User Guide:
+
+ReadySET 0.9.3
+Copyright (C) 2003-2004 Jason Robbins. All rights reserved.
+
+This template package is licensed under the terms of a BSD License.  See
+readyset-license.html in the "Documentation" folder for the complete text
+of the license.
+
+The original template package can be found at http://readyset.tigris.org/
+
+**************************************************************************
+
+Some graphics from the following package are used in the PDFKeeper user
+interface:
+
+Mini Icons
+By Mark James
+
+This graphics package is available for free use for any purpose.
+
+The original graphics package can be found at
+http://www.famfamfam.com/lab/icons/mini/

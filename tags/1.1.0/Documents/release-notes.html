@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <title>PDFKeeper 1.1.0: Release Notes</title>
+  <style type="text/css">
+/* <![CDATA[ */ 
+@import "css/readyset.css"; 
+@import "css/inst.css";
+/*  ]]> */
+ </style>
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+</head>
+
+<body>
+<h2>PDFKeeper 1.1.0: Release Notes</h2>
+
+<div class="app">
+
+<div class="readyset">
+
+<div id="releaseinfo">
+<h3>Product Release Information</h3>
+
+<table border="1" cellpadding="3" cellspacing="2" class="axial">
+  <tbody>
+    <tr>
+      <th>Product:</th>
+      <td><a href="http://code.google.com/p/pdfkeeper/">PDFKeeper</a></td>
+    </tr>
+    <tr>
+      <th>Release Number:</th>
+      <td>1.1.0 </td>
+    </tr>
+    <tr>
+      <th>Release Date:</th>
+      <td>2010/04/29 </td>
+    </tr>
+    <tr>
+      <th>Customer Support:</th>
+      <td>For more information or support, please visit <a
+        href="http://code.google.com/p/pdfkeeper/">website</a> or send an email
+        to <a href="mailto:rffrasca@gmail.com">rffrasca@gmail.com</a> </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- /releaseinfo -->
+
+<div id="introduction">
+<h3>Introduction</h3>
+
+<p>This document contains the release notes for PDFKeeper version 1.1.0. The
+following sections describe the release in detail and provide late-breaking or
+other information that supplements the main documentation.</p>
+
+<p>This is an upgrade release with some significant enhancements and fixes.
+Users of previous releases are encouraged to upgrade. </p>
+</div>
+<!-- /introduction -->
+
+<div id="whatsnew">
+<h3>What's New?</h3>
+<ul>
+  <li>Open Object Rexx 4.0.0 is now required.</li>
+  <li>Sumatra PDF has been updated, now at version 1.0.1</li>
+  <li>pdfinfo.exe from Xpdf has been updated, now at version 3.02pl4</li>
+  <li>Improvements to the product's quality and reliability. See "Recent
+    Changes" below for details.</li>
+  <li>Additional software testing for this release was performed by <a
+    href="http://nresult.com">nResult</a>.</li>
+</ul>
+</div>
+<!-- /whatsnew -->
+
+<div id="installation">
+<h3>Installation and Upgrade Notes</h3>
+<dl>
+  <dt>Installation</dt>
+    <dd>See the <a href="install.html">installation instructions</a> for full
+      details.</dd>
+    <dd>The installer will remove prior versions of PDFKeeper, this includes
+      the PDFKEEPER_UPLOAD environment variable. Following an upgrade, the
+      Document Upload Folder will need to be selected.</dd>
+  <dt>Manifest</dt>
+    <dd>This release consists of the following items: 
+      <ul>
+        <li>Release notes (this file)</li>
+        <li>Installation instructions / Quick start guide</li>
+        <li>Product installer binary</li>
+        <li>User guide</li>
+        <li>For product source code, please visit <a
+          href="http://code.google.com/p/pdfkeeper/source/checkout">website</a></li>
+      </ul>
+    </dd>
+  <dt>Minimum System Requirements</dt>
+    <dd>
+      <table border="1" cellpadding="3" cellspacing="2" class="axial">
+        <tbody>
+          <tr>
+            <th>System Processor:</th>
+            <td>Intel-compatible PC with a 32-bit processor</td>
+          </tr>
+          <tr>
+            <th>Free Disk Space:</th>
+            <td>5.4MB for the client-side components, 1.5MB for the server-side
+              components; does not include data, temporary files, or
+              prerequisites.</td>
+          </tr>
+          <tr>
+            <th>Operating System:</th>
+            <td>Windows XP (32-bit)</td>
+          </tr>
+          <tr>
+            <th>Networking:</th>
+            <td>TCP/IP; Client for Microsoft Networks and File and Printer
+              Sharing for Microsoft Networks, if used in a Workgroup.</td>
+          </tr>
+          <tr>
+            <th>Existing Software:</th>
+            <td>
+              <div>
+              Popular web browser to view documentation</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  <dt>Version Compatibility</dt>
+    <dd>The database schema is unchanged with this release.</dd>
+</dl>
+
+<h3>Recent Changes</h3>
+<ul>
+  <li>FIX <a href="http://code.google.com/p/pdfkeeper/issues/detail?id=1">1</a>
+    "Error Cannot Load Resource File sqresus.dll" followed by "REXX/SQL-1:
+    Database Error - specified driver could not be loaded due to system error
+    1114 (Oracle in XEClient)."</li>
+  <li>FIX <a href="http://code.google.com/p/pdfkeeper/issues/detail?id=2">2</a>
+    "The system cannot find the file specified."</li>
+  <li>FIX <a href="http://code.google.com/p/pdfkeeper/issues/detail?id=3">3</a>
+    "Object Rexx Interface has encountered a problem and needs to close. We are
+    sorry for the inconvenience."</li>
+  <li>FIX <a href="http://code.google.com/p/pdfkeeper/issues/detail?id=4">4</a>
+    "Error 40 Incorrect call to routine occurred on line 97 of C:\Program
+    Files\PDFKeeper\Binaries\pdf.cls External routine RXWINEXEC
+  failed<b>"</b></li>
+  <li>FIX <a href="http://code.google.com/p/pdfkeeper/issues/detail?id=6">6</a>
+    Summary Editor: Author and Subject combo boxes are not always being
+    disabled when hourglass is displayed</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=10">10</a> PDF
+    document author was overwritten by document title after being loaded into
+    the database</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=16">16</a> File
+    is still deleted even if it's rejected by the document loader</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=17">17</a>
+    PDFKeeper Summary Editor fails to save keywords correctly if there's
+    carriage return in keywords</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=18">18</a>
+    PDFKeeper Summary Editor: Keywords pane does not have vertical scroll
+  bar</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=19">19</a>
+    PDFKeeper Search: Document note does not have vertical scoll bar if there's
+    a lot of text</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=20">20</a>
+    Database error if user uses * in their search</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=21">21</a> The
+    columns on the main screen are collapsed when trying to search with no
+    result</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=23">23</a>
+    Database error message is displayed if only keywords are entered in the
+    search text</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=24">24</a>
+    Computer needs to be restarted for the dloader to work after everything is
+    installed.</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=26">26</a>
+    pdfloader.log does not include the file name of the pdf file</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=29">29</a>
+    PDFKeeper Search: The column is automatically re-sized even if there's a
+    very long subject</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=32">32</a> Error
+    when selecting multiple files for summary edit</li>
+  <li>FIX <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=33">33</a> Win7 -
+    Unable to select upload folder</li>
+  <li>ENHANCEMENT <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=7">7</a>
+    Third-Party component update: Sumatra PDF</li>
+  <li>ENHANCEMENT <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=8">8</a>
+    Third-Party component update: pdfinfo.exe</li>
+  <li>ENHANCEMENT <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=9">9</a>
+    Prerequisite software update: Open Object Rexx</li>
+  <li>ENHANCEMENT <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=11">11</a> Add
+    functionality to "Check" and "Uncheck" all list view items on Search
+  dialog</li>
+  <li>ENHANCEMENT <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=15">15</a>
+    PDFKeeper Summary Editor: Add check for vertical pipe '|' symbol(s)</li>
+  <li>ENHANCEMENT <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=22">22</a> Add
+    more examples on the "about" operator to the User Guide</li>
+  <li>ENHANCEMENT <a
+    href="http://code.google.com/p/pdfkeeper/issues/detail?id=34">34</a> Add
+    upload folder integrity check to document loader</li>
+</ul>
+</div>
+<!-- /installation -->
+<!-- /recentchanges -->
+
+<div id="knownproblems">
+<h3>Known Problems and Workarounds</h3>
+<ul>
+  <li>No known problems with this release. 
+    <ul>
+      <li>WORKAROUND: N/A</li>
+    </ul>
+  </li>
+</ul>
+</div>
+<!-- /knownproblems -->
+</div>
+
+<div class="legal1">
+Company Proprietary</div>
+
+<div class="footnote">
+Copyright © 2009-2010 Robert F. Frasca</div>
+</div>
+</body>
+</html>

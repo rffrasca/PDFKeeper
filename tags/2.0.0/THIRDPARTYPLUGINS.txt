@@ -1,0 +1,21 @@
+**************************************************************************
+
+ PDFKeeper 2.0.0 Third-Party Plug-Ins
+ Copyright (C) 2009-2010 Robert F. Frasca
+
+**************************************************************************
+
+The following plug-ins may be included with PDFKeeper:
+
+	Sumatra PDF
+	Copyright (C) 2006-2009 Krzysztof Kowalczyk
+	The software and source code are available at
+	http://blog.kowalczyk.info/software/sumatrapdf/
+
+	iTextSharp
+	Copyright (C) 1999-2010 by Bruno Lowagie and Paulo Soares.
+	All Rights Reserved.
+	The software and source code are available at
+	http://sourceforge.net/projects/itextsharp/
+
+**************************************************************************

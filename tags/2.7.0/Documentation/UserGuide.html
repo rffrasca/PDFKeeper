@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <title>User Guide</title>
+  <style type="text/css">
+/* <![CDATA[ */ 
+@import "css/readyset.css"; 
+@import "css/inst.css";
+/*  ]]> */
+ </style>
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="readyset">
+<h2>User Guide</h2>
+
+<div id="projectinfo">
+<h3>Product Release Information</h3>
+
+<div class="axial">
+
+<table border="1" cellpadding="3" cellspacing="2">
+  <tbody>
+    <tr>
+      <th>Product:</th>
+      <td><a href="http://code.google.com/p/pdfkeeper/">PDFKeeper</a></td>
+    </tr>
+    <tr>
+      <th>Release Number:</th>
+      <td>2.7.0</td>
+    </tr>
+    <tr>
+      <th>Release Date:</th>
+      <td>2012/09/29</td>
+    </tr>
+    <tr>
+      <th>Customer Support:</th>
+      <td>For more information or support, please visit <a
+        href="http://code.google.com/p/pdfkeeper/">website</a> or send an email
+        to <a href="mailto:rffrasca@gmail.com">rffrasca@gmail.com</a> </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<!-- /projectinfo -->
+
+<div id="toc">
+<h3>Table of Contents</h3>
+<ol>
+  <li><a href="#Introducti">Introduction</a> 
+    <ul>
+      <li><a href="#What">What is PDFKeeper?</a></li>
+      <li><a href="#About">About this user guide</a></li>
+    </ul>
+  </li>
+  <li><a href="#Database">Database Setup</a> 
+    <ul>
+      <li><a href="#Descriptio">Description</a></li>
+      <li><a href="#Table">Table structure</a></li>
+      <li><a href="#Action">Action steps</a></li>
+    </ul>
+  </li>
+  <li><a href="#Database1">Database User Account Management</a> 
+    <ul>
+      <li><a href="#Recommenda">Recommendation</a></li>
+      <li><a href="#Granting">Granting access to the pdfkeeper schema</a></li>
+    </ul>
+  </li>
+  <li><a href="#Starting">Starting and Logging into PDFKeeper</a> 
+    <ul>
+      <li><a href="#Descriptio1">Description</a></li>
+      <li><a href="#start">How to start and login to PDFKeeper</a></li>
+    </ul>
+  </li>
+  <li><a href="#Document">Document Searching</a> 
+    <ul>
+      <li><a href="#Descriptio2">Description</a></li>
+      <li><a href="#search">How to search for documents</a> 
+        <ul>
+          <li><a href="#Search">Search Text examples</a></li>
+          <li><a href="#Sorting">Sorting the results</a></li>
+          <li><a href="#Refreshing">Refreshing the list view</a></li>
+        </ul>
+      </li>
+      <li><a href="#Document2">Document viewing</a></li>
+      <li><a href="#Save">Save a PDF document to disk without viewing</a></li>
+      <li><a href="#Printing">Printing Document Notes</a></li>
+      <li><a href="#Editing1">Editing Document Notes</a></li>
+      <li><a href="#Viewing">Viewing Document Keywords</a></li>
+      <li><a href="#Deleting1">Deleting documents</a></li>
+    </ul>
+  </li>
+  <li><a href="#PDFKeeper">Information Properties Editor</a> 
+    <ul>
+      <li><a href="#Descriptio3">Description</a></li>
+      <li><a href="#edit">How to edit the </a><a href="#Editing">PDF
+        Information Properties</a></li>
+      <li><a href="#Informatio">Information Properties Editor folder
+      watcher</a></li>
+    </ul>
+  </li>
+  <li><a href="#Document1">Document Uploading</a> 
+    <ul>
+      <li><a href="#Descriptio4">Description</a></li>
+      <li><a href="#upload">How to upload documents</a></li>
+      <li><a href="#I">Important Information</a></li>
+      <li><a href="#Upload">Upload folder watcher</a></li>
+    </ul>
+  </li>
+  <li><a href="#Troublesho">Troubleshooting</a></li>
+</ol>
+
+<h3>1. <a name="Introducti" id="Introducti">Introduction</a></h3>
+<dl>
+  <dt><a name="What" id="What">What is PDFKeeper?</a></dt>
+    <dd>It is a free, open source PDF document storage system that provides
+      storage, indexing, and retrieval using the free Oracle Database Express
+      Edition (Oracle Database XE).</dd>
+    <dd>PDFKeeper is perfect for anyone who wants to implement a low cost PDF
+      document storage system in a small or home office. It can be implemented
+      for use on a single user system or in a workgroup.</dd>
+  <dt><a name="About" id="About">About this user guide</a></dt>
+    <dd>This guide provides the steps that need to be performed in order to
+      implement and use PDFKeeper. It is intended to be used by those involved
+      in implementing, administering, and using PDFKeeper. Before proceeding,
+      make sure that all software required by PDFKeeper has been installed.</dd>
+</dl>
+
+<h3>2. <a name="Database" id="Database">Database Setup</a></h3>
+<dl>
+  <dt><a name="Descriptio" id="Descriptio">Description</a></dt>
+    <dd>The Database Setup script creates the following:</dd>
+    <dd><ul>
+        <li><b>pdfkeeper</b> schema account in the <b>users</b> tablespace.</li>
+        <li><b>docs</b> sequence used to generate document ID numbers, in the
+          pdfkeeper schema.</li>
+        <li><b>docs</b> table used to store the documents, in the pdfkeeper
+          schema.</li>
+        <li>Oracle Text, lexer and datastore preferences; and attributes, in
+          the ctxsys schema.</li>
+        <li><b>docs</b> table full-text search index, in the pdfkeeper
+        schema.</li>
+      </ul>
+    </dd>
+  <dt><a name="Table" id="Table">Table structure</a></dt>
+    <dd>Each document is stored in the database as follows:</dd>
+    <dd style="margin-left:6em"><b>ID</b> - Assigned to the document record by
+      the database. 
+      <p><b>Title</b> - Extracted from the PDF summary (InfoDictionary). This
+      column is searchable.</p>
+    </dd>
+    <dd style="margin-left:6em"><b>Author</b> - Extracted from the PDF summary
+      (InfoDictionary). This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Subject</b> - Extracted from the PDF summary
+      (InfoDictionary). This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Keywords</b> - Extracted from the PDF
+      summary (InfoDictionary). This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Added</b> - Date and time the document was
+      added to the database. This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Notes</b> - User editable notes. This column
+      is searchable.</dd>
+    <dd style="margin-left:6em"><b>PDF</b> - The contents of the PDF document.
+      This column is searchable.</dd>
+  <dt><a name="Action" id="Action">Action steps</a></dt>
+    <dd><ol>
+        <li>Select <b>Start</b> | <b>All Programs</b> | <b>PDFKeeper</b> |
+          <b>Database Setup</b>.</li>
+        <li>When prompted, enter the database connect string in the format:
+          <b>username@host:port</b> 
+          <ul>
+            <li><b>username</b> is a database account that must be a member of
+              SYSDBA. Note, <b>SYSTEM</b> is a member of SYSDBA. </li>
+            <li><b>host</b> is the host name or IP address of the computer that
+              is running Oracle Database XE Server. Specify <b>localhost</b> or
+              <b>127.0.0.1</b> if logged onto the same system as Oracle
+              Database XE Server.</li>
+            <li><b>port</b> (optional) is the TCP port number on which the
+              Oracle Net listener is listening. If not specified, the default
+              port number 1521 is assumed. </li>
+          </ul>
+        </li>
+        <li>Secure the <b>pdfkeeper</b> database user account by changing the
+          password, the default password is <b>pdfkeeper</b>. 
+          <ol>
+            <li>On the system that has Oracle Server installed, log into
+              Windows as the user that installed Oracle Server.</li>
+            <li>Select <b>Start</b> | <b>All Programs</b> | <b>Oracle Database
+              (10g or 11g) Express Edition</b> | <b>Run SQL Command
+            Line</b>.</li>
+            <li>When prompted, enter the following: <b>connect / as
+              sysdba</b><b></b></li>
+            <li>Next, enter the following: <b>alter user pdfkeeper identified
+              by <i><i><i>"new_password"</i></i></i><i>;</i></b></li>
+          </ol>
+        </li>
+      </ol>
+    </dd>
+</dl>
+
+<h3>3. <a name="Database1" id="Database1">Database User Account
+Management</a></h3>
+<dl>
+  <dt><a name="Recommenda" id="Recommenda">Recommendation</a></dt>
+    <dd>It is recommended that each user be assigned a personal database
+      account, with only the required privileges. The <b>pdfkeeper</b> database
+      account should only be used for <b>pdfkeeper</b> schema administration,
+      not for general use. For more information on Managing Users, please refer
+      to the <a
+      href="http://docs.oracle.com/cd/E17781_01/server.112/e18804/toc.htm">Oracle
+      Database 11g Express Edition 2 Day DBA guide</a> or <a
+      href="http://docs.oracle.com/cd/B25329_01/doc/admin.102/b25107/users_secure.htm">Oracle
+      Database 10g Express Edition 2 Day DBA guide</a>.</dd>
+  <dt><a name="Granting" id="Granting">Granting access to the pdfkeeper
+  schema</a></dt>
+    <dd>Perform the following steps for any user that will need access to the
+      <b>pdfkeeper</b> schema: </dd>
+    <dd><ol>
+        <li>If the user does not have a database user account, create one for
+          the user: 
+          <ol>
+            <li>On the system that has Oracle Server installed, log into
+              Windows as the user that installed Oracle Server.</li>
+            <li>Select <b>Start</b> | <b>All Programs</b> | <b>Oracle Database
+              (10g or 11g) Express Edition</b> | <b>Run SQL Command
+            Line</b>.</li>
+            <li>When prompted, enter the following: <b>connect / as
+            sysdba</b></li>
+            <li>Next, enter the following: <b>create user <i>user_name</i>
+              default tablespace users identified by <i>"password"</i>;</b></li>
+            <li>Next, enter the following: <b>grant connect, resource to
+              <i>user_name</i>;</b></li>
+            <li>Close SQL Command Line, enter: <b>quit</b></li>
+          </ol>
+        </li>
+        <li>Connect to Oracle Server as <b>pdfkeeper</b> 
+          <ol>
+            <li>Select <b>Start</b> | <b>All Programs</b> | <b>Oracle Database
+              (10g or 11g) Express Edition</b> | <b>Run SQL Command
+            Line</b>.</li>
+            <li>When prompted, enter the following: <b>connect
+            pdfkeeper</b></li>
+            <li>When prompted, enter the password</li>
+          </ol>
+        </li>
+        <li>For a new account, enter the following statement to grant the user
+          select/query access to the <b>DOCS</b> table: 
+          <dl>
+            <dt style="margin-left:2em;"><b>grant select on docs to
+            <i>user_name</i>;</b></dt>
+          </dl>
+        </li>
+        <li>Grant/Revoke permissions as neccessary: 
+          <p style="margin-left:2em;">To give the user the ability to upload
+          documents, enter the following statements:</p>
+          <p style="margin-left:4em"><b>grant insert on docs to
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:4em"><b>grant select on docs_seq to
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:2em;">To give the user the ability to edit
+          document notes, enter the following statement:</p>
+          <p style="margin-left:4em"><b>grant update on docs to
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:2em;">To give the user the ability to delete
+          documents, enter the following statement:</p>
+          <p style="margin-left:4em"><b>grant delete on docs to
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:2em;">To prevent the user from uploading
+          documents, enter the following statements:</p>
+          <p style="margin-left:4em"><b>revoke insert on docs from
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:4em"><b>revoke select on docs_seq from
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:2em;">To prevent the user from editing document
+          notes, enter the following statement:</p>
+          <p style="margin-left:4em"><b>revoke update on docs from
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:2em;">To prevent the user from deleting
+          documents, enter the following statement:</p>
+          <p style="margin-left:4em"><b>revoke delete on docs from
+          <i>user_name</i>;</b></p>
+        </li>
+      </ol>
+    </dd>
+</dl>
+
+<h3>4. <a name="Starting" id="Starting">Starting and Logging into
+PDFKeeper</a></h3>
+<dl>
+  <dt><a name="Descriptio1" id="Descriptio1">Description</a></dt>
+    <dd>The PDFKeeper application is used to locate PDF document records in the
+      database by Title, Author, Subject, Keywords, document notes, date and
+      time added to the database, and any text within the PDF document. 
+      <p>The following tasks can be performed on any PDF document record that
+      has been returned during a search: </p>
+      <ul>
+        <li>View the document.</li>
+        <li>Save the document to disk.</li>
+        <li>Edit document notes.</li>
+        <li>View the document keywords.</li>
+        <li>Delete selected database records. </li>
+      </ul>
+    </dd>
+    <dd>In addition, you can edit the Information Properties of PDF documents
+      and upload them to the database. </dd>
+  <dt><a name="start" id="start">How to start and login to PDFKeeper</a></dt>
+    <dd>PDFKeeper will function with <b>User</b> privileges and can be started
+      by either: </dd>
+    <dd><ul>
+        <li>Clicking the <b>PDFKeeper </b>desktop icon.</li>
+        <li><p>Clicking <b>Start</b> | <b>All Programs</b> | <b>PDFKeeper</b> |
+          <b>PDFKeeper</b></p>
+        </li>
+      </ul>
+    </dd>
+    <dd>When prompted; enter the database <b>Username</b>, <b>Password</b>, and
+      <b>Data Source</b>. The Data Source must be specified as follows:
+      <b>host:port</b> 
+      <ul>
+        <li><b>host</b> is the host name or IP address of the computer that is
+          running Oracle Database XE Server. If connecting locally to Oracle
+          Database XE Server, the hostname or IP address must be
+          <b>localhost</b> or <b>127.0.0.1</b></li>
+        <li><b>port</b> (optional) is the TCP port number on which the Oracle
+          Net listener is listening. If not specified, the default port number
+          1521 is assumed.</li>
+      </ul>
+    </dd>
+</dl>
+
+<h3>5. <a name="Document" id="Document">Document Searching</a></h3>
+<dl>
+  <dt><a name="Descriptio2" id="Descriptio2">Description</a></dt>
+    <dd>PDF document records can be searched by Title, Author, Subject,
+      Keywords, document notes, date and time added to the database, and any
+      text within the PDF document. 
+      <p>The following tasks can be performed on any PDF document record that
+      has been returned during a search: </p>
+      <ul>
+        <li>View the document.</li>
+        <li>Save the document to disk.</li>
+        <li>Print document notes.</li>
+        <li>Edit document notes.</li>
+        <li>View document keywords.</li>
+        <li>Delete selected database records.</li>
+      </ul>
+    </dd>
+  <dt><a name="Setting1" id="Setting1">How to search for documents</a></dt>
+    <dd>From the main dialog; enter the <b>Search Text</b> or select a
+      previously entered <b>Search Text</b>, and then click <b>Search</b> or
+      press the <b>Enter</b> key.</dd>
+    <dd><b><a name="Search1" id="Search1">Search Text examples:</a></b></dd>
+    <dd><p style="margin-left:2em;"><b>about(insurance)</b></p>
+    </dd>
+    <dd><p style="margin-left:4em">Will return documents
+      about<i>insurance</i>.</p>
+    </dd>
+    <dd><p style="margin-left:4em">The about operator supports single words,
+      phrases, and can be combined with other operators, such as AND, OR, or
+      NOT. Any query operators included in a phrase will be ignored. However,
+      you can use other operators, such as AND, OR, or NOT; to combine ABOUT
+      queries with word queries.</p>
+    </dd>
+    <dd><p style="margin-left:2em;"><b><b>about(insurance)</b> and
+      banking</b></p>
+    </dd>
+</dl>
+
+<p style="margin-left:8em">Will return documents about<i>insurance</i>, and
+<i>banking</i>.</p>
+
+<p style="margin-left:6em"><b>about(insurance) and about(banking)</b></p>
+
+<p style="margin-left:8em">Will return documents about <i>insurance,</i> and
+about <i>banking</i>.</p>
+
+<p style="margin-left:6em"><b>about(insurance) not about(homeowners)</b></p>
+
+<p style="margin-left:8em">Will return documents about<i>insurance,</i> and not
+about <i>homeowners.</i></p>
+<dl>
+    <dd><p style="margin-left:2em;"><b>auto and home</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>auto &amp; home</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain
+      <i>auto</i> and <i>home</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em"><b>maine=vermont is a new england
+      state</b></p>
+      <p style="margin-left:2em"><b>maine equiv vermont is a new england
+      state</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain either
+      the phrase; <i>maine is a new england state</i>, or <i>vermont is a new
+      england state</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>?product</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that match a fuzzy
+      expansion of <i>product</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>insurance ~ auto</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>insurance not auto</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain
+      <i>insurance</i> and not <i>auto</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>cars | trains</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>cars or trains</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain
+      <i>cars</i> or <i>trains</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>!edgartown</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that sound like
+      <i>edgartown</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>$produce</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain the same
+      root word, as <i>produce</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>grocer%</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain the term,
+      beginning with <i>grocer</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:2em;"><b>_rain</b></p>
+    </dd>
+</dl>
+<dl>
+    <dd><p style="margin-left:4em">Will return documents that contain the term,
+      ending in <i>rain</i>.</p>
+    </dd>
+</dl>
+<dl>
+    <dd><b>Notes on special characters:</b> 
+      <ul>
+        <li><b>% </b>is a multiple wildcard character.</li>
+        <li><b>_</b> is a single wildcard character.</li>
+        <li>Parenthesis characters <b>()</b> can be used to group terms and
+          operators.</li>
+        <li>Braces <b>{}</b> can be used to escape a string of characters or
+          symbols.</li>
+        <li>A backslash <b>\</b> can be used to escape a single character.</li>
+        <li>Common characters, such as <b>-</b> (dash) and <b>&amp;</b> that
+          are part of a string, need to be escaped. For example, a string
+          <i>2009-10-01</i> needs to be specified as <i>2009\10\01.</i> With
+          the BASIC_LEXER, a printjoin attribute is used requiring any <b>-
+          </b>(dash) in a string to be escaped with an <b>_ </b>(underscore).
+          For example, a string 2009-10-01 needs to be specified as
+          2009_10_01.<b></b></li>
+      </ul>
+    </dd>
+</dl>
+<dl>
+  <dt style="margin-left:2em;"><a name="Sorting1" id="Sorting1">Sorting the
+  results</a></dt>
+    <dd>When search results are returned, the sort order is by <b>ID</b>.
+      Clicking on a list view column header will sort the results by the column
+      selected, in ascending order; clicking on the same column header a second
+      time will sort the results by the column selected, in descending order.
+    </dd>
+  <dt style="margin-left:2em;"><a name="Refreshing1"
+  id="Refreshing1">Refreshing the list view</a></dt>
+    <dd>To refresh the list view, using the last used sort order and search
+      text; select the <b>View</b> menu, and then <b>Refresh</b>. Note, the
+      <b>F5</b> key will also refresh the list view.</dd>
+  <dt style="margin-left:0em">Document Viewing</dt>
+    <dd>To view the contents of a document returned from a search, double click
+      the document list view record. The document will be opened with the
+      bundled, third-party PDF viewer. Note, the PDF document will remain
+      cached on disk until PDFKeeper is closed out.</dd>
+    <dd>If your operating system supports the Encrypting File System (EFS), the
+      PDF document will be encrypted. The following operating systems do not
+      support EFS: Windows XP Home, Windows Vista Home Basic and Premium, and
+      Windows 7 Starter, Home Basic and Premium.</dd>
+  <dt style="margin-left:0em">Save a PDF document to disk without viewing</dt>
+    <dd>To save a PDF document that was returned from a search to disk, without
+      having to view it: 
+      <ol>
+        <li>From the list view, select the PDF document record.</li>
+        <li>Select the <b>File</b> menu, and then select <b>Save PDF Document
+          to Disk</b>; or you can use the keyboard shortcut key
+        <b>Ctrl+S</b>.</li>
+        <li>Browse to the desired location.</li>
+        <li>Modify the <b>file name</b>, if necessary.</li>
+        <li>Select <b>Save</b>.</li>
+      </ol>
+    </dd>
+  <dt><a name="Printing" id="Printing">Printing Document Notes</a></dt>
+    <dd>To print document notes for any document record returned from a search: 
+      <ol>
+        <li>From the list view, select the PDF document record.</li>
+        <li>Select the <b>File</b> menu, and then select <b>Print Document
+          Notes</b>; or you can use the keyboard shortcut <b>Ctrl+P</b>.</li>
+        <li>Select the Printer to use, and then select <b>Print</b>.</li>
+      </ol>
+    </dd>
+  <dt style="margin-left:0em">Editing Document Notes</dt>
+    <dd>Document Notes is where you can store information related to a selected
+      document record. To edit document notes for any document record returned
+      from a search: 
+      <ol>
+        <li>From the list view, select the PDF document record.</li>
+        <li>Select the <b>Document Notes</b> tab.</li>
+        <li>If you need to add a Date/Time stamp to the text box: select the
+          <b>Edit</b> menu, and then select <b>Insert Date/Time into Document
+          Notes</b>; or you can use the keyboard shortcut <b>Ctrl+T</b>. </li>
+        <li>Make the necessary edits, and then select <b>Update</b>.</li>
+      </ol>
+    </dd>
+  <dt>Viewing Document Keywords</dt>
+    <dd>To view the document keywords that were extracted from the PDF document
+      InfoDictionary: 
+      <ol>
+        <li>From the list view, select the PDF document record.</li>
+        <li>Select the <b>Document Keywords</b> tab.</li>
+      </ol>
+    </dd>
+  <dt><a name="Deleting1" id="Deleting1">Deleting documents</a></dt>
+    <dd>Any document returned from a search can be deleted from the database
+      by: 
+      <ol>
+        <li>Clicking on the checkbox for each record that you wish to delete;
+          to select all documents in the list: select the <b>Edit</b> menu, and
+          then select <b>Check all Documents</b>; or you can use the keyboard
+          shortcut <b>Ctrl+C</b>.</li>
+        <li>Select the <b>Edit</b> menu, and then select <b>Delete all Checked
+          Documents</b>; or you can use the keyboard shortcut
+        <b>Ctrl+D</b>.</li>
+        <li>When prompted, select <b>Yes</b> or press <b>Enter</b> to perform
+          the delete.</li>
+      </ol>
+    </dd>
+</dl>
+
+<h3>6. <a name="PDFKeeper" id="PDFKeeper">Information Properties Editor</a></h3>
+<dl>
+  <dt><a name="Descriptio3" id="Descriptio3">Description</a></dt>
+    <dd>Information Properties Editor is used to edit the Title, Author,
+      Subject, and Keywords of one or more PDF documents prior to being
+      uploaded to the database. The Author and Subject entry fields are linked
+      to the database, to allow for selecting an existing Author and
+    Subject.</dd>
+    <dd>Note, any PDF document that is protected by an <b>OWNER</b> or
+      <b>USER</b> password cannot be edited. For more information, see the
+      Troubleshooting section in the <a href="faq.html">User FAQ</a>. In
+      addition, the Information Properties Editor will not save changes to the
+      original PDF.</dd>
+  <dt><a name="edit" id="edit">How to edit the PDF Information
+  Properties</a></dt>
+    <dd>To edit the PDF Information Properties of one or more PDF documents,
+      perform the following: 
+      <ol>
+        <li>From the main form; select the <b>Tools</b> menu, and then select
+          <b>Information Properties Editor</b>; or you can use the keyboard
+          shortcut <b>Ctrl+I</b>.</li>
+        <li>Browse to the desired location.</li>
+        <li>Select one or more PDF files to be edited.</li>
+        <li>Select <b>Open</b>.</li>
+      </ol>
+    </dd>
+    <dd>For each PDF document selected: 
+      <ol>
+        <li>If necessary, view the PDF document by selecting <b>View</b>, which
+          will open it with the bundled, third-party PDF viewer.</li>
+        <li>Enter the document <b>Title</b>.</li>
+        <li>Enter or select the <b>Author</b> of the document.</li>
+        <li>Enter or select the <b>Subject</b> of the document.</li>
+        <li>If necessary, enter document <b>Keywords</b>.</li>
+        <li>If you want the PDF document displayed after saving, check the box
+          labeled <b>Open PDF document in viewer.</b></li>
+        <li>If you want the PDF document added to the upload queue after
+          saving, check the box labeled <b>Add PDF document to the upload
+          queue.</b></li>
+        <li>If you want the original PDF document deleted after saving, check
+          the box labeled <b>Delete original PDF document. </b>Note, having
+          PDFKeeper delete the original PDF document after saving is not
+          recommended unless you have a backup or can easily reproduce the
+          document.</li>
+        <li>If you checked the box labeled <b>Add PDF document to the upload
+          queue</b> and want the saved copy of the PDF document deleted after
+          it has been uploaded, check the box labeled <b>Delete saved PDF
+          document after being uploaded.</b></li>
+        <li>Select <b>Save</b>. Note, the original PDF document will be
+          preserved in its original location unless the box labeled <b>Delete
+          original PDF document</b> was checked. A modified version of the PDF
+          will be written in the same folder with the same file name as the
+          original with <b>.&lt;10 digit random number&gt;</b> appended to the
+          name and will remain unless the box labeled <b>Delete saved PDF
+          document after being uploaded</b> was checked. If called from the
+          folder watcher, the original PDF document will be preserved in the
+          <b>My Documents\PDFKeeper\Archive</b> folder with <b>&lt;10 digit
+          random number&gt;.A</b> appended to the name unless the box labeled
+          <b>Delete original PDF document</b> was checked. If called from the
+          folder watcher, a modified version of the PDF will be written in the
+          <b>My Documents\PDFKeeper\Archive</b> folder with the same file name
+          as the original with <b>&lt;10 digit random number&gt;.B</b> appended
+          to the name and will remain unless the box labeled <b>Delete saved
+          PDF document after being uploaded</b> was checked.</li>
+        <li>If not already added to the upload queue, the updated PDF document
+          is now ready to be uploaded into the database.</li>
+      </ol>
+    </dd>
+  <dt><a name="Informatio" id="Informatio">Information Properties Editor folder
+  watcher</a></dt>
+    <dd>A folder watcher can be enabled to watch a selected folder, calling the
+      Information Properties Editor for any PDF document that is created in
+      this folder. When an event is detected, the absolute name of the PDF
+      document is added to a queue and the Information Properties Editor will
+      be called, unless it is still open from a previous event. The user will
+      have the opportunity to edit each document that is in the queue. Note, it
+      is highly recommended that a dedicated folder be used with the folder
+      watcher.</dd>
+    <dd>To select the folder to be watched, perform the following: 
+      <ol>
+        <li>From the main form menu; select <b>Tools</b>, <b>Folder
+          Watcher</b>, <b>Information Properties Editor</b>, and then <b>Select
+          Folder</b>.</li>
+        <li>Select the folder to be watched, and then select <b>OK </b>or press
+          <b><b>Enter</b></b>.</li>
+        <li>To enable the folder watcher immediately, select <b>Yes</b> when
+          prompted or press <b>Enter</b>, otherwise select <b>No</b>.</li>
+      </ol>
+    </dd>
+    <dd>To enable the folder watcher, perform the following: 
+      <ol>
+        <li>From the main form menu; select <b>Tools</b>, <b>Folder
+          Watcher</b>, <b>Information Properties Editor</b>, and then
+          <b>Enable</b>.</li>
+        <li>If PDF document(s) exist in the watched folder a prompt will be
+          displayed to process the PDF documents, select <b>Yes</b> to process
+          or press <b>Enter</b>, otherwise select <b>No</b>.</li>
+      </ol>
+    </dd>
+    <dd>To disable the folder watcher, perform the following: 
+      <ol>
+        <li>From the main form menu; select <b>Tools</b>, <b>Folder
+          Watcher</b>, <b>Information Properties Editor</b>, and then
+          <b>Disable</b>.</li>
+      </ol>
+    </dd>
+    <dd><b>NOTE:</b> While the folder watcher is enabled, you will see a yellow
+      folder object on the bottom right corner of the main form. If you click
+      on the folder object, the watched folder will be opened in Windows
+      Explorer. It is possible for problems to arise while using this feature
+      to watch a folder on a network drive or a very active folder, resulting
+      in missed events. For troubleshooting, all exception errors are logged to
+      <b>%USERPROFILE%\Local Settings\Application
+      Data\PDFKeeper\FolderWatcher.log</b> on Windows XP or
+      <b>%LOCALAPPDATA%\PDFKeeper\FolderWatcher.log</b> on Windows Vista and
+    7.</dd>
+</dl>
+
+<h3>7. <a name="Document1" id="Document1">Document Uploading</a></h3>
+<dl>
+  <dt><a name="Descriptio4" id="Descriptio4">Description</a></dt>
+    <dd>PDFKeeper will upload one or more, selected PDF documents, into the
+      <b>docs</b> table. However, any PDF document that does not have a title,
+      author, or subject; specified in the PDF <b>Information Properties</b>
+      (InfoDictionary), will not be uploaded.</dd>
+    <dd>Note, any PDF document that is protected by an <b>OWNER</b> or
+      <b>USER</b> password will not be uploaded. For more information, see the
+      Troubleshooting section in the <a href="faq.html">User FAQ</a>.</dd>
+  <dt><a name="upload" id="upload">How to upload documents</a></dt>
+    <dd>To upload one or more PDF documents, perform the following: 
+      <ol>
+        <li>From the main form; select the <b>Tools</b> menu, and then select
+          <b>Upload</b>; or you can use the keyboard shortcut
+          <b>Ctrl+Shift+U</b>.</li>
+        <li>Browse to the desired location.</li>
+        <li>Select one or more PDF files to be uploaded.</li>
+        <li>Select <b>Open</b>.</li>
+        <li>For each file to be uploaded you will be prompted to delete the PDF
+          document after it has been uploaded. Select <b>Yes</b> or press
+          <b>Enter</b> to delete the PDF document after it has been uploaded or
+          select <b>No</b> to preserve the PDF document in its original
+          location. Note, it is not recommended to delete the PDF document
+          after it has been uploaded unless you have a backup or can easily
+          reproduce the document.</li>
+      </ol>
+    </dd>
+  <dt><a name="I" id="I">I</a><a name="Deleting" id="Deleting">mportant
+  Information</a></dt>
+</dl>
+<ul>
+  <li>Each PDF document selected to be uploaded is added to a queue. The queue
+    is processed in batch mode by the Upload process. Note, the Upload will not
+    run when the Information Properties Editor is open.</li>
+  <li>The Document Upload will log each PDF document that is uploaded
+    (including if the PDF document was deleted or not deleted) to a log file
+    named in the format of <b>YYYY-MM-DD_HH.MM_uploaded.log</b> and each
+    skipped PDF document will be logged to a log file named in the format of
+    <b>YYYY-MM-DD_HH.MM_skipped.log</b>. Note, <b>YYYY-MM-DD HH.MM</b> is the
+    date and time PDFKeeper was opened for that session. Current session
+    uploaded and skipped logs can be opened from the status bar on the main
+    form, if they exist.</li>
+  <li>All Document Upload log files are written to <b>%USERPROFILE%\Local
+    Settings\Application Data\PDFKeeper\UploadLogs</b> on Windows XP or
+    <b>%LOCALAPPDATA%\PDFKeeper\UploadLogs</b> on Windows Vista and 7.</li>
+</ul>
+<dl>
+  <dt><a name="Upload" id="Upload">Upload folder watcher</a></dt>
+</dl>
+<dl>
+    <dd>A folder watcher can be enabled to watch a selected folder, calling the
+      document upload directly for any PDF document that is created in this
+      folder. When an event is detected, the Information Properties for the
+      document is updated using values defined during configuration. The
+      updated PDF document is added to the upload queue; uploaded to the
+      database and deleted. If the option to delete the original PDF document
+      was selected in the configuration, then the original PDF document is
+      deleted after the upload. Note, it is highly recommended that a dedicated
+      folder be used with the folder watcher.</dd>
+    <dd>To select the folder to be watched, perform the following: 
+      <ol>
+        <li>From the main form menu; select <b>Tools</b>, <b>Folder
+          Watcher</b>, <b>Upload</b>, and then <b>Select Folder</b>.</li>
+        <li>Select the folder to be watched, and then select <b>OK </b>or press
+          <b><b>Enter</b></b>.</li>
+        <li>If the folder watcher needs to be configured, you will be prompted
+          to configure before enabling, select <b>Yes</b> when prompted or
+          press <b>Enter</b>, otherwise select <b>No</b>. If the folder watcher
+          is already configured, you will be prompted to enable the folder
+          watcher, select <b>Yes</b> or press <b>Enter</b>, otherwise select
+          <b>No</b>.</li>
+      </ol>
+    </dd>
+    <dd>To configure the folder watcher, perform the following: 
+      <ol>
+        <li>From the main form menu; select <b>Tools</b>, <b>Folder
+          Watcher</b>, <b>Upload</b>, and then <b>Configuration</b>.</li>
+        <li>Select or specify the <b>Title PreFill</b> and if desired, check
+          the box labeled <b>Use existing Title, if not blank.</b></li>
+        <li>Select or specify the <b>Author PreFill</b> and if desired, check
+          the box labeled <b>Use existing Author, if not blank.</b></li>
+        <li>Select or specify the <b>Subject PreFill</b> and if desired, check
+          the box labeled <b>Use existing Subject, if not blank.</b></li>
+        <li>If needed, specify the <b>Keywords PreFill</b> and if desired,
+          check the box labeled <b>Use existing Subject, if not blank.</b></li>
+        <li>If you want the PDF document deleted after it has been uploaded,
+          check the box labeled <b>Delete PDF document after being
+          uploaded.</b> Otherwise, the PDF will be preserved in the <b>My
+          Documents\PDFKeeper\Archive</b> folder with <b>&lt;10 digit random
+          number&gt;</b> appended to the name.</li>
+        <li>Select <b>OK </b>or press <b><b>Enter</b></b> to save the
+          configuration.</li>
+        <li>If the folder to watch has not been selected, you will be prompted
+          to select it, and then select <b>OK</b> or press <b>Enter</b>.</li>
+        <li>When prompted to enable the folder watcher, select <b>Yes</b> or
+          press <b>Enter</b>, otherwise select <b>No</b>.</li>
+      </ol>
+    </dd>
+    <dd>To enable the folder watcher, perform the following: 
+      <ol>
+        <li>From the main form menu; select <b>Tools</b>, <b>Folder
+          Watcher</b>, <b>Upload</b>, and then <b>Enable</b>.</li>
+        <li>If PDF document(s) exist in the watched folder a prompt will be
+          displayed to process the PDF documents, select <b>Yes</b> to process
+          or press <b>Enter</b>, otherwise select <b>No</b>.</li>
+      </ol>
+    </dd>
+    <dd>To disable the folder watcher, perform the following: 
+      <ol>
+        <li>From the main form menu; select <b>Tools</b>, <b>Folder
+          Watcher</b>, <b>Upload</b>, and then <b>Disable</b>.</li>
+      </ol>
+    </dd>
+</dl>
+
+<p style="margin-left:4em"><b>NOTE:</b> While the folder watcher is enabled,
+you will see a yellow folder object on the bottom right corner of the main
+form. If you click on the folder object, the watched folder will be opened in
+Windows Explorer. It is possible for problems to arise while using this feature
+to watch a folder on a network drive or a very active folder, resulting in
+missed events. For troubleshooting, all exception errors are logged to
+<b>%USERPROFILE%\Local Settings\Application
+Data\PDFKeeper\FolderWatcher.log</b> on Windows XP or
+<b>%LOCALAPPDATA%\PDFKeeper\FolderWatcher.log</b> on Windows Vista and 7.</p>
+
+<h3>8. <a name="Troublesho" id="Troublesho">Troubleshooting</a></h3>
+<dl>
+    <dd>For troubleshooting information, see the Troubleshooting section in the
+      <a href="faq.html">User FAQ</a>.</dd>
+</dl>
+</div>
+<!-- toc -->
+</div>
+
+<div class="legal1">
+Company Proprietary</div>
+
+<div class="footnote">
+Copyright © 2009-2012 Robert F. Frasca</div>
+</div>
+</body>
+</html>

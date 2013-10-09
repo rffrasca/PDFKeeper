@@ -1,0 +1,127 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{4D39F521-BABC-4086-AC17-86B114BD31BC}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <MyType>WindowsForms</MyType>
+    <RootNamespace>PdfKeeper</RootNamespace>
+    <AssemblyName>PdfKeeper</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <OptionInfer>On</OptionInfer>
+    <SourceAnalysisOverrideSettingsFile>C:\Documents and Settings\Robert\Application Data\ICSharpCode/SharpDevelop3.0\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <ApplicationIcon>..\Graphics\Logo.ico</ApplicationIcon>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <DefineConstants>DEBUG=1,TRACE=1</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <DefineConstants>TRACE=1</DefineConstants>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.Targets" />
+  <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\Bundled\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutForm.Designer.vb">
+      <DependentUpon>AboutForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AboutForm.vb" />
+    <Compile Include="DatabaseConnection.vb" />
+    <Compile Include="DatabaseConnectionForm.Designer.vb">
+      <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseConnectionForm.vb" />
+    <Compile Include="Constants.vb">
+    </Compile>
+    <Compile Include="DatabaseConnectionString.vb" />
+    <Compile Include="InformationPropertiesEditorForm.Designer.vb">
+      <DependentUpon>InformationPropertiesEditorForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InformationPropertiesEditorForm.vb" />
+    <Compile Include="MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.vb" />
+    <Compile Include="MessageDialog.vb" />
+    <Compile Include="NativeMethods.vb" />
+    <Compile Include="PdfUtilities.vb" />
+    <Compile Include="PdfProperties.vb" />
+    <Compile Include="PrintPages.vb" />
+    <Compile Include="Program.vb" />
+    <Compile Include="Properties\AssemblyInfo.vb" />
+    <Compile Include="UpdateCheck.vb" />
+    <Compile Include="UserSettings.vb" />
+    <Compile Include="WinProcess.vb" />
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseConnectionForm.resx">
+      <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformationPropertiesEditorForm.resx">
+      <DependentUpon>InformationPropertiesEditorForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>start ..\..\..\PostBuild</PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Import Include="iTextSharp.text" />
+    <Import Include="iTextSharp.text.pdf" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.Win32" />
+    <Import Include="Oracle.DataAccess.Client" />
+    <Import Include="Oracle.DataAccess.Types" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Globalization" />
+    <Import Include="System.IO" />
+    <Import Include="System.Net" />
+    <Import Include="System.Resources" />
+    <Import Include="System.Runtime.InteropServices" />
+    <Import Include="System.Security" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Threading" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+</Project>
