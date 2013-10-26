@@ -22,14 +22,9 @@ rem * with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 rem *
 rem ***************************************************************************
 
-copy "..\..\..\..\Build\SumatraPDF.exe"
-copy "..\..\..\..\Build\sumatrapdfrestrict.ini"
-copy "..\..\..\..\Build\gxps-9.07-win32.exe"
-copy "..\..\..\..\Build\ssleay32.dll"
-copy "..\..\..\..\Build\libgcc_s_dw2-1.dll"
-copy "..\..\..\..\Build\libeay32.dll"
-copy "..\..\..\..\Build\mingwm10.dll"
-copy "..\..\..\..\Build\wkhtmltopdf.exe"
-copy "..\..\..\..\Documentation\Help\PDFKeeper*.chm"
+copy "..\..\..\..\Tools\sumatrapdfrestrict.ini"
+copy "..\..\..\..\Libraries\SumatraPDF.exe"
+copy "..\..\..\..\Libaries\gxps-?.??-win32.exe" gxps-win32.exe
+copy "..\..\..\..\Help\PDFKeeper*.chm"
 
 exit
