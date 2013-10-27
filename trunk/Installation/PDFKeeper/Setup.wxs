@@ -7,7 +7,7 @@
 		Version="3.0.0"
 		UpgradeCode="18055295-A37D-42A8-A4C9-80E80E2F1DE9"
 		Manufacturer="Robert F. Frasca">
-		<Package Description="#Description"
+		<Package Description="PDF capture, store, index, and search for the Small or Home Office."
 			Comments="Comments"
 			InstallerVersion="200"
 			Compressed="yes"/>
@@ -31,8 +31,11 @@
 		-->
 		<Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
 		
-		<Icon Id="PDFKeeper.ico" SourceFile="..\..\Common\Icon\PDFKeeper.ico"/>
+		<Icon Id="PDFKeeper.ico" SourceFile="..\..\Icon\PDFKeeper.ico"/>
 		<Property Id="ARPPRODUCTICON" Value="PDFKeeper.ico" />
+		<Property Id='ARPHELPLINK'>http://pdfkeeper.codeplex.com/</Property>
+		<Property Id='ARPURLINFOABOUT'>http://pdfkeeper.codeplex.com/</Property>
+		<Property Id='ARPURLUPDATEINFO'>http://pdfkeeper.codeplex.com/</Property>
 		<WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
 		<WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
 		
@@ -86,7 +89,7 @@
 		
 		<Feature Id="Complete"
 		         Title="PDFKeeper"
-		         Description="Document Storage for Small or Home Office"
+		         Description="PDF capture, store, index, and search for the Small or Home Office."
 		         Level="1">
 			<ComponentRef Id="LicenseRtf" />
 		</Feature>
