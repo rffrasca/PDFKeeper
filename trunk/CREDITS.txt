@@ -17,14 +17,13 @@ License: BSD (http://readyset.tigris.org/templates/readyset-license.html)
 
 iTextSharp (binary)
 -------------------
-Website: http://blog.kowalczyk.info/software/sumatrapdf/free-pdf-reader.html
-Copyright: Copyright (c) 1999-2013 by Bruno Lowagie and Paulo Soares.
-           All Rights Reserved.
-License: AGPLv3 (http://www.gnu.org/licenses/agpl.html)
+Website: http://itextpdf.com/
+Copyright: Copyright (c) 1999-2013 by Bruno Lowagie and Paulo Soares. All Rights Reserved.
+License: AGPLv3 (http://itextpdf.com/agpl)
 
 Nini (binary)
 -------------
-Website: http://blog.kowalczyk.info/software/sumatrapdf/free-pdf-reader.html
+Website: http://nini.sourceforge.net/
 Copyright: Copyright (c) 2006 Brent R. Matzelle
 License: MIT (http://nini.sourceforge.net/license.php)
 
@@ -32,10 +31,12 @@ Sumatra PDF (binary)
 --------------------
 Website: http://blog.kowalczyk.info/software/sumatrapdf/free-pdf-reader.html
 Copyright: Copyright 2006-2013 all authors (GPLv3)
-License: GPLv3 (http://www.gnu.org/licenses/gpl.html)
+License: GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
 
 GhostXPS (binary)
 -----------------
 Website: http://www.ghostscript.com/
-Copyright: Copyright 2006-2013 all authors (GPLv3)
-License: GPLv3 (http://www.gnu.org/licenses/gpl.html)
+Copyright: Copyright (C) 2001-2012 Artifex Software, Inc. All Rights Reserved.
+
+
+License: AGPLv3 (http://www.gnu.org/licenses/agpl-3.0.html)
