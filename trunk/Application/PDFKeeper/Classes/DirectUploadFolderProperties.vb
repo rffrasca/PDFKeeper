@@ -136,7 +136,7 @@ Public Class DirectUploadFolderProperties
 	''' </summary>
 	''' <returns>0 = Success, 1 = Failed</returns>
 	Public Function Read() As Integer
-		If IO.File.Exists(xmlFile) Then
+		If System.IO.File.Exists(xmlFile) Then
 			Try
 				Dim xmlConfig As New XmlConfigSource(xmlFile)
 				m_TitlePreFill = xmlConfig.Configs("Properties") _

@@ -719,7 +719,7 @@ Public Partial Class MainForm
 		pdfFile = Path.Combine(CacheDir, "pdfkeeper" & selectedId & ".pdf")
 		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
 			Try
-				IO.File.Encrypt(pdfFile)
+				System.IO.File.Encrypt(pdfFile)
 			Catch ex As IOException
 			End Try
 						

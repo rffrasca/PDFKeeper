@@ -160,7 +160,7 @@ Public Class UserSettings
 		If ImportLegacyRegistryValues() = 1 Then
 			Return 1
 		End If
-		If IO.File.Exists(xmlFile) Then
+		If System.IO.File.Exists(xmlFile) Then
 			Try
 				Dim xmlConfig As New XmlConfigSource(xmlFile)
 				m_LastUserName = xmlConfig.Configs("DatabaseConnectionForm") _
@@ -243,7 +243,7 @@ Public Class UserSettings
 	''' <returns>0 = Success, 1 = Failed</returns>
 	Private Shared Function ImportLegacyProperties() As Integer
 		Dim legacyProperties As String = Path.Combine(AppDataDir, "pdfkeeper.properties")
-		If IO.File.Exists(legacyProperties) Then
+		If System.IO.File.Exists(legacyProperties) Then
 			Try
 				Using oFileStream As New FileStream(legacyProperties, _
 									 	 FileMode.Open)
@@ -258,7 +258,7 @@ Public Class UserSettings
 					End Using
 					oFileStream.Close
 				End Using
-				IO.File.Delete(legacyProperties)
+				System.IO.File.Delete(legacyProperties)
 			Catch ex As IOException
 				MessageBoxWrapper.ShowError(ex.Message)
 				Return 1

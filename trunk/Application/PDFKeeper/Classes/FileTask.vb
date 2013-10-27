@@ -50,7 +50,7 @@ Public NotInheritable Class FileTask
 	''' <param name="file"></param>
 	Public Shared Sub Encrypt(ByVal file As String)
 		Try
-			IO.File.Encrypt(file)
+			System.IO.File.Encrypt(file)
 		Catch ex As IOException
 		End Try
 	End Sub
@@ -61,7 +61,7 @@ Public NotInheritable Class FileTask
 	''' </summary>
 	''' <param name="file"></param>
 	Public Shared Sub WaitForFileCreation(ByVal file As String)
-		Do Until IO.File.Exists(file)
+		Do Until System.IO.File.Exists(file)
 			Thread.Sleep(2000)
 		Loop
 		Do While IsInUse(file)
@@ -76,7 +76,7 @@ Public NotInheritable Class FileTask
 	''' <param name="file"></param>
 	''' <returns>True or False</returns>
 	Public Shared Function IsInUse(ByVal file As String) As Boolean
-		If IO.File.Exists(file) Then
+		If System.IO.File.Exists(file) Then
 			Try
 				Using oFileStream As New FileStream(file, FileMode.Open, _
 								  		 FileAccess.ReadWrite, FileShare.None)
@@ -102,13 +102,13 @@ Public NotInheritable Class FileTask
 	Public Shared Function Delete(ByVal file As String, _
 								  ByVal recycle As Boolean) As Integer
 		Try
-			If IO.File.Exists(file) Then
+			If System.IO.File.Exists(file) Then
 				If recycle Then
 					My.Computer.FileSystem.DeleteFile(file, _
 					Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, _
 					Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin)
 				Else
-					IO.File.Delete(file)
+					System.IO.File.Delete(file)
 				End If
 			End If
 			Return 0
@@ -132,7 +132,7 @@ Public NotInheritable Class FileTask
 		Dim converterArgs As String
 		If fileType = ".XPS" Then
 			outputFile = SetConvertOutputFileName(inputFile)
-			converterTool = "gxps-9.07-win32.exe"
+			converterTool = "gxps-win32.exe"
 			converterArgs = "-sDEVICE=pdfwrite " & _
 							"-sOutputFile=" & outputFile & _
 						  	" -dNOPAUSE " & inputFile
@@ -176,11 +176,11 @@ Public NotInheritable Class FileTask
 			ByVal inputFile As String) As String
 		Dim outputFile As String
 		outputFile = Path.Combine(CaptureDir, Path.GetFileName(inputFile) & ".pdf")
-		If IO.File.Exists(outputFile) Then
+		If System.IO.File.Exists(outputFile) Then
 			Dim value As Integer = 0
 			Do
 				value += 1
-				If IO.File.Exists(Path.Combine(CaptureDir, _
+				If System.IO.File.Exists(Path.Combine(CaptureDir, _
 					Path.GetFileName(inputFile) & "_" & value & ".pdf")) = _
 						False Then
 					outputFile = Path.Combine(CaptureDir, _

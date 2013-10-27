@@ -292,7 +292,7 @@ Public Partial Class DirectUploadConfigurationForm
 			performFolderCheck = True
 		End If
 		If performFolderCheck Then
-			If IO.File.Exists(Path.Combine(UploadXmlDir, _
+			If System.IO.File.Exists(Path.Combine(UploadXmlDir, _
 							  textBoxFolderName.Text & ".xml")) Then
 				Return True
 			End If
