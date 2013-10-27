@@ -56,7 +56,7 @@ Public NotInheritable Class DirectUpload
 		For Each configuredFolder As String In configuredFolders
 			If FolderTask.DeleteAllEmptySubfolders(Path.Combine(UploadDir, _
 												   configuredFolder)) = 0 Then
-				If IO.File.Exists(Path.Combine(UploadXmlDir, _
+				If System.IO.File.Exists(Path.Combine(UploadXmlDir, _
 								  configuredFolder & ".xml")) = False Then
 					If FolderTask.CountOfFiles(Path.Combine(UploadDir, _
 											   configuredFolder), "*") = 0 Then

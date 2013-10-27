@@ -24,7 +24,8 @@ rem ***************************************************************************
 
 copy "..\..\..\..\Tools\sumatrapdfrestrict.ini"
 copy "..\..\..\..\Libraries\SumatraPDF.exe"
-copy "..\..\..\..\Libaries\gxps-?.??-win32.exe" gxps-win32.exe
+copy "..\..\..\..\Libraries\gxps-?.??-win32.exe"
+move gxps-?.??-win32.exe gxps-win32.exe
 copy "..\..\..\..\Help\PDFKeeper*.chm"
 
 exit

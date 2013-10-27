@@ -46,7 +46,7 @@ Public NotInheritable Class FileCache
 	''' <param name="file"></param>
 	''' <returns>True or False</returns>
 	Public Shared Function IsCached(ByVal file As String) As Boolean
-		If IO.File.Exists(file) Then
+		If System.IO.File.Exists(file) Then
 			If cache.ContainsKey(file) Then
 				If FileTask.CalcHashCode(file) = cache(file) Then
 					Return True

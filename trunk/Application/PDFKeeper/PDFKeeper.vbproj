@@ -196,7 +196,7 @@
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>start ..\..\..\..\Build\PostBuild</PostBuildEvent>
+    <PostBuildEvent>start ..\..\..\..\Tools\PostBuild</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Classes" />

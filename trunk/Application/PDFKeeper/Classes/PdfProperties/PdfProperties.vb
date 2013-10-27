@@ -211,7 +211,6 @@ Public Class PdfProperties
 			MessageBoxWrapper.ShowError(ex.Message)
 			Return 1
 		Finally
-			oPdfReader.Close
 			If outputCreated = True Then
 				Dispose
 			End If
@@ -230,6 +229,7 @@ Public Class PdfProperties
 				End If
 				oPdfStamper.Close
 				oPdfStamper.Dispose
+				oPdfReader.Dispose
 			End If
 		End If
 		Me.isDisposed = True
