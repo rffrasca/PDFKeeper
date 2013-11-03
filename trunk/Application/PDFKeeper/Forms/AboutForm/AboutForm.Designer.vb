@@ -58,12 +58,12 @@ Partial Class AboutForm
 		Me.tabControlLicenses = New System.Windows.Forms.TabControl()
 		Me.tabPageLicense = New System.Windows.Forms.TabPage()
 		Me.textBoxLicense = New System.Windows.Forms.TextBox()
-		Me.tabPage2 = New System.Windows.Forms.TabPage()
-		Me.textBoxThirdParty = New System.Windows.Forms.TextBox()
+		Me.tabPageThirdPartyCredits = New System.Windows.Forms.TabPage()
+		Me.textBoxThirdPartyCredits = New System.Windows.Forms.TextBox()
 		CType(Me.pictureBoxLogo,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.tabControlLicenses.SuspendLayout
 		Me.tabPageLicense.SuspendLayout
-		Me.tabPage2.SuspendLayout
+		Me.tabPageThirdPartyCredits.SuspendLayout
 		Me.SuspendLayout
 		'
 		'pictureBoxLogo
@@ -109,7 +109,7 @@ Partial Class AboutForm
 		'tabControlLicenses
 		'
 		Me.tabControlLicenses.Controls.Add(Me.tabPageLicense)
-		Me.tabControlLicenses.Controls.Add(Me.tabPage2)
+		Me.tabControlLicenses.Controls.Add(Me.tabPageThirdPartyCredits)
 		resources.ApplyResources(Me.tabControlLicenses, "tabControlLicenses")
 		Me.tabControlLicenses.Name = "tabControlLicenses"
 		Me.tabControlLicenses.SelectedIndex = 0
@@ -127,18 +127,18 @@ Partial Class AboutForm
 		Me.textBoxLicense.Name = "textBoxLicense"
 		Me.textBoxLicense.ReadOnly = true
 		'
-		'tabPage2
+		'tabPageThirdPartyCredits
 		'
-		Me.tabPage2.Controls.Add(Me.textBoxThirdParty)
-		resources.ApplyResources(Me.tabPage2, "tabPage2")
-		Me.tabPage2.Name = "tabPage2"
-		Me.tabPage2.UseVisualStyleBackColor = true
+		Me.tabPageThirdPartyCredits.Controls.Add(Me.textBoxThirdPartyCredits)
+		resources.ApplyResources(Me.tabPageThirdPartyCredits, "tabPageThirdPartyCredits")
+		Me.tabPageThirdPartyCredits.Name = "tabPageThirdPartyCredits"
+		Me.tabPageThirdPartyCredits.UseVisualStyleBackColor = true
 		'
-		'textBoxThirdParty
+		'textBoxThirdPartyCredits
 		'
-		resources.ApplyResources(Me.textBoxThirdParty, "textBoxThirdParty")
-		Me.textBoxThirdParty.Name = "textBoxThirdParty"
-		Me.textBoxThirdParty.ReadOnly = true
+		resources.ApplyResources(Me.textBoxThirdPartyCredits, "textBoxThirdPartyCredits")
+		Me.textBoxThirdPartyCredits.Name = "textBoxThirdPartyCredits"
+		Me.textBoxThirdPartyCredits.ReadOnly = true
 		'
 		'AboutForm
 		'
@@ -165,15 +165,15 @@ Partial Class AboutForm
 		Me.tabControlLicenses.ResumeLayout(false)
 		Me.tabPageLicense.ResumeLayout(false)
 		Me.tabPageLicense.PerformLayout
-		Me.tabPage2.ResumeLayout(false)
-		Me.tabPage2.PerformLayout
+		Me.tabPageThirdPartyCredits.ResumeLayout(false)
+		Me.tabPageThirdPartyCredits.PerformLayout
 		Me.ResumeLayout(false)
 	End Sub
-	Private textBoxThirdParty As System.Windows.Forms.TextBox
+	Private textBoxThirdPartyCredits As System.Windows.Forms.TextBox
 	Private textBoxLicense As System.Windows.Forms.TextBox
 	Private tabPageLicense As System.Windows.Forms.TabPage
 	Private tabControlLicenses As System.Windows.Forms.TabControl
-	Private tabPage2 As System.Windows.Forms.TabPage
+	Private tabPageThirdPartyCredits As System.Windows.Forms.TabPage
 	Private linkLabelProjectSite As System.Windows.Forms.LinkLabel
 	Private labelVersion As System.Windows.Forms.Label
 	Private labelCopyright As System.Windows.Forms.Label

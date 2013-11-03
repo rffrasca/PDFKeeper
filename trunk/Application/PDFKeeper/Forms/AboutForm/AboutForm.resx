@@ -437,58 +437,58 @@
   <data name="&gt;&gt;tabPageLicense.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="textBoxThirdParty.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textBoxThirdPartyCredits.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 5</value>
   </data>
-  <data name="textBoxThirdParty.Multiline" type="System.Boolean, mscorlib">
+  <data name="textBoxThirdPartyCredits.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBoxThirdParty.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+  <data name="textBoxThirdPartyCredits.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="textBoxThirdParty.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBoxThirdPartyCredits.Size" type="System.Drawing.Size, System.Drawing">
     <value>342, 172</value>
   </data>
-  <data name="textBoxThirdParty.TabIndex" type="System.Int32, mscorlib">
+  <data name="textBoxThirdPartyCredits.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;textBoxThirdParty.Name" xml:space="preserve">
-    <value>textBoxThirdParty</value>
+  <data name="&gt;&gt;textBoxThirdPartyCredits.Name" xml:space="preserve">
+    <value>textBoxThirdPartyCredits</value>
   </data>
-  <data name="&gt;&gt;textBoxThirdParty.Type" xml:space="preserve">
+  <data name="&gt;&gt;textBoxThirdPartyCredits.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBoxThirdParty.Parent" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="&gt;&gt;textBoxThirdPartyCredits.Parent" xml:space="preserve">
+    <value>tabPageThirdPartyCredits</value>
   </data>
-  <data name="&gt;&gt;textBoxThirdParty.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;textBoxThirdPartyCredits.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
+  <data name="tabPageThirdPartyCredits.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageThirdPartyCredits.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 182</value>
+  <data name="tabPageThirdPartyCredits.Size" type="System.Drawing.Size, System.Drawing">
+    <value>354, 184</value>
   </data>
-  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
+  <data name="tabPageThirdPartyCredits.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>Third-Party Notices</value>
+  <data name="tabPageThirdPartyCredits.Text" xml:space="preserve">
+    <value>Third-Party Credits</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="&gt;&gt;tabPageThirdPartyCredits.Name" xml:space="preserve">
+    <value>tabPageThirdPartyCredits</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageThirdPartyCredits.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageThirdPartyCredits.Parent" xml:space="preserve">
     <value>tabControlLicenses</value>
   </data>
-  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPageThirdPartyCredits.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="tabControlLicenses.Location" type="System.Drawing.Point, System.Drawing">

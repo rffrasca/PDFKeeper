@@ -65,7 +65,7 @@ Public Partial Class AboutForm
 	''' </summary>
 	Private Sub FillTabs
 		textBoxLicense.Text = AboutForm_Strings.License
-		textBoxThirdParty.Text = AboutForm_Strings.ThirdPartyNotices
+		textBoxThirdPartyCredits.Text = AboutForm_Strings.ThirdPartyCredits
 	End Sub
 	
 	''' <summary>
