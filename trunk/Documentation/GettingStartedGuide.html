@@ -92,6 +92,14 @@ Oracle XE Database be installed on a dedicated system.</p>
         UAC (User Access Control) enabled Windows system, make sure to perform
         the installation with a <b>Command Prompt</b> session that was opened
         using <b>Run as administrator</b>.</li>
+      <li>To enable HTML to PDF Conversion in Document Capture, install <a
+        href="http://code.google.com/p/wkhtmltopdf/">wkhtmltopdf</a>. Note,
+        heed the warning about the Modify PATH option in the installation
+        wizard, plus modifying the PATH is not neccessary for use with
+        PDFKeeper. If <b>wkhtmltopdf</b> is installed to a location other than
+        <b>C:\Program Files\wkhtmltopdf</b>, modify the <b>wkhtmltopdf</b> key
+        in the PDFKeeper <b>app.config</b> file to match the absolute path to
+        <b>wkhtmltopdf.exe</b>.</li>
     </ul>
   </li>
   <li>Refer to the <a
