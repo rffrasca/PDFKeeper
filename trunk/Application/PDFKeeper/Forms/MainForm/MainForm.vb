@@ -1436,17 +1436,16 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will process the Direct Upload folder by converting any
-	''' XPS documents to PDF and upload all PDF documents in each configured
-	''' folder, including subfolders.  To maintain synchronization, the timer
-	''' is stopped during the execution of this subroutine.
+	''' This subroutine will process the Direct Upload folder by uploading all
+	''' PDF documents in each configured folder, including subfolders.  To
+	''' maintain synchronization, the timer is stopped during the execution of
+	''' this subroutine.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub TimerDirectUploadTick(sender As Object, e As EventArgs)
 		toolStripMenuItemDirectUploadConfig.Enabled = False
 		timerDirectUpload.Stop
-		DirectUpload.ConvertAllXpsFilesToPdf
 		If DirectUpload.CountOfPdfFiles > 0 Then
 			toolStripStatusLabelUploading.Visible = True
 			Application.DoEvents

@@ -69,18 +69,6 @@ Public NotInheritable Class DirectUpload
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will convert all XPS documents in each configured
-	''' folder, including subfolders. 
-	''' </summary>
-	Public Shared Sub ConvertAllXpsFilesToPdf
-		FillConfiguredFoldersArray
-		For Each configuredFolder As String In configuredFolders
-			FolderTask.ConvertAllXpsFilesToPdf(Path.Combine(UploadDir, _
-											   configuredFolder))
-		Next
-	End Sub
-	
-	''' <summary>
 	''' This function will return a count of PDF documents in each configured
 	''' folder, including subfolders.
 	''' </summary>
