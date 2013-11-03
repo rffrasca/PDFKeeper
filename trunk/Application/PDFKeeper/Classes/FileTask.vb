@@ -138,7 +138,7 @@ Public NotInheritable Class FileTask
 						  	" -dNOPAUSE " & inputFile
 		ElseIf fileType = ".HTM" Or fileType = ".HTML" Then
 			outputFile = SetConvertOutputFileName(inputFile)
-			converterTool = "wkhtmltopdf.exe"
+			converterTool = ConfigurationManager.AppSettings("wkhtmltopdf")
 			converterArgs = Chr(34) & inputFile & Chr(34) & _
 					  " " & Chr(34) & outputFile & Chr(34)
 		Else
