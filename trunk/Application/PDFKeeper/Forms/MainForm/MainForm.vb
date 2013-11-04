@@ -34,7 +34,14 @@ Public Partial Class MainForm
 	Dim capturePdfFile As String
 	Dim captureModPdfFile As String
 	Dim lastPdfDocumentCheckResult As Integer
-								
+	Friend Shared appVersion As String = _
+		My.Application.Info.Version.Major.ToString( _
+		CultureInfo.CurrentCulture) & "." & _
+		My.Application.Info.Version.Minor.ToString( _
+		CultureInfo.CurrentCulture) & "." & _
+		My.Application.Info.Version.Build.ToString( _
+		CultureInfo.CurrentCulture)
+	
 	Public Sub New()
 		Me.InitializeComponent()
 		StartUpdateCheck
@@ -1386,15 +1393,14 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will open the Download page using the default web
-	''' browser.
+	''' This subroutine will open the project site using the default browser.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub StatusStripItemClicked(sender As Object, e As ToolStripItemClickedEventArgs)
 		If e.ClickedItem.Text = MainForm_Strings.NewerVersionAvailable Then
 			Me.Cursor = Cursors.WaitCursor
-			Process.Start(ConfigurationManager.AppSettings("DownloadUrl"))
+			Process.Start(ConfigurationManager.AppSettings("ProjectSiteUrl"))
 			Me.Cursor = Cursors.Default
 		End If
 	End Sub

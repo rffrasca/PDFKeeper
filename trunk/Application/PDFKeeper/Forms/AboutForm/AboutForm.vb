@@ -50,12 +50,7 @@ Public Partial Class AboutForm
 		labelName.Text = My.Application.Info.ProductName
 		labelDescription.Text = My.Application.Info.Description
 		labelCopyright.Text = My.Application.Info.Copyright
-		labelVersion.Text = My.Application.Info.Version.Major.ToString( _
-							CultureInfo.CurrentCulture) & "." & _
-							My.Application.Info.Version.Minor.ToString( _
-							CultureInfo.CurrentCulture) & "." & _
-							My.Application.Info.Version.Build.ToString( _
-							CultureInfo.CurrentCulture) & " - Build: " & _
+		labelVersion.Text = MainForm.appVersion & " - Build: " & _
 							My.Application.Info.Version.Revision.ToString( _
 							CultureInfo.CurrentCulture)
 	End Sub
