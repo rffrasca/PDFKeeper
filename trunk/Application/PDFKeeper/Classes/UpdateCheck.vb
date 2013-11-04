@@ -33,27 +33,21 @@ Public NotInheritable Class UpdateCheck
 	''' </summary>
 	''' <returns>True or False</returns>
 	Public Shared Function UpdateAvailable As Boolean
-		Dim appVersion As String = _
-			ConfigurationManager.AppSettings("AppVersion")
 		Dim installerVersion As String
 		Dim maxVersion As String = "0.0.0"
 		Using oWebClient As New WebClient
 			Dim pageContents As String = oWebClient.DownloadString( _
-				ConfigurationManager.AppSettings("DownloadUrl"))
+				ConfigurationManager.AppSettings("ProjectSiteUrl"))
 			Dim matches As MatchCollection = Regex.Matches(pageContents, _
-										"//\S+[^-,;:?]\.exe")
+				"\bPDFKeeper\b\s\d.\d.\d")
 			For Each expMatch As Match In matches
-				For Each oGroup As group In expMatch.Groups
-					installerVersion = oGroup.Value.Substring( _
-									   oGroup.Value.LastIndexOf("/", _
-								 	   StringComparison.Ordinal) + 11,5)
-					If installerVersion > maxVersion Then
-						maxVersion = installerVersion
-					End If
-				Next
+				installerVersion = expMatch.ToString.Substring(10)
+				If installerVersion > maxVersion Then
+					maxVersion = installerVersion
+				End If
 			Next
 		End Using
-		If maxVersion > appVersion Then
+		If maxVersion > MainForm.appVersion Then
 			Return True
 		Else
 			Return False
