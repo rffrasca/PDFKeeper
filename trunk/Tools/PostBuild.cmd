@@ -2,7 +2,7 @@
 
 rem ***************************************************************************
 rem *
-rem * PDFKeeper -- PDF Document Storage for Small or Home Office
+rem * PDFKeeper -- PDF Document Capture, Storage, and Search
 rem * Copyright (C) 2009-2013 Robert F. Frasca
 rem *
 rem * This file is part of PDFKeeper.

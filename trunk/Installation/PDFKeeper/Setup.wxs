@@ -7,7 +7,7 @@
 		Version="3.0.0"
 		UpgradeCode="18055295-A37D-42A8-A4C9-80E80E2F1DE9"
 		Manufacturer="Robert F. Frasca">
-		<Package Description="PDF capture, store, index, and search for the Small or Home Office"
+		<Package Description="PDF Document Capture, Storage, and Search"
 			Comments="Comments"
 			InstallerVersion="200"
 			Compressed="yes"/>
@@ -89,7 +89,7 @@
 		
 		<Feature Id="Complete"
 		         Title="PDFKeeper"
-		         Description="PDF capture, store, index, and search for the Small or Home Office."
+		         Description="PDF Document Capture, Storage, and Search"
 		         Level="1">
 			<ComponentRef Id="LicenseRtf" />
 		</Feature>

@@ -1,6 +1,6 @@
 ﻿'******************************************************************************
 '*
-'* PDFKeeper -- PDF Document Storage for Small or Home Office
+'* PDFKeeper -- PDF Document Capture, Storage, and Search
 '* Copyright (C) 2009-2013 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
@@ -31,7 +31,7 @@ Imports System.Runtime.InteropServices
 ' you compile.
 
 <assembly: AssemblyTitle("PDFKeeper")>
-<assembly: AssemblyDescription("PDF capture, store, index, and search for the Small or Home Office")>
+<assembly: AssemblyDescription("PDF Document Capture, Storage, and Search")>
 <assembly: AssemblyConfiguration("")>
 <assembly: AssemblyCompany("Robert F. Frasca")>
 <assembly: AssemblyProduct("PDFKeeper")>
