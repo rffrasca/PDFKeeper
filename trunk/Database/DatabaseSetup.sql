@@ -1,6 +1,6 @@
 /******************************************************************************
 **
-** PDFKeeper -- PDF Document Storage for Small or Home Office
+** PDFKeeper -- PDF Document Capture, Storage, and Search
 ** Copyright (C) 2009-2013 Robert F. Frasca
 **
 ** This file is part of PDFKeeper.
