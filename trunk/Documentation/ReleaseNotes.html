@@ -87,10 +87,8 @@ other information that supplements the main documentation.</p>
 <div id="installation">
 <h3>Recent Changes</h3>
 <ul>
-  <li>FIX <a
-    href="http://code.google.com/p/pdfkeeper/issues/detail?id=43">43</a>
-    Document Capture: Prompt for password when PDF document contains an OWNER
-    password.</li>
+  <li>FIX <a href="http://pdfkeeper.codeplex.com/workitem/1247">1247</a> Update
+    links in source and documentation to new project site</li>
   <li>FIX <a href="http://pdfkeeper.codeplex.com/workitem/1264">1264</a> Using
     mouse scroll wheel following seach results in scrolling in Search Text
     combo box instead of list view</li>
@@ -137,9 +135,6 @@ other information that supplements the main documentation.</p>
     href="http://pdfkeeper.codeplex.com/workitem/1265">1265</a> Set form font
     to SystemFonts.MessageBoxFont to improve appearance on Windows Vista and
     later</li>
-  <li>ENHANCEMENT <a
-    href="http://code.google.com/p/pdfkeeper/issues/detail?id=111">111</a>
-    Implement a global application error handler.</li>
 </ul>
 
 <h3>Upgrade Notes</h3>
@@ -163,17 +158,18 @@ other information that supplements the main documentation.</p>
     <dd>In PDFKeeper 1.0.0 and 1.1.0, the Oracle Text WORLD_LEXER was used to
       provide broad language support during PDF document indexing. However, a
       bug exists with this lexer in the Oracle Database 10g Express Edition,
-      see <a
-      href="http://code.google.com/p/pdfkeeper/issues/detail?id=50">Issue
-      50</a> for details. As a result of this bug, starting with PDFKeeper
-      2.0.0, the BASIC_LEXER is now used. This change will only affect a
-      database schema built in PDFKeeper 2.0.0 or later; an existing database
-      schema will need to be altered if an ORA-03113 error is encountered while
-      uploading documents.</dd>
+      see the <b>Known Problems and Workarounds</b> below for details. As a
+      result of this bug, starting with PDFKeeper 2.0.0, the BASIC_LEXER is now
+      used. This change will only affect a database schema built in PDFKeeper
+      2.0.0 or later; an existing database schema will need to be altered if an
+      ORA-03113 error is encountered while uploading documents or
+      adding/updating Document Notes.</dd>
     <dd>For more information on the BASIC_LEXER, including the languages
       supported, please refer to the <a
       href="http://download.oracle.com/docs/cd/B19306_01/text.102/b14218/cdatadic.htm#i1007615">Oracle
-      Text Documentation</a>.</dd>
+      Text 10g Release 2 (10.2) Documentation</a> or <a
+      href="http://docs.oracle.com/cd/B28359_01/text.111/b28304/amultlng.htm#CEGBCDHJ">Oracle
+      Text 11g Release 1 (11.1) Documentation</a>.</dd>
 </dl>
 
 <h3>Known Problems and Workarounds</h3>
@@ -185,11 +181,52 @@ other information that supplements the main documentation.</p>
 <ul>
   <li style="margin-left:0;"><b>ORA-03113: end-of-file on communication
     channel</b> following the upload of a PDF document and your database schema
-    was built using the Database Setup included with PDFKeeper 1.0.0 or 1.1.0. 
+    was built using the Database Setup included with PDFKeeper 1.0.0 or 1.1.0.
+    Note, once this condition occurs, any subsequent insert, update, or delete
+    will trigger this error. 
     <ul>
-      <li>WORKAROUND: Please refer to the <a
-        href="http://code.google.com/p/pdfkeeper/wiki/EndOfFileOnCommunicationChannelAlert">alert</a>
-        for the workaround.</li>
+      <li>CAUSE: PDFKeeper uses the Oracle Text WORLD_LEXER to provide broader
+        language support during indexing of documents. This error is the result
+        of a bug (5036380 worldlexer index creation can dump<b></b>(drlwtkn))
+        with Oracle Database 10.2.0.1 (including Express Edition) that was
+        fixed in a 10.2.0.3 patchset; however, patchsets are not available for
+        Orace Database Express Edition.</li>
+      <li>WORKAROUND: Note, the steps below will switch from the WORLD_LEXER to
+        the BASIC_LEXER. For more information on the BASIC_LEXER, including the
+        languages supported, please refer to the <a
+        href="http://download.oracle.com/docs/cd/B19306_01/text.102/b14218/cdatadic.htm#i1007615">Oracle
+        Text 10g Release 2 (10.2) Documentation</a>. 
+        <ol>
+          <li>Do not proceed until all users are out of PDFKeeper. In addition,
+            it's highly recommended that you perform an Oracle Backup and
+            back-up the Flash Recovery Area.</li>
+          <li>On the system that has Oracle Server installed, log into Windows
+            as the user that installed Oracle Server. </li>
+          <li>Open <b>Run SQL Command Line</b> from <b>Start</b> | <b>All
+            Programs</b> | <b>Oracle Database 10G Express Edition</b></li>
+          <li>Type: <b>connect / as sysdba</b> and then press <b>Enter</b></li>
+          <li>Type: <b>drop index pdfkeeper.docs_idx;</b> and then press
+            <b>Enter</b></li>
+          <li>Type: <b>exec
+            ctx_ddl.drop_preference('ctxsys.pdfkeeper_lexer')</b> and then
+            press <b>Enter</b></li>
+          <li>Type: <b>exec
+            ctx_ddl.create_preference('ctxsys.pdfkeeper_lexer','basic_lexer')
+            </b>and then press <b>Enter</b></li>
+          <li>Type: <b>exec
+            ctx_ddl.set_attribute('ctxsys.pdfkeeper_lexer','printjoins','_-')
+            </b>and then press <b>Enter</b></li>
+          <li>Type: <b>create index pdfkeeper.docs_idx on
+            pdfkeeper.docs(doc_dummy)</b> and then press <b>Enter</b></li>
+          <li>Type: <b>indextype is ctxsys.context</b> and then press
+            <b>Enter</b></li>
+          <li>Type: <b>parameters ('datastore ctxsys.pdfkeeper_multi</b> and
+            then press <b>Enter</b></li>
+          <li>Type: <b>lexer ctxsys.pdfkeeper_lexer sync (on commit)');</b> and
+            then press <b>Enter</b></li>
+          <li>Type: <b>quit</b> and then press <b>Enter</b></li>
+        </ol>
+      </li>
     </ul>
   </li>
 </ul>
