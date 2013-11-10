@@ -20,13 +20,35 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class UpdateCheck
+Public NotInheritable Class Product
+	Dim Shared appVersion As String = _
+		System.Windows.Forms.Application.ProductVersion
 	
 	''' <summary>
 	''' This subroutine is the class constructor required for FxCop compliance.
 	''' </summary>
 	Private Sub New()
 	End Sub
+	
+	''' <summary>
+	''' This function will return the product version.
+	''' </summary>
+	''' <returns>Version</returns>
+	Public Shared Function Version As String
+		Return appVersion.Substring(0, _
+			appVersion.Length - appVersion.LastIndexOf(".", _
+			StringComparison.CurrentCulture) - 1)
+	End Function
+	
+	''' <summary>
+	''' This function will return the product build.
+	''' </summary>
+	''' <returns>Build</returns>
+	Public Shared Function Build As String
+		Return appVersion.Substring( _
+			appVersion.Length - appVersion.LastIndexOf(".", _
+			StringComparison.CurrentCulture))
+	End Function
 	
 	''' <summary>
 	''' This subroutine will check if an update is available.
@@ -47,7 +69,7 @@ Public NotInheritable Class UpdateCheck
 				End If
 			Next
 		End Using
-		If maxVersion > MainForm.appVersion Then
+		If maxVersion > Version Then
 			Return True
 		Else
 			Return False

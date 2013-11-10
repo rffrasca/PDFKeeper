@@ -43,16 +43,15 @@ Public Partial Class AboutForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will read the Product name, version, and copyright from
-	''' the Assembly Details and update the form.
+	''' This subroutine will read the Product name, description, copyright,
+	''' version and build from the Assembly Details and update the form.
 	''' </summary>
 	Private Sub ReadAssemblyDetails
 		labelName.Text = My.Application.Info.ProductName
 		labelDescription.Text = My.Application.Info.Description
 		labelCopyright.Text = My.Application.Info.Copyright
-		labelVersion.Text = MainForm.appVersion & " - Build: " & _
-							My.Application.Info.Version.Revision.ToString( _
-							CultureInfo.CurrentCulture)
+		labelVersion.Text = "Version: " & Product.Version & _
+							" - Build: " & Product.Build
 	End Sub
 	
 	''' <summary>
