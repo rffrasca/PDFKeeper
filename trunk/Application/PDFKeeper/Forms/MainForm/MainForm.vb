@@ -34,13 +34,6 @@ Public Partial Class MainForm
 	Dim capturePdfFile As String
 	Dim captureModPdfFile As String
 	Dim lastPdfDocumentCheckResult As Integer
-	Friend Shared appVersion As String = _
-		My.Application.Info.Version.Major.ToString( _
-		CultureInfo.CurrentCulture) & "." & _
-		My.Application.Info.Version.Minor.ToString( _
-		CultureInfo.CurrentCulture) & "." & _
-		My.Application.Info.Version.Build.ToString( _
-		CultureInfo.CurrentCulture)
 	
 	Public Sub New()
 		Me.InitializeComponent()
@@ -1475,7 +1468,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub BackgroundWorkerUpdateCheckDoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
-		updateAvailable = UpdateCheck.UpdateAvailable
+		updateAvailable = Product.UpdateAvailable
 		BackgroundWorkerUpdateCheckRunWorkerCompleted(Me, Nothing)
 	End Sub
 	
