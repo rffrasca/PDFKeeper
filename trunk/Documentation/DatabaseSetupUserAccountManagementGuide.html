@@ -57,7 +57,7 @@
 <ol>
   <li><a href="#Introducti">Introduction</a> 
     <ul>
-      <li><a href="#About">About this user guide</a></li>
+      <li><a href="#About">About this guide</a></li>
     </ul>
   </li>
   <li><a href="#Database">Database Setup</a> 
@@ -83,6 +83,34 @@
       used by those involved in implementing and administering PDFKeeper.
       Before proceeding, make sure that all software required by PDFKeeper has
       been installed.</dd>
+    <dd></dd>
+    <dd>This guide assumes that all steps will be performed on the system that
+      Oracle Database XE Server was installed on. Note, to perform these steps
+      from a client that does not have Oracle Database XE Server installed
+      requires downloading <a
+      href="http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html">Oracle
+      Instant Client Basic or Basic Lite and SQL*Plus packages</a> and then
+      extracting the ZIP files into an empty folder that will need to be added
+      to the System PATH.</dd>
+    <dd>To call SQL*Plus from a client computer:</dd>
+    <dd><ol>
+        <li>From the command line, execute <b>sqlplus</b></li>
+        <li>When prompted, enter the database connect string in the format:
+          <b>username@host:port</b>
+          <ul>
+            <li><b>username</b> is a database account that must be a member of
+              SYSDBA. Note, <b>SYSTEM</b> is a member of SYSDBA.</li>
+            <li><b>host</b> is the host name or IP address of the computer that
+              is running Oracle Database XE Server. Specify <b>localhost</b> or
+              <b>127.0.0.1</b> if logged onto the same system as Oracle
+              Database XE Server.</li>
+            <li><b>port</b> (optional) is the TCP port number on which the
+              Oracle Net listener is listening. If not specified, the default
+              port number 1521 is assumed.</li>
+          </ul>
+        </li>
+      </ol>
+    </dd>
 </dl>
 
 <h3>2. <a name="Database" id="Database">Database Setup</a></h3>
@@ -142,8 +170,9 @@
         <li>Secure the <b>pdfkeeper</b> database user account by changing the
           password, the default password is <b>pdfkeeper</b>. 
           <ol>
-            <li>On the system that has Oracle Server installed, log into
-              Windows as the user that installed Oracle Server.</li>
+            <li>On the system that has Oracle Database XE Server installed, log
+              into Windows as the user that installed Oracle Database XE
+            Server.</li>
             <li>Select <b>Start</b> | <b>All Programs</b> | <b>Oracle Database
               Express Edition</b> | <b>Run SQL Command Line</b>.</li>
             <li>When prompted, enter the following: <b>connect / as
@@ -175,8 +204,9 @@ Management</a></h3>
         <li>If the user does not have a database user account, create one for
           the user: 
           <ol>
-            <li>On the system that has Oracle Server installed, log into
-              Windows as the user that installed Oracle Server.</li>
+            <li>On the system that has Oracle Database XE Server installed, log
+              into Windows as the user that installed Oracle Database XE
+            Server.</li>
             <li>Select <b>Start</b> | <b>All Programs</b> | <b>Oracle Database
               Express Edition</b> | <b>Run SQL Command Line</b>.</li>
             <li>When prompted, enter the following: <b>connect / as
@@ -188,7 +218,7 @@ Management</a></h3>
             <li>Close SQL Command Line, enter: <b>quit</b></li>
           </ol>
         </li>
-        <li>Connect to Oracle Server as <b>pdfkeeper</b> 
+        <li>Connect to Oracle Database XE Server as <b>pdfkeeper</b> 
           <ol>
             <li>Select <b>Start</b> | <b>All Programs</b> | <b>Oracle Database
               Express Edition</b> | <b>Run SQL Command Line</b>.</li>
