@@ -135,6 +135,7 @@ Partial Class MainForm
 		Me.listBoxDocCaptureQueue = New System.Windows.Forms.ListBox()
 		Me.processCapturePdfViewer = New System.Diagnostics.Process()
 		Me.timerDirectUpload = New System.Windows.Forms.Timer(Me.components)
+		Me.backgroundWorkerDirectUpload = New System.ComponentModel.BackgroundWorker()
 		Me.menuStrip.SuspendLayout
 		CType(Me.errorProvider,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.statusStrip.SuspendLayout
@@ -739,6 +740,11 @@ Partial Class MainForm
 		Me.timerDirectUpload.Interval = 15000
 		AddHandler Me.timerDirectUpload.Tick, AddressOf Me.TimerDirectUploadTick
 		'
+		'backgroundWorkerDirectUpload
+		'
+		AddHandler Me.backgroundWorkerDirectUpload.DoWork, AddressOf Me.BackgroundWorkerDirectUploadDoWork
+		AddHandler Me.backgroundWorkerDirectUpload.RunWorkerCompleted, AddressOf Me.BackgroundWorkerDirectUploadRunWorkerCompleted
+		'
 		'MainForm
 		'
 		Me.AcceptButton = Me.buttonSearch
@@ -775,6 +781,7 @@ Partial Class MainForm
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private backgroundWorkerDirectUpload As System.ComponentModel.BackgroundWorker
 	Private toolStripMenuItemDirectUploadFolder As System.Windows.Forms.ToolStripMenuItem
 	Private toolStripStatusLabelUploading As System.Windows.Forms.ToolStripStatusLabel
 	Private timerDirectUpload As System.Windows.Forms.Timer

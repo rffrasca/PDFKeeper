@@ -1439,31 +1439,22 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will process the Direct Upload folder by uploading all
-	''' PDF documents in each configured folder, including subfolders.  To
-	''' maintain synchronization, the timer is stopped during the execution of
-	''' this subroutine.
+	''' This subroutine will process the Direct Upload folder on a worker
+	''' thread by uploading all PDF documents in each configured folder,
+	''' including subfolders.  To maintain synchronization, the timer is
+	''' stopped during the execution of this subroutine.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub TimerDirectUploadTick(sender As Object, e As EventArgs)
 		toolStripMenuItemDirectUploadConfig.Enabled = False
 		timerDirectUpload.Stop
-		If DirectUpload.CountOfPdfFiles > 0 Then
-			toolStripStatusLabelUploading.Visible = True
-			Application.DoEvents
-			DirectUpload.UploadAllPdfFiles
-			toolStripStatusLabelUploading.Visible = False
-			Application.DoEvents
-		End If
-		DirectUpload.DeleteAllEmptySubfolders
-		timerDirectUpload.Start
-		toolStripMenuItemDirectUploadConfig.Enabled = True
+		backgroundWorkerDirectUpload.RunWorkerAsync
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will check if an update is available and trigger the
-	''' RunWorkerCompleted event.
+	''' This subroutine will check if an update is available and automatically
+	''' trigger the RunWorkerCompleted event.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -1490,6 +1481,36 @@ Public Partial Class MainForm
 		End If
 	End Sub
 	
+	''' <summary>
+	''' This subroutine will process the Direct Upload folder by uploading all
+	''' PDF documents in each configured folder, including subfolders; delete
+	''' any subfolders inside of each configured folder; and automatically
+	''' trigger the RunWorkerCompleted event.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub BackgroundWorkerDirectUploadDoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
+		If DirectUpload.CountOfPdfFiles > 0 Then
+			toolStripStatusLabelUploading.Visible = True
+			Application.DoEvents
+			DirectUpload.UploadAllPdfFiles
+			toolStripStatusLabelUploading.Visible = False
+			Application.DoEvents
+		End If
+		DirectUpload.DeleteAllEmptySubfolders
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will start the Direct Upload timer and enable the
+	''' "Direct Upload Configuration" menu item.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub BackgroundWorkerDirectUploadRunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs)
+		timerDirectUpload.Start
+		toolStripMenuItemDirectUploadConfig.Enabled = True
+	End Sub
+		
 	''' <summary>
 	''' This subroutine will execute when a file is added to the Capture
 	''' folder.  If the file added is a PDF document, then set the Capture
@@ -1607,7 +1628,8 @@ Public Partial Class MainForm
 	''' </summary>
 	''' <returns>True or False</returns>
 	Function BackgroundWorkersBusy() As Boolean
-		If backgroundWorkerUpdateCheck.IsBusy Then
+		If backgroundWorkerUpdateCheck.IsBusy Or _
+				backgroundWorkerDirectUpload.IsBusy Then
 			Return True
 		Else
 			Return False
