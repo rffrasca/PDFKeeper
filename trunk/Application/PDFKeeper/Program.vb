@@ -28,12 +28,12 @@ Namespace My
 			MyBase.New(AuthenticationMode.Windows)
 			Me.IsSingleInstance = True
 			Me.EnableVisualStyles = True
-			
-			' MySettings are not supported in SharpDevelop.
+			AddHandler AppDomain.CurrentDomain.UnhandledException, _
+				AddressOf MyApplication_UnhandledException
+				' MySettings are not supported in SharpDevelop.
 			Me.SaveMySettingsOnExit = False
-			
 			Me.ShutDownStyle = ShutdownMode.AfterMainFormCloses
-			
+				
 			' Create User Profile folders and delete deprecated folders.
 			If UserProfileFoldersTask.Create = 1 Then
 				Environment.Exit(1)
@@ -77,11 +77,9 @@ Namespace My
 		''' </summary>
 		''' <param name="sender"></param>
 		''' <param name="e"></param>
-		Private Sub MyApplication_UnhandledException(ByVal sender As Object, _
-				ByVal e As _
-				Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventArgs) _
-				Handles Me.UnhandledException
-			MessageBoxWrapper.ShowError(e.Exception.Message)
+		Private Sub MyApplication_UnhandledException(sender As Object, _
+				e As System.UnhandledExceptionEventArgs)
+			MessageBoxWrapper.ShowError(e.ExceptionObject.ToString)
 		End Sub
 	End Class
 End Namespace
