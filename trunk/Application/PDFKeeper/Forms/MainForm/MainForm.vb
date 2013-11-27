@@ -1460,7 +1460,6 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub BackgroundWorkerUpdateCheckDoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
 		updateAvailable = Product.UpdateAvailable
-		BackgroundWorkerUpdateCheckRunWorkerCompleted(Me, Nothing)
 	End Sub
 	
 	''' <summary>
