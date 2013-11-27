@@ -41,7 +41,7 @@
 		
 		<!-- Condition checks -->
 		<PropertyRef Id="NETFRAMEWORK40CLIENT"/>
-		<Condition Message="PDFKeeper requires .NET Framework 4 Client Profile. Please install the .NET Framework, and then run this installer again.">
+		<Condition Message="This setup requires .NET Framework 4 Client Profile or Extended. Please install the .NET Framework and then run this setup again.">
   			<![CDATA[Installed OR NETFRAMEWORK40CLIENT]]>
 		</Condition>
 		<Condition Message="PDFKeeper is only supported on Windows XP SP3 or higher.">
