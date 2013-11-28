@@ -94,5 +94,27 @@
 			<param name="ImageNumber" value="9">
 			</OBJECT>
 	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Direct Upload">
+		<param name="Local" value="Direct Upload.html">
+		<param name="ImageNumber" value="1">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Uploading PDF documents with Direct Upload">
+			<param name="Local" value="Uploading PDF documents with Direct Upload.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Configuring Direct Upload folders">
+			<param name="Local" value="Configuring Direct Upload folders.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Accessing the Direct Upload Folder">
+			<param name="Local" value="Accessing the Direct Upload Folder.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+	</UL>
 </UL>
 </BODY></HTML>
