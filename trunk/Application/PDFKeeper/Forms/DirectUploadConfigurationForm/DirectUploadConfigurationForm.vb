@@ -299,7 +299,18 @@ Public Partial Class DirectUploadConfigurationForm
 		End If
 		Return False
 	End Function
-		
+	
+	''' <summary>
+	''' This subroutine will display the help page for this form.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="hlpevent"></param>
+	Private Sub DirectUploadConfigurationFormHelpRequested(sender As Object, hlpevent As HelpEventArgs)
+		Me.Cursor = Cursors.WaitCursor
+		HelpWrapper.ShowHelp(Me, "Configuring Direct Upload folders.html")
+		Me.Cursor = Cursors.Default
+	End Sub
+	
 	''' <summary>
 	''' This subroutine will save the current folder entry and clear the form.
 	''' </summary>

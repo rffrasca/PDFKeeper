@@ -73,6 +73,7 @@ Partial Class DirectUploadConfigurationForm
 		Me.buttonSave = New System.Windows.Forms.Button()
 		Me.buttonClose = New System.Windows.Forms.Button()
 		Me.errorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+		Me.labelHelp = New System.Windows.Forms.Label()
 		Me.groupBoxFolders.SuspendLayout
 		Me.groupBoxFolderName.SuspendLayout
 		Me.groupBoxTitlePreFill.SuspendLayout
@@ -259,12 +260,18 @@ Partial Class DirectUploadConfigurationForm
 		'
 		Me.errorProvider.ContainerControl = Me
 		'
+		'labelHelp
+		'
+		resources.ApplyResources(Me.labelHelp, "labelHelp")
+		Me.labelHelp.Name = "labelHelp"
+		'
 		'DirectUploadConfigurationForm
 		'
 		Me.AcceptButton = Me.buttonSave
 		resources.ApplyResources(Me, "$this")
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.CancelButton = Me.buttonDiscard
+		Me.Controls.Add(Me.labelHelp)
 		Me.Controls.Add(Me.buttonClose)
 		Me.Controls.Add(Me.groupBoxProperties)
 		Me.Controls.Add(Me.groupBoxFolders)
@@ -274,6 +281,7 @@ Partial Class DirectUploadConfigurationForm
 		Me.Name = "DirectUploadConfigurationForm"
 		AddHandler FormClosing, AddressOf Me.DirectUploadConfigurationFormFormClosing
 		AddHandler Load, AddressOf Me.DirectUploadConfigurationFormLoad
+		AddHandler HelpRequested, AddressOf Me.DirectUploadConfigurationFormHelpRequested
 		Me.groupBoxFolders.ResumeLayout(false)
 		Me.groupBoxFolderName.ResumeLayout(false)
 		Me.groupBoxFolderName.PerformLayout
@@ -286,6 +294,7 @@ Partial Class DirectUploadConfigurationForm
 		CType(Me.errorProvider,System.ComponentModel.ISupportInitialize).EndInit
 		Me.ResumeLayout(false)
 	End Sub
+	Private labelHelp As System.Windows.Forms.Label
 	Private buttonEdit As System.Windows.Forms.Button
 	Private errorProvider As System.Windows.Forms.ErrorProvider
 	Private buttonClose As System.Windows.Forms.Button
