@@ -106,13 +106,13 @@
 			<param name="ImageNumber" value="9">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Configuring Direct Upload folders">
-			<param name="Local" value="Configuring Direct Upload folders.html">
+			<param name="Name" value="Configuring Direct Upload sub-folders">
+			<param name="Local" value="Configuring Direct Upload sub-folders.html">
 			<param name="ImageNumber" value="9">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Accessing the Direct Upload Folder">
-			<param name="Local" value="Accessing the Direct Upload Folder.html">
+			<param name="Name" value="Accessing the Direct Upload Folder and sub-folders">
+			<param name="Local" value="Accessing the Direct Upload Folder and sub-folders.html">
 			<param name="ImageNumber" value="9">
 			</OBJECT>
 	</UL>
