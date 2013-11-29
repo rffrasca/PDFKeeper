@@ -307,7 +307,7 @@ Public Partial Class DirectUploadConfigurationForm
 	''' <param name="hlpevent"></param>
 	Private Sub DirectUploadConfigurationFormHelpRequested(sender As Object, hlpevent As HelpEventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		HelpWrapper.ShowHelp(Me, "Configuring Direct Upload folders.html")
+		HelpWrapper.ShowHelp(Me, "Configuring Direct Upload sub-folders.html")
 		Me.Cursor = Cursors.Default
 	End Sub
 	
