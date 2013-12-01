@@ -44,7 +44,7 @@ Public Partial Class MainForm
 	#Region "Form Loading"
 	
 	''' <summary>
-	''' This subroutine will set the font to MS Sans Serif 8pt in XP and
+	''' This subroutine will set the font to MS Sans Serif 8pt in XP or
 	''' Segoe UI 9pt in Vista or later; set the form size and position based
 	''' on the values retrieved from the User Settings object properties, a
 	''' default will be used for any value that is NUL; call the

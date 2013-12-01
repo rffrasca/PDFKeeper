@@ -30,7 +30,7 @@ Public Partial Class AboutForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will set the font to MS Sans Serif 8pt in XP and
+	''' This subroutine will set the font to MS Sans Serif 8pt in XP or
 	''' Segoe UI 9pt in Vista or later; read the Assebly details, and fill the
 	''' fill the License and Third-Party Notices tabs.
 	''' </summary>

@@ -32,7 +32,7 @@ Public Partial Class DirectUploadConfigurationForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will set the font to MS Sans Serif 8pt in XP and
+	''' This subroutine will set the font to MS Sans Serif 8pt in XP or
 	''' Segoe UI 9pt in Vista or later; fill the list box with configured
 	''' folders; and fill the combo boxes with stock pre-fill items.
 	''' </summary>
