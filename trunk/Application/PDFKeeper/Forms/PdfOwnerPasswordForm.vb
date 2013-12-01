@@ -21,8 +21,8 @@
 '******************************************************************************
 
 Public Partial Class PdfOwnerPasswordForm
-	Friend Shared ownerPasswordSecure As SecureString
-
+	Friend Shared ownerPasswordSecure As New SecureString
+	
 	''' <summary>
 	''' This subroutine is the class constructor.
 	''' </summary>
@@ -31,24 +31,24 @@ Public Partial Class PdfOwnerPasswordForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will set the font to MS Sans Serif 8pt in XP and
-	''' Segoe UI 9pt in Vista or later; and select the Password text box.
+	''' This subroutine will set the font to MS Sans Serif 8pt in XP or
+	''' Segoe UI 9pt in Vista or later, clear the password string, and select
+	''' the Password text box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub PdfOwnerPasswordFormLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont
+		ownerPasswordSecure.Clear
 		textBoxPassword.Select
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will trim leading and trailing spaces from the text in
-	''' the Password text box and will enable the OK button if the length of
-	''' the Password is greater than 0.
+	''' This subroutine will enable the OK button if the length of the password
+	''' string is greater than 0.
 	''' </summary>
 	Private Sub TextBoxTextChanged
-		textBoxPassword.Text = textBoxPassword.Text.Trim
-		If textBoxPassword.TextLength > 0 Then
+		If ownerPasswordSecure.Length > 0 Then		
 			buttonOK.Enabled = True
 		Else
 			buttonOK.Enabled = False
@@ -56,37 +56,93 @@ Public Partial Class PdfOwnerPasswordForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will create a SecureString object of the text in the
-	''' password text box and call the ZeroPasswordText subroutine.
+	''' This subroutine will handle the deleting of selected characters from
+	''' the password string, ignoring the Esc and Enter keys.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub TextBoxPasswordKeyDown(sender As Object, e As KeyEventArgs)
+		If e.KeyCode = Keys.Delete Then
+			If textBoxPassword.SelectionLength > 0 Then
+				RemoveCharacters()
+			ElseIf textBoxPassword.SelectionStart < _
+					textBoxPassword.Text.Length Then
+				ownerPasswordSecure.RemoveAt(textBoxPassword.SelectionStart)
+			End If
+			SetTextBoxTextProperty(textBoxPassword.SelectionStart)
+			e.Handled = True
+		ElseIf e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
+			e.Handled = True
+		End If
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will update the password string by removing the
+	''' printable character that was removed by pressing the Backspace key or
+	''' adding the printable character entered.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub TextBoxPasswordKeyPress(sender As Object, e As KeyPressEventArgs)
+		If e.KeyChar = ControlChars.Back Then
+			If textBoxPassword.SelectionLength > 0 Then
+				RemoveCharacters()
+				SetTextBoxTextProperty(textBoxPassword.SelectionStart)
+			ElseIf textBoxPassword.SelectionStart > 0 Then
+				ownerPasswordSecure.RemoveAt( _
+					textBoxPassword.SelectionStart - 1)
+				SetTextBoxTextProperty(textBoxPassword.SelectionStart - 1)
+			End If
+		Else
+			If textBoxPassword.SelectionLength > 0 Then
+				RemoveCharacters()
+			End If
+			ownerPasswordSecure.InsertAt(textBoxPassword.SelectionStart, _
+				e.KeyChar)
+			SetTextBoxTextProperty(textBoxPassword.SelectionStart + 1)
+		End If
+		e.Handled = True
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will remove selected characters from the password
+	''' string.
+	''' </summary>
+	Private Sub RemoveCharacters
+		For i As Integer = 0 To textBoxPassword.SelectionLength - 1
+			ownerPasswordSecure.RemoveAt(textBoxPassword.SelectionStart)
+		Next
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will set the text property of the password text box to
+	''' the number of password characters matching the length of the password
+	''' string.
+	''' </summary>
+	''' <param name="caretPos"></param>
+	Private Sub SetTextBoxTextProperty(ByVal caretPos As Integer)
+		textBoxPassword.Text = New String(CChar("*"), _
+			ownerPasswordSecure.Length)
+		textBoxPassword.SelectionStart = caretPos
+	End Sub
+
+	''' <summary>
+	''' This subroutine will clear the text box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonOkClick(sender As Object, e As EventArgs)
-		Me.Cursor = Cursors.WaitCursor
-		ownerPasswordSecure = SecureStringWrapper.ToSecureString( _
-							  textBoxPassword.Text)
-		ZeroPasswordText
-		Me.Cursor = Cursors.Default
+		textBoxPassword.Text = Nothing
 		Me.DialogResult = Windows.Forms.DialogResult.OK
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will call the ZeroPasswordText subroutine.
+	''' This subroutine will clear the password string and text box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonCancelClick(sender As Object, e As EventArgs)
-		Me.Cursor = Cursors.WaitCursor
-		ZeroPasswordText
-		Me.Cursor = Cursors.Default
-	End Sub
-	
-	''' <summary>
-	''' This subroutine will zero out the memory allocated to the password
-	''' text.
-	''' </summary>
-	Private Sub ZeroPasswordText
-		NativeMethods.ZeroMemory(textBoxPassword.text, _
-								 textBoxPassword.Text.Length * 2)
+		ownerPasswordSecure.Clear
+		textBoxPassword.Text = Nothing
 	End Sub
 End Class
