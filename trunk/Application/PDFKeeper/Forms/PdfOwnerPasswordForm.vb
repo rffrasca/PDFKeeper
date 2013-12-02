@@ -21,7 +21,7 @@
 '******************************************************************************
 
 Public Partial Class PdfOwnerPasswordForm
-	Friend Shared ownerPasswordSecure As New SecureString
+	Friend Shared ownerPassword As New SecureString
 	
 	''' <summary>
 	''' This subroutine is the class constructor.
@@ -39,7 +39,7 @@ Public Partial Class PdfOwnerPasswordForm
 	''' <param name="e"></param>
 	Private Sub PdfOwnerPasswordFormLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont
-		ownerPasswordSecure.Clear
+		ownerPassword.Clear
 		textBoxPassword.Select
 	End Sub
 	
@@ -48,7 +48,7 @@ Public Partial Class PdfOwnerPasswordForm
 	''' string is greater than 0.
 	''' </summary>
 	Private Sub TextBoxTextChanged
-		If ownerPasswordSecure.Length > 0 Then		
+		If ownerPassword.Length > 0 Then		
 			buttonOK.Enabled = True
 		Else
 			buttonOK.Enabled = False
@@ -67,7 +67,7 @@ Public Partial Class PdfOwnerPasswordForm
 				RemoveCharacters()
 			ElseIf textBoxPassword.SelectionStart < _
 					textBoxPassword.Text.Length Then
-				ownerPasswordSecure.RemoveAt(textBoxPassword.SelectionStart)
+				ownerPassword.RemoveAt(textBoxPassword.SelectionStart)
 			End If
 			SetTextBoxTextProperty(textBoxPassword.SelectionStart)
 			e.Handled = True
@@ -89,16 +89,14 @@ Public Partial Class PdfOwnerPasswordForm
 				RemoveCharacters()
 				SetTextBoxTextProperty(textBoxPassword.SelectionStart)
 			ElseIf textBoxPassword.SelectionStart > 0 Then
-				ownerPasswordSecure.RemoveAt( _
-					textBoxPassword.SelectionStart - 1)
+				ownerPassword.RemoveAt(textBoxPassword.SelectionStart - 1)
 				SetTextBoxTextProperty(textBoxPassword.SelectionStart - 1)
 			End If
 		Else
 			If textBoxPassword.SelectionLength > 0 Then
 				RemoveCharacters()
 			End If
-			ownerPasswordSecure.InsertAt(textBoxPassword.SelectionStart, _
-				e.KeyChar)
+			ownerPassword.InsertAt(textBoxPassword.SelectionStart, e.KeyChar)
 			SetTextBoxTextProperty(textBoxPassword.SelectionStart + 1)
 		End If
 		e.Handled = True
@@ -110,7 +108,7 @@ Public Partial Class PdfOwnerPasswordForm
 	''' </summary>
 	Private Sub RemoveCharacters
 		For i As Integer = 0 To textBoxPassword.SelectionLength - 1
-			ownerPasswordSecure.RemoveAt(textBoxPassword.SelectionStart)
+			ownerPassword.RemoveAt(textBoxPassword.SelectionStart)
 		Next
 	End Sub
 	
@@ -121,8 +119,7 @@ Public Partial Class PdfOwnerPasswordForm
 	''' </summary>
 	''' <param name="caretPos"></param>
 	Private Sub SetTextBoxTextProperty(ByVal caretPos As Integer)
-		textBoxPassword.Text = New String(CChar("*"), _
-			ownerPasswordSecure.Length)
+		textBoxPassword.Text = New String(CChar("*"), ownerPassword.Length)
 		textBoxPassword.SelectionStart = caretPos
 	End Sub
 
@@ -142,7 +139,7 @@ Public Partial Class PdfOwnerPasswordForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonCancelClick(sender As Object, e As EventArgs)
-		ownerPasswordSecure.Clear
+		ownerPassword.Clear
 		textBoxPassword.Text = Nothing
 	End Sub
 End Class
