@@ -33,13 +33,15 @@ Public Partial Class DirectUploadConfigurationForm
 	
 	''' <summary>
 	''' This subroutine will set the font to MS Sans Serif 8pt in XP or
-	''' Segoe UI 9pt in Vista or later; fill the list box with configured
-	''' folders; and fill the combo boxes with stock pre-fill items.
+	''' Segoe UI 9pt in Vista or later, create missing Direct Upload folders,
+	''' fill the list box with configured folders, and fill the combo boxes
+	''' with stock pre-fill items.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub DirectUploadConfigurationFormLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont
+		DirectUpload.CreateMissingFolders
 		FillList
 		FillComboBoxes
 	End Sub
