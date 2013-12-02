@@ -64,13 +64,4 @@ Friend Class NativeMethods
 		<InAttribute(), MarshalAs(UnmanagedType.LPTStr)> _
 		ByVal pszPath As String) As <MarshalAs(UnmanagedType.Bool)> Boolean
  	End Function
-	
-	''' <summary>
-	''' This subroutine will fill a block in memory with zeros.
-	''' </summary>
-	''' <param name="Destination"></param>
-	''' <param name="Length"></param>
-	Friend Declare Sub ZeroMemory Lib "kernel32.dll" Alias "RtlZeroMemory" _
-								 (ByVal Destination As String, _
-         					 	  ByVal Length As Integer)
 End Class

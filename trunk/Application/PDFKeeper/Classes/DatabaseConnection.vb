@@ -26,15 +26,19 @@ Public Class DatabaseConnection
 	Friend oraConnection As New OracleConnection
 	
 	''' <summary>
-	''' This function will open a database connection.  If the connection fails
-	''' to open, the connection object is closed and disposed.
+	''' This function will create the connection string and open a database
+	''' connection.
 	''' </summary>
 	''' <returns>0 = Successful, 1 = Failed</returns>
-	Public Function Open() As Integer
+	Public Function Open(ByVal userName As String, _
+						 ByVal password As SecureString, _
+						 ByVal dataSource As String) As Integer
 		Try
-			oraConnection.ConnectionString = _
-				SecureStringWrapper.ToTextString( _
-				DatabaseConnectionForm.connectionStringSecure)
+			oraConnection.ConnectionString = "User Id=" + userName + ";" & _
+				"Password=" + StringDecoder.SecureStringToString( _
+					password) + ";" & _
+				"Data Source=" + dataSource + ";" & _
+				"Persist Security Info=False;Pooling=True"
 			oraConnection.Open
 			Return 0
   		Catch ex As OracleException

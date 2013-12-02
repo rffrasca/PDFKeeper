@@ -104,7 +104,7 @@
     <Compile Include="Classes\PdfProperties\PdfProperties.vb" />
     <Compile Include="Classes\Print.vb" />
     <Compile Include="Classes\Product.vb" />
-    <Compile Include="Classes\SecureStringWrapper.vb" />
+    <Compile Include="Classes\StringDecoder.vb" />
     <Compile Include="Classes\UserProfileFoldersTask\UserProfileFoldersTask.Strings.Designer.vb">
       <DependentUpon>UserProfileFoldersTask.Strings.resx</DependentUpon>
       <AutoGen>True</AutoGen>

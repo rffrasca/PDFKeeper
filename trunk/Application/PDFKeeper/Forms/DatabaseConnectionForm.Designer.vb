@@ -81,8 +81,11 @@ Partial Class DatabaseConnectionForm
 		'
 		resources.ApplyResources(Me.textBoxPassword, "textBoxPassword")
 		Me.textBoxPassword.Name = "textBoxPassword"
+		Me.textBoxPassword.ShortcutsEnabled = false
 		Me.textBoxPassword.UseSystemPasswordChar = true
 		AddHandler Me.textBoxPassword.TextChanged, AddressOf Me.TextBoxTextChanged
+		AddHandler Me.textBoxPassword.KeyDown, AddressOf Me.TextBoxPasswordKeyDown
+		AddHandler Me.textBoxPassword.KeyPress, AddressOf Me.TextBoxPasswordKeyPress
 		'
 		'labelDataSource
 		'
