@@ -192,7 +192,7 @@ Public Class PdfProperties
 				oPdfReader = New PdfReader(sourcePdf, _
 							 System.Text.Encoding.ASCII.GetBytes( _
 							 SecureStringWrapper.ToTextString( _
-							 PdfOwnerPasswordForm.ownerPassword)))
+							 ownerPasswordLocal)))
 			Else
 				oPdfReader = New PdfReader(sourcePdf)
 			End If
@@ -220,14 +220,15 @@ Public Class PdfProperties
 	End Function
 	
 	''' <summary>
-	''' This subroutine will close the PdfStamper file object and dispose it.
+	''' This subroutine will close the PdfStamper file object and dispose it
+	''' and clear the owner password if one was specified.
 	''' </summary>
 	''' <param name="disposing"></param>
 	Protected Overridable Sub Dispose(ByVal disposing As Boolean)
 		If Not Me.isDisposed Then
 			If disposing Then
 				If containsOwnerPassword Then
-					ownerPasswordLocal.Dispose
+					ownerPasswordLocal.Clear
 				End If
 				oPdfStamper.Close
 				oPdfStamper.Dispose

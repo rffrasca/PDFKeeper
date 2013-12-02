@@ -956,7 +956,6 @@ Public Partial Class MainForm
 		If Not capturePdfFile = Nothing Then
 			captureModPdfFile = Path.Combine(CaptureTempDir, _
 								Path.GetFileName(capturePdfFile))
-			Dim lastPdfDocumentCheckResult As Integer
 			lastPdfDocumentCheckResult = PdfFileTask.SecurityCheck(capturePdfFile)
 			If lastPdfDocumentCheckResult = 1 Then
 				If PdfOwnerPasswordForm.ShowDialog() = _
@@ -1112,7 +1111,7 @@ Public Partial Class MainForm
 	
 	''' <summary>
 	''' This subroutine will call the TerminateCapturePdfViewer subroutine;
-	''' save the information properties to the new PDF document; and dispose
+	''' save the information properties to the new PDF document; and clear
 	'''	the PDF password secure string, if it was specified.
 	''' </summary>
 	''' <param name="sender"></param>
@@ -1151,7 +1150,7 @@ Public Partial Class MainForm
 		captureLastStatusMessage = toolStripStatusLabelMessage.Text
 		EnableCaptureControls(False)
 		If lastPdfDocumentCheckResult = 1 Then
-			PdfOwnerPasswordForm.ownerPassword.Dispose
+			PdfOwnerPasswordForm.ownerPassword.Clear
 		End If
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1253,7 +1252,7 @@ Public Partial Class MainForm
 			TerminateCapturePdfViewer
 			ClearCaptureSelection
 			If lastPdfDocumentCheckResult = 1 Then
-				PdfOwnerPasswordForm.ownerPassword.Dispose
+				PdfOwnerPasswordForm.ownerPassword.Clear
 			End If
 			Me.Cursor = Cursors.Default
 		End If
