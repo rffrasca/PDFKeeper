@@ -1490,14 +1490,16 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will process the Direct Upload folder by uploading all
-	''' PDF documents in each configured folder, including subfolders; delete
-	''' any subfolders inside of each configured folder; and automatically
-	''' trigger the RunWorkerCompleted event.
+	''' This subroutine will create missing Direct Upload folders; process the
+	''' Direct Upload folder by uploading all PDF documents in each configured
+	''' folder, including subfolders; delete any subfolders inside of each
+	''' configured folder; and automatically trigger the RunWorkerCompleted
+	''' event.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub BackgroundWorkerDirectUploadDoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
+		DirectUpload.CreateMissingFolders
 		If DirectUpload.CountOfPdfFiles > 0 Then
 			toolStripStatusLabelUploading.Visible = True
 			Application.DoEvents
