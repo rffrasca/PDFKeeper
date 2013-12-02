@@ -93,7 +93,7 @@ Public Partial Class DatabaseConnectionForm
 					textBoxPassword.Text.Length Then
 				dbPassword.RemoveAt(textBoxPassword.SelectionStart)
 			End If
-			SetTextBoxTextProperty(textBoxPassword.SelectionStart)
+			SetPWTextBoxTextProperty(textBoxPassword.SelectionStart)
 			e.Handled = True
 		ElseIf e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
 			e.Handled = True
@@ -111,17 +111,17 @@ Public Partial Class DatabaseConnectionForm
 		If e.KeyChar = ControlChars.Back Then
 			If textBoxPassword.SelectionLength > 0 Then
 				RemoveCharacters()
-				SetTextBoxTextProperty(textBoxPassword.SelectionStart)
+				SetPWTextBoxTextProperty(textBoxPassword.SelectionStart)
 			ElseIf textBoxPassword.SelectionStart > 0 Then
 				dbPassword.RemoveAt(textBoxPassword.SelectionStart - 1)
-				SetTextBoxTextProperty(textBoxPassword.SelectionStart - 1)
+				SetPWTextBoxTextProperty(textBoxPassword.SelectionStart - 1)
 			End If
 		Else
 			If textBoxPassword.SelectionLength > 0 Then
 				RemoveCharacters()
 			End If
 			dbPassword.InsertAt(textBoxPassword.SelectionStart, e.KeyChar)
-			SetTextBoxTextProperty(textBoxPassword.SelectionStart + 1)
+			SetPWTextBoxTextProperty(textBoxPassword.SelectionStart + 1)
 		End If
 		e.Handled = True
 	End Sub
@@ -142,7 +142,7 @@ Public Partial Class DatabaseConnectionForm
 	''' string.
 	''' </summary>
 	''' <param name="caretPos"></param>
-	Private Sub SetTextBoxTextProperty(ByVal caretPos As Integer)
+	Private Sub SetPWTextBoxTextProperty(ByVal caretPos As Integer)
 		textBoxPassword.Text = New String(CChar("*"), dbPassword.Length)
 		textBoxPassword.SelectionStart = caretPos
 	End Sub
@@ -171,10 +171,10 @@ Public Partial Class DatabaseConnectionForm
 	''' This function will check if a connection to the database can be made.
 	''' </summary>
 	''' <returns>True or False</returns>
-	Private Shared Function CanConnectToDatabase() As Boolean
+	Private Function CanConnectToDatabase() As Boolean
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(UserSettings.LastUserName, dbPassword, _
-				UserSettings.LastDataSource) = 0 Then
+		If oDatabaseConnection.Open(textBoxUserName.Text, dbPassword, _
+									textBoxDataSource.Text) = 0 Then
 			oDatabaseConnection.Dispose
 			Return True
 		Else
