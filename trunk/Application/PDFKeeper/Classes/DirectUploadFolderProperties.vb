@@ -34,9 +34,9 @@ Public Class DirectUploadFolderProperties
 	''' <summary>
 	''' This subroutine is the class constructor.
 	''' </summary>
-	''' <param name="xmlFile" name only without the file extension></param>
-	Public Sub New(ByVal arg as String)
-		xmlFile = Path.Combine(UploadXmlDir, arg & ".xml")
+	''' <param name="xmlName" name only without the file extension></param>
+	Public Sub New(ByVal xmlName as String)
+		xmlFile = Path.Combine(UploadXmlDir, xmlName & ".xml")
 	End Sub
 						
 	#Region "Properties"
