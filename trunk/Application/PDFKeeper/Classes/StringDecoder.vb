@@ -20,7 +20,7 @@
 '*
 '******************************************************************************
 
-Friend Class SecureStringWrapper
+Friend Class StringDecoder
 	
 	''' <summary>
 	''' This subroutine is the class constructor required for FxCop compliance.
@@ -29,29 +29,13 @@ Friend Class SecureStringWrapper
 	End Sub	
 	
 	''' <summary>
-	''' This function will return a SecureString object of the specified text.
-	''' </summary>
-	''' <param name="textString"></param>
-	''' <returns>SecureString object</returns>
-	Friend Shared Function ToSecureString(ByVal textString As String) _
-										  As SecureString
-		Dim txtSecureString As New SecureString
-		For i = 0 To textString.Length - 1
-			txtSecureString.AppendChar(textString.Chars(i))
-		Next i
-		txtSecureString.MakeReadOnly()
-		NativeMethods.ZeroMemory(textString, textString.Length)
-		Return txtSecureString
-	End Function
-	
-	''' <summary>
 	'''	This function will return the string of the specified SecureString
 	''' object.
 	''' </summary>
 	''' <param name="textSecureString"></param>
 	''' <returns>string</returns>
-	Friend Shared Function ToTextString( _
-						   ByVal textSecureString As SecureString) As String
+	Friend Shared Function SecureStringToString(ByVal textSecureString As _
+												SecureString) As String
 		Dim textStringPtr As IntPtr
 		Try
 			textStringPtr = Marshal.SecureStringToBSTR(textSecureString)

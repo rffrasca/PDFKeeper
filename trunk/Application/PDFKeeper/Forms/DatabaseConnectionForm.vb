@@ -21,8 +21,8 @@
 '******************************************************************************
 
 Public Partial Class DatabaseConnectionForm
-	Friend Shared connectionStringSecure As SecureString
-		
+	Friend Shared dbPassword As New SecureString
+			
 	''' <summary>
 	''' This subroutine is the class constructor.
 	''' </summary>
@@ -31,14 +31,15 @@ Public Partial Class DatabaseConnectionForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will set the font to MS Sans Serif 8pt in XP and
-	''' Segoe UI 9pt in Vista or later; and prefill the User Name and Data
-	''' Source text boxes.
+	''' This subroutine will set the font to MS Sans Serif 8pt in XP or
+	''' Segoe UI 9pt in Vista or later, prefill the User Name and Data
+	''' Source text boxes, and clear the password string.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub DatabaseConnectionFormLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont
+		dbPassword.Clear
 		ReadUserProperties
 	End Sub
 	
@@ -49,23 +50,6 @@ Public Partial Class DatabaseConnectionForm
 	Private Sub ReadUserProperties
 		textBoxUserName.Text = UserSettings.LastUserName
 		textBoxDataSource.Text = UserSettings.LastDataSource
-	End Sub
-	
-	''' <summary>
-	''' This subroutine will trim leading and trailing spaces from the text in
-	''' all of the text boxes and will enable the OK button if the length of
-	''' the User Name and Data Source is greater than 0.
-	''' </summary>
-	Private Sub TextBoxTextChanged
-		textBoxUserName.Text = textBoxUserName.Text.Trim
-		textBoxPassword.Text = textBoxPassword.Text.Trim
-		textBoxDataSource.Text = textBoxDataSource.Text.Trim
-		If textBoxUserName.TextLength > 0 And _
-		   textBoxDataSource.TextLength > 0 Then
-			buttonOK.Enabled = True
-		Else
-			buttonOK.Enabled = False
-		End If
 	End Sub
 	
 	''' <summary>
@@ -80,15 +64,99 @@ Public Partial Class DatabaseConnectionForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will create the secure database connection string;
-	''' open a database connection, and then close it; and update the user
-	''' settings properties with the specified User Name and Data Source.
+	''' This subroutine will trim leading and trailing spaces from the text in
+	''' the User Name and Data Source text boxes and will enable the OK button
+	''' if the length of the User Name and Data Source is greater than 0.
+	''' </summary>
+	Private Sub TextBoxTextChanged
+		textBoxUserName.Text = textBoxUserName.Text.Trim
+		textBoxDataSource.Text = textBoxDataSource.Text.Trim
+		If textBoxUserName.TextLength > 0 And _
+		   textBoxDataSource.TextLength > 0 Then
+			buttonOK.Enabled = True
+		Else
+			buttonOK.Enabled = False
+		End If
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will handle the deleting of selected characters from
+	''' the password string, ignoring the Esc and Enter keys.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub TextBoxPasswordKeyDown(sender As Object, e As KeyEventArgs)
+		If e.KeyCode = Keys.Delete Then
+			If textBoxPassword.SelectionLength > 0 Then
+				RemoveCharacters()
+			ElseIf textBoxPassword.SelectionStart < _
+					textBoxPassword.Text.Length Then
+				dbPassword.RemoveAt(textBoxPassword.SelectionStart)
+			End If
+			SetTextBoxTextProperty(textBoxPassword.SelectionStart)
+			e.Handled = True
+		ElseIf e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
+			e.Handled = True
+		End If
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will update the password string by removing the
+	''' printable character that was removed by pressing the Backspace key or
+	''' adding the printable character entered.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub TextBoxPasswordKeyPress(sender As Object, e As KeyPressEventArgs)
+		If e.KeyChar = ControlChars.Back Then
+			If textBoxPassword.SelectionLength > 0 Then
+				RemoveCharacters()
+				SetTextBoxTextProperty(textBoxPassword.SelectionStart)
+			ElseIf textBoxPassword.SelectionStart > 0 Then
+				dbPassword.RemoveAt(textBoxPassword.SelectionStart - 1)
+				SetTextBoxTextProperty(textBoxPassword.SelectionStart - 1)
+			End If
+		Else
+			If textBoxPassword.SelectionLength > 0 Then
+				RemoveCharacters()
+			End If
+			dbPassword.InsertAt(textBoxPassword.SelectionStart, e.KeyChar)
+			SetTextBoxTextProperty(textBoxPassword.SelectionStart + 1)
+		End If
+		e.Handled = True
+	End Sub
+		
+	''' <summary>
+	''' This subroutine will remove selected characters from the password
+	''' string.
+	''' </summary>
+	Private Sub RemoveCharacters
+		For i As Integer = 0 To textBoxPassword.SelectionLength - 1
+			dbPassword.RemoveAt(textBoxPassword.SelectionStart)
+		Next
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will set the text property of the password text box to
+	''' the number of password characters matching the length of the password
+	''' string.
+	''' </summary>
+	''' <param name="caretPos"></param>
+	Private Sub SetTextBoxTextProperty(ByVal caretPos As Integer)
+		textBoxPassword.Text = New String(CChar("*"), dbPassword.Length)
+		textBoxPassword.SelectionStart = caretPos
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will clear the Password text box, open a database
+	''' connection and then close it, and update the user settings properties
+	''' with the specified User Name and Data Source.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonOkClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		CreateSecureConnectionString
+		textBoxPassword.Text = Nothing
 		If CanConnectToDatabase() = False Then
 			textBoxUsername.Select
 			Me.Cursor = Cursors.Default
@@ -100,28 +168,17 @@ Public Partial Class DatabaseConnectionForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will create a secure database connection string.
-	''' </summary>
-	Private Sub CreateSecureConnectionString
-		connectionStringSecure = SecureStringWrapper.ToSecureString( _
-							"User Id=" + textBoxUserName.Text + ";" & _
-							"Password=" + textBoxPassword.Text + ";" & _
-							"Data Source=" + textBoxDataSource.Text + ";" & _
-							"Persist Security Info=False;Pooling=True")
-		ZeroPasswordText
-	End Sub
-	
-	''' <summary>
 	''' This function will check if a connection to the database can be made.
 	''' </summary>
 	''' <returns>True or False</returns>
 	Private Shared Function CanConnectToDatabase() As Boolean
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open = 0 Then
+		If oDatabaseConnection.Open(UserSettings.LastUserName, dbPassword, _
+				UserSettings.LastDataSource) = 0 Then
 			oDatabaseConnection.Dispose
 			Return True
 		Else
-			connectionStringSecure.Dispose
+			dbPassword.Clear
 			Return False
 		End If
 	End Function
@@ -136,22 +193,12 @@ Public Partial Class DatabaseConnectionForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will call the ZeroPasswordText subroutine.
+	''' This subroutine will clear the password string and text box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonCancelClick(sender As Object, e As EventArgs)
-		Me.Cursor = Cursors.WaitCursor
-		ZeroPasswordText
-		Me.Cursor = Cursors.Default
-	End Sub
-	
-	''' <summary>
-	''' This subroutine will zero out the memory allocated to the password
-	''' text.
-	''' </summary>
-	Private Sub ZeroPasswordText
-		NativeMethods.ZeroMemory(textBoxPassword.text, _
-								 textBoxPassword.Text.Length * 2)
+		dbPassword.Clear
+		textBoxPassword.Text = Nothing
 	End Sub
 End Class

@@ -233,7 +233,9 @@ Public Partial Class MainForm
 		End If
 		Me.Cursor = Cursors.WaitCursor
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open = 1 Then
+		If oDatabaseConnection.Open(UserSettings.LastUserName, _
+				DatabaseConnectionForm.dbPassword, _
+				UserSettings.LastDataSource) = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			Exit Sub
@@ -507,7 +509,9 @@ Public Partial Class MainForm
 		toolStripStatusLabelMessage.Text = Nothing
 		Me.Refresh	' Form needed to be refreshed for status label to clear.
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open = 1 Then
+		If oDatabaseConnection.Open(UserSettings.LastUserName, _
+				DatabaseConnectionForm.dbPassword, _
+				UserSettings.LastDataSource) = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			comboBoxSearchText.Select
@@ -667,7 +671,9 @@ Public Partial Class MainForm
 			selectedId = CInt(listViewDocs.SelectedItems(0).Text.Trim)
 			Me.Cursor = Cursors.WaitCursor
 			Dim oDatabaseConnection As New DatabaseConnection
-			If oDatabaseConnection.Open = 1 Then
+			If oDatabaseConnection.Open(UserSettings.LastUserName, _
+					DatabaseConnectionForm.dbPassword, _
+					UserSettings.LastDataSource) = 1 Then
 				oDatabaseConnection.Dispose
 				Me.Cursor = Cursors.Default
 				Exit Sub
@@ -854,7 +860,9 @@ Public Partial Class MainForm
 		Me.Cursor = Cursors.WaitCursor
 		textBoxDocumentNotes.Text = textBoxDocumentNotes.Text.Trim
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open = 1 Then
+		If oDatabaseConnection.Open(UserSettings.LastUserName, _
+				DatabaseConnectionForm.dbPassword, _
+				UserSettings.LastDataSource) = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			Exit Sub
@@ -1044,7 +1052,9 @@ Public Partial Class MainForm
 		End If
 		Me.Cursor = Cursors.WaitCursor
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open = 1 Then
+		If oDatabaseConnection.Open(UserSettings.LastUserName, _
+				DatabaseConnectionForm.dbPassword, _
+				UserSettings.LastDataSource) = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			Exit Sub
@@ -1636,7 +1646,7 @@ Public Partial Class MainForm
 	
 	''' <summary>
 	''' This subroutine will call subroutines to check for unsaved Document
-	''' Notes, delete cached PDF files, dispose the database connection string,
+	''' Notes, delete cached PDF files, dispose the database password string,
 	'''	save the form size and postion, and then save the user settings.
 	''' </summary>
 	''' <param name="sender"></param>
@@ -1644,7 +1654,7 @@ Public Partial Class MainForm
 	Private Sub MainFormFormClosed(sender As Object, e As FormClosedEventArgs)
 		DocumentNotesModifiedCheck
 		FolderTask.DeletePdfKeeperCreatedPdfFiles(CacheDir)
-		DatabaseConnectionForm.connectionStringSecure.Dispose
+		DatabaseConnectionForm.dbPassword.Dispose
 		SaveFormPosition
 		UserProfileFoldersTask.DeleteDocumentCaptureShortcuts
 		UserProfileFoldersTask.DeleteDirectUploadShortcut
