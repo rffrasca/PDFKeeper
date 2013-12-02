@@ -25,7 +25,7 @@ Public Class PdfProperties
 	Private isDisposed As Boolean
 	<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
 		"CA1823:AvoidUnusedPrivateFields")> _
-	Dim ownerPassword As SecureString
+	Dim ownerPasswordLocal As SecureString
 	Dim oPdfReader As PdfReader
 	Dim oPdfStamper As PdfStamper
 	Dim sourcePdf As String
@@ -39,20 +39,21 @@ Public Class PdfProperties
 	''' <summary>
 	''' This subroutine is the class constructor for reading only.
 	''' </summary>
-	''' <param name="arg: sourcePdf"></param>
-	Public Sub New(ByVal arg as String)
-		sourcePdf = arg
+	''' <param name="sourcePdf"></param>
+	Public Sub New(ByVal sourcePdfArg as String)
+		sourcePdf = sourcePdfArg
 	End Sub
 	
 	''' <summary>
 	''' This subroutine is the class constructor for reading only with OWNER
 	''' password.
 	''' </summary>
-	''' <param name="arg1: sourcePdf"></param>
-	''' <param name="arg2: ownerPassword"></param>
-	Public Sub New(ByVal arg1 As String, ByVal arg2 As SecureString)
-		sourcePdf = arg1
-		ownerPassword = arg2
+	''' <param name="sourcePdf"></param>
+	''' <param name="ownerPassword"></param>
+	Public Sub New(ByVal sourcePdfArg As String, _
+				   ByVal ownerPasswordArg As SecureString)
+		sourcePdf = sourcePdfArg
+		ownerPasswordLocal = ownerPasswordArg
 		containsOwnerPassword = True
 	End Sub
 	
@@ -60,25 +61,26 @@ Public Class PdfProperties
 	''' This subroutine is the class constructor overload for reading and
 	''' writing.
 	''' </summary>
-	''' <param name="arg1: sourcePdf"></param>
-	''' <param name="arg2: targetPdf"></param>
-	Public Sub New(ByVal arg1 As String, ByVal arg2 As String)
-		sourcePdf = arg1
-		targetPdf = arg2
+	''' <param name="sourcePdf"></param>
+	''' <param name="targetPdf"></param>
+	Public Sub New(ByVal sourcePdfArg As String, ByVal targetPdfArg As String)
+		sourcePdf = sourcePdfArg
+		targetPdf = targetPdfArg
 	End Sub
 	
 	''' <summary>
 	''' This subroutine is the class constructor overload for reading and
 	''' writing with OWNER password.
 	''' </summary>
-	''' <param name="arg1: sourcePdf"></param>
-	''' <param name="arg2: targetPdf"></param>
-	''' <param name="arg3: ownerPassword"></param>
-	Public Sub New(ByVal arg1 As String, ByVal arg2 As String, _
-				   ByVal arg3 As SecureString)
-		sourcePdf = arg1
-		targetPdf = arg2
-		ownerPassword = arg3
+	''' <param name="sourcePdf"></param>
+	''' <param name="targetPdf"></param>
+	''' <param name="ownerPassword"></param>
+	Public Sub New(ByVal sourcePdfArg As String, _
+				   ByVal targetPdfArg As String, _
+				   ByVal ownerPasswordArg As SecureString)
+		sourcePdf = sourcePdfArg
+		targetPdf = targetPdfArg
+		ownerPasswordLocal = ownerPasswordArg
 		containsOwnerPassword = True
 	End Sub
 	
@@ -134,7 +136,7 @@ Public Class PdfProperties
 				oPdfReader = New PdfReader(sourcePdf, _
 							 System.Text.Encoding.ASCII.GetBytes( _
 							 SecureStringWrapper.ToTextString( _
-							 PdfOwnerPasswordForm.ownerPasswordSecure)))
+							 ownerPasswordLocal)))
 			Else
 				oPdfReader = New PdfReader(sourcePdf)
 			End If
@@ -190,7 +192,7 @@ Public Class PdfProperties
 				oPdfReader = New PdfReader(sourcePdf, _
 							 System.Text.Encoding.ASCII.GetBytes( _
 							 SecureStringWrapper.ToTextString( _
-							 PdfOwnerPasswordForm.ownerPasswordSecure)))
+							 PdfOwnerPasswordForm.ownerPassword)))
 			Else
 				oPdfReader = New PdfReader(sourcePdf)
 			End If
@@ -225,7 +227,7 @@ Public Class PdfProperties
 		If Not Me.isDisposed Then
 			If disposing Then
 				If containsOwnerPassword Then
-					ownerPassword.Dispose
+					ownerPasswordLocal.Dispose
 				End If
 				oPdfStamper.Close
 				oPdfStamper.Dispose
