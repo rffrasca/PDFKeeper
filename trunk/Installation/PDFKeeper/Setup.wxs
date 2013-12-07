@@ -13,6 +13,7 @@
 			Compressed="yes"/>
 	
 		<MajorUpgrade
+			AllowSameVersionUpgrades="yes"
 			DowngradeErrorMessage="A later version of PDFKeeper is already installed. Setup will now exit." />
 				
 		<!-- Uninstall command for legacy versions. -->
