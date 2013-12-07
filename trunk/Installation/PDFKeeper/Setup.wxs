@@ -12,9 +12,8 @@
 			InstallerVersion="200"
 			Compressed="yes"/>
 	
-		<MajorUpgrade AllowSameVersionUpgrades="yes"
-		              DowngradeErrorMessage="A later version of PDFKeeper is already installed. Setup will now exit."
-					  Schedule="afterInstallValidate" />
+		<MajorUpgrade
+			DowngradeErrorMessage="A later version of PDFKeeper is already installed. Setup will now exit." />
 				
 		<!-- Uninstall command for legacy versions. -->
 		<Property Id="UNINSTALL_LEGACY">
@@ -44,7 +43,7 @@
 		<Condition Message="This setup requires .NET Framework 4 Client Profile or Extended. Please install the .NET Framework and then run this setup again.">
   			<![CDATA[Installed OR NETFRAMEWORK40CLIENT]]>
 		</Condition>
-		<Condition Message="PDFKeeper is only supported on Windows XP SP3 or higher.">
+		<Condition Message="This application is only supported on Windows XP SP3 or higher.">
     		<![CDATA[Installed OR (VersionNT >= 501)]]>
 		</Condition>
 			
