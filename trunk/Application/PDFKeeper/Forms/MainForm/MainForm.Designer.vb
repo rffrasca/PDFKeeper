@@ -109,7 +109,7 @@ Partial Class MainForm
 		Me.tabPageDocumentKeywords = New System.Windows.Forms.TabPage()
 		Me.textBoxDocumentKeywords = New System.Windows.Forms.TextBox()
 		Me.listViewDocs = New System.Windows.Forms.ListView()
-		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(CType(resources.GetObject("listViewDocs.Columns"),Integer))
+		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(0)
 		Me.columnHeaderTitle = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderAuthor = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderSubject = New System.Windows.Forms.ColumnHeader()
@@ -486,9 +486,9 @@ Partial Class MainForm
 		'
 		'tabControlDocNotesKeywords
 		'
-		resources.ApplyResources(Me.tabControlDocNotesKeywords, "tabControlDocNotesKeywords")
 		Me.tabControlDocNotesKeywords.Controls.Add(Me.tabPageDocumentNotes)
 		Me.tabControlDocNotesKeywords.Controls.Add(Me.tabPageDocumentKeywords)
+		resources.ApplyResources(Me.tabControlDocNotesKeywords, "tabControlDocNotesKeywords")
 		Me.tabControlDocNotesKeywords.ImageList = Me.imageList
 		Me.tabControlDocNotesKeywords.Name = "tabControlDocNotesKeywords"
 		Me.tabControlDocNotesKeywords.SelectedIndex = 0
