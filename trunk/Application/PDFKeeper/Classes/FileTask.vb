@@ -134,8 +134,8 @@ Public NotInheritable Class FileTask
 			outputFile = SetConvertOutputFileName(inputFile)
 			converterTool = "gxps-win32.exe"
 			converterArgs = "-sDEVICE=pdfwrite " & _
-							"-sOutputFile=" & outputFile & _
-						  	" -dNOPAUSE " & inputFile
+							"-sOutputFile=" & Chr(34) & outputFile & Chr(34) & _
+						  	" -dNOPAUSE " & Chr(34) & inputFile & Chr(34)
 		ElseIf fileType = ".HTM" Or fileType = ".HTML" Then
 			outputFile = SetConvertOutputFileName(inputFile)
 			converterTool = ConfigurationManager.AppSettings("wkhtmltopdf")
