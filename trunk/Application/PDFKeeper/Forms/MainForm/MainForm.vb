@@ -79,12 +79,20 @@ Public Partial Class MainForm
 		Me.Top = CInt(UserSettings.FormPositionTop)
 		Me.Left = CInt(UserSettings.FormPositionLeft)
 		If CInt(UserSettings.FormPositionHeight) = Nothing Then
-			Me.Height = CInt(((Screen.PrimaryScreen.Bounds.Height / 100) * 90))
+			Dim workingRectangle As System.Drawing.Rectangle = _
+				Screen.PrimaryScreen.WorkingArea
+			Me.Size = New System.Drawing.Size(workingRectangle.Width - 10, _
+				workingRectangle.Height - 10)
+			If Me.Height > 714 Then
+				Me.Height = 714
+			End If
 		Else
 			Me.Height = CInt(UserSettings.FormPositionHeight)
 		End If
 		If Not CInt(UserSettings.FormPositionWidth) = Nothing Then
 			Me.Width = CInt(UserSettings.FormPositionWidth)
+		ElseIf Me.Width > 714 Then
+			Me.Width = 714			
 		End If
 		Me.WindowState = CType(UserSettings.FormPositionWindowState, _
 			Windows.Forms.FormWindowState)

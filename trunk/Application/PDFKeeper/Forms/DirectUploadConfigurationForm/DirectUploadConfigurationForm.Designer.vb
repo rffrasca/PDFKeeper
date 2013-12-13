@@ -268,9 +268,9 @@ Partial Class DirectUploadConfigurationForm
 		'DirectUploadConfigurationForm
 		'
 		Me.AcceptButton = Me.buttonSave
-		resources.ApplyResources(Me, "$this")
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
 		Me.CancelButton = Me.buttonDiscard
+		resources.ApplyResources(Me, "$this")
 		Me.Controls.Add(Me.labelHelp)
 		Me.Controls.Add(Me.buttonClose)
 		Me.Controls.Add(Me.groupBoxProperties)

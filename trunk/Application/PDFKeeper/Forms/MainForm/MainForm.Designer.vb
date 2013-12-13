@@ -109,7 +109,7 @@ Partial Class MainForm
 		Me.tabPageDocumentKeywords = New System.Windows.Forms.TabPage()
 		Me.textBoxDocumentKeywords = New System.Windows.Forms.TextBox()
 		Me.listViewDocs = New System.Windows.Forms.ListView()
-		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(0)
+		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(CType(resources.GetObject("listViewDocs.Columns"),Integer))
 		Me.columnHeaderTitle = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderAuthor = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderSubject = New System.Windows.Forms.ColumnHeader()
@@ -748,9 +748,9 @@ Partial Class MainForm
 		'MainForm
 		'
 		Me.AcceptButton = Me.buttonSearch
-		resources.ApplyResources(Me, "$this")
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
 		Me.CancelButton = Me.buttonDeselect
+		resources.ApplyResources(Me, "$this")
 		Me.Controls.Add(Me.tabControlMain)
 		Me.Controls.Add(Me.statusStrip)
 		Me.Controls.Add(Me.menuStrip)

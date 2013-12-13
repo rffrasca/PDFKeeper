@@ -120,41 +120,11 @@
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 0</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>698, 24</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="menuStrip.Text" xml:space="preserve">
-    <value>menuStrip</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
-    <value>menuStrip</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="toolStripMenuItemFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="toolStripMenuItemFile.Text" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
   <data name="toolStripMenuItemSavePDFtoDisk.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toolStripMenuItemSavePDFtoDisk.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -220,11 +190,11 @@
   <data name="toolStripMenuItemExit.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
-  <data name="toolStripMenuItemEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
+  <data name="toolStripMenuItemFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
   </data>
-  <data name="toolStripMenuItemEdit.Text" xml:space="preserve">
-    <value>&amp;Edit</value>
+  <data name="toolStripMenuItemFile.Text" xml:space="preserve">
+    <value>&amp;File</value>
   </data>
   <data name="toolStripMenuItemInsertDateTimeIntoDocumentNotes.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -304,11 +274,11 @@
   <data name="toolStripMenuItemDeleteCheckedDocuments.Text" xml:space="preserve">
     <value>&amp;Delete Checked Documents...</value>
   </data>
-  <data name="toolStripMenuItemView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+  <data name="toolStripMenuItemEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
   </data>
-  <data name="toolStripMenuItemView.Text" xml:space="preserve">
-    <value>&amp;View</value>
+  <data name="toolStripMenuItemEdit.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
   </data>
   <data name="toolStripMenuItemRefresh.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -334,11 +304,11 @@
   <data name="toolStripMenuItemRefresh.Text" xml:space="preserve">
     <value>&amp;Refresh</value>
   </data>
-  <data name="toolStripMenuItemTools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
+  <data name="toolStripMenuItemView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
   </data>
-  <data name="toolStripMenuItemTools.Text" xml:space="preserve">
-    <value>&amp;Tools</value>
+  <data name="toolStripMenuItemView.Text" xml:space="preserve">
+    <value>&amp;View</value>
   </data>
   <data name="toolStripMenuItemHtmlConverter.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -428,11 +398,11 @@
   <data name="toolStripMenuItemDirectUploadConfig.Text" xml:space="preserve">
     <value>&amp;Direct Upload Configuration</value>
   </data>
-  <data name="toolStripMenuItemHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+  <data name="toolStripMenuItemTools.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
   </data>
-  <data name="toolStripMenuItemHelp.Text" xml:space="preserve">
-    <value>&amp;Help</value>
+  <data name="toolStripMenuItemTools.Text" xml:space="preserve">
+    <value>&amp;Tools</value>
   </data>
   <data name="toolStripMenuItemContents.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -482,6 +452,36 @@
   </data>
   <data name="toolStripMenuItemAbout.Text" xml:space="preserve">
     <value>&amp;About...</value>
+  </data>
+  <data name="toolStripMenuItemHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="toolStripMenuItemHelp.Text" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>698, 24</value>
+  </data>
+  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="menuStrip.Text" xml:space="preserve">
+    <value>menuStrip</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
+    <value>menuStrip</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="labelSearchText.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 3</value>
@@ -562,9 +562,6 @@
   <data name="&gt;&gt;buttonSearch.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="buttonDeselect.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -604,6 +601,298 @@
   <data name="tabControlMain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <data name="tabPageDocumentNotes.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="buttonDocumentNotesRevert.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonDocumentNotesRevert.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonDocumentNotesRevert.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonDocumentNotesRevert.Location" type="System.Drawing.Point, System.Drawing">
+    <value>597, 161</value>
+  </data>
+  <data name="buttonDocumentNotesRevert.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonDocumentNotesRevert.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonDocumentNotesRevert.Text" xml:space="preserve">
+    <value>&amp;Revert</value>
+  </data>
+  <data name="&gt;&gt;buttonDocumentNotesRevert.Name" xml:space="preserve">
+    <value>buttonDocumentNotesRevert</value>
+  </data>
+  <data name="&gt;&gt;buttonDocumentNotesRevert.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonDocumentNotesRevert.Parent" xml:space="preserve">
+    <value>tabPageDocumentNotes</value>
+  </data>
+  <data name="&gt;&gt;buttonDocumentNotesRevert.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonDocumentNotesUpdate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="buttonDocumentNotesUpdate.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonDocumentNotesUpdate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQAAJXD9Iasxm6MqnSn2lZtjVaRyEpXbYu767TX/2KZztvr/4Gy5KrT/3ut32+gzlFh
+        e+r0/0RNX9/u/9Ln+8Xg//n8/4e36CkxQz9GVkSCvKjL35/N/Je91K7T5bDS4////yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQAAAAAACwAAAAAEAAQAAAIuQA/CBxIsKDACRwScggQwIGAhwIICBDYQcEEgwg+bNjw
+        QKCHCQgkQBgpQcKBCg0AEBCoAaRIkhIsVBigUiAHCgwkKNjJU8GAAx0/3NwIAMABCwsaDHCwIGgAChuK
+        HjiQdMDSAQYEPpWKtKqDBA6yfgiAwGhXpUsTJIgg0AGCo0nRfi1QgO0HAQyQNpCrtkAGDAIFbKi69GsC
+        un8FEohqdEFavxkyXAhMoPKDBwYMRIiAAcOFoAZDCwwIADs=
+</value>
+  </data>
+  <data name="buttonDocumentNotesUpdate.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="buttonDocumentNotesUpdate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonDocumentNotesUpdate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>516, 161</value>
+  </data>
+  <data name="buttonDocumentNotesUpdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonDocumentNotesUpdate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonDocumentNotesUpdate.Text" xml:space="preserve">
+    <value>&amp;Update</value>
+  </data>
+  <data name="buttonDocumentNotesUpdate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;buttonDocumentNotesUpdate.Name" xml:space="preserve">
+    <value>buttonDocumentNotesUpdate</value>
+  </data>
+  <data name="&gt;&gt;buttonDocumentNotesUpdate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonDocumentNotesUpdate.Parent" xml:space="preserve">
+    <value>tabPageDocumentNotes</value>
+  </data>
+  <data name="&gt;&gt;buttonDocumentNotesUpdate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBoxDocumentNotes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="textBoxDocumentNotes.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxDocumentNotes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 5</value>
+  </data>
+  <data name="textBoxDocumentNotes.MaxLength" type="System.Int32, mscorlib">
+    <value>4000</value>
+  </data>
+  <data name="textBoxDocumentNotes.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxDocumentNotes.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="textBoxDocumentNotes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>668, 149</value>
+  </data>
+  <data name="textBoxDocumentNotes.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxDocumentNotes.Name" xml:space="preserve">
+    <value>textBoxDocumentNotes</value>
+  </data>
+  <data name="&gt;&gt;textBoxDocumentNotes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxDocumentNotes.Parent" xml:space="preserve">
+    <value>tabPageDocumentNotes</value>
+  </data>
+  <data name="&gt;&gt;textBoxDocumentNotes.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPageDocumentNotes.ImageIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageDocumentNotes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
+  </data>
+  <data name="tabPageDocumentNotes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageDocumentNotes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>678, 185</value>
+  </data>
+  <data name="tabPageDocumentNotes.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageDocumentNotes.Text" xml:space="preserve">
+    <value>Document Notes</value>
+  </data>
+  <data name="&gt;&gt;tabPageDocumentNotes.Name" xml:space="preserve">
+    <value>tabPageDocumentNotes</value>
+  </data>
+  <data name="&gt;&gt;tabPageDocumentNotes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageDocumentNotes.Parent" xml:space="preserve">
+    <value>tabControlDocNotesKeywords</value>
+  </data>
+  <data name="&gt;&gt;tabPageDocumentNotes.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageDocumentKeywords.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="textBoxDocumentKeywords.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="textBoxDocumentKeywords.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxDocumentKeywords.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 5</value>
+  </data>
+  <data name="textBoxDocumentKeywords.MaxLength" type="System.Int32, mscorlib">
+    <value>4000</value>
+  </data>
+  <data name="textBoxDocumentKeywords.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxDocumentKeywords.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="textBoxDocumentKeywords.Size" type="System.Drawing.Size, System.Drawing">
+    <value>668, 176</value>
+  </data>
+  <data name="textBoxDocumentKeywords.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxDocumentKeywords.Name" xml:space="preserve">
+    <value>textBoxDocumentKeywords</value>
+  </data>
+  <data name="&gt;&gt;textBoxDocumentKeywords.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxDocumentKeywords.Parent" xml:space="preserve">
+    <value>tabPageDocumentKeywords</value>
+  </data>
+  <data name="&gt;&gt;textBoxDocumentKeywords.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageDocumentKeywords.ImageIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageDocumentKeywords.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
+  </data>
+  <data name="tabPageDocumentKeywords.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageDocumentKeywords.Size" type="System.Drawing.Size, System.Drawing">
+    <value>678, 185</value>
+  </data>
+  <data name="tabPageDocumentKeywords.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageDocumentKeywords.Text" xml:space="preserve">
+    <value>Document Keywords</value>
+  </data>
+  <data name="&gt;&gt;tabPageDocumentKeywords.Name" xml:space="preserve">
+    <value>tabPageDocumentKeywords</value>
+  </data>
+  <data name="&gt;&gt;tabPageDocumentKeywords.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageDocumentKeywords.Parent" xml:space="preserve">
+    <value>tabControlDocNotesKeywords</value>
+  </data>
+  <data name="&gt;&gt;tabPageDocumentKeywords.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabControlDocNotesKeywords.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <metadata name="imageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>304, 8</value>
+  </metadata>
+  <data name="imageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACA
+        CwAAAk1TRnQBSQFMAgEBBAEAARwBCQEcAQkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD//8A/wD/AP8ABQAV/wGU
+        AUYBGin/AbQDrgTqAxMB/wFEAUwC/wHvAewB7QHsAUYBRQFuAewF6wHsAv8BtAFtAa4DbQISAhMCFAEV
+        AW0C/wG0A64CbQMSAxMBFQFtAv8BrgHxAf8B9ALzBf8BRAFMAUQC/wHtAfIB/wH0ARoCRgEaA/MB9AHx
+        AesC/wGuARkB/wH0B/MB9AEJARUC/wGuAfEB/wH0B/MB9AEJARUC/wG0Af8CGQIJAW4ERAFMAUQD/wHv
+        Af8D8gHxAW8BRgFvAQcC8AH0AesC/wG0Af8DCQHcAQkBtASuAfQBFAH/A1IBGQQJBdwB9AETAv8BtAH0
+        AxkBbgFKAfQCGQF0AUQB/wETAv8B7wH0BPIB8QJvAUYBbwKTAUUBlAH/AbQB9AEJBG0BrgG0A9wB8wEU
+        Af8BeQH2AXoBUgUJBNwB8wETAv8BtAH0AxkBSgP0AhkBRAH/ARMC/wHvAfQF8gFvAQcB8QNGAUUBbwH/
+        AbQB9AEZAXoBOAExARkBCQTcAfMBEwL/AXkB9gF6AlICMQEJBNwB8wETAv8BtAH0AxkBbgP/AfQBGQFE
+        Af8BEwL/Ae8B9AXyA5MBRgG8AfQB6wL/AbQC9AExAXoBOAExARkBCQPcAfMBEwL/AnkB9gGaATECegEx
+        AQkD3AHzARMC/wG1Af8DGQFuA/8B9AEZAUQB/wHqAv8B7wH/AfMF8gJGAbwB8QH0AesC/wG1Af8BGQH0
+        ATEBegE4AYsBGQEJAtwB8wESAv8BtQH/AXkDmgJ6ATECCQHcAfMBEgL/AbUB/wMZAu0C/wH0Am4B/wHq
+        Av8B7wH/A/MD8gFGAbwC8gH/AewC/wG1Af8CGQH0ATEB3AHVAYsBGQIJAf8BEgL/AbUBeQSaAnkBegEx
+        AgkB/wESAv8BuwH/BBkB7QRuAQkB/wHqAv8BBwH/BfMBvAFGAZMC8gH/AewC/wG7Af8DGQH0AYsB3AHV
+        AYsBGQEJAf8BbQL/AbsBeQH2ApoBUgEZAXkBegExAgkB/wFtAv8BuwH/CRkBCQH/AeoC/wEHAf8F8wGU
+        AW8BkwLzAf8B7AL/AbsB/wQZAfQBiwHcAdUBiwEZAf8BbQL/AbsB/wF5AfYBmgRSAwkB/wFtAv8BCQH/
+        CBkC9AH/Aa4C/wHwAf8F9AEaAW8BGgP/AewC/wEJAf8FGQH0AYsB3AHVAYsB/wFtAv8BCQH/ARkBeQH2
+        ApoBUgIZA/8BbQL/AQkB8wgZAfQC3AGuAv8B8AH/AfQB/wb0Af8CBwHtAv8BCQH0BhkB9AGLAdwB1QGL
+        AW0C/wEJAfQCGQF5AlIDGQH/AtwBrgL/AQkBGQHzAfQB8wL0BPMB3AGuAf8BAAH/AfAK/wEHAe0B/wEA
+        Af8BCQEZAfME9APzAYsB3AHVAYsC/wEJARkB8wT0BPMB3AGuAf8BAAH/ARkDCQK7ArUEtAH/AgAB/wHy
+        A/ACBwbvAf8CAAH/ARkDCQK7ArUDtAKLAbsC/wEZAwkCuwK1BLQB/wIADf8DAA3/AwAd/wMAAUIBTQE+
+        BwABPgMAASgDAAFAAwABIAMAAQEBAAEBBgABARYAA//qAAEBAQABAQMAAQEBAAEDAQABAwMAAQMBAAEH
+        AQABBwMAAQcL
+</value>
+  </data>
+  <data name="tabControlDocNotesKeywords.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 385</value>
+  </data>
+  <data name="tabControlDocNotesKeywords.Size" type="System.Drawing.Size, System.Drawing">
+    <value>686, 212</value>
+  </data>
+  <data name="tabControlDocNotesKeywords.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
   <data name="&gt;&gt;tabControlDocNotesKeywords.Name" xml:space="preserve">
     <value>tabControlDocNotesKeywords</value>
   </data>
@@ -616,6 +905,48 @@
   <data name="&gt;&gt;tabControlDocNotesKeywords.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="listViewDocs.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="listViewDocs.Columns" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="columnHeaderID.Text" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="columnHeaderTitle.Text" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="columnHeaderTitle.Width" type="System.Int32, mscorlib">
+    <value>165</value>
+  </data>
+  <data name="columnHeaderAuthor.Text" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="columnHeaderAuthor.Width" type="System.Int32, mscorlib">
+    <value>165</value>
+  </data>
+  <data name="columnHeaderSubject.Text" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="columnHeaderSubject.Width" type="System.Int32, mscorlib">
+    <value>165</value>
+  </data>
+  <data name="columnHeaderAdded.Text" xml:space="preserve">
+    <value>Added</value>
+  </data>
+  <data name="columnHeaderAdded.Width" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <data name="listViewDocs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 34</value>
+  </data>
+  <data name="listViewDocs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>690, 351</value>
+  </data>
+  <data name="listViewDocs.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
   <data name="&gt;&gt;listViewDocs.Name" xml:space="preserve">
     <value>listViewDocs</value>
   </data>
@@ -626,6 +957,21 @@
     <value>tabPageSearch</value>
   </data>
   <data name="&gt;&gt;listViewDocs.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBoxSearchText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="comboBoxSearchText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 5</value>
+  </data>
+  <data name="comboBoxSearchText.MaxLength" type="System.Int32, mscorlib">
+    <value>4000</value>
+  </data>
+  <data name="comboBoxSearchText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>508, 21</value>
+  </data>
+  <data name="comboBoxSearchText.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="&gt;&gt;comboBoxSearchText.Name" xml:space="preserve">
@@ -1090,6 +1436,40 @@
   <data name="groupBoxDocument.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
   </data>
+  <data name="buttonView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonView.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonView.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQAAOmNjMfHx9UqJ3Fvb9hoZqmpqbe3t96pqPn4+IeHh9ra2qRSUOXl5dtFQ9i2turq
+        6uDg4NTT0+7u7uzMy/DX15OTk9/Ew99+fa89PN+Yl/Hp6eLi4vPz8/v7+////////yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIxgA9CBxIcOCHgx4YRFgYIICBhwUiekAYAUGHixgxBqgw
+        0UOEDhwQcBhJskNDjh5BkuRA4QIFjAkEBuggoWZNABcyPHiAIKaHmQ8k7HxgoUEGBgx6CjTQYShSBg0s
+        QICg1IMBBA+ebmAgQIAFBRwGLOWAdMPUAxkyRNUwAIGHAmQ3mIVwwYGCBl0xXHjLQe5UBQQINCCQ4QAG
+        AG8RzFVwoUHdhWEFVkjKYUKDBhSEPuCgQOzbBBUSCMCwIMGA06d9EgSAueDAgAA7
+</value>
+  </data>
+  <data name="buttonView.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="buttonView.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>601, 23</value>
+  </data>
+  <data name="buttonView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonView.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonView.Text" xml:space="preserve">
+    <value>&amp;View</value>
+  </data>
   <data name="&gt;&gt;buttonView.Name" xml:space="preserve">
     <value>buttonView</value>
   </data>
@@ -1100,6 +1480,21 @@
     <value>groupBoxDocument</value>
   </data>
   <data name="&gt;&gt;buttonView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxPdfDocument.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="textBoxPdfDocument.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 24</value>
+  </data>
+  <data name="textBoxPdfDocument.MaxLength" type="System.Int32, mscorlib">
+    <value>512</value>
+  </data>
+  <data name="textBoxPdfDocument.Size" type="System.Drawing.Size, System.Drawing">
+    <value>589, 20</value>
+  </data>
+  <data name="textBoxPdfDocument.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxPdfDocument.Name" xml:space="preserve">
@@ -1222,66 +1617,6 @@
   <data name="&gt;&gt;tabPageCapture.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="imageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>304, 8</value>
-  </metadata>
-  <data name="imageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACA
-        CwAAAk1TRnQBSQFMAgEBBAEAARQBCQEUAQkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
-        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
-        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
-        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
-        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
-        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
-        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
-        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
-        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
-        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
-        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
-        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
-        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
-        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
-        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
-        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
-        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
-        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
-        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
-        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
-        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
-        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
-        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
-        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
-        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
-        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
-        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
-        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
-        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD//8A/wD/AP8ABQAV/wGU
-        AUYBGin/AbQDrgTqAxMB/wFEAUwC/wHvAewB7QHsAUYBRQFuAewF6wHsAv8BtAFtAa4DbQISAhMCFAEV
-        AW0C/wG0A64CbQMSAxMBFQFtAv8BrgHxAf8B9ALzBf8BRAFMAUQC/wHtAfIB/wH0ARoCRgEaA/MB9AHx
-        AesC/wGuARkB/wH0B/MB9AEJARUC/wGuAfEB/wH0B/MB9AEJARUC/wG0Af8CGQIJAW4ERAFMAUQD/wHv
-        Af8D8gHxAW8BRgFvAQcC8AH0AesC/wG0Af8DCQHcAQkBtASuAfQBFAH/A1IBGQQJBdwB9AETAv8BtAH0
-        AxkBbgFKAfQCGQF0AUQB/wETAv8B7wH0BPIB8QJvAUYBbwKTAUUBlAH/AbQB9AEJBG0BrgG0A9wB8wEU
-        Af8BeQH2AXoBUgUJBNwB8wETAv8BtAH0AxkBSgP0AhkBRAH/ARMC/wHvAfQF8gFvAQcB8QNGAUUBbwH/
-        AbQB9AEZAXoBOAExARkBCQTcAfMBEwL/AXkB9gF6AlICMQEJBNwB8wETAv8BtAH0AxkBbgP/AfQBGQFE
-        Af8BEwL/Ae8B9AXyA5MBRgG8AfQB6wL/AbQC9AExAXoBOAExARkBCQPcAfMBEwL/AnkB9gGaATECegEx
-        AQkD3AHzARMC/wG1Af8DGQFuA/8B9AEZAUQB/wHqAv8B7wH/AfMF8gJGAbwB8QH0AesC/wG1Af8BGQH0
-        ATEBegE4AYsBGQEJAtwB8wESAv8BtQH/AXkDmgJ6ATECCQHcAfMBEgL/AbUB/wMZAu0C/wH0Am4B/wHq
-        Av8B7wH/A/MD8gFGAbwC8gH/AewC/wG1Af8CGQH0ATEB3AHVAYsBGQIJAf8BEgL/AbUBeQSaAnkBegEx
-        AgkB/wESAv8BuwH/BBkB7QRuAQkB/wHqAv8BBwH/BfMBvAFGAZMC8gH/AewC/wG7Af8DGQH0AYsB3AHV
-        AYsBGQEJAf8BbQL/AbsBeQH2ApoBUgEZAXkBegExAgkB/wFtAv8BuwH/CRkBCQH/AeoC/wEHAf8F8wGU
-        AW8BkwLzAf8B7AL/AbsB/wQZAfQBiwHcAdUBiwEZAf8BbQL/AbsB/wF5AfYBmgRSAwkB/wFtAv8BCQH/
-        CBkC9AH/Aa4C/wHwAf8F9AEaAW8BGgP/AewC/wEJAf8FGQH0AYsB3AHVAYsB/wFtAv8BCQH/ARkBeQH2
-        ApoBUgIZA/8BbQL/AQkB8wgZAfQC3AGuAv8B8AH/AfQB/wb0Af8CBwHtAv8BCQH0BhkB9AGLAdwB1QGL
-        AW0C/wEJAfQCGQF5AlIDGQH/AtwBrgL/AQkBGQHzAfQB8wL0BPMB3AGuAf8BAAH/AfAK/wEHAe0B/wEA
-        Af8BCQEZAfME9APzAYsB3AHVAYsC/wEJARkB8wT0BPMB3AGuAf8BAAH/ARkDCQK7ArUEtAH/AgAB/wHy
-        A/ACBwbvAf8CAAH/ARkDCQK7ArUDtAKLAbsC/wEZAwkCuwK1BLQB/wIADf8DAA3/AwAd/wMAAUIBTQE+
-        BwABPgMAASgDAAFAAwABIAMAAQEBAAEBBgABARYAA//qAAEBAQABAQMAAQEBAAEDAQABAwMAAQMBAAEH
-        AQABBwMAAQcL
-</value>
-  </data>
   <data name="tabControlMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 27</value>
   </data>
@@ -1306,6 +1641,50 @@
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>798, 72</value>
   </metadata>
+  <data name="toolStripStatusLabelMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
+  </data>
+  <data name="toolStripStatusLabelUpdateStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>683, 17</value>
+  </data>
+  <data name="toolStripStatusLabelUploading.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQfAJLNW3aXtJnM/OTs9YivyMfj/ldwkabS+73d/UpXbdXb5PP2+dHn+uv1/uvx9mGN
+        RIm77LXZ/H6xW1Jhe6/S5ERNX5rA1qjL3uLw/t7o8CkxQz9GVsvM0WOPRf///////yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIvQA9CBxIcOCHgx4YUKBwwYIFAgQCSAzgASGFDAMcaHQw
+        oOMACAYqeqDgoIBJkwhSNoAAUuCFBScLPHigssGCCQItwDTZQYKEBxGC3sy5swOAowCAHhjqgQDMDlCP
+        Qu2wNIFApwgaNDAqoQMGDAcGWPUQoEFKBFwfHDggYEAFgQEcpIwwlaoAARnekpUblIHfAnfxboC7AEHQ
+        tWsDOxjswYCCBRw9ZpjsgIMGuAYyT5iQIEGFChs2aMBZsHTBgAA7
+</value>
+  </data>
+  <data name="toolStripStatusLabelUploading.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 17</value>
+  </data>
+  <data name="toolStripStatusLabelUploading.ToolTipText" xml:space="preserve">
+    <value>Direct Upload is uploading PDF document(s)...</value>
+  </data>
+  <data name="toolStripStatusLabelUploading.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripStatusLabelCaptured.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQfAOmNjMfHx9UqJ3Fvb9hoZqmpqbe3t96pqPn4+IeHh9ra2qRSUOXl5dtFQ9i2turq
+        6uDg4NTT0+7u7uzMy/DX15OTk9/Ew99+fa89PN+Yl/Hp6eLi4vPz8/v7+////////yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIxgA9CBxIcOCHgx4YRFgYIICBhwUiekAYAUGHixgxBqgw
+        0UOEDhwQcBhJskNDjh5BkuRA4QIFjAkEBuggoWZNABcyPHiAIKaHmQ8k7HxgoUEGBgx6CjTQYShSBg0s
+        QICg1IMBBA+ebmAgQIAFBRwGLOWAdMPUAxkyRNUwAIGHAmQ3mIVwwYGCBl0xXHjLQe5UBQQINCCQ4QAG
+        AG8RzFVwoUHdhWEFVkjKYUKDBhSEPuCgQOzbBBUSCMCwIMGA06d9EgSAueDAgAA7
+</value>
+  </data>
+  <data name="toolStripStatusLabelCaptured.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 17</value>
+  </data>
+  <data name="toolStripStatusLabelCaptured.ToolTipText" xml:space="preserve">
+    <value>Document Capture contains PDF document(s) to process.</value>
+  </data>
+  <data name="toolStripStatusLabelCaptured.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 654</value>
   </data>
@@ -1736,50 +2115,6 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="toolStripStatusLabelMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
-  </data>
-  <data name="toolStripStatusLabelUpdateStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>683, 17</value>
-  </data>
-  <data name="toolStripStatusLabelUploading.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQfAJLNW3aXtJnM/OTs9YivyMfj/ldwkabS+73d/UpXbdXb5PP2+dHn+uv1/uvx9mGN
-        RIm77LXZ/H6xW1Jhe6/S5ERNX5rA1qjL3uLw/t7o8CkxQz9GVsvM0WOPRf///////yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIvQA9CBxIcOCHgx4YUKBwwYIFAgQCSAzgASGFDAMcaHQw
-        oOMACAYqeqDgoIBJkwhSNoAAUuCFBScLPHigssGCCQItwDTZQYKEBxGC3sy5swOAowCAHhjqgQDMDlCP
-        Qu2wNIFApwgaNDAqoQMGDAcGWPUQoEFKBFwfHDggYEAFgQEcpIwwlaoAARnekpUblIHfAnfxboC7AEHQ
-        tWsDOxjswYCCBRw9ZpjsgIMGuAYyT5iQIEGFChs2aMBZsHTBgAA7
-</value>
-  </data>
-  <data name="toolStripStatusLabelUploading.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
-  </data>
-  <data name="toolStripStatusLabelUploading.ToolTipText" xml:space="preserve">
-    <value>Direct Upload is uploading PDF document(s)...</value>
-  </data>
-  <data name="toolStripStatusLabelUploading.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripStatusLabelCaptured.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQfAOmNjMfHx9UqJ3Fvb9hoZqmpqbe3t96pqPn4+IeHh9ra2qRSUOXl5dtFQ9i2turq
-        6uDg4NTT0+7u7uzMy/DX15OTk9/Ew99+fa89PN+Yl/Hp6eLi4vPz8/v7+////////yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIxgA9CBxIcOCHgx4YRFgYIICBhwUiekAYAUGHixgxBqgw
-        0UOEDhwQcBhJskNDjh5BkuRA4QIFjAkEBuggoWZNABcyPHiAIKaHmQ8k7HxgoUEGBgx6CjTQYShSBg0s
-        QICg1IMBBA+ebmAgQIAFBRwGLOWAdMPUAxkyRNUwAIGHAmQ3mIVwwYGCBl0xXHjLQe5UBQQINCCQ4QAG
-        AG8RzFVwoUHdhWEFVkjKYUKDBhSEPuCgQOzbBBUSCMCwIMGA06d9EgSAueDAgAA7
-</value>
-  </data>
-  <data name="toolStripStatusLabelCaptured.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
-  </data>
-  <data name="toolStripStatusLabelCaptured.ToolTipText" xml:space="preserve">
-    <value>Document Capture contains PDF document(s) to process.</value>
-  </data>
-  <data name="toolStripStatusLabelCaptured.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>356, 72</value>
   </metadata>
@@ -1798,33 +2133,6 @@
   <metadata name="backgroundWorkerUpdateCheck.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>632, 35</value>
   </metadata>
-  <data name="comboBoxSearchText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="comboBoxSearchText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>87, 5</value>
-  </data>
-  <data name="comboBoxSearchText.MaxLength" type="System.Int32, mscorlib">
-    <value>4000</value>
-  </data>
-  <data name="comboBoxSearchText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>508, 21</value>
-  </data>
-  <data name="comboBoxSearchText.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSearchText.Name" xml:space="preserve">
-    <value>comboBoxSearchText</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSearchText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSearchText.Parent" xml:space="preserve">
-    <value>tabPageSearch</value>
-  </data>
-  <data name="&gt;&gt;comboBoxSearchText.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <metadata name="printDocumentNotes.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>478, 35</value>
   </metadata>
@@ -1846,425 +2154,6 @@
   <metadata name="timerCaptureCheck.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>9, 35</value>
   </metadata>
-  <data name="tabPageDocumentNotes.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesRevert.Name" xml:space="preserve">
-    <value>buttonDocumentNotesRevert</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesRevert.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesRevert.Parent" xml:space="preserve">
-    <value>tabPageDocumentNotes</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesRevert.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesUpdate.Name" xml:space="preserve">
-    <value>buttonDocumentNotesUpdate</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesUpdate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesUpdate.Parent" xml:space="preserve">
-    <value>tabPageDocumentNotes</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesUpdate.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentNotes.Name" xml:space="preserve">
-    <value>textBoxDocumentNotes</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentNotes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentNotes.Parent" xml:space="preserve">
-    <value>tabPageDocumentNotes</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentNotes.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabPageDocumentNotes.ImageIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabPageDocumentNotes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 23</value>
-  </data>
-  <data name="tabPageDocumentNotes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageDocumentNotes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>678, 185</value>
-  </data>
-  <data name="tabPageDocumentNotes.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPageDocumentNotes.Text" xml:space="preserve">
-    <value>Document Notes</value>
-  </data>
-  <data name="&gt;&gt;tabPageDocumentNotes.Name" xml:space="preserve">
-    <value>tabPageDocumentNotes</value>
-  </data>
-  <data name="&gt;&gt;tabPageDocumentNotes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageDocumentNotes.Parent" xml:space="preserve">
-    <value>tabControlDocNotesKeywords</value>
-  </data>
-  <data name="&gt;&gt;tabPageDocumentNotes.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageDocumentKeywords.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Stretch</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentKeywords.Name" xml:space="preserve">
-    <value>textBoxDocumentKeywords</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentKeywords.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentKeywords.Parent" xml:space="preserve">
-    <value>tabPageDocumentKeywords</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentKeywords.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageDocumentKeywords.ImageIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tabPageDocumentKeywords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 23</value>
-  </data>
-  <data name="tabPageDocumentKeywords.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageDocumentKeywords.Size" type="System.Drawing.Size, System.Drawing">
-    <value>678, 185</value>
-  </data>
-  <data name="tabPageDocumentKeywords.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabPageDocumentKeywords.Text" xml:space="preserve">
-    <value>Document Keywords</value>
-  </data>
-  <data name="&gt;&gt;tabPageDocumentKeywords.Name" xml:space="preserve">
-    <value>tabPageDocumentKeywords</value>
-  </data>
-  <data name="&gt;&gt;tabPageDocumentKeywords.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageDocumentKeywords.Parent" xml:space="preserve">
-    <value>tabControlDocNotesKeywords</value>
-  </data>
-  <data name="&gt;&gt;tabPageDocumentKeywords.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabControlDocNotesKeywords.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="tabControlDocNotesKeywords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 385</value>
-  </data>
-  <data name="tabControlDocNotesKeywords.Size" type="System.Drawing.Size, System.Drawing">
-    <value>686, 212</value>
-  </data>
-  <data name="tabControlDocNotesKeywords.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;tabControlDocNotesKeywords.Name" xml:space="preserve">
-    <value>tabControlDocNotesKeywords</value>
-  </data>
-  <data name="&gt;&gt;tabControlDocNotesKeywords.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControlDocNotesKeywords.Parent" xml:space="preserve">
-    <value>tabPageSearch</value>
-  </data>
-  <data name="&gt;&gt;tabControlDocNotesKeywords.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonDocumentNotesRevert.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="buttonDocumentNotesRevert.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonDocumentNotesRevert.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonDocumentNotesRevert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>597, 161</value>
-  </data>
-  <data name="buttonDocumentNotesRevert.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="buttonDocumentNotesRevert.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="buttonDocumentNotesRevert.Text" xml:space="preserve">
-    <value>&amp;Revert</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesRevert.Name" xml:space="preserve">
-    <value>buttonDocumentNotesRevert</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesRevert.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesRevert.Parent" xml:space="preserve">
-    <value>tabPageDocumentNotes</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesRevert.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonDocumentNotesUpdate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="buttonDocumentNotesUpdate.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonDocumentNotesUpdate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQAAJXD9Iasxm6MqnSn2lZtjVaRyEpXbYu767TX/2KZztvr/4Gy5KrT/3ut32+gzlFh
-        e+r0/0RNX9/u/9Ln+8Xg//n8/4e36CkxQz9GVkSCvKjL35/N/Je91K7T5bDS4////yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQAAAAAACwAAAAAEAAQAAAIuQA/CBxIsKDACRwScggQwIGAhwIICBDYQcEEgwg+bNjw
-        QKCHCQgkQBgpQcKBCg0AEBCoAaRIkhIsVBigUiAHCgwkKNjJU8GAAx0/3NwIAMABCwsaDHCwIGgAChuK
-        HjiQdMDSAQYEPpWKtKqDBA6yfgiAwGhXpUsTJIgg0AGCo0nRfi1QgO0HAQyQNpCrtkAGDAIFbKi69GsC
-        un8FEohqdEFavxkyXAhMoPKDBwYMRIiAAcOFoAZDCwwIADs=
-</value>
-  </data>
-  <data name="buttonDocumentNotesUpdate.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="buttonDocumentNotesUpdate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonDocumentNotesUpdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>516, 161</value>
-  </data>
-  <data name="buttonDocumentNotesUpdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="buttonDocumentNotesUpdate.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="buttonDocumentNotesUpdate.Text" xml:space="preserve">
-    <value>&amp;Update</value>
-  </data>
-  <data name="buttonDocumentNotesUpdate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesUpdate.Name" xml:space="preserve">
-    <value>buttonDocumentNotesUpdate</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesUpdate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesUpdate.Parent" xml:space="preserve">
-    <value>tabPageDocumentNotes</value>
-  </data>
-  <data name="&gt;&gt;buttonDocumentNotesUpdate.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="textBoxDocumentNotes.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="textBoxDocumentNotes.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="textBoxDocumentNotes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 5</value>
-  </data>
-  <data name="textBoxDocumentNotes.MaxLength" type="System.Int32, mscorlib">
-    <value>4000</value>
-  </data>
-  <data name="textBoxDocumentNotes.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxDocumentNotes.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="textBoxDocumentNotes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>668, 149</value>
-  </data>
-  <data name="textBoxDocumentNotes.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentNotes.Name" xml:space="preserve">
-    <value>textBoxDocumentNotes</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentNotes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentNotes.Parent" xml:space="preserve">
-    <value>tabPageDocumentNotes</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentNotes.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="textBoxDocumentKeywords.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="textBoxDocumentKeywords.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="textBoxDocumentKeywords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 5</value>
-  </data>
-  <data name="textBoxDocumentKeywords.MaxLength" type="System.Int32, mscorlib">
-    <value>4000</value>
-  </data>
-  <data name="textBoxDocumentKeywords.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxDocumentKeywords.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="textBoxDocumentKeywords.Size" type="System.Drawing.Size, System.Drawing">
-    <value>668, 176</value>
-  </data>
-  <data name="textBoxDocumentKeywords.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentKeywords.Name" xml:space="preserve">
-    <value>textBoxDocumentKeywords</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentKeywords.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentKeywords.Parent" xml:space="preserve">
-    <value>tabPageDocumentKeywords</value>
-  </data>
-  <data name="&gt;&gt;textBoxDocumentKeywords.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="listViewDocs.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="listViewDocs.Columns" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="listViewDocs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 34</value>
-  </data>
-  <data name="listViewDocs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>690, 351</value>
-  </data>
-  <data name="listViewDocs.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;listViewDocs.Name" xml:space="preserve">
-    <value>listViewDocs</value>
-  </data>
-  <data name="&gt;&gt;listViewDocs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listViewDocs.Parent" xml:space="preserve">
-    <value>tabPageSearch</value>
-  </data>
-  <data name="&gt;&gt;listViewDocs.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="columnHeaderID.Text" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="columnHeaderTitle.Text" xml:space="preserve">
-    <value>Title</value>
-  </data>
-  <data name="columnHeaderTitle.Width" type="System.Int32, mscorlib">
-    <value>165</value>
-  </data>
-  <data name="columnHeaderAuthor.Text" xml:space="preserve">
-    <value>Author</value>
-  </data>
-  <data name="columnHeaderAuthor.Width" type="System.Int32, mscorlib">
-    <value>165</value>
-  </data>
-  <data name="columnHeaderSubject.Text" xml:space="preserve">
-    <value>Subject</value>
-  </data>
-  <data name="columnHeaderSubject.Width" type="System.Int32, mscorlib">
-    <value>165</value>
-  </data>
-  <data name="columnHeaderAdded.Text" xml:space="preserve">
-    <value>Added</value>
-  </data>
-  <data name="columnHeaderAdded.Width" type="System.Int32, mscorlib">
-    <value>125</value>
-  </data>
-  <data name="buttonView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="buttonView.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonView.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQAAOmNjMfHx9UqJ3Fvb9hoZqmpqbe3t96pqPn4+IeHh9ra2qRSUOXl5dtFQ9i2turq
-        6uDg4NTT0+7u7uzMy/DX15OTk9/Ew99+fa89PN+Yl/Hp6eLi4vPz8/v7+////////yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIxgA9CBxIcOCHgx4YRFgYIICBhwUiekAYAUGHixgxBqgw
-        0UOEDhwQcBhJskNDjh5BkuRA4QIFjAkEBuggoWZNABcyPHiAIKaHmQ8k7HxgoUEGBgx6CjTQYShSBg0s
-        QICg1IMBBA+ebmAgQIAFBRwGLOWAdMPUAxkyRNUwAIGHAmQ3mIVwwYGCBl0xXHjLQe5UBQQINCCQ4QAG
-        AG8RzFVwoUHdhWEFVkjKYUKDBhSEPuCgQOzbBBUSCMCwIMGA06d9EgSAueDAgAA7
-</value>
-  </data>
-  <data name="buttonView.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="buttonView.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>601, 23</value>
-  </data>
-  <data name="buttonView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="buttonView.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="buttonView.Text" xml:space="preserve">
-    <value>&amp;View</value>
-  </data>
-  <data name="&gt;&gt;buttonView.Name" xml:space="preserve">
-    <value>buttonView</value>
-  </data>
-  <data name="&gt;&gt;buttonView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonView.Parent" xml:space="preserve">
-    <value>groupBoxDocument</value>
-  </data>
-  <data name="&gt;&gt;buttonView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="textBoxPdfDocument.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="textBoxPdfDocument.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 24</value>
-  </data>
-  <data name="textBoxPdfDocument.MaxLength" type="System.Int32, mscorlib">
-    <value>512</value>
-  </data>
-  <data name="textBoxPdfDocument.Size" type="System.Drawing.Size, System.Drawing">
-    <value>589, 20</value>
-  </data>
-  <data name="textBoxPdfDocument.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;textBoxPdfDocument.Name" xml:space="preserve">
-    <value>textBoxPdfDocument</value>
-  </data>
-  <data name="&gt;&gt;textBoxPdfDocument.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxPdfDocument.Parent" xml:space="preserve">
-    <value>groupBoxDocument</value>
-  </data>
-  <data name="&gt;&gt;textBoxPdfDocument.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="processCapturePdfViewer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>482, 72</value>
   </metadata>

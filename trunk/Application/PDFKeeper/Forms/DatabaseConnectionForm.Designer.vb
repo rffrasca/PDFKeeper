@@ -127,9 +127,9 @@ Partial Class DatabaseConnectionForm
 		'DatabaseConnectionForm
 		'
 		Me.AcceptButton = Me.buttonOK
-		resources.ApplyResources(Me, "$this")
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
 		Me.CancelButton = Me.buttonCancel
+		resources.ApplyResources(Me, "$this")
 		Me.Controls.Add(Me.labelHelp)
 		Me.Controls.Add(Me.pictureBoxLogo)
 		Me.Controls.Add(Me.buttonCancel)
