@@ -143,8 +143,8 @@ Partial Class AboutForm
 		'AboutForm
 		'
 		Me.AcceptButton = Me.buttonOK
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
 		resources.ApplyResources(Me, "$this")
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.ControlBox = false
 		Me.Controls.Add(Me.tabControlLicenses)
 		Me.Controls.Add(Me.linkLabelProjectSite)
