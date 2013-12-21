@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <title>Getting Started Guide</title>
+  <style type="text/css">
+/* <![CDATA[ */ 
+@import "css/readyset.css"; 
+@import "css/inst.css";
+/*  ]]> */
+
+ </style>
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="readyset">
+<h2>Getting Started Guide</h2>
+
+<div id="releaseinfo">
+<h3>Product Release Information</h3>
+
+<table border="1" cellpadding="3" cellspacing="2" class="axial">
+  <tbody>
+    <tr>
+      <th>Product:</th>
+      <td><a href="http://pdfkeeper.codeplex.com/">PDFKeeper</a></td>
+    </tr>
+    <tr>
+      <th>Release Number:</th>
+      <td>3.0.0</td>
+    </tr>
+    <tr>
+      <th>Release Date:</th>
+      <td>2013/12/21</td>
+    </tr>
+    <tr>
+      <th>Customer Support:</th>
+      <td>For more information or support, please visit <a
+        href="http://pdfkeeper.codeplex.com/">website</a> or send an email to
+        <a href="mailto:rffrasca@gmail.com">rffrasca@gmail.com</a><a
+        href="mailto:support@COMPANY.com"></a> </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- /releaseinfo -->
+
+<div id="introduction">
+<h3>Introduction</h3>
+
+<p>This document describes how to get started with PDFKeeper.</p>
+
+<p>PDFKeeper can be implemented for use by a single user or for use in a multi
+user environment. If implementing for use in a multi user environment, it is
+recommended that the Oracle XE Database be installed on a dedicated system.</p>
+</div>
+<!-- /introduction -->
+
+<div id="systemrequirements">
+<h3>Getting Started</h3>
+<dl>
+  <dt>How can I get started using PDFKeeper?</dt>
+</dl>
+<ol>
+  <li>Please read the <a href="release-notes.html">release notes</a> for any
+    late-breaking information.</li>
+  <li>If new to Oracle XE, read the <a
+    href="http://www.oracle.com/technetwork/products/express-edition/documentation/index.html">Oracle
+    Database Express Edition documentation</a> for instructions on how to
+    install, configure, and administer an Oracle Express Edition Database.</li>
+  <li>For the system that will host the database, make sure the following
+    software is installed: 
+    <ul>
+      <li><a
+        href="http://www.oracle.com/technetwork/products/express-edition/downloads/index.html">Oracle
+        Database Express Edition</a></li>
+    </ul>
+  </li>
+  <li>For each system that the PDFKeeper application will be used on, make sure
+    the following software is installed: 
+    <ul>
+      <li><a
+        href="http://www.oracle.com/technetwork/database/windows/downloads/utilsoft-087491.html">ODP.NET,
+        Managed Driver</a>. For installation instructions, refer to the Readme
+        that is included with the Xcopy ZIP file. Note, when installing on a
+        UAC (User Access Control) enabled Windows system, make sure to perform
+        the installation with a <b>Command Prompt</b> session that was opened
+        using <b>Run as administrator</b>.</li>
+      <li><a href="http://code.google.com/p/wkhtmltopdf/">wkhtmltopdf</a>
+        (optional). Install to enable HTML to PDF Conversion in Document
+        Capture. Note, heed the warning about the Modify PATH option in the
+        installation wizard, plus modifying the PATH is not necessary for use
+        with PDFKeeper. If <b>wkhtmltopdf</b> is installed to a location other
+        than <b>C:\Program Files\wkhtmltopdf</b>, modify the <b>wkhtmltopdf</b>
+        key in the <b>PdfKeeper.exe.config</b> file to match the absolute path
+        to <b>wkhtmltopdf.exe</b>.</li>
+    </ul>
+  </li>
+  <li>Refer to the <a
+    href="DatabaseSetupUserAccountManagementGuide.html">Database Setup and User
+    Account Management Guide</a> for configuring the PDFKeeper database schema.
+    Note, if PDFKeeper was just upgraded from version 1.0.0 or 1.1.0, please
+    refer to section <b>3. Database User Account Management</b> for additional
+    grants that need to be provided to existing database user accounts. No
+    database configuration changes are required when upgrading from version
+    2.0.0 or above. </li>
+</ol>
+</div>
+<!-- /systemrequirements -->
+
+<div id="installation">
+<h3>Uninstalling PDFKeeper</h3>
+<dl>
+  <dt>How can I uninstall PDFKeeper?</dt>
+</dl>
+<ol>
+  <li>As an Administrator, open <b>Add or Remove Programs </b>or <b>Programs
+    and Features</b>.</li>
+  <li>Select <b>PDFKeeper</b> from the list.</li>
+  <li>Click <b>Uninstall</b> to start the uninstall.</li>
+  <li>Click <b>Yes</b>.</li>
+  <li>Close out of <b>Add or Remove Programs</b> or <b>Programs and
+    Features</b>.</li>
+</ol>
+</div>
+<!-- /installation -->
+<!-- /gettingstarted -->
+</div>
+
+<div class="legal1">
+Company Proprietary</div>
+
+<div class="footnote">
+Copyright © 2009-2013 Robert F. Frasca</div>
+</div>
+</body>
+</html>

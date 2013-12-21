@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <title>Database Setup and User Account Management Guide</title>
+  <style type="text/css">
+/* <![CDATA[ */ 
+@import "css/readyset.css"; 
+@import "css/inst.css";
+/*  ]]> */
+ </style>
+  <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="readyset">
+<h2>Database Setup and User Account Management Guide</h2>
+
+<div id="projectinfo">
+<h3>Product Release Information</h3>
+
+<div class="axial">
+
+<table border="1" cellpadding="3" cellspacing="2">
+  <tbody>
+    <tr>
+      <th>Product:</th>
+      <td><a href="http://pdfkeeper.codeplex.com/">PDFKeeper</a></td>
+    </tr>
+    <tr>
+      <th>Release Number:</th>
+      <td>3.0.0</td>
+    </tr>
+    <tr>
+      <th>Release Date:</th>
+      <td>2013/12/21</td>
+    </tr>
+    <tr>
+      <th>Customer Support:</th>
+      <td>For more information or support, please visit <a
+        href="http://pdfkeeper.codeplex.com/">website</a> or send an email to
+        <a href="mailto:rffrasca@gmail.com">rffrasca@gmail.com</a> </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<!-- /projectinfo -->
+
+<div id="toc">
+<h3>Table of Contents</h3>
+<ol>
+  <li><a href="#Introducti">Introduction</a> 
+    <ul>
+      <li><a href="#About">About this guide</a></li>
+    </ul>
+  </li>
+  <li><a href="#Database">Database Setup</a> 
+    <ul>
+      <li><a href="#Descriptio">Description</a></li>
+      <li><a href="#Table">Table structure</a></li>
+      <li><a href="#Action">Action steps</a></li>
+    </ul>
+  </li>
+  <li><a href="#Database1">Database User Account Management</a> 
+    <ul>
+      <li><a href="#Recommenda">Recommendation</a></li>
+      <li><a href="#Granting">Granting access to the pdfkeeper schema</a></li>
+    </ul>
+  </li>
+</ol>
+
+<h3>1. <a name="Introducti" id="Introducti">Introduction</a></h3>
+<dl>
+  <dt><a name="What" id="What">About this guide</a></dt>
+    <dd>This guide provides the steps that need to be performed in order to
+      setup Oracle Database XE for use with PDFKeeper. It is intended to be
+      used by those involved in implementing and administering PDFKeeper.
+      Before proceeding, make sure that all software required by PDFKeeper has
+      been installed.</dd>
+    <dd>This guide assumes that all steps will be performed on the system that
+      Oracle Database XE Server was installed on. Note, to perform these steps
+      from a client that does not have Oracle Database XE Server installed
+      requires downloading <a
+      href="http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html">Oracle
+      Instant Client Basic or Basic Lite and SQL*Plus packages</a> and then
+      extracting the ZIP files into an empty folder that will need to be added
+      to the System PATH.</dd>
+    <dd>To call SQL*Plus from a client computer:</dd>
+    <dd><ol>
+        <li>From the command line, execute <b>sqlplus</b></li>
+        <li>When prompted, enter the database connect string in the format:
+          <b>username@host:port</b> 
+          <ul>
+            <li><b>username</b> is a database account that must be a member of
+              SYSDBA. Note, <b>SYSTEM</b> is a member of SYSDBA.</li>
+            <li><b>host</b> is the host name or IP address of the computer that
+              is running Oracle Database XE Server. Specify <b>localhost</b> or
+              <b>127.0.0.1</b> if logged onto the same system as Oracle
+              Database XE Server.</li>
+            <li><b>port</b> (optional) is the TCP port number on which the
+              Oracle Net listener is listening. If not specified, the default
+              port number 1521 is assumed.</li>
+          </ul>
+        </li>
+      </ol>
+    </dd>
+</dl>
+
+<h3>2. <a name="Database" id="Database">Database Setup</a></h3>
+<dl>
+  <dt><a name="Descriptio" id="Descriptio">Description</a></dt>
+    <dd>Database Setup will need to be performed when implementing PDFKeeper,
+      it will create the following:</dd>
+    <dd><ul>
+        <li><b>pdfkeeper</b> schema account in the <b>users</b> tablespace.</li>
+        <li><b>docs</b> sequence used to generate document ID numbers, in the
+          pdfkeeper schema.</li>
+        <li><b>docs</b> table used to store the documents, in the pdfkeeper
+          schema.</li>
+        <li>Oracle Text, lexer and datastore preferences; and attributes, in
+          the ctxsys schema.</li>
+        <li><b>docs</b> table full-text search index, in the pdfkeeper
+        schema.</li>
+      </ul>
+    </dd>
+  <dt><a name="Table" id="Table">Table structure</a></dt>
+    <dd>Each document is stored in the database as follows:</dd>
+    <dd style="margin-left:6em"><b>ID</b> - Assigned to the document record by
+      the database. 
+      <p><b>Title</b> - Extracted from the PDF summary (InfoDictionary). This
+      column is searchable.</p>
+    </dd>
+    <dd style="margin-left:6em"><b>Author</b> - Extracted from the PDF summary
+      (InfoDictionary). This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Subject</b> - Extracted from the PDF summary
+      (InfoDictionary). This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Keywords</b> - Extracted from the PDF
+      summary (InfoDictionary). This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Added</b> - Date and time the document was
+      added to the database. This column is searchable.</dd>
+    <dd style="margin-left:6em"><b>Notes</b> - User editable notes. This column
+      is searchable.</dd>
+    <dd style="margin-left:6em"><b>PDF</b> - The contents of the PDF document.
+      This column is searchable.</dd>
+  <dt><a name="Action" id="Action">Action steps</a></dt>
+    <dd><ol>
+        <li>Select <b>Start</b> | <b>All Programs</b> | <b>PDFKeeper</b> |
+          <b>Database Setup</b>.</li>
+        <li>When prompted, enter the database connect string in the format:
+          <b>username@host:port</b> 
+          <ul>
+            <li><b>username</b> is a database account that must be a member of
+              SYSDBA. Note, <b>SYSTEM</b> is a member of SYSDBA. </li>
+            <li><b>host</b> is the host name or IP address of the computer that
+              is running Oracle Database XE Server. Specify <b>localhost</b> or
+              <b>127.0.0.1</b> if logged onto the same system as Oracle
+              Database XE Server.</li>
+            <li><b>port</b> (optional) is the TCP port number on which the
+              Oracle Net listener is listening. If not specified, the default
+              port number 1521 is assumed. </li>
+          </ul>
+        </li>
+        <li>Secure the <b>pdfkeeper</b> database user account by changing the
+          password, the default password is <b>pdfkeeper</b>. 
+          <ol>
+            <li>On the system that has Oracle Database XE Server installed, log
+              into Windows as the user that installed Oracle Database XE
+            Server.</li>
+            <li>Select <b>Start</b> | <b>All Programs</b> | <b>Oracle Database
+              Express Edition</b> | <b>Run SQL Command Line</b>.</li>
+            <li>When prompted, enter the following: <b>connect / as
+              sysdba</b><b></b></li>
+            <li>Next, enter the following: <b>alter user pdfkeeper identified
+              by <i><i><i>"new_password"</i></i></i><i>;</i></b></li>
+          </ol>
+        </li>
+      </ol>
+    </dd>
+</dl>
+
+<h3>3. <a name="Database1" id="Database1">Database User Account
+Management</a></h3>
+<dl>
+  <dt><a name="Recommenda" id="Recommenda">Recommendation</a></dt>
+    <dd>It is recommended that each user be assigned a personal database
+      account, with only the required privileges. The <b>pdfkeeper</b> database
+      account should only be used for <b>pdfkeeper</b> schema administration,
+      not for general use. For more information on Managing Users, please refer
+      to the <b>Oracle Database Express Edition 2 Day DBA </b>book in the <a
+      href="http://www.oracle.com/technetwork/products/express-edition/documentation/index.html">Oracle
+      Database Express Edition Documentation</a>.</dd>
+  <dt><a name="Granting" id="Granting">Granting access to the pdfkeeper
+  schema</a></dt>
+    <dd>Perform the following steps for any user that will need access to the
+      <b>pdfkeeper</b> schema: </dd>
+    <dd><ol>
+        <li>If the user does not have a database user account, create one for
+          the user: 
+          <ol>
+            <li>On the system that has Oracle Database XE Server installed, log
+              into Windows as the user that installed Oracle Database XE
+            Server.</li>
+            <li>Select <b>Start</b> | <b>All Programs</b> | <b>Oracle Database
+              Express Edition</b> | <b>Run SQL Command Line</b>.</li>
+            <li>When prompted, enter the following: <b>connect / as
+            sysdba</b></li>
+            <li>Next, enter the following: <b>create user <i>user_name</i>
+              default tablespace users identified by <i>"password"</i>;</b></li>
+            <li>Next, enter the following: <b>grant connect, resource to
+              <i>user_name</i>;</b></li>
+            <li>Close SQL Command Line, enter: <b>quit</b></li>
+          </ol>
+        </li>
+        <li>Connect to Oracle Database XE Server as <b>pdfkeeper</b> 
+          <ol>
+            <li>Select <b>Start</b> | <b>All Programs</b> | <b>Oracle Database
+              Express Edition</b> | <b>Run SQL Command Line</b>.</li>
+            <li>When prompted, enter the following: <b>connect
+            pdfkeeper</b></li>
+            <li>When prompted, enter the password</li>
+          </ol>
+        </li>
+        <li>For a new account, enter the following statement to grant the user
+          select/query access to the <b>DOCS</b> table: 
+          <dl>
+            <dt style="margin-left:2em;"><b>grant select on docs to
+            <i>user_name</i>;</b></dt>
+          </dl>
+        </li>
+        <li>Grant/Revoke permissions as neccessary: 
+          <p style="margin-left:2em;">To give the user the ability to upload
+          documents, enter the following statements:</p>
+          <p style="margin-left:4em"><b>grant insert on docs to
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:4em"><b>grant select on docs_seq to
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:2em;">To give the user the ability to edit
+          document notes, enter the following statement:</p>
+          <p style="margin-left:4em"><b>grant update on docs to
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:2em;">To give the user the ability to delete
+          documents, enter the following statement:</p>
+          <p style="margin-left:4em"><b>grant delete on docs to
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:2em;">To prevent the user from uploading
+          documents, enter the following statements:</p>
+          <p style="margin-left:4em"><b>revoke insert on docs from
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:4em"><b>revoke select on docs_seq from
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:2em;">To prevent the user from editing document
+          notes, enter the following statement:</p>
+          <p style="margin-left:4em"><b>revoke update on docs from
+          <i>user_name</i>;</b></p>
+          <p style="margin-left:2em;">To prevent the user from deleting
+          documents, enter the following statement:</p>
+          <p style="margin-left:4em"><b>revoke delete on docs from
+          <i>user_name</i>;</b></p>
+        </li>
+      </ol>
+    </dd>
+</dl>
+</div>
+<!-- toc -->
+</div>
+
+<div class="legal1">
+Company Proprietary</div>
+
+<div class="footnote">
+Copyright © 2009-2013 Robert F. Frasca</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Introduction">
+		<param name="Local" value="Introduction.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Database Connection">
+		<param name="Local" value="Database Connection.html">
+		<param name="ImageNumber" value="9">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Document Search">
+		<param name="Local" value="Document Search.html">
+		<param name="ImageNumber" value="1">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="How to search for documents">
+			<param name="Local" value="How to search for documents.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Document Viewing">
+			<param name="Local" value="Document Viewing.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Save a PDF document to disk without viewing">
+			<param name="Local" value="Save a PDF document to disk without viewing.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Document Notes">
+			<param name="Local" value="Document Notes.html">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Editing Document Notes">
+				<param name="Local" value="Editing Document Notes.html">
+				<param name="ImageNumber" value="9">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Printing Document Notes">
+				<param name="Local" value="Printing Document Notes.html">
+				<param name="ImageNumber" value="9">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Deleting documents">
+			<param name="Local" value="Deleting documents.html">
+			<param name="URL" value="Deleting documents.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Viewing Document Keywords">
+			<param name="Local" value="Viewing Document Keywords.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Document Capture">
+		<param name="Local" value="Document Capture.html">
+		<param name="ImageNumber" value="1">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Capturing Documents">
+			<param name="Local" value="Capturing Documents.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Capturing HTML Documents">
+			<param name="Local" value="Capturing HTML Documents.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Accessing the Capture Folder">
+			<param name="Local" value="Accessing the Capture Folder.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Document Information Properties Editing and Uploading">
+			<param name="Local" value="Document Information Properties Editing and Uploading.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Direct Upload">
+		<param name="Local" value="Direct Upload.html">
+		<param name="ImageNumber" value="1">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Uploading PDF documents with Direct Upload">
+			<param name="Local" value="Uploading PDF documents with Direct Upload.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Configuring Direct Upload sub-folders">
+			<param name="Local" value="Configuring Direct Upload sub-folders.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Accessing the Direct Upload Folder and sub-folders">
+			<param name="Local" value="Accessing the Direct Upload Folder and sub-folders.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+	</UL>
+</UL>
+</BODY></HTML>
