@@ -1,0 +1,42 @@
+PDFKeeper 3.0.0
+Copyright (C) 2009-2013 Robert F. Frasca
+
+This software includes works distributed under the licenses listed below.
+
+Mini Icons (subset)
+-------------------
+Website: http://www.famfamfam.com/lab/icons/mini/
+Author: Mark James
+License: Available for free use for any purpose.
+
+ReadySET 0.9.3 (subset)
+-----------------------
+Website: http://readyset.tigris.org/
+Copyright: Copyright (C) 2003-2004 Jason Robbins. All rights reserved.
+License: BSD (http://readyset.tigris.org/templates/readyset-license.html)
+
+iTextSharp (binary)
+-------------------
+Website: http://itextpdf.com/
+Copyright: Copyright (c) 1999-2013 by Bruno Lowagie and Paulo Soares. All Rights Reserved.
+License: AGPLv3 (http://itextpdf.com/agpl)
+
+Nini (binary)
+-------------
+Website: http://nini.sourceforge.net/
+Copyright: Copyright (c) 2006 Brent R. Matzelle
+License: MIT (http://nini.sourceforge.net/license.php)
+
+Sumatra PDF (binary)
+--------------------
+Website: http://blog.kowalczyk.info/software/sumatrapdf/free-pdf-reader.html
+Copyright: Copyright 2006-2013 all authors (GPLv3)
+License: GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
+
+GhostXPS (binary)
+-----------------
+Website: http://www.ghostscript.com/
+Copyright: Copyright (C) 2001-2012 Artifex Software, Inc. All Rights Reserved.
+
+
+License: AGPLv3 (http://www.gnu.org/licenses/agpl-3.0.html)

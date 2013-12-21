@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <title>How to search for documents</title>
+</head>
+
+<body>
+<h1 style="font-family: Arial,Helvetica,sans-serif"><span
+style="font-family: Arial,Helvetica,sans-serif"><span
+style="font-family: Times New Roman,Times,serif"><span
+style="font-family: Arial,Helvetica,sans-serif">How to search for
+documents</span><span
+style="font-family: Arial,Helvetica,sans-serif"></span></span></span></h1>
+<ol style="font-family: Arial,Helvetica,sans-serif">
+  <li>Enter the <b>Search Text</b> or select a previously entered <b>Search
+    Text</b>.</li>
+  <li>Click <b>Search</b> or press the <b>Enter</b> key.</li>
+</ol>
+
+<p style="line-height:1em;font-family: Arial,Helvetica,sans-serif"><span
+style="font-family: Arial,Helvetica,sans-serif"><span
+style="font-family: Times New Roman,Times,serif"><b><span
+style="font-family: Arial,Helvetica,sans-serif">Search Text
+examples:</span></b></span></span></p>
+<dl style="line-height:1em;font-family: Arial,Helvetica,sans-serif">
+    <dd style="text-align:left;margin-left:0;margin-right:auto;"><p
+      style="margin-left:2em"><b>about(insurance)</b></p>
+    </dd>
+    <dd style="margin-left:2em"><p
+      style="text-align:left;margin-right:auto;margin-left:2em">Will return
+      documents about <i>insurance</i>.</p>
+    </dd>
+</dl>
+
+<p
+style="margin-left:4em;line-height:1em;font-family: Arial,Helvetica,sans-serif"><span
+style="font-family: Arial,Helvetica,sans-serif">The about operator supports
+single words, phrases, and can be combined with other operators, such as AND,
+OR, or NOT. Any query operators included in a phrase will be ignored; however,
+you can use other operators, such as AND, OR, or NOT to combine ABOUT queries
+with word queries.</span></p>
+<dl style="line-height:1em;font-family: Arial,Helvetica,sans-serif">
+  <dt style="margin-left:2em;"><b>about(insurance) and banking</b></dt>
+</dl>
+
+<p
+style="margin-left:4em;line-height:1em;font-family: Arial,Helvetica,sans-serif">Will
+return documents about <i>insurance</i>, and <i>banking</i>.</p>
+
+<p
+style="margin-left:2em;line-height:1em;font-family: Arial,Helvetica,sans-serif"><b>about(insurance)
+and about(banking)</b></p>
+
+<p
+style="margin-left:4em;line-height:1em;font-family: Arial,Helvetica,sans-serif">Will
+return documents about <i>insurance,</i> and about <i>banking</i>.</p>
+
+<p
+style="margin-left:2em;line-height:1em;font-family: Arial,Helvetica,sans-serif"><b>about(insurance)
+not about(homeowners)</b></p>
+
+<p
+style="margin-left:4em;line-height:1em;font-family: Arial,Helvetica,sans-serif">Will
+return documents about <i>insurance</i>, and not about <i>homeowners.</i></p>
+
+<p style="line-height:1em;font-family: Arial,Helvetica,sans-serif"></p>
+
+<p style="margin-left:2em;font-family: Arial,Helvetica,sans-serif"><span
+style="font-family: Arial,Helvetica,sans-serif"><b>auto and home</b></span></p>
+
+<p style="margin-left:2em;font-family: Arial,Helvetica,sans-serif"><span
+style="font-family: Arial,Helvetica,sans-serif"><b>auto &amp;
+home</b></span></p>
+
+<p style="margin-left:4em;font-family: Arial,Helvetica,sans-serif"><span
+style="font-family: Arial,Helvetica,sans-serif">Will return documents that
+contain <i>auto</i> and <i>home</i>.</span></p>
+
+<p style="font-family: Arial,Helvetica,sans-serif;line-height:1em;"></p>
+
+<p style="margin-left:2em;font-family: Arial,Helvetica,sans-serif"><b><span
+style="font-family: Arial,Helvetica,sans-serif">maine equiv vermont is a new
+england state</span></b></p>
+
+<p
+style="margin-left:2em;font-family: Arial,Helvetica,sans-serif"><b>maine=vermont
+is a new england state</b></p>
+
+<p style="margin-left:4em;font-family: Arial,Helvetica,sans-serif"><span
+style="font-family: Arial,Helvetica,sans-serif">Will return documents that
+contain either the phrase; <i>maine is a new england state</i>, or <i>vermont
+is a new england state</i>.</span></p>
+<dl style="font-family: Arial,Helvetica,sans-serif">
+  <dt style="line-height:1em;"></dt>
+  <dt style="margin-left:2em;"><b>?product</b></dt>
+</dl>
+
+<p style="margin-left:4em;font-family: Arial,Helvetica,sans-serif"><span
+style="font-family: Arial,Helvetica,sans-serif">Will return documents that
+match a fuzzy expansion of <i>product</i>.</span></p>
+
+<p style="font-family: Arial,Helvetica,sans-serif;line-height:1em;"></p>
+
+<p style="margin-left:2em;font-family: Arial,Helvetica,sans-serif"><b><span
+style="font-family: Arial,Helvetica,sans-serif">insurance not
+auto</span></b></p>
+
+<p style="margin-left:2em;font-family: Times New Roman,Times,serif"><b><span
+style="font-family: Arial,Helvetica,sans-serif">insurance ~ auto</span></b></p>
+
+<p style="margin-left:4em"><span
+style="font-family: Arial,Helvetica,sans-serif">Will return documents that
+contain <i>insurance</i> and not <i>auto</i></span></p>
+
+<p style="font-family: Arial,Helvetica,sans-serif;line-height:1em;"></p>
+
+<p style="margin-left:2em;"><span><b><span
+style="font-family: Arial,Helvetica,sans-serif">cars |
+trains</span></b></span></p>
+
+<p style="margin-left:2em;"><span><b><span
+style="font-family: Arial,Helvetica,sans-serif">cars or
+trains</span></b></span></p>
+
+<p style="margin-left:4em"><span
+style="font-family: Arial,Helvetica,sans-serif">Will return documents that
+contain <i>cars</i> or <i>trains</i>.</span></p>
+
+<p style="font-family: Arial,Helvetica,sans-serif;line-height:1em;"></p>
+
+<p style="margin-left:2em;"><b
+style="font-family: Arial,Helvetica,sans-serif">!edgartown</b></p>
+
+<p style="margin-left:4em"><span
+style="font-family: Arial,Helvetica,sans-serif">Will return documents that
+sound like <i>edgartown</i>.</span></p>
+
+<p style="font-family: Arial,Helvetica,sans-serif"></p>
+
+<p style="font-family: Arial,Helvetica,sans-serif;margin-left:2em;"><span
+style="font-family: Arial,Helvetica,sans-serif"><span
+style="font-family: Times New Roman,Times,serif"><span><b><span
+style="font-family: Arial,Helvetica,sans-serif">$produce</span></b></span></span></span></p>
+
+<p style="font-family: Arial,Helvetica,sans-serif;margin-left:4em">Will return
+documents that contain the same root word as <i>produce</i>.</p>
+
+<p style="font-family: Arial,Helvetica,sans-serif"></p>
+
+<p style="margin-left:2em;"><b
+style="font-family: Arial,Helvetica,sans-serif">grocer%</b></p>
+
+<p style="margin-left:4em"><span
+style="font-family: Arial,Helvetica,sans-serif">Will return documents that
+contain the term, beginning with <i>grocer</i>.</span></p>
+
+<p style="font-family: Arial,Helvetica,sans-serif"></p>
+
+<p style="margin-left:2em;"><b
+style="font-family: Arial,Helvetica,sans-serif">_rain</b></p>
+
+<p style="text-align:left;margin-right:auto;margin-left:4em"><span
+style="font-family: Arial,Helvetica,sans-serif">Will return documents that
+contain the term, ending in rain.</span></p>
+
+<p style="font-family: Arial,Helvetica,sans-serif"></p>
+
+<p><b><span style="font-family: Arial,Helvetica,sans-serif">Notes on special
+characters:</span></b></p>
+<ul>
+  <li><span style="font-family: Arial,Helvetica,sans-serif"><b>%</b> is a
+    multiple wildcard character;</span></li>
+  <li><span style="font-family: Arial,Helvetica,sans-serif"><b>_</b> is a
+    single wildcard character;</span></li>
+  <li><span style="font-family: Arial,Helvetica,sans-serif">Parenthesis
+    characters <b>()</b> can be used to group terms and operators;</span></li>
+  <li><span style="font-family: Arial,Helvetica,sans-serif">Braces <b>{}</b>
+    can be used to escape a string of characters or symbols;</span></li>
+  <li><span style="font-family: Arial,Helvetica,sans-serif">A backslash
+    <b>\</b> can be used to escape a single character.</span></li>
+  <li><span style="font-family: Arial,Helvetica,sans-serif"><span><span><span
+    style="font-family: Arial,Helvetica,sans-serif">Common characters, such as
+    </span><b>- </b><span
+    style="font-family: Arial,Helvetica,sans-serif">(dash) and</span>
+    <b>&amp;</b></span></span></span><span
+    style="font-family: Arial,Helvetica,sans-serif"><span
+    style="font-family: Arial,Helvetica,sans-serif"><span><span>that are part
+    of a string, need to be escaped. For example, a string 2009-10-01 needs to
+    be specified as 2009\10\01. With the BASIC_LEXER, a printjoin attribute is
+    used requiring any <b>-</b> (dash) in a string to be escaped with an
+    <b></b><b></b><b>_</b> (underscore). For example, a string 2009-10-01 needs
+    to be specified as 2009_10_01.</span></span></span></span></li>
+</ul>
+
+<p style="font-family: Arial,Helvetica,sans-serif"></p>
+
+<p><span style="font-family: Arial,Helvetica,sans-serif"><b>Sorting the
+results</b></span></p>
+
+<p style="font-family: Arial,Helvetica,sans-serif;margin-left:2em;">When search
+results are returned, the sort order is by <b>ID</b>. Clicking on a list view
+column header will sort the results by the column selected, in ascending order;
+clicking on the same column header a second time will sort the results by the
+column selected, in descending order.</p>
+
+<p style="font-family: Arial,Helvetica,sans-serif"></p>
+
+<p><b style="font-family: Arial,Helvetica,sans-serif">Refreshing the list
+view</b></p>
+
+<p style="font-family: Arial,Helvetica,sans-serif;margin-left:2em;"><span
+style="font-family: Arial,Helvetica,sans-serif">To refresh the list view, using
+the last used sort order and search text, select the <b>View</b> menu, and then
+<b>Refresh</b>. Note, the <b>F5</b> key will also refresh the list
+view.</span></p>
+
+<p></p>
+
+<p><span style="font-family: Arial,Helvetica,sans-serif"><span
+style="font-size: 10pt">Copyright © 2009-2013 Robert F. Frasca</span></span></p>
+</body>
+</html>
