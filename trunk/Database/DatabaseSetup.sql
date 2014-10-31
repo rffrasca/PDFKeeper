@@ -1,7 +1,7 @@
 /******************************************************************************
 **
 ** PDFKeeper -- PDF Document Capture, Storage, and Search
-** Copyright (C) 2009-2013 Robert F. Frasca
+** Copyright (C) 2009-2014 Robert F. Frasca
 **
 ** This file is part of PDFKeeper.
 **
