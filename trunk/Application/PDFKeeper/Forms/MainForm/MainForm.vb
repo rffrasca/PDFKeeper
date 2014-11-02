@@ -1576,22 +1576,18 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub FileSystemWatcherDocumentCaptureRenamed(sender As Object, e As RenamedEventArgs)
 		If Not listBoxDocCaptureQueue.FindStringExact(e.OldFullPath) = -1 Then
-			documentCaptureFolderChanged = True
+			documentCaptureFolderChanged = False
+			FillDocCaptureQueueList
 			If textBoxPDFDocument.Text = e.OldFullPath Then
 				MessageBoxWrapper.ShowInformation( _
 					MainForm_Strings.SelectedDocRenamed)
 				Me.Cursor = Cursors.WaitCursor
 				TerminateCapturePdfViewer
 				ClearCaptureSelection
-				Do Until documentCaptureFolderChanged = False
-					If Not listBoxDocCaptureQueue.FindStringExact( _
-							e.OldFullPath) = -1 Then
-						listBoxDocCaptureQueue.SetSelected( _
+				listBoxDocCaptureQueue.SetSelected( _
 							listBoxDocCaptureQueue.FindStringExact(e.FullPath), _
 							True)
-					End If
-					Thread.Sleep(1000)
-				Loop
+				ListBoxDocCaptureQueueSelectedIndexChanged(Me,Nothing)
 				Me.Cursor = Cursors.Default
 			End If
 		End If
