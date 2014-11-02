@@ -1375,15 +1375,17 @@ Public Partial Class MainForm
 			toolStripMenuItemCaptureFolder.Enabled = False
 			toolStripStatusLabelMessage.Text = searchLastStatusMessage
 		Else	' "Document Capture" tab
-			Dim wkhtmltopdf As String = _
-				ConfigurationManager.AppSettings("wkhtmltopdf")
 			Me.Text = "PDFKeeper"
 			toolStripMenuItemSavePDFtoDisk.Enabled = False
 			toolStripMenuItemPrintDocumentNotes.Enabled = False
 			toolStripMenuItemEdit.Enabled = False
 			toolStripMenuItemView.Enabled = False
-			If System.IO.File.Exists(wkhtmltopdf) Then
-				toolStripMenuItemHtmlConverter.Enabled = True
+			Dim wkhtmltopdf As String = CStr(Registry.GetValue( _
+				"HKEY_LOCAL_MACHINE\SOFTWARE\wkhtmltopdf", "PdfPath", Nothing))
+			If Not wkhtmltopdf = Nothing Then
+				If System.IO.File.Exists(wkhtmltopdf) Then
+					toolStripMenuItemHtmlConverter.Enabled = True
+				End If	
 			End If
 			toolStripMenuItemCaptureFolder.Enabled = True
 			toolStripStatusLabelMessage.Text = captureLastStatusMessage
