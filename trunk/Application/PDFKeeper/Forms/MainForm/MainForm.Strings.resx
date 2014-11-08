@@ -138,8 +138,8 @@
   <data name="DocumentNotesSavePrompt" xml:space="preserve">
     <value>The Document Notes text box contains unsaved data.  Do you want to save changes?</value>
   </data>
-  <data name="ListViewCount" xml:space="preserve">
-    <value>{0} document(s) found.</value>
+  <data name="ListViewCountChecked" xml:space="preserve">
+    <value>{0} document(s) found; {1} document(s) checked.</value>
   </data>
   <data name="SelectedDocDeleted" xml:space="preserve">
     <value>The selected document has been deleted from outside of PDFKeeper.
