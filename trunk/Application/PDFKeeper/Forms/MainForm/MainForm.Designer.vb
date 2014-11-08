@@ -397,6 +397,7 @@ Partial Class MainForm
 		resources.ApplyResources(Me.comboBoxSearchText, "comboBoxSearchText")
 		Me.comboBoxSearchText.FormattingEnabled = true
 		Me.comboBoxSearchText.Name = "comboBoxSearchText"
+		Me.comboBoxSearchText.Sorted = true
 		AddHandler Me.comboBoxSearchText.DropDown, AddressOf Me.ComboBoxSearchTextDropDown
 		AddHandler Me.comboBoxSearchText.TextChanged, AddressOf Me.ComboBoxSearchTextTextChanged
 		'
