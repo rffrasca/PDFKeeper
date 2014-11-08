@@ -1000,6 +1000,14 @@ Public Partial Class MainForm
 				textBoxPDFDocument.Text = capturePdfFile
 				buttonView.Enabled = True
 				textBoxTitle.Text = oPdfProperties.Title
+				
+				' If the title is blank, default to the filename without the
+				' PDF extension.
+				If oPdfProperties.Title Is Nothing Then
+					textBoxTitle.Text = Path.GetFileNameWithoutExtension( _
+						capturePdfFile)
+				End If
+				
 				textBoxTitle.Enabled = True
 				textBoxTitle.Select
 				listBoxDocCaptureQueue.Enabled = False
