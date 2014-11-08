@@ -210,6 +210,7 @@ Public Partial Class MainForm
 		For Each oListViewItem In listViewDocs.Items
 			oListViewItem.Checked = True
 		Next
+		UpdateListCountStatusBar
 		Me.Cursor = Cursors.Default
 	End Sub
 	
@@ -224,6 +225,7 @@ Public Partial Class MainForm
 		For Each oListViewItem In listViewDocs.Items
 			oListViewItem.Checked = False
 		Next
+		UpdateListCountStatusBar
 		Me.Cursor = Cursors.Default
 	End Sub
 	
@@ -762,7 +764,8 @@ Public Partial Class MainForm
 	''' <summary>
 	''' This subroutine will toggle "Uncheck All" and
 	''' "Delete Checked Documents" menu items based on if any listview items
-	''' are checked or none are checked.
+	''' are checked or none are checked and update the status bar with the
+	''' number of checked list view items.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -774,6 +777,7 @@ Public Partial Class MainForm
 			toolStripMenuItemUncheckAll.Enabled = False
 			toolStripMenuItemDeleteCheckedDocuments.Enabled = False
 		End If
+		UpdateListCountStatusBar
 	End Sub
 	
 	''' <summary>
@@ -1399,8 +1403,9 @@ Public Partial Class MainForm
 	Private Sub UpdateListCountStatusBar
 		toolStripStatusLabelMessage.Text = String.Format( _
 										   CultureInfo.CurrentCulture, _
-										   MainForm_Strings.ListViewCount, _
-										   listViewDocs.Items.Count)
+										   MainForm_Strings.ListViewCountChecked, _
+										   listViewDocs.Items.Count, _
+										   listViewDocs.CheckedItems.Count)
 		searchLastStatusMessage = toolStripStatusLabelMessage.Text
 	End Sub
 	
