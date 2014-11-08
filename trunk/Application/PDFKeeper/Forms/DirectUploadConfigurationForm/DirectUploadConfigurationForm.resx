@@ -241,6 +241,9 @@
   <data name="&gt;&gt;buttonNew.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="listBoxFolders.HorizontalScrollbar" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="listBoxFolders.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 19</value>
   </data>
