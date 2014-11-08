@@ -31,10 +31,15 @@ Public NotInheritable Class FileCache
 	
 	''' <summary>
 	''' This subroutine will add "file" to the cache collection with its
-	''' hashcode.
+	''' hashcode.  If the collection already contains "file", then remove it
+	''' before adding which would be neccessary if the cached PDF file was
+	''' deleted from the Cache folder while PDFKeeper was open.
 	''' </summary>
 	''' <param name="file"></param>
 	Public Shared Sub Add(ByVal file As String)
+		If cache.ContainsKey(file) Then
+			cache.Remove(file)
+		End If
 		cache.Add(file, FileTask.CalcHashCode(file))
 	End Sub
 	
