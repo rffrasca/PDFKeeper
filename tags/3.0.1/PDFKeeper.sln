@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 4.4
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDFKeeper.Application", "Application\PDFKeeper\PDFKeeper.Application.vbproj", "{4D39F521-BABC-4086-AC17-86B114BD31BC}"
+EndProject
+Project("{CFEE4113-1246-4D54-95CB-156813CB8593}") = "PDFKeeper.Installation", "Installation\PDFKeeper\PDFKeeper.Installation.wixproj", "{E6D3651A-64D1-4A65-9428-C81B483A2242}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D39F521-BABC-4086-AC17-86B114BD31BC}.Debug|x86.Build.0 = Debug|x86
+		{4D39F521-BABC-4086-AC17-86B114BD31BC}.Debug|x86.ActiveCfg = Debug|x86
+		{4D39F521-BABC-4086-AC17-86B114BD31BC}.Release|x86.Build.0 = Release|x86
+		{4D39F521-BABC-4086-AC17-86B114BD31BC}.Release|x86.ActiveCfg = Release|x86
+		{E6D3651A-64D1-4A65-9428-C81B483A2242}.Debug|x86.Build.0 = Debug|Any CPU
+		{E6D3651A-64D1-4A65-9428-C81B483A2242}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E6D3651A-64D1-4A65-9428-C81B483A2242}.Release|x86.Build.0 = Release|Any CPU
+		{E6D3651A-64D1-4A65-9428-C81B483A2242}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+EndGlobal

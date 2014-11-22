@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<Dictionary>
+	<Words>
+		<Recognized>
+			<Word>wkhtmltopdf</Word>
+			<Word>wkhtmltoimage</Word>
+			<Word>sumatrapdf</Word>
+			<Word>sourceforge</Word>
+			<Word>readyset-license</Word>
+			<Word>readyset</Word>
+			<Word>php</Word>
+			<Word>noncommercially</Word>
+			<Word>nini</Word>
+			<Word>lgpl</Word>
+			<Word>kowalczyk</Word>
+			<Word>Soares</Word>
+			<Word>Lowagie</Word>
+			<Word>itextpdf</Word>
+			<Word>gpl</Word>
+			<Word>ghostscript</Word>
+			<Word>fsf</Word>
+			<Word>famfamfam</Word>
+			<Word>copyleft</Word>
+			<Word>agpl</Word>
+			<Word>Matzelle</Word>
+			<Word>Artifex</Word>
+			<Word>Affero</Word>
+			<Word>Xps</Word>
+			<Word>htm</Word>
+		</Recognized>
+	</Words>
+</Dictionary>

@@ -1,0 +1,106 @@
+﻿<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<DirectoryRef Id="TARGETDIR">
+			<Directory Id="ProgramFilesFolder" Name="PFiles">
+				<Directory Id="INSTALLDIR" Name="PDFKeeper">
+					<Component Id="LicenseRtf" Guid="51DFE8C8-4306-4898-AEFB-7031B5E95ED0" DiskId="1">
+						<File Id="LicenseFile" Name="license.rtf" Source="license.rtf" KeyPath="yes" />
+					</Component>
+					<Component Guid="8ADB0AD8-8885-4EF5-B1ED-7D1BFF56A7F1" Id="SumatrapdfrestrictIni" DiskId="1" Feature="Complete">
+						<File Source="..\..\Application\PDFKeeper\bin\Release\sumatrapdfrestrict.ini" Name="sumatrapdfrestrict.ini" Id="sumatrapdfrestrict.ini" KeyPath="yes" />
+					</Component>
+					<Component Guid="6FFE0124-F139-47A9-A669-619CAF990EEF" Id="SumatraPDFExe" DiskId="1" Feature="Complete">
+						<File Source="..\..\Application\PDFKeeper\bin\Release\SumatraPDF.exe" Name="SumatraPDF.exe" Id="SumatraPDF.exe" KeyPath="yes" />
+					</Component>
+					<Component Guid="4E0F9D42-AA6D-441D-B8D6-D513FA47624D" Id="ItextsharpDll" DiskId="1" Feature="Complete">
+						<File Source="..\..\Application\PDFKeeper\bin\Release\itextsharp.dll" Name="itextsharp.dll" Id="itextsharp.dll" KeyPath="yes" />
+					</Component>
+					<Component Guid="6E3D13AF-0599-425F-AB01-A7C1BB94C79F" Id="NiniDll" DiskId="1" Feature="Complete">
+						<File Source="..\..\Application\PDFKeeper\bin\Release\Nini.dll" Name="Nini.dll" Id="Nini.dll" KeyPath="yes" />
+					</Component>
+					<Component Guid="90D088D0-D87F-4B9E-A3D1-19A05C3FE13B" Id="PDFKeeperenChm" DiskId="1" Feature="Complete">
+						<File Source="..\..\Application\PDFKeeper\bin\Release\PDFKeeper.en.chm" Name="PDFKeeper.en.chm" Id="PDFKeeper.en.chm" KeyPath="yes" />
+					</Component>
+					<Component Guid="6F1C0913-0A7F-40FE-B690-44070D18B3CE" Id="InteropIWshRuntimeLibraryDll" DiskId="1" Feature="Complete">
+						<File Source="..\..\Application\PDFKeeper\bin\Release\Interop.IWshRuntimeLibrary.dll" Name="Interop.IWshRuntimeLibrary.dll" Id="Interop.IWshRuntimeLibrary.dll" KeyPath="yes" />
+					</Component>
+					<Component Guid="537B3415-EDE6-4380-8095-AE1335E11717" Id="PdfKeeperExe" Feature="Complete" DiskId="1">
+						<File Source="..\..\Application\PDFKeeper\bin\Release\PdfKeeper.exe" Name="PdfKeeper.exe" Id="PdfKeeper.exe" KeyPath="yes" />
+					</Component>
+					<Component Guid="98A4817A-3448-4427-BE39-445EABB035BD" Id="DatabaseSetupCmd" DiskId="1" Feature="Complete">
+						<File Source="..\..\Database\DatabaseSetup.cmd" Name="DatabaseSetup.cmd" Id="DatabaseSetup.cmd" KeyPath="yes" />
+					</Component>
+					<Component Guid="BDE2613B-718E-4365-A84D-75B7AE830F4F" Id="DatabaseSetupSql" DiskId="1" Feature="Complete">
+						<File Source="..\..\Database\DatabaseSetup.sql" Name="DatabaseSetup.sql" Id="DatabaseSetup.sql" KeyPath="yes" />
+					</Component>
+					<Directory Id="Documentation" Name="Documentation">
+						<Component Guid="4455B013-E930-48FB-8213-80DA3FC9F8FA" Id="DatabaseSetupUserAccountManagementGuideHtml" DiskId="1" Feature="Complete">
+							<File Source="..\..\Documentation\DatabaseSetupUserAccountManagementGuide.html" Name="DatabaseSetupUserAccountManagementGuide.html" Id="DatabaseSetupUserAccountManagementGuide.html" KeyPath="yes" />
+						</Component>
+						<Component Guid="156D3DCD-14E1-4CF1-98CD-3F5B0BCFD078" Id="GettingStartedGuideHtml" DiskId="1" Feature="Complete">
+							<File Source="..\..\Documentation\GettingStartedGuide.html" Name="GettingStartedGuide.html" Id="GettingStartedGuide.html" KeyPath="yes" />
+						</Component>
+						<Component Guid="B524CA42-58A8-4DA9-9A4B-0EC5ED2237B1" Id="ReleaseNotesHtml" DiskId="1" Feature="Complete">
+							<File Source="..\..\Documentation\ReleaseNotes.html" Name="ReleaseNotes.html" Id="ReleaseNotes.html" KeyPath="yes" />
+						</Component>
+						<Component Guid="0AE4789A-4B93-4BE6-B2A7-919DFDE22BEE" Id="UserFAQHtml" DiskId="1" Feature="Complete">
+							<File Source="..\..\Documentation\UserFAQ.html" Name="UserFAQ.html" Id="UserFAQ.html" KeyPath="yes" />
+						</Component>
+						<Directory Id="css" Name="css">
+							<Component Guid="5B8402A8-75F1-416F-95DE-FEF035FDB8C2" Id="InstCss" DiskId="1" Feature="Complete">
+								<File Source="..\..\Documentation\css\inst.css" Name="inst.css" Id="inst.css" KeyPath="yes" />
+							</Component>
+							<Component Guid="A11836E4-8A95-484A-B714-9BA7AD1DFCD8" Id="NavCss" DiskId="1" Feature="Complete">
+								<File Source="..\..\Documentation\css\nav.css" Name="nav.css" Id="nav.css" KeyPath="yes" />
+							</Component>
+							<Component Guid="04872A98-F940-4548-B54C-F928FE8E054B" Id="PrintCss" DiskId="1" Feature="Complete">
+								<File Source="..\..\Documentation\css\print.css" Name="print.css" Id="print.css" KeyPath="yes" />
+							</Component>
+							<Component Guid="4FA39D9C-B54D-4B95-9F2A-7048C6925BFA" Id="ReadysetCss" DiskId="1" Feature="Complete">
+								<File Source="..\..\Documentation\css\readyset.css" Name="readyset.css" Id="readyset.css" KeyPath="yes" />
+							</Component>
+						</Directory>
+					</Directory>
+					<Component Id="PdfKeeperexeConfig" Guid="969D39A7-ACA3-4FD6-B926-6806206261E8" DiskId="1" Feature="Complete">
+						<File Id="PdfKeeper.exe.config" Name="PdfKeeper.exe.config" Source="..\..\Application\PDFKeeper\bin\Release\PdfKeeper.exe.config" KeyPath="yes" />
+					</Component>
+					<Component Id="COPYINGTxt" Guid="E3BC1AEE-64BF-4971-8F4B-30A07CF08389" DiskId="1" Feature="Complete">
+						<File Id="COPYING.txt" Name="COPYING.txt" Source="..\..\COPYING.txt" KeyPath="yes" />
+					</Component>
+					<Component Id="CREDITSTxt" Guid="012D0EF9-2E86-4081-8074-1EC642F20DB4" DiskId="1" Feature="Complete">
+						<File Id="CREDITS.txt" Name="CREDITS.txt" Source="..\..\CREDITS.txt" KeyPath="yes" />
+					</Component>
+					<Component Id="Gxps_win32Exe" Guid="78584CC6-C3F7-4545-9B41-A851766089DA" DiskId="1" Feature="Complete">
+						<File Id="gxps_win32.exe" Name="gxps-win32.exe" Source="..\..\Application\PDFKeeper\bin\Release\gxps-win32.exe" KeyPath="yes" />
+					</Component>
+				</Directory>
+			</Directory>
+			<Directory Id="DesktopFolder">
+				<Component Guid="10B4E840-F101-4F24-85ED-C2DD279B7062" Id="DesktopShortcut" DiskId="1" Feature="Complete">
+					<Shortcut Description="PDF Document Capture, Storage, and Search" Directory="DesktopFolder" Name="PDFKeeper" Show="normal" WorkingDirectory="INSTALLDIR" Id="PdfKeeperDesktopShortcut" Target="[INSTALLDIR]PdfKeeper.exe"></Shortcut>
+					<RegistryValue Root="HKCU" Type="integer" Value="1" KeyPath="yes" Name="Installed" Key="Software\PDFKeeper" />
+				</Component>
+			</Directory>
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="ApplicationProgramsFolder" Name="PDFKeeper">
+					<Component Guid="710B90F9-CBF5-4AAF-B7D1-FD31082A2E0C" Id="ApplicationShortcutsFolder" Feature="Complete" DiskId="1">
+						<RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
+						<RegistryValue Key="Software\PDFKeeper" Root="HKCU" Type="integer" Value="1" Name="Installed" KeyPath="yes" />
+						<Shortcut Description="PDF Document Capture, Storage, and Search" Directory="ApplicationProgramsFolder" Name="PDFKeeper" Show="normal" WorkingDirectory="INSTALLDIR" Id="PdfKeeperStartMenuShortcut" Target="[INSTALLDIR]PdfKeeper.exe"></Shortcut>
+						<Shortcut Id="DatabaseSetupStartMenuShortcut" Show="normal" WorkingDirectory="INSTALLDIR" Name="Database Setup" Directory="ApplicationProgramsFolder" Target="[INSTALLDIR]DatabaseSetup.cmd" />
+					</Component>
+					<Directory Id="DocumentationProgramsFolder" Name="Documentation">
+						<Component Guid="FFDBFE46-DE3B-4E86-98DA-546D5DF07D66" Id="DocumentationShortcutsFolder" DiskId="1" Feature="Complete">
+							<RemoveFolder On="uninstall" Id="DocumentationProgramsFolder" />
+							<RegistryValue Key="Software\PDFKeeper" KeyPath="yes" Name="Installed" Root="HKCU" Type="integer" Value="1" />
+							<Shortcut Show="normal" WorkingDirectory="INSTALLDIR" Name="Database Setup and User Account Management Guide" Directory="DocumentationProgramsFolder" Id="DatabaseSetupUserAccountManagementGuideStartMenuShortcut" Target="[INSTALLDIR]Documentation\DatabaseSetupUserAccountManagementGuide.html" />
+							<Shortcut Id="GettingStartedGuideStartMenuShortcut" Name="Getting Started Guide" Show="normal" Directory="DocumentationProgramsFolder" WorkingDirectory="INSTALLDIR" Target="[INSTALLDIR]Documentation\GettingStartedGuide.html" />
+							<Shortcut Name="Release Notes" Id="ReleaseNotesStartMenuShortcut" Directory="DocumentationProgramsFolder" WorkingDirectory="INSTALLDIR" Show="normal" Target="[INSTALLDIR]Documentation\ReleaseNotes.html" />
+							<Shortcut Name="User FAQ" Show="normal" WorkingDirectory="INSTALLDIR" Directory="DocumentationProgramsFolder" Id="UserFAQStartMenuShortcut" Target="[INSTALLDIR]Documentation\UserFAQ.html" />
+						</Component>
+					</Directory>
+				</Directory>
+			</Directory>
+		</DirectoryRef>
+	</Fragment>
+</Wix>
