@@ -1,0 +1,124 @@
+﻿<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	<Product Id="*"
+		Name="PDFKeeper"
+		Language="1033"
+		Version="3.0.1"
+		UpgradeCode="18055295-A37D-42A8-A4C9-80E80E2F1DE9"
+		Manufacturer="Robert F. Frasca">
+		<Package Description="PDF Document Capture, Storage, and Search"
+			Comments="Comments"
+			InstallerVersion="200"
+			Compressed="yes"/>
+	
+		<MajorUpgrade
+			AllowSameVersionUpgrades="yes"
+			DowngradeErrorMessage="A later version of PDFKeeper is already installed. Setup will now exit." />
+				
+		<!-- Uninstall command for legacy versions. -->
+		<Property Id="UNINSTALL_LEGACY">
+			<RegistrySearch Id="LocateLegacyUninstallExe"
+			                Type="file"
+			                Root="HKLM"
+			                Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{4F0E9E20-AB83-4AB1-9B05-D77BDED27ED4}_is1"
+			                Name="UninstallString" />
+		</Property>
+		
+		<!--
+			Source media for the installation. 
+ 			Specifies a single cab file to be embedded in the installer's .msi. 
+		-->
+		<Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
+		
+		<Icon Id="PDFKeeper.ico" SourceFile="..\..\Icon\PDFKeeper.ico"/>
+		<Property Id="ARPPRODUCTICON" Value="PDFKeeper.ico" />
+		<Property Id='ARPHELPLINK'>http://pdfkeeper.codeplex.com/</Property>
+		<Property Id='ARPURLINFOABOUT'>http://pdfkeeper.codeplex.com/</Property>
+		<Property Id='ARPURLUPDATEINFO'>http://pdfkeeper.codeplex.com/</Property>
+		<WixVariable Id="WixUIBannerBmp" Value="banner.bmp" />
+		<WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
+		
+		<!-- Condition checks -->
+		<PropertyRef Id="NETFRAMEWORK40CLIENT"/>
+		<Condition Message="This setup requires .NET Framework 4 Client Profile or Extended. Please install the .NET Framework and then run this setup again.">
+  			<![CDATA[Installed OR NETFRAMEWORK40CLIENT]]>
+		</Condition>
+		<Condition Message="This application is only supported on Windows XP SP3 or higher.">
+    		<![CDATA[Installed OR (VersionNT >= 501)]]>
+		</Condition>
+			
+		<!-- Installation directory and files are defined in Files.wxs -->
+		
+		<Property Id="ALLUSERS">1</Property>
+		<DirectoryRef Id="DesktopFolder"></DirectoryRef>
+		<Directory Id="TARGETDIR" Name="SourceDir"/>
+		
+		<!-- Uninstall existing legacy version custom action. -->
+		<Property Id="LegacyVersionUninstall">
+			<![CDATA[
+			Function Main()
+				On Error Resume Next
+				Set objShell = CreateObject("WScript.Shell")
+				uninstallExe = objShell.RegRead("HKLM\SOFTWARE\Microsoft\" & _
+								"Windows\CurrentVersion\Uninstall\" & _
+								"{4F0E9E20-AB83-4AB1-9B05-D77BDED27ED4}_is1\" & _
+								"UninstallString")
+				If Err.Number = 0 Then
+					objShell.Run "%comspec% /c " & chr(34) & uninstallExe & _
+						chr(34) & _
+						" /VERYSILENT /NORESTART /SUPPRESSMSGBOXES", 0, True
+					if Err.Number = 0 Then
+						Main = 1
+					Else
+						Main = 3
+					End If
+				Else
+					Main = 1
+				End If
+			End Function
+			]]>
+		</Property>
+		<CustomAction Id="UninstallLegacyVersion"
+		              VBScriptCall="Main"
+		              Property="LegacyVersionUninstall" />
+		<InstallExecuteSequence>
+			<Custom Action="UninstallLegacyVersion"
+			        Before="InstallValidate">Not Installed</Custom>
+		</InstallExecuteSequence>
+		
+		<Feature Id="Complete"
+		         Title="PDFKeeper"
+		         Description="PDF Document Capture, Storage, and Search"
+		         Level="1">
+			<ComponentRef Id="LicenseRtf" />
+		</Feature>
+		
+		<!-- 
+			Using the Wix UI library
+ 
+			WixUI_InstallDir does not allow the user to choose 
+			features but adds a dialog to let the user choose a 
+			directory where the product will be installed
+		-->
+		<Property Id="WIXUI_INSTALLDIR">INSTALLDIR</Property>
+		<UI>
+        	<UIRef Id="WixUI_InstallDir" />
+        	<Publish Dialog="ExitDialog"
+			         Control="Finish" 
+        	         Event="DoAction"
+        	         Value="OpenGettingStartedGuide">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed
+			</Publish>
+    	</UI>
+
+		<!-- Open Getting Started Guide at end of installation custom action. -->
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
+		          Value="Open Getting Started Guide" />
+		<Property Id="WixShellExecTarget"
+		          Value="[#GettingStartedGuide.html]" />
+		<CustomAction Id="OpenGettingStartedGuide"
+		              BinaryKey="WixCA"
+		              DllEntry="WixShellExec"
+		              Impersonate="yes" />
+	</Product>
+</Wix>
