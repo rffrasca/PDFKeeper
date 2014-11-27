@@ -1,5 +1,5 @@
 PDFKeeper 3.1.0
-Copyright (C) 2009-2014 Robert F. Frasca
+Copyright (C) 2009-2015 Robert F. Frasca
 
 This software includes works distributed under the licenses listed below.
 
