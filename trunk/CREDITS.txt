@@ -18,7 +18,7 @@ License: BSD (http://readyset.tigris.org/templates/readyset-license.html)
 iTextSharp (binary)
 -------------------
 Website: http://itextpdf.com/
-Copyright: Copyright (c) 1999-2013 by Bruno Lowagie and Paulo Soares. All Rights Reserved.
+Copyright: Copyright (c) 1999-2014 by Bruno Lowagie and Paulo Soares. All Rights Reserved.
 License: AGPLv3 (http://itextpdf.com/agpl)
 
 Nini (binary)
