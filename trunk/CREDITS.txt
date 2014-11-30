@@ -40,3 +40,9 @@ Copyright: Copyright (C) 2001-2012 Artifex Software, Inc. All Rights Reserved.
 
 
 License: AGPLv3 (http://www.gnu.org/licenses/agpl-3.0.html)
+
+Ghostscript (binary)
+--------------------
+Website: http://www.ghostscript.com/
+Copyright: Copyright (C) 2014 Artifex Software, Inc.  All rights reserved.
+License: AGPLv3 (http://www.gnu.org/licenses/agpl-3.0.html)

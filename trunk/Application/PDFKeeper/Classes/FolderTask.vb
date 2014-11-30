@@ -95,17 +95,22 @@ Public NotInheritable Class FolderTask
 	End Function
 	
 	''' <summary>
-	''' This subroutine will delete all PDF files created by PDFKeeper from
-	''' "folder".  This subroutine will not display a message when an
+	''' This subroutine will delete all PDF and PNG files created by PDFKeeper
+	''' from "folder".  This subroutine will not display a message when an
 	''' IOException has been caught.
 	''' </summary>
 	''' <param name="folder"></param>
-	Public Shared Sub DeletePdfKeeperCreatedPdfFiles(ByVal folder As String)
+	Public Shared Sub DeletePdfKeeperCreatedFiles(ByVal folder As String)
 		Dim objDirectoryInfo As New DirectoryInfo(folder)
-		Dim files As FileInfo() = objDirectoryInfo.GetFiles("pdfkeeper*.pdf")
+		Dim files As FileInfo() = objDirectoryInfo.GetFiles("pdfkeeper*.*")
 		For Each oFile In files
 			Try
-				oFile.Delete
+				If oFile.Extension.ToUpper( _
+						CultureInfo.CurrentCulture) = ".PDF" Or _
+						oFile.Extension.ToUpper( _
+						CultureInfo.CurrentCulture) = ".PNG" Then
+					oFile.Delete
+				End If
 			Catch ex as IOException
 			End Try
 		Next

@@ -109,17 +109,22 @@ Partial Class MainForm
 		Me.tabPageDocumentKeywords = New System.Windows.Forms.TabPage()
 		Me.textBoxDocumentKeywords = New System.Windows.Forms.TextBox()
 		Me.listViewDocs = New System.Windows.Forms.ListView()
-		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(CType(resources.GetObject("listViewDocs.Columns"),Integer))
+		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(0)
 		Me.columnHeaderTitle = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderAuthor = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderSubject = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderAdded = New System.Windows.Forms.ColumnHeader()
+		Me.tabPagePreview = New System.Windows.Forms.TabPage()
+		Me.panelPreview = New System.Windows.Forms.Panel()
+		Me.pictureBoxPreview = New System.Windows.Forms.PictureBox()
+		Me.buttonNext = New System.Windows.Forms.Button()
+		Me.buttonPrevious = New System.Windows.Forms.Button()
 		Me.tabPageCapture = New System.Windows.Forms.TabPage()
 		Me.groupBoxProperties = New System.Windows.Forms.GroupBox()
 		Me.textBoxKeywords = New System.Windows.Forms.TextBox()
 		Me.buttonUpload = New System.Windows.Forms.Button()
 		Me.labelKeywords = New System.Windows.Forms.Label()
-		Me.buttonPreview = New System.Windows.Forms.Button()
+		Me.buttonView = New System.Windows.Forms.Button()
 		Me.comboBoxSubject = New System.Windows.Forms.ComboBox()
 		Me.buttonDeselect = New System.Windows.Forms.Button()
 		Me.buttonSave = New System.Windows.Forms.Button()
@@ -129,7 +134,7 @@ Partial Class MainForm
 		Me.textBoxTitle = New System.Windows.Forms.TextBox()
 		Me.labelTitle = New System.Windows.Forms.Label()
 		Me.groupBoxDocument = New System.Windows.Forms.GroupBox()
-		Me.buttonView = New System.Windows.Forms.Button()
+		Me.buttonViewOriginal = New System.Windows.Forms.Button()
 		Me.textBoxPdfDocument = New System.Windows.Forms.TextBox()
 		Me.groupBoxDocuments = New System.Windows.Forms.GroupBox()
 		Me.listBoxDocCaptureQueue = New System.Windows.Forms.ListBox()
@@ -145,6 +150,9 @@ Partial Class MainForm
 		Me.tabControlDocNotesKeywords.SuspendLayout
 		Me.tabPageDocumentNotes.SuspendLayout
 		Me.tabPageDocumentKeywords.SuspendLayout
+		Me.tabPagePreview.SuspendLayout
+		Me.panelPreview.SuspendLayout
+		CType(Me.pictureBoxPreview,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.tabPageCapture.SuspendLayout
 		Me.groupBoxProperties.SuspendLayout
 		Me.groupBoxDocument.SuspendLayout
@@ -406,9 +414,10 @@ Partial Class MainForm
 		Me.imageList.ImageStream = CType(resources.GetObject("imageList.ImageStream"),System.Windows.Forms.ImageListStreamer)
 		Me.imageList.TransparentColor = System.Drawing.Color.Transparent
 		Me.imageList.Images.SetKeyName(0, "page_find.gif")
-		Me.imageList.Images.SetKeyName(1, "file_acrobat.gif")
-		Me.imageList.Images.SetKeyName(2, "page_edit.gif")
-		Me.imageList.Images.SetKeyName(3, "page_key.gif")
+		Me.imageList.Images.SetKeyName(1, "page_text.gif")
+		Me.imageList.Images.SetKeyName(2, "file_acrobat.gif")
+		Me.imageList.Images.SetKeyName(3, "page_edit.gif")
+		Me.imageList.Images.SetKeyName(4, "page_key.gif")
 		'
 		'printDocumentNotes
 		'
@@ -468,6 +477,7 @@ Partial Class MainForm
 		'
 		resources.ApplyResources(Me.tabControlMain, "tabControlMain")
 		Me.tabControlMain.Controls.Add(Me.tabPageSearch)
+		Me.tabControlMain.Controls.Add(Me.tabPagePreview)
 		Me.tabControlMain.Controls.Add(Me.tabPageCapture)
 		Me.tabControlMain.ImageList = Me.imageList
 		Me.tabControlMain.Name = "tabControlMain"
@@ -577,6 +587,42 @@ Partial Class MainForm
 		'
 		resources.ApplyResources(Me.columnHeaderAdded, "columnHeaderAdded")
 		'
+		'tabPagePreview
+		'
+		Me.tabPagePreview.Controls.Add(Me.panelPreview)
+		Me.tabPagePreview.Controls.Add(Me.buttonNext)
+		Me.tabPagePreview.Controls.Add(Me.buttonPrevious)
+		resources.ApplyResources(Me.tabPagePreview, "tabPagePreview")
+		Me.tabPagePreview.Name = "tabPagePreview"
+		Me.tabPagePreview.UseVisualStyleBackColor = true
+		'
+		'panelPreview
+		'
+		resources.ApplyResources(Me.panelPreview, "panelPreview")
+		Me.panelPreview.Controls.Add(Me.pictureBoxPreview)
+		Me.panelPreview.Name = "panelPreview"
+		'
+		'pictureBoxPreview
+		'
+		resources.ApplyResources(Me.pictureBoxPreview, "pictureBoxPreview")
+		Me.pictureBoxPreview.Name = "pictureBoxPreview"
+		Me.pictureBoxPreview.TabStop = false
+		AddHandler Me.pictureBoxPreview.MouseDoubleClick, AddressOf Me.ListViewDocsMouseDoubleClick
+		'
+		'buttonNext
+		'
+		resources.ApplyResources(Me.buttonNext, "buttonNext")
+		Me.buttonNext.Name = "buttonNext"
+		Me.buttonNext.UseVisualStyleBackColor = true
+		AddHandler Me.buttonNext.Click, AddressOf Me.ButtonNextClick
+		'
+		'buttonPrevious
+		'
+		resources.ApplyResources(Me.buttonPrevious, "buttonPrevious")
+		Me.buttonPrevious.Name = "buttonPrevious"
+		Me.buttonPrevious.UseVisualStyleBackColor = true
+		AddHandler Me.buttonPrevious.Click, AddressOf Me.ButtonPreviousClick
+		'
 		'tabPageCapture
 		'
 		Me.tabPageCapture.Controls.Add(Me.groupBoxProperties)
@@ -592,7 +638,7 @@ Partial Class MainForm
 		Me.groupBoxProperties.Controls.Add(Me.textBoxKeywords)
 		Me.groupBoxProperties.Controls.Add(Me.buttonUpload)
 		Me.groupBoxProperties.Controls.Add(Me.labelKeywords)
-		Me.groupBoxProperties.Controls.Add(Me.buttonPreview)
+		Me.groupBoxProperties.Controls.Add(Me.buttonView)
 		Me.groupBoxProperties.Controls.Add(Me.comboBoxSubject)
 		Me.groupBoxProperties.Controls.Add(Me.buttonDeselect)
 		Me.groupBoxProperties.Controls.Add(Me.buttonSave)
@@ -622,12 +668,12 @@ Partial Class MainForm
 		resources.ApplyResources(Me.labelKeywords, "labelKeywords")
 		Me.labelKeywords.Name = "labelKeywords"
 		'
-		'buttonPreview
+		'buttonView
 		'
-		resources.ApplyResources(Me.buttonPreview, "buttonPreview")
-		Me.buttonPreview.Name = "buttonPreview"
-		Me.buttonPreview.UseVisualStyleBackColor = true
-		AddHandler Me.buttonPreview.Click, AddressOf Me.ButtonPreviewClick
+		resources.ApplyResources(Me.buttonView, "buttonView")
+		Me.buttonView.Name = "buttonView"
+		Me.buttonView.UseVisualStyleBackColor = true
+		AddHandler Me.buttonView.Click, AddressOf Me.ButtonViewClick
 		'
 		'comboBoxSubject
 		'
@@ -688,17 +734,17 @@ Partial Class MainForm
 		'groupBoxDocument
 		'
 		resources.ApplyResources(Me.groupBoxDocument, "groupBoxDocument")
-		Me.groupBoxDocument.Controls.Add(Me.buttonView)
+		Me.groupBoxDocument.Controls.Add(Me.buttonViewOriginal)
 		Me.groupBoxDocument.Controls.Add(Me.textBoxPdfDocument)
 		Me.groupBoxDocument.Name = "groupBoxDocument"
 		Me.groupBoxDocument.TabStop = false
 		'
-		'buttonView
+		'buttonViewOriginal
 		'
-		resources.ApplyResources(Me.buttonView, "buttonView")
-		Me.buttonView.Name = "buttonView"
-		Me.buttonView.UseVisualStyleBackColor = true
-		AddHandler Me.buttonView.Click, AddressOf Me.ButtonViewClick
+		resources.ApplyResources(Me.buttonViewOriginal, "buttonViewOriginal")
+		Me.buttonViewOriginal.Name = "buttonViewOriginal"
+		Me.buttonViewOriginal.UseVisualStyleBackColor = true
+		AddHandler Me.buttonViewOriginal.Click, AddressOf Me.ButtonViewOriginalClick
 		'
 		'textBoxPdfDocument
 		'
@@ -773,6 +819,10 @@ Partial Class MainForm
 		Me.tabPageDocumentNotes.PerformLayout
 		Me.tabPageDocumentKeywords.ResumeLayout(false)
 		Me.tabPageDocumentKeywords.PerformLayout
+		Me.tabPagePreview.ResumeLayout(false)
+		Me.panelPreview.ResumeLayout(false)
+		Me.panelPreview.PerformLayout
+		CType(Me.pictureBoxPreview,System.ComponentModel.ISupportInitialize).EndInit
 		Me.tabPageCapture.ResumeLayout(false)
 		Me.groupBoxProperties.ResumeLayout(false)
 		Me.groupBoxProperties.PerformLayout
@@ -782,6 +832,11 @@ Partial Class MainForm
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private panelPreview As System.Windows.Forms.Panel
+	Private buttonPrevious As System.Windows.Forms.Button
+	Private buttonNext As System.Windows.Forms.Button
+	Private pictureBoxPreview As System.Windows.Forms.PictureBox
+	Private tabPagePreview As System.Windows.Forms.TabPage
 	Private backgroundWorkerDirectUpload As System.ComponentModel.BackgroundWorker
 	Private toolStripMenuItemDirectUploadFolder As System.Windows.Forms.ToolStripMenuItem
 	Private toolStripStatusLabelUploading As System.Windows.Forms.ToolStripStatusLabel
@@ -803,13 +858,13 @@ Partial Class MainForm
 	Private labelSubject As System.Windows.Forms.Label
 	Private buttonSave As System.Windows.Forms.Button
 	Private comboBoxSubject As System.Windows.Forms.ComboBox
-	Private buttonPreview As System.Windows.Forms.Button
+	Private buttonView As System.Windows.Forms.Button
 	Private labelKeywords As System.Windows.Forms.Label
 	Private buttonUpload As System.Windows.Forms.Button
 	Private textBoxKeywords As System.Windows.Forms.TextBox
 	Private groupBoxProperties As System.Windows.Forms.GroupBox
 	Private textBoxPdfDocument As System.Windows.Forms.TextBox
-	Private buttonView As System.Windows.Forms.Button
+	Private buttonViewOriginal As System.Windows.Forms.Button
 	Private groupBoxDocument As System.Windows.Forms.GroupBox
 	Private listBoxDocCaptureQueue As System.Windows.Forms.ListBox
 	Private groupBoxDocuments As System.Windows.Forms.GroupBox
