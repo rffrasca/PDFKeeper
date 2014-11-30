@@ -3,7 +3,7 @@
 		<DirectoryRef Id="TARGETDIR">
 			<Directory Id="ProgramFilesFolder" Name="PFiles">
 				<Directory Id="INSTALLDIR" Name="PDFKeeper">
-					<Component Id="LicenseRtf" Guid="51DFE8C8-4306-4898-AEFB-7031B5E95ED0" DiskId="1">
+					<Component Id="LicenseRtf" Guid="51DFE8C8-4306-4898-AEFB-7031B5E95ED0" DiskId="1" Feature="Complete">
 						<File Id="LicenseFile" Name="license.rtf" Source="license.rtf" KeyPath="yes" />
 					</Component>
 					<Component Guid="8ADB0AD8-8885-4EF5-B1ED-7D1BFF56A7F1" Id="SumatrapdfrestrictIni" DiskId="1" Feature="Complete">
@@ -72,6 +72,12 @@
 					</Component>
 					<Component Id="Gxps_win32Exe" Guid="78584CC6-C3F7-4545-9B41-A851766089DA" DiskId="1" Feature="Complete">
 						<File Id="gxps_win32.exe" Name="gxps-win32.exe" Source="..\..\Application\PDFKeeper\bin\Release\gxps-win32.exe" KeyPath="yes" />
+					</Component>
+					<Component Id="Gsdll32Dll" Guid="4F6C6658-849F-4F42-8017-55E69CF9B97F" DiskId="1" Feature="Complete">
+						<File Id="gsdll32.dll" Name="gsdll32.dll" Source="..\..\Application\PDFKeeper\bin\Release\gsdll32.dll" KeyPath="yes" />
+					</Component>
+					<Component Id="Gswin32cExe" Guid="A2C3C3BF-7D5A-4F05-B149-D8B41B96E7DB" DiskId="1" Feature="Complete">
+						<File Id="gswin32c.exe" Name="gswin32c.exe" Source="..\..\Application\PDFKeeper\bin\Release\gswin32c.exe" KeyPath="yes" />
 					</Component>
 				</Directory>
 			</Directory>

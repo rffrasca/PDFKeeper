@@ -677,8 +677,14 @@ Public Partial Class MainForm
 			buttonDocumentNotesRevert.Enabled = False
 			Me.Text = "PDFKeeper"
 			searchLastTitleText = Me.Text
+			buttonPrevious.Enabled = False
+			buttonNext.Enabled = False
+			pictureBoxPreview.Image = Nothing
+			pictureBoxPreview.Enabled = False
 		Else
 			selectedId = CInt(listViewDocs.SelectedItems(0).Text.Trim)
+			Dim pdfFile As String = Path.Combine(CacheDir, _
+				"pdfkeeper" & selectedId & ".pdf")
 			Me.Cursor = Cursors.WaitCursor
 			Dim oDatabaseConnection As New DatabaseConnection
 			If oDatabaseConnection.Open(UserSettings.LastUserName, _
@@ -707,13 +713,17 @@ Public Partial Class MainForm
 						oDatabaseConnection.Dispose
 						toolStripMenuItemSavePDFtoDisk.Enabled = True
 						toolStripMenuItemInsertDateTimeIntoDocumentNotes.Enabled = True
+						tabPagePreview.Enabled = True
 						textBoxDocumentNotes.Enabled = True
 						TextBoxDocumentNotesScrollToEnd
 						Me.Text = "PDFKeeper - [" & selectedId & "]"
 						searchLastTitleText = Me.Text
-						Me.Cursor = Cursors.Default
+						If tabControlMain.SelectedIndex = 1 Then
+							
+						End If
 					End Using
 				End Using
+				Me.Cursor = Cursors.Default
 			Catch ex As OracleException
 				oDatabaseConnection.Dispose
 				Me.Cursor = Cursors.Default
@@ -724,7 +734,8 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will open the PDF document for the selected ID.
+	''' This subroutine will get the title of the PDF document for the selected
+	''' ID and open it.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -734,12 +745,6 @@ Public Partial Class MainForm
 		Dim pdfFile As String
 		pdfFile = Path.Combine(CacheDir, "pdfkeeper" & selectedId & ".pdf")
 		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
-			Try
-				System.IO.File.Encrypt(pdfFile)
-			Catch ex As IOException
-			End Try
-						
-			' Get the title of the PDF document and open it.
 			Dim oPdfProperties As New PdfProperties(pdfFile)
 			If oPdfProperties.Read = 0 Then
 				Dim titleBarText As String
@@ -943,6 +948,75 @@ Public Partial Class MainForm
 	
 	#End Region
 	
+	#Region "Document Preview"
+	
+	''' <summary>
+	''' This subroutine will select the previous listview item on the Document
+	''' Search tab, and then generate and load the document preview PNG file
+	''' into picture box control on Document Preview tab.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub ButtonPreviousClick(sender As Object, e As EventArgs)
+		listViewDocs.Focus()
+		listViewDocs.Items( _
+			listViewDocs.SelectedItems(0).Index - 1).Selected = True
+		Me.Cursor = Cursors.WaitCursor
+		LoadDocumentPreview
+		Me.Cursor = Cursors.Default
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will select the next listview item on the Document
+	''' Search tab, and then generate and load the document preview PNG file
+	''' into picture box control on Document Preview tab.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub ButtonNextClick(sender As Object, e As EventArgs)
+		listViewDocs.Focus()
+		listViewDocs.Items( _
+			listViewDocs.SelectedItems(0).Index + 1).Selected = True
+		Me.Cursor = Cursors.WaitCursor
+		LoadDocumentPreview
+		Me.Cursor = Cursors.Default
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will retrieve the PDF file for the selected listview
+	''' item on the Document Search tab, generate a PNG file containing the
+	''' first page from PDF file, enable/disable controls on the Document
+	''' Preview tab, load the PNG file into the picture box control, and update
+	''' the status bar.
+	''' </summary>
+	Private Sub LoadDocumentPreview
+		toolStripStatusLabelMessage.Text = Nothing
+		Application.DoEvents
+		buttonPrevious.Enabled = False
+		buttonNext.Enabled = False
+		pictureBoxPreview.Image = Nothing
+		Dim pdfFile As String = Path.Combine(CacheDir, "pdfkeeper" & _
+			selectedId & ".pdf")
+		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
+			If PdfFileTask.GeneratePdfPreviewImage(pdfFile) = 0 Then
+				pictureBoxPreview.Enabled = True
+				pictureBoxPreview.Load(Path.ChangeExtension(pdfFile, "png"))
+				If listViewDocs.SelectedItems(0).Index > 0 Then
+					buttonPrevious.Enabled = True
+				End If
+				If listViewDocs.SelectedItems(0).Index < _
+						listViewDocs.Items.Count - 1 Then
+					buttonNext.Enabled = True
+				End If
+				toolStripStatusLabelMessage.Text = "Previewing document: " & _
+					listViewDocs.SelectedItems(0).Index + 1 & " of " & _
+					listViewDocs.Items.Count
+			End If
+		End If
+	End Sub
+	
+	#End Region
+	
 	#Region "Document Capture"
 	
 	''' <summary>
@@ -998,7 +1072,7 @@ Public Partial Class MainForm
 			End If
 			If oPdfProperties.Read = 0 Then
 				textBoxPDFDocument.Text = capturePdfFile
-				buttonView.Enabled = True
+				buttonViewOriginal.Enabled = True
 				textBoxTitle.Text = oPdfProperties.Title
 				
 				' If the title is blank, default to the filename without the
@@ -1030,11 +1104,11 @@ Public Partial Class MainForm
 	
 	''' <summary>
  	''' This subroutine will call the CaptureViewPdf subroutine to display the
- 	''' PDF document in a restricted Sumatra PDF process.
+ 	''' original PDF document in a restricted Sumatra PDF process.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	Private Sub ButtonViewClick(sender As Object, e As EventArgs)
+	Private Sub ButtonViewOriginalClick(sender As Object, e As EventArgs)
 		CaptureViewPdf(capturePdfFile)
 	End Sub
 	
@@ -1135,7 +1209,7 @@ Public Partial Class MainForm
 		Else
 			buttonSave.Enabled = False
 		End If
-		buttonPreview.Enabled = False
+		buttonView.Enabled = False
 		buttonUpload.Enabled = False
 	End Sub
 	
@@ -1169,11 +1243,11 @@ Public Partial Class MainForm
 		oPdfProperties.Keywords = textBoxKeywords.Text.Trim
 		If oPdfProperties.Write = 0 Then
 			buttonSave.Enabled = False
-			buttonPreview.Enabled = True
+			buttonView.Enabled = True
 			buttonUpload.Enabled = True
 			toolStripStatusLabelMessage.Text = MainForm_Strings.CaptureSaved
 		Else
-			buttonPreview.Enabled = False
+			buttonView.Enabled = False
 			buttonUpload.Enabled = False
 			toolStripStatusLabelMessage.Text = Nothing
 		End If
@@ -1191,7 +1265,7 @@ Public Partial Class MainForm
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	Private Sub ButtonPreviewClick(sender As Object, e As EventArgs)
+	Private Sub ButtonViewClick(sender As Object, e As EventArgs)
 		CaptureViewPdf(captureModPdfFile)
 	End Sub
 	
@@ -1233,14 +1307,14 @@ Public Partial Class MainForm
 	''' </summary>
 	''' <param name="uploading"></param>
 	Private Sub DisableCaptureControls(uploading As Boolean)
-		buttonView.Enabled = False
+		buttonViewOriginal.Enabled = False
 		textBoxTitle.Enabled = False
 		comboBoxAuthor.Enabled = False
 		comboBoxSubject.Enabled = False
 		textBoxKeywords.Enabled = False
 		buttonSave.Enabled = False
 		If uploading Then
-			buttonPreview.Enabled = False
+			buttonView.Enabled = False
 			buttonUpload.Enabled = False
 		End If
 		buttonDeselect.Enabled = False
@@ -1255,13 +1329,13 @@ Public Partial Class MainForm
 	''' </summary>
 	''' <param name="uploading"></param>
 	Private Sub EnableCaptureControls(uploading As Boolean)
-		buttonView.Enabled = True
+		buttonViewOriginal.Enabled = True
 		textBoxTitle.Enabled = True
 		comboBoxAuthor.Enabled = True
 		comboBoxSubject.Enabled = True
 		textBoxKeywords.Enabled = True
 		If uploading Then
-			buttonPreview.Enabled = True
+			buttonView.Enabled = True
 			buttonUpload.Enabled = True
 		End If
 		buttonDeselect.Enabled = True
@@ -1338,7 +1412,7 @@ Public Partial Class MainForm
 		toolStripStatusLabelMessage.Text = Nothing
 		captureLastStatusMessage = Nothing
 		textBoxPDFDocument.Text = Nothing
-		buttonView.Enabled = False
+		buttonViewOriginal.Enabled = False
 		textBoxTitle.Text = Nothing
 		textBoxTitle.Enabled = False
 		comboBoxAuthor.Text = Nothing
@@ -1348,7 +1422,7 @@ Public Partial Class MainForm
 		textBoxKeywords.Text = Nothing
 		textBoxKeywords.Enabled = False
 		buttonSave.Enabled = False
-		buttonPreview.Enabled = False
+		buttonView.Enabled = False
 		buttonUpload.Enabled = False
 		buttonDeselect.Enabled = False
 		listBoxDocCaptureQueue.Enabled = True
@@ -1367,7 +1441,8 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub TabControlMainSelectedIndexChanged(sender As Object, e As EventArgs)
-		If tabControlMain.SelectedIndex = 0 Then	' "Document Search" tab
+		Me.Cursor = Cursors.WaitCursor
+		If tabControlMain.SelectedIndex = 0 Then ' Document Search
 			Me.Text = searchLastTitleText
 			If selectedId > 0 Then
 				listViewDocs.Focus
@@ -1386,7 +1461,23 @@ Public Partial Class MainForm
 			toolStripMenuItemHtmlConverter.Enabled = False
 			toolStripMenuItemCaptureFolder.Enabled = False
 			toolStripStatusLabelMessage.Text = searchLastStatusMessage
-		Else	' "Document Capture" tab
+		ElseIf tabControlMain.SelectedIndex = 1 Then ' Document Search Preview
+			Me.Text = searchLastTitleText
+			toolStripStatusLabelMessage.Text = Nothing
+			If selectedId > 0 Then
+				listViewDocs.Focus
+				listViewDocs.SelectedItems(0).Text = CStr(selectedId)
+				toolStripMenuItemSavePDFtoDisk.Enabled = True
+				LoadDocumentPreview
+			Else
+				toolStripMenuItemSavePDFtoDisk.Enabled = False
+			End If
+			toolStripMenuItemPrintDocumentNotes.Enabled = False
+			toolStripMenuItemEdit.Enabled = False
+			toolStripMenuItemView.Enabled = False
+			toolStripMenuItemHtmlConverter.Enabled = False
+			toolStripMenuItemCaptureFolder.Enabled = False
+		Else ' Document Capture
 			Me.Text = "PDFKeeper"
 			toolStripMenuItemSavePDFtoDisk.Enabled = False
 			toolStripMenuItemPrintDocumentNotes.Enabled = False
@@ -1402,6 +1493,7 @@ Public Partial Class MainForm
 			toolStripMenuItemCaptureFolder.Enabled = True
 			toolStripStatusLabelMessage.Text = captureLastStatusMessage
 		End If
+		Me.Cursor = Cursors.Default
 	End Sub
 	
 	''' <summary>
@@ -1667,14 +1759,16 @@ Public Partial Class MainForm
 	
 	''' <summary>
 	''' This subroutine will call subroutines to check for unsaved Document
-	''' Notes, delete cached PDF files, dispose the database password string,
-	'''	save the form size and postion, and then save the user settings.
+	''' Notes, dispose the Document Preview picture box, delete cached PDF and
+	''' PNG files, dispose the database password string, save the form size and
+	''' postion, and then save the user settings.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub MainFormFormClosed(sender As Object, e As FormClosedEventArgs)
 		DocumentNotesModifiedCheck
-		FolderTask.DeletePdfKeeperCreatedPdfFiles(CacheDir)
+		pictureBoxPreview.Dispose ' added so last loaded image can be deleted.
+		FolderTask.DeletePdfKeeperCreatedFiles(CacheDir)
 		DatabaseConnectionForm.dbPassword.Dispose
 		SaveFormPosition
 		UserProfileFoldersTask.DeleteDocumentCaptureShortcuts

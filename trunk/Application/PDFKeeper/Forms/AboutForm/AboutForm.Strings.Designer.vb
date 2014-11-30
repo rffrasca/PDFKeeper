@@ -86,19 +86,19 @@ Friend Class AboutForm_Strings
 	'''  Looks up a localized string similar to This software includes works distributed under the licenses listed below.
 	'''
 	'''Mini Icons (subset)
-	'''-------------------
+	'''--------------------
 	'''Website: http://www.famfamfam.com/lab/icons/mini/
 	'''Author: Mark James
 	'''License: Available for free use for any purpose.
 	'''
 	'''ReadySET 0.9.3 (subset)
-	'''-----------------------
+	'''-------------------------
 	'''Website: http://readyset.tigris.org/
 	'''Copyright: Copyright (C) 2003-2004 Jason Robbins. All rights reserved.
 	'''License: BSD (http://readyset.tigris.org/templates/readyset-license.html)
 	'''
 	'''iTextSharp (binary)
-	'''------------ [rest of string was truncated]&quot;;.
+	'''--------- [rest of string was truncated]&quot;;.
 	'''</summary>
 	Friend Shared ReadOnly Property ThirdPartyCredits() As String
 		Get

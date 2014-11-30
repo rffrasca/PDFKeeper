@@ -116,61 +116,102 @@ Public NotInheritable Class PdfFileTask
 	''' <summary>
 	''' This function will retrieve the PDF document from the database for
 	''' "selectedId" and then save it to disk as "pdfFile".  If "pdfFile" is
-	''' cached, then skip the retrieve.  If the PDF document is retrieved,
-	''' then add "pdfFile" to the cache.
+	''' cached, then skip the retrieve.  If "pdfFile" is retrieved, then add to
+	''' the cache.  If encryption is supported by the operating system, encrypt
+	''' "pdfFile".
 	''' </summary>
 	''' <param name="selectedId"></param>
 	''' <param name="pdfFile"></param>
 	''' <returns>0 = Success, 1 = Failed</returns>
 	Public Shared Function RetrieveFromDatabase(ByVal selectedId As Integer, _
 										ByVal pdfFile As String) As Integer
-		If FileCache.IsCached(pdfFile) Then
-			Return 0
-		End If
-		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(UserSettings.LastUserName, _
-				DatabaseConnectionForm.dbPassword, _
-				UserSettings.LastDataSource) = 1 Then
-			oDatabaseConnection.Dispose
-			Return 1
-		End If
-		Dim sql As String = "select doc_pdf from pdfkeeper.docs " & _
-							"where doc_id =" & selectedId
-		Using oOracleCommand As New OracleCommand(sql, _
-			  oDatabaseConnection.oraConnection)
-			Try
-				Using oOracleDataReader As OracleDataReader = _
-					  oOracleCommand.ExecuteReader()
-  					oOracleDataReader.Read()
-  					Using oOracleBlob As OracleBlob = _
-  						  oOracleDataReader.GetOracleBlob(0)
-  						Using oMemoryStream As New _
-  							   MemoryStream(oOracleBlob.Value)
-  							Using oFileStream As New FileStream(pdfFile, _
-  									 FileMode.Create,FileAccess.Write)
-								Try
-									oFileStream.Write( _
-										oMemoryStream.ToArray, 0, _
-										CInt(oOracleBlob.Length))
-								Catch ex As IOException
-									MessageBoxWrapper.ShowError(ex.Message)
-									oDatabaseConnection.Dispose
-									Return 1
-  								Finally
-  									oFileStream.Close()
-								End Try
+		If FileCache.IsCached(pdfFile) = False Then
+			Dim oDatabaseConnection As New DatabaseConnection
+			If oDatabaseConnection.Open(UserSettings.LastUserName, _
+					DatabaseConnectionForm.dbPassword, _
+					UserSettings.LastDataSource) = 1 Then
+				oDatabaseConnection.Dispose
+				Return 1
+			End If
+			Dim sql As String = "select doc_pdf from pdfkeeper.docs " & _
+								"where doc_id =" & selectedId
+			Using oOracleCommand As New OracleCommand(sql, _
+				  oDatabaseConnection.oraConnection)
+				Try
+					Using oOracleDataReader As OracleDataReader = _
+						  oOracleCommand.ExecuteReader()
+  						oOracleDataReader.Read()
+  						Using oOracleBlob As OracleBlob = _
+  							  oOracleDataReader.GetOracleBlob(0)
+  							Using oMemoryStream As New _
+  								   MemoryStream(oOracleBlob.Value)
+  								Using oFileStream As New FileStream(pdfFile, _
+  										 FileMode.Create,FileAccess.Write)
+									Try
+										oFileStream.Write( _
+											oMemoryStream.ToArray, 0, _
+											CInt(oOracleBlob.Length))
+									Catch ex As IOException
+										MessageBoxWrapper.ShowError(ex.Message)
+										oDatabaseConnection.Dispose
+										Return 1
+  									Finally
+  										oFileStream.Close()
+									End Try
+								End Using
 							End Using
 						End Using
 					End Using
-				End Using
-			Catch ex As OracleException
-				MessageBoxWrapper.ShowError(ex.Message.ToString())
+				Catch ex As OracleException
+					MessageBoxWrapper.ShowError(ex.Message.ToString())
+					Return 1
+				Finally
+					oDatabaseConnection.Dispose
+				End Try
+			End Using
+			FileCache.Add(pdfFile)		
+		End If
+		FileTask.Encrypt(pdfFile)
+		Return 0
+	End Function
+	
+	''' <summary>
+	''' This function will generate a PNG file in the Cache folder containing
+	''' the first page from "pdfFile".  If the PNG file is cached, then skip
+	''' the file generation.  If the PNG file is generated, then add to the
+	''' cache.  If encryption is supported by the operating system, encrypt the
+	''' generated PNG file.
+	''' </summary>
+	''' <param name="pdfFile"></param>
+	''' <returns>0 = Success, 1 = Failed</returns>
+	Public Shared Function GeneratePdfPreviewImage(ByVal pdfFile As String) _
+													As Integer
+		Dim outputFile As String = Path.ChangeExtension(pdfFile, "png")
+		If FileCache.IsCached(outputFile) = False Then
+			Dim oProcess As New Process()
+			Try
+				oProcess.StartInfo.FileName = "gswin32c.exe"
+				oProcess.StartInfo.Arguments = _
+					"-o " & Chr(34) & outputFile & Chr(34) & _
+					" -sDEVICE=pngalpha " & _
+					"-dLastPage=1 " & Chr(34) & pdfFile & Chr(34)
+				oProcess.StartInfo.UseShellExecute = False
+				oProcess.StartInfo.CreateNoWindow = True
+				oProcess.StartInfo.RedirectStandardError = True
+				oProcess.Start
+				oProcess.WaitForExit
+				If oProcess.ExitCode <> 0 Then
+					Dim oStreamReader As StreamReader = oProcess.StandardError
+					MessageBoxWrapper.ShowError(oStreamReader.ReadToEnd)
+					Return 1
+				End If
+				FileCache.Add(outputFile)
+			Catch ex As System.ComponentModel.Win32Exception
+				MessageBoxWrapper.ShowError(ex.Message)
 				Return 1
-			Finally
-				oDatabaseConnection.Dispose
 			End Try
-		End Using
-		FileCache.Add(pdfFile)
+		End If
+		FileTask.Encrypt(outputFile)
 		Return 0
 	End Function
 	
