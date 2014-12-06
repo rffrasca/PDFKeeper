@@ -31,15 +31,15 @@ Public Partial Class AboutForm
 	
 	''' <summary>
 	''' This subroutine will set the font to MS Sans Serif 8pt in XP or
-	''' Segoe UI 9pt in Vista or later; read the Assebly details, and fill the
-	''' fill the License and Third-Party Notices tabs.
+	''' Segoe UI 9pt in Vista or later; read the Assembly details, and fill the
+	''' License and Credits text boxes.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub AboutFormLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont	' Use Segoe UI in Vista & 7
 		ReadAssemblyDetails
-		FillTabs
+		FillTextBoxes
 	End Sub
 	
 	''' <summary>
@@ -55,11 +55,11 @@ Public Partial Class AboutForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will fill the License and Third-Party Notice tabs.
+	''' This subroutine will fill the License and Credits text boxes.
 	''' </summary>
-	Private Sub FillTabs
+	Private Sub FillTextBoxes
 		textBoxLicense.Text = AboutForm_Strings.License
-		textBoxThirdPartyCredits.Text = AboutForm_Strings.ThirdPartyCredits
+		textBoxCredits.Text = AboutForm_Strings.Credits
 	End Sub
 	
 	''' <summary>

@@ -64,6 +64,31 @@ Friend Class AboutForm_Strings
 	End Property
 	
 	'''<summary>
+	'''  Looks up a localized string similar to This software includes works distributed under the licenses listed below.
+	'''
+	'''Mini Icons (subset)
+	'''--------------------
+	'''Author: Mark James
+	'''Website: http://www.famfamfam.com/lab/icons/mini/
+	'''License: Available for free use for any purpose.
+	'''
+	'''Open Iconic (subset)
+	'''----------------------
+	'''Copyright (c) 2014 Waybury
+	'''Website: https://github.com/iconic/open-iconic
+	'''License: MIT (https://github.com/iconic/open-iconic/blob/master/ICON-LICENSE)
+	'''
+	'''ReadySET 0.9.3 (subset)
+	'''-------------------------
+	'''Copyright (C)  [rest of string was truncated]&quot;;.
+	'''</summary>
+	Friend Shared ReadOnly Property Credits() As String
+		Get
+			Return ResourceManager.GetString("Credits", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
 	'''  Looks up a localized string similar to GNU GENERAL PUBLIC LICENSE
 	'''Version 3, 29 June 2007
 	'''
@@ -79,31 +104,6 @@ Friend Class AboutForm_Strings
 	Friend Shared ReadOnly Property License() As String
 		Get
 			Return ResourceManager.GetString("License", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
-	'''  Looks up a localized string similar to This software includes works distributed under the licenses listed below.
-	'''
-	'''Mini Icons (subset)
-	'''--------------------
-	'''Website: http://www.famfamfam.com/lab/icons/mini/
-	'''Author: Mark James
-	'''License: Available for free use for any purpose.
-	'''
-	'''Open Iconic (subset)
-	'''----------------------
-	'''Website: https://github.com/iconic/open-iconic
-	'''Copyright: Copyright (c) 2014 Waybury
-	'''License: MIT (https://github.com/iconic/open-iconic/blob/master/ICON-LICENSE)
-	'''
-	'''ReadySET 0.9.3 (subset)
-	'''-------------------------
-	'''Web [rest of string was truncated]&quot;;.
-	'''</summary>
-	Friend Shared ReadOnly Property ThirdPartyCredits() As String
-		Get
-			Return ResourceManager.GetString("ThirdPartyCredits", resourceCulture)
 		End Get
 	End Property
 End Class
