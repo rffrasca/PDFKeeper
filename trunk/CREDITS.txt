@@ -9,6 +9,12 @@ Website: http://www.famfamfam.com/lab/icons/mini/
 Author: Mark James
 License: Available for free use for any purpose.
 
+Open Iconic (subset)
+--------------------
+Website: https://github.com/iconic/open-iconic
+Copyright: Copyright (c) 2014 Waybury
+License: MIT (https://github.com/iconic/open-iconic/blob/master/ICON-LICENSE)
+
 ReadySET 0.9.3 (subset)
 -----------------------
 Website: http://readyset.tigris.org/

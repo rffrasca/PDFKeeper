@@ -115,6 +115,8 @@ Partial Class MainForm
 		Me.columnHeaderSubject = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderAdded = New System.Windows.Forms.ColumnHeader()
 		Me.tabPagePreview = New System.Windows.Forms.TabPage()
+		Me.buttonZoomOut = New System.Windows.Forms.Button()
+		Me.buttonZoomIn = New System.Windows.Forms.Button()
 		Me.panelPreview = New System.Windows.Forms.Panel()
 		Me.pictureBoxPreview = New System.Windows.Forms.PictureBox()
 		Me.buttonNext = New System.Windows.Forms.Button()
@@ -589,12 +591,28 @@ Partial Class MainForm
 		'
 		'tabPagePreview
 		'
+		Me.tabPagePreview.Controls.Add(Me.buttonZoomOut)
+		Me.tabPagePreview.Controls.Add(Me.buttonZoomIn)
 		Me.tabPagePreview.Controls.Add(Me.panelPreview)
 		Me.tabPagePreview.Controls.Add(Me.buttonNext)
 		Me.tabPagePreview.Controls.Add(Me.buttonPrevious)
 		resources.ApplyResources(Me.tabPagePreview, "tabPagePreview")
 		Me.tabPagePreview.Name = "tabPagePreview"
 		Me.tabPagePreview.UseVisualStyleBackColor = true
+		'
+		'buttonZoomOut
+		'
+		resources.ApplyResources(Me.buttonZoomOut, "buttonZoomOut")
+		Me.buttonZoomOut.Name = "buttonZoomOut"
+		Me.buttonZoomOut.UseVisualStyleBackColor = true
+		AddHandler Me.buttonZoomOut.Click, AddressOf Me.ButtonZoomOutClick
+		'
+		'buttonZoomIn
+		'
+		resources.ApplyResources(Me.buttonZoomIn, "buttonZoomIn")
+		Me.buttonZoomIn.Name = "buttonZoomIn"
+		Me.buttonZoomIn.UseVisualStyleBackColor = true
+		AddHandler Me.buttonZoomIn.Click, AddressOf Me.ButtonZoomInClick
 		'
 		'panelPreview
 		'
@@ -832,6 +850,8 @@ Partial Class MainForm
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private buttonZoomIn As System.Windows.Forms.Button
+	Private buttonZoomOut As System.Windows.Forms.Button
 	Private panelPreview As System.Windows.Forms.Panel
 	Private buttonPrevious As System.Windows.Forms.Button
 	Private buttonNext As System.Windows.Forms.Button

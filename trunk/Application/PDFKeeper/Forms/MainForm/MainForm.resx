@@ -667,26 +667,99 @@
   <data name="&gt;&gt;tabPageSearch.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="buttonZoomOut.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonZoomOut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsPAAALDwGS+QOlAAABFElEQVQ4T5WSO0pDQRRAAzbG
+        TiuJy7ASxEpcgyCkEAP2VilDCLoPwU5EENeREFeiYiz8nXOZCfM0GcmBA3Pvu/N7c1u/2MErfML35BQv
+        sYNVTvAVv5OfxVhf8BgX4uQvtPAad3EN13Efb9Fv1vxZxGPnnc9NLOECrXnGbRMZ7+yHm4jq3KG1o4gS
+        /jCTexHVOUBrJxEl/NMmva84XqRsoONZRIm8QDui5qRSscaxc+b4ziY93n/kK4wjStgkJu8jqpOfcxBR
+        wg6zSfzQN7EEJ1mjZyZKbI7cSI94hFu4iYf4gHmyfmAXG7iITVIW1nTDU2xgh9kkvrNP5d92PMQeunO5
+        yBuuhMfOV1UXXBmP7c5MbvV/ADd+abjt8BQXAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="buttonZoomOut.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="buttonZoomOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>434, 6</value>
+  </data>
+  <data name="buttonZoomOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="buttonZoomOut.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonZoomOut.Text" xml:space="preserve">
+    <value>Zoom &amp;Out</value>
+  </data>
+  <data name="buttonZoomOut.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;buttonZoomOut.Name" xml:space="preserve">
+    <value>buttonZoomOut</value>
+  </data>
+  <data name="&gt;&gt;buttonZoomOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonZoomOut.Parent" xml:space="preserve">
+    <value>tabPagePreview</value>
+  </data>
+  <data name="&gt;&gt;buttonZoomOut.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonZoomIn.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonZoomIn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsPAAALDwGS+QOlAAABHUlEQVQ4T5WSO0oEQRBAF0xc
+        M41Ej2EkiJF4BkEwEAVzow1FRO8hmIkI4jl2WU+iogb+3iu6nJ51dmEfPOiq6arunu7eBOt4hU/4URzj
+        Ja7hTPbxFX+KX9VYX3APO7H4G514jRu4gIu4hbfoN+f8a+K2c+UTE1M4Rec846qJxDP74SaiBnNac4fm
+        LiIq+MNMbkbU0NVgG82NIir4p016XsnCSWUJHb9HVMgG/YjaRbXiHMfW/OE9m3R7NXVhkkcYRlTwkZi8
+        j6ihq0Fe51lEBV+Yj8QPAxNTsCibHpmo8XHkQ3rEXVzBZdzBB8xi/cQDbGETH0k9cZYueIgtfGE+Eu/Z
+        q/JvOz7HY3TluskbzoXbzqOqDefGbbsyxb3BL4IwcbC9qb/fAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="buttonZoomIn.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="buttonZoomIn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 6</value>
+  </data>
+  <data name="buttonZoomIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="buttonZoomIn.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonZoomIn.Text" xml:space="preserve">
+    <value>Zoom &amp;In</value>
+  </data>
+  <data name="buttonZoomIn.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;buttonZoomIn.Name" xml:space="preserve">
+    <value>buttonZoomIn</value>
+  </data>
+  <data name="&gt;&gt;buttonZoomIn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonZoomIn.Parent" xml:space="preserve">
+    <value>tabPagePreview</value>
+  </data>
+  <data name="&gt;&gt;buttonZoomIn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="panelPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="panelPreview.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="pictureBoxPreview.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="pictureBoxPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 5</value>
-  </data>
-  <data name="pictureBoxPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>670, 550</value>
-  </data>
-  <data name="pictureBoxPreview.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>AutoSize</value>
-  </data>
-  <data name="pictureBoxPreview.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;pictureBoxPreview.Name" xml:space="preserve">
     <value>pictureBoxPreview</value>
@@ -719,7 +792,7 @@
     <value>tabPagePreview</value>
   </data>
   <data name="&gt;&gt;panelPreview.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="buttonNext.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -747,7 +820,7 @@
     <value>75, 23</value>
   </data>
   <data name="buttonNext.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="buttonNext.Text" xml:space="preserve">
     <value>&amp;Next</value>
@@ -762,7 +835,7 @@
     <value>tabPagePreview</value>
   </data>
   <data name="&gt;&gt;buttonNext.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="buttonPrevious.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -790,7 +863,7 @@
     <value>75, 23</value>
   </data>
   <data name="buttonPrevious.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="buttonPrevious.Text" xml:space="preserve">
     <value>&amp;Previous</value>
@@ -808,7 +881,7 @@
     <value>tabPagePreview</value>
   </data>
   <data name="&gt;&gt;buttonPrevious.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="tabPagePreview.ImageIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -914,7 +987,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACu
-        DAAAAk1TRnQBSQFMAgEBBQEAAQwBCgEMAQoBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DAAAAk1TRnQBSQFMAgEBBQEAATQBCgE0AQoBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1880,6 +1953,33 @@
   </data>
   <data name="columnHeaderAdded.Width" type="System.Int32, mscorlib">
     <value>125</value>
+  </data>
+  <data name="pictureBoxPreview.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="pictureBoxPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="pictureBoxPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>670, 550</value>
+  </data>
+  <data name="pictureBoxPreview.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
+  </data>
+  <data name="pictureBoxPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxPreview.Name" xml:space="preserve">
+    <value>pictureBoxPreview</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxPreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxPreview.Parent" xml:space="preserve">
+    <value>panelPreview</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxPreview.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="groupBoxProperties.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>

@@ -34,7 +34,9 @@ Public Partial Class MainForm
 	Dim capturePdfFile As String
 	Dim captureModPdfFile As String
 	Dim lastPdfDocumentCheckResult As Integer
-	
+	Dim previewImage As System.Drawing.Image
+	Dim previewImageZoomValue As Int32
+		
 	Public Sub New()
 		Me.InitializeComponent()
 		StartUpdateCheck
@@ -951,6 +953,32 @@ Public Partial Class MainForm
 	#Region "Document Preview"
 	
 	''' <summary>
+	''' This subroutine will increase the zoom value by 25 and update the
+	''' Document Preview Picture Box.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub ButtonZoomInClick(sender As Object, e As EventArgs)
+		Me.Cursor = Cursors.WaitCursor
+		previewImageZoomValue += 25
+		PreviewImageZoom
+		Me.Cursor = Cursors.Default
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will decrease the zoom value by 25 and update the
+	''' Document Preview Picture Box. 
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub ButtonZoomOutClick(sender As Object, e As EventArgs)
+		Me.Cursor = Cursors.WaitCursor
+		previewImageZoomValue -= 25
+		PreviewImageZoom
+		Me.Cursor = Cursors.Default
+	End Sub
+	
+	''' <summary>
 	''' This subroutine will select the previous listview item on the Document
 	''' Search tab, and then generate and load the document preview PNG file
 	''' into picture box control on Document Preview tab.
@@ -992,6 +1020,8 @@ Public Partial Class MainForm
 	Private Sub LoadDocumentPreview
 		toolStripStatusLabelMessage.Text = Nothing
 		Application.DoEvents
+		buttonZoomIn.Enabled = False
+		buttonZoomOut.Enabled = False
 		buttonPrevious.Enabled = False
 		buttonNext.Enabled = False
 		pictureBoxPreview.Image = Nothing
@@ -1001,6 +1031,7 @@ Public Partial Class MainForm
 			If PdfFileTask.GeneratePdfPreviewImage(pdfFile) = 0 Then
 				pictureBoxPreview.Enabled = True
 				pictureBoxPreview.Load(Path.ChangeExtension(pdfFile, "png"))
+				buttonZoomIn.Enabled = True
 				If listViewDocs.SelectedItems(0).Index > 0 Then
 					buttonPrevious.Enabled = True
 				End If
@@ -1011,8 +1042,32 @@ Public Partial Class MainForm
 				toolStripStatusLabelMessage.Text = "Previewing document: " & _
 					listViewDocs.SelectedItems(0).Index + 1 & " of " & _
 					listViewDocs.Items.Count
+				previewImage = PictureBoxPreview.Image
+				previewImageZoomValue = 100
 			End If
 		End If
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will resize the image in the Picture Box to the zoom
+	''' value set by the caller.
+	''' </summary>
+	Private Sub PreviewImageZoom
+		If previewImageZoomValue > 100 Then
+			buttonZoomOut.Enabled = True
+		Else
+			buttonZoomOut.Enabled = False
+		End If
+		Dim zoomImage As New Bitmap(previewImage, _
+			CInt(Convert.ToInt32(previewImage.Width * _
+			previewImageZoomValue) / 100), _
+			(Convert.ToInt32(previewImage.Height * _
+			previewImageZoomValue / 100)))
+		Dim convertedImage As Graphics = Graphics.FromImage(zoomImage)
+		convertedImage.InterpolationMode = _
+			System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor
+		PictureBoxPreview.Image = Nothing
+		PictureBoxPreview.Image = zoomImage
 	End Sub
 	
 	#End Region

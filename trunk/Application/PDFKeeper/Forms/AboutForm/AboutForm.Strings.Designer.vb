@@ -91,14 +91,15 @@ Friend Class AboutForm_Strings
 	'''Author: Mark James
 	'''License: Available for free use for any purpose.
 	'''
+	'''Open Iconic (subset)
+	'''----------------------
+	'''Website: https://github.com/iconic/open-iconic
+	'''Copyright: Copyright (c) 2014 Waybury
+	'''License: MIT (https://github.com/iconic/open-iconic/blob/master/ICON-LICENSE)
+	'''
 	'''ReadySET 0.9.3 (subset)
 	'''-------------------------
-	'''Website: http://readyset.tigris.org/
-	'''Copyright: Copyright (C) 2003-2004 Jason Robbins. All rights reserved.
-	'''License: BSD (http://readyset.tigris.org/templates/readyset-license.html)
-	'''
-	'''iTextSharp (binary)
-	'''--------- [rest of string was truncated]&quot;;.
+	'''Web [rest of string was truncated]&quot;;.
 	'''</summary>
 	Friend Shared ReadOnly Property ThirdPartyCredits() As String
 		Get
