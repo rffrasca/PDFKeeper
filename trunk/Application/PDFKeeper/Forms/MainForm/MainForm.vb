@@ -679,6 +679,8 @@ Public Partial Class MainForm
 			buttonDocumentNotesRevert.Enabled = False
 			Me.Text = "PDFKeeper"
 			searchLastTitleText = Me.Text
+			buttonZoomIn.Enabled = False
+			buttonZoomOut.Enabled = False
 			buttonPrevious.Enabled = False
 			buttonNext.Enabled = False
 			pictureBoxPreview.Image = Nothing
