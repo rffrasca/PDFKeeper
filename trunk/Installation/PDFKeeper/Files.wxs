@@ -3,7 +3,7 @@
 		<DirectoryRef Id="TARGETDIR">
 			<Directory Id="ProgramFilesFolder" Name="PFiles">
 				<Directory Id="INSTALLDIR" Name="PDFKeeper">
-					<Component Id="LicenseRtf" Guid="51DFE8C8-4306-4898-AEFB-7031B5E95ED0" DiskId="1" Feature="Complete">
+					<Component Id="LicenseRtf" Guid="51DFE8C8-4306-4898-AEFB-7031B5E95ED0" DiskId="1">
 						<File Id="LicenseFile" Name="license.rtf" Source="license.rtf" KeyPath="yes" />
 					</Component>
 					<Component Guid="8ADB0AD8-8885-4EF5-B1ED-7D1BFF56A7F1" Id="SumatrapdfrestrictIni" DiskId="1" Feature="Complete">
