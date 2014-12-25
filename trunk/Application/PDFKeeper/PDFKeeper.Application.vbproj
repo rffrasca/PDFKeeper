@@ -53,7 +53,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.Targets" />
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\..\packages\iTextSharp.5.5.3\lib\itextsharp.dll</HintPath>
+      <HintPath>..\..\packages\iTextSharp.5.5.4\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Nini">
       <HintPath>..\..\packages\Trove.Nini.1.1.0.0\lib\net20\Nini.dll</HintPath>
