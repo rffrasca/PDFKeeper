@@ -225,6 +225,7 @@
   <ItemGroup>
     <Import Include="iTextSharp.text" />
     <Import Include="iTextSharp.text.pdf" />
+    <Import Include="iTextSharp.text.pdf.parser" />
     <Import Include="IWshRuntimeLibrary" />
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="Microsoft.Win32" />
