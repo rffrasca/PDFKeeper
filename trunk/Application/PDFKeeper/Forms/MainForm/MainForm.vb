@@ -681,10 +681,14 @@ Public Partial Class MainForm
 			searchLastTitleText = Me.Text
 			buttonZoomIn.Enabled = False
 			buttonZoomOut.Enabled = False
-			buttonPrevious.Enabled = False
-			buttonNext.Enabled = False
+			buttonPreviewPrevious.Enabled = False
+			buttonPreviewNext.Enabled = False
 			pictureBoxPreview.Image = Nothing
 			pictureBoxPreview.Enabled = False
+			buttonTextOnlyPrevious.Enabled = False
+			buttonTextOnlyNext.Enabled = False
+			textBoxTextOnlyView.Text = Nothing
+			textBoxTextOnlyView.Enabled = False
 		Else
 			selectedId = CInt(listViewDocs.SelectedItems(0).Text.Trim)
 			Dim pdfFile As String = Path.Combine(CacheDir, _
@@ -983,11 +987,11 @@ Public Partial Class MainForm
 	''' <summary>
 	''' This subroutine will select the previous listview item on the Document
 	''' Search tab, and then generate and load the document preview PNG file
-	''' into picture box control on Document Preview tab.
+	''' into picture box control on the Document Preview tab.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	Private Sub ButtonPreviousClick(sender As Object, e As EventArgs)
+	Private Sub ButtonPreviewPreviousClick(sender As Object, e As EventArgs)
 		listViewDocs.Focus()
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index - 1).Selected = True
@@ -999,11 +1003,11 @@ Public Partial Class MainForm
 	''' <summary>
 	''' This subroutine will select the next listview item on the Document
 	''' Search tab, and then generate and load the document preview PNG file
-	''' into picture box control on Document Preview tab.
+	''' into picture box control on the Document Preview tab.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	Private Sub ButtonNextClick(sender As Object, e As EventArgs)
+	Private Sub ButtonPreviewNextClick(sender As Object, e As EventArgs)
 		listViewDocs.Focus()
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index + 1).Selected = True
@@ -1024,8 +1028,8 @@ Public Partial Class MainForm
 		Application.DoEvents
 		buttonZoomIn.Enabled = False
 		buttonZoomOut.Enabled = False
-		buttonPrevious.Enabled = False
-		buttonNext.Enabled = False
+		buttonPreviewPrevious.Enabled = False
+		buttonPreviewNext.Enabled = False
 		pictureBoxPreview.Image = Nothing
 		Dim pdfFile As String = Path.Combine(CacheDir, "pdfkeeper" & _
 			selectedId & ".pdf")
@@ -1035,11 +1039,11 @@ Public Partial Class MainForm
 				pictureBoxPreview.Load(Path.ChangeExtension(pdfFile, "png"))
 				buttonZoomIn.Enabled = True
 				If listViewDocs.SelectedItems(0).Index > 0 Then
-					buttonPrevious.Enabled = True
+					buttonPreviewPrevious.Enabled = True
 				End If
 				If listViewDocs.SelectedItems(0).Index < _
 						listViewDocs.Items.Count - 1 Then
-					buttonNext.Enabled = True
+					buttonPreviewNext.Enabled = True
 				End If
 				toolStripStatusLabelMessage.Text = "Previewing document: " & _
 					listViewDocs.SelectedItems(0).Index + 1 & " of " & _
@@ -1070,6 +1074,72 @@ Public Partial Class MainForm
 			System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor
 		PictureBoxPreview.Image = Nothing
 		PictureBoxPreview.Image = zoomImage
+	End Sub
+	
+	#End Region
+	
+	#Region "Document Text-Only View"
+	
+	''' <summary>
+	''' This subroutine will select the previous listview item on the Document
+	''' Search tab, and then extract and load the document text into the text
+	''' box control on the Document Text-Only View tab.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub ButtonTextOnlyPreviousClick(sender As Object, e As EventArgs)
+		listViewDocs.Focus()
+		listViewDocs.Items( _
+			listViewDocs.SelectedItems(0).Index - 1).Selected = True
+		Me.Cursor = Cursors.WaitCursor
+		LoadTextOnlyView
+		Me.Cursor = Cursors.Default
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will select the next listview item on the Document
+	''' Search tab, and then extract and load the document text into the text
+	''' box control on the Document Text-Only View tab.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub ButtonTextOnlyNextClick(sender As Object, e As EventArgs)
+		listViewDocs.Focus()
+		listViewDocs.Items( _
+			listViewDocs.SelectedItems(0).Index + 1).Selected = True
+		Me.Cursor = Cursors.WaitCursor
+		LoadTextOnlyView
+		Me.Cursor = Cursors.Default
+	End Sub
+	
+	''' <summary>
+	''' This subroutine will retrieve the PDF file for the selected listview
+	''' item on the Document Search tab, extract the text from the PDF file,
+	''' enable/disable controls on the Document Text-Only View tab, load the
+	''' text into the text box control, and update the status bar.
+	''' </summary>
+	Private Sub LoadTextOnlyView
+		toolStripStatusLabelMessage.Text = Nothing
+		Application.DoEvents
+		buttonTextOnlyPrevious.Enabled = False
+		buttonTextOnlyNext.Enabled = False
+		textBoxTextOnlyView.Text = Nothing
+		Dim pdfFile As String = Path.Combine(CacheDir, "pdfkeeper" & _
+			selectedId & ".pdf")
+		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
+			textBoxTextOnlyView.Text = PdfFileTask.ExtractPdfText(pdfFile)
+			textBoxTextOnlyView.Enabled = True
+			If listViewDocs.SelectedItems(0).Index > 0 Then
+				buttonTextOnlyPrevious.Enabled = True
+			End If
+			If listViewDocs.SelectedItems(0).Index < _
+					listViewDocs.Items.Count - 1 Then
+				buttonTextOnlyNext.Enabled = True
+			End If
+			toolStripStatusLabelMessage.Text = "Viewing document: " & _
+				listViewDocs.SelectedItems(0).Index + 1 & " of " & _
+				listViewDocs.Items.Count
+		End If
 	End Sub
 	
 	#End Region
@@ -1499,7 +1569,9 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub TabControlMainSelectedIndexChanged(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		If tabControlMain.SelectedIndex = 0 Then ' Document Search
+		
+		' Document Search
+		If tabControlMain.SelectedIndex = 0 Then
 			Me.Text = searchLastTitleText
 			If selectedId > 0 Then
 				listViewDocs.Focus
@@ -1518,14 +1590,21 @@ Public Partial Class MainForm
 			toolStripMenuItemHtmlConverter.Enabled = False
 			toolStripMenuItemCaptureFolder.Enabled = False
 			toolStripStatusLabelMessage.Text = searchLastStatusMessage
-		ElseIf tabControlMain.SelectedIndex = 1 Then ' Document Search Preview
+			
+		' Document Preview or Document Text-Only View
+		ElseIf tabControlMain.SelectedIndex = 1 Or _
+				tabControlMain.SelectedIndex = 2 Then
 			Me.Text = searchLastTitleText
 			toolStripStatusLabelMessage.Text = Nothing
 			If selectedId > 0 Then
 				listViewDocs.Focus
 				listViewDocs.SelectedItems(0).Text = CStr(selectedId)
 				toolStripMenuItemSavePDFtoDisk.Enabled = True
-				LoadDocumentPreview
+				If tabControlMain.SelectedIndex = 1 Then
+					LoadDocumentPreview	
+				ElseIf tabControlMain.SelectedIndex = 2 Then
+					LoadTextOnlyView
+				End If
 			Else
 				toolStripMenuItemSavePDFtoDisk.Enabled = False
 			End If

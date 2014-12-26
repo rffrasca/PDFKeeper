@@ -109,7 +109,7 @@ Partial Class MainForm
 		Me.tabPageDocumentKeywords = New System.Windows.Forms.TabPage()
 		Me.textBoxDocumentKeywords = New System.Windows.Forms.TextBox()
 		Me.listViewDocs = New System.Windows.Forms.ListView()
-		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(0)
+		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(CType(resources.GetObject("listViewDocs.Columns"),Integer))
 		Me.columnHeaderTitle = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderAuthor = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderSubject = New System.Windows.Forms.ColumnHeader()
@@ -119,8 +119,12 @@ Partial Class MainForm
 		Me.buttonZoomIn = New System.Windows.Forms.Button()
 		Me.panelPreview = New System.Windows.Forms.Panel()
 		Me.pictureBoxPreview = New System.Windows.Forms.PictureBox()
-		Me.buttonNext = New System.Windows.Forms.Button()
-		Me.buttonPrevious = New System.Windows.Forms.Button()
+		Me.buttonPreviewNext = New System.Windows.Forms.Button()
+		Me.buttonPreviewPrevious = New System.Windows.Forms.Button()
+		Me.tabPageTextOnlyView = New System.Windows.Forms.TabPage()
+		Me.textBoxTextOnlyView = New System.Windows.Forms.TextBox()
+		Me.buttonTextOnlyNext = New System.Windows.Forms.Button()
+		Me.buttonTextOnlyPrevious = New System.Windows.Forms.Button()
 		Me.tabPageCapture = New System.Windows.Forms.TabPage()
 		Me.groupBoxProperties = New System.Windows.Forms.GroupBox()
 		Me.textBoxKeywords = New System.Windows.Forms.TextBox()
@@ -155,6 +159,7 @@ Partial Class MainForm
 		Me.tabPagePreview.SuspendLayout
 		Me.panelPreview.SuspendLayout
 		CType(Me.pictureBoxPreview,System.ComponentModel.ISupportInitialize).BeginInit
+		Me.tabPageTextOnlyView.SuspendLayout
 		Me.tabPageCapture.SuspendLayout
 		Me.groupBoxProperties.SuspendLayout
 		Me.groupBoxDocument.SuspendLayout
@@ -416,10 +421,11 @@ Partial Class MainForm
 		Me.imageList.ImageStream = CType(resources.GetObject("imageList.ImageStream"),System.Windows.Forms.ImageListStreamer)
 		Me.imageList.TransparentColor = System.Drawing.Color.Transparent
 		Me.imageList.Images.SetKeyName(0, "page_find.gif")
-		Me.imageList.Images.SetKeyName(1, "page_text.gif")
-		Me.imageList.Images.SetKeyName(2, "file_acrobat.gif")
-		Me.imageList.Images.SetKeyName(3, "page_edit.gif")
-		Me.imageList.Images.SetKeyName(4, "page_key.gif")
+		Me.imageList.Images.SetKeyName(1, "page.gif")
+		Me.imageList.Images.SetKeyName(2, "page_text.gif")
+		Me.imageList.Images.SetKeyName(3, "file_acrobat.gif")
+		Me.imageList.Images.SetKeyName(4, "page_edit.gif")
+		Me.imageList.Images.SetKeyName(5, "page_key.gif")
 		'
 		'printDocumentNotes
 		'
@@ -480,6 +486,7 @@ Partial Class MainForm
 		resources.ApplyResources(Me.tabControlMain, "tabControlMain")
 		Me.tabControlMain.Controls.Add(Me.tabPageSearch)
 		Me.tabControlMain.Controls.Add(Me.tabPagePreview)
+		Me.tabControlMain.Controls.Add(Me.tabPageTextOnlyView)
 		Me.tabControlMain.Controls.Add(Me.tabPageCapture)
 		Me.tabControlMain.ImageList = Me.imageList
 		Me.tabControlMain.Name = "tabControlMain"
@@ -594,8 +601,8 @@ Partial Class MainForm
 		Me.tabPagePreview.Controls.Add(Me.buttonZoomOut)
 		Me.tabPagePreview.Controls.Add(Me.buttonZoomIn)
 		Me.tabPagePreview.Controls.Add(Me.panelPreview)
-		Me.tabPagePreview.Controls.Add(Me.buttonNext)
-		Me.tabPagePreview.Controls.Add(Me.buttonPrevious)
+		Me.tabPagePreview.Controls.Add(Me.buttonPreviewNext)
+		Me.tabPagePreview.Controls.Add(Me.buttonPreviewPrevious)
 		resources.ApplyResources(Me.tabPagePreview, "tabPagePreview")
 		Me.tabPagePreview.Name = "tabPagePreview"
 		Me.tabPagePreview.UseVisualStyleBackColor = true
@@ -627,19 +634,51 @@ Partial Class MainForm
 		Me.pictureBoxPreview.TabStop = false
 		AddHandler Me.pictureBoxPreview.MouseDoubleClick, AddressOf Me.ListViewDocsMouseDoubleClick
 		'
-		'buttonNext
+		'buttonPreviewNext
 		'
-		resources.ApplyResources(Me.buttonNext, "buttonNext")
-		Me.buttonNext.Name = "buttonNext"
-		Me.buttonNext.UseVisualStyleBackColor = true
-		AddHandler Me.buttonNext.Click, AddressOf Me.ButtonNextClick
+		resources.ApplyResources(Me.buttonPreviewNext, "buttonPreviewNext")
+		Me.buttonPreviewNext.Name = "buttonPreviewNext"
+		Me.buttonPreviewNext.UseVisualStyleBackColor = true
+		AddHandler Me.buttonPreviewNext.Click, AddressOf Me.ButtonPreviewNextClick
 		'
-		'buttonPrevious
+		'buttonPreviewPrevious
 		'
-		resources.ApplyResources(Me.buttonPrevious, "buttonPrevious")
-		Me.buttonPrevious.Name = "buttonPrevious"
-		Me.buttonPrevious.UseVisualStyleBackColor = true
-		AddHandler Me.buttonPrevious.Click, AddressOf Me.ButtonPreviousClick
+		resources.ApplyResources(Me.buttonPreviewPrevious, "buttonPreviewPrevious")
+		Me.buttonPreviewPrevious.Name = "buttonPreviewPrevious"
+		Me.buttonPreviewPrevious.UseVisualStyleBackColor = true
+		AddHandler Me.buttonPreviewPrevious.Click, AddressOf Me.ButtonPreviewPreviousClick
+		'
+		'tabPageTextOnlyView
+		'
+		Me.tabPageTextOnlyView.Controls.Add(Me.textBoxTextOnlyView)
+		Me.tabPageTextOnlyView.Controls.Add(Me.buttonTextOnlyNext)
+		Me.tabPageTextOnlyView.Controls.Add(Me.buttonTextOnlyPrevious)
+		resources.ApplyResources(Me.tabPageTextOnlyView, "tabPageTextOnlyView")
+		Me.tabPageTextOnlyView.Name = "tabPageTextOnlyView"
+		Me.tabPageTextOnlyView.UseVisualStyleBackColor = true
+		'
+		'textBoxTextOnlyView
+		'
+		resources.ApplyResources(Me.textBoxTextOnlyView, "textBoxTextOnlyView")
+		Me.textBoxTextOnlyView.Cursor = System.Windows.Forms.Cursors.IBeam
+		Me.textBoxTextOnlyView.Name = "textBoxTextOnlyView"
+		Me.textBoxTextOnlyView.ReadOnly = true
+		Me.textBoxTextOnlyView.TabStop = false
+		AddHandler Me.textBoxTextOnlyView.MouseDoubleClick, AddressOf Me.ListViewDocsMouseDoubleClick
+		'
+		'buttonTextOnlyNext
+		'
+		resources.ApplyResources(Me.buttonTextOnlyNext, "buttonTextOnlyNext")
+		Me.buttonTextOnlyNext.Name = "buttonTextOnlyNext"
+		Me.buttonTextOnlyNext.UseVisualStyleBackColor = true
+		AddHandler Me.buttonTextOnlyNext.Click, AddressOf Me.ButtonTextOnlyNextClick
+		'
+		'buttonTextOnlyPrevious
+		'
+		resources.ApplyResources(Me.buttonTextOnlyPrevious, "buttonTextOnlyPrevious")
+		Me.buttonTextOnlyPrevious.Name = "buttonTextOnlyPrevious"
+		Me.buttonTextOnlyPrevious.UseVisualStyleBackColor = true
+		AddHandler Me.buttonTextOnlyPrevious.Click, AddressOf Me.ButtonTextOnlyPreviousClick
 		'
 		'tabPageCapture
 		'
@@ -841,6 +880,8 @@ Partial Class MainForm
 		Me.panelPreview.ResumeLayout(false)
 		Me.panelPreview.PerformLayout
 		CType(Me.pictureBoxPreview,System.ComponentModel.ISupportInitialize).EndInit
+		Me.tabPageTextOnlyView.ResumeLayout(false)
+		Me.tabPageTextOnlyView.PerformLayout
 		Me.tabPageCapture.ResumeLayout(false)
 		Me.groupBoxProperties.ResumeLayout(false)
 		Me.groupBoxProperties.PerformLayout
@@ -850,11 +891,15 @@ Partial Class MainForm
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private buttonTextOnlyPrevious As System.Windows.Forms.Button
+	Private buttonTextOnlyNext As System.Windows.Forms.Button
+	Private textBoxTextOnlyView As System.Windows.Forms.TextBox
+	Private tabPageTextOnlyView As System.Windows.Forms.TabPage
 	Private buttonZoomIn As System.Windows.Forms.Button
 	Private buttonZoomOut As System.Windows.Forms.Button
 	Private panelPreview As System.Windows.Forms.Panel
-	Private buttonPrevious As System.Windows.Forms.Button
-	Private buttonNext As System.Windows.Forms.Button
+	Private buttonPreviewPrevious As System.Windows.Forms.Button
+	Private buttonPreviewNext As System.Windows.Forms.Button
 	Private pictureBoxPreview As System.Windows.Forms.PictureBox
 	Private tabPagePreview As System.Windows.Forms.TabPage
 	Private backgroundWorkerDirectUpload As System.ComponentModel.BackgroundWorker

@@ -216,6 +216,28 @@ Public NotInheritable Class PdfFileTask
 	End Function
 	
 	''' <summary>
+	''' This function will extract the text contained within "pdfFile" and
+	''' return extracted text to the caller.
+	''' </summary>
+	''' <param name="pdfFile"></param>
+	''' <returns>Text extracted from pdfFile</returns>
+	Public Shared Function ExtractPdfText(ByVal pdfFile As String) As String
+		Dim strategy As ITextExtractionStrategy = _
+			New iTextSharp.text.pdf.parser.LocationTextExtractionStrategy()
+		Using oPdfReader = New PdfReader(pdfFile)
+			Dim text As New StringBuilder()
+			For i As Integer = 1 To oPdfReader.NumberOfPages
+				Dim currentPage As String = PdfTextExtractor.GetTextFromPage(oPdfReader, i, strategy)
+				Dim lines As String() = currentPage.Split(ControlChars.Lf)
+				For Each line As String In lines
+					text.AppendLine(line)
+				Next
+			Next
+			Return text.ToString()
+		End Using
+	End Function
+	
+	''' <summary>
 	''' This function will perform a security check on "pdfFile" and return
 	'''	the result code.
 	''' </summary>
