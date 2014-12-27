@@ -1619,13 +1619,7 @@ Public Partial Class MainForm
 			toolStripMenuItemPrintDocumentNotes.Enabled = False
 			toolStripMenuItemEdit.Enabled = False
 			toolStripMenuItemView.Enabled = False
-			Dim wkhtmltopdf As String = CStr(Registry.GetValue( _
-				"HKEY_LOCAL_MACHINE\SOFTWARE\wkhtmltopdf", "PdfPath", Nothing))
-			If Not wkhtmltopdf = Nothing Then
-				If System.IO.File.Exists(wkhtmltopdf) Then
-					toolStripMenuItemHtmlConverter.Enabled = True
-				End If	
-			End If
+			toolStripMenuItemHtmlConverter.Enabled = True
 			toolStripMenuItemCaptureFolder.Enabled = True
 			toolStripStatusLabelMessage.Text = captureLastStatusMessage
 		End If
