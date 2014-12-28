@@ -222,12 +222,13 @@ Public NotInheritable Class PdfFileTask
 	''' <param name="pdfFile"></param>
 	''' <returns>Text extracted from pdfFile</returns>
 	Public Shared Function ExtractPdfText(ByVal pdfFile As String) As String
-		Dim strategy As ITextExtractionStrategy = _
-			New iTextSharp.text.pdf.parser.LocationTextExtractionStrategy()
 		Using oPdfReader = New PdfReader(pdfFile)
 			Dim text As New StringBuilder()
 			For i As Integer = 1 To oPdfReader.NumberOfPages
-				Dim currentPage As String = PdfTextExtractor.GetTextFromPage(oPdfReader, i, strategy)
+				Dim strategy As ITextExtractionStrategy = _
+					New iTextSharp.text.pdf.parser.LocationTextExtractionStrategy()
+				Dim currentPage As String = PdfTextExtractor.GetTextFromPage( _
+					oPdfReader, i, strategy)
 				Dim lines As String() = currentPage.Split(ControlChars.Lf)
 				For Each line As String In lines
 					text.AppendLine(line)
