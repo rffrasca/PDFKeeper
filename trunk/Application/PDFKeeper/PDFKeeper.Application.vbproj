@@ -48,6 +48,7 @@
     <Optimize>True</Optimize>
     <DefineConstants>TRACE=1</DefineConstants>
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <AllowedReferenceRelatedFileExtensions>.allowedextension</AllowedReferenceRelatedFileExtensions>
     <StartAction>Project</StartAction>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.Targets" />
