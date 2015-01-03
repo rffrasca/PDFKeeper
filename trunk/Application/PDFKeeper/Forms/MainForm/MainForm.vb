@@ -363,9 +363,9 @@ Public Partial Class MainForm
 	Private Sub ToolStripMenuItemContentsClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
 		Dim helpFile As String
-		If tabControlMain.SelectedIndex = 0 Then	' "Document Search" tab
+		If tabControlMain.SelectedIndex < 3 Then
 			helpFile = "Document Search.html"
-		Else	' "Document Capture" tab
+		Else	' Document Capture tab selected.
 			helpFile = "Document Capture.html"
 		End If
 		HelpWrapper.ShowHelp(Me, helpFile)
