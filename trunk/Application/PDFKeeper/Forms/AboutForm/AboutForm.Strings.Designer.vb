@@ -64,23 +64,21 @@ Friend Class AboutForm_Strings
 	End Property
 	
 	'''<summary>
-	'''  Looks up a localized string similar to This software includes works distributed under the licenses listed below.
+	'''  Looks up a localized string similar to Components used by PDFKeeper and their respective licenses.
 	'''
-	'''Mini Icons (subset)
-	'''--------------------
+	'''Mini Icons (subset from collection)
+	'''-------------------------------------
 	'''Author: Mark James
 	'''Website: http://www.famfamfam.com/lab/icons/mini/
 	'''License: Available for free use for any purpose.
 	'''
-	'''Open Iconic (subset)
-	'''----------------------
+	'''Open Iconic (subset from collection)
+	'''---------------------------------------
 	'''Copyright (c) 2014 Waybury
 	'''Website: https://github.com/iconic/open-iconic
 	'''License: MIT (https://github.com/iconic/open-iconic/blob/master/ICON-LICENSE)
 	'''
-	'''ReadySET 0.9.3 (subset)
-	'''-------------------------
-	'''Copyright (C)  [rest of string was truncated]&quot;;.
+	'''ReadySET 0.9.3 [rest of string was truncated]&quot;;.
 	'''</summary>
 	Friend Shared ReadOnly Property Credits() As String
 		Get
