@@ -22,7 +22,7 @@ rem * with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 rem *
 rem ***************************************************************************
 
-copy "..\..\..\..\Tools\sumatrapdfrestrict.ini"
+copy "..\..\..\..\Settings\sumatrapdfrestrict.ini"
 copy "..\..\..\..\Libraries\SumatraPDF.exe"
 copy "..\..\..\..\Libraries\gxps-?.??-win32.exe"
 move gxps-?.??-win32.exe gxps-win32.exe
