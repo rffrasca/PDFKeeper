@@ -184,8 +184,8 @@ Public NotInheritable Class PdfFileTask
 	''' </summary>
 	''' <param name="pdfFile"></param>
 	''' <returns>0 = Success, 1 = Failed</returns>
-	Public Shared Function GeneratePdfPreviewImage(ByVal pdfFile As String) _
-													As Integer
+	Public Shared Function GeneratePreviewImage(ByVal pdfFile As String) _
+												As Integer
 		Dim outputFile As String = Path.ChangeExtension(pdfFile, "png")
 		If FileCache.IsCached(outputFile) = False Then
 			Dim oProcess As New Process()

@@ -1034,7 +1034,7 @@ Public Partial Class MainForm
 		Dim pdfFile As String = Path.Combine(CacheDir, "pdfkeeper" & _
 			selectedId & ".pdf")
 		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
-			If PdfFileTask.GeneratePdfPreviewImage(pdfFile) = 0 Then
+			If PdfFileTask.GeneratePreviewImage(pdfFile) = 0 Then
 				pictureBoxPreview.Enabled = True
 				pictureBoxPreview.Load(Path.ChangeExtension(pdfFile, "png"))
 				buttonZoomIn.Enabled = True
