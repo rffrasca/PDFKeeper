@@ -79,11 +79,6 @@
 			<param name="ImageNumber" value="9">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Capturing HTML Documents">
-			<param name="Local" value="Capturing HTML Documents.html">
-			<param name="ImageNumber" value="9">
-			</OBJECT>
-		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Accessing the Capture Folder">
 			<param name="Local" value="Accessing the Capture Folder.html">
 			<param name="ImageNumber" value="9">

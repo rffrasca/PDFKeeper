@@ -165,23 +165,6 @@ Public NotInheritable Class FolderTask
 	End Function
 		
 	''' <summary>
-	''' This subroutine will convert all XPS files in "folder", including its
-	''' subfolders to PDF and delete to the Recycle Bin. 
-	''' </summary>
-	''' <param name="folder"></param>
-	Public Shared Sub ConvertAllXpsFilesToPdf(ByVal folder As String)
-		Dim files As String()
-		files = Directory.GetFiles(folder, "*.xps", _
-								   SearchOption.AllDirectories)
-		For Each oFile In files
-			FileTask.WaitForFileCreation(oFile)
-			If FileTask.ConvertToPdf(oFile) = 0 Then
-				FileTask.Delete(oFile, True)
-			End If
-		Next
-	End Sub
-	
-	''' <summary>
 	''' This function will return True or False if the name of the specified
 	''' folder contains one or more invalid characters.
 	''' </summary>

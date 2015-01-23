@@ -276,32 +276,6 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will prompt the user to select one or more HTML files,
-	'''	and then proceed to convert the selected file(s) to PDF.
-	''' </summary>
-	''' <param name="sender"></param>
-	''' <param name="e"></param>
-	Private Sub ToolStripMenuItemHtmlConverterClick(sender As Object, e As EventArgs)
-		OpenFileDialog.InitialDirectory = UserSettings.OpenFileLastFolder
-		OpenFileDialog.Title = MainForm_Strings.OpenFileDialogHtmlConvert
-        OpenFileDialog.FileName = Nothing
- 		If OpenFileDialog.ShowDialog() = 2 Then
- 			Exit Sub
-        End If
-        Me.Cursor = Cursors.WaitCursor
- 		For Each fileName As String In OpenFileDialog.FileNames
- 			Dim oFileInfo As New fileinfo(fileName)
- 			UserSettings.OpenFileLastFolder = oFileInfo.DirectoryName
- 			If FileTask.ConvertToPdf(fileName) = 1 Then
- 				MessageBoxWrapper.ShowError(String.Format( _
-					CultureInfo.CurrentCulture, _
-					MainForm_Strings.FailedToConvert, fileName))
-			End If
-        Next
-		Me.Cursor = Cursors.Default 
-	End Sub
-	
-	''' <summary>
 	''' This subroutine will open the Capture folder with Windows Explorer.
 	''' </summary>
 	''' <param name="sender"></param>
@@ -1587,7 +1561,6 @@ Public Partial Class MainForm
 			End If
 			toolStripMenuItemEdit.Enabled = True
 			toolStripMenuItemView.Enabled = True
-			toolStripMenuItemHtmlConverter.Enabled = False
 			toolStripMenuItemCaptureFolder.Enabled = False
 			toolStripStatusLabelMessage.Text = searchLastStatusMessage
 			
@@ -1611,7 +1584,6 @@ Public Partial Class MainForm
 			toolStripMenuItemPrintDocumentNotes.Enabled = False
 			toolStripMenuItemEdit.Enabled = False
 			toolStripMenuItemView.Enabled = False
-			toolStripMenuItemHtmlConverter.Enabled = False
 			toolStripMenuItemCaptureFolder.Enabled = False
 		Else ' Document Capture
 			Me.Text = "PDFKeeper"
@@ -1619,7 +1591,6 @@ Public Partial Class MainForm
 			toolStripMenuItemPrintDocumentNotes.Enabled = False
 			toolStripMenuItemEdit.Enabled = False
 			toolStripMenuItemView.Enabled = False
-			toolStripMenuItemHtmlConverter.Enabled = True
 			toolStripMenuItemCaptureFolder.Enabled = True
 			toolStripStatusLabelMessage.Text = captureLastStatusMessage
 		End If
@@ -1666,19 +1637,17 @@ Public Partial Class MainForm
 	#Region "Components"
 	
 	''' <summary>
-	''' This subroutine will process the Capture folder by converting any XPS
-	''' documents to PDF; display or hide the "Document Capture" status bar
-	''' icon; refresh the "Document Capture Queue" list box, if the folder
-	''' change flag is set to True; delete all empty sub-folders; and display
-	''' or hide the "Document Capture Deny" status bar icon.  To maintain
-	''' synchronization, the timer is stopped during the execution of this
-	''' subroutine.
+	''' This subroutine will process the Capture folder by displaying or hiding
+	''' the "Document Capture" status bar icon; refresh the "Document Capture
+	''' Queue" list box, if the folder change flag is set to True; delete all
+	''' empty sub-folders; and display or hide the "Document Capture Deny"
+	''' status bar icon.  To maintain synchronization, the timer is stopped
+	''' during the execution of this subroutine.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub TimerCaptureCheckTick(sender As Object, e As EventArgs)
 		timerCaptureCheck.Stop
-		FolderTask.ConvertAllXpsFilesToPdf(CaptureDir)
 		If FolderTask.CountOfFiles(CaptureDir, "pdf") > 0 Then
 			toolStripStatusLabelCaptured.Visible = True
 		Else

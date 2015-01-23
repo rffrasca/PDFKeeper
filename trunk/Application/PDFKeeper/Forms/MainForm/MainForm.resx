@@ -310,31 +310,6 @@
   <data name="toolStripMenuItemView.Text" xml:space="preserve">
     <value>&amp;View</value>
   </data>
-  <data name="toolStripMenuItemHtmlConverter.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripMenuItemHtmlConverter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQfAOvx84i2163W+YrKdyVxxlarVTxDVNvo7aPYipvK+sjf8Tqa6m6wzNDpvFSR2y6W
-        KKjO2kSgOj6MisfP2EunznjJTme1jX2fuEqot+f4yFJhe1dwkfL2+uXt9f///////yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIwAA9CBxIcOCHgx4gBFh44QLDhhc8IAxwoAMAiwcqdugQ
-        YINEDwo6QCgQgYADCAoUcFjo0cOBAQUagAwgwYIADjg1CAQgwUOGAQssNIggoCgHnR4cCMiAAAOFCgNg
-        GkVKQEAABgueFkDwYKpAAgewZiXJtWgHpFsHWMCwgEBNpQk6GNgZIUOFBwQIJNCbIMGBuS4HRIjKwIHJ
-        vn4BT+AwMq8DxH0BAN6g8mKHjJgBTAB8YYNnDaA1GBg9GmnB0wQDAgA7
-</value>
-  </data>
-  <data name="toolStripMenuItemHtmlConverter.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+H</value>
-  </data>
-  <data name="toolStripMenuItemHtmlConverter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>265, 22</value>
-  </data>
-  <data name="toolStripMenuItemHtmlConverter.Text" xml:space="preserve">
-    <value>&amp;HTML Converter</value>
-  </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>262, 6</value>
-  </data>
   <data name="toolStripMenuItemCaptureFolder.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -832,7 +807,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACg
-        DQAAAk1TRnQBSQFMAgEBBgEAAXwBCgF8AQoBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAYQBCgGEAQoBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2311,18 +2286,6 @@
   </data>
   <data name="&gt;&gt;toolStripMenuItemTools.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItemHtmlConverter.Name" xml:space="preserve">
-    <value>toolStripMenuItemHtmlConverter</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItemHtmlConverter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
-    <value>toolStripSeparator7</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItemCaptureFolder.Name" xml:space="preserve">
     <value>toolStripMenuItemCaptureFolder</value>
