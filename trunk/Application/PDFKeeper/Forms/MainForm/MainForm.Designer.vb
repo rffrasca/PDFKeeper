@@ -65,8 +65,6 @@ Partial Class MainForm
 		Me.toolStripMenuItemView = New System.Windows.Forms.ToolStripMenuItem()
 		Me.toolStripMenuItemRefresh = New System.Windows.Forms.ToolStripMenuItem()
 		Me.toolStripMenuItemTools = New System.Windows.Forms.ToolStripMenuItem()
-		Me.toolStripMenuItemHtmlConverter = New System.Windows.Forms.ToolStripMenuItem()
-		Me.toolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
 		Me.toolStripMenuItemCaptureFolder = New System.Windows.Forms.ToolStripMenuItem()
 		Me.toolStripMenuItemDirectUploadFolder = New System.Windows.Forms.ToolStripMenuItem()
 		Me.toolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
@@ -255,20 +253,9 @@ Partial Class MainForm
 		'
 		'toolStripMenuItemTools
 		'
-		Me.toolStripMenuItemTools.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolStripMenuItemHtmlConverter, Me.toolStripSeparator7, Me.toolStripMenuItemCaptureFolder, Me.toolStripMenuItemDirectUploadFolder, Me.toolStripSeparator8, Me.toolStripMenuItemDirectUploadConfig})
+		Me.toolStripMenuItemTools.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolStripMenuItemCaptureFolder, Me.toolStripMenuItemDirectUploadFolder, Me.toolStripSeparator8, Me.toolStripMenuItemDirectUploadConfig})
 		Me.toolStripMenuItemTools.Name = "toolStripMenuItemTools"
 		resources.ApplyResources(Me.toolStripMenuItemTools, "toolStripMenuItemTools")
-		'
-		'toolStripMenuItemHtmlConverter
-		'
-		resources.ApplyResources(Me.toolStripMenuItemHtmlConverter, "toolStripMenuItemHtmlConverter")
-		Me.toolStripMenuItemHtmlConverter.Name = "toolStripMenuItemHtmlConverter"
-		AddHandler Me.toolStripMenuItemHtmlConverter.Click, AddressOf Me.ToolStripMenuItemHtmlConverterClick
-		'
-		'toolStripSeparator7
-		'
-		Me.toolStripSeparator7.Name = "toolStripSeparator7"
-		resources.ApplyResources(Me.toolStripSeparator7, "toolStripSeparator7")
 		'
 		'toolStripMenuItemCaptureFolder
 		'
@@ -908,8 +895,6 @@ Partial Class MainForm
 	Private timerDirectUpload As System.Windows.Forms.Timer
 	Private toolStripMenuItemDirectUploadConfig As System.Windows.Forms.ToolStripMenuItem
 	Private toolStripSeparator8 As System.Windows.Forms.ToolStripSeparator
-	Private toolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
-	Private toolStripMenuItemHtmlConverter As System.Windows.Forms.ToolStripMenuItem
 	Private buttonDeselect As System.Windows.Forms.Button
 	Private toolStripMenuItemReportNewIssue As System.Windows.Forms.ToolStripMenuItem
 	Private toolStripSeparator3 As System.Windows.Forms.ToolStripSeparator

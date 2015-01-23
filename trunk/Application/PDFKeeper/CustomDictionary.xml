@@ -2,34 +2,27 @@
 <Dictionary>
 	<Words>
 		<Recognized>
-			<Word>wkhtmltopdf</Word>
-			<Word>wkhtmltoimage</Word>
-			<Word>sumatrapdf</Word>
+			<Word>htm</Word>
+			<Word>sumatrapdfreader</Word>
 			<Word>sourceforge</Word>
 			<Word>readyset-license</Word>
 			<Word>readyset</Word>
 			<Word>php</Word>
 			<Word>noncommercially</Word>
-			<Word>nini</Word>
-			<Word>lgpl</Word>
-			<Word>kowalczyk</Word>
-			<Word>Soares</Word>
-			<Word>Lowagie</Word>
 			<Word>itextpdf</Word>
-			<Word>gpl</Word>
-			<Word>ghostscript</Word>
+			<Word>github</Word>
 			<Word>fsf</Word>
-			<Word>famfamfam</Word>
+			<Word>famfamfam</Word>	
 			<Word>copyleft</Word>
 			<Word>agpl</Word>
+			<Word>Waybury</Word>
+			<Word>Soares</Word>
+			<Word>nini</Word>
 			<Word>Matzelle</Word>
+			<Word>Lowagie</Word>
+			<Word>ghostscript</Word>
 			<Word>Artifex</Word>
 			<Word>Affero</Word>
-			<Word>Xps</Word>
-			<Word>htm</Word>
-			<Word>github</Word>
-			<Word>Waybury</Word>
-			<Word>sumatrapdfreader</Word>
 		</Recognized>
 	</Words>
 </Dictionary>

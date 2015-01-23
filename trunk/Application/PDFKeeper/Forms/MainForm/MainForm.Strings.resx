@@ -174,12 +174,6 @@ Are you sure you want to close PDFKeeper?
   <data name="CaptureUploading" xml:space="preserve">
     <value>Uploading PDF document...</value>
   </data>
-  <data name="OpenFileDialogHtmlConvert" xml:space="preserve">
-    <value>Select HTML File(s) to Convert</value>
-  </data>
-  <data name="FailedToConvert" xml:space="preserve">
-    <value>Failed to convert {0}</value>
-  </data>
   <data name="UnableToStartDirectUpload" xml:space="preserve">
     <value>Unable to start Direct Upload Process due to an error while syncing folders to configuration files.</value>
   </data>

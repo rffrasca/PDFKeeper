@@ -70,17 +70,11 @@
 					<Component Id="CREDITSTxt" Guid="012D0EF9-2E86-4081-8074-1EC642F20DB4" DiskId="1" Feature="Complete">
 						<File Id="CREDITS.txt" Name="CREDITS.txt" Source="..\..\CREDITS.txt" KeyPath="yes" />
 					</Component>
-					<Component Id="Gxps_win32Exe" Guid="78584CC6-C3F7-4545-9B41-A851766089DA" DiskId="1" Feature="Complete">
-						<File Id="gxps_win32.exe" Name="gxps-win32.exe" Source="..\..\Application\PDFKeeper\bin\Release\gxps-win32.exe" KeyPath="yes" />
-					</Component>
 					<Component Id="Gsdll32Dll" Guid="4F6C6658-849F-4F42-8017-55E69CF9B97F" DiskId="1" Feature="Complete">
 						<File Id="gsdll32.dll" Name="gsdll32.dll" Source="..\..\Application\PDFKeeper\bin\Release\gsdll32.dll" KeyPath="yes" />
 					</Component>
 					<Component Id="Gswin32cExe" Guid="A2C3C3BF-7D5A-4F05-B149-D8B41B96E7DB" DiskId="1" Feature="Complete">
 						<File Id="gswin32c.exe" Name="gswin32c.exe" Source="..\..\Application\PDFKeeper\bin\Release\gswin32c.exe" KeyPath="yes" />
-					</Component>
-					<Component Id="WkhtmltopdfExe" Guid="EC958003-1D42-4D98-BDDB-8E4F1DFE5430" DiskId="1" Feature="Complete">
-						<File Id="wkhtmltopdf.exe" Name="wkhtmltopdf.exe" Source="..\..\Application\PDFKeeper\bin\Release\wkhtmltopdf.exe" KeyPath="yes" />
 					</Component>
 				</Directory>
 			</Directory>
