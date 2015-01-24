@@ -43,9 +43,6 @@
 						<Component Guid="B524CA42-58A8-4DA9-9A4B-0EC5ED2237B1" Id="ReleaseNotesHtml" DiskId="1" Feature="Complete">
 							<File Source="..\..\Documentation\ReleaseNotes.html" Name="ReleaseNotes.html" Id="ReleaseNotes.html" KeyPath="yes" />
 						</Component>
-						<Component Guid="0AE4789A-4B93-4BE6-B2A7-919DFDE22BEE" Id="UserFAQHtml" DiskId="1" Feature="Complete">
-							<File Source="..\..\Documentation\UserFAQ.html" Name="UserFAQ.html" Id="UserFAQ.html" KeyPath="yes" />
-						</Component>
 						<Directory Id="css" Name="css">
 							<Component Guid="5B8402A8-75F1-416F-95DE-FEF035FDB8C2" Id="InstCss" DiskId="1" Feature="Complete">
 								<File Source="..\..\Documentation\css\inst.css" Name="inst.css" Id="inst.css" KeyPath="yes" />
@@ -99,7 +96,6 @@
 							<Shortcut Show="normal" WorkingDirectory="INSTALLDIR" Name="Database Setup and User Account Management Guide" Directory="DocumentationProgramsFolder" Id="DatabaseSetupUserAccountManagementGuideStartMenuShortcut" Target="[INSTALLDIR]Documentation\DatabaseSetupUserAccountManagementGuide.html" />
 							<Shortcut Id="GettingStartedGuideStartMenuShortcut" Name="Getting Started Guide" Show="normal" Directory="DocumentationProgramsFolder" WorkingDirectory="INSTALLDIR" Target="[INSTALLDIR]Documentation\GettingStartedGuide.html" />
 							<Shortcut Name="Release Notes" Id="ReleaseNotesStartMenuShortcut" Directory="DocumentationProgramsFolder" WorkingDirectory="INSTALLDIR" Show="normal" Target="[INSTALLDIR]Documentation\ReleaseNotes.html" />
-							<Shortcut Name="User FAQ" Show="normal" WorkingDirectory="INSTALLDIR" Directory="DocumentationProgramsFolder" Id="UserFAQStartMenuShortcut" Target="[INSTALLDIR]Documentation\UserFAQ.html" />
 						</Component>
 					</Directory>
 				</Directory>
