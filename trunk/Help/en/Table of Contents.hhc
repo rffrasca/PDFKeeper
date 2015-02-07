@@ -34,6 +34,11 @@
 			<param name="ImageNumber" value="9">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Previewing documents returned from a search">
+			<param name="Local" value="Previewing documents returned from a search.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Save a PDF document to disk without viewing">
 			<param name="Local" value="Save a PDF document to disk without viewing.html">
 			<param name="ImageNumber" value="9">
