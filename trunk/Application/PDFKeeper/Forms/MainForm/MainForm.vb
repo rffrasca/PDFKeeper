@@ -336,10 +336,14 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemContentsClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		Dim helpFile As String
-		If tabControlMain.SelectedIndex < 3 Then
+		Dim helpFile As String = Nothing
+		If tabControlMain.SelectedIndex = 0 Then
 			helpFile = "Document Search.html"
-		Else	' Document Capture tab selected.
+		ElseIf tabControlMain.SelectedIndex = 1 Then
+			helpFile = "Previewing documents returned from a search.html"
+		ElseIf tabControlMain.SelectedIndex = 2 Then
+			helpFile = "Document Search.html"
+		ElseIf tabControlMain.SelectedIndex = 3 Then
 			helpFile = "Document Capture.html"
 		End If
 		HelpWrapper.ShowHelp(Me, helpFile)
