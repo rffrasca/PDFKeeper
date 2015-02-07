@@ -342,7 +342,8 @@ Public Partial Class MainForm
 		ElseIf tabControlMain.SelectedIndex = 1 Then
 			helpFile = "Previewing documents returned from a search.html"
 		ElseIf tabControlMain.SelectedIndex = 2 Then
-			helpFile = "Document Search.html"
+			helpFile = _
+				"Viewing text-only for documents returned from a search.html"
 		ElseIf tabControlMain.SelectedIndex = 3 Then
 			helpFile = "Document Capture.html"
 		End If
