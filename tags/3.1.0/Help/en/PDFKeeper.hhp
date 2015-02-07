@@ -1,0 +1,39 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=..\PDFKeeper.en.chm
+Contents file=Table of Contents.hhc
+Default Window=Main
+Default topic=Introduction.html
+Display compile progress=No
+Language=0x409 English (United States)
+Title=PDFKeeper Help
+
+[WINDOWS]
+Main="PDFKeeper Help","Table of Contents.hhc",,"Introduction.html",,,,,,0x2120,,0x3006,,,,,,,,0
+
+
+[FILES]
+Introduction.html
+Database Connection.html
+Document Search.html
+How to search for documents.html
+Document Capture.html
+Document Viewing.html
+Save a PDF document to disk without viewing.html
+Viewing Document Keywords.html
+Deleting documents.html
+Document Notes.html
+Editing Document Notes.html
+Printing Document Notes.html
+Document Information Properties Editing and Uploading.html
+Accessing the Capture Folder.html
+Capturing Documents.html
+Direct Upload.html
+Uploading PDF documents with Direct Upload.html
+Accessing the Direct Upload Folder and sub-folders.html
+Configuring Direct Upload sub-folders.html
+Previewing documents returned from a search.html
+Viewing text-only for documents returned from a search.html
+
+[INFOTYPES]
+
