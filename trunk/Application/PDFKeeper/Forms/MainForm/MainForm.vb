@@ -594,6 +594,7 @@ Public Partial Class MainForm
 			End If
 			toolStripMenuItemCheckAll.Enabled = True
 			AddSearchTextToHistory
+			listViewDocs.Focus
 			listViewDocs.Select
 		Else
 			toolStripMenuItemCheckAll.Enabled = False
@@ -669,6 +670,7 @@ Public Partial Class MainForm
 			textBoxTextOnlyView.Text = Nothing
 			textBoxTextOnlyView.Enabled = False
 		Else
+			Dim selectedIndex As integer = listViewDocs.SelectedItems(0).Index
 			selectedId = CInt(listViewDocs.SelectedItems(0).Text.Trim)
 			Dim pdfFile As String = Path.Combine(CacheDir, _
 				"pdfkeeper" & selectedId & ".pdf")
@@ -705,8 +707,9 @@ Public Partial Class MainForm
 						TextBoxDocumentNotesScrollToEnd
 						Me.Text = "PDFKeeper - [" & selectedId & "]"
 						searchLastTitleText = Me.Text
-						If tabControlMain.SelectedIndex = 1 Then
-							
+						If tabControlMain.SelectedIndex = 0 Then
+							listViewDocs.Focus
+							listViewDocs.Items(selectedIndex).Selected = True
 						End If
 					End Using
 				End Using
@@ -971,7 +974,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonPreviewPreviousClick(sender As Object, e As EventArgs)
-		listViewDocs.Focus()
+		listViewDocs.Focus
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index - 1).Selected = True
 		Me.Cursor = Cursors.WaitCursor
@@ -987,7 +990,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonPreviewNextClick(sender As Object, e As EventArgs)
-		listViewDocs.Focus()
+		listViewDocs.Focus
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index + 1).Selected = True
 		Me.Cursor = Cursors.WaitCursor
@@ -1067,7 +1070,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonTextOnlyPreviousClick(sender As Object, e As EventArgs)
-		listViewDocs.Focus()
+		listViewDocs.Focus
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index - 1).Selected = True
 		Me.Cursor = Cursors.WaitCursor
@@ -1083,7 +1086,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonTextOnlyNextClick(sender As Object, e As EventArgs)
-		listViewDocs.Focus()
+		listViewDocs.Focus
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index + 1).Selected = True
 		Me.Cursor = Cursors.WaitCursor
