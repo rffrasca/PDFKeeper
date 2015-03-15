@@ -1795,9 +1795,11 @@ Public Partial Class MainForm
 				Me.Cursor = Cursors.WaitCursor
 				TerminateCapturePdfViewer
 				ClearCaptureSelection
-				listBoxDocCaptureQueue.SetSelected( _
-							listBoxDocCaptureQueue.FindStringExact(e.FullPath), _
-							True)
+				Dim index As Integer = _
+					listBoxDocCaptureQueue.FindStringExact(e.FullPath)
+				If Not index = -1 Then
+					listBoxDocCaptureQueue.SetSelected(index, True)
+				End If
 				ListBoxDocCaptureQueueSelectedIndexChanged(Me,Nothing)
 				Me.Cursor = Cursors.Default
 			End If
