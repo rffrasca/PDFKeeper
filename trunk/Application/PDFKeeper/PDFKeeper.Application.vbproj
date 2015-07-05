@@ -120,10 +120,10 @@
       <DependentUpon>AboutForm.Strings.resx</DependentUpon>
     </Compile>
     <Compile Include="Forms\AboutForm\AboutForm.vb" />
-    <Compile Include="Forms\DatabaseConnectionForm.Designer.vb">
+    <Compile Include="Forms\DatabaseConnectionForm\DatabaseConnectionForm.Designer.vb">
       <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DatabaseConnectionForm.vb" />
+    <Compile Include="Forms\DatabaseConnectionForm\DatabaseConnectionForm.vb" />
     <Compile Include="Forms\DirectUploadConfigurationForm\DirectUploadConfigurationForm.Designer.vb">
       <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
     </Compile>
@@ -139,10 +139,10 @@
       <DependentUpon>MainForm.Strings.resx</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainForm\MainForm.vb" />
-    <Compile Include="Forms\PdfOwnerPasswordForm.Designer.vb">
+    <Compile Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.Designer.vb">
       <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PdfOwnerPasswordForm.vb" />
+    <Compile Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.vb" />
     <Compile Include="Modules\UserProfileDeprecatedFolders.vb" />
     <Compile Include="Modules\UserProfileFolders.vb" />
     <Compile Include="Program.vb" />
@@ -173,7 +173,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AboutForm.Strings.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DatabaseConnectionForm.resx">
+    <EmbeddedResource Include="Forms\DatabaseConnectionForm\DatabaseConnectionForm.resx">
       <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DirectUploadConfigurationForm\DirectUploadConfigurationForm.resx">
@@ -190,7 +190,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MainForm.Strings.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PdfOwnerPasswordForm.resx">
+    <EmbeddedResource Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.resx">
       <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
     </EmbeddedResource>
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
