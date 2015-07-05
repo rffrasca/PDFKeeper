@@ -488,12 +488,15 @@ Public Partial Class MainForm
 	''' match the Search Text, and then add the matching records to the
 	''' listview, sorted by the selected column. If the search returns one or
 	''' more records, add the search text to the search text history, only if
-	''' the search text doesn't already exist in the history.
+	''' the search text doesn't already exist in the history.  If the listview
+	''' contains a selected document, then reselect that same document after
+	''' reloading the list view, if the document record still exists. 
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonSearchClick(sender As Object, e As EventArgs)
 		DocumentNotesModifiedCheck
+		Dim selectedItem As Integer = selectedId
 		Me.Cursor = Cursors.WaitCursor
 		listViewDocs.SelectedItems.Clear
 		listViewDocs.Items.Clear
@@ -596,6 +599,15 @@ Public Partial Class MainForm
 			AddSearchTextToHistory
 			listViewDocs.Focus
 			listViewDocs.Select
+			If selectedItem > 0 Then
+				For i As Integer = 0 To listViewDocs.Items.Count - 1
+					If listViewDocs.Items(i).Text.Trim = selectedItem.ToString.Trim Then
+						ListViewDocs.Items(i).Selected = True
+						listViewDocs.EnsureVisible( _
+							listViewDocs.SelectedItems(0).Index)
+					End If
+				Next
+			End If
 		Else
 			toolStripMenuItemCheckAll.Enabled = False
 		End If
