@@ -601,7 +601,9 @@ Public Partial Class MainForm
 			listViewDocs.Select
 			If selectedItem > 0 Then
 				For i As Integer = 0 To listViewDocs.Items.Count - 1
-					If listViewDocs.Items(i).Text.Trim = selectedItem.ToString.Trim Then
+					If listViewDocs.Items(i).Text.Trim = _
+							selectedItem.ToString( _
+							CultureInfo.InvariantCulture).Trim Then
 						ListViewDocs.Items(i).Selected = True
 						listViewDocs.EnsureVisible( _
 							listViewDocs.SelectedItems(0).Index)
