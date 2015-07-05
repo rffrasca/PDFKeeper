@@ -1,4 +1,4 @@
-PDFKeeper 3.1.1
+PDFKeeper 3.1.2
 Copyright (C) 2009-2015 Robert F. Frasca
 
 Components used by PDFKeeper and their respective licenses.
