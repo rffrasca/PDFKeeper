@@ -23,9 +23,9 @@ rem *
 rem ***************************************************************************
 
 copy "..\..\..\..\Settings\sumatrapdfrestrict.ini"
-copy "..\..\..\..\Libraries\SumatraPDF.exe"
-copy "..\..\..\..\Libraries\gswin32c.exe"
-copy "..\..\..\..\Libraries\gsdll32.dll"
+copy "..\..\..\..\Binaries\SumatraPDF.exe"
+copy "..\..\..\..\Binaries\gswin32c.exe"
+copy "..\..\..\..\Binaries\gsdll32.dll"
 copy "..\..\..\..\Help\PDFKeeper*.chm"
 
 exit
