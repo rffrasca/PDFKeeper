@@ -40,14 +40,14 @@ Setup script, DatabaseSetup.cmd is located in the project Database folder.
     b. Sumatra PDF (Portable Version)
        (http://www.sumatrapdfreader.org/free-pdf-reader.html)
 
-       After downloading, extract SumatraPDF.exe into the project Libraries
+       After downloading, extract SumatraPDF.exe into the project Binaries
        folder and unblock.
 
     c. Ghostscript
        (http://www.ghostscript.com/)
 
        After downloading, extract gsdll32.dll and gswin32c.exe in the project
-       Libraries folder.
+       Binaries folder.
 
        NOTE: To extract from the GhostScript installer, you can use
        7-Zip Portable (http://portableapps.com/apps/utilities/7-zip_portable)
