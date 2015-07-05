@@ -977,6 +977,7 @@ Public Partial Class MainForm
 		listViewDocs.Focus
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index - 1).Selected = True
+		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
 		Me.Cursor = Cursors.WaitCursor
 		LoadDocumentPreview
 		Me.Cursor = Cursors.Default
@@ -993,6 +994,7 @@ Public Partial Class MainForm
 		listViewDocs.Focus
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index + 1).Selected = True
+		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
 		Me.Cursor = Cursors.WaitCursor
 		LoadDocumentPreview
 		Me.Cursor = Cursors.Default
@@ -1073,6 +1075,7 @@ Public Partial Class MainForm
 		listViewDocs.Focus
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index - 1).Selected = True
+		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
 		Me.Cursor = Cursors.WaitCursor
 		LoadTextOnlyView
 		Me.Cursor = Cursors.Default
@@ -1089,6 +1092,7 @@ Public Partial Class MainForm
 		listViewDocs.Focus
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index + 1).Selected = True
+		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
 		Me.Cursor = Cursors.WaitCursor
 		LoadTextOnlyView
 		Me.Cursor = Cursors.Default
