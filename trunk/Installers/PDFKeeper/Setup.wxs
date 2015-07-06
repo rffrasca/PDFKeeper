@@ -4,7 +4,7 @@
 	<Product Id="*"
 		Name="PDFKeeper"
 		Language="1033"
-		Version="3.1.1"
+		Version="3.1.2"
 		UpgradeCode="18055295-A37D-42A8-A4C9-80E80E2F1DE9"
 		Manufacturer="Robert F. Frasca">
 		<Package Description="PDF Document Capture, Storage, and Search"
@@ -31,7 +31,7 @@
 		-->
 		<Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
 		
-		<Icon Id="PDFKeeper.ico" SourceFile="..\..\Icon\PDFKeeper.ico"/>
+		<Icon Id="PDFKeeper.ico" SourceFile="..\..\Logos\PDFKeeper.ico"/>
 		<Property Id="ARPPRODUCTICON" Value="PDFKeeper.ico" />
 		<Property Id='ARPHELPLINK'>https://pdfkeeper.codeplex.com/</Property>
 		<Property Id='ARPURLINFOABOUT'>https://pdfkeeper.codeplex.com/</Property>
