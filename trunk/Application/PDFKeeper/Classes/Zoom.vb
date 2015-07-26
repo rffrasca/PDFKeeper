@@ -20,6 +20,9 @@
 '*
 '******************************************************************************
 
+''' <summary>
+''' Document Preview zoom percentage.
+''' </summary>
 Public NotInheritable Class Zoom
 	Shared m_Percentage As Int32
 	
@@ -31,7 +34,6 @@ Public NotInheritable Class Zoom
 	
 	''' <summary>
 	''' Get and set zoom percentage.
-	'''
 	''' Note: Property can not be set to a value less than 100%.
 	''' </summary>
 	Shared Property Percentage() As Int32
