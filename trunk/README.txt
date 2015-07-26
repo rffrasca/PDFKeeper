@@ -1,4 +1,4 @@
-PDFKeeper 3.1.2
+PDFKeeper 3.2.0
 Copyright (C) 2009-2015 Robert F. Frasca
 
 -------------
