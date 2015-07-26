@@ -35,7 +35,6 @@ Public Partial Class MainForm
 	Dim captureModPdfFile As String
 	Dim lastPdfDocumentCheckResult As Integer
 	Dim previewImage As System.Drawing.Image
-	Dim previewImageZoomValue As Int32
 		
 	Public Sub New()
 		Me.InitializeComponent()
@@ -955,35 +954,35 @@ Public Partial Class MainForm
 	#Region "Document Preview"
 	
 	''' <summary>
-	''' This subroutine will increase the zoom value by 25 and update the
-	''' Document Preview Picture Box.
+	''' Increase the zoom percentage by 25% and update the Document Preview
+	''' Picture Box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonZoomInClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		previewImageZoomValue += 25
+		Zoom.IncreasePercentage
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will decrease the zoom value by 25 and update the
-	''' Document Preview Picture Box. 
+	''' Decrease the zoom percentage by 25% and update the Document Preview
+	''' Picture Box. 
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonZoomOutClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		previewImageZoomValue -= 25
+		Zoom.DecreasePercentage
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will select the previous listview item on the Document
-	''' Search tab, and then generate and load the document preview PNG file
-	''' into picture box control on the Document Preview tab.
+	''' Select the previous listview item on the Document Search tab, and then
+	''' generate and load the document preview PNG file into Picture Box
+	'''	control on the Document Preview tab.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -998,9 +997,9 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will select the next listview item on the Document
-	''' Search tab, and then generate and load the document preview PNG file
-	''' into picture box control on the Document Preview tab.
+	''' Select the next listview item on the Document Search tab, and then
+	''' generate and load the document preview PNG file into Picture Box
+	''' control on the Document Preview tab.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -1015,11 +1014,10 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will retrieve the PDF file for the selected listview
-	''' item on the Document Search tab, generate a PNG file containing the
-	''' first page from PDF file, enable/disable controls on the Document
-	''' Preview tab, load the PNG file into the picture box control, and update
-	''' the status bar.
+	''' Retrieve the PDF file for the selected listview item on the Document
+	''' Search tab, generate a PNG file containing the first page from PDF
+	''' file, enable/disable controls on the Document Preview tab, load the PNG
+	''' file into the picture box control, and update the status bar.
 	''' </summary>
 	Private Sub LoadDocumentPreview
 		toolStripStatusLabelMessage.Text = Nothing
@@ -1047,26 +1045,26 @@ Public Partial Class MainForm
 					listViewDocs.SelectedItems(0).Index + 1 & " of " & _
 					listViewDocs.Items.Count
 				previewImage = PictureBoxPreview.Image
-				previewImageZoomValue = 100
+				Zoom.ResetPercentage
 			End If
 		End If
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will resize the image in the Picture Box to the zoom
-	''' value set by the caller.
+	''' Resize the image in the Picture Box to the zoom percentage set by the
+	''' caller.
 	''' </summary>
 	Private Sub PreviewImageZoom
-		If previewImageZoomValue > 100 Then
+		If Zoom.Percentage > 100 Then	
 			buttonZoomOut.Enabled = True
 		Else
 			buttonZoomOut.Enabled = False
 		End If
 		Dim zoomImage As New Bitmap(previewImage, _
 			CInt(Convert.ToInt32(previewImage.Width * _
-			previewImageZoomValue) / 100), _
+			Zoom.Percentage) / 100), _
 			(Convert.ToInt32(previewImage.Height * _
-			previewImageZoomValue / 100)))
+			Zoom.Percentage / 100)))
 		Dim convertedImage As Graphics = Graphics.FromImage(zoomImage)
 		convertedImage.InterpolationMode = _
 			System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor
