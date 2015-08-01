@@ -44,9 +44,6 @@ Public NotInheritable Class Zoom
 	''' </summary>
 	Public Shared Sub DecreasePercentage
 		Percentage -= 25
-		If Percentage < 100 Then
-			MsgBox("oops")
-		End If
 	End Sub
 	
 	''' <summary>
