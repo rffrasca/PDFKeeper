@@ -31,22 +31,38 @@ Public NotInheritable Class UserSettings
 	Shared _FormPositionHeight As String
 	Shared _FormPositionWidth As String
 	
-	' Database Connection form settings.
-	
+	''' <summary>
+	''' Database Connection form last database username.
+	''' </summary>
 	Shared Property LastUserName As String = Nothing
+	
+	''' <summary>
+	''' Database Connection form last data source.
+	''' </summary>
 	Shared Property LastDataSource As String = Nothing
 	
-	' Main form settings.
-	
+	''' <summary>
+	''' Main form top position.
+	''' </summary>
 	Shared Property FormPositionTop As String = "10"
+	
+	''' <summary>
+	''' Main form left position.
+	''' </summary>
 	Shared Property FormPositionLeft As String = "25"
 	
+	''' <summary>
+	''' Main form default height.
+	''' </summary>
 	Shared ReadOnly Property FormPositionDefaultHeight As Integer
 		Get
 			Return 714 
 		End Get
 	End Property
 	
+	''' <summary>
+	''' Main form height.
+	''' </summary>
 	Shared Property FormPositionHeight As String
 		Get
 			Return _FormPositionHeight
@@ -56,12 +72,18 @@ Public NotInheritable Class UserSettings
 		End Set
 	End Property
 	
+	''' <summary>
+	''' Main form default width.
+	''' </summary>
 	Shared ReadOnly Property FormPositionDefaultWidth As Integer
 		Get
 			Return 714 
 		End Get
 	End Property
 	
+	''' <summary>
+	''' Main form width.
+	''' </summary>
 	Shared Property FormPositionWidth As String
 		Get
 			Return _FormPositionWidth
@@ -71,11 +93,21 @@ Public NotInheritable Class UserSettings
 		End Set
 	End Property
 	
+	''' <summary>
+	''' Main form window state.
+	''' 0 = Normal, 2 = Maximized
+	''' </summary>
 	Shared Property FormPositionWindowState As String = "0"
+	
+	''' <summary>
+	''' Main form "Automatically Check for Newer Version" setting.
+	''' 1 = Enabled, 0 = Disabled
+	''' </summary>	
 	Shared Property UpdateCheck As String = "1"
 	
-	' Common Dialogs settings.
-	
+	''' <summary>
+	''' Common Open file dialog last folder.
+	''' </summary>
 	Shared Property OpenFileLastFolder As String
 		Get
 			If _OpenFileLastFolder = Nothing Then
@@ -89,6 +121,9 @@ Public NotInheritable Class UserSettings
 		End Set
 	End Property
 	
+	''' <summary>
+	''' Common Save file dialog last folder.
+	''' </summary>
 	Shared Property SaveFileLastFolder As String
 		Get
 			If _SaveFileLastFolder = Nothing Then
@@ -157,7 +192,7 @@ Public NotInheritable Class UserSettings
 
 	''' <summary>
 	''' Save user settings to UserSettings.xml.  This needs to be performed
-	''' when the Main Form is closing.
+	''' while the Main form is closing.
 	''' </summary>
 	Public Shared Sub Save
 		Try
@@ -200,7 +235,7 @@ Public NotInheritable Class UserSettings
 	''' Import deprecated PDFKeeper 1.0.0 or 1.1.0 user settings.
 	''' </summary>
 	''' <returns>0 = Success, 1 = Failed</returns>
-	Private Shared Function ImportDeprecatedProperties() As Integer
+	Private Shared Function ImportDeprecatedProperties As Integer
 		Dim legacyProperties As String = Path.Combine(AppDataDir, "pdfkeeper.properties")
 		If System.IO.File.Exists(legacyProperties) Then
 			Try
@@ -226,7 +261,7 @@ Public NotInheritable Class UserSettings
 	''' Import deprecated PDFKeeper 2.0.0 through 2.4.0 user settings.
 	''' </summary>
 	''' <returns>0 = Success, 1 = Failed</returns>
-	Private Shared Function ImportDeprecatedRegistryValues() As Integer
+	Private Shared Function ImportDeprecatedRegistryValues As Integer
 		Dim appRoot As String = "HKEY_CURRENT_USER\Software\" & _
 								 Application.ProductName
 		Dim regKey As Microsoft.Win32.RegistryKey = _
