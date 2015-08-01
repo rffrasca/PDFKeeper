@@ -24,7 +24,7 @@
 ''' Document Preview zoom percentage.
 ''' </summary>
 Public NotInheritable Class Zoom
-	Shared Property Percentage() As Int32 = 100
+	Shared Property Percentage As Int32 = 100
 		
 	''' <summary>
 	''' Private constructor required for FxCop compliance (CA1053).
