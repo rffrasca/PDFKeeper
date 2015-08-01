@@ -24,33 +24,14 @@
 ''' Document Preview zoom percentage.
 ''' </summary>
 Public NotInheritable Class Zoom
-	Shared m_Percentage As Int32
-	
+	Shared Property Percentage() As Int32 = 100
+		
 	''' <summary>
 	''' Private constructor required for FxCop compliance (CA1053).
 	''' </summary>
 	Private Sub New()
 	End Sub
-	
-	''' <summary>
-	''' Get and set zoom percentage.
-	''' Note: Property can not be set to a value less than 100%.
-	''' </summary>
-	Shared Property Percentage() As Int32
-		Get
-			If m_Percentage = Nothing Then
-				m_Percentage = 100
-			End If
-			Return m_Percentage
-		End Get
-		Set(ByVal value As Int32)
-			m_Percentage = value
-			If m_Percentage < 100 Then
-				m_Percentage = 100
-			End If
-		End Set
-	End Property
-	
+		
 	''' <summary>
 	''' Increase zoom percentage by 25%.
 	''' </summary>
@@ -63,6 +44,9 @@ Public NotInheritable Class Zoom
 	''' </summary>
 	Public Shared Sub DecreasePercentage
 		Percentage -= 25
+		If Percentage < 100 Then
+			MsgBox("oops")
+		End If
 	End Sub
 	
 	''' <summary>
