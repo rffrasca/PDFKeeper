@@ -55,9 +55,8 @@ Namespace My
 				Environment.Exit(1)
 			End If
 			
-			' Read User Settings.
-			Dim oUserSettings As New UserSettings
-			If Not oUserSettings.Read = 0 Then
+			' Read application user settings.
+			If UserSettings.Read = 1 Then
 				Environment.Exit(1)
 			End If
 			

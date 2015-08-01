@@ -84,16 +84,16 @@ Public Partial Class MainForm
 				Screen.PrimaryScreen.WorkingArea
 			Me.Size = New System.Drawing.Size(workingRectangle.Width - 10, _
 				workingRectangle.Height - 10)
-			If Me.Height > 714 Then
-				Me.Height = 714
+			If Me.Height > UserSettings.FormPositionDefaultHeight Then
+				Me.Height = UserSettings.FormPositionDefaultHeight
 			End If
 		Else
 			Me.Height = CInt(UserSettings.FormPositionHeight)
 		End If
 		If Not CInt(UserSettings.FormPositionWidth) = Nothing Then
 			Me.Width = CInt(UserSettings.FormPositionWidth)
-		ElseIf Me.Width > 714 Then
-			Me.Width = 714			
+		ElseIf Me.Width > UserSettings.FormPositionDefaultWidth Then
+			Me.Width = UserSettings.FormPositionDefaultWidth			
 		End If
 		Me.WindowState = CType(UserSettings.FormPositionWindowState, _
 			Windows.Forms.FormWindowState)
@@ -1898,8 +1898,7 @@ Public Partial Class MainForm
 		SaveFormPosition
 		UserProfileFoldersTask.DeleteDocumentCaptureShortcuts
 		UserProfileFoldersTask.DeleteDirectUploadShortcut
-		Dim oUserSettings As New UserSettings
-		oUserSettings.Write
+		UserSettings.Save
 	End Sub
 	
 	''' <summary>
