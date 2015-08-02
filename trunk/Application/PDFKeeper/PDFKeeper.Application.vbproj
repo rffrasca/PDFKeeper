@@ -88,6 +88,7 @@
     <Compile Include="Classes\HelpWrapper.vb" />
     <Compile Include="Classes\DatabaseConnection.vb" />
     <Compile Include="Classes\FileCache.vb" />
+    <Compile Include="Classes\ImageResizer.vb" />
     <Compile Include="Classes\MessageBoxWrapper\MessageBoxWrapper.Strings.Designer.vb">
       <DependentUpon>MessageBoxWrapper.Strings.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -113,7 +114,6 @@
     <Compile Include="Classes\UserProfileFoldersTask\UserProfileFoldersTask.vb" />
     <Compile Include="Classes\UserSettings.vb" />
     <Compile Include="Classes\WindowFinder.vb" />
-    <Compile Include="Classes\Zoom.vb" />
     <Compile Include="Forms\AboutForm\AboutForm.Designer.vb">
       <DependentUpon>AboutForm.vb</DependentUpon>
     </Compile>
