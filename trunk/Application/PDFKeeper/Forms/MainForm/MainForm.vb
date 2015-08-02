@@ -34,8 +34,7 @@ Public Partial Class MainForm
 	Dim capturePdfFile As String
 	Dim captureModPdfFile As String
 	Dim lastPdfDocumentCheckResult As Integer
-	Dim previewImage As System.Drawing.Image
-		
+			
 	Public Sub New()
 		Me.InitializeComponent()
 		StartUpdateCheck
@@ -961,7 +960,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomInClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		Zoom.IncreasePercentage
+		ImageResizer.IncreaseZoom
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -974,7 +973,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomOutClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		Zoom.DecreasePercentage
+		ImageResizer.DecreaseZoom
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1044,8 +1043,8 @@ Public Partial Class MainForm
 				toolStripStatusLabelMessage.Text = "Previewing document: " & _
 					listViewDocs.SelectedItems(0).Index + 1 & " of " & _
 					listViewDocs.Items.Count
-				previewImage = PictureBoxPreview.Image
-				Zoom.ResetPercentage
+				ImageResizer.Image = PictureBoxPreview.Image
+				ImageResizer.ResetZoom
 			End If
 		End If
 	End Sub
@@ -1055,21 +1054,13 @@ Public Partial Class MainForm
 	''' caller.
 	''' </summary>
 	Private Sub PreviewImageZoom
-		If Zoom.Percentage > 100 Then	
+		If ImageResizer.Zoom > 100 Then
 			buttonZoomOut.Enabled = True
 		Else
 			buttonZoomOut.Enabled = False
 		End If
-		Dim zoomImage As New Bitmap(previewImage, _
-			CInt(Convert.ToInt32(previewImage.Width * _
-			Zoom.Percentage) / 100), _
-			(Convert.ToInt32(previewImage.Height * _
-			Zoom.Percentage / 100)))
-		Dim convertedImage As Graphics = Graphics.FromImage(zoomImage)
-		convertedImage.InterpolationMode = _
-			System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor
-		PictureBoxPreview.Image = Nothing
-		PictureBoxPreview.Image = zoomImage
+		pictureBoxPreview.Image = Nothing
+		pictureBoxPreview.Image = ImageResizer.ModifiedImage
 	End Sub
 	
 	#End Region
