@@ -1060,7 +1060,7 @@ Public Partial Class MainForm
 			buttonZoomOut.Enabled = False
 		End If
 		pictureBoxPreview.Image = Nothing
-		pictureBoxPreview.Image = ImageResizer.ModifiedImage
+		pictureBoxPreview.Image = ImageResizer.ResizedImage
 	End Sub
 	
 	#End Region
