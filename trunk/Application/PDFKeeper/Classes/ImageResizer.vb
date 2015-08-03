@@ -21,14 +21,14 @@
 '******************************************************************************
 
 ''' <summary>
-''' Image 
+''' Document Preview image resizer. 
 ''' </summary>
 Public NotInheritable Class ImageResizer
 	Shared _Image As System.Drawing.Image
-	Shared _ModifiedImage As System.Drawing.Image
+	Shared _ResizedImage As System.Drawing.Image
 		
 	''' <summary>
-	''' 
+	''' Source image. 
 	''' </summary>
 	Shared Property Image As System.Drawing.Image
 		Get
@@ -40,19 +40,19 @@ Public NotInheritable Class ImageResizer
 	End Property
 	
 	''' <summary>
-	''' 
+	''' Resized image with zoom value applied.
 	''' </summary>
-	Shared Property ModifiedImage As System.Drawing.Image
+	Shared Property ResizedImage As System.Drawing.Image
 		Get
-			Return _ModifiedImage
+			Return _ResizedImage
 		End Get
 		Set(ByVal value As System.Drawing.Image)
-			_ModifiedImage = value
+			_ResizedImage = value
 		End Set
 	End Property
 	
 	''' <summary>
-	''' Zoom percentage (default value = 100%).
+	''' Zoom value, default is 100%.
 	''' </summary>
 	Shared Property Zoom As Int32 = 100
 	
@@ -63,7 +63,7 @@ Public NotInheritable Class ImageResizer
 	End Sub
 	
 	''' <summary>
-	''' Increase zoom by 25%.
+	''' Increase zoom by 25% and resize image.
 	''' </summary>
 	Public Shared Sub IncreaseZoom
 		Zoom += 25
@@ -71,7 +71,7 @@ Public NotInheritable Class ImageResizer
 	End Sub
 	
 	''' <summary>
-	''' Decrease zoom by 25%.
+	''' Decrease zoom by 25% and resize image.
 	''' </summary>
 	Public Shared Sub DecreaseZoom
 		Zoom -= 25
@@ -79,7 +79,7 @@ Public NotInheritable Class ImageResizer
 	End Sub
 	
 	''' <summary>
-	''' Reset zoom percentage to 100%.
+	''' Reset zoom to 100% and resize image.
 	''' </summary>
 	Public Shared Sub ResetZoom
 		Zoom = 100
@@ -87,15 +87,15 @@ Public NotInheritable Class ImageResizer
 	End Sub
 	
 	''' <summary>
-	''' 
+	''' Resize image with zoom value applied.
 	''' </summary>
 	Private Shared Sub Resize
 		Dim zoomImage As New Bitmap(Image, _
 			CInt(Convert.ToInt32(Image.Width * Zoom) / 100), _
 			(Convert.ToInt32(Image.Height * Zoom / 100)))
-		Dim resizedImage As Graphics = Graphics.FromImage(zoomImage)
-		resizedImage.InterpolationMode = _
+		Dim resized As Graphics = Graphics.FromImage(zoomImage)
+		resized.InterpolationMode = _
 			System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor
-		ModifiedImage = zoomImage
+		ResizedImage = zoomImage
 	End Sub
 End Class
