@@ -111,8 +111,8 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Classes\UserProfileFoldersTask\UserProfileFoldersTask.vb" />
-    <Compile Include="Classes\UserSettings.vb" />
     <Compile Include="Classes\WindowFinder.vb" />
+    <Compile Include="Common\UserSettings.vb" />
     <Compile Include="Forms\AboutForm\AboutForm.Designer.vb">
       <DependentUpon>AboutForm.vb</DependentUpon>
     </Compile>
@@ -222,6 +222,7 @@
       <Isolated>False</Isolated>
     </COMReference>
     <Folder Include="Helper" />
+    <Folder Include="Common" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

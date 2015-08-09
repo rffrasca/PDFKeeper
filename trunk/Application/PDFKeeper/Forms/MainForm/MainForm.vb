@@ -71,14 +71,13 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will the form size and position based on the values
-	''' retrieved from the User Settings properties, a default will be used
-	''' for any NUL value.
+	''' Size and position form based on the values retrieved from the
+	''' UserSettings properties.
 	''' </summary>
 	Private Sub PositionAndSizeForm
 		Me.Top = CInt(UserSettings.FormPositionTop)
 		Me.Left = CInt(UserSettings.FormPositionLeft)
-		If CInt(UserSettings.FormPositionHeight) = Nothing Then
+		If IsNothing(UserSettings.FormPositionHeight) Then
 			Dim workingRectangle As System.Drawing.Rectangle = _
 				Screen.PrimaryScreen.WorkingArea
 			Me.Size = New System.Drawing.Size(workingRectangle.Width - 10, _
@@ -89,7 +88,7 @@ Public Partial Class MainForm
 		Else
 			Me.Height = CInt(UserSettings.FormPositionHeight)
 		End If
-		If Not CInt(UserSettings.FormPositionWidth) = Nothing Then
+		If IsNothing(UserSettings.FormPositionWidth) = False Then
 			Me.Width = CInt(UserSettings.FormPositionWidth)
 		ElseIf Me.Width > UserSettings.FormPositionDefaultWidth Then
 			Me.Width = UserSettings.FormPositionDefaultWidth			

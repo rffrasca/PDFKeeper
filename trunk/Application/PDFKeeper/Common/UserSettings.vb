@@ -20,16 +20,15 @@
 '*
 '******************************************************************************
 
-''' <summary>
-''' PDFKeeper application user settings.
-''' </summary>
 Public NotInheritable Class UserSettings
-	Shared settingsFile As String = Path.Combine(RootDataDir, _
+	Const formDefaultPositionTop As Integer = 10
+	Const formDefaultPositionLeft As Integer = 25
+	Const formDefaultHeight As Integer = 714
+	Const formDefaultWidth As Integer = 714
+	Const formDefaultWindowState As Integer = 0	' 0 = Normal, 2 = Maximized
+	Const defaultUpdateCheck As Integer = 1	' 1 = Enabled, 0 = Disabled
+	Shared Private settingsFile As String = Path.Combine(RootDataDir, _
 		"UserSettings.xml")
-	Shared _OpenFileLastFolder As String
-	Shared _SaveFileLastFolder As String
-	Shared _FormPositionHeight As String
-	Shared _FormPositionWidth As String
 	
 	''' <summary>
 	''' Database Connection form last database username.
@@ -44,101 +43,68 @@ Public NotInheritable Class UserSettings
 	''' <summary>
 	''' Main form top position.
 	''' </summary>
-	Shared Property FormPositionTop As String = "10"
-	
+	Shared Property FormPositionTop As String = CStr(formDefaultPositionTop)
+		
 	''' <summary>
 	''' Main form left position.
 	''' </summary>
-	Shared Property FormPositionLeft As String = "25"
+	Shared Property FormPositionLeft As String = CStr(formDefaultPositionLeft)
+	
+	''' <summary>
+	''' Main form height.
+	''' </summary>
+	Shared Property FormPositionHeight As String = Nothing
 	
 	''' <summary>
 	''' Main form default height.
 	''' </summary>
 	Shared ReadOnly Property FormPositionDefaultHeight As Integer
 		Get
-			Return 714 
-		End Get
-	End Property
-	
-	''' <summary>
-	''' Main form height.
-	''' </summary>
-	Shared Property FormPositionHeight As String
-		Get
-			Return _FormPositionHeight
-		End Get
-		Set(ByVal Value As String)
-			_FormPositionHeight = Value
-		End Set
-	End Property
-	
-	''' <summary>
-	''' Main form default width.
-	''' </summary>
-	Shared ReadOnly Property FormPositionDefaultWidth As Integer
-		Get
-			Return 714 
+			Return formDefaultHeight		
 		End Get
 	End Property
 	
 	''' <summary>
 	''' Main form width.
 	''' </summary>
-	Shared Property FormPositionWidth As String
+	Shared Property FormPositionWidth As String = Nothing
+	
+	''' <summary>
+	''' Main form default width.
+	''' </summary>
+	Shared ReadOnly Property FormPositionDefaultWidth As Integer
 		Get
-			Return _FormPositionWidth
+			Return formDefaultWidth
 		End Get
-		Set(ByVal Value As String)
-			_FormPositionWidth = Value
-		End Set
 	End Property
 	
 	''' <summary>
 	''' Main form window state.
 	''' 0 = Normal, 2 = Maximized
 	''' </summary>
-	Shared Property FormPositionWindowState As String = "0"
-	
+	Shared Property FormPositionWindowState As String = _
+		CStr(formDefaultWindowState)
+		
 	''' <summary>
 	''' Main form "Automatically Check for Newer Version" setting.
 	''' 1 = Enabled, 0 = Disabled
 	''' </summary>	
-	Shared Property UpdateCheck As String = "1"
-	
+	Shared Property UpdateCheck As String = CStr(defaultUpdateCheck)
+			
 	''' <summary>
 	''' Common Open file dialog last folder.
 	''' </summary>
-	Shared Property OpenFileLastFolder As String
-		Get
-			If _OpenFileLastFolder = Nothing Then
-				_OpenFileLastFolder = _
-					My.Computer.FileSystem.SpecialDirectories.MyDocuments
-			End If
-			Return _OpenFileLastFolder
-		End Get
-		Set(ByVal Value As String)
-			_OpenFileLastFolder = Value
-		End Set
-	End Property
-	
+	Shared Property OpenFileLastFolder As String = _
+		My.Computer.FileSystem.SpecialDirectories.MyDocuments
+		
 	''' <summary>
 	''' Common Save file dialog last folder.
 	''' </summary>
-	Shared Property SaveFileLastFolder As String
-		Get
-			If _SaveFileLastFolder = Nothing Then
-				_SaveFileLastFolder = _
-					My.Computer.FileSystem.SpecialDirectories.MyDocuments
-			End If
-			Return _SaveFileLastFolder
-		End Get
-		Set(ByVal Value As String)
-			_SaveFileLastFolder = Value
-		End Set
-	End Property
-	
+	Shared Property SaveFileLastFolder As String = _
+		My.Computer.FileSystem.SpecialDirectories.MyDocuments
+		
 	''' <summary>
-	''' Private constructor required for FxCop compliance (CA1053).
+	''' Required for FxCop compliance (CA1053).
 	''' </summary>
 	Private Sub New()
 	End Sub
@@ -215,14 +181,10 @@ Public NotInheritable Class UserSettings
 											   FormPositionWindowState)
 			xmlConfig.Configs("MainForm").Set("UpdateCheck", UpdateCheck)
 			xmlConfig.AddConfig("CommonDialogs")
-			If Not OpenFileLastFolder = Nothing Then
-				xmlConfig.Configs("CommonDialogs").Set("OpenFileLastFolder", _
-														OpenFileLastFolder)				
-			End If
-			If Not SaveFileLastFolder = Nothing Then
-				xmlConfig.Configs("CommonDialogs").Set("SaveFileLastFolder", _
-														SaveFileLastFolder)
-			End If
+			xmlConfig.Configs("CommonDialogs").Set("OpenFileLastFolder", _
+				OpenFileLastFolder)
+			xmlConfig.Configs("CommonDialogs").Set("SaveFileLastFolder", _
+				SaveFileLastFolder)
 			xmlConfig.Save(settingsFile)
 		Catch ex As UnauthorizedAccessException
 			MessageBoxWrapper.ShowError(ex.Message)
@@ -236,7 +198,8 @@ Public NotInheritable Class UserSettings
 	''' </summary>
 	''' <returns>0 = Success, 1 = Failed</returns>
 	Private Shared Function ImportDeprecatedProperties As Integer
-		Dim legacyProperties As String = Path.Combine(AppDataDir, "pdfkeeper.properties")
+		Dim legacyProperties As String = Path.Combine(AppDataDir, _
+			"pdfkeeper.properties")
 		If System.IO.File.Exists(legacyProperties) Then
 			Try
 				Using oFileStream As New FileStream(legacyProperties, _
@@ -267,7 +230,7 @@ Public NotInheritable Class UserSettings
 		Dim regKey As Microsoft.Win32.RegistryKey = _
 			  		  Microsoft.Win32.Registry.CurrentUser.OpenSubKey( _
 			  		 "Software\" & Application.ProductName, True)
-		If Not regKey Is Nothing Then
+		If IsNothing(regKey) = False Then
 			Try
 				LastUserName = CStr(Registry.GetValue(appRoot, _
 					"LastUserName", Nothing))
