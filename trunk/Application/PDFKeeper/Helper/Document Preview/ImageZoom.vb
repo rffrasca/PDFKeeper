@@ -21,6 +21,10 @@
 '******************************************************************************
 
 Public NotInheritable Class ImageZoom
+	
+	''' <summary>
+	''' Original, preview image from picture box.
+	''' </summary>
 	Shared Property OriginalImage As System.Drawing.Image = Nothing
 	
 	''' <summary>
@@ -30,9 +34,9 @@ Public NotInheritable Class ImageZoom
 	End Sub
 	
 	''' <summary>
-	''' 
+	''' Apply ZoomLevel.Level to OriginalImage.
 	''' </summary>
-	''' <returns></returns>
+	''' <returns>Image with zoom level applied</returns>
 	Public Shared Function Zoom As System.Drawing.Image
 		Dim zoomImage As New Bitmap(OriginalImage, CInt( _
 			Convert.ToInt32(OriginalImage.Width * ZoomLevel.Level) / 100), ( _
