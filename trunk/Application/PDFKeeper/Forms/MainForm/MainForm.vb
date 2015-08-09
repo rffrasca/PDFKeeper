@@ -953,8 +953,8 @@ Public Partial Class MainForm
 	#Region "Document Preview"
 	
 	''' <summary>
-	''' Increase the zoom percentage by 25% and update the Document Preview
-	''' Picture Box.
+	''' Increase the zoom level by 25%, and then apply to the image in the
+	''' picture box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -966,8 +966,8 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' Decrease the zoom percentage by 25% and update the Document Preview
-	''' Picture Box. 
+	''' Decrease the zoom level by 25%, and then apply to the image in the
+	''' picture box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -980,43 +980,43 @@ Public Partial Class MainForm
 	
 	''' <summary>
 	''' Select the previous listview item on the Document Search tab, and then
-	''' generate and load the document preview PNG file into Picture Box
-	'''	control on the Document Preview tab.
+	''' load the preview PNG file generated from the PDF into the picture
+	''' box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonPreviewPreviousClick(sender As Object, e As EventArgs)
+		Me.Cursor = Cursors.WaitCursor
 		listViewDocs.Focus
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index - 1).Selected = True
 		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
-		Me.Cursor = Cursors.WaitCursor
 		LoadDocumentPreview
 		Me.Cursor = Cursors.Default
 	End Sub
 	
 	''' <summary>
 	''' Select the next listview item on the Document Search tab, and then
-	''' generate and load the document preview PNG file into Picture Box
-	''' control on the Document Preview tab.
+	''' load the preview PNG file generated from the PDF into the picture
+	''' box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonPreviewNextClick(sender As Object, e As EventArgs)
+		Me.Cursor = Cursors.WaitCursor
 		listViewDocs.Focus
 		listViewDocs.Items( _
 			listViewDocs.SelectedItems(0).Index + 1).Selected = True
 		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
-		Me.Cursor = Cursors.WaitCursor
 		LoadDocumentPreview
 		Me.Cursor = Cursors.Default
 	End Sub
 	
 	''' <summary>
-	''' Retrieve the PDF file for the selected listview item on the Document
-	''' Search tab, generate a PNG file containing the first page from PDF
-	''' file, enable/disable controls on the Document Preview tab, load the PNG
-	''' file into the picture box control, and update the status bar.
+	''' Retrieve the PDF file for the selected ID, generate a PNG file
+	''' containing the first page from the PDF, enable/disable controls on the
+	''' Document Preview tab, load the PNG file into the picture box, and then
+	''' update the status bar.
 	''' </summary>
 	Private Sub LoadDocumentPreview
 		toolStripStatusLabelMessage.Text = Nothing
@@ -1050,8 +1050,8 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' Resize the image in the Picture Box to the zoom percentage set by the
-	''' caller.
+	''' Enable/Disable the Zoom Out button, and then apply the zoom level to
+	''' the image in the picture box.
 	''' </summary>
 	Private Sub PreviewImageZoom
 		If ZoomLevel.Level > 100 Then
