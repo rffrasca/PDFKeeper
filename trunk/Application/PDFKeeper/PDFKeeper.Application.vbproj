@@ -88,7 +88,6 @@
     <Compile Include="Classes\HelpWrapper.vb" />
     <Compile Include="Classes\DatabaseConnection.vb" />
     <Compile Include="Classes\FileCache.vb" />
-    <Compile Include="Classes\ImageResizer.vb" />
     <Compile Include="Classes\MessageBoxWrapper\MessageBoxWrapper.Strings.Designer.vb">
       <DependentUpon>MessageBoxWrapper.Strings.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -144,6 +143,8 @@
       <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.vb" />
+    <Compile Include="Helper\Document Preview\ImageZoom.vb" />
+    <Compile Include="Helper\Document Preview\ZoomLevel.vb" />
     <Compile Include="Modules\UserProfileDeprecatedFolders.vb" />
     <Compile Include="Modules\UserProfileFolders.vb" />
     <Compile Include="Program.vb" />
@@ -210,6 +211,7 @@
     <Folder Include="Forms\MainForm" />
     <Folder Include="Forms\AboutForm" />
     <Folder Include="Forms\DirectUploadConfigurationForm" />
+    <Folder Include="Helper\Document Preview" />
     <Folder Include="Modules" />
     <COMReference Include="IWshRuntimeLibrary">
       <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
@@ -219,6 +221,7 @@
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+    <Folder Include="Helper" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

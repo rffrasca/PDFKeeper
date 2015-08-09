@@ -34,7 +34,7 @@ Public Partial Class MainForm
 	Dim capturePdfFile As String
 	Dim captureModPdfFile As String
 	Dim lastPdfDocumentCheckResult As Integer
-			
+		
 	Public Sub New()
 		Me.InitializeComponent()
 		StartUpdateCheck
@@ -960,7 +960,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomInClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		ImageResizer.IncreaseZoom
+		ZoomLevel.Increase
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -973,7 +973,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomOutClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		ImageResizer.DecreaseZoom
+		ZoomLevel.Decrease
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1043,8 +1043,8 @@ Public Partial Class MainForm
 				toolStripStatusLabelMessage.Text = "Previewing document: " & _
 					listViewDocs.SelectedItems(0).Index + 1 & " of " & _
 					listViewDocs.Items.Count
-				ImageResizer.Image = PictureBoxPreview.Image
-				ImageResizer.ResetZoom
+				ImageZoom.OriginalImage = PictureBoxPreview.Image
+				ZoomLevel.Reset
 			End If
 		End If
 	End Sub
@@ -1054,13 +1054,13 @@ Public Partial Class MainForm
 	''' caller.
 	''' </summary>
 	Private Sub PreviewImageZoom
-		If ImageResizer.Zoom > 100 Then
+		If ZoomLevel.Level > 100 Then
 			buttonZoomOut.Enabled = True
 		Else
 			buttonZoomOut.Enabled = False
 		End If
 		pictureBoxPreview.Image = Nothing
-		pictureBoxPreview.Image = ImageResizer.ResizedImage
+		pictureBoxPreview.Image = ImageZoom.Zoom
 	End Sub
 	
 	#End Region
