@@ -186,6 +186,7 @@ Public NotInheritable Class UserSettings
 			xmlConfig.Configs("CommonDialogs").Set("SaveFileLastFolder", _
 				SaveFileLastFolder)
 			xmlConfig.Save(settingsFile)
+		Catch ex As System.ArgumentNullException
 		Catch ex As UnauthorizedAccessException
 			MessageBoxWrapper.ShowError(ex.Message)
 		Catch ex As IOException
