@@ -55,6 +55,7 @@ Public Partial Class MainForm
 	Private Sub MainFormLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont
 		PositionAndSizeForm
+		DoNotResetZoomLevelCheck
 		ResizeListViewColumns
 		comboBoxSearchText.Select
 	End Sub
@@ -97,6 +98,16 @@ Public Partial Class MainForm
 			Windows.Forms.FormWindowState)
 	End Sub
 	
+	''' <summary>
+	''' If user setting is enabled, check "Do not reset Zoom Level during this
+	''' preview session" on the Document Preview tab. 
+	''' </summary>
+	Private Sub DoNotResetZoomLevelCheck
+		If UserSettings.DoNotResetZoomLevel = CStr(1) Then
+			checkBoxDoNotResetZoomLevel.Checked = True
+		End If
+	End Sub
+		
 	#End Region
 	
 	#Region "Form Menu"
@@ -952,6 +963,20 @@ Public Partial Class MainForm
 	#Region "Document Preview"
 	
 	''' <summary>
+	''' "Do not reset Zoom Level during this preview session" checkbox.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub CheckBoxDoNotResetZoomLevelCheckedChanged(sender As Object, _
+		e As EventArgs)
+		If checkBoxDoNotResetZoomLevel.Checked Then
+			UserSettings.DoNotResetZoomLevel = CStr(1)
+		Else
+			UserSettings.DoNotResetZoomLevel = CStr(0)
+		End If
+	End Sub
+	
+	''' <summary>
 	''' Increase the zoom level by 25%, and then apply to the image in the
 	''' picture box.
 	''' </summary>
@@ -1020,6 +1045,7 @@ Public Partial Class MainForm
 	Private Sub LoadDocumentPreview
 		toolStripStatusLabelMessage.Text = Nothing
 		Application.DoEvents
+		checkBoxDoNotResetZoomLevel.Enabled = False
 		buttonZoomIn.Enabled = False
 		buttonZoomOut.Enabled = False
 		buttonPreviewPrevious.Enabled = False
@@ -1031,6 +1057,7 @@ Public Partial Class MainForm
 			If PdfFileTask.GeneratePreviewImage(pdfFile) = 0 Then
 				pictureBoxPreview.Enabled = True
 				pictureBoxPreview.Load(Path.ChangeExtension(pdfFile, "png"))
+				checkBoxDoNotResetZoomLevel.Enabled = True
 				buttonZoomIn.Enabled = True
 				If listViewDocs.SelectedItems(0).Index > 0 Then
 					buttonPreviewPrevious.Enabled = True
@@ -1043,7 +1070,11 @@ Public Partial Class MainForm
 					listViewDocs.SelectedItems(0).Index + 1 & " of " & _
 					listViewDocs.Items.Count
 				ImageZoom.OriginalImage = PictureBoxPreview.Image
-				ZoomLevel.Reset
+				If checkBoxDoNotResetZoomLevel.Checked = True Then
+					PreviewImageZoom
+				Else
+					ZoomLevel.Reset
+				End If
 			End If
 		End If
 	End Sub

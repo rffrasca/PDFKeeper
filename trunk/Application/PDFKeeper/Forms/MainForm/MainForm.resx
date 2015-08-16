@@ -807,7 +807,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACg
-        DQAAAk1TRnQBSQFMAgEBBgEAAYQBCgGEAQoBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAZQBCgGUAQoBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1000,6 +1000,33 @@
   <data name="&gt;&gt;tabPageSearch.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="checkBoxDoNotResetZoomLevel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBoxDoNotResetZoomLevel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 5</value>
+  </data>
+  <data name="checkBoxDoNotResetZoomLevel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>324, 24</value>
+  </data>
+  <data name="checkBoxDoNotResetZoomLevel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxDoNotResetZoomLevel.Text" xml:space="preserve">
+    <value>Do not &amp;reset Zoom Level during this preview session.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDoNotResetZoomLevel.Name" xml:space="preserve">
+    <value>checkBoxDoNotResetZoomLevel</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDoNotResetZoomLevel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDoNotResetZoomLevel.Parent" xml:space="preserve">
+    <value>tabPagePreview</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDoNotResetZoomLevel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="buttonZoomOut.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1024,7 +1051,7 @@
     <value>90, 23</value>
   </data>
   <data name="buttonZoomOut.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="buttonZoomOut.Text" xml:space="preserve">
     <value>Zoom &amp;Out</value>
@@ -1042,7 +1069,7 @@
     <value>tabPagePreview</value>
   </data>
   <data name="&gt;&gt;buttonZoomOut.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="buttonZoomIn.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1068,7 +1095,7 @@
     <value>90, 23</value>
   </data>
   <data name="buttonZoomIn.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="buttonZoomIn.Text" xml:space="preserve">
     <value>Zoom &amp;In</value>
@@ -1086,7 +1113,7 @@
     <value>tabPagePreview</value>
   </data>
   <data name="&gt;&gt;buttonZoomIn.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panelPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1140,7 +1167,7 @@
     <value>tabPagePreview</value>
   </data>
   <data name="&gt;&gt;panelPreview.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="buttonPreviewNext.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1168,7 +1195,7 @@
     <value>75, 23</value>
   </data>
   <data name="buttonPreviewNext.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="buttonPreviewNext.Text" xml:space="preserve">
     <value>&amp;Next</value>
@@ -1183,7 +1210,7 @@
     <value>tabPagePreview</value>
   </data>
   <data name="&gt;&gt;buttonPreviewNext.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="buttonPreviewPrevious.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1211,7 +1238,7 @@
     <value>75, 23</value>
   </data>
   <data name="buttonPreviewPrevious.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="buttonPreviewPrevious.Text" xml:space="preserve">
     <value>&amp;Previous</value>
@@ -1229,7 +1256,7 @@
     <value>tabPagePreview</value>
   </data>
   <data name="&gt;&gt;buttonPreviewPrevious.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="tabPagePreview.ImageIndex" type="System.Int32, mscorlib">
     <value>1</value>

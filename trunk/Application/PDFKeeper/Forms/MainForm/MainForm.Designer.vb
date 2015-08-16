@@ -113,6 +113,7 @@ Partial Class MainForm
 		Me.columnHeaderSubject = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderAdded = New System.Windows.Forms.ColumnHeader()
 		Me.tabPagePreview = New System.Windows.Forms.TabPage()
+		Me.checkBoxDoNotResetZoomLevel = New System.Windows.Forms.CheckBox()
 		Me.buttonZoomOut = New System.Windows.Forms.Button()
 		Me.buttonZoomIn = New System.Windows.Forms.Button()
 		Me.panelPreview = New System.Windows.Forms.Panel()
@@ -585,6 +586,7 @@ Partial Class MainForm
 		'
 		'tabPagePreview
 		'
+		Me.tabPagePreview.Controls.Add(Me.checkBoxDoNotResetZoomLevel)
 		Me.tabPagePreview.Controls.Add(Me.buttonZoomOut)
 		Me.tabPagePreview.Controls.Add(Me.buttonZoomIn)
 		Me.tabPagePreview.Controls.Add(Me.panelPreview)
@@ -593,6 +595,13 @@ Partial Class MainForm
 		resources.ApplyResources(Me.tabPagePreview, "tabPagePreview")
 		Me.tabPagePreview.Name = "tabPagePreview"
 		Me.tabPagePreview.UseVisualStyleBackColor = true
+		'
+		'checkBoxDoNotResetZoomLevel
+		'
+		resources.ApplyResources(Me.checkBoxDoNotResetZoomLevel, "checkBoxDoNotResetZoomLevel")
+		Me.checkBoxDoNotResetZoomLevel.Name = "checkBoxDoNotResetZoomLevel"
+		Me.checkBoxDoNotResetZoomLevel.UseVisualStyleBackColor = true
+		AddHandler Me.checkBoxDoNotResetZoomLevel.CheckedChanged, AddressOf Me.CheckBoxDoNotResetZoomLevelCheckedChanged
 		'
 		'buttonZoomOut
 		'
@@ -878,6 +887,7 @@ Partial Class MainForm
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private checkBoxDoNotResetZoomLevel As System.Windows.Forms.CheckBox
 	Private buttonTextOnlyPrevious As System.Windows.Forms.Button
 	Private buttonTextOnlyNext As System.Windows.Forms.Button
 	Private textBoxTextOnlyView As System.Windows.Forms.TextBox
