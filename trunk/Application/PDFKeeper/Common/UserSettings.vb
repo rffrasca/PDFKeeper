@@ -27,6 +27,7 @@ Public NotInheritable Class UserSettings
 	Const formDefaultWidth As Integer = 714
 	Const formDefaultWindowState As Integer = 0	' 0 = Normal, 2 = Maximized
 	Const defaultUpdateCheck As Integer = 1	' 1 = Enabled, 0 = Disabled
+	Const defaultDoNotResetZoomLevel As Integer = 0	' 1 = Enabled, 0 = Disabled
 	Shared Private settingsFile As String = Path.Combine(RootDataDir, _
 		"UserSettings.xml")
 	
@@ -90,7 +91,15 @@ Public NotInheritable Class UserSettings
 	''' 1 = Enabled, 0 = Disabled
 	''' </summary>	
 	Shared Property UpdateCheck As String = CStr(defaultUpdateCheck)
-			
+	
+	''' <summary>
+	''' Document Preview "Do not reset Zoom Level during this preview session"
+	''' setting.
+	''' 1 = Enabled, 0 = Disabled
+	''' </summary>
+	Shared Property DoNotResetZoomLevel As String = _
+		CStr(defaultDoNotResetZoomLevel)
+	
 	''' <summary>
 	''' Common Open file dialog last folder.
 	''' </summary>
@@ -140,6 +149,9 @@ Public NotInheritable Class UserSettings
 					.Get("FormPositionWindowState")
 				UpdateCheck = xmlConfig.Configs("MainForm") _
 					.Get("UpdateCheck")
+				DoNotResetZoomLevel = _
+					xmlConfig.Configs("MainForm.DocumentPreview") _
+					.Get("DoNotResetZoomLevel")
 				OpenFileLastFolder = xmlConfig.Configs("CommonDialogs") _
 					.Get("OpenFileLastFolder")
 				SaveFileLastFolder = xmlConfig.Configs("CommonDialogs") _
@@ -180,6 +192,10 @@ Public NotInheritable Class UserSettings
 			xmlConfig.Configs("MainForm").Set("FormPositionWindowState", _
 											   FormPositionWindowState)
 			xmlConfig.Configs("MainForm").Set("UpdateCheck", UpdateCheck)
+			xmlConfig.AddConfig("MainForm.DocumentPreview")		
+			xmlConfig.Configs( _
+				"MainForm.DocumentPreview").Set("DoNotResetZoomLevel", _
+				DoNotResetZoomLevel)
 			xmlConfig.AddConfig("CommonDialogs")
 			xmlConfig.Configs("CommonDialogs").Set("OpenFileLastFolder", _
 				OpenFileLastFolder)

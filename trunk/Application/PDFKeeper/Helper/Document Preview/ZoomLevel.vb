@@ -30,7 +30,7 @@ Public NotInheritable Class ZoomLevel
 	''' </summary>
 	Shared ReadOnly Property Level As Integer
 		Get
-			If IsNothing(_Level) Then
+			If _Level = 0 Then
 				_Level = minimumValue
 			End If
 			Return _Level
