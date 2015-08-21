@@ -119,11 +119,13 @@ Public NotInheritable Class UserSettings
 	End Sub
 	
 	''' <summary>
-	''' Read user settings from UserSettings.xml.  This needs to be performed
-	''' during application startup.
+	''' Get all user settings from UserSettings.xml.  This needs to be
+	''' performed during application startup.
 	''' </summary>
 	''' <returns>0 = Success, 1 = Failed</returns>
-	Public Shared Function Read As Integer
+	<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
+		"CA1024:UsePropertiesWhereAppropriate")> _
+	Public Shared Function GetSettings As Integer
 		If ImportDeprecatedProperties = 1 Then
 			Return 1
 		End If
@@ -169,10 +171,10 @@ Public NotInheritable Class UserSettings
 	End Function
 
 	''' <summary>
-	''' Save user settings to UserSettings.xml.  This needs to be performed
-	''' while the Main form is closing.
+	''' Set all user settings into UserSettings.xml.  This needs to be
+	''' performed while the Main form is closing.
 	''' </summary>
-	Public Shared Sub Save
+	Public Shared Sub SetSettings
 		Try
 			Dim xmlConfig As New XmlConfigSource
 			xmlConfig.AddConfig("DatabaseConnectionForm")
