@@ -20,7 +20,7 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class ImageZoom
+Public NotInheritable Class ImageUtils
 	
 	''' <summary>
 	''' Original, preview image from picture box.

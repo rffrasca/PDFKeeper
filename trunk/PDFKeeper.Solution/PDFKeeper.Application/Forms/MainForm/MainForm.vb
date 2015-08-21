@@ -1069,7 +1069,7 @@ Public Partial Class MainForm
 				toolStripStatusLabelMessage.Text = "Previewing document: " & _
 					listViewDocs.SelectedItems(0).Index + 1 & " of " & _
 					listViewDocs.Items.Count
-				ImageZoom.OriginalImage = PictureBoxPreview.Image
+				ImageUtils.OriginalImage = PictureBoxPreview.Image
 				If checkBoxDoNotResetZoomLevel.Checked = True Then
 					PreviewImageZoom
 				Else
@@ -1090,7 +1090,7 @@ Public Partial Class MainForm
 			buttonZoomOut.Enabled = False
 		End If
 		pictureBoxPreview.Image = Nothing
-		pictureBoxPreview.Image = ImageZoom.Zoom
+		pictureBoxPreview.Image = ImageUtils.Zoom
 	End Sub
 	
 	#End Region
