@@ -119,6 +119,15 @@ Friend Class MainForm_Strings
 	End Property
 	
 	'''<summary>
+	'''  Looks up a localized string similar to direction argument must be N or P.
+	'''</summary>
+	Friend Shared ReadOnly Property DirectionArgument() As String
+		Get
+			Return ResourceManager.GetString("DirectionArgument", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
 	'''  Looks up a localized string similar to The Document Notes text box contains unsaved data.  Do you want to save changes?.
 	'''</summary>
 	Friend Shared ReadOnly Property DocumentNotesSavePrompt() As String

@@ -852,6 +852,25 @@ Public Partial Class MainForm
 				ColumnHeaderAutoResizeStyle.HeaderSize)
 		End If
 	End Sub
+	
+	''' <summary>
+	''' Selects the next listview item.
+	''' direction = "N" or "P"; where N = Next, P = Previous
+	''' </summary>
+	''' <param name="direction"></param>
+	Private Sub SelectNextListViewItem(ByVal direction As String)
+		listViewDocs.Focus
+		If direction.ToUpper(CultureInfo.CurrentCulture) = "N" Then
+			listViewDocs.Items( _
+				listViewDocs.SelectedItems(0).Index + 1).Selected = True
+		ElseIf direction.ToUpper(CultureInfo.CurrentCulture) = "P" Then
+			listViewDocs.Items( _
+				listViewDocs.SelectedItems(0).Index - 1).Selected = True
+		Else
+			Throw New System.ArgumentException(MainForm_Strings.DirectionArgument)
+		End If
+		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
+	End Sub
 		
 	''' <summary>
 	''' This subroutine will trim a leading space from the text in the
@@ -1011,10 +1030,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonPreviewPreviousClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		listViewDocs.Focus
-		listViewDocs.Items( _
-			listViewDocs.SelectedItems(0).Index - 1).Selected = True
-		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
+		SelectNextListViewItem("P")
 		LoadDocumentPreview
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1028,10 +1044,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonPreviewNextClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		listViewDocs.Focus
-		listViewDocs.Items( _
-			listViewDocs.SelectedItems(0).Index + 1).Selected = True
-		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
+		SelectNextListViewItem("N")
 		LoadDocumentPreview
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1105,11 +1118,8 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonTextOnlyPreviousClick(sender As Object, e As EventArgs)
-		listViewDocs.Focus
-		listViewDocs.Items( _
-			listViewDocs.SelectedItems(0).Index - 1).Selected = True
-		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
 		Me.Cursor = Cursors.WaitCursor
+		SelectNextListViewItem("P")
 		LoadTextOnlyView
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1122,11 +1132,8 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonTextOnlyNextClick(sender As Object, e As EventArgs)
-		listViewDocs.Focus
-		listViewDocs.Items( _
-			listViewDocs.SelectedItems(0).Index + 1).Selected = True
-		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
 		Me.Cursor = Cursors.WaitCursor
+		SelectNextListViewItem("N")
 		LoadTextOnlyView
 		Me.Cursor = Cursors.Default
 	End Sub
