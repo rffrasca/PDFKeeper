@@ -177,4 +177,7 @@ Are you sure you want to close PDFKeeper?
   <data name="UnableToStartDirectUpload" xml:space="preserve">
     <value>Unable to start Direct Upload Process due to an error while syncing folders to configuration files.</value>
   </data>
+  <data name="DirectionArgument" xml:space="preserve">
+    <value>direction argument must be N or P</value>
+  </data>
 </root>
