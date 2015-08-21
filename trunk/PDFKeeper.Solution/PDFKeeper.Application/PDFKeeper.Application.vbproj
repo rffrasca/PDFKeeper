@@ -89,6 +89,8 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Classes\DirectUpload\DirectUpload.vb" />
+    <Compile Include="Classes\Document Preview\ImageZoom.vb" />
+    <Compile Include="Classes\Document Preview\ZoomLevel.vb" />
     <Compile Include="Classes\FileTask.vb" />
     <Compile Include="Classes\FolderTask.vb" />
     <Compile Include="Classes\HelpWrapper.vb" />
@@ -148,8 +150,6 @@
       <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.vb" />
-    <Compile Include="Helper\Document Preview\ImageZoom.vb" />
-    <Compile Include="Helper\Document Preview\ZoomLevel.vb" />
     <Compile Include="Modules\UserProfileDeprecatedFolders.vb" />
     <Compile Include="Modules\UserProfileFolders.vb" />
     <Compile Include="Program.vb" />
@@ -210,6 +210,7 @@
     <Folder Include="Classes\MessageBoxWrapper" />
     <Folder Include="Classes\DirectUpload" />
     <Folder Include="Classes\Common" />
+    <Folder Include="Classes\Document Preview" />
     <Folder Include="Classes\UserProfileFoldersTask" />
     <Folder Include="Classes\PdfFileTask" />
     <Folder Include="Classes\PdfProperties" />
@@ -217,7 +218,6 @@
     <Folder Include="Forms\MainForm" />
     <Folder Include="Forms\AboutForm" />
     <Folder Include="Forms\DirectUploadConfigurationForm" />
-    <Folder Include="Helper\Document Preview" />
     <Folder Include="Modules" />
     <COMReference Include="IWshRuntimeLibrary">
       <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
@@ -227,7 +227,6 @@
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
-    <Folder Include="Helper" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
