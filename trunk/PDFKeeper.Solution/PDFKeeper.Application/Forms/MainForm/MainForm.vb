@@ -1926,7 +1926,7 @@ Public Partial Class MainForm
 		SaveFormPosition
 		UserProfileFoldersTask.DeleteDocumentCaptureShortcuts
 		UserProfileFoldersTask.DeleteDirectUploadShortcut
-		UserSettings.Save
+		UserSettings.SetSettings
 	End Sub
 	
 	''' <summary>
