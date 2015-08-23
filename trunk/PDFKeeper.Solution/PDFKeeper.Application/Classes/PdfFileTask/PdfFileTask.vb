@@ -176,46 +176,6 @@ Public NotInheritable Class PdfFileTask
 	End Function
 	
 	''' <summary>
-	''' This function will generate a PNG file in the Cache folder containing
-	''' the first page from "pdfFile".  If the PNG file is cached, then skip
-	''' the file generation.  If the PNG file is generated, then add to the
-	''' cache.  If encryption is supported by the operating system, encrypt the
-	''' generated PNG file.
-	''' </summary>
-	''' <param name="pdfFile"></param>
-	''' <returns>0 = Success, 1 = Failed</returns>
-	Public Shared Function GeneratePreviewImage(ByVal pdfFile As String) _
-												As Integer
-		Dim outputFile As String = Path.ChangeExtension(pdfFile, "png")
-		If FileCache.IsCached(outputFile) = False Then
-			Dim oProcess As New Process()
-			Try
-				oProcess.StartInfo.FileName = "gswin32c.exe"
-				oProcess.StartInfo.Arguments = _
-					"-o " & Chr(34) & outputFile & Chr(34) & _
-					" -sDEVICE=pngalpha " & _
-					"-dLastPage=1 " & Chr(34) & pdfFile & Chr(34)
-				oProcess.StartInfo.UseShellExecute = False
-				oProcess.StartInfo.CreateNoWindow = True
-				oProcess.StartInfo.RedirectStandardError = True
-				oProcess.Start
-				oProcess.WaitForExit
-				If oProcess.ExitCode <> 0 Then
-					Dim oStreamReader As StreamReader = oProcess.StandardError
-					MessageBoxWrapper.ShowError(oStreamReader.ReadToEnd)
-					Return 1
-				End If
-				FileCache.Add(outputFile)
-			Catch ex As System.ComponentModel.Win32Exception
-				MessageBoxWrapper.ShowError(ex.Message)
-				Return 1
-			End Try
-		End If
-		FileTask.Encrypt(outputFile)
-		Return 0
-	End Function
-	
-	''' <summary>
 	''' This function will extract the text contained within "pdfFile" and
 	''' return extracted text to the caller.
 	''' </summary>

@@ -982,7 +982,7 @@ Public Partial Class MainForm
 	#Region "Document Preview"
 	
 	''' <summary>
-	''' "Do not reset Zoom Level during this preview session" checkbox.
+	''' "Do not reset Zoom Level during this preview session" setting checkbox.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -1003,7 +1003,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomInClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		ZoomLevel.Increase
+		DocumentPreviewer.IncreaseZoomLevel
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1016,7 +1016,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomOutClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		ZoomLevel.Decrease
+		DocumentPreviewer.DecreaseZoomLevel
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1050,10 +1050,11 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' Retrieve the PDF file for the selected ID, generate a PNG file
+	''' Retrieve the PDF file for the selected ID, generate an image file
 	''' containing the first page from the PDF, enable/disable controls on the
-	''' Document Preview tab, load the PNG file into the picture box, and then
-	''' update the status bar.
+	''' Document Preview tab, load image file into picture box, set
+	''' PreviewImage property to image from picture box, and then update the
+	''' status bar.
 	''' </summary>
 	Private Sub LoadDocumentPreview
 		toolStripStatusLabelMessage.Text = Nothing
@@ -1067,9 +1068,10 @@ Public Partial Class MainForm
 		Dim pdfFile As String = Path.Combine(CacheDir, "pdfkeeper" & _
 			selectedId & ".pdf")
 		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
-			If PdfFileTask.GeneratePreviewImage(pdfFile) = 0 Then
+			If DocumentPreviewer.PdfToPreviewImage(pdfFile) = 0 Then
 				pictureBoxPreview.Enabled = True
 				pictureBoxPreview.Load(Path.ChangeExtension(pdfFile, "png"))
+				DocumentPreviewer.PreviewImage = pictureBoxPreview.Image
 				checkBoxDoNotResetZoomLevel.Enabled = True
 				buttonZoomIn.Enabled = True
 				If listViewDocs.SelectedItems(0).Index > 0 Then
@@ -1082,11 +1084,10 @@ Public Partial Class MainForm
 				toolStripStatusLabelMessage.Text = "Previewing document: " & _
 					listViewDocs.SelectedItems(0).Index + 1 & " of " & _
 					listViewDocs.Items.Count
-				ImageUtils.OriginalImage = PictureBoxPreview.Image
 				If checkBoxDoNotResetZoomLevel.Checked = True Then
 					PreviewImageZoom
 				Else
-					ZoomLevel.Reset
+					DocumentPreviewer.ResetZoomLevel
 				End If
 			End If
 		End If
@@ -1097,13 +1098,13 @@ Public Partial Class MainForm
 	''' the image in the picture box.
 	''' </summary>
 	Private Sub PreviewImageZoom
-		If ZoomLevel.Level > 100 Then
+		If DocumentPreviewer.ZoomLevel > 100 Then
 			buttonZoomOut.Enabled = True
 		Else
 			buttonZoomOut.Enabled = False
 		End If
 		pictureBoxPreview.Image = Nothing
-		pictureBoxPreview.Image = ImageUtils.Zoom
+		pictureBoxPreview.Image = DocumentPreviewer.ZoomPreviewImage
 	End Sub
 	
 	#End Region
@@ -1911,22 +1912,22 @@ Public Partial Class MainForm
 	End Function
 	
 	''' <summary>
-	''' This subroutine will call subroutines to check for unsaved Document
-	''' Notes, dispose the Document Preview picture box, delete cached PDF and
-	''' PNG files, dispose the database password string, save the form size and
-	''' postion, and then save the user settings.
+	''' Check for unsaved Document Notes; dispose the database password string;
+	''' save form size and postion; delete Document Capture and Direct Upload
+	''' folder shortcuts; set user settings; dispose the Document Preview
+	''' picture box; and delete cached PDF and PNG files.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub MainFormFormClosed(sender As Object, e As FormClosedEventArgs)
 		DocumentNotesModifiedCheck
-		pictureBoxPreview.Dispose ' added so last loaded image can be deleted.
-		FolderTask.DeletePdfKeeperCreatedFiles(CacheDir)
 		DatabaseConnectionForm.dbPassword.Dispose
 		SaveFormPosition
 		UserProfileFoldersTask.DeleteDocumentCaptureShortcuts
 		UserProfileFoldersTask.DeleteDirectUploadShortcut
 		UserSettings.SetSettings
+		pictureBoxPreview.Dispose
+		FolderTask.DeletePdfKeeperCreatedFiles(CacheDir)
 	End Sub
 	
 	''' <summary>

@@ -88,8 +88,7 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Classes\DirectUpload\DirectUpload.vb" />
-    <Compile Include="Classes\Document Preview\ImageUtils.vb" />
-    <Compile Include="Classes\Document Preview\ZoomLevel.vb" />
+    <Compile Include="Classes\DocumentPreviewer.vb" />
     <Compile Include="Classes\FileTask.vb" />
     <Compile Include="Classes\FolderTask.vb" />
     <Compile Include="Classes\HelpWrapper.vb" />
@@ -209,7 +208,6 @@
     <Folder Include="Classes" />
     <Folder Include="Classes\MessageBoxWrapper" />
     <Folder Include="Classes\DirectUpload" />
-    <Folder Include="Classes\Document Preview" />
     <Folder Include="Classes\UserProfileFoldersTask" />
     <Folder Include="Classes\PdfFileTask" />
     <Folder Include="Classes\PdfProperties" />
