@@ -82,7 +82,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Common\UserSettings.vb" />
     <Compile Include="Classes\DirectUploadFolderProperties.vb" />
     <Compile Include="Classes\DirectUpload\DirectUpload.Strings.Designer.vb">
       <DependentUpon>DirectUpload.Strings.resx</DependentUpon>
@@ -119,6 +118,7 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Classes\UserProfileFoldersTask\UserProfileFoldersTask.vb" />
+    <Compile Include="Classes\UserSettings.vb" />
     <Compile Include="Classes\WindowFinder.vb" />
     <Compile Include="Forms\AboutForm\AboutForm.Designer.vb">
       <DependentUpon>AboutForm.vb</DependentUpon>
@@ -209,7 +209,6 @@
     <Folder Include="Classes" />
     <Folder Include="Classes\MessageBoxWrapper" />
     <Folder Include="Classes\DirectUpload" />
-    <Folder Include="Classes\Common" />
     <Folder Include="Classes\Document Preview" />
     <Folder Include="Classes\UserProfileFoldersTask" />
     <Folder Include="Classes\PdfFileTask" />
