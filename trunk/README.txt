@@ -52,6 +52,6 @@ Setup script, DatabaseSetup.cmd is located in the project Database folder.
        NOTE: To extract from the GhostScript installer, you can use
        7-Zip Portable (http://portableapps.com/apps/utilities/7-zip_portable)
 
-4. Open PDFKeeper.Help\en\PDFKeeper.hhp with HTML Help Workshop and compile.
+4. Open Help\en\PDFKeeper.hhp with HTML Help Workshop and compile.
 
 5. Open PDFKeeper.Solution\PDFKeeper.sln with SharpDevelop (or Visual Studio) and Build. 
