@@ -1174,34 +1174,134 @@ Public Partial Class MainForm
 	#Region "Document Capture"
 	
 	''' <summary>
-	''' This subroutine will fill the "Document Capture Queue" list box with
-	''' the absolute pathname for each PDF document in the Capture folder.
+	''' Display the "Document Capture" status bar icon, if PDF files exist in
+	''' the Capture folder; refresh the "Document Capture Queue" list box, if
+	''' the folder change flag is set to True; and delete all empty
+	''' sub-folders.  To maintain synchronization, the timer is stopped during
+	''' the execution of this subroutine.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub TimerCaptureCheckTick(sender As Object, e As EventArgs)
+		timerCaptureCheck.Stop
+		If FolderTask.CountOfFiles(CaptureDir, "pdf") > 0 Then
+			toolStripStatusLabelCaptured.Visible = True
+		Else
+			toolStripStatusLabelCaptured.Visible = False
+		End If
+		If documentCaptureFolderChanged Then
+			documentCaptureFolderChanged = False
+			FillDocCaptureQueueList
+		End If
+		FolderTask.DeleteAllEmptySubfolders(CaptureDir)
+		timerCaptureCheck.Start
+	End Sub
+	
+	''' <summary>
+	''' Set the Capture folder changed flag to True when a file added to the
+	''' Capture folder is a PDF document.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub FileSystemWatcherDocumentCaptureCreated(sender As Object, e As FileSystemEventArgs)
+		If Path.GetExtension(e.FullPath) = ".pdf" Then
+			Me.Cursor = Cursors.WaitCursor
+			FileTask.WaitForFileCreation(e.FullPath)
+			If listBoxDocCaptureQueue.FindStringExact(e.FullPath) = -1 Then
+				documentCaptureFolderChanged = True
+			End If
+			Me.Cursor = Cursors.Default
+		End If
+	End Sub
+
+	''' <summary>
+	''' Set the Capture folder changed flag to True when a file is deleted from
+	''' the Capture folder that exists in the Document Capture Queue list box,
+	''' and then clear the form if a PDF document is selected.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub FileSystemWatcherDocumentCaptureDeleted(sender As Object, e As FileSystemEventArgs)
+		If Not listBoxDocCaptureQueue.FindStringExact(e.FullPath) = -1 Then
+			documentCaptureFolderChanged = True
+			If textBoxPDFDocument.Text = e.FullPath Then
+				MessageBoxWrapper.ShowInformation( _
+					MainForm_Strings.SelectedDocDeleted)
+				Me.Cursor = Cursors.WaitCursor
+				TerminateCapturePdfViewer
+				ClearCaptureSelection
+				Me.Cursor = Cursors.Default
+			End If
+		End If
+	End Sub
+
+	''' <summary>
+	''' Set the Capture folder changed flag to True when a file in the Capture
+	''' folder is renamed and is selected; and then clear the form and select
+	''' the renamed PDF document.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub FileSystemWatcherDocumentCaptureRenamed(sender As Object, e As RenamedEventArgs)
+		If Not listBoxDocCaptureQueue.FindStringExact(e.OldFullPath) = -1 Then
+			documentCaptureFolderChanged = False
+			FillDocCaptureQueueList
+			If textBoxPDFDocument.Text = e.OldFullPath Then
+				MessageBoxWrapper.ShowInformation( _
+					MainForm_Strings.SelectedDocRenamed)
+				Me.Cursor = Cursors.WaitCursor
+				TerminateCapturePdfViewer
+				ClearCaptureSelection
+				Dim index As Integer = _
+					listBoxDocCaptureQueue.FindStringExact(e.FullPath)
+				If Not index = -1 Then
+					listBoxDocCaptureQueue.SetSelected(index, True)
+				End If
+				ListBoxDocCaptureQueueSelectedIndexChanged(Me,Nothing)
+				Me.Cursor = Cursors.Default
+			End If
+		End If
+	End Sub
+	
+	''' <summary>
+	''' This subroutine is the "Document Capture" folder watcher error event
+	''' handler that will display the error exception message and enable the
+	''' folder watcher.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub FileSystemWatcherDocumentCaptureError(sender As Object, e As ErrorEventArgs)
+		MessageBoxWrapper.ShowError(e.GetException().ToString)
+		fileSystemWatcherDocumentCapture.EnableRaisingEvents = True
+	End Sub
+		
+	''' <summary>
+	''' Fill the "Document Capture Queue" list box with the absolute pathname
+	''' for each PDF document in the Capture folder.
 	''' </summary>
 	Private Sub FillDocCaptureQueueList
 		Me.Cursor = Cursors.WaitCursor
 		listBoxDocCaptureQueue.Items.Clear
-		Dim files As String()
-		files = Directory.GetFiles(CaptureDir, "*.pdf", _
-				SearchOption.AllDirectories)
-		For Each oFile In files
-			listBoxDocCaptureQueue.Items.Add(oFile)
+		Dim files As String() = Directory.GetFiles(CaptureDir, "*.pdf", _
+			SearchOption.AllDirectories)
+		For Each file In files
+			listBoxDocCaptureQueue.Items.Add(file)
 		Next
 		Me.Cursor = Cursors.Default
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will read the information properties for the selected
-	''' PDF document and update the form.  When a PDF document is selected,
-	''' the "Document Capture Queue" list box is disabled.  If the selected PDF
-	''' document is protected by an OWNER password, a password prompt will be
-	''' displayed.
+	''' Read the information properties for the selected PDF document and
+	''' update the form.  When a PDF document is selected, the "Document
+	''' Capture Queue" list box is disabled.  If the selected PDF document is
+	''' protected by an OWNER password, a password prompt will be displayed.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ListBoxDocCaptureQueueSelectedIndexChanged(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
 		capturePdfFile = CStr(listBoxDocCaptureQueue.SelectedItem)
-		If Not capturePdfFile = Nothing Then
+		If IsNothing(capturePdfFile) = False Then
 			captureModPdfFile = Path.Combine(CaptureTempDir, _
 								Path.GetFileName(capturePdfFile))
 			lastPdfDocumentCheckResult = PdfFileTask.SecurityCheck(capturePdfFile)
@@ -1231,7 +1331,7 @@ Public Partial Class MainForm
 				
 				' If the title is blank, default to the filename without the
 				' PDF extension.
-				If oPdfProperties.Title Is Nothing Then
+				If IsNothing(oPdfProperties.Title) Then
 					textBoxTitle.Text = Path.GetFileNameWithoutExtension( _
 						capturePdfFile)
 				End If
@@ -1257,8 +1357,8 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
- 	''' This subroutine will call the CaptureViewPdf subroutine to display the
- 	''' original PDF document in a restricted Sumatra PDF process.
+ 	''' Call the CaptureViewPdf subroutine to display the original PDF
+ 	''' document in a restricted Sumatra PDF process.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -1267,7 +1367,7 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will fill the Author combo box.
+	''' Fill the Author combo box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -1276,7 +1376,7 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will fill the Subject combo box.
+	''' Fill the Subject combo box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -1285,9 +1385,8 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will fill "comboBoxName" with either authors or
-	''' subjects for the selected/specified author.  "comboBoxName" can be
-	''' "Author" or "Subject.
+	''' Fill "comboBoxName" with either authors or subjects for the
+	''' selected/specified author.  "comboBoxName" can be "Author" or "Subject.
 	''' </summary>
 	''' <param name="comboBoxName"></param>
 	Private Sub FillCaptureComboBox(ByVal comboBoxTitle As String)
@@ -1346,9 +1445,9 @@ Public Partial Class MainForm
 	End Sub
 		
 	''' <summary>
-	''' This subroutine will trim the leading space from the text in all of
-	''' the Document Capture text and combo boxes, and enables the Save button
-	''' if the length of the Title, Author, and Subject is greater than 0.
+	''' Trim the leading space from the text in all of the Document Capture
+	''' text and combo boxes; and enable the Save button if the length of the
+	''' Title, Author, and Subject is greater than 0.
 	''' </summary>
 	Private Sub CaptureComboBoxTextChanged
 		toolStripStatusLabelMessage.Text = Nothing
@@ -1368,9 +1467,9 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will call the TerminateCapturePdfViewer subroutine;
-	''' save the information properties to the new PDF document; and clear
-	'''	the PDF password secure string, if it was specified.
+	''' Call the TerminateCapturePdfViewer subroutine; save the information
+	''' properties to the new PDF document; and clear the PDF password secure
+	''' string, if it was specified.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -1414,8 +1513,8 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will call the CaptureViewPdf subroutine to display the
- 	''' modified PDF document in a restricted Sumatra PDF process.
+	''' Call the CaptureViewPdf subroutine to display the modified PDF
+ 	''' document in a restricted Sumatra PDF process.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -1424,10 +1523,10 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will call the TerminateCapturePdfViewer subroutine,
-	''' upload the modified PDF document to the database, delete the original
-	''' PDF document to the recycle bin, call the ClearCaptureSelection and
-	''' FillDocCaptureQueueList subroutines.
+	''' Call the TerminateCapturePdfViewer subroutine, upload the modified PDF
+	''' document to the database, delete the original PDF document to the
+	''' recycle bin, call the ClearCaptureSelection and FillDocCaptureQueueList
+	''' subroutines.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -1454,10 +1553,10 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine is to be called at the start of a Save or Upload.  It
-	''' will disable all text and combo boxes, and the appropriate buttons
-	''' based on the action being performed.  If performing a Save, "uploading"
-	''' should be False; if performing an upload, "uploading" should be True.
+	''' Disable all text and combo boxes, and the appropriate buttons based on
+	''' the action being performed.  If performing a Save, "uploading" should
+	''' be False; if performing an upload, "uploading" should be True.  This
+	''' should be called at the start of a Save or Upload.
 	''' </summary>
 	''' <param name="uploading"></param>
 	Private Sub DisableCaptureControls(uploading As Boolean)
@@ -1475,11 +1574,10 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine is to be called at the end of a Save or when an Upload
-	''' has failed.  It will disable all text and combo boxes, and the
-	''' appropriate buttons based on the action being performed.  If performing
-	''' a Save, "uploading" should be False; if performing an upload,
-	''' "uploading" should be True.
+	''' Disable all text and combo boxes, and the appropriate buttons based on
+	''' the action being performed.  If performing a Save, "uploading" should
+	''' be False; if performing an upload, "uploading" should be True.  This
+	''' should be called at the end of a Save or when an Upload has failed.
 	''' </summary>
 	''' <param name="uploading"></param>
 	Private Sub EnableCaptureControls(uploading As Boolean)
@@ -1496,10 +1594,9 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will perform the following, if the user selects "Yes"
-	''' at the prompt: call the TerminateCapturePdfViewer and
-	''' ClearCaptureSelection subroutines; and dispose the PDF password secure
-	'''	string, if it was specified.
+	''' When the user selects "Yes" to deselect the selected document; call the
+	''' the TerminateCapturePdfViewer and ClearCaptureSelection subroutines, and
+	''' dispose the PDF password secure string if it was specified.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -1517,9 +1614,8 @@ Public Partial Class MainForm
 	End Sub
 		
 	''' <summary>
-	''' This subroutine will display the PDF document "file" in the restricted
-	''' Sumatra PDF viewer.  If a Sumatra PDF process object does exist, it will
-	''' be terminated.
+	''' Display the PDF document "file" in the restricted Sumatra PDF viewer.
+	''' If a Sumatra PDF process object does exist, it will be terminated.
 	''' </summary>
 	''' <param name="file"></param>
 	Private Sub CaptureViewPdf(file As String)
@@ -1529,7 +1625,7 @@ Public Partial Class MainForm
 		Dim oPdfProperties As New PdfProperties(file)
 		If oPdfProperties.Read = 0 Then
 			Dim titleBarText As String
-			If oPdfProperties.Title = Nothing Then
+			If IsNothing(oPdfProperties.Title) Then
 				titleBarText = Path.GetFileName(file) & " - SumatraPDF"
 			Else
 				titleBarText = Path.GetFileName(file) & " - [" & _
@@ -1547,8 +1643,7 @@ Public Partial Class MainForm
 	End Sub
 		
 	''' <summary>
-	''' This subroutine will terminate the restricted Sumatra PDF process
-	''' object.
+	''' Terminate the restricted Sumatra PDF process object.
 	''' </summary>
 	Private Sub TerminateCapturePdfViewer
 		Try
@@ -1558,9 +1653,9 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will clear the "Document Capture" form controls, enable
-	''' the "Document Capture Queue" list box, and delete the modified copy of
-	''' the selected PDF document.
+	''' Clear the "Document Capture" form controls, enable the "Document
+	''' Capture Queue" list box, and delete the modified copy of the selected
+	''' PDF document.
 	''' </summary>
 	Private Sub ClearCaptureSelection
 		toolStripStatusLabelMessage.Text = Nothing
@@ -1690,31 +1785,6 @@ Public Partial Class MainForm
 	#Region "Components"
 	
 	''' <summary>
-	''' This subroutine will process the Capture folder by displaying or hiding
-	''' the "Document Capture" status bar icon; refresh the "Document Capture
-	''' Queue" list box, if the folder change flag is set to True; delete all
-	''' empty sub-folders; and display or hide the "Document Capture Deny"
-	''' status bar icon.  To maintain synchronization, the timer is stopped
-	''' during the execution of this subroutine.
-	''' </summary>
-	''' <param name="sender"></param>
-	''' <param name="e"></param>
-	Private Sub TimerCaptureCheckTick(sender As Object, e As EventArgs)
-		timerCaptureCheck.Stop
-		If FolderTask.CountOfFiles(CaptureDir, "pdf") > 0 Then
-			toolStripStatusLabelCaptured.Visible = True
-		Else
-			toolStripStatusLabelCaptured.Visible = False
-		End If
-		If documentCaptureFolderChanged Then
-			documentCaptureFolderChanged = False
-			FillDocCaptureQueueList
-		End If
-		FolderTask.DeleteAllEmptySubfolders(CaptureDir)
-		timerCaptureCheck.Start
-	End Sub
-	
-	''' <summary>
 	''' This subroutine will process the Direct Upload folder on a worker
 	''' thread by uploading all PDF documents in each configured folder,
 	''' including subfolders.  To maintain synchronization, the timer is
@@ -1787,85 +1857,7 @@ Public Partial Class MainForm
 		timerDirectUpload.Start
 		toolStripMenuItemDirectUploadConfig.Enabled = True
 	End Sub
-		
-	''' <summary>
-	''' This subroutine will execute when a file is added to the Capture
-	''' folder.  If the file added is a PDF document, then set the Capture
-	''' folder changed flag to True.
-	''' </summary>
-	''' <param name="sender"></param>
-	''' <param name="e"></param>
-	Private Sub FileSystemWatcherDocumentCaptureCreated(sender As Object, e As FileSystemEventArgs)
-		If Path.GetExtension(e.FullPath) = ".pdf" Then
-			Me.Cursor = Cursors.WaitCursor
-			FileTask.WaitForFileCreation(e.FullPath)
-			If listBoxDocCaptureQueue.FindStringExact(e.FullPath) = -1 Then
-				documentCaptureFolderChanged = True
-			End If
-			Me.Cursor = Cursors.Default
-		End If
-	End Sub
-
-	''' <summary>
-	''' This subroutine will set the Capture folder changed flag to True and
-	''' clear the form if the PDF document was selected.
-	''' </summary>
-	''' <param name="sender"></param>
-	''' <param name="e"></param>
-	Private Sub FileSystemWatcherDocumentCaptureDeleted(sender As Object, e As FileSystemEventArgs)
-		If Not listBoxDocCaptureQueue.FindStringExact(e.FullPath) = -1 Then
-			documentCaptureFolderChanged = True
-			If textBoxPDFDocument.Text = e.FullPath Then
-				MessageBoxWrapper.ShowInformation( _
-					MainForm_Strings.SelectedDocDeleted)
-				Me.Cursor = Cursors.WaitCursor
-				TerminateCapturePdfViewer
-				ClearCaptureSelection
-				Me.Cursor = Cursors.Default
-			End If
-		End If
-	End Sub
-
-	''' <summary>
-	''' This subroutine will set the Capture folder changed flag to True and if
-	''' the renamed PDF document was selected, clear the form and select the
-	''' renamed PDF document.
-	''' </summary>
-	''' <param name="sender"></param>
-	''' <param name="e"></param>
-	Private Sub FileSystemWatcherDocumentCaptureRenamed(sender As Object, e As RenamedEventArgs)
-		If Not listBoxDocCaptureQueue.FindStringExact(e.OldFullPath) = -1 Then
-			documentCaptureFolderChanged = False
-			FillDocCaptureQueueList
-			If textBoxPDFDocument.Text = e.OldFullPath Then
-				MessageBoxWrapper.ShowInformation( _
-					MainForm_Strings.SelectedDocRenamed)
-				Me.Cursor = Cursors.WaitCursor
-				TerminateCapturePdfViewer
-				ClearCaptureSelection
-				Dim index As Integer = _
-					listBoxDocCaptureQueue.FindStringExact(e.FullPath)
-				If Not index = -1 Then
-					listBoxDocCaptureQueue.SetSelected(index, True)
-				End If
-				ListBoxDocCaptureQueueSelectedIndexChanged(Me,Nothing)
-				Me.Cursor = Cursors.Default
-			End If
-		End If
-	End Sub
 	
-	''' <summary>
-	''' This subroutine is the "Document Capture" folder watcher error event
-	''' handler that will display the error exception message and enable the
-	''' folder watcher.
-	''' </summary>
-	''' <param name="sender"></param>
-	''' <param name="e"></param>
-	Private Sub FileSystemWatcherDocumentCaptureError(sender As Object, e As ErrorEventArgs)
-		MessageBoxWrapper.ShowError(e.GetException().ToString)
-		fileSystemWatcherDocumentCapture.EnableRaisingEvents = True
-	End Sub
-
 	#End Region
 	
 	#Region "Form Closing"
