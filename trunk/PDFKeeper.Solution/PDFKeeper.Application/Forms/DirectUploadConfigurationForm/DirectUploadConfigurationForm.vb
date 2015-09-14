@@ -142,7 +142,7 @@ Public Partial Class DirectUploadConfigurationForm
 					DirectUploadConfigurationForm_Strings.DeleteFolder, _
 					selectedFolder)) = 6 Then
 				If FolderTask.Delete(folderPath, False) = 0 Then
-					If FileTask.Delete(Path.Combine(UploadXmlDir, _
+					If FileUtil.Delete(Path.Combine(UploadXmlDir, _
 									   selectedFolder & ".xml"), False) = 0 Then
 						FillList
 						Discard
@@ -346,7 +346,7 @@ Public Partial Class DirectUploadConfigurationForm
 				Return 1
 			End If
 		Else
-			If FileTask.Delete(Path.Combine(UploadXmlDir, _
+			If FileUtil.Delete(Path.Combine(UploadXmlDir, _
 							   selectedFolder & ".xml"), False) = 1 Then
 				Return 1
 			End If

@@ -171,7 +171,7 @@ Public NotInheritable Class PdfFileTask
 			End Using
 			FileCache.Add(pdfFile)		
 		End If
-		FileTask.Encrypt(pdfFile)
+		FileUtil.Encrypt(pdfFile)
 		Return 0
 	End Function
 	

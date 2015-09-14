@@ -134,11 +134,11 @@ Public NotInheritable Class UserProfileFoldersTask
 	''' <returns></returns>
 	Public Shared Sub DeleteDocumentCaptureShortcuts
 		If Directory.Exists(LinksDir) Then
-			FileTask.Delete(DocumentCaptureLinksShortcut, False)
+			FileUtil.Delete(DocumentCaptureLinksShortcut, False)
 		Else
-			FileTask.Delete(DocumentCaptureMyDocsShortcut, False)
+			FileUtil.Delete(DocumentCaptureMyDocsShortcut, False)
 		End If
-		FileTask.Delete(DocumentCaptureSendToShortcut, False)
+		FileUtil.Delete(DocumentCaptureSendToShortcut, False)
 	End Sub
 	
 	''' <summary>
@@ -147,9 +147,9 @@ Public NotInheritable Class UserProfileFoldersTask
 	''' <returns></returns>
 	Public Shared Sub DeleteDirectUploadShortcut
 		If Directory.Exists(LinksDir) Then
-			FileTask.Delete(DirectUploadLinksShortcut, False)
+			FileUtil.Delete(DirectUploadLinksShortcut, False)
 		Else
-			FileTask.Delete(DirectUploadMyDocsShortcut, False)
+			FileUtil.Delete(DirectUploadMyDocsShortcut, False)
 		End If
 	End Sub
 End Class

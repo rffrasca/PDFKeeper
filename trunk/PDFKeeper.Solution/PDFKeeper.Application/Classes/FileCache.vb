@@ -31,7 +31,7 @@ Public NotInheritable Class FileCache
 	
 	''' <summary>
 	''' This subroutine will add "file" to the cache collection with its
-	''' hashcode.  If the collection already contains "file", then remove it
+	''' hash value.  If the collection already contains "file", then remove it
 	''' before adding which would be neccessary if the cached file was deleted
 	''' from the Cache folder while PDFKeeper was open.
 	''' </summary>
@@ -40,20 +40,20 @@ Public NotInheritable Class FileCache
 		If cache.ContainsKey(file) Then
 			cache.Remove(file)
 		End If
-		cache.Add(file, FileTask.CalcHashCode(file))
+		cache.Add(file, FileUtil.ComputeHashValue(file))
 	End Sub
 	
 	''' <summary>
 	''' This function will check if "file" is cached.  For the file to be
 	''' cached, it must exist on disk and its hash code must match the hash
-	''' code stored in the cache collection. 
+	''' value stored in the cache collection. 
 	''' </summary>
 	''' <param name="file"></param>
 	''' <returns>True or False</returns>
 	Public Shared Function IsCached(ByVal file As String) As Boolean
 		If System.IO.File.Exists(file) Then
 			If cache.ContainsKey(file) Then
-				If FileTask.CalcHashCode(file) = cache(file) Then
+				If FileUtil.ComputeHashValue(file) = cache(file) Then
 					Return True
 				End If
 			End If

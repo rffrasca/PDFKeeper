@@ -98,7 +98,7 @@ Public NotInheritable Class DirectUpload
 				oDirectoryInfo.GetFileSystemInfos("*.pdf", _
 					SearchOption.AllDirectories)
 			For Each pdfFile In oFileSystemInfo
-				FileTask.WaitForFileCreation(pdfFile.FullName)
+				FileUtil.WaitForFileCreation(pdfFile.FullName)
 				Dim oDate As Date = pdfFile.LastWriteTime
 				counter += 1
 				oSortedList.Add(oDate.ToString("s", _
@@ -179,8 +179,8 @@ Public NotInheritable Class DirectUpload
 				End If
 				If oPdfProperties.Write = 0 Then
 					If PdfFileTask.UploadToDatabase(outputPdfFile) = 0 Then
-						FileTask.Delete(inputPdfFile, True)
-						FileTask.Delete(outputPdfFile, False)
+						FileUtil.Delete(inputPdfFile, True)
+						FileUtil.Delete(outputPdfFile, False)
 					End If
 				End If
 			Else

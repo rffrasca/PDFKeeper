@@ -20,21 +20,21 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class FileTask
+Public NotInheritable Class FileUtil
 	
 	''' <summary>
-	''' This subroutine is the class constructor required for FxCop compliance.
+	''' Required for FxCop compliance (CA1053).
 	''' </summary>
 	Private Sub New()
 	End Sub
 	
 	''' <summary>
-	''' This function will compute the hash code of "file" and return it to
-	''' the caller as a string value. 
+	''' Compute the hash value of "file" and return it to the caller as a
+	''' string value.
 	''' </summary>
 	''' <param name="file"></param>
 	''' <returns></returns>
-	Public Shared Function CalcHashCode(ByVal file As String) As String
+	Public Shared Function ComputeHashValue(ByVal file As String) As String
 		Dim oHashAlgorithm As HashAlgorithm = HashAlgorithm.Create("SHA1")
 		Using oFileStream As New FileStream(file, FileMode.Open, _
 												  FileAccess.Read)
@@ -44,20 +44,22 @@ Public NotInheritable Class FileTask
 	End Function
 		
 	''' <summary>
-	''' This subroutine will encrypt "file" if the operating system supports
-	''' the Encrypting File System (EFS).
+	''' Eencrypt "file" if the operating system supports the Encrypting File
+	''' System (EFS).
 	''' </summary>
 	''' <param name="file"></param>
 	Public Shared Sub Encrypt(ByVal file As String)
 		Try
 			System.IO.File.Encrypt(file)
 		Catch ex As IOException
+		Catch ex As UnauthorizedAccessException
+			MessageBoxWrapper.ShowError(ex.Message)
 		End Try
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will wait for "file" to be created.  It will wait until
-	''' "file" exists and is not in use.
+	''' Wait for "file" to be created.  It will wait until "file" exists and is
+	''' not in use.
 	''' </summary>
 	''' <param name="file"></param>
 	Public Shared Sub WaitForFileCreation(ByVal file As String)
@@ -70,8 +72,8 @@ Public NotInheritable Class FileTask
 	End Sub
 		
 	''' <summary>
-	''' This function will return True or False if "file" is in use.  If
-	''' "file" does not exist, False is returned. 
+	''' Return True or False if "file" is in use.  If "file" does not exist,
+	''' False is returned. 
 	''' </summary>
 	''' <param name="file"></param>
 	''' <returns>True or False</returns>
@@ -92,9 +94,8 @@ Public NotInheritable Class FileTask
 	End Function
 	
 	''' <summary>
-	''' This function will delete "file" if it does exist.  To delete "file"
-	''' and move it to the Recycle Bin, set "recycle" to True; otherwise, set
-	''' "recycle" to False. 
+	''' Delete "file" if it does exist.  To delete "file" and move it to the
+	''' Recycle Bin, set "recycle" to True; otherwise, set "recycle" to False. 
 	''' </summary>
 	''' <param name="file"></param>
 	''' <param name="recycle"></param>
