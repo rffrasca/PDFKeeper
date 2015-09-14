@@ -1206,7 +1206,7 @@ Public Partial Class MainForm
 	Private Sub FileSystemWatcherDocumentCaptureCreated(sender As Object, e As FileSystemEventArgs)
 		If Path.GetExtension(e.FullPath) = ".pdf" Then
 			Me.Cursor = Cursors.WaitCursor
-			FileTask.WaitForFileCreation(e.FullPath)
+			FileUtil.WaitForFileCreation(e.FullPath)
 			If listBoxDocCaptureQueue.FindStringExact(e.FullPath) = -1 Then
 				documentCaptureFolderChanged = True
 			End If
@@ -1542,7 +1542,7 @@ Public Partial Class MainForm
 			If PdfFileTask.UploadToDatabase(captureModPdfFile) = 0 Then
 				toolStripStatusLabelMessage.Text = Nothing
 				Application.DoEvents
-				FileTask.Delete(capturePdfFile, True)
+				FileUtil.Delete(capturePdfFile, True)
 				ClearCaptureSelection
 				FillDocCaptureQueueList
 			Else
@@ -1675,7 +1675,7 @@ Public Partial Class MainForm
 		buttonUpload.Enabled = False
 		buttonDeselect.Enabled = False
 		listBoxDocCaptureQueue.Enabled = True
-		FileTask.Delete(captureModPdfFile, False)
+		FileUtil.Delete(captureModPdfFile, False)
 	End Sub
 	
 	#End Region

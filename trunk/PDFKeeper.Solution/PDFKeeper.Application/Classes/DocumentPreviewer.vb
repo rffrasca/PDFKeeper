@@ -85,7 +85,7 @@ Public NotInheritable Class DocumentPreviewer
 				Return 1
 			End Try
 		End If
-		FileTask.Encrypt(imgFile)
+		FileUtil.Encrypt(imgFile)
 		Return 0
 	End Function
 	
