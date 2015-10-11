@@ -107,7 +107,7 @@ Partial Class MainForm
 		Me.tabPageDocumentKeywords = New System.Windows.Forms.TabPage()
 		Me.textBoxDocumentKeywords = New System.Windows.Forms.TextBox()
 		Me.listViewDocs = New System.Windows.Forms.ListView()
-		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(CType(resources.GetObject("listViewDocs.Columns"),Integer))
+		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(0)
 		Me.columnHeaderTitle = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderAuthor = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderSubject = New System.Windows.Forms.ColumnHeader()
@@ -126,6 +126,7 @@ Partial Class MainForm
 		Me.buttonTextOnlyPrevious = New System.Windows.Forms.Button()
 		Me.tabPageCapture = New System.Windows.Forms.TabPage()
 		Me.groupBoxProperties = New System.Windows.Forms.GroupBox()
+		Me.buttonSetToFileName = New System.Windows.Forms.Button()
 		Me.textBoxKeywords = New System.Windows.Forms.TextBox()
 		Me.buttonUpload = New System.Windows.Forms.Button()
 		Me.labelKeywords = New System.Windows.Forms.Label()
@@ -688,6 +689,7 @@ Partial Class MainForm
 		'groupBoxProperties
 		'
 		resources.ApplyResources(Me.groupBoxProperties, "groupBoxProperties")
+		Me.groupBoxProperties.Controls.Add(Me.buttonSetToFileName)
 		Me.groupBoxProperties.Controls.Add(Me.textBoxKeywords)
 		Me.groupBoxProperties.Controls.Add(Me.buttonUpload)
 		Me.groupBoxProperties.Controls.Add(Me.labelKeywords)
@@ -702,6 +704,13 @@ Partial Class MainForm
 		Me.groupBoxProperties.Controls.Add(Me.labelTitle)
 		Me.groupBoxProperties.Name = "groupBoxProperties"
 		Me.groupBoxProperties.TabStop = false
+		'
+		'buttonSetToFileName
+		'
+		resources.ApplyResources(Me.buttonSetToFileName, "buttonSetToFileName")
+		Me.buttonSetToFileName.Name = "buttonSetToFileName"
+		Me.buttonSetToFileName.UseVisualStyleBackColor = true
+		AddHandler Me.buttonSetToFileName.Click, AddressOf Me.ButtonSetToFilenameClick
 		'
 		'textBoxKeywords
 		'
@@ -887,6 +896,7 @@ Partial Class MainForm
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private buttonSetToFileName As System.Windows.Forms.Button
 	Private checkBoxDoNotResetZoomLevel As System.Windows.Forms.CheckBox
 	Private buttonTextOnlyPrevious As System.Windows.Forms.Button
 	Private buttonTextOnlyNext As System.Windows.Forms.Button
