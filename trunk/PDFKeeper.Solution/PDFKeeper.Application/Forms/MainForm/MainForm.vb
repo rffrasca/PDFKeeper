@@ -1328,6 +1328,7 @@ Public Partial Class MainForm
 				textBoxPDFDocument.Text = capturePdfFile
 				buttonViewOriginal.Enabled = True
 				textBoxTitle.Text = oPdfProperties.Title
+				buttonSetToFileName.Enabled = True
 				
 				' If the title is blank, default to the filename without the
 				' PDF extension.
@@ -1338,6 +1339,7 @@ Public Partial Class MainForm
 				
 				textBoxTitle.Enabled = True
 				textBoxTitle.Select
+				buttonSetToFileName.Enabled = True
 				listBoxDocCaptureQueue.Enabled = False
 				comboBoxAuthor.Text = oPdfProperties.Author
 				comboBoxAuthor.Enabled = True
@@ -1364,6 +1366,15 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonViewOriginalClick(sender As Object, e As EventArgs)
 		CaptureViewPdf(capturePdfFile)
+	End Sub
+	
+	''' <summary>
+	''' Set Title textbox text to PDF file name without the extension. 
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub ButtonSetToFilenameClick(sender As Object, e As EventArgs)
+		textBoxTitle.Text = Path.GetFileNameWithoutExtension(capturePdfFile)
 	End Sub
 	
 	''' <summary>
@@ -1562,6 +1573,7 @@ Public Partial Class MainForm
 	Private Sub DisableCaptureControls(uploading As Boolean)
 		buttonViewOriginal.Enabled = False
 		textBoxTitle.Enabled = False
+		buttonSetToFileName.Enabled = False
 		comboBoxAuthor.Enabled = False
 		comboBoxSubject.Enabled = False
 		textBoxKeywords.Enabled = False
@@ -1583,6 +1595,7 @@ Public Partial Class MainForm
 	Private Sub EnableCaptureControls(uploading As Boolean)
 		buttonViewOriginal.Enabled = True
 		textBoxTitle.Enabled = True
+		buttonSetToFileName.Enabled = True
 		comboBoxAuthor.Enabled = True
 		comboBoxSubject.Enabled = True
 		textBoxKeywords.Enabled = True
@@ -1664,6 +1677,7 @@ Public Partial Class MainForm
 		buttonViewOriginal.Enabled = False
 		textBoxTitle.Text = Nothing
 		textBoxTitle.Enabled = False
+		buttonSetToFileName.Enabled = False
 		comboBoxAuthor.Text = Nothing
 		comboBoxAuthor.Enabled = False
 		comboBoxSubject.Text = Nothing
