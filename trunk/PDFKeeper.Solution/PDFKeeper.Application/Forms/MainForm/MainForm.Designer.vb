@@ -107,7 +107,7 @@ Partial Class MainForm
 		Me.tabPageDocumentKeywords = New System.Windows.Forms.TabPage()
 		Me.textBoxDocumentKeywords = New System.Windows.Forms.TextBox()
 		Me.listViewDocs = New System.Windows.Forms.ListView()
-		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(0)
+		Me.columnHeaderID = New System.Windows.Forms.ColumnHeader(CType(resources.GetObject("listViewDocs.Columns"),Integer))
 		Me.columnHeaderTitle = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderAuthor = New System.Windows.Forms.ColumnHeader()
 		Me.columnHeaderSubject = New System.Windows.Forms.ColumnHeader()
