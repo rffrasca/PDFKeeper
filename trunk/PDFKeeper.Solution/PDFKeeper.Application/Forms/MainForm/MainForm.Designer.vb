@@ -143,6 +143,8 @@ Partial Class MainForm
 		Me.buttonViewOriginal = New System.Windows.Forms.Button()
 		Me.textBoxPdfDocument = New System.Windows.Forms.TextBox()
 		Me.groupBoxDocuments = New System.Windows.Forms.GroupBox()
+		Me.buttonRename = New System.Windows.Forms.Button()
+		Me.buttonDelete = New System.Windows.Forms.Button()
 		Me.listBoxDocCaptureQueue = New System.Windows.Forms.ListBox()
 		Me.processCapturePdfViewer = New System.Diagnostics.Process()
 		Me.timerDirectUpload = New System.Windows.Forms.Timer(Me.components)
@@ -818,9 +820,25 @@ Partial Class MainForm
 		'groupBoxDocuments
 		'
 		resources.ApplyResources(Me.groupBoxDocuments, "groupBoxDocuments")
+		Me.groupBoxDocuments.Controls.Add(Me.buttonRename)
+		Me.groupBoxDocuments.Controls.Add(Me.buttonDelete)
 		Me.groupBoxDocuments.Controls.Add(Me.listBoxDocCaptureQueue)
 		Me.groupBoxDocuments.Name = "groupBoxDocuments"
 		Me.groupBoxDocuments.TabStop = false
+		'
+		'buttonRename
+		'
+		resources.ApplyResources(Me.buttonRename, "buttonRename")
+		Me.buttonRename.Name = "buttonRename"
+		Me.buttonRename.UseVisualStyleBackColor = true
+		AddHandler Me.buttonRename.Click, AddressOf Me.ButtonRenameClick
+		'
+		'buttonDelete
+		'
+		resources.ApplyResources(Me.buttonDelete, "buttonDelete")
+		Me.buttonDelete.Name = "buttonDelete"
+		Me.buttonDelete.UseVisualStyleBackColor = true
+		AddHandler Me.buttonDelete.Click, AddressOf Me.ButtonDeleteClick
 		'
 		'listBoxDocCaptureQueue
 		'
@@ -896,6 +914,8 @@ Partial Class MainForm
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private buttonDelete As System.Windows.Forms.Button
+	Private buttonRename As System.Windows.Forms.Button
 	Private buttonSetToFileName As System.Windows.Forms.Button
 	Private checkBoxDoNotResetZoomLevel As System.Windows.Forms.CheckBox
 	Private buttonTextOnlyPrevious As System.Windows.Forms.Button
