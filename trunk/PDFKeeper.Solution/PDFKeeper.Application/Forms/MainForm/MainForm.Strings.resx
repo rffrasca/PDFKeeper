@@ -142,7 +142,7 @@
     <value>{0} document(s) found; {1} document(s) checked.</value>
   </data>
   <data name="SelectedDocDeleted" xml:space="preserve">
-    <value>The selected document has been deleted from outside of PDFKeeper.
+    <value>The selected document has been deleted.
 All modifications will be lost.</value>
   </data>
   <data name="UnableRead" xml:space="preserve">
@@ -156,7 +156,7 @@ Any modifications will be discarded.</value>
     <value>Upload {0}?</value>
   </data>
   <data name="SelectedDocRenamed" xml:space="preserve">
-    <value>The selected document has been renamed from outside of PDFKeeper.
+    <value>The selected document has been renamed.
 All modifications will be lost.</value>
   </data>
   <data name="FormClosingPromptSelected" xml:space="preserve">
@@ -179,5 +179,8 @@ Are you sure you want to close PDFKeeper?
   </data>
   <data name="DirectionArgument" xml:space="preserve">
     <value>direction argument must be N or P</value>
+  </data>
+  <data name="DeletePrompt" xml:space="preserve">
+    <value>Delete {0}?</value>
   </data>
 </root>

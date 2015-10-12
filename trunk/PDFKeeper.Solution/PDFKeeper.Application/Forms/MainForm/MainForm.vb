@@ -1354,8 +1354,37 @@ Public Partial Class MainForm
 								CultureInfo.CurrentCulture, _
 								MainForm_Strings.UnableRead, capturePdfFile))
 			End If
+			buttonRename.Enabled = True
+			buttonDelete.Enabled = True
+		Else
+			buttonRename.Enabled = False
+			buttonDelete.Enabled = False
 		End If
 		Me.Cursor = Cursors.Default
+	End Sub
+	
+	''' <summary>
+	''' 
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Sub ButtonRenameClick(sender As Object, e As EventArgs)
+		
+	End Sub
+	
+	''' <summary>
+	''' Delete the selected PDF document to the Recycle Bin.
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Sub ButtonDeleteClick(sender As Object, e As EventArgs)
+		If MessageBoxWrapper.ShowQuestion(String.Format( _
+				CultureInfo.CurrentCulture, _
+				MainForm_Strings.DeletePrompt, capturePdfFile)) = 6 Then ' Yes
+			Me.Cursor = Cursors.WaitCursor
+			FileUtil.Delete(capturePdfFile, True)
+			Me.Cursor = Cursors.Default
+		End If
 	End Sub
 	
 	''' <summary>
@@ -1673,6 +1702,8 @@ Public Partial Class MainForm
 	Private Sub ClearCaptureSelection
 		toolStripStatusLabelMessage.Text = Nothing
 		captureLastStatusMessage = Nothing
+		buttonRename.Enabled = False
+		buttonDelete.Enabled = False
 		textBoxPDFDocument.Text = Nothing
 		buttonViewOriginal.Enabled = False
 		textBoxTitle.Text = Nothing

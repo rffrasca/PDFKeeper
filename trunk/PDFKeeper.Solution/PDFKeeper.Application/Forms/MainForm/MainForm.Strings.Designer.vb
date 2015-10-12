@@ -109,6 +109,15 @@ Friend Class MainForm_Strings
 	End Property
 	
 	'''<summary>
+	'''  Looks up a localized string similar to Delete {0}?.
+	'''</summary>
+	Friend Shared ReadOnly Property DeletePrompt() As String
+		Get
+			Return ResourceManager.GetString("DeletePrompt", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
 	'''  Looks up a localized string similar to Are you sure you want to deselect this document?
 	'''Any modifications will be discarded..
 	'''</summary>
@@ -194,7 +203,7 @@ Friend Class MainForm_Strings
 	End Property
 	
 	'''<summary>
-	'''  Looks up a localized string similar to The selected document has been deleted from outside of PDFKeeper.
+	'''  Looks up a localized string similar to The selected document has been deleted.
 	'''All modifications will be lost..
 	'''</summary>
 	Friend Shared ReadOnly Property SelectedDocDeleted() As String
@@ -204,7 +213,7 @@ Friend Class MainForm_Strings
 	End Property
 	
 	'''<summary>
-	'''  Looks up a localized string similar to The selected document has been renamed from outside of PDFKeeper.
+	'''  Looks up a localized string similar to The selected document has been renamed.
 	'''All modifications will be lost..
 	'''</summary>
 	Friend Shared ReadOnly Property SelectedDocRenamed() As String
