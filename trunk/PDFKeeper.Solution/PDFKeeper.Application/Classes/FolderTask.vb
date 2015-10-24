@@ -163,19 +163,4 @@ Public NotInheritable Class FolderTask
 			Return 1
 		End If
 	End Function
-		
-	''' <summary>
-	''' This function will return True or False if the name of the specified
-	''' folder contains one or more invalid characters.
-	''' </summary>
-	''' <param name="folder"></param>
-	''' <returns>True or False</returns>
-	Public Shared Function NameContainsInvalidChars(ByVal folder As String) As Boolean
-		For Each invalidChar In Path.GetInvalidFileNameChars()
-			If folder.Contains(invalidChar) Then
-				Return True
-			End If
-		Next
-		Return False
-	End Function
 End Class

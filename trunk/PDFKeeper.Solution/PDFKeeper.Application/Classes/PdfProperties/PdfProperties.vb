@@ -135,7 +135,7 @@ Public Class PdfProperties
 			If containsOwnerPassword Then
 				oPdfReader = New PdfReader(sourcePdf, _
 					System.Text.Encoding.ASCII.GetBytes( _
-					StringDecoder.SecureStringToString(ownerPasswordLocal)))
+					StringUtil.SecureStringToString(ownerPasswordLocal)))
 			Else
 				oPdfReader = New PdfReader(sourcePdf)
 			End If
@@ -190,7 +190,7 @@ Public Class PdfProperties
 			If containsOwnerPassword Then
 				oPdfReader = New PdfReader(sourcePdf, _
 					System.Text.Encoding.ASCII.GetBytes( _
-					StringDecoder.SecureStringToString(ownerPasswordLocal)))
+					StringUtil.SecureStringToString(ownerPasswordLocal)))
 			Else
 				oPdfReader = New PdfReader(sourcePdf)
 			End If
