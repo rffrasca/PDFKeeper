@@ -1369,7 +1369,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Sub ButtonRenameClick(sender As Object, e As EventArgs)
-		
+		PdfFileRenameForm.ShowDialog()
 	End Sub
 	
 	''' <summary>
