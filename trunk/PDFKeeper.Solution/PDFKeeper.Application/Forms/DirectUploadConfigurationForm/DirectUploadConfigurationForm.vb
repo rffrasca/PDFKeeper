@@ -245,7 +245,7 @@ Public Partial Class DirectUploadConfigurationForm
 			Me.Cursor = Cursors.Default
 			Exit Sub
 		End If
-		If FolderTask.NameContainsInvalidChars(textBoxFolderName.Text) Then
+		If StringUtil.ContainsInvalidFileNameChars(textBoxFolderName.Text) Then
 			errorProvider.SetError(textBoxFolderName, _
 				DirectUploadConfigurationForm_Strings.FolderNameInvalid)
 			Me.Cursor = Cursors.Default

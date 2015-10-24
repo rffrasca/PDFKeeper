@@ -35,7 +35,7 @@ Public Class DatabaseConnection
 						 ByVal dataSource As String) As Integer
 		Try
 			oraConnection.ConnectionString = "User Id=" + userName + ";" & _
-				"Password=" + StringDecoder.SecureStringToString( _
+				"Password=" + StringUtil.SecureStringToString( _
 					password) + ";" & _
 				"Data Source=" + dataSource + ";" & _
 				"Persist Security Info=False;Pooling=True"
