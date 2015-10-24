@@ -54,4 +54,13 @@ Public Partial Class PdfFileRenameForm
 			buttonOK.Enabled = False
 		End If
 	End Sub
+	
+	''' <summary>
+	''' 
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub ButtonOKClick(sender As Object, e As EventArgs)
+		Me.DialogResult = Windows.Forms.DialogResult.OK
+	End Sub
 End Class
