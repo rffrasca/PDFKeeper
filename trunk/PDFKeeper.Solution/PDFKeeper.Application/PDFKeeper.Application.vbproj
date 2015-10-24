@@ -64,7 +64,7 @@
     <Reference Include="Nini">
       <HintPath>..\packages\Trove.Nini.1.1.0.0\lib\net20\Nini.dll</HintPath>
     </Reference>
-    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />
+    <Reference Include="Oracle.ManagedDataAccess" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
@@ -145,6 +145,10 @@
       <DependentUpon>MainForm.Strings.resx</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainForm\MainForm.vb" />
+    <Compile Include="Forms\PdfFileRenameForm\PdfFileRenameForm.Designer.vb">
+      <DependentUpon>PdfFileRenameForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PdfFileRenameForm\PdfFileRenameForm.vb" />
     <Compile Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.Designer.vb">
       <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
     </Compile>
@@ -196,6 +200,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MainForm.Strings.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PdfFileRenameForm\PdfFileRenameForm.resx">
+      <DependentUpon>PdfFileRenameForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.resx">
       <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +222,7 @@
     <Folder Include="Forms\MainForm" />
     <Folder Include="Forms\AboutForm" />
     <Folder Include="Forms\DirectUploadConfigurationForm" />
+    <Folder Include="Forms\PdfFileRenameForm" />
     <Folder Include="Modules" />
     <COMReference Include="IWshRuntimeLibrary">
       <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
