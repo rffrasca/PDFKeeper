@@ -33,7 +33,7 @@ Public NotInheritable Class FileUtil
 	''' string value.
 	''' </summary>
 	''' <param name="file"></param>
-	''' <returns></returns>
+	''' <returns>Hash value of "file"</returns>
 	Public Shared Function ComputeHashValue(ByVal file As String) As String
 		Dim oHashAlgorithm As HashAlgorithm = HashAlgorithm.Create("SHA1")
 		Using oFileStream As New FileStream(file, FileMode.Open, _
@@ -112,6 +112,24 @@ Public NotInheritable Class FileUtil
 					System.IO.File.Delete(file)
 				End If
 			End If
+			Return 0
+		Catch ex As IOException
+			MessageBoxWrapper.ShowError(ex.Message)
+			Return 1
+		End Try
+	End Function
+	
+	''' <summary>
+	''' Move "sourceFile" to "targetFile"; can be used to rename "sourceFile"
+	''' to "targetFile".
+	''' </summary>
+	''' <param name="sourceFile"></param>
+	''' <param name="targetFile"></param>
+	''' <returns>0 = Successful, 1 = Failed</returns>
+	Public Shared Function Move(ByVal sourceFile As String, _
+								ByVal targetFile As String) As Integer
+		Try
+			System.IO.File.Move(SourceFile, targetFile)
 			Return 0
 		Catch ex As IOException
 			MessageBoxWrapper.ShowError(ex.Message)
