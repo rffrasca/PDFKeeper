@@ -21,6 +21,7 @@
 '******************************************************************************
 
 Public Partial Class PdfFileRenameForm
+	Shared Friend pdfRenameName As String
 	
 	''' <summary>
 	''' Class constructor.
@@ -31,36 +32,52 @@ Public Partial Class PdfFileRenameForm
 	
 	''' <summary>
 	''' Set the font to MS Sans Serif 8pt in XP or Segoe UI 9pt in Vista or
-	''' later and select the file name text box.
+	''' later, set textbox text to "pdfRenameName", and select the file name
+	''' text box.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub PdfFileRenameFormLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont
+		textBoxFileName.Text = pdfRenameName
 		textBoxFileName.Select
 	End Sub
 	
 	''' <summary>
 	''' Enable the OK button if the length of the file name string is greater
-	''' than 0.
+	''' than 0, not equal to "pdfRenameName", and does not contain invalid
+	''' characters.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub TextBoxFileNameTextChanged(sender As Object, e As EventArgs)
+		errorProvider.Clear
 		textBoxFileName.Text = textBoxFileName.Text.Trim
-		If textBoxFileName.Text.Length > 0 Then		
-			buttonOK.Enabled = True
+		If textBoxFileName.Text.Length > 0 Then
+			If Not textBoxFileName.Text.ToUpper(CultureInfo.CurrentCulture) = _
+					pdfRenameName.ToUpper(CultureInfo.CurrentCulture) Then
+				If StringUtil.ContainsInvalidFileNameChars( _
+						textBoxFileName.Text) Then
+					errorProvider.SetError(textBoxFileName, _
+						PdfFileRenameForm_Strings.FileNameInvalid)
+				Else
+					buttonOK.Enabled = True
+				End If
+			Else
+				buttonOK.Enabled = False
+			End If
 		Else
 			buttonOK.Enabled = False
 		End If
 	End Sub
 	
 	''' <summary>
-	''' 
+	''' Set "pdfRenameName" to the textbox text and close dialog. 
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonOKClick(sender As Object, e As EventArgs)
+		pdfRenameName = textBoxFileName.Text
 		Me.DialogResult = Windows.Forms.DialogResult.OK
 	End Sub
 End Class

@@ -34,7 +34,10 @@ Public Partial Class MainForm
 	Dim capturePdfFile As String
 	Dim captureModPdfFile As String
 	Dim lastPdfDocumentCheckResult As Integer
-		
+	
+	''' <summary>
+	''' Class constructor.
+	''' </summary>
 	Public Sub New()
 		Me.InitializeComponent()
 		StartUpdateCheck
@@ -1364,12 +1367,21 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' 
+	''' Prompt for new file name, and then rename the selected PDF document.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Sub ButtonRenameClick(sender As Object, e As EventArgs)
-		PdfFileRenameForm.ShowDialog()
+		PdfFileRenameForm.pdfRenameName = _
+			Path.GetFileNameWithoutExtension(capturePdfFile)
+		If PdfFileRenameForm.ShowDialog() = Windows.Forms.DialogResult.OK Then
+			Dim capturePdfFileNewName As String = _
+				Path.Combine(Path.GetDirectoryName(capturePdfFile), _
+				PdfFileRenameForm.pdfRenameName & ".pdf")
+			Me.Cursor = Cursors.WaitCursor
+			FileUtil.Move(capturePdfFile, capturePdfFileNewName)
+			Me.Cursor = Cursors.Default
+		End If
 	End Sub
 	
 	''' <summary>

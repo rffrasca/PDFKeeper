@@ -148,6 +148,10 @@
     <Compile Include="Forms\PdfFileRenameForm\PdfFileRenameForm.Designer.vb">
       <DependentUpon>PdfFileRenameForm.vb</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PdfFileRenameForm\PdfFileRenameForm.Strings.Designer.vb">
+      <DependentUpon>PdfFileRenameForm.Strings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="Forms\PdfFileRenameForm\PdfFileRenameForm.vb" />
     <Compile Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.Designer.vb">
       <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
@@ -202,6 +206,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PdfFileRenameForm\PdfFileRenameForm.resx">
       <DependentUpon>PdfFileRenameForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PdfFileRenameForm\PdfFileRenameForm.Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PdfFileRenameForm.Strings.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.resx">
       <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>

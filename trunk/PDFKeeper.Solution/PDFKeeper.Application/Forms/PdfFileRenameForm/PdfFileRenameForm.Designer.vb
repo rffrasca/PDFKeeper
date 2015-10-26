@@ -47,70 +47,66 @@ Partial Class PdfFileRenameForm
 	''' not be able to load this method if it was changed manually.
 	''' </summary>
 	Private Sub InitializeComponent()
+		Me.components = New System.ComponentModel.Container()
 		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PdfFileRenameForm))
 		Me.buttonCancel = New System.Windows.Forms.Button()
 		Me.buttonOK = New System.Windows.Forms.Button()
 		Me.textBoxFileName = New System.Windows.Forms.TextBox()
 		Me.labelFileName = New System.Windows.Forms.Label()
+		Me.errorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
+		CType(Me.errorProvider,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.SuspendLayout
 		'
 		'buttonCancel
 		'
 		Me.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-		Me.buttonCancel.Location = New System.Drawing.Point(241, 82)
+		resources.ApplyResources(Me.buttonCancel, "buttonCancel")
 		Me.buttonCancel.Name = "buttonCancel"
-		Me.buttonCancel.Size = New System.Drawing.Size(75, 23)
-		Me.buttonCancel.TabIndex = 3
-		Me.buttonCancel.Text = "Cancel"
 		Me.buttonCancel.UseVisualStyleBackColor = true
 		'
 		'buttonOK
 		'
-		Me.buttonOK.Enabled = false
-		Me.buttonOK.Location = New System.Drawing.Point(160, 82)
+		resources.ApplyResources(Me.buttonOK, "buttonOK")
 		Me.buttonOK.Name = "buttonOK"
-		Me.buttonOK.Size = New System.Drawing.Size(75, 23)
-		Me.buttonOK.TabIndex = 2
-		Me.buttonOK.Text = "OK"
 		Me.buttonOK.UseVisualStyleBackColor = true
 		AddHandler Me.buttonOK.Click, AddressOf Me.ButtonOKClick
 		'
 		'textBoxFileName
 		'
-		Me.textBoxFileName.Location = New System.Drawing.Point(12, 35)
+		resources.ApplyResources(Me.textBoxFileName, "textBoxFileName")
 		Me.textBoxFileName.Name = "textBoxFileName"
 		Me.textBoxFileName.ShortcutsEnabled = false
-		Me.textBoxFileName.Size = New System.Drawing.Size(304, 20)
-		Me.textBoxFileName.TabIndex = 1
 		AddHandler Me.textBoxFileName.TextChanged, AddressOf Me.TextBoxFileNameTextChanged
 		'
 		'labelFileName
 		'
-		Me.labelFileName.Location = New System.Drawing.Point(12, 9)
+		resources.ApplyResources(Me.labelFileName, "labelFileName")
 		Me.labelFileName.Name = "labelFileName"
-		Me.labelFileName.Size = New System.Drawing.Size(260, 23)
-		Me.labelFileName.TabIndex = 0
-		Me.labelFileName.Text = "Enter new file name:"
-		Me.labelFileName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+		'
+		'errorProvider
+		'
+		Me.errorProvider.ContainerControl = Me
 		'
 		'PdfFileRenameForm
 		'
+		Me.AcceptButton = Me.buttonOK
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-		Me.ClientSize = New System.Drawing.Size(328, 117)
+		Me.CancelButton = Me.buttonCancel
+		resources.ApplyResources(Me, "$this")
 		Me.Controls.Add(Me.buttonCancel)
 		Me.Controls.Add(Me.buttonOK)
 		Me.Controls.Add(Me.textBoxFileName)
 		Me.Controls.Add(Me.labelFileName)
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-		Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
 		Me.MaximizeBox = false
 		Me.MinimizeBox = false
 		Me.Name = "PdfFileRenameForm"
-		Me.Text = "PDF File Rename"
 		AddHandler Load, AddressOf Me.PdfFileRenameFormLoad
+		CType(Me.errorProvider,System.ComponentModel.ISupportInitialize).EndInit
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private errorProvider As System.Windows.Forms.ErrorProvider
 	Private labelFileName As System.Windows.Forms.Label
 	Private textBoxFileName As System.Windows.Forms.TextBox
 	Private buttonOK As System.Windows.Forms.Button
