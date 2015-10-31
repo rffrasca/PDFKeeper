@@ -66,6 +66,7 @@ Public NotInheritable Class DocumentPreviewer
 				ghostScript.StartInfo.Arguments = _
 					"-o " & Chr(34) & imgFile & Chr(34) & _
 					" -sDEVICE=pngalpha " & _
+					" -r120x120 " & _
 					"-dLastPage=1 " & Chr(34) & pdfFile & Chr(34)
 				ghostScript.StartInfo.UseShellExecute = False
 				ghostScript.StartInfo.CreateNoWindow = True
