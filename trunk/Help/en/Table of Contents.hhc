@@ -94,6 +94,11 @@
 			<param name="ImageNumber" value="9">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Document Capture Queue File Operations">
+			<param name="Local" value="Document Capture Queue File Operations.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Document Information Properties Editing and Uploading">
 			<param name="Local" value="Document Information Properties Editing and Uploading.html">
 			<param name="ImageNumber" value="9">
