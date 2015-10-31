@@ -72,13 +72,11 @@ Friend Class AboutForm_Strings
 	'''Website: http://www.famfamfam.com/lab/icons/mini/
 	'''License: Available for free use for any purpose.
 	'''
-	'''Open Iconic (subset from collection)
-	'''---------------------------------------
-	'''Copyright (c) 2014 Waybury
-	'''Website: https://github.com/iconic/open-iconic
-	'''License: MIT (https://github.com/iconic/open-iconic/blob/master/ICON-LICENSE)
-	'''
-	'''ReadySET 0.9.3 [rest of string was truncated]&quot;;.
+	'''Snowish Icons (subset from collection)
+	'''-----------------------------------------
+	'''Author: Saki (Alexandre Moore)
+	'''Website: http://www.iconarchive.com/show/snowish-icons-by-saki.html
+	'''License: GPLv2 (http://www.iconarchive.com/icons/saki/snowish/GPL. [rest of string was truncated]&quot;;.
 	'''</summary>
 	Friend Shared ReadOnly Property Credits() As String
 		Get
