@@ -58,8 +58,8 @@ Public Partial Class AboutForm
 	''' This subroutine will fill the License and Credits text boxes.
 	''' </summary>
 	Private Sub FillTextBoxes
-		textBoxLicense.Text = AboutForm_Strings.License
-		textBoxCredits.Text = AboutForm_Strings.Credits
+		textBoxLicense.Text = PdfKeeper.Strings.License
+		textBoxCredits.Text = PdfKeeper.Strings.Credits
 	End Sub
 	
 	''' <summary>
