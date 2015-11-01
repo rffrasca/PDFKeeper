@@ -135,16 +135,16 @@ Public NotInheritable Class DirectUpload
 					If oPdfProperties.Title = Nothing Or CDbl( _
 						oDirectUploadFolderProperties.UseExistingTitleChecked) = 0 Then
 						If oDirectUploadFolderProperties.TitlePreFill.Trim = _
-							DirectUploadConfigurationForm_Strings.TitleDate Then
+							PdfKeeper.Strings.DirectUploadConfigTitleDate Then
 							oPdfProperties.Title = DateTime.Now.ToString( _
 								"yyyy-MM-dd", CultureInfo.CurrentCulture)
 						ElseIf oDirectUploadFolderProperties.TitlePreFill.Trim = _
-							DirectUploadConfigurationForm_Strings.TitleDateTime Then
+							PdfKeeper.Strings.DirectUploadConfigTitleDateTime Then
 							oPdfProperties.Title = DateTime.Now.ToString( _
 								"yyyy-MM-dd HH:mm:ss", _
 								CultureInfo.CurrentCulture)
 						ElseIf oDirectUploadFolderProperties.TitlePreFill.Trim = _
-							DirectUploadConfigurationForm_Strings.TitleFileName Then
+							PdfKeeper.Strings.DirectUploadConfigTitleFileName Then
 							oPdfProperties.Title = _
 								oFileInfo.Name.ToString.Substring(0, ( _
 								oFileInfo.Name.ToString.Length - 4))
@@ -156,10 +156,10 @@ Public NotInheritable Class DirectUpload
 					If oPdfProperties.Author = Nothing Or CDbl( _
 						oDirectUploadFolderProperties.UseExistingAuthorChecked) = 0 Then
 						If oDirectUploadFolderProperties.AuthorPreFill.Trim = _
-							DirectUploadConfigurationForm_Strings.AuthorDatabaseUserName Then
+							PdfKeeper.Strings.DirectUploadConfigAuthorDatabaseUserName Then
 							oPdfProperties.Author = UserSettings.LastUserName
 						ElseIf oDirectUploadFolderProperties.AuthorPreFill.Trim = _
-							DirectUploadConfigurationForm_Strings.AuthorWindowsUserName Then
+							PdfKeeper.Strings.DirectUploadConfigAuthorWindowsUserName Then
 							oPdfProperties.Author = Environment.UserName
 						Else
 							oPdfProperties.Author = _

@@ -54,17 +54,17 @@ Public Partial Class DirectUploadConfigurationForm
 		comboBoxAuthorPreFill.Items.Clear
 		comboBoxSubjectPreFill.Items.Clear
 		comboBoxTitlePreFill.Items.Add( _
-			DirectUploadConfigurationForm_Strings.TitleDate)
+			PdfKeeper.Strings.DirectUploadConfigTitleDate)
 		comboBoxTitlePreFill.Items.Add( _
-			DirectUploadConfigurationForm_Strings.TitleDateTime)
+			PdfKeeper.Strings.DirectUploadConfigTitleDateTime)
 		comboBoxTitlePreFill.Items.Add( _
-			DirectUploadConfigurationForm_Strings.TitleFileName)
+			PdfKeeper.Strings.DirectUploadConfigTitleFileName)
 		comboBoxAuthorPreFill.Items.Add( _
-			DirectUploadConfigurationForm_Strings.AuthorDatabaseUserName)
+			PdfKeeper.Strings.DirectUploadConfigAuthorDatabaseUserName)
 		comboBoxAuthorPreFill.Items.Add( _
-			DirectUploadConfigurationForm_Strings.AuthorWindowsUserName)
+			PdfKeeper.Strings.DirectUploadConfigAuthorWindowsUserName)
 		comboBoxSubjectPreFill.Items.Add( _
-			DirectUploadConfigurationForm_Strings.SubjectScannedDocument)
+			PdfKeeper.Strings.DirectUploadConfigSubjectScannedDocument)
 	End Sub
 	
 	''' <summary>
@@ -139,11 +139,11 @@ Public Partial Class DirectUploadConfigurationForm
 		If FolderTask.CountOfFiles(folderPath, "pdf") = 0 Then
 			If MessageBoxWrapper.ShowQuestion(String.Format( _
 					CultureInfo.CurrentCulture, _
-					DirectUploadConfigurationForm_Strings.DeleteFolder, _
+					PdfKeeper.Strings.DeleteFolderQuestion, _
 					selectedFolder)) = 6 Then
 				If FolderTask.Delete(folderPath, False) = 0 Then
 					If FileUtil.Delete(Path.Combine(UploadXmlDir, _
-									   selectedFolder & ".xml"), False) = 0 Then
+							selectedFolder & ".xml"), False) = 0 Then
 						FillList
 						Discard
 					End If
@@ -152,8 +152,7 @@ Public Partial Class DirectUploadConfigurationForm
 		Else
 			MessageBoxWrapper.ShowError(String.Format( _
 				CultureInfo.CurrentCulture, _
-				DirectUploadConfigurationForm_Strings.CannotDeleteFolder, _
-				selectedFolder))
+				PdfKeeper.Strings.CannotDeleteFolder, selectedFolder))
 			buttonDelete.Enabled = False
 		End If
 		Me.Cursor = Cursors.Default
@@ -247,14 +246,14 @@ Public Partial Class DirectUploadConfigurationForm
 		End If
 		If StringUtil.ContainsInvalidFileNameChars(textBoxFolderName.Text) Then
 			errorProvider.SetError(textBoxFolderName, _
-				DirectUploadConfigurationForm_Strings.FolderNameInvalid)
+				PdfKeeper.Strings.FolderNameContainsInvalidChars)
 			Me.Cursor = Cursors.Default
 			Exit Sub
 		End If
 		If SpecifiedFolderNameAlreadyConfigured() Then
 			errorProvider.SetError(textBoxFolderName, _
 					String.Format(CultureInfo.CurrentCulture, _
-					DirectUploadConfigurationForm_Strings.FolderAlreadyConfigured, _
+					PdfKeeper.Strings.FolderAlreadyConfigured, _
 					textBoxFolderName.Text))
 			Me.Cursor = Cursors.Default
 			Exit Sub
@@ -410,7 +409,7 @@ Public Partial Class DirectUploadConfigurationForm
 	''' <param name="e"></param>
 	Private Sub ButtonDiscardClick(sender As Object, e As EventArgs)
 		If MessageBoxWrapper.ShowQuestion( _
-			DirectUploadConfigurationForm_Strings.CancelPrompt) = 6 Then ' Yes
+			PdfKeeper.Strings.DiscardAllModificationsPrompt) = 6 Then ' Yes
 			FillList
 			Discard
 		End If

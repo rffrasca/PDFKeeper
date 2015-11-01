@@ -59,7 +59,7 @@ Public Partial Class PdfFileRenameForm
 				If StringUtil.ContainsInvalidFileNameChars( _
 						textBoxFileName.Text) Then
 					errorProvider.SetError(textBoxFileName, _
-						PdfFileRenameForm_Strings.FileNameInvalid)
+						PdfKeeper.Strings.FileNameContainsInvalidChars)
 				Else
 					buttonOK.Enabled = True
 				End If
