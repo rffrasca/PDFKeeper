@@ -33,7 +33,7 @@ Public NotInheritable Class MessageBoxWrapper
 	''' </summary>
 	''' <param name="message"></param>
 	Public Shared Sub ShowError(ByVal message As String)
-		MessageBox.Show(message, MessageBoxWrapper_Strings.ErrorTitle, _
+		MessageBox.Show(message, PdfKeeper.Strings.MessageBoxTitleError, _
 								 MessageBoxButtons.OK, _
 								 MessageBoxIcon.Error, _
 								 MessageBoxDefaultButton.Button1, 0, False)
@@ -44,7 +44,7 @@ Public NotInheritable Class MessageBoxWrapper
 	''' </summary>
 	''' <param name="message"></param>
 	Public Shared Sub ShowInformation(ByVal message As String)
-		MessageBox.Show(message, MessageBoxWrapper_Strings.InformationTitle, _
+		MessageBox.Show(message, PdfKeeper.Strings.MessageBoxTitleInformation, _
 								 MessageBoxButtons.OK, _
 							  	 MessageBoxIcon.Information, _
 								 MessageBoxDefaultButton.Button1, 0, False)
@@ -57,7 +57,7 @@ Public NotInheritable Class MessageBoxWrapper
 	''' <returns>6 for Yes, 7 for No</returns>
 	Public Shared Function ShowQuestion(ByVal message As String) As Integer
 		Dim button = MessageBox.Show(message, _
-					 			MessageBoxWrapper_Strings.QuestionTitle, _
+					 			PdfKeeper.Strings.MessageBoxTitleQuestion, _
 						  		MessageBoxButtons.YesNo, _
 								MessageBoxIcon.Question, _
 					 			MessageBoxDefaultButton.Button1, 0, False)

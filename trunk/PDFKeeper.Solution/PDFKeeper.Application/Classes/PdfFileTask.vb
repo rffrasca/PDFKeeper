@@ -44,7 +44,7 @@ Public NotInheritable Class PdfFileTask
 		   	   oPdfProperties.Author = Nothing Or _
 		   	   oPdfProperties.Subject = Nothing Then
 				MessageBoxWrapper.ShowError( _
-					PdfFileTask_Strings.PdfPropertiesBlank)
+					PdfKeeper.Strings.PdfPropertiesBlank)
 		   		Return 1
 			End If
 		Else
@@ -226,7 +226,7 @@ Public NotInheritable Class PdfFileTask
 			If ex.Message = "Bad user password" Then
 				MessageBoxWrapper.ShowError(String.Format( _
 							CultureInfo.CurrentCulture, _
-							PdfFileTask_Strings.ContainsUserPassword, pdfFile))
+							PdfKeeper.Strings.PdfContainsUserPassword, pdfFile))
 			Else
 				MessageBoxWrapper.ShowError(ex.Message)
 			End If

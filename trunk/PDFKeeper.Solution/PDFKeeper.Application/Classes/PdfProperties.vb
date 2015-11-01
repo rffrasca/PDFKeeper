@@ -166,7 +166,8 @@ Public Class PdfProperties
 			Return 1
 		Catch ex As IOException
 			If ex.Message = "Bad user password" Then
-				MessageBoxWrapper.ShowError(PdfProperties_Strings.BadPassword)
+				MessageBoxWrapper.ShowError( _
+					PdfKeeper.Strings.IncorrectOwnerPassword)
 			Else
 				MessageBoxWrapper.ShowError(ex.Message)
 			End If
