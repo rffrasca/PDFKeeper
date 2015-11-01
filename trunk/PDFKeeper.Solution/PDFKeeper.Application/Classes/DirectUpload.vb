@@ -186,7 +186,7 @@ Public NotInheritable Class DirectUpload
 			Else
 				MessageBoxWrapper.ShowError(String.Format( _
 					CultureInfo.CurrentCulture, _
-					DirectUpload_Strings.ContainsPassword, inputPdfFile))
+					PdfKeeper.Strings.PdfContainsPassword, inputPdfFile))
 			End If
 		Next
 	End Sub

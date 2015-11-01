@@ -24,21 +24,21 @@ Public NotInheritable Class UserProfileFoldersTask
 	Dim Shared ReadOnly DocumentCaptureSendToShortcut As String = _
 		Path.Combine(Environment.GetFolderPath( _
 		Environment.SpecialFolder.SendTo), _
-		"PDFKeeper " & UserProfileFoldersTask_Strings.DocumentCapture & ".lnk")
+		"PDFKeeper " & PdfKeeper.Strings.DocumentCapture & ".lnk")
 	Dim Shared ReadOnly DocumentCaptureLinksShortcut As String = _
 		Path.Combine(LinksDir, "PDFKeeper " & _
-		UserProfileFoldersTask_Strings.DocumentCapture & ".lnk")
+		PdfKeeper.Strings.DocumentCapture & ".lnk")
 	Dim Shared ReadOnly DocumentCaptureMyDocsShortcut As String = _
 		Path.Combine(Environment.GetFolderPath( _
 		Environment.SpecialFolder.MyDocuments), _
-		"PDFKeeper " & UserProfileFoldersTask_Strings.DocumentCapture & ".lnk")
+		"PDFKeeper " & PdfKeeper.Strings.DocumentCapture & ".lnk")
 	Dim Shared ReadOnly DirectUploadLinksShortcut As String = _
 		Path.Combine(LinksDir, "PDFKeeper " & _
-		UserProfileFoldersTask_Strings.DirectUpload & ".lnk")
+		PdfKeeper.Strings.DirectUpload & ".lnk")
 	Dim Shared ReadOnly DirectUploadMyDocsShortcut As String = _
 		Path.Combine(Environment.GetFolderPath( _
 		Environment.SpecialFolder.MyDocuments), _
-		"PDFKeeper " & UserProfileFoldersTask_Strings.DirectUpload & ".lnk")
+		"PDFKeeper " & PdfKeeper.Strings.DirectUpload & ".lnk")
 		
 	''' <summary>
 	''' This subroutine is the class constructor required for FxCop compliance.

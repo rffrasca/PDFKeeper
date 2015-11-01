@@ -82,41 +82,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DirectUpload.vb" />
     <Compile Include="Classes\DirectUploadFolderProperties.vb" />
-    <Compile Include="Classes\DirectUpload\DirectUpload.Strings.Designer.vb">
-      <DependentUpon>DirectUpload.Strings.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Classes\DirectUpload\DirectUpload.vb" />
     <Compile Include="Classes\DocumentPreviewer.vb" />
     <Compile Include="Classes\FileUtil.vb" />
     <Compile Include="Classes\FolderTask.vb" />
     <Compile Include="Classes\HelpWrapper.vb" />
     <Compile Include="Classes\DatabaseConnection.vb" />
     <Compile Include="Classes\FileCache.vb" />
-    <Compile Include="Classes\MessageBoxWrapper\MessageBoxWrapper.Strings.Designer.vb">
-      <DependentUpon>MessageBoxWrapper.Strings.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Classes\MessageBoxWrapper\MessageBoxWrapper.vb" />
+    <Compile Include="Classes\MessageBoxWrapper.vb" />
     <Compile Include="Classes\NativeMethods.vb" />
-    <Compile Include="Classes\PdfFileTask\PdfFileTask.Strings.Designer.vb">
-      <DependentUpon>PdfFileTask.Strings.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Classes\PdfFileTask\PdfFileTask.vb" />
-    <Compile Include="Classes\PdfProperties\PdfProperties.Strings.Designer.vb">
-      <DependentUpon>PdfProperties.Strings.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Classes\PdfProperties\PdfProperties.vb" />
+    <Compile Include="Classes\PdfFileTask.vb" />
+    <Compile Include="Classes\PdfProperties.vb" />
     <Compile Include="Classes\Print.vb" />
     <Compile Include="Classes\Product.vb" />
     <Compile Include="Classes\StringUtil.vb" />
-    <Compile Include="Classes\UserProfileFoldersTask\UserProfileFoldersTask.Strings.Designer.vb">
-      <DependentUpon>UserProfileFoldersTask.Strings.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Classes\UserProfileFoldersTask\UserProfileFoldersTask.vb" />
+    <Compile Include="Classes\UserProfileFoldersTask.vb" />
     <Compile Include="Classes\UserSettings.vb" />
     <Compile Include="Classes\WindowFinder.vb" />
     <Compile Include="Forms\AboutForm\AboutForm.Designer.vb">
@@ -161,25 +142,10 @@
     <Compile Include="Modules\UserProfileFolders.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="Properties\AssemblyInfo.vb" />
-    <EmbeddedResource Include="Classes\DirectUpload\DirectUpload.Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>DirectUpload.Strings.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Classes\MessageBoxWrapper\MessageBoxWrapper.Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>MessageBoxWrapper.Strings.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Classes\PdfFileTask\PdfFileTask.Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>PdfFileTask.Strings.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Classes\PdfProperties\PdfProperties.Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Classes\UserProfileFoldersTask\UserProfileFoldersTask.Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>UserProfileFoldersTask.Strings.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
+    <Compile Include="Strings\Strings.Designer.vb">
+      <DependentUpon>Strings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <EmbeddedResource Include="Forms\AboutForm\AboutForm.resx">
       <DependentUpon>AboutForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -215,17 +181,16 @@
       <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
     </EmbeddedResource>
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
+    <EmbeddedResource Include="Strings\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>start ..\..\..\..\Build\PostBuild</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Classes" />
-    <Folder Include="Classes\MessageBoxWrapper" />
-    <Folder Include="Classes\DirectUpload" />
-    <Folder Include="Classes\UserProfileFoldersTask" />
-    <Folder Include="Classes\PdfFileTask" />
-    <Folder Include="Classes\PdfProperties" />
     <Folder Include="Forms" />
     <Folder Include="Forms\MainForm" />
     <Folder Include="Forms\AboutForm" />
@@ -240,6 +205,7 @@
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+    <Folder Include="Strings" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
