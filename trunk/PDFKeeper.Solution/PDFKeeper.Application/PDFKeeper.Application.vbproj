@@ -115,9 +115,6 @@
     <Compile Include="Forms\MainForm\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainForm\MainForm.Strings.Designer.vb">
-      <DependentUpon>MainForm.Strings.resx</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MainForm\MainForm.vb" />
     <Compile Include="Forms\PdfFileRenameForm.Designer.vb">
       <DependentUpon>PdfFileRenameForm.vb</DependentUpon>
@@ -146,10 +143,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm\MainForm.Strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>MainForm.Strings.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PdfFileRenameForm.resx">
       <DependentUpon>PdfFileRenameForm.vb</DependentUpon>
