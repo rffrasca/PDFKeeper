@@ -162,7 +162,6 @@
   <ItemGroup>
     <Folder Include="Classes" />
     <Folder Include="Forms" />
-    <Folder Include="Forms\MainForm" />
     <Folder Include="Modules" />
     <COMReference Include="IWshRuntimeLibrary">
       <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
