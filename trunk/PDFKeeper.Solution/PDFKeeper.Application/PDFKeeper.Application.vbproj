@@ -84,7 +84,7 @@
   <ItemGroup>
     <Compile Include="Classes\DirectUpload.vb" />
     <Compile Include="Classes\DirectUploadFolderProperties.vb" />
-    <Compile Include="Classes\DocumentPreviewer.vb" />
+    <Compile Include="Classes\DocumentPreviewZoom.vb" />
     <Compile Include="Classes\FileUtil.vb" />
     <Compile Include="Classes\FolderTask.vb" />
     <Compile Include="Classes\HelpWrapper.vb" />

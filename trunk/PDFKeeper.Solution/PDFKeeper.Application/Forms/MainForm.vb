@@ -1010,7 +1010,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomInClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		DocumentPreviewer.IncreaseZoomLevel
+		DocumentPreviewZoom.IncreaseZoomLevel
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1023,7 +1023,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomOutClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		DocumentPreviewer.DecreaseZoomLevel
+		DocumentPreviewZoom.DecreaseZoomLevel
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1078,7 +1078,7 @@ Public Partial Class MainForm
 			If PdfUtil.CreatePdfPreviewImage(pdfFile) = 0 Then
 				pictureBoxPreview.Enabled = True
 				pictureBoxPreview.Load(Path.ChangeExtension(pdfFile, "png"))
-				DocumentPreviewer.PreviewImage = pictureBoxPreview.Image
+				DocumentPreviewZoom.PreviewImage = pictureBoxPreview.Image
 				checkBoxDoNotResetZoomLevel.Enabled = True
 				buttonZoomIn.Enabled = True
 				If listViewDocs.SelectedItems(0).Index > 0 Then
@@ -1094,7 +1094,7 @@ Public Partial Class MainForm
 				If checkBoxDoNotResetZoomLevel.Checked = True Then
 					PreviewImageZoom
 				Else
-					DocumentPreviewer.ResetZoomLevel
+					DocumentPreviewZoom.ResetZoomLevel
 				End If
 			End If
 		End If
@@ -1105,13 +1105,13 @@ Public Partial Class MainForm
 	''' the image in the picture box.
 	''' </summary>
 	Private Sub PreviewImageZoom
-		If DocumentPreviewer.ZoomLevel > 100 Then
+		If DocumentPreviewZoom.ZoomLevel > 100 Then
 			buttonZoomOut.Enabled = True
 		Else
 			buttonZoomOut.Enabled = False
 		End If
 		pictureBoxPreview.Image = Nothing
-		pictureBoxPreview.Image = DocumentPreviewer.ZoomPreviewImage
+		pictureBoxPreview.Image = DocumentPreviewZoom.ZoomPreviewImage
 	End Sub
 	
 	#End Region

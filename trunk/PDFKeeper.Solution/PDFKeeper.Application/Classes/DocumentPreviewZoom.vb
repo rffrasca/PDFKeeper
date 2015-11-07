@@ -20,7 +20,7 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class DocumentPreviewer
+Public NotInheritable Class DocumentPreviewZoom
 	Const zoomMinValue As Integer = 100
 	Const zoomStepValue As Integer = 25
 	Shared Private _ZoomLevel As Integer
