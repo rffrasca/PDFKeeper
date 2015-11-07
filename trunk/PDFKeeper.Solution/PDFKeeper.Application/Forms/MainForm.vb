@@ -1075,7 +1075,7 @@ Public Partial Class MainForm
 		Dim pdfFile As String = Path.Combine(CacheDir, "pdfkeeper" & _
 			selectedId & ".pdf")
 		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
-			If PdfUtil.CreatePdfPreviewImage(pdfFile) = 0 Then
+			If PdfUtil.CreatePreviewImage(pdfFile) = 0 Then
 				pictureBoxPreview.Enabled = True
 				pictureBoxPreview.Load(Path.ChangeExtension(pdfFile, "png"))
 				DocumentPreviewZoom.PreviewImage = pictureBoxPreview.Image
@@ -1161,7 +1161,7 @@ Public Partial Class MainForm
 		Dim pdfFile As String = Path.Combine(CacheDir, "pdfkeeper" & _
 			selectedId & ".pdf")
 		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
-			textBoxTextOnlyView.Text = PdfUtil.ExtractTextFromPdf(pdfFile)
+			textBoxTextOnlyView.Text = PdfUtil.ExtractText(pdfFile)
 			textBoxTextOnlyView.Enabled = True
 			If listViewDocs.SelectedItems(0).Index > 0 Then
 				buttonTextOnlyPrevious.Enabled = True
