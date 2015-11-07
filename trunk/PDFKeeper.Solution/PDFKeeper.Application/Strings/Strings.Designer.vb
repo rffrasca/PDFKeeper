@@ -266,6 +266,165 @@ Friend Class Strings
 	End Property
 	
 	'''<summary>
+	'''  Looks up a localized string similar to Checking for a newer version of PDFKeeper....
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormCheckingVersion() As String
+		Get
+			Return ResourceManager.GetString("MainFormCheckingVersion", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to A captured PDF document is currently selected.
+	'''Closing PDFKeeper will result in all modifications being discarded.
+	'''Are you sure you want to close PDFKeeper?
+	'''.
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormClosingPromptSelected() As String
+		Get
+			Return ResourceManager.GetString("MainFormClosingPromptSelected", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to Delete all checked documents?.
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormDeleteChecked() As String
+		Get
+			Return ResourceManager.GetString("MainFormDeleteChecked", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to Delete {0}?.
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormDeletePrompt() As String
+		Get
+			Return ResourceManager.GetString("MainFormDeletePrompt", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to Are you sure you want to deselect this document?
+	'''Any modifications will be discarded..
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormDeselectPrompt() As String
+		Get
+			Return ResourceManager.GetString("MainFormDeselectPrompt", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to direction argument must be N or P.
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormDirectionArgument() As String
+		Get
+			Return ResourceManager.GetString("MainFormDirectionArgument", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to The Document Notes text box contains unsaved data.  Do you want to save changes?.
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormDocumentNotesSavePrompt() As String
+		Get
+			Return ResourceManager.GetString("MainFormDocumentNotesSavePrompt", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to {0} document(s) found; {1} document(s) checked..
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormListViewCountChecked() As String
+		Get
+			Return ResourceManager.GetString("MainFormListViewCountChecked", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to A newer version of PDFKeeper is available.
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormNewerVersionAvailable() As String
+		Get
+			Return ResourceManager.GetString("MainFormNewerVersionAvailable", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to {0} has been saved..
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormPdfSaved() As String
+		Get
+			Return ResourceManager.GetString("MainFormPdfSaved", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to Improper use of operators and/or characters. For more information, please consult &quot;How to search for documents&quot; in the Help file..
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormSearchImproperUsage() As String
+		Get
+			Return ResourceManager.GetString("MainFormSearchImproperUsage", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to Database does not support the use of * as a wildcard character! Use % instead.  For more information, please consult &quot;How to search for documents&quot; in the Help file..
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormSearchTextUsageError() As String
+		Get
+			Return ResourceManager.GetString("MainFormSearchTextUsageError", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to The selected document has been deleted.
+	'''All modifications will be lost..
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormSelectedDocDeleted() As String
+		Get
+			Return ResourceManager.GetString("MainFormSelectedDocDeleted", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to The selected document has been renamed.
+	'''All modifications will be lost..
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormSelectedDocRenamed() As String
+		Get
+			Return ResourceManager.GetString("MainFormSelectedDocRenamed", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to Unable to read {0}.
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormUnableRead() As String
+		Get
+			Return ResourceManager.GetString("MainFormUnableRead", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to Unable to start Direct Upload Process due to an error while syncing folders to configuration files..
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormUnableToStartDirectUpload() As String
+		Get
+			Return ResourceManager.GetString("MainFormUnableToStartDirectUpload", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to Upload {0}?.
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormUploadPrompt() As String
+		Get
+			Return ResourceManager.GetString("MainFormUploadPrompt", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
 	'''  Looks up a localized string similar to Error.
 	'''</summary>
 	Friend Shared ReadOnly Property MessageBoxTitleError() As String
