@@ -69,7 +69,7 @@ Public Partial Class MainForm
 	Private Sub StartUpdateCheck
 		If CDbl(UserSettings.UpdateCheck) = 1 Then
 			toolStripStatusLabelUpdateStatus.Text = _
-				MainForm_Strings.CheckingVersion
+				PdfKeeper.Strings.MainFormCheckingVersion
 			BackgroundWorkerUpdateCheck.RunWorkerAsync
 		End If
 	End Sub
@@ -137,14 +137,15 @@ Public Partial Class MainForm
 		Dim pdfFile As String = SaveFileDialog.FileName
 		Dim pdfFileInfo As New FileInfo(pdfFile)
 		UserSettings.SaveFileLastFolder = pdfFileInfo.DirectoryName
-		If Not pdfFileInfo.Extension.ToUpper(CultureInfo.InvariantCulture) = ".PDF" Then
+		If Not pdfFileInfo.Extension.ToUpper(CultureInfo.InvariantCulture) = _
+				".PDF" Then
 			pdfFile = pdfFile & ".pdf"
 		End If
 		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
 			Me.Cursor = Cursors.Default
 			MessageBoxWrapper.ShowInformation(String.Format( _
 									CultureInfo.CurrentCulture, _
-									MainForm_Strings.PdfSaved, pdfFile))
+									PdfKeeper.Strings.MainFormPdfSaved, pdfFile))
 		End If
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -251,7 +252,7 @@ Public Partial Class MainForm
 	Private Sub ToolStripMenuItemDeleteCheckedDocumentsClick(sender As Object, e As EventArgs)
 		DocumentNotesModifiedCheck
 		If MessageBoxWrapper.ShowQuestion( _
-				MainForm_Strings.DeleteChecked) = 7 Then ' No
+				PdfKeeper.Strings.MainFormDeleteChecked) = 7 Then ' No
 			Exit Sub
 		End If
 		Me.Cursor = Cursors.WaitCursor
@@ -431,14 +432,15 @@ Public Partial Class MainForm
 		If comboBoxSearchText.Text.Length = 0 Then
 			Exit Sub
 		End If
-		If comboBoxSearchText.Text.IndexOf("*", StringComparison.Ordinal) <> -1 Then
-			errorMessage = MainForm_Strings.SearchTextUsageError
+		If comboBoxSearchText.Text.IndexOf("*", _
+				StringComparison.Ordinal) <> -1 Then
+			errorMessage = PdfKeeper.Strings.MainFormSearchTextUsageError
 			errorProvider.SetError(comboBoxSearchText, errorMessage)
 			comboBoxSearchText.Select
 			Exit Sub
 		End If
 		If SearchTextInvalid() Then
-			errorMessage = MainForm_Strings.ImproperUsage
+			errorMessage = PdfKeeper.Strings.MainFormSearchImproperUsage
 			errorProvider.SetError(comboBoxSearchText, errorMessage)
 			comboBoxSearchText.Select
 			Exit Sub
@@ -870,7 +872,8 @@ Public Partial Class MainForm
 			listViewDocs.Items( _
 				listViewDocs.SelectedItems(0).Index - 1).Selected = True
 		Else
-			Throw New System.ArgumentException(MainForm_Strings.DirectionArgument)
+			Throw New System.ArgumentException( _
+				PdfKeeper.Strings.MainFormDirectionArgument)
 		End If
 		listViewDocs.EnsureVisible(listViewDocs.SelectedItems(0).Index)
 	End Sub
@@ -972,7 +975,8 @@ Public Partial Class MainForm
 		If buttonDocumentNotesUpdate.Enabled Then
 			tabControlDocNotesKeywords.SelectTab(0)
 			If MessageBoxWrapper.ShowQuestion( _
-					MainForm_Strings.DocumentNotesSavePrompt) = 6 Then ' Yes
+				PdfKeeper.Strings.MainFormDocumentNotesSavePrompt) = _
+					6 Then ' Yes
 				ButtonDocumentNotesUpdateClick(Me, Nothing)
 			Else
 				ButtonDocumentNotesRevertClick(Me, Nothing)
@@ -1229,7 +1233,7 @@ Public Partial Class MainForm
 			documentCaptureFolderChanged = True
 			If textBoxPDFDocument.Text = e.FullPath Then
 				MessageBoxWrapper.ShowInformation( _
-					MainForm_Strings.SelectedDocDeleted)
+					PdfKeeper.Strings.MainFormSelectedDocDeleted)
 				Me.Cursor = Cursors.WaitCursor
 				TerminateCapturePdfViewer
 				ClearCaptureSelection
@@ -1251,7 +1255,7 @@ Public Partial Class MainForm
 			FillDocCaptureQueueList
 			If textBoxPDFDocument.Text = e.OldFullPath Then
 				MessageBoxWrapper.ShowInformation( _
-					MainForm_Strings.SelectedDocRenamed)
+					PdfKeeper.Strings.MainFormSelectedDocRenamed)
 				Me.Cursor = Cursors.WaitCursor
 				TerminateCapturePdfViewer
 				ClearCaptureSelection
@@ -1354,8 +1358,8 @@ Public Partial Class MainForm
 				CaptureComboBoxTextChanged
 			Else
 				MessageBoxWrapper.ShowError(String.Format( _
-								CultureInfo.CurrentCulture, _
-								MainForm_Strings.UnableRead, capturePdfFile))
+						CultureInfo.CurrentCulture, _
+						PdfKeeper.Strings.MainFormUnableRead, capturePdfFile))
 			End If
 			buttonRename.Enabled = True
 			buttonDelete.Enabled = True
@@ -1392,7 +1396,8 @@ Public Partial Class MainForm
 	Sub ButtonDeleteClick(sender As Object, e As EventArgs)
 		If MessageBoxWrapper.ShowQuestion(String.Format( _
 				CultureInfo.CurrentCulture, _
-				MainForm_Strings.DeletePrompt, capturePdfFile)) = 6 Then ' Yes
+				PdfKeeper.Strings.MainFormDeletePrompt, _
+					capturePdfFile)) = 6 Then ' Yes
 			Me.Cursor = Cursors.WaitCursor
 			FileUtil.Delete(capturePdfFile, True)
 			Me.Cursor = Cursors.Default
@@ -1587,7 +1592,8 @@ Public Partial Class MainForm
 	Private Sub ButtonUploadClick(sender As Object, e As EventArgs)
 		If MessageBoxWrapper.ShowQuestion(String.Format( _
 				CultureInfo.CurrentCulture, _
-				MainForm_Strings.UploadPrompt, captureModPdfFile)) = 6 Then ' Yes
+				PdfKeeper.Strings.MainFormUploadPrompt, _
+				captureModPdfFile)) = 6 Then ' Yes
 			Me.Cursor = Cursors.WaitCursor
 			DisableCaptureControls(True)
 			TerminateCapturePdfViewer
@@ -1659,7 +1665,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonDeselectClick(sender As Object, e As EventArgs)
 		If MessageBoxWrapper.ShowQuestion( _
-				MainForm_Strings.DeselectPrompt) = 6 Then ' Yes
+				PdfKeeper.Strings.MainFormDeselectPrompt) = 6 Then ' Yes
 			Me.Cursor = Cursors.WaitCursor
 			TerminateCapturePdfViewer
 			ClearCaptureSelection
@@ -1811,10 +1817,10 @@ Public Partial Class MainForm
 	''' </summary>
 	Private Sub UpdateListCountStatusBar
 		toolStripStatusLabelMessage.Text = String.Format( _
-										   CultureInfo.CurrentCulture, _
-										   MainForm_Strings.ListViewCountChecked, _
-										   listViewDocs.Items.Count, _
-										   listViewDocs.CheckedItems.Count)
+							CultureInfo.CurrentCulture, _
+							PdfKeeper.Strings.MainFormListViewCountChecked, _
+							listViewDocs.Items.Count, _
+							listViewDocs.CheckedItems.Count)
 		searchLastStatusMessage = toolStripStatusLabelMessage.Text
 	End Sub
 	
@@ -1824,7 +1830,8 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub StatusStripItemClicked(sender As Object, e As ToolStripItemClickedEventArgs)
-		If e.ClickedItem.Text = MainForm_Strings.NewerVersionAvailable Then
+		If e.ClickedItem.Text = _
+				PdfKeeper.Strings.MainFormNewerVersionAvailable Then
 			Me.Cursor = Cursors.WaitCursor
 			Process.Start(ConfigurationManager.AppSettings("ProjectSiteUrl"))
 			Me.Cursor = Cursors.Default
@@ -1877,7 +1884,7 @@ Public Partial Class MainForm
 	Private Sub BackgroundWorkerUpdateCheckRunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs)
 		If updateAvailable Then
 			toolStripStatusLabelUpdateStatus.Text = _
-				MainForm_Strings.NewerVersionAvailable
+				PdfKeeper.Strings.MainFormNewerVersionAvailable
 			toolStripStatusLabelUpdateStatus.ForeColor = _
 				 System.Drawing.SystemColors.ActiveCaption
 			toolStripStatusLabelUpdateStatus.IsLink = True
@@ -1938,7 +1945,8 @@ Public Partial Class MainForm
 		Else
 			If Not textBoxPDFDocument.Text = Nothing Then
 				If MessageBoxWrapper.ShowQuestion( _
-					MainForm_Strings.FormClosingPromptSelected) = 6 Then ' Yes
+					PdfKeeper.Strings.MainFormClosingPromptSelected) = _
+						6 Then ' Yes
 					Me.Cursor = Cursors.WaitCursor
 					TerminateCapturePdfViewer
 					ClearCaptureSelection
