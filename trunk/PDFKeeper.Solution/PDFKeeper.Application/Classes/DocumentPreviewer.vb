@@ -47,49 +47,7 @@ Public NotInheritable Class DocumentPreviewer
 	''' </summary>
 	Private Sub New()
 	End Sub
-	
-	''' <summary>
-	''' Create image file that contains the first page from "pdfFile" in the
-	''' same folder as "pdfFile", and then register in the file cache.  Skip
-	''' creating the image file if it's already registered in the file cache.
-	''' If file encryption is supported by the operating system, encrypt the
-	''' image file.
-	''' </summary>
-	''' <param name="pdfFile"></param>
-	''' <returns>0 = Success, 1 = Failed</returns>
-	Public Shared Function PdfToPreviewImage(ByVal pdfFile As String) As Integer
-		Dim imgFile As String = Path.ChangeExtension(pdfFile, "png")
-		If FileCache.IsCached(imgFile) = False Then
-			Dim ghostScript As New Process()
-			Try
-				ghostScript.StartInfo.FileName = "gswin32c.exe"
-				ghostScript.StartInfo.Arguments = _
-					"-o " & Chr(34) & imgFile & Chr(34) & _
-					" -sDEVICE=pngalpha " & _
-					" -r120x120 " & _
-					"-dLastPage=1 " & Chr(34) & pdfFile & Chr(34)
-				ghostScript.StartInfo.UseShellExecute = False
-				ghostScript.StartInfo.CreateNoWindow = True
-				ghostScript.StartInfo.RedirectStandardError = True
-				ghostScript.Start
-				ghostScript.WaitForExit
-				If ghostScript.ExitCode <> 0 Then
-					Dim ghostScriptErrorOutput As StreamReader = _
-						ghostScript.StandardError
-					MessageBoxWrapper.ShowError( _
-						ghostScriptErrorOutput.ReadToEnd)
-					Return 1
-				End If
-				FileCache.Add(imgFile)
-			Catch ex As System.ComponentModel.Win32Exception
-				MessageBoxWrapper.ShowError(ex.Message)
-				Return 1
-			End Try
-		End If
-		FileUtil.Encrypt(imgFile)
-		Return 0
-	End Function
-	
+		
 	''' <summary>
 	''' Increase ZoomLevel by zoomStepValue.
 	''' </summary>

@@ -127,7 +127,7 @@ Public NotInheritable Class DirectUpload
 			If oDirectUploadFolderProperties.Read = 1 Then
 				Exit Sub
 			End If
-			If PdfFileTask.SecurityCheck(inputPdfFile) = 0 Then
+			If PdfUtil.SecurityLevelCheck(inputPdfFile) = 0 Then
 				Dim oPdfProperties As New PdfProperties(inputPdfFile, _
 					outputPdfFile)
 				If oPdfProperties.Read = 0 Then

@@ -35,10 +35,10 @@ Public NotInheritable Class FileUtil
 	''' <param name="file"></param>
 	''' <returns>Hash value of "file"</returns>
 	Public Shared Function ComputeHashValue(ByVal file As String) As String
-		Dim oHashAlgorithm As HashAlgorithm = HashAlgorithm.Create("SHA1")
-		Using oFileStream As New FileStream(file, FileMode.Open, _
-												  FileAccess.Read)
-			Dim hash As Byte() = oHashAlgorithm.ComputeHash(oFileStream)
+		Dim algorithm As HashAlgorithm = HashAlgorithm.Create("SHA1")
+		Using stream As New FileStream(file, FileMode.Open, _
+									  		 FileAccess.Read)
+			Dim hash As Byte() = algorithm.ComputeHash(stream)
 			Return BitConverter.ToString(hash)
 		End Using
 	End Function
@@ -80,8 +80,8 @@ Public NotInheritable Class FileUtil
 	Public Shared Function IsInUse(ByVal file As String) As Boolean
 		If System.IO.File.Exists(file) Then
 			Try
-				Using oFileStream As New FileStream(file, FileMode.Open, _
-								  		 FileAccess.ReadWrite, FileShare.None)
+				Using stream As New FileStream(file, FileMode.Open, _
+								  	FileAccess.ReadWrite, FileShare.None)
 				End Using
 				Return False
 			Catch ex As IOException
