@@ -29,6 +29,21 @@ Public NotInheritable Class StringUtil
 	End Sub	
 	
 	''' <summary>
+	''' Return True or False if the specified file or folder name contains one
+	''' or more invalid characters.
+	''' </summary>
+	''' <param name="fileOrFolderName"></param>
+	''' <returns>True or False</returns>
+	Public Shared Function ContainsInvalidFileNameChars(ByVal fileOrFolderName As String) As Boolean
+		For Each invalidChar In Path.GetInvalidFileNameChars()
+			If fileOrFolderName.Contains(invalidChar) Then
+				Return True
+			End If
+		Next
+		Return False
+	End Function
+	
+	''' <summary>
 	'''	Return the string of the specified SecureString.
 	''' </summary>
 	''' <param name="textSecureString"></param>
@@ -42,20 +57,5 @@ Public NotInheritable Class StringUtil
 		Finally
 			Marshal.ZeroFreeBSTR(textStringPtr)
 		End Try
-	End Function
-	
-	''' <summary>
-	''' Return True or False if the specified file or folder name contains one
-	''' or more invalid characters.
-	''' </summary>
-	''' <param name="fileOrFolderName"></param>
-	''' <returns>True or False</returns>
-	Public Shared Function ContainsInvalidFileNameChars(ByVal fileOrFolderName As String) As Boolean
-		For Each invalidChar In Path.GetInvalidFileNameChars()
-			If fileOrFolderName.Contains(invalidChar) Then
-				Return True
-			End If
-		Next
-		Return False
 	End Function
 End Class

@@ -42,56 +42,6 @@ Public NotInheritable Class FileUtil
 			Return BitConverter.ToString(hash)
 		End Using
 	End Function
-		
-	''' <summary>
-	''' Eencrypt "file" if the operating system supports the Encrypting File
-	''' System (EFS).
-	''' </summary>
-	''' <param name="file"></param>
-	Public Shared Sub Encrypt(ByVal file As String)
-		Try
-			System.IO.File.Encrypt(file)
-		Catch ex As IOException
-		Catch ex As UnauthorizedAccessException
-			MessageBoxWrapper.ShowError(ex.Message)
-		End Try
-	End Sub
-	
-	''' <summary>
-	''' Wait for "file" to be created.  It will wait until "file" exists and is
-	''' not in use.
-	''' </summary>
-	''' <param name="file"></param>
-	Public Shared Sub WaitForFileCreation(ByVal file As String)
-		Do Until System.IO.File.Exists(file)
-			Thread.Sleep(2000)
-		Loop
-		Do While IsInUse(file)
-			Thread.Sleep(2000)
-		Loop
-	End Sub
-		
-	''' <summary>
-	''' Return True or False if "file" is in use.  If "file" does not exist,
-	''' False is returned. 
-	''' </summary>
-	''' <param name="file"></param>
-	''' <returns>True or False</returns>
-	Public Shared Function IsInUse(ByVal file As String) As Boolean
-		If System.IO.File.Exists(file) Then
-			Try
-				Using stream As New FileStream(file, FileMode.Open, _
-								  	FileAccess.ReadWrite, FileShare.None)
-				End Using
-				Return False
-			Catch ex As IOException
-				Return True
-			Catch ex As UnauthorizedAccessException
-				Return True
-			End Try
-		End If
-		Return False
-	End Function
 	
 	''' <summary>
 	''' Delete "file" if it does exist.  To delete "file" and move it to the
@@ -120,6 +70,42 @@ Public NotInheritable Class FileUtil
 	End Function
 	
 	''' <summary>
+	''' Eencrypt "file" if the operating system supports the Encrypting File
+	''' System (EFS).
+	''' </summary>
+	''' <param name="file"></param>
+	Public Shared Sub Encrypt(ByVal file As String)
+		Try
+			System.IO.File.Encrypt(file)
+		Catch ex As IOException
+		Catch ex As UnauthorizedAccessException
+			MessageBoxWrapper.ShowError(ex.Message)
+		End Try
+	End Sub
+	
+	''' <summary>
+	''' Return True or False if "file" is in use.  If "file" does not exist,
+	''' False is returned. 
+	''' </summary>
+	''' <param name="file"></param>
+	''' <returns>True or False</returns>
+	Public Shared Function IsInUse(ByVal file As String) As Boolean
+		If System.IO.File.Exists(file) Then
+			Try
+				Using stream As New FileStream(file, FileMode.Open, _
+								  	FileAccess.ReadWrite, FileShare.None)
+				End Using
+				Return False
+			Catch ex As IOException
+				Return True
+			Catch ex As UnauthorizedAccessException
+				Return True
+			End Try
+		End If
+		Return False
+	End Function
+		
+	''' <summary>
 	''' Move "sourceFile" to "targetFile"; can be used to rename "sourceFile"
 	''' to "targetFile".
 	''' </summary>
@@ -136,4 +122,18 @@ Public NotInheritable Class FileUtil
 			Return 1
 		End Try
 	End Function
+	
+	''' <summary>
+	''' Wait for "file" to be created.  It will wait until "file" exists and is
+	''' not in use.
+	''' </summary>
+	''' <param name="file"></param>
+	Public Shared Sub WaitForFileCreation(ByVal file As String)
+		Do Until System.IO.File.Exists(file)
+			Thread.Sleep(2000)
+		Loop
+		Do While IsInUse(file)
+			Thread.Sleep(2000)
+		Loop
+	End Sub
 End Class

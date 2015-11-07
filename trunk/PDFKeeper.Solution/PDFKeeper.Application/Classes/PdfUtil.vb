@@ -27,29 +27,7 @@ Public NotInheritable Class PdfUtil
 	''' </summary>
 	Private Sub New()
 	End Sub
-	
-	''' <summary>
-	''' Extract the text contained within "pdfFile" and return to the caller.
-	''' </summary>
-	''' <param name="pdfFile"></param>
-	''' <returns>Text extracted from pdfFile</returns>
-	Public Shared Function ExtractTextFromPdf(ByVal pdfFile As String) As String
-		Using reader = New PdfReader(pdfFile)
-			Dim text As New StringBuilder()
-			For i As Integer = 1 To reader.NumberOfPages
-				Dim strategy As ITextExtractionStrategy = _
-					New iTextSharp.text.pdf.parser.LocationTextExtractionStrategy()
-				Dim currentPage As String = PdfTextExtractor.GetTextFromPage( _
-					reader, i, strategy)
-				Dim lines As String() = currentPage.Split(ControlChars.Lf)
-				For Each line As String In lines
-					text.AppendLine(line)
-				Next
-			Next
-			Return text.ToString()
-		End Using
-	End Function
-	
+		
 	''' <summary>
 	''' Create image file that contains the first page from "pdfFile" in the
 	''' same folder as "pdfFile", and then register in the file cache.  Skip
@@ -91,6 +69,28 @@ Public NotInheritable Class PdfUtil
 		End If
 		FileUtil.Encrypt(imgFile)
 		Return 0
+	End Function
+		
+	''' <summary>
+	''' Extract the text contained within "pdfFile" and return to the caller.
+	''' </summary>
+	''' <param name="pdfFile"></param>
+	''' <returns>Text extracted from pdfFile</returns>
+	Public Shared Function ExtractTextFromPdf(ByVal pdfFile As String) As String
+		Using reader = New PdfReader(pdfFile)
+			Dim text As New StringBuilder()
+			For i As Integer = 1 To reader.NumberOfPages
+				Dim strategy As ITextExtractionStrategy = _
+					New iTextSharp.text.pdf.parser.LocationTextExtractionStrategy()
+				Dim currentPage As String = PdfTextExtractor.GetTextFromPage( _
+					reader, i, strategy)
+				Dim lines As String() = currentPage.Split(ControlChars.Lf)
+				For Each line As String In lines
+					text.AppendLine(line)
+				Next
+			Next
+			Return text.ToString()
+		End Using
 	End Function
 	
 	''' <summary>
