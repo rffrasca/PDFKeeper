@@ -1075,7 +1075,7 @@ Public Partial Class MainForm
 		Dim pdfFile As String = Path.Combine(CacheDir, "pdfkeeper" & _
 			selectedId & ".pdf")
 		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
-			If DocumentPreviewer.PdfToPreviewImage(pdfFile) = 0 Then
+			If PdfUtil.CreatePdfPreviewImage(pdfFile) = 0 Then
 				pictureBoxPreview.Enabled = True
 				pictureBoxPreview.Load(Path.ChangeExtension(pdfFile, "png"))
 				DocumentPreviewer.PreviewImage = pictureBoxPreview.Image
@@ -1161,7 +1161,7 @@ Public Partial Class MainForm
 		Dim pdfFile As String = Path.Combine(CacheDir, "pdfkeeper" & _
 			selectedId & ".pdf")
 		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
-			textBoxTextOnlyView.Text = PdfFileTask.ExtractPdfText(pdfFile)
+			textBoxTextOnlyView.Text = PdfUtil.ExtractTextFromPdf(pdfFile)
 			textBoxTextOnlyView.Enabled = True
 			If listViewDocs.SelectedItems(0).Index > 0 Then
 				buttonTextOnlyPrevious.Enabled = True
@@ -1311,7 +1311,7 @@ Public Partial Class MainForm
 		If IsNothing(capturePdfFile) = False Then
 			captureModPdfFile = Path.Combine(CaptureTempDir, _
 								Path.GetFileName(capturePdfFile))
-			lastPdfDocumentCheckResult = PdfFileTask.SecurityCheck(capturePdfFile)
+			lastPdfDocumentCheckResult = PdfUtil.SecurityLevelCheck(capturePdfFile)
 			If lastPdfDocumentCheckResult = 1 Then
 				If PdfOwnerPasswordForm.ShowDialog() = _
 						Windows.Forms.DialogResult.Cancel Then

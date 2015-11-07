@@ -94,6 +94,7 @@
     <Compile Include="Classes\NativeMethods.vb" />
     <Compile Include="Classes\PdfFileTask.vb" />
     <Compile Include="Classes\PdfProperties.vb" />
+    <Compile Include="Classes\PdfUtil.vb" />
     <Compile Include="Classes\Print.vb" />
     <Compile Include="Classes\Product.vb" />
     <Compile Include="Classes\StringUtil.vb" />
