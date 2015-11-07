@@ -112,10 +112,10 @@
       <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\DirectUploadConfigurationForm.vb" />
-    <Compile Include="Forms\MainForm\MainForm.Designer.vb">
+    <Compile Include="Forms\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainForm\MainForm.vb" />
+    <Compile Include="Forms\MainForm.vb" />
     <Compile Include="Forms\PdfFileRenameForm.Designer.vb">
       <DependentUpon>PdfFileRenameForm.vb</DependentUpon>
     </Compile>
@@ -141,7 +141,7 @@
     <EmbeddedResource Include="Forms\DirectUploadConfigurationForm.resx">
       <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm\MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PdfFileRenameForm.resx">
