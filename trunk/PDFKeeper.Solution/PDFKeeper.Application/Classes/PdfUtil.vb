@@ -132,4 +132,15 @@ Public NotInheritable Class PdfUtil
 			End If
 		End Try
 	End Function
+	
+	''' <summary>
+	''' Return the total number of pages contained in "pdfFile" to the caller.
+	''' </summary>
+	''' <param name="pdfFile"></param>
+	''' <returns>Total number of pages in "pdfFile"</returns>
+	Public Shared Function TotalPages(ByVal pdfFile As String) As Integer
+		Using reader = New PdfReader(pdfFile)
+			Return reader.NumberOfPages
+		End Using
+	End Function
 End Class
