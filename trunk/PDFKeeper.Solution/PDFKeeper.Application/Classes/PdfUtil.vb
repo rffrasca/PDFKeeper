@@ -37,8 +37,8 @@ Public NotInheritable Class PdfUtil
 	''' </summary>
 	''' <param name="pdfFile"></param>
 	''' <returns>0 = Success, 1 = Failed</returns>
-	Public Shared Function CreatePdfPreviewImage(ByVal pdfFile As String) _
-															   As Integer
+	Public Shared Function CreatePreviewImage(ByVal pdfFile As String) _
+															As Integer
 		Dim imgFile As String = Path.ChangeExtension(pdfFile, "png")
 		If FileCache.IsCached(imgFile) = False Then
 			Dim ghostScript As New Process()
@@ -76,7 +76,7 @@ Public NotInheritable Class PdfUtil
 	''' </summary>
 	''' <param name="pdfFile"></param>
 	''' <returns>Text extracted from pdfFile</returns>
-	Public Shared Function ExtractTextFromPdf(ByVal pdfFile As String) As String
+	Public Shared Function ExtractText(ByVal pdfFile As String) As String
 		Using reader = New PdfReader(pdfFile)
 			Dim text As New StringBuilder()
 			For i As Integer = 1 To reader.NumberOfPages
