@@ -64,33 +64,6 @@ Friend Class MainForm_Strings
 	End Property
 	
 	'''<summary>
-	'''  Looks up a localized string similar to Temporary copy of PDF document has been saved and is ready to be uploaded..
-	'''</summary>
-	Friend Shared ReadOnly Property CaptureSaved() As String
-		Get
-			Return ResourceManager.GetString("CaptureSaved", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
-	'''  Looks up a localized string similar to Saving temporary copy of PDF document....
-	'''</summary>
-	Friend Shared ReadOnly Property CaptureSaving() As String
-		Get
-			Return ResourceManager.GetString("CaptureSaving", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
-	'''  Looks up a localized string similar to Uploading PDF document....
-	'''</summary>
-	Friend Shared ReadOnly Property CaptureUploading() As String
-		Get
-			Return ResourceManager.GetString("CaptureUploading", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
 	'''  Looks up a localized string similar to Checking for a newer version of PDFKeeper....
 	'''</summary>
 	Friend Shared ReadOnly Property CheckingVersion() As String

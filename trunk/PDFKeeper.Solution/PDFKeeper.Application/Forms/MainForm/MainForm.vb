@@ -1529,7 +1529,8 @@ Public Partial Class MainForm
 		Me.Cursor = Cursors.WaitCursor
 		DisableCaptureControls(False)
 		TerminateCapturePdfViewer
-		toolStripStatusLabelMessage.Text = MainForm_Strings.CaptureSaving
+		toolStripStatusLabelMessage.Text = _
+			PdfKeeper.Strings.MainFormCaptureSaving
 		Application.DoEvents
 		Dim oPdfProperties As PdfProperties = Nothing
 		If lastPdfDocumentCheckResult = 0 Then
@@ -1550,7 +1551,8 @@ Public Partial Class MainForm
 			buttonSave.Enabled = False
 			buttonView.Enabled = True
 			buttonUpload.Enabled = True
-			toolStripStatusLabelMessage.Text = MainForm_Strings.CaptureSaved
+			toolStripStatusLabelMessage.Text = _
+				PdfKeeper.Strings.MainFormCaptureSaved
 		Else
 			buttonView.Enabled = False
 			buttonUpload.Enabled = False
@@ -1589,7 +1591,8 @@ Public Partial Class MainForm
 			Me.Cursor = Cursors.WaitCursor
 			DisableCaptureControls(True)
 			TerminateCapturePdfViewer
-			toolStripStatusLabelMessage.Text = MainForm_Strings.CaptureUploading
+			toolStripStatusLabelMessage.Text = _
+				PdfKeeper.Strings.MainFormCaptureUploading
 			Application.DoEvents
 			If PdfFileTask.UploadToDatabase(captureModPdfFile) = 0 Then
 				toolStripStatusLabelMessage.Text = Nothing

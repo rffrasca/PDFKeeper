@@ -412,4 +412,13 @@ License: AGPLv3 (http://www.gnu.org/licenses/agpl-3.0.html)</value>
   <data name="FolderNameContainsInvalidChars" xml:space="preserve">
     <value>Folder name contains invalid characters.</value>
   </data>
+  <data name="MainFormCaptureSaving" xml:space="preserve">
+    <value>Saving temporary copy of PDF document...</value>
+  </data>
+  <data name="MainFormCaptureSaved" xml:space="preserve">
+    <value>Temporary copy of PDF document has been saved and is ready to be uploaded.</value>
+  </data>
+  <data name="MainFormCaptureUploading" xml:space="preserve">
+    <value>Uploading PDF document...</value>
+  </data>
 </root>
