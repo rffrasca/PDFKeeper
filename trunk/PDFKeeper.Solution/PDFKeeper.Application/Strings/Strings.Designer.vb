@@ -239,6 +239,33 @@ Friend Class Strings
 	End Property
 	
 	'''<summary>
+	'''  Looks up a localized string similar to Temporary copy of PDF document has been saved and is ready to be uploaded..
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormCaptureSaved() As String
+		Get
+			Return ResourceManager.GetString("MainFormCaptureSaved", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to Saving temporary copy of PDF document....
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormCaptureSaving() As String
+		Get
+			Return ResourceManager.GetString("MainFormCaptureSaving", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to Uploading PDF document....
+	'''</summary>
+	Friend Shared ReadOnly Property MainFormCaptureUploading() As String
+		Get
+			Return ResourceManager.GetString("MainFormCaptureUploading", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
 	'''  Looks up a localized string similar to Error.
 	'''</summary>
 	Friend Shared ReadOnly Property MessageBoxTitleError() As String
