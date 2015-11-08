@@ -94,6 +94,52 @@ Public NotInheritable Class PdfUtil
 	End Function
 	
 	''' <summary>
+	''' 
+	''' </summary>
+	''' <param name="sourcePdfFile"></param>
+	''' <param name="targetPdfFile"></param>
+	''' <param name="fromPage"></param>
+	''' <param name="toPage"></param>
+	''' <param name="rotation"></param>
+	''' <returns></returns>
+	Public Shared Function PageRotation(ByVal sourcePdfFile As String, _
+										ByVal targetPdfFile As String, _
+										ByVal fromPage As Integer, _
+										ByVal toPage As Integer, _
+										ByVal rotation As Integer) As Integer
+		Dim reader As PdfReader = Nothing
+		Dim stamper As PdfStamper = Nothing
+		Try
+			reader = New PdfReader(sourcePdfFile)
+			Dim pages As Integer = reader.NumberOfPages
+			Dim page As PdfDictionary
+			Dim rotate As PdfNumber
+			For pageCounter As Integer = 1 To pages
+				page = reader.GetPageN(pageCounter)
+				rotate = page.GetAsNumber(PdfName.ROTATE)
+				If rotate Is Nothing Then
+					page.Put(PdfName.ROTATE, New PdfNumber(rotation))
+				Else
+					page.Put(PdfName.ROTATE, New _
+						PdfNumber((rotate.IntValue() + rotation) Mod 360))
+				End If
+			Next
+			stamper = New PdfStamper(reader, New FileStream(targetPdfFile, _
+					FileMode.Create, FileAccess.Write, FileShare.None))
+			Return 0
+		Catch ex As DocumentException
+			MessageBoxWrapper.ShowError(ex.Message)
+			Return 1
+		Catch ex As IOException
+			MessageBoxWrapper.ShowError(ex.Message)
+			Return 1
+		Finally
+			reader.Close
+			stamper.Close
+		End Try
+	End Function
+	
+	''' <summary>
 	''' Check security level for "pdfFile" and return the result code to the
 	'''	caller.
 	''' </summary>
