@@ -77,7 +77,7 @@
 			</Directory>
 			<Directory Id="DesktopFolder">
 				<Component Guid="10B4E840-F101-4F24-85ED-C2DD279B7062" Id="DesktopShortcut" DiskId="1" Feature="Complete">
-					<Shortcut Description="PDF Document Capture, Storage, and Search" Directory="DesktopFolder" Name="PDFKeeper" Show="normal" WorkingDirectory="INSTALLDIR" Id="PdfKeeperDesktopShortcut" Target="[INSTALLDIR]PdfKeeper.exe"></Shortcut>
+					<Shortcut Description="PDF Document Capture, Upload, and Search" Directory="DesktopFolder" Name="PDFKeeper" Show="normal" WorkingDirectory="INSTALLDIR" Id="PdfKeeperDesktopShortcut" Target="[INSTALLDIR]PdfKeeper.exe"></Shortcut>
 					<RegistryValue Root="HKCU" Type="integer" Value="1" KeyPath="yes" Name="Installed" Key="Software\PDFKeeper" />
 				</Component>
 			</Directory>
@@ -86,7 +86,7 @@
 					<Component Guid="710B90F9-CBF5-4AAF-B7D1-FD31082A2E0C" Id="ApplicationShortcutsFolder" Feature="Complete" DiskId="1">
 						<RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
 						<RegistryValue Key="Software\PDFKeeper" Root="HKCU" Type="integer" Value="1" Name="Installed" KeyPath="yes" />
-						<Shortcut Description="PDF Document Capture, Storage, and Search" Directory="ApplicationProgramsFolder" Name="PDFKeeper" Show="normal" WorkingDirectory="INSTALLDIR" Id="PdfKeeperStartMenuShortcut" Target="[INSTALLDIR]PdfKeeper.exe"></Shortcut>
+						<Shortcut Description="PDF Document Capture, Upload, and Search" Directory="ApplicationProgramsFolder" Name="PDFKeeper" Show="normal" WorkingDirectory="INSTALLDIR" Id="PdfKeeperStartMenuShortcut" Target="[INSTALLDIR]PdfKeeper.exe"></Shortcut>
 						<Shortcut Id="DatabaseSetupStartMenuShortcut" Show="normal" WorkingDirectory="INSTALLDIR" Name="Database Setup" Directory="ApplicationProgramsFolder" Target="[INSTALLDIR]DatabaseSetup.cmd" />
 					</Component>
 					<Directory Id="DocumentationProgramsFolder" Name="Documentation">

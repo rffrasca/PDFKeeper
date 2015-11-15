@@ -2,7 +2,7 @@
 
 rem ***************************************************************************
 rem *
-rem * PDFKeeper -- PDF Document Capture, Storage, and Search
+rem * PDFKeeper -- PDF Document Capture, Upload, and Search
 rem * Copyright (C) 2009-2015 Robert F. Frasca
 rem *
 rem * This file is part of PDFKeeper.
