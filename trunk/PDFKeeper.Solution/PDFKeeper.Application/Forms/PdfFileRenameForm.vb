@@ -76,7 +76,7 @@ Public Partial Class PdfFileRenameForm
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	Private Sub ButtonOKClick(sender As Object, e As EventArgs)
+	Private Sub ButtonOkClick(sender As Object, e As EventArgs)
 		pdfRenameName = textBoxFileName.Text
 		Me.DialogResult = Windows.Forms.DialogResult.OK
 	End Sub

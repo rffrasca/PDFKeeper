@@ -103,7 +103,7 @@ Partial Class DatabaseConnectionForm
 		resources.ApplyResources(Me.buttonOK, "buttonOK")
 		Me.buttonOK.Name = "buttonOK"
 		Me.buttonOK.UseVisualStyleBackColor = true
-		AddHandler Me.buttonOK.Click, AddressOf Me.ButtonOKClick
+		AddHandler Me.buttonOK.Click, AddressOf Me.ButtonOkClick
 		'
 		'buttonCancel
 		'
