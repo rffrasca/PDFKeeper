@@ -30,9 +30,9 @@ Public Partial Class MainForm
 	Dim documentCaptureFolderChanged As Boolean = True
 	Dim searchLastTitleText As String = "PDFKeeper"
 	Dim searchLastStatusMessage As String
+	Dim capturePdfEditInput As String
+	Dim capturePdfEditOutput As String
 	Dim captureLastStatusMessage As String
-	Dim capturePdfFile As String
-	Dim captureModPdfFile As String
 	Dim lastPdfDocumentCheckResult As Integer
 	
 	''' <summary>
@@ -1307,11 +1307,12 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ListBoxDocCaptureQueueSelectedIndexChanged(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		capturePdfFile = CStr(listBoxDocCaptureQueue.SelectedItem)
-		If IsNothing(capturePdfFile) = False Then
-			captureModPdfFile = Path.Combine(CaptureTempDir, _
-								Path.GetFileName(capturePdfFile))
-			lastPdfDocumentCheckResult = PdfUtil.SecurityLevelCheck(capturePdfFile)
+		capturePdfEditInput = CStr(listBoxDocCaptureQueue.SelectedItem)
+		If IsNothing(capturePdfEditInput) = False Then
+			capturePdfEditOutput = Path.Combine(CaptureTempDir, _
+							   Path.GetFileName(capturePdfEditInput))
+			lastPdfDocumentCheckResult = _
+				PdfUtil.SecurityLevelCheck(capturePdfEditInput)
 			If lastPdfDocumentCheckResult = 1 Then
 				If PdfOwnerPasswordForm.ShowDialog() = _
 						Windows.Forms.DialogResult.Cancel Then
@@ -1324,15 +1325,15 @@ Public Partial Class MainForm
 			End If
 			Dim oPdfProperties As PdfProperties = Nothing
 			If lastPdfDocumentCheckResult = 0 Then
-				Dim oPdfProperties1 As New PdfProperties(capturePdfFile)
+				Dim oPdfProperties1 As New PdfProperties(capturePdfEditInput)
 				oPdfProperties = oPdfProperties1
 			ElseIf lastPdfDocumentCheckResult = 1 Then
-				Dim oPdfProperties2 As New PdfProperties(capturePdfFile, _
+				Dim oPdfProperties2 As New PdfProperties(capturePdfEditInput, _
 									   PdfOwnerPasswordForm.ownerPassword)
 				oPdfProperties = oPdfProperties2
 			End If
 			If oPdfProperties.Read = 0 Then
-				textBoxPDFDocument.Text = capturePdfFile
+				textBoxPDFDocument.Text = capturePdfEditInput
 				buttonViewOriginal.Enabled = True
 				textBoxTitle.Text = oPdfProperties.Title
 				buttonSetToFileName.Enabled = True
@@ -1341,7 +1342,7 @@ Public Partial Class MainForm
 				' PDF extension.
 				If IsNothing(oPdfProperties.Title) Then
 					textBoxTitle.Text = Path.GetFileNameWithoutExtension( _
-						capturePdfFile)
+						capturePdfEditInput)
 				End If
 				
 				textBoxTitle.Enabled = True
@@ -1359,7 +1360,8 @@ Public Partial Class MainForm
 			Else
 				MessageBoxWrapper.ShowError(String.Format( _
 						CultureInfo.CurrentCulture, _
-						PdfKeeper.Strings.MainFormUnableRead, capturePdfFile))
+						PdfKeeper.Strings.MainFormUnableRead, _
+						capturePdfEditInput))
 			End If
 			buttonRename.Enabled = True
 			buttonDelete.Enabled = True
@@ -1375,15 +1377,15 @@ Public Partial Class MainForm
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	Sub ButtonRenameClick(sender As Object, e As EventArgs)
+	Private Sub ButtonRenameClick(sender As Object, e As EventArgs)
 		PdfFileRenameForm.pdfRenameName = _
-			Path.GetFileNameWithoutExtension(capturePdfFile)
+			Path.GetFileNameWithoutExtension(capturePdfEditInput)
 		If PdfFileRenameForm.ShowDialog() = Windows.Forms.DialogResult.OK Then
 			Dim capturePdfFileNewName As String = _
-				Path.Combine(Path.GetDirectoryName(capturePdfFile), _
+				Path.Combine(Path.GetDirectoryName(capturePdfEditInput), _
 				PdfFileRenameForm.pdfRenameName & ".pdf")
 			Me.Cursor = Cursors.WaitCursor
-			FileUtil.Move(capturePdfFile, capturePdfFileNewName)
+			FileUtil.Move(capturePdfEditInput, capturePdfFileNewName)
 			Me.Cursor = Cursors.Default
 		End If
 	End Sub
@@ -1393,13 +1395,13 @@ Public Partial Class MainForm
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	Sub ButtonDeleteClick(sender As Object, e As EventArgs)
+	Private Sub ButtonDeleteClick(sender As Object, e As EventArgs)
 		If MessageBoxWrapper.ShowQuestion(String.Format( _
 				CultureInfo.CurrentCulture, _
 				PdfKeeper.Strings.MainFormDeletePrompt, _
-					capturePdfFile)) = 6 Then ' Yes
+					capturePdfEditInput)) = 6 Then ' Yes
 			Me.Cursor = Cursors.WaitCursor
-			FileUtil.Delete(capturePdfFile, True)
+			FileUtil.Delete(capturePdfEditInput, True)
 			Me.Cursor = Cursors.Default
 		End If
 	End Sub
@@ -1411,7 +1413,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonViewOriginalClick(sender As Object, e As EventArgs)
-		CaptureViewPdf(capturePdfFile)
+		CaptureViewPdf(capturePdfEditInput)
 	End Sub
 	
 	''' <summary>
@@ -1420,7 +1422,8 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonSetToFilenameClick(sender As Object, e As EventArgs)
-		textBoxTitle.Text = Path.GetFileNameWithoutExtension(capturePdfFile)
+		textBoxTitle.Text = _
+			Path.GetFileNameWithoutExtension(capturePdfEditInput)
 	End Sub
 	
 	''' <summary>
@@ -1519,6 +1522,7 @@ Public Partial Class MainForm
 		Else
 			buttonSave.Enabled = False
 		End If
+		buttonRotate.Enabled = False
 		buttonView.Enabled = False
 		buttonUpload.Enabled = False
 	End Sub
@@ -1539,12 +1543,12 @@ Public Partial Class MainForm
 		Application.DoEvents
 		Dim oPdfProperties As PdfProperties = Nothing
 		If lastPdfDocumentCheckResult = 0 Then
-			Dim oPdfProperties1 As New PdfProperties(capturePdfFile, _
-													 captureModPdfFile)
+			Dim oPdfProperties1 As New PdfProperties(capturePdfEditInput, _
+													 capturePdfEditOutput)
 			oPdfProperties = oPdfProperties1
 		ElseIf lastPdfDocumentCheckResult = 1 Then
-			Dim oPdfProperties2 As New PdfProperties(capturePdfFile, _
-								   captureModPdfFile, _
+			Dim oPdfProperties2 As New PdfProperties(capturePdfEditInput, _
+								   capturePdfEditOutput, _
 								   PdfOwnerPasswordForm.ownerPassword)
 			oPdfProperties = oPdfProperties2
 		End If
@@ -1554,11 +1558,13 @@ Public Partial Class MainForm
 		oPdfProperties.Keywords = textBoxKeywords.Text.Trim
 		If oPdfProperties.Write = 0 Then
 			buttonSave.Enabled = False
+			buttonRotate.Enabled = True
 			buttonView.Enabled = True
 			buttonUpload.Enabled = True
 			toolStripStatusLabelMessage.Text = _
 				PdfKeeper.Strings.MainFormCaptureSaved
 		Else
+			buttonRotate.Enabled = False
 			buttonView.Enabled = False
 			buttonUpload.Enabled = False
 			toolStripStatusLabelMessage.Text = Nothing
@@ -1572,13 +1578,22 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
+	''' 
+	''' </summary>
+	''' <param name="sender"></param>
+	''' <param name="e"></param>
+	Private Sub ButtonRotateClick(sender As Object, e As EventArgs)
+		RotatePagesForm.ShowDialog()
+	End Sub
+	
+	''' <summary>
 	''' Call the CaptureViewPdf subroutine to display the modified PDF
  	''' document in a restricted Sumatra PDF process.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonViewClick(sender As Object, e As EventArgs)
-		CaptureViewPdf(captureModPdfFile)
+		CaptureViewPdf(capturePdfEditOutput)
 	End Sub
 	
 	''' <summary>
@@ -1593,17 +1608,17 @@ Public Partial Class MainForm
 		If MessageBoxWrapper.ShowQuestion(String.Format( _
 				CultureInfo.CurrentCulture, _
 				PdfKeeper.Strings.MainFormUploadPrompt, _
-				captureModPdfFile)) = 6 Then ' Yes
+				capturePdfEditOutput)) = 6 Then ' Yes
 			Me.Cursor = Cursors.WaitCursor
 			DisableCaptureControls(True)
 			TerminateCapturePdfViewer
 			toolStripStatusLabelMessage.Text = _
 				PdfKeeper.Strings.MainFormCaptureUploading
 			Application.DoEvents
-			If PdfFileTask.UploadToDatabase(captureModPdfFile) = 0 Then
+			If PdfFileTask.UploadToDatabase(capturePdfEditOutput) = 0 Then
 				toolStripStatusLabelMessage.Text = Nothing
 				Application.DoEvents
-				FileUtil.Delete(capturePdfFile, True)
+				FileUtil.Delete(capturePdfEditInput, True)
 				ClearCaptureSelection
 				FillDocCaptureQueueList
 			Else
@@ -1629,6 +1644,7 @@ Public Partial Class MainForm
 		textBoxKeywords.Enabled = False
 		buttonSave.Enabled = False
 		If uploading Then
+			buttonRotate.Enabled = False
 			buttonView.Enabled = False
 			buttonUpload.Enabled = False
 		End If
@@ -1650,6 +1666,7 @@ Public Partial Class MainForm
 		comboBoxSubject.Enabled = True
 		textBoxKeywords.Enabled = True
 		If uploading Then
+			buttonRotate.Enabled = True
 			buttonView.Enabled = True
 			buttonUpload.Enabled = True
 		End If
@@ -1737,11 +1754,12 @@ Public Partial Class MainForm
 		textBoxKeywords.Text = Nothing
 		textBoxKeywords.Enabled = False
 		buttonSave.Enabled = False
+		buttonRotate.Enabled = False
 		buttonView.Enabled = False
 		buttonUpload.Enabled = False
 		buttonDeselect.Enabled = False
 		listBoxDocCaptureQueue.Enabled = True
-		FileUtil.Delete(captureModPdfFile, False)
+		FileUtil.Delete(capturePdfEditOutput, False)
 	End Sub
 	
 	#End Region

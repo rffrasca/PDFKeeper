@@ -126,6 +126,7 @@ Partial Class MainForm
 		Me.buttonTextOnlyPrevious = New System.Windows.Forms.Button()
 		Me.tabPageCapture = New System.Windows.Forms.TabPage()
 		Me.groupBoxProperties = New System.Windows.Forms.GroupBox()
+		Me.buttonRotate = New System.Windows.Forms.Button()
 		Me.buttonSetToFileName = New System.Windows.Forms.Button()
 		Me.textBoxKeywords = New System.Windows.Forms.TextBox()
 		Me.buttonUpload = New System.Windows.Forms.Button()
@@ -691,6 +692,7 @@ Partial Class MainForm
 		'groupBoxProperties
 		'
 		resources.ApplyResources(Me.groupBoxProperties, "groupBoxProperties")
+		Me.groupBoxProperties.Controls.Add(Me.buttonRotate)
 		Me.groupBoxProperties.Controls.Add(Me.buttonSetToFileName)
 		Me.groupBoxProperties.Controls.Add(Me.textBoxKeywords)
 		Me.groupBoxProperties.Controls.Add(Me.buttonUpload)
@@ -706,6 +708,13 @@ Partial Class MainForm
 		Me.groupBoxProperties.Controls.Add(Me.labelTitle)
 		Me.groupBoxProperties.Name = "groupBoxProperties"
 		Me.groupBoxProperties.TabStop = false
+		'
+		'buttonRotate
+		'
+		resources.ApplyResources(Me.buttonRotate, "buttonRotate")
+		Me.buttonRotate.Name = "buttonRotate"
+		Me.buttonRotate.UseVisualStyleBackColor = true
+		AddHandler Me.buttonRotate.Click, AddressOf Me.ButtonRotateClick
 		'
 		'buttonSetToFileName
 		'
@@ -914,6 +923,7 @@ Partial Class MainForm
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private buttonRotate As System.Windows.Forms.Button
 	Private buttonDelete As System.Windows.Forms.Button
 	Private buttonRename As System.Windows.Forms.Button
 	Private buttonSetToFileName As System.Windows.Forms.Button

@@ -125,6 +125,10 @@
       <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\PdfOwnerPasswordForm.vb" />
+    <Compile Include="Forms\RotatePagesForm.Designer.vb">
+      <DependentUpon>RotatePagesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RotatePagesForm.vb" />
     <Compile Include="Modules\UserProfileDeprecatedFolders.vb" />
     <Compile Include="Modules\UserProfileFolders.vb" />
     <Compile Include="Program.vb" />
@@ -152,6 +156,9 @@
       <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
     </EmbeddedResource>
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
+    <EmbeddedResource Include="Forms\RotatePagesForm.resx">
+      <DependentUpon>RotatePagesForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Strings\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.vb</LastGenOutput>
