@@ -572,7 +572,7 @@
     <value>75, 23</value>
   </data>
   <data name="buttonDeselect.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="buttonDeselect.Text" xml:space="preserve">
     <value>D&amp;eselect</value>
@@ -590,7 +590,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;buttonDeselect.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>698, 676</value>
@@ -829,7 +829,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACg
-        DQAAAk1TRnQBSQFMAgEBBgEAARABCwEQAQsBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAATABCwEwAQsBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1490,6 +1490,60 @@
   <data name="groupBoxProperties.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
   </data>
+  <data name="buttonRotate.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonRotate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAGYktHRAD/AP8A/6C9p5MAAAAielRYdFNvZnR3YXJlAAB42isvL9fLzMsuTk4sSNXLL0oHADbY
+        BlgQU8pcAAADWUlEQVQ4T22SW0iTYRjHP2UmlRZ1EXWRuQ7QyZIOVEIkhFBdRN1oQQV1UdBFEJGxtIuy
+        yIhw4qalWdFmG2sHdW5TtzZdNufnDt/OurOnmZvu0LZvc2t7+77ZRlEXDy88/J/fy/P/PxAA4J9Kp9NQ
+        OIIWOmcWtlpdHqI/GC7Ce//T/tOIxZcJSsR2litFPnOGzBOMLyYHvV8zIBk1XQ5HY4VZHQ7E66/haCxe
+        KJQj9WwJ4h+AnTGZ0ZuS26NAaAyB9xJb9JMQfhyJxlahsXjBuMFxxOKYI+aGU6kUxB0cu9XGkEi/aazX
+        EIv7uFhhvM2Sma0iYxBwdSHQPmgN0/ijDa97xt/Xv+lXGSan9uYAFvvszqetnEb3nLckuy/+qk3OCprY
+        6OrWBUEXvJRuEjlSdTwnaGYrWdForGDld0zYL9eesLnnS7JAvH5E0NUj6smqdp5S16vzA4bKD16PLIJ6
+        jjXNk2pv4pqMMJH8iQGQSkx8zj3rLcF2JMx7A0XUrgHS2+7RGYHGA/r0fsDSBMA7pR88Y2k9ZvvsvhwA
+        N6WV/Y3VIrQk2/sQe1e/mtct1ZD6ZJrLIjlSzR9C7jIGNfROIWJoFVlQClvBx2POAbCsdzUwxqc7FEuA
+        qQ6AXl0ACDTz4F3v2HfyB8FzzJeN8eVEnmfBv0lldJ4UDWtPYXHn5wD8Id31hyxLiir34UaBHmzfjh54
+        8qt64nwgFCn+84imPb4t3WK4Mpn8mZcB4E42sRRMEscBXvZZU7SxxTQXCYKPYpNHqbOd/nN4bsG/+QmF
+        3agyOMqzPUiPZVnXJoDbeGOdNL7iUZvIHOJgACGWPVNqdgmGkTtas+uYQmu9RP0kFn/kDddmf88AsP23
+        6SemyrEkCLF4ogA74foPUntEZA4DuR0FMpMvNahyo1yZIciTqF+EIuja7HAGkEgkIL1eBzGZzHwqlUqo
+        fUAqqrpw9catuuaRVzSxh0wbmLlNeik5c/HqlXv3a4tbWloIdDo9H4ZhCEVRCAoGgxCFQsmrqakpqKio
+        WHPw4IF127cTNxB37CLuKTt0dPf+8sOlxB0lpaWlG8rKytZjmrXV1dWryGRyvs/nW0kBNyqZTEKhUAjC
+        my6XC7LZbFhZf782yOl0Ql6vN6PBtSvmAugXJ0nEPOOZdVMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="buttonRotate.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="buttonRotate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>358, 290</value>
+  </data>
+  <data name="buttonRotate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonRotate.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="buttonRotate.Text" xml:space="preserve">
+    <value>&amp;Rotate</value>
+  </data>
+  <data name="buttonRotate.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;buttonRotate.Name" xml:space="preserve">
+    <value>buttonRotate</value>
+  </data>
+  <data name="&gt;&gt;buttonRotate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonRotate.Parent" xml:space="preserve">
+    <value>groupBoxProperties</value>
+  </data>
+  <data name="&gt;&gt;buttonRotate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="buttonSetToFileName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -1534,7 +1588,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;buttonSetToFileName.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="textBoxKeywords.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1570,7 +1624,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;textBoxKeywords.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="buttonUpload.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1601,7 +1655,7 @@
     <value>75, 23</value>
   </data>
   <data name="buttonUpload.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="buttonUpload.Text" xml:space="preserve">
     <value>&amp;Upload</value>
@@ -1619,7 +1673,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;buttonUpload.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="labelKeywords.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1649,7 +1703,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;labelKeywords.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="buttonView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1680,10 +1734,13 @@
     <value>75, 23</value>
   </data>
   <data name="buttonView.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="buttonView.Text" xml:space="preserve">
     <value>&amp;View</value>
+  </data>
+  <data name="buttonView.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
   </data>
   <data name="&gt;&gt;buttonView.Name" xml:space="preserve">
     <value>buttonView</value>
@@ -1695,7 +1752,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;buttonView.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="comboBoxSubject.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1725,7 +1782,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;comboBoxSubject.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="buttonSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1750,7 +1807,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>358, 290</value>
+    <value>277, 290</value>
   </data>
   <data name="buttonSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1760,6 +1817,9 @@
   </data>
   <data name="buttonSave.Text" xml:space="preserve">
     <value>&amp;Save</value>
+  </data>
+  <data name="buttonSave.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
   </data>
   <data name="&gt;&gt;buttonSave.Name" xml:space="preserve">
     <value>buttonSave</value>
@@ -1771,7 +1831,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;buttonSave.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="labelSubject.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1801,7 +1861,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;labelSubject.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="comboBoxAuthor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1831,7 +1891,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;comboBoxAuthor.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="labelAuthor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1861,7 +1921,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;labelAuthor.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="textBoxTitle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1891,7 +1951,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;textBoxTitle.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="labelTitle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1921,7 +1981,7 @@
     <value>groupBoxProperties</value>
   </data>
   <data name="&gt;&gt;labelTitle.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="groupBoxProperties.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 276</value>
@@ -2091,7 +2151,7 @@
     <value>1</value>
   </data>
   <data name="buttonRename.Text" xml:space="preserve">
-    <value>&amp;Rename</value>
+    <value>Re&amp;name</value>
   </data>
   <data name="buttonRename.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
