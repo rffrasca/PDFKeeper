@@ -84,19 +84,22 @@
   <ItemGroup>
     <Compile Include="Classes\DirectUpload.vb" />
     <Compile Include="Classes\DirectUploadFolderProperties.vb" />
-    <Compile Include="Classes\DocumentPreviewZoom.vb" />
     <Compile Include="Classes\FileUtil.vb" />
     <Compile Include="Classes\FolderTask.vb" />
     <Compile Include="Classes\HelpWrapper.vb" />
     <Compile Include="Classes\DatabaseConnection.vb" />
     <Compile Include="Classes\FileCache.vb" />
+    <Compile Include="Classes\ImageZoom.vb" />
     <Compile Include="Classes\MessageBoxWrapper.vb" />
     <Compile Include="Classes\NativeMethods.vb" />
     <Compile Include="Classes\PdfFileTask.vb" />
+    <Compile Include="Classes\PdfPreviewCreator.vb" />
     <Compile Include="Classes\PdfProperties.vb" />
+    <Compile Include="Classes\PdfTextExtractor.vb" />
     <Compile Include="Classes\PdfUtil.vb" />
     <Compile Include="Classes\Print.vb" />
     <Compile Include="Classes\Product.vb" />
+    <Compile Include="Classes\SelectedSearchItem.vb" />
     <Compile Include="Classes\StringUtil.vb" />
     <Compile Include="Classes\UserProfileFoldersTask.vb" />
     <Compile Include="Classes\UserSettings.vb" />

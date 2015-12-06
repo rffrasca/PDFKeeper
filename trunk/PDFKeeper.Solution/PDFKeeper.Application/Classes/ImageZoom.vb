@@ -20,20 +20,29 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class DocumentPreviewZoom
+Public NotInheritable Class ImageZoom
 	Const zoomMinValue As Integer = 100
 	Const zoomStepValue As Integer = 25
 	Shared Private _ZoomLevel As Integer
 	
 	''' <summary>
-	''' Get and set preview image that was created from PDF.
+	''' Source image to be zoomed.
 	''' </summary>
-	Shared Property PreviewImage As System.Drawing.Image
-
+	Shared Property SourceImage As System.Drawing.Image = Nothing
+			
+	''' <summary>
+	''' SourceImage zoomed to ZoomLevel.
+	''' </summary>
+	Shared ReadOnly Property ZoomedImage As System.Drawing.Image
+		Get
+			Return ZoomImage
+		End Get
+	End Property
+	
 	''' <summary>
 	''' Get zoom level.
 	''' </summary>
-	Shared ReadOnly Property ZoomLevel As Integer
+	Shared ReadOnly Property GetZoomLevel As Integer
 		Get
 			If _ZoomLevel = 0 Then
 				ResetZoomLevel
@@ -46,8 +55,8 @@ Public NotInheritable Class DocumentPreviewZoom
 	''' Required for FxCop compliance (CA1053).
 	''' </summary>
 	Private Sub New()
-	End Sub
-		
+	End Sub	
+	
 	''' <summary>
 	''' Increase ZoomLevel by zoomStepValue.
 	''' </summary>
@@ -73,16 +82,16 @@ Public NotInheritable Class DocumentPreviewZoom
 	End Sub
 	
 	''' <summary>
-	''' Zoom PreviewImage to ZoomLevel.
+	''' Zoom SourceImage to ZoomLevel.
 	''' </summary>
-	''' <returns>Preview image with ZoomLevel applied</returns>
-	Public Shared Function ZoomPreviewImage As System.Drawing.Image
-		Dim zoomImage As New Bitmap(PreviewImage, CInt( _
-			Convert.ToInt32(PreviewImage.Width * ZoomLevel) / 100), ( _
-			Convert.ToInt32(PreviewImage.Height * ZoomLevel / 100)))
-		Dim resized As Graphics = Graphics.FromImage(zoomImage)
+	''' <returns>Source image with ZoomLevel applied</returns>
+	Private Shared Function ZoomImage As System.Drawing.Image
+		Dim zoomedImg As New Bitmap(SourceImage, CInt( _
+			Convert.ToInt32(SourceImage.Width * GetZoomLevel) / 100), ( _
+			Convert.ToInt32(SourceImage.Height * GetZoomLevel / 100)))
+		Dim resized As Graphics = Graphics.FromImage(zoomedImage)
 		resized.InterpolationMode = _
 			System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor
-		Return zoomImage
+		Return zoomedImg
 	End Function
 End Class
