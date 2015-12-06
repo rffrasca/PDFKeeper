@@ -25,7 +25,6 @@ Public Partial Class MainForm
 	Dim history As New ArrayList
 	Dim sortColumn As Byte
 	Dim sortOrder As string = "asc"
-	Dim selectedId As Integer
 	Dim documentNotesUndoText As String
 	Dim documentCaptureFolderChanged As Boolean = True
 	Dim searchLastTitleText As String = "PDFKeeper"
@@ -34,7 +33,7 @@ Public Partial Class MainForm
 	Dim capturePdfEditOutput As String
 	Dim captureLastStatusMessage As String
 	Dim lastPdfDocumentCheckResult As Integer
-	
+				
 	''' <summary>
 	''' Class constructor.
 	''' </summary>
@@ -141,7 +140,8 @@ Public Partial Class MainForm
 				".PDF" Then
 			pdfFile = pdfFile & ".pdf"
 		End If
-		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
+		If PdfFileTask.RetrieveFromDatabase(SelectedSearchItem.Id, _
+				pdfFile) = 0 Then
 			Me.Cursor = Cursors.Default
 			MessageBoxWrapper.ShowInformation(String.Format( _
 									CultureInfo.CurrentCulture, _
@@ -509,7 +509,6 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonSearchClick(sender As Object, e As EventArgs)
 		DocumentNotesModifiedCheck
-		Dim selectedItem As Integer = selectedId
 		Me.Cursor = Cursors.WaitCursor
 		listViewDocs.SelectedItems.Clear
 		listViewDocs.Items.Clear
@@ -612,10 +611,10 @@ Public Partial Class MainForm
 			AddSearchTextToHistory
 			listViewDocs.Focus
 			listViewDocs.Select
-			If selectedItem > 0 Then
+			If SelectedSearchItem.Id > 0 Then
 				For i As Integer = 0 To listViewDocs.Items.Count - 1
 					If listViewDocs.Items(i).Text.Trim = _
-							selectedItem.ToString( _
+							SelectedSearchItem.Id.ToString( _
 							CultureInfo.InvariantCulture).Trim Then
 						ListViewDocs.Items(i).Selected = True
 						listViewDocs.EnsureVisible( _
@@ -677,7 +676,7 @@ Public Partial Class MainForm
 		textBoxDocumentNotes.Text = Nothing
 		documentNotesUndoText = Nothing
 		If listViewDocs.SelectedItems.Count = 0 Then
-			selectedId = 0	' no item is selected
+			SelectedSearchItem.Id = 0	' no item selected
 			toolStripMenuItemSavePDFtoDisk.Enabled = False
 			toolStripMenuItemInsertDateTimeIntoDocumentNotes.Enabled = False
 			textBoxDocumentNotes.Enabled = False
@@ -698,9 +697,8 @@ Public Partial Class MainForm
 			textBoxTextOnlyView.Enabled = False
 		Else
 			Dim selectedIndex As integer = listViewDocs.SelectedItems(0).Index
-			selectedId = CInt(listViewDocs.SelectedItems(0).Text.Trim)
-			Dim pdfFile As String = Path.Combine(CacheDir, _
-				"pdfkeeper" & selectedId & ".pdf")
+			SelectedSearchItem.Id = _
+				CInt(listViewDocs.SelectedItems(0).Text.Trim)
 			Me.Cursor = Cursors.WaitCursor
 			Dim oDatabaseConnection As New DatabaseConnection
 			If oDatabaseConnection.Open(UserSettings.LastUserName, _
@@ -710,8 +708,9 @@ Public Partial Class MainForm
 				Me.Cursor = Cursors.Default
 				Exit Sub
 			End If
-			Dim sql As String = "select doc_keywords,doc_notes from pdfkeeper.docs " & _
-								"where doc_id = " & selectedId
+			Dim sql As String = "select doc_keywords,doc_notes from " & _
+								"pdfkeeper.docs where " & _
+								"doc_id = " & SelectedSearchItem.Id
 			Try
 				Using oOracleCommand As New OracleCommand(sql, _
 					  oDatabaseConnection.oraConnection)
@@ -732,7 +731,7 @@ Public Partial Class MainForm
 						tabPagePreview.Enabled = True
 						textBoxDocumentNotes.Enabled = True
 						TextBoxDocumentNotesScrollToEnd
-						Me.Text = "PDFKeeper - [" & selectedId & "]"
+						Me.Text = "PDFKeeper - [" & SelectedSearchItem.Id & "]"
 						searchLastTitleText = Me.Text
 						If tabControlMain.SelectedIndex = 0 Then
 							listViewDocs.Focus
@@ -759,22 +758,23 @@ Public Partial Class MainForm
 	Private Sub ListViewDocsMouseDoubleClick(sender As Object, e As MouseEventArgs)
 		Me.Cursor = Cursors.WaitCursor
 		listViewDocs.SelectedItems(0).Checked = False
-		Dim pdfFile As String
-		pdfFile = Path.Combine(CacheDir, "pdfkeeper" & selectedId & ".pdf")
-		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
-			Dim oPdfProperties As New PdfProperties(pdfFile)
+		If PdfFileTask.RetrieveFromDatabase(SelectedSearchItem.Id, _
+				SelectedSearchItem.PdfPathName) = 0 Then
+			Dim oPdfProperties As New PdfProperties( _
+				SelectedSearchItem.PdfPathName)
 			If oPdfProperties.Read = 0 Then
 				Dim titleBarText As String
 				If oPdfProperties.Title = Nothing Then
-					titleBarText = Path.GetFileName(pdfFile) & " - SumatraPDF"
+					titleBarText = Path.GetFileName( _
+						SelectedSearchItem.PdfPathName) & " - SumatraPDF"
 				Else
-					titleBarText = Path.GetFileName(pdfFile) & " - [" & _
-								   oPdfProperties.Title & "] - SumatraPDF"
+					titleBarText = Path.GetFileName( _
+						SelectedSearchItem.PdfPathName) & " - [" & _
+						oPdfProperties.Title & "] - SumatraPDF"
 				End If
 				If WindowFinder.Exists(titleBarText, True) = False Then
 					processSearchPdfViewer.StartInfo.Arguments = chr(34) & _
-																 pdfFile & _
-													   	   		 chr(34)
+						SelectedSearchItem.PdfPathName & chr(34)
 					processSearchPdfViewer.Start
 					processSearchPdfViewer.WaitForInputIdle(15000)
 				End If
@@ -923,7 +923,8 @@ Public Partial Class MainForm
 		End If
 		Dim sql As String = "update pdfkeeper.docs set " & _
 			 				"doc_notes =q'[" & textBoxDocumentNotes.Text & _
-			 				"]',doc_dummy = '' where doc_id = " & selectedId
+			 				"]',doc_dummy = '' where " & _
+			 				"doc_id = " & SelectedSearchItem.Id
 		Using oOracleCommand As New OracleCommand(sql, _
 			  oDatabaseConnection.oraConnection)
 			Try
@@ -1010,7 +1011,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomInClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		DocumentPreviewZoom.IncreaseZoomLevel
+		ImageZoom.IncreaseZoomLevel
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1023,7 +1024,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomOutClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		DocumentPreviewZoom.DecreaseZoomLevel
+		ImageZoom.DecreaseZoomLevel
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1072,13 +1073,13 @@ Public Partial Class MainForm
 		buttonPreviewPrevious.Enabled = False
 		buttonPreviewNext.Enabled = False
 		pictureBoxPreview.Image = Nothing
-		Dim pdfFile As String = Path.Combine(CacheDir, "pdfkeeper" & _
-			selectedId & ".pdf")
-		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
-			If PdfUtil.CreatePreviewImage(pdfFile) = 0 Then
+		If PdfFileTask.RetrieveFromDatabase(SelectedSearchItem.Id, _
+				SelectedSearchItem.PdfPathName) = 0 Then
+			Dim pdfPreviewImage As New PdfPreviewCreator(SelectedSearchItem.PdfPathName)
+			If pdfPreviewImage.PreviewImage.Size.IsEmpty = False Then
+				pictureBoxPreview.Image = pdfPreviewImage.PreviewImage
+				ImageZoom.SourceImage = pictureBoxPreview.Image
 				pictureBoxPreview.Enabled = True
-				pictureBoxPreview.Load(Path.ChangeExtension(pdfFile, "png"))
-				DocumentPreviewZoom.PreviewImage = pictureBoxPreview.Image
 				checkBoxDoNotResetZoomLevel.Enabled = True
 				buttonZoomIn.Enabled = True
 				If listViewDocs.SelectedItems(0).Index > 0 Then
@@ -1094,9 +1095,11 @@ Public Partial Class MainForm
 				If checkBoxDoNotResetZoomLevel.Checked = True Then
 					PreviewImageZoom
 				Else
-					DocumentPreviewZoom.ResetZoomLevel
+					ImageZoom.ResetZoomLevel
 				End If
 			End If
+		Else
+			pictureBoxPreview.Image = Nothing
 		End If
 	End Sub
 	
@@ -1105,13 +1108,13 @@ Public Partial Class MainForm
 	''' the image in the picture box.
 	''' </summary>
 	Private Sub PreviewImageZoom
-		If DocumentPreviewZoom.ZoomLevel > 100 Then
+		If ImageZoom.GetZoomLevel > 100 Then
 			buttonZoomOut.Enabled = True
 		Else
 			buttonZoomOut.Enabled = False
 		End If
 		pictureBoxPreview.Image = Nothing
-		pictureBoxPreview.Image = DocumentPreviewZoom.ZoomPreviewImage
+		pictureBoxPreview.Image = ImageZoom.ZoomedImage
 	End Sub
 	
 	#End Region
@@ -1158,10 +1161,10 @@ Public Partial Class MainForm
 		buttonTextOnlyPrevious.Enabled = False
 		buttonTextOnlyNext.Enabled = False
 		textBoxTextOnlyView.Text = Nothing
-		Dim pdfFile As String = Path.Combine(CacheDir, "pdfkeeper" & _
-			selectedId & ".pdf")
-		If PdfFileTask.RetrieveFromDatabase(selectedId, pdfFile) = 0 Then
-			textBoxTextOnlyView.Text = PdfUtil.ExtractText(pdfFile)
+		If PdfFileTask.RetrieveFromDatabase(SelectedSearchItem.Id, _
+				SelectedSearchItem.PdfPathName) = 0 Then
+			Dim pdfText As New PdfTextExtractor(SelectedSearchItem.PdfPathName)
+			textBoxTextOnlyView.Text = pdfText.Text
 			textBoxTextOnlyView.Enabled = True
 			If listViewDocs.SelectedItems(0).Index > 0 Then
 				buttonTextOnlyPrevious.Enabled = True
@@ -1779,9 +1782,10 @@ Public Partial Class MainForm
 		' Document Search
 		If tabControlMain.SelectedIndex = 0 Then
 			Me.Text = searchLastTitleText
-			If selectedId > 0 Then
+			If SelectedSearchItem.Id > 0 Then
 				listViewDocs.Focus
-				listViewDocs.SelectedItems(0).Text = CStr(selectedId)
+				listViewDocs.SelectedItems(0).Text = _
+					CStr(SelectedSearchItem.Id)
 				toolStripMenuItemSavePDFtoDisk.Enabled = True
 			Else
 				toolStripMenuItemSavePDFtoDisk.Enabled = False
@@ -1801,9 +1805,10 @@ Public Partial Class MainForm
 				tabControlMain.SelectedIndex = 2 Then
 			Me.Text = searchLastTitleText
 			toolStripStatusLabelMessage.Text = Nothing
-			If selectedId > 0 Then
+			If SelectedSearchItem.Id > 0 Then
 				listViewDocs.Focus
-				listViewDocs.SelectedItems(0).Text = CStr(selectedId)
+				listViewDocs.SelectedItems(0).Text = _
+					CStr(SelectedSearchItem.Id)
 				toolStripMenuItemSavePDFtoDisk.Enabled = True
 				If tabControlMain.SelectedIndex = 1 Then
 					LoadDocumentPreview	
@@ -1992,8 +1997,8 @@ Public Partial Class MainForm
 	''' <summary>
 	''' Check for unsaved Document Notes; dispose the database password string;
 	''' save form size and postion; delete Document Capture and Direct Upload
-	''' folder shortcuts; set user settings; dispose the Document Preview
-	''' picture box; and delete cached PDF and PNG files.
+	''' folder shortcuts; set user settings; and delete cached PDF and PNG
+	''' files.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -2004,7 +2009,6 @@ Public Partial Class MainForm
 		UserProfileFoldersTask.DeleteDocumentCaptureShortcuts
 		UserProfileFoldersTask.DeleteDirectUploadShortcut
 		UserSettings.SetSettings
-		pictureBoxPreview.Dispose
 		FolderTask.DeletePdfKeeperCreatedFiles(CacheDir)
 	End Sub
 	
