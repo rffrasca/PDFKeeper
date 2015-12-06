@@ -89,7 +89,7 @@ Public NotInheritable Class ImageZoom
 		Dim zoomedImg As New Bitmap(SourceImage, CInt( _
 			Convert.ToInt32(SourceImage.Width * GetZoomLevel) / 100), ( _
 			Convert.ToInt32(SourceImage.Height * GetZoomLevel / 100)))
-		Dim resized As Graphics = Graphics.FromImage(zoomedImage)
+		Dim resized As Graphics = Graphics.FromImage(zoomedImg)
 		resized.InterpolationMode = _
 			System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor
 		Return zoomedImg
