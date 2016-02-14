@@ -72,8 +72,10 @@ Public Partial Class DirectUploadConfigurationForm
 	''' </summary>
 	Private Sub FillList
 		Dim files As String()
-		files = Directory.GetFiles(UploadXmlDir, "*.xml", _
-								   SearchOption.TopDirectoryOnly)
+		files = Directory.GetFiles( _
+			ApplicationProfileFolders.Instance.DirectUploadXml, _
+			"*.xml", _
+			SearchOption.TopDirectoryOnly)
 		listBoxFolders.Items.Clear
 		For Each oFile In files
 			listBoxFolders.Items.Add(Path.GetFileNameWithoutExtension(oFile))
@@ -90,7 +92,9 @@ Public Partial Class DirectUploadConfigurationForm
 		Me.Cursor = Cursors.WaitCursor
 		selectedFolder = CStr(listBoxFolders.SelectedItem)
 		If Not selectedFolder = Nothing Then
-			folderPath = Path.Combine(UploadDir, selectedFolder)
+			folderPath = Path.Combine( _
+				ApplicationProfileFolders.Instance.DirectUpload, _
+				selectedFolder)
 			buttonEdit.Enabled = True
 			If FolderTask.CountOfFiles(folderPath, "pdf") = 0 Then
 				buttonDelete.Enabled = True
@@ -137,22 +141,30 @@ Public Partial Class DirectUploadConfigurationForm
 	Private Sub ButtonDeleteClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
 		If FolderTask.CountOfFiles(folderPath, "pdf") = 0 Then
-			If MessageBoxWrapper.ShowQuestion(String.Format( _
-					CultureInfo.CurrentCulture, _
-					PdfKeeper.Strings.DeleteFolderQuestion, _
-					selectedFolder)) = 6 Then
+			If MessageBoxQuestion( _
+				String.Format( _
+				CultureInfo.CurrentCulture, _
+				PdfKeeper.Strings.DeleteFolderQuestion, _
+				selectedFolder)) = 6 Then
+				
 				If FolderTask.Delete(folderPath, False) = 0 Then
-					If FileUtil.Delete(Path.Combine(UploadXmlDir, _
-							selectedFolder & ".xml"), False) = 0 Then
+					If FileUtil.Delete( _
+						Path.Combine( _
+						ApplicationProfileFolders.Instance.DirectUploadXml, _
+						selectedFolder & ".xml"), _
+						False) = 0 Then
+						
 						FillList
 						Discard
 					End If
 				End If
 			End If
 		Else
-			MessageBoxWrapper.ShowError(String.Format( _
+			MessageBoxError( _
+				String.Format( _
 				CultureInfo.CurrentCulture, _
-				PdfKeeper.Strings.CannotDeleteFolder, selectedFolder))
+				PdfKeeper.Strings.CannotDeleteFolder, _
+				selectedFolder))
 			buttonDelete.Enabled = False
 		End If
 		Me.Cursor = Cursors.Default
@@ -229,11 +241,10 @@ Public Partial Class DirectUploadConfigurationForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will trim the leading space from the text in all of
-	''' the combo and text boxes; and enable the Save button, if the folder
-	''' name doesn't contain invalid characters, the folder is not already
-	''' configured, and the length of the folder name, Title, Author, and
-	''' Subject is greater than 0.
+	''' Trim the leading space from the text in all of the combo and text
+	''' boxes; and enable the Save button, if the folder name doesn't contain
+	''' invalid characters, the folder is not already configured, and the
+	''' length of the folder name, Title, Author, and Subject is > 0.
 	''' </summary>
 	Private Sub TextAndComboBoxTextChanged
 		Me.Cursor = Cursors.WaitCursor
@@ -244,17 +255,19 @@ Public Partial Class DirectUploadConfigurationForm
 			Me.Cursor = Cursors.Default
 			Exit Sub
 		End If
-		If StringUtil.ContainsInvalidFileNameChars(textBoxFolderName.Text) Then
-			errorProvider.SetError(textBoxFolderName, _
+		Dim stringCheck As String = textBoxFolderName.Text
+		If stringCheck.ContainsInvalidFileNameChars Then
+			errorProvider.SetError( _
+				textBoxFolderName, _
 				PdfKeeper.Strings.FolderNameContainsInvalidChars)
 			Me.Cursor = Cursors.Default
 			Exit Sub
 		End If
 		If SpecifiedFolderNameAlreadyConfigured() Then
 			errorProvider.SetError(textBoxFolderName, _
-					String.Format(CultureInfo.CurrentCulture, _
-					PdfKeeper.Strings.FolderAlreadyConfigured, _
-					textBoxFolderName.Text))
+				String.Format(CultureInfo.CurrentCulture, _
+				PdfKeeper.Strings.FolderAlreadyConfigured, _
+				textBoxFolderName.Text))
 			Me.Cursor = Cursors.Default
 			Exit Sub
 		End If
@@ -293,8 +306,11 @@ Public Partial Class DirectUploadConfigurationForm
 			performFolderCheck = True
 		End If
 		If performFolderCheck Then
-			If System.IO.File.Exists(Path.Combine(UploadXmlDir, _
-							  textBoxFolderName.Text & ".xml")) Then
+			If System.IO.File.Exists( _
+				Path.Combine( _
+				ApplicationProfileFolders.Instance.DirectUploadXml, _
+				textBoxFolderName.Text & ".xml")) Then
+				
 				Return True
 			End If
 		End If
@@ -308,7 +324,7 @@ Public Partial Class DirectUploadConfigurationForm
 	''' <param name="hlpevent"></param>
 	Private Sub DirectUploadConfigurationFormHelpRequested(sender As Object, hlpevent As HelpEventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		HelpWrapper.ShowHelp(Me, "Configuring Direct Upload sub-folders.html")
+		HelpShow(Me, "Configuring Direct Upload sub-folders.html")
 		Me.Cursor = Cursors.Default
 	End Sub
 	
@@ -338,24 +354,35 @@ Public Partial Class DirectUploadConfigurationForm
 	''' <returns>0 = Success, 1 = Failed</returns>
 	Private Function CreateSpecifiedFolder() As Integer
 		If selectedFolder = Nothing Then
-			If FolderTask.Create(Path.Combine(UploadDir, _
+			If FolderTask.Create( _
+				Path.Combine(ApplicationProfileFolders.Instance.DirectUpload, _
 				textBoxFolderName.Text)) = 0 Then
+				
 				Return 0
 			Else
 				Return 1
 			End If
 		Else
-			If FileUtil.Delete(Path.Combine(UploadXmlDir, _
-							   selectedFolder & ".xml"), False) = 1 Then
+			If FileUtil.Delete( _
+				Path.Combine( _
+				ApplicationProfileFolders.Instance.DirectUploadXml, _
+				selectedFolder & ".xml"), _
+				False) = 1 Then
+				
 				Return 1
 			End If
 			If Not selectedFolder.ToUpper(CultureInfo.CurrentCulture) = _
 				textBoxFolderName.Text.ToUpper(CultureInfo.CurrentCulture) Then
 				Try
-					Directory.Move(Path.Combine(UploadDir, selectedFolder), _
-							  Path.Combine(UploadDir, textBoxFolderName.Text))
+					Directory.Move( _
+						Path.Combine( _
+						ApplicationProfileFolders.Instance.DirectUpload, _
+						selectedFolder), _
+						Path.Combine( _
+						ApplicationProfileFolders.Instance.DirectUpload, _
+						textBoxFolderName.Text))
 				Catch ex As IOException
-					MessageBoxWrapper.ShowError(ex.Message)
+					MessageBoxError(ex.Message)
 					Return 1
 				End Try
 			End If
@@ -408,8 +435,9 @@ Public Partial Class DirectUploadConfigurationForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonDiscardClick(sender As Object, e As EventArgs)
-		If MessageBoxWrapper.ShowQuestion( _
+		If MessageBoxQuestion( _
 			PdfKeeper.Strings.DiscardAllModificationsPrompt) = 6 Then ' Yes
+			
 			FillList
 			Discard
 		End If

@@ -36,11 +36,15 @@ Public NotInheritable Class DirectUpload
 	''' <returns>0 = Success, 1 = Failed</returns>
 	Public Shared Function CreateMissingFolders() As Integer
 		Dim xmlFiles As String()
-		xmlFiles = Directory.GetFiles(UploadXmlDir, "*.xml", _
+		xmlFiles = Directory.GetFiles( _
+			ApplicationProfileFolders.Instance.DirectUploadXml, _
+			"*.xml", _
 			SearchOption.TopDirectoryOnly)
 		For Each xmlFile In xmlFiles
-			If FolderTask.Create(Path.Combine(UploadDir, _
-						  Path.GetFileNameWithoutExtension(xmlFile))) = 1 Then
+			If FolderTask.Create( _
+				Path.Combine(ApplicationProfileFolders.Instance.DirectUpload, _
+				Path.GetFileNameWithoutExtension(xmlFile))) = 1 Then
+				
 				Return 1
 			End If
 		Next
@@ -54,14 +58,26 @@ Public NotInheritable Class DirectUpload
 	Public Shared Sub DeleteAllEmptySubfolders
 		FillConfiguredFoldersArray
 		For Each configuredFolder As String In configuredFolders
-			If FolderTask.DeleteAllEmptySubfolders(Path.Combine(UploadDir, _
-												   configuredFolder)) = 0 Then
-				If System.IO.File.Exists(Path.Combine(UploadXmlDir, _
-								  configuredFolder & ".xml")) = False Then
-					If FolderTask.CountOfFiles(Path.Combine(UploadDir, _
-											   configuredFolder), "*") = 0 Then
-						FolderTask.Delete(Path.Combine(UploadDir, _
-										  configuredFolder), False)
+			If FolderTask.DeleteAllEmptySubfolders( _
+				Path.Combine(ApplicationProfileFolders.Instance.DirectUpload, _
+				configuredFolder)) = 0 Then
+				
+				If System.IO.File.Exists( _
+					Path.Combine( _
+					ApplicationProfileFolders.Instance.DirectUploadXml, _
+					configuredFolder & ".xml")) = False Then
+					
+					If FolderTask.CountOfFiles( _
+						Path.Combine( _
+						ApplicationProfileFolders.Instance.DirectUpload, _
+						configuredFolder), _
+						"*") = 0 Then
+						
+						FolderTask.Delete( _
+							Path.Combine( _
+							ApplicationProfileFolders.Instance.DirectUpload, _
+							configuredFolder), _
+							False)
 					End If
 				End If
 			End If
@@ -77,8 +93,10 @@ Public NotInheritable Class DirectUpload
 		Dim count As Integer
 		FillConfiguredFoldersArray
 		For Each configuredFolder As String In configuredFolders
-			count = count + FolderTask.CountOfFiles(Path.Combine(UploadDir, _
-													configuredFolder), "pdf")
+			count = count + FolderTask.CountOfFiles( _
+				Path.Combine(ApplicationProfileFolders.Instance.DirectUpload, _
+				configuredFolder), _
+				"pdf")
 		Next
 		Return count
 	End Function
@@ -92,8 +110,9 @@ Public NotInheritable Class DirectUpload
 		FillConfiguredFoldersArray
 		Dim counter As Integer = 0
 		For Each configuredFolder As String In configuredFolders
-			Dim oDirectoryInfo As New DirectoryInfo(Path.Combine(UploadDir, _
-													configuredFolder))
+			Dim oDirectoryInfo As New DirectoryInfo( _
+				Path.Combine(ApplicationProfileFolders.Instance.DirectUpload, _
+				configuredFolder))
 			Dim oFileSystemInfo As FileSystemInfo() = _
 				oDirectoryInfo.GetFileSystemInfos("*.pdf", _
 					SearchOption.AllDirectories)
@@ -113,10 +132,12 @@ Public NotInheritable Class DirectUpload
 		Dim pdfConfigFolderPtr As Integer
 		For index = 0 To oSortedList.Count - 1
 			inputPdfFile = CStr(oSortedList.GetByIndex(index))
-			outputPdfFile = Path.Combine(UploadTempDir, _
+			outputPdfFile = Path.Combine( _
+				ApplicationProfileFolders.Instance.DirectUploadTemp, _
 				Path.GetFileName(inputPdfFile))
 			pdfConfigFolder = Path.GetDirectoryName( _
-				inputPdfFile.Substring(Len(UploadDir) + 1))
+				inputPdfFile.Substring( _
+				Len(ApplicationProfileFolders.Instance.DirectUpload) + 1))
 			pdfConfigFolderPtr = pdfConfigFolder.IndexOf( _
 				Path.DirectorySeparatorChar)
 			If Not pdfConfigFolderPtr = -1 Then
@@ -127,7 +148,8 @@ Public NotInheritable Class DirectUpload
 			If oDirectUploadFolderProperties.Read = 1 Then
 				Exit Sub
 			End If
-			If PdfUtil.SecurityLevelCheck(inputPdfFile) = 0 Then
+			If PdfPasswordProtection.GetPType(inputPdfFile) = _
+				PdfPasswordProtection.Type.None Then
 				Dim oPdfProperties As New PdfProperties(inputPdfFile, _
 					outputPdfFile)
 				If oPdfProperties.Read = 0 Then
@@ -184,9 +206,10 @@ Public NotInheritable Class DirectUpload
 					End If
 				End If
 			Else
-				MessageBoxWrapper.ShowError(String.Format( _
+				MessageBoxError(String.Format( _
 					CultureInfo.CurrentCulture, _
-					PdfKeeper.Strings.PdfContainsPassword, inputPdfFile))
+					PdfKeeper.Strings.PdfContainsPassword, _
+					inputPdfFile))
 			End If
 		Next
 	End Sub
@@ -196,7 +219,8 @@ Public NotInheritable Class DirectUpload
 	''' </summary>
 	Private Shared Sub FillConfiguredFoldersArray
 		configuredFolders.Clear
-		Dim odirectoryInfo As DirectoryInfo = New DirectoryInfo(UploadDir)
+		Dim odirectoryInfo As DirectoryInfo = New DirectoryInfo( _
+			ApplicationProfileFolders.Instance.DirectUpload)
 		Dim subFolders() As DirectoryInfo = _
 			oDirectoryInfo.GetDirectories("*", SearchOption.TopDirectoryOnly)
 		Dim oDirectory As DirectoryInfo

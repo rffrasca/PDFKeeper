@@ -133,9 +133,10 @@ Public Class PdfProperties
 		Dim inputOpened As Boolean = False
 		Try
 			If containsOwnerPassword Then
+				Dim passwordSecureString As SecureString = ownerPasswordLocal
 				oPdfReader = New PdfReader(sourcePdf, _
 					System.Text.Encoding.ASCII.GetBytes( _
-					StringUtil.SecureStringToString(ownerPasswordLocal)))
+					passwordSecureString.GetString))
 			Else
 				oPdfReader = New PdfReader(sourcePdf)
 			End If
@@ -162,14 +163,14 @@ Public Class PdfProperties
 			End If
 			Return 0
 		Catch ex As DocumentException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 			Return 1
 		Catch ex As IOException
 			If ex.Message = "Bad user password" Then
-				MessageBoxWrapper.ShowError( _
+				MessageBoxError( _
 					PdfKeeper.Strings.IncorrectOwnerPassword)
 			Else
-				MessageBoxWrapper.ShowError(ex.Message)
+				MessageBoxError(ex.Message)
 			End If
 			Return 1
 		Finally
@@ -189,9 +190,10 @@ Public Class PdfProperties
 		Dim outputCreated As Boolean = False
 		Try
 			If containsOwnerPassword Then
+				Dim passwordSecureString As SecureString = ownerPasswordLocal
 				oPdfReader = New PdfReader(sourcePdf, _
 					System.Text.Encoding.ASCII.GetBytes( _
-					StringUtil.SecureStringToString(ownerPasswordLocal)))
+					passwordSecureString.GetString))
 			Else
 				oPdfReader = New PdfReader(sourcePdf)
 			End If
@@ -206,10 +208,10 @@ Public Class PdfProperties
 			oPdfStamper.MoreInfo = oDictionary
 			Return 0
 		Catch ex As DocumentException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 			Return 1
 		Catch ex As IOException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 			Return 1
 		Finally
 			If outputCreated = True Then

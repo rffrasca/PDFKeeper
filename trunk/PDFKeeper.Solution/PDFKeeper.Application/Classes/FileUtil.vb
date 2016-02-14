@@ -27,22 +27,7 @@ Public NotInheritable Class FileUtil
 	''' </summary>
 	Private Sub New()
 	End Sub
-	
-	''' <summary>
-	''' Compute the hash value of "file" and return it to the caller as a
-	''' string value.
-	''' </summary>
-	''' <param name="file"></param>
-	''' <returns>Hash value of "file"</returns>
-	Public Shared Function ComputeHashValue(ByVal file As String) As String
-		Dim algorithm As HashAlgorithm = HashAlgorithm.Create("SHA1")
-		Using stream As New FileStream(file, FileMode.Open, _
-									  		 FileAccess.Read)
-			Dim hash As Byte() = algorithm.ComputeHash(stream)
-			Return BitConverter.ToString(hash)
-		End Using
-	End Function
-	
+		
 	''' <summary>
 	''' Delete "file" if it does exist.  To delete "file" and move it to the
 	''' Recycle Bin, set "recycle" to True; otherwise, set "recycle" to False. 
@@ -64,7 +49,7 @@ Public NotInheritable Class FileUtil
 			End If
 			Return 0
 		Catch ex As IOException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 			Return 1
 		End Try
 	End Function
@@ -79,7 +64,7 @@ Public NotInheritable Class FileUtil
 			System.IO.File.Encrypt(file)
 		Catch ex As IOException
 		Catch ex As UnauthorizedAccessException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 		End Try
 	End Sub
 	
@@ -118,7 +103,7 @@ Public NotInheritable Class FileUtil
 			System.IO.File.Move(SourceFile, targetFile)
 			Return 0
 		Catch ex As IOException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 			Return 1
 		End Try
 	End Function

@@ -36,7 +36,9 @@ Public Class DirectUploadFolderProperties
 	''' </summary>
 	''' <param name="xmlName" name only without the file extension></param>
 	Public Sub New(ByVal xmlName as String)
-		xmlFile = Path.Combine(UploadXmlDir, xmlName & ".xml")
+		xmlFile = Path.Combine( _
+			ApplicationProfileFolders.Instance.DirectUploadXml, _
+			xmlName & ".xml")
 	End Sub
 						
 	#Region "Properties"
@@ -157,10 +159,10 @@ Public Class DirectUploadFolderProperties
 					"Properties").Get("UseExistingKeywordsChecked")
 			Catch ex As System.NullReferenceException
 			Catch ex As UnauthorizedAccessException
-				MessageBoxWrapper.ShowError(ex.Message)
+				MessageBoxError(ex.Message)
 				Return 1
 			Catch ex As IOException
-				MessageBoxWrapper.ShowError(ex.Message)
+				MessageBoxError(ex.Message)
 				Return 1
 			End Try
 		End If
@@ -213,10 +215,10 @@ Public Class DirectUploadFolderProperties
 					m_UseExistingKeywordsChecked)
 			xmlConfig.Save(xmlFile)
 		Catch ex As UnauthorizedAccessException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 			Return 1
 		Catch ex As IOException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 			Return 1
 		End Try
 		Return 0

@@ -34,11 +34,8 @@ Namespace My
 			Me.SaveMySettingsOnExit = False
 			Me.ShutDownStyle = ShutdownMode.AfterMainFormCloses
 				
-			' Create User Profile folders and delete deprecated folders.
+			' Create User Profile folders.
 			If UserProfileFoldersTask.Create = 1 Then
-				Environment.Exit(1)
-			End If
-			If UserProfileFoldersTask.DeleteDeprecated = 1 Then
 				Environment.Exit(1)
 			End If
 			If DirectUpload.CreateMissingFolders = 1 Then
@@ -78,7 +75,7 @@ Namespace My
 		''' <param name="e"></param>
 		Private Sub MyApplication_UnhandledException(sender As Object, _
 				e As System.UnhandledExceptionEventArgs)
-			MessageBoxWrapper.ShowError(e.ExceptionObject.ToString)
+			MessageBoxError(e.ExceptionObject.ToString)
 		End Sub
 	End Class
 End Namespace

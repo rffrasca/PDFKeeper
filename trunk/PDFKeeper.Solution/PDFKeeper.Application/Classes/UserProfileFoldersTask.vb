@@ -26,14 +26,14 @@ Public NotInheritable Class UserProfileFoldersTask
 		Environment.SpecialFolder.SendTo), _
 		"PDFKeeper " & PdfKeeper.Strings.DocumentCapture & ".lnk")
 	Dim Shared ReadOnly DocumentCaptureLinksShortcut As String = _
-		Path.Combine(LinksDir, "PDFKeeper " & _
+		Path.Combine(ApplicationProfileFolders.Instance.Links, "PDFKeeper " & _
 		PdfKeeper.Strings.DocumentCapture & ".lnk")
 	Dim Shared ReadOnly DocumentCaptureMyDocsShortcut As String = _
 		Path.Combine(Environment.GetFolderPath( _
 		Environment.SpecialFolder.MyDocuments), _
 		"PDFKeeper " & PdfKeeper.Strings.DocumentCapture & ".lnk")
 	Dim Shared ReadOnly DirectUploadLinksShortcut As String = _
-		Path.Combine(LinksDir, "PDFKeeper " & _
+		Path.Combine(ApplicationProfileFolders.Instance.Links, "PDFKeeper " & _
 		PdfKeeper.Strings.DirectUpload & ".lnk")
 	Dim Shared ReadOnly DirectUploadMyDocsShortcut As String = _
 		Path.Combine(Environment.GetFolderPath( _
@@ -53,33 +53,16 @@ Public NotInheritable Class UserProfileFoldersTask
 	''' <returns>0 = Success, 1 = Failure</returns>
 	Public Shared Function Create As Integer
 		Dim folders As New ArrayList
-		folders.Add(RootDataDir)
-		folders.Add(UploadXmlDir)
-		folders.Add(LocAppDataDir)
-		folders.Add(CaptureDir)
-		Folders.Add(CaptureTempDir)
-		folders.Add(UploadDir)
-		folders.Add(UploadTempDir)
-		folders.Add(CacheDir)
+		folders.Add(ApplicationProfileFolders.Instance.RoamingParent)
+		folders.Add(ApplicationProfileFolders.Instance.DirectUploadXml)
+		folders.Add(ApplicationProfileFolders.Instance.LocalParent)
+		folders.Add(ApplicationProfileFolders.Instance.Capture)
+		Folders.Add(ApplicationProfileFolders.Instance.CaptureTemp)
+		folders.Add(ApplicationProfileFolders.Instance.DirectUpload)
+		folders.Add(ApplicationProfileFolders.Instance.DirectUploadTemp)
+		folders.Add(ApplicationProfileFolders.Instance.Cache)
 		For Each folder As String In folders
 			If FolderTask.Create(folder) = 1 Then
-				Return 1
-			End If
-		Next
-		Return 0
-	End Function
-	
-	''' <summary>
-	''' This function will delete User Profile folders no longer needed for
-	''' PDFKeeper operation.
-	''' </summary>
-	''' <returns>0 = Success, 1 = Failure</returns>
-	Public Shared Function DeleteDeprecated As Integer
-		Dim folders As New ArrayList
-		folders.Add(OldCacheDir)
-		folders.Add(UploadLogDir)
-		For Each folder As String In folders
-			If FolderTask.Delete(folder, False) = 1 Then
 				Return 1
 			End If
 		Next
@@ -91,19 +74,25 @@ Public NotInheritable Class UserProfileFoldersTask
 	''' </summary>
 	''' <returns>0 = Success, 1 = Failure</returns>
 	Public Shared Function CreateDocumentCaptureShortcuts As Integer
-		If Directory.Exists(LinksDir) Then
+		If Directory.Exists(ApplicationProfileFolders.Instance.Links) Then
 			If FolderTask.CreateShortcutToFolder( _
-				DocumentCaptureLinksShortcut, CaptureDir) = 1 Then
+				DocumentCaptureLinksShortcut, _
+				ApplicationProfileFolders.Instance.Capture) = 1 Then
+				
 				Return 1
 			End If
 		Else
 			If FolderTask.CreateShortcutToFolder( _
-				DocumentCaptureMyDocsShortcut, CaptureDir) = 1 Then
+				DocumentCaptureMyDocsShortcut, _
+				ApplicationProfileFolders.Instance.Capture) = 1 Then
+				
 				Return 1
 			End If
 		End If
 		If FolderTask.CreateShortcutToFolder( _
-			DocumentCaptureSendToShortcut, CaptureDir) = 1 Then
+			DocumentCaptureSendToShortcut, _
+			ApplicationProfileFolders.Instance.Capture) = 1 Then
+			
 			Return 1
 		End If
 		Return 0
@@ -114,14 +103,18 @@ Public NotInheritable Class UserProfileFoldersTask
 	''' </summary>
 	''' <returns>0 = Success, 1 = Failure</returns>
 	Public Shared Function CreateDirectUploadShortcut As Integer
-		If Directory.Exists(LinksDir) Then
+		If Directory.Exists(ApplicationProfileFolders.Instance.Links) Then
 			If FolderTask.CreateShortcutToFolder( _
-				DirectUploadLinksShortcut, UploadDir) = 1 Then
+				DirectUploadLinksShortcut, _
+				ApplicationProfileFolders.Instance.DirectUpload) = 1 Then
+				
 				Return 1
 			End If
 		Else
 			If FolderTask.CreateShortcutToFolder( _
-				DirectUploadMyDocsShortcut, UploadDir) = 1 Then
+				DirectUploadMyDocsShortcut, _
+				ApplicationProfileFolders.Instance.DirectUpload) = 1 Then
+				
 				Return 1
 			End If
 		End If
@@ -133,7 +126,7 @@ Public NotInheritable Class UserProfileFoldersTask
 	''' </summary>
 	''' <returns></returns>
 	Public Shared Sub DeleteDocumentCaptureShortcuts
-		If Directory.Exists(LinksDir) Then
+		If Directory.Exists(ApplicationProfileFolders.Instance.Links) Then
 			FileUtil.Delete(DocumentCaptureLinksShortcut, False)
 		Else
 			FileUtil.Delete(DocumentCaptureMyDocsShortcut, False)
@@ -146,7 +139,7 @@ Public NotInheritable Class UserProfileFoldersTask
 	''' </summary>
 	''' <returns></returns>
 	Public Shared Sub DeleteDirectUploadShortcut
-		If Directory.Exists(LinksDir) Then
+		If Directory.Exists(ApplicationProfileFolders.Instance.Links) Then
 			FileUtil.Delete(DirectUploadLinksShortcut, False)
 		Else
 			FileUtil.Delete(DirectUploadMyDocsShortcut, False)
