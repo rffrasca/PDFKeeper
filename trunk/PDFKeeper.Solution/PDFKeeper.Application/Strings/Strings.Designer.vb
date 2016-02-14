@@ -94,6 +94,15 @@ Friend Class Strings
 	End Property
 	
 	'''<summary>
+	'''  Looks up a localized string similar to {0} is unavailable..
+	'''</summary>
+	Friend Shared ReadOnly Property DatabaseUnavailable() As String
+		Get
+			Return ResourceManager.GetString("DatabaseUnavailable", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
 	'''  Looks up a localized string similar to Delete {0}?.
 	'''</summary>
 	Friend Shared ReadOnly Property DeleteFolderQuestion() As String

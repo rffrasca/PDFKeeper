@@ -86,24 +86,13 @@
     <Compile Include="Classes\DirectUploadFolderProperties.vb" />
     <Compile Include="Classes\FileUtil.vb" />
     <Compile Include="Classes\FolderTask.vb" />
-    <Compile Include="Classes\HelpWrapper.vb" />
     <Compile Include="Classes\DatabaseConnection.vb" />
-    <Compile Include="Classes\FileCache.vb" />
-    <Compile Include="Classes\ImageZoom.vb" />
-    <Compile Include="Classes\MessageBoxWrapper.vb" />
     <Compile Include="Classes\NativeMethods.vb" />
     <Compile Include="Classes\PdfFileTask.vb" />
-    <Compile Include="Classes\PdfPreviewCreator.vb" />
+    <Compile Include="Classes\PdfPasswordProtection.vb" />
     <Compile Include="Classes\PdfProperties.vb" />
-    <Compile Include="Classes\PdfTextExtractor.vb" />
-    <Compile Include="Classes\PdfUtil.vb" />
-    <Compile Include="Classes\Print.vb" />
-    <Compile Include="Classes\Product.vb" />
-    <Compile Include="Classes\SelectedSearchItem.vb" />
-    <Compile Include="Classes\StringUtil.vb" />
     <Compile Include="Classes\UserProfileFoldersTask.vb" />
     <Compile Include="Classes\UserSettings.vb" />
-    <Compile Include="Classes\WindowFinder.vb" />
     <Compile Include="Forms\AboutForm.Designer.vb">
       <DependentUpon>AboutForm.vb</DependentUpon>
     </Compile>
@@ -132,10 +121,20 @@
       <DependentUpon>RotatePagesForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\RotatePagesForm.vb" />
-    <Compile Include="Modules\UserProfileDeprecatedFolders.vb" />
-    <Compile Include="Modules\UserProfileFolders.vb" />
+    <Compile Include="Modules\ExtensionMethods.vb" />
+    <Compile Include="Modules\HelpUtil.vb" />
+    <Compile Include="Modules\MessageBoxWrapper.vb" />
+    <Compile Include="Modules\PdfUtil.vb" />
+    <Compile Include="Modules\WindowUtil.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="Properties\AssemblyInfo.vb" />
+    <Compile Include="Singleton Classes\DocumentRecord.vb" />
+    <Compile Include="Singleton Classes\FileHashArray.vb" />
+    <Compile Include="Singleton Classes\ImageZoom.vb" />
+    <Compile Include="Singleton Classes\ProductDetails.vb" />
+    <Compile Include="Singleton Classes\UpdateCheck.vb" />
+    <Compile Include="Singleton Classes\ApplicationProfileFolders.vb" />
+    <Compile Include="Singleton Classes\WindowsProfileFolders.vb" />
     <Compile Include="Strings\Strings.Designer.vb">
       <DependentUpon>Strings.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -182,6 +181,7 @@
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+    <Folder Include="Singleton Classes" />
     <Folder Include="Strings" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +210,7 @@
     <Import Include="System.Linq" />
     <Import Include="System.Net" />
     <Import Include="System.Resources" />
+    <Import Include="System.Runtime.CompilerServices" />
     <Import Include="System.Runtime.InteropServices" />
     <Import Include="System.Security" />
     <Import Include="System.Security.AccessControl" />

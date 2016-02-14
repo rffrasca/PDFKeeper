@@ -40,7 +40,7 @@ Public NotInheritable Class FolderTask
 			End If
 			Return 0
 		Catch ex As IOException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 			Return 1
 		End Try
 	End Function
@@ -68,7 +68,7 @@ Public NotInheritable Class FolderTask
 			End If
 			Return 0
 		Catch ex As IOException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 			Return 1
 		End Try
 	End Function
@@ -89,32 +89,10 @@ Public NotInheritable Class FolderTask
 			shortcut.Save
 			Return 0
 		Catch ex As COMException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 			Return 1
 		End Try
 	End Function
-	
-	''' <summary>
-	''' This subroutine will delete all PDF and PNG files created by PDFKeeper
-	''' from "folder".  This subroutine will not display a message when an
-	''' IOException has been caught.
-	''' </summary>
-	''' <param name="folder"></param>
-	Public Shared Sub DeletePdfKeeperCreatedFiles(ByVal folder As String)
-		Dim objDirectoryInfo As New DirectoryInfo(folder)
-		Dim files As FileInfo() = objDirectoryInfo.GetFiles("pdfkeeper*.*")
-		For Each oFile In files
-			Try
-				If oFile.Extension.ToUpper( _
-						CultureInfo.CurrentCulture) = ".PDF" Or _
-						oFile.Extension.ToUpper( _
-						CultureInfo.CurrentCulture) = ".PNG" Then
-					oFile.Delete
-				End If
-			Catch ex as IOException
-			End Try
-		Next
-	End Sub
 	
 	''' <summary>
 	''' This function will return a count of files in "folder" with
@@ -153,7 +131,7 @@ Public NotInheritable Class FolderTask
 					Directory.Delete(oDirectory.FullName)
 				Catch ex As IOException
 					errors += 1
-					MessageBoxWrapper.ShowError(ex.Message)
+					MessageBoxError(ex.Message)
 				End Try
 			End If
 		Next

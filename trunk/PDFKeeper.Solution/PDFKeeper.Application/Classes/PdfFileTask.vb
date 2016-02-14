@@ -41,9 +41,10 @@ Public NotInheritable Class PdfFileTask
 		Dim oPdfProperties As New PdfProperties(pdfFile)
 		If oPdfProperties.Read = 0 Then
 			If oPdfProperties.Title = Nothing Or _
-		   	   oPdfProperties.Author = Nothing Or _
-		   	   oPdfProperties.Subject = Nothing Then
-				MessageBoxWrapper.ShowError( _
+		   	   	oPdfProperties.Author = Nothing Or _
+		   	   	oPdfProperties.Subject = Nothing Then
+				
+				MessageBoxError( _
 					PdfKeeper.Strings.PdfPropertiesBlank)
 		   		Return 1
 			End If
@@ -61,7 +62,7 @@ Public NotInheritable Class PdfFileTask
 				pdfStream.Read(pdfBlob, 0, _
 							   System.Convert.ToInt32(pdfStream.Length))
 			Catch ex As IOException
-				MessageBoxWrapper.ShowError(ex.Message)
+				MessageBoxError(ex.Message)
 				Return 1
 			Finally
 				pdfStream.Close
@@ -102,7 +103,7 @@ Public NotInheritable Class PdfFileTask
 				Try
 					oOracleCommand.ExecuteNonQuery()
 				Catch ex As OracleException
-					MessageBoxWrapper.ShowError(ex.Message.ToString())
+					MessageBoxError(ex.Message.ToString())
 					Return 1
   				Finally
   					oDatabaseConnection.Dispose
@@ -110,68 +111,6 @@ Public NotInheritable Class PdfFileTask
 			End Using
 		End Using
 		
-		Return 0
-	End Function
-	
-	''' <summary>
-	''' This function will retrieve the PDF document from the database for
-	''' "selectedId" and then save it to disk as "pdfFile".  If "pdfFile" is
-	''' cached, then skip the retrieve.  If "pdfFile" is retrieved, then add to
-	''' the cache.  If encryption is supported by the operating system, encrypt
-	''' "pdfFile".
-	''' </summary>
-	''' <param name="selectedId"></param>
-	''' <param name="pdfFile"></param>
-	''' <returns>0 = Success, 1 = Failed</returns>
-	Public Shared Function RetrieveFromDatabase(ByVal selectedId As Integer, _
-										ByVal pdfFile As String) As Integer
-		If FileCache.IsCached(pdfFile) = False Then
-			Dim oDatabaseConnection As New DatabaseConnection
-			If oDatabaseConnection.Open(UserSettings.LastUserName, _
-					DatabaseConnectionForm.dbPassword, _
-					UserSettings.LastDataSource) = 1 Then
-				oDatabaseConnection.Dispose
-				Return 1
-			End If
-			Dim sql As String = "select doc_pdf from pdfkeeper.docs " & _
-								"where doc_id =" & selectedId
-			Using oOracleCommand As New OracleCommand(sql, _
-				  oDatabaseConnection.oraConnection)
-				Try
-					Using oOracleDataReader As OracleDataReader = _
-						  oOracleCommand.ExecuteReader()
-  						oOracleDataReader.Read()
-  						Using oOracleBlob As OracleBlob = _
-  							  oOracleDataReader.GetOracleBlob(0)
-  							Using oMemoryStream As New _
-  								   MemoryStream(oOracleBlob.Value)
-  								Using oFileStream As New FileStream(pdfFile, _
-  										 FileMode.Create,FileAccess.Write)
-									Try
-										oFileStream.Write( _
-											oMemoryStream.ToArray, 0, _
-											CInt(oOracleBlob.Length))
-									Catch ex As IOException
-										MessageBoxWrapper.ShowError(ex.Message)
-										oDatabaseConnection.Dispose
-										Return 1
-  									Finally
-  										oFileStream.Close()
-									End Try
-								End Using
-							End Using
-						End Using
-					End Using
-				Catch ex As OracleException
-					MessageBoxWrapper.ShowError(ex.Message.ToString())
-					Return 1
-				Finally
-					oDatabaseConnection.Dispose
-				End Try
-			End Using
-			FileCache.Add(pdfFile)		
-		End If
-		FileUtil.Encrypt(pdfFile)
 		Return 0
 	End Function
 End Class

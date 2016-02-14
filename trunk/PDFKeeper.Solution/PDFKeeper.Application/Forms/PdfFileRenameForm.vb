@@ -54,11 +54,13 @@ Public Partial Class PdfFileRenameForm
 		errorProvider.Clear
 		textBoxFileName.Text = textBoxFileName.Text.Trim
 		If textBoxFileName.Text.Length > 0 Then
-			If Not textBoxFileName.Text.ToUpper(CultureInfo.CurrentCulture) = _
-					pdfRenameName.ToUpper(CultureInfo.CurrentCulture) Then
-				If StringUtil.ContainsInvalidFileNameChars( _
-						textBoxFileName.Text) Then
-					errorProvider.SetError(textBoxFileName, _
+			If Not textBoxFileName.Text.ToUpper( _
+				CultureInfo.CurrentCulture) = _
+				pdfRenameName.ToUpper(CultureInfo.CurrentCulture) Then
+				Dim stringCheck As String = textBoxFileName.Text
+				If stringCheck.ContainsInvalidFileNameChars Then
+					errorProvider.SetError( _
+						textBoxFileName, _
 						PdfKeeper.Strings.FileNameContainsInvalidChars)
 				Else
 					buttonOK.Enabled = True

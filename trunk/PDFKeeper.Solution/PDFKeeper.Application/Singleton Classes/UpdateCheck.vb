@@ -1,7 +1,7 @@
 ﻿'******************************************************************************
 '*
 '* PDFKeeper -- Free, Open Source PDF Capture, Upload, and Search.
-'* Copyright (C) 2009-2015 Robert F. Frasca
+'* Copyright (C) 2009-2016 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
 '*
@@ -20,48 +20,42 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class Product
-	Dim Shared appVersion As String = _
-		System.Windows.Forms.Application.ProductVersion
+''' <summary>
+''' UpdateCheck single instance class.
+''' </summary>
+Public NotInheritable Class UpdateCheck
+	Private Shared _instance As UpdateCheck = New UpdateCheck()
+	Private _isUpdateAvailable As Boolean = Nothing
+	
+	Public Shared ReadOnly Property Instance As UpdateCheck
+		Get
+			Return _instance
+		End Get
+	End Property
 	
 	''' <summary>
-	''' This subroutine is the class constructor required for FxCop compliance.
+	''' Returns True or False if an update is available for the application.
 	''' </summary>
-	Private Sub New()
-	End Sub
+	Public ReadOnly Property IsUpdateAvailable As Boolean
+		Get
+			If IsNothing(_isUpdateAvailable) Then
+				SetIsUpdateAvailable
+			End If
+			Return _isUpdateAvailable
+		End Get
+	End Property
 	
 	''' <summary>
-	''' This function will return the product version.
+	''' Sets the IsUpdateAvailable property to True or False.
 	''' </summary>
-	''' <returns>Version</returns>
-	Public Shared Function Version As String
-		Return appVersion.Substring(0, _
-			appVersion.Length - appVersion.LastIndexOf(".", _
-			StringComparison.CurrentCulture) - 1)
-	End Function
-	
-	''' <summary>
-	''' This function will return the product build.
-	''' </summary>
-	''' <returns>Build</returns>
-	Public Shared Function Build As String
-		Return appVersion.Substring( _
-			appVersion.Length - appVersion.LastIndexOf(".", _
-			StringComparison.CurrentCulture))
-	End Function
-	
-	''' <summary>
-	''' This subroutine will check if an update is available.
-	''' </summary>
-	''' <returns>True or False</returns>
-	Public Shared Function UpdateAvailable As Boolean
+	Private Sub SetIsUpdateAvailable
 		Dim installerVersion As String
 		Dim maxVersion As String = "0.0.0"
 		Using oWebClient As New WebClient
 			Dim pageContents As String = oWebClient.DownloadString( _
 				ConfigurationManager.AppSettings("ProjectSiteUrl"))
 			Dim matches As MatchCollection = Regex.Matches(pageContents, _
-				"\bPDFKeeper\b\s\d.\d.\d")
+				"\b(" & ProductDetails.Instance.Name & ")\b\s\d.\d.\d")
 			For Each expMatch As Match In matches
 				installerVersion = expMatch.ToString.Substring(10)
 				If installerVersion > maxVersion Then
@@ -69,10 +63,10 @@ Public NotInheritable Class Product
 				End If
 			Next
 		End Using
-		If maxVersion > Version Then
-			Return True
+		If maxVersion > ProductDetails.Instance.Version Then
+			_isUpdateAvailable = True
 		Else
-			Return False
+			_isUpdateAvailable = False
 		End If
-	End Function
+	End Sub
 End Class

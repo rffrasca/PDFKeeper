@@ -35,7 +35,7 @@ Imports System.Runtime.InteropServices
 <assembly: AssemblyConfiguration("")>
 <assembly: AssemblyCompany("Robert F. Frasca")>
 <assembly: AssemblyProduct("PDFKeeper")>
-<assembly: AssemblyCopyright("Copyright © 2009-2015 Robert F. Frasca")>
+<assembly: AssemblyCopyright("Copyright © 2009-2016 Robert F. Frasca")>
 <assembly: AssemblyTrademark("")>
 <assembly: AssemblyCulture("")>
 

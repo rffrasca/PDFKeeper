@@ -28,7 +28,8 @@ Public NotInheritable Class UserSettings
 	Const formDefaultWindowState As Integer = 0	' 0 = Normal, 2 = Maximized
 	Const defaultUpdateCheck As Integer = 1	' 1 = Enabled, 0 = Disabled
 	Const defaultDoNotResetZoomLevel As Integer = 0	' 1 = Enabled, 0 = Disabled
-	Shared Private settingsFile As String = Path.Combine(RootDataDir, _
+	Shared Private settingsFile As String = Path.Combine( _
+		ApplicationProfileFolders.Instance.RoamingParent, _
 		"UserSettings.xml")
 	
 	''' <summary>
@@ -160,10 +161,10 @@ Public NotInheritable Class UserSettings
 					.Get("SaveFileLastFolder")
 			Catch ex As System.NullReferenceException
 			Catch ex As UnauthorizedAccessException
-				MessageBoxWrapper.ShowError(ex.Message)
+				MessageBoxError(ex.Message)
 				Return 1
 			Catch ex As IOException
-				MessageBoxWrapper.ShowError(ex.Message)
+				MessageBoxError(ex.Message)
 				Return 1
 			End Try
 		End If
@@ -206,9 +207,9 @@ Public NotInheritable Class UserSettings
 			xmlConfig.Save(settingsFile)
 		Catch ex As System.ArgumentNullException
 		Catch ex As UnauthorizedAccessException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 		Catch ex As IOException
-			MessageBoxWrapper.ShowError(ex.Message)
+			MessageBoxError(ex.Message)
 		End Try
 	End Sub
 	
@@ -217,7 +218,8 @@ Public NotInheritable Class UserSettings
 	''' </summary>
 	''' <returns>0 = Success, 1 = Failed</returns>
 	Private Shared Function ImportDeprecatedProperties As Integer
-		Dim legacyProperties As String = Path.Combine(AppDataDir, _
+		Dim legacyProperties As String = Path.Combine( _
+			ApplicationProfileFolders.Instance.AppData, _
 			"pdfkeeper.properties")
 		If System.IO.File.Exists(legacyProperties) Then
 			Try
@@ -232,7 +234,7 @@ Public NotInheritable Class UserSettings
 				End Using
 				System.IO.File.Delete(legacyProperties)
 			Catch ex As IOException
-				MessageBoxWrapper.ShowError(ex.Message)
+				MessageBoxError(ex.Message)
 				Return 1
 			End Try
 		End If
@@ -270,7 +272,7 @@ Public NotInheritable Class UserSettings
 				registry.CurrentUser.DeleteSubKey("Software\" & _
 					Application.ProductName)
 			Catch ex as IOException
-				MessageBoxWrapper.ShowError(ex.Message)
+				MessageBoxError(ex.Message)
 				Return 1
 			End Try
 		End If

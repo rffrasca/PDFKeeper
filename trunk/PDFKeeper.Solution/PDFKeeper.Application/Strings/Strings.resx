@@ -478,4 +478,7 @@ All modifications will be lost.</value>
   <data name="MainFormUploadPrompt" xml:space="preserve">
     <value>Upload {0}?</value>
   </data>
+  <data name="DatabaseUnavailable" xml:space="preserve">
+    <value>{0} is unavailable.</value>
+  </data>
 </root>

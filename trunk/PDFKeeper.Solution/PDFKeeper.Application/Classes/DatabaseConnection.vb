@@ -34,16 +34,16 @@ Public Class DatabaseConnection
 						 ByVal password As SecureString, _
 						 ByVal dataSource As String) As Integer
 		Try
+			Dim passwordSecureString As SecureString = password
 			oraConnection.ConnectionString = "User Id=" + userName + ";" & _
-				"Password=" + StringUtil.SecureStringToString( _
-					password) + ";" & _
+				"Password=" + passwordSecureString.GetString + ";" & _
 				"Data Source=" + dataSource + ";" & _
 				"Persist Security Info=False;Pooling=True"
 			oraConnection.Open
 			Return 0
   		Catch ex As OracleException
   			Dispose
-  			MessageBoxWrapper.ShowError(ex.Message.ToString())
+  			MessageBoxError(ex.Message.ToString())
 			Return 1
   		End Try
 	End Function

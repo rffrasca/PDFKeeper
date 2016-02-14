@@ -1,7 +1,7 @@
 ﻿'******************************************************************************
 '*
 '* PDFKeeper -- Free, Open Source PDF Capture, Upload, and Search.
-'* Copyright (C) 2009-2015 Robert F. Frasca
+'* Copyright (C) 2009-2016 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
 '*
@@ -20,8 +20,17 @@
 '*
 '******************************************************************************
 
-Public Module UserProfileDeprecatedFolders
-	Friend ReadOnly OldCacheDir As String = Path.Combine(RootDataDir, "Cache")
-	Friend ReadOnly UploadLogDir As String = Path.Combine(LocAppDataDir, _
-		"UploadLogs")
+Public Module HelpUtil
+	''' <summary>
+	''' Shows the help file, selecting the specified topic file contained in
+	''' the help file.
+	''' </summary>
+	''' <param name="parent">Parent control of the Help dialog box.</param>
+	''' <param name="topicFile">Help topic file.</param>
+	Public Sub HelpShow( _
+		ByVal parent As Windows.Forms.Control, _
+		ByVal topicFile As String)
+		
+		Help.ShowHelp(parent, "PDFKeeper.en.chm", topicFile)
+	End Sub
 End Module
