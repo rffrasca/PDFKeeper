@@ -1,7 +1,7 @@
 ﻿'******************************************************************************
 '*
 '* PDFKeeper -- Free, Open Source PDF Capture, Upload, and Search.
-'* Copyright (C) 2009-2015 Robert F. Frasca
+'* Copyright (C) 2009-2016 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
 '*
@@ -20,48 +20,51 @@
 '*
 '******************************************************************************
 
-Friend Class NativeMethods
-	
+Public NotInheritable Class NativeMethods
 	''' <summary>
-	''' This subroutine is the class constructor required for FxCop compliance.
+	''' Required for FxCop compliance (CA1053).
 	''' </summary>
 	Private Sub New()
-	End Sub
-	
-	''' <summary>
-	''' This function is used to find an open window.  lpClassName can be
-	''' Nothing and lpWindowName is the text that is displayed on the titlebar
-	''' of the window to find.
-	''' </summary>
-	''' <param name="lpClassName"></param>
-	''' <param name="lpWindowName"></param>
-	''' <returns>window handle or 0 if window not found</returns>
-	<DllImport("user32.dll", CharSet:=CharSet.Unicode)> _
-	Friend Shared Function FindWindow(ByVal lpClassName As String, _
-	ByVal lpWindowName As String) As IntPtr
-	End Function
 		
+	End Sub
+
 	''' <summary>
-	''' This function is used to bring a window to the foreground.  hWnd is the
-	''' handle of the window.
+	''' Retrieves a handle to the top-level window whose class name and window
+	''' name match the specified strings.
 	''' </summary>
-	''' <param name="hWnd"></param>
-	''' <returns></returns>
-	<DllImport("user32.dll")> _						 
-	Friend Shared Function SetForegroundWindow(ByVal hWnd As IntPtr) _
-	As <MarshalAs(UnmanagedType.Bool)> Boolean
+	''' <param name="lpClassName">Class name of the window
+	''' (can be Nothing).</param>
+	''' <param name="lpWindowName">Window Name (Title) of the window.</param>
+	''' <returns>Window handle or 0 when window is not found.</returns>
+	<DllImport("user32.dll", _
+		SetLastError:=True, _
+		CharSet:=CharSet.Unicode)> _
+ 	Friend Shared Function FindWindow( _
+		ByVal lpClassName As String, _
+		ByVal lpWindowName As String) As IntPtr
+ 	End Function
+	
+	''' <summary>
+	''' Moves the window associated with the passed handle to the front.
+	''' </summary>
+	''' <param name="hWnd">Handle to the window.</param>
+	''' <returns>True or False.</returns>
+	<DllImport("user32.dll")> _
+	Friend Shared Function SetForegroundWindow( _
+		ByVal hWnd As IntPtr) As <MarshalAs(UnmanagedType.Bool)> Boolean
 	End Function
 	
 	''' <summary>
-	''' This function will determine if the specified path is an empty
-	''' directory.
+	''' Determines whether a specified path is an empty directory.
 	''' </summary>
-	''' <param name="pszPath"></param>
-	''' <returns>True or False</returns>
-	<DllImport("shlwapi.dll", CharSet:=CharSet.Unicode, _
+	''' <param name="pszPath">Path to be tested.</param>
+	''' <returns>True or False.</returns>
+	<DllImport("shlwapi.dll", _
+		CharSet:=CharSet.Unicode, _
 		BestFitMapping:=False)> _
 	Friend Shared Function PathIsDirectoryEmpty( _
-		<InAttribute(), MarshalAs(UnmanagedType.LPTStr)> _
+		<InAttribute(), _
+		MarshalAs(UnmanagedType.LPTStr)> _
 		ByVal pszPath As String) As <MarshalAs(UnmanagedType.Bool)> Boolean
  	End Function
 End Class
