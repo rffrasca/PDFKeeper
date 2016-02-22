@@ -47,29 +47,6 @@ Public NotInheritable Class UserProfileFoldersTask
 	End Sub
 	
 	''' <summary>
-	''' This function will create User Profile folders needed for PDFKeeper
-	''' operation.
-	''' </summary>
-	''' <returns>0 = Success, 1 = Failure</returns>
-	Public Shared Function Create As Integer
-		Dim folders As New ArrayList
-		folders.Add(ApplicationProfileFolders.Instance.RoamingParent)
-		folders.Add(ApplicationProfileFolders.Instance.DirectUploadXml)
-		folders.Add(ApplicationProfileFolders.Instance.LocalParent)
-		folders.Add(ApplicationProfileFolders.Instance.Capture)
-		Folders.Add(ApplicationProfileFolders.Instance.CaptureTemp)
-		folders.Add(ApplicationProfileFolders.Instance.DirectUpload)
-		folders.Add(ApplicationProfileFolders.Instance.DirectUploadTemp)
-		folders.Add(ApplicationProfileFolders.Instance.Cache)
-		For Each folder As String In folders
-			If FolderTask.Create(folder) = 1 Then
-				Return 1
-			End If
-		Next
-		Return 0
-	End Function
-	
-	''' <summary>
 	''' This subroutine will create the Document Capture folder shortcuts.
 	''' </summary>
 	''' <returns>0 = Success, 1 = Failure</returns>

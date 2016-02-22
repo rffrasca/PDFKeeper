@@ -36,110 +36,130 @@ Public NotInheritable Class ApplicationProfileFolders
 	
 	''' <summary>
 	''' Gets the absoluate pathname to the parent folder in the user's profile
-	''' where application XML files are stored.
+	''' where application XML files are stored.  If the folder does not exist,
+	''' it will be created.
 	''' </summary>
 	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
 		"Microsoft.Performance", _
 		"CA1822:MarkMembersAsStatic")> _
 	Public ReadOnly Property RoamingParent As String
 		Get
-			Return Path.Combine( _
+			Dim pathName As String = Path.Combine( _
 				ApplicationProfileFolders.Instance.AppData, _
 				"PDFKeeper")
+			Directory.CreateDirectory(pathName)
+			Return pathName
 		End Get
 	End Property
 	
 	''' <summary>
 	''' Gets the absoluate pathname to the parent folder in the user's profile
-	''' where temporary data is stored.
+	''' where temporary data is stored.  If the folder does not exist, it will
+	''' be created.
 	''' </summary>
 	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
 		"Microsoft.Performance", _
 		"CA1822:MarkMembersAsStatic")> _
 	Public ReadOnly Property LocalParent As String
 		Get
-			Return Path.Combine( _
+			Dim pathName As String = Path.Combine( _
 				ApplicationProfileFolders.Instance.LocalAppData, _
 				"PDFKeeper")
+			Directory.CreateDirectory(pathName)
+			Return pathName
 		End Get
 	End Property
 	
 	''' <summary>
 	''' Gets the absoluate pathname to the Cache folder in the user's profile.
+	''' If the folder does not exist, it will be created.
 	''' </summary>
 	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
 		"Microsoft.Performance", _
 		"CA1822:MarkMembersAsStatic")> _
 	Public ReadOnly Property Cache As String
 		Get
-			Return Path.Combine(LocalParent, "Cache")
+			Dim pathName As String = Path.Combine(LocalParent, "Cache")
+			Directory.CreateDirectory(pathName)
+			Return pathName
 		End Get
 	End Property
 	
 	''' <summary>
 	''' Gets the absoluate pathname to the Capture folder in the user's
-	''' profile.
+	''' profile.  If the folder does not exist, it will be created.
 	''' </summary>
 	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
 		"Microsoft.Performance", _
 		"CA1822:MarkMembersAsStatic")> _
 	Public ReadOnly Property Capture As String
 		Get
-			Return Path.Combine(LocalParent, "Capture")
+			Dim pathName As String = Path.Combine(LocalParent, "Capture")
+			Directory.CreateDirectory(pathName)
+			Return pathName			
 		End Get
 	End Property
 	
 	''' <summary>
 	''' Gets the absoluate pathname to the CaptureTemp folder in the user's
-	''' profile.
+	''' profile.  If the folder does not exist, it will be created.
 	''' </summary>
 	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
 		"Microsoft.Performance", _
 		"CA1822:MarkMembersAsStatic")> _
 	Public ReadOnly Property CaptureTemp As String
 		Get
-			Return Path.Combine(LocalParent, "CaptureTemp")
+			Dim pathName As String = Path.Combine(LocalParent, "CaptureTemp")
+			Directory.CreateDirectory(pathName)
+			Return pathName
 		End Get
 	End Property
 	
 	''' <summary>
 	''' Gets the absoluate pathname to the DirectUpload folder in the user's
-	''' profile.
+	''' profile.  If the folder does not exist, it will be created.
 	''' </summary>
 	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
 		"Microsoft.Performance", _
 		"CA1822:MarkMembersAsStatic")> _
 	Public ReadOnly Property DirectUpload As String
 		Get
-			Return Path.Combine(LocalParent, "DirectUpload")
+			Dim pathName As String = Path.Combine(LocalParent, "DirectUpload")
+			Directory.CreateDirectory(pathName)
+			Return pathName
 		End Get
 	End Property
 	
 	''' <summary>
 	''' Gets the absoluate pathname to the DirectUploadTemp folder in the
-	''' user's profile.
+	''' user's profile.  If the folder does not exist, it will be created.
 	''' </summary>
 	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
 		"Microsoft.Performance", _
 		"CA1822:MarkMembersAsStatic")> _
 	Public ReadOnly Property DirectUploadTemp As String
 		Get
-			Return Path.Combine(LocalParent, "DirectUploadTemp")
+			Dim pathName As String = Path.Combine(LocalParent, "DirectUploadTemp")
+			Directory.CreateDirectory(pathName)
+			Return pathName
 		End Get
 	End Property
 	
 	''' <summary>
 	''' Gets the absoluate pathname to the DirectUpload folder in the user's
-	''' profile used for storing Direct Upload XML files.
+	''' profile used for storing Direct Upload XML files.  If the folder does
+	''' not exist, it will be created.
 	''' </summary>
 	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
 		"Microsoft.Performance", _
 		"CA1822:MarkMembersAsStatic")> _
 	Public ReadOnly Property DirectUploadXml As String
 		Get
-			Return Path.Combine( _
+			Dim pathName As String = Path.Combine( _
 				ApplicationProfileFolders.Instance.RoamingParent, _
 				"DirectUpload")
+			Directory.CreateDirectory(pathName)
+			Return pathName
 		End Get
 	End Property
 End Class

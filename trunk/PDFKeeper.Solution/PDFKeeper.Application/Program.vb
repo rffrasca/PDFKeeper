@@ -35,9 +35,6 @@ Namespace My
 			Me.ShutDownStyle = ShutdownMode.AfterMainFormCloses
 				
 			' Create User Profile folders.
-			If UserProfileFoldersTask.Create = 1 Then
-				Environment.Exit(1)
-			End If
 			If DirectUpload.CreateMissingFolders = 1 Then
 				Environment.Exit(1)
 			End If
