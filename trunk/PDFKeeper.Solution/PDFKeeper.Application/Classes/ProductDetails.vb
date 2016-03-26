@@ -20,26 +20,20 @@
 '*
 '******************************************************************************
 
-''' <summary>
-''' ProductDetails single instance class.
-''' </summary>
 Public NotInheritable Class ProductDetails
-	Private Shared _instance As ProductDetails = New ProductDetails()
-	Private productVersion As String = Application.ProductVersion
+	Private Shared productVersion As String = Application.ProductVersion
 	
-	Public Shared ReadOnly Property Instance As ProductDetails
-		Get
-			Return _instance
-		End Get
-	End Property
+	''' <summary>
+	''' Class cannot be instantiated as it only contains shared members.
+	''' </summary>
+	Private Sub New()
+		' Required for FxCop compliance (CA1053).
+	End Sub
 	
 	''' <summary>
 	''' Gets the Name associated with the application.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property Name As String
+	Public Shared ReadOnly Property Name As String
 		Get
 			Return Application.ProductName
 		End Get
@@ -48,10 +42,7 @@ Public NotInheritable Class ProductDetails
 	''' <summary>
 	''' Gets the Description associated with the application.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property Description As String
+	Public Shared ReadOnly Property Description As String
 		Get
 			Return My.Application.Info.Description
 		End Get
@@ -60,10 +51,7 @@ Public NotInheritable Class ProductDetails
 	''' <summary>
 	''' Gets the Copyright associated with the application.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property Copyright As String
+	Public Shared ReadOnly Property Copyright As String
 		Get
 			Return My.Application.Info.Copyright
 		End Get
@@ -73,7 +61,7 @@ Public NotInheritable Class ProductDetails
 	''' Gets the Product Version without the build number associated with the
 	''' application.
 	''' </summary>
-	Public ReadOnly Property Version As String
+	Public Shared ReadOnly Property Version As String
 		Get
 			Return Application.ProductVersion.Substring( _
 				0, _
@@ -86,11 +74,11 @@ Public NotInheritable Class ProductDetails
 	''' Gets the Build number from the Product Version associated with the
 	''' application.
 	''' </summary>
-	Public ReadOnly Property Build As String
+	Public Shared ReadOnly Property Build As String
 		Get
 			Return productVersion.Substring( _
 				productVersion.Length - productVersion.LastIndexOf(".", _
 				StringComparison.CurrentCulture) + 1)
 		End Get
-	End Property
+	End Property	
 End Class

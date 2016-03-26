@@ -73,7 +73,7 @@ Public Partial Class DirectUploadConfigurationForm
 	Private Sub FillList
 		Dim files As String()
 		files = Directory.GetFiles( _
-			ApplicationProfileFolders.Instance.DirectUploadXml, _
+			ApplicationProfileFolders.DirectUploadXml, _
 			"*.xml", _
 			SearchOption.TopDirectoryOnly)
 		listBoxFolders.Items.Clear
@@ -93,10 +93,10 @@ Public Partial Class DirectUploadConfigurationForm
 		selectedFolder = CStr(listBoxFolders.SelectedItem)
 		If Not selectedFolder = Nothing Then
 			folderPath = Path.Combine( _
-				ApplicationProfileFolders.Instance.DirectUpload, _
+				ApplicationProfileFolders.DirectUpload, _
 				selectedFolder)
 			buttonEdit.Enabled = True
-			If FolderTask.CountOfFiles(folderPath, "pdf") = 0 Then
+			If CountOfFilesInfolder(folderPath, "pdf") = 0 Then
 				buttonDelete.Enabled = True
 			Else
 				buttonDelete.Enabled = False
@@ -140,17 +140,17 @@ Public Partial Class DirectUploadConfigurationForm
 	''' <param name="e"></param>
 	Private Sub ButtonDeleteClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		If FolderTask.CountOfFiles(folderPath, "pdf") = 0 Then
+		If CountOfFilesInfolder(folderPath, "pdf") = 0 Then
 			If MessageBoxQuestion( _
 				String.Format( _
 				CultureInfo.CurrentCulture, _
 				PdfKeeper.Strings.DeleteFolderQuestion, _
 				selectedFolder)) = 6 Then
 				
-				If FolderTask.Delete(folderPath, False) = 0 Then
-					If FileUtil.Delete( _
+				If DeleteFolder(folderPath, False) = 0 Then
+					If DeleteFile( _
 						Path.Combine( _
-						ApplicationProfileFolders.Instance.DirectUploadXml, _
+						ApplicationProfileFolders.DirectUploadXml, _
 						selectedFolder & ".xml"), _
 						False) = 0 Then
 						
@@ -308,7 +308,7 @@ Public Partial Class DirectUploadConfigurationForm
 		If performFolderCheck Then
 			If System.IO.File.Exists( _
 				Path.Combine( _
-				ApplicationProfileFolders.Instance.DirectUploadXml, _
+				ApplicationProfileFolders.DirectUploadXml, _
 				textBoxFolderName.Text & ".xml")) Then
 				
 				Return True
@@ -324,7 +324,7 @@ Public Partial Class DirectUploadConfigurationForm
 	''' <param name="hlpevent"></param>
 	Private Sub DirectUploadConfigurationFormHelpRequested(sender As Object, hlpevent As HelpEventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		HelpShow(Me, "Configuring Direct Upload sub-folders.html")
+		ShowHelp(Me, "Configuring Direct Upload sub-folders.html")
 		Me.Cursor = Cursors.Default
 	End Sub
 	
@@ -354,8 +354,8 @@ Public Partial Class DirectUploadConfigurationForm
 	''' <returns>0 = Success, 1 = Failed</returns>
 	Private Function CreateSpecifiedFolder() As Integer
 		If selectedFolder = Nothing Then
-			If FolderTask.Create( _
-				Path.Combine(ApplicationProfileFolders.Instance.DirectUpload, _
+			If CreateFolder( _
+				Path.Combine(ApplicationProfileFolders.DirectUpload, _
 				textBoxFolderName.Text)) = 0 Then
 				
 				Return 0
@@ -363,9 +363,9 @@ Public Partial Class DirectUploadConfigurationForm
 				Return 1
 			End If
 		Else
-			If FileUtil.Delete( _
+			If DeleteFile( _
 				Path.Combine( _
-				ApplicationProfileFolders.Instance.DirectUploadXml, _
+				ApplicationProfileFolders.DirectUploadXml, _
 				selectedFolder & ".xml"), _
 				False) = 1 Then
 				
@@ -376,10 +376,10 @@ Public Partial Class DirectUploadConfigurationForm
 				Try
 					Directory.Move( _
 						Path.Combine( _
-						ApplicationProfileFolders.Instance.DirectUpload, _
+						ApplicationProfileFolders.DirectUpload, _
 						selectedFolder), _
 						Path.Combine( _
-						ApplicationProfileFolders.Instance.DirectUpload, _
+						ApplicationProfileFolders.DirectUpload, _
 						textBoxFolderName.Text))
 				Catch ex As IOException
 					MessageBoxError(ex.Message)

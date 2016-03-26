@@ -29,8 +29,7 @@ Public NotInheritable Class UserSettings
 	Const defaultUpdateCheck As Integer = 1	' 1 = Enabled, 0 = Disabled
 	Const defaultDoNotResetZoomLevel As Integer = 0	' 1 = Enabled, 0 = Disabled
 	Shared Private settingsFile As String = Path.Combine( _
-		ApplicationProfileFolders.Instance.RoamingParent, _
-		"UserSettings.xml")
+		ApplicationProfileFolders.RoamingParent, "UserSettings.xml")
 	
 	''' <summary>
 	''' Database Connection form last database username.
@@ -219,8 +218,7 @@ Public NotInheritable Class UserSettings
 	''' <returns>0 = Success, 1 = Failed</returns>
 	Private Shared Function ImportDeprecatedProperties As Integer
 		Dim legacyProperties As String = Path.Combine( _
-			ApplicationProfileFolders.Instance.AppData, _
-			"pdfkeeper.properties")
+			WindowsProfileFolders.AppData, "pdfkeeper.properties")
 		If System.IO.File.Exists(legacyProperties) Then
 			Try
 				Using oFileStream As New FileStream(legacyProperties, _

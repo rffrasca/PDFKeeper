@@ -27,7 +27,7 @@ Public Module HelpUtil
 	''' </summary>
 	''' <param name="parent">Parent control of the Help dialog box.</param>
 	''' <param name="topicFile">Help topic file.</param>
-	Public Sub HelpShow( _
+	Public Sub ShowHelp( _
 		ByVal parent As Windows.Forms.Control, _
 		ByVal topicFile As String)
 		

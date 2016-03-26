@@ -37,12 +37,12 @@ Public NotInheritable Class DirectUpload
 	Public Shared Function CreateMissingFolders() As Integer
 		Dim xmlFiles As String()
 		xmlFiles = Directory.GetFiles( _
-			ApplicationProfileFolders.Instance.DirectUploadXml, _
+			ApplicationProfileFolders.DirectUploadXml, _
 			"*.xml", _
 			SearchOption.TopDirectoryOnly)
 		For Each xmlFile In xmlFiles
-			If FolderTask.Create( _
-				Path.Combine(ApplicationProfileFolders.Instance.DirectUpload, _
+			If CreateFolder( _
+				Path.Combine(ApplicationProfileFolders.DirectUpload, _
 				Path.GetFileNameWithoutExtension(xmlFile))) = 1 Then
 				
 				Return 1
@@ -58,24 +58,24 @@ Public NotInheritable Class DirectUpload
 	Public Shared Sub DeleteAllEmptySubfolders
 		FillConfiguredFoldersArray
 		For Each configuredFolder As String In configuredFolders
-			If FolderTask.DeleteAllEmptySubfolders( _
-				Path.Combine(ApplicationProfileFolders.Instance.DirectUpload, _
+			If DeleteEmptySubfoldersFromFolder( _
+				Path.Combine(ApplicationProfileFolders.DirectUpload, _
 				configuredFolder)) = 0 Then
 				
 				If System.IO.File.Exists( _
 					Path.Combine( _
-					ApplicationProfileFolders.Instance.DirectUploadXml, _
+					ApplicationProfileFolders.DirectUploadXml, _
 					configuredFolder & ".xml")) = False Then
 					
-					If FolderTask.CountOfFiles( _
+					If CountOfFilesInfolder( _
 						Path.Combine( _
-						ApplicationProfileFolders.Instance.DirectUpload, _
+						ApplicationProfileFolders.DirectUpload, _
 						configuredFolder), _
 						"*") = 0 Then
 						
-						FolderTask.Delete( _
+						DeleteFolder( _
 							Path.Combine( _
-							ApplicationProfileFolders.Instance.DirectUpload, _
+							ApplicationProfileFolders.DirectUpload, _
 							configuredFolder), _
 							False)
 					End If
@@ -93,8 +93,8 @@ Public NotInheritable Class DirectUpload
 		Dim count As Integer
 		FillConfiguredFoldersArray
 		For Each configuredFolder As String In configuredFolders
-			count = count + FolderTask.CountOfFiles( _
-				Path.Combine(ApplicationProfileFolders.Instance.DirectUpload, _
+			count = count + CountOfFilesInfolder( _
+				Path.Combine(ApplicationProfileFolders.DirectUpload, _
 				configuredFolder), _
 				"pdf")
 		Next
@@ -111,7 +111,7 @@ Public NotInheritable Class DirectUpload
 		Dim counter As Integer = 0
 		For Each configuredFolder As String In configuredFolders
 			Dim oDirectoryInfo As New DirectoryInfo( _
-				Path.Combine(ApplicationProfileFolders.Instance.DirectUpload, _
+				Path.Combine(ApplicationProfileFolders.DirectUpload, _
 				configuredFolder))
 			Dim oFileSystemInfo As FileSystemInfo() = _
 				oDirectoryInfo.GetFileSystemInfos("*.pdf", _
@@ -133,11 +133,11 @@ Public NotInheritable Class DirectUpload
 		For index = 0 To oSortedList.Count - 1
 			inputPdfFile = CStr(oSortedList.GetByIndex(index))
 			outputPdfFile = Path.Combine( _
-				ApplicationProfileFolders.Instance.DirectUploadTemp, _
+				ApplicationProfileFolders.DirectUploadTemp, _
 				Path.GetFileName(inputPdfFile))
 			pdfConfigFolder = Path.GetDirectoryName( _
 				inputPdfFile.Substring( _
-				Len(ApplicationProfileFolders.Instance.DirectUpload) + 1))
+				Len(ApplicationProfileFolders.DirectUpload) + 1))
 			pdfConfigFolderPtr = pdfConfigFolder.IndexOf( _
 				Path.DirectorySeparatorChar)
 			If Not pdfConfigFolderPtr = -1 Then
@@ -201,8 +201,8 @@ Public NotInheritable Class DirectUpload
 				End If
 				If oPdfProperties.Write = 0 Then
 					If PdfFileTask.UploadToDatabase(outputPdfFile) = 0 Then
-						FileUtil.Delete(inputPdfFile, True)
-						FileUtil.Delete(outputPdfFile, False)
+						DeleteFile(inputPdfFile, True)
+						DeleteFile(outputPdfFile, False)
 					End If
 				End If
 			Else
@@ -220,7 +220,7 @@ Public NotInheritable Class DirectUpload
 	Private Shared Sub FillConfiguredFoldersArray
 		configuredFolders.Clear
 		Dim odirectoryInfo As DirectoryInfo = New DirectoryInfo( _
-			ApplicationProfileFolders.Instance.DirectUpload)
+			ApplicationProfileFolders.DirectUpload)
 		Dim subFolders() As DirectoryInfo = _
 			oDirectoryInfo.GetDirectories("*", SearchOption.TopDirectoryOnly)
 		Dim oDirectory As DirectoryInfo

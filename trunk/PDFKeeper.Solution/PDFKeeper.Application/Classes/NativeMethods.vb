@@ -22,7 +22,7 @@
 
 Public NotInheritable Class NativeMethods
 	''' <summary>
-	''' This class cannot be instantiated as it only contains shared members.
+	''' Class cannot be instantiated as it only contains shared members.
 	''' </summary>
 	Private Sub New()
 		' Required for FxCop compliance (CA1053).

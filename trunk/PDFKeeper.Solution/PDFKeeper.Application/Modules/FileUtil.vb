@@ -20,23 +20,31 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class FileUtil
+Public Module FileUtil
+	''' <summary>
+	''' Returns the hash value for the specified file.
+	''' </summary>
+	''' <param name="file">Path name of file.</param>
+	''' <returns>Hash value.</returns>
+	Public Function ComputeFileHashValue(ByVal file As String) As String
+		Dim algorithm As HashAlgorithm = HashAlgorithm.Create("SHA1")
+		Using stream As New FileStream(file, FileMode.Open, FileAccess.Read)
+			Dim hash As Byte() = algorithm.ComputeHash(stream)
+			Return BitConverter.ToString(hash)
+		End Using
+	End Function
 	
 	''' <summary>
-	''' Required for FxCop compliance (CA1053).
+	''' Deletes the specified file if it does exist.
 	''' </summary>
-	Private Sub New()
-	End Sub
+	''' <param name="file">Path name of file.</param>
+	''' <param name="recycle">True or False to delete file to the Recycle Bin.
+	''' </param>
+	''' <returns>0 = Successful or file does not exist, 1 = Failed.</returns>
+	Public Function DeleteFile( _
+		ByVal file As String, _
+		ByVal recycle As Boolean) As Integer
 		
-	''' <summary>
-	''' Delete "file" if it does exist.  To delete "file" and move it to the
-	''' Recycle Bin, set "recycle" to True; otherwise, set "recycle" to False. 
-	''' </summary>
-	''' <param name="file"></param>
-	''' <param name="recycle"></param>
-	''' <returns>0 = Successful or file does not exist, 1 = Failed</returns>
-	Public Shared Function Delete(ByVal file As String, _
-								  ByVal recycle As Boolean) As Integer
 		Try
 			If System.IO.File.Exists(file) Then
 				If recycle Then
@@ -55,11 +63,11 @@ Public NotInheritable Class FileUtil
 	End Function
 	
 	''' <summary>
-	''' Eencrypt "file" if the operating system supports the Encrypting File
-	''' System (EFS).
+	''' Eencrypts the specified file if the operating system supports the
+	''' Encrypting File System (EFS).
 	''' </summary>
-	''' <param name="file"></param>
-	Public Shared Sub Encrypt(ByVal file As String)
+	''' <param name="file">Path name of file.</param>
+	Public Sub EncryptFile(ByVal file As String)
 		Try
 			System.IO.File.Encrypt(file)
 		Catch ex As IOException
@@ -69,12 +77,12 @@ Public NotInheritable Class FileUtil
 	End Sub
 	
 	''' <summary>
-	''' Return True or False if "file" is in use.  If "file" does not exist,
-	''' False is returned. 
+	''' Returns True or False if the specified file is in use.  If the file
+	''' does not exist, False is returned. 
 	''' </summary>
-	''' <param name="file"></param>
-	''' <returns>True or False</returns>
-	Public Shared Function IsInUse(ByVal file As String) As Boolean
+	''' <param name="file">Path name of file.</param>
+	''' <returns>True or False.</returns>
+	Public Function IsFileInUse(ByVal file As String) As Boolean
 		If System.IO.File.Exists(file) Then
 			Try
 				Using stream As New FileStream(file, FileMode.Open, _
@@ -89,16 +97,18 @@ Public NotInheritable Class FileUtil
 		End If
 		Return False
 	End Function
-		
+			
 	''' <summary>
-	''' Move "sourceFile" to "targetFile"; can be used to rename "sourceFile"
-	''' to "targetFile".
+	''' Moves the specified file to the specified target file.  It can be used
+	''' to rename the source file to the target file.
 	''' </summary>
-	''' <param name="sourceFile"></param>
-	''' <param name="targetFile"></param>
-	''' <returns>0 = Successful, 1 = Failed</returns>
-	Public Shared Function Move(ByVal sourceFile As String, _
-								ByVal targetFile As String) As Integer
+	''' <param name="sourceFile">Path name of source file.</param>
+	''' <param name="targetFile">Path name of target file.</param>
+	''' <returns>0 = Successful, 1 = Failed.</returns>
+	Public Function MoveFile( _
+		ByVal sourceFile As String, _
+		ByVal targetFile As String) As Integer
+		
 		Try
 			System.IO.File.Move(SourceFile, targetFile)
 			Return 0
@@ -109,16 +119,16 @@ Public NotInheritable Class FileUtil
 	End Function
 	
 	''' <summary>
-	''' Wait for "file" to be created.  It will wait until "file" exists and is
-	''' not in use.
+	''' Waits for "file" to be created.  It will wait until "file" exists and
+	''' is not in use.
 	''' </summary>
-	''' <param name="file"></param>
-	Public Shared Sub WaitForFileCreation(ByVal file As String)
+	''' <param name="file">Path name of file.</param>
+	Public Sub WaitForFileCreation(ByVal file As String)
 		Do Until System.IO.File.Exists(file)
 			Thread.Sleep(2000)
 		Loop
-		Do While IsInUse(file)
+		Do While IsFileInUse(file)
 			Thread.Sleep(2000)
 		Loop
 	End Sub
-End Class
+End Module

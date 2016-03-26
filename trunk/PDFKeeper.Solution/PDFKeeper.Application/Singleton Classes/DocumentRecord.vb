@@ -79,7 +79,7 @@ Public NotInheritable Class DocumentRecord
 	Public ReadOnly Property PdfPathName As String
 		Get
 			Return Path.Combine( _
-				ApplicationProfileFolders.Instance.Cache, _
+				ApplicationProfileFolders.Cache, _
 				"pdfkeeper" & Id & ".pdf")
 		End Get
 	End Property
@@ -160,7 +160,7 @@ Public NotInheritable Class DocumentRecord
 						End Using
 						FileHashArray.Instance.Add(PdfPathName)
 					End If
-					FileUtil.Encrypt(PdfPathName)
+					EncryptFile(PdfPathName)
 				End Using
 			End Using
 		Catch ex As OracleException
