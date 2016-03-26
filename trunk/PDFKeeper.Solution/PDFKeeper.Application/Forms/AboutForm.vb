@@ -37,11 +37,11 @@ Public Partial Class AboutForm
 	''' <param name="e"></param>
 	Private Sub AboutFormLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont	' Use Segoe UI in Vista & 7
-		labelName.Text = ProductDetails.Instance.Name
-		labelDescription.Text = ProductDetails.Instance.Description
-		labelCopyright.Text = ProductDetails.Instance.Copyright
-		labelVersion.Text = "Version: " & ProductDetails.Instance.Version & _
-							" - Build: " & ProductDetails.Instance.Build
+		labelName.Text = ProductDetails.Name
+		labelDescription.Text = ProductDetails.Description
+		labelCopyright.Text = ProductDetails.Copyright
+		labelVersion.Text = "Version: " & ProductDetails.Version & _
+							" - Build: " & ProductDetails.Build
 		textBoxLicense.Text = PdfKeeper.Strings.License
 		textBoxCredits.Text = PdfKeeper.Strings.Credits
 	End Sub

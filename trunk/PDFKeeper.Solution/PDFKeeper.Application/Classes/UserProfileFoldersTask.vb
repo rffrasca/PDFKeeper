@@ -26,14 +26,14 @@ Public NotInheritable Class UserProfileFoldersTask
 		Environment.SpecialFolder.SendTo), _
 		"PDFKeeper " & PdfKeeper.Strings.DocumentCapture & ".lnk")
 	Dim Shared ReadOnly DocumentCaptureLinksShortcut As String = _
-		Path.Combine(ApplicationProfileFolders.Instance.Links, "PDFKeeper " & _
+		Path.Combine(WindowsProfileFolders.Links, "PDFKeeper " & _
 		PdfKeeper.Strings.DocumentCapture & ".lnk")
 	Dim Shared ReadOnly DocumentCaptureMyDocsShortcut As String = _
 		Path.Combine(Environment.GetFolderPath( _
 		Environment.SpecialFolder.MyDocuments), _
 		"PDFKeeper " & PdfKeeper.Strings.DocumentCapture & ".lnk")
 	Dim Shared ReadOnly DirectUploadLinksShortcut As String = _
-		Path.Combine(ApplicationProfileFolders.Instance.Links, "PDFKeeper " & _
+		Path.Combine(WindowsProfileFolders.Links, "PDFKeeper " & _
 		PdfKeeper.Strings.DirectUpload & ".lnk")
 	Dim Shared ReadOnly DirectUploadMyDocsShortcut As String = _
 		Path.Combine(Environment.GetFolderPath( _
@@ -51,24 +51,24 @@ Public NotInheritable Class UserProfileFoldersTask
 	''' </summary>
 	''' <returns>0 = Success, 1 = Failure</returns>
 	Public Shared Function CreateDocumentCaptureShortcuts As Integer
-		If Directory.Exists(ApplicationProfileFolders.Instance.Links) Then
-			If FolderTask.CreateShortcutToFolder( _
+		If Directory.Exists(WindowsProfileFolders.Links) Then
+			If CreateFolderShortcut( _
 				DocumentCaptureLinksShortcut, _
-				ApplicationProfileFolders.Instance.Capture) = 1 Then
+				ApplicationProfileFolders.Capture) = 1 Then
 				
 				Return 1
 			End If
 		Else
-			If FolderTask.CreateShortcutToFolder( _
+			If CreateFolderShortcut( _
 				DocumentCaptureMyDocsShortcut, _
-				ApplicationProfileFolders.Instance.Capture) = 1 Then
+				ApplicationProfileFolders.Capture) = 1 Then
 				
 				Return 1
 			End If
 		End If
-		If FolderTask.CreateShortcutToFolder( _
+		If CreateFolderShortcut( _
 			DocumentCaptureSendToShortcut, _
-			ApplicationProfileFolders.Instance.Capture) = 1 Then
+			ApplicationProfileFolders.Capture) = 1 Then
 			
 			Return 1
 		End If
@@ -80,17 +80,17 @@ Public NotInheritable Class UserProfileFoldersTask
 	''' </summary>
 	''' <returns>0 = Success, 1 = Failure</returns>
 	Public Shared Function CreateDirectUploadShortcut As Integer
-		If Directory.Exists(ApplicationProfileFolders.Instance.Links) Then
-			If FolderTask.CreateShortcutToFolder( _
+		If Directory.Exists(WindowsProfileFolders.Links) Then
+			If CreateFolderShortcut( _
 				DirectUploadLinksShortcut, _
-				ApplicationProfileFolders.Instance.DirectUpload) = 1 Then
+				ApplicationProfileFolders.DirectUpload) = 1 Then
 				
 				Return 1
 			End If
 		Else
-			If FolderTask.CreateShortcutToFolder( _
+			If CreateFolderShortcut( _
 				DirectUploadMyDocsShortcut, _
-				ApplicationProfileFolders.Instance.DirectUpload) = 1 Then
+				ApplicationProfileFolders.DirectUpload) = 1 Then
 				
 				Return 1
 			End If
@@ -103,12 +103,12 @@ Public NotInheritable Class UserProfileFoldersTask
 	''' </summary>
 	''' <returns></returns>
 	Public Shared Sub DeleteDocumentCaptureShortcuts
-		If Directory.Exists(ApplicationProfileFolders.Instance.Links) Then
-			FileUtil.Delete(DocumentCaptureLinksShortcut, False)
+		If Directory.Exists(WindowsProfileFolders.Links) Then
+			DeleteFile(DocumentCaptureLinksShortcut, False)
 		Else
-			FileUtil.Delete(DocumentCaptureMyDocsShortcut, False)
+			DeleteFile(DocumentCaptureMyDocsShortcut, False)
 		End If
-		FileUtil.Delete(DocumentCaptureSendToShortcut, False)
+		DeleteFile(DocumentCaptureSendToShortcut, False)
 	End Sub
 	
 	''' <summary>
@@ -116,10 +116,10 @@ Public NotInheritable Class UserProfileFoldersTask
 	''' </summary>
 	''' <returns></returns>
 	Public Shared Sub DeleteDirectUploadShortcut
-		If Directory.Exists(ApplicationProfileFolders.Instance.Links) Then
-			FileUtil.Delete(DirectUploadLinksShortcut, False)
+		If Directory.Exists(WindowsProfileFolders.Links) Then
+			DeleteFile(DirectUploadLinksShortcut, False)
 		Else
-			FileUtil.Delete(DirectUploadMyDocsShortcut, False)
+			DeleteFile(DirectUploadMyDocsShortcut, False)
 		End If
 	End Sub
 End Class

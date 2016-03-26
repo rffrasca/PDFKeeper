@@ -20,20 +20,35 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class FolderTask
+Public Module FolderUtil
+	''' <summary>
+	''' Returns a count of files for the specified extension in the specified
+	''' folder, including subfolders.
+	''' </summary>
+	''' <param name="folder">Path name of folder.</param>
+	''' <param name="extension">Extension of files to count, * for all files.
+	''' </param>
+	''' <returns>count of files.</returns>
+	Public Function CountOfFilesInfolder( _
+		ByVal folder As String, _
+		ByVal extension As String) As Integer
+		
+		Dim count As Integer = 0
+		Dim files As String()
+		files = Directory.GetFiles(folder, "*." & extension, _
+								   SearchOption.AllDirectories)
+		For Each oFile In files
+			count += 1
+		Next
+		Return count
+	End Function
 	
 	''' <summary>
-	''' This subroutine is the class constructor required for FxCop compliance.
+	''' Creates the specified folder if it doesn't exist.
 	''' </summary>
-	Private Sub New()
-	End Sub
-	
-	''' <summary>
-	''' This function will create "folder" if it doesn't exist.
-	''' </summary>
-	''' <param name="folder"></param>
-	''' <returns>0 = Success, 1 = Failed</returns>
-	Public Shared Function Create(ByVal folder As String) As Integer
+	''' <param name="folder">Path name of folder.</param>
+	''' <returns>0 = Success, 1 = Failed.</returns>
+	Public Function CreateFolder(ByVal folder As String) As Integer
 		Try
 			If Directory.Exists(folder) = False Then
 				Directory.CreateDirectory(folder)
@@ -44,17 +59,42 @@ Public NotInheritable Class FolderTask
 			Return 1
 		End Try
 	End Function
+		
+	''' <summary>
+	''' Creates the specified shortcut to the specified folder.
+	''' </summary>
+	''' <param name="shortcut">Path name of shortcut.</param>
+	''' <param name="folder">Path name of folder.</param>
+	''' <returns>0 = Success, 1 = Failed.</returns>
+	Public Function CreateFolderShortcut( _
+		ByVal shortcut As String, _
+		ByVal folder As String) As Integer
+		
+		Try
+			Dim oWshShell As New WshShellClass
+			Dim shortcutName As IWshShortcut = _
+				DirectCast(oWshShell.CreateShortcut(shortcut), IWshShortcut)
+			shortcutName.TargetPath = folder
+			shortcutName.Save
+			Return 0
+		Catch ex As COMException
+			MessageBoxError(ex.Message)
+			Return 1
+		End Try
+	End Function
 	
 	''' <summary>
-	''' This function will delete "folder" if it does exist, including
-	''' subfolders and files.  To delete "folder" and move it to the Recycle
-	''' Bin, set "recycle" to True; otherwise, set "recycle" to False. 
+	''' Deletes the specified folder if it does exist, including subfolders
+	''' and files.
 	''' </summary>
-	''' <param name="folder"></param>
-	''' <param name="recycle"></param>
-	''' <returns>0 = Success, 1 = Failed</returns>
-	Public Shared Function Delete(ByVal folder As String, _
-								  ByVal recycle As Boolean) As Integer
+	''' <param name="folder">Path name of folder.</param>
+	''' <param name="recycle">True or False to delete folder to the Recycle
+	''' Bin.</param>
+	''' <returns>0 = Success, 1 = Failed.</returns>
+	Public Function DeleteFolder( _
+		ByVal folder As String, _
+		ByVal recycle As Boolean) As Integer
+		
 		Try
 			If Directory.Exists(folder) Then
 				If recycle Then
@@ -72,54 +112,15 @@ Public NotInheritable Class FolderTask
 			Return 1
 		End Try
 	End Function
-	
+		
 	''' <summary>
-	''' This function will create shortcut "pathName" to "folder".
+	''' Deletes all empty subfolders from the specified folder.
 	''' </summary>
-	''' <param name="pathName"></param>
-	''' <param name="folder"></param>
-	''' <returns>0 = Success, 1 = Failed</returns>
-	Public Shared Function CreateShortcutToFolder(ByVal pathName As String, _
-										 ByVal folder As String) As Integer
-		Try
-			Dim oWshShell As New WshShellClass
-			Dim shortcut As IWshShortcut = _
-				DirectCast(oWshShell.CreateShortcut(pathName), IWshShortcut)
-			shortcut.TargetPath = folder
-			shortcut.Save
-			Return 0
-		Catch ex As COMException
-			MessageBoxError(ex.Message)
-			Return 1
-		End Try
-	End Function
-	
-	''' <summary>
-	''' This function will return a count of files in "folder" with
-	'''	"extension", including subfolders.
-	''' </summary>
-	''' <param name="folder"></param>
-	''' <param name="extension"></param>
-	''' <returns>number of files</returns>
-	Public Shared Function CountOfFiles(ByVal folder As String, _
-										ByVal extension As String) As Integer
-		Dim count As Integer = 0
-		Dim files As String()
-		files = Directory.GetFiles(folder, "*." & extension, _
-								   SearchOption.AllDirectories)
-		For Each oFile In files
-			count += 1
-		Next
-		Return count
-	End Function
-	
-	''' <summary>
-	''' This subroutine will delete all empty subfolders in "folder".
-	''' </summary>
-	''' <param name="folder"></param>
-	''' <returns>0 = Success, 1 = Failed</returns>
-	Public Shared Function DeleteAllEmptySubfolders(ByVal folder As String) _
-																 As Integer
+	''' <param name="folder">Path name of folder.</param>
+	''' <returns>0 = Success, 1 = Failed.</returns>
+	Public Function DeleteEmptySubfoldersFromFolder( _
+		ByVal folder As String) As Integer
+		
 		Dim errors As Integer = 0
 		Dim odirectoryInfo As DirectoryInfo = New DirectoryInfo(folder)
 		Dim subFolders() As DirectoryInfo = _
@@ -141,4 +142,4 @@ Public NotInheritable Class FolderTask
 			Return 1
 		End If
 	End Function
-End Class
+End Module

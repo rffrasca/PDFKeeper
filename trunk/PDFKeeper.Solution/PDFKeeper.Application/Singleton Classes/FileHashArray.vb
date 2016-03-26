@@ -42,22 +42,6 @@ Public NotInheritable Class FileHashArray
 	End Sub
 	
 	''' <summary>
-	''' Returns the hash value for the specified file.
-	''' </summary>
-	''' <param name="file">Path name of file.</param>
-	''' <returns>Hash value.</returns>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Private Function ComputeFileHashValue(ByVal file As String) As String
-		Dim algorithm As HashAlgorithm = HashAlgorithm.Create("SHA1")
-		Using stream As New FileStream(file, FileMode.Open, FileAccess.Read)
-			Dim hash As Byte() = algorithm.ComputeHash(stream)
-			Return BitConverter.ToString(hash)
-		End Using
-	End Function
-	
-	''' <summary>
 	''' Checks that the specified file exists, is contained in fileHashDict,
 	''' and the hash value of the file matches the hash value in fileHashDict.
 	''' </summary>
@@ -83,7 +67,7 @@ Public NotInheritable Class FileHashArray
 		For Each pair As KeyValuePair(Of String, String) In fileHashDict
 			Dim item As String = pair.Key
 			If System.IO.File.Exists(item) Then
-				FileUtil.Delete(item, False)
+				DeleteFile(item, False)
 			End If
 		Next
 	End Sub

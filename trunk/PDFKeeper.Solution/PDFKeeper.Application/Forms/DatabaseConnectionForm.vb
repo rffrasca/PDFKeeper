@@ -59,7 +59,7 @@ Public Partial Class DatabaseConnectionForm
 	''' <param name="hlpevent"></param>
 	Private Sub DatabaseConnectionFormHelpRequested(sender As Object, hlpevent As HelpEventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		HelpShow(Me, "Database Connection.html")
+		ShowHelp(Me, "Database Connection.html")
 		Me.Cursor = Cursors.Default
 	End Sub
 	

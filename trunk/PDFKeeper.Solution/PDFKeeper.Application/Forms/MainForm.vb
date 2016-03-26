@@ -39,7 +39,7 @@ Public Partial Class MainForm
 		Me.InitializeComponent()
 		StartUpdateCheck
 		fileSystemWatcherDocumentCapture.Path = _
-			ApplicationProfileFolders.Instance.Capture
+			ApplicationProfileFolders.Capture
 	End Sub
 	
 	#Region "Form Loading"
@@ -302,7 +302,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemCaptureFolderClick(sender As Object, e As EventArgs)
-		OpenFolder(ApplicationProfileFolders.Instance.Capture)
+		OpenFolder(ApplicationProfileFolders.Capture)
 	End Sub
 	
 	''' <summary>
@@ -311,7 +311,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemDirectUploadFolderClick(sender As Object, e As EventArgs)
-		OpenFolder(ApplicationProfileFolders.Instance.DirectUpload)
+		OpenFolder(ApplicationProfileFolders.DirectUpload)
 	End Sub
 	
 	''' <summary>
@@ -368,7 +368,7 @@ Public Partial Class MainForm
 		ElseIf tabControlMain.SelectedIndex = 3 Then
 			helpFile = "Document Capture.html"
 		End If
-		HelpShow(Me, helpFile)
+		ShowHelp(Me, helpFile)
 		Me.Cursor = Cursors.Default
 	End Sub
 	
@@ -1153,8 +1153,8 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub TimerCaptureCheckTick(sender As Object, e As EventArgs)
 		timerCaptureCheck.Stop
-		If FolderTask.CountOfFiles( _
-			ApplicationProfileFolders.Instance.Capture, _
+		If CountOfFilesInfolder( _
+			ApplicationProfileFolders.Capture, _
 			"pdf") > 0 Then
 			
 			toolStripStatusLabelCaptured.Visible = True
@@ -1165,8 +1165,8 @@ Public Partial Class MainForm
 			documentCaptureFolderChanged = False
 			FillDocCaptureQueueList
 		End If
-		FolderTask.DeleteAllEmptySubfolders( _
-			ApplicationProfileFolders.Instance.Capture)
+		DeleteEmptySubfoldersFromFolder( _
+			ApplicationProfileFolders.Capture)
 		timerCaptureCheck.Start
 	End Sub
 	
@@ -1256,7 +1256,7 @@ Public Partial Class MainForm
 		Me.Cursor = Cursors.WaitCursor
 		listBoxDocCaptureQueue.Items.Clear
 		Dim files As String() = Directory.GetFiles( _
-			ApplicationProfileFolders.Instance.Capture, _
+			ApplicationProfileFolders.Capture, _
 			"*.pdf", _
 			SearchOption.AllDirectories)
 		For Each file In files
@@ -1278,7 +1278,7 @@ Public Partial Class MainForm
 		capturePdfEditInput = CStr(listBoxDocCaptureQueue.SelectedItem)
 		If IsNothing(capturePdfEditInput) = False Then
 			capturePdfEditOutput = Path.Combine( _
-				ApplicationProfileFolders.Instance.CaptureTemp, _
+				ApplicationProfileFolders.CaptureTemp, _
 				Path.GetFileName(capturePdfEditInput))
 			lastPdfDocumentCheckResult = _
 				PdfPasswordProtection.GetPType(capturePdfEditInput)
@@ -1358,7 +1358,7 @@ Public Partial Class MainForm
 				Path.Combine(Path.GetDirectoryName(capturePdfEditInput), _
 				PdfFileRenameForm.pdfRenameName & ".pdf")
 			Me.Cursor = Cursors.WaitCursor
-			FileUtil.Move(capturePdfEditInput, capturePdfFileNewName)
+			MoveFile(capturePdfEditInput, capturePdfFileNewName)
 			Me.Cursor = Cursors.Default
 		End If
 	End Sub
@@ -1376,7 +1376,7 @@ Public Partial Class MainForm
 			capturePdfEditInput)) = 6 Then ' Yes
 			
 			Me.Cursor = Cursors.WaitCursor
-			FileUtil.Delete(capturePdfEditInput, True)
+			DeleteFile(capturePdfEditInput, True)
 			Me.Cursor = Cursors.Default
 		End If
 	End Sub
@@ -1595,7 +1595,7 @@ Public Partial Class MainForm
 			If PdfFileTask.UploadToDatabase(capturePdfEditOutput) = 0 Then
 				toolStripStatusLabelMessage.Text = Nothing
 				Application.DoEvents
-				FileUtil.Delete(capturePdfEditInput, True)
+				DeleteFile(capturePdfEditInput, True)
 				ClearCaptureSelection
 				FillDocCaptureQueueList
 			Else
@@ -1737,7 +1737,7 @@ Public Partial Class MainForm
 		buttonUpload.Enabled = False
 		buttonDeselect.Enabled = False
 		listBoxDocCaptureQueue.Enabled = True
-		FileUtil.Delete(capturePdfEditOutput, False)
+		DeleteFile(capturePdfEditOutput, False)
 	End Sub
 	
 	#End Region

@@ -55,7 +55,7 @@ Public NotInheritable Class UpdateCheck
 			Dim pageContents As String = oWebClient.DownloadString( _
 				ConfigurationManager.AppSettings("ProjectSiteUrl"))
 			Dim matches As MatchCollection = Regex.Matches(pageContents, _
-				"\b(" & ProductDetails.Instance.Name & ")\b\s\d.\d.\d")
+				"\b(" & ProductDetails.Name & ")\b\s\d.\d.\d")
 			For Each expMatch As Match In matches
 				installerVersion = expMatch.ToString.Substring(10)
 				If installerVersion > maxVersion Then
@@ -63,7 +63,7 @@ Public NotInheritable Class UpdateCheck
 				End If
 			Next
 		End Using
-		If maxVersion > ProductDetails.Instance.Version Then
+		If maxVersion > ProductDetails.Version Then
 			_isUpdateAvailable = True
 		Else
 			_isUpdateAvailable = False

@@ -20,32 +20,23 @@
 '*
 '******************************************************************************
 
-''' <summary>
-''' ApplicationProfileFolders single instance class.
-''' </summary>
 Public NotInheritable Class ApplicationProfileFolders
-	Inherits WindowsProfileFolders	
-	Private Shared _instance As ApplicationProfileFolders = _
-		New ApplicationProfileFolders()
-	
-	Overloads Shared ReadOnly Property Instance As ApplicationProfileFolders
-		Get
-			Return _instance
-		End Get
-	End Property
+	''' <summary>
+	''' Class cannot be instantiated as it only contains shared members.
+	''' </summary>
+	Private Sub New()
+		' Required for FxCop compliance (CA1053).
+	End Sub
 	
 	''' <summary>
 	''' Gets the absoluate pathname to the parent folder in the user's profile
 	''' where application XML files are stored.  If the folder does not exist,
 	''' it will be created.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property RoamingParent As String
+	Public Shared ReadOnly Property RoamingParent As String
 		Get
 			Dim pathName As String = Path.Combine( _
-				ApplicationProfileFolders.Instance.AppData, _
+				WindowsProfileFolders.AppData, _
 				"PDFKeeper")
 			Directory.CreateDirectory(pathName)
 			Return pathName
@@ -57,13 +48,10 @@ Public NotInheritable Class ApplicationProfileFolders
 	''' where temporary data is stored.  If the folder does not exist, it will
 	''' be created.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property LocalParent As String
+	Public Shared ReadOnly Property LocalParent As String
 		Get
 			Dim pathName As String = Path.Combine( _
-				ApplicationProfileFolders.Instance.LocalAppData, _
+				WindowsProfileFolders.LocalAppData, _
 				"PDFKeeper")
 			Directory.CreateDirectory(pathName)
 			Return pathName
@@ -74,10 +62,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	''' Gets the absoluate pathname to the Cache folder in the user's profile.
 	''' If the folder does not exist, it will be created.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property Cache As String
+	Public Shared ReadOnly Property Cache As String
 		Get
 			Dim pathName As String = Path.Combine(LocalParent, "Cache")
 			Directory.CreateDirectory(pathName)
@@ -89,10 +74,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	''' Gets the absoluate pathname to the Capture folder in the user's
 	''' profile.  If the folder does not exist, it will be created.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property Capture As String
+	Public Shared ReadOnly Property Capture As String
 		Get
 			Dim pathName As String = Path.Combine(LocalParent, "Capture")
 			Directory.CreateDirectory(pathName)
@@ -104,10 +86,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	''' Gets the absoluate pathname to the CaptureTemp folder in the user's
 	''' profile.  If the folder does not exist, it will be created.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property CaptureTemp As String
+	Public Shared ReadOnly Property CaptureTemp As String
 		Get
 			Dim pathName As String = Path.Combine(LocalParent, "CaptureTemp")
 			Directory.CreateDirectory(pathName)
@@ -119,10 +98,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	''' Gets the absoluate pathname to the DirectUpload folder in the user's
 	''' profile.  If the folder does not exist, it will be created.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property DirectUpload As String
+	Public Shared ReadOnly Property DirectUpload As String
 		Get
 			Dim pathName As String = Path.Combine(LocalParent, "DirectUpload")
 			Directory.CreateDirectory(pathName)
@@ -134,10 +110,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	''' Gets the absoluate pathname to the DirectUploadTemp folder in the
 	''' user's profile.  If the folder does not exist, it will be created.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property DirectUploadTemp As String
+	Public Shared ReadOnly Property DirectUploadTemp As String
 		Get
 			Dim pathName As String = Path.Combine(LocalParent, "DirectUploadTemp")
 			Directory.CreateDirectory(pathName)
@@ -150,13 +123,10 @@ Public NotInheritable Class ApplicationProfileFolders
 	''' profile used for storing Direct Upload XML files.  If the folder does
 	''' not exist, it will be created.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property DirectUploadXml As String
+	Public Shared ReadOnly Property DirectUploadXml As String
 		Get
 			Dim pathName As String = Path.Combine( _
-				ApplicationProfileFolders.Instance.RoamingParent, _
+				ApplicationProfileFolders.RoamingParent, _
 				"DirectUpload")
 			Directory.CreateDirectory(pathName)
 			Return pathName

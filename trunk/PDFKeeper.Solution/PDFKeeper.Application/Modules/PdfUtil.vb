@@ -65,7 +65,7 @@ Public Module PdfUtil
 				Return Nothing
 			End Try
 		End If
-		FileUtil.Encrypt(imageFile)
+		EncryptFile(imageFile)
 		Using file As New FileStream(imageFile, FileMode.Open, FileAccess.Read)
 			Return System.Drawing.Image.FromStream(file)
 		End Using

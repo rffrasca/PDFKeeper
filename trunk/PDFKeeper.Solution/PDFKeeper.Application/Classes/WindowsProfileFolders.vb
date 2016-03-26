@@ -20,25 +20,18 @@
 '*
 '******************************************************************************
 
-''' <summary>
-''' WindowsProfileFolders single instance class.
-''' </summary>
-Public Class WindowsProfileFolders
-	Private Shared _instance As WindowsProfileFolders = New WindowsProfileFolders()
-	
-	Public Shared ReadOnly Property Instance As WindowsProfileFolders
-		Get
-			Return _instance
-		End Get
-	End Property
+Public NotInheritable Class WindowsProfileFolders
+	''' <summary>
+	''' Class cannot be instantiated as it only contains shared members.
+	''' </summary>
+	Private Sub New()
+		' Required for FxCop compliance (CA1053).
+	End Sub
 	
 	''' <summary>
 	''' Gets the absoluate pathname to the Links folder in the user's profile.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property Links As String
+	Public Shared ReadOnly Property Links As String
 		Get
 			Return Path.Combine( _
 				Environment.GetFolderPath( _
@@ -50,10 +43,7 @@ Public Class WindowsProfileFolders
 	''' <summary>
 	''' Gets the absoluate pathname to the AppData folder in the user's profile.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property AppData As String
+	Public Shared ReadOnly Property AppData As String
 		Get
 			Return Environment.GetFolderPath( _
 				Environment.SpecialFolder.ApplicationData)
@@ -64,10 +54,7 @@ Public Class WindowsProfileFolders
 	''' Gets the absoluate pathname to the LocalAppData folder in the user's
 	''' profile.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property LocalAppData As String
+	Public Shared ReadOnly Property LocalAppData As String
 		Get
 			Return Environment.GetFolderPath( _
 				Environment.SpecialFolder.LocalApplicationData)

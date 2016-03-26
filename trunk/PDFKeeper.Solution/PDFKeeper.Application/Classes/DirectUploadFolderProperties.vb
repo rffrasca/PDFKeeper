@@ -37,7 +37,7 @@ Public Class DirectUploadFolderProperties
 	''' <param name="xmlName" name only without the file extension></param>
 	Public Sub New(ByVal xmlName as String)
 		xmlFile = Path.Combine( _
-			ApplicationProfileFolders.Instance.DirectUploadXml, _
+			ApplicationProfileFolders.DirectUploadXml, _
 			xmlName & ".xml")
 	End Sub
 						
