@@ -3,7 +3,7 @@
 rem ***************************************************************************
 rem *
 rem * PDFKeeper -- Free, Open Source PDF Capture, Upload, and Search.
-rem * Copyright (C) 2009-2015 Robert F. Frasca
+rem * Copyright (C) 2009-2016 Robert F. Frasca
 rem *
 rem * This file is part of PDFKeeper.
 rem *

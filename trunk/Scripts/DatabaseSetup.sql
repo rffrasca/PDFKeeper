@@ -1,7 +1,7 @@
 /******************************************************************************
 **
 ** PDFKeeper -- Free, Open Source PDF Capture, Upload, and Search.
-** Copyright (C) 2009-2015 Robert F. Frasca
+** Copyright (C) 2009-2016 Robert F. Frasca
 **
 ** This file is part of PDFKeeper.
 **
