@@ -20,9 +20,6 @@
 '*
 '******************************************************************************
 
-''' <summary>
-''' ImageZoom single instance class.
-''' </summary>
 Public NotInheritable Class ImageZoom
 	Private Shared _instance As ImageZoom = New ImageZoom()
 	Private Const ActualSize As Integer = 100	' percentage
