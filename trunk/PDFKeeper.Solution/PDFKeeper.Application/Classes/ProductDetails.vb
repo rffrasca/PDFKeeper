@@ -23,10 +23,8 @@
 Public NotInheritable Class ProductDetails
 	Private Shared productVersion As String = Application.ProductVersion
 	
-	''' <summary>
-	''' Class cannot be instantiated as it only contains shared members.
-	''' </summary>
 	Private Sub New()
+		' Class cannot be instantiated as it only contains shared members.
 		' Required for FxCop compliance (CA1053).
 	End Sub
 	
