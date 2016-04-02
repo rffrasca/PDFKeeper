@@ -48,8 +48,8 @@ Public Partial Class DatabaseConnectionForm
 	''' user properties and update the form.
 	''' </summary>
 	Private Sub ReadUserProperties
-		textBoxUserName.Text = UserSettings.LastUserName
-		textBoxDataSource.Text = UserSettings.LastDataSource
+		textBoxUserName.Text = UserSettings.Instance.LastUserName
+		textBoxDataSource.Text = UserSettings.Instance.LastDataSource
 	End Sub
 	
 	''' <summary>
@@ -188,8 +188,8 @@ Public Partial Class DatabaseConnectionForm
 	''' coorespending user properties.
 	''' </summary>
 	Private Sub SaveUserProperties
-		UserSettings.LastUserName = textBoxUserName.Text
-		UserSettings.LastDataSource = textBoxDataSource.Text
+		UserSettings.Instance.LastUserName = textBoxUserName.Text
+		UserSettings.Instance.LastDataSource = textBoxDataSource.Text
 	End Sub
 	
 	''' <summary>

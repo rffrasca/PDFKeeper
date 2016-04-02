@@ -21,9 +21,6 @@
 '******************************************************************************
 
 Public Partial Class AboutForm
-	''' <summary>
-	''' Form constructor.
-	''' </summary>
 	Public Sub New()
 		Me.InitializeComponent()
 	End Sub
