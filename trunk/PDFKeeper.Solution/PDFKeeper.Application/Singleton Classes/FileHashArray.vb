@@ -20,9 +20,6 @@
 '*
 '******************************************************************************
 
-''' <summary>
-''' FileHashArray single instance class.
-''' </summary>
 Public NotInheritable Class FileHashArray
 	Private Shared _instance As FileHashArray = New FileHashArray()
 	Private fileHashDict As New Dictionary(Of String, String)

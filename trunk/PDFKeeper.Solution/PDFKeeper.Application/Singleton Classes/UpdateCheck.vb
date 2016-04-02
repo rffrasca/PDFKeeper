@@ -20,9 +20,6 @@
 '*
 '******************************************************************************
 
-''' <summary>
-''' UpdateCheck single instance class.
-''' </summary>
 Public NotInheritable Class UpdateCheck
 	Private Shared _instance As UpdateCheck = New UpdateCheck()
 	Private _isUpdateAvailable As Boolean = Nothing
