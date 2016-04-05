@@ -22,10 +22,10 @@
 
 Public Module MessageBoxWrapper
 	''' <summary>
-	''' Displays the specified message in an Error Message Box.
+	''' Shows "value" in an Error Message Box.
 	''' </summary>
-	''' <param name="value">Message to display.</param>
-	Public Sub MessageBoxError(ByVal value As String)
+	''' <param name="value"></param>
+	Public Sub ShowError(ByVal value As String)
 		MessageBox.Show(value, _
 			PdfKeeper.Strings.MessageBoxTitleError, _
 			MessageBoxButtons.OK, _
@@ -36,10 +36,10 @@ Public Module MessageBoxWrapper
 	End Sub
 	
 	''' <summary>
-	''' Displays the specified message in an Information Message Box.
+	''' Shows "value" in an Information Message Box.
 	''' </summary>
-	''' <param name="value">Message to display.</param>
-	Public Sub MessageBoxInformation(ByVal value As String)
+	''' <param name="value"></param>
+	Public Sub ShowInformation(ByVal value As String)
 		MessageBox.Show(value, _
 			PdfKeeper.Strings.MessageBoxTitleInformation, _
 			MessageBoxButtons.OK, _
@@ -50,11 +50,11 @@ Public Module MessageBoxWrapper
 	End Sub
 		
 	''' <summary>
-	''' Displays the specified message in a Question Message Box.
+	''' Shows "value" in a Question Message Box.
 	''' </summary>
-	''' <param name="value">Message to display.</param>
-	''' <returns>6 for Yes or 7 for No.</returns>
-	Public Function MessageBoxQuestion(ByVal value As String) As Integer
+	''' <param name="value"></param>
+	''' <returns>6 for Yes or 7 for No</returns>
+	Public Function ShowQuestion(ByVal value As String) As Integer
 		Dim button = MessageBox.Show(value, _
 			PdfKeeper.Strings.MessageBoxTitleQuestion, _
 			MessageBoxButtons.YesNo, _

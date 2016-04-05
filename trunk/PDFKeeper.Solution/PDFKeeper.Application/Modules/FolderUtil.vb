@@ -22,13 +22,13 @@
 
 Public Module FolderUtil
 	''' <summary>
-	''' Returns a count of files for the specified extension in the specified
-	''' folder, including subfolders.
+	''' Returns a count of files with "extension" in "folder", including
+	''' subfolders.
 	''' </summary>
-	''' <param name="folder">Path name of folder.</param>
-	''' <param name="extension">Extension of files to count, * for all files.
-	''' </param>
-	''' <returns>count of files.</returns>
+	''' <param name="folder"></param>
+	''' <param name="extension">file extension minus the period.  * will count
+	'''	all files.</param>
+	''' <returns></returns>
 	Public Function CountOfFilesInfolder( _
 		ByVal folder As String, _
 		ByVal extension As String) As Integer
@@ -44,10 +44,10 @@ Public Module FolderUtil
 	End Function
 	
 	''' <summary>
-	''' Creates the specified folder if it doesn't exist.
+	''' Creates "folder" if it does not exist.
 	''' </summary>
-	''' <param name="folder">Path name of folder.</param>
-	''' <returns>0 = Success, 1 = Failed.</returns>
+	''' <param name="folder"></param>
+	''' <returns>0 = Success, 1 = Failed</returns>
 	Public Function CreateFolder(ByVal folder As String) As Integer
 		Try
 			If Directory.Exists(folder) = False Then
@@ -55,17 +55,17 @@ Public Module FolderUtil
 			End If
 			Return 0
 		Catch ex As IOException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Return 1
 		End Try
 	End Function
 		
 	''' <summary>
-	''' Creates the specified shortcut to the specified folder.
+	''' Creates "shortcut" to "folder".
 	''' </summary>
-	''' <param name="shortcut">Path name of shortcut.</param>
-	''' <param name="folder">Path name of folder.</param>
-	''' <returns>0 = Success, 1 = Failed.</returns>
+	''' <param name="shortcut"></param>
+	''' <param name="folder"></param>
+	''' <returns>0 = Success, 1 = Failed</returns>
 	Public Function CreateFolderShortcut( _
 		ByVal shortcut As String, _
 		ByVal folder As String) As Integer
@@ -78,19 +78,18 @@ Public Module FolderUtil
 			shortcutName.Save
 			Return 0
 		Catch ex As COMException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Return 1
 		End Try
 	End Function
 	
 	''' <summary>
-	''' Deletes the specified folder if it does exist, including subfolders
-	''' and files.
+	''' Deletes "folder", including subfolders and files.  When "recycle" is
+	''' True, deletes to the Windows Recycle Bin.
 	''' </summary>
-	''' <param name="folder">Path name of folder.</param>
-	''' <param name="recycle">True or False to delete folder to the Recycle
-	''' Bin.</param>
-	''' <returns>0 = Success, 1 = Failed.</returns>
+	''' <param name="folder"></param>
+	''' <param name="recycle">True or False</param>
+	''' <returns>0 = Successful or file does not exist, 1 = Failed</returns>
 	Public Function DeleteFolder( _
 		ByVal folder As String, _
 		ByVal recycle As Boolean) As Integer
@@ -108,31 +107,31 @@ Public Module FolderUtil
 			End If
 			Return 0
 		Catch ex As IOException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Return 1
 		End Try
 	End Function
 		
 	''' <summary>
-	''' Deletes all empty subfolders from the specified folder.
+	''' Deletes all empty subfolders from "folder".
 	''' </summary>
-	''' <param name="folder">Path name of folder.</param>
-	''' <returns>0 = Success, 1 = Failed.</returns>
+	''' <param name="folder"></param>
+	''' <returns>0 = Success, 1 = Failed</returns>
 	Public Function DeleteEmptySubfoldersFromFolder( _
 		ByVal folder As String) As Integer
 		
 		Dim errors As Integer = 0
-		Dim odirectoryInfo As DirectoryInfo = New DirectoryInfo(folder)
+		Dim dirInfo As DirectoryInfo = New DirectoryInfo(folder)
 		Dim subFolders() As DirectoryInfo = _
-			oDirectoryInfo.GetDirectories("*", SearchOption.AllDirectories)
-		Dim oDirectory As DirectoryInfo
-		For Each oDirectory In subFolders
-			If NativeMethods.PathIsDirectoryEmpty(oDirectory.FullName) Then
+			dirInfo.GetDirectories("*", SearchOption.AllDirectories)
+		Dim dir As DirectoryInfo
+		For Each dir In subFolders
+			If NativeMethods.PathIsDirectoryEmpty(dir.FullName) Then
 				Try
-					Directory.Delete(oDirectory.FullName)
+					Directory.Delete(dir.FullName)
 				Catch ex As IOException
 					errors += 1
-					MessageBoxError(ex.Message)
+					ShowError(ex.Message)
 				End Try
 			End If
 		Next
