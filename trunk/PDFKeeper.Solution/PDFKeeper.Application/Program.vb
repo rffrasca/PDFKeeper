@@ -72,7 +72,7 @@ Namespace My
 		''' <param name="e"></param>
 		Private Sub MyApplication_UnhandledException(sender As Object, _
 				e As System.UnhandledExceptionEventArgs)
-			MessageBoxError(e.ExceptionObject.ToString)
+			ShowError(e.ExceptionObject.ToString)
 		End Sub
 	End Class
 End Namespace

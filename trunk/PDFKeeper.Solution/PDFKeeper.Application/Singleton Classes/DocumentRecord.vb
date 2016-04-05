@@ -34,8 +34,8 @@ Public NotInheritable Class DocumentRecord
 	End Property
 	
 	''' <summary>
-	''' Gets or sets the Document Record ID.
-	''' ID = 0 will set a null record.
+	''' Gets or sets the Document Record ID.  Setting the Id to 0 will set a
+	''' null record.
 	''' </summary>
 	Public Property Id As Integer
 		Get
@@ -80,13 +80,31 @@ Public NotInheritable Class DocumentRecord
 				"pdfkeeper" & Id & ".pdf")
 		End Get
 	End Property
+	
+	''' <summary>
+	''' 
+	''' </summary>
+	Public ReadOnly Property PdfPreviewImage As System.Drawing.Image
+		Get
+			Return PdfFirstPageToImage(PdfPathName)
+		End Get
+	End Property
+	
+	''' <summary>
+	''' Gets the text from the Document Record PDF.
+	''' </summary>
+	Public ReadOnly Property PdfText As String
+		Get
+			Return PdfTextToString(PdfPathName)
+		End Get
+	End Property
 		
 	''' <summary>
 	''' Queries Document Record Keywords, Notes, and PDF from the database.
-	''' Only query Keywords and Notes when the Document Record PDF is cached.
-	''' When the PDF is queried, add to the file cache.  Encrypt the image
-	''' file only if file system encryption is supported by the operating
-	''' system.
+	''' Only query Keywords and Notes when the the Document Record PDF is
+	''' contained in the file cache.  When the PDF document is queried, add to
+	''' the file cache.  Encrypt the PDF document if file system encryption is
+	''' supported by the operating system.
 	''' </summary>
 	Private Sub OnIdChanged
 		Dim query As String
@@ -97,17 +115,17 @@ Public NotInheritable Class DocumentRecord
 		End If
 		Dim connection As New DatabaseConnection
 		If connection.Open( _
-			UserSettings.Instance.LastUserName, _
+			UserSettings.LastUserName, _
 			DatabaseConnectionForm.dbPassword, _
-			UserSettings.Instance.LastDataSource) = 1 Then
+			UserSettings.LastDataSource) = 1 Then
 			connection.Dispose
 			_id = 0
 			Throw New DataException(String.Format( _
 				CultureInfo.CurrentCulture, _
 				PdfKeeper.Strings.DatabaseUnavailable, _
-				UserSettings.Instance.LastDataSource))
+				UserSettings.LastDataSource))
 		End If
-		If FileHashArray.Instance.ContainsItemAndHashValuesMatch( _
+		If FileCache.Instance.ContainsItemAndHashValuesMatch( _
 			PdfPathName) Then
 			
 			query = "select doc_keywords,doc_notes " & _
@@ -128,7 +146,7 @@ Public NotInheritable Class DocumentRecord
 					If dataReader.IsDBNull(1) = False Then
 						_notes = dataReader.GetString(1)
 					End If
-					If FileHashArray.Instance.ContainsItemAndHashValuesMatch( _
+					If FileCache.Instance.ContainsItemAndHashValuesMatch( _
 						PdfPathName) = False Then
 						
 						Using blob As OracleBlob = dataReader.GetOracleBlob(2)
@@ -155,7 +173,7 @@ Public NotInheritable Class DocumentRecord
 								End Using
 							End Using
 						End Using
-						FileHashArray.Instance.Add(PdfPathName)
+						FileCache.Instance.Add(PdfPathName)
 					End If
 					EncryptFile(PdfPathName)
 				End Using
@@ -169,20 +187,20 @@ Public NotInheritable Class DocumentRecord
 	End Sub
 	
 	''' <summary>
-	''' Updates Document Notes in the database for the Document Record.
+	''' Updates Document Notes in the database for Id.
 	''' </summary>
 	Private Sub OnNotesChanged
 		Dim connection As New DatabaseConnection
 		If connection.Open( _
-			UserSettings.Instance.LastUserName, _
+			UserSettings.LastUserName, _
 			DatabaseConnectionForm.dbPassword, _
-			UserSettings.Instance.LastDataSource) = 1 Then
+			UserSettings.LastDataSource) = 1 Then
 			connection.Dispose
 			_notes = undoNotes
 			Throw New DataException(String.Format( _
 				CultureInfo.CurrentCulture, _
 				PdfKeeper.Strings.DatabaseUnavailable, _
-				UserSettings.Instance.LastDataSource))
+				UserSettings.LastDataSource))
 		End If
 		Dim update As String = _
 			"update pdfkeeper.docs " & _
