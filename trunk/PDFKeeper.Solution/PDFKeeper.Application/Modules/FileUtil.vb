@@ -22,10 +22,10 @@
 
 Public Module FileUtil
 	''' <summary>
-	''' Returns the hash value for the specified file.
+	''' Returns the hash value of "file".
 	''' </summary>
-	''' <param name="file">Path name of file.</param>
-	''' <returns>Hash value.</returns>
+	''' <param name="file"></param>
+	''' <returns></returns>
 	Public Function ComputeFileHashValue(ByVal file As String) As String
 		Dim algorithm As HashAlgorithm = HashAlgorithm.Create("SHA1")
 		Using stream As New FileStream(file, FileMode.Open, FileAccess.Read)
@@ -35,12 +35,12 @@ Public Module FileUtil
 	End Function
 	
 	''' <summary>
-	''' Deletes the specified file if it does exist.
+	''' Deletes "file".  When "recycle" is True, deletes to the Windows Recycle
+	''' Bin.
 	''' </summary>
-	''' <param name="file">Path name of file.</param>
-	''' <param name="recycle">True or False to delete file to the Recycle Bin.
-	''' </param>
-	''' <returns>0 = Successful or file does not exist, 1 = Failed.</returns>
+	''' <param name="file"></param>
+	''' <param name="recycle">True or False</param>
+	''' <returns>0 = Successful or file does not exist, 1 = Failed</returns>
 	Public Function DeleteFile( _
 		ByVal file As String, _
 		ByVal recycle As Boolean) As Integer
@@ -57,31 +57,31 @@ Public Module FileUtil
 			End If
 			Return 0
 		Catch ex As IOException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Return 1
 		End Try
 	End Function
 	
 	''' <summary>
-	''' Eencrypts the specified file if the operating system supports the
-	''' Encrypting File System (EFS).
+	''' Eencrypts "file" when the operating system supports the Encrypting File
+	''' System (EFS).
 	''' </summary>
-	''' <param name="file">Path name of file.</param>
+	''' <param name="file"></param>
 	Public Sub EncryptFile(ByVal file As String)
 		Try
 			System.IO.File.Encrypt(file)
 		Catch ex As IOException
 		Catch ex As UnauthorizedAccessException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 		End Try
 	End Sub
 	
 	''' <summary>
-	''' Returns True or False if the specified file is in use.  If the file
-	''' does not exist, False is returned. 
+	''' Returns True or False if "file" is in use.  If "file" does not exist,
+	''' False is returned. 
 	''' </summary>
-	''' <param name="file">Path name of file.</param>
-	''' <returns>True or False.</returns>
+	''' <param name="file"></param>
+	''' <returns></returns>
 	Public Function IsFileInUse(ByVal file As String) As Boolean
 		If System.IO.File.Exists(file) Then
 			Try
@@ -99,12 +99,11 @@ Public Module FileUtil
 	End Function
 			
 	''' <summary>
-	''' Moves the specified file to the specified target file.  It can be used
-	''' to rename the source file to the target file.
+	''' Moves/renames "sourceFile" to "targetFile".
 	''' </summary>
-	''' <param name="sourceFile">Path name of source file.</param>
-	''' <param name="targetFile">Path name of target file.</param>
-	''' <returns>0 = Successful, 1 = Failed.</returns>
+	''' <param name="sourceFile"></param>
+	''' <param name="targetFile"></param>
+	''' <returns>0 = Successful, 1 = Failed</returns>
 	Public Function MoveFile( _
 		ByVal sourceFile As String, _
 		ByVal targetFile As String) As Integer
@@ -113,16 +112,16 @@ Public Module FileUtil
 			System.IO.File.Move(SourceFile, targetFile)
 			Return 0
 		Catch ex As IOException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Return 1
 		End Try
 	End Function
 	
 	''' <summary>
-	''' Waits for "file" to be created.  It will wait until "file" exists and
-	''' is not in use.
+	''' Waits for "file" to be created by waiting until "file" exists and
+	''' not in use.
 	''' </summary>
-	''' <param name="file">Path name of file.</param>
+	''' <param name="file"></param>
 	Public Sub WaitForFileCreation(ByVal file As String)
 		Do Until System.IO.File.Exists(file)
 			Thread.Sleep(2000)

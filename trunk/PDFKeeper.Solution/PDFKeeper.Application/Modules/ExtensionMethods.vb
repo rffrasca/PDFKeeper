@@ -22,10 +22,10 @@
 
 Public Module ExtensionMethods
 	''' <summary>
-	''' Checks if the specified string contains invalid file name characters.
+	''' Checks if "value" contains invalid file name characters.
 	''' </summary>
-	''' <param name="value">String to check.</param>
-	''' <returns>True or False.</returns>
+	''' <param name="value"></param>
+	''' <returns>True or False</returns>
 	<ExtensionAttribute> _
 	Public Function ContainsInvalidFileNameChars( _
 		ByVal value As String) As Boolean
@@ -39,11 +39,12 @@ Public Module ExtensionMethods
 	End Function
 	
 	''' <summary>
-	''' Prints the specified string.
+	''' Prints "value" using "font" and "printArgs" from the PrintDocument
+	''' component.
 	''' </summary>
-	''' <param name="value">String to print.</param>
-	''' <param name="font">Font to use for text.</param>
-	''' <param name="printArgs">Data for the PrintPage event.</param>
+	''' <param name="value"></param>
+	''' <param name="font"></param>
+	''' <param name="printArgs"></param>
 	<ExtensionAttribute> _
 	Public Sub Print( _
 		ByVal value As String, _
@@ -87,10 +88,10 @@ Public Module ExtensionMethods
 	End Sub
 	
 	''' <summary>
-	''' Gets the string from the specified SecureString object.
+	''' Gets the string from the SecureString "param".
 	''' </summary>
-	''' <param name="param">SecureString object.</param>
-	''' <returns>Plain text string.</returns>
+	''' <param name="param"></param>
+	''' <returns></returns>
 	<ExtensionAttribute> _
 	Friend Function GetString(ByVal param As SecureString) As String
 		Dim secureStringPtr As IntPtr
