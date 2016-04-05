@@ -141,7 +141,7 @@ Public Partial Class DirectUploadConfigurationForm
 	Private Sub ButtonDeleteClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
 		If CountOfFilesInfolder(folderPath, "pdf") = 0 Then
-			If MessageBoxQuestion( _
+			If ShowQuestion( _
 				String.Format( _
 				CultureInfo.CurrentCulture, _
 				PdfKeeper.Strings.DeleteFolderQuestion, _
@@ -160,7 +160,7 @@ Public Partial Class DirectUploadConfigurationForm
 				End If
 			End If
 		Else
-			MessageBoxError( _
+			ShowError( _
 				String.Format( _
 				CultureInfo.CurrentCulture, _
 				PdfKeeper.Strings.CannotDeleteFolder, _
@@ -324,7 +324,10 @@ Public Partial Class DirectUploadConfigurationForm
 	''' <param name="hlpevent"></param>
 	Private Sub DirectUploadConfigurationFormHelpRequested(sender As Object, hlpevent As HelpEventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		ShowHelp(Me, "Configuring Direct Upload sub-folders.html")
+		Help.ShowHelp( _
+			Me, _
+			HelpFileTopics.HelpFile, _
+			HelpFileTopics.DirectUploadConfigurationForm)
 		Me.Cursor = Cursors.Default
 	End Sub
 	
@@ -382,7 +385,7 @@ Public Partial Class DirectUploadConfigurationForm
 						ApplicationProfileFolders.DirectUpload, _
 						textBoxFolderName.Text))
 				Catch ex As IOException
-					MessageBoxError(ex.Message)
+					ShowError(ex.Message)
 					Return 1
 				End Try
 			End If
@@ -435,7 +438,7 @@ Public Partial Class DirectUploadConfigurationForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonDiscardClick(sender As Object, e As EventArgs)
-		If MessageBoxQuestion( _
+		If ShowQuestion( _
 			PdfKeeper.Strings.DiscardAllModificationsPrompt) = 6 Then ' Yes
 			
 			FillList

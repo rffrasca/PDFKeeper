@@ -65,7 +65,7 @@ Public Partial Class MainForm
 	''' This subroutine will start the update check thread.
 	''' </summary>
 	Private Sub StartUpdateCheck
-		If CDbl(UserSettings.Instance.UpdateCheck) = 1 Then
+		If CDbl(UserSettings.UpdateCheck) = 1 Then
 			toolStripStatusLabelUpdateStatus.Text = _
 				PdfKeeper.Strings.MainFormCheckingVersion
 			BackgroundWorkerUpdateCheck.RunWorkerAsync
@@ -77,9 +77,9 @@ Public Partial Class MainForm
 	''' UserSettings properties.
 	''' </summary>
 	Private Sub PositionAndSizeForm
-		Me.Top = CInt(UserSettings.Instance.FormPositionTop)
-		Me.Left = CInt(UserSettings.Instance.FormPositionLeft)
-		If IsNothing(UserSettings.Instance.FormPositionHeight) Then
+		Me.Top = CInt(UserSettings.FormPositionTop)
+		Me.Left = CInt(UserSettings.FormPositionLeft)
+		If IsNothing(UserSettings.FormPositionHeight) Then
 			Dim workingRectangle As System.Drawing.Rectangle = _
 				Screen.PrimaryScreen.WorkingArea
 			Me.Size = New System.Drawing.Size(workingRectangle.Width - 10, _
@@ -88,14 +88,14 @@ Public Partial Class MainForm
 				Me.Height = UserSettings.FormPositionDefaultHeight
 			End If
 		Else
-			Me.Height = CInt(UserSettings.Instance.FormPositionHeight)
+			Me.Height = CInt(UserSettings.FormPositionHeight)
 		End If
-		If IsNothing(UserSettings.Instance.FormPositionWidth) = False Then
-			Me.Width = CInt(UserSettings.Instance.FormPositionWidth)
+		If IsNothing(UserSettings.FormPositionWidth) = False Then
+			Me.Width = CInt(UserSettings.FormPositionWidth)
 		ElseIf Me.Width > UserSettings.FormPositionDefaultWidth Then
 			Me.Width = UserSettings.FormPositionDefaultWidth			
 		End If
-		Me.WindowState = CType(UserSettings.Instance.FormPositionWindowState, _
+		Me.WindowState = CType(UserSettings.FormPositionWindowState, _
 			Windows.Forms.FormWindowState)
 	End Sub
 	
@@ -104,7 +104,7 @@ Public Partial Class MainForm
 	''' preview session" on the Document Preview tab. 
 	''' </summary>
 	Private Sub DoNotResetZoomLevelCheck
-		If UserSettings.Instance.DoNotResetZoomLevel = CStr(1) Then
+		If UserSettings.DoNotResetZoomLevel = CStr(1) Then
 			checkBoxDoNotResetZoomLevel.Checked = True
 		End If
 	End Sub
@@ -122,7 +122,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemSavePdfToDiskClick(sender As Object, e As EventArgs)
 		SaveFileDialog.InitialDirectory = _
-			UserSettings.Instance.SaveFileLastFolder
+			UserSettings.SaveFileLastFolder
 		
 		' Construct the file name prefill using the title of the selected
 		' list view item.
@@ -135,7 +135,7 @@ Public Partial Class MainForm
 		Me.Cursor = Cursors.WaitCursor
 		Dim targetPdfFile As String = SaveFileDialog.FileName
 		Dim pdfFileInfo As New FileInfo(targetPdfFile)
-		UserSettings.Instance.SaveFileLastFolder = pdfFileInfo.DirectoryName
+		UserSettings.SaveFileLastFolder = pdfFileInfo.DirectoryName
 		If Not pdfFileInfo.Extension.ToUpper(CultureInfo.InvariantCulture) = _
 				".PDF" Then
 			targetPdfFile = targetPdfFile & ".pdf"
@@ -146,11 +146,11 @@ Public Partial Class MainForm
 				targetPdfFile)
 		Catch ex As IOException
 			Me.Cursor = Cursors.Default
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Exit Sub
 		End Try
 		Me.Cursor = Cursors.Default
-		MessageBoxInformation(String.Format( _
+		ShowInformation(String.Format( _
 			CultureInfo.CurrentCulture, _
 			PdfKeeper.Strings.MainFormPdfSaved, _
 			targetPdfFile))
@@ -218,7 +218,7 @@ Public Partial Class MainForm
 			textBoxDocumentNotes.AppendText(vbCrLf & vbCrLf)
 		End If
 		textBoxDocumentNotes.AppendText("--- " & Date.Now & " (" & _
-			UserSettings.Instance.LastUserName & ") ---" & vbCrLf)
+			UserSettings.LastUserName & ") ---" & vbCrLf)
 		TextBoxDocumentNotesScrollToEnd
 	End Sub
 
@@ -260,16 +260,16 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemDeleteCheckedDocumentsClick(sender As Object, e As EventArgs)
 		DocumentNotesModifiedCheck
-		If MessageBoxQuestion( _
+		If ShowQuestion( _
 			PdfKeeper.Strings.MainFormDeleteChecked) = 7 Then ' No
 			
 			Exit Sub
 		End If
 		Me.Cursor = Cursors.WaitCursor
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(UserSettings.Instance.LastUserName, _
+		If oDatabaseConnection.Open(UserSettings.LastUserName, _
 				DatabaseConnectionForm.dbPassword, _
-				UserSettings.Instance.LastDataSource) = 1 Then
+				UserSettings.LastDataSource) = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			Exit Sub
@@ -284,7 +284,7 @@ Public Partial Class MainForm
 					oOracleCommand.ExecuteNonQuery
 				Catch ex As OracleException
 					Me.Cursor = Cursors.Default
-					MessageBoxError(ex.Message.ToString())
+					ShowError(ex.Message.ToString())
 					oDatabaseConnection.Dispose
 					Exit Sub
 				End Try
@@ -344,7 +344,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemHelpClick(sender As Object, e As EventArgs)
-		If CDbl(UserSettings.Instance.UpdateCheck) = 1 Then
+		If CDbl(UserSettings.UpdateCheck) = 1 Then
 			toolStripMenuItemCheckNewerVersion.Checked = True
 		Else
 			toolStripMenuItemCheckNewerVersion.Checked = False
@@ -358,18 +358,17 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemContentsClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		Dim helpFile As String = Nothing
+		Dim helpTopic As String = Nothing
 		If tabControlMain.SelectedIndex = 0 Then
-			helpFile = "Document Search.html"
+			helpTopic = HelpFileTopics.MainFormDocumentSearchTab
 		ElseIf tabControlMain.SelectedIndex = 1 Then
-			helpFile = "Previewing documents returned from a search.html"
+			helpTopic = HelpFileTopics.MainFormDocumentPreviewTab
 		ElseIf tabControlMain.SelectedIndex = 2 Then
-			helpFile = _
-				"Viewing text-only for documents returned from a search.html"
+			helpTopic = HelpFileTopics.MainFormDocumentTextOnlyViewTab
 		ElseIf tabControlMain.SelectedIndex = 3 Then
-			helpFile = "Document Capture.html"
+			helpTopic = HelpFileTopics.MainFormDocumentCaptureTab
 		End If
-		ShowHelp(Me, helpFile)
+		Help.ShowHelp(Me, HelpFileTopics.HelpFile, helpTopic)
 		Me.Cursor = Cursors.Default
 	End Sub
 	
@@ -380,10 +379,10 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemCheckNewerVersionClick(sender As Object, e As EventArgs)
 		If toolStripMenuItemCheckNewerVersion.Checked Then
-			UserSettings.Instance.UpdateCheck = CStr(0)
+			UserSettings.UpdateCheck = CStr(0)
 			toolStripMenuItemCheckNewerVersion.Checked = False
 		Else
-			UserSettings.Instance.UpdateCheck = CStr(1)
+			UserSettings.UpdateCheck = CStr(1)
 			toolStripMenuItemCheckNewerVersion.Checked = True
 		End If
 	End Sub
@@ -525,9 +524,9 @@ Public Partial Class MainForm
 		toolStripStatusLabelMessage.Text = Nothing
 		Me.Refresh	' Form needed to be refreshed for status label to clear.
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(UserSettings.Instance.LastUserName, _
+		If oDatabaseConnection.Open(UserSettings.LastUserName, _
 				DatabaseConnectionForm.dbPassword, _
-				UserSettings.Instance.LastDataSource) = 1 Then
+				UserSettings.LastDataSource) = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			comboBoxSearchText.Select
@@ -603,7 +602,7 @@ Public Partial Class MainForm
   			Catch ex As OracleException
 				oDatabaseConnection.Dispose
 				Me.Cursor = Cursors.Default
-				MessageBoxError(ex.Message.ToString())
+				ShowError(ex.Message.ToString())
 				comboBoxSearchText.Select
 				Exit Sub
 			End Try
@@ -711,7 +710,7 @@ Public Partial Class MainForm
 				DocumentRecord.Instance.Id = _
 					CInt(listViewDocs.SelectedItems(0).Text.Trim)
 			Catch ex As DataException
-				MessageBoxError(ex.Message.ToString())
+				ShowError(ex.Message.ToString())
 				Exit Sub
 			Finally
 				Me.Cursor = Cursors.Default
@@ -901,7 +900,7 @@ Public Partial Class MainForm
 			Me.Cursor = Cursors.WaitCursor
 			DocumentRecord.Instance.Notes = textBoxDocumentNotes.Text
 		Catch ex As DataException
-			MessageBoxError(ex.Message.ToString())
+			ShowError(ex.Message.ToString())
 			Exit Sub
 		Finally
 			Me.Cursor = Cursors.Default
@@ -943,7 +942,7 @@ Public Partial Class MainForm
 	Private Sub DocumentNotesModifiedCheck
 		If buttonDocumentNotesUpdate.Enabled Then
 			tabControlDocNotesKeywords.SelectTab(0)
-			If MessageBoxQuestion( _
+			If ShowQuestion( _
 				PdfKeeper.Strings.MainFormDocumentNotesSavePrompt) = 6 Then 'Yes
 				
 				ButtonDocumentNotesUpdateClick(Me, Nothing)
@@ -965,9 +964,9 @@ Public Partial Class MainForm
 	Private Sub CheckBoxDoNotResetZoomLevelCheckedChanged(sender As Object, _
 		e As EventArgs)
 		If checkBoxDoNotResetZoomLevel.Checked Then
-			UserSettings.Instance.DoNotResetZoomLevel = CStr(1)
+			UserSettings.DoNotResetZoomLevel = CStr(1)
 		Else
-			UserSettings.Instance.DoNotResetZoomLevel = CStr(0)
+			UserSettings.DoNotResetZoomLevel = CStr(0)
 		End If
 	End Sub
 	
@@ -1113,10 +1112,10 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' Extract the text from the PDF file for the selected listview item on
-	''' the Document Search tab and load into the text box control;
-	''' enable/disable controls on the Document Text-Only View tab; and
-	''' update the status bar.
+	''' Load extracted text from the PDF document for the selected listview
+	''' item on the Document Search tab into the text box control,
+	''' enable/disable controls on the Document Text-Only View tab, and update
+	''' the status bar.
 	''' </summary>
 	Private Sub LoadTextOnlyView
 		toolStripStatusLabelMessage.Text = Nothing
@@ -1124,8 +1123,7 @@ Public Partial Class MainForm
 		buttonTextOnlyPrevious.Enabled = False
 		buttonTextOnlyNext.Enabled = False
 		textBoxTextOnlyView.Text = Nothing
-		textBoxTextOnlyView.Text = _
-			PdfTextToString(DocumentRecord.Instance.PdfPathName)
+		textBoxTextOnlyView.Text = DocumentRecord.Instance.PdfText
 		textBoxTextOnlyView.Enabled = True
 		If listViewDocs.SelectedItems(0).Index > 0 Then
 			buttonTextOnlyPrevious.Enabled = True
@@ -1199,7 +1197,7 @@ Public Partial Class MainForm
 		If Not listBoxDocCaptureQueue.FindStringExact(e.FullPath) = -1 Then
 			documentCaptureFolderChanged = True
 			If textBoxPDFDocument.Text = e.FullPath Then
-				MessageBoxInformation( _
+				ShowInformation( _
 					PdfKeeper.Strings.MainFormSelectedDocDeleted)
 				Me.Cursor = Cursors.WaitCursor
 				TerminateCapturePdfViewer
@@ -1221,7 +1219,7 @@ Public Partial Class MainForm
 			documentCaptureFolderChanged = False
 			FillDocCaptureQueueList
 			If textBoxPDFDocument.Text = e.OldFullPath Then
-				MessageBoxInformation( _
+				ShowInformation( _
 					PdfKeeper.Strings.MainFormSelectedDocRenamed)
 				Me.Cursor = Cursors.WaitCursor
 				TerminateCapturePdfViewer
@@ -1245,7 +1243,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub FileSystemWatcherDocumentCaptureError(sender As Object, e As ErrorEventArgs)
-		MessageBoxError(e.GetException().ToString)
+		ShowError(e.GetException().ToString)
 		fileSystemWatcherDocumentCapture.EnableRaisingEvents = True
 	End Sub
 		
@@ -1332,7 +1330,7 @@ Public Partial Class MainForm
 				buttonDeselect.Enabled = True
 				CaptureComboBoxTextChanged
 			Else
-				MessageBoxError(String.Format( _
+				ShowError(String.Format( _
 					CultureInfo.CurrentCulture, _
 					PdfKeeper.Strings.MainFormUnableRead, _
 					capturePdfEditInput))
@@ -1370,7 +1368,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonDeleteClick(sender As Object, e As EventArgs)
-		If MessageBoxQuestion( _
+		If ShowQuestion( _
 			String.Format( _
 			CultureInfo.CurrentCulture, _
 			PdfKeeper.Strings.MainFormDeletePrompt, _
@@ -1435,9 +1433,9 @@ Public Partial Class MainForm
 		End If
 		Me.Cursor = Cursors.WaitCursor
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(UserSettings.Instance.LastUserName, _
+		If oDatabaseConnection.Open(UserSettings.LastUserName, _
 				DatabaseConnectionForm.dbPassword, _
-				UserSettings.Instance.LastDataSource) = 1 Then
+				UserSettings.LastDataSource) = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			Exit Sub
@@ -1474,7 +1472,7 @@ Public Partial Class MainForm
 			Me.Cursor = Cursors.Default
 		Catch ex As OracleException
 			Me.Cursor = Cursors.Default
-			MessageBoxError(ex.Message.ToString())
+			ShowError(ex.Message.ToString())
 		Finally
 			oDatabaseConnection.Dispose
 		End Try
@@ -1581,7 +1579,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonUploadClick(sender As Object, e As EventArgs)
-		If MessageBoxQuestion( _
+		If ShowQuestion( _
 			String.Format( _
 			CultureInfo.CurrentCulture, _
 			PdfKeeper.Strings.MainFormUploadPrompt, _
@@ -1659,7 +1657,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonDeselectClick(sender As Object, e As EventArgs)
-		If MessageBoxQuestion( _
+		If ShowQuestion( _
 			PdfKeeper.Strings.MainFormDeselectPrompt) = 6 Then ' Yes
 			
 			Me.Cursor = Cursors.WaitCursor
@@ -1943,7 +1941,7 @@ Public Partial Class MainForm
 			e.Cancel = True
 		Else
 			If Not textBoxPDFDocument.Text = Nothing Then
-				If MessageBoxQuestion( _
+				If ShowQuestion( _
 					PdfKeeper.Strings.MainFormClosingPromptSelected) = 6 Then 'Yes
 					
 					Me.Cursor = Cursors.WaitCursor
@@ -1984,8 +1982,8 @@ Public Partial Class MainForm
 		SaveFormPosition
 		UserProfileFoldersTask.DeleteDocumentCaptureShortcuts
 		UserProfileFoldersTask.DeleteDirectUploadShortcut
-		UserSettings.Instance.SetSettings
-		FileHashArray.Instance.DeleteAllItemsFromFileSystem
+		UserSettings.SetSettings
+		FileCache.Instance.DeleteAllItemsFromFileSystem
 	End Sub
 	
 	''' <summary>
@@ -1993,18 +1991,18 @@ Public Partial Class MainForm
 	''' </summary>
 	Private Sub SaveFormPosition
 		If Me.WindowState.ToString = "Normal" Then
-			UserSettings.Instance.FormPositionTop = _
+			UserSettings.FormPositionTop = _
 				Me.Top.ToString(CultureInfo.InvariantCulture)
-			UserSettings.Instance.FormPositionLeft = _
+			UserSettings.FormPositionLeft = _
 				Me.Left.ToString(CultureInfo.InvariantCulture)
-			UserSettings.Instance.FormPositionHeight = _
+			UserSettings.FormPositionHeight = _
 				Me.Height.ToString(CultureInfo.InvariantCulture)
-			UserSettings.Instance.FormPositionWidth = _
+			UserSettings.FormPositionWidth = _
 				Me.Width.ToString(CultureInfo.InvariantCulture)
-			UserSettings.Instance.FormPositionWindowState = CStr(0)
+			UserSettings.FormPositionWindowState = CStr(0)
 		End If
 		If Me.WindowState.ToString = "Maximized" Then
-			UserSettings.Instance.FormPositionWindowState = CStr(2)
+			UserSettings.FormPositionWindowState = CStr(2)
 		End If
 	End Sub
 	
