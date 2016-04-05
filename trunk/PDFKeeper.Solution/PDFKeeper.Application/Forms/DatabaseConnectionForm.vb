@@ -48,8 +48,8 @@ Public Partial Class DatabaseConnectionForm
 	''' user properties and update the form.
 	''' </summary>
 	Private Sub ReadUserProperties
-		textBoxUserName.Text = UserSettings.Instance.LastUserName
-		textBoxDataSource.Text = UserSettings.Instance.LastDataSource
+		textBoxUserName.Text = UserSettings.LastUserName
+		textBoxDataSource.Text = UserSettings.LastDataSource
 	End Sub
 	
 	''' <summary>
@@ -59,7 +59,10 @@ Public Partial Class DatabaseConnectionForm
 	''' <param name="hlpevent"></param>
 	Private Sub DatabaseConnectionFormHelpRequested(sender As Object, hlpevent As HelpEventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		ShowHelp(Me, "Database Connection.html")
+		Help.ShowHelp( _
+			Me, _
+			HelpFileTopics.HelpFile, _
+			HelpFileTopics.DatabaseConnectionForm)
 		Me.Cursor = Cursors.Default
 	End Sub
 	
@@ -188,8 +191,8 @@ Public Partial Class DatabaseConnectionForm
 	''' coorespending user properties.
 	''' </summary>
 	Private Sub SaveUserProperties
-		UserSettings.Instance.LastUserName = textBoxUserName.Text
-		UserSettings.Instance.LastDataSource = textBoxDataSource.Text
+		UserSettings.LastUserName = textBoxUserName.Text
+		UserSettings.LastDataSource = textBoxDataSource.Text
 	End Sub
 	
 	''' <summary>

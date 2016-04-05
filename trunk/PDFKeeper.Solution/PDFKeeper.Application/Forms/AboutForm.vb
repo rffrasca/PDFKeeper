@@ -26,14 +26,14 @@ Public Partial Class AboutForm
 	End Sub
 	
 	''' <summary>
-	''' Sets the font to MS Sans Serif 8pt in XP or Segoe UI 9pt in Vista or
+	''' Sets the font to MS Sans Serif 8pt for XP or Segoe UI 9pt for Vista or
 	''' later; updates the form with Product Name, Description, Copyright,
 	''' Version, Build, License, and Credits.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub AboutFormLoad(sender As Object, e As EventArgs)
-		Font = SystemFonts.MessageBoxFont	' Use Segoe UI in Vista & 7
+		Font = SystemFonts.MessageBoxFont
 		labelName.Text = ProductDetails.Name
 		labelDescription.Text = ProductDetails.Description
 		labelCopyright.Text = ProductDetails.Copyright
