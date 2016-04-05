@@ -22,13 +22,13 @@
 
 Public Module WindowUtil
 	''' <summary>
-	''' Finds a Window or Form with the specified title bar text and if found
-	''' sets it as the foreground window if "bringToFront" is True.
+	''' Returns True or False if a Window or Form with "titleBarText" exists.
+	''' If True, will bring the window or Form to the foreground if
+	''' "bringToFront" is True.
 	''' </summary>
-	''' <param name="titleBarText">Title bar text to search.</param>
-	''' <param name="bringToFront">True or False to bring found window or Form
-	''' to the front.</param>
-	''' <returns>True or False.</returns>
+	''' <param name="titleBarText"></param>
+	''' <param name="bringToFront">True or False</param>
+	''' <returns></returns>
 	Public Function WindowFinder( _
 		ByVal titleBarText As String, _
 		ByVal bringToFront As Boolean) As Boolean
