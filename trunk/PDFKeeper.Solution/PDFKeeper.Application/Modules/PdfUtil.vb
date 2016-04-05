@@ -22,22 +22,23 @@
 
 Public Module PdfUtil
 	''' <summary>
-	''' Creates an image file containing the first page from the specified
-	''' PDF and returns it as an image.  Writing the first page from the PDF to
-	''' an image file will be skipped if the image file exists in the File Hash
-	''' Array and the hashes match.  When the image file containing the first
-	''' page from the PDF is created, it will be added to the File Hash Array.
-	''' Lastly, Encrypt the image file, only if file system encryption is
-	''' supported by the operating system. 
+	''' Creates an image file containing the first page from "pdfFile" and
+	''' returns it as an image.  Skip the Writing of the first page from
+	''' "pdfFile" to an image file if the image file already exists and is
+	''' contained in the file cache and the hash values match.  When the image
+	''' file containing the first page from "pdfFile" is created, its name and
+	''' hash value will be added to the file cache.  Lastly, Encrypt the image
+	''' file, only if file system encryption is supported by the operating
+	''' system.
 	''' </summary>
-	''' <param name="pdfFile">PDF file pathname.</param>
-	''' <returns>Image of first page from PDF or nothing on error.</returns>
+	''' <param name="pdfFile"></param>
+	''' <returns></returns>
 	Public Function PdfFirstPageToImage( _
 		ByVal pdfFile As String) As System.Drawing.Image
 		
 		Dim imageFile As String = _
 			Path.ChangeExtension(pdfFile, "png")
-		If FileHashArray.Instance.ContainsItemAndHashValuesMatch( _
+		If FileCache.Instance.ContainsItemAndHashValuesMatch( _
 			imageFile) = False Then
 			
 			Dim ghostScript As New Process()
@@ -56,12 +57,12 @@ Public Module PdfUtil
 				If ghostScript.ExitCode <> 0 Then
 					Dim ghostScriptErrorOutput As StreamReader = _
 						ghostScript.StandardError
-					MessageBoxError(ghostScriptErrorOutput.ReadToEnd)
+					ShowError(ghostScriptErrorOutput.ReadToEnd)
 					Return Nothing
 				End If
-				FileHashArray.Instance.Add(imageFile)
+				FileCache.Instance.Add(imageFile)
 			Catch ex As System.ComponentModel.Win32Exception
-				MessageBoxError(ex.Message)
+				ShowError(ex.Message)
 				Return Nothing
 			End Try
 		End If
@@ -72,10 +73,10 @@ Public Module PdfUtil
 	End Function
 	
 	''' <summary>
-	''' Returns the number of pages in the specified PDF.
+	''' Returns the number of pages in "pdfFile".
 	''' </summary>
-	''' <param name="pdfFile">PDF file pathname.</param>
-	''' <returns>Page count.</returns>
+	''' <param name="pdfFile"></param>
+	''' <returns></returns>
 	Public Function PdfPageCounter(ByVal pdfFile As String) As Integer
 		Using reader = New PdfReader(pdfFile)
 			Return reader.NumberOfPages
@@ -83,10 +84,10 @@ Public Module PdfUtil
 	End Function
 		
 	''' <summary>
-	''' Returns a string containing text from the specified PDF.
+	''' Returns a string containing the text extracted from "pdfFile".
 	''' </summary>
-	''' <param name="pdfFile">PDF file pathname.</param>
-	''' <returns>String containing text from PDF.</returns>
+	''' <param name="pdfFile"></param>
+	''' <returns></returns>
 	Public Function PdfTextToString( _
 		ByVal pdfFile As String) As String
 		
