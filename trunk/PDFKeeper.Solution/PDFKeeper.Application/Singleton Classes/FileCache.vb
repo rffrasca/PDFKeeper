@@ -20,36 +20,37 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class FileHashArray
-	Private Shared _instance As FileHashArray = New FileHashArray()
-	Private fileHashDict As New Dictionary(Of String, String)
+Public NotInheritable Class FileCache
+	Private Shared _instance As FileCache = New FileCache()
+	Private fileCacheDict As New Dictionary(Of String, String)
 	
-	Public Shared ReadOnly Property Instance As FileHashArray
+	Public Shared ReadOnly Property Instance As FileCache
 		Get
 			Return _instance
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Adds the specified file and its calculated hash value to fileHashDict.
+	''' Adds "file" and its calculated hash value to fileCacheDict.
 	''' </summary>
-	''' <param name="file">Path name of file.</param>
+	''' <param name="file"></param>
 	Public Sub Add(ByVal file As String)
-		fileHashDict.Item(file) = ComputeFileHashValue(file)
+		fileCacheDict.Item(file) = ComputeFileHashValue(file)
 	End Sub
 	
 	''' <summary>
-	''' Checks that the specified file exists, is contained in fileHashDict,
-	''' and the hash value of the file matches the hash value in fileHashDict.
+	''' Returns True or False if "file" exists, is contained in fileCacheDict,
+	''' and the hash value of "file" matches the hash value stored in
+	''' fileCacheDict.
 	''' </summary>
-	''' <param name="file">Path name of file.</param>
-	''' <returns>True or False.</returns>
+	''' <param name="file"></param>
+	''' <returns></returns>
 	Public Function ContainsItemAndHashValuesMatch( _
 		ByVal file As String) As Boolean
 
 		If System.IO.File.Exists(file) Then
-			If fileHashDict.ContainsKey(file) Then
-				If ComputeFileHashValue(file) = fileHashDict.Item(file) Then
+			If fileCacheDict.ContainsKey(file) Then
+				If ComputeFileHashValue(file) = fileCacheDict.Item(file) Then
 					Return True
 				End If
 			End If
@@ -58,10 +59,11 @@ Public NotInheritable Class FileHashArray
 	End Function
 	
 	''' <summary>
-	''' Deletes all items in the list from the file system.
+	''' Deletes all items contained in fileCacheDict from the file system.
+	''' This should be called when the Main Form is closing.
 	''' </summary>
 	Public Sub DeleteAllItemsFromFileSystem
-		For Each pair As KeyValuePair(Of String, String) In fileHashDict
+		For Each pair As KeyValuePair(Of String, String) In fileCacheDict
 			Dim item As String = pair.Key
 			If System.IO.File.Exists(item) Then
 				DeleteFile(item, False)
