@@ -55,17 +55,17 @@ Public NotInheritable Class PdfPasswordProtection
 				Return PdfPasswordProtection.Type.Owner
 			End If
 		Catch ex As DocumentException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Return PdfPasswordProtection.Type.Unknown
 		Catch ex As IOException
 			If ex.Message = "Bad user password" Then
-				MessageBoxError(String.Format( _
+				ShowError(String.Format( _
 					CultureInfo.CurrentCulture, _
 					PdfKeeper.Strings.PdfContainsUserPassword, _
 					pdfFile))
 				Return PdfPasswordProtection.Type.User
 			Else
-				MessageBoxError(ex.Message)
+				ShowError(ex.Message)
 				Return PdfPasswordProtection.Type.Unknown
 			End If
 		Finally

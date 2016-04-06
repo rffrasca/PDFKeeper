@@ -163,14 +163,13 @@ Public Class PdfProperties
 			End If
 			Return 0
 		Catch ex As DocumentException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Return 1
 		Catch ex As IOException
 			If ex.Message = "Bad user password" Then
-				MessageBoxError( _
-					PdfKeeper.Strings.IncorrectOwnerPassword)
+				ShowError(PdfKeeper.Strings.IncorrectOwnerPassword)
 			Else
-				MessageBoxError(ex.Message)
+				ShowError(ex.Message)
 			End If
 			Return 1
 		Finally
@@ -208,10 +207,10 @@ Public Class PdfProperties
 			oPdfStamper.MoreInfo = oDictionary
 			Return 0
 		Catch ex As DocumentException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Return 1
 		Catch ex As IOException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Return 1
 		Finally
 			If outputCreated = True Then
