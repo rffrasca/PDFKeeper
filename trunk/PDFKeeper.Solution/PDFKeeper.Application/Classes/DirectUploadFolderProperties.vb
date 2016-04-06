@@ -159,10 +159,10 @@ Public Class DirectUploadFolderProperties
 					"Properties").Get("UseExistingKeywordsChecked")
 			Catch ex As System.NullReferenceException
 			Catch ex As UnauthorizedAccessException
-				MessageBoxError(ex.Message)
+				ShowError(ex.Message)
 				Return 1
 			Catch ex As IOException
-				MessageBoxError(ex.Message)
+				ShowError(ex.Message)
 				Return 1
 			End Try
 		End If
@@ -215,10 +215,10 @@ Public Class DirectUploadFolderProperties
 					m_UseExistingKeywordsChecked)
 			xmlConfig.Save(xmlFile)
 		Catch ex As UnauthorizedAccessException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Return 1
 		Catch ex As IOException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 			Return 1
 		End Try
 		Return 0

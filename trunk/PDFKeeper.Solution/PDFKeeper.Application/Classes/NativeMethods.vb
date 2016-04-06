@@ -27,12 +27,11 @@ Public NotInheritable Class NativeMethods
 	End Sub
 
 	''' <summary>
-	''' Retrieves a handle to the top-level window whose class name and window
-	''' name match the specified strings.
+	''' Returns the window handle to the top-level window whose class name and
+	''' window name match "lpClassName" and "lpWindowName".
 	''' </summary>
-	''' <param name="lpClassName">Class name of the window
-	''' (can be Nothing).</param>
-	''' <param name="lpWindowName">Window Name (Title) of the window.</param>
+	''' <param name="lpClassName">Window class name, can be nothing.</param>
+	''' <param name="lpWindowName">Window title.</param>
 	''' <returns>Window handle or 0 when window is not found.</returns>
 	<DllImport("user32.dll", _
 		SetLastError:=True, _
@@ -43,20 +42,20 @@ Public NotInheritable Class NativeMethods
  	End Function
 	
 	''' <summary>
-	''' Moves the window associated with the passed handle to the front.
+	''' Moves the window associated with "hWnd" to the front.
 	''' </summary>
-	''' <param name="hWnd">Handle to the window.</param>
-	''' <returns>True or False.</returns>
+	''' <param name="hWnd"></param>
+	''' <returns>True or False</returns>
 	<DllImport("user32.dll")> _
 	Friend Shared Function SetForegroundWindow( _
 		ByVal hWnd As IntPtr) As <MarshalAs(UnmanagedType.Bool)> Boolean
 	End Function
 	
 	''' <summary>
-	''' Determines whether a specified path is an empty directory.
+	''' Returns True or False if "pszPath" is an empty directory.
 	''' </summary>
-	''' <param name="pszPath">Path to be tested.</param>
-	''' <returns>True or False.</returns>
+	''' <param name="pszPath"></param>
+	''' <returns></returns>
 	<DllImport("shlwapi.dll", _
 		CharSet:=CharSet.Unicode, _
 		BestFitMapping:=False)> _
