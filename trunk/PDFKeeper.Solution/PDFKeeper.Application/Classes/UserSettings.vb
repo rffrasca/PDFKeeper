@@ -160,10 +160,10 @@ Public NotInheritable Class UserSettings
 					.Get("SaveFileLastFolder")
 			Catch ex As System.NullReferenceException
 			Catch ex As UnauthorizedAccessException
-				MessageBoxError(ex.Message)
+				ShowError(ex.Message)
 				Return 1
 			Catch ex As IOException
-				MessageBoxError(ex.Message)
+				ShowError(ex.Message)
 				Return 1
 			End Try
 		End If
@@ -206,9 +206,9 @@ Public NotInheritable Class UserSettings
 			xmlConfig.Save(settingsFile)
 		Catch ex As System.ArgumentNullException
 		Catch ex As UnauthorizedAccessException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 		Catch ex As IOException
-			MessageBoxError(ex.Message)
+			ShowError(ex.Message)
 		End Try
 	End Sub
 	
@@ -232,7 +232,7 @@ Public NotInheritable Class UserSettings
 				End Using
 				System.IO.File.Delete(legacyProperties)
 			Catch ex As IOException
-				MessageBoxError(ex.Message)
+				ShowError(ex.Message)
 				Return 1
 			End Try
 		End If
@@ -270,7 +270,7 @@ Public NotInheritable Class UserSettings
 				registry.CurrentUser.DeleteSubKey("Software\" & _
 					Application.ProductName)
 			Catch ex as IOException
-				MessageBoxError(ex.Message)
+				ShowError(ex.Message)
 				Return 1
 			End Try
 		End If

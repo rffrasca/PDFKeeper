@@ -44,8 +44,7 @@ Public NotInheritable Class PdfFileTask
 		   	   	oPdfProperties.Author = Nothing Or _
 		   	   	oPdfProperties.Subject = Nothing Then
 				
-				MessageBoxError( _
-					PdfKeeper.Strings.PdfPropertiesBlank)
+				ShowError(PdfKeeper.Strings.PdfPropertiesBlank)
 		   		Return 1
 			End If
 		Else
@@ -62,16 +61,16 @@ Public NotInheritable Class PdfFileTask
 				pdfStream.Read(pdfBlob, 0, _
 							   System.Convert.ToInt32(pdfStream.Length))
 			Catch ex As IOException
-				MessageBoxError(ex.Message)
+				ShowError(ex.Message)
 				Return 1
 			Finally
 				pdfStream.Close
 			End Try
 		
 			Dim oDatabaseConnection As New DatabaseConnection
-			If oDatabaseConnection.Open(UserSettings.Instance.LastUserName, _
+			If oDatabaseConnection.Open(UserSettings.LastUserName, _
 					DatabaseConnectionForm.dbPassword, _
-					UserSettings.Instance.LastDataSource) = 1 Then
+					UserSettings.LastDataSource) = 1 Then
 				Return 1
 			End If
 			
@@ -103,7 +102,7 @@ Public NotInheritable Class PdfFileTask
 				Try
 					oOracleCommand.ExecuteNonQuery()
 				Catch ex As OracleException
-					MessageBoxError(ex.Message.ToString())
+					ShowError(ex.Message.ToString())
 					Return 1
   				Finally
   					oDatabaseConnection.Dispose
