@@ -43,7 +43,7 @@ Public Class DatabaseConnection
 			Return 0
   		Catch ex As OracleException
   			Dispose
-  			MessageBoxError(ex.Message.ToString())
+  			ShowError(ex.Message.ToString())
 			Return 1
   		End Try
 	End Function

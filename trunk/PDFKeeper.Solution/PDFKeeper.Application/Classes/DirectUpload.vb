@@ -179,7 +179,7 @@ Public NotInheritable Class DirectUpload
 						oDirectUploadFolderProperties.UseExistingAuthorChecked) = 0 Then
 						If oDirectUploadFolderProperties.AuthorPreFill.Trim = _
 							PdfKeeper.Strings.DirectUploadConfigAuthorDatabaseUserName Then
-							oPdfProperties.Author = UserSettings.Instance.LastUserName
+							oPdfProperties.Author = UserSettings.LastUserName
 						ElseIf oDirectUploadFolderProperties.AuthorPreFill.Trim = _
 							PdfKeeper.Strings.DirectUploadConfigAuthorWindowsUserName Then
 							oPdfProperties.Author = Environment.UserName
@@ -206,7 +206,7 @@ Public NotInheritable Class DirectUpload
 					End If
 				End If
 			Else
-				MessageBoxError(String.Format( _
+				ShowError(String.Format( _
 					CultureInfo.CurrentCulture, _
 					PdfKeeper.Strings.PdfContainsPassword, _
 					inputPdfFile))
