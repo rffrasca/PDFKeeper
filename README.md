@@ -11,5 +11,5 @@ PDFKeeper is free, open source software designed for capturing, uploading, and s
 * Document Notes can be added to database records, including Date and Time stamp with database user account name. All Document Notes are indexed by the database, making the text searchable.
 
 ## Links
-* For more information, visit the [PDFKeeper Home Page](https://bit.ly/pdfkeeper).
-* For status updates, visit [Google+](https://plus.google.com/103180603238817050437).
+* For more information, visit the [PDFKeeper Home Page](https://bit.ly/pdfkeeper)
+* For status updates, visit [Google+](https://plus.google.com/103180603238817050437)
