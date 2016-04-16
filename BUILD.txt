@@ -1,8 +1,7 @@
---------------------
- BUILD INSTRUCTIONS
---------------------
-PDFKeeper 3.2.0
-Copyright (C) 2009-2016 Robert F. Frasca
+------------------------------------------
+ PDFKeeper 3.2.0
+ Copyright (C) 2009-2016 Robert F. Frasca
+------------------------------------------
 
 NOTE: Testing PDFKeeper requires connecting to a database server. Install and
 configure Oracle Database Express Edition on any system. Next, configure the
