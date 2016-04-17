@@ -31,24 +31,26 @@ Setup script, DatabaseSetup.cmd is located in the project Database folder.
 
 3. Download Third-Party Programs and Libraries: 
 
-    a. iTextSharp and Trove Unofficial Nini Configuration
+    a. Create a "Binaries" folder in the root of the project.
 
-       Use Restore Packages feature in SharpDevelop to download NuGet packages.
-
-    b. Sumatra PDF (Portable Version)
+    b. Download Sumatra PDF (Portable Version)
        (http://www.sumatrapdfreader.org/free-pdf-reader.html)
 
        After downloading, extract SumatraPDF.exe into the project Binaries
        folder and unblock.
 
-    c. Ghostscript
+    c. Download Ghostscript
        (http://www.ghostscript.com/)
 
-       After downloading, extract gsdll32.dll and gswin32c.exe in the project
-       Binaries folder.
+       After downloading, extract gsdll32.dll and gswin32c.exe into the
+       "Binaries" folder.
 
        NOTE: To extract from the GhostScript installer, you can use
        7-Zip Portable (http://portableapps.com/apps/utilities/7-zip_portable)
+
+    d. iTextSharp and Trove Unofficial Nini Configuration
+
+       Use Restore Packages feature in SharpDevelop to download NuGet packages.
 
 4. Open Help\en\PDFKeeper.hhp with HTML Help Workshop and compile.
 
