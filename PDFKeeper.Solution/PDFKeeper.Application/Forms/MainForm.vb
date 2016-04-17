@@ -1870,7 +1870,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub BackgroundWorkerUpdateCheckDoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
-		Dim updateAvailable As Boolean = UpdateCheck.Instance.IsUpdateAvailable
+		UpdateCheck.Instance.SetIsUpdateAvailable
 	End Sub
 	
 	''' <summary>

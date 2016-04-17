@@ -35,17 +35,15 @@ Public NotInheritable Class UpdateCheck
 	''' </summary>
 	Public ReadOnly Property IsUpdateAvailable As Boolean
 		Get
-			If IsNothing(_isUpdateAvailable) Then
-				SetIsUpdateAvailable
-			End If
 			Return _isUpdateAvailable
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Sets the IsUpdateAvailable property to True or False.
+	''' Sets the IsUpdateAvailable property to True or False.  This method must
+	''' be called when the Main Form opens.
 	''' </summary>
-	Private Sub SetIsUpdateAvailable
+	Public Sub SetIsUpdateAvailable
 		Dim installerVersion As String
 		Dim maxVersion As String = "0.0.0"
 		Using oWebClient As New WebClient
