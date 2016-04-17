@@ -50,7 +50,7 @@ Public NotInheritable Class UpdateCheck
 		Dim maxVersion As String = "0.0.0"
 		Using oWebClient As New WebClient
 			Dim pageContents As String = oWebClient.DownloadString( _
-				ConfigurationManager.AppSettings("ProjectSiteUrl"))
+				ConfigurationManager.AppSettings("UpdateCheckUrl"))
 			Dim matches As MatchCollection = Regex.Matches(pageContents, _
 				"\b(" & ProductDetails.Name & ")\b\s\d.\d.\d")
 			For Each expMatch As Match In matches

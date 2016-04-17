@@ -53,7 +53,7 @@ Public Partial Class AboutForm
 		e As LinkLabelLinkClickedEventArgs)
 		
 		Me.Cursor = Cursors.WaitCursor
-		Process.Start(ConfigurationManager.AppSettings("ProjectSiteUrl"))
+		Process.Start(ConfigurationManager.AppSettings("HomePageUrl"))
 		Me.Cursor = Cursors.Default
 	End Sub
 End Class

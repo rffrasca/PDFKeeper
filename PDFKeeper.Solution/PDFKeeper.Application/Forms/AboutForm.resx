@@ -356,31 +356,31 @@
   <data name="&gt;&gt;labelVersion.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="linkLabelProjectSite.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="linkLabelHomePage.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 161</value>
   </data>
-  <data name="linkLabelProjectSite.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="linkLabelHomePage.Size" type="System.Drawing.Size, System.Drawing">
     <value>361, 23</value>
   </data>
-  <data name="linkLabelProjectSite.TabIndex" type="System.Int32, mscorlib">
+  <data name="linkLabelHomePage.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="linkLabelProjectSite.Text" xml:space="preserve">
-    <value>Visit Project Site</value>
+  <data name="linkLabelHomePage.Text" xml:space="preserve">
+    <value>PDFKeeper Home Page</value>
   </data>
-  <data name="linkLabelProjectSite.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="linkLabelHomePage.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
   </data>
-  <data name="&gt;&gt;linkLabelProjectSite.Name" xml:space="preserve">
-    <value>linkLabelProjectSite</value>
+  <data name="&gt;&gt;linkLabelHomePage.Name" xml:space="preserve">
+    <value>linkLabelHomePage</value>
   </data>
-  <data name="&gt;&gt;linkLabelProjectSite.Type" xml:space="preserve">
+  <data name="&gt;&gt;linkLabelHomePage.Type" xml:space="preserve">
     <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;linkLabelProjectSite.Parent" xml:space="preserve">
+  <data name="&gt;&gt;linkLabelHomePage.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;linkLabelProjectSite.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;linkLabelHomePage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="textBoxLicense.Location" type="System.Drawing.Point, System.Drawing">

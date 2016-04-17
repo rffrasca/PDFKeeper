@@ -54,7 +54,7 @@ Partial Class AboutForm
 		Me.labelDescription = New System.Windows.Forms.Label()
 		Me.labelCopyright = New System.Windows.Forms.Label()
 		Me.labelVersion = New System.Windows.Forms.Label()
-		Me.linkLabelProjectSite = New System.Windows.Forms.LinkLabel()
+		Me.linkLabelHomePage = New System.Windows.Forms.LinkLabel()
 		Me.tabControlLicenses = New System.Windows.Forms.TabControl()
 		Me.tabPageLicense = New System.Windows.Forms.TabPage()
 		Me.textBoxLicense = New System.Windows.Forms.TextBox()
@@ -99,12 +99,12 @@ Partial Class AboutForm
 		resources.ApplyResources(Me.labelVersion, "labelVersion")
 		Me.labelVersion.Name = "labelVersion"
 		'
-		'linkLabelProjectSite
+		'linkLabelHomePage
 		'
-		resources.ApplyResources(Me.linkLabelProjectSite, "linkLabelProjectSite")
-		Me.linkLabelProjectSite.Name = "linkLabelProjectSite"
-		Me.linkLabelProjectSite.TabStop = true
-		AddHandler Me.linkLabelProjectSite.LinkClicked, AddressOf Me.LinkLabelProjectSiteLinkClicked
+		resources.ApplyResources(Me.linkLabelHomePage, "linkLabelHomePage")
+		Me.linkLabelHomePage.Name = "linkLabelHomePage"
+		Me.linkLabelHomePage.TabStop = true
+		AddHandler Me.linkLabelHomePage.LinkClicked, AddressOf Me.LinkLabelProjectSiteLinkClicked
 		'
 		'tabControlLicenses
 		'
@@ -147,7 +147,7 @@ Partial Class AboutForm
 		resources.ApplyResources(Me, "$this")
 		Me.ControlBox = false
 		Me.Controls.Add(Me.tabControlLicenses)
-		Me.Controls.Add(Me.linkLabelProjectSite)
+		Me.Controls.Add(Me.linkLabelHomePage)
 		Me.Controls.Add(Me.labelVersion)
 		Me.Controls.Add(Me.labelCopyright)
 		Me.Controls.Add(Me.labelDescription)
@@ -174,7 +174,7 @@ Partial Class AboutForm
 	Private tabPageLicense As System.Windows.Forms.TabPage
 	Private tabControlLicenses As System.Windows.Forms.TabControl
 	Private tabPageCredits As System.Windows.Forms.TabPage
-	Private linkLabelProjectSite As System.Windows.Forms.LinkLabel
+	Private linkLabelHomePage As System.Windows.Forms.LinkLabel
 	Private labelVersion As System.Windows.Forms.Label
 	Private labelCopyright As System.Windows.Forms.Label
 	Private labelName As System.Windows.Forms.Label
