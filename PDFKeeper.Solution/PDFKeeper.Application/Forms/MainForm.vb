@@ -388,18 +388,6 @@ Public Partial Class MainForm
 	End Sub
 	
 	''' <summary>
-	''' This subroutine will open the New Issue page on the Project Site using
-	''' the default web browser.
-	''' </summary>
-	''' <param name="sender"></param>
-	''' <param name="e"></param>
-	Private Sub ToolStripMenuItemReportNewIssueClick(sender As Object, e As EventArgs)
-		Me.Cursor = Cursors.WaitCursor
-		Process.Start(ConfigurationManager.AppSettings("NewIssueUrl"))
-		Me.Cursor = Cursors.Default
-	End Sub
-	
-	''' <summary>
 	''' This subroutine will display the About box.
 	''' </summary>
 	''' <param name="sender"></param>

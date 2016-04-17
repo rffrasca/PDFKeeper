@@ -74,8 +74,6 @@ Partial Class MainForm
 		Me.toolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
 		Me.toolStripMenuItemCheckNewerVersion = New System.Windows.Forms.ToolStripMenuItem()
 		Me.toolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-		Me.toolStripMenuItemReportNewIssue = New System.Windows.Forms.ToolStripMenuItem()
-		Me.toolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
 		Me.toolStripMenuItemAbout = New System.Windows.Forms.ToolStripMenuItem()
 		Me.labelSearchText = New System.Windows.Forms.Label()
 		Me.errorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
@@ -287,7 +285,7 @@ Partial Class MainForm
 		'
 		'toolStripMenuItemHelp
 		'
-		Me.toolStripMenuItemHelp.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolStripMenuItemContents, Me.toolStripSeparator3, Me.toolStripMenuItemCheckNewerVersion, Me.toolStripSeparator6, Me.toolStripMenuItemReportNewIssue, Me.toolStripSeparator5, Me.toolStripMenuItemAbout})
+		Me.toolStripMenuItemHelp.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolStripMenuItemContents, Me.toolStripSeparator3, Me.toolStripMenuItemCheckNewerVersion, Me.toolStripSeparator6, Me.toolStripMenuItemAbout})
 		Me.toolStripMenuItemHelp.Name = "toolStripMenuItemHelp"
 		resources.ApplyResources(Me.toolStripMenuItemHelp, "toolStripMenuItemHelp")
 		AddHandler Me.toolStripMenuItemHelp.Click, AddressOf Me.ToolStripMenuItemHelpClick
@@ -315,17 +313,6 @@ Partial Class MainForm
 		'
 		Me.toolStripSeparator6.Name = "toolStripSeparator6"
 		resources.ApplyResources(Me.toolStripSeparator6, "toolStripSeparator6")
-		'
-		'toolStripMenuItemReportNewIssue
-		'
-		Me.toolStripMenuItemReportNewIssue.Name = "toolStripMenuItemReportNewIssue"
-		resources.ApplyResources(Me.toolStripMenuItemReportNewIssue, "toolStripMenuItemReportNewIssue")
-		AddHandler Me.toolStripMenuItemReportNewIssue.Click, AddressOf Me.ToolStripMenuItemReportNewIssueClick
-		'
-		'toolStripSeparator5
-		'
-		Me.toolStripSeparator5.Name = "toolStripSeparator5"
-		resources.ApplyResources(Me.toolStripSeparator5, "toolStripSeparator5")
 		'
 		'toolStripMenuItemAbout
 		'
@@ -946,7 +933,6 @@ Partial Class MainForm
 	Private toolStripMenuItemDirectUploadConfig As System.Windows.Forms.ToolStripMenuItem
 	Private toolStripSeparator8 As System.Windows.Forms.ToolStripSeparator
 	Private buttonDeselect As System.Windows.Forms.Button
-	Private toolStripMenuItemReportNewIssue As System.Windows.Forms.ToolStripMenuItem
 	Private toolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
 	Private toolStripStatusLabelMessage As System.Windows.Forms.ToolStripStatusLabel
 	Private processCapturePdfViewer As System.Diagnostics.Process
@@ -1020,7 +1006,6 @@ Partial Class MainForm
 	Private statusStrip As System.Windows.Forms.StatusStrip
 	Private errorProvider As System.Windows.Forms.ErrorProvider
 	Private labelSearchText As System.Windows.Forms.Label
-	Private toolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
 	Private toolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
 	Private toolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
 	Private menuStrip As System.Windows.Forms.MenuStrip
