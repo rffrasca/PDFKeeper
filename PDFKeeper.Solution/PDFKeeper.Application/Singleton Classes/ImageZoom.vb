@@ -22,8 +22,8 @@
 
 Public NotInheritable Class ImageZoom
 	Private Shared _instance As ImageZoom = New ImageZoom()
-	Private Const ActualSize As Integer = 100	' percentage
-	Private Const ZoomStepValue As Integer = 10	' percentage
+	Private ReadOnly ActualSize As Integer = 100	' percentage
+	Private ReadOnly ZoomStepValue As Integer = 10	' percentage
 	Private _zoomLevel As Integer
 
 	Public Shared ReadOnly Property Instance As ImageZoom
