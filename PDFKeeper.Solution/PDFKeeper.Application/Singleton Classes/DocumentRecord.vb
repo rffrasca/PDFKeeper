@@ -82,7 +82,7 @@ Public NotInheritable Class DocumentRecord
 	End Property
 	
 	''' <summary>
-	''' 
+	''' Gets the first page from the Document Record PDF as an image.
 	''' </summary>
 	Public ReadOnly Property PdfPreviewImage As System.Drawing.Image
 		Get

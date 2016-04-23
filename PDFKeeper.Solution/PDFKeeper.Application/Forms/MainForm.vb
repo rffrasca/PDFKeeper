@@ -1028,7 +1028,7 @@ Public Partial Class MainForm
 		buttonPreviewNext.Enabled = False
 		pictureBoxPreview.Image = Nothing
 		Dim img As System.Drawing.Image = _
-			PdfFirstPageToImage(DocumentRecord.Instance.PdfPathName)
+			DocumentRecord.Instance.PdfPreviewImage
 		If img.Size.IsEmpty = False Then
 			pictureBoxPreview.Image = img
 			ImageZoom.Instance.SourceImage = pictureBoxPreview.Image
