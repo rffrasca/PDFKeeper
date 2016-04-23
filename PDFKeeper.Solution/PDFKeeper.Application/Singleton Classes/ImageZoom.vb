@@ -25,7 +25,7 @@ Public NotInheritable Class ImageZoom
 	Private Const ActualSize As Integer = 100	' percentage
 	Private Const ZoomStepValue As Integer = 10	' percentage
 	Private _zoomLevel As Integer
-	
+
 	Public Shared ReadOnly Property Instance As ImageZoom
 		Get
 			Return _instance
@@ -33,17 +33,29 @@ Public NotInheritable Class ImageZoom
 	End Property
 	
 	''' <summary>
-	''' Gets or sets source image used by the ZoomToImage method.
+	''' Gets or sets the source image.
 	''' </summary>
 	Public Property SourceImage As System.Drawing.Image = Nothing
 	
+	''' <summary>
+	''' Gets SourceImage with ZoomLevel applied.
+	''' </summary>
+	Public ReadOnly Property ZoomedImage As System.Drawing.Image
+		Get
+			If IsNothing(SourceImage) Then
+				Return Nothing
+			End If
+			Return ZoomSourceImage
+		End Get
+	End Property
+		
 	''' <summary>
 	''' Gets zoom level.
 	''' </summary>
 	Public ReadOnly Property ZoomLevel As Integer
 		Get
 			If _zoomLevel = 0 Then
-				ResetLevel
+				ResetZoomLevel
 			End If
 			Return _zoomLevel
 		End Get
@@ -52,33 +64,33 @@ Public NotInheritable Class ImageZoom
 	''' <summary>
 	''' Increases ZoomLevel by ZoomStepValue.
 	''' </summary>
-	Public Sub IncreaseLevel
+	Public Sub IncreaseZoomLevel
 		_zoomLevel += ZoomStepValue
 	End Sub
 	
 	''' <summary>
 	''' Decreases ZoomLevel by ZoomStepValue but not below ActualSize.
 	''' </summary>
-	Public Sub DecreaseLevel
+	Public Sub DecreaseZoomLevel
 		_zoomLevel -= ZoomStepValue
 		If _zoomLevel < ActualSize Then
-			ResetLevel
+			ResetZoomLevel
 		End If
 	End Sub
 	
 	''' <summary>
 	''' Resets ZoomLevel to ActualSize.
 	''' </summary>
-	Public Sub ResetLevel
+	Public Sub ResetZoomLevel
 		_zoomLevel = ActualSize
 	End Sub
 	
 	''' <summary>
-	''' Zooms the source image to the value set in ZoomLevel and returns as an
-	''' image, leaving the source image unchanged.
+	''' Zooms SourceImage to the value set in ZoomLevel and returns as an
+	''' image, leaving SourceImage unchanged.
 	''' </summary>
-	''' <returns>Image of source image with zoom level applied.</returns>
-	Public Function ZoomToImage As System.Drawing.Image
+	''' <returns>SourceImage with ZoomLevel applied.</returns>
+	Private Function ZoomSourceImage As System.Drawing.Image
 		Dim zoomedImage As New Bitmap( _
 			SourceImage, _
 			CInt(Convert.ToInt32(SourceImage.Width * ZoomLevel) / 100), _

@@ -966,7 +966,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomInClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		ImageZoom.Instance.IncreaseLevel
+		ImageZoom.Instance.IncreaseZoomLevel
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -979,7 +979,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ButtonZoomOutClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		ImageZoom.Instance.DecreaseLevel
+		ImageZoom.Instance.DecreaseZoomLevel
 		PreviewImageZoom
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1048,7 +1048,7 @@ Public Partial Class MainForm
 			If checkBoxDoNotResetZoomLevel.Checked = True Then
 				PreviewImageZoom
 			Else
-				ImageZoom.Instance.ResetLevel
+				ImageZoom.Instance.ResetZoomLevel
 			End If
 		End If
 	End Sub
@@ -1064,7 +1064,7 @@ Public Partial Class MainForm
 			buttonZoomOut.Enabled = False
 		End If
 		pictureBoxPreview.Image = Nothing
-		pictureBoxPreview.Image = ImageZoom.Instance.ZoomToImage
+		pictureBoxPreview.Image = ImageZoom.Instance.ZoomedImage
 	End Sub
 	
 	#End Region
