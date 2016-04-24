@@ -94,7 +94,6 @@
     <Compile Include="Classes\PdfProperties.vb" />
     <Compile Include="Classes\ProductDetails.vb" />
     <Compile Include="Classes\UserProfileFoldersTask.vb" />
-    <Compile Include="Classes\UserSettings.vb" />
     <Compile Include="Classes\WindowsProfileFolders.vb" />
     <Compile Include="Forms\AboutForm.Designer.vb">
       <DependentUpon>AboutForm.vb</DependentUpon>
@@ -124,6 +123,7 @@
       <DependentUpon>RotatePagesForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\RotatePagesForm.vb" />
+    <Compile Include="Modules\UserSettingsEnums.vb" />
     <Compile Include="Modules\ExtensionMethods.vb" />
     <Compile Include="Modules\FileUtil.vb" />
     <Compile Include="Modules\FolderUtil.vb" />

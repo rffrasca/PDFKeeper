@@ -115,15 +115,15 @@ Public NotInheritable Class DocumentRecord
 		End If
 		Dim connection As New DatabaseConnection
 		If connection.Open( _
-			UserSettings.LastUserName, _
+			UserSettings.Instance.LastUserName, _
 			DatabaseConnectionForm.dbPassword, _
-			UserSettings.LastDataSource) = 1 Then
+			UserSettings.Instance.LastDataSource) = 1 Then
 			connection.Dispose
 			_id = 0
 			Throw New DataException(String.Format( _
 				CultureInfo.CurrentCulture, _
 				PdfKeeper.Strings.DatabaseUnavailable, _
-				UserSettings.LastDataSource))
+				UserSettings.Instance.LastDataSource))
 		End If
 		If FileCache.Instance.ContainsItemAndHashValuesMatch( _
 			PdfPathName) Then
@@ -192,15 +192,15 @@ Public NotInheritable Class DocumentRecord
 	Private Sub OnNotesChanged
 		Dim connection As New DatabaseConnection
 		If connection.Open( _
-			UserSettings.LastUserName, _
+			UserSettings.Instance.LastUserName, _
 			DatabaseConnectionForm.dbPassword, _
-			UserSettings.LastDataSource) = 1 Then
+			UserSettings.Instance.LastDataSource) = 1 Then
 			connection.Dispose
 			_notes = undoNotes
 			Throw New DataException(String.Format( _
 				CultureInfo.CurrentCulture, _
 				PdfKeeper.Strings.DatabaseUnavailable, _
-				UserSettings.LastDataSource))
+				UserSettings.Instance.LastDataSource))
 		End If
 		Dim update As String = _
 			"update pdfkeeper.docs " & _

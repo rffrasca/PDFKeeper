@@ -49,11 +49,6 @@ Namespace My
 				Environment.Exit(1)
 			End If
 			
-			' Read application user settings.
-			If UserSettings.GetSettings = 1 Then
-				Environment.Exit(1)
-			End If
-			
 			' Show Database Connection Dialog to the user.
 			If DatabaseConnectionForm.ShowDialog() = Windows.Forms.DialogResult.Cancel Then
 				Environment.Exit(1)

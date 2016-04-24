@@ -84,7 +84,7 @@ other information that supplements the main documentation.</p>
   <li>ADDED - New button on Document Capture tab to set Title textbox to
     selected PDF file name without the extension.</li>
   <li>ADDED - New icon to Document Capture Deselect button.</li>
-  <li>CHANGED - Refactored code. </li>
+  <li>CHANGED - Extensive refactoring of the source code. </li>
   <li>CHANGED - Replaced icon on Document Preview Zoom In and Out buttons.</li>
   <li>CHANGED - Renamed "Project Site" link in About box to "PDFKeeper Home
     Page" and changed to open new Home Page.</li>
@@ -98,15 +98,24 @@ other information that supplements the main documentation.</p>
 
 <h3>Upgrade Notes</h3>
 <dl>
+  <dt>User Settings</dt>
+</dl>
+
+<p style="margin-left:4em">When upgrading from any version pf PDFKeeper prior
+to 2.5.0, the User Settings will not be imported by PDFKeeper and will remain
+on the system and can be removed. Users settings for PDFKeeper 1.0.0 - 1.1.0
+are stored in <b>%APPDATA%\pdfkeeper.properties</b>. User Settings for
+PDFKeeper 2.0.0 - 2.4.0 are stored in the registry at
+<b>HKEY_CURRENT_USER\Software\Software\PDFKeeper</b>.</p>
+<dl>
   <dt>Deprecated Components Information</dt>
-    <dd><p>Since PDFKeeper 2.0.0, the server-side components have been
-      deprecated. If not upgrading a system that has only the server-side
-      components from PDFKeeper 1.0.0 or 1.1.0 installed, please uninstall
-      PDFKeeper from that system. From the server; remove the Document Loader
-      scheduled task, Document Upload Folder, and delete the PDFKEEPER_UPLOAD
-      environment variable. From each client, remove the shortcut to the
-      Document Upload folder.</p>
-    </dd>
+    <dd>Since PDFKeeper 2.0.0, the server-side components have been deprecated.
+      If not upgrading a system that has only the server-side components from
+      PDFKeeper 1.0.0 or 1.1.0 installed, please uninstall PDFKeeper from that
+      system. From the server; remove the Document Loader scheduled task,
+      Document Upload Folder, and delete the PDFKEEPER_UPLOAD environment
+      variable. From each client, remove the shortcut to the Document Upload
+      folder.</dd>
     <dd>If used in a prior version, the <b>Information Properties Editor Folder
       Watcher</b> settings will be discarded as that functionality has been
       replaced by <b>Document Capture</b>.</dd>

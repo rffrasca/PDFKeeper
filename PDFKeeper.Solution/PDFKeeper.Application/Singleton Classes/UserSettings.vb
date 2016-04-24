@@ -20,239 +20,360 @@
 '*
 '******************************************************************************
 
-'Public NotInheritable Class UserSettings
-'	Private Shared _instance As UserSettings = New UserSettings()
-''	Private ReadOnly formDefaultPositionTop As Integer = 10
-''	Private ReadOnly formDefaultPositionLeft As Integer = 25
-''	Private ReadOnly formDefaultHeight As Integer = 714
-''	Private ReadOnly formDefaultWidth As Integer = 714
-''	Private ReadOnly formDefaultWindowState As Integer = 0	' 0 = Normal
-''															' 2 = Maximized
-''	Private ReadOnly defaultUpdateCheck As Integer = 1	' 1 = Enabled
-''														' 0 = Disabled
-''	Private ReadOnly defaultDoNotResetZoomLevel As Integer = 0	' 1 = Enabled
-''																' 0 = Disabled
-''	Private ReadOnly settingsFile As String = Path.Combine( _
-''		ApplicationProfileFolders.RoamingParent, _
-''		"UserSettings.xml")
-'	Private _lastUserName As String = Nothing
-'	Private _lastDataSource As String = Nothing
-''	Private _formPositionTop As String = 
-'		
-'	Public Shared ReadOnly Property Instance As UserSettings
-'		Get
-'			Return _instance
-'		End Get
-'	End Property
-'	
-'	''' <summary>
-'	''' Gets or Sets Database Connection Form last User Name.
-'	''' </summary>
-'	Public Property LastUserName As String
-'		Get
-'			If _lastUserName = Nothing Then
-'				GetSettings
-'			End If
-'			Return _lastUserName
-'		End Get
-'		Set(ByVal value As String)
-'			_lastUserName = value
-'			SetSettings
-'		End Set
-'	End Property
-'	
-'	''' <summary>
-'	''' Gets or Sets Database Connection Form last Data Source.
-'	''' </summary>
-'	Public Property LastDataSource As String
-'		Get
-'			If _lastDataSource = Nothing Then
-'				GetSettings
-'			End If
-'			Return _lastDataSource
-'		End Get
-'		Set(ByVal value As String)
-'			_lastDataSource = value
-'			SetSettings
-'		End Set
-'	End Property
-'		
-'	''' <summary>
-'	''' Gets or sets the Main Form top position.
-'	''' </summary>
-'	'Public Property FormPositionTop As String = CStr(formDefaultPositionTop)
-''	Public Property FormPositionTop As String
-''		Get
-''			If _formPositionTop = Nothing Then
-''				
-''				If _formPositionTop = Nothing Then
-''					
-''				End If
-''			End If
-''		End Get
-''		Set(ByVal value As String)
-''			
-''		End Set
-''	End Property
-'	
-'	
-'	
-'	
-'	
-'	
-'	
-'	
-'	
-'	
-'	
-'	
-'	
-'	
-'	
-'	''' <summary>
-'	''' Gets all user settings from UserSettings.xml.  This is called
-'	''' internally during a property get when the property value = nothing.
-'	''' </summary>
-'	Public Sub GetSettings
-'		ImportDeprecatedProperties
-'		ImportDeprecatedRegistryValues
-'		If System.IO.File.Exists(settingsFile) Then
-'			Try
-'				Dim xmlConfig As New XmlConfigSource(settingsFile)
-'				LastUserName = xmlConfig.Configs("DatabaseConnectionForm") _
-'					.Get("LastUserName")					
-'				LastDataSource = xmlConfig.Configs("DatabaseConnectionForm") _
-'					.Get("LastDataSource")					
-'				FormPositionTop = xmlConfig.Configs("MainForm") _
-'					.Get("FormPositionTop")					
-'				FormPositionLeft = xmlConfig.Configs("MainForm") _
-'					.Get("FormPositionLeft")					
-'				FormPositionHeight = xmlConfig.Configs("MainForm") _
-'					.Get("FormPositionHeight")
-'				FormPositionWidth = xmlConfig.Configs("MainForm") _
-'					.Get("FormPositionWidth")
-'				FormPositionWindowState = xmlConfig.Configs("MainForm") _
-'					.Get("FormPositionWindowState")
-'				UpdateCheck = xmlConfig.Configs("MainForm") _
-'					.Get("UpdateCheck")
-'				DoNotResetZoomLevel = _
-'					xmlConfig.Configs("MainForm.DocumentPreview") _
-'					.Get("DoNotResetZoomLevel")
-'				OpenFileLastFolder = xmlConfig.Configs("CommonDialogs") _
-'					.Get("OpenFileLastFolder")
-'				SaveFileLastFolder = xmlConfig.Configs("CommonDialogs") _
-'					.Get("SaveFileLastFolder")
-'			Catch ex As System.NullReferenceException
-'			Catch ex As UnauthorizedAccessException
-'				Throw New UnauthorizedAccessException(ex.Message.ToString())
-'			Catch ex As IOException
-'				Throw New IOException(ex.Message.ToString())
-'			End Try
-'		End If
-'	End Sub
-'		
-'	''' <summary>
-'	''' Sets all user settings into UserSettings.xml.  This is called
-'	''' internally when a property is set.
-'	''' </summary>
-'	Public Sub SetSettings
-'		Try
-'			Dim xmlConfig As New XmlConfigSource
-'			xmlConfig.AddConfig("DatabaseConnectionForm")
-'			xmlConfig.Configs("DatabaseConnectionForm").Set("LastUserName", _
-'														     LastUserName)
-'			xmlConfig.Configs("DatabaseConnectionForm").Set("LastDataSource", _
-'														 	 LastDataSource)
-'			xmlConfig.AddConfig("MainForm")
-'			xmlConfig.Configs("MainForm").Set("FormPositionTop", _
-'											   FormPositionTop)
-'			xmlConfig.Configs("MainForm").Set("FormPositionLeft", _
-'											   FormPositionLeft)
-'			xmlConfig.Configs("MainForm").Set("FormPositionHeight", _
-'											   FormPositionHeight)
-'			xmlConfig.Configs("MainForm").Set("FormPositionWidth", _
-'											   FormPositionWidth)
-'			xmlConfig.Configs("MainForm").Set("FormPositionWindowState", _
-'											   FormPositionWindowState)
-'			xmlConfig.Configs("MainForm").Set("UpdateCheck", UpdateCheck)
-'			xmlConfig.AddConfig("MainForm.DocumentPreview")		
-'			xmlConfig.Configs( _
-'				"MainForm.DocumentPreview").Set("DoNotResetZoomLevel", _
-'				DoNotResetZoomLevel)
-'			xmlConfig.AddConfig("CommonDialogs")
-'			xmlConfig.Configs("CommonDialogs").Set("OpenFileLastFolder", _
-'				OpenFileLastFolder)
-'			xmlConfig.Configs("CommonDialogs").Set("SaveFileLastFolder", _
-'				SaveFileLastFolder)
-'			xmlConfig.Save(settingsFile)
-'		Catch ex As System.ArgumentNullException
-'		Catch ex As UnauthorizedAccessException
-'			Throw New UnauthorizedAccessException(ex.Message.ToString())
-'		Catch ex As IOException
-'			Throw New IOException(ex.Message.ToString())
-'		End Try
-'	End Sub
-'		
-'	''' <summary>
-'	''' Imports deprecated PDFKeeper 1.0.0 or 1.1.0 user settings.
-'	''' </summary>
-'	Public Sub ImportDeprecatedProperties
-'		Dim legacyProperties As String = Path.Combine( _
-'			WindowsProfileFolders.AppData, "pdfkeeper.properties")
-'		If System.IO.File.Exists(legacyProperties) Then
-'			Try
-'				Using fileStream As New FileStream( _
-'					legacyProperties, _
-'					FileMode.Open)
-'					
-'					Using streamReader As New StreamReader( _
-'						fileStream, _
-'						Encoding.ASCII)
-'						
-'						LastUserName = streamReader.ReadLine.Substring(13)
-'						LastDataSource = streamReader.ReadLine.Substring(15)
-'					End Using
-'					fileStream.Close
-'				End Using
-'				System.IO.File.Delete(legacyProperties)
-'			Catch ex As IOException
-'				Throw New IOException(ex.Message.ToString())
-'			End Try
-'		End If
-'	End Sub
-'	
-'	''' <summary>
-'	''' Imports deprecated PDFKeeper 2.0.0 through 2.4.0 user settings.
-'	''' </summary>
-'	Private Sub ImportDeprecatedRegistryValues
-'		Dim appRoot As String = "HKEY_CURRENT_USER\Software\" & _
-'								 Application.ProductName
-'		Dim regKey As Microsoft.Win32.RegistryKey = _
-'			  		  Microsoft.Win32.Registry.CurrentUser.OpenSubKey( _
-'			  		 "Software\" & Application.ProductName, True)
-'		If IsNothing(regKey) = False Then
-'			Try
-'				LastUserName = CStr(Registry.GetValue(appRoot, _
-'					"LastUserName", Nothing))
-'				LastDataSource = CStr(Registry.GetValue(appRoot, _
-'					"LastDataSource", Nothing))
-'				FormPositionTop = CStr(Registry.GetValue(appRoot, _
-'					"FormPositionTop", Nothing))
-'				FormPositionLeft = CStr(Registry.GetValue(appRoot, _
-'					"FormPositionLeft", Nothing))
-'				FormPositionHeight = CStr(Registry.GetValue(appRoot, _
-'					"FormPositionHeight", Nothing))
-'				FormPositionWidth = CStr(Registry.GetValue(appRoot, _
-'					"FormPositionWidth", Nothing))
-'				FormPositionWindowState = CStr(Registry.GetValue(appRoot, _
-'					"FormPositionWindowState", Nothing))
-'				UpdateCheck = CStr(Registry.GetValue(appRoot, _
-'					"UpdateCheck", Nothing))
-'				registry.CurrentUser.DeleteSubKey("Software\" & _
-'					Application.ProductName)
-'			Catch ex as IOException
-'				Throw New IOException(ex.Message.ToString())
-'			End Try
-'		End If
-'	End Sub
-'End Class
+Public NotInheritable Class UserSettings
+	Private Shared _instance As UserSettings = New UserSettings()
+	Private ReadOnly settingsFile As String = Path.Combine( _
+		ApplicationProfileFolders.RoamingParent, _
+		"UserSettings.xml")
+	Private ReadOnly formDefaultPositionTop As Integer = 10
+	Private ReadOnly formDefaultPositionLeft As Integer = 25
+	Private ReadOnly formDefaultHeight As Integer = 714
+	Private ReadOnly formDefaultWidth As Integer = 714
+	Private ReadOnly formDefaultWindowState As Integer = 0	' 0 = Normal
+															' 2 = Maximized
+	Private readonly defaultUpdateCheck As Integer = 1	' 1 = Enabled
+														' 0 = Disabled
+	Private ReadOnly defaultDoNotResetZoomLevel As Integer = 0	' 1 = Enabled
+																' 0 = Disabled
+	Private _lastUserName As String
+	Private _lastDataSource As String
+	Private _formPositionTop As String
+	Private _formPositionLeft As String
+	Private _formPositionHeight As String
+	Private _formPositionWidth As String
+	Private _formPositionWindowState As String
+	Private _updateCheck As String
+	Private _doNotResetZoomLevel As String
+	Private _openFileLastFolder As String = _
+		My.Computer.FileSystem.SpecialDirectories.MyDocuments
+	Private _saveFileLastFolder As String = _
+		My.Computer.FileSystem.SpecialDirectories.MyDocuments
+		
+	Public Shared ReadOnly Property Instance As UserSettings
+		Get
+			Return _instance
+		End Get
+	End Property
+	
+	''' <summary>
+	''' Gets the Main Form default height.
+	''' </summary>
+	Public ReadOnly Property FormPositionDefaultHeight As Integer
+		Get
+			Return formDefaultHeight		
+		End Get
+	End Property
+	
+	''' <summary>
+	''' Gets the Main Form default width.
+	''' </summary>
+	Public ReadOnly Property FormPositionDefaultWidth As Integer
+		Get
+			Return formDefaultWidth		
+		End Get
+	End Property
+		
+	''' <summary>
+	''' Gets or sets the Database Connection Form last database User Name.
+	''' </summary>
+	Public Property LastUserName As String
+		Get
+			_lastUserName = ReadSetting( _
+				UserSettingsEnums.SectionName.DatabaseConnectionForm.ToString, _
+				UserSettingsEnums.KeyName.LastUserName.ToString)
+			Return _lastUserName
+		End Get
+		Set(ByVal value As String)
+			_lastUserName = value
+			SaveAllSettings
+		End Set
+	End Property
+	
+	''' <summary>
+	''' Gets or sets the Database Connection Form last Data Source.
+	''' </summary>
+	Public Property LastDataSource As String
+		Get
+			_lastDataSource = ReadSetting( _
+				UserSettingsEnums.SectionName.DatabaseConnectionForm.ToString, _
+				UserSettingsEnums.KeyName.LastDataSource.ToString)
+			Return _lastDataSource
+		End Get
+		Set(ByVal value As String)
+			_lastDataSource = value
+			SaveAllSettings
+		End Set
+	End Property
+	
+	''' <summary>
+	''' Gets or sets the Main Form top position.
+	''' </summary>
+	Public Property FormPositionTop As String
+		Get
+			_formPositionTop = ReadSetting( _
+				UserSettingsEnums.SectionName.MainForm.ToString, _
+				UserSettingsEnums.KeyName.FormPositionTop.ToString)
+			If _formPositionTop Is Nothing Then
+				_formPositionTop = CStr(formDefaultPositionTop)
+			End If
+			Return _formPositionTop
+		End Get
+		Set(ByVal value As String)
+			_formPositionTop = value
+			SaveAllSettings
+		End Set
+	End Property
+	
+	''' <summary>
+	''' Gets or sets the Main Form left position.
+	''' </summary>
+	Public Property FormPositionLeft As String
+		Get
+			_formPositionLeft = ReadSetting( _
+				UserSettingsEnums.SectionName.MainForm.ToString, _
+				UserSettingsEnums.KeyName.FormPositionLeft.ToString)
+			If _formPositionLeft Is Nothing Then
+				_formPositionLeft = CStr(formDefaultPositionLeft)
+			End If
+			Return _formPositionLeft
+		End Get
+		Set(ByVal value As String)
+			_formPositionLeft = value
+			SaveAllSettings
+		End Set
+	End Property
+	
+	''' <summary>
+	''' Gets or sets the Main Form height.
+	''' </summary>
+	Public Property FormPositionHeight As String
+		Get
+			_formPositionHeight = ReadSetting( _
+				UserSettingsEnums.SectionName.MainForm.ToString, _
+				UserSettingsEnums.KeyName.FormPositionHeight.ToString)
+			If _formPositionHeight Is Nothing Then
+				_formPositionHeight = CStr(formDefaultHeight)
+			End If
+			Return _formPositionHeight
+		End Get
+		Set(ByVal value As String)
+			_formPositionHeight = value
+			SaveAllSettings
+		End Set
+	End Property
+	
+	''' <summary>
+	''' Gets or sets the Main Form width.
+	''' </summary>
+	Public Property FormPositionWidth As String
+		Get
+			_formPositionWidth = ReadSetting( _
+				UserSettingsEnums.SectionName.MainForm.ToString, _
+				UserSettingsEnums.KeyName.FormPositionWidth.ToString)
+			If _formPositionWidth Is Nothing Then
+				_formPositionWidth = CStr(formDefaultWidth)
+			End If
+			Return _formPositionWidth
+		End Get
+		Set(ByVal value As String)
+			_formPositionWidth = value
+			SaveAllSettings
+		End Set
+	End Property
+		
+	''' <summary>
+	''' Gets or sets the Main Form window state.
+	''' 0 = Normal, 2 = Maximized
+	''' </summary>
+	Public Property FormPositionWindowState As String
+		Get
+			_formPositionWindowState = ReadSetting( _
+				UserSettingsEnums.SectionName.MainForm.ToString, _
+				UserSettingsEnums.KeyName.FormPositionWindowState.ToString)
+			If _formPositionWindowState Is Nothing Then
+				_formPositionWindowState = CStr(formDefaultWindowState)
+			End If
+			Return _formPositionWindowState
+		End Get
+		Set(ByVal value As String)
+			_formPositionWindowState = value
+			SaveAllSettings
+		End Set
+	End Property
+	
+	''' <summary>
+	''' Gets or sets the Main Form "Automatically Check for Newer Version"
+	''' setting.
+	''' 1 = Enabled, 0 = Disabled
+	''' </summary>
+	Public Property UpdateCheck As String
+		Get
+			_updateCheck = ReadSetting( _
+				UserSettingsEnums.SectionName.MainForm.ToString, _
+				UserSettingsEnums.KeyName.UpdateCheck.ToString)
+			If _updateCheck Is Nothing Then
+				_updateCheck = CStr(defaultUpdateCheck)
+			End If
+			Return _updateCheck
+		End Get
+		Set(ByVal value As String)
+			_updateCheck = value
+			SaveAllSettings
+		End Set
+	End Property
+	
+	''' <summary>
+	''' Gets or sets the Main Form, Document Preview tab "Do not reset Zoom
+	''' Level during this preview session" setting.
+	''' 1 = Enabled, 0 = Disabled
+	''' </summary>
+	Public Property DoNotResetZoomLevel As String
+		Get
+			_doNotResetZoomLevel = ReadSetting( _
+				UserSettingsEnums.SectionName.MainFormDocumentPreviewTab.ToString, _
+				UserSettingsEnums.KeyName.DoNotResetZoomLevel.ToString)
+			If _doNotResetZoomLevel Is Nothing Then
+				_doNotResetZoomLevel = CStr(defaultDoNotResetZoomLevel)
+			End If
+			Return _doNotResetZoomLevel
+		End Get
+		Set(ByVal value As String)
+			_doNotResetZoomLevel = value
+			SaveAllSettings
+		End Set
+	End Property
+		
+	''' <summary>
+	''' Gets or sets the Common Open file dialog last selected folder.
+	''' </summary>
+	Public Property OpenFileLastFolder As String
+		Get
+			_openFileLastFolder = ReadSetting( _
+				UserSettingsEnums.SectionName.CommonDialogs.ToString, _
+				UserSettingsEnums.KeyName.OpenFileLastFolder.ToString)
+			If _openFileLastFolder Is Nothing Then
+				_openFileLastFolder = _
+					My.Computer.FileSystem.SpecialDirectories.MyDocuments
+			End If
+			Return _openFileLastFolder
+		End Get
+		Set(ByVal value As String)
+			_openFileLastFolder = value
+			SaveAllSettings
+		End Set
+	End Property
+		
+	''' <summary>
+	''' Gets or sets the Common Save file dialog last selected folder.
+	''' </summary>
+	Public Property SaveFileLastFolder As String
+		Get
+			_saveFileLastFolder = ReadSetting( _
+				UserSettingsEnums.SectionName.CommonDialogs.ToString, _
+				UserSettingsEnums.KeyName.SaveFileLastFolder.ToString)
+			If _saveFileLastFolder Is Nothing Then
+				_saveFileLastFolder = _
+					My.Computer.FileSystem.SpecialDirectories.MyDocuments
+			End If
+			Return _saveFileLastFolder
+		End Get
+		Set(ByVal value As String)
+			_saveFileLastFolder = value
+			SaveAllSettings
+		End Set
+	End Property
+		
+	''' <summary>
+	''' Reads the specified User Setting from UserSettings.XML.
+	''' </summary>
+	''' <param name="sectionName">Section Name</param>
+	''' <param name="keyName">Key Name</param>
+	''' <returns>Value</returns>
+	Private Function ReadSetting( _
+		ByVal sectionName As String, _
+		ByVal keyName As String) As String
+				
+		If System.IO.File.Exists(settingsFile) Then
+			Try
+				Dim xmlConfig As New XmlConfigSource(settingsFile)
+				Return xmlConfig.Configs(sectionName).Get(keyName)
+			Catch ex As System.NullReferenceException
+				Return Nothing	
+			Catch ex As UnauthorizedAccessException
+				ShowError(ex.Message)
+				Return Nothing
+			Catch ex As IOException
+				ShowError(ex.Message)
+				Return Nothing
+			End Try
+		End If
+		Return Nothing	
+	End Function
+	
+	''' <summary>
+	''' Saves all User Settings to UserSettings.XML.
+	''' </summary>
+	Private Sub SaveAllSettings
+		Try
+			Dim xmlConfig As New XmlConfigSource
+			xmlConfig.AddConfig( _
+				UserSettingsEnums.SectionName.DatabaseConnectionForm.ToString)
+			xmlConfig.Configs( _
+				UserSettingsEnums.SectionName.DatabaseConnectionForm.ToString).Set( _
+				UserSettingsEnums.KeyName.LastUserName.ToString, _
+				_lastUserName)
+			xmlConfig.Configs( _
+				UserSettingsEnums.SectionName.DatabaseConnectionForm.ToString).Set( _
+				UserSettingsEnums.KeyName.LastDataSource.ToString, _
+				_lastDataSource)
+			xmlConfig.AddConfig( _
+				UserSettingsEnums.SectionName.MainForm.ToString)
+			xmlConfig.Configs( _
+				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
+				UserSettingsEnums.KeyName.FormPositionTop.ToString, _
+				_formPositionTop)	
+			xmlConfig.Configs( _
+				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
+				UserSettingsEnums.KeyName.FormPositionLeft.ToString, _
+				_formPositionLeft)	
+			xmlConfig.Configs( _
+				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
+				UserSettingsEnums.KeyName.FormPositionHeight.ToString, _
+				_formPositionHeight)
+			xmlConfig.Configs( _
+				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
+				UserSettingsEnums.KeyName.FormPositionWidth.ToString, _
+				_formPositionWidth)			
+			xmlConfig.Configs( _
+				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
+				UserSettingsEnums.KeyName.FormPositionWindowState.ToString, _
+				_formPositionWindowState)
+			xmlConfig.Configs( _
+				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
+				UserSettingsEnums.KeyName.UpdateCheck.ToString, _
+				_updateCheck)
+			xmlConfig.AddConfig( _
+				UserSettingsEnums.SectionName.MainFormDocumentPreviewTab.ToString)
+			xmlConfig.Configs( _
+				UserSettingsEnums.SectionName.MainFormDocumentPreviewTab.ToString).Set( _
+				UserSettingsEnums.KeyName.DoNotResetZoomLevel.ToString, _
+				_doNotResetZoomLevel)
+			xmlConfig.AddConfig( _
+				UserSettingsEnums.SectionName.CommonDialogs.ToString)
+			xmlConfig.Configs( _
+				UserSettingsEnums.SectionName.CommonDialogs.ToString).Set( _
+				UserSettingsEnums.KeyName.OpenFileLastFolder.ToString, _
+				_openFileLastFolder)
+			xmlConfig.Configs( _
+				UserSettingsEnums.SectionName.CommonDialogs.ToString).Set( _
+				UserSettingsEnums.KeyName.SaveFileLastFolder.ToString, _
+				_saveFileLastFolder)
+			xmlConfig.Save(settingsFile)
+		Catch ex As System.ArgumentNullException
+		Catch ex As UnauthorizedAccessException
+			ShowError(ex.Message)
+		Catch ex As IOException
+			ShowError(ex.Message)
+		End Try
+	End Sub
+End Class

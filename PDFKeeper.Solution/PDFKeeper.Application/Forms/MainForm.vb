@@ -65,7 +65,7 @@ Public Partial Class MainForm
 	''' This subroutine will start the update check thread.
 	''' </summary>
 	Private Sub StartUpdateCheck
-		If CDbl(UserSettings.UpdateCheck) = 1 Then
+		If CDbl(UserSettings.Instance.UpdateCheck) = 1 Then
 			toolStripStatusLabelUpdateStatus.Text = _
 				PdfKeeper.Strings.MainFormCheckingVersion
 			BackgroundWorkerUpdateCheck.RunWorkerAsync
@@ -77,25 +77,25 @@ Public Partial Class MainForm
 	''' UserSettings properties.
 	''' </summary>
 	Private Sub PositionAndSizeForm
-		Me.Top = CInt(UserSettings.FormPositionTop)
-		Me.Left = CInt(UserSettings.FormPositionLeft)
-		If IsNothing(UserSettings.FormPositionHeight) Then
+		Me.Top = CInt(UserSettings.Instance.FormPositionTop)
+		Me.Left = CInt(UserSettings.Instance.FormPositionLeft)
+		If IsNothing(UserSettings.Instance.FormPositionHeight) Then
 			Dim workingRectangle As System.Drawing.Rectangle = _
 				Screen.PrimaryScreen.WorkingArea
 			Me.Size = New System.Drawing.Size(workingRectangle.Width - 10, _
 				workingRectangle.Height - 10)
-			If Me.Height > UserSettings.FormPositionDefaultHeight Then
-				Me.Height = UserSettings.FormPositionDefaultHeight
+			If Me.Height > UserSettings.Instance.FormPositionDefaultHeight Then
+				Me.Height = UserSettings.Instance.FormPositionDefaultHeight
 			End If
 		Else
-			Me.Height = CInt(UserSettings.FormPositionHeight)
+			Me.Height = CInt(UserSettings.Instance.FormPositionHeight)
 		End If
-		If IsNothing(UserSettings.FormPositionWidth) = False Then
-			Me.Width = CInt(UserSettings.FormPositionWidth)
-		ElseIf Me.Width > UserSettings.FormPositionDefaultWidth Then
-			Me.Width = UserSettings.FormPositionDefaultWidth			
+		If IsNothing(UserSettings.Instance.FormPositionWidth) = False Then
+			Me.Width = CInt(UserSettings.Instance.FormPositionWidth)
+		ElseIf Me.Width > UserSettings.Instance.FormPositionDefaultWidth Then
+			Me.Width = UserSettings.Instance.FormPositionDefaultWidth			
 		End If
-		Me.WindowState = CType(UserSettings.FormPositionWindowState, _
+		Me.WindowState = CType(UserSettings.Instance.FormPositionWindowState, _
 			Windows.Forms.FormWindowState)
 	End Sub
 	
@@ -104,7 +104,7 @@ Public Partial Class MainForm
 	''' preview session" on the Document Preview tab. 
 	''' </summary>
 	Private Sub DoNotResetZoomLevelCheck
-		If UserSettings.DoNotResetZoomLevel = CStr(1) Then
+		If UserSettings.Instance.DoNotResetZoomLevel = CStr(1) Then
 			checkBoxDoNotResetZoomLevel.Checked = True
 		End If
 	End Sub
@@ -122,7 +122,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemSavePdfToDiskClick(sender As Object, e As EventArgs)
 		SaveFileDialog.InitialDirectory = _
-			UserSettings.SaveFileLastFolder
+			UserSettings.Instance.SaveFileLastFolder
 		
 		' Construct the file name prefill using the title of the selected
 		' list view item.
@@ -135,7 +135,7 @@ Public Partial Class MainForm
 		Me.Cursor = Cursors.WaitCursor
 		Dim targetPdfFile As String = SaveFileDialog.FileName
 		Dim pdfFileInfo As New FileInfo(targetPdfFile)
-		UserSettings.SaveFileLastFolder = pdfFileInfo.DirectoryName
+		UserSettings.Instance.SaveFileLastFolder = pdfFileInfo.DirectoryName
 		If Not pdfFileInfo.Extension.ToUpper(CultureInfo.InvariantCulture) = _
 				".PDF" Then
 			targetPdfFile = targetPdfFile & ".pdf"
@@ -218,7 +218,7 @@ Public Partial Class MainForm
 			textBoxDocumentNotes.AppendText(vbCrLf & vbCrLf)
 		End If
 		textBoxDocumentNotes.AppendText("--- " & Date.Now & " (" & _
-			UserSettings.LastUserName & ") ---" & vbCrLf)
+			UserSettings.Instance.LastUserName & ") ---" & vbCrLf)
 		TextBoxDocumentNotesScrollToEnd
 	End Sub
 
@@ -267,9 +267,9 @@ Public Partial Class MainForm
 		End If
 		Me.Cursor = Cursors.WaitCursor
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(UserSettings.LastUserName, _
+		If oDatabaseConnection.Open(UserSettings.Instance.LastUserName, _
 				DatabaseConnectionForm.dbPassword, _
-				UserSettings.LastDataSource) = 1 Then
+				UserSettings.Instance.LastDataSource) = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			Exit Sub
@@ -344,7 +344,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemHelpClick(sender As Object, e As EventArgs)
-		If CDbl(UserSettings.UpdateCheck) = 1 Then
+		If CDbl(UserSettings.Instance.UpdateCheck) = 1 Then
 			toolStripMenuItemCheckNewerVersion.Checked = True
 		Else
 			toolStripMenuItemCheckNewerVersion.Checked = False
@@ -379,10 +379,10 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemCheckNewerVersionClick(sender As Object, e As EventArgs)
 		If toolStripMenuItemCheckNewerVersion.Checked Then
-			UserSettings.UpdateCheck = CStr(0)
+			UserSettings.Instance.UpdateCheck = CStr(0)
 			toolStripMenuItemCheckNewerVersion.Checked = False
 		Else
-			UserSettings.UpdateCheck = CStr(1)
+			UserSettings.Instance.UpdateCheck = CStr(1)
 			toolStripMenuItemCheckNewerVersion.Checked = True
 		End If
 	End Sub
@@ -512,9 +512,9 @@ Public Partial Class MainForm
 		toolStripStatusLabelMessage.Text = Nothing
 		Me.Refresh	' Form needed to be refreshed for status label to clear.
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(UserSettings.LastUserName, _
+		If oDatabaseConnection.Open(UserSettings.Instance.LastUserName, _
 				DatabaseConnectionForm.dbPassword, _
-				UserSettings.LastDataSource) = 1 Then
+				UserSettings.Instance.LastDataSource) = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			comboBoxSearchText.Select
@@ -949,12 +949,11 @@ Public Partial Class MainForm
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	Private Sub CheckBoxDoNotResetZoomLevelCheckedChanged(sender As Object, _
-		e As EventArgs)
+	Private Sub CheckBoxDoNotResetZoomLevelCheckedChanged(sender As Object, e As EventArgs)
 		If checkBoxDoNotResetZoomLevel.Checked Then
-			UserSettings.DoNotResetZoomLevel = CStr(1)
+			UserSettings.Instance.DoNotResetZoomLevel = CStr(1)
 		Else
-			UserSettings.DoNotResetZoomLevel = CStr(0)
+			UserSettings.Instance.DoNotResetZoomLevel = CStr(0)
 		End If
 	End Sub
 	
@@ -1421,9 +1420,9 @@ Public Partial Class MainForm
 		End If
 		Me.Cursor = Cursors.WaitCursor
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(UserSettings.LastUserName, _
+		If oDatabaseConnection.Open(UserSettings.Instance.LastUserName, _
 				DatabaseConnectionForm.dbPassword, _
-				UserSettings.LastDataSource) = 1 Then
+				UserSettings.Instance.LastDataSource) = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			Exit Sub
@@ -1959,8 +1958,7 @@ Public Partial Class MainForm
 	''' <summary>
 	''' Check for unsaved Document Notes; dispose the database password string;
 	''' save form size and postion; delete Document Capture and Direct Upload
-	''' folder shortcuts; set user settings; and delete cached PDF and PNG
-	''' files.
+	''' folder shortcuts; and delete cached PDF and PNG files.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -1970,7 +1968,6 @@ Public Partial Class MainForm
 		SaveFormPosition
 		UserProfileFoldersTask.DeleteDocumentCaptureShortcuts
 		UserProfileFoldersTask.DeleteDirectUploadShortcut
-		UserSettings.SetSettings
 		FileCache.Instance.DeleteAllItemsFromFileSystem
 	End Sub
 	
@@ -1979,18 +1976,18 @@ Public Partial Class MainForm
 	''' </summary>
 	Private Sub SaveFormPosition
 		If Me.WindowState.ToString = "Normal" Then
-			UserSettings.FormPositionTop = _
+			UserSettings.Instance.FormPositionTop = _
 				Me.Top.ToString(CultureInfo.InvariantCulture)
-			UserSettings.FormPositionLeft = _
+			UserSettings.Instance.FormPositionLeft = _
 				Me.Left.ToString(CultureInfo.InvariantCulture)
-			UserSettings.FormPositionHeight = _
+			UserSettings.Instance.FormPositionHeight = _
 				Me.Height.ToString(CultureInfo.InvariantCulture)
-			UserSettings.FormPositionWidth = _
+			UserSettings.Instance.FormPositionWidth = _
 				Me.Width.ToString(CultureInfo.InvariantCulture)
-			UserSettings.FormPositionWindowState = CStr(0)
+			UserSettings.Instance.FormPositionWindowState = CStr(0)
 		End If
 		If Me.WindowState.ToString = "Maximized" Then
-			UserSettings.FormPositionWindowState = CStr(2)
+			UserSettings.Instance.FormPositionWindowState = CStr(2)
 		End If
 	End Sub
 	

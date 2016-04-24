@@ -179,7 +179,7 @@ Public NotInheritable Class DirectUpload
 						oDirectUploadFolderProperties.UseExistingAuthorChecked) = 0 Then
 						If oDirectUploadFolderProperties.AuthorPreFill.Trim = _
 							PdfKeeper.Strings.DirectUploadConfigAuthorDatabaseUserName Then
-							oPdfProperties.Author = UserSettings.LastUserName
+							oPdfProperties.Author = UserSettings.Instance.LastUserName
 						ElseIf oDirectUploadFolderProperties.AuthorPreFill.Trim = _
 							PdfKeeper.Strings.DirectUploadConfigAuthorWindowsUserName Then
 							oPdfProperties.Author = Environment.UserName
