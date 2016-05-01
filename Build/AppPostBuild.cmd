@@ -22,10 +22,10 @@ rem * with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 rem *
 rem ***************************************************************************
 
-copy "..\..\..\..\Binaries\SumatraPDF.exe"
-copy "..\..\..\..\Binaries\gswin32c.exe"
-copy "..\..\..\..\Binaries\gsdll32.dll"
-copy "..\..\..\..\Custom\sumatrapdfrestrict.ini"
-copy "..\..\..\..\Help\PDFKeeper*.chm"
+copy "..\..\..\..\externals\SumatraPDF.exe"
+copy "..\..\..\..\externals\gswin32c.exe"
+copy "..\..\..\..\externals\gsdll32.dll"
+copy "..\..\..\..\resources\sumatrapdfrestrict.ini"
+copy "..\..\..\..\help\PDFKeeper*.chm"
 
 exit
