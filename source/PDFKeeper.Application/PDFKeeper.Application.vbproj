@@ -169,7 +169,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>start ..\..\..\..\Build\PostBuild</PostBuildEvent>
+    <PostBuildEvent>start ..\..\..\..\build\AppPostBuild</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Classes" />
