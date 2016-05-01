@@ -73,27 +73,6 @@ Friend Class Strings
 	End Property
 	
 	'''<summary>
-	'''  Looks up a localized string similar to Components used by PDFKeeper which are subject to their respective licenses:
-	'''
-	'''Mini Icons (subset from collection)
-	'''-------------------------------------
-	'''Author: Mark James
-	'''Website: http://www.famfamfam.com/lab/icons/mini/
-	'''License: Available for free use for any purpose.
-	'''
-	'''Snowish Icons (subset from collection)
-	'''-----------------------------------------
-	'''Author: Saki (Alexandre Moore)
-	'''Website: http://www.iconarchive.com/show/snowish-icons-by-saki.html
-	'''License: GPLv2 (http://www.iconarchive.com/icons/ [rest of string was truncated]&quot;;.
-	'''</summary>
-	Friend Shared ReadOnly Property Credits() As String
-		Get
-			Return ResourceManager.GetString("Credits", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
 	'''  Looks up a localized string similar to {0} is unavailable..
 	'''</summary>
 	Friend Shared ReadOnly Property DatabaseUnavailable() As String
@@ -484,6 +463,33 @@ Friend Class Strings
 	Friend Shared ReadOnly Property PdfPropertiesBlank() As String
 		Get
 			Return ResourceManager.GetString("PdfPropertiesBlank", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to PDFKeeper uses third-party programs, libraries, and other resources that may be distributed under licenses different than PDFKeeper.
+	'''
+	'''License notice for Mini Icons 
+	'''-------------------------------
+	'''
+	'''http://www.famfamfam.com/lab/icons/mini/
+	'''
+	'''By Mark James
+	'''
+	'''The icons in this collection is &quot;Available for free use for any purpose&quot;.
+	'''
+	'''License notice for Open Iconic 
+	'''---------------------------------
+	'''
+	'''https://github.com/iconic/open-iconic/
+	'''
+	'''Copyright (c) 2014 Waybury
+	'''
+	'''This icons in this collection [rest of string was truncated]&quot;;.
+	'''</summary>
+	Friend Shared ReadOnly Property ThirdPartyNotices() As String
+		Get
+			Return ResourceManager.GetString("ThirdPartyNotices", resourceCulture)
 		End Get
 	End Property
 End Class

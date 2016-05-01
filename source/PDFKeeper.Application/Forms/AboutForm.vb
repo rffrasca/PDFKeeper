@@ -40,7 +40,7 @@ Public Partial Class AboutForm
 		labelVersion.Text = "Version: " & ProductDetails.Version & _
 							" - Build: " & ProductDetails.Build
 		textBoxLicense.Text = PdfKeeper.Strings.License
-		textBoxCredits.Text = PdfKeeper.Strings.Credits
+		textBoxCredits.Text = PdfKeeper.Strings.ThirdPartyNotices
 	End Sub
 	
 	''' <summary>

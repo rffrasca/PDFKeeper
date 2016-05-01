@@ -459,36 +459,36 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBoxCredits.Parent" xml:space="preserve">
-    <value>tabPageCredits</value>
+    <value>tabPageThirdPartyNotices</value>
   </data>
   <data name="&gt;&gt;textBoxCredits.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabPageCredits.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageThirdPartyNotices.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageCredits.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageThirdPartyNotices.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPageCredits.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageThirdPartyNotices.Size" type="System.Drawing.Size, System.Drawing">
     <value>354, 184</value>
   </data>
-  <data name="tabPageCredits.TabIndex" type="System.Int32, mscorlib">
+  <data name="tabPageThirdPartyNotices.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tabPageCredits.Text" xml:space="preserve">
-    <value>Credits</value>
+  <data name="tabPageThirdPartyNotices.Text" xml:space="preserve">
+    <value>Third-Party Notices</value>
   </data>
-  <data name="&gt;&gt;tabPageCredits.Name" xml:space="preserve">
-    <value>tabPageCredits</value>
+  <data name="&gt;&gt;tabPageThirdPartyNotices.Name" xml:space="preserve">
+    <value>tabPageThirdPartyNotices</value>
   </data>
-  <data name="&gt;&gt;tabPageCredits.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageThirdPartyNotices.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageCredits.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageThirdPartyNotices.Parent" xml:space="preserve">
     <value>tabControlLicenses</value>
   </data>
-  <data name="&gt;&gt;tabPageCredits.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPageThirdPartyNotices.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="tabControlLicenses.Location" type="System.Drawing.Point, System.Drawing">

@@ -58,12 +58,12 @@ Partial Class AboutForm
 		Me.tabControlLicenses = New System.Windows.Forms.TabControl()
 		Me.tabPageLicense = New System.Windows.Forms.TabPage()
 		Me.textBoxLicense = New System.Windows.Forms.TextBox()
-		Me.tabPageCredits = New System.Windows.Forms.TabPage()
+		Me.tabPageThirdPartyNotices = New System.Windows.Forms.TabPage()
 		Me.textBoxCredits = New System.Windows.Forms.TextBox()
 		CType(Me.pictureBoxLogo,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.tabControlLicenses.SuspendLayout
 		Me.tabPageLicense.SuspendLayout
-		Me.tabPageCredits.SuspendLayout
+		Me.tabPageThirdPartyNotices.SuspendLayout
 		Me.SuspendLayout
 		'
 		'pictureBoxLogo
@@ -109,7 +109,7 @@ Partial Class AboutForm
 		'tabControlLicenses
 		'
 		Me.tabControlLicenses.Controls.Add(Me.tabPageLicense)
-		Me.tabControlLicenses.Controls.Add(Me.tabPageCredits)
+		Me.tabControlLicenses.Controls.Add(Me.tabPageThirdPartyNotices)
 		resources.ApplyResources(Me.tabControlLicenses, "tabControlLicenses")
 		Me.tabControlLicenses.Name = "tabControlLicenses"
 		Me.tabControlLicenses.SelectedIndex = 0
@@ -127,12 +127,12 @@ Partial Class AboutForm
 		Me.textBoxLicense.Name = "textBoxLicense"
 		Me.textBoxLicense.ReadOnly = true
 		'
-		'tabPageCredits
+		'tabPageThirdPartyNotices
 		'
-		Me.tabPageCredits.Controls.Add(Me.textBoxCredits)
-		resources.ApplyResources(Me.tabPageCredits, "tabPageCredits")
-		Me.tabPageCredits.Name = "tabPageCredits"
-		Me.tabPageCredits.UseVisualStyleBackColor = true
+		Me.tabPageThirdPartyNotices.Controls.Add(Me.textBoxCredits)
+		resources.ApplyResources(Me.tabPageThirdPartyNotices, "tabPageThirdPartyNotices")
+		Me.tabPageThirdPartyNotices.Name = "tabPageThirdPartyNotices"
+		Me.tabPageThirdPartyNotices.UseVisualStyleBackColor = true
 		'
 		'textBoxCredits
 		'
@@ -165,15 +165,15 @@ Partial Class AboutForm
 		Me.tabControlLicenses.ResumeLayout(false)
 		Me.tabPageLicense.ResumeLayout(false)
 		Me.tabPageLicense.PerformLayout
-		Me.tabPageCredits.ResumeLayout(false)
-		Me.tabPageCredits.PerformLayout
+		Me.tabPageThirdPartyNotices.ResumeLayout(false)
+		Me.tabPageThirdPartyNotices.PerformLayout
 		Me.ResumeLayout(false)
 	End Sub
 	Private textBoxCredits As System.Windows.Forms.TextBox
 	Private textBoxLicense As System.Windows.Forms.TextBox
 	Private tabPageLicense As System.Windows.Forms.TabPage
 	Private tabControlLicenses As System.Windows.Forms.TabControl
-	Private tabPageCredits As System.Windows.Forms.TabPage
+	Private tabPageThirdPartyNotices As System.Windows.Forms.TabPage
 	Private linkLabelHomePage As System.Windows.Forms.LinkLabel
 	Private labelVersion As System.Windows.Forms.Label
 	Private labelCopyright As System.Windows.Forms.Label
