@@ -11,7 +11,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <OptionInfer>On</OptionInfer>
-    <ApplicationIcon>..\Common\PDFKeeper.ico</ApplicationIcon>
+    <ApplicationIcon>..\..\resources\logo\PDFKeeper.ico</ApplicationIcon>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>PdfKeeper.My.MyApplication</StartupObject>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -60,10 +60,10 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.Targets" />
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\packages\iTextSharp.5.5.2\lib\itextsharp.dll</HintPath>
+      <HintPath>..\..\packages\iTextSharp.5.5.2\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Nini">
-      <HintPath>..\packages\Trove.Nini.1.1.0.0\lib\net20\Nini.dll</HintPath>
+      <HintPath>..\..\packages\Trove.Nini.1.1.0.0\lib\net20\Nini.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess" />
     <Reference Include="System" />
