@@ -26,19 +26,13 @@ Public Class DatabaseConnection
 	Friend oraConnection As New OracleConnection
 	
 	''' <summary>
-	''' This function will create the connection string and open a database
-	''' connection.
+	''' This function will open a database connection.
 	''' </summary>
 	''' <returns>0 = Successful, 1 = Failed</returns>
-	Public Function Open(ByVal userName As String, _
-						 ByVal password As SecureString, _
-						 ByVal dataSource As String) As Integer
+	Public Function Open As Integer
 		Try
-			Dim passwordSecureString As SecureString = password
-			oraConnection.ConnectionString = "User Id=" + userName + ";" & _
-				"Password=" + passwordSecureString.GetString + ";" & _
-				"Data Source=" + dataSource + ";" & _
-				"Persist Security Info=False;Pooling=True"
+			oraConnection.ConnectionString = _
+				DBConnectionString.Instance.ConnectionString
 			oraConnection.Open
 			Return 0
   		Catch ex As OracleException

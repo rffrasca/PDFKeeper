@@ -68,9 +68,7 @@ Public NotInheritable Class PdfFileTask
 			End Try
 		
 			Dim oDatabaseConnection As New DatabaseConnection
-			If oDatabaseConnection.Open(UserSettings.Instance.LastUserName, _
-					DatabaseConnectionForm.dbPassword, _
-					UserSettings.Instance.LastDataSource) = 1 Then
+			If oDatabaseConnection.Open = 1 Then
 				Return 1
 			End If
 			

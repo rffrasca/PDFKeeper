@@ -267,9 +267,7 @@ Public Partial Class MainForm
 		End If
 		Me.Cursor = Cursors.WaitCursor
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(UserSettings.Instance.LastUserName, _
-				DatabaseConnectionForm.dbPassword, _
-				UserSettings.Instance.LastDataSource) = 1 Then
+		If oDatabaseConnection.Open = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			Exit Sub
@@ -512,9 +510,7 @@ Public Partial Class MainForm
 		toolStripStatusLabelMessage.Text = Nothing
 		Me.Refresh	' Form needed to be refreshed for status label to clear.
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(UserSettings.Instance.LastUserName, _
-				DatabaseConnectionForm.dbPassword, _
-				UserSettings.Instance.LastDataSource) = 1 Then
+		If oDatabaseConnection.Open = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			comboBoxSearchText.Select
@@ -1420,9 +1416,7 @@ Public Partial Class MainForm
 		End If
 		Me.Cursor = Cursors.WaitCursor
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(UserSettings.Instance.LastUserName, _
-				DatabaseConnectionForm.dbPassword, _
-				UserSettings.Instance.LastDataSource) = 1 Then
+		If oDatabaseConnection.Open = 1 Then
 			oDatabaseConnection.Dispose
 			Me.Cursor = Cursors.Default
 			Exit Sub

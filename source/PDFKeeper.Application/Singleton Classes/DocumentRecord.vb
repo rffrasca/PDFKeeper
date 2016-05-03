@@ -114,10 +114,7 @@ Public NotInheritable Class DocumentRecord
 			Exit Sub
 		End If
 		Dim connection As New DatabaseConnection
-		If connection.Open( _
-			UserSettings.Instance.LastUserName, _
-			DatabaseConnectionForm.dbPassword, _
-			UserSettings.Instance.LastDataSource) = 1 Then
+		If connection.Open = 1 Then
 			connection.Dispose
 			_id = 0
 			Throw New DataException(String.Format( _
@@ -191,10 +188,7 @@ Public NotInheritable Class DocumentRecord
 	''' </summary>
 	Private Sub OnNotesChanged
 		Dim connection As New DatabaseConnection
-		If connection.Open( _
-			UserSettings.Instance.LastUserName, _
-			DatabaseConnectionForm.dbPassword, _
-			UserSettings.Instance.LastDataSource) = 1 Then
+		If connection.Open = 1 Then
 			connection.Dispose
 			_notes = undoNotes
 			Throw New DataException(String.Format( _

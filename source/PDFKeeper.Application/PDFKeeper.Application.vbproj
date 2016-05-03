@@ -132,6 +132,7 @@
     <Compile Include="Modules\WindowUtil.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="Properties\AssemblyInfo.vb" />
+    <Compile Include="Singleton Classes\DBConnectionString.vb" />
     <Compile Include="Singleton Classes\DocumentRecord.vb" />
     <Compile Include="Singleton Classes\FileCache.vb" />
     <Compile Include="Singleton Classes\ImageZoom.vb" />

@@ -159,6 +159,9 @@ Public Partial Class DatabaseConnectionForm
 	''' <param name="e"></param>
 	Private Sub ButtonOkClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
+		DBConnectionString.Instance.UserName = textBoxUserName.Text
+		DBConnectionString.Instance.Password = dbPassword
+		DBConnectionString.Instance.DataSource = textBoxDataSource.Text
 		textBoxPassword.Text = Nothing
 		If CanConnectToDatabase() = False Then
 			textBoxUsername.Select
@@ -174,10 +177,9 @@ Public Partial Class DatabaseConnectionForm
 	''' This function will check if a connection to the database can be made.
 	''' </summary>
 	''' <returns>True or False</returns>
-	Private Function CanConnectToDatabase() As Boolean
+	Private Shared Function CanConnectToDatabase() As Boolean
 		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open(textBoxUserName.Text, dbPassword, _
-									textBoxDataSource.Text) = 0 Then
+		If oDatabaseConnection.Open = 0 Then
 			oDatabaseConnection.Dispose
 			Return True
 		Else
