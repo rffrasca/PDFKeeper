@@ -20,13 +20,13 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class DBConnectionString
-	Private Shared _instance As DBConnectionString = New DBConnectionString()
+Public NotInheritable Class DatabaseConnectionString
+	Private Shared _instance As DatabaseConnectionString = New DatabaseConnectionString()
 	Private _userName As String
 	Private _password As SecureString
 	Private _dataSource As String
 	
-	Public Shared ReadOnly Property Instance As DBConnectionString
+	Public Shared ReadOnly Property Instance As DatabaseConnectionString
 		Get
 			Return _instance
 		End Get

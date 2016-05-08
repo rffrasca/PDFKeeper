@@ -32,7 +32,7 @@ Public Class DatabaseConnection
 	Public Function Open As Integer
 		Try
 			oraConnection.ConnectionString = _
-				DBConnectionString.Instance.ConnectionString
+				DatabaseConnectionString.Instance.ConnectionString
 			oraConnection.Open
 			Return 0
   		Catch ex As OracleException

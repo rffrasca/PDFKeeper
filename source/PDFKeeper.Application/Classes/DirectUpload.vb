@@ -200,10 +200,34 @@ Public NotInheritable Class DirectUpload
 					End If
 				End If
 				If oPdfProperties.Write = 0 Then
-					If PdfFileTask.UploadToDatabase(outputPdfFile) = 0 Then
-						DeleteFile(inputPdfFile, True)
-						DeleteFile(outputPdfFile, False)
+					' Read properties from PDF document and confirm that the
+					' Title, Author, and Subject are not blank.
+					Dim oPdfProperties2 As New PdfProperties(outputPdfFile)
+					If oPdfProperties2.Read = 0 Then
+						If oPdfProperties2.Title = Nothing Or _
+				   		   	oPdfProperties2.Author = Nothing Or _
+				   		   	oPdfProperties2.Subject = Nothing Then
+				
+							ShowError(PdfKeeper.Strings.PdfPropertiesBlank)
+							Exit Sub
+						End If
+					Else
+						Exit Sub
 					End If
+			
+					Dim nonQuery As New DatabaseNonQuery( _
+						oPdfProperties2.Title, _
+						oPdfProperties2.Author, _
+						oPdfProperties2.Subject, _
+						oPdfProperties2.Keywords, _
+						outputPdfFile)
+					Try
+						nonQuery.ExecuteNonQuery
+					Catch ex As DataException
+						Exit Sub
+					End Try
+					DeleteFile(inputPdfFile, True)
+					DeleteFile(outputPdfFile, False)
 				End If
 			Else
 				ShowError(String.Format( _

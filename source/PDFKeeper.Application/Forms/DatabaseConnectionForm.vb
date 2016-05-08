@@ -159,9 +159,9 @@ Public Partial Class DatabaseConnectionForm
 	''' <param name="e"></param>
 	Private Sub ButtonOkClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		DBConnectionString.Instance.UserName = textBoxUserName.Text
-		DBConnectionString.Instance.Password = dbPassword
-		DBConnectionString.Instance.DataSource = textBoxDataSource.Text
+		DatabaseConnectionString.Instance.UserName = textBoxUserName.Text
+		DatabaseConnectionString.Instance.Password = dbPassword
+		DatabaseConnectionString.Instance.DataSource = textBoxDataSource.Text
 		textBoxPassword.Text = Nothing
 		If CanConnectToDatabase() = False Then
 			textBoxUsername.Select

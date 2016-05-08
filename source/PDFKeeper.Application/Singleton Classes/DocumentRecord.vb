@@ -187,28 +187,11 @@ Public NotInheritable Class DocumentRecord
 	''' Updates Document Notes in the database for Id.
 	''' </summary>
 	Private Sub OnNotesChanged
-		Dim connection As New DatabaseConnection
-		If connection.Open = 1 Then
-			connection.Dispose
+		Dim nonQuery As New DatabaseNonQuery(CStr(Id), Notes)
+		Try
+			nonQuery.ExecuteNonQuery
+		Catch ex As DataException
 			_notes = undoNotes
-			Throw New DataException(String.Format( _
-				CultureInfo.CurrentCulture, _
-				PdfKeeper.Strings.DatabaseUnavailable, _
-				UserSettings.Instance.LastDataSource))
-		End If
-		Dim update As String = _
-			"update pdfkeeper.docs " & _
-			"set doc_notes =q'[" & Notes & "]',doc_dummy = '' " & _
-			"where doc_id = " & Id
-		Using command As New OracleCommand(update, connection.oraConnection)
-			Try
-				command.ExecuteNonQuery
-			Catch ex As OracleException
-				_notes = undoNotes
-				Throw New DataException(ex.Message.ToString())
-			Finally
-				connection.Dispose
-			End Try
-		End Using
+		End Try
 	End Sub
 End Class

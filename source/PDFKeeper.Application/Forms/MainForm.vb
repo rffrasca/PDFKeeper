@@ -266,31 +266,18 @@ Public Partial Class MainForm
 			Exit Sub
 		End If
 		Me.Cursor = Cursors.WaitCursor
-		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open = 1 Then
-			oDatabaseConnection.Dispose
-			Me.Cursor = Cursors.Default
-			Exit Sub
-		End If
 		Dim oListViewItem As ListViewItem
 		For Each oListViewItem In listViewDocs.CheckedItems
-			Dim sql As String = "delete from pdfkeeper.docs where " & _
-								"doc_id =" & oListViewItem.Text
-			Using oOracleCommand As New OracleCommand(sql, _
-				  oDatabaseConnection.oraConnection)
-				Try
-					oOracleCommand.ExecuteNonQuery
-				Catch ex As OracleException
-					Me.Cursor = Cursors.Default
-					ShowError(ex.Message.ToString())
-					oDatabaseConnection.Dispose
-					Exit Sub
-				End Try
-			End Using
+			Dim nonQuery As New DatabaseNonQuery(oListViewItem.Text)
+			Try
+				nonQuery.ExecuteNonQuery
+			Catch ex As DataException
+				Me.Cursor = Cursors.Default
+				Exit Sub
+			End Try
 			oListViewItem.Checked = False
 			oListViewItem.Remove
 		Next
-		oDatabaseConnection.Dispose
 		UpdateListCountStatusBar
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1572,15 +1559,44 @@ Public Partial Class MainForm
 			toolStripStatusLabelMessage.Text = _
 				PdfKeeper.Strings.MainFormCaptureUploading
 			Application.DoEvents
-			If PdfFileTask.UploadToDatabase(capturePdfEditOutput) = 0 Then
-				toolStripStatusLabelMessage.Text = Nothing
-				Application.DoEvents
-				DeleteFile(capturePdfEditInput, True)
-				ClearCaptureSelection
-				FillDocCaptureQueueList
+			
+			' Read properties from PDF document and confirm that the Title, 
+			' Author, and Subject are not blank.
+			Dim oPdfProperties As New PdfProperties(capturePdfEditOutput)
+			If oPdfProperties.Read = 0 Then
+				If oPdfProperties.Title = Nothing Or _
+		   		   	oPdfProperties.Author = Nothing Or _
+		   		   	oPdfProperties.Subject = Nothing Then
+				
+					Me.Cursor = Cursors.Default
+					EnableCaptureControls(True)
+					ShowError(PdfKeeper.Strings.PdfPropertiesBlank)
+					Exit Sub
+				End If
 			Else
+				Me.Cursor = Cursors.Default
 				EnableCaptureControls(True)
+				Exit Sub
 			End If
+			
+			Dim nonQuery As New DatabaseNonQuery( _
+				oPdfProperties.Title, _
+				oPdfProperties.Author, _
+				oPdfProperties.Subject, _
+				oPdfProperties.Keywords, _
+				capturePdfEditOutput)
+			Try
+				nonQuery.ExecuteNonQuery
+			Catch ex As DataException
+				EnableCaptureControls(True)
+				Me.Cursor = Cursors.Default
+				Exit Sub
+			End Try
+			toolStripStatusLabelMessage.Text = Nothing
+			Application.DoEvents
+			DeleteFile(capturePdfEditInput, True)
+			ClearCaptureSelection
+			FillDocCaptureQueueList
 			Me.Cursor = Cursors.Default
 		End If
 	End Sub
