@@ -31,7 +31,7 @@
 		-->
 		<Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
 		
-		<Icon Id="PDFKeeper.ico" SourceFile="..\Common\PDFKeeper.ico"/>
+		<Icon Id="PDFKeeper.ico" SourceFile="..\..\resources\logo\PDFKeeper.ico"/>
 		<Property Id="ARPPRODUCTICON" Value="PDFKeeper.ico" />
 		<Property Id='ARPHELPLINK'>https://pdfkeeper.codeplex.com/</Property>
 		<Property Id='ARPURLINFOABOUT'>https://pdfkeeper.codeplex.com/</Property>
