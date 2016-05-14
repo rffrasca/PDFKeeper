@@ -76,9 +76,8 @@ Public Class DatabaseNonQuery
 	End Sub
 		
 	''' <summary>
-	''' If performing an insert, read the PDF file into a stream; open
-	''' database connection; execute the SQL statement set by the constructor;
-	''' and close the connection. 
+	''' If performing an insert, read the PDF file into a stream, and then
+	''' execute the SQL statement set by the constructor. 
 	''' </summary>
 	Public Sub ExecuteNonQuery
 		If insert Then

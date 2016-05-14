@@ -1394,56 +1394,27 @@ Public Partial Class MainForm
 	''' </summary>
 	''' <param name="comboBoxName"></param>
 	Private Sub FillCaptureComboBox(ByVal comboBoxTitle As String)
+		Dim query As DatabaseAuthorsSubjectsQuery
+		Me.Cursor = Cursors.WaitCursor
 		If comboBoxTitle = "Author" Then
 			comboBoxAuthor.Items.Clear
+			query = New DatabaseAuthorsSubjectsQuery
 		ElseIf comboBoxTitle = "Subject" Then
 			comboBoxSubject.Items.Clear
+			query = New DatabaseAuthorsSubjectsQuery(comboBoxAuthor.Text)
 		Else
 			Exit Sub
 		End If
-		Me.Cursor = Cursors.WaitCursor
-		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open = 1 Then
-			oDatabaseConnection.Dispose
-			Me.Cursor = Cursors.Default
-			Exit Sub
-		End If
-		
-		' Perform the query.
-		Dim sql As String = Nothing
-		If comboBoxTitle = "Author" Then
-			sql = "select doc_author,count(doc_author) from " & _
-				  "pdfkeeper.docs group by doc_author"
-		ElseIf comboBoxTitle = "Subject" Then
-			sql = "select doc_subject from pdfkeeper.docs where " & _
-				  "doc_author = q'[" & comboBoxAuthor.Text & "]' group by " & _
-				  "doc_subject"
-		End If
-		Try
-			Using oOracleCommand As New OracleCommand(sql, _
-				  oDatabaseConnection.oraConnection)
-				Using oOracleDataReader As OracleDataReader = _
-					  oOracleCommand.ExecuteReader()
-	
-					' Fill combo box with the results.
-					Do While (oOracleDataReader.Read())
-						If comboBoxTitle = "Author" Then
-							comboBoxAuthor.Items.Add( _
-								oOracleDataReader("doc_author"))
-						ElseIf comboBoxTitle = "Subject" Then
-							comboBoxSubject.Items.Add( _
-								oOracleDataReader("doc_subject"))
-						End If
-					Loop
-				End Using
-			End Using
-			Me.Cursor = Cursors.Default
-		Catch ex As OracleException
-			Me.Cursor = Cursors.Default
-			ShowError(ex.Message.ToString())
-		Finally
-			oDatabaseConnection.Dispose
-		End Try
+		Dim results As ArrayList = query.ExecuteQuery
+		Dim result As String
+		For Each result In results
+			If comboBoxTitle = "Author" Then
+				comboBoxAuthor.Items.Add(result)
+			ElseIf comboBoxTitle = "Subject" Then
+				comboBoxSubject.Items.Add(result)
+			End If
+		Next
+		Me.Cursor = Cursors.Default
 	End Sub
 		
 	''' <summary>

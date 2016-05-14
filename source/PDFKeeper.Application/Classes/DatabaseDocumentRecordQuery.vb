@@ -98,8 +98,9 @@ Public Class DatabaseDocumentRecordQuery
 	End Property
 	
 	''' <summary>
-	''' Executes the query set by the constructor; when pdfQuery is True, write
-	''' the PDF to the specified path name; and close the connection.
+	''' Executes the query set by the constructor, setting the Keywords and
+	''' Notes properties.  When pdfQuery is True, write the PDF to the
+	''' specified path name.
 	''' </summary>
 	Private Sub ExecuteQuery
 		_keywords = Nothing
