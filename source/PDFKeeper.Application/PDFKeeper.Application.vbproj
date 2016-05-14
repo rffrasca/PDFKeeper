@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="Classes\ApplicationProfileFolders.vb" />
     <Compile Include="Classes\DatabaseNonQuery.vb" />
+    <Compile Include="Classes\DatabaseQueryDocumentRecord.vb" />
     <Compile Include="Classes\DirectUpload.vb" />
     <Compile Include="Classes\DirectUploadFolderProperties.vb" />
     <Compile Include="Classes\DatabaseConnection.vb" />

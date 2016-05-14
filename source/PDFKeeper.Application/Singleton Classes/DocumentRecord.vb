@@ -107,80 +107,25 @@ Public NotInheritable Class DocumentRecord
 	''' supported by the operating system.
 	''' </summary>
 	Private Sub OnIdChanged
-		Dim query As String
+		Dim query As DatabaseQueryDocumentRecord
 		_keywords = Nothing
 		_notes = Nothing
 		If Id = 0 Then
 			Exit Sub
 		End If
-		Dim connection As New DatabaseConnection
-		If connection.Open = 1 Then
-			connection.Dispose
-			_id = 0
-			Throw New DataException(String.Format( _
-				CultureInfo.CurrentCulture, _
-				PdfKeeper.Strings.DatabaseUnavailable, _
-				UserSettings.Instance.LastDataSource))
-		End If
-		If FileCache.Instance.ContainsItemAndHashValuesMatch( _
-			PdfPathName) Then
-			
-			query = "select doc_keywords,doc_notes " & _
-					"from pdfkeeper.docs " & _
-					"where doc_id = " & Id
+		If FileCache.Instance.ContainsItemAndHashValuesMatch(PdfPathName) Then
+			query = New DatabaseQueryDocumentRecord(CStr(Id))
 		Else
-			query = "select doc_keywords,doc_notes,doc_pdf " & _
-					"from pdfkeeper.docs " & _
-					"where doc_id = " & Id
+			query = New DatabaseQueryDocumentRecord(CStr(Id), PdfPathName)
 		End If
-		Try
-			Using command As New OracleCommand(query, connection.oraConnection)
-				Using dataReader As OracleDataReader = command.ExecuteReader()
-					dataReader.Read()
-					If dataReader.IsDBNull(0) = False Then
-						_keywords = dataReader.GetString(0)
-					End If
-					If dataReader.IsDBNull(1) = False Then
-						_notes = dataReader.GetString(1)
-					End If
-					If FileCache.Instance.ContainsItemAndHashValuesMatch( _
-						PdfPathName) = False Then
+		_keywords = query.Keywords
+		_notes = query.Notes
+		If FileCache.Instance.ContainsItemAndHashValuesMatch( _
+			PdfPathName) = False Then
 						
-						Using blob As OracleBlob = dataReader.GetOracleBlob(2)
-  							Using memory As New MemoryStream(blob.Value)
-  								Using file As New FileStream( _
-  									PdfPathName, _
-  									FileMode.Create, _
-  									FileAccess.Write)
-									Try
-										file.Write( _
-											memory.ToArray, _
-											0, _
-											CInt(blob.Length))
-									Catch ex As IOException
-										_keywords = Nothing
-										_notes = Nothing
-										_id = 0
-										Throw New IOException( _
-											ex.Message.ToString())
-										connection.Dispose
-  									Finally
-  										file.Close()
-									End Try
-								End Using
-							End Using
-						End Using
-						FileCache.Instance.Add(PdfPathName)
-					End If
-					EncryptFile(PdfPathName)
-				End Using
-			End Using
-		Catch ex As OracleException
-			_id = 0
-			Throw New DataException(ex.Message.ToString())
-		Finally
-			connection.Dispose
-		End Try
+			FileCache.Instance.Add(PdfPathName)
+		End If
+		EncryptFile(PdfPathName)
 	End Sub
 	
 	''' <summary>

@@ -27,7 +27,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Sub
 	
 	''' <summary>
-	''' Gets the absoluate pathname to the parent folder in the user's profile
+	''' Gets the absoluate path name to the parent folder in the user's profile
 	''' where application XML files are stored.  If the folder does not exist,
 	''' it will be created.
 	''' </summary>
@@ -42,7 +42,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate pathname to the parent folder in the user's profile
+	''' Gets the absoluate path name to the parent folder in the user's profile
 	''' where temporary data is stored.  If the folder does not exist, it will
 	''' be created.
 	''' </summary>
@@ -57,7 +57,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate pathname to the Cache folder in the user's profile.
+	''' Gets the absoluate path name to the Cache folder in the user's profile.
 	''' If the folder does not exist, it will be created.
 	''' </summary>
 	Public Shared ReadOnly Property Cache As String
@@ -69,7 +69,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate pathname to the Capture folder in the user's
+	''' Gets the absoluate path name to the Capture folder in the user's
 	''' profile.  If the folder does not exist, it will be created.
 	''' </summary>
 	Public Shared ReadOnly Property Capture As String
@@ -81,7 +81,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate pathname to the CaptureTemp folder in the user's
+	''' Gets the absoluate path name to the CaptureTemp folder in the user's
 	''' profile.  If the folder does not exist, it will be created.
 	''' </summary>
 	Public Shared ReadOnly Property CaptureTemp As String
@@ -93,7 +93,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate pathname to the DirectUpload folder in the user's
+	''' Gets the absoluate path name to the DirectUpload folder in the user's
 	''' profile.  If the folder does not exist, it will be created.
 	''' </summary>
 	Public Shared ReadOnly Property DirectUpload As String
@@ -105,7 +105,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate pathname to the DirectUploadTemp folder in the
+	''' Gets the absoluate path name to the DirectUploadTemp folder in the
 	''' user's profile.  If the folder does not exist, it will be created.
 	''' </summary>
 	Public Shared ReadOnly Property DirectUploadTemp As String
@@ -117,7 +117,7 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate pathname to the DirectUpload folder in the user's
+	''' Gets the absoluate path name to the DirectUpload folder in the user's
 	''' profile used for storing Direct Upload XML files.  If the folder does
 	''' not exist, it will be created.
 	''' </summary>

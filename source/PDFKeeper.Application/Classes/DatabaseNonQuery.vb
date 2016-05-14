@@ -82,21 +82,8 @@ Public Class DatabaseNonQuery
 	''' </summary>
 	Public Sub ExecuteNonQuery
 		If insert Then
-			' Read the PDF file into a byte array for loading.
-			Using pdfStream As FileStream = New FileStream( _
-				_pdfFile, _
-				FileMode.Open, _
-				FileAccess.Read)
-				
-				ReDim pdfBlob(CInt(pdfStream.Length))
-				Try
-					pdfStream.Read(pdfBlob, 0, System.Convert.ToInt32(pdfStream.Length))
-				Catch ex As IOException
-					Throw New IOException(ex.Message.ToString())
-				End Try
-			End Using
+			pdfBlob = FileToByteArray(_pdfFile)
 		End If
-			
 		Using oraConnection As New OracleConnection
 			Try
 				oraConnection.ConnectionString = _

@@ -1218,7 +1218,7 @@ Public Partial Class MainForm
 	End Sub
 		
 	''' <summary>
-	''' Fill the "Document Capture Queue" list box with the absolute pathname
+	''' Fill the "Document Capture Queue" list box with the absolute path name
 	''' for each PDF document in the Capture folder.
 	''' </summary>
 	Private Sub FillDocCaptureQueueList

@@ -27,7 +27,7 @@ Public NotInheritable Class WindowsProfileFolders
 	End Sub
 	
 	''' <summary>
-	''' Gets the absoluate pathname to the Links folder in the user's profile.
+	''' Gets the absoluate path name to the Links folder in the user's profile.
 	''' </summary>
 	Public Shared ReadOnly Property Links As String
 		Get
@@ -39,7 +39,8 @@ Public NotInheritable Class WindowsProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate pathname to the AppData folder in the user's profile.
+	''' Gets the absoluate path name to the AppData folder in the user's
+	''' profile.
 	''' </summary>
 	Public Shared ReadOnly Property AppData As String
 		Get
@@ -49,7 +50,7 @@ Public NotInheritable Class WindowsProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate pathname to the LocalAppData folder in the user's
+	''' Gets the absoluate path name to the LocalAppData folder in the user's
 	''' profile.
 	''' </summary>
 	Public Shared ReadOnly Property LocalAppData As String

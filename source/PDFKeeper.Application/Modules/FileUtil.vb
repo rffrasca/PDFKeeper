@@ -77,6 +77,28 @@ Public Module FileUtil
 	End Sub
 	
 	''' <summary>
+	''' Returns a byte array of the specified file.
+	''' </summary>
+	''' <param name="file"></param>
+	''' <returns></returns>
+	Public Function FileToByteArray(ByVal file As String) As Byte()
+		Dim blob As Byte()
+		Using stream As FileStream = New FileStream( _
+			file, _
+			FileMode.Open, _
+			FileAccess.Read)
+				
+			ReDim blob(CInt(stream.Length))
+			Try
+				stream.Read(blob, 0, System.Convert.ToInt32(stream.Length))
+				Return blob
+			Catch ex As IOException
+				Throw New IOException(ex.Message.ToString())
+			End Try
+		End Using
+	End Function
+	
+	''' <summary>
 	''' Returns True or False if "file" is in use.  If "file" does not exist,
 	''' False is returned. 
 	''' </summary>

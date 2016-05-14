@@ -502,4 +502,7 @@ All modifications will be lost.</value>
   <data name="DatabaseUnavailable" xml:space="preserve">
     <value>{0} is unavailable.</value>
   </data>
+  <data name="PropertyNotSupported" xml:space="preserve">
+    <value>{0} property not supported.</value>
+  </data>
 </root>

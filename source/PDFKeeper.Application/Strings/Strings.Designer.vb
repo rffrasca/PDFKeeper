@@ -467,6 +467,15 @@ Friend Class Strings
 	End Property
 	
 	'''<summary>
+	'''  Looks up a localized string similar to {0} property not supported..
+	'''</summary>
+	Friend Shared ReadOnly Property PropertyNotSupported() As String
+		Get
+			Return ResourceManager.GetString("PropertyNotSupported", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
 	'''  Looks up a localized string similar to PDFKeeper uses third-party programs, libraries, and other resources that may be distributed under licenses different than PDFKeeper.
 	'''
 	'''License notice for Mini Icons 
