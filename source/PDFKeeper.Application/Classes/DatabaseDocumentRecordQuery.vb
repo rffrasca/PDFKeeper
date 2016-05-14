@@ -20,7 +20,7 @@
 '*
 '******************************************************************************
 
-Public Class DatabaseQueryDocumentRecord
+Public Class DatabaseDocumentRecordQuery
 	Private sql As String
 	Private pdfQuery As Boolean
 	Private queryExecuted As Boolean

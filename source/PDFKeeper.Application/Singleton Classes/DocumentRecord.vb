@@ -107,16 +107,16 @@ Public NotInheritable Class DocumentRecord
 	''' supported by the operating system.
 	''' </summary>
 	Private Sub OnIdChanged
-		Dim query As DatabaseQueryDocumentRecord
+		Dim query As DatabaseDocumentRecordQuery
 		_keywords = Nothing
 		_notes = Nothing
 		If Id = 0 Then
 			Exit Sub
 		End If
 		If FileCache.Instance.ContainsItemAndHashValuesMatch(PdfPathName) Then
-			query = New DatabaseQueryDocumentRecord(CStr(Id))
+			query = New DatabaseDocumentRecordQuery(CStr(Id))
 		Else
-			query = New DatabaseQueryDocumentRecord(CStr(Id), PdfPathName)
+			query = New DatabaseDocumentRecordQuery(CStr(Id), PdfPathName)
 		End If
 		_keywords = query.Keywords
 		_notes = query.Notes
