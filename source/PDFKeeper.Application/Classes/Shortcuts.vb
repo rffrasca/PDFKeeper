@@ -20,54 +20,45 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class WindowsProfileFolders
+Public NotInheritable Class Shortcuts
 	Private Sub New()
 		' Class cannot be instantiated as it only contains shared members.
 		' Required for FxCop compliance (CA1053).
 	End Sub
-		
-	''' <summary>
-	''' Gets the absolute path name to the AppData folder in the user's
-	''' profile.
-	''' </summary>
-	Public Shared ReadOnly Property AppData As String
-		Get
-			Return Environment.GetFolderPath( _
-				Environment.SpecialFolder.ApplicationData)
-		End Get
-	End Property
 	
 	''' <summary>
-	''' Gets the absolute path name to the LocalAppData folder in the user's
-	''' profile.
+	''' Gets the absolute path name of the Document Capture shortcut in the
+	''' Links folder of the user's profile.
 	''' </summary>
-	Public Shared ReadOnly Property LocalAppData As String
-		Get
-			Return Environment.GetFolderPath( _
-				Environment.SpecialFolder.LocalApplicationData)
-		End Get
-	End Property
-	
-	''' <summary>
-	''' Gets the absolute path name to the Links folder in the user's profile.
-	''' </summary>
-	Public Shared ReadOnly Property Links As String
+	Public Shared ReadOnly Property DocumentCaptureInLinks As String
 		Get
 			Return Path.Combine( _
-				Environment.GetFolderPath( _
-				Environment.SpecialFolder.UserProfile), _
-				"Links")
+				WindowsProfileFolders.Links, _
+				"PDFKeeper " & PdfKeeper.Strings.DocumentCapture & ".lnk")
+		End Get
+	End Property
+		
+	''' <summary>
+	''' Gets the absolute path name of the Document Capture shortcut in the
+	''' SendTo folder of the user's profile.
+	''' </summary>
+	Public Shared ReadOnly Property DocumentCaptureInSendTo As String
+		Get
+			Return Path.Combine( _
+				WindowsProfileFolders.SendTo, _
+				"PDFKeeper " & PdfKeeper.Strings.DocumentCapture & ".lnk")
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Gets the absolute path name to the SendTo folder in the user's
-	''' profile.
+	''' Gets the absolute path name of the Direct Upload shortcut in the Links
+	''' folder of the user's profile.
 	''' </summary>
-	Public Shared ReadOnly Property SendTo As String
+	Public Shared ReadOnly Property DirectUploadInLinks As String
 		Get
-			Return Environment.GetFolderPath( _
-				Environment.SpecialFolder.SendTo)
+			Return Path.Combine( _
+				WindowsProfileFolders.Links, _
+				"PDFKeeper " & PdfKeeper.Strings.DirectUpload & ".lnk")
 		End Get
 	End Property
 End Class

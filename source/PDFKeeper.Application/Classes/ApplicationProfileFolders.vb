@@ -27,9 +27,9 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Sub
 	
 	''' <summary>
-	''' Gets the absoluate path name to the parent folder in the user's profile
-	''' where application XML files are stored.  If the folder does not exist,
-	''' it will be created.
+	''' Gets the absolute path name of the parent folder in the user's profile
+	''' where application XML files are stored.  The folder will be created if
+	''' it does not exist.
 	''' </summary>
 	Public Shared ReadOnly Property RoamingParent As String
 		Get
@@ -42,9 +42,9 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate path name to the parent folder in the user's profile
-	''' where temporary data is stored.  If the folder does not exist, it will
-	''' be created.
+	''' Gets the absolute path name of the parent folder in the user's profile
+	''' where temporary data is stored.  The folder will be created if it does
+	''' not exist.
 	''' </summary>
 	Public Shared ReadOnly Property LocalParent As String
 		Get
@@ -57,8 +57,8 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate path name to the Cache folder in the user's profile.
-	''' If the folder does not exist, it will be created.
+	''' Gets the absolute path name of the Cache folder in the user's profile.
+	''' The folder will be created if it does not exist.
 	''' </summary>
 	Public Shared ReadOnly Property Cache As String
 		Get
@@ -69,20 +69,24 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate path name to the Capture folder in the user's
-	''' profile.  If the folder does not exist, it will be created.
+	''' Gets the absolute path name of the Capture folder in the user's
+	''' profile.  The folder will be created if it does not exist and
+	''' Document Capture shortcuts to this folder will be created in the Links
+	''' and SendTo folders in the user's profile.
 	''' </summary>
 	Public Shared ReadOnly Property Capture As String
 		Get
 			Dim pathName As String = Path.Combine(LocalParent, "Capture")
 			Directory.CreateDirectory(pathName)
+			CreateFolderShortcut(Shortcuts.DocumentCaptureInLinks, pathName)
+			CreateFolderShortcut(Shortcuts.DocumentCaptureInSendTo, pathName)
 			Return pathName			
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate path name to the CaptureTemp folder in the user's
-	''' profile.  If the folder does not exist, it will be created.
+	''' Gets the absolute path name of the CaptureTemp folder in the user's
+	''' profile.  The folder will be created if it does not exist.
 	''' </summary>
 	Public Shared ReadOnly Property CaptureTemp As String
 		Get
@@ -93,20 +97,23 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate path name to the DirectUpload folder in the user's
-	''' profile.  If the folder does not exist, it will be created.
+	''' Gets the absolute path name of the DirectUpload folder in the user's
+	''' profile.  The folder will be created if it does not exist and a Direct
+	''' Upload shortcut to this folder will be created in the Links folders in
+	''' the user's profile.
 	''' </summary>
 	Public Shared ReadOnly Property DirectUpload As String
 		Get
 			Dim pathName As String = Path.Combine(LocalParent, "DirectUpload")
 			Directory.CreateDirectory(pathName)
+			CreateFolderShortcut(Shortcuts.DirectUploadInLinks, pathName)
 			Return pathName
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate path name to the DirectUploadTemp folder in the
-	''' user's profile.  If the folder does not exist, it will be created.
+	''' Gets the absolute path name to the DirectUploadTemp folder in the
+	''' user's profile.  The folder will be created if it does not exist.
 	''' </summary>
 	Public Shared ReadOnly Property DirectUploadTemp As String
 		Get
@@ -117,9 +124,9 @@ Public NotInheritable Class ApplicationProfileFolders
 	End Property
 	
 	''' <summary>
-	''' Gets the absoluate path name to the DirectUpload folder in the user's
-	''' profile used for storing Direct Upload XML files.  If the folder does
-	''' not exist, it will be created.
+	''' Gets the absolute path name to the DirectUpload folder in the user's
+	''' profile used for storing Direct Upload XML files.  The folder will be
+	''' created if it does not exist.
 	''' </summary>
 	Public Shared ReadOnly Property DirectUploadXml As String
 		Get

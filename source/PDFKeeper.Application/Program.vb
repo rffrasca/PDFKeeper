@@ -30,27 +30,15 @@ Namespace My
 			Me.EnableVisualStyles = True
 			AddHandler AppDomain.CurrentDomain.UnhandledException, _
 				AddressOf MyApplication_UnhandledException
-				' MySettings are not supported in SharpDevelop.
+			
+			' MySettings are not supported in SharpDevelop.
 			Me.SaveMySettingsOnExit = False
 			Me.ShutDownStyle = ShutdownMode.AfterMainFormCloses
 				
-			' Create User Profile folders.
-			If DirectUpload.CreateMissingFolders = 1 Then
-				Environment.Exit(1)
-			End If
-			
-			' Create Document Capture Shortcuts.
-			If UserProfileFoldersTask.CreateDocumentCaptureShortcuts = 1 Then
-				Environment.Exit(1)
-			End If
-			
-			' Create Direct Upload Shortcut.
-			If UserProfileFoldersTask.CreateDirectUploadShortcut = 1 Then
-				Environment.Exit(1)
-			End If
-			
 			' Show Database Connection Dialog to the user.
-			If DatabaseConnectionForm.ShowDialog() = Windows.Forms.DialogResult.Cancel Then
+			If DatabaseConnectionForm.ShowDialog() = _
+				Windows.Forms.DialogResult.Cancel Then
+				
 				Environment.Exit(1)
 			End If
 		End Sub
@@ -60,13 +48,15 @@ Namespace My
 		End Sub
 		
 		''' <summary>
-		''' This subroutine is the application global unhandled exception
-		''' handler that will display the error to the user.		
+		''' Application global unhandled exception handler that displays the
+		''' error to the user.		
 		''' </summary>
 		''' <param name="sender"></param>
 		''' <param name="e"></param>
-		Private Sub MyApplication_UnhandledException(sender As Object, _
-				e As System.UnhandledExceptionEventArgs)
+		Private Sub MyApplication_UnhandledException( _
+			sender As Object, _
+			e As System.UnhandledExceptionEventArgs)
+			
 			ShowError(e.ExceptionObject.ToString)
 		End Sub
 	End Class

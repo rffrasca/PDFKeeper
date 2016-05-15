@@ -95,7 +95,7 @@
     <Compile Include="Classes\PdfPasswordProtection.vb" />
     <Compile Include="Classes\PdfProperties.vb" />
     <Compile Include="Classes\ProductDetails.vb" />
-    <Compile Include="Classes\UserProfileFoldersTask.vb" />
+    <Compile Include="Classes\Shortcuts.vb" />
     <Compile Include="Classes\WindowsProfileFolders.vb" />
     <Compile Include="Forms\AboutForm.Designer.vb">
       <DependentUpon>AboutForm.vb</DependentUpon>

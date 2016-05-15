@@ -65,10 +65,9 @@ Public Module FolderUtil
 	''' </summary>
 	''' <param name="shortcut"></param>
 	''' <param name="folder"></param>
-	''' <returns>0 = Success, 1 = Failed</returns>
-	Public Function CreateFolderShortcut( _
+	Public Sub CreateFolderShortcut( _
 		ByVal shortcut As String, _
-		ByVal folder As String) As Integer
+		ByVal folder As String)
 		
 		Try
 			Dim oWshShell As New WshShellClass
@@ -76,12 +75,10 @@ Public Module FolderUtil
 				DirectCast(oWshShell.CreateShortcut(shortcut), IWshShortcut)
 			shortcutName.TargetPath = folder
 			shortcutName.Save
-			Return 0
 		Catch ex As COMException
-			ShowError(ex.Message)
-			Return 1
+			Throw New IOException(ex.Message)
 		End Try
-	End Function
+	End Sub
 	
 	''' <summary>
 	''' Deletes "folder", including subfolders and files.  When "recycle" is

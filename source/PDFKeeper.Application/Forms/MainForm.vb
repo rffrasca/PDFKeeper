@@ -1915,8 +1915,9 @@ Public Partial Class MainForm
 		DocumentNotesModifiedCheck
 		DatabaseConnectionForm.dbPassword.Dispose
 		SaveFormPosition
-		UserProfileFoldersTask.DeleteDocumentCaptureShortcuts
-		UserProfileFoldersTask.DeleteDirectUploadShortcut
+		DeleteFile(Shortcuts.DocumentCaptureInLinks, False)
+		DeleteFile(Shortcuts.DocumentCaptureInSendTo, False)
+		DeleteFile(Shortcuts.DirectUploadInLinks, False)
 		FileCache.Instance.DeleteAllItemsFromFileSystem
 	End Sub
 	
