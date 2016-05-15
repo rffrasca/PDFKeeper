@@ -163,7 +163,8 @@ Public Partial Class DatabaseConnectionForm
 		DatabaseConnectionString.Instance.Password = dbPassword
 		DatabaseConnectionString.Instance.DataSource = textBoxDataSource.Text
 		textBoxPassword.Text = Nothing
-		If CanConnectToDatabase() = False Then
+		If CanConnectToDatabase = False Then
+			dbPassword.Clear
 			textBoxUsername.Select
 			Me.Cursor = Cursors.Default
 			Exit Sub
@@ -172,21 +173,6 @@ Public Partial Class DatabaseConnectionForm
 		Me.Cursor = Cursors.Default
 		Me.DialogResult = Windows.Forms.DialogResult.OK
 	End Sub
-	
-	''' <summary>
-	''' This function will check if a connection to the database can be made.
-	''' </summary>
-	''' <returns>True or False</returns>
-	Private Shared Function CanConnectToDatabase() As Boolean
-		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open = 0 Then
-			oDatabaseConnection.Dispose
-			Return True
-		Else
-			dbPassword.Clear
-			Return False
-		End If
-	End Function
 	
 	''' <summary>
 	''' This subroutine will save the last User Name and Data Source to the

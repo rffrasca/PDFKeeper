@@ -20,46 +20,37 @@
 '*
 '******************************************************************************
 
-Public Class DatabaseAuthorsSubjectsQuery
+Public Class DatabaseSearchQuery
 	Dim sql As String
-	Dim tableColumn As String
 	
 	''' <summary>
-	''' All Authors SQL query constructor.
+	''' Search SQL query constructor.
 	''' </summary>
-	Public Sub New()
-		sql = "select doc_author,count(doc_author) from pdfkeeper.docs " & _
-			  "group by doc_author"
-		tableColumn = "doc_author"
+	''' <param name="searchString"></param>
+	''' <param name="orderBy"></param>
+	Public Sub New(searchValue As String, orderBy As String)
+		sql = "select doc_id,doc_title,doc_author," & _
+			  "doc_subject,doc_added from pdfkeeper.docs where " & _
+			  "(contains(doc_dummy,q'[" & searchValue & "]'))>0 " & _
+			  "order by " & orderBy
 	End Sub
-	
-	''' <summary>
-	''' All Subjects for specified Author SQL query constructor.
-	''' </summary>
-	''' <param name="author"></param>
-	Public Sub New(author As String)
-		sql = "select doc_subject from pdfkeeper.docs where " & _
-			  "doc_author = q'[" & author & "]' group by doc_subject"
-		tableColumn = "doc_subject"	
-	End Sub
-	
+		
 	''' <summary>
 	''' Executes the query set by the constructor.
 	''' </summary>
-	''' <returns>Records returned from the query in an ArrayList.</returns>
-	Public Function ExecuteQuery As ArrayList
-		Dim rows As New ArrayList
+	''' <returns>Records returned from the query in a DataTable.</returns>
+	<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", _
+		"CA1306:SetLocaleForDataTypes")> _
+	Public Function ExecuteQuery As DataTable
 		Using oraConnection As New OracleConnection
 			Try
 				oraConnection.ConnectionString = _
 					DatabaseConnectionString.Instance.ConnectionString
 				oraConnection.Open
-				Dim oraCommand As New OracleCommand(sql, oraConnection)
-				Dim dataReader As OracleDataReader = oraCommand.ExecuteReader()
-				Do While (dataReader.Read())
-					rows.Add(dataReader(tableColumn))
-				Loop
-				Return rows
+				Dim adapter As New OracleDataAdapter(sql, oraConnection)
+				Dim table As New DataTable
+				adapter.Fill(table)
+				Return table
 			Catch ex As OracleException
 				Throw New DataException(ex.Message.ToString())
 			End Try

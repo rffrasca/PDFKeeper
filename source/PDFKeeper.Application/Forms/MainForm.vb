@@ -496,13 +496,6 @@ Public Partial Class MainForm
 		listViewDocs.Items.Clear
 		toolStripStatusLabelMessage.Text = Nothing
 		Me.Refresh	' Form needed to be refreshed for status label to clear.
-		Dim oDatabaseConnection As New DatabaseConnection
-		If oDatabaseConnection.Open = 1 Then
-			oDatabaseConnection.Dispose
-			Me.Cursor = Cursors.Default
-			comboBoxSearchText.Select
-			Exit Sub
-		End If
 		
 		' Build query string.
 		Dim orderBy As String = Nothing
@@ -538,48 +531,23 @@ Public Partial Class MainForm
 						  "doc_author " & sortOrder & "," & _
 						  "doc_subject " & sortOrder
 		End Select
-		Dim sql As String = "select doc_id,doc_title,doc_author," & _
-							"doc_subject,doc_added from " & _
-							"pdfkeeper.docs where " & _
-							"(contains(doc_dummy,q'[" & _
-							 comboBoxSearchText.Text & "]'))>0 " & _
-							"order by " & orderBy
+		Dim query As New DatabaseSearchQuery(comboBoxSearchText.Text, orderBy)
+		Dim tableReader As DataTableReader = _
+			query.ExecuteQuery.CreateDataReader
 		
-		' Perform the query.
-		Using oOracleCommand As New OracleCommand(sql, _
-			  oDatabaseConnection.oraConnection)
-			Try
-				Using oOracleDataReader As OracleDataReader = _
-					  oOracleCommand.ExecuteReader()
-			
-					' Fill listview with the results.
-					Dim oListViewItem As ListViewItem
-					Dim itemArray(5) As String
-					Do While (oOracleDataReader.Read())
-						itemArray(0) = CType( _
-							oOracleDataReader("doc_id"), String)
-						itemArray(1) = CType( _
-							oOracleDataReader("doc_title"), String)
-						itemArray(2) = CType( _
-							oOracleDataReader("doc_author"), String)
- 						itemArray(3) = CType( _
- 							oOracleDataReader("doc_subject"), String)
- 						itemArray(4) = CType( _
- 							oOracleDataReader("doc_added"), String)
-						oListViewItem = New ListViewItem(itemArray)
- 						ListViewDocs.Items.Add(oListViewItem)
-					Loop
-				End Using
-  			Catch ex As OracleException
-				oDatabaseConnection.Dispose
-				Me.Cursor = Cursors.Default
-				ShowError(ex.Message.ToString())
-				comboBoxSearchText.Select
-				Exit Sub
-			End Try
-		End Using
-		
-		oDatabaseConnection.Dispose
+		' Fill listview with the results.
+		Dim oListViewItem As ListViewItem
+		Dim itemArray(5) As String
+		Do While (tableReader.Read())
+			itemArray(0) = CType(tableReader("doc_id"), String)
+			itemArray(1) = CType(tableReader("doc_title"), String)
+			itemArray(2) = CType(tableReader("doc_author"), String)
+ 			itemArray(3) = CType(tableReader("doc_subject"), String)
+ 			itemArray(4) = CType(tableReader("doc_added"), String)
+			oListViewItem = New ListViewItem(itemArray)
+ 			ListViewDocs.Items.Add(oListViewItem)
+		Loop
+				
 		UpdateListCountStatusBar
 		RightJustifyListViewDocIds
 		ResizeListViewColumns
@@ -1405,13 +1373,13 @@ Public Partial Class MainForm
 		Else
 			Exit Sub
 		End If
-		Dim results As ArrayList = query.ExecuteQuery
-		Dim result As String
-		For Each result In results
+		Dim rows As ArrayList = query.ExecuteQuery
+		Dim row As String
+		For Each row In rows
 			If comboBoxTitle = "Author" Then
-				comboBoxAuthor.Items.Add(result)
+				comboBoxAuthor.Items.Add(row)
 			ElseIf comboBoxTitle = "Subject" Then
-				comboBoxSubject.Items.Add(result)
+				comboBoxSubject.Items.Add(row)
 			End If
 		Next
 		Me.Cursor = Cursors.Default

@@ -20,49 +20,22 @@
 '*
 '******************************************************************************
 
-Public Class DatabaseAuthorsSubjectsQuery
-	Dim sql As String
-	Dim tableColumn As String
-	
+Public Module DatabaseUtil
 	''' <summary>
-	''' All Authors SQL query constructor.
+	''' Checks if can connect to the database.
 	''' </summary>
-	Public Sub New()
-		sql = "select doc_author,count(doc_author) from pdfkeeper.docs " & _
-			  "group by doc_author"
-		tableColumn = "doc_author"
-	End Sub
-	
-	''' <summary>
-	''' All Subjects for specified Author SQL query constructor.
-	''' </summary>
-	''' <param name="author"></param>
-	Public Sub New(author As String)
-		sql = "select doc_subject from pdfkeeper.docs where " & _
-			  "doc_author = q'[" & author & "]' group by doc_subject"
-		tableColumn = "doc_subject"	
-	End Sub
-	
-	''' <summary>
-	''' Executes the query set by the constructor.
-	''' </summary>
-	''' <returns>Records returned from the query in an ArrayList.</returns>
-	Public Function ExecuteQuery As ArrayList
-		Dim rows As New ArrayList
+	''' <returns>True or False</returns>
+	Public Function CanConnectToDatabase As Boolean
 		Using oraConnection As New OracleConnection
 			Try
 				oraConnection.ConnectionString = _
 					DatabaseConnectionString.Instance.ConnectionString
 				oraConnection.Open
-				Dim oraCommand As New OracleCommand(sql, oraConnection)
-				Dim dataReader As OracleDataReader = oraCommand.ExecuteReader()
-				Do While (dataReader.Read())
-					rows.Add(dataReader(tableColumn))
-				Loop
-				Return rows
+				Return True
 			Catch ex As OracleException
-				Throw New DataException(ex.Message.ToString())
+				ShowError(ex.Message.ToString())
+				Return False
 			End Try
 		End Using
 	End Function
-End Class
+End Module

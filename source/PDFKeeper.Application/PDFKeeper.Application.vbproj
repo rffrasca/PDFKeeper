@@ -87,9 +87,9 @@
     <Compile Include="Classes\DatabaseNonQuery.vb" />
     <Compile Include="Classes\DatabaseAuthorsSubjectsQuery.vb" />
     <Compile Include="Classes\DatabaseDocumentRecordQuery.vb" />
+    <Compile Include="Classes\DatabaseSearchQuery.vb" />
     <Compile Include="Classes\DirectUpload.vb" />
     <Compile Include="Classes\DirectUploadFolderProperties.vb" />
-    <Compile Include="Classes\DatabaseConnection.vb" />
     <Compile Include="Classes\HelpFileTopics.vb" />
     <Compile Include="Classes\NativeMethods.vb" />
     <Compile Include="Classes\PdfPasswordProtection.vb" />
@@ -125,6 +125,7 @@
       <DependentUpon>RotatePagesForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\RotatePagesForm.vb" />
+    <Compile Include="Modules\DatabaseUtil.vb" />
     <Compile Include="Modules\UserSettingsEnums.vb" />
     <Compile Include="Modules\ExtensionMethods.vb" />
     <Compile Include="Modules\FileUtil.vb" />
