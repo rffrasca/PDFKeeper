@@ -23,7 +23,6 @@
 Public Class DatabaseDocumentRecordQuery
 	Private sql As String
 	Private pdfQuery As Boolean
-	Private queryExecuted As Boolean
 	Private _keywords As String
 	Private _notes As String
 	Private _pdfPathName As String
@@ -36,7 +35,7 @@ Public Class DatabaseDocumentRecordQuery
 		sql = "select doc_keywords,doc_notes from pdfkeeper.docs " & _
 			  "where doc_id = " & docId
 		pdfQuery = False
-		queryExecuted = False
+		ExecuteQuery
 	End Sub
 	
 	''' <summary>
@@ -49,8 +48,8 @@ Public Class DatabaseDocumentRecordQuery
 		sql = "select doc_keywords,doc_notes,doc_pdf from pdfkeeper.docs " & _
 			  "where doc_id = " & docId
 		pdfQuery = True
-		queryExecuted = False
 		_pdfPathName = pdfFile
+		ExecuteQuery
 	End Sub
 	
 	''' <summary>
@@ -58,9 +57,6 @@ Public Class DatabaseDocumentRecordQuery
 	''' </summary>
 	Public ReadOnly Property Keywords As String
 		Get
-			If queryExecuted = False Then
-				ExecuteQuery
-			End If
 			Return _keywords
 		End Get
 	End Property
@@ -70,9 +66,6 @@ Public Class DatabaseDocumentRecordQuery
 	''' </summary>
 	Public ReadOnly Property Notes As String
 		Get
-			If queryExecuted = False Then
-				ExecuteQuery
-			End If
 			Return _notes
 		End Get
 	End Property
@@ -89,9 +82,6 @@ Public Class DatabaseDocumentRecordQuery
 					CultureInfo.CurrentCulture, _
 					PdfKeeper.Strings.PropertyNotSupported, _
 					"PdfPathName"))
-			End If
-			If queryExecuted = False Then
-				ExecuteQuery
 			End If
 			Return _pdfPathName
 		End Get
@@ -136,7 +126,6 @@ Public Class DatabaseDocumentRecordQuery
 						End Try	
 					End Using
 				End If
-				queryExecuted = True
 			Catch ex As OracleException
 				Throw New DataException(ex.Message.ToString())
 			End Try
