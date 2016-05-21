@@ -20,11 +20,11 @@
 '*
 '******************************************************************************
 
-Friend Module UserSettingsEnums
+Public Module Enums
 	''' <summary>
-	''' XML Section Names.
+	''' User Settings XML Sections.
 	''' </summary>
-	Friend Enum SectionName
+	Friend Enum UserSettingsSection
 		DatabaseConnectionForm
 		MainForm
 		MainFormDocumentPreviewTab
@@ -32,9 +32,9 @@ Friend Module UserSettingsEnums
 	End Enum
 	
 	''' <summary>
-	''' XML Key Names.
+	''' User Settings XML Keys.
 	''' </summary>
-	Friend Enum KeyName
+	Friend Enum UserSettingsKey
 		LastUserName
 		LastDataSource
 		FormPositionTop
@@ -46,5 +46,28 @@ Friend Module UserSettingsEnums
 		DoNotResetZoomLevel
 		OpenFileLastFolder
 		SaveFileLastFolder
+	End Enum
+	
+	''' <summary>
+	''' PDF Information Properties.
+	''' </summary>
+	Friend Enum PdfInformationProperty
+		Title
+		Author
+		Subject
+		Keywords
+	End Enum
+	
+	''' <summary>
+	''' PDF Password Types.
+	''' </summary>
+	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
+		"Microsoft.Design", _
+		"CA1034:NestedTypesShouldNotBeVisible")> _
+	Public Enum PdfPasswordType
+		None
+		Owner
+		User
+		Unknown
 	End Enum
 End Module

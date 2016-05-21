@@ -30,7 +30,7 @@ Public Partial Class MainForm
 	Dim capturePdfEditInput As String
 	Dim capturePdfEditOutput As String
 	Dim captureLastStatusMessage As String
-	Dim lastPdfDocumentCheckResult As PdfPasswordProtection.Type
+	Dim lastPdfDocumentCheckResult As Enums.PdfPasswordType
 						
 	''' <summary>
 	''' Class constructor.
@@ -1220,16 +1220,16 @@ Public Partial Class MainForm
 			lastPdfDocumentCheckResult = _
 				PdfPasswordProtection.GetPType(capturePdfEditInput)
 			If lastPdfDocumentCheckResult = _
-				PdfPasswordProtection.Type.Owner Then
+				Enums.PdfPasswordType.Owner Then
 				If PdfOwnerPasswordForm.ShowDialog() = _
 						Windows.Forms.DialogResult.Cancel Then
 					Me.Cursor = Cursors.Default
 					Exit Sub
 				End If
 			ElseIf lastPdfDocumentCheckResult = _
-				PdfPasswordProtection.Type.User Or _
+				Enums.PdfPasswordType.User Or _
 				lastPdfDocumentCheckResult = _
-				PdfPasswordProtection.Type.Unknown Then
+				Enums.PdfPasswordType.Unknown Then
 				Me.Cursor = Cursors.Default
 				Exit Sub
 			End If

@@ -22,16 +22,6 @@
 
 Public NotInheritable Class PdfPasswordProtection
 	''' <summary>
-	''' PDF Password types.
-	''' </summary>
-	Public Enum Type
-		None
-		Owner
-		User
-		Unknown
-	End Enum
-	
-	''' <summary>
 	''' Required for FxCop compliance (CA1053).
 	''' </summary>
 	Private Sub New
@@ -43,30 +33,30 @@ Public NotInheritable Class PdfPasswordProtection
 	''' <param name="pdfFile"></param>
 	''' <returns></returns>
 	Public Shared Function GetPType( _
-		ByVal pdfFile As String) As Type
+		ByVal pdfFile As String) As Enums.PdfPasswordType
 		Dim reader As PdfReader = Nothing
 		Dim inputOpened As Boolean = False
 		Try
 			reader = New PdfReader(pdfFile)
 			inputOpened = True
 			If reader.IsOpenedWithFullPermissions Then
-				Return PdfPasswordProtection.Type.None
+				Return Enums.PdfPasswordType.None
 			Else
-				Return PdfPasswordProtection.Type.Owner
+				Return Enums.PdfPasswordType.Owner
 			End If
 		Catch ex As DocumentException
 			ShowError(ex.Message)
-			Return PdfPasswordProtection.Type.Unknown
+			Return Enums.PdfPasswordType.Unknown
 		Catch ex As IOException
 			If ex.Message = "Bad user password" Then
 				ShowError(String.Format( _
 					CultureInfo.CurrentCulture, _
 					PdfKeeper.Strings.PdfContainsUserPassword, _
 					pdfFile))
-				Return PdfPasswordProtection.Type.User
+				Return Enums.PdfPasswordType.User
 			Else
 				ShowError(ex.Message)
-				Return PdfPasswordProtection.Type.Unknown
+				Return Enums.PdfPasswordType.Unknown
 			End If
 		Finally
 			If inputOpened = True Then

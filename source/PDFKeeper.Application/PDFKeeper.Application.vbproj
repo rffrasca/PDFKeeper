@@ -92,6 +92,7 @@
     <Compile Include="Classes\DirectUploadFolderProperties.vb" />
     <Compile Include="Classes\HelpFileTopics.vb" />
     <Compile Include="Classes\NativeMethods.vb" />
+    <Compile Include="Classes\PdfDocument.vb" />
     <Compile Include="Classes\PdfPasswordProtection.vb" />
     <Compile Include="Classes\PdfProperties.vb" />
     <Compile Include="Classes\ProductDetails.vb" />
@@ -126,7 +127,7 @@
     </Compile>
     <Compile Include="Forms\RotatePagesForm.vb" />
     <Compile Include="Modules\DatabaseUtil.vb" />
-    <Compile Include="Modules\UserSettingsEnums.vb" />
+    <Compile Include="Modules\Enums.vb" />
     <Compile Include="Modules\ExtensionMethods.vb" />
     <Compile Include="Modules\FileUtil.vb" />
     <Compile Include="Modules\FolderUtil.vb" />

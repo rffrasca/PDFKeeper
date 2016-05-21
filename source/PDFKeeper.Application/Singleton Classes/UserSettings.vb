@@ -79,8 +79,8 @@ Public NotInheritable Class UserSettings
 	Public Property LastUserName As String
 		Get
 			_lastUserName = ReadSetting( _
-				UserSettingsEnums.SectionName.DatabaseConnectionForm.ToString, _
-				UserSettingsEnums.KeyName.LastUserName.ToString)
+				Enums.UserSettingsSection.DatabaseConnectionForm.ToString, _
+				Enums.UserSettingsKey.LastUserName.ToString)
 			Return _lastUserName
 		End Get
 		Set(ByVal value As String)
@@ -95,8 +95,8 @@ Public NotInheritable Class UserSettings
 	Public Property LastDataSource As String
 		Get
 			_lastDataSource = ReadSetting( _
-				UserSettingsEnums.SectionName.DatabaseConnectionForm.ToString, _
-				UserSettingsEnums.KeyName.LastDataSource.ToString)
+				Enums.UserSettingsSection.DatabaseConnectionForm.ToString, _
+				Enums.UserSettingsKey.LastDataSource.ToString)
 			Return _lastDataSource
 		End Get
 		Set(ByVal value As String)
@@ -111,8 +111,8 @@ Public NotInheritable Class UserSettings
 	Public Property FormPositionTop As String
 		Get
 			_formPositionTop = ReadSetting( _
-				UserSettingsEnums.SectionName.MainForm.ToString, _
-				UserSettingsEnums.KeyName.FormPositionTop.ToString)
+				Enums.UserSettingsSection.MainForm.ToString, _
+				Enums.UserSettingsKey.FormPositionTop.ToString)
 			If _formPositionTop Is Nothing Then
 				_formPositionTop = CStr(formDefaultPositionTop)
 			End If
@@ -130,8 +130,8 @@ Public NotInheritable Class UserSettings
 	Public Property FormPositionLeft As String
 		Get
 			_formPositionLeft = ReadSetting( _
-				UserSettingsEnums.SectionName.MainForm.ToString, _
-				UserSettingsEnums.KeyName.FormPositionLeft.ToString)
+				Enums.UserSettingsSection.MainForm.ToString, _
+				Enums.UserSettingsKey.FormPositionLeft.ToString)
 			If _formPositionLeft Is Nothing Then
 				_formPositionLeft = CStr(formDefaultPositionLeft)
 			End If
@@ -149,8 +149,8 @@ Public NotInheritable Class UserSettings
 	Public Property FormPositionHeight As String
 		Get
 			_formPositionHeight = ReadSetting( _
-				UserSettingsEnums.SectionName.MainForm.ToString, _
-				UserSettingsEnums.KeyName.FormPositionHeight.ToString)
+				Enums.UserSettingsSection.MainForm.ToString, _
+				Enums.UserSettingsKey.FormPositionHeight.ToString)
 			If _formPositionHeight Is Nothing Then
 				_formPositionHeight = CStr(formDefaultHeight)
 			End If
@@ -168,8 +168,8 @@ Public NotInheritable Class UserSettings
 	Public Property FormPositionWidth As String
 		Get
 			_formPositionWidth = ReadSetting( _
-				UserSettingsEnums.SectionName.MainForm.ToString, _
-				UserSettingsEnums.KeyName.FormPositionWidth.ToString)
+				Enums.UserSettingsSection.MainForm.ToString, _
+				Enums.UserSettingsKey.FormPositionWidth.ToString)
 			If _formPositionWidth Is Nothing Then
 				_formPositionWidth = CStr(formDefaultWidth)
 			End If
@@ -188,8 +188,8 @@ Public NotInheritable Class UserSettings
 	Public Property FormPositionWindowState As String
 		Get
 			_formPositionWindowState = ReadSetting( _
-				UserSettingsEnums.SectionName.MainForm.ToString, _
-				UserSettingsEnums.KeyName.FormPositionWindowState.ToString)
+				Enums.UserSettingsSection.MainForm.ToString, _
+				Enums.UserSettingsKey.FormPositionWindowState.ToString)
 			If _formPositionWindowState Is Nothing Then
 				_formPositionWindowState = CStr(formDefaultWindowState)
 			End If
@@ -209,8 +209,8 @@ Public NotInheritable Class UserSettings
 	Public Property UpdateCheck As String
 		Get
 			_updateCheck = ReadSetting( _
-				UserSettingsEnums.SectionName.MainForm.ToString, _
-				UserSettingsEnums.KeyName.UpdateCheck.ToString)
+				Enums.UserSettingsSection.MainForm.ToString, _
+				Enums.UserSettingsKey.UpdateCheck.ToString)
 			If _updateCheck Is Nothing Then
 				_updateCheck = CStr(defaultUpdateCheck)
 			End If
@@ -230,8 +230,8 @@ Public NotInheritable Class UserSettings
 	Public Property DoNotResetZoomLevel As String
 		Get
 			_doNotResetZoomLevel = ReadSetting( _
-				UserSettingsEnums.SectionName.MainFormDocumentPreviewTab.ToString, _
-				UserSettingsEnums.KeyName.DoNotResetZoomLevel.ToString)
+				Enums.UserSettingsSection.MainFormDocumentPreviewTab.ToString, _
+				Enums.UserSettingsKey.DoNotResetZoomLevel.ToString)
 			If _doNotResetZoomLevel Is Nothing Then
 				_doNotResetZoomLevel = CStr(defaultDoNotResetZoomLevel)
 			End If
@@ -249,8 +249,8 @@ Public NotInheritable Class UserSettings
 	Public Property OpenFileLastFolder As String
 		Get
 			_openFileLastFolder = ReadSetting( _
-				UserSettingsEnums.SectionName.CommonDialogs.ToString, _
-				UserSettingsEnums.KeyName.OpenFileLastFolder.ToString)
+				Enums.UserSettingsSection.CommonDialogs.ToString, _
+				Enums.UserSettingsKey.OpenFileLastFolder.ToString)
 			If _openFileLastFolder Is Nothing Then
 				_openFileLastFolder = _
 					My.Computer.FileSystem.SpecialDirectories.MyDocuments
@@ -269,8 +269,8 @@ Public NotInheritable Class UserSettings
 	Public Property SaveFileLastFolder As String
 		Get
 			_saveFileLastFolder = ReadSetting( _
-				UserSettingsEnums.SectionName.CommonDialogs.ToString, _
-				UserSettingsEnums.KeyName.SaveFileLastFolder.ToString)
+				Enums.UserSettingsSection.CommonDialogs.ToString, _
+				Enums.UserSettingsKey.SaveFileLastFolder.ToString)
 			If _saveFileLastFolder Is Nothing Then
 				_saveFileLastFolder = _
 					My.Computer.FileSystem.SpecialDirectories.MyDocuments
@@ -317,56 +317,56 @@ Public NotInheritable Class UserSettings
 		Try
 			Dim xmlConfig As New XmlConfigSource
 			xmlConfig.AddConfig( _
-				UserSettingsEnums.SectionName.DatabaseConnectionForm.ToString)
+				Enums.UserSettingsSection.DatabaseConnectionForm.ToString)
 			xmlConfig.Configs( _
-				UserSettingsEnums.SectionName.DatabaseConnectionForm.ToString).Set( _
-				UserSettingsEnums.KeyName.LastUserName.ToString, _
+				Enums.UserSettingsSection.DatabaseConnectionForm.ToString).Set( _
+				Enums.UserSettingsKey.LastUserName.ToString, _
 				_lastUserName)
 			xmlConfig.Configs( _
-				UserSettingsEnums.SectionName.DatabaseConnectionForm.ToString).Set( _
-				UserSettingsEnums.KeyName.LastDataSource.ToString, _
+				Enums.UserSettingsSection.DatabaseConnectionForm.ToString).Set( _
+				Enums.UserSettingsKey.LastDataSource.ToString, _
 				_lastDataSource)
 			xmlConfig.AddConfig( _
-				UserSettingsEnums.SectionName.MainForm.ToString)
+				Enums.UserSettingsSection.MainForm.ToString)
 			xmlConfig.Configs( _
-				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
-				UserSettingsEnums.KeyName.FormPositionTop.ToString, _
+				Enums.UserSettingsSection.MainForm.ToString).Set( _
+				Enums.UserSettingsKey.FormPositionTop.ToString, _
 				_formPositionTop)	
 			xmlConfig.Configs( _
-				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
-				UserSettingsEnums.KeyName.FormPositionLeft.ToString, _
+				Enums.UserSettingsSection.MainForm.ToString).Set( _
+				Enums.UserSettingsKey.FormPositionLeft.ToString, _
 				_formPositionLeft)	
 			xmlConfig.Configs( _
-				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
-				UserSettingsEnums.KeyName.FormPositionHeight.ToString, _
+				Enums.UserSettingsSection.MainForm.ToString).Set( _
+				Enums.UserSettingsKey.FormPositionHeight.ToString, _
 				_formPositionHeight)
 			xmlConfig.Configs( _
-				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
-				UserSettingsEnums.KeyName.FormPositionWidth.ToString, _
+				Enums.UserSettingsSection.MainForm.ToString).Set( _
+				Enums.UserSettingsKey.FormPositionWidth.ToString, _
 				_formPositionWidth)			
 			xmlConfig.Configs( _
-				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
-				UserSettingsEnums.KeyName.FormPositionWindowState.ToString, _
+				Enums.UserSettingsSection.MainForm.ToString).Set( _
+				Enums.UserSettingsKey.FormPositionWindowState.ToString, _
 				_formPositionWindowState)
 			xmlConfig.Configs( _
-				UserSettingsEnums.SectionName.MainForm.ToString).Set( _
-				UserSettingsEnums.KeyName.UpdateCheck.ToString, _
+				Enums.UserSettingsSection.MainForm.ToString).Set( _
+				Enums.UserSettingsKey.UpdateCheck.ToString, _
 				_updateCheck)
 			xmlConfig.AddConfig( _
-				UserSettingsEnums.SectionName.MainFormDocumentPreviewTab.ToString)
+				Enums.UserSettingsSection.MainFormDocumentPreviewTab.ToString)
 			xmlConfig.Configs( _
-				UserSettingsEnums.SectionName.MainFormDocumentPreviewTab.ToString).Set( _
-				UserSettingsEnums.KeyName.DoNotResetZoomLevel.ToString, _
+				Enums.UserSettingsSection.MainFormDocumentPreviewTab.ToString).Set( _
+				Enums.UserSettingsKey.DoNotResetZoomLevel.ToString, _
 				_doNotResetZoomLevel)
 			xmlConfig.AddConfig( _
-				UserSettingsEnums.SectionName.CommonDialogs.ToString)
+				Enums.UserSettingsSection.CommonDialogs.ToString)
 			xmlConfig.Configs( _
-				UserSettingsEnums.SectionName.CommonDialogs.ToString).Set( _
-				UserSettingsEnums.KeyName.OpenFileLastFolder.ToString, _
+				Enums.UserSettingsSection.CommonDialogs.ToString).Set( _
+				Enums.UserSettingsKey.OpenFileLastFolder.ToString, _
 				_openFileLastFolder)
 			xmlConfig.Configs( _
-				UserSettingsEnums.SectionName.CommonDialogs.ToString).Set( _
-				UserSettingsEnums.KeyName.SaveFileLastFolder.ToString, _
+				Enums.UserSettingsSection.CommonDialogs.ToString).Set( _
+				Enums.UserSettingsKey.SaveFileLastFolder.ToString, _
 				_saveFileLastFolder)
 			xmlConfig.Save(settingsFile)
 		Catch ex As System.ArgumentNullException
