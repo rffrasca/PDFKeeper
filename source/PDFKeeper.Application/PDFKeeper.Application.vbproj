@@ -98,6 +98,7 @@
     <Compile Include="Classes\ProductDetails.vb" />
     <Compile Include="Classes\Shortcuts.vb" />
     <Compile Include="Classes\WindowsProfileFolders.vb" />
+    <Compile Include="Enums\Enums.vb" />
     <Compile Include="Forms\AboutForm.Designer.vb">
       <DependentUpon>AboutForm.vb</DependentUpon>
     </Compile>
@@ -127,7 +128,6 @@
     </Compile>
     <Compile Include="Forms\RotatePagesForm.vb" />
     <Compile Include="Modules\DatabaseUtil.vb" />
-    <Compile Include="Modules\Enums.vb" />
     <Compile Include="Modules\ExtensionMethods.vb" />
     <Compile Include="Modules\FileUtil.vb" />
     <Compile Include="Modules\FolderUtil.vb" />
@@ -188,6 +188,7 @@
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+    <Folder Include="Enums" />
     <Folder Include="Singleton Classes" />
     <Folder Include="Strings" />
   </ItemGroup>
