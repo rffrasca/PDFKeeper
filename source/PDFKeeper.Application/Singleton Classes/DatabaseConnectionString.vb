@@ -21,7 +21,9 @@
 '******************************************************************************
 
 Public NotInheritable Class DatabaseConnectionString
-	Private Shared _instance As DatabaseConnectionString = New DatabaseConnectionString()
+	Private Shared _instance As DatabaseConnectionString = _
+		New DatabaseConnectionString()
+	
 	Private _userName As String
 	Private _password As SecureString
 	Private _dataSource As String
@@ -71,12 +73,28 @@ Public NotInheritable Class DatabaseConnectionString
 	''' <summary>
 	''' Gets the database connection string.
 	''' </summary>
-	Friend ReadOnly Property ConnectionString As String
-		Get
-			Return "User Id=" + UserName + ";" & _
-				   "Password=" + Password.GetString + ";" & _
-				   "Data Source=" + DataSource + ";" & _
-				   "Persist Security Info=False;Pooling=True"
-		End Get
-	End Property
+	Friend Function GetConnectionString As String
+		Return "User Id=" + UserName + ";" & _
+			   "Password=" + Password.GetString + ";" & _
+			   "Data Source=" + DataSource + ";" & _
+			   "Persist Security Info=False;Pooling=True"
+	End Function
+	
+	''' <summary>
+	''' Is the database connection string valid?
+	''' </summary>
+	''' <returns>True or False</returns>
+	Friend Shared Function IsConnectionStringValid As Boolean
+		Using connection As New OracleConnection
+			Try
+				connection.ConnectionString = _
+					DatabaseConnectionString.Instance.GetConnectionString
+				connection.Open
+				Return True
+			Catch ex As OracleException
+				ShowError(ex.Message.ToString())
+				Return False
+			End Try
+		End Using
+	End Function
 End Class

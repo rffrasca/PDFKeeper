@@ -163,7 +163,7 @@ Public Partial Class DatabaseConnectionForm
 		DatabaseConnectionString.Instance.Password = dbPassword
 		DatabaseConnectionString.Instance.DataSource = textBoxDataSource.Text
 		textBoxPassword.Text = Nothing
-		If CanConnectToDatabase = False Then
+		If DatabaseConnectionString.IsConnectionStringValid = False Then
 			dbPassword.Clear
 			textBoxUsername.Select
 			Me.Cursor = Cursors.Default
