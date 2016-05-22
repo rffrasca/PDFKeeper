@@ -20,18 +20,21 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class UpdateCheck
-	Private Shared _instance As UpdateCheck = New UpdateCheck()
+Public NotInheritable Class UpdateChecker
+	Private Shared _instance As UpdateChecker = New UpdateChecker()
 	Private _isUpdateAvailable As Boolean = Nothing
 	
-	Public Shared ReadOnly Property Instance As UpdateCheck
+	Public Shared ReadOnly Property Instance As UpdateChecker
 		Get
 			Return _instance
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Returns True or False if an update is available for the application.
+	''' Is an update available for the application?
+	''' 
+	''' RunUpdateCheck method must be called when the Main Form opens to update
+	''' this property.
 	''' </summary>
 	Public ReadOnly Property IsUpdateAvailable As Boolean
 		Get
@@ -40,10 +43,10 @@ Public NotInheritable Class UpdateCheck
 	End Property
 	
 	''' <summary>
-	''' Sets the IsUpdateAvailable property to True or False.  This method must
-	''' be called when the Main Form opens.
+	''' Runs the update check that sets the IsUpdateAvailable property to True
+	''' or False.  This method must be called when the Main Form opens.
 	''' </summary>
-	Public Sub SetIsUpdateAvailable
+	Public Sub RunUpdateCheck
 		Dim installerVersion As String
 		Dim maxVersion As String = "0.0.0"
 		Using oWebClient As New WebClient
