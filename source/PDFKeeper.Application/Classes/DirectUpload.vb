@@ -148,8 +148,9 @@ Public NotInheritable Class DirectUpload
 			If oDirectUploadFolderProperties.Read = 1 Then
 				Exit Sub
 			End If
-			If PdfPasswordProtection.GetPType(inputPdfFile) = _
+			If GetPdfPasswordType(inputPdfFile) = _
 				Enums.PdfPasswordType.None Then
+				
 				Dim oPdfProperties As New PdfProperties(inputPdfFile, _
 					outputPdfFile)
 				If oPdfProperties.Read = 0 Then

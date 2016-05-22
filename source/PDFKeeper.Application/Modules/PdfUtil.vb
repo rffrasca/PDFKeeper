@@ -82,7 +82,40 @@ Public Module PdfUtil
 			Return reader.NumberOfPages
 		End Using
 	End Function
+	
+	''' <summary>
+	''' Gets the password type set in "pdfFile".
+	''' </summary>
+	''' <param name="pdfFile"></param>
+	''' <returns>Password type enumerator.</returns>
+	Public Function GetPdfPasswordType( _
+		ByVal pdfFile As String) As Enums.PdfPasswordType
 		
+		Using reader As New PdfReader(pdfFile)
+			Try
+				If reader.IsOpenedWithFullPermissions Then
+					Return Enums.PdfPasswordType.None
+				Else
+					Return Enums.PdfPasswordType.Owner
+				End If
+			Catch ex As DocumentException
+				ShowError(ex.Message)
+				Return Enums.PdfPasswordType.Unknown
+			Catch ex As IOException
+				If ex.Message = "Bad user password" Then
+					ShowError(String.Format( _
+						CultureInfo.CurrentCulture, _
+						PdfKeeper.Strings.PdfContainsUserPassword, _
+						pdfFile))
+					Return Enums.PdfPasswordType.User
+				Else
+					ShowError(ex.Message)
+					Return Enums.PdfPasswordType.Unknown
+				End If
+			End Try
+		End Using
+	End Function
+	
 	''' <summary>
 	''' Returns a string containing the text extracted from "pdfFile".
 	''' </summary>

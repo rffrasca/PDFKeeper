@@ -1218,7 +1218,7 @@ Public Partial Class MainForm
 				ApplicationProfileFolders.CaptureTemp, _
 				Path.GetFileName(capturePdfEditInput))
 			lastPdfDocumentCheckResult = _
-				PdfPasswordProtection.GetPType(capturePdfEditInput)
+				GetPdfPasswordType(capturePdfEditInput)
 			If lastPdfDocumentCheckResult = _
 				Enums.PdfPasswordType.Owner Then
 				If PdfOwnerPasswordForm.ShowDialog() = _

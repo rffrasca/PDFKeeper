@@ -93,7 +93,6 @@
     <Compile Include="Classes\HelpFileTopics.vb" />
     <Compile Include="Classes\NativeMethods.vb" />
     <Compile Include="Classes\PdfDocument.vb" />
-    <Compile Include="Classes\PdfPasswordProtection.vb" />
     <Compile Include="Classes\PdfProperties.vb" />
     <Compile Include="Classes\ProductDetails.vb" />
     <Compile Include="Classes\Shortcuts.vb" />
