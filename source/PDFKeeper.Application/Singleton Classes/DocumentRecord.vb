@@ -123,7 +123,7 @@ Public NotInheritable Class DocumentRecord
 		If FileCache.Instance.ContainsItemAndHashValuesMatch( _
 			PdfPathName) = False Then
 						
-			FileCache.Instance.Add(PdfPathName)
+			FileCache.Instance.AddFileToCache(PdfPathName)
 		End If
 		EncryptFile(PdfPathName)
 	End Sub

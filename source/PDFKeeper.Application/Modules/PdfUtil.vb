@@ -60,7 +60,7 @@ Public Module PdfUtil
 					ShowError(ghostScriptErrorOutput.ReadToEnd)
 					Return Nothing
 				End If
-				FileCache.Instance.Add(imageFile)
+				FileCache.Instance.AddFileToCache(imageFile)
 			Catch ex As System.ComponentModel.Win32Exception
 				ShowError(ex.Message)
 				Return Nothing

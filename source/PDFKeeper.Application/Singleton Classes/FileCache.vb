@@ -22,7 +22,7 @@
 
 Public NotInheritable Class FileCache
 	Private Shared _instance As FileCache = New FileCache()
-	Private fileCacheDict As New Dictionary(Of String, String)
+	Private cache As New Dictionary(Of String, String)
 	
 	Public Shared ReadOnly Property Instance As FileCache
 		Get
@@ -31,26 +31,25 @@ Public NotInheritable Class FileCache
 	End Property
 	
 	''' <summary>
-	''' Adds "file" and its calculated hash value to fileCacheDict.
+	''' Adds "file" and its calculated hash value to "cache".
 	''' </summary>
 	''' <param name="file"></param>
-	Public Sub Add(ByVal file As String)
-		fileCacheDict.Item(file) = ComputeFileHashValue(file)
+	Public Sub AddFileToCache(ByVal file As String)
+		cache.Item(file) = ComputeFileHashValue(file)
 	End Sub
 	
 	''' <summary>
-	''' Returns True or False if "file" exists, is contained in fileCacheDict,
-	''' and the hash value of "file" matches the hash value stored in
-	''' fileCacheDict.
+	''' Does "file" exist, is contained in "cache", and the hash value of
+	''' "file" matches the hash value stored in "cache"?
 	''' </summary>
 	''' <param name="file"></param>
-	''' <returns></returns>
+	''' <returns>True or False</returns>
 	Public Function ContainsItemAndHashValuesMatch( _
 		ByVal file As String) As Boolean
 
 		If System.IO.File.Exists(file) Then
-			If fileCacheDict.ContainsKey(file) Then
-				If ComputeFileHashValue(file) = fileCacheDict.Item(file) Then
+			If cache.ContainsKey(file) Then
+				If ComputeFileHashValue(file) = cache.Item(file) Then
 					Return True
 				End If
 			End If
@@ -59,11 +58,11 @@ Public NotInheritable Class FileCache
 	End Function
 	
 	''' <summary>
-	''' Deletes all items contained in fileCacheDict from the file system.
-	''' This should be called when the Main Form is closing.
+	''' Deletes all items contained in "cache" from the file system.  This
+	''' method should be called when the Main Form is closing.
 	''' </summary>
 	Public Sub DeleteAllItemsFromFileSystem
-		For Each pair As KeyValuePair(Of String, String) In fileCacheDict
+		For Each pair As KeyValuePair(Of String, String) In cache
 			Dim item As String = pair.Key
 			If System.IO.File.Exists(item) Then
 				DeleteFile(item, False)
