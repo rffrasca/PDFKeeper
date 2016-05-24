@@ -73,12 +73,14 @@ Public NotInheritable Class DatabaseConnectionString
 	''' <summary>
 	''' Gets the database connection string.
 	''' </summary>
-	Friend Function GetConnectionString As String
-		Return "User Id=" + UserName + ";" & _
-			   "Password=" + Password.GetString + ";" & _
-			   "Data Source=" + DataSource + ";" & _
-			   "Persist Security Info=False;Pooling=True"
-	End Function
+	Friend ReadOnly Property ConnectionString As String
+		Get
+			Return "User Id=" + UserName + ";" & _
+				   "Password=" + Password.GetString + ";" & _
+			   	   "Data Source=" + DataSource + ";" & _
+			   	   "Persist Security Info=False;Pooling=True"
+		End Get
+	End Property
 	
 	''' <summary>
 	''' Is the database connection string valid?
@@ -88,7 +90,7 @@ Public NotInheritable Class DatabaseConnectionString
 		Using connection As New OracleConnection
 			Try
 				connection.ConnectionString = _
-					DatabaseConnectionString.Instance.GetConnectionString
+					DatabaseConnectionString.Instance.ConnectionString
 				connection.Open
 				Return True
 			Catch ex As OracleException
