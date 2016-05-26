@@ -25,10 +25,10 @@ Public NotInheritable Class UserSettings
 	Private ReadOnly settingsFile As String = Path.Combine( _
 		ApplicationProfileFolders.RoamingParent, _
 		"UserSettings.xml")
+	Private ReadOnly _formPositionDefaultHeight As Integer = 714
+	Private ReadOnly _formPositionDefaultWidth As Integer = 714
 	Private ReadOnly formDefaultPositionTop As Integer = 10
 	Private ReadOnly formDefaultPositionLeft As Integer = 25
-	Private ReadOnly formDefaultHeight As Integer = 714
-	Private ReadOnly formDefaultWidth As Integer = 714
 	Private ReadOnly formDefaultWindowState As Integer = 0	' 0 = Normal
 															' 2 = Maximized
 	Private readonly defaultUpdateCheck As Integer = 1	' 1 = Enabled
@@ -60,7 +60,7 @@ Public NotInheritable Class UserSettings
 	''' </summary>
 	Public ReadOnly Property FormPositionDefaultHeight As Integer
 		Get
-			Return formDefaultHeight		
+			Return _formPositionDefaultHeight		
 		End Get
 	End Property
 	
@@ -69,7 +69,7 @@ Public NotInheritable Class UserSettings
 	''' </summary>
 	Public ReadOnly Property FormPositionDefaultWidth As Integer
 		Get
-			Return formDefaultWidth		
+			Return _formPositionDefaultWidth	
 		End Get
 	End Property
 		
@@ -152,7 +152,7 @@ Public NotInheritable Class UserSettings
 				Enums.UserSettingsSection.MainForm.ToString, _
 				Enums.UserSettingsKey.FormPositionHeight.ToString)
 			If _formPositionHeight Is Nothing Then
-				_formPositionHeight = CStr(formDefaultHeight)
+				_formPositionHeight = CStr(FormPositionDefaultHeight)
 			End If
 			Return _formPositionHeight
 		End Get
@@ -171,7 +171,7 @@ Public NotInheritable Class UserSettings
 				Enums.UserSettingsSection.MainForm.ToString, _
 				Enums.UserSettingsKey.FormPositionWidth.ToString)
 			If _formPositionWidth Is Nothing Then
-				_formPositionWidth = CStr(formDefaultWidth)
+				_formPositionWidth = CStr(FormPositionDefaultWidth)
 			End If
 			Return _formPositionWidth
 		End Get
