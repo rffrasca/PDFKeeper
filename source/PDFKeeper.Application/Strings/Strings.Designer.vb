@@ -64,6 +64,15 @@ Friend Class Strings
 	End Property
 	
 	'''<summary>
+	'''  Looks up a localized string similar to The CheckForUpdate method has not been called..
+	'''</summary>
+	Friend Shared ReadOnly Property ApplicationUpdatePropertyException() As String
+		Get
+			Return ResourceManager.GetString("ApplicationUpdatePropertyException", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
 	'''  Looks up a localized string similar to {0} cannot be deleted because it contains PDF documents..
 	'''</summary>
 	Friend Shared ReadOnly Property CannotDeleteFolder() As String
