@@ -22,8 +22,8 @@
 
 Public NotInheritable Class ImageZoom
 	Private Shared _instance As ImageZoom = New ImageZoom()
-	Private ReadOnly ActualSize As Integer = 100	' percentage
-	Private ReadOnly ZoomStepValue As Integer = 10	' percentage
+	Private ReadOnly actualSize As Integer = 100	' percentage
+	Private ReadOnly zoomStepValue As Integer = 10	' percentage
 	Private _zoomLevel As Integer
 
 	Public Shared ReadOnly Property Instance As ImageZoom
@@ -37,18 +37,6 @@ Public NotInheritable Class ImageZoom
 	''' </summary>
 	Public Property SourceImage As System.Drawing.Image = Nothing
 	
-	''' <summary>
-	''' Gets SourceImage with ZoomLevel applied.
-	''' </summary>
-	Public ReadOnly Property ZoomedImage As System.Drawing.Image
-		Get
-			If IsNothing(SourceImage) Then
-				Return Nothing
-			End If
-			Return ZoomSourceImage
-		End Get
-	End Property
-		
 	''' <summary>
 	''' Gets zoom level.
 	''' </summary>
@@ -73,7 +61,7 @@ Public NotInheritable Class ImageZoom
 	''' </summary>
 	Public Sub DecreaseZoomLevel
 		_zoomLevel -= ZoomStepValue
-		If _zoomLevel < ActualSize Then
+		If _zoomLevel < actualSize Then
 			ResetZoomLevel
 		End If
 	End Sub
@@ -82,15 +70,15 @@ Public NotInheritable Class ImageZoom
 	''' Resets ZoomLevel to ActualSize.
 	''' </summary>
 	Public Sub ResetZoomLevel
-		_zoomLevel = ActualSize
+		_zoomLevel = actualSize
 	End Sub
 	
 	''' <summary>
-	''' Zooms SourceImage to the value set in ZoomLevel and returns as an
+	''' Zooms SourceImage to the value set for ZoomLevel and returns as an
 	''' image, leaving SourceImage unchanged.
 	''' </summary>
 	''' <returns>SourceImage with ZoomLevel applied.</returns>
-	Private Function ZoomSourceImage As System.Drawing.Image
+	Public Function ZoomSourceImage As System.Drawing.Image
 		Dim zoomedImage As New Bitmap( _
 			SourceImage, _
 			CInt(Convert.ToInt32(SourceImage.Width * ZoomLevel) / 100), _

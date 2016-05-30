@@ -1014,7 +1014,7 @@ Public Partial Class MainForm
 			buttonZoomOut.Enabled = False
 		End If
 		pictureBoxPreview.Image = Nothing
-		pictureBoxPreview.Image = ImageZoom.Instance.ZoomedImage
+		pictureBoxPreview.Image = ImageZoom.Instance.ZoomSourceImage
 	End Sub
 	
 	#End Region
