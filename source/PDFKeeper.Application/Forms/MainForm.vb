@@ -1806,7 +1806,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub BackgroundWorkerUpdateCheckDoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs)
-		UpdateChecker.Instance.RunUpdateCheck
+		ApplicationUpdate.Instance.CheckForUpdate
 	End Sub
 	
 	''' <summary>
@@ -1815,7 +1815,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub BackgroundWorkerUpdateCheckRunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs)
-		If UpdateChecker.Instance.IsUpdateAvailable Then
+		If ApplicationUpdate.Instance.IsUpdateAvailable Then
 			toolStripStatusLabelUpdateStatus.Text = _
 				PdfKeeper.Strings.MainFormNewerVersionAvailable
 			toolStripStatusLabelUpdateStatus.ForeColor = _

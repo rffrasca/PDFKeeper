@@ -134,11 +134,11 @@
     <Compile Include="Modules\WindowUtil.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="Properties\AssemblyInfo.vb" />
+    <Compile Include="Singleton Classes\ApplicationUpdate.vb" />
     <Compile Include="Singleton Classes\DatabaseConnectionString.vb" />
     <Compile Include="Singleton Classes\DocumentRecord.vb" />
     <Compile Include="Singleton Classes\FileCache.vb" />
     <Compile Include="Singleton Classes\ImageZoom.vb" />
-    <Compile Include="Singleton Classes\UpdateChecker.vb" />
     <Compile Include="Singleton Classes\UserSettings.vb" />
     <Compile Include="Strings\Strings.Designer.vb">
       <DependentUpon>Strings.resx</DependentUpon>
