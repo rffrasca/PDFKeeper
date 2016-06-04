@@ -48,7 +48,7 @@ Public NotInheritable Class DocumentRecord
 	End Property
 	
 	''' <summary>
-	''' Gets the Document Record Keywords.
+	''' Gets the Document Record Keywords for Id.
 	''' </summary>
 	Public ReadOnly Property Keywords As String
 		Get
@@ -57,7 +57,7 @@ Public NotInheritable Class DocumentRecord
 	End Property
 	
 	''' <summary>
-	''' Gets or sets the Document Record Notes.
+	''' Gets or sets the Document Record Notes for Id.
 	''' </summary>
 	Public Property Notes As String
 		Get
@@ -71,7 +71,7 @@ Public NotInheritable Class DocumentRecord
 	End Property
 	
 	''' <summary>
-	''' Gets the absolute path name of the Document Record PDF.
+	''' Gets the absolute path name of the Document Record PDF for Id.
 	''' </summary>
 	Public ReadOnly Property PdfPathName As String
 		Get
@@ -82,26 +82,30 @@ Public NotInheritable Class DocumentRecord
 	End Property
 	
 	''' <summary>
-	''' Gets the first page from the Document Record PDF as an image.
+	''' Gets the first page from the Document Record PDF as an image for Id.
 	''' </summary>
-	Public ReadOnly Property PdfPreviewImage As System.Drawing.Image
-		Get
-			Return PdfFirstPageToImage(PdfPathName)
-		End Get
-	End Property
+	''' <returns>Image</returns>
+	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
+		"Microsoft.Design", _
+		"CA1024:UsePropertiesWhereAppropriate")> _
+	Public Function GetPdfPreviewImage As System.Drawing.Image
+		Return PdfFirstPageToImage(PdfPathName)
+	End Function
+
+	''' <summary>
+	''' Gets the text from the Document Record PDF for Id.
+	''' </summary>
+	''' <returns>Text</returns>
+	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
+		"Microsoft.Design", _
+		"CA1024:UsePropertiesWhereAppropriate")> _
+	Public Function GetPdfText As String
+		Return PdfTextToString(PdfPathName)
+	End Function
 	
 	''' <summary>
-	''' Gets the text from the Document Record PDF.
-	''' </summary>
-	Public ReadOnly Property PdfText As String
-		Get
-			Return PdfTextToString(PdfPathName)
-		End Get
-	End Property
-		
-	''' <summary>
-	''' Queries Document Record Keywords, Notes, and PDF from the database.
-	''' Only query Keywords and Notes when the the Document Record PDF is
+	''' Queries Document Record Keywords, Notes, and PDF from the database for
+	''' Id.  Only query Keywords and Notes when the the Document Record PDF is
 	''' contained in the file cache.  When the PDF document is queried, add to
 	''' the file cache.  Encrypt the PDF document if file system encryption is
 	''' supported by the operating system.

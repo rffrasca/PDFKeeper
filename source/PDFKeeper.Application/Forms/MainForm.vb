@@ -978,7 +978,7 @@ Public Partial Class MainForm
 		buttonPreviewNext.Enabled = False
 		pictureBoxPreview.Image = Nothing
 		Dim img As System.Drawing.Image = _
-			DocumentRecord.Instance.PdfPreviewImage
+			DocumentRecord.Instance.GetPdfPreviewImage
 		If img.Size.IsEmpty = False Then
 			pictureBoxPreview.Image = img
 			ImageZoom.Instance.SourceImage = pictureBoxPreview.Image
@@ -1061,7 +1061,7 @@ Public Partial Class MainForm
 		buttonTextOnlyPrevious.Enabled = False
 		buttonTextOnlyNext.Enabled = False
 		textBoxTextOnlyView.Text = Nothing
-		textBoxTextOnlyView.Text = DocumentRecord.Instance.PdfText
+		textBoxTextOnlyView.Text = DocumentRecord.Instance.GetPdfText
 		textBoxTextOnlyView.Enabled = True
 		If listViewDocs.SelectedItems(0).Index > 0 Then
 			buttonTextOnlyPrevious.Enabled = True
