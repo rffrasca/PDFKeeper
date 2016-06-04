@@ -505,7 +505,4 @@ All modifications will be lost.</value>
   <data name="PropertyNotSupported" xml:space="preserve">
     <value>{0} property not supported.</value>
   </data>
-  <data name="ApplicationUpdatePropertyException" xml:space="preserve">
-    <value>The CheckForUpdate method has not been called.</value>
-  </data>
 </root>

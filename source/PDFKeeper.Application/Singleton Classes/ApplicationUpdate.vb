@@ -33,23 +33,18 @@ Public NotInheritable Class ApplicationUpdate
 	''' <summary>
 	''' Is an update available for the application?
 	''' 
-	''' InvalidOperationException: The CheckForUpdate method has not been called.
+	''' The CheckForUpdate method must be called for this property to be set.
 	''' </summary>
 	Public ReadOnly Property IsUpdateAvailable As Nullable(Of Boolean)
 		Get
-			If _isUpdateAvailable Is Nothing Then
-				Throw New InvalidOperationException( _
-					PdfKeeper.Strings.ApplicationUpdatePropertyException)
-			Else
-				Return _isUpdateAvailable
-			End If
+			Return _isUpdateAvailable
 		End Get
 	End Property
 	
 	''' <summary>
 	''' Checks for an update and sets the IsUpdateAvailable property to True or
 	''' False.  This method is intended to be called when the Main Form opens
-	''' in a seprate thread.
+	''' in its own thread.
 	''' </summary>
 	Public Sub CheckForUpdate
 		Dim installerVersion As String
