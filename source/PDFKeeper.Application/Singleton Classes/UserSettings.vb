@@ -25,16 +25,21 @@ Public NotInheritable Class UserSettings
 	Private ReadOnly settingsFile As String = Path.Combine( _
 		ApplicationProfileFolders.RoamingParent, _
 		"UserSettings.xml")
+	
 	Private ReadOnly _formPositionDefaultHeight As Integer = 714
 	Private ReadOnly _formPositionDefaultWidth As Integer = 714
 	Private ReadOnly formDefaultPositionTop As Integer = 10
 	Private ReadOnly formDefaultPositionLeft As Integer = 25
-	Private ReadOnly formDefaultWindowState As Integer = 0	' 0 = Normal
-															' 2 = Maximized
-	Private readonly defaultUpdateCheck As Integer = 1	' 1 = Enabled
-														' 0 = Disabled
-	Private ReadOnly defaultDoNotResetZoomLevel As Integer = 0	' 1 = Enabled
-																' 0 = Disabled
+	
+	' 0 = Normal, 2 = Maximized
+	Private ReadOnly formDefaultWindowState As Integer = 0
+	
+	' 1 = Enabled, 0 = Disabled
+	Private ReadOnly defaultUpdateCheck As Integer = 1
+	
+	' 1 = Enabled, 0 = Disabled
+	Private ReadOnly defaultDoNotResetZoomLevel As Integer = 0
+	
 	Private _lastUserName As String
 	Private _lastDataSource As String
 	Private _formPositionTop As String
