@@ -24,8 +24,8 @@ Public Module FileUtil
 	''' <summary>
 	''' Returns the hash value of "file".
 	''' </summary>
-	''' <param name="file"></param>
-	''' <returns></returns>
+	''' <param name="file">Name and path of file.</param>
+	''' <returns>Value</returns>
 	Public Function ComputeFileHashValue(ByVal file As String) As String
 		Dim algorithm As HashAlgorithm = HashAlgorithm.Create("SHA1")
 		Using stream As New FileStream(file, FileMode.Open, FileAccess.Read)
@@ -35,38 +35,27 @@ Public Module FileUtil
 	End Function
 	
 	''' <summary>
-	''' Deletes "file".  When "recycle" is True, deletes to the Windows Recycle
-	''' Bin.
+	''' Deletes "file" to the Windows Recycle Bin.
+	''' 
+	''' IOException: The file is in use.
 	''' </summary>
-	''' <param name="file"></param>
-	''' <param name="recycle">True or False</param>
-	''' <returns>0 = Successful or file does not exist, 1 = Failed</returns>
-	Public Function DeleteFile( _
-		ByVal file As String, _
-		ByVal recycle As Boolean) As Integer
-		
+	''' <param name="file">Name and path of file.</param>
+	Public Sub DeleteFileToRecycleBin(ByVal file As String)
 		Try
-			If System.IO.File.Exists(file) Then
-				If recycle Then
-					My.Computer.FileSystem.DeleteFile(file, _
-					Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, _
-					Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin)
-				Else
-					System.IO.File.Delete(file)
-				End If
-			End If
-			Return 0
+			My.Computer.FileSystem.DeleteFile( _
+				file, _
+				Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, _
+				Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin)
 		Catch ex As IOException
-			ShowError(ex.Message)
-			Return 1
+			Throw
 		End Try
-	End Function
+	End Sub
 	
 	''' <summary>
 	''' Eencrypts "file" when the operating system supports the Encrypting File
 	''' System (EFS).
 	''' </summary>
-	''' <param name="file"></param>
+	''' <param name="file">Name and path of file.</param>
 	Public Sub EncryptFile(ByVal file As String)
 		Try
 			System.IO.File.Encrypt(file)
@@ -78,9 +67,11 @@ Public Module FileUtil
 	
 	''' <summary>
 	''' Returns a byte array of the specified file.
+	''' 
+	''' IOException: I/O error has occurred.
 	''' </summary>
-	''' <param name="file"></param>
-	''' <returns></returns>
+	''' <param name="file">Name and path of file.</param>
+	''' <returns>Byte Array</returns>
 	Public Function FileToByteArray(ByVal file As String) As Byte()
 		Dim blob As Byte()
 		Using stream As FileStream = New FileStream( _
@@ -93,7 +84,7 @@ Public Module FileUtil
 				stream.Read(blob, 0, System.Convert.ToInt32(stream.Length))
 				Return blob
 			Catch ex As IOException
-				Throw New IOException(ex.Message.ToString())
+				Throw
 			End Try
 		End Using
 	End Function
@@ -102,8 +93,8 @@ Public Module FileUtil
 	''' Returns True or False if "file" is in use.  If "file" does not exist,
 	''' False is returned. 
 	''' </summary>
-	''' <param name="file"></param>
-	''' <returns></returns>
+	''' <param name="file">Name and path of file.</param>
+	''' <returns>True or False</returns>
 	Public Function IsFileInUse(ByVal file As String) As Boolean
 		If System.IO.File.Exists(file) Then
 			Try
@@ -121,29 +112,10 @@ Public Module FileUtil
 	End Function
 			
 	''' <summary>
-	''' Moves/renames "sourceFile" to "targetFile".
-	''' </summary>
-	''' <param name="sourceFile"></param>
-	''' <param name="targetFile"></param>
-	''' <returns>0 = Successful, 1 = Failed</returns>
-	Public Function MoveFile( _
-		ByVal sourceFile As String, _
-		ByVal targetFile As String) As Integer
-		
-		Try
-			System.IO.File.Move(SourceFile, targetFile)
-			Return 0
-		Catch ex As IOException
-			ShowError(ex.Message)
-			Return 1
-		End Try
-	End Function
-	
-	''' <summary>
 	''' Waits for "file" to be created by waiting until "file" exists and
 	''' not in use.
 	''' </summary>
-	''' <param name="file"></param>
+	''' <param name="file">Name and path of file.</param>
 	Public Sub WaitForFileCreation(ByVal file As String)
 		Do Until System.IO.File.Exists(file)
 			Thread.Sleep(2000)

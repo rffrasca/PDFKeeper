@@ -148,15 +148,16 @@ Public Partial Class DirectUploadConfigurationForm
 				selectedFolder)) = 6 Then
 				
 				If DeleteFolder(folderPath, False) = 0 Then
-					If DeleteFile( _
-						Path.Combine( _
-						ApplicationProfileFolders.DirectUploadXml, _
-						selectedFolder & ".xml"), _
-						False) = 0 Then
-						
+					Try
+						System.IO.File.Delete( _
+							Path.Combine( _
+							ApplicationProfileFolders.DirectUploadXml, _
+							selectedFolder & ".xml"))
 						FillList
 						Discard
-					End If
+					Catch ex As IOException
+						ShowError(ex.Message)
+					End Try
 				End If
 			End If
 		Else
@@ -366,14 +367,15 @@ Public Partial Class DirectUploadConfigurationForm
 				Return 1
 			End If
 		Else
-			If DeleteFile( _
-				Path.Combine( _
-				ApplicationProfileFolders.DirectUploadXml, _
-				selectedFolder & ".xml"), _
-				False) = 1 Then
-				
+			Try
+				System.IO.File.Delete( _
+					Path.Combine( _
+					ApplicationProfileFolders.DirectUploadXml, _
+					selectedFolder & ".xml"))
+			Catch ex As IOException
+				ShowError(ex.Message)
 				Return 1
-			End If
+			End Try
 			If Not selectedFolder.ToUpper(CultureInfo.CurrentCulture) = _
 				textBoxFolderName.Text.ToUpper(CultureInfo.CurrentCulture) Then
 				Try

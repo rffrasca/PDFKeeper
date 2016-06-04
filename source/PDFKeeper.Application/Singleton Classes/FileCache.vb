@@ -33,7 +33,7 @@ Public NotInheritable Class FileCache
 	''' <summary>
 	''' Adds "file" and its calculated hash value to "cache".
 	''' </summary>
-	''' <param name="file"></param>
+	''' <param name="file">Name and path of file.</param>
 	Public Sub AddFileToCache(ByVal file As String)
 		cache.Item(file) = ComputeFileHashValue(file)
 	End Sub
@@ -42,7 +42,7 @@ Public NotInheritable Class FileCache
 	''' Does "file" exist, is contained in "cache", and the hash value of
 	''' "file" matches the hash value stored in "cache"?
 	''' </summary>
-	''' <param name="file"></param>
+	''' <param name="file">Name and path of file.</param>
 	''' <returns>True or False</returns>
 	Public Function ContainsItemAndHashValuesMatch( _
 		ByVal file As String) As Boolean
@@ -64,9 +64,11 @@ Public NotInheritable Class FileCache
 	Public Sub DeleteAllItemsFromFileSystem
 		For Each pair As KeyValuePair(Of String, String) In cache
 			Dim item As String = pair.Key
-			If System.IO.File.Exists(item) Then
-				DeleteFile(item, False)
-			End If
+			Try
+				System.IO.File.Delete(item)
+			Catch ex As IOException
+				ShowError(ex.Message)
+			End Try
 		Next
 	End Sub
 End Class

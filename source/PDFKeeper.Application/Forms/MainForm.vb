@@ -1295,8 +1295,13 @@ Public Partial Class MainForm
 				Path.Combine(Path.GetDirectoryName(capturePdfEditInput), _
 				PdfFileRenameForm.pdfRenameName & ".pdf")
 			Me.Cursor = Cursors.WaitCursor
-			MoveFile(capturePdfEditInput, capturePdfFileNewName)
-			Me.Cursor = Cursors.Default
+			Try
+				System.IO.File.Move(capturePdfEditInput, capturePdfFileNewName)
+			Catch ex As IOException
+				ShowError(ex.Message)
+			Finally
+				Me.Cursor = Cursors.Default
+			End Try
 		End If
 	End Sub
 	
@@ -1313,8 +1318,13 @@ Public Partial Class MainForm
 			capturePdfEditInput)) = 6 Then ' Yes
 			
 			Me.Cursor = Cursors.WaitCursor
-			DeleteFile(capturePdfEditInput, True)
-			Me.Cursor = Cursors.Default
+			Try
+				DeleteFileToRecycleBin(capturePdfEditInput)
+			Catch ex As IOException
+				ShowError(ex.Message)
+			Finally
+				Me.Cursor = Cursors.Default
+			End Try
 		End If
 	End Sub
 	
@@ -1533,7 +1543,11 @@ Public Partial Class MainForm
 			End Try
 			toolStripStatusLabelMessage.Text = Nothing
 			Application.DoEvents
-			DeleteFile(capturePdfEditInput, True)
+			Try
+				DeleteFileToRecycleBin(capturePdfEditInput)
+			Catch ex As IOException
+				ShowError(ex.Message)
+			End Try
 			ClearCaptureSelection
 			FillDocCaptureQueueList
 			Me.Cursor = Cursors.Default
@@ -1672,7 +1686,11 @@ Public Partial Class MainForm
 		buttonUpload.Enabled = False
 		buttonDeselect.Enabled = False
 		listBoxDocCaptureQueue.Enabled = True
-		DeleteFile(capturePdfEditOutput, False)
+		Try
+			System.IO.File.Delete(capturePdfEditOutput)
+		Catch ex As IOException
+			ShowError(ex.Message)
+		End Try
 	End Sub
 	
 	#End Region
@@ -1915,9 +1933,13 @@ Public Partial Class MainForm
 		DocumentNotesModifiedCheck
 		DatabaseConnectionForm.dbPassword.Dispose
 		SaveFormPosition
-		DeleteFile(Shortcuts.DocumentCaptureInLinks, False)
-		DeleteFile(Shortcuts.DocumentCaptureInSendTo, False)
-		DeleteFile(Shortcuts.DirectUploadInLinks, False)
+		Try
+			System.IO.File.Delete(Shortcuts.DocumentCaptureInLinks)
+			System.IO.File.Delete(Shortcuts.DocumentCaptureInSendTo)
+			System.IO.File.Delete(Shortcuts.DirectUploadInLinks)
+		Catch ex As IOException
+			ShowError(ex.Message)
+		End Try
 		FileCache.Instance.DeleteAllItemsFromFileSystem
 	End Sub
 	

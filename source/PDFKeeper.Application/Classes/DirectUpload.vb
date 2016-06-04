@@ -227,8 +227,12 @@ Public NotInheritable Class DirectUpload
 					Catch ex As DataException
 						Exit Sub
 					End Try
-					DeleteFile(inputPdfFile, True)
-					DeleteFile(outputPdfFile, False)
+					Try
+						DeleteFileToRecycleBin(inputPdfFile)
+						System.IO.File.Delete(outputPdfFile)
+					Catch ex As IOException
+						ShowError(ex.Message)
+					End Try
 				End If
 			Else
 				ShowError(String.Format( _
