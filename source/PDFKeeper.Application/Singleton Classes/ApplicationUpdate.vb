@@ -33,7 +33,8 @@ Public NotInheritable Class ApplicationUpdate
 	''' <summary>
 	''' Is an update available for the application?
 	''' 
-	''' The CheckForUpdate method must be called for this property to be set.
+	''' The CheckForUpdate method must be called for this property to be set;
+	''' otheriwse, null will be returned.
 	''' </summary>
 	Public ReadOnly Property IsUpdateAvailable As Nullable(Of Boolean)
 		Get
@@ -43,8 +44,8 @@ Public NotInheritable Class ApplicationUpdate
 	
 	''' <summary>
 	''' Checks for an update and sets the IsUpdateAvailable property to True or
-	''' False.  This method is intended to be called when the Main Form opens
-	''' in its own thread.
+	''' False.  This method is intended to be executed in its own thread when
+	''' the Main Form opens.
 	''' </summary>
 	Public Sub CheckForUpdate
 		Dim installerVersion As String

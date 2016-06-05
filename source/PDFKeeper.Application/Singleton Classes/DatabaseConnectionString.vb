@@ -94,7 +94,7 @@ Public NotInheritable Class DatabaseConnectionString
 				connection.Open
 				Return True
 			Catch ex As OracleException
-				ShowError(ex.Message.ToString())
+				ShowError(ex.Message)
 				Return False
 			End Try
 		End Using

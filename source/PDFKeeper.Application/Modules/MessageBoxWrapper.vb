@@ -22,9 +22,9 @@
 
 Public Module MessageBoxWrapper
 	''' <summary>
-	''' Shows "value" in an Error Message Box.
+	''' Shows the specified value in an Error Message Box.
 	''' </summary>
-	''' <param name="value"></param>
+	''' <param name="value">Text value.</param>
 	Public Sub ShowError(ByVal value As String)
 		MessageBox.Show(value, _
 			PdfKeeper.Strings.MessageBoxTitleError, _
@@ -36,9 +36,9 @@ Public Module MessageBoxWrapper
 	End Sub
 	
 	''' <summary>
-	''' Shows "value" in an Information Message Box.
+	''' Shows the specified value in an Information Message Box.
 	''' </summary>
-	''' <param name="value"></param>
+	''' <param name="value">Text value.</param>
 	Public Sub ShowInformation(ByVal value As String)
 		MessageBox.Show(value, _
 			PdfKeeper.Strings.MessageBoxTitleInformation, _
@@ -50,9 +50,9 @@ Public Module MessageBoxWrapper
 	End Sub
 		
 	''' <summary>
-	''' Shows "value" in a Question Message Box.
+	''' Shows the specified value in a Question Message Box.
 	''' </summary>
-	''' <param name="value"></param>
+	''' <param name="value">Text value.</param>
 	''' <returns>6 for Yes or 7 for No</returns>
 	Public Function ShowQuestion(ByVal value As String) As Integer
 		Dim button = MessageBox.Show(value, _
