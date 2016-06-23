@@ -478,8 +478,9 @@ Friend Class Strings
 	'''<summary>
 	'''  Looks up a localized string similar to PDFKeeper uses third-party programs, libraries, and other resources that may be distributed under licenses different than PDFKeeper.
 	'''
-	'''License notice for Mini Icons 
-	'''-------------------------------
+	'''--------------------------------
+	''' License notice for Mini Icons
+	'''--------------------------------
 	'''
 	'''http://www.famfamfam.com/lab/icons/mini/
 	'''
@@ -487,14 +488,11 @@ Friend Class Strings
 	'''
 	'''The icons in this collection is &quot;Available for free use for any purpose&quot;.
 	'''
-	'''License notice for Open Iconic 
-	'''---------------------------------
+	'''----------------------------------
+	''' License notice for Open Iconic
+	'''----------------------------------
 	'''
-	'''https://github.com/iconic/open-iconic/
-	'''
-	'''Copyright (c) 2014 Waybury
-	'''
-	'''This icons in this collection [rest of string was truncated]&quot;;.
+	'''https://github.com/iconic/ope [rest of string was truncated]&quot;;.
 	'''</summary>
 	Friend Shared ReadOnly Property ThirdPartyNotices() As String
 		Get
