@@ -9,8 +9,8 @@
 NOTE: Testing PDFKeeper requires connecting to a database server. Install and
 configure Oracle Database Express Edition on any system. Next, configure the
 PDFKeeper database schema following the "Database Setup and User Account
-Management Guide" located in the "Source\Documentation" folder. The Database
-Setup script, DatabaseSetup.cmd is located in the "Source\Scripts" folder.
+Management Guide" located in the "Documentation" folder. The Database Setup
+Setup script, "DatabaseSetup.cmd" is located in the "Scripts" folder.
 
 1. The following Development Tools must be installed:
 
@@ -40,19 +40,20 @@ Setup script, DatabaseSetup.cmd is located in the "Source\Scripts" folder.
  Download External Applications
 -------------------------------------------------------------------------------
 
-1. Create an "Externals" folder in the "Sources" folder.
+1. Create an "Externals" folder in the same folder where "PDFKeeper.sln" is
+   located.
 
 2. Download Sumatra PDF (Portable Version)
 	http://www.sumatrapdfreader.org/free-pdf-reader.html
 
-	After downloading, extract SumatraPDF.exe into the "Sources\Externals"
-	folder and unblock.
+	After downloading, extract "SumatraPDF.exe" into the "Externals"
+	folder, and then unblock.
 
 3. Download Ghostscript
 	http://www.ghostscript.com/
 
-	After downloading, extract gsdll32.dll and gswin32c.exe into the
-       	"Sources\Externals" folder.
+	After downloading, extract "gsdll32.dll" and "gswin32c.exe" into the
+       	"Externals" folder.
 
        	NOTE: To extract from the GhostScript installer, you can use
        	7-Zip Portable (http://portableapps.com/apps/utilities/7-zip_portable)
@@ -66,7 +67,7 @@ Setup script, DatabaseSetup.cmd is located in the "Source\Scripts" folder.
  Building PDFKeeper
 -------------------------------------------------------------------------------
 
-1. Open "Source\Help\EN\PDFKeeper.hhp" with HTML Help Workshop and compile.
+1. Open "Help\EN\PDFKeeper.hhp" with HTML Help Workshop and compile.
 
-2. Open "Source\PDFKeeper.sln" with SharpDevelop (or Visual Studio), set
-   configuration to Release, and then Build.
+2. Open "PDFKeeper.sln" with SharpDevelop (or Visual Studio), set configuration
+   to Release, and then Build.
