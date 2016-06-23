@@ -1,16 +1,16 @@
-------------------------------------------
- PDFKeeper 3.2.0 - Build Readme
- Copyright (C) 2009-2016 Robert F. Frasca
-------------------------------------------
+===============================================================================
+===                       BUILD-README for PDFKeeper                        ===
+===============================================================================
 
-Prerequisites
+-------------------------------------------------------------------------------
+ Prerequisites
 -------------------------------------------------------------------------------
 
 NOTE: Testing PDFKeeper requires connecting to a database server. Install and
 configure Oracle Database Express Edition on any system. Next, configure the
 PDFKeeper database schema following the "Database Setup and User Account
-Management Guide" located in the project documents folder. The Database Setup
-script, DatabaseSetup.cmd is located in the project scripts folder.
+Management Guide" located in the "Source\Documentation" folder. The Database
+Setup script, DatabaseSetup.cmd is located in the "Source\Scripts" folder.
 
 1. The following Development Tools must be installed:
 
@@ -36,33 +36,37 @@ script, DatabaseSetup.cmd is located in the project scripts folder.
 	with a Command Prompt session that was opened using "Run as
 	administrator".
 
-Download External Applications
+-------------------------------------------------------------------------------
+ Download External Applications
 -------------------------------------------------------------------------------
 
-1. Create an "externals" folder in the root of the project.
+1. Create an "Externals" folder in the "Sources" folder.
 
 2. Download Sumatra PDF (Portable Version)
 	http://www.sumatrapdfreader.org/free-pdf-reader.html
 
-	After downloading, extract SumatraPDF.exe into the project externals
+	After downloading, extract SumatraPDF.exe into the "Sources\Externals"
 	folder and unblock.
 
 3. Download Ghostscript
 	http://www.ghostscript.com/
 
 	After downloading, extract gsdll32.dll and gswin32c.exe into the
-       	"externals" folder.
+       	"Sources\Externals" folder.
 
        	NOTE: To extract from the GhostScript installer, you can use
        	7-Zip Portable (http://portableapps.com/apps/utilities/7-zip_portable)
 
 4. iTextSharp and Trove Unofficial Nini Configuration
 
-	Use Restore Packages feature in SharpDevelop to download NuGet packages.
+	Use Restore Packages feature in SharpDevelop to download NuGet
+	packages.
 
-Building PDFKeeper
+-------------------------------------------------------------------------------
+ Building PDFKeeper
 -------------------------------------------------------------------------------
 
-1. Open help\en\PDFKeeper.hhp with HTML Help Workshop and compile.
+1. Open "Source\Help\EN\PDFKeeper.hhp" with HTML Help Workshop and compile.
 
-2. Open PDFKeeper.sln with SharpDevelop (or Visual Studio) and Build. 
+2. Open "Source\PDFKeeper.sln" with SharpDevelop (or Visual Studio), set
+   configuration to Release, and then Build.

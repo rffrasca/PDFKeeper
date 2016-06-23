@@ -1,13 +1,13 @@
-------------------------------------------
- PDFKeeper 3.2.0
- Copyright (C) 2009-2016 Robert F. Frasca
-------------------------------------------
+===============================================================================
+===                    THIRD-PARTY-NOTICE for PDFKeeper                     ===
+===============================================================================
 
 PDFKeeper uses third-party programs, libraries, and other resources that may be
 distributed under licenses different than PDFKeeper.
 
-License notice for Mini Icons 
-------------------------------
+-------------------------------
+ License notice for Mini Icons
+-------------------------------
 
 http://www.famfamfam.com/lab/icons/mini/
 
@@ -15,8 +15,9 @@ By Mark James
 
 The icons in this collection is "Available for free use for any purpose".
 
-License notice for Open Iconic 
--------------------------------
+--------------------------------
+ License notice for Open Iconic
+--------------------------------
 
 https://github.com/iconic/open-iconic/
 
@@ -25,8 +26,9 @@ Copyright (c) 2014 Waybury
 This icons in this collection is licensed subject to the MIT License, available
 at https://github.com/iconic/open-iconic/blob/master/ICON-LICENSE.
 
-License notice for ReadySET 
-----------------------------
+-----------------------------
+ License notice for ReadySET
+-----------------------------
 
 http://readyset.tigris.org/
 
@@ -35,8 +37,9 @@ Copyright (C) 2003-2004 Jason Robbins. All rights reserved.
 The templates in this package is licensed subject to the BSD License, available
 at http://readyset.tigris.org/templates/readyset-license.html.
 
-License notice for iTextSharp 
-------------------------------
+-------------------------------
+ License notice for iTextSharp
+-------------------------------
 
 http://itextpdf.com/
 
@@ -45,8 +48,9 @@ Copyright (c) 1999-2014 by Bruno Lowagie and Paulo Soares. All Rights Reserved.
 This software library is licensed subject to the AGPLv3 License, available at
 http://itextpdf.com/agpl.
 
-License notice for Nini 
-------------------------
+-------------------------
+ License notice for Nini
+-------------------------
 
 http://nini.sourceforge.net/
 
@@ -55,8 +59,9 @@ Copyright (c) 2006 Brent R. Matzelle
 This software library is licensed subject to the MIT License, available at
 http://nini.sourceforge.net/license.php.
 
-License notice for Sumatra PDF 
--------------------------------
+--------------------------------
+ License notice for Sumatra PDF
+--------------------------------
 
 http://www.sumatrapdfreader.org/free-pdf-reader.html
 
@@ -65,8 +70,9 @@ Copyright 2006-2015 all authors
 This software program is licensed subject to the GPLv3 License, available at
 http://www.gnu.org/licenses/gpl-3.0.html.
 
-License notice for Ghostscript 
--------------------------------
+--------------------------------
+ License notice for Ghostscript
+--------------------------------
 
 http://www.ghostscript.com/
 
