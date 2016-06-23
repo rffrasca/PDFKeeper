@@ -28,33 +28,33 @@
 						<File Source="..\PDFKeeper.Application\bin\Release\PdfKeeper.exe" Name="PdfKeeper.exe" Id="PdfKeeper.exe" KeyPath="yes" />
 					</Component>
 					<Component Guid="98A4817A-3448-4427-BE39-445EABB035BD" Id="DatabaseSetupCmd" DiskId="1" Feature="Complete">
-						<File Source="..\..\Scripts\DatabaseSetup.cmd" Name="DatabaseSetup.cmd" Id="DatabaseSetup.cmd" KeyPath="yes" />
+						<File Source="..\Scripts\DatabaseSetup.cmd" Name="DatabaseSetup.cmd" Id="DatabaseSetup.cmd" KeyPath="yes" />
 					</Component>
 					<Component Guid="BDE2613B-718E-4365-A84D-75B7AE830F4F" Id="DatabaseSetupSql" DiskId="1" Feature="Complete">
-						<File Source="..\..\Scripts\DatabaseSetup.sql" Name="DatabaseSetup.sql" Id="DatabaseSetup.sql" KeyPath="yes" />
+						<File Source="..\Scripts\DatabaseSetup.sql" Name="DatabaseSetup.sql" Id="DatabaseSetup.sql" KeyPath="yes" />
 					</Component>
 					<Directory Id="Documentation" Name="Documentation">
 						<Component Guid="4455B013-E930-48FB-8213-80DA3FC9F8FA" Id="DatabaseSetupUserAccountManagementGuideHtml" DiskId="1" Feature="Complete">
-							<File Source="..\..\documents\DatabaseSetupUserAccountManagementGuide.html" Name="DatabaseSetupUserAccountManagementGuide.html" Id="DatabaseSetupUserAccountManagementGuide.html" KeyPath="yes" />
+							<File Source="..\Documentation\DatabaseSetupUserAccountManagementGuide.html" Name="DatabaseSetupUserAccountManagementGuide.html" Id="DatabaseSetupUserAccountManagementGuide.html" KeyPath="yes" />
 						</Component>
 						<Component Guid="156D3DCD-14E1-4CF1-98CD-3F5B0BCFD078" Id="GettingStartedGuideHtml" DiskId="1" Feature="Complete">
-							<File Source="..\..\documents\GettingStartedGuide.html" Name="GettingStartedGuide.html" Id="GettingStartedGuide.html" KeyPath="yes" />
+							<File Source="..\Documentation\GettingStartedGuide.html" Name="GettingStartedGuide.html" Id="GettingStartedGuide.html" KeyPath="yes" />
 						</Component>
 						<Component Guid="B524CA42-58A8-4DA9-9A4B-0EC5ED2237B1" Id="ReleaseNotesHtml" DiskId="1" Feature="Complete">
-							<File Source="..\..\documents\ReleaseNotes.html" Name="ReleaseNotes.html" Id="ReleaseNotes.html" KeyPath="yes" />
+							<File Source="..\Documentation\ReleaseNotes.html" Name="ReleaseNotes.html" Id="ReleaseNotes.html" KeyPath="yes" />
 						</Component>
 						<Directory Id="css" Name="css">
 							<Component Guid="5B8402A8-75F1-416F-95DE-FEF035FDB8C2" Id="InstCss" DiskId="1" Feature="Complete">
-								<File Source="..\..\documents\css\inst.css" Name="inst.css" Id="inst.css" KeyPath="yes" />
+								<File Source="..\Documentation\css\inst.css" Name="inst.css" Id="inst.css" KeyPath="yes" />
 							</Component>
 							<Component Guid="A11836E4-8A95-484A-B714-9BA7AD1DFCD8" Id="NavCss" DiskId="1" Feature="Complete">
-								<File Source="..\..\documents\css\nav.css" Name="nav.css" Id="nav.css" KeyPath="yes" />
+								<File Source="..\Documentation\css\nav.css" Name="nav.css" Id="nav.css" KeyPath="yes" />
 							</Component>
 							<Component Guid="04872A98-F940-4548-B54C-F928FE8E054B" Id="PrintCss" DiskId="1" Feature="Complete">
-								<File Source="..\..\documents\css\print.css" Name="print.css" Id="print.css" KeyPath="yes" />
+								<File Source="..\Documentation\css\print.css" Name="print.css" Id="print.css" KeyPath="yes" />
 							</Component>
 							<Component Guid="4FA39D9C-B54D-4B95-9F2A-7048C6925BFA" Id="ReadysetCss" DiskId="1" Feature="Complete">
-								<File Source="..\..\documents\css\readyset.css" Name="readyset.css" Id="readyset.css" KeyPath="yes" />
+								<File Source="..\Documentation\css\readyset.css" Name="readyset.css" Id="readyset.css" KeyPath="yes" />
 							</Component>
 						</Directory>
 					</Directory>
@@ -62,10 +62,10 @@
 						<File Id="PdfKeeper.exe.config" Name="PdfKeeper.exe.config" Source="..\PDFKeeper.Application\bin\Release\PdfKeeper.exe.config" KeyPath="yes" />
 					</Component>
 					<Component Id="LICENSETxt" Guid="E3BC1AEE-64BF-4971-8F4B-30A07CF08389" DiskId="1" Feature="Complete">
-						<File Id="LICENSE.txt" Name="LICENSE.txt" Source="..\..\LICENSE.txt" KeyPath="yes" />
+						<File Id="LICENSE.txt" Name="LICENSE.txt" Source="..\LICENSE.txt" KeyPath="yes" />
 					</Component>
-					<Component Id="THIRDPARTYNOTICESTxt" Guid="012D0EF9-2E86-4081-8074-1EC642F20DB4" DiskId="1" Feature="Complete">
-						<File Id="THIRDPARTYNOTICES.txt" Name="THIRD-PARTY-NOTICES.txt" Source="..\..\THIRD-PARTY-NOTICES.txt" KeyPath="yes" />
+					<Component Id="THIRDPARTYNOTICETxt" Guid="012D0EF9-2E86-4081-8074-1EC642F20DB4" DiskId="1" Feature="Complete">
+						<File Id="THIRDPARTYNOTICE.txt" Name="THIRD-PARTY-NOTICE.txt" Source="..\THIRD-PARTY-NOTICE.txt" KeyPath="yes" />
 					</Component>
 					<Component Id="Gsdll32Dll" Guid="4F6C6658-849F-4F42-8017-55E69CF9B97F" DiskId="1" Feature="Complete">
 						<File Id="gsdll32.dll" Name="gsdll32.dll" Source="..\PDFKeeper.Application\bin\Release\gsdll32.dll" KeyPath="yes" />
