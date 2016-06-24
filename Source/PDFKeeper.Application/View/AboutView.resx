@@ -242,34 +242,34 @@
   <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="labelName.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelProductName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
-  <data name="labelName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="labelProductName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="labelName.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="labelProductName.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 66</value>
   </data>
-  <data name="labelName.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelProductName.Size" type="System.Drawing.Size, System.Drawing">
     <value>361, 23</value>
   </data>
-  <data name="labelName.TabIndex" type="System.Int32, mscorlib">
+  <data name="labelProductName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="labelName.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="labelProductName.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
   </data>
-  <data name="&gt;&gt;labelName.Name" xml:space="preserve">
-    <value>labelName</value>
+  <data name="&gt;&gt;labelProductName.Name" xml:space="preserve">
+    <value>labelProductName</value>
   </data>
-  <data name="&gt;&gt;labelName.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelProductName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelName.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labelProductName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;labelName.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelProductName.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="labelDescription.Font" type="System.Drawing.Font, System.Drawing">
@@ -356,31 +356,28 @@
   <data name="&gt;&gt;labelVersion.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="linkLabelHomePage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="linkLabelHomepageName.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 161</value>
   </data>
-  <data name="linkLabelHomePage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="linkLabelHomepageName.Size" type="System.Drawing.Size, System.Drawing">
     <value>361, 23</value>
   </data>
-  <data name="linkLabelHomePage.TabIndex" type="System.Int32, mscorlib">
+  <data name="linkLabelHomepageName.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="linkLabelHomePage.Text" xml:space="preserve">
-    <value>PDFKeeper Home Page</value>
-  </data>
-  <data name="linkLabelHomePage.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="linkLabelHomepageName.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
   </data>
-  <data name="&gt;&gt;linkLabelHomePage.Name" xml:space="preserve">
-    <value>linkLabelHomePage</value>
+  <data name="&gt;&gt;linkLabelHomepageName.Name" xml:space="preserve">
+    <value>linkLabelHomepageName</value>
   </data>
-  <data name="&gt;&gt;linkLabelHomePage.Type" xml:space="preserve">
+  <data name="&gt;&gt;linkLabelHomepageName.Type" xml:space="preserve">
     <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;linkLabelHomePage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;linkLabelHomepageName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;linkLabelHomePage.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;linkLabelHomepageName.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="textBoxLicense.Location" type="System.Drawing.Point, System.Drawing">
@@ -437,58 +434,58 @@
   <data name="&gt;&gt;tabPageLicense.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="textBoxCredits.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textBoxThirdPartyNotice.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 5</value>
   </data>
-  <data name="textBoxCredits.Multiline" type="System.Boolean, mscorlib">
+  <data name="textBoxThirdPartyNotice.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBoxCredits.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+  <data name="textBoxThirdPartyNotice.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="textBoxCredits.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBoxThirdPartyNotice.Size" type="System.Drawing.Size, System.Drawing">
     <value>342, 172</value>
   </data>
-  <data name="textBoxCredits.TabIndex" type="System.Int32, mscorlib">
+  <data name="textBoxThirdPartyNotice.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;textBoxCredits.Name" xml:space="preserve">
-    <value>textBoxCredits</value>
+  <data name="&gt;&gt;textBoxThirdPartyNotice.Name" xml:space="preserve">
+    <value>textBoxThirdPartyNotice</value>
   </data>
-  <data name="&gt;&gt;textBoxCredits.Type" xml:space="preserve">
+  <data name="&gt;&gt;textBoxThirdPartyNotice.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBoxCredits.Parent" xml:space="preserve">
-    <value>tabPageThirdPartyNotices</value>
+  <data name="&gt;&gt;textBoxThirdPartyNotice.Parent" xml:space="preserve">
+    <value>tabPageThirdPartyNotice</value>
   </data>
-  <data name="&gt;&gt;textBoxCredits.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;textBoxThirdPartyNotice.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabPageThirdPartyNotices.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageThirdPartyNotice.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageThirdPartyNotices.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPageThirdPartyNotice.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPageThirdPartyNotices.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageThirdPartyNotice.Size" type="System.Drawing.Size, System.Drawing">
     <value>354, 184</value>
   </data>
-  <data name="tabPageThirdPartyNotices.TabIndex" type="System.Int32, mscorlib">
+  <data name="tabPageThirdPartyNotice.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tabPageThirdPartyNotices.Text" xml:space="preserve">
-    <value>Third-Party Notices</value>
+  <data name="tabPageThirdPartyNotice.Text" xml:space="preserve">
+    <value>Third-Party Notice</value>
   </data>
-  <data name="&gt;&gt;tabPageThirdPartyNotices.Name" xml:space="preserve">
-    <value>tabPageThirdPartyNotices</value>
+  <data name="&gt;&gt;tabPageThirdPartyNotice.Name" xml:space="preserve">
+    <value>tabPageThirdPartyNotice</value>
   </data>
-  <data name="&gt;&gt;tabPageThirdPartyNotices.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageThirdPartyNotice.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageThirdPartyNotices.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageThirdPartyNotice.Parent" xml:space="preserve">
     <value>tabControlLicenses</value>
   </data>
-  <data name="&gt;&gt;tabPageThirdPartyNotices.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPageThirdPartyNotice.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="tabControlLicenses.Location" type="System.Drawing.Point, System.Drawing">
@@ -528,7 +525,7 @@
     <value>About</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>AboutForm</value>
+    <value>AboutView</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

@@ -331,7 +331,7 @@ If the disclaimer of warranty and limitation of liability provided above cannot 
 
 END OF TERMS AND CONDITIONS</value>
   </data>
-  <data name="ThirdPartyNotices" xml:space="preserve">
+  <data name="ThirdPartyNotice" xml:space="preserve">
     <value>PDFKeeper uses third-party programs, libraries, and other resources that may be distributed under licenses different than PDFKeeper.
 
 --------------------------------
@@ -511,5 +511,8 @@ All modifications will be lost.</value>
   </data>
   <data name="PropertyNotSupported" xml:space="preserve">
     <value>{0} property not supported.</value>
+  </data>
+  <data name="Homepage" xml:space="preserve">
+    <value>Homepage</value>
   </data>
 </root>

@@ -199,6 +199,15 @@ Friend Class Strings
 	End Property
 	
 	'''<summary>
+	'''  Looks up a localized string similar to Homepage.
+	'''</summary>
+	Friend Shared ReadOnly Property Homepage() As String
+		Get
+			Return ResourceManager.GetString("Homepage", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
 	'''  Looks up a localized string similar to Incorrect OWNER password.  If you do not know the password and have the legal right to remove the password, you can find plenty of information on the internet to assist you..
 	'''</summary>
 	Friend Shared ReadOnly Property IncorrectOwnerPassword() As String
@@ -494,9 +503,9 @@ Friend Class Strings
 	'''
 	'''https://github.com/iconic/ope [rest of string was truncated]&quot;;.
 	'''</summary>
-	Friend Shared ReadOnly Property ThirdPartyNotices() As String
+	Friend Shared ReadOnly Property ThirdPartyNotice() As String
 		Get
-			Return ResourceManager.GetString("ThirdPartyNotices", resourceCulture)
+			Return ResourceManager.GetString("ThirdPartyNotice", resourceCulture)
 		End Get
 	End Property
 End Class

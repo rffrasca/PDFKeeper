@@ -20,40 +20,35 @@
 '*
 '******************************************************************************
 
-Public Partial Class AboutForm
+Public Partial Class AboutView
 	Public Sub New()
 		Me.InitializeComponent()
 	End Sub
 	
 	''' <summary>
-	''' Sets the font to MS Sans Serif 8pt for XP or Segoe UI 9pt for Vista or
-	''' later; updates the form with Product Name, Description, Copyright,
-	''' Version, Build, License, and Credits.
+	''' Sets the font and reads the Model properties.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	Private Sub AboutFormLoad(sender As Object, e As EventArgs)
+	Sub AboutViewLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont
-		labelName.Text = ProductDetails.Name
-		labelDescription.Text = ProductDetails.Description
-		labelCopyright.Text = ProductDetails.Copyright
-		labelVersion.Text = "Version: " & ProductDetails.Version & _
-							" - Build: " & ProductDetails.Build
-		textBoxLicense.Text = PdfKeeper.Strings.License
-		textBoxCredits.Text = PdfKeeper.Strings.ThirdPartyNotices
+		labelProductName.Text = About.ProductName
+		labelDescription.Text = About.Description
+		labelVersion.Text = About.Version
+		labelCopyright.Text = About.Copyright
+		linkLabelHomepageName.Text = About.HomepageName
+		textBoxLicense.Text = About.License
+		textBoxThirdPartyNotice.Text = About.ThirdPartyNotice
 	End Sub
 	
 	''' <summary>
-	''' Opens the Project Site URL using the default web browser.
+	''' Opens the Homepage using the default application.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	Private Sub LinkLabelProjectSiteLinkClicked( _
-		sender As Object, _
+	Sub LinkLabelHomepageNameLinkClicked(sender As Object, _
 		e As LinkLabelLinkClickedEventArgs)
 		
-		Me.Cursor = Cursors.WaitCursor
-		Process.Start(ConfigurationManager.AppSettings("HomePageUrl"))
-		Me.Cursor = Cursors.Default
+		AboutHelper.OpenHomepage
 	End Sub
 End Class

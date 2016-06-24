@@ -94,14 +94,10 @@
     <Compile Include="Classes\NativeMethods.vb" />
     <Compile Include="Classes\PdfDocument.vb" />
     <Compile Include="Classes\PdfProperties.vb" />
-    <Compile Include="Classes\ProductDetails.vb" />
     <Compile Include="Classes\Shortcuts.vb" />
     <Compile Include="Classes\WindowsProfileFolders.vb" />
+    <Compile Include="Helper\AboutHelper.vb" />
     <Compile Include="Enums\Enums.vb" />
-    <Compile Include="Forms\AboutForm.Designer.vb">
-      <DependentUpon>AboutForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\AboutForm.vb" />
     <Compile Include="Forms\DatabaseConnectionForm.Designer.vb">
       <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
     </Compile>
@@ -126,6 +122,7 @@
       <DependentUpon>RotatePagesForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\RotatePagesForm.vb" />
+    <Compile Include="Model\About.vb" />
     <Compile Include="Modules\ExtensionMethods.vb" />
     <Compile Include="Modules\FileUtil.vb" />
     <Compile Include="Modules\FolderUtil.vb" />
@@ -144,9 +141,10 @@
       <DependentUpon>Strings.resx</DependentUpon>
       <AutoGen>True</AutoGen>
     </Compile>
-    <EmbeddedResource Include="Forms\AboutForm.resx">
-      <DependentUpon>AboutForm.vb</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="View\AboutView.Designer.vb">
+      <DependentUpon>AboutView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\AboutView.vb" />
     <EmbeddedResource Include="Forms\DatabaseConnectionForm.resx">
       <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +168,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AboutView.resx">
+      <DependentUpon>AboutView.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>start ..\..\..\Build\AppPostBuild</PostBuildEvent>
@@ -187,6 +188,9 @@
       <Isolated>False</Isolated>
     </COMReference>
     <Folder Include="Enums" />
+    <Folder Include="Model" />
+    <Folder Include="Helper" />
+    <Folder Include="View" />
     <Folder Include="Singleton Classes" />
     <Folder Include="Strings" />
   </ItemGroup>

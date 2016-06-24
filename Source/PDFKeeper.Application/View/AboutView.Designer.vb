@@ -20,7 +20,7 @@
 '*
 '******************************************************************************
 
-Partial Class AboutForm
+Partial Class AboutView
 	Inherits System.Windows.Forms.Form
 	
 	''' <summary>
@@ -47,23 +47,23 @@ Partial Class AboutForm
 	''' not be able to load this method if it was changed manually.
 	''' </summary>
 	Private Sub InitializeComponent()
-		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AboutForm))
+		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AboutView))
 		Me.pictureBoxLogo = New System.Windows.Forms.PictureBox()
 		Me.buttonOK = New System.Windows.Forms.Button()
-		Me.labelName = New System.Windows.Forms.Label()
+		Me.labelProductName = New System.Windows.Forms.Label()
 		Me.labelDescription = New System.Windows.Forms.Label()
 		Me.labelCopyright = New System.Windows.Forms.Label()
 		Me.labelVersion = New System.Windows.Forms.Label()
-		Me.linkLabelHomePage = New System.Windows.Forms.LinkLabel()
+		Me.linkLabelHomepageName = New System.Windows.Forms.LinkLabel()
 		Me.tabControlLicenses = New System.Windows.Forms.TabControl()
 		Me.tabPageLicense = New System.Windows.Forms.TabPage()
 		Me.textBoxLicense = New System.Windows.Forms.TextBox()
-		Me.tabPageThirdPartyNotices = New System.Windows.Forms.TabPage()
-		Me.textBoxCredits = New System.Windows.Forms.TextBox()
+		Me.tabPageThirdPartyNotice = New System.Windows.Forms.TabPage()
+		Me.textBoxThirdPartyNotice = New System.Windows.Forms.TextBox()
 		CType(Me.pictureBoxLogo,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.tabControlLicenses.SuspendLayout
 		Me.tabPageLicense.SuspendLayout
-		Me.tabPageThirdPartyNotices.SuspendLayout
+		Me.tabPageThirdPartyNotice.SuspendLayout
 		Me.SuspendLayout
 		'
 		'pictureBoxLogo
@@ -79,10 +79,10 @@ Partial Class AboutForm
 		Me.buttonOK.Name = "buttonOK"
 		Me.buttonOK.UseVisualStyleBackColor = true
 		'
-		'labelName
+		'labelProductName
 		'
-		resources.ApplyResources(Me.labelName, "labelName")
-		Me.labelName.Name = "labelName"
+		resources.ApplyResources(Me.labelProductName, "labelProductName")
+		Me.labelProductName.Name = "labelProductName"
 		'
 		'labelDescription
 		'
@@ -99,17 +99,16 @@ Partial Class AboutForm
 		resources.ApplyResources(Me.labelVersion, "labelVersion")
 		Me.labelVersion.Name = "labelVersion"
 		'
-		'linkLabelHomePage
+		'linkLabelHomepageName
 		'
-		resources.ApplyResources(Me.linkLabelHomePage, "linkLabelHomePage")
-		Me.linkLabelHomePage.Name = "linkLabelHomePage"
-		Me.linkLabelHomePage.TabStop = true
-		AddHandler Me.linkLabelHomePage.LinkClicked, AddressOf Me.LinkLabelProjectSiteLinkClicked
+		resources.ApplyResources(Me.linkLabelHomepageName, "linkLabelHomepageName")
+		Me.linkLabelHomepageName.Name = "linkLabelHomepageName"
+		AddHandler Me.linkLabelHomepageName.LinkClicked, AddressOf Me.LinkLabelHomepageNameLinkClicked
 		'
 		'tabControlLicenses
 		'
 		Me.tabControlLicenses.Controls.Add(Me.tabPageLicense)
-		Me.tabControlLicenses.Controls.Add(Me.tabPageThirdPartyNotices)
+		Me.tabControlLicenses.Controls.Add(Me.tabPageThirdPartyNotice)
 		resources.ApplyResources(Me.tabControlLicenses, "tabControlLicenses")
 		Me.tabControlLicenses.Name = "tabControlLicenses"
 		Me.tabControlLicenses.SelectedIndex = 0
@@ -127,57 +126,57 @@ Partial Class AboutForm
 		Me.textBoxLicense.Name = "textBoxLicense"
 		Me.textBoxLicense.ReadOnly = true
 		'
-		'tabPageThirdPartyNotices
+		'tabPageThirdPartyNotice
 		'
-		Me.tabPageThirdPartyNotices.Controls.Add(Me.textBoxCredits)
-		resources.ApplyResources(Me.tabPageThirdPartyNotices, "tabPageThirdPartyNotices")
-		Me.tabPageThirdPartyNotices.Name = "tabPageThirdPartyNotices"
-		Me.tabPageThirdPartyNotices.UseVisualStyleBackColor = true
+		Me.tabPageThirdPartyNotice.Controls.Add(Me.textBoxThirdPartyNotice)
+		resources.ApplyResources(Me.tabPageThirdPartyNotice, "tabPageThirdPartyNotice")
+		Me.tabPageThirdPartyNotice.Name = "tabPageThirdPartyNotice"
+		Me.tabPageThirdPartyNotice.UseVisualStyleBackColor = true
 		'
-		'textBoxCredits
+		'textBoxThirdPartyNotice
 		'
-		resources.ApplyResources(Me.textBoxCredits, "textBoxCredits")
-		Me.textBoxCredits.Name = "textBoxCredits"
-		Me.textBoxCredits.ReadOnly = true
+		resources.ApplyResources(Me.textBoxThirdPartyNotice, "textBoxThirdPartyNotice")
+		Me.textBoxThirdPartyNotice.Name = "textBoxThirdPartyNotice"
+		Me.textBoxThirdPartyNotice.ReadOnly = true
 		'
-		'AboutForm
+		'AboutView
 		'
 		Me.AcceptButton = Me.buttonOK
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
 		resources.ApplyResources(Me, "$this")
 		Me.ControlBox = false
 		Me.Controls.Add(Me.tabControlLicenses)
-		Me.Controls.Add(Me.linkLabelHomePage)
+		Me.Controls.Add(Me.linkLabelHomepageName)
 		Me.Controls.Add(Me.labelVersion)
 		Me.Controls.Add(Me.labelCopyright)
 		Me.Controls.Add(Me.labelDescription)
-		Me.Controls.Add(Me.labelName)
+		Me.Controls.Add(Me.labelProductName)
 		Me.Controls.Add(Me.buttonOK)
 		Me.Controls.Add(Me.pictureBoxLogo)
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
 		Me.MaximizeBox = false
 		Me.MinimizeBox = false
-		Me.Name = "AboutForm"
+		Me.Name = "AboutView"
 		Me.ShowIcon = false
 		Me.ShowInTaskbar = false
-		AddHandler Load, AddressOf Me.AboutFormLoad
+		AddHandler Load, AddressOf Me.AboutViewLoad
 		CType(Me.pictureBoxLogo,System.ComponentModel.ISupportInitialize).EndInit
 		Me.tabControlLicenses.ResumeLayout(false)
 		Me.tabPageLicense.ResumeLayout(false)
 		Me.tabPageLicense.PerformLayout
-		Me.tabPageThirdPartyNotices.ResumeLayout(false)
-		Me.tabPageThirdPartyNotices.PerformLayout
+		Me.tabPageThirdPartyNotice.ResumeLayout(false)
+		Me.tabPageThirdPartyNotice.PerformLayout
 		Me.ResumeLayout(false)
 	End Sub
-	Private textBoxCredits As System.Windows.Forms.TextBox
+	Private textBoxThirdPartyNotice As System.Windows.Forms.TextBox
 	Private textBoxLicense As System.Windows.Forms.TextBox
 	Private tabPageLicense As System.Windows.Forms.TabPage
 	Private tabControlLicenses As System.Windows.Forms.TabControl
-	Private tabPageThirdPartyNotices As System.Windows.Forms.TabPage
-	Private linkLabelHomePage As System.Windows.Forms.LinkLabel
+	Private tabPageThirdPartyNotice As System.Windows.Forms.TabPage
+	Private linkLabelHomepageName As System.Windows.Forms.LinkLabel
 	Private labelVersion As System.Windows.Forms.Label
 	Private labelCopyright As System.Windows.Forms.Label
-	Private labelName As System.Windows.Forms.Label
+	Private labelProductName As System.Windows.Forms.Label
 	Private labelDescription As System.Windows.Forms.Label
 	Private buttonOK As System.Windows.Forms.Button
 	Private pictureBoxLogo As System.Windows.Forms.PictureBox

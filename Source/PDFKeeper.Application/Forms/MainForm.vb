@@ -378,7 +378,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemAboutClick(sender As Object, e As EventArgs)
-		AboutForm.ShowDialog()
+		AboutView.ShowDialog()
 	End Sub
 	
 	#End Region
