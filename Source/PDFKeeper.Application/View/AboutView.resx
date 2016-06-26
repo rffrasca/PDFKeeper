@@ -242,34 +242,34 @@
   <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="labelProductName.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelProduct.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
   </data>
-  <data name="labelProductName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="labelProduct.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="labelProductName.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="labelProduct.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 66</value>
   </data>
-  <data name="labelProductName.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="labelProduct.Size" type="System.Drawing.Size, System.Drawing">
     <value>361, 23</value>
   </data>
-  <data name="labelProductName.TabIndex" type="System.Int32, mscorlib">
+  <data name="labelProduct.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="labelProductName.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="labelProduct.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
   </data>
-  <data name="&gt;&gt;labelProductName.Name" xml:space="preserve">
-    <value>labelProductName</value>
+  <data name="&gt;&gt;labelProduct.Name" xml:space="preserve">
+    <value>labelProduct</value>
   </data>
-  <data name="&gt;&gt;labelProductName.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelProduct.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelProductName.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labelProduct.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;labelProductName.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelProduct.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="labelDescription.Font" type="System.Drawing.Font, System.Drawing">

@@ -22,32 +22,29 @@
 '*
 '* Created by SharpDevelop.
 '* User: Robert
-'* Date: 6/23/2016
-'* Time: 5:13 PM
+'* Date: 6/26/2016
+'* Time: 3:22 PM
 '*
 '******************************************************************************
 
-''' <summary>
-''' AboutView Model.
-''' </summary>
 Public NotInheritable Class About
 	Private Sub New()
 		' Because type 'About' contains only 'Shared' members, add a default
 		' private constructor to prevent the compiler from adding a default
-		' public constructor. (CA1053)
+		' public constructor. (CA1053)	
 	End Sub
 	
 	''' <summary>
-	''' Gets the application Product Name.
+	''' Gets Assembly Product.
 	''' </summary>
-	Public Shared ReadOnly Property ProductName As String
+	Public Shared ReadOnly Property Product As String
 		Get
-			Return My.Application.Info.ProductName
+			Return Application.ProductName
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Gets the application Description.
+	''' Gets Assembly Description.
 	''' </summary>
 	Public Shared ReadOnly Property Description As String
 		Get
@@ -56,16 +53,16 @@ Public NotInheritable Class About
 	End Property
 	
 	''' <summary>
-	''' Gets the application Version.
+	''' Gets Assembly Version.
 	''' </summary>
 	Public Shared ReadOnly Property Version As String
 		Get
-			Return My.Application.Info.Version.ToString
+			Return Application.ProductVersion
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Gets the application Copyright.
+	''' Gets Assembly Copyright.
 	''' </summary>
 	Public Shared ReadOnly Property Copyright As String
 		Get
@@ -74,7 +71,16 @@ Public NotInheritable Class About
 	End Property
 	
 	''' <summary>
-	''' Gets the application License.
+	''' Gets Homepage Name.
+	''' </summary>
+	Public Shared ReadOnly Property HomepageName As String
+		Get
+			Return Product & " " & PdfKeeper.Strings.Homepage
+		End Get
+	End Property
+	
+	''' <summary>
+	''' Gets License.
 	''' </summary>
 	Public Shared ReadOnly Property License As String
 		Get
@@ -83,31 +89,11 @@ Public NotInheritable Class About
 	End Property
 	
 	''' <summary>
-	''' Gets the application Homepage Name.
-	''' </summary>
-	Public Shared ReadOnly Property HomepageName As String
-		Get
-			Return ProductName & " " & PdfKeeper.Strings.Homepage
-		End Get
-	End Property
-	
-	''' <summary>
-	''' Gets the application Third-Party Notice.
+	''' Gets Third-Party Notice.
 	''' </summary>
 	Public Shared ReadOnly Property ThirdPartyNotice As String
 		Get
 			Return PdfKeeper.Strings.ThirdPartyNotice
-		End Get
-	End Property
-	
-	''' <summary>
-	''' Gets the application Homepage URL.
-	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
-		"CA1056:UriPropertiesShouldNotBeStrings")> _
-	Public Shared ReadOnly Property HomepageUrl As String
-		Get
-			Return ConfigurationManager.AppSettings("HomePageUrl")
 		End Get
 	End Property
 End Class

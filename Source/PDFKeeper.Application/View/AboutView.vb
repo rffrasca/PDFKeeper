@@ -26,13 +26,13 @@ Public Partial Class AboutView
 	End Sub
 	
 	''' <summary>
-	''' Sets the font and reads the Model properties.
+	''' Sets the font and gets the Model.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Sub AboutViewLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont
-		labelProductName.Text = About.ProductName
+		labelProduct.Text = About.Product
 		labelDescription.Text = About.Description
 		labelVersion.Text = About.Version
 		labelCopyright.Text = About.Copyright

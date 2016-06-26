@@ -50,7 +50,7 @@ Partial Class AboutView
 		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AboutView))
 		Me.pictureBoxLogo = New System.Windows.Forms.PictureBox()
 		Me.buttonOK = New System.Windows.Forms.Button()
-		Me.labelProductName = New System.Windows.Forms.Label()
+		Me.labelProduct = New System.Windows.Forms.Label()
 		Me.labelDescription = New System.Windows.Forms.Label()
 		Me.labelCopyright = New System.Windows.Forms.Label()
 		Me.labelVersion = New System.Windows.Forms.Label()
@@ -79,10 +79,10 @@ Partial Class AboutView
 		Me.buttonOK.Name = "buttonOK"
 		Me.buttonOK.UseVisualStyleBackColor = true
 		'
-		'labelProductName
+		'labelProduct
 		'
-		resources.ApplyResources(Me.labelProductName, "labelProductName")
-		Me.labelProductName.Name = "labelProductName"
+		resources.ApplyResources(Me.labelProduct, "labelProduct")
+		Me.labelProduct.Name = "labelProduct"
 		'
 		'labelDescription
 		'
@@ -150,7 +150,7 @@ Partial Class AboutView
 		Me.Controls.Add(Me.labelVersion)
 		Me.Controls.Add(Me.labelCopyright)
 		Me.Controls.Add(Me.labelDescription)
-		Me.Controls.Add(Me.labelProductName)
+		Me.Controls.Add(Me.labelProduct)
 		Me.Controls.Add(Me.buttonOK)
 		Me.Controls.Add(Me.pictureBoxLogo)
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
@@ -176,7 +176,7 @@ Partial Class AboutView
 	Private linkLabelHomepageName As System.Windows.Forms.LinkLabel
 	Private labelVersion As System.Windows.Forms.Label
 	Private labelCopyright As System.Windows.Forms.Label
-	Private labelProductName As System.Windows.Forms.Label
+	Private labelProduct As System.Windows.Forms.Label
 	Private labelDescription As System.Windows.Forms.Label
 	Private buttonOK As System.Windows.Forms.Button
 	Private pictureBoxLogo As System.Windows.Forms.PictureBox

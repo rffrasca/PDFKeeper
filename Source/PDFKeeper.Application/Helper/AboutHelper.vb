@@ -22,25 +22,22 @@
 '*
 '* Created by SharpDevelop.
 '* User: Robert
-'* Date: 6/23/2016
-'* Time: 6:22 PM
+'* Date: 6/26/2016
+'* Time: 3:19 PM
 '*
 '******************************************************************************
 
-''' <summary>
-''' AboutView Helper.
-''' </summary>
 Public NotInheritable Class AboutHelper
 	Private Sub New()
-		' Because type 'About' contains only 'Shared' members, add a default
-		' private constructor to prevent the compiler from adding a default
-		' public constructor. (CA1053)
+		' Because type 'AboutHelper' contains only 'Shared' members, add a
+		' default private constructor to prevent the compiler from adding a
+		' default public constructor. (CA1053)
 	End Sub
 	
 	''' <summary>
-	''' Opens the Homepage using the default application.
+	''' Opens Homepage using default application.
 	''' </summary>
 	Public Shared Sub OpenHomepage
-		Process.Start(About.HomepageUrl)
+		Process.Start(ConfigurationManager.AppSettings("HomePageUrl"))
 	End Sub
 End Class
