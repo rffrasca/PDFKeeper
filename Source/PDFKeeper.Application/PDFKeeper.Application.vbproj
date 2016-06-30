@@ -16,7 +16,7 @@
     <StartupObject>PdfKeeper.My.MyApplication</StartupObject>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <NoWin32Manifest>False</NoWin32Manifest>
-    <AssemblyOriginatorKeyFile>PDFKeeper.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\PDFKeeper.snk</AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>
     <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
     <OptionStrict>Off</OptionStrict>
