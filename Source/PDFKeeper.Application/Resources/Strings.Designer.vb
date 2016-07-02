@@ -466,7 +466,7 @@ Friend Class Strings
 	End Property
 	
 	'''<summary>
-	'''  Looks up a localized string similar to Capture, Upload, and Search for PDF Documents .
+	'''  Looks up a localized string similar to Capture, Upload, and Search for PDF Documents.
 	'''</summary>
 	Friend Shared ReadOnly Property ProductDescription() As String
 		Get

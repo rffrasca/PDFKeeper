@@ -7,7 +7,7 @@
 		Version="3.2.0"
 		UpgradeCode="18055295-A37D-42A8-A4C9-80E80E2F1DE9"
 		Manufacturer="Robert F. Frasca">
-		<Package Description="Free, Open Source PDF Capture, Upload, and Search."
+		<Package Description="Capture, Upload, and Search for PDF Documents"
 			Comments="Comments"
 			InstallerVersion="200"
 			Compressed="yes"/>
@@ -89,7 +89,7 @@
 		
 		<Feature Id="Complete"
 		         Title="PDFKeeper"
-		         Description="Free, Open Source PDF Capture, Upload, and Search."
+		         Description="Capture, Upload, and Search for PDF Documents"
 		         Level="1">
 			<ComponentRef Id="LicenseRtf" />
 		</Feature>

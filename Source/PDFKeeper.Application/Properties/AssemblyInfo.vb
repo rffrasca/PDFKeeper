@@ -31,7 +31,7 @@ Imports System.Runtime.InteropServices
 ' you compile.
 
 <assembly: AssemblyTitle("PDFKeeper")>
-<assembly: AssemblyDescription("Free, Open Source PDF Capture, Upload, and Search.")>
+<assembly: AssemblyDescription("Capture, Upload, and Search for PDF Documents")>
 <assembly: AssemblyConfiguration("")>
 <assembly: AssemblyCompany("Robert F. Frasca")>
 <assembly: AssemblyProduct("PDFKeeper")>
