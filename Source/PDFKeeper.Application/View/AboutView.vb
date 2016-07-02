@@ -25,27 +25,18 @@ Public Partial Class AboutView
 		Me.InitializeComponent()
 	End Sub
 	
-	''' <summary>
-	''' Sets the font and gets the Model.
-	''' </summary>
-	''' <param name="sender"></param>
-	''' <param name="e"></param>
 	Sub AboutViewLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont
 		labelProduct.Text = About.Product
 		labelDescription.Text = About.Description
 		labelVersion.Text = About.Version
+		labelBuild.Text = About.Build
 		labelCopyright.Text = About.Copyright
 		linkLabelHomepageName.Text = About.HomepageName
 		textBoxLicense.Text = About.License
 		textBoxThirdPartyNotice.Text = About.ThirdPartyNotice
 	End Sub
 	
-	''' <summary>
-	''' Opens the Homepage using the default application.
-	''' </summary>
-	''' <param name="sender"></param>
-	''' <param name="e"></param>
 	Sub LinkLabelHomepageNameLinkClicked(sender As Object, _
 		e As LinkLabelLinkClickedEventArgs)
 		

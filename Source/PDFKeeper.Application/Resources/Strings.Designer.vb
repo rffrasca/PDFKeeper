@@ -64,6 +64,15 @@ Friend Class Strings
 	End Property
 	
 	'''<summary>
+	'''  Looks up a localized string similar to Build.
+	'''</summary>
+	Friend Shared ReadOnly Property Build() As String
+		Get
+			Return ResourceManager.GetString("Build", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
 	'''  Looks up a localized string similar to {0} cannot be deleted because it contains PDF documents..
 	'''</summary>
 	Friend Shared ReadOnly Property CannotDeleteFolder() As String
@@ -213,25 +222,6 @@ Friend Class Strings
 	Friend Shared ReadOnly Property IncorrectOwnerPassword() As String
 		Get
 			Return ResourceManager.GetString("IncorrectOwnerPassword", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
-	'''  Looks up a localized string similar to GNU GENERAL PUBLIC LICENSE
-	'''Version 3, 29 June 2007
-	'''
-	'''Copyright © 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt;
-	'''
-	'''Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
-	'''
-	'''Preamble
-	'''The GNU General Public License is a free, copyleft license for software and other kinds of works.
-	'''
-	'''The licenses for most software and other practical works are designed to take away your freedom to share and change the works. By contrast, the GNU General [rest of string was truncated]&quot;;.
-	'''</summary>
-	Friend Shared ReadOnly Property License() As String
-		Get
-			Return ResourceManager.GetString("License", resourceCulture)
 		End Get
 	End Property
 	
@@ -476,11 +466,30 @@ Friend Class Strings
 	End Property
 	
 	'''<summary>
-	'''  Looks up a localized string similar to {0} property not supported..
+	'''  Looks up a localized string similar to Capture, Upload, and Search for PDF Documents .
 	'''</summary>
-	Friend Shared ReadOnly Property PropertyNotSupported() As String
+	Friend Shared ReadOnly Property ProductDescription() As String
 		Get
-			Return ResourceManager.GetString("PropertyNotSupported", resourceCulture)
+			Return ResourceManager.GetString("ProductDescription", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to GNU GENERAL PUBLIC LICENSE
+	'''Version 3, 29 June 2007
+	'''
+	'''Copyright © 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt;
+	'''
+	'''Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
+	'''
+	'''Preamble
+	'''The GNU General Public License is a free, copyleft license for software and other kinds of works.
+	'''
+	'''The licenses for most software and other practical works are designed to take away your freedom to share and change the works. By contrast, the GNU General [rest of string was truncated]&quot;;.
+	'''</summary>
+	Friend Shared ReadOnly Property ProductLicense() As String
+		Get
+			Return ResourceManager.GetString("ProductLicense", resourceCulture)
 		End Get
 	End Property
 	
@@ -503,9 +512,27 @@ Friend Class Strings
 	'''
 	'''https://github.com/iconic/ope [rest of string was truncated]&quot;;.
 	'''</summary>
-	Friend Shared ReadOnly Property ThirdPartyNotice() As String
+	Friend Shared ReadOnly Property ProductThirdPartyNotice() As String
 		Get
-			Return ResourceManager.GetString("ThirdPartyNotice", resourceCulture)
+			Return ResourceManager.GetString("ProductThirdPartyNotice", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to {0} property not supported..
+	'''</summary>
+	Friend Shared ReadOnly Property PropertyNotSupported() As String
+		Get
+			Return ResourceManager.GetString("PropertyNotSupported", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to Version.
+	'''</summary>
+	Friend Shared ReadOnly Property Version() As String
+		Get
+			Return ResourceManager.GetString("Version", resourceCulture)
 		End Get
 	End Property
 End Class

@@ -22,78 +22,70 @@
 '*
 '* Created by SharpDevelop.
 '* User: Robert
-'* Date: 6/26/2016
-'* Time: 3:22 PM
+'* Date: 7/2/2016
+'* Time: 11:00 AM
 '*
 '******************************************************************************
 
 Public NotInheritable Class About
+	Private Shared productVersion As String = Application.ProductVersion
+		
 	Private Sub New()
-		' Because type 'About' contains only 'Shared' members, add a default
-		' private constructor to prevent the compiler from adding a default
-		' public constructor. (CA1053)	
+		' Added to prevent the compiler from adding a default public
+		' constructor. (CA1053)
 	End Sub
 	
-	''' <summary>
-	''' Gets Assembly Product.
-	''' </summary>
 	Public Shared ReadOnly Property Product As String
 		Get
 			Return Application.ProductName
 		End Get
 	End Property
 	
-	''' <summary>
-	''' Gets Assembly Description.
-	''' </summary>
 	Public Shared ReadOnly Property Description As String
 		Get
-			Return My.Application.Info.Description
+			Return PdfKeeper.Strings.ProductDescription
 		End Get
 	End Property
 	
-	''' <summary>
-	''' Gets Assembly Version.
-	''' </summary>
 	Public Shared ReadOnly Property Version As String
 		Get
-			Return Application.ProductVersion
+			Return PdfKeeper.Strings.Version & ": " & _
+				productVersion.Substring(0, _
+				productVersion.Length - productVersion.LastIndexOf(".", _
+				StringComparison.CurrentCulture) - 1)
 		End Get
 	End Property
 	
-	''' <summary>
-	''' Gets Assembly Copyright.
-	''' </summary>
+	Public Shared ReadOnly Property Build As String
+		Get
+			Return PdfKeeper.Strings.Build & ": " & _
+				productVersion.Substring( _
+				productVersion.Length - productVersion.LastIndexOf(".", _
+				StringComparison.CurrentCulture))
+		End Get
+	End Property
+	
 	Public Shared ReadOnly Property Copyright As String
 		Get
 			Return My.Application.Info.Copyright
 		End Get
 	End Property
 	
-	''' <summary>
-	''' Gets Homepage Name.
-	''' </summary>
 	Public Shared ReadOnly Property HomepageName As String
 		Get
 			Return Product & " " & PdfKeeper.Strings.Homepage
 		End Get
 	End Property
 	
-	''' <summary>
-	''' Gets License.
-	''' </summary>
 	Public Shared ReadOnly Property License As String
 		Get
-			Return PdfKeeper.Strings.License
+			Return PdfKeeper.Strings.ProductLicense
 		End Get
 	End Property
 	
-	''' <summary>
-	''' Gets Third-Party Notice.
-	''' </summary>
 	Public Shared ReadOnly Property ThirdPartyNotice As String
 		Get
-			Return PdfKeeper.Strings.ThirdPartyNotice
+			Return PdfKeeper.Strings.ProductThirdPartyNotice
 		End Get
 	End Property
 End Class

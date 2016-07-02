@@ -98,6 +98,10 @@
     <Compile Include="Classes\WindowsProfileFolders.vb" />
     <Compile Include="Helper\AboutHelper.vb" />
     <Compile Include="Model\About.vb" />
+    <Compile Include="View\AboutView.Designer.vb">
+      <DependentUpon>AboutView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\AboutView.vb" />
     <Compile Include="Enums\Enums.vb" />
     <Compile Include="Forms\DatabaseConnectionForm.Designer.vb">
       <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
@@ -141,10 +145,6 @@
     <Compile Include="Singleton Classes\FileCache.vb" />
     <Compile Include="Singleton Classes\ImageZoom.vb" />
     <Compile Include="Singleton Classes\UserSettings.vb" />
-    <Compile Include="View\AboutView.Designer.vb">
-      <DependentUpon>AboutView.vb</DependentUpon>
-    </Compile>
-    <Compile Include="View\AboutView.vb" />
     <EmbeddedResource Include="Forms\DatabaseConnectionForm.resx">
       <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -190,8 +190,8 @@
     <Folder Include="Enums" />
     <Folder Include="Model" />
     <Folder Include="Helper" />
-    <Folder Include="Resources" />
     <Folder Include="View" />
+    <Folder Include="Resources" />
     <Folder Include="Singleton Classes" />
   </ItemGroup>
   <ItemGroup>

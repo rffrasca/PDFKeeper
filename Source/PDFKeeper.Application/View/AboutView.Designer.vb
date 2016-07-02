@@ -60,6 +60,7 @@ Partial Class AboutView
 		Me.textBoxLicense = New System.Windows.Forms.TextBox()
 		Me.tabPageThirdPartyNotice = New System.Windows.Forms.TabPage()
 		Me.textBoxThirdPartyNotice = New System.Windows.Forms.TextBox()
+		Me.labelBuild = New System.Windows.Forms.Label()
 		CType(Me.pictureBoxLogo,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.tabControlLicenses.SuspendLayout
 		Me.tabPageLicense.SuspendLayout
@@ -103,6 +104,7 @@ Partial Class AboutView
 		'
 		resources.ApplyResources(Me.linkLabelHomepageName, "linkLabelHomepageName")
 		Me.linkLabelHomepageName.Name = "linkLabelHomepageName"
+		Me.linkLabelHomepageName.TabStop = true
 		AddHandler Me.linkLabelHomepageName.LinkClicked, AddressOf Me.LinkLabelHomepageNameLinkClicked
 		'
 		'tabControlLicenses
@@ -139,12 +141,18 @@ Partial Class AboutView
 		Me.textBoxThirdPartyNotice.Name = "textBoxThirdPartyNotice"
 		Me.textBoxThirdPartyNotice.ReadOnly = true
 		'
+		'labelBuild
+		'
+		resources.ApplyResources(Me.labelBuild, "labelBuild")
+		Me.labelBuild.Name = "labelBuild"
+		'
 		'AboutView
 		'
 		Me.AcceptButton = Me.buttonOK
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
 		resources.ApplyResources(Me, "$this")
 		Me.ControlBox = false
+		Me.Controls.Add(Me.labelBuild)
 		Me.Controls.Add(Me.tabControlLicenses)
 		Me.Controls.Add(Me.linkLabelHomepageName)
 		Me.Controls.Add(Me.labelVersion)
@@ -168,6 +176,7 @@ Partial Class AboutView
 		Me.tabPageThirdPartyNotice.PerformLayout
 		Me.ResumeLayout(false)
 	End Sub
+	Private labelBuild As System.Windows.Forms.Label
 	Private textBoxThirdPartyNotice As System.Windows.Forms.TextBox
 	Private textBoxLicense As System.Windows.Forms.TextBox
 	Private tabPageLicense As System.Windows.Forms.TabPage

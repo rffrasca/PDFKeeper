@@ -216,7 +216,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pictureBoxLogo.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 407</value>
@@ -240,7 +240,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="labelProduct.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -249,16 +249,19 @@
     <value>NoControl</value>
   </data>
   <data name="labelProduct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 66</value>
+    <value>12, 55</value>
   </data>
   <data name="labelProduct.Size" type="System.Drawing.Size, System.Drawing">
-    <value>361, 23</value>
+    <value>362, 23</value>
   </data>
   <data name="labelProduct.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="labelProduct.Text" xml:space="preserve">
+    <value>Product</value>
+  </data>
   <data name="labelProduct.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
+    <value>MiddleCenter</value>
   </data>
   <data name="&gt;&gt;labelProduct.Name" xml:space="preserve">
     <value>labelProduct</value>
@@ -270,7 +273,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelProduct.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="labelDescription.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -279,16 +282,19 @@
     <value>NoControl</value>
   </data>
   <data name="labelDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 89</value>
+    <value>12, 78</value>
   </data>
   <data name="labelDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>361, 23</value>
+    <value>362, 23</value>
   </data>
   <data name="labelDescription.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="labelDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="labelDescription.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
+    <value>MiddleCenter</value>
   </data>
   <data name="&gt;&gt;labelDescription.Name" xml:space="preserve">
     <value>labelDescription</value>
@@ -300,22 +306,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelDescription.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="labelCopyright.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="labelCopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 134</value>
+    <value>12, 124</value>
   </data>
   <data name="labelCopyright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>361, 23</value>
+    <value>362, 23</value>
   </data>
   <data name="labelCopyright.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="labelCopyright.Text" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
   <data name="labelCopyright.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
+    <value>MiddleCenter</value>
   </data>
   <data name="&gt;&gt;labelCopyright.Name" xml:space="preserve">
     <value>labelCopyright</value>
@@ -327,22 +336,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelCopyright.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="labelVersion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="labelVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 113</value>
+    <value>9, 101</value>
   </data>
   <data name="labelVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>361, 23</value>
+    <value>181, 23</value>
   </data>
   <data name="labelVersion.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="labelVersion.Text" xml:space="preserve">
+    <value>Version: 0.0.0</value>
+  </data>
   <data name="labelVersion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
+    <value>MiddleRight</value>
   </data>
   <data name="&gt;&gt;labelVersion.Name" xml:space="preserve">
     <value>labelVersion</value>
@@ -354,19 +366,22 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelVersion.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="linkLabelHomepageName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 161</value>
+    <value>12, 147</value>
   </data>
   <data name="linkLabelHomepageName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>361, 23</value>
+    <value>362, 23</value>
   </data>
   <data name="linkLabelHomepageName.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="linkLabelHomepageName.Text" xml:space="preserve">
+    <value>Homepage</value>
+  </data>
   <data name="linkLabelHomepageName.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
+    <value>MiddleCenter</value>
   </data>
   <data name="&gt;&gt;linkLabelHomepageName.Name" xml:space="preserve">
     <value>linkLabelHomepageName</value>
@@ -378,22 +393,52 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;linkLabelHomepageName.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabPageLicense.Name" xml:space="preserve">
+    <value>tabPageLicense</value>
+  </data>
+  <data name="&gt;&gt;tabPageLicense.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageLicense.Parent" xml:space="preserve">
+    <value>tabControlLicenses</value>
+  </data>
+  <data name="&gt;&gt;tabPageLicense.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabPageThirdPartyNotice.Name" xml:space="preserve">
+    <value>tabPageThirdPartyNotice</value>
+  </data>
+  <data name="&gt;&gt;tabPageThirdPartyNotice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageThirdPartyNotice.Parent" xml:space="preserve">
+    <value>tabControlLicenses</value>
+  </data>
+  <data name="&gt;&gt;tabPageThirdPartyNotice.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="textBoxLicense.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 5</value>
+  <data name="tabControlLicenses.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 187</value>
   </data>
-  <data name="textBoxLicense.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="tabControlLicenses.Size" type="System.Drawing.Size, System.Drawing">
+    <value>362, 210</value>
   </data>
-  <data name="textBoxLicense.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
+  <data name="tabControlLicenses.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="textBoxLicense.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 172</value>
+  <data name="&gt;&gt;tabControlLicenses.Name" xml:space="preserve">
+    <value>tabControlLicenses</value>
   </data>
-  <data name="textBoxLicense.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;tabControlLicenses.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControlLicenses.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControlLicenses.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;textBoxLicense.Name" xml:space="preserve">
     <value>textBoxLicense</value>
@@ -434,20 +479,32 @@
   <data name="&gt;&gt;tabPageLicense.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="textBoxThirdPartyNotice.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textBoxLicense.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 5</value>
   </data>
-  <data name="textBoxThirdPartyNotice.Multiline" type="System.Boolean, mscorlib">
+  <data name="textBoxLicense.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBoxThirdPartyNotice.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+  <data name="textBoxLicense.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="textBoxThirdPartyNotice.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBoxLicense.Size" type="System.Drawing.Size, System.Drawing">
     <value>342, 172</value>
   </data>
-  <data name="textBoxThirdPartyNotice.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="textBoxLicense.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxLicense.Name" xml:space="preserve">
+    <value>textBoxLicense</value>
+  </data>
+  <data name="&gt;&gt;textBoxLicense.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxLicense.Parent" xml:space="preserve">
+    <value>tabPageLicense</value>
+  </data>
+  <data name="&gt;&gt;textBoxLicense.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxThirdPartyNotice.Name" xml:space="preserve">
     <value>textBoxThirdPartyNotice</value>
@@ -488,25 +545,64 @@
   <data name="&gt;&gt;tabPageThirdPartyNotice.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabControlLicenses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 187</value>
+  <data name="textBoxThirdPartyNotice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 5</value>
   </data>
-  <data name="tabControlLicenses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>362, 210</value>
+  <data name="textBoxThirdPartyNotice.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="tabControlLicenses.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="textBoxThirdPartyNotice.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
   </data>
-  <data name="&gt;&gt;tabControlLicenses.Name" xml:space="preserve">
-    <value>tabControlLicenses</value>
+  <data name="textBoxThirdPartyNotice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>342, 172</value>
   </data>
-  <data name="&gt;&gt;tabControlLicenses.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="textBoxThirdPartyNotice.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;tabControlLicenses.Parent" xml:space="preserve">
+  <data name="&gt;&gt;textBoxThirdPartyNotice.Name" xml:space="preserve">
+    <value>textBoxThirdPartyNotice</value>
+  </data>
+  <data name="&gt;&gt;textBoxThirdPartyNotice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxThirdPartyNotice.Parent" xml:space="preserve">
+    <value>tabPageThirdPartyNotice</value>
+  </data>
+  <data name="&gt;&gt;textBoxThirdPartyNotice.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelBuild.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="labelBuild.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelBuild.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 101</value>
+  </data>
+  <data name="labelBuild.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 23</value>
+  </data>
+  <data name="labelBuild.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="labelBuild.Text" xml:space="preserve">
+    <value>Build: 0000</value>
+  </data>
+  <data name="labelBuild.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;labelBuild.Name" xml:space="preserve">
+    <value>labelBuild</value>
+  </data>
+  <data name="&gt;&gt;labelBuild.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBuild.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tabControlLicenses.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelBuild.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
