@@ -25,19 +25,24 @@ Public Partial Class AboutView
 		Me.InitializeComponent()
 	End Sub
 	
-	Sub AboutViewLoad(sender As Object, e As EventArgs)
+	Private Sub AboutViewLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont
-		labelProduct.Text = About.Product
-		labelDescription.Text = About.Description
-		labelVersion.Text = About.Version
-		labelBuild.Text = About.Build
-		labelCopyright.Text = About.Copyright
-		linkLabelHomepageName.Text = About.HomepageName
-		textBoxLicense.Text = About.License
-		textBoxThirdPartyNotice.Text = About.ThirdPartyNotice
+		GetDataFromViewModel
 	End Sub
 	
-	Sub LinkLabelHomepageNameLinkClicked(sender As Object, _
+	Private Sub GetDataFromViewModel
+		labelTitle.Text = AboutViewModel.Title
+		labelDescription.Text = AboutViewModel.Description
+		labelVersion.Text = AboutViewModel.Version
+		labelBuild.Text = AboutViewModel.Build
+		labelCopyright.Text = AboutViewModel.Copyright
+		linkLabelHomepageName.Text = AboutViewModel.HomepageName
+		textBoxLicense.Text = AboutViewModel.License
+		textBoxThirdPartyNotice.Text = AboutViewModel.ThirdPartyNotice
+	End Sub
+	
+	Private Sub LinkLabelHomepageNameLinkClicked( _
+		sender As Object, _
 		e As LinkLabelLinkClickedEventArgs)
 		
 		AboutHelper.OpenHomepage

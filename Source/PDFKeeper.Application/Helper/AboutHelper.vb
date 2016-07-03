@@ -29,10 +29,14 @@
 
 Public NotInheritable Class AboutHelper
 	Private Sub New()
-		' Added to prevent the compiler from adding a default public
-		' constructor. (CA1053)
+		' Because type 'AboutHelper' contains only 'Shared' members, add a
+		' default private constructor to prevent the compiler from adding a
+		' default public constructor. (CA1053)
 	End Sub
-
+	
+	''' <summary>
+	''' Opens homepage with default application.
+	''' </summary>
 	Public Shared Sub OpenHomepage
 		Process.Start(ConfigurationManager.AppSettings("HomePageUrl"))
 	End Sub

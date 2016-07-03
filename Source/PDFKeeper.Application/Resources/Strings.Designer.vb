@@ -64,6 +64,50 @@ Friend Class Strings
 	End Property
 	
 	'''<summary>
+	'''  Looks up a localized string similar to GNU GENERAL PUBLIC LICENSE
+	'''Version 3, 29 June 2007
+	'''
+	'''Copyright © 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt;
+	'''
+	'''Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
+	'''
+	'''Preamble
+	'''The GNU General Public License is a free, copyleft license for software and other kinds of works.
+	'''
+	'''The licenses for most software and other practical works are designed to take away your freedom to share and change the works. By contrast, the GNU General [rest of string was truncated]&quot;;.
+	'''</summary>
+	Friend Shared ReadOnly Property ApplicationLicense() As String
+		Get
+			Return ResourceManager.GetString("ApplicationLicense", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
+	'''  Looks up a localized string similar to PDFKeeper uses third-party programs, libraries, and other resources that may be distributed under licenses different than PDFKeeper.
+	'''
+	'''--------------------------------
+	''' License notice for Mini Icons
+	'''--------------------------------
+	'''
+	'''http://www.famfamfam.com/lab/icons/mini/
+	'''
+	'''By Mark James
+	'''
+	'''The icons in this collection is &quot;Available for free use for any purpose&quot;.
+	'''
+	'''----------------------------------
+	''' License notice for Open Iconic
+	'''----------------------------------
+	'''
+	'''https://github.com/iconic/ope [rest of string was truncated]&quot;;.
+	'''</summary>
+	Friend Shared ReadOnly Property ApplicationThirdPartyNotice() As String
+		Get
+			Return ResourceManager.GetString("ApplicationThirdPartyNotice", resourceCulture)
+		End Get
+	End Property
+	
+	'''<summary>
 	'''  Looks up a localized string similar to Build.
 	'''</summary>
 	Friend Shared ReadOnly Property Build() As String
@@ -462,59 +506,6 @@ Friend Class Strings
 	Friend Shared ReadOnly Property PdfPropertiesBlank() As String
 		Get
 			Return ResourceManager.GetString("PdfPropertiesBlank", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
-	'''  Looks up a localized string similar to Capture, Upload, and Search for PDF Documents.
-	'''</summary>
-	Friend Shared ReadOnly Property ProductDescription() As String
-		Get
-			Return ResourceManager.GetString("ProductDescription", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
-	'''  Looks up a localized string similar to GNU GENERAL PUBLIC LICENSE
-	'''Version 3, 29 June 2007
-	'''
-	'''Copyright © 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt;
-	'''
-	'''Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
-	'''
-	'''Preamble
-	'''The GNU General Public License is a free, copyleft license for software and other kinds of works.
-	'''
-	'''The licenses for most software and other practical works are designed to take away your freedom to share and change the works. By contrast, the GNU General [rest of string was truncated]&quot;;.
-	'''</summary>
-	Friend Shared ReadOnly Property ProductLicense() As String
-		Get
-			Return ResourceManager.GetString("ProductLicense", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
-	'''  Looks up a localized string similar to PDFKeeper uses third-party programs, libraries, and other resources that may be distributed under licenses different than PDFKeeper.
-	'''
-	'''--------------------------------
-	''' License notice for Mini Icons
-	'''--------------------------------
-	'''
-	'''http://www.famfamfam.com/lab/icons/mini/
-	'''
-	'''By Mark James
-	'''
-	'''The icons in this collection is &quot;Available for free use for any purpose&quot;.
-	'''
-	'''----------------------------------
-	''' License notice for Open Iconic
-	'''----------------------------------
-	'''
-	'''https://github.com/iconic/ope [rest of string was truncated]&quot;;.
-	'''</summary>
-	Friend Shared ReadOnly Property ProductThirdPartyNotice() As String
-		Get
-			Return ResourceManager.GetString("ProductThirdPartyNotice", resourceCulture)
 		End Get
 	End Property
 	

@@ -23,69 +23,86 @@
 '* Created by SharpDevelop.
 '* User: Robert
 '* Date: 7/2/2016
-'* Time: 11:00 AM
+'* Time: 10:03 PM
 '*
 '******************************************************************************
 
-Public NotInheritable Class About
-	Private Shared productVersion As String = Application.ProductVersion
-		
+Public NotInheritable Class AboutViewModel
 	Private Sub New()
-		' Added to prevent the compiler from adding a default public
-		' constructor. (CA1053)
+		' Because type 'AboutViewModel' contains only 'Shared' members, add a
+		' default private constructor to prevent the compiler from adding a
+		' default public constructor. (CA1053)
 	End Sub
 	
-	Public Shared ReadOnly Property Product As String
+	''' <summary>
+	''' Gets data used by AboutView.labelTitle.
+	''' </summary>
+	Public Shared ReadOnly Property Title As String
 		Get
-			Return Application.ProductName
+			Return ApplicationInfo.Title
 		End Get
 	End Property
 	
+	''' <summary>
+	''' Gets data used by AboutView.labelDescription.
+	''' </summary>
 	Public Shared ReadOnly Property Description As String
 		Get
-			Return PdfKeeper.Strings.ProductDescription
+			Return ApplicationInfo.Description
 		End Get
 	End Property
 	
+	''' <summary>
+	''' Gets data used by AboutView.labelVersion.
+	''' </summary>
 	Public Shared ReadOnly Property Version As String
 		Get
-			Return PdfKeeper.Strings.Version & ": " & _
-				productVersion.Substring(0, _
-				productVersion.Length - productVersion.LastIndexOf(".", _
-				StringComparison.CurrentCulture) - 1)
+			Return PdfKeeper.Strings.Version & ": " & ApplicationInfo.Version
 		End Get
 	End Property
 	
+	''' <summary>
+	''' Gets data used by AboutView.labelBuild.
+	''' </summary>
 	Public Shared ReadOnly Property Build As String
 		Get
-			Return PdfKeeper.Strings.Build & ": " & _
-				productVersion.Substring( _
-				productVersion.Length - productVersion.LastIndexOf(".", _
-				StringComparison.CurrentCulture))
+			Return PdfKeeper.Strings.Build & ": " & ApplicationInfo.Build
 		End Get
 	End Property
 	
+	''' <summary>
+	''' Gets data used by AboutView.labelCopyright.
+	''' </summary>
 	Public Shared ReadOnly Property Copyright As String
 		Get
-			Return My.Application.Info.Copyright
+			Return ApplicationInfo.Copyright
 		End Get
 	End Property
 	
+	''' <summary>
+	''' Gets data used by AboutView.linkLabelHomepageName.
+	''' </summary>
 	Public Shared ReadOnly Property HomepageName As String
 		Get
-			Return Product & " " & PdfKeeper.Strings.Homepage
+			Return Title & " " & PdfKeeper.Strings.Homepage
 		End Get
 	End Property
 	
+	''' <summary>
+	''' Gets data used by AboutView.textBoxLicense.
+	''' </summary>
 	Public Shared ReadOnly Property License As String
 		Get
-			Return PdfKeeper.Strings.ProductLicense
+			Return PdfKeeper.Strings.ApplicationLicense
 		End Get
 	End Property
 	
+	''' <summary>
+	''' Gets data used by AboutView.textBoxThirdPartyNotice.
+	''' </summary>
 	Public Shared ReadOnly Property ThirdPartyNotice As String
 		Get
-			Return PdfKeeper.Strings.ProductThirdPartyNotice
+			Return PdfKeeper.Strings.ApplicationThirdPartyNotice
 		End Get
 	End Property
 End Class
