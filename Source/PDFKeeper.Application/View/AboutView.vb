@@ -27,10 +27,10 @@ Public Partial Class AboutView
 	
 	Private Sub AboutViewLoad(sender As Object, e As EventArgs)
 		Font = SystemFonts.MessageBoxFont
-		GetDataFromViewModel
+		GetData
 	End Sub
 	
-	Private Sub GetDataFromViewModel
+	Private Sub GetData
 		labelTitle.Text = AboutViewModel.Title
 		labelDescription.Text = AboutViewModel.Description
 		labelVersion.Text = AboutViewModel.Version

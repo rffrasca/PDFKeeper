@@ -35,7 +35,7 @@ Public NotInheritable Class AboutViewModel
 	End Sub
 	
 	''' <summary>
-	''' Gets data used by AboutView.labelTitle.
+	''' Gets value for AboutView.labelTitle.
 	''' </summary>
 	Public Shared ReadOnly Property Title As String
 		Get
@@ -44,7 +44,7 @@ Public NotInheritable Class AboutViewModel
 	End Property
 	
 	''' <summary>
-	''' Gets data used by AboutView.labelDescription.
+	''' Gets value for AboutView.labelDescription.
 	''' </summary>
 	Public Shared ReadOnly Property Description As String
 		Get
@@ -53,7 +53,7 @@ Public NotInheritable Class AboutViewModel
 	End Property
 	
 	''' <summary>
-	''' Gets data used by AboutView.labelVersion.
+	''' Gets value for AboutView.labelVersion.
 	''' </summary>
 	Public Shared ReadOnly Property Version As String
 		Get
@@ -62,7 +62,7 @@ Public NotInheritable Class AboutViewModel
 	End Property
 	
 	''' <summary>
-	''' Gets data used by AboutView.labelBuild.
+	''' Gets value for AboutView.labelBuild.
 	''' </summary>
 	Public Shared ReadOnly Property Build As String
 		Get
@@ -71,7 +71,7 @@ Public NotInheritable Class AboutViewModel
 	End Property
 	
 	''' <summary>
-	''' Gets data used by AboutView.labelCopyright.
+	''' Gets value for AboutView.labelCopyright.
 	''' </summary>
 	Public Shared ReadOnly Property Copyright As String
 		Get
@@ -80,7 +80,7 @@ Public NotInheritable Class AboutViewModel
 	End Property
 	
 	''' <summary>
-	''' Gets data used by AboutView.linkLabelHomepageName.
+	''' Gets value for AboutView.linkLabelHomepageName.
 	''' </summary>
 	Public Shared ReadOnly Property HomepageName As String
 		Get
@@ -89,7 +89,7 @@ Public NotInheritable Class AboutViewModel
 	End Property
 	
 	''' <summary>
-	''' Gets data used by AboutView.textBoxLicense.
+	''' Gets value for AboutView.textBoxLicense.
 	''' </summary>
 	Public Shared ReadOnly Property License As String
 		Get
@@ -98,7 +98,7 @@ Public NotInheritable Class AboutViewModel
 	End Property
 	
 	''' <summary>
-	''' Gets data used by AboutView.textBoxThirdPartyNotice.
+	''' Gets value for AboutView.textBoxThirdPartyNotice.
 	''' </summary>
 	Public Shared ReadOnly Property ThirdPartyNotice As String
 		Get
