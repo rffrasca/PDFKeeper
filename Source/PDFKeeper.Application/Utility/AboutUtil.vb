@@ -27,7 +27,7 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class AboutHelper
+Public NotInheritable Class AboutUtil
 	Private Sub New()
 		' Because type 'AboutHelper' contains only 'Shared' members, add a
 		' default private constructor to prevent the compiler from adding a

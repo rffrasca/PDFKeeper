@@ -45,6 +45,6 @@ Public Partial Class AboutView
 		sender As Object, _
 		e As LinkLabelLinkClickedEventArgs)
 		
-		AboutHelper.OpenHomepage
+		AboutUtil.OpenHomepage
 	End Sub
 End Class
