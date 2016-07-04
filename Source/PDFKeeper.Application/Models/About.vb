@@ -22,31 +22,31 @@
 '*
 '* Created by SharpDevelop.
 '* User: Robert
-'* Date: 7/3/2016
-'* Time: 10:43 AM
+'* Date: 7/4/2016
+'* Time: 3:44 PM
 '*
 '******************************************************************************
 
-Public NotInheritable Class ApplicationInfo
-	Private Shared appVersion As String = My.Application.Info.Version.ToString
+Public NotInheritable Class About
+	Private Shared productVersion As String = Application.ProductVersion
 	
 	Private Sub New()
-		' Because type 'ApplicationInfo' contains only 'Shared' members, add a
-		' default private constructor to prevent the compiler from adding a
-		' default public constructor. (CA1053)
+		' Because type 'About' contains only 'Shared' members, add a default
+		' private constructor to prevent the compiler from adding a default
+		' public constructor. (CA1053)
 	End Sub
 	
 	''' <summary>
-	''' Gets application title.
+	''' Gets the title associated with this application.
 	''' </summary>
 	Public Shared ReadOnly Property Title As String
 		Get
-			Return My.Application.Info.Title
+			Return Application.ProductName
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Gets application description.
+	''' Gets the description associated with this application.
 	''' </summary>
 	Public Shared ReadOnly Property Description As String
 		Get
@@ -55,33 +55,53 @@ Public NotInheritable Class ApplicationInfo
 	End Property
 	
 	''' <summary>
-	''' Gets application version without build number.
+	''' Gets the version associated with this application without the build
+	''' number.
 	''' </summary>
 	Public Shared ReadOnly Property Version As String
 		Get
-			Return appVersion.Substring(0, _
-				appVersion.Length - appVersion.LastIndexOf(".", _
+			Return productVersion.Substring( _
+				0, _
+				productVersion.Length - productVersion.LastIndexOf(".", _
 				StringComparison.CurrentCulture) - 1)
 		End Get
 	End Property
-	
+		
 	''' <summary>
-	''' Gets application version build number.
+	''' Gets the build number associated with this application.
 	''' </summary>
 	Public Shared ReadOnly Property Build As String
 		Get
-			Return appVersion.Substring(0, _
-				appVersion.Length - appVersion.LastIndexOf(".", _
+			Return productVersion.Substring( _
+				productVersion.Length - productVersion.LastIndexOf(".", _
 				StringComparison.CurrentCulture))
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Gets application copyright.
+	''' Gets the copyright notice associated with this application.
 	''' </summary>
 	Public Shared ReadOnly Property Copyright As String
 		Get
 			Return My.Application.Info.Copyright
+		End Get
+	End Property
+	
+	''' <summary>
+	''' Gets the license associated with this application.
+	''' </summary>
+	Public Shared ReadOnly Property License As String
+		Get
+			Return PdfKeeper.Strings.AboutLicense
+		End Get
+	End Property
+	
+	''' <summary>
+	''' Gets the third-party notice associated with this application.
+	''' </summary>
+	Public Shared ReadOnly Property ThirdPartyNotice As String
+		Get
+			Return PdfKeeper.Strings.AboutThirdPartyNotice
 		End Get
 	End Property
 End Class
