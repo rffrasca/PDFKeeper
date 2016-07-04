@@ -216,7 +216,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pictureBoxLogo.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 407</value>
@@ -225,7 +225,7 @@
     <value>75, 23</value>
   </data>
   <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="buttonOK.Text" xml:space="preserve">
     <value>OK</value>
@@ -240,7 +240,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="labelTitle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -273,7 +273,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelTitle.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="labelDescription.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -306,19 +306,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelDescription.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="labelCopyright.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="labelCopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 124</value>
+    <value>12, 133</value>
   </data>
   <data name="labelCopyright.Size" type="System.Drawing.Size, System.Drawing">
     <value>362, 23</value>
   </data>
   <data name="labelCopyright.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="labelCopyright.Text" xml:space="preserve">
     <value>Copyright</value>
@@ -336,22 +336,22 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelCopyright.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="labelVersion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="labelVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 101</value>
+    <value>12, 106</value>
   </data>
   <data name="labelVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 23</value>
+    <value>114, 23</value>
   </data>
   <data name="labelVersion.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="labelVersion.Text" xml:space="preserve">
-    <value>Version: 0.0.0</value>
+    <value>Version:</value>
   </data>
   <data name="labelVersion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -366,34 +366,34 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelVersion.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
-  <data name="linkLabelHomepageName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 147</value>
+  <data name="linkLabelHomepage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 156</value>
   </data>
-  <data name="linkLabelHomepageName.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="linkLabelHomepage.Size" type="System.Drawing.Size, System.Drawing">
     <value>362, 23</value>
   </data>
-  <data name="linkLabelHomepageName.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="linkLabelHomepage.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="linkLabelHomepageName.Text" xml:space="preserve">
+  <data name="linkLabelHomepage.Text" xml:space="preserve">
     <value>Homepage</value>
   </data>
-  <data name="linkLabelHomepageName.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="linkLabelHomepage.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;linkLabelHomepageName.Name" xml:space="preserve">
-    <value>linkLabelHomepageName</value>
+  <data name="&gt;&gt;linkLabelHomepage.Name" xml:space="preserve">
+    <value>linkLabelHomepage</value>
   </data>
-  <data name="&gt;&gt;linkLabelHomepageName.Type" xml:space="preserve">
+  <data name="&gt;&gt;linkLabelHomepage.Type" xml:space="preserve">
     <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;linkLabelHomepageName.Parent" xml:space="preserve">
+  <data name="&gt;&gt;linkLabelHomepage.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;linkLabelHomepageName.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;linkLabelHomepage.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="textBoxLicense.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 5</value>
@@ -510,7 +510,7 @@
     <value>362, 210</value>
   </data>
   <data name="tabControlLicenses.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;tabControlLicenses.Name" xml:space="preserve">
     <value>tabControlLicenses</value>
@@ -522,7 +522,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControlLicenses.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="labelBuild.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
@@ -531,19 +531,19 @@
     <value>NoControl</value>
   </data>
   <data name="labelBuild.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 101</value>
+    <value>193, 106</value>
   </data>
   <data name="labelBuild.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 23</value>
+    <value>40, 23</value>
   </data>
   <data name="labelBuild.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>4</value>
   </data>
   <data name="labelBuild.Text" xml:space="preserve">
-    <value>Build: 0000</value>
+    <value>Build:</value>
   </data>
   <data name="labelBuild.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+    <value>MiddleRight</value>
   </data>
   <data name="&gt;&gt;labelBuild.Name" xml:space="preserve">
     <value>labelBuild</value>
@@ -555,6 +555,54 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelBuild.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBoxBuild.Location" type="System.Drawing.Point, System.Drawing">
+    <value>242, 106</value>
+  </data>
+  <data name="textBoxBuild.MaxLength" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="textBoxBuild.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxBuild.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;textBoxBuild.Name" xml:space="preserve">
+    <value>textBoxBuild</value>
+  </data>
+  <data name="&gt;&gt;textBoxBuild.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxBuild.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxBuild.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBoxVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>133, 106</value>
+  </data>
+  <data name="textBoxVersion.MaxLength" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="textBoxVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="textBoxVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;textBoxVersion.Name" xml:space="preserve">
+    <value>textBoxVersion</value>
+  </data>
+  <data name="&gt;&gt;textBoxVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxVersion.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxVersion.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

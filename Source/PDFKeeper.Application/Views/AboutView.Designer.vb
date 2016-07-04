@@ -54,13 +54,15 @@ Partial Class AboutView
 		Me.labelDescription = New System.Windows.Forms.Label()
 		Me.labelCopyright = New System.Windows.Forms.Label()
 		Me.labelVersion = New System.Windows.Forms.Label()
-		Me.linkLabelHomepageName = New System.Windows.Forms.LinkLabel()
+		Me.linkLabelHomepage = New System.Windows.Forms.LinkLabel()
 		Me.tabControlLicenses = New System.Windows.Forms.TabControl()
 		Me.tabPageLicense = New System.Windows.Forms.TabPage()
 		Me.textBoxLicense = New System.Windows.Forms.TextBox()
 		Me.tabPageThirdPartyNotice = New System.Windows.Forms.TabPage()
 		Me.textBoxThirdPartyNotice = New System.Windows.Forms.TextBox()
 		Me.labelBuild = New System.Windows.Forms.Label()
+		Me.textBoxBuild = New System.Windows.Forms.TextBox()
+		Me.textBoxVersion = New System.Windows.Forms.TextBox()
 		CType(Me.pictureBoxLogo,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.tabControlLicenses.SuspendLayout
 		Me.tabPageLicense.SuspendLayout
@@ -100,12 +102,12 @@ Partial Class AboutView
 		resources.ApplyResources(Me.labelVersion, "labelVersion")
 		Me.labelVersion.Name = "labelVersion"
 		'
-		'linkLabelHomepageName
+		'linkLabelHomepage
 		'
-		resources.ApplyResources(Me.linkLabelHomepageName, "linkLabelHomepageName")
-		Me.linkLabelHomepageName.Name = "linkLabelHomepageName"
-		Me.linkLabelHomepageName.TabStop = true
-		AddHandler Me.linkLabelHomepageName.LinkClicked, AddressOf Me.LinkLabelHomepageNameLinkClicked
+		resources.ApplyResources(Me.linkLabelHomepage, "linkLabelHomepage")
+		Me.linkLabelHomepage.Name = "linkLabelHomepage"
+		Me.linkLabelHomepage.TabStop = true
+		AddHandler Me.linkLabelHomepage.Click, AddressOf Me.LinkLabelHomepageClick
 		'
 		'tabControlLicenses
 		'
@@ -146,15 +148,31 @@ Partial Class AboutView
 		resources.ApplyResources(Me.labelBuild, "labelBuild")
 		Me.labelBuild.Name = "labelBuild"
 		'
+		'textBoxBuild
+		'
+		resources.ApplyResources(Me.textBoxBuild, "textBoxBuild")
+		Me.textBoxBuild.Name = "textBoxBuild"
+		Me.textBoxBuild.ReadOnly = true
+		Me.textBoxBuild.TabStop = false
+		'
+		'textBoxVersion
+		'
+		resources.ApplyResources(Me.textBoxVersion, "textBoxVersion")
+		Me.textBoxVersion.Name = "textBoxVersion"
+		Me.textBoxVersion.ReadOnly = true
+		Me.textBoxVersion.TabStop = false
+		'
 		'AboutView
 		'
 		Me.AcceptButton = Me.buttonOK
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
 		resources.ApplyResources(Me, "$this")
 		Me.ControlBox = false
+		Me.Controls.Add(Me.textBoxVersion)
+		Me.Controls.Add(Me.textBoxBuild)
 		Me.Controls.Add(Me.labelBuild)
 		Me.Controls.Add(Me.tabControlLicenses)
-		Me.Controls.Add(Me.linkLabelHomepageName)
+		Me.Controls.Add(Me.linkLabelHomepage)
 		Me.Controls.Add(Me.labelVersion)
 		Me.Controls.Add(Me.labelCopyright)
 		Me.Controls.Add(Me.labelDescription)
@@ -167,7 +185,6 @@ Partial Class AboutView
 		Me.Name = "AboutView"
 		Me.ShowIcon = false
 		Me.ShowInTaskbar = false
-		AddHandler Load, AddressOf Me.AboutViewLoad
 		CType(Me.pictureBoxLogo,System.ComponentModel.ISupportInitialize).EndInit
 		Me.tabControlLicenses.ResumeLayout(false)
 		Me.tabPageLicense.ResumeLayout(false)
@@ -175,14 +192,17 @@ Partial Class AboutView
 		Me.tabPageThirdPartyNotice.ResumeLayout(false)
 		Me.tabPageThirdPartyNotice.PerformLayout
 		Me.ResumeLayout(false)
+		Me.PerformLayout
 	End Sub
+	Private textBoxVersion As System.Windows.Forms.TextBox
+	Private textBoxBuild As System.Windows.Forms.TextBox
 	Private labelBuild As System.Windows.Forms.Label
 	Private textBoxThirdPartyNotice As System.Windows.Forms.TextBox
 	Private textBoxLicense As System.Windows.Forms.TextBox
 	Private tabPageLicense As System.Windows.Forms.TabPage
 	Private tabControlLicenses As System.Windows.Forms.TabControl
 	Private tabPageThirdPartyNotice As System.Windows.Forms.TabPage
-	Private linkLabelHomepageName As System.Windows.Forms.LinkLabel
+	Private linkLabelHomepage As System.Windows.Forms.LinkLabel
 	Private labelVersion As System.Windows.Forms.Label
 	Private labelCopyright As System.Windows.Forms.Label
 	Private labelTitle As System.Windows.Forms.Label
