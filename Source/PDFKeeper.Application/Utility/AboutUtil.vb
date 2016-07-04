@@ -35,9 +35,9 @@ Public NotInheritable Class AboutUtil
 	End Sub
 	
 	''' <summary>
-	''' Opens homepage with default application.
+	''' Shows homepage with default application.
 	''' </summary>
-	Public Shared Sub OpenHomepage
+	Public Shared Sub ShowHomepage
 		Process.Start(ConfigurationManager.AppSettings("HomePageUrl"))
 	End Sub
 End Class
