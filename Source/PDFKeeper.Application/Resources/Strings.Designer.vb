@@ -76,9 +76,9 @@ Friend Class Strings
 	'''
 	'''The licenses for most software and other practical works are designed to take away your freedom to share and change the works. By contrast, the GNU General [rest of string was truncated]&quot;;.
 	'''</summary>
-	Friend Shared ReadOnly Property ApplicationLicense() As String
+	Friend Shared ReadOnly Property AboutLicense() As String
 		Get
-			Return ResourceManager.GetString("ApplicationLicense", resourceCulture)
+			Return ResourceManager.GetString("AboutLicense", resourceCulture)
 		End Get
 	End Property
 	
@@ -101,18 +101,9 @@ Friend Class Strings
 	'''
 	'''https://github.com/iconic/ope [rest of string was truncated]&quot;;.
 	'''</summary>
-	Friend Shared ReadOnly Property ApplicationThirdPartyNotice() As String
+	Friend Shared ReadOnly Property AboutThirdPartyNotice() As String
 		Get
-			Return ResourceManager.GetString("ApplicationThirdPartyNotice", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
-	'''  Looks up a localized string similar to Build.
-	'''</summary>
-	Friend Shared ReadOnly Property Build() As String
-		Get
-			Return ResourceManager.GetString("Build", resourceCulture)
+			Return ResourceManager.GetString("AboutThirdPartyNotice", resourceCulture)
 		End Get
 	End Property
 	
@@ -248,15 +239,6 @@ Friend Class Strings
 	Friend Shared ReadOnly Property FolderNameContainsInvalidChars() As String
 		Get
 			Return ResourceManager.GetString("FolderNameContainsInvalidChars", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
-	'''  Looks up a localized string similar to Homepage.
-	'''</summary>
-	Friend Shared ReadOnly Property Homepage() As String
-		Get
-			Return ResourceManager.GetString("Homepage", resourceCulture)
 		End Get
 	End Property
 	
@@ -515,15 +497,6 @@ Friend Class Strings
 	Friend Shared ReadOnly Property PropertyNotSupported() As String
 		Get
 			Return ResourceManager.GetString("PropertyNotSupported", resourceCulture)
-		End Get
-	End Property
-	
-	'''<summary>
-	'''  Looks up a localized string similar to Version.
-	'''</summary>
-	Friend Shared ReadOnly Property Version() As String
-		Get
-			Return ResourceManager.GetString("Version", resourceCulture)
 		End Get
 	End Property
 End Class

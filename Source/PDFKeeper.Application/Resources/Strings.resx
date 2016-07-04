@@ -144,7 +144,7 @@
   <data name="DocumentCapture" xml:space="preserve">
     <value>Document Capture</value>
   </data>
-  <data name="ApplicationLicense" xml:space="preserve">
+  <data name="AboutLicense" xml:space="preserve">
     <value>GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 
@@ -331,7 +331,7 @@ If the disclaimer of warranty and limitation of liability provided above cannot 
 
 END OF TERMS AND CONDITIONS</value>
   </data>
-  <data name="ApplicationThirdPartyNotice" xml:space="preserve">
+  <data name="AboutThirdPartyNotice" xml:space="preserve">
     <value>PDFKeeper uses third-party programs, libraries, and other resources that may be distributed under licenses different than PDFKeeper.
 
 --------------------------------
@@ -511,14 +511,5 @@ All modifications will be lost.</value>
   </data>
   <data name="PropertyNotSupported" xml:space="preserve">
     <value>{0} property not supported.</value>
-  </data>
-  <data name="Homepage" xml:space="preserve">
-    <value>Homepage</value>
-  </data>
-  <data name="Version" xml:space="preserve">
-    <value>Version</value>
-  </data>
-  <data name="Build" xml:space="preserve">
-    <value>Build</value>
   </data>
 </root>
