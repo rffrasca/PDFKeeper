@@ -33,7 +33,10 @@ Public Partial Class AboutView
 		textBoxThirdPartyNotice.Text = About.ThirdPartyNotice
 	End Sub
 	
-	Private Sub LinkLabelHomepageClick(sender As Object, e As EventArgs)
+	Private Sub LinkLabelHomepageLinkClicked( _
+		sender As Object, _
+		e As LinkLabelLinkClickedEventArgs)
+		
 		AboutUtil.ShowHomepage
 	End Sub
 End Class

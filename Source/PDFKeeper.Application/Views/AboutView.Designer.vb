@@ -107,7 +107,7 @@ Partial Class AboutView
 		resources.ApplyResources(Me.linkLabelHomepage, "linkLabelHomepage")
 		Me.linkLabelHomepage.Name = "linkLabelHomepage"
 		Me.linkLabelHomepage.TabStop = true
-		AddHandler Me.linkLabelHomepage.Click, AddressOf Me.LinkLabelHomepageClick
+		AddHandler Me.linkLabelHomepage.LinkClicked, AddressOf Me.LinkLabelHomepageLinkClicked
 		'
 		'tabControlLicenses
 		'
