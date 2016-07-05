@@ -86,7 +86,7 @@ Public Class DatabaseNonQuery
 		Using oraConnection As New OracleConnection
 			Try
 				oraConnection.ConnectionString = _
-					DatabaseConnectionString.Instance.GetConnectionString
+					DatabaseLogOn.Instance.ConnectionString
 				oraConnection.Open
 				Dim oraCommand As New OracleCommand(sql, oraConnection)
 				If insert Then

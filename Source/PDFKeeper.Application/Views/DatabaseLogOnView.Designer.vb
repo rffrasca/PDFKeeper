@@ -20,7 +20,7 @@
 '*
 '******************************************************************************
 
-Partial Class DatabaseConnectionForm
+Partial Class DatabaseLogOnView
 	Inherits System.Windows.Forms.Form
 	
 	''' <summary>
@@ -47,17 +47,17 @@ Partial Class DatabaseConnectionForm
 	''' not be able to load this method if it was changed manually.
 	''' </summary>
 	Private Sub InitializeComponent()
-		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DatabaseConnectionForm))
+		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DatabaseLogOnView))
 		Me.labelUserName = New System.Windows.Forms.Label()
 		Me.textBoxUserName = New System.Windows.Forms.TextBox()
 		Me.labelPassword = New System.Windows.Forms.Label()
-		Me.textBoxPassword = New System.Windows.Forms.TextBox()
 		Me.labelDataSource = New System.Windows.Forms.Label()
 		Me.textBoxDataSource = New System.Windows.Forms.TextBox()
 		Me.buttonOK = New System.Windows.Forms.Button()
 		Me.buttonCancel = New System.Windows.Forms.Button()
 		Me.pictureBoxLogo = New System.Windows.Forms.PictureBox()
 		Me.labelHelp = New System.Windows.Forms.Label()
+		Me.textBoxSecure = New PdfKeeper.TextBoxSecure()
 		CType(Me.pictureBoxLogo,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.SuspendLayout
 		'
@@ -70,22 +70,11 @@ Partial Class DatabaseConnectionForm
 		'
 		resources.ApplyResources(Me.textBoxUserName, "textBoxUserName")
 		Me.textBoxUserName.Name = "textBoxUserName"
-		AddHandler Me.textBoxUserName.TextChanged, AddressOf Me.TextBoxTextChanged
 		'
 		'labelPassword
 		'
 		resources.ApplyResources(Me.labelPassword, "labelPassword")
 		Me.labelPassword.Name = "labelPassword"
-		'
-		'textBoxPassword
-		'
-		resources.ApplyResources(Me.textBoxPassword, "textBoxPassword")
-		Me.textBoxPassword.Name = "textBoxPassword"
-		Me.textBoxPassword.ShortcutsEnabled = false
-		Me.textBoxPassword.UseSystemPasswordChar = true
-		AddHandler Me.textBoxPassword.TextChanged, AddressOf Me.TextBoxTextChanged
-		AddHandler Me.textBoxPassword.KeyDown, AddressOf Me.TextBoxPasswordKeyDown
-		AddHandler Me.textBoxPassword.KeyPress, AddressOf Me.TextBoxPasswordKeyPress
 		'
 		'labelDataSource
 		'
@@ -96,7 +85,6 @@ Partial Class DatabaseConnectionForm
 		'
 		resources.ApplyResources(Me.textBoxDataSource, "textBoxDataSource")
 		Me.textBoxDataSource.Name = "textBoxDataSource"
-		AddHandler Me.textBoxDataSource.TextChanged, AddressOf Me.TextBoxTextChanged
 		'
 		'buttonOK
 		'
@@ -111,7 +99,6 @@ Partial Class DatabaseConnectionForm
 		resources.ApplyResources(Me.buttonCancel, "buttonCancel")
 		Me.buttonCancel.Name = "buttonCancel"
 		Me.buttonCancel.UseVisualStyleBackColor = true
-		AddHandler Me.buttonCancel.Click, AddressOf Me.ButtonCancelClick
 		'
 		'pictureBoxLogo
 		'
@@ -124,37 +111,43 @@ Partial Class DatabaseConnectionForm
 		resources.ApplyResources(Me.labelHelp, "labelHelp")
 		Me.labelHelp.Name = "labelHelp"
 		'
-		'DatabaseConnectionForm
+		'textBoxSecure
+		'
+		resources.ApplyResources(Me.textBoxSecure, "textBoxSecure")
+		Me.textBoxSecure.Name = "textBoxSecure"
+		Me.textBoxSecure.ShortcutsEnabled = false
+		Me.textBoxSecure.UseSystemPasswordChar = true
+		'
+		'DatabaseLogOnView
 		'
 		Me.AcceptButton = Me.buttonOK
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
 		Me.CancelButton = Me.buttonCancel
 		resources.ApplyResources(Me, "$this")
+		Me.Controls.Add(Me.textBoxSecure)
 		Me.Controls.Add(Me.labelHelp)
 		Me.Controls.Add(Me.pictureBoxLogo)
 		Me.Controls.Add(Me.buttonCancel)
 		Me.Controls.Add(Me.buttonOK)
 		Me.Controls.Add(Me.textBoxDataSource)
 		Me.Controls.Add(Me.labelDataSource)
-		Me.Controls.Add(Me.textBoxPassword)
 		Me.Controls.Add(Me.labelPassword)
 		Me.Controls.Add(Me.textBoxUserName)
 		Me.Controls.Add(Me.labelUserName)
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
 		Me.MaximizeBox = false
 		Me.MinimizeBox = false
-		Me.Name = "DatabaseConnectionForm"
-		AddHandler Load, AddressOf Me.DatabaseConnectionFormLoad
-		AddHandler HelpRequested, AddressOf Me.DatabaseConnectionFormHelpRequested
+		Me.Name = "DatabaseLogOnView"
+		AddHandler HelpRequested, AddressOf Me.DatabaseLogOnViewHelpRequested
 		CType(Me.pictureBoxLogo,System.ComponentModel.ISupportInitialize).EndInit
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private textBoxSecure As PdfKeeper.TextBoxSecure
 	Private labelHelp As System.Windows.Forms.Label
 	Private pictureBoxLogo As System.Windows.Forms.PictureBox
 	Private textBoxUserName As System.Windows.Forms.TextBox
 	Private labelUserName As System.Windows.Forms.Label
-	Private textBoxPassword As System.Windows.Forms.TextBox
 	Private textBoxDataSource As System.Windows.Forms.TextBox
 	Private buttonOK As System.Windows.Forms.Button
 	Private buttonCancel As System.Windows.Forms.Button

@@ -1931,7 +1931,7 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub MainFormFormClosed(sender As Object, e As FormClosedEventArgs)
 		DocumentNotesModifiedCheck
-		DatabaseConnectionForm.dbPassword.Dispose
+		DatabaseLogOnView.dbPassword.Dispose
 		SaveFormPosition
 		Try
 			System.IO.File.Delete(Shortcuts.DocumentCaptureInLinks)

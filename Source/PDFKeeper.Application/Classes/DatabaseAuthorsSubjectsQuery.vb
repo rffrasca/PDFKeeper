@@ -52,7 +52,7 @@ Public Class DatabaseAuthorsSubjectsQuery
 		Using oraConnection As New OracleConnection
 			Try
 				oraConnection.ConnectionString = _
-					DatabaseConnectionString.Instance.GetConnectionString
+					DatabaseLogOn.Instance.ConnectionString
 				oraConnection.Open
 				Dim oraCommand As New OracleCommand(sql, oraConnection)
 				Dim dataReader As OracleDataReader = oraCommand.ExecuteReader()

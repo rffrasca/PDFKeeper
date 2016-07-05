@@ -13,8 +13,8 @@
 		<param name="Local" value="Introduction.html">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="Database Connection">
-		<param name="Local" value="Database Connection.html">
+		<param name="Name" value="Database Log On">
+		<param name="Local" value="DatabaseLogOnView.html">
 		<param name="ImageNumber" value="9">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">

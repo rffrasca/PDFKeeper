@@ -1,6 +1,6 @@
 ﻿'******************************************************************************
 '*
-'* PDFKeeper -- Free, Open Source PDF Capture, Upload, and Search.
+'* PDFKeeper -- Capture, Upload, and Search for PDF Documents
 '* Copyright (C) 2009-2016 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
@@ -19,21 +19,29 @@
 '* with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '*
 '******************************************************************************
+'*
+'* Created by SharpDevelop.
+'* User: Robert
+'* Date: 7/5/2016
+'* Time: 2:21 PM
+'*
+'******************************************************************************
 
-Public NotInheritable Class DatabaseConnectionString
-	Private Shared _instance As DatabaseConnectionString = _
-		New DatabaseConnectionString()
-	
+''' <summary>
+''' DatabaseLogOn Model.
+''' </summary>
+Public NotInheritable Class DatabaseLogOn
+	Private Shared _instance As DatabaseLogOn = New DatabaseLogOn()
 	Private _userName As String
 	Private _password As SecureString
 	Private _dataSource As String
 	
-	Public Shared ReadOnly Property Instance As DatabaseConnectionString
+	Public Shared ReadOnly Property Instance As DatabaseLogOn
 		Get
 			Return _instance
 		End Get
 	End Property
-		
+	
 	''' <summary>
 	''' Gets or sets the User Name for the database connection string.
 	''' </summary>
@@ -71,27 +79,29 @@ Public NotInheritable Class DatabaseConnectionString
 	End Property
 	
 	''' <summary>
-	''' Gets the database connection string.
+	''' Gets the connection string needed to make a database connection.
 	''' </summary>
-	''' <returns>Connection string.</returns>
-	Friend Function GetConnectionString As String
-		Return "User Id=" + UserName + ";" & _
+	Friend ReadOnly Property ConnectionString As String
+		Get
+			Return "User Id=" + UserName + ";" & _
 			   "Password=" + Password.GetString + ";" & _
 			   "Data Source=" + DataSource + ";" & _
 			   "Persist Security Info=False;Pooling=True"
-	End Function
+		End Get
+	End Property
 	
 	''' <summary>
-	''' Is the database connection string valid?
+	''' Checks if the connection string is ok to connect to the database and
+	''' saves the User Name and Data Source to the UserSettings object.
 	''' </summary>
 	''' <returns>True or False</returns>
-	Friend Shared Function IsConnectionStringValid As Boolean
+	Friend Function IsConnectionStringOk As Boolean
 		Using connection As New OracleConnection
 			Try
-				connection.ConnectionString = _
-					DatabaseConnectionString.Instance.GetConnectionString
-				
+				connection.ConnectionString = ConnectionString
 				connection.Open
+				UserSettings.Instance.LastUserName = UserName
+				UserSettings.Instance.LastDataSource = DataSource
 				Return True
 			Catch ex As OracleException
 				ShowError(ex.Message)

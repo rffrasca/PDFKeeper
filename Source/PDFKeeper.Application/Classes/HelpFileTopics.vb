@@ -36,15 +36,6 @@ Public NotInheritable Class HelpFileTopics
 	End Property
 	
 	''' <summary>
-	''' Gets the Database Connection Form help topic file name.
-	''' </summary>
-	Public Shared ReadOnly Property DatabaseConnectionForm As String
-		Get
-			Return "Database Connection.html"
-		End Get
-	End Property
-	
-	''' <summary>
 	''' Gets the Direct Upload Configuration Form help topic file name.
 	''' </summary>
 	Public Shared ReadOnly Property DirectUploadConfigurationForm As String

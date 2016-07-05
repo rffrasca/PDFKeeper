@@ -96,17 +96,18 @@
     <Compile Include="Classes\PdfProperties.vb" />
     <Compile Include="Classes\Shortcuts.vb" />
     <Compile Include="Classes\WindowsProfileFolders.vb" />
-    <Compile Include="Helper\AboutHelper.vb" />
-    <Compile Include="Model\About.vb" />
-    <Compile Include="View\AboutView.Designer.vb">
+    <Compile Include="Controls\TextBoxSecure.vb" />
+    <Compile Include="Models\About.vb" />
+    <Compile Include="Models\DatabaseLogOn.vb" />
+    <Compile Include="Utilities\AboutUtil.vb" />
+    <Compile Include="Utilities\HelpUtil.vb" />
+    <Compile Include="ViewModels\DatabaseLogOnViewModel.vb" />
+    <Compile Include="ViewModels\ViewModelBase.vb" />
+    <Compile Include="Views\AboutView.Designer.vb">
       <DependentUpon>AboutView.vb</DependentUpon>
     </Compile>
-    <Compile Include="View\AboutView.vb" />
+    <Compile Include="Views\AboutView.vb" />
     <Compile Include="Enums\Enums.vb" />
-    <Compile Include="Forms\DatabaseConnectionForm.Designer.vb">
-      <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\DatabaseConnectionForm.vb" />
     <Compile Include="Forms\DirectUploadConfigurationForm.Designer.vb">
       <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
     </Compile>
@@ -140,14 +141,14 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Singleton Classes\ApplicationUpdate.vb" />
-    <Compile Include="Singleton Classes\DatabaseConnectionString.vb" />
     <Compile Include="Singleton Classes\DocumentRecord.vb" />
     <Compile Include="Singleton Classes\FileCache.vb" />
     <Compile Include="Singleton Classes\ImageZoom.vb" />
     <Compile Include="Singleton Classes\UserSettings.vb" />
-    <EmbeddedResource Include="Forms\DatabaseConnectionForm.resx">
-      <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Views\DatabaseLogOnView.Designer.vb">
+      <DependentUpon>DatabaseLogOnView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DatabaseLogOnView.vb" />
     <EmbeddedResource Include="Forms\DirectUploadConfigurationForm.resx">
       <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -168,8 +169,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AboutView.resx">
+    <EmbeddedResource Include="Views\AboutView.resx">
       <DependentUpon>AboutView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DatabaseLogOnView.resx">
+      <DependentUpon>DatabaseLogOnView.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -188,9 +192,11 @@
       <Isolated>False</Isolated>
     </COMReference>
     <Folder Include="Enums" />
-    <Folder Include="Model" />
-    <Folder Include="Helper" />
-    <Folder Include="View" />
+    <Folder Include="Models" />
+    <Folder Include="Controls" />
+    <Folder Include="ViewModels" />
+    <Folder Include="Utilities" />
+    <Folder Include="Views" />
     <Folder Include="Resources" />
     <Folder Include="Singleton Classes" />
   </ItemGroup>
@@ -211,6 +217,7 @@
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
+    <Import Include="System.ComponentModel" />
     <Import Include="System.Configuration" />
     <Import Include="System.Data" />
     <Import Include="System.Diagnostics" />
