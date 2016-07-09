@@ -1,6 +1,6 @@
 ﻿'******************************************************************************
 '*
-'* PDFKeeper -- Free, Open Source PDF Capture, Upload, and Search.
+'* PDFKeeper -- Capture, Upload, and Search for PDF Documents
 '* Copyright (C) 2009-2016 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
@@ -19,8 +19,15 @@
 '* with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '*
 '******************************************************************************
+'*
+'* Created by SharpDevelop.
+'* User: Robert
+'* Date: 7/9/2016
+'* Time: 5:47 PM
+'*
+'******************************************************************************
 
-Public Module ExtensionMethods
+Public Module StringExt
 	''' <summary>
 	''' Checks if the specified value contains invalid file name characters.
 	''' </summary>
@@ -86,20 +93,4 @@ Public Module ExtensionMethods
 			printArgs.HasMorePages = False
 		End If
 	End Sub
-	
-	''' <summary>
-	''' Gets the string value from the specified SecureString object.
-	''' </summary>
-	''' <param name="param">SecureString object.</param>
-	''' <returns>Value</returns>
-	<ExtensionAttribute> _
-	Friend Function GetString(ByVal param As SecureString) As String
-		Dim secureStringPtr As IntPtr
-		Try
-			secureStringPtr = Marshal.SecureStringToGlobalAllocUnicode(param)
-			Return Marshal.PtrToStringAuto(secureStringPtr)
-		Finally
-			Marshal.ZeroFreeGlobalAllocUnicode(secureStringPtr)
-		End Try
-	End Function
 End Module

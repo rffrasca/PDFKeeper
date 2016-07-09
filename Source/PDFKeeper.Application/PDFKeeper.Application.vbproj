@@ -97,6 +97,8 @@
     <Compile Include="Classes\Shortcuts.vb" />
     <Compile Include="Classes\WindowsProfileFolders.vb" />
     <Compile Include="Controls\TextBoxSecure.vb" />
+    <Compile Include="Extensions\SecureStringExt.vb" />
+    <Compile Include="Extensions\StringExt.vb" />
     <Compile Include="Models\AppInfo.vb" />
     <Compile Include="Models\DBConnection.vb" />
     <Compile Include="Utilities\MiscUtil.vb" />
@@ -123,7 +125,6 @@
       <DependentUpon>RotatePagesForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\RotatePagesForm.vb" />
-    <Compile Include="Modules\ExtensionMethods.vb" />
     <Compile Include="Modules\FileUtil.vb" />
     <Compile Include="Modules\FolderUtil.vb" />
     <Compile Include="Modules\MessageBoxWrapper.vb" />
@@ -186,6 +187,7 @@
     <Folder Include="Enums" />
     <Folder Include="Models" />
     <Folder Include="Controls" />
+    <Folder Include="Extensions" />
     <Folder Include="ViewModels" />
     <Folder Include="Utilities" />
     <Folder Include="Views" />
