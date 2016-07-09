@@ -1273,36 +1273,42 @@ Public Partial Class MainForm
 					PdfKeeper.Strings.MainFormUnableRead, _
 					capturePdfEditInput))
 			End If
-			buttonRename.Enabled = True
+			buttonSaveAs.Enabled = True
 			buttonDelete.Enabled = True
 		Else
-			buttonRename.Enabled = False
+			buttonSaveAs.Enabled = False
 			buttonDelete.Enabled = False
 		End If
 		Me.Cursor = Cursors.Default
 	End Sub
 	
 	''' <summary>
-	''' Prompt for new file name, and then rename the selected PDF document.
+	''' Prompts for the folder and file name to save the captured PDF as, and then performs a move operation.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
-	Private Sub ButtonRenameClick(sender As Object, e As EventArgs)
-		PdfFileRenameForm.pdfRenameName = _
-			Path.GetFileNameWithoutExtension(capturePdfEditInput)
-		If PdfFileRenameForm.ShowDialog() = Windows.Forms.DialogResult.OK Then
-			Dim capturePdfFileNewName As String = _
-				Path.Combine(Path.GetDirectoryName(capturePdfEditInput), _
-				PdfFileRenameForm.pdfRenameName & ".pdf")
-			Me.Cursor = Cursors.WaitCursor
-			Try
-				System.IO.File.Move(capturePdfEditInput, capturePdfFileNewName)
-			Catch ex As IOException
-				ShowError(ex.Message)
-			Finally
-				Me.Cursor = Cursors.Default
-			End Try
+	Private Sub ButtonSaveAsClick(sender As Object, e As EventArgs)
+		SaveFileDialog.InitialDirectory = ApplicationProfileFolders.Capture
+		SaveFileDialog.FileName = Path.GetFileName(capturePdfEditInput)
+		If SaveFileDialog.ShowDialog() = 2 Then
+			Exit Sub
 		End If
+		Me.Cursor = Cursors.WaitCursor
+		Dim targetPdfFile As String = SaveFileDialog.FileName
+		Dim pdfFileInfo As New FileInfo(targetPdfFile)
+		UserSettings.Instance.SaveFileLastFolder = pdfFileInfo.DirectoryName
+		If Not pdfFileInfo.Extension.ToUpper(CultureInfo.InvariantCulture) = _
+				".PDF" Then
+			targetPdfFile = targetPdfFile & ".pdf"
+		End If
+		Try
+			System.IO.File.Move(capturePdfEditInput, targetPdfFile)
+		Catch ex As IOException
+			Me.Cursor = Cursors.Default
+			ShowError(ex.Message)
+			Exit Sub
+		End Try
+		Me.Cursor = Cursors.Default
 	End Sub
 	
 	''' <summary>
@@ -1667,7 +1673,7 @@ Public Partial Class MainForm
 	Private Sub ClearCaptureSelection
 		toolStripStatusLabelMessage.Text = Nothing
 		captureLastStatusMessage = Nothing
-		buttonRename.Enabled = False
+		buttonSaveAs.Enabled = False
 		buttonDelete.Enabled = False
 		textBoxPDFDocument.Text = Nothing
 		buttonViewOriginal.Enabled = False

@@ -820,7 +820,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACg
-        DQAAAk1TRnQBSQFMAgEBBgEAATgBCwE4AQsBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAUABCwFAAQsBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2104,13 +2104,13 @@
   <data name="groupBoxDocuments.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="buttonRename.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="buttonSaveAs.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="buttonRename.Enabled" type="System.Boolean, mscorlib">
+  <data name="buttonSaveAs.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="buttonRename.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonSaveAs.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAGYktHRAD/AP8A/6C9p5MAAAAielRYdFNvZnR3YXJlAAB42isvL9fLzMsuTk4sSNXLL0oHADbY
@@ -2129,34 +2129,34 @@
         nBsAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="buttonRename.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="buttonSaveAs.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="buttonRename.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonSaveAs.Location" type="System.Drawing.Point, System.Drawing">
     <value>520, 177</value>
   </data>
-  <data name="buttonRename.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonSaveAs.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="buttonRename.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonSaveAs.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="buttonRename.Text" xml:space="preserve">
-    <value>Re&amp;name</value>
+  <data name="buttonSaveAs.Text" xml:space="preserve">
+    <value>Save &amp;As...</value>
   </data>
-  <data name="buttonRename.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="buttonSaveAs.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="&gt;&gt;buttonRename.Name" xml:space="preserve">
-    <value>buttonRename</value>
+  <data name="&gt;&gt;buttonSaveAs.Name" xml:space="preserve">
+    <value>buttonSaveAs</value>
   </data>
-  <data name="&gt;&gt;buttonRename.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonSaveAs.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonRename.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonSaveAs.Parent" xml:space="preserve">
     <value>groupBoxDocuments</value>
   </data>
-  <data name="&gt;&gt;buttonRename.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonSaveAs.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="buttonDelete.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">

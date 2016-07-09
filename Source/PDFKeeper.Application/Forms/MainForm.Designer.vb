@@ -142,7 +142,7 @@ Partial Class MainForm
 		Me.buttonViewOriginal = New System.Windows.Forms.Button()
 		Me.textBoxPdfDocument = New System.Windows.Forms.TextBox()
 		Me.groupBoxDocuments = New System.Windows.Forms.GroupBox()
-		Me.buttonRename = New System.Windows.Forms.Button()
+		Me.buttonSaveAs = New System.Windows.Forms.Button()
 		Me.buttonDelete = New System.Windows.Forms.Button()
 		Me.listBoxDocCaptureQueue = New System.Windows.Forms.ListBox()
 		Me.processCapturePdfViewer = New System.Diagnostics.Process()
@@ -816,18 +816,18 @@ Partial Class MainForm
 		'groupBoxDocuments
 		'
 		resources.ApplyResources(Me.groupBoxDocuments, "groupBoxDocuments")
-		Me.groupBoxDocuments.Controls.Add(Me.buttonRename)
+		Me.groupBoxDocuments.Controls.Add(Me.buttonSaveAs)
 		Me.groupBoxDocuments.Controls.Add(Me.buttonDelete)
 		Me.groupBoxDocuments.Controls.Add(Me.listBoxDocCaptureQueue)
 		Me.groupBoxDocuments.Name = "groupBoxDocuments"
 		Me.groupBoxDocuments.TabStop = false
 		'
-		'buttonRename
+		'buttonSaveAs
 		'
-		resources.ApplyResources(Me.buttonRename, "buttonRename")
-		Me.buttonRename.Name = "buttonRename"
-		Me.buttonRename.UseVisualStyleBackColor = true
-		AddHandler Me.buttonRename.Click, AddressOf Me.ButtonRenameClick
+		resources.ApplyResources(Me.buttonSaveAs, "buttonSaveAs")
+		Me.buttonSaveAs.Name = "buttonSaveAs"
+		Me.buttonSaveAs.UseVisualStyleBackColor = true
+		AddHandler Me.buttonSaveAs.Click, AddressOf Me.ButtonSaveAsClick
 		'
 		'buttonDelete
 		'
@@ -912,7 +912,7 @@ Partial Class MainForm
 	End Sub
 	Private buttonRotate As System.Windows.Forms.Button
 	Private buttonDelete As System.Windows.Forms.Button
-	Private buttonRename As System.Windows.Forms.Button
+	Private buttonSaveAs As System.Windows.Forms.Button
 	Private buttonSetToFileName As System.Windows.Forms.Button
 	Private checkBoxDoNotResetZoomLevel As System.Windows.Forms.CheckBox
 	Private buttonTextOnlyPrevious As System.Windows.Forms.Button
