@@ -22,16 +22,16 @@
 '*
 '* Created by SharpDevelop.
 '* User: Robert
-'* Date: 7/4/2016
-'* Time: 3:44 PM
+'* Date: 7/9/2016
+'* Time: 2:10 PM
 '*
 '******************************************************************************
 
-Public NotInheritable Class About
+Public NotInheritable Class AppInfo
 	Private Shared productVersion As String = Application.ProductVersion
 	
 	Private Sub New()
-		' Because type 'About' contains only 'Shared' members, add a default
+		' Because type 'AppInfo' contains only 'Shared' members, add a default
 		' private constructor to prevent the compiler from adding a default
 		' public constructor. (CA1053)
 	End Sub
@@ -55,7 +55,7 @@ Public NotInheritable Class About
 	End Property
 	
 	''' <summary>
-	''' Gets the version associated with this application without the build
+	''' Gets the version associated with this application, without the build
 	''' number.
 	''' </summary>
 	Public Shared ReadOnly Property Version As String

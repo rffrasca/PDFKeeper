@@ -22,22 +22,28 @@
 '*
 '* Created by SharpDevelop.
 '* User: Robert
-'* Date: 7/2/2016
-'* Time: 12:01 PM
+'* Date: 7/9/2016
+'* Time: 2:18 PM
 '*
 '******************************************************************************
 
-Public NotInheritable Class AboutUtil
-	Private Sub New()
-		' Because type 'AboutHelper' contains only 'Shared' members, add a
-		' default private constructor to prevent the compiler from adding a
-		' default public constructor. (CA1053)
+Public Module MiscUtil
+	''' <summary>
+	''' Shows the specified topic file in the Help dialog box.
+	''' </summary>
+	''' <param name="parent">Parent control of the help dialog box.</param>
+	''' <param name="helpTopic">Topic file in help file to display.</param>
+	Public Sub ShowHelp( _
+		ByVal parent As System.Windows.Forms.Control, _
+		helpTopic As String)
+			
+		Help.ShowHelp(parent, "PDFKeeper.en.chm", helpTopic & ".html")
 	End Sub
 	
 	''' <summary>
-	''' Shows homepage with default application.
+	''' Shows the homepage using the default application.
 	''' </summary>
-	Public Shared Sub ShowHomepage
+	Public Sub ShowHomepage
 		Process.Start(ConfigurationManager.AppSettings("HomePageUrl"))
 	End Sub
-End Class
+End Module

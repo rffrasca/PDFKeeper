@@ -24,19 +24,19 @@ Public Partial Class AboutView
 	Public Sub New()
 		Me.InitializeComponent()
 		Font = SystemFonts.MessageBoxFont
-		labelTitle.Text = About.Title
-		labelDescription.Text = About.Description
-		textBoxVersion.Text = About.Version
-		textBoxBuild.Text = About.Build
-		labelCopyright.Text = About.Copyright
-		textBoxLicense.Text = About.License
-		textBoxThirdPartyNotice.Text = About.ThirdPartyNotice
+		labelTitle.Text = AppInfo.Title
+		labelDescription.Text = AppInfo.Description
+		textBoxVersion.Text = AppInfo.Version
+		textBoxBuild.Text = AppInfo.Build
+		labelCopyright.Text = AppInfo.Copyright
+		textBoxLicense.Text = AppInfo.License
+		textBoxThirdPartyNotice.Text = AppInfo.ThirdPartyNotice
 	End Sub
 	
 	Private Sub LinkLabelHomepageLinkClicked( _
 		sender As Object, _
 		e As LinkLabelLinkClickedEventArgs)
 		
-		AboutUtil.ShowHomepage
+		ShowHomepage
 	End Sub
 End Class
