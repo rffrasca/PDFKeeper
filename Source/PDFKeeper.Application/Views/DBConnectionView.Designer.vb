@@ -20,7 +20,7 @@
 '*
 '******************************************************************************
 
-Partial Class DatabaseLogOnView
+Partial Class DBConnectionView
 	Inherits System.Windows.Forms.Form
 	
 	''' <summary>
@@ -47,7 +47,7 @@ Partial Class DatabaseLogOnView
 	''' not be able to load this method if it was changed manually.
 	''' </summary>
 	Private Sub InitializeComponent()
-		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DatabaseLogOnView))
+		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DBConnectionView))
 		Me.labelUserName = New System.Windows.Forms.Label()
 		Me.textBoxUserName = New System.Windows.Forms.TextBox()
 		Me.labelPassword = New System.Windows.Forms.Label()
@@ -118,7 +118,7 @@ Partial Class DatabaseLogOnView
 		Me.textBoxSecure.ShortcutsEnabled = false
 		Me.textBoxSecure.UseSystemPasswordChar = true
 		'
-		'DatabaseLogOnView
+		'DBConnectionView
 		'
 		Me.AcceptButton = Me.buttonOK
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -137,8 +137,8 @@ Partial Class DatabaseLogOnView
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
 		Me.MaximizeBox = false
 		Me.MinimizeBox = false
-		Me.Name = "DatabaseLogOnView"
-		AddHandler HelpRequested, AddressOf Me.DatabaseLogOnViewHelpRequested
+		Me.Name = "DBConnectionView"
+		AddHandler HelpRequested, AddressOf Me.DBConnectionViewHelpRequested
 		CType(Me.pictureBoxLogo,System.ComponentModel.ISupportInitialize).EndInit
 		Me.ResumeLayout(false)
 		Me.PerformLayout

@@ -444,7 +444,7 @@
     <value>textBoxSecure</value>
   </data>
   <data name="&gt;&gt;textBoxSecure.Type" xml:space="preserve">
-    <value>PdfKeeper.TextBoxSecure, PdfKeeper, Version=3.2.0.30972, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PdfKeeper.TextBoxSecure, PdfKeeper, Version=3.2.0.24744, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
   </data>
   <data name="&gt;&gt;textBoxSecure.Parent" xml:space="preserve">
     <value>$this</value>
@@ -541,10 +541,10 @@
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Database Log On - PDFKeeper</value>
+    <value>Database Connection - PDFKeeper</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>DatabaseLogOnView</value>
+    <value>DBConnectionView</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

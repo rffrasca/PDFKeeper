@@ -45,7 +45,7 @@ Public Class DatabaseSearchQuery
 		Using oraConnection As New OracleConnection
 			Try
 				oraConnection.ConnectionString = _
-					DatabaseLogOn.Instance.ConnectionString
+					DBConnection.Instance.GetConnectionString
 				oraConnection.Open
 				Dim adapter As New OracleDataAdapter(sql, oraConnection)
 				Dim table As New DataTable

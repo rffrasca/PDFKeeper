@@ -20,15 +20,13 @@
 '*
 '******************************************************************************
 
-Public Partial Class DatabaseLogOnView
-	Private viewModel As New DatabaseLogOnViewModel
-	Friend Shared dbPassword As New SecureString
+Public Partial Class DBConnectionView
+	Private viewModel As New DBConnectionViewModel
 		
 	Public Sub New()
 		Me.InitializeComponent()
 		Font = SystemFonts.MessageBoxFont
 		InitializeDataBindings
-		viewModel.GetLastLogOnUserNameAndDataSource
 	End Sub
 	
 	Private Sub InitializeDataBindings
@@ -50,21 +48,21 @@ Public Partial Class DatabaseLogOnView
 			"DataSource", _
 			False, _
 			Windows.Forms.DataSourceUpdateMode.OnPropertyChanged)
-		buttonOK.DataBindings.Add("Enabled", viewModel, "IsOkToLogOn")
+		buttonOK.DataBindings.Add("Enabled", viewModel, "ReadyToConnect")
 	End Sub
 	
-	Private Sub DatabaseLogOnViewHelpRequested( _
+	Private Sub DBConnectionViewHelpRequested( _
 		sender As Object, _
 		hlpevent As HelpEventArgs)
 		
-		HelpUtil.ShowHelp(Me, ActiveForm.Name)
+		ShowHelp(Me, ActiveForm.Name)
 	End Sub
 	
 	Private Sub ButtonOkClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
 		viewModel.SecurePassword = TextBoxSecure.SecureText
 		Me.Cursor = Cursors.Default
-		If viewModel.IsAbleToConnect = False Then
+		If viewModel.ConnectionValidated = False Then
 			TextBoxSecure.SecureText.Clear
 			textBoxUsername.Select
 			Exit Sub

@@ -60,7 +60,7 @@ Public Class TextBoxSecure
 	''' <summary>
 	''' Updates the secure string by either removing the printable character
 	''' that was removed from the text box by pressing the Backspace key or
-	''' adding the printable character entered. 
+	''' adding the printable character entered.
 	''' </summary>
 	''' <param name="e"></param>
 	Protected Overrides Sub OnKeyPress( _

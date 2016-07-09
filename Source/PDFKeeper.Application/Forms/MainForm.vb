@@ -1923,15 +1923,14 @@ Public Partial Class MainForm
 	End Function
 	
 	''' <summary>
-	''' Check for unsaved Document Notes; dispose the database password string;
-	''' save form size and postion; delete Document Capture and Direct Upload
-	''' folder shortcuts; and delete cached PDF and PNG files.
+	''' Check for unsaved Document Notes; save form size and postion; delete
+	''' Document Capture and Direct Upload folder shortcuts; and delete cached
+	''' PDF and PNG files.
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub MainFormFormClosed(sender As Object, e As FormClosedEventArgs)
 		DocumentNotesModifiedCheck
-		DatabaseLogOnView.dbPassword.Dispose
 		SaveFormPosition
 		Try
 			System.IO.File.Delete(Shortcuts.DocumentCaptureInLinks)

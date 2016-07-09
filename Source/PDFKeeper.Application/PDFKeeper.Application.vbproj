@@ -97,11 +97,10 @@
     <Compile Include="Classes\Shortcuts.vb" />
     <Compile Include="Classes\WindowsProfileFolders.vb" />
     <Compile Include="Controls\TextBoxSecure.vb" />
-    <Compile Include="Models\About.vb" />
-    <Compile Include="Models\DatabaseLogOn.vb" />
-    <Compile Include="Utilities\AboutUtil.vb" />
-    <Compile Include="Utilities\HelpUtil.vb" />
-    <Compile Include="ViewModels\DatabaseLogOnViewModel.vb" />
+    <Compile Include="Models\AppInfo.vb" />
+    <Compile Include="Models\DBConnection.vb" />
+    <Compile Include="Utilities\MiscUtil.vb" />
+    <Compile Include="ViewModels\DBConnectionViewModel.vb" />
     <Compile Include="ViewModels\ViewModelBase.vb" />
     <Compile Include="Views\AboutView.Designer.vb">
       <DependentUpon>AboutView.vb</DependentUpon>
@@ -145,10 +144,10 @@
     <Compile Include="Singleton Classes\FileCache.vb" />
     <Compile Include="Singleton Classes\ImageZoom.vb" />
     <Compile Include="Singleton Classes\UserSettings.vb" />
-    <Compile Include="Views\DatabaseLogOnView.Designer.vb">
-      <DependentUpon>DatabaseLogOnView.vb</DependentUpon>
+    <Compile Include="Views\DBConnectionView.Designer.vb">
+      <DependentUpon>DBConnectionView.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\DatabaseLogOnView.vb" />
+    <Compile Include="Views\DBConnectionView.vb" />
     <EmbeddedResource Include="Forms\DirectUploadConfigurationForm.resx">
       <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -172,8 +171,8 @@
     <EmbeddedResource Include="Views\AboutView.resx">
       <DependentUpon>AboutView.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\DatabaseLogOnView.resx">
-      <DependentUpon>DatabaseLogOnView.vb</DependentUpon>
+    <EmbeddedResource Include="Views\DBConnectionView.resx">
+      <DependentUpon>DBConnectionView.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

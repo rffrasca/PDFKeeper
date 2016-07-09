@@ -35,8 +35,8 @@ Namespace My
 			Me.SaveMySettingsOnExit = False
 			Me.ShutDownStyle = ShutdownMode.AfterMainFormCloses
 				
-			' Show Database LogOn view to the user.
-			If DatabaseLogOnView.ShowDialog() = _
+			' Show Database Connection view to the user.
+			If DBConnectionView.ShowDialog() = _
 				Windows.Forms.DialogResult.Cancel Then
 				
 				Environment.Exit(1)
