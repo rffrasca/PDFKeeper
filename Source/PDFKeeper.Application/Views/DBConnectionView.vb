@@ -48,7 +48,7 @@ Public Partial Class DBConnectionView
 			"DataSource", _
 			False, _
 			Windows.Forms.DataSourceUpdateMode.OnPropertyChanged)
-		buttonOK.DataBindings.Add("Enabled", viewModel, "ReadyToConnect")
+		buttonOK.DataBindings.Add("Enabled", viewModel, "OkButtonState")
 	End Sub
 	
 	Private Sub DBConnectionViewHelpRequested( _
@@ -59,14 +59,15 @@ Public Partial Class DBConnectionView
 	End Sub
 	
 	Private Sub ButtonOkClick(sender As Object, e As EventArgs)
-		Me.Cursor = Cursors.WaitCursor
 		viewModel.SecurePassword = TextBoxSecure.SecureText
+		Me.Cursor = Cursors.WaitCursor
+		viewModel.PerformOkButtonActions
 		Me.Cursor = Cursors.Default
-		If viewModel.ConnectionValidated = False Then
+		If viewModel.ConnectTestPassed = False Then
 			TextBoxSecure.SecureText.Clear
 			textBoxUsername.Select
-			Exit Sub
+		Else
+			Me.DialogResult = Windows.Forms.DialogResult.OK
 		End If
-		Me.DialogResult = Windows.Forms.DialogResult.OK
 	End Sub
 End Class

@@ -29,27 +29,38 @@
 
 Public Class DBConnectionViewModel
 	Inherits ViewModelBase
-	Private _password As String
-	Private _readyToConnect As Boolean
+	Private _userName As String = String.Empty
+	Private _password As String = String.Empty
+	Private _securePassword As SecureString
+	Private _dataSource As String = String.Empty
+	Private _okButtonState As Boolean
+	Private _connectTestPassed As Boolean
+	Private userNameSet As Boolean
+	Private dataSourceSet As Boolean
 	
 	''' <summary>
-	''' Gets/Sets the database connection user name and is a binder between the
-	''' view and the model.
+	''' Gets/Sets the user name for the database connection and is bound to the
+	''' view.
 	''' </summary>
 	Public Property UserName As String
 		Get
-			SetReadyToConnect
-			Return DBConnection.Instance.UserName
+			If _userName.Length = 0 And userNameSet = False Then
+				_userName = DBConnection.Instance.UserName
+				userNameSet = True
+				SetOkButtonStateProperty
+			End If
+			Return _userName
 		End Get
 		Set(ByVal value As String)
-			DBConnection.Instance.UserName = value.Trim
-			SetReadyToConnect
+			_userName = value.Trim
+			SetOkButtonStateProperty
 			OnPropertyChanged("UserName")
 		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets/Sets the password string of asterisks and is bound to the view.
+	''' Gets/Sets the password string of asterisks for the database connection
+	''' and is bound to the view.
 	''' </summary>
 	Public Property Password As String
 		Get
@@ -57,84 +68,93 @@ Public Class DBConnectionViewModel
 		End Get
 		Set(ByVal value As String)
 			_password = value.Trim
+			SetOkButtonStateProperty
 			OnPropertyChanged("Password")
 		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets/Sets the database connection secure password object.
+	''' Gets/Sets the secure password for the database connection and is to be
+	''' set by the view.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
 	Public Property SecurePassword As SecureString
 		Get
-			Return DBConnection.Instance.SecurePassword
+			Return _securePassword
 		End Get
 		Set(ByVal value As SecureString)
-			DBConnection.Instance.SecurePassword = value
+			_securePassword = value
 		End Set
 	End Property
-	
+		
 	''' <summary>
-	''' Gets/Sets the database connection data source and is a binder between
-	''' the view and the model. 
+	''' Gets/Sets the data source for the database connection and is bound to
+	''' the view.
 	''' </summary>
 	Public Property DataSource As String
 		Get
-			SetReadyToConnect
-			Return DBConnection.Instance.DataSource
+			If _dataSource.Length = 0 And dataSourceSet = False Then
+				_dataSource = DBConnection.Instance.DataSource
+				dataSourceSet = True
+				SetOkButtonStateProperty
+			End If
+			Return _dataSource
 		End Get
 		Set(ByVal value As String)
-			DBConnection.Instance.DataSource = value.Trim
-			SetReadyToConnect
-			OnPropertyChanged("UserName")
+			_dataSource = value.Trim
+			SetOkButtonStateProperty
+			OnPropertyChanged("DataSource")
 		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets/Sets the ready to connect status and is a binder between the view
-	''' and the model.
+	''' Gets/Sets the ok button state and is bound to the view.
 	''' </summary>
-	Public Property ReadyToConnect As Boolean
+	Public Property OkButtonState As Boolean
 		Get
-			return _readyToConnect
+			return _okButtonState
 		End Get
 		Set(ByVal value As Boolean)
-			_readyToConnect = value
-			OnPropertyChanged("ReadyToConnect")
+			_okButtonState = value
+			OnPropertyChanged("OkButtonState")
 		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets/Sets the connection validation status and is used by the view. It
-	''' also sets the Password property to an empty string when the validation
-	''' status is false to clear the Password text box on the view.
+	''' Gets the connect test passed result for the view.
 	''' </summary>
-	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
-		"Microsoft.Performance", _
-		"CA1822:MarkMembersAsStatic")> _
-	Public ReadOnly Property ConnectionValidated As Boolean
+	Public ReadOnly Property ConnectTestPassed As Boolean
 		Get
-			Dim result As Boolean = DBConnection.Instance.ConnectionValidated
-			If result = False Then
-				Password = ""
-			End If
-			Return result
+			return _connectTestPassed
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Sets the ready to connect status to the value of the model.
+	''' Calls methods on the model to set the user name, password, and data
+	''' source; and then perform a test connection, setting the
+	''' ConnectTestPassed property with the result.
 	''' </summary>
-	Private Sub SetReadyToConnect
-		' This if check is needed to avoid a StackOverflowException.
-		If ReadyToConnect <> DBConnection.Instance.ReadyToConnect Then
-			If DBConnection.Instance.ReadyToConnect
-				ReadyToConnect = True
-			Else
-				ReadyToConnect = False
-			End If
+	Public Sub PerformOkButtonActions
+		DBConnection.Instance.SetModelProperties( _
+			UserName, _
+			SecurePassword, _
+			DataSource)
+		_connectTestPassed = DBConnection.Instance.PerformTestConnection
+		If ConnectTestPassed = False Then
+			Password = String.Empty
+		End If
+	End Sub
+		
+	''' <summary>
+	''' Sets the OK button state property that is bound to the view.
+	''' </summary>
+	Private Sub SetOkButtonStateProperty
+		If UserName.Length > 0 And _
+			Password.Length > 0 And _
+			DataSource.Length > 0 Then
+			
+			OkButtonState = True
+		Else
+			OkButtonState = False
 		End If
 	End Sub
 End Class

@@ -32,11 +32,9 @@
 ''' </summary>
 Public NotInheritable Class DBConnection
 	Private Shared _instance As DBConnection = New DBConnection()
-	Private _userName As String
+	Private _userName As String = String.Empty
 	Private _securePassword As SecureString
-	Private _dataSource As String
-	Private _readyToConnect As Boolean
-	Private _connectionValidated As Boolean
+	Private _dataSource As String = String.Empty
 	
 	Public Shared ReadOnly Property Instance As DBConnection
 		Get
@@ -45,128 +43,88 @@ Public NotInheritable Class DBConnection
 	End Property
 	
 	''' <summary>
-	''' Gets/Sets the database connection user name.  On a get, the user name
-	''' last used to connect will be set using the value from the UserSettings
-	''' object.
+	''' Gets/Sets the user name for the database connection.
 	''' </summary>
-	Friend Property UserName As String
+	Friend ReadOnly Property UserName As String
 		Get
-			If _userName Is Nothing Then
+			If _userName.Length = 0 Then
 				_userName = UserSettings.Instance.LastUserName
-				OnPropertyChanged
 			End If
 			Return _userName
 		End Get
-		Set(ByVal value As String)
-			_userName = value
-			OnPropertyChanged
-		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets/Sets the database connection secure password object.
+	''' Gets/Sets the password for the database connection.
 	''' </summary>
-	Friend Property SecurePassword As SecureString
+	Friend ReadOnly Property SecurePassword As SecureString
 		Get
 			Return _securePassword
 		End Get
-		Set(ByVal value As SecureString)
-			_securePassword = value
-			OnPropertyChanged
-		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets/Sets the database connection data source.  On a get, the data
-	''' source last used to connect will be set using the value from the
-	''' UserSettings object.
+	''' Gets/Sets the data source for the database connection.
 	''' </summary>
-	Friend Property DataSource As String
+	Friend ReadOnly Property DataSource As String
 		Get
-			If _dataSource Is Nothing Then
+			If _dataSource.Length = 0 Then
 				_dataSource = UserSettings.Instance.LastDataSource
-				OnPropertyChanged
 			End If
 			Return _dataSource
 		End Get
-		Set(ByVal value As String)
-			_dataSource = value
-			OnPropertyChanged
-		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets the ready to connect status.
+	''' Gets the connection string for the database connection.
 	''' </summary>
-	Friend ReadOnly Property ReadyToConnect As Boolean
+	Friend ReadOnly Property ConnectionString As String
 		Get
-			Return _readyToConnect
+			Return "User Id=" + UserName + ";" & _
+				"Password=" + SecurePassword.GetString + ";" & _
+				"Data Source=" + DataSource + ";" & _
+				"Persist Security Info=False;Pooling=True"
 		End Get
 	End Property
 	
 	''' <summary>
-	''' Gets the database connection validation status.
+	''' Sets the model properties for the database connection. 
 	''' </summary>
-	Friend ReadOnly Property ConnectionValidated As Boolean
-		Get
-			return _connectionValidated
-		End Get
-	End Property
+	''' <param name="userNameParam"></param>
+	''' <param name="securePasswordParam"></param>
+	''' <param name="dataSourceParam"></param>
+	Friend Sub SetModelProperties( _
+		ByVal userNameParam As String, _
+		ByVal securePasswordParam As SecureString, _
+		ByVal dataSourceParam As String)
 		
+		_userName = userNameParam
+		_securePassword = securePasswordParam
+		_dataSource = dataSourceParam
+	End Sub
+	
 	''' <summary>
-	''' Gets the database connection string.  It should only be called right
-	''' before connecting to the database and the connection string should be
-	''' disposed as quickly as possible.
+	''' Performs a test connection with the data source and calls the
+	''' SetLastUserNameAndDataSource except when the fails. 
 	''' </summary>
-	''' <returns>database connection string.</returns>
-	Friend Function GetConnectionString As String
-		Return "User Id=" + UserName + ";" & _
-			"Password=" + SecurePassword.GetString + ";" & _
-			"Data Source=" + DataSource + ";" & _
-			"Persist Security Info=False;Pooling=True"
+	''' <returns>Test passed (True or False)</returns>
+	Friend Function PerformTestConnection As Boolean
+		Using connection As New OracleConnection
+			Try
+				connection.ConnectionString = ConnectionString
+				connection.Open
+				SetLastUserNameAndDataSource
+				Return True
+			Catch ex As OracleException
+				ShowError(ex.Message)
+				Return False
+			End Try
+		End Using
 	End Function
 	
 	''' <summary>
-	''' Sets the ready to connect status to true when the user name and data
-	''' source properties are not blank.  It also validates the database
-	''' connection when the secure password is not nothing and sets the
-	''' connection validation status based on the result. 
-	''' </summary>
-	Private Sub OnPropertyChanged
-		If UserName.Length > 0 And DataSource.Length > 0 Then
-			_readyToConnect = True
-			If SecurePassword IsNot Nothing Then
-				ValidateConnection
-			Else
-				_connectionValidated = False
-			End If
-		Else
-			_readyToConnect = False
-		End If
-	End Sub
-	
-	''' <summary>
-	''' Validates the Database Connection by making a connection to the
-	''' database, and then setting the ConnectionValidated property based on
-	''' the result.
-	''' </summary>
-	Private Sub ValidateConnection
-		Using connection As New OracleConnection
-			Try
-				connection.ConnectionString = GetConnectionString
-				connection.Open
-				SetLastUserNameAndDataSource
-				_connectionValidated = True
-			Catch ex As OracleException
-				ShowError(ex.Message)
-				_connectionValidated = False
-			End Try
-		End Using
-	End Sub
-		
-	''' <summary>
-	''' Sets the user name and data source to their cooresponding properties in
-	''' the UserSettings object.
+	''' Sets the user name and data source cooresponding properties in the
+	''' UserSettings object.
 	''' </summary>
 	Private Sub SetLastUserNameAndDataSource
 		UserSettings.Instance.LastUserName = UserName

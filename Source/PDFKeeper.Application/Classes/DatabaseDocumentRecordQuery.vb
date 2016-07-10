@@ -98,7 +98,7 @@ Public Class DatabaseDocumentRecordQuery
 		Using oraConnection As New OracleConnection
 			Try
 				oraConnection.ConnectionString = _
-					DBConnection.Instance.GetConnectionString
+					DBConnection.Instance.ConnectionString
 				oraConnection.Open
 				Dim oraCommand As New OracleCommand(sql, oraConnection)
 				Dim dataReader As OracleDataReader = oraCommand.ExecuteReader()
