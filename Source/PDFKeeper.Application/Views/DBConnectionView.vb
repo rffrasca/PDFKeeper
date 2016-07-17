@@ -59,15 +59,14 @@ Public Partial Class DBConnectionView
 	End Sub
 	
 	Private Sub ButtonOkClick(sender As Object, e As EventArgs)
-		viewModel.SecurePassword = TextBoxSecure.SecureText
 		Me.Cursor = Cursors.WaitCursor
-		viewModel.PerformOkButtonActions
+		viewModel.SecurePassword = TextBoxSecure.SecureText
 		Me.Cursor = Cursors.Default
-		If viewModel.ConnectTestPassed = False Then
+		If viewModel.ConnectTestPassed Then
+			Me.DialogResult = Windows.Forms.DialogResult.OK
+		Else
 			TextBoxSecure.SecureText.Clear
 			textBoxUsername.Select
-		Else
-			Me.DialogResult = Windows.Forms.DialogResult.OK
 		End If
 	End Sub
 End Class

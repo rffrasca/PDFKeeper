@@ -104,8 +104,9 @@ Public NotInheritable Class DBConnection
 	End Sub
 	
 	''' <summary>
-	''' Performs a test connection with the data source and calls the
-	''' SetLastUserNameAndDataSource except when the fails. 
+	''' Performs a test connection with the data source, and when successful,
+	''' makes the SecurePassword property member readonly and executes
+	''' SetLastUserNameAndDataSource. 
 	''' </summary>
 	''' <returns>Test passed (True or False)</returns>
 	Friend Function PerformTestConnection As Boolean
@@ -113,6 +114,7 @@ Public NotInheritable Class DBConnection
 			Try
 				connection.ConnectionString = ConnectionString
 				connection.Open
+				_securePassword.MakeReadOnly
 				SetLastUserNameAndDataSource
 				Return True
 			Catch ex As OracleException

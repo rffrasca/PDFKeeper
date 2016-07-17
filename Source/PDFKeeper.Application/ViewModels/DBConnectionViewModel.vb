@@ -75,7 +75,7 @@ Public Class DBConnectionViewModel
 	
 	''' <summary>
 	''' Gets/Sets the secure password for the database connection and is to be
-	''' set by the view.
+	''' set by the view; and then executes OnSecurePasswordSet.
 	''' </summary>
 	Public Property SecurePassword As SecureString
 		Get
@@ -83,6 +83,7 @@ Public Class DBConnectionViewModel
 		End Get
 		Set(ByVal value As SecureString)
 			_securePassword = value
+			OnSecurePasswordSet
 		End Set
 	End Property
 		
@@ -129,11 +130,11 @@ Public Class DBConnectionViewModel
 	End Property
 	
 	''' <summary>
-	''' Calls methods on the model to set the user name, password, and data
+	''' Executes methods on the model to set the user name, password, and data
 	''' source; and then perform a test connection, setting the
-	''' ConnectTestPassed property with the result.
+	''' ConnectTestPassed property member with the result.
 	''' </summary>
-	Public Sub PerformOkButtonActions
+	Public Sub OnSecurePasswordSet
 		DBConnection.Instance.SetModelProperties( _
 			UserName, _
 			SecurePassword, _
