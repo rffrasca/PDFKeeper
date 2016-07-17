@@ -87,9 +87,9 @@ Partial Class PdfOwnerPasswordForm
 		'PdfOwnerPasswordForm
 		'
 		Me.AcceptButton = Me.buttonOK
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-		Me.CancelButton = Me.buttonCancel
 		resources.ApplyResources(Me, "$this")
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.CancelButton = Me.buttonCancel
 		Me.Controls.Add(Me.buttonCancel)
 		Me.Controls.Add(Me.buttonOK)
 		Me.Controls.Add(Me.textBoxPassword)

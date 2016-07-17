@@ -103,6 +103,7 @@
     <Compile Include="Models\DBConnection.vb" />
     <Compile Include="Utilities\MiscUtil.vb" />
     <Compile Include="ViewModels\DBConnectionViewModel.vb" />
+    <Compile Include="ViewModels\PdfOwnerPasswordViewModel.vb" />
     <Compile Include="ViewModels\ViewModelBase.vb" />
     <Compile Include="Views\AboutView.Designer.vb">
       <DependentUpon>AboutView.vb</DependentUpon>
@@ -145,6 +146,10 @@
       <DependentUpon>DBConnectionView.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\DBConnectionView.vb" />
+    <Compile Include="Views\PdfOwnerPasswordView.Designer.vb">
+      <DependentUpon>PdfOwnerPasswordView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PdfOwnerPasswordView.vb" />
     <EmbeddedResource Include="Forms\DirectUploadConfigurationForm.resx">
       <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DBConnectionView.resx">
       <DependentUpon>DBConnectionView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PdfOwnerPasswordView.resx">
+      <DependentUpon>PdfOwnerPasswordView.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

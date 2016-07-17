@@ -871,9 +871,9 @@ Partial Class MainForm
 		'MainForm
 		'
 		Me.AcceptButton = Me.buttonSearch
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-		Me.CancelButton = Me.buttonDeselect
 		resources.ApplyResources(Me, "$this")
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.CancelButton = Me.buttonDeselect
 		Me.Controls.Add(Me.tabControlMain)
 		Me.Controls.Add(Me.statusStrip)
 		Me.Controls.Add(Me.menuStrip)

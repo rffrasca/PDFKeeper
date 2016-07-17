@@ -165,8 +165,8 @@ Partial Class AboutView
 		'AboutView
 		'
 		Me.AcceptButton = Me.buttonOK
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
 		resources.ApplyResources(Me, "$this")
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.ControlBox = false
 		Me.Controls.Add(Me.textBoxVersion)
 		Me.Controls.Add(Me.textBoxBuild)

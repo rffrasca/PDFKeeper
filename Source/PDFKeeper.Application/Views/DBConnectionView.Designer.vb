@@ -121,9 +121,9 @@ Partial Class DBConnectionView
 		'DBConnectionView
 		'
 		Me.AcceptButton = Me.buttonOK
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-		Me.CancelButton = Me.buttonCancel
 		resources.ApplyResources(Me, "$this")
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.CancelButton = Me.buttonCancel
 		Me.Controls.Add(Me.textBoxSecure)
 		Me.Controls.Add(Me.labelHelp)
 		Me.Controls.Add(Me.pictureBoxLogo)

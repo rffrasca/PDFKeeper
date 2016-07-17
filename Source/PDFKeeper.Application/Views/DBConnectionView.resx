@@ -248,9 +248,6 @@
   <data name="&gt;&gt;textBoxDataSource.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="buttonOK.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
     <value>222, 179</value>
   </data>
@@ -444,7 +441,7 @@
     <value>textBoxSecure</value>
   </data>
   <data name="&gt;&gt;textBoxSecure.Type" xml:space="preserve">
-    <value>PdfKeeper.TextBoxSecure, PdfKeeper, Version=3.2.0.24744, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PdfKeeper.TextBoxSecure, PdfKeeper, Version=3.2.0.20039, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
   </data>
   <data name="&gt;&gt;textBoxSecure.Parent" xml:space="preserve">
     <value>$this</value>
@@ -455,6 +452,9 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>390, 213</value>
   </data>
