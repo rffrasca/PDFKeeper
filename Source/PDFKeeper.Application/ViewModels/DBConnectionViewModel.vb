@@ -102,7 +102,7 @@ Public Class DBConnectionViewModel
 	
 	''' <summary>
 	''' Sets OkEnabled to True when the length of UserName, Password, and
-	''' DataSource are > 0; otherwise, sets OkEnabled = False.
+	''' DataSource are > 0; otherwise, sets OkEnabled to False.
 	''' </summary>
 	Private Sub SetOkEnabled
 		If UserName.Length > 0 And _
