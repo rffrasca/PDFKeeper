@@ -31,36 +31,35 @@ Public Class DBConnectionViewModel
 	Inherits ViewModelBase
 	Private _userName As String = String.Empty
 	Private _password As String = String.Empty
-	Private _securePassword As SecureString
 	Private _dataSource As String = String.Empty
-	Private _okButtonState As Boolean
-	Private _connectTestPassed As Boolean
-	Private userNameSet As Boolean
-	Private dataSourceSet As Boolean
+	Private _okEnabled As Boolean
 	
 	''' <summary>
-	''' Gets/Sets the user name for the database connection and is bound to the
+	''' Constructor gets LastUserName and LastDataSource from the UserSettings
+	''' object.
+	''' </summary>
+	Public Sub New()
+		_userName = UserSettings.Instance.LastUserName
+		_dataSource = UserSettings.Instance.LastDataSource
+	End Sub
+	
+	''' <summary>
+	''' Gets/Sets the User Name for the Database Connection and is bound to the
 	''' view.
 	''' </summary>
 	Public Property UserName As String
 		Get
-			If _userName.Length = 0 And userNameSet = False Then
-				_userName = DBConnection.Instance.UserName
-				userNameSet = True
-				SetOkButtonStateProperty
-			End If
 			Return _userName
 		End Get
 		Set(ByVal value As String)
 			_userName = value.Trim
-			SetOkButtonStateProperty
+			SetOkEnabled
 			OnPropertyChanged("UserName")
 		End Set
 	End Property
-	
+		
 	''' <summary>
-	''' Gets/Sets the password string of asterisks for the database connection
-	''' and is bound to the view.
+	''' Gets/Sets the Password string as asterisks and is bound to the view.
 	''' </summary>
 	Public Property Password As String
 		Get
@@ -68,94 +67,77 @@ Public Class DBConnectionViewModel
 		End Get
 		Set(ByVal value As String)
 			_password = value.Trim
-			SetOkButtonStateProperty
+			SetOkEnabled
 			OnPropertyChanged("Password")
 		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets/Sets the secure password for the database connection and is to be
-	''' set by the view; and then executes OnSecurePasswordSet.
-	''' </summary>
-	Public Property SecurePassword As SecureString
-		Get
-			Return _securePassword
-		End Get
-		Set(ByVal value As SecureString)
-			_securePassword = value
-			OnSecurePasswordSet
-		End Set
-	End Property
-		
-	''' <summary>
-	''' Gets/Sets the data source for the database connection and is bound to
-	''' the view.
+	''' Gets/Sets the Data Source for the Database Connection bound to the
+	''' view.
 	''' </summary>
 	Public Property DataSource As String
 		Get
-			If _dataSource.Length = 0 And dataSourceSet = False Then
-				_dataSource = DBConnection.Instance.DataSource
-				dataSourceSet = True
-				SetOkButtonStateProperty
-			End If
 			Return _dataSource
 		End Get
 		Set(ByVal value As String)
 			_dataSource = value.Trim
-			SetOkButtonStateProperty
+			SetOkEnabled
 			OnPropertyChanged("DataSource")
 		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets/Sets the ok button state and is bound to the view.
+	''' Gets/Sets the OK button enabled state and is bound to the view.
 	''' </summary>
-	Public Property OkButtonState As Boolean
+	Public Property OkEnabled As Boolean
 		Get
-			return _okButtonState
+			Return _okEnabled
 		End Get
 		Set(ByVal value As Boolean)
-			_okButtonState = value
-			OnPropertyChanged("OkButtonState")
+			_okEnabled = value
+			OnPropertyChanged("OkEnabled")
 		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets the connect test passed result for the view.
+	''' Sets OkEnabled to True when the length of UserName, Password, and
+	''' DataSource are > 0; otherwise, sets OkEnabled = False.
 	''' </summary>
-	Public ReadOnly Property ConnectTestPassed As Boolean
-		Get
-			return _connectTestPassed
-		End Get
-	End Property
-	
-	''' <summary>
-	''' Executes methods on the model to set the user name, password, and data
-	''' source; and then perform a test connection, setting the
-	''' ConnectTestPassed property member with the result.
-	''' </summary>
-	Public Sub OnSecurePasswordSet
-		DBConnection.Instance.SetModelProperties( _
-			UserName, _
-			SecurePassword, _
-			DataSource)
-		_connectTestPassed = DBConnection.Instance.PerformTestConnection
-		If ConnectTestPassed = False Then
-			Password = String.Empty
-		End If
-	End Sub
-		
-	''' <summary>
-	''' Sets the OK button state property that is bound to the view.
-	''' </summary>
-	Private Sub SetOkButtonStateProperty
+	Private Sub SetOkEnabled
 		If UserName.Length > 0 And _
 			Password.Length > 0 And _
 			DataSource.Length > 0 Then
 			
-			OkButtonState = True
+			OkEnabled = True
 		Else
-			OkButtonState = False
+			OkEnabled = False
 		End If
+	End Sub
+	
+	''' <summary>
+	''' Invokes SetModel from this class, and then TestConnection from the
+	''' model.
+	''' </summary>
+	''' <param name="secureText">SecureString object.</param>
+	''' <returns>True or False for successful.</returns>
+	Public Function OkClicked(ByVal secureText As SecureString) As Boolean
+		SetModel(secureText)
+		If DBConnection.Instance.TestConnection Then
+			Return True
+		Else
+			Password = String.Empty
+			Return False
+		End If
+	End Function
+	
+	''' <summary>
+	''' Sets UserName, SecurePassword, and DataSource on the model.
+	''' </summary>
+	''' <param name="secureText">SecureString object.</param>
+	Private Sub SetModel(ByVal secureText As SecureString)
+		DBConnection.Instance.UserName = UserName
+		DBConnection.Instance.SecurePassword = secureText
+		DBConnection.Instance.DataSource = DataSource
 	End Sub
 End Class

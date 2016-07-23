@@ -28,14 +28,14 @@
 '******************************************************************************
 
 ''' <summary>
-''' Database connection singleton model.
+''' Database Connection singleton model.
 ''' </summary>
 Public NotInheritable Class DBConnection
 	Private Shared _instance As DBConnection = New DBConnection()
 	Private _userName As String = String.Empty
 	Private _securePassword As SecureString
 	Private _dataSource As String = String.Empty
-	
+		
 	Public Shared ReadOnly Property Instance As DBConnection
 		Get
 			Return _instance
@@ -43,40 +43,43 @@ Public NotInheritable Class DBConnection
 	End Property
 	
 	''' <summary>
-	''' Gets/Sets the user name for the database connection.
+	''' Gets/Sets the User Name for the Database Connection.
 	''' </summary>
-	Friend ReadOnly Property UserName As String
+	Friend Property UserName As String
 		Get
-			If _userName.Length = 0 Then
-				_userName = UserSettings.Instance.LastUserName
-			End If
 			Return _userName
 		End Get
+		Set(ByVal value As String)
+			_userName = value
+		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets/Sets the password for the database connection.
+	''' Gets/Sets the Password for the Database Connection.
 	''' </summary>
-	Friend ReadOnly Property SecurePassword As SecureString
+	Friend Property SecurePassword As SecureString
 		Get
 			Return _securePassword
 		End Get
+		Set(ByVal value As SecureString)
+			_securePassword = value
+		End Set
 	End Property
-	
+		
 	''' <summary>
-	''' Gets/Sets the data source for the database connection.
+	''' Gets/Sets the Data Source for the Database Connection.
 	''' </summary>
-	Friend ReadOnly Property DataSource As String
+	Friend Property DataSource As String
 		Get
-			If _dataSource.Length = 0 Then
-				_dataSource = UserSettings.Instance.LastDataSource
-			End If
 			Return _dataSource
 		End Get
+		Set(ByVal value As String)
+			_dataSource = value
+		End Set
 	End Property
 	
 	''' <summary>
-	''' Gets the connection string for the database connection.
+	''' Gets the connection string for the Database Connection.
 	''' </summary>
 	Friend ReadOnly Property ConnectionString As String
 		Get
@@ -88,28 +91,11 @@ Public NotInheritable Class DBConnection
 	End Property
 	
 	''' <summary>
-	''' Sets the model properties for the database connection. 
+	''' Tests a database connection. When successful, makes the SecurePassword
+	''' member readonly and invokes SetLastUserNameAndDataSource.
 	''' </summary>
-	''' <param name="userNameParam"></param>
-	''' <param name="securePasswordParam"></param>
-	''' <param name="dataSourceParam"></param>
-	Friend Sub SetModelProperties( _
-		ByVal userNameParam As String, _
-		ByVal securePasswordParam As SecureString, _
-		ByVal dataSourceParam As String)
-		
-		_userName = userNameParam
-		_securePassword = securePasswordParam
-		_dataSource = dataSourceParam
-	End Sub
-	
-	''' <summary>
-	''' Performs a test connection with the data source, and when successful,
-	''' makes the SecurePassword property member readonly and executes
-	''' SetLastUserNameAndDataSource. 
-	''' </summary>
-	''' <returns>Test passed (True or False)</returns>
-	Friend Function PerformTestConnection As Boolean
+	''' <returns>True for test passed or False for test failed.</returns>
+	Friend Function TestConnection As Boolean
 		Using connection As New OracleConnection
 			Try
 				connection.ConnectionString = ConnectionString
@@ -125,8 +111,8 @@ Public NotInheritable Class DBConnection
 	End Function
 	
 	''' <summary>
-	''' Sets the user name and data source cooresponding properties in the
-	''' UserSettings object.
+	''' Sets both UserName to LastUserName and DataSource to LastDataSource in
+	''' the UserSettings object.
 	''' </summary>
 	Private Sub SetLastUserNameAndDataSource
 		UserSettings.Instance.LastUserName = UserName

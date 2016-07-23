@@ -32,7 +32,8 @@ Public Module MiscUtil
 	''' Shows the specified topic file in the Help dialog box.
 	''' </summary>
 	''' <param name="parent">Parent control of the help dialog box.</param>
-	''' <param name="helpTopic">Topic file in help file to display.</param>
+	''' <param name="helpTopic">Topic file (without extension) in help file to
+	''' display.</param>
 	Public Sub ShowHelp( _
 		ByVal parent As System.Windows.Forms.Control, _
 		helpTopic As String)

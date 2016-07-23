@@ -91,7 +91,7 @@ Partial Class DBConnectionView
 		resources.ApplyResources(Me.buttonOK, "buttonOK")
 		Me.buttonOK.Name = "buttonOK"
 		Me.buttonOK.UseVisualStyleBackColor = true
-		AddHandler Me.buttonOK.Click, AddressOf Me.ButtonOkClick
+		AddHandler Me.buttonOK.Click, AddressOf Me.ButtonOKClick
 		'
 		'buttonCancel
 		'

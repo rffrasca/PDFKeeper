@@ -55,8 +55,8 @@ Public NotInheritable Class AppInfo
 	End Property
 	
 	''' <summary>
-	''' Gets the version associated with this application, without the build
-	''' number.
+	''' Gets the version, without the build number associated with this
+	''' application.
 	''' </summary>
 	Public Shared ReadOnly Property Version As String
 		Get

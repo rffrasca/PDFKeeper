@@ -30,7 +30,10 @@
 Public Class TextBoxSecure
 	Inherits System.Windows.Forms.TextBox
 	Friend SecureText As New SecureString
-		
+	
+	''' <summary>
+	''' Constructor sets text box properties.
+	''' </summary>
 	Public Sub New()
 		Me.UseSystemPasswordChar = True
 		Me.ShortcutsEnabled = False
