@@ -90,30 +90,29 @@ Public Module PdfUtil
 	''' <returns>Password type enumerator.</returns>
 	Public Function GetPdfPasswordType( _
 		ByVal pdfFile As String) As Enums.PdfPasswordType
-		
-		Using reader As New PdfReader(pdfFile)
-			Try
+
+		Try
+			Using reader As New PdfReader(pdfFile)
 				If reader.IsOpenedWithFullPermissions Then
 					Return Enums.PdfPasswordType.None
 				Else
 					Return Enums.PdfPasswordType.Owner
 				End If
-			Catch ex As DocumentException
-				ShowError(ex.Message)
-				Return Enums.PdfPasswordType.Unknown
-			Catch ex As IOException
-				If ex.Message = "Bad user password" Then
-					ShowError(String.Format( _
-						CultureInfo.CurrentCulture, _
-						PdfKeeper.Strings.PdfContainsUserPassword, _
-						pdfFile))
-					Return Enums.PdfPasswordType.User
-				Else
-					ShowError(ex.Message)
-					Return Enums.PdfPasswordType.Unknown
-				End If
-			End Try
-		End Using
+			End Using
+		Catch ex As DocumentException
+			ShowError(ex.Message)
+			Return Enums.PdfPasswordType.Unknown
+		Catch ex As BadPasswordException
+			ShowError( _
+				String.Format( _
+				CultureInfo.CurrentCulture, _
+				PdfKeeper.Strings.PdfContainsUserPassword, _
+				pdfFile))
+			Return Enums.PdfPasswordType.User
+		Catch ex As IOException
+			ShowError(ex.Message)
+			Return Enums.PdfPasswordType.Unknown
+		End Try
 	End Function
 	
 	''' <summary>
