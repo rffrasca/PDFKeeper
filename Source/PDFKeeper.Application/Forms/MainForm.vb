@@ -31,11 +31,14 @@ Public Partial Class MainForm
 	Dim capturePdfEditOutput As String
 	Dim captureLastStatusMessage As String
 	Dim lastPdfDocumentCheckResult As Enums.PdfPasswordType
+	Dim pdfOwnerPassword As SecureString
 						
-	''' <summary>
-	''' Class constructor.
-	''' </summary>
 	Public Sub New()
+		Dim systemFont As System.Drawing.Font = SystemFonts.MessageBoxFont
+		Me.Font = New System.Drawing.Font( _
+			systemFont.Name, _
+			systemFont.Size, _
+			systemFont.Style)
 		Me.InitializeComponent()
 		StartUpdateCheck
 		fileSystemWatcherDocumentCapture.Path = _
@@ -54,7 +57,6 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub MainFormLoad(sender As Object, e As EventArgs)
-		Font = SystemFonts.MessageBoxFont
 		PositionAndSizeForm
 		DoNotResetZoomLevelCheck
 		ResizeListViewColumns
@@ -1221,8 +1223,11 @@ Public Partial Class MainForm
 				GetPdfPasswordType(capturePdfEditInput)
 			If lastPdfDocumentCheckResult = _
 				Enums.PdfPasswordType.Owner Then
-				If PdfOwnerPasswordForm.ShowDialog() = _
-						Windows.Forms.DialogResult.Cancel Then
+				
+				Dim dialog As New PdfOwnerPasswordView
+				If dialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+					pdfOwnerPassword = dialog.SecurePassword
+				Else
 					Me.Cursor = Cursors.Default
 					Exit Sub
 				End If
@@ -1230,6 +1235,7 @@ Public Partial Class MainForm
 				Enums.PdfPasswordType.User Or _
 				lastPdfDocumentCheckResult = _
 				Enums.PdfPasswordType.Unknown Then
+				
 				Me.Cursor = Cursors.Default
 				Exit Sub
 			End If
@@ -1238,8 +1244,9 @@ Public Partial Class MainForm
 				Dim oPdfProperties1 As New PdfProperties(capturePdfEditInput)
 				oPdfProperties = oPdfProperties1
 			ElseIf lastPdfDocumentCheckResult = 1 Then
-				Dim oPdfProperties2 As New PdfProperties(capturePdfEditInput, _
-									   PdfOwnerPasswordForm.ownerPassword)
+				Dim oPdfProperties2 As New PdfProperties( _
+					capturePdfEditInput, _
+					pdfOwnerPassword)
 				oPdfProperties = oPdfProperties2
 			End If
 			If oPdfProperties.Read = 0 Then
@@ -1444,9 +1451,10 @@ Public Partial Class MainForm
 													 capturePdfEditOutput)
 			oPdfProperties = oPdfProperties1
 		ElseIf lastPdfDocumentCheckResult = 1 Then
-			Dim oPdfProperties2 As New PdfProperties(capturePdfEditInput, _
-								   capturePdfEditOutput, _
-								   PdfOwnerPasswordForm.ownerPassword)
+			Dim oPdfProperties2 As New PdfProperties( _
+				capturePdfEditInput, _
+				capturePdfEditOutput, _
+				pdfOwnerPassword)
 			oPdfProperties = oPdfProperties2
 		End If
 		oPdfProperties.Title = textBoxTitle.Text.Trim
@@ -1469,7 +1477,7 @@ Public Partial Class MainForm
 		captureLastStatusMessage = toolStripStatusLabelMessage.Text
 		EnableCaptureControls(False)
 		If lastPdfDocumentCheckResult = 1 Then
-			PdfOwnerPasswordForm.ownerPassword.Clear
+			pdfOwnerPassword.Clear
 		End If
 		Me.Cursor = Cursors.Default
 	End Sub
@@ -1620,7 +1628,7 @@ Public Partial Class MainForm
 			TerminateCapturePdfViewer
 			ClearCaptureSelection
 			If lastPdfDocumentCheckResult = 1 Then
-				PdfOwnerPasswordForm.ownerPassword.Clear
+				pdfOwnerPassword.Clear
 			End If
 			Me.Cursor = Cursors.Default
 		End If

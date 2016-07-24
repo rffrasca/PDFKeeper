@@ -441,7 +441,7 @@
     <value>textBoxSecure</value>
   </data>
   <data name="&gt;&gt;textBoxSecure.Type" xml:space="preserve">
-    <value>PdfKeeper.TextBoxSecure, PdfKeeper, Version=3.2.0.21513, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PdfKeeper.TextBoxSecure, PdfKeeper, Version=3.2.0.28301, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
   </data>
   <data name="&gt;&gt;textBoxSecure.Parent" xml:space="preserve">
     <value>$this</value>

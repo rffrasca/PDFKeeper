@@ -24,8 +24,12 @@ Public Partial Class DBConnectionView
 	Private viewModel As New DBConnectionViewModel
 		
 	Public Sub New()
+		Dim systemFont As System.Drawing.Font = SystemFonts.MessageBoxFont
+		Me.Font = New System.Drawing.Font( _
+			systemFont.Name, _
+			systemFont.Size, _
+			systemFont.Style)
 		Me.InitializeComponent()
-		Font = SystemFonts.MessageBoxFont
 		InitializeDataBindings
 	End Sub
 	

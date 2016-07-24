@@ -21,14 +21,13 @@
 '******************************************************************************
 
 Public Partial Class RotatePagesForm
-	
-	''' <summary>
-	''' Class constructor.
-	''' </summary>
 	Public Sub New()
-		' The Me.InitializeComponent call is required for Windows Forms designer support.
+		Dim systemFont As System.Drawing.Font = SystemFonts.MessageBoxFont
+		Me.Font = New System.Drawing.Font( _
+			systemFont.Name, _
+			systemFont.Size, _
+			systemFont.Style)
 		Me.InitializeComponent()
-		
 		'
 		' TODO : Add constructor code after InitializeComponents
 		'

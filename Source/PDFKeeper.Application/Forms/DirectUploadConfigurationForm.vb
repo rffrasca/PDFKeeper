@@ -28,6 +28,11 @@ Public Partial Class DirectUploadConfigurationForm
 	''' This subroutine is the class constructor.
 	''' </summary>
 	Public Sub New()
+		Dim systemFont As System.Drawing.Font = SystemFonts.MessageBoxFont
+		Me.Font = New System.Drawing.Font( _
+			systemFont.Name, _
+			systemFont.Size, _
+			systemFont.Style)
 		Me.InitializeComponent()
 	End Sub
 	
@@ -40,7 +45,6 @@ Public Partial Class DirectUploadConfigurationForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub DirectUploadConfigurationFormLoad(sender As Object, e As EventArgs)
-		Font = SystemFonts.MessageBoxFont
 		DirectUpload.CreateMissingFolders
 		FillList
 		FillComboBoxes
