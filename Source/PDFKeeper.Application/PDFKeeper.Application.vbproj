@@ -119,7 +119,6 @@
       <DependentUpon>PdfOwnerPasswordView.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\PdfOwnerPasswordView.vb" />
-    <Compile Include="ViewModels\xPdfOwnerPasswordViewModel.vb" />
     <Compile Include="Enums\Enums.vb" />
     <Compile Include="Forms\DirectUploadConfigurationForm.Designer.vb">
       <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
@@ -196,7 +195,6 @@
     <Folder Include="Utilities" />
     <Folder Include="Presentation Models" />
     <Folder Include="Views" />
-    <Folder Include="ViewModels" />
     <Folder Include="Resources" />
     <Folder Include="Singleton Classes" />
   </ItemGroup>

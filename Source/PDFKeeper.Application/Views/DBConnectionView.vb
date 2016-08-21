@@ -61,13 +61,13 @@ Public Partial Class DBConnectionView
 	Private Sub DBConnectionViewHelpRequested( _
 		sender As Object, _
 		hlpevent As HelpEventArgs)
-		Help.ShowHelp(Me, ActiveForm.Name)
+		HelpUtil.ShowHelp(Me, ActiveForm.Name)
 	End Sub
 	
 	Private Sub LinkLabelHelpLinkClicked( _
 		sender As Object, _
 		e As LinkLabelLinkClickedEventArgs)
-		Help.ShowHelp(Me, ActiveForm.Name)
+		HelpUtil.ShowHelp(Me, ActiveForm.Name)
 	End Sub
 	
 	Private Sub ButtonOKClick(sender As Object, e As EventArgs)
