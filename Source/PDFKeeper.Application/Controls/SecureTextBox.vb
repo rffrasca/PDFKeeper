@@ -19,92 +19,83 @@
 '* with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '*
 '******************************************************************************
-'*
-'* Created by SharpDevelop.
-'* User: Robert
-'* Date: 7/5/2016
-'* Time: 12:16 PM
-'*
-'******************************************************************************
 
-Public Class TextBoxSecure
+''' <summary>
+''' Secure implemenation of the TextBox control.
+''' </summary>
+Public Class SecureTextBox
 	Inherits System.Windows.Forms.TextBox
+	
+	''' <summary>
+	''' Text entered by the user is stored in this member. The TextBox Text
+	''' property will only contain asterisks.
+	''' </summary>
 	Friend SecureText As New SecureString
 	
 	''' <summary>
-	''' Constructor sets text box properties.
-	''' </summary>
-	Public Sub New()
-		Me.UseSystemPasswordChar = True
-		Me.ShortcutsEnabled = False
-	End Sub
-
-	''' <summary>
-	''' Deletes characters that are selected in the text box from the secure
-	''' string, ignoring the Esc and Enter keys.
+	''' When the user presses the Delete key, either remove the character after
+	''' the cursor or all selected characters from the SecureString member.
 	''' </summary>
 	''' <param name="e"></param>
 	Protected Overrides Sub OnKeyDown( _
 		ByVal e As System.Windows.Forms.KeyEventArgs)
-		
 		If e.KeyCode = Keys.Delete Then
 			If Me.SelectionLength > 0 Then
-				RemoveCharsFromSecureString
+				RemoveSelectedCharsFromSecureString
 			ElseIf Me.SelectionStart < Me.Text.Length Then
 				SecureText.RemoveAt(Me.SelectionStart)
 			End If
-			SetTextBoxTextProperty(Me.SelectionStart)
+			SetTextPropertyAndCursorPosition(Me.SelectionStart)
 			e.Handled = True
 		ElseIf e.KeyCode = Keys.Escape Or e.KeyCode = Keys.Enter Then
 			e.Handled = True
 		End If
 	End Sub
-		
+	
 	''' <summary>
-	''' Updates the secure string by either removing the printable character
-	''' that was removed from the text box by pressing the Backspace key or
-	''' adding the printable character entered.
+	''' When the user presses the Backspace key, either remove the character
+	''' before the cursor or all seleected characters. For any other printable
+	''' character, remove all selected characters and insert printable
+	''' character into SecureString member.
 	''' </summary>
 	''' <param name="e"></param>
 	Protected Overrides Sub OnKeyPress( _
 		ByVal e As System.Windows.Forms.KeyPressEventArgs)
-	
 		If e.KeyChar = ControlChars.Back Then
 			If Me.SelectionLength > 0 Then
-				RemoveCharsFromSecureString
-				SetTextBoxTextProperty(Me.SelectionStart)
+				RemoveSelectedCharsFromSecureString
+				SetTextPropertyAndCursorPosition(Me.SelectionStart)
 			ElseIf Me.SelectionStart > 0 Then
 				SecureText.RemoveAt(Me.SelectionStart - 1)
-				SetTextBoxTextProperty(Me.SelectionStart - 1)
+				SetTextPropertyAndCursorPosition(Me.SelectionStart - 1)
 			End If
 		Else
 			If Me.SelectionLength > 0 Then
-				RemoveCharsFromSecureString
+				RemoveSelectedCharsFromSecureString
 			End If
 			SecureText.InsertAt(Me.SelectionStart, e.KeyChar)
-			SetTextBoxTextProperty(Me.SelectionStart + 1)
+			SetTextPropertyAndCursorPosition(Me.SelectionStart + 1)
 		End If
 		e.Handled = True
-    End Sub
-     
-    ''' <summary>
-    ''' Removes characters that are selected in the text box from the secure
-	''' string.
-    ''' </summary>
-	Private Sub RemoveCharsFromSecureString
+	End Sub
+	
+	Private Sub RemoveSelectedCharsFromSecureString
     	For i As Integer = 0 To Me.SelectionLength - 1
     		SecureText.RemoveAt(Me.SelectionStart)
 		Next
 	End Sub
 	
-    ''' <summary>
-    ''' Sets the text property of the text box to a string of asterisks
-	''' matching the length of the secure string, and then sets the text
-	''' selection starting point.
-    ''' </summary>
-    ''' <param name="startingPos">Selection starting point.</param>
-    Private Sub SetTextBoxTextProperty(ByVal startingPos As Integer)
+	''' <summary>
+	''' Sets the text property of the text box to a string of asterisks
+	''' matching the length of the SecureString member, and then sets the
+	''' cursor position.
+	''' </summary>
+	''' <param name="cursorPosition">Where to position the cursor.</param>
+	Private Sub SetTextPropertyAndCursorPosition( _
+		ByVal cursorPosition As Integer)
     	Me.Text = New String(CChar("*"), SecureText.Length)
-    	Me.SelectionStart = startingPos
-    End Sub
+    	' The next step must be performed after setting the Text property. It
+    	' does not work properly if moved out of this method.
+    	Me.SelectionStart = cursorPosition
+	End Sub
 End Class
