@@ -19,32 +19,18 @@
 '* with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '*
 '******************************************************************************
-'*
-'* Created by SharpDevelop.
-'* User: Robert
-'* Date: 7/9/2016
-'* Time: 2:18 PM
-'*
-'******************************************************************************
 
-Public Module MiscUtil
-	''' <summary>
-	''' Shows the specified topic file in the Help dialog box.
-	''' </summary>
-	''' <param name="parent">Parent control of the help dialog box.</param>
-	''' <param name="helpTopic">Topic file (without extension) in help file to
-	''' display.</param>
-	Public Sub ShowHelp( _
-		ByVal parent As System.Windows.Forms.Control, _
-		helpTopic As String)
-			
-		Help.ShowHelp(parent, "PDFKeeper.en.chm", helpTopic & ".html")
+Public NotInheritable Class WebPages
+	Private Sub New()
+		' Because type 'WebPages' contains only 'Shared' members, a default
+		' private constructor was added to prevent the compiler from adding a
+		' default public constructor. (CA1053)
 	End Sub
 	
 	''' <summary>
 	''' Shows the homepage using the default application.
 	''' </summary>
-	Public Sub ShowHomepage
+	Public Shared Sub ShowHomepage
 		Process.Start(ConfigurationManager.AppSettings("HomePageUrl"))
 	End Sub
-End Module
+End Class
