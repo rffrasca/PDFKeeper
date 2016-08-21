@@ -19,24 +19,15 @@
 '* with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '*
 '******************************************************************************
-'*
-'* Created by SharpDevelop.
-'* User: Robert
-'* Date: 7/9/2016
-'* Time: 5:47 PM
-'*
-'******************************************************************************
 
-Public Module StringExt
+Public Module StringExtension
 	''' <summary>
-	''' Checks if the specified value contains invalid file name characters.
+	''' Checks if string contains invalid file name characters.
 	''' </summary>
-	''' <param name="value">Folder or file path name.</param>
+	''' <param name="value">String value to check.</param>
 	''' <returns>True or False</returns>
-	<ExtensionAttribute> _
-	Public Function ContainsInvalidFileNameChars( _
-		ByVal value As String) As Boolean
-		
+	<ExtensionAttribute>Public Function ContainsInvalidFileNameChars( _
+	ByVal value As String) As Boolean
 		For Each invalidChar In Path.GetInvalidFileNameChars()
 			If value.Contains(invalidChar) Then
 				Return True
@@ -46,46 +37,30 @@ Public Module StringExt
 	End Function
 	
 	''' <summary>
-	''' Prints the specified value using the specified font and print arguments
-	''' from the PrintDocument component.
+	''' Prints a string using the specified font and print arguments from the
+	''' PrintDocument component.
 	''' </summary>
-	''' <param name="value">Text to print.</param>
+	''' <param name="value">String to print.</param>
 	''' <param name="font">Font to use.</param>
-	''' <param name="printArgs">Data for PrintPage event.</param>
-	<ExtensionAttribute> _
-	Public Sub Print( _
-		ByVal value As String, _
+	''' <param name="printArgs">TODO : need to update this.</param>
+	<ExtensionAttribute>Public Sub Print(ByVal value As String, _
 		ByVal font As System.Drawing.Font, _
-		ByVal printArgs As System.Drawing.Printing.PrintPageEventArgs)
-		
+	ByVal printArgs As System.Drawing.Printing.PrintPageEventArgs)
 		Dim numChars As Integer
 		Dim numLines As Integer
 		Dim textForPage As String
 		Dim strFormat As New StringFormat()
-		Dim rectDraw As New RectangleF( _
-			printArgs.MarginBounds.Left, _
-			printArgs.MarginBounds.Top, _
-			printArgs.MarginBounds.Width, _
+		Dim rectDraw As New RectangleF(printArgs.MarginBounds.Left, _
+			printArgs.MarginBounds.Top, printArgs.MarginBounds.Width, _
 			printArgs.MarginBounds.Height)
-		Dim sizeMeasure As New SizeF( _
-			printArgs.MarginBounds.Width, _
-			printArgs.MarginBounds.Height - _
-			font.GetHeight(printArgs.Graphics))
+		Dim sizeMeasure As New SizeF(printArgs.MarginBounds.Width, _
+			printArgs.MarginBounds.Height - font.GetHeight(printArgs.Graphics))
 		strFormat.Trimming = StringTrimming.Word
-		printArgs.Graphics.MeasureString( _
-			value, _
-			font, _
-			sizeMeasure, _
-			strFormat, _
-			numChars, _
-			numLines)
+		printArgs.Graphics.MeasureString(value, font, sizeMeasure, strFormat, _
+			numChars, numLines)
 		textForPage = value.Substring(0, numChars)
-		printArgs.Graphics.DrawString( _
-			textForPage, _
-			font, _
-			Brushes.Black, _
-			rectDraw, _
-			strFormat)
+		printArgs.Graphics.DrawString(textForPage, font, Brushes.Black, _
+			rectDraw, strFormat)
 		If numChars < value.Length Then
 			textForPage = value.Substring(numChars)
 			printArgs.HasMorePages = True

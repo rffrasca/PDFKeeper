@@ -19,22 +19,15 @@
 '* with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '*
 '******************************************************************************
-'*
-'* Created by SharpDevelop.
-'* User: Robert
-'* Date: 7/9/2016
-'* Time: 5:45 PM
-'*
-'******************************************************************************
 
-Public Module SecureStringExt
+Public Module SecureStringExtension
 	''' <summary>
-	''' Gets the string value from the specified SecureString object.
+	''' Gets the string value of a SecureString object.
 	''' </summary>
 	''' <param name="param">SecureString object.</param>
-	''' <returns>String value.</returns>
-	<ExtensionAttribute> _
-	Friend Function GetString(ByVal param As SecureString) As String
+	''' <returns>String value of the SecureString object.</returns>
+	<ExtensionAttribute>Friend Function GetString( _
+	ByVal param As SecureString) As String
 		Dim secureStringPtr As IntPtr
 		Try
 			secureStringPtr = Marshal.SecureStringToGlobalAllocUnicode(param)
@@ -42,5 +35,5 @@ Public Module SecureStringExt
 		Finally
 			Marshal.ZeroFreeGlobalAllocUnicode(secureStringPtr)
 		End Try
-	End Function	
+	End Function
 End Module
