@@ -178,9 +178,10 @@ Public NotInheritable Class DirectUpload
 					End If
 					If oPdfProperties.Author = Nothing Or CDbl( _
 						oDirectUploadFolderProperties.UseExistingAuthorChecked) = 0 Then
+						Dim dbConnection As New DBConnection
 						If oDirectUploadFolderProperties.AuthorPreFill.Trim = _
 							PdfKeeper.Strings.DirectUploadConfigAuthorDatabaseUserName Then
-							oPdfProperties.Author = UserSettings.Instance.LastUserName
+							oPdfProperties.Author = dbConnection.UserName
 						ElseIf oDirectUploadFolderProperties.AuthorPreFill.Trim = _
 							PdfKeeper.Strings.DirectUploadConfigAuthorWindowsUserName Then
 							oPdfProperties.Author = Environment.UserName
