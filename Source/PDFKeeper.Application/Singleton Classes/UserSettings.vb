@@ -40,8 +40,6 @@ Public NotInheritable Class UserSettings
 	' 1 = Enabled, 0 = Disabled
 	Private ReadOnly defaultDoNotResetZoomLevel As Integer = 0
 	
-	Private _lastUserName As String
-	Private _lastDataSource As String
 	Private _formPositionTop As String
 	Private _formPositionLeft As String
 	Private _formPositionHeight As String
@@ -78,44 +76,6 @@ Public NotInheritable Class UserSettings
 		End Get
 	End Property
 		
-	''' <summary>
-	''' Gets or sets the Database Connection Form last database User Name.
-	''' </summary>
-	Public Property LastUserName As String
-		Get
-			_lastUserName = ReadSetting( _
-				Enums.UserSettingsSection.DatabaseConnectionForm.ToString, _
-				Enums.UserSettingsKey.LastUserName.ToString)
-			If _lastUserName Is Nothing Then
-				_lastUserName = String.Empty
-			End If
-			Return _lastUserName
-		End Get
-		Set(ByVal value As String)
-			_lastUserName = value
-			SaveAllSettings
-		End Set
-	End Property
-	
-	''' <summary>
-	''' Gets or sets the Database Connection Form last Data Source.
-	''' </summary>
-	Public Property LastDataSource As String
-		Get
-			_lastDataSource = ReadSetting( _
-				Enums.UserSettingsSection.DatabaseConnectionForm.ToString, _
-				Enums.UserSettingsKey.LastDataSource.ToString)
-			If _lastDataSource Is Nothing Then
-				_lastDataSource = String.Empty
-			End If
-			Return _lastDataSource
-		End Get
-		Set(ByVal value As String)
-			_lastDataSource = value
-			SaveAllSettings
-		End Set
-	End Property
-	
 	''' <summary>
 	''' Gets or sets the Main Form top position.
 	''' </summary>
@@ -327,16 +287,6 @@ Public NotInheritable Class UserSettings
 	Private Sub SaveAllSettings
 		Try
 			Dim xmlConfig As New XmlConfigSource
-			xmlConfig.AddConfig( _
-				Enums.UserSettingsSection.DatabaseConnectionForm.ToString)
-			xmlConfig.Configs( _
-				Enums.UserSettingsSection.DatabaseConnectionForm.ToString).Set( _
-				Enums.UserSettingsKey.LastUserName.ToString, _
-				_lastUserName)
-			xmlConfig.Configs( _
-				Enums.UserSettingsSection.DatabaseConnectionForm.ToString).Set( _
-				Enums.UserSettingsKey.LastDataSource.ToString, _
-				_lastDataSource)
 			xmlConfig.AddConfig( _
 				Enums.UserSettingsSection.MainForm.ToString)
 			xmlConfig.Configs( _
