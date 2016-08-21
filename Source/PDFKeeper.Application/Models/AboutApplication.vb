@@ -19,45 +19,28 @@
 '* with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '*
 '******************************************************************************
-'*
-'* Created by SharpDevelop.
-'* User: Robert
-'* Date: 7/9/2016
-'* Time: 2:10 PM
-'*
-'******************************************************************************
 
-Public NotInheritable Class AppInfo
+Public NotInheritable Class AboutApplication
 	Private Shared productVersion As String = Application.ProductVersion
 	
 	Private Sub New()
-		' Because type 'AppInfo' contains only 'Shared' members, add a default
-		' private constructor to prevent the compiler from adding a default
-		' public constructor. (CA1053)
+		' Because type 'AboutApplication' contains only 'Shared' members, a
+		' default private constructor was added to prevent the compiler from
+		' adding a default public constructor. (CA1053)
 	End Sub
 	
-	''' <summary>
-	''' Gets the title associated with this application.
-	''' </summary>
 	Public Shared ReadOnly Property Title As String
 		Get
 			Return Application.ProductName
 		End Get
 	End Property
 	
-	''' <summary>
-	''' Gets the description associated with this application.
-	''' </summary>
 	Public Shared ReadOnly Property Description As String
 		Get
 			Return My.Application.Info.Description
 		End Get
 	End Property
 	
-	''' <summary>
-	''' Gets the version, without the build number associated with this
-	''' application.
-	''' </summary>
 	Public Shared ReadOnly Property Version As String
 		Get
 			Return productVersion.Substring( _
@@ -67,9 +50,6 @@ Public NotInheritable Class AppInfo
 		End Get
 	End Property
 		
-	''' <summary>
-	''' Gets the build number associated with this application.
-	''' </summary>
 	Public Shared ReadOnly Property Build As String
 		Get
 			Return productVersion.Substring( _
@@ -78,27 +58,18 @@ Public NotInheritable Class AppInfo
 		End Get
 	End Property
 	
-	''' <summary>
-	''' Gets the copyright notice associated with this application.
-	''' </summary>
 	Public Shared ReadOnly Property Copyright As String
 		Get
 			Return My.Application.Info.Copyright
 		End Get
 	End Property
 	
-	''' <summary>
-	''' Gets the license associated with this application.
-	''' </summary>
 	Public Shared ReadOnly Property License As String
 		Get
 			Return PdfKeeper.Strings.AboutLicense
 		End Get
 	End Property
 	
-	''' <summary>
-	''' Gets the third-party notice associated with this application.
-	''' </summary>
 	Public Shared ReadOnly Property ThirdPartyNotice As String
 		Get
 			Return PdfKeeper.Strings.AboutThirdPartyNotice
