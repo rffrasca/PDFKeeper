@@ -25,7 +25,6 @@ Namespace Enums
 	''' User Settings XML Sections.
 	''' </summary>
 	Public Enum UserSettingsSection
-		DatabaseConnectionForm
 		MainForm
 		MainFormDocumentPreviewTab
 		CommonDialogs
@@ -35,8 +34,6 @@ Namespace Enums
 	''' User Settings XML Keys.
 	''' </summary>
 	Public Enum UserSettingsKey
-		LastUserName
-		LastDataSource
 		FormPositionTop
 		FormPositionLeft
 		FormPositionHeight
