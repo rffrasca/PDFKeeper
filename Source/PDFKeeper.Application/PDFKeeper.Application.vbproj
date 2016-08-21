@@ -83,6 +83,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\NotifyPropertyChangedBase.vb" />
+    <Compile Include="Controls\SecureTextBox.vb" />
+    <Compile Include="Extensions\SecureStringExtension.vb" />
+    <Compile Include="Extensions\StringExtension.vb" />
+    <Compile Include="Models\AboutApplication.vb" />
+    <Compile Include="Models\DBConnection.vb" />
+    <Compile Include="Presentation Models\DBConnectionPresentationModel.vb" />
+    <Compile Include="Utilities\DBConnectionUtil.vb" />
+    <Compile Include="Utilities\HelpUtil.vb" />
+    <Compile Include="Utilities\Serializer.vb" />
+    <Compile Include="Utilities\WebPages.vb" />
+    <Compile Include="Views\AboutView.Designer.vb">
+      <DependentUpon>AboutView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AboutView.vb" />
+    <Compile Include="Views\DBConnectionView.Designer.vb">
+      <DependentUpon>DBConnectionView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DBConnectionView.vb" />
     <Compile Include="Classes\ApplicationProfileFolders.vb" />
     <Compile Include="Classes\DatabaseNonQuery.vb" />
     <Compile Include="Classes\DatabaseAuthorsSubjectsQuery.vb" />
@@ -96,19 +115,11 @@
     <Compile Include="Classes\PdfProperties.vb" />
     <Compile Include="Classes\Shortcuts.vb" />
     <Compile Include="Classes\WindowsProfileFolders.vb" />
-    <Compile Include="Controls\TextBoxSecure.vb" />
-    <Compile Include="Extensions\SecureStringExt.vb" />
-    <Compile Include="Extensions\StringExt.vb" />
-    <Compile Include="Models\AppInfo.vb" />
-    <Compile Include="Models\DBConnection.vb" />
-    <Compile Include="Utilities\MiscUtil.vb" />
-    <Compile Include="ViewModels\DBConnectionViewModel.vb" />
-    <Compile Include="ViewModels\PdfOwnerPasswordViewModel.vb" />
-    <Compile Include="ViewModels\ViewModelBase.vb" />
-    <Compile Include="Views\AboutView.Designer.vb">
-      <DependentUpon>AboutView.vb</DependentUpon>
+    <Compile Include="Views\PdfOwnerPasswordView.Designer.vb">
+      <DependentUpon>PdfOwnerPasswordView.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\AboutView.vb" />
+    <Compile Include="Views\PdfOwnerPasswordView.vb" />
+    <Compile Include="ViewModels\xPdfOwnerPasswordViewModel.vb" />
     <Compile Include="Enums\Enums.vb" />
     <Compile Include="Forms\DirectUploadConfigurationForm.Designer.vb">
       <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
@@ -138,14 +149,6 @@
     <Compile Include="Singleton Classes\FileCache.vb" />
     <Compile Include="Singleton Classes\ImageZoom.vb" />
     <Compile Include="Singleton Classes\UserSettings.vb" />
-    <Compile Include="Views\DBConnectionView.Designer.vb">
-      <DependentUpon>DBConnectionView.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DBConnectionView.vb" />
-    <Compile Include="Views\PdfOwnerPasswordView.Designer.vb">
-      <DependentUpon>PdfOwnerPasswordView.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PdfOwnerPasswordView.vb" />
     <EmbeddedResource Include="Forms\DirectUploadConfigurationForm.resx">
       <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -186,12 +189,14 @@
       <Isolated>False</Isolated>
     </COMReference>
     <Folder Include="Enums" />
-    <Folder Include="Models" />
     <Folder Include="Controls" />
     <Folder Include="Extensions" />
-    <Folder Include="ViewModels" />
+    <Folder Include="Models" />
+    <Folder Include="Base" />
     <Folder Include="Utilities" />
+    <Folder Include="Presentation Models" />
     <Folder Include="Views" />
+    <Folder Include="ViewModels" />
     <Folder Include="Resources" />
     <Folder Include="Singleton Classes" />
   </ItemGroup>
@@ -231,5 +236,6 @@
     <Import Include="System.Text.RegularExpressions" />
     <Import Include="System.Threading" />
     <Import Include="System.Windows.Forms" />
+    <Import Include="System.Xml.Serialization" />
   </ItemGroup>
 </Project>
