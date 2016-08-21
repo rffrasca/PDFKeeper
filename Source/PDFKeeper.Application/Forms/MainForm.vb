@@ -214,13 +214,14 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemInsertDateTimeIntoDocumentNotesClick(sender As Object, e As EventArgs)
+		Dim dbConnection As New DBConnection
 		tabControlDocNotesKeywords.SelectTab(0)
 		TextBoxDocumentNotesScrollToEnd
 		If textBoxDocumentNotes.TextLength > 0 Then
 			textBoxDocumentNotes.AppendText(vbCrLf & vbCrLf)
 		End If
 		textBoxDocumentNotes.AppendText("--- " & Date.Now & " (" & _
-			UserSettings.Instance.LastUserName & ") ---" & vbCrLf)
+			dbConnection.UserName & ") ---" & vbCrLf)
 		TextBoxDocumentNotesScrollToEnd
 	End Sub
 
@@ -1226,7 +1227,7 @@ Public Partial Class MainForm
 				
 				Dim dialog As New PdfOwnerPasswordView
 				If dialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
-					pdfOwnerPassword = dialog.SecurePassword
+					'TODO : pdfOwnerPassword = dialog.SecurePassword
 				Else
 					Me.Cursor = Cursors.Default
 					Exit Sub
