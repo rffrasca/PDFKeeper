@@ -56,8 +56,8 @@ Partial Class DBConnectionView
 		Me.buttonOK = New System.Windows.Forms.Button()
 		Me.buttonCancel = New System.Windows.Forms.Button()
 		Me.pictureBoxLogo = New System.Windows.Forms.PictureBox()
-		Me.labelHelp = New System.Windows.Forms.Label()
-		Me.textBoxSecure = New PdfKeeper.TextBoxSecure()
+		Me.secureTextBox = New PdfKeeper.SecureTextBox()
+		Me.linkLabelHelp = New System.Windows.Forms.LinkLabel()
 		CType(Me.pictureBoxLogo,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.SuspendLayout
 		'
@@ -106,17 +106,17 @@ Partial Class DBConnectionView
 		Me.pictureBoxLogo.Name = "pictureBoxLogo"
 		Me.pictureBoxLogo.TabStop = false
 		'
-		'labelHelp
+		'secureTextBox
 		'
-		resources.ApplyResources(Me.labelHelp, "labelHelp")
-		Me.labelHelp.Name = "labelHelp"
+		resources.ApplyResources(Me.secureTextBox, "secureTextBox")
+		Me.secureTextBox.Name = "secureTextBox"
 		'
-		'textBoxSecure
+		'linkLabelHelp
 		'
-		resources.ApplyResources(Me.textBoxSecure, "textBoxSecure")
-		Me.textBoxSecure.Name = "textBoxSecure"
-		Me.textBoxSecure.ShortcutsEnabled = false
-		Me.textBoxSecure.UseSystemPasswordChar = true
+		resources.ApplyResources(Me.linkLabelHelp, "linkLabelHelp")
+		Me.linkLabelHelp.Name = "linkLabelHelp"
+		Me.linkLabelHelp.TabStop = true
+		AddHandler Me.linkLabelHelp.LinkClicked, AddressOf Me.LinkLabelHelpLinkClicked
 		'
 		'DBConnectionView
 		'
@@ -124,8 +124,8 @@ Partial Class DBConnectionView
 		resources.ApplyResources(Me, "$this")
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.CancelButton = Me.buttonCancel
-		Me.Controls.Add(Me.textBoxSecure)
-		Me.Controls.Add(Me.labelHelp)
+		Me.Controls.Add(Me.linkLabelHelp)
+		Me.Controls.Add(Me.secureTextBox)
 		Me.Controls.Add(Me.pictureBoxLogo)
 		Me.Controls.Add(Me.buttonCancel)
 		Me.Controls.Add(Me.buttonOK)
@@ -143,8 +143,8 @@ Partial Class DBConnectionView
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
-	Private textBoxSecure As PdfKeeper.TextBoxSecure
-	Private labelHelp As System.Windows.Forms.Label
+	Private linkLabelHelp As System.Windows.Forms.LinkLabel
+	Private secureTextBox As PdfKeeper.SecureTextBox
 	Private pictureBoxLogo As System.Windows.Forms.PictureBox
 	Private textBoxUserName As System.Windows.Forms.TextBox
 	Private labelUserName As System.Windows.Forms.Label

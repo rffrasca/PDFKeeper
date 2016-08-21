@@ -28,8 +28,8 @@
 '******************************************************************************
 
 Public Partial Class PdfOwnerPasswordView
-	Private viewModel As New PdfOwnerPasswordViewModel
-	Private _securePassword As SecureString
+	'Private viewModel As New PdfOwnerPasswordViewModel
+	'Private _securePassword As SecureString
 	
 	Public Sub New()
 		Dim systemFont As System.Drawing.Font = SystemFonts.MessageBoxFont
@@ -38,30 +38,30 @@ Public Partial Class PdfOwnerPasswordView
 			systemFont.Size, _
 			systemFont.Style)
 		Me.InitializeComponent()
-		InitializeDataBindings
+		'InitializeDataBindings
 	End Sub
 	
 	''' <summary>
 	''' Gets the Secure Password as a secure string object that gets set when
 	''' the OK button is clicked.
 	''' </summary>
-	Public ReadOnly Property SecurePassword As SecureString
-		Get
-			Return _securePassword
-		End Get
-	End Property
+'	Public ReadOnly Property SecurePassword As SecureString
+'		Get
+'			Return _securePassword
+'		End Get
+'	End Property
 	
-	Private Sub InitializeDataBindings
-		textBoxSecure.DataBindings.Add( _
-			"Text", _
-			viewModel, _
-			"Password", _
-			False, _
-			Windows.Forms.DataSourceUpdateMode.OnPropertyChanged)
-		buttonOK.DataBindings.Add("Enabled", viewModel, "OkEnabled")
-	End Sub
+	'Private Sub InitializeDataBindings
+'		textBoxSecure.DataBindings.Add( _
+'			"Text", _
+'			viewModel, _
+'			"Password", _
+'			False, _
+'			Windows.Forms.DataSourceUpdateMode.OnPropertyChanged)
+'		buttonOK.DataBindings.Add("Enabled", viewModel, "OkEnabled")
+	'End Sub
 	
 	Private Sub ButtonOKClick(sender As Object, e As EventArgs)
-		_securePassword = TextBoxSecure.SecureText
+'		_securePassword = TextBoxSecure.SecureText
 	End Sub
 End Class

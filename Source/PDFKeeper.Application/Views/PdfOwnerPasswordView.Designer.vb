@@ -56,7 +56,6 @@ Partial Class PdfOwnerPasswordView
 	Private Sub InitializeComponent()
 		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PdfOwnerPasswordView))
 		Me.labelOwnerPassword = New System.Windows.Forms.Label()
-		Me.textBoxSecure = New PdfKeeper.TextBoxSecure()
 		Me.buttonOK = New System.Windows.Forms.Button()
 		Me.buttonCancel = New System.Windows.Forms.Button()
 		Me.SuspendLayout
@@ -65,13 +64,6 @@ Partial Class PdfOwnerPasswordView
 		'
 		resources.ApplyResources(Me.labelOwnerPassword, "labelOwnerPassword")
 		Me.labelOwnerPassword.Name = "labelOwnerPassword"
-		'
-		'textBoxSecure
-		'
-		resources.ApplyResources(Me.textBoxSecure, "textBoxSecure")
-		Me.textBoxSecure.Name = "textBoxSecure"
-		Me.textBoxSecure.ShortcutsEnabled = false
-		Me.textBoxSecure.UseSystemPasswordChar = true
 		'
 		'buttonOK
 		'
@@ -96,7 +88,6 @@ Partial Class PdfOwnerPasswordView
 		Me.CancelButton = Me.buttonCancel
 		Me.Controls.Add(Me.buttonCancel)
 		Me.Controls.Add(Me.buttonOK)
-		Me.Controls.Add(Me.textBoxSecure)
 		Me.Controls.Add(Me.labelOwnerPassword)
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
 		Me.MaximizeBox = false
@@ -107,6 +98,5 @@ Partial Class PdfOwnerPasswordView
 	End Sub
 	Private buttonCancel As System.Windows.Forms.Button
 	Private buttonOK As System.Windows.Forms.Button
-	Private textBoxSecure As PdfKeeper.TextBoxSecure
 	Private labelOwnerPassword As System.Windows.Forms.Label
 End Class

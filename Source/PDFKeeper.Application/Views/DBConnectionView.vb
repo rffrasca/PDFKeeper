@@ -21,8 +21,8 @@
 '******************************************************************************
 
 Public Partial Class DBConnectionView
-	Private viewModel As New DBConnectionViewModel
-		
+	Private presentationModel As New DBConnectionPresentationModel
+	
 	Public Sub New()
 		Dim systemFont As System.Drawing.Font = SystemFonts.MessageBoxFont
 		Me.Font = New System.Drawing.Font( _
@@ -36,40 +36,48 @@ Public Partial Class DBConnectionView
 	Private Sub InitializeDataBindings
 		textBoxUserName.DataBindings.Add( _
 			"Text", _
-			viewModel, _
+			presentationModel, _
 			"UserName", _
 			False, _
 			Windows.Forms.DataSourceUpdateMode.OnPropertyChanged)
-		textBoxSecure.DataBindings.Add( _
+		secureTextBox.DataBindings.Add( _
 			"Text", _
-			viewModel, _
+			presentationModel, _
 			"Password", _
 			False, _
 			Windows.Forms.DataSourceUpdateMode.OnPropertyChanged)
 		textBoxDataSource.DataBindings.Add( _
 			"Text", _
-			viewModel, _
+			presentationModel, _
 			"DataSource", _
 			False, _
 			Windows.Forms.DataSourceUpdateMode.OnPropertyChanged)
-		buttonOK.DataBindings.Add("Enabled", viewModel, "OkEnabled")
+		buttonOK.DataBindings.Add( _
+			"Enabled", _
+			presentationModel, _
+			"OkButtonEnabled")
 	End Sub
 	
-	Private	Sub DBConnectionViewHelpRequested( _
+	Private Sub DBConnectionViewHelpRequested( _
 		sender As Object, _
 		hlpevent As HelpEventArgs)
-		
-		ShowHelp(Me, ActiveForm.Name)
+		Help.ShowHelp(Me, ActiveForm.Name)
+	End Sub
+	
+	Private Sub LinkLabelHelpLinkClicked( _
+		sender As Object, _
+		e As LinkLabelLinkClickedEventArgs)
+		Help.ShowHelp(Me, ActiveForm.Name)
 	End Sub
 	
 	Private Sub ButtonOKClick(sender As Object, e As EventArgs)
 		Me.Cursor = Cursors.WaitCursor
-		If viewModel.OkClicked(TextBoxSecure.SecureText) Then
+		If presentationModel.OkButtonClicked(SecureTextBox.SecureText) Then
 			Me.DialogResult = Windows.Forms.DialogResult.OK
 		Else
 			Me.Cursor = Cursors.Default
-			TextBoxSecure.SecureText.Clear
-			textBoxUsername.Select
+			SecureTextBox.SecureText.Clear
+			textBoxUserName.Select
 		End If
 	End Sub
 End Class

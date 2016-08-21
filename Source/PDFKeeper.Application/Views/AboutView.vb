@@ -29,22 +29,21 @@ Public Partial Class AboutView
 			systemFont.Style)
 		Me.InitializeComponent()
 		SetControlData
-	End Sub
-	
+	End Sub	
+		
 	Private Sub SetControlData
-		labelTitle.Text = AppInfo.Title
-		labelDescription.Text = AppInfo.Description
-		textBoxVersion.Text = AppInfo.Version
-		textBoxBuild.Text = AppInfo.Build
-		labelCopyright.Text = AppInfo.Copyright
-		textBoxLicense.Text = AppInfo.License
-		textBoxThirdPartyNotice.Text = AppInfo.ThirdPartyNotice
+		labelTitle.Text = AboutApplication.Title
+		labelDescription.Text = AboutApplication.Description
+		textBoxVersion.Text = AboutApplication.Version
+		textBoxBuild.Text = AboutApplication.Build
+		labelCopyright.Text = AboutApplication.Copyright
+		textBoxLicense.Text = AboutApplication.License
+		textBoxThirdPartyNotice.Text = AboutApplication.ThirdPartyNotice
 	End Sub
 	
 	Private Sub LinkLabelHomepageLinkClicked( _
 		sender As Object, _
 		e As LinkLabelLinkClickedEventArgs)
-		
-		ShowHomepage
+		WebPages.ShowHomepage
 	End Sub
 End Class
