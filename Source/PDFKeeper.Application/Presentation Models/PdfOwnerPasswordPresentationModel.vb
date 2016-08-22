@@ -21,7 +21,6 @@
 '******************************************************************************
 
 Public Class PdfOwnerPasswordPresentationModel
-	Inherits NotifyPropertyChangedBase
 	Private _password As String
 	Private _okButtonEnabled As Boolean
 	
@@ -35,11 +34,6 @@ Public Class PdfOwnerPasswordPresentationModel
 		End Get
 		Set(ByVal value As String)
 			_password = value
-			' Added to send a property change notification only when property
-			' is set to an empty string to clear the TextBox.
-			If _password = String.Empty Then
-				OnPropertyChanged("Password")
-			End If
 			SetOkButtonState
 		End Set
 	End Property
