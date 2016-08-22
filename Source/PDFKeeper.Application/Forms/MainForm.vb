@@ -1227,7 +1227,7 @@ Public Partial Class MainForm
 				
 				Dim dialog As New PdfOwnerPasswordView
 				If dialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
-					'TODO : pdfOwnerPassword = dialog.SecurePassword
+					pdfOwnerPassword = dialog.SecurePassword
 				Else
 					Me.Cursor = Cursors.Default
 					Exit Sub

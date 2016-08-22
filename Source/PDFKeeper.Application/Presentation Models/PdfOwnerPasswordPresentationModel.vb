@@ -20,41 +20,44 @@
 '*
 '******************************************************************************
 
-Public Partial Class PdfOwnerPasswordView
-	Private presentationModel As New PdfOwnerPasswordPresentationModel
-	Private _securePassword As SecureString
-	
-	Public Sub New()
-		Dim systemFont As System.Drawing.Font = SystemFonts.MessageBoxFont
-		Me.Font = New System.Drawing.Font( _
-			systemFont.Name, _
-			systemFont.Size, _
-			systemFont.Style)
-		Me.InitializeComponent()
-		InitializeDataBinding
-	End Sub
+Public Class PdfOwnerPasswordPresentationModel
+	Inherits NotifyPropertyChangedBase
+	Private _password As String
+	Private _okButtonEnabled As Boolean
 	
 	''' <summary>
-	''' Gets the Secure Password as a secure string object that gets set when
-	''' the OK button is clicked.
+	''' This property does not store the password, only a string of asterisks
+	''' equal in length to the actual password.
 	''' </summary>
-	Public ReadOnly Property SecurePassword As SecureString
+	Public Property Password As String
 		Get
-			Return _securePassword
+			Return _password
 		End Get
+		Set(ByVal value As String)
+			_password = value
+			' Added to send a property change notification only when property
+			' is set to an empty string to clear the TextBox.
+			If _password = String.Empty Then
+				OnPropertyChanged("Password")
+			End If
+			SetOkButtonState
+		End Set
 	End Property
 	
-	Private Sub InitializeDataBinding
-		secureTextBox.DataBindings.Add( _
-			"Text", _
-			presentationModel, _
-			"Password", _
-			False, _
-			Windows.Forms.DataSourceUpdateMode.OnPropertyChanged)
-		buttonOK.DataBindings.Add("Enabled", presentationModel, "OkButtonEnabled")
-	End Sub
+	Public Property OkButtonEnabled As Boolean
+		Get
+			Return _okButtonEnabled
+		End Get
+		Set(ByVal value As Boolean)
+			_okButtonEnabled = value
+		End Set
+	End Property
 	
-	Private Sub ButtonOKClick(sender As Object, e As EventArgs)
-		_securePassword = SecureTextBox.SecureText
+	Private Sub SetOkButtonState
+		If Password.Length > 0 Then
+			OkButtonEnabled = True
+		Else
+			OkButtonEnabled = False
+		End If
 	End Sub
 End Class

@@ -90,6 +90,7 @@
     <Compile Include="Models\AboutApplication.vb" />
     <Compile Include="Models\DBConnection.vb" />
     <Compile Include="Presentation Models\DBConnectionPresentationModel.vb" />
+    <Compile Include="Presentation Models\PdfOwnerPasswordPresentationModel.vb" />
     <Compile Include="Utilities\DBConnectionUtil.vb" />
     <Compile Include="Utilities\HelpUtil.vb" />
     <Compile Include="Utilities\Serializer.vb" />

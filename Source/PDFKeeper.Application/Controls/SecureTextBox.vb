@@ -32,6 +32,11 @@ Public Class SecureTextBox
 	''' </summary>
 	Friend SecureText As New SecureString
 	
+	Public Sub New()
+		' Need to disable defined shortcuts since these are not handled.
+		Me.ShortcutsEnabled = False
+	End Sub
+	
 	''' <summary>
 	''' When the user presses the Delete key, either remove the character after
 	''' the cursor or all selected characters from the SecureString member.
