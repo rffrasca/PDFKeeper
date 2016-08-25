@@ -1427,7 +1427,7 @@ Public Partial Class MainForm
 		Else
 			buttonSave.Enabled = False
 		End If
-		buttonRotate.Enabled = False
+		'buttonRotate.Enabled = False
 		buttonView.Enabled = False
 		buttonUpload.Enabled = False
 	End Sub
@@ -1464,13 +1464,13 @@ Public Partial Class MainForm
 		oPdfProperties.Keywords = textBoxKeywords.Text.Trim
 		If oPdfProperties.Write = 0 Then
 			buttonSave.Enabled = False
-			buttonRotate.Enabled = True
+			'buttonRotate.Enabled = True
 			buttonView.Enabled = True
 			buttonUpload.Enabled = True
 			toolStripStatusLabelMessage.Text = _
 				PdfKeeper.Strings.MainFormCaptureSaved
 		Else
-			buttonRotate.Enabled = False
+			'buttonRotate.Enabled = False
 			buttonView.Enabled = False
 			buttonUpload.Enabled = False
 			toolStripStatusLabelMessage.Text = Nothing
@@ -1489,7 +1489,7 @@ Public Partial Class MainForm
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
 	Private Sub ButtonRotateClick(sender As Object, e As EventArgs)
-		RotatePagesForm.ShowDialog()
+		'RotatePagesForm.ShowDialog()
 	End Sub
 	
 	''' <summary>
@@ -1585,7 +1585,7 @@ Public Partial Class MainForm
 		textBoxKeywords.Enabled = False
 		buttonSave.Enabled = False
 		If uploading Then
-			buttonRotate.Enabled = False
+			'buttonRotate.Enabled = False
 			buttonView.Enabled = False
 			buttonUpload.Enabled = False
 		End If
@@ -1607,7 +1607,7 @@ Public Partial Class MainForm
 		comboBoxSubject.Enabled = True
 		textBoxKeywords.Enabled = True
 		If uploading Then
-			buttonRotate.Enabled = True
+			'buttonRotate.Enabled = True
 			buttonView.Enabled = True
 			buttonUpload.Enabled = True
 		End If
@@ -1696,7 +1696,7 @@ Public Partial Class MainForm
 		textBoxKeywords.Text = Nothing
 		textBoxKeywords.Enabled = False
 		buttonSave.Enabled = False
-		buttonRotate.Enabled = False
+		'buttonRotate.Enabled = False
 		buttonView.Enabled = False
 		buttonUpload.Enabled = False
 		buttonDeselect.Enabled = False

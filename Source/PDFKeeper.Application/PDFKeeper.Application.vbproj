@@ -129,10 +129,6 @@
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainForm.vb" />
-    <Compile Include="Forms\RotatePagesForm.Designer.vb">
-      <DependentUpon>RotatePagesForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\RotatePagesForm.vb" />
     <Compile Include="Modules\FileUtil.vb" />
     <Compile Include="Modules\FolderUtil.vb" />
     <Compile Include="Modules\MessageBoxWrapper.vb" />
@@ -156,9 +152,6 @@
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
-    <EmbeddedResource Include="Forms\RotatePagesForm.resx">
-      <DependentUpon>RotatePagesForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.vb</LastGenOutput>
