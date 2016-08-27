@@ -33,7 +33,7 @@ Public NotInheritable Class Serializer
 	''' </summary>
 	''' <param name="objectName">Name of object to serialize.</param>
 	''' <param name="xmlFile">Path name of XML file to write.</param>
-	Public Shared Sub SerializeToXml(Of T As New)( _
+	Public Shared Sub ToXml(Of T As New)( _
 		ByVal objectName As T, _
 		ByVal xmlFile As String)
 		Dim writer As New StreamWriter(xmlFile)
@@ -48,7 +48,7 @@ Public NotInheritable Class Serializer
 	''' </summary>
 	''' <param name="objectName">Name of object to deserialize.</param>
 	''' <param name="xmlFile">Path name of XML file to read.</param>
-	Public Shared Sub DeserializeFromXml(Of T)( _
+	Public Shared Sub FromXml(Of T)( _
 		ByVal objectName As T, _
 		ByVal xmlFile As String)
 		Try

@@ -20,7 +20,7 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class DBConnectionUtil
+Public NotInheritable Class DBConnectionString
 	Private Sub New()
 		' Because type 'DBConnectionUtil' contains only 'Shared' members, a
 		' default private constructor was added to prevent the compiler from
@@ -35,7 +35,7 @@ Public NotInheritable Class DBConnectionUtil
 	''' exposure.
 	''' </remarks>
 	''' <returns>The connection string.</returns>
-	Friend Shared Function GetConnectionString As String
+	Friend Shared Function GetString As String
 		Dim dbConnection As New DBConnection
 		Return "User Id=" + dbConnection.UserName + ";" & _
 			"Password=" + dbConnection.Password.GetString + ";" & _
@@ -44,17 +44,17 @@ Public NotInheritable Class DBConnectionUtil
 	End Function
 	
 	''' <summary>
-	''' Performs a tests database connection.
+	''' Tests the database connection.
 	''' </summary>
 	''' <remarks>
 	''' This method is intended to confirm the User Name, Password, and Data
 	''' Source provided by the user is valid.
 	''' </remarks>
 	''' <returns>True for test passed or False for test failed.</returns>
-	Friend Shared Function TestConnection As Boolean
+	Friend Shared Function Test As Boolean
 		Using connection As New OracleConnection
 			Try
-				connection.ConnectionString = GetConnectionString
+				connection.ConnectionString = GetString
 				connection.Open
 				Return True
 			Catch ex As OracleException

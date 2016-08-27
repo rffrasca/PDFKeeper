@@ -40,7 +40,7 @@ Public Class DBConnectionPresentationModel
 	''' properties on this class to update the view.
 	''' </summary>
 	Public Sub New()
-		Serializer.DeserializeFromXml(dbConnection, xmlFile)
+		Serializer.FromXml(dbConnection, xmlFile)
 		UserName = dbConnection.UserName
 		DataSource = dbConnection.DataSource
 	End Sub
@@ -108,9 +108,9 @@ Public Class DBConnectionPresentationModel
 	End Sub
 	
 	''' <summary>
-	''' Sets the password property on the DBConnection model, performs a
-	''' database test connection, and then serializes the UserName and
-	''' DataSource properties from the DBConnection model to an XML file.
+	''' Sets the password property on the DBConnection model, tests the
+	''' database connection, and then serializes the UserName and DataSource
+	''' properties from the DBConnection model to an XML file.
 	''' </summary>
 	''' <param name="passwordParam">
 	''' SecureString object containing the password.
@@ -118,8 +118,8 @@ Public Class DBConnectionPresentationModel
 	''' <returns>True for success or False for failure.</returns>
 	Friend Function OkButtonClicked(passwordParam As SecureString) As Boolean
 		DBConnection.Password = passwordParam
-		If DBConnectionUtil.TestConnection Then
-			Serializer.SerializeToXml(dbConnection, xmlFile)
+		If DBConnectionString.Test Then
+			Serializer.ToXml(dbConnection, xmlFile)
 			Return True
 		Else
 			' On failure, the Password TextBox on the view needs to be cleared.
