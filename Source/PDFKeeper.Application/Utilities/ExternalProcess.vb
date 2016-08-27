@@ -20,17 +20,34 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class WebPages
-	Private Sub New()
-		' Because type 'WebPages' contains only 'Shared' members, a default
-		' private constructor was added to prevent the compiler from adding a
-		' default public constructor. (CA1053)
+Public Class ExternalProcess
+	Private openParam As String
+	
+	''' <summary>
+	''' Initializes a new instance of this class with the specified System.Uri
+	''' object.
+	''' </summary>
+	''' <param name="arg">System.Uri object.</param>
+	Public Sub New(ByVal arg As System.Uri)
+		openParam = arg.ToString
 	End Sub
 	
 	''' <summary>
-	''' Shows the homepage using the default application.
+	''' Initializes a new instance of this class with the specified string
+	''' object.
 	''' </summary>
-	Public Shared Sub ShowHomepage
-		Process.Start(ConfigurationManager.AppSettings("HomePageUrl"))
+	''' <param name="arg"></param>
+	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
+		"Microsoft.Design", _
+		"CA1057:StringUriOverloadsCallSystemUriOverloads")> _
+	Public Sub New(ByVal arg As String)
+		openParam = arg
+	End Sub
+	
+	''' <summary>
+	''' Opens the object using the default application.    
+	''' </summary>
+	Public Sub Open
+		Process.Start(openParam)
 	End Sub
 End Class

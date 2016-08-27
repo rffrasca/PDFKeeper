@@ -64,6 +64,14 @@ Public NotInheritable Class AboutApplication
 		End Get
 	End Property
 	
+	Public Shared ReadOnly Property HomepageUrl As System.Uri
+		Get
+			Dim url As New System.Uri( _
+				ConfigurationManager.AppSettings("HomePageUrl"))
+			Return url
+		End Get
+	End Property
+	
 	Public Shared ReadOnly Property License As String
 		Get
 			Return PdfKeeper.Strings.AboutLicense

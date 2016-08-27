@@ -44,6 +44,7 @@ Public Partial Class AboutView
 	Private Sub LinkLabelHomepageLinkClicked( _
 		sender As Object, _
 		e As LinkLabelLinkClickedEventArgs)
-		WebPages.ShowHomepage
+		Dim external As New ExternalProcess(AboutApplication.HomePageUrl)
+		external.Open
 	End Sub
 End Class
