@@ -20,7 +20,7 @@
 '*
 '******************************************************************************
 
-Public NotInheritable Class HelpUtil
+Public NotInheritable Class HelpTopic
 	Private Sub New()
 		' Because type 'HelpWrapper' contains only 'Shared' members, a default
 		' private constructor was added to prevent the compiler from adding a
@@ -39,7 +39,7 @@ Public NotInheritable Class HelpUtil
 	''' Topic file (without extension) in help file to display.
 	''' Use ActiveForm.Name to specify the name of the active form.
 	''' </param>
-	Public Shared Sub ShowHelp( _
+	Public Shared Sub Show( _
 		ByVal parent As System.Windows.Forms.Control, _
 		helpTopic As String)
 		Help.ShowHelp(parent, "PDFKeeper.en.chm", helpTopic & ".html")

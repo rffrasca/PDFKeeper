@@ -27,7 +27,7 @@ Public Class ExternalProcess
 	''' Initializes a new instance of this class with the specified System.Uri
 	''' object.
 	''' </summary>
-	''' <param name="arg">System.Uri object.</param>
+	''' <param name="arg">System.Uri object to open.</param>
 	Public Sub New(ByVal arg As System.Uri)
 		openParam = arg.ToString
 	End Sub
@@ -36,7 +36,7 @@ Public Class ExternalProcess
 	''' Initializes a new instance of this class with the specified string
 	''' object.
 	''' </summary>
-	''' <param name="arg"></param>
+	''' <param name="arg">string object to open.</param>
 	<System.Diagnostics.CodeAnalysis.SuppressMessage( _
 		"Microsoft.Design", _
 		"CA1057:StringUriOverloadsCallSystemUriOverloads")> _

@@ -93,7 +93,7 @@
     <Compile Include="Presentation Models\PdfOwnerPasswordPresentationModel.vb" />
     <Compile Include="Utilities\DBConnectionString.vb" />
     <Compile Include="Utilities\ExternalProcess.vb" />
-    <Compile Include="Utilities\HelpUtil.vb" />
+    <Compile Include="Utilities\HelpTopic.vb" />
     <Compile Include="Utilities\Serializer.vb" />
     <Compile Include="Views\AboutView.Designer.vb">
       <DependentUpon>AboutView.vb</DependentUpon>
