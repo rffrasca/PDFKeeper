@@ -89,7 +89,9 @@
     <Compile Include="Extensions\StringExtension.vb" />
     <Compile Include="Models\AboutApplication.vb" />
     <Compile Include="Models\DBConnection.vb" />
+    <Compile Include="Models\DirectUploadFolders.vb" />
     <Compile Include="Presentation Models\DBConnectionPresentationModel.vb" />
+    <Compile Include="Presentation Models\ManageDirectUploadFoldersPresentationModel.vb" />
     <Compile Include="Presentation Models\PdfOwnerPasswordPresentationModel.vb" />
     <Compile Include="Utilities\DBConnectionString.vb" />
     <Compile Include="Utilities\ExternalProcess.vb" />
@@ -116,6 +118,10 @@
     <Compile Include="Classes\PdfProperties.vb" />
     <Compile Include="Classes\Shortcuts.vb" />
     <Compile Include="Classes\WindowsProfileFolders.vb" />
+    <Compile Include="Views\ManageDirectUploadFoldersView.Designer.vb">
+      <DependentUpon>ManageDirectUploadFoldersView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManageDirectUploadFoldersView.vb" />
     <Compile Include="Views\PdfOwnerPasswordView.Designer.vb">
       <DependentUpon>PdfOwnerPasswordView.vb</DependentUpon>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DBConnectionView.resx">
       <DependentUpon>DBConnectionView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ManageDirectUploadFoldersView.resx">
+      <DependentUpon>ManageDirectUploadFoldersView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PdfOwnerPasswordView.resx">
       <DependentUpon>PdfOwnerPasswordView.vb</DependentUpon>

@@ -22,7 +22,6 @@
 
 Public Class DBConnectionPresentationModel
 	Inherits NotifyPropertyChangedBase
-	
 	Private readonly xmlFile As String = Path.Combine( _
 		ApplicationProfileFolders.RoamingParent, "DBConnection.xml")
 	Private dbConnection As New DBConnection

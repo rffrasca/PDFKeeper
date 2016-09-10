@@ -321,7 +321,13 @@ Public Partial Class MainForm
 	''' <param name="e"></param>
 	Private Sub ToolStripMenuItemDirectUploadConfigClick(sender As Object, e As EventArgs)
 		timerDirectUpload.Stop
-		DirectUploadConfigurationForm.ShowDialog()
+		'DirectUploadConfigurationForm.ShowDialog()
+		ManageDirectUploadFoldersView.ShowDialog()
+		
+'		Dim folders As New DirectUploadFoldersCollection
+'		For Each file In folders.Folders
+'			MsgBox(file)
+'		Next
 		timerDirectUpload.Start
 	End Sub
 	
