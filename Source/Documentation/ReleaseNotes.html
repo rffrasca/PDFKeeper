@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-  <title>PDFKeeper 3.2.0: Release Notes</title>
+  <title>PDFKeeper 3.1.2: Release Notes</title>
   <style type="text/css">
 /* <![CDATA[ */ 
 @import "css/readyset.css"; 
@@ -15,7 +15,7 @@
 </head>
 
 <body style="font-family: Arial,Helvetica,sans-serif">
-<h2>PDFKeeper 3.2.0: Release Notes</h2>
+<h2>PDFKeeper 3.1.2: Release Notes</h2>
 
 <div class="app">
 
@@ -32,11 +32,11 @@
     </tr>
     <tr>
       <th>Release Number:</th>
-      <td>3.2.0</td>
+      <td>3.1.2</td>
     </tr>
     <tr>
       <th>Release Date:</th>
-      <td>2016/xx/xx</td>
+      <td>2015/07/11</td>
     </tr>
     <tr>
       <th>Customer Support:</th>
@@ -52,7 +52,7 @@
 <div id="introduction">
 <h3>Introduction</h3>
 
-<p>This document contains the release notes for PDFKeeper version 3.2.0. The
+<p>This document contains the release notes for PDFKeeper version 3.1.2. The
 following sections describe the release in detail and provide late-breaking or
 other information that supplements the main documentation.</p>
 </div>
@@ -61,10 +61,8 @@ other information that supplements the main documentation.</p>
 <div id="whatsnew">
 <h3>What's New?</h3>
 <ul>
-  <li>This is a minor release primarily focusing on Document Capture and
-    Document Preview.</li>
-  <li>Sumatra PDF has been updated to 3.1 in the "official" binary release.</li>
-  <li>Ghostscript has been updated to 9.18 in the "official" binary release.
+  <li>This is a bug fix release.</li>
+  <li>Ghostscript has been updated to 9.16 in the "official" binary release.
   </li>
   <li>The source code for this release is available at <a
     href="https://pdfkeeper.codeplex.com/SourceControl/latest">website</a>.</li>
@@ -77,48 +75,25 @@ other information that supplements the main documentation.</p>
 <div id="installation">
 <h3>Recent Changes</h3>
 <ul>
-  <li>ADDED - Selected file can now be renamed, moved, or deleted from within
-    Document Capture.</li>
-  <li>ADDED - "Do not reset Zoom Level during this preview session" checkbox
-    added to Document Preview.</li>
-  <li>ADDED - New button on Document Capture tab to set Title textbox to
-    selected PDF file name without the extension.</li>
-  <li>ADDED - New icon to Document Capture Deselect button.</li>
-  <li>CHANGED - Extensive refactoring of the source code.</li>
-  <li>CHANGED - Presentation Model pattern has been applied to all views.</li>
-  <li>CHANGED - Replaced icon on Document Preview Zoom In and Out buttons.</li>
-  <li>CHANGED - Renamed "Project Site" link in About box to "PDFKeeper Home
-    Page" and changed to open new Home Page.</li>
-  <li>CHANGED - Renamed ProjectSiteUrl to UpdateCheckUrl in app.config and
-    UpdateCheck.</li>
-  <li>CHANGED - F1 = Help is now Help F1 on Database Commection view and is now
-    a link that will show help topic.</li>
-  <li>FIXED - Unhandled Exception when saving PDF Document to Disk.</li>
-  <li>FIXED - Improved Document Preview image quality.</li>
-  <li>FIXED - UpdateCheck now working after refactoring.</li>
-  <li>REMOVED - "Report New Issue" menu item from Main Form.</li>
+  <li>FIXED <a href="https://pdfkeeper.codeplex.com/workitem/1746">1746</a>
+    Document Search: listview not scrolling when selected item is off the
+  screen</li>
+  <li>FIXED <a href="https://pdfkeeper.codeplex.com/workitem/1751">1751</a>
+    Document Search: selected listview item becomes deselected after
+  refresh</li>
 </ul>
 
 <h3>Upgrade Notes</h3>
 <dl>
-  <dt>User Settings</dt>
-</dl>
-
-<p style="margin-left:4em">When upgrading from any version pf PDFKeeper prior
-to 2.5.0, the User Settings will not be imported by PDFKeeper and will remain
-on the system and can be removed. Users settings for PDFKeeper 1.0.0 - 1.1.0
-are stored in <b>%APPDATA%\pdfkeeper.properties</b>. User Settings for
-PDFKeeper 2.0.0 - 2.4.0 are stored in the registry at
-<b>HKEY_CURRENT_USER\Software\Software\PDFKeeper</b>.</p>
-<dl>
   <dt>Deprecated Components Information</dt>
-    <dd>Since PDFKeeper 2.0.0, the server-side components have been deprecated.
-      If not upgrading a system that has only the server-side components from
-      PDFKeeper 1.0.0 or 1.1.0 installed, please uninstall PDFKeeper from that
-      system. From the server; remove the Document Loader scheduled task,
-      Document Upload Folder, and delete the PDFKEEPER_UPLOAD environment
-      variable. From each client, remove the shortcut to the Document Upload
-      folder.</dd>
+    <dd><p>Since PDFKeeper 2.0.0, the server-side components have been
+      deprecated. If not upgrading a system that has only the server-side
+      components from PDFKeeper 1.0.0 or 1.1.0 installed, please uninstall
+      PDFKeeper from that system. From the server; remove the Document Loader
+      scheduled task, Document Upload Folder, and delete the PDFKEEPER_UPLOAD
+      environment variable. From each client, remove the shortcut to the
+      Document Upload folder.</p>
+    </dd>
     <dd>If used in a prior version, the <b>Information Properties Editor Folder
       Watcher</b> settings will be discarded as that functionality has been
       replaced by <b>Document Capture</b>.</dd>
@@ -210,7 +185,7 @@ PDFKeeper 2.0.0 - 2.4.0 are stored in the registry at
 Company Proprietary</div>
 
 <div class="footnote">
-Copyright © 2009-2016 Robert F. Frasca</div>
+Copyright © 2009-2015 Robert F. Frasca</div>
 </div>
 </body>
 </html>
