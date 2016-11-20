@@ -14,6 +14,7 @@ Main="PDFKeeper Help","Table of Contents.hhc",,"Introduction.html",,,,,,0x2120,,
 
 [FILES]
 Introduction.html
+Database Connection.html
 Document Search.html
 How to search for documents.html
 Document Capture.html
@@ -33,7 +34,6 @@ Accessing the Direct Upload Folder and sub-folders.html
 Configuring Direct Upload sub-folders.html
 Previewing documents returned from a search.html
 Viewing text-only for documents returned from a search.html
-DBConnectionView.html
 
 [INFOTYPES]
 

@@ -14,7 +14,7 @@
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="Database Connection">
-		<param name="Local" value="DBConnectionView.html">
+		<param name="Local" value="Database Connection.html">
 		<param name="ImageNumber" value="9">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
@@ -91,11 +91,6 @@
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Accessing the Capture Folder">
 			<param name="Local" value="Accessing the Capture Folder.html">
-			<param name="ImageNumber" value="9">
-			</OBJECT>
-		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Document Capture Queue File Operations">
-			<param name="Local" value="Document Capture Queue File Operations.html">
 			<param name="ImageNumber" value="9">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
