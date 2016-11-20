@@ -1,7 +1,7 @@
 ﻿'******************************************************************************
 '*
-'* PDFKeeper -- Free, Open Source PDF Capture, Upload, and Search.
-'* Copyright (C) 2009-2016 Robert F. Frasca
+'* PDFKeeper -- PDF Document Capture, Storage, and Search
+'* Copyright (C) 2009-2015 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
 '*
@@ -36,9 +36,7 @@ Public Class DirectUploadFolderProperties
 	''' </summary>
 	''' <param name="xmlName" name only without the file extension></param>
 	Public Sub New(ByVal xmlName as String)
-		xmlFile = Path.Combine( _
-			ApplicationProfileFolders.DirectUploadXml, _
-			xmlName & ".xml")
+		xmlFile = Path.Combine(UploadXmlDir, xmlName & ".xml")
 	End Sub
 						
 	#Region "Properties"
@@ -159,10 +157,10 @@ Public Class DirectUploadFolderProperties
 					"Properties").Get("UseExistingKeywordsChecked")
 			Catch ex As System.NullReferenceException
 			Catch ex As UnauthorizedAccessException
-				ShowError(ex.Message)
+				MessageBoxWrapper.ShowError(ex.Message)
 				Return 1
 			Catch ex As IOException
-				ShowError(ex.Message)
+				MessageBoxWrapper.ShowError(ex.Message)
 				Return 1
 			End Try
 		End If
@@ -215,10 +213,10 @@ Public Class DirectUploadFolderProperties
 					m_UseExistingKeywordsChecked)
 			xmlConfig.Save(xmlFile)
 		Catch ex As UnauthorizedAccessException
-			ShowError(ex.Message)
+			MessageBoxWrapper.ShowError(ex.Message)
 			Return 1
 		Catch ex As IOException
-			ShowError(ex.Message)
+			MessageBoxWrapper.ShowError(ex.Message)
 			Return 1
 		End Try
 		Return 0

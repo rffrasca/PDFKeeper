@@ -11,12 +11,13 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <OptionInfer>On</OptionInfer>
-    <ApplicationIcon>..\Resources\Logo\PDFKeeper.ico</ApplicationIcon>
+    <ApplicationIcon>..\..\Logos\PDFKeeper.ico</ApplicationIcon>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>PdfKeeper.My.MyApplication</StartupObject>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <NoWin32Manifest>False</NoWin32Manifest>
-    <AssemblyOriginatorKeyFile>..\PDFKeeper.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>PDFKeeper.snk</AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>
     <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
     <OptionStrict>Off</OptionStrict>
@@ -25,9 +26,6 @@
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>False</RunCodeAnalysis>
-    <SourceAnalysisOverrideSettingsFile>
-    </SourceAnalysisOverrideSettingsFile>
-    <ResolveComReferenceSilent>True</ResolveComReferenceSilent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -41,17 +39,13 @@
     <DebugSymbols>True</DebugSymbols>
     <DebugType>Full</DebugType>
     <Optimize>False</Optimize>
-    <SignAssembly>False</SignAssembly>
     <DefineConstants>DEBUG=1,TRACE=1</DefineConstants>
-    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
-    <StartAction>Project</StartAction>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>bin\Release\</OutputPath>
     <DebugSymbols>False</DebugSymbols>
     <DebugType>None</DebugType>
     <Optimize>True</Optimize>
-    <SignAssembly>True</SignAssembly>
     <DefineConstants>TRACE=1</DefineConstants>
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <AllowedReferenceRelatedFileExtensions>.allowedextension</AllowedReferenceRelatedFileExtensions>
@@ -60,12 +54,12 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.Targets" />
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\packages\iTextSharp.5.5.2\lib\itextsharp.dll</HintPath>
+      <HintPath>..\..\packages\iTextSharp.5.5.2\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Nini">
-      <HintPath>..\packages\Trove.Nini.1.1.0.0\lib\net20\Nini.dll</HintPath>
+      <HintPath>..\..\packages\Trove.Nini.1.1.0.0\lib\net20\Nini.dll</HintPath>
     </Reference>
-    <Reference Include="Oracle.ManagedDataAccess" />
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
@@ -83,104 +77,138 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\NotifyPropertyChangedBase.vb" />
-    <Compile Include="Controls\SecureTextBox.vb" />
-    <Compile Include="Extensions\SecureStringExtension.vb" />
-    <Compile Include="Extensions\StringExtension.vb" />
-    <Compile Include="Models\AboutApplication.vb" />
-    <Compile Include="Models\DBConnection.vb" />
-    <Compile Include="Models\DirectUploadFolders.vb" />
-    <Compile Include="Presentation Models\DBConnectionPresentationModel.vb" />
-    <Compile Include="Presentation Models\ManageDirectUploadFoldersPresentationModel.vb" />
-    <Compile Include="Presentation Models\PdfOwnerPasswordPresentationModel.vb" />
-    <Compile Include="Utilities\DBConnectionString.vb" />
-    <Compile Include="Utilities\ExternalProcess.vb" />
-    <Compile Include="Utilities\HelpTopic.vb" />
-    <Compile Include="Utilities\Serializer.vb" />
-    <Compile Include="Views\AboutView.Designer.vb">
-      <DependentUpon>AboutView.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AboutView.vb" />
-    <Compile Include="Views\DBConnectionView.Designer.vb">
-      <DependentUpon>DBConnectionView.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DBConnectionView.vb" />
-    <Compile Include="Classes\ApplicationProfileFolders.vb" />
-    <Compile Include="Classes\DatabaseNonQuery.vb" />
-    <Compile Include="Classes\DatabaseAuthorsSubjectsQuery.vb" />
-    <Compile Include="Classes\DatabaseDocumentRecordQuery.vb" />
-    <Compile Include="Classes\DatabaseSearchQuery.vb" />
-    <Compile Include="Classes\DirectUpload.vb" />
     <Compile Include="Classes\DirectUploadFolderProperties.vb" />
-    <Compile Include="Classes\HelpFileTopics.vb" />
-    <Compile Include="Classes\NativeMethods.vb" />
-    <Compile Include="Classes\PdfDocument.vb" />
-    <Compile Include="Classes\PdfProperties.vb" />
-    <Compile Include="Classes\Shortcuts.vb" />
-    <Compile Include="Classes\WindowsProfileFolders.vb" />
-    <Compile Include="Views\ManageDirectUploadFoldersView.Designer.vb">
-      <DependentUpon>ManageDirectUploadFoldersView.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ManageDirectUploadFoldersView.vb" />
-    <Compile Include="Views\PdfOwnerPasswordView.Designer.vb">
-      <DependentUpon>PdfOwnerPasswordView.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PdfOwnerPasswordView.vb" />
-    <Compile Include="Enums\Enums.vb" />
-    <Compile Include="Forms\DirectUploadConfigurationForm.Designer.vb">
-      <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\DirectUploadConfigurationForm.vb" />
-    <Compile Include="Forms\MainForm.Designer.vb">
-      <DependentUpon>MainForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MainForm.vb" />
-    <Compile Include="Modules\FileUtil.vb" />
-    <Compile Include="Modules\FolderUtil.vb" />
-    <Compile Include="Modules\MessageBoxWrapper.vb" />
-    <Compile Include="Modules\PdfUtil.vb" />
-    <Compile Include="Modules\WindowUtil.vb" />
-    <Compile Include="Program.vb" />
-    <Compile Include="Properties\AssemblyInfo.vb" />
-    <Compile Include="Resources\Strings.Designer.vb">
-      <DependentUpon>Strings.resx</DependentUpon>
+    <Compile Include="Classes\DirectUpload\DirectUpload.Strings.Designer.vb">
+      <DependentUpon>DirectUpload.Strings.resx</DependentUpon>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Singleton Classes\ApplicationUpdate.vb" />
-    <Compile Include="Singleton Classes\DocumentRecord.vb" />
-    <Compile Include="Singleton Classes\FileCache.vb" />
-    <Compile Include="Singleton Classes\ImageZoom.vb" />
-    <Compile Include="Singleton Classes\UserSettings.vb" />
-    <EmbeddedResource Include="Forms\DirectUploadConfigurationForm.resx">
+    <Compile Include="Classes\DirectUpload\DirectUpload.vb" />
+    <Compile Include="Classes\FileTask.vb" />
+    <Compile Include="Classes\FolderTask.vb" />
+    <Compile Include="Classes\HelpWrapper.vb" />
+    <Compile Include="Classes\DatabaseConnection.vb" />
+    <Compile Include="Classes\FileCache.vb" />
+    <Compile Include="Classes\MessageBoxWrapper\MessageBoxWrapper.Strings.Designer.vb">
+      <DependentUpon>MessageBoxWrapper.Strings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Classes\MessageBoxWrapper\MessageBoxWrapper.vb" />
+    <Compile Include="Classes\NativeMethods.vb" />
+    <Compile Include="Classes\PdfFileTask\PdfFileTask.Strings.Designer.vb">
+      <DependentUpon>PdfFileTask.Strings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Classes\PdfFileTask\PdfFileTask.vb" />
+    <Compile Include="Classes\PdfProperties\PdfProperties.Strings.Designer.vb">
+      <DependentUpon>PdfProperties.Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\PdfProperties\PdfProperties.vb" />
+    <Compile Include="Classes\Print.vb" />
+    <Compile Include="Classes\Product.vb" />
+    <Compile Include="Classes\StringDecoder.vb" />
+    <Compile Include="Classes\UserProfileFoldersTask\UserProfileFoldersTask.Strings.Designer.vb">
+      <DependentUpon>UserProfileFoldersTask.Strings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Classes\UserProfileFoldersTask\UserProfileFoldersTask.vb" />
+    <Compile Include="Classes\UserSettings.vb" />
+    <Compile Include="Classes\WindowFinder.vb" />
+    <Compile Include="Forms\AboutForm\AboutForm.Designer.vb">
+      <DependentUpon>AboutForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AboutForm\AboutForm.Strings.Designer.vb">
+      <DependentUpon>AboutForm.Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AboutForm\AboutForm.vb" />
+    <Compile Include="Forms\DatabaseConnectionForm\DatabaseConnectionForm.Designer.vb">
+      <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DatabaseConnectionForm\DatabaseConnectionForm.vb" />
+    <Compile Include="Forms\DirectUploadConfigurationForm\DirectUploadConfigurationForm.Designer.vb">
+      <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DirectUploadConfigurationForm\DirectUploadConfigurationForm.Strings.Designer.vb">
+      <DependentUpon>DirectUploadConfigurationForm.Strings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Forms\DirectUploadConfigurationForm\DirectUploadConfigurationForm.vb" />
+    <Compile Include="Forms\MainForm\MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm\MainForm.Strings.Designer.vb">
+      <DependentUpon>MainForm.Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm\MainForm.vb" />
+    <Compile Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.Designer.vb">
+      <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.vb" />
+    <Compile Include="Modules\UserProfileDeprecatedFolders.vb" />
+    <Compile Include="Modules\UserProfileFolders.vb" />
+    <Compile Include="Program.vb" />
+    <Compile Include="Properties\AssemblyInfo.vb" />
+    <EmbeddedResource Include="Classes\DirectUpload\DirectUpload.Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DirectUpload.Strings.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\MessageBoxWrapper\MessageBoxWrapper.Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageBoxWrapper.Strings.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\PdfFileTask\PdfFileTask.Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PdfFileTask.Strings.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\PdfProperties\PdfProperties.Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\UserProfileFoldersTask\UserProfileFoldersTask.Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserProfileFoldersTask.Strings.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutForm\AboutForm.resx">
+      <DependentUpon>AboutForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutForm\AboutForm.Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutForm.Strings.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DatabaseConnectionForm\DatabaseConnectionForm.resx">
+      <DependentUpon>DatabaseConnectionForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DirectUploadConfigurationForm\DirectUploadConfigurationForm.resx">
       <DependentUpon>DirectUploadConfigurationForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
+    <EmbeddedResource Include="Forms\DirectUploadConfigurationForm\DirectUploadConfigurationForm.Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DirectUploadConfigurationForm.Strings.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
-    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
-    <EmbeddedResource Include="Resources\Strings.resx">
+    <EmbeddedResource Include="Forms\MainForm\MainForm.Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.vb</LastGenOutput>
+      <LastGenOutput>MainForm.Strings.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\AboutView.resx">
-      <DependentUpon>AboutView.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\PdfOwnerPasswordForm\PdfOwnerPasswordForm.resx">
+      <DependentUpon>PdfOwnerPasswordForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\DBConnectionView.resx">
-      <DependentUpon>DBConnectionView.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ManageDirectUploadFoldersView.resx">
-      <DependentUpon>ManageDirectUploadFoldersView.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\PdfOwnerPasswordView.resx">
-      <DependentUpon>PdfOwnerPasswordView.vb</DependentUpon>
-    </EmbeddedResource>
+    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>start ..\..\..\Build\AppPostBuild</PostBuildEvent>
+    <PostBuildEvent>start ..\..\..\..\Build\PostBuild</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Classes" />
+    <Folder Include="Classes\MessageBoxWrapper" />
+    <Folder Include="Classes\DirectUpload" />
+    <Folder Include="Classes\UserProfileFoldersTask" />
+    <Folder Include="Classes\PdfFileTask" />
+    <Folder Include="Classes\PdfProperties" />
     <Folder Include="Forms" />
+    <Folder Include="Forms\MainForm" />
+    <Folder Include="Forms\AboutForm" />
+    <Folder Include="Forms\DirectUploadConfigurationForm" />
     <Folder Include="Modules" />
     <COMReference Include="IWshRuntimeLibrary">
       <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
@@ -190,16 +218,6 @@
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
-    <Folder Include="Enums" />
-    <Folder Include="Controls" />
-    <Folder Include="Extensions" />
-    <Folder Include="Models" />
-    <Folder Include="Base" />
-    <Folder Include="Utilities" />
-    <Folder Include="Presentation Models" />
-    <Folder Include="Views" />
-    <Folder Include="Resources" />
-    <Folder Include="Singleton Classes" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -218,7 +236,6 @@
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
-    <Import Include="System.ComponentModel" />
     <Import Include="System.Configuration" />
     <Import Include="System.Data" />
     <Import Include="System.Diagnostics" />
@@ -228,7 +245,6 @@
     <Import Include="System.Linq" />
     <Import Include="System.Net" />
     <Import Include="System.Resources" />
-    <Import Include="System.Runtime.CompilerServices" />
     <Import Include="System.Runtime.InteropServices" />
     <Import Include="System.Security" />
     <Import Include="System.Security.AccessControl" />
@@ -237,6 +253,5 @@
     <Import Include="System.Text.RegularExpressions" />
     <Import Include="System.Threading" />
     <Import Include="System.Windows.Forms" />
-    <Import Include="System.Xml.Serialization" />
   </ItemGroup>
 </Project>

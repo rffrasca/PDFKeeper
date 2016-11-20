@@ -1,7 +1,7 @@
 ﻿'******************************************************************************
 '*
-'* PDFKeeper -- Free, Open Source PDF Capture, Upload, and Search.
-'* Copyright (C) 2009-2016 Robert F. Frasca
+'* PDFKeeper -- PDF Document Capture, Storage, and Search
+'* Copyright (C) 2009-2015 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
 '*
@@ -30,15 +30,39 @@ Namespace My
 			Me.EnableVisualStyles = True
 			AddHandler AppDomain.CurrentDomain.UnhandledException, _
 				AddressOf MyApplication_UnhandledException
-			
-			' MySettings are not supported in SharpDevelop.
+				' MySettings are not supported in SharpDevelop.
 			Me.SaveMySettingsOnExit = False
 			Me.ShutDownStyle = ShutdownMode.AfterMainFormCloses
 				
-			' Show Database Connection view to the user.
-			If DBConnectionView.ShowDialog() = _
-				Windows.Forms.DialogResult.Cancel Then
-				
+			' Create User Profile folders and delete deprecated folders.
+			If UserProfileFoldersTask.Create = 1 Then
+				Environment.Exit(1)
+			End If
+			If UserProfileFoldersTask.DeleteDeprecated = 1 Then
+				Environment.Exit(1)
+			End If
+			If DirectUpload.CreateMissingFolders = 1 Then
+				Environment.Exit(1)
+			End If
+			
+			' Create Document Capture Shortcuts.
+			If UserProfileFoldersTask.CreateDocumentCaptureShortcuts = 1 Then
+				Environment.Exit(1)
+			End If
+			
+			' Create Direct Upload Shortcut.
+			If UserProfileFoldersTask.CreateDirectUploadShortcut = 1 Then
+				Environment.Exit(1)
+			End If
+			
+			' Read User Settings.
+			Dim oUserSettings As New UserSettings
+			If Not oUserSettings.Read = 0 Then
+				Environment.Exit(1)
+			End If
+			
+			' Show Database Connection Dialog to the user.
+			If DatabaseConnectionForm.ShowDialog() = Windows.Forms.DialogResult.Cancel Then
 				Environment.Exit(1)
 			End If
 		End Sub
@@ -48,16 +72,14 @@ Namespace My
 		End Sub
 		
 		''' <summary>
-		''' Application global unhandled exception handler that displays the
-		''' error to the user.		
+		''' This subroutine is the application global unhandled exception
+		''' handler that will display the error to the user.		
 		''' </summary>
 		''' <param name="sender"></param>
 		''' <param name="e"></param>
-		Private Sub MyApplication_UnhandledException( _
-			sender As Object, _
-			e As System.UnhandledExceptionEventArgs)
-			
-			ShowError(e.ExceptionObject.ToString)
+		Private Sub MyApplication_UnhandledException(sender As Object, _
+				e As System.UnhandledExceptionEventArgs)
+			MessageBoxWrapper.ShowError(e.ExceptionObject.ToString)
 		End Sub
 	End Class
 End Namespace

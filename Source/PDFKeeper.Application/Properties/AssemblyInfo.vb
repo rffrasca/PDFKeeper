@@ -1,7 +1,7 @@
 ﻿'******************************************************************************
 '*
-'* PDFKeeper -- Free, Open Source PDF Capture, Upload, and Search.
-'* Copyright (C) 2009-2016 Robert F. Frasca
+'* PDFKeeper -- PDF Document Capture, Storage, and Search
+'* Copyright (C) 2009-2015 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
 '*
@@ -31,11 +31,11 @@ Imports System.Runtime.InteropServices
 ' you compile.
 
 <assembly: AssemblyTitle("PDFKeeper")>
-<assembly: AssemblyDescription("Capture, Upload, and Search for PDF Documents")>
+<assembly: AssemblyDescription("PDF Document Capture, Storage, and Search")>
 <assembly: AssemblyConfiguration("")>
 <assembly: AssemblyCompany("Robert F. Frasca")>
 <assembly: AssemblyProduct("PDFKeeper")>
-<assembly: AssemblyCopyright("Copyright © 2009-2016 Robert F. Frasca")>
+<assembly: AssemblyCopyright("Copyright © 2009-2015 Robert F. Frasca")>
 <assembly: AssemblyTrademark("")>
 <assembly: AssemblyCulture("")>
 
@@ -50,6 +50,6 @@ Imports System.Runtime.InteropServices
 ' You can specify all values by your own or you can build default build and revision
 ' numbers with the '*' character (the default):
 
-<assembly: AssemblyVersion("3.2.0.*")>
+<assembly: AssemblyVersion("3.1.2.*")>
 <assembly: CLSCompliant(True)>
 <assembly: NeutralResourcesLanguageAttribute("en")>
