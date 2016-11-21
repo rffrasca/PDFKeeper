@@ -14,15 +14,16 @@ Setup script, "DatabaseSetup.cmd" is located in the "Scripts" folder.
 
 1. The following Development Tools must be installed:
 
-    a. SharpDevelop
-	http://www.icsharpcode.net/OpenSource/SD/Download/
+    a. Microsoft Visual Studio
+	https://www.visualstudio.com/downloads/
 
-	Note: Visual Studio may be used; however, not tested.
-    
-    b. Wix Toolset
-	http://wixtoolset.org/
-    
-    c. Microsoft HTML Help Workshop
+    b. Microsoft .NET Framework 4.6.1 Developer Pack
+	https://www.microsoft.com/en-us/download/details.aspx?id=49978
+ 
+    c. Wix Toolset
+    	http://wixtoolset.org/
+
+    d. Microsoft HTML Help Workshop
 	http://www.microsoft.com/en-us/download/details.aspx?id=21138
 
 2. The following Library must be installed:
@@ -60,8 +61,8 @@ Setup script, "DatabaseSetup.cmd" is located in the "Scripts" folder.
 
 4. iTextSharp and Trove Unofficial Nini Configuration
 
-	Use Restore Packages feature in SharpDevelop to download NuGet
-	packages.
+	Open "Manage NuGet Packages for Solution..." and select Restore to
+	download NuGet packages.
 
 -------------------------------------------------------------------------------
  Building PDFKeeper
@@ -69,5 +70,5 @@ Setup script, "DatabaseSetup.cmd" is located in the "Scripts" folder.
 
 1. Open "Help\EN\PDFKeeper.hhp" with HTML Help Workshop and compile.
 
-2. Open "PDFKeeper.sln" with SharpDevelop (or Visual Studio), set configuration
-   to Release, and then Build.
+2. Open "PDFKeeper.sln" with Visual Studio, set configuration to Release, and
+   then Build.
