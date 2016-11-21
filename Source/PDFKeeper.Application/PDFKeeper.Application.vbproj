@@ -11,13 +11,13 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <OptionInfer>On</OptionInfer>
-    <ApplicationIcon>..\..\Logos\PDFKeeper.ico</ApplicationIcon>
+    <ApplicationIcon>..\Resources\Logo\PDFKeeper.ico</ApplicationIcon>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>PdfKeeper.My.MyApplication</StartupObject>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <NoWin32Manifest>False</NoWin32Manifest>
     <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>PDFKeeper.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\PDFKeeper.snk</AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>
     <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
     <OptionStrict>Off</OptionStrict>
@@ -54,10 +54,10 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.Targets" />
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\..\packages\iTextSharp.5.5.2\lib\itextsharp.dll</HintPath>
+      <HintPath>..\packages\iTextSharp.5.5.2\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Nini">
-      <HintPath>..\..\packages\Trove.Nini.1.1.0.0\lib\net20\Nini.dll</HintPath>
+      <HintPath>..\packages\Trove.Nini.1.1.0.0\lib\net20\Nini.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />
     <Reference Include="System" />
@@ -196,7 +196,7 @@
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>start ..\..\..\..\Build\PostBuild</PostBuildEvent>
+    <PostBuildEvent>start ..\..\..\Build\AppPostBuild</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Classes" />
