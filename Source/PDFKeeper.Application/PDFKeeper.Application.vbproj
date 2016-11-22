@@ -229,6 +229,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\Externals\sumatrapdfrestrict.ini">
+      <Link>sumatrapdfrestrict.ini</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
