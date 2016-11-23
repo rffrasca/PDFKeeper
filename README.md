@@ -11,7 +11,7 @@ PDFKeeper is free, open source software designed for capturing, uploading, and s
 * Document Preview and Text-Only View features are included for stepping through each PDF document returned from a search, viewing the first page of the PDF or just the text without opening the actual PDF document. 
 * Document Notes can be added to database records, including Date and Time stamp with database user account name. All Document Notes are indexed by the database, making the text searchable.
 
-## Documentation and Support Links
+## Documentation and Support
 * [Build Requirements and Instructions](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/BUILD-README.txt)
 * [PDFKeeper Home Page](https://bit.ly/pdfkeeper)
 * Status updates, visit [Google+](https://plus.google.com/103180603238817050437)
@@ -28,4 +28,4 @@ Database Management System
 * [Supported stable releases](https://pdfkeeper.codeplex.com/releases/view/616109)
 
 ## License
-* PDFKeeper is released under the terms of the [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/LICENSE.txt)
+* PDFKeeper is released under the terms of the [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/LICENSE.txt).
