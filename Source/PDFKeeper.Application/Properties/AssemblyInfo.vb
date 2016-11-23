@@ -31,11 +31,11 @@ Imports System.Runtime.InteropServices
 ' you compile.
 
 <assembly: AssemblyTitle("PDFKeeper")>
-<assembly: AssemblyDescription("PDF Document Capture, Storage, and Search")>
+<Assembly: AssemblyDescription("Open Source PDF Document Capture, Storage, and Search")> 
 <assembly: AssemblyConfiguration("")>
 <assembly: AssemblyCompany("Robert F. Frasca")>
 <assembly: AssemblyProduct("PDFKeeper")>
-<assembly: AssemblyCopyright("Copyright © 2009-2015 Robert F. Frasca")>
+<Assembly: AssemblyCopyright("Copyright © 2009-2017 Robert F. Frasca")> 
 <assembly: AssemblyTrademark("")>
 <assembly: AssemblyCulture("")>
 
@@ -50,6 +50,6 @@ Imports System.Runtime.InteropServices
 ' You can specify all values by your own or you can build default build and revision
 ' numbers with the '*' character (the default):
 
-<assembly: AssemblyVersion("3.1.2.*")>
+<Assembly: AssemblyVersion("4.0.0.0")> 
 <assembly: CLSCompliant(True)>
 <assembly: NeutralResourcesLanguageAttribute("en")>
