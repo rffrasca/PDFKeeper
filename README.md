@@ -20,6 +20,7 @@ PDFKeeper is free, open source software designed for capturing, uploading, and s
 * Microsoft Windows (XP SP3 or newer)
 * Microsoft .NET Framework 4.0 (Client or Extended) or above
 * Oracle ODP.NET, Managed Driver
+
 Database Management System
 * Oracle Database Express Edition
 
@@ -27,4 +28,4 @@ Database Management System
 * [Supported stable releases](https://pdfkeeper.codeplex.com/releases/view/616109)
 
 ## License
-PDFKeeper is released under the terms of the [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/LICENSE.txt).
+* PDFKeeper is released under the terms of the [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/LICENSE.txt)
