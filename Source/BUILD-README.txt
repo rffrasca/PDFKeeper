@@ -41,10 +41,7 @@ Setup script, "DatabaseSetup.cmd" is located in the "Scripts" folder.
  Download External Applications
 -------------------------------------------------------------------------------
 
-1. Create an "Externals" folder in the same folder where "PDFKeeper.sln" is
-   located.
-
-2. Download Sumatra PDF (Portable Version)
+1. Download Sumatra PDF (Portable Version)
 	http://www.sumatrapdfreader.org/free-pdf-reader.html
 
 	After downloading, extract "SumatraPDF.exe" into the "Externals"
