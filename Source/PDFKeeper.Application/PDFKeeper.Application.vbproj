@@ -216,7 +216,8 @@
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>start ..\..\..\Build\AppPostBuild</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">
@@ -229,8 +230,24 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\Externals\gsdll32.dll">
+      <Link>gsdll32.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Externals\gswin32c.exe">
+      <Link>gswin32c.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Externals\SumatraPDF.exe">
+      <Link>SumatraPDF.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\Externals\sumatrapdfrestrict.ini">
       <Link>sumatrapdfrestrict.ini</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Help\PDFKeeper.en.chm">
+      <Link>PDFKeeper.en.chm</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
