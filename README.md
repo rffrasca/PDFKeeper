@@ -1,7 +1,7 @@
 # PDFKeeper
-Free, Open Source PDF Capture, Upload, and Search.
+Open Source PDF Document Capture, Storage, and Search
 
-## Introduction
+## Overview
 PDFKeeper is free, open source software designed for capturing, uploading, and searching PDF documents in a client-server or single system environment using the free,  [Oracle Database Express Edition (Oracle Database XE)](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html), an entry-level database based on the Oracle Database code base that is easy to install and administer. With Oracle Database XE, you can deploy PDFKeeper with a powerful, proven, industry-leading infrastructure, and then upgrade when necessary to a higher edition based on your business needs and budget.
 
 ## Features
