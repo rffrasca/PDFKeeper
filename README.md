@@ -28,9 +28,9 @@ Setup instructions are available in the Help file, post deployment.
 At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database Express Edition (XE) has been tested. Future releases will include support for additional relational database management systems. For a database to be considered, please open an new issue, unless one was already opened. If your database has already been requested, please update the existing issue.
 
 ### Downloads
-TODO
+New version 4.0.0 will be available soon!
 
-Download previous stable release [here](https://pdfkeeper.codeplex.com/releases/view/616109).
+Version 3.1.2 is still available and can be downloaded from [here](https://pdfkeeper.codeplex.com/releases/view/616109).
 
 ## Building
 TODO
