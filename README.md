@@ -1,15 +1,31 @@
-![Logo](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/Resources/Logo/PDFKeeper.bmp) 
+![Logo](https://github.com/robertfrasca/PDFKeeper/blob/master/src/Resources/Logo/PDFKeeper.bmp) 
 # PDFKeeper
-Open Source PDF Document Capture, Storage, and Search
+Open Source PDF Document Storage Solution
 
 ## Overview
-PDFKeeper is free, open source software designed for capturing, uploading, and searching PDF documents in a client-server or single system environment using the free,  [Oracle Database Express Edition (Oracle Database XE)](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html), an entry-level database based on the Oracle Database code base that is easy to install and administer. With Oracle Database XE, you can deploy PDFKeeper with a powerful, proven, industry-leading infrastructure, and then upgrade when necessary to a higher edition based on your business needs and budget.
+PDFKeeper integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents.
 
 ## Features
-* PDF Documents are captured for PDF Information Properties editing and are uploaded to the database where they can be searched by Title, Author, Subject, Keywords, date and time added to the database, and any text within the document. 
-* Automated uploading of PDF documents to the database can be setup using preconfigured folders, each with its own PDF Information Properties values. 
-* Document Preview and Text-Only View features are included for stepping through each PDF document returned from a search, viewing the first page of the PDF or just the text without opening the actual PDF document. 
-* Document Notes can be added to database records, including Date and Time stamp with database user account name. All Document Notes are indexed by the database, making the text searchable.
+* PDF documents are stored and indexed in a compatible, relational database where they can be searched by String, Author, Subject, Author and Subject, Date Added, and by querying all documents.
+* PDF documents can be uploaded individually or in bulk, with or without using configured Upload folders.
+* Document record functions include, PDF document viewing with the bundled or default viewer, Notes editing, Keywords viewing, PDF document Preview image viewing from 10 to 600 dots per inch (DPI), and viewing of Text extracted from the PDF document.
+* Notes can be added to document records, including a Date and Time stamp that includes the database user account name. All Notes can be edited and are indexed by the database, making the text searchable. Notes can be saved to a text file, printed, and can be uploaded with a name matching PDF document.
+* Text extracted from the PDF document can be printed and saved to a text file.
+* PDF documents and their Notes can be exported from the database.
+* Querying of the entire database can be disabled by applying a policy to each client.
+
+## Client Deployment Requirements
+* .NET Framework 4.6.1 or higher
+* Windows 7 SP1 (32 or 64 bit) or newer
+* Oracle ODP.NET, Managed Driver
+
+## Supported Database Management Systems
+* Oracle Database 11g Express Edition
+
+At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database Express Edition (XE) has been tested. Future releases will include support for additional relational database management systems. For a database to be considered, please open an new issue, unless one was already opened. If your database has already been requested, please update the existing issue.
+
+## Building
+TODO
 
 ## Documentation and Support
 * [Build Requirements and Instructions](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/BUILD-README.txt)
@@ -28,4 +44,4 @@ Database Management System
 * [Supported stable releases](https://pdfkeeper.codeplex.com/releases/view/616109)
 
 ## License
-* PDFKeeper is released under the terms of the [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/LICENSE.txt).
+* PDFKeeper is licensed under the terms of the [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/LICENSE.txt).
