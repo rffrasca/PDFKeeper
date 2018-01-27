@@ -33,7 +33,7 @@ New version 4.0.0 will be available soon!
 Version 3.1.2 is still available and can be downloaded from [here](https://pdfkeeper.codeplex.com/releases/view/616109).
 
 ## Building
-TODO
+Build Instructions for v4.0.0 will be available soon!
 
 ## License
 PDFKeeper is licensed under the terms of [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/LICENSE).
