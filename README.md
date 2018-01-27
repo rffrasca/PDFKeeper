@@ -36,4 +36,4 @@ Version 3.1.2 is still available and can be downloaded from [here](https://pdfke
 TODO
 
 ## License
-PDFKeeper is licensed under the terms of [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/LICENSE.txt).
+PDFKeeper is licensed under the terms of [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/LICENSE).
