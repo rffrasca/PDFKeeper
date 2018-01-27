@@ -27,21 +27,9 @@ At this time, PDFKeeper has been designed for use with the Oracle Database and o
 ## Building
 TODO
 
-## Documentation and Support
-* [Build Requirements and Instructions](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/BUILD-README.txt)
-* [PDFKeeper Home Page](https://bit.ly/pdfkeeper)
-* Status updates, visit [Google+](https://plus.google.com/103180603238817050437)
-
-## Deployment Requirements
-* Microsoft Windows (XP SP3 or newer)
-* Microsoft .NET Framework 4.0 (Client or Extended) or above
-* Oracle ODP.NET, Managed Driver
-
-Database Management System
-* Oracle Database Express Edition
-
 ## Downloads
-* [Supported stable releases](https://pdfkeeper.codeplex.com/releases/view/616109)
+TODO
+Download older stable release [here](https://pdfkeeper.codeplex.com/releases/view/616109).
 
 ## License
 * PDFKeeper is licensed under the terms of the [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/LICENSE.txt).
