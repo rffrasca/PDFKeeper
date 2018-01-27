@@ -1,0 +1,8 @@
+*.exe
+/vendor/xpdf-tools-win-4.00
+*.suo
+/src/packages
+/src/PDFKeeper.WindowsApplication/bin
+/src/PDFKeeper.WindowsApplication/obj
+*.user
+*.chm

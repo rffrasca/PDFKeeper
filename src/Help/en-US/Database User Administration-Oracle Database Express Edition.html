@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Oracle Database Express Edition Administration</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.3  (Win32)">
+	<META NAME="CREATED" CONTENT="20180115;13124628">
+	<META NAME="CHANGEDBY" CONTENT="Robert Frasca">
+	<META NAME="CHANGED" CONTENT="20180120;9581922">
+	<META NAME="DESCRIPTION" CONTENT="
+*******************************************************************************
+* PDFKeeper -- Open Source PDF Document Storage Solution
+* Copyright (C) 2009-2018  Robert F. Frasca
+*
+* This file is part of PDFKeeper.
+*
+* PDFKeeper is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* PDFKeeper is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*******************************************************************************">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1><FONT FACE="Segoe UI, sans-serif">Database User Administration</FONT></H1>
+<P><FONT FACE="Segoe UI, sans-serif"><FONT SIZE=5><B>Oracle Database
+Express Edition (XE)</B></FONT></FONT></P>
+<P><FONT FACE="Segoe UI, sans-serif">It is recommended that each user
+be assigned a personal database account, with only the required
+privileges. The </FONT><FONT FACE="Segoe UI, sans-serif"><B>pdfkeeper</B></FONT>
+<FONT FACE="Segoe UI, sans-serif">database account should only be
+used for </FONT><FONT FACE="Segoe UI, sans-serif"><B>pdfkeeper</B></FONT>
+<FONT FACE="Segoe UI, sans-serif">schema administration, not for
+general use. For more information on Managing Users, please refer to
+the </FONT><FONT FACE="Segoe UI, sans-serif"><B>2 Day DBA </B></FONT><FONT FACE="Segoe UI, sans-serif">book
+in the <A HREF="http://www.oracle.com/technetwork/products/express-edition/documentation/index.html" TARGET="_blank">Oracle
+Database Express Edition Documentation</A>.</FONT></P>
+<P><FONT FACE="Segoe UI, sans-serif">Perform the following steps for
+any user that will need access to the <B>pdfkeeper</B> schema:</FONT></P>
+<OL>
+	<LI><P><FONT FACE="Segoe UI, sans-serif">From a Command Prompt,
+	execute <B>sqlplus</B></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">When
+	logged onto the computer that has Oracle Database XE installed and
+	using the account that installed Oracle Database XE, enter</SPAN>
+	<B>connect / as sysdba</B><SPAN STYLE="font-weight: normal">.
+	Otherwise, enter the database connect string in the format
+	</SPAN><B>username@host:port </B><SPAN STYLE="font-weight: normal">where
+	</SPAN><B>username </B><SPAN STYLE="font-weight: normal">is a
+	database account that must be a member of SYSDBA (SYSTEM is a member
+	of SYSDBA); </SPAN><B>host </B><SPAN STYLE="font-weight: normal">is
+	the host name or IP address of the computer that is running Oracle
+	Database XE (use </SPAN><B>localhost </B><SPAN STYLE="font-weight: normal">or
+	</SPAN><B>127.0.0.1 </B><SPAN STYLE="font-weight: normal">if logged
+	onto the same computer as Oracle Database XE); and </SPAN><B>port
+	</B><SPAN STYLE="font-weight: normal">(optional) is the TCP port
+	number on which the Oracle Net listener is listening (the default
+	port number is 1521).</SPAN></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">Enter
+	</SPAN><B>create user </B><I><B>user_name</B></I> <B>default
+	tablespace users identified by </B><I><B>&quot;password&quot;</B></I><B>;</B></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">Enter
+	</SPAN><B>grant connect, resource to </B><I><B>user_name</B></I><B>;</B></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">Enter
+	</SPAN><B>quit</B></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">From
+	a Command Prompt, execute </SPAN><B>sqlplus</B></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">When
+	logged onto the computer that has Oracle Database XE installed and
+	using the account that installed Oracle Database XE, enter</SPAN>
+	<B>connect pdfkeeper</B><SPAN STYLE="font-weight: normal">.
+	Otherwise, enter the database connect string in the format
+	</SPAN><B>pdfkeeper@host:port </B><SPAN STYLE="font-weight: normal">where
+	</SPAN><B>host </B><SPAN STYLE="font-weight: normal">is the host
+	name or IP address of the computer that is running Oracle Database
+	XE (use </SPAN><B>localhost </B><SPAN STYLE="font-weight: normal">or
+	</SPAN><B>127.0.0.1 </B><SPAN STYLE="font-weight: normal">if logged
+	onto the same computer as Oracle Database XE); and </SPAN><B>port
+	</B><SPAN STYLE="font-weight: normal">(optional) is the TCP port
+	number on which the Oracle Net listener is listening (the default
+	port number is 1521).</SPAN></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">For
+	a new account, enter the following statement to grant the user
+	select/query access: </SPAN><B>grant select on docs to </B><I><B>user_name</B></I><B>;</B></FONT></P>
+	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">To
+	give the user the ability to upload documents, enter the following
+	statements: <B>grant insert on docs to </B><I><B>user_name</B></I><B>;
+	</B>and <B>grant select on docs_seq to </B><I><B>user_name</B></I><B>;</B></FONT></P>
+	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">To
+	give the user the ability to edit document notes, enter the
+	following statement: <B>grant update on docs to </B><I><B>user_name</B></I><B>;</B></FONT></P>
+	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">To
+	give the user the ability to delete documents, enter the following
+	statement: <B>grant delete on docs to </B><I><B>user_name</B></I><B>;</B></FONT></P>
+	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">To
+	prevent the user from uploading documents, enter the following
+	statements: <B>revoke insert on docs from </B><I><B>user_name</B></I><B>;
+	</B>and <B>revoke select on docs_seq from </B><I><B>user_name</B></I><B>;</B></FONT></P>
+	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">To
+	prevent the user from editing document notes, enter the following
+	statement: <B>revoke update on docs from </B><I><B>user_name</B></I><B>;</B></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">To
+	prevent the user from deleting documents, enter the following
+	statement: </SPAN><B>revoke delete on docs from </B><I><B>user_name</B></I><B>;</B></FONT></P>
+</OL>
+</BODY>
+</HTML>

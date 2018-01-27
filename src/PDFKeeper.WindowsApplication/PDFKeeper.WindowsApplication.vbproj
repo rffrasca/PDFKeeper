@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BD8B275B-8505-49DD-9DD9-7171760959D5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>PDFKeeper.WindowsApplication.My.MyApplication</StartupObject>
+    <RootNamespace>PDFKeeper.WindowsApplication</RootNamespace>
+    <AssemblyName>PDFKeeper</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>PDFKeeper.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>PDFKeeper.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>PDFKeeper.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>PDFKeeper.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="oracle.manageddataaccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Oracle.ManagedDataAccess\v4.0_4.122.1.0__89b483f429c47342\oracle.manageddataaccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="iTextSharp.text.exceptions" />
+    <Import Include="iTextSharp.text.pdf" />
+    <Import Include="IWshRuntimeLibrary" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Oracle.ManagedDataAccess.Client" />
+    <Import Include="Oracle.ManagedDataAccess.Types" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.ComponentModel" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing.Printing" />
+    <Import Include="System.Globalization" />
+    <Import Include="System.IO" />
+    <Import Include="System.Net.Mail" />
+    <Import Include="System.Runtime.CompilerServices" />
+    <Import Include="System.Runtime.InteropServices" />
+    <Import Include="System.Security" />
+    <Import Include="System.Security.Cryptography" />
+    <Import Include="System.Text" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Xml.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Data\DatabaseCredential.vb" />
+    <Compile Include="Data\DataProviderHelper.vb" />
+    <Compile Include="Data\IDataProvider.vb" />
+    <Compile Include="Data\INonQueryService.vb" />
+    <Compile Include="Data\IQueryService.vb" />
+    <Compile Include="Data\NonQueryServiceHelper.vb" />
+    <Compile Include="Data\OracleDataProvider.vb" />
+    <Compile Include="Data\OracleNonQueryService.vb" />
+    <Compile Include="Data\OracleQueryService.vb" />
+    <Compile Include="Data\QueryServiceHelper.vb" />
+    <Compile Include="Data\SharedPresenterQueries.vb" />
+    <Compile Include="Extensions\SecureStringExtension.vb" />
+    <Compile Include="Extensions\StringExtension.vb" />
+    <Compile Include="Generics\GenericDictionaryList.vb" />
+    <Compile Include="Generics\GenericList.vb" />
+    <Compile Include="Generics\GenericSerializer.vb" />
+    <Compile Include="GlobalSuppressions.vb" />
+    <Compile Include="Logic\ApplicationDirectories.vb" />
+    <Compile Include="Logic\ApplicationPolicy.vb" />
+    <Compile Include="Logic\DirectoryHelper.vb" />
+    <Compile Include="Logic\FileBase.vb" />
+    <Compile Include="Logic\FileDeleteToolStripCommand.vb" />
+    <Compile Include="Logic\FileExportToolStripCommand.vb" />
+    <Compile Include="Logic\FileHelper.vb" />
+    <Compile Include="Logic\FileNewToolStripCommand.vb" />
+    <Compile Include="Logic\FileOpenToolStripCommand.vb" />
+    <Compile Include="Logic\FilePathNameGenerator.vb" />
+    <Compile Include="Logic\FilePrintToolStripCommand.vb" />
+    <Compile Include="Logic\FileSaveAsToolStripCommand.vb" />
+    <Compile Include="Logic\FileSelectToolStripCommand.vb" />
+    <Compile Include="Logic\HelpProviderHelper.vb" />
+    <Compile Include="Logic\ICommand.vb" />
+    <Compile Include="Logic\ImageFile.vb" />
+    <Compile Include="Logic\NativeMethods.vb" />
+    <Compile Include="Logic\PdfFile.vb" />
+    <Compile Include="Logic\PdfFileInfoPropertiesBase.vb" />
+    <Compile Include="Logic\PdfFileInfoPropertiesReader.vb" />
+    <Compile Include="Logic\PdfFileInfoPropertiesWriter.vb" />
+    <Compile Include="Logic\ProcessHelper.vb" />
+    <Compile Include="Logic\SearchResultsSortParameters.vb" />
+    <Compile Include="Logic\UnhandledExceptionService.vb" />
+    <Compile Include="Enums.vb" />
+    <Compile Include="Logic\UploadCommand.vb" />
+    <Compile Include="Logic\UploadConfigDirectory.vb" />
+    <Compile Include="Logic\UploadController.vb" />
+    <Compile Include="Logic\UploadDirectory.vb" />
+    <Compile Include="Logic\UploadFolderConfiguration.vb" />
+    <Compile Include="Logic\UploadFolderConfigurationTokens.vb" />
+    <Compile Include="Logic\UploadStagingDirectory.vb" />
+    <Compile Include="Logic\ViewStatusBarToolStripCommand.vb" />
+    <Compile Include="Logic\ViewToggleRightPanelToolStripCommand.vb" />
+    <Compile Include="Logic\ViewToolBarToolStripCommand.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Presentation\AboutBox.Designer.vb">
+      <DependentUpon>AboutBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\AboutBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\AddPdfDocument\AddPdfDocumentDialog.Designer.vb">
+      <DependentUpon>AddPdfDocumentDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\AddPdfDocument\AddPdfDocumentDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\AddPdfDocument\AddPdfDocumentViewPresenter.vb" />
+    <Compile Include="Presentation\AddPdfDocument\IAddPdfDocumentView.vb" />
+    <Compile Include="Presentation\FileDialogDisplayService\FileDialogDisplayService.vb" />
+    <Compile Include="Presentation\FileDialogDisplayService\IFileDialogDisplayService.vb" />
+    <Compile Include="Presentation\FolderBrowserDialogDisplayService\FolderBrowserDialogDisplayService.vb" />
+    <Compile Include="Presentation\FolderBrowserDialogDisplayService\IFolderBrowserDialogDisplayService.vb" />
+    <Compile Include="Presentation\GenericFormClosingPrompt.vb" />
+    <Compile Include="Presentation\Login\ILoginView.vb" />
+    <Compile Include="Presentation\Login\LoginForm.designer.vb">
+      <DependentUpon>LoginForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Login\LoginForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Login\LoginViewPresenter.vb" />
+    <Compile Include="Presentation\Main\IMainViewDocumentData.vb" />
+    <Compile Include="Presentation\Main\IMainViewSearch.vb" />
+    <Compile Include="Presentation\Main\IMainViewToolStripState.vb" />
+    <Compile Include="Presentation\Main\IMainViewUnboundSettings.vb" />
+    <Compile Include="Presentation\Main\IMainViewUpload.vb" />
+    <Compile Include="Presentation\Main\MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Main\MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Main\MainViewDocumentDataPresenter.vb" />
+    <Compile Include="Presentation\Main\MainViewSearchPresenter.vb" />
+    <Compile Include="Presentation\Main\MainViewToolStripStateManager.vb" />
+    <Compile Include="Presentation\Main\MainViewUnboundSettingsPresenter.vb" />
+    <Compile Include="Presentation\Main\MainViewUploadPresenter.vb" />
+    <Compile Include="Presentation\MessageDisplayService\IMessageDisplayService.vb" />
+    <Compile Include="Presentation\MessageDisplayService\MessageDisplayService.vb" />
+    <Compile Include="Presentation\OptionsDialog.Designer.vb">
+      <DependentUpon>OptionsDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\OptionsDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\PasswordDialog.Designer.vb">
+      <DependentUpon>PasswordDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\PasswordDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\PreviewImageResolutionDialog.Designer.vb">
+      <DependentUpon>PreviewImageResolutionDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\PreviewImageResolutionDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\SecureTextBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Presentation\UploadFolderConfiguration\IUploadFolderConfigurationView.vb" />
+    <Compile Include="Presentation\UploadFolderConfiguration\UploadFolderConfigurationDialog.Designer.vb">
+      <DependentUpon>UploadFolderConfigurationDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UploadFolderConfiguration\UploadFolderConfigurationDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\UploadFolderConfiguration\UploadFolderConfigurationPresenter.vb" />
+    <Compile Include="Presentation\UploadFolders\IUploadFoldersView.vb" />
+    <Compile Include="Presentation\UploadFolders\UploadFoldersDialog.Designer.vb">
+      <DependentUpon>UploadFoldersDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\UploadFolders\UploadFoldersDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\UploadFolders\UploadFoldersPresenter.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\AboutBox.resx">
+      <DependentUpon>AboutBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\AddPdfDocument\AddPdfDocumentDialog.resx">
+      <DependentUpon>AddPdfDocumentDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Login\LoginForm.resx">
+      <DependentUpon>LoginForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Main\MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\OptionsDialog.resx">
+      <DependentUpon>OptionsDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\PasswordDialog.resx">
+      <DependentUpon>PasswordDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\PreviewImageResolutionDialog.resx">
+      <DependentUpon>PreviewImageResolutionDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\UploadFolderConfiguration\UploadFolderConfigurationDialog.resx">
+      <DependentUpon>UploadFolderConfigurationDialog.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\UploadFolders\UploadFoldersDialog.resx">
+      <DependentUpon>UploadFoldersDialog.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\vendor\SumatraPDF.exe">
+      <Link>SumatraPDF.exe</Link>
+    </Content>
+    <Content Include="..\..\vendor\xpdf-tools-win-4.00\bin32\pdftopng.exe">
+      <Link>pdftopng.exe</Link>
+    </Content>
+    <Content Include="..\Config\SumatraPDF-settings.txt">
+      <Link>SumatraPDF-settings.txt</Link>
+    </Content>
+    <Content Include="..\Help\PDFKeeper.en-US.chm">
+      <Link>PDFKeeper.en-US.chm</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="..\Config\sumatrapdfrestrict.ini">
+      <Link>sumatrapdfrestrict.ini</Link>
+    </None>
+    <None Include="app.config" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="PDFKeeper.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PDFKeeper.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

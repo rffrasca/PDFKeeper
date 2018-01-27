@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Database Setup-Oracle Database Express Edition</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.3  (Win32)">
+	<META NAME="CREATED" CONTENT="20180115;13124628">
+	<META NAME="CHANGEDBY" CONTENT="Robert Frasca">
+	<META NAME="CHANGED" CONTENT="20180120;9592928">
+	<META NAME="DESCRIPTION" CONTENT="
+*******************************************************************************
+* PDFKeeper -- Open Source PDF Document Storage Solution
+* Copyright (C) 2009-2018  Robert F. Frasca
+*
+* This file is part of PDFKeeper.
+*
+* PDFKeeper is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* PDFKeeper is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*******************************************************************************">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1><FONT FACE="Segoe UI, sans-serif"><B>Database Setup</B></FONT></H1>
+<P><FONT FACE="Segoe UI, sans-serif"><FONT SIZE=5><B>Oracle Database
+Express Edition (XE)</B></FONT></FONT></P>
+<P><FONT FACE="Segoe UI, sans-serif">This topic provides the steps
+that need to be performed for first time setup of Oracle Database XE
+for use with PDFKeeper.</FONT></P>
+<P><FONT FACE="Segoe UI, sans-serif">For an existing database schema
+that was built with a setup script from any version of PDFKeeper
+starting with 2.0.0 and ending with 3.1.2 or had to change from the
+WORLD_LEXER to the BASIC_LEXER due to the WORLD_LEXER bug in Oracle
+Database XE 10g can make the switch back to the WORLD_LEXER if so
+desired by starting with Step 3; however, Oracle Database XE must be
+at a minimum of 11g to avoid the bug.</FONT></P>
+<OL>
+	<LI><P><FONT FACE="Segoe UI, sans-serif">Please read the <A HREF="http://www.oracle.com/technetwork/database/database-technologies/express-edition/documentation/index.html" TARGET="_blank">Oracle
+	Database Express Edition Documentation</A> for instructions on how
+	to install, configure, and administer an Oracle Express Edition
+	Database.</FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif">Install <A HREF="http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html" TARGET="_blank">Oracle
+	Database Express Edition</A> on the system that will host the
+	database.</FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif">If Oracle Database XE was
+	installed on a different computer, you will need to download <A HREF="http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html" TARGET="_blank">Oracle
+	Instant Client Basic or Basic Lite and SQL*Plus packages</A> to this
+	computer, extract the ZIP files into an empty folder, and then add
+	that folder to the PATH.</FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif">Execute <A HREF="OracleDatabaseSetup.cmd">Oracle
+	Database Setup</A></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif">From a Command Prompt,
+	execute <B>sqlplus</B></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif">When logged onto the
+	computer that has Oracle Database XE installed and using the account
+	that installed Oracle Database XE, enter <B>connect / as sysdba</B><SPAN STYLE="font-weight: normal">.
+	Otherwise, enter the database connect string in the format
+	</SPAN><B>username@host:port </B><SPAN STYLE="font-weight: normal">where
+	</SPAN><B>username</B> <SPAN STYLE="font-weight: normal">is a
+	database account that must be a member of SYSDBA (SYSTEM is a member
+	of SYSDBA); </SPAN><B>host</B> <SPAN STYLE="font-weight: normal">is
+	the host name or IP address of the computer that is running Oracle
+	Database XE (use </SPAN><B>localhost</B> <SPAN STYLE="font-weight: normal">or
+	</SPAN><B>127.0.0.1</B> <SPAN STYLE="font-weight: normal">if logged
+	onto the same computer as Oracle Database XE); and </SPAN><B>port</B>
+	<SPAN STYLE="font-weight: normal">(optional) is the TCP port number
+	on which the Oracle Net listener is listening (the default port
+	number is 1521).</SPAN></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">Change
+	the </SPAN><B>pdfkeeper</B> <SPAN STYLE="font-weight: normal">database
+	user account password by entering </SPAN><B>alter user pdfkeeper
+	identified by </B><I><B>&quot;new_password&quot;;</B></I> </FONT>
+	</P>
+</OL>
+</BODY>
+</HTML>

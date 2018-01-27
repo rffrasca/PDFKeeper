@@ -1,0 +1,38 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=..\PDFKeeper.en-US.chm
+Contents file=Table of Contents.hhc
+Default topic=PDFKeeper.html
+Display compile progress=No
+Language=0x409 English (United States)
+Title=PDFKeeper
+
+
+[FILES]
+PDFKeeper.html
+Features.html
+GNU General Public License v3_0 - GNU Project - Free Software Foundation (FSF).html
+Third-Party Components.html
+Mini Icons.html
+Silk Icons.html
+Attribution 3.0 Unported-legalcode.htm
+agpl-3.0-standalone.htm
+iTextSharp.html
+Sumatra PDF.html
+pdftopng from Xpdf tools.html
+Database Setup.html
+Database Setup-Oracle Database Express Edition.html
+OracleDatabaseSetup.cmd
+Additional Client Prerequisites.html
+Database User Administration.html
+Database User Administration-Oracle Database Express Edition.html
+Installing ODP.NET Managed Driver.html
+Getting Support.html
+Using PDFKeeper.html
+Logging into PDFKeeper.html
+Uploading PDF Documents.html
+Uploading a PDF Document from within PDFKeeper.html
+Entering PDF Document Information Properties.html
+
+[INFOTYPES]
+
