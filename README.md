@@ -14,7 +14,7 @@ PDFKeeper integrates with a compatible, relational database management system to
 * PDF documents and their Notes can be exported from the database.
 * Querying of the entire database can be disabled by applying a policy to each client.
 
-## Deployment
+## Installing
 ### Client Prerequisites
 * .NET Framework 4.6.1 or higher.
 * Windows 7 SP1 (32 or 64 bit) or newer.
