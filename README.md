@@ -14,22 +14,23 @@ PDFKeeper integrates with a compatible, relational database management system to
 * PDF documents and their Notes can be exported from the database.
 * Querying of the entire database can be disabled by applying a policy to each client.
 
-## Client Deployment Requirements
-* .NET Framework 4.6.1 or higher
-* Windows 7 SP1 (32 or 64 bit) or newer
-* Oracle ODP.NET, Managed Driver
+## Client Prerequisites
+* .NET Framework 4.6.1 or higher.
+* Windows 7 SP1 (32 or 64 bit) or newer.
+* Any additional prerequisites will be referenced in the Help file. 
 
 ## Supported Database Management Systems
 * Oracle Database 11g Express Edition
+Setup instructions are available in the Help file.
 
 At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database Express Edition (XE) has been tested. Future releases will include support for additional relational database management systems. For a database to be considered, please open an new issue, unless one was already opened. If your database has already been requested, please update the existing issue.
+
+## Downloads
+TODO
+Download previous stable release [here](https://pdfkeeper.codeplex.com/releases/view/616109).
 
 ## Building
 TODO
 
-## Downloads
-TODO
-Download older stable release [here](https://pdfkeeper.codeplex.com/releases/view/616109).
-
 ## License
-* PDFKeeper is licensed under the terms of the [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/LICENSE.txt).
+PDFKeeper is licensed under the terms of [GPL v3](https://github.com/robertfrasca/PDFKeeper/blob/master/Source/LICENSE.txt).
