@@ -319,12 +319,15 @@
   <ItemGroup>
     <Content Include="..\..\vendor\SumatraPDF.exe">
       <Link>SumatraPDF.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\vendor\xpdf-tools-win-4.00\bin32\pdftopng.exe">
       <Link>pdftopng.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\Config\SumatraPDF-settings.txt">
       <Link>SumatraPDF-settings.txt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\Help\PDFKeeper.en-US.chm">
       <Link>PDFKeeper.en-US.chm</Link>
@@ -332,6 +335,7 @@
     </Content>
     <None Include="..\Config\sumatrapdfrestrict.ini">
       <Link>sumatrapdfrestrict.ini</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="app.config" />
     <None Include="My Project\app.manifest" />
