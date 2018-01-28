@@ -26,7 +26,13 @@ Public Class MainViewUnboundSettingsPresenter
 
     Public Sub GetSettings()
         If Not IsNothing(My.Settings.MainLocation) Then
-            view.ViewLocation = My.Settings.MainLocation
+            ' Workaround added for an occasional bug that can cause the Main Form to
+            ' be positioned off the screen.
+            If My.Settings.MainLocation = New System.Drawing.Point(-32000, -32000) Then
+                view.ViewLocation = New System.Drawing.Point(0, 0)
+            Else
+                view.ViewLocation = My.Settings.MainLocation
+            End If
         End If
         If Not IsNothing(My.Settings.MainSize) Then
             view.ViewSize = My.Settings.MainSize
