@@ -1,4 +1,4 @@
-![Logo](https://github.com/robertfrasca/PDFKeeper/blob/master/src/Resources/Logo/PDFKeeper.bmp) # PDFKeeper
+#![Logo](https://github.com/robertfrasca/PDFKeeper/blob/master/src/Resources/Logo/PDFKeeper.bmp) PDFKeeper
 Open Source PDF Document Storage Solution
 
 ## Overview
