@@ -31,6 +31,7 @@ Public Class AddPdfDocumentDialog
         presenter = New AddPdfDocumentViewPresenter(Me)
         m_OriginalPdfFile = originalPdfFile
         m_OriginalPdfFilePassword = originalPdfFilePassword
+        HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
         TitleTextBox.Select()
     End Sub
 

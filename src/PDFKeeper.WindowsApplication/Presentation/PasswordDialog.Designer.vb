@@ -47,6 +47,7 @@ Partial Class PasswordDialog
         Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.PasswordSecureTextBox = New PDFKeeper.WindowsApplication.SecureTextBox()
         Me.PasswordLabel = New System.Windows.Forms.Label()
+        Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -89,9 +90,12 @@ Partial Class PasswordDialog
         Me.Controls.Add(Me.PasswordLabel)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.HelpProvider.SetHelpKeyword(Me, resources.GetString("$this.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me, CType(resources.GetObject("$this.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "PasswordDialog"
+        Me.HelpProvider.SetShowHelp(Me, CType(resources.GetObject("$this.ShowHelp"), Boolean))
         Me.ShowInTaskbar = False
         Me.TableLayoutPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -103,5 +107,6 @@ Partial Class PasswordDialog
     Friend WithEvents Cancel_Button As System.Windows.Forms.Button
     Friend WithEvents PasswordSecureTextBox As PDFKeeper.WindowsApplication.SecureTextBox
     Friend WithEvents PasswordLabel As System.Windows.Forms.Label
+    Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
 
 End Class

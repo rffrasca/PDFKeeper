@@ -61,6 +61,7 @@ Partial Class AddPdfDocumentDialog
         Me.KeywordsLabel = New System.Windows.Forms.Label()
         Me.KeywordsTextBox = New System.Windows.Forms.TextBox()
         Me.DeleteOriginalPdfOnOKCheckBox = New System.Windows.Forms.CheckBox()
+        Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -197,9 +198,12 @@ Partial Class AddPdfDocumentDialog
         Me.Controls.Add(Me.OriginalPdfPathNameLabel)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.HelpProvider.SetHelpKeyword(Me, resources.GetString("$this.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me, CType(resources.GetObject("$this.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "AddPdfDocumentDialog"
+        Me.HelpProvider.SetShowHelp(Me, CType(resources.GetObject("$this.ShowHelp"), Boolean))
         Me.ShowInTaskbar = False
         Me.TableLayoutPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -224,5 +228,6 @@ Partial Class AddPdfDocumentDialog
     Friend WithEvents PreviewButton As System.Windows.Forms.Button
     Friend WithEvents SaveButton As System.Windows.Forms.Button
     Friend WithEvents DeleteOriginalPdfOnOKCheckBox As System.Windows.Forms.CheckBox
+    Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
 
 End Class

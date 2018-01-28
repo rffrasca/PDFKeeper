@@ -24,7 +24,7 @@ Public Class LoginForm
     Public Sub New()
         InitializeComponent()
         presenter = New LoginViewPresenter(Me)
-        HelpProvider.HelpNamespace = "PDFKeeper.en-US.chm"
+        HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
     End Sub
 
     Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load

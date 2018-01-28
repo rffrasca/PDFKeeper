@@ -38,7 +38,7 @@ Public Class MainForm
         searchPresenter = New MainViewSearchPresenter(Me)
         documentDataPresenter = New MainViewDocumentDataPresenter(Me)
         uploadPresenter = New MainViewUploadPresenter(Me)
-        HelpProvider.HelpNamespace = "PDFKeeper.en-US.chm"
+        HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
     End Sub
 
 #Region "Form events and protected and private methods"
@@ -247,7 +247,7 @@ Public Class MainForm
 #Region "Help ToolStrip events"
     Private Sub HelpContentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpContentsToolStripMenuItem.Click,
                                                                                               HelpContentsToolStripButton.Click
-        MsgBox("Not implemented")
+        HelpProviderHelper.ShowHelp(Me, "Using PDFKeeper.html")
     End Sub
 
     Private Sub HelpIndexToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpIndexToolStripMenuItem.Click

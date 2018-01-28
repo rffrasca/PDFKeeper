@@ -59,72 +59,63 @@ Partial Class LoginForm
         Me.OK = New System.Windows.Forms.Button()
         Me.Cancel = New System.Windows.Forms.Button()
         Me.DatasourceLabel = New System.Windows.Forms.Label()
-        Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.PasswordSecureTextBox = New PDFKeeper.WindowsApplication.SecureTextBox()
-        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        CType(Me.LogoPictureBox,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'LogoPictureBox
         '
         Me.LogoPictureBox.BackColor = System.Drawing.SystemColors.ActiveBorder
         resources.ApplyResources(Me.LogoPictureBox, "LogoPictureBox")
         Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.HelpProvider.SetShowHelp(Me.LogoPictureBox, CType(resources.GetObject("LogoPictureBox.ShowHelp"), Boolean))
-        Me.LogoPictureBox.TabStop = False
+        Me.LogoPictureBox.TabStop = false
         '
         'UsernameLabel
         '
         resources.ApplyResources(Me.UsernameLabel, "UsernameLabel")
         Me.UsernameLabel.Name = "UsernameLabel"
-        Me.HelpProvider.SetShowHelp(Me.UsernameLabel, CType(resources.GetObject("UsernameLabel.ShowHelp"), Boolean))
         '
         'PasswordLabel
         '
         resources.ApplyResources(Me.PasswordLabel, "PasswordLabel")
         Me.PasswordLabel.Name = "PasswordLabel"
-        Me.HelpProvider.SetShowHelp(Me.PasswordLabel, CType(resources.GetObject("PasswordLabel.ShowHelp"), Boolean))
         '
         'UsernameTextBox
         '
-        Me.UsernameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "LoginUsername", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.UsernameTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "LoginUsername", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         resources.ApplyResources(Me.UsernameTextBox, "UsernameTextBox")
         Me.UsernameTextBox.Name = "UsernameTextBox"
-        Me.HelpProvider.SetShowHelp(Me.UsernameTextBox, CType(resources.GetObject("UsernameTextBox.ShowHelp"), Boolean))
         Me.UsernameTextBox.Text = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.LoginUsername
         '
         'DatasourceTextBox
         '
-        Me.DatasourceTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "LoginDatasource", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.DatasourceTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "LoginDatasource", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         resources.ApplyResources(Me.DatasourceTextBox, "DatasourceTextBox")
         Me.DatasourceTextBox.Name = "DatasourceTextBox"
-        Me.HelpProvider.SetShowHelp(Me.DatasourceTextBox, CType(resources.GetObject("DatasourceTextBox.ShowHelp"), Boolean))
         Me.DatasourceTextBox.Text = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.LoginDatasource
         '
         'OK
         '
         resources.ApplyResources(Me.OK, "OK")
         Me.OK.Name = "OK"
-        Me.HelpProvider.SetShowHelp(Me.OK, CType(resources.GetObject("OK.ShowHelp"), Boolean))
         '
         'Cancel
         '
         Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         resources.ApplyResources(Me.Cancel, "Cancel")
         Me.Cancel.Name = "Cancel"
-        Me.HelpProvider.SetShowHelp(Me.Cancel, CType(resources.GetObject("Cancel.ShowHelp"), Boolean))
         '
         'DatasourceLabel
         '
         resources.ApplyResources(Me.DatasourceLabel, "DatasourceLabel")
         Me.DatasourceLabel.Name = "DatasourceLabel"
-        Me.HelpProvider.SetShowHelp(Me.DatasourceLabel, CType(resources.GetObject("DatasourceLabel.ShowHelp"), Boolean))
         '
         'PasswordSecureTextBox
         '
         resources.ApplyResources(Me.PasswordSecureTextBox, "PasswordSecureTextBox")
         Me.PasswordSecureTextBox.Name = "PasswordSecureTextBox"
-        Me.PasswordSecureTextBox.ShortcutsEnabled = False
-        Me.HelpProvider.SetShowHelp(Me.PasswordSecureTextBox, CType(resources.GetObject("PasswordSecureTextBox.ShowHelp"), Boolean))
+        Me.PasswordSecureTextBox.ShortcutsEnabled = false
         '
         'LoginForm
         '
@@ -143,14 +134,14 @@ Partial Class LoginForm
         Me.Controls.Add(Me.LogoPictureBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.HelpProvider.SetHelpKeyword(Me, resources.GetString("$this.HelpKeyword"))
-        Me.HelpProvider.SetHelpNavigator(Me, CType(resources.GetObject("$this.HelpNavigator"), System.Windows.Forms.HelpNavigator))
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
+        Me.HelpProvider.SetHelpNavigator(Me, CType(resources.GetObject("$this.HelpNavigator"),System.Windows.Forms.HelpNavigator))
+        Me.MaximizeBox = false
+        Me.MinimizeBox = false
         Me.Name = "LoginForm"
-        Me.HelpProvider.SetShowHelp(Me, CType(resources.GetObject("$this.ShowHelp"), Boolean))
+        Me.HelpProvider.SetShowHelp(Me, CType(resources.GetObject("$this.ShowHelp"),Boolean))
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
-        Me.TopMost = True
-        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TopMost = true
+        CType(Me.LogoPictureBox,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
 

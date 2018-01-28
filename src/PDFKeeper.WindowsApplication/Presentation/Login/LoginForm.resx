@@ -163,19 +163,13 @@
   <data name="LogoPictureBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="LogoPictureBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="LogoPictureBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 234</value>
   </data>
   <data name="LogoPictureBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>CenterImage</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="LogoPictureBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -196,9 +190,6 @@
   </data>
   <data name="UsernameLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>147, 10</value>
-  </data>
-  <data name="UsernameLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="UsernameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>307, 27</value>
@@ -230,9 +221,6 @@
   <data name="PasswordLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>147, 67</value>
   </data>
-  <data name="PasswordLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="PasswordLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>307, 27</value>
   </data>
@@ -260,9 +248,6 @@
   <data name="UsernameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>147, 40</value>
   </data>
-  <data name="UsernameTextBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="UsernameTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>306, 23</value>
   </data>
@@ -283,9 +268,6 @@
   </data>
   <data name="DatasourceTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>147, 156</value>
-  </data>
-  <data name="DatasourceTextBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="DatasourceTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>306, 23</value>
@@ -310,9 +292,6 @@
   </data>
   <data name="OK.Location" type="System.Drawing.Point, System.Drawing">
     <value>230, 193</value>
-  </data>
-  <data name="OK.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="OK.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 27</value>
@@ -341,9 +320,6 @@
   <data name="Cancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>346, 193</value>
   </data>
-  <data name="Cancel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="Cancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 27</value>
   </data>
@@ -370,9 +346,6 @@
   </data>
   <data name="DatasourceLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>147, 126</value>
-  </data>
-  <data name="DatasourceLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="DatasourceLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>307, 27</value>
@@ -401,9 +374,6 @@
   <data name="PasswordSecureTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>147, 98</value>
   </data>
-  <data name="PasswordSecureTextBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="PasswordSecureTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>306, 23</value>
   </data>
@@ -422,6 +392,9 @@
   <data name="&gt;&gt;PasswordSecureTextBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

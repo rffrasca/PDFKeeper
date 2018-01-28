@@ -22,11 +22,59 @@ Public NotInheritable Class HelpProviderHelper
         ' Required by Code Analysis.
     End Sub
 
-    Public Shared Sub OpenHelpFile()
-        Using helpFile As New Process
-            helpFile.StartInfo.FileName = "PDFKeeper.en-US.chm"
-            helpFile.Start()
-            helpFile.WaitForExit()
+    ''' <summary>
+    ''' Gets the help file based on the current culture. If a help file does
+    ''' not exist for the current culture, then default to the help file for
+    ''' en-US. 
+    ''' </summary>
+    ''' <value></value>
+    ''' <returns>
+    ''' Help file name with extension. The current working directory is
+    ''' assumed.
+    ''' </returns>
+    ''' <remarks></remarks>
+    Public Shared ReadOnly Property HelpFile As String
+        Get
+            Dim chmFile As String = _
+                "PDFKeeper." & CultureInfo.CurrentCulture.ToString & ".chm"
+            If IO.File.Exists(chmFile) = False Then
+                chmFile = "PDFKeeper.en-US.chm"
+            End If
+            Return chmFile
+        End Get
+    End Property
+
+    ''' <summary>
+    ''' Opens the help file at the starting topic page and waits until closed.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Shared Sub OpenHelpFileAndWait()
+        Using htmlHelp As New Process
+            htmlHelp.StartInfo.FileName = Path.Combine( _
+                Environment.GetFolderPath(Environment.SpecialFolder.Windows), _
+                "hh.exe")
+            htmlHelp.StartInfo.Arguments = HelpFile
+            ' Suppress security warning.
+            htmlHelp.StartInfo.UseShellExecute = False
+            htmlHelp.StartInfo.CreateNoWindow = True
+            htmlHelp.Start()
+            htmlHelp.WaitForExit()
         End Using
+    End Sub
+
+    ''' <summary>
+    ''' Shows the help file at the specified topic in the Help dialog box.
+    ''' </summary>
+    ''' <param name="parentControl">
+    ''' Parent form or control of the help dialog box. The Me object can be
+    ''' specified as the parentControl.
+    ''' </param>
+    ''' <param name="helpTopic">
+    ''' Topic file with extension contained in help file to display.
+    ''' </param>
+    ''' <remarks></remarks>
+    Public Shared Sub ShowHelp(ByVal parentControl As System.Windows.Forms.Control, _
+                               ByVal helpTopic As String)
+        Help.ShowHelp(parentControl, HelpFile, helpTopic)
     End Sub
 End Class

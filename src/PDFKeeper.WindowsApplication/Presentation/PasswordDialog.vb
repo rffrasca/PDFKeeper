@@ -30,6 +30,7 @@ Public Class PasswordDialog
         InitializeComponent()
         Me.Text = formTitle
         Me.PasswordLabel.Text = formLabel
+        HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
         PasswordSecureTextBox.Select()
     End Sub
 
