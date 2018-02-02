@@ -33,6 +33,6 @@ New version 4.0.0 will be available soon!
 Build Instructions for v4.0.0 will be available soon!
 
 ## License
-PDFKeeper is licensed under the [GNU General Public License v3](https://github.com/robertfrasca/PDFKeeper/blob/master/LICENSE).
+PDFKeeper is licensed under the [GNU General Public License v3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
 
 ![Logo](http://www.gnu.org/graphics/gplv3-127x51.png)
