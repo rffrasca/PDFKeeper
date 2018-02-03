@@ -144,7 +144,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to PDFKeeper integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents.
         '''
-        '''This program comes with ABSOLUTELY NO WARRANTY.  This is free software, and you are welcome to redistribute it under certain conditions; see the License for details..
+        '''This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you are welcome to redistribute it under certain conditions; for details, select License..
         '''</summary>
         Friend ReadOnly Property DescriptionDetail() As String
             Get
