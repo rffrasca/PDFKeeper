@@ -40,8 +40,22 @@ Public NotInheritable Class AboutBox
         Me.LabelCopyright.Text = My.Application.Info.Copyright
         Me.LabelCompanyName.Text = My.Application.Info.CompanyName
         Me.TextBoxDescription.Text = My.Application.Info.Description & _
-            vbCrLf & vbCrLf & My.Resources.DescriptionDetail & _
-            vbCrLf & vbCrLf & My.Resources.ImageCredit
+            vbCrLf & vbCrLf & My.Resources.DescriptionDetail
+        'Position License and Third-Party Components link labels.
+        LicenseLinkLabel.Parent = LogoPictureBox
+        LicenseLinkLabel.BackColor = Color.Transparent
+        LicenseLinkLabel.Location = New Point(0, 257)
+        ThirdPartyLinkLabel.Parent = LogoPictureBox
+        ThirdPartyLinkLabel.BackColor = Color.Transparent
+        ThirdPartyLinkLabel.Location = New Point(0, 273)
+    End Sub
+
+    Private Sub LicenseLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LicenseLinkLabel.LinkClicked
+        HelpProviderHelper.ShowHelp(Me, "GNU General Public License v3_0 - GNU Project - Free Software Foundation (FSF).html")
+    End Sub
+
+    Private Sub ThirdPartyLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ThirdPartyLinkLabel.LinkClicked
+        HelpProviderHelper.ShowHelp(Me, "Third-Party Components.html")
     End Sub
 
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OKButton.Click

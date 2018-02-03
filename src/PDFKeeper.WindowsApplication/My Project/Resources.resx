@@ -133,7 +133,9 @@
     <value>Delete selected documents?</value>
   </data>
   <data name="DescriptionDetail" xml:space="preserve">
-    <value>PDFKeeper integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents.</value>
+    <value>PDFKeeper integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents.
+
+This program comes with ABSOLUTELY NO WARRANTY.  This is free software, and you are welcome to redistribute it under certain conditions; see the License for details.</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Export</value>
@@ -149,9 +151,6 @@
   </data>
   <data name="ID" xml:space="preserve">
     <value>ID</value>
-  </data>
-  <data name="ImageCredit" xml:space="preserve">
-    <value>All images, except the PDFKeeper logo are by Mark James.</value>
   </data>
   <data name="SearchStringImproperUsageOfQueryOperators" xml:space="preserve">
     <value>Improper usage of query operators and/or characters.</value>

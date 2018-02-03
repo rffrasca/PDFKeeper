@@ -142,7 +142,9 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to PDFKeeper integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents..
+        '''  Looks up a localized string similar to PDFKeeper integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents.
+        '''
+        '''This program comes with ABSOLUTELY NO WARRANTY.  This is free software, and you are welcome to redistribute it under certain conditions; see the License for details..
         '''</summary>
         Friend ReadOnly Property DescriptionDetail() As String
             Get
@@ -247,15 +249,6 @@ Namespace My.Resources
         Friend ReadOnly Property ID() As String
             Get
                 Return ResourceManager.GetString("ID", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to All images, except the PDFKeeper logo are by Mark James..
-        '''</summary>
-        Friend ReadOnly Property ImageCredit() As String
-            Get
-                Return ResourceManager.GetString("ImageCredit", resourceCulture)
             End Get
         End Property
         

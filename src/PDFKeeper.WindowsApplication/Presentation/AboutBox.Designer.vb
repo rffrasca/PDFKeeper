@@ -59,9 +59,11 @@ Partial Class AboutBox
         Me.LabelCompanyName = New System.Windows.Forms.Label()
         Me.TextBoxDescription = New System.Windows.Forms.TextBox()
         Me.OKButton = New System.Windows.Forms.Button()
-        Me.TableLayoutPanel.SuspendLayout()
-        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        Me.LicenseLinkLabel = New System.Windows.Forms.LinkLabel()
+        Me.ThirdPartyLinkLabel = New System.Windows.Forms.LinkLabel()
+        Me.TableLayoutPanel.SuspendLayout
+        CType(Me.LogoPictureBox,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'TableLayoutPanel
         '
@@ -81,7 +83,7 @@ Partial Class AboutBox
         resources.ApplyResources(Me.LogoPictureBox, "LogoPictureBox")
         Me.LogoPictureBox.Name = "LogoPictureBox"
         Me.TableLayoutPanel.SetRowSpan(Me.LogoPictureBox, 6)
-        Me.LogoPictureBox.TabStop = False
+        Me.LogoPictureBox.TabStop = false
         '
         'LabelProductName
         '
@@ -107,8 +109,8 @@ Partial Class AboutBox
         '
         resources.ApplyResources(Me.TextBoxDescription, "TextBoxDescription")
         Me.TextBoxDescription.Name = "TextBoxDescription"
-        Me.TextBoxDescription.ReadOnly = True
-        Me.TextBoxDescription.TabStop = False
+        Me.TextBoxDescription.ReadOnly = true
+        Me.TextBoxDescription.TabStop = false
         '
         'OKButton
         '
@@ -116,22 +118,39 @@ Partial Class AboutBox
         Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.OKButton.Name = "OKButton"
         '
+        'LicenseLinkLabel
+        '
+        resources.ApplyResources(Me.LicenseLinkLabel, "LicenseLinkLabel")
+        Me.LicenseLinkLabel.Name = "LicenseLinkLabel"
+        Me.LicenseLinkLabel.TabStop = true
+        '
+        'ThirdPartyLinkLabel
+        '
+        resources.ApplyResources(Me.ThirdPartyLinkLabel, "ThirdPartyLinkLabel")
+        Me.ThirdPartyLinkLabel.Name = "ThirdPartyLinkLabel"
+        Me.ThirdPartyLinkLabel.TabStop = true
+        '
         'AboutBox
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.OKButton
+        Me.Controls.Add(Me.ThirdPartyLinkLabel)
+        Me.Controls.Add(Me.LicenseLinkLabel)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
+        Me.MaximizeBox = false
+        Me.MinimizeBox = false
         Me.Name = "AboutBox"
-        Me.ShowInTaskbar = False
-        Me.TableLayoutPanel.ResumeLayout(False)
-        Me.TableLayoutPanel.PerformLayout()
-        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
+        Me.ShowInTaskbar = false
+        Me.TableLayoutPanel.ResumeLayout(false)
+        Me.TableLayoutPanel.PerformLayout
+        CType(Me.LogoPictureBox,System.ComponentModel.ISupportInitialize).EndInit
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
+    Friend WithEvents LicenseLinkLabel As System.Windows.Forms.LinkLabel
+    Friend WithEvents ThirdPartyLinkLabel As System.Windows.Forms.LinkLabel
 
 End Class
