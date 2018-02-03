@@ -26,6 +26,7 @@ Public Class UploadFoldersDialog
     Public Sub New()
         InitializeComponent()
         presenter = New UploadFoldersPresenter(Me)
+        HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
         FoldersListBox.Select()
         presenter.FillFolders()
     End Sub

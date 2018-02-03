@@ -47,6 +47,7 @@ Partial Class UploadFoldersDialog
         Me.EditButton = New System.Windows.Forms.Button()
         Me.DeleteButton = New System.Windows.Forms.Button()
         Me.FoldersListBox = New System.Windows.Forms.ListBox()
+        Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -90,9 +91,12 @@ Partial Class UploadFoldersDialog
         Me.Controls.Add(Me.FoldersListBox)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.HelpProvider.SetHelpKeyword(Me, resources.GetString("$this.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me, CType(resources.GetObject("$this.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "UploadFoldersDialog"
+        Me.HelpProvider.SetShowHelp(Me, CType(resources.GetObject("$this.ShowHelp"), Boolean))
         Me.ShowInTaskbar = False
         Me.TableLayoutPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -103,5 +107,6 @@ Partial Class UploadFoldersDialog
     Friend WithEvents AddButton As System.Windows.Forms.Button
     Friend WithEvents EditButton As System.Windows.Forms.Button
     Friend WithEvents DeleteButton As System.Windows.Forms.Button
+    Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
 
 End Class

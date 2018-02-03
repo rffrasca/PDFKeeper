@@ -71,16 +71,36 @@
 						<param name="Local" value="Entering PDF Document Information Properties.html">
 						</OBJECT>
 				</UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Uploading PDF Documents from outside of PDFKeeper">
+					<param name="Local" value="Uploading PDF Documents from outside of PDFKeeper.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Uploading PDF Documents using Configured Folders">
+					<param name="Local" value="Uploading PDF Documents using Configured Folders.html">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Configuring Upload Folders">
+						<param name="Local" value="Configuring Upload Folders.html">
+						</OBJECT>
+					<UL>
+						<LI> <OBJECT type="text/sitemap">
+							<param name="Name" value="Adding, Editing, and Deleting Configured Folders">
+							<param name="Local" value="Adding, Editing, and Deleting Configured Folders.html">
+							</OBJECT>
+					</UL>
+				</UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Getting Support">
+					<param name="Local" value="Getting Support.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="License">
+					<param name="Local" value="GNU General Public License v3_0 - GNU Project - Free Software Foundation (FSF).html">
+					</OBJECT>
 			</UL>
 		</UL>
-		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Getting Support">
-			<param name="Local" value="Getting Support.html">
-			</OBJECT>
-		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="License">
-			<param name="Local" value="GNU General Public License v3_0 - GNU Project - Free Software Foundation (FSF).html">
-			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Third-Party Components">
 			<param name="Local" value="Third-Party Components.html">
