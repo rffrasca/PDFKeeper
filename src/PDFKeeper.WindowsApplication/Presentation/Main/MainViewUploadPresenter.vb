@@ -36,8 +36,15 @@ Public Class MainViewUploadPresenter
 
     Public Sub DoUpload()
         If UploadController.SkipUpload = False Then
-            view.UploadRunningVisible = True
             view.UploadSkippedVisible = False
+            If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.Upload, _
+                                               SearchOption.AllDirectories) > 0 Then
+                view.UploadRunningVisible = True
+            End If
+            If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.UploadStaging, _
+                                               SearchOption.AllDirectories) > 0 Then
+                view.UploadRunningVisible = True
+            End If
             Application.DoEvents()
             Dim command As ICommand = New UploadCommand
             command.Execute()
@@ -51,7 +58,7 @@ Public Class MainViewUploadPresenter
 
     Private Sub CheckForFilesNotUploaded()
         If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.Upload, _
-                                              SearchOption.AllDirectories) > 0 Then
+                                           SearchOption.AllDirectories) > 0 Then
             view.UploadFolderErrorVisible = True
         End If
         If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.UploadStaging, _

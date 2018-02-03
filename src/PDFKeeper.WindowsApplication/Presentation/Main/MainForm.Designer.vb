@@ -860,7 +860,7 @@ Partial Class MainForm
         'UploadTimer
         '
         Me.UploadTimer.Enabled = True
-        Me.UploadTimer.Interval = 15000
+        Me.UploadTimer.Interval = 5000
         '
         'HelpProvider
         '
