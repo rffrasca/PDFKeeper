@@ -123,6 +123,16 @@
 			</UL>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Updating PDFKeeper">
+			<param name="Local" value="Updating PDFKeeper.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Uninstalling PDFKeeper">
+			<param name="Local" value="Uninstalling PDFKeeper.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Getting Support">
 			<param name="Local" value="Getting Support.html">
 			<param name="ImageNumber" value="9">
