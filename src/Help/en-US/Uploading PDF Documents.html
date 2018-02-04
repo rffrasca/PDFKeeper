@@ -6,7 +6,7 @@
 	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.3  (Win32)">
 	<META NAME="CREATED" CONTENT="20180115;14243916">
 	<META NAME="CHANGEDBY" CONTENT="Robert Frasca">
-	<META NAME="CHANGED" CONTENT="20180203;12521596">
+	<META NAME="CHANGED" CONTENT="20180204;10054138">
 	<META NAME="DESCRIPTION" CONTENT="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Storage Solution
@@ -39,6 +39,12 @@
 <P><FONT FACE="Segoe UI, sans-serif">PDF documents can be uploaded
 individually or in bulk, with or without using configured Upload
 folders.</FONT></P>
+<P><FONT FACE="Segoe UI, sans-serif">Configured Upload Folders are
+used to automate the uploading of PDF documents to the database. For
+each PDF document that is created in or copied into a configured
+upload folder will have PDF Information Properties defined for that
+folder written to a clone of the PDF file; and then the PDF file
+clone is uploaded to the database during the next upload cycle.</FONT></P>
 <P><FONT FACE="Segoe UI, sans-serif">Each document is stored in the
 database as follows:</FONT></P>
 <P STYLE="margin-left: 0.49in"><FONT FACE="Segoe UI, sans-serif"><B>ID</B>-
@@ -98,6 +104,16 @@ Information:</B></FONT></FONT></P>
 	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">Oracle
 	Database XE does not index annotations contained within a PDF
 	document.</FONT></P>
+	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">The
+	upload process will check for PDF documents that need to be uploaded
+	every five seconds.  While the upload process is running, adding a
+	new PDF document and configuring Upload Folders will not be allowed.
+	</FONT>
+	</P>
+	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">It
+	is NOT recommended to configure the Windows Recycle Bin to delete
+	files immediately as the Upload process will delete all preprocessed
+	and cloned PDF documents to the Recycle Bin.</FONT></P>
 </UL>
 </BODY>
 </HTML>
