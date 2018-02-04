@@ -598,28 +598,16 @@
 </value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Contents</value>
   </data>
-  <data name="HelpIndexToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
-  </data>
-  <data name="HelpIndexToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Index</value>
-  </data>
-  <data name="HelpSearchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
-  </data>
-  <data name="HelpSearchToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Search</value>
-  </data>
   <data name="ToolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="HelpAboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="HelpAboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About ...</value>
@@ -2438,18 +2426,6 @@
     <value>HelpContentsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;HelpContentsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;HelpIndexToolStripMenuItem.Name" xml:space="preserve">
-    <value>HelpIndexToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;HelpIndexToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;HelpSearchToolStripMenuItem.Name" xml:space="preserve">
-    <value>HelpSearchToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;HelpSearchToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripSeparator12.Name" xml:space="preserve">

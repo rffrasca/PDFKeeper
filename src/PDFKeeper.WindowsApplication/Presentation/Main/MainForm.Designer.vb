@@ -90,8 +90,6 @@ Partial Class MainForm
         Me.ToolsUploadFoldersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpContentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpIndexToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpSearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.HelpAboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchStringErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
@@ -415,7 +413,7 @@ Partial Class MainForm
         '
         'HelpToolStripMenuItem
         '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HelpContentsToolStripMenuItem, Me.HelpIndexToolStripMenuItem, Me.HelpSearchToolStripMenuItem, Me.ToolStripSeparator12, Me.HelpAboutToolStripMenuItem})
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HelpContentsToolStripMenuItem, Me.ToolStripSeparator12, Me.HelpAboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         resources.ApplyResources(Me.HelpToolStripMenuItem, "HelpToolStripMenuItem")
         '
@@ -423,16 +421,6 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.HelpContentsToolStripMenuItem, "HelpContentsToolStripMenuItem")
         Me.HelpContentsToolStripMenuItem.Name = "HelpContentsToolStripMenuItem"
-        '
-        'HelpIndexToolStripMenuItem
-        '
-        Me.HelpIndexToolStripMenuItem.Name = "HelpIndexToolStripMenuItem"
-        resources.ApplyResources(Me.HelpIndexToolStripMenuItem, "HelpIndexToolStripMenuItem")
-        '
-        'HelpSearchToolStripMenuItem
-        '
-        Me.HelpSearchToolStripMenuItem.Name = "HelpSearchToolStripMenuItem"
-        resources.ApplyResources(Me.HelpSearchToolStripMenuItem, "HelpSearchToolStripMenuItem")
         '
         'ToolStripSeparator12
         '
@@ -966,8 +954,6 @@ Partial Class MainForm
     Friend WithEvents ToolStripSeparator11 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolsUploadFoldersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HelpContentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents HelpIndexToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents HelpSearchToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator12 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents HelpAboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FileNewToolStripButton As System.Windows.Forms.ToolStripButton

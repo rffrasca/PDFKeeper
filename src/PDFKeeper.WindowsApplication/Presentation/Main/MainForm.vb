@@ -252,14 +252,6 @@ Public Class MainForm
         HelpProviderHelper.ShowHelp(Me, "Using PDFKeeper.html")
     End Sub
 
-    Private Sub HelpIndexToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpIndexToolStripMenuItem.Click
-        MsgBox("Not implemented")
-    End Sub
-
-    Private Sub HelpSearchToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpSearchToolStripMenuItem.Click
-        MsgBox("Not implemented")
-    End Sub
-
     Private Sub HelpAboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpAboutToolStripMenuItem.Click
         AboutBox.ShowDialog()
     End Sub
