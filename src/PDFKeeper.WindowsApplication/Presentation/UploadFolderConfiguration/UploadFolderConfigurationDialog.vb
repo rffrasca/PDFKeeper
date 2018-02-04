@@ -28,6 +28,7 @@ Public Class UploadFolderConfigurationDialog
         InitializeComponent()
         presenter = New UploadFolderConfigurationPresenter(Me)
         m_EditUploadFolderConfig = editUploadFolderConfig
+        HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
         FolderNameTextBox.Select()
     End Sub
 

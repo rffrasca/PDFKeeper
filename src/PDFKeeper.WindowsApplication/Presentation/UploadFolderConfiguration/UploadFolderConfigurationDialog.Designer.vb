@@ -57,6 +57,7 @@ Partial Class UploadFolderConfigurationDialog
         Me.SubjectComboBox = New System.Windows.Forms.ComboBox()
         Me.KeywordsPrefillLabel = New System.Windows.Forms.Label()
         Me.KeywordsTextBox = New System.Windows.Forms.TextBox()
+        Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.FolderNameErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -163,9 +164,12 @@ Partial Class UploadFolderConfigurationDialog
         Me.Controls.Add(Me.FolderNameLabel)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.HelpProvider.SetHelpKeyword(Me, resources.GetString("$this.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me, CType(resources.GetObject("$this.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "UploadFolderConfigurationDialog"
+        Me.HelpProvider.SetShowHelp(Me, CType(resources.GetObject("$this.ShowHelp"), Boolean))
         Me.ShowInTaskbar = False
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.FolderNameErrorProvider, System.ComponentModel.ISupportInitialize).EndInit()
@@ -187,5 +191,6 @@ Partial Class UploadFolderConfigurationDialog
     Friend WithEvents AuthorComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents AuthorPrefillLabel As System.Windows.Forms.Label
     Friend WithEvents TitlePrefillLabel As System.Windows.Forms.Label
+    Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
 
 End Class
