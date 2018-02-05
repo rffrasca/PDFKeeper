@@ -29,6 +29,7 @@ Public Class MainViewToolStripStateManager
     End Sub
 
     Private Sub SetDefaults()
+        shortNames.SetItem("FileNew", True)
         shortNames.SetItem("FileOpen", False)
         shortNames.SetItem("FileSave", False)
         shortNames.SetItem("FileSaveAs", False)
@@ -49,6 +50,7 @@ Public Class MainViewToolStripStateManager
         shortNames.SetItem("ViewToggleRightPanel", False)
         shortNames.SetItem("ViewRefresh", False)
         shortNames.SetItem("ViewSetPreviewImageResolution", False)
+        shortNames.SetItem("ToolsUploadFolders", True)
     End Sub
 
     Public Sub SetDefaultState()
@@ -186,6 +188,18 @@ Public Class MainViewToolStripStateManager
         shortNames.SetItem("EditPaste", False)
         shortNames.SetItem("EditSelectAll", False)
         shortNames.SetItem("EditDateTime", False)
+        ApplyState()
+    End Sub
+
+    Public Sub SetUploadStartedState()
+        shortNames.SetItem("FileNew", False)
+        shortNames.SetItem("ToolsUploadFolders", False)
+        ApplyState()
+    End Sub
+
+    Public Sub SetUploadStoppedState()
+        shortNames.SetItem("FileNew", True)
+        shortNames.SetItem("ToolsUploadFolders", True)
         ApplyState()
     End Sub
 
