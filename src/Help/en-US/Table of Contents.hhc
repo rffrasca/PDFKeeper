@@ -121,7 +121,57 @@
 						</OBJECT>
 				</UL>
 			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Searching for Documents">
+				<param name="Local" value="Searching for Documents.html">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Search by String Examples">
+					<param name="Local" value="Search by String Examples.html">
+					</OBJECT>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Working with Search Results">
+				<param name="Local" value="Working with Search Results.html">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Sorting the Search Results">
+					<param name="Local" value="Sorting the Search Results.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Refreshing the Search Results">
+					<param name="Local" value="Refreshing the Search Results.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="PDF Document Viewing">
+					<param name="Local" value="PDF Document Viewing.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Setting PDFKeeper Options">
+				<param name="Local" value="Setting PDFKeeper Options.html">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="PDFKeeper Options">
+					<param name="Local" value="PDFKeeper Options.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+			</UL>
 		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Disable Querying of all Document Records by Policy">
+			<param name="Local" value="Disable Querying of all Document Records by Policy.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Updating PDFKeeper">
 			<param name="Local" value="Updating PDFKeeper.html">
