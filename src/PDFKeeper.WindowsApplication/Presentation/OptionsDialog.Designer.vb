@@ -46,6 +46,7 @@ Partial Class OptionsDialog
         Me.OK_Button = New System.Windows.Forms.Button()
         Me.CheckBoxOpenPdfWithDefaultApplication = New System.Windows.Forms.CheckBox()
         Me.CheckBoxSearchResultsSelectLastRow = New System.Windows.Forms.CheckBox()
+        Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -86,9 +87,12 @@ Partial Class OptionsDialog
         Me.Controls.Add(Me.CheckBoxSearchResultsSelectLastRow)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.HelpProvider.SetHelpKeyword(Me, resources.GetString("$this.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me, CType(resources.GetObject("$this.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "OptionsDialog"
+        Me.HelpProvider.SetShowHelp(Me, CType(resources.GetObject("$this.ShowHelp"), Boolean))
         Me.ShowInTaskbar = False
         Me.TableLayoutPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -99,5 +103,6 @@ Partial Class OptionsDialog
     Friend WithEvents OK_Button As System.Windows.Forms.Button
     Friend WithEvents CheckBoxSearchResultsSelectLastRow As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxOpenPdfWithDefaultApplication As System.Windows.Forms.CheckBox
+    Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
 
 End Class
