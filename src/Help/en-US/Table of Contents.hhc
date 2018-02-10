@@ -130,6 +130,7 @@
 				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Search by String Examples">
 					<param name="Local" value="Search by String Examples.html">
+					<param name="ImageNumber" value="9">
 					</OBJECT>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
@@ -151,6 +152,16 @@
 				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="PDF Document Viewing">
 					<param name="Local" value="PDF Document Viewing.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Document Record Notes">
+					<param name="Local" value="Document Record Notes.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Document Record Keywords">
+					<param name="Local" value="Document Record Keywords.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 			</UL>
