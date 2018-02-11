@@ -164,6 +164,11 @@
 					<param name="Local" value="Document Record Keywords.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="PDF Document Text">
+					<param name="Local" value="PDF Document Text.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="Setting PDFKeeper Options">
