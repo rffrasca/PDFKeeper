@@ -238,13 +238,13 @@
     <value>149, 6</value>
   </data>
   <data name="FileSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="FileSelectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;All</value>
   </data>
   <data name="FileSelectNoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="FileSelectNoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;None</value>
@@ -477,13 +477,13 @@
     <value>F12</value>
   </data>
   <data name="ViewToggleRightPanelToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 22</value>
+    <value>275, 22</value>
   </data>
   <data name="ViewToggleRightPanelToolStripMenuItem.Text" xml:space="preserve">
     <value>Toggle Right &amp;Panel</value>
   </data>
   <data name="ToolStripSeparator23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 6</value>
+    <value>272, 6</value>
   </data>
   <data name="ViewRefreshToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -508,34 +508,34 @@
     <value>F5</value>
   </data>
   <data name="ViewRefreshToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 22</value>
+    <value>275, 22</value>
   </data>
   <data name="ViewRefreshToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Refresh</value>
   </data>
   <data name="ToolStripSeparator24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 6</value>
+    <value>272, 6</value>
   </data>
   <data name="ViewSetPreviewImageResolutionToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+R</value>
+    <value>Ctrl+I</value>
   </data>
   <data name="ViewSetPreviewImageResolutionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 22</value>
+    <value>275, 22</value>
   </data>
   <data name="ViewSetPreviewImageResolutionToolStripMenuItem.Text" xml:space="preserve">
     <value>Set Preview &amp;Image Resolution...</value>
   </data>
   <data name="ToolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 6</value>
+    <value>272, 6</value>
   </data>
   <data name="ViewToolbarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 22</value>
+    <value>275, 22</value>
   </data>
   <data name="ViewToolbarToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Tool Bar</value>
   </data>
   <data name="ViewStatusBarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 22</value>
+    <value>275, 22</value>
   </data>
   <data name="ViewStatusBarToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Status Bar</value>
