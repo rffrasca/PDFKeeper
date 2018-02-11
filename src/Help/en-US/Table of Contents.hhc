@@ -179,6 +179,11 @@
 					<param name="Local" value="Saving PDF Document outside of PDFKeeper.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Deleting Document Records">
+					<param name="Local" value="Deleting Document Records.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="Setting PDFKeeper Options">
