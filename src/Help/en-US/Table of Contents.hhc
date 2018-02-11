@@ -184,6 +184,11 @@
 					<param name="Local" value="Deleting Document Records.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Exporting PDF Documents and Notes">
+					<param name="Local" value="Exporting PDF Documents and Notes.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="Setting PDFKeeper Options">
