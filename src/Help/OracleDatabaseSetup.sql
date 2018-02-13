@@ -40,10 +40,7 @@ create table pdfkeeper.docs(
 	doc_pdf blob not null,
 	doc_dummy varchar2(1));
 
-drop index pdfkeeper.docs_idx;
-
 begin
-	ctx_ddl.drop_preference('ctxsys.pdfkeeper_lexer')
 	ctx_ddl.create_preference('ctxsys.pdfkeeper_lexer',
 			      	  'world_lexer');
 	ctx_ddl.create_preference('ctxsys.pdfkeeper_multi',
