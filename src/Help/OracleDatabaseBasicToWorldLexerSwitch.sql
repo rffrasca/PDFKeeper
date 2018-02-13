@@ -21,7 +21,7 @@
 drop index pdfkeeper.docs_idx;
 
 begin
-	ctx_ddl.drop_preference('ctxsys.pdfkeeper_lexer')
+	ctx_ddl.drop_preference('ctxsys.pdfkeeper_lexer');
 	ctx_ddl.create_preference('ctxsys.pdfkeeper_lexer',
 			      	  'world_lexer');
 end;
