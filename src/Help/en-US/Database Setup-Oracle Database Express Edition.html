@@ -6,7 +6,7 @@
 	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.3  (Win32)">
 	<META NAME="CREATED" CONTENT="20180115;13124628">
 	<META NAME="CHANGEDBY" CONTENT="Robert Frasca">
-	<META NAME="CHANGED" CONTENT="20180128;11384370">
+	<META NAME="CHANGED" CONTENT="20180212;20135386">
 	<META NAME="DESCRIPTION" CONTENT="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Storage Solution
@@ -40,7 +40,7 @@ that was built with a setup script from any version of PDFKeeper
 starting with 2.0.0 and ending with 3.1.2 or had to change from the
 WORLD_LEXER to the BASIC_LEXER due to the WORLD_LEXER bug in Oracle
 Database XE 10g can make the switch back to the WORLD_LEXER if so
-desired by starting with Step 3; however, Oracle Database XE must be
+desired by starting with Step 4; however, Oracle Database XE must be
 at a minimum of 11g to avoid the bug.</FONT></P>
 <OL>
 	<LI><P><FONT FACE="Segoe UI, sans-serif">Please read the <A HREF="http://www.oracle.com/technetwork/database/database-technologies/express-edition/documentation/index.html" TARGET="_blank">Oracle
@@ -55,8 +55,11 @@ at a minimum of 11g to avoid the bug.</FONT></P>
 	Instant Client Basic or Basic Lite and SQL*Plus packages</A> to this
 	computer, extract the ZIP files into an empty folder, and then add
 	that folder to the PATH.</FONT></P>
-	<LI><P><FONT FACE="Segoe UI, sans-serif">Execute <A HREF="OracleDatabaseSetup.cmd">Oracle
-	Database Setup</A></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif">For first time setup,
+	execute <A HREF="OracleDatabaseSetup.cmd">Oracle Database Setup</A>;
+	to switch an existing schema from BASIC_LEXER to WORLD_LEXER,
+	execute <A HREF="OracleDatabaseBasicToWorldLexerSwitch.cmd">Oracle
+	Database Basic To World Lexer Switch</A></FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif">From a Command Prompt,
 	execute <B>sqlplus</B></FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif">When logged onto the
