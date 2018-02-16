@@ -56,12 +56,12 @@ Public Class PdfFile
                                                  Path.GetFileNameWithoutExtension(FullName) & "-" & _
                                                  resolution)
         Using pdftopng As New Process
-            pdftopng.StartInfo.FileName = "pdftopng.exe"
+            pdftopng.StartInfo.FileName = Path.Combine(Application.StartupPath, _
+                                                       "pdftopng.exe")
             pdftopng.StartInfo.Arguments = _
                 "-f 1 -l 1 -r " & resolution & _
                 " " & Chr(34) & FullName & Chr(34) & _
                 " " & Chr(34) & outputParam & Chr(34)
-            ' Suppress security warning.
             pdftopng.StartInfo.UseShellExecute = False
             pdftopng.StartInfo.CreateNoWindow = True
             pdftopng.Start()
@@ -123,10 +123,9 @@ Public Class PdfFile
         "CA1822:MarkMembersAsStatic")> _
     Private Function OpenSumatraPdf(ByVal param As String) As Integer
         Using sumatraPdf As New Process
-            sumatraPdf.StartInfo.FileName = "SumatraPDF.exe"
+            sumatraPdf.StartInfo.FileName = Path.Combine(Application.StartupPath, _
+                                                         "SumatraPDF.exe")
             sumatraPdf.StartInfo.Arguments = param
-            ' Suppress security warning.
-            sumatraPdf.StartInfo.UseShellExecute = False
             sumatraPdf.Start()
             Return sumatraPdf.Id    ' Process ID
         End Using

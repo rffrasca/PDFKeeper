@@ -54,9 +54,6 @@ Public NotInheritable Class HelpProviderHelper
                 Environment.GetFolderPath(Environment.SpecialFolder.Windows), _
                 "hh.exe")
             htmlHelp.StartInfo.Arguments = HelpFile
-            ' Suppress security warning.
-            htmlHelp.StartInfo.UseShellExecute = False
-            htmlHelp.StartInfo.CreateNoWindow = True
             htmlHelp.Start()
             htmlHelp.WaitForExit()
         End Using
