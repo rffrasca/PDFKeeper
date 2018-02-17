@@ -129,7 +129,6 @@ Partial Class MainForm
         Me.DeleteExportToolStripProgressBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.FillerToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.UploadRunningToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.UploadSkippedToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.UploadFolderErrorToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.UploadStagingFolderErrorToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
@@ -673,7 +672,7 @@ Partial Class MainForm
         'StatusStrip
         '
         Me.StatusStrip.DataBindings.Add(New System.Windows.Forms.Binding("Visible", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "MainStatusBarVisible", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TotalRecordsToolStripStatusLabel, Me.TotalRecordsCountToolStripStatusLabel, Me.DeleteExportToolStripProgressBar, Me.FillerToolStripStatusLabel, Me.UploadRunningToolStripStatusLabel, Me.UploadSkippedToolStripStatusLabel, Me.UploadFolderErrorToolStripStatusLabel, Me.UploadStagingFolderErrorToolStripStatusLabel})
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TotalRecordsToolStripStatusLabel, Me.TotalRecordsCountToolStripStatusLabel, Me.DeleteExportToolStripProgressBar, Me.FillerToolStripStatusLabel, Me.UploadRunningToolStripStatusLabel, Me.UploadFolderErrorToolStripStatusLabel, Me.UploadStagingFolderErrorToolStripStatusLabel})
         resources.ApplyResources(Me.StatusStrip, "StatusStrip")
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.ShowItemToolTips = True
@@ -705,11 +704,6 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.UploadRunningToolStripStatusLabel, "UploadRunningToolStripStatusLabel")
         Me.UploadRunningToolStripStatusLabel.Name = "UploadRunningToolStripStatusLabel"
-        '
-        'UploadSkippedToolStripStatusLabel
-        '
-        resources.ApplyResources(Me.UploadSkippedToolStripStatusLabel, "UploadSkippedToolStripStatusLabel")
-        Me.UploadSkippedToolStripStatusLabel.Name = "UploadSkippedToolStripStatusLabel"
         '
         'UploadFolderErrorToolStripStatusLabel
         '
@@ -1013,6 +1007,5 @@ Partial Class MainForm
     Friend WithEvents UploadFolderErrorToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents UploadStagingFolderErrorToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents FillerToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents UploadSkippedToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
 End Class

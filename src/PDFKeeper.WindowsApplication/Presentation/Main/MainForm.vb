@@ -1050,15 +1050,6 @@ Public Class MainForm
         End Set
     End Property
 
-    Public Property UploadSkippedVisible As Boolean Implements IMainViewUpload.UploadSkippedVisible
-        Get
-            Return UploadSkippedToolStripStatusLabel.Visible
-        End Get
-        Set(value As Boolean)
-            UploadSkippedToolStripStatusLabel.Visible = value
-        End Set
-    End Property
-
     Public Property UploadFolderErrorVisible As Boolean Implements IMainViewUpload.UploadFolderErrorVisible
         Get
             Return UploadFolderErrorToolStripStatusLabel.Visible

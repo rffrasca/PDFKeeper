@@ -21,9 +21,7 @@ Public Class FileNewToolStripCommand
     Implements ICommand
 
     Public Sub Execute() Implements ICommand.Execute
-        UploadController.SkipUpload = True
         AddSelectedPdfFile()
-        UploadController.SkipUpload = False
     End Sub
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", _

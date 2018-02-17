@@ -27,33 +27,26 @@ Public Class MainViewUploadPresenter
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
         "CA1822:MarkMembersAsStatic")> _
     Public Sub ShowUploadFoldersDialog()
-        UploadController.SkipUpload = True
         Using uploadFoldersDialog As New UploadFoldersDialog
             uploadFoldersDialog.ShowDialog()
         End Using
-        UploadController.SkipUpload = False
     End Sub
 
     Public Sub DoUpload()
-        If UploadController.SkipUpload = False Then
-            view.UploadSkippedVisible = False
-            If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.Upload, _
-                                               SearchOption.AllDirectories) > 0 Then
-                view.UploadRunningVisible = True
-            End If
-            If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.UploadStaging, _
-                                               SearchOption.AllDirectories) > 0 Then
-                view.UploadRunningVisible = True
-            End If
-            Application.DoEvents()
-            Dim command As ICommand = New UploadCommand
-            command.Execute()
-            view.UploadRunningVisible = False
-            CheckForFilesNotUploaded()
-            Application.DoEvents()
-        Else
-            view.UploadSkippedVisible = True
+        If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.Upload, _
+                                           SearchOption.AllDirectories) > 0 Then
+            view.UploadRunningVisible = True
         End If
+        If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.UploadStaging, _
+                                           SearchOption.AllDirectories) > 0 Then
+            view.UploadRunningVisible = True
+        End If
+        Application.DoEvents()
+        Dim command As ICommand = New UploadCommand
+        command.Execute()
+        view.UploadRunningVisible = False
+        CheckForFilesNotUploaded()
+        Application.DoEvents()
     End Sub
 
     Private Sub CheckForFilesNotUploaded()

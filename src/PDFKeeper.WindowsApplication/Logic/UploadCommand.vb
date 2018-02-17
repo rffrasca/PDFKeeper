@@ -21,8 +21,10 @@ Public Class UploadCommand
     Implements ICommand
 
     Public Sub Execute() Implements ICommand.Execute
+        UploadController.UploadRunning = True
         UploadDirectory.ProcessAllPdfFiles()
         UploadDirectory.DeleteEmptyNonConfiguredChildDirectories()
         UploadStagingDirectory.UploadAllPdfFiles()
+        UploadController.UploadRunning = False
     End Sub
 End Class

@@ -22,5 +22,5 @@ Public NotInheritable Class UploadController
         ' Required by Code Analysis.
     End Sub
 
-    Public Shared Property SkipUpload As Boolean
+    Public Shared Property UploadRunning
 End Class

@@ -19,7 +19,6 @@
 '******************************************************************************
 Public Interface IMainViewUpload
     Property UploadRunningVisible As Boolean
-    Property UploadSkippedVisible As Boolean
     Property UploadFolderErrorVisible As Boolean
     Property UploadStagingFolderErrorVisible As Boolean
 End Interface

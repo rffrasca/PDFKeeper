@@ -955,34 +955,6 @@
   <data name="UploadRunningToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="UploadSkippedToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAMUSURBVDhPXZFbSBRhGIaHSLrpKuhA0RmyAxSFCUnH
-        iy4iopCibCkwo80EDbUIWl3tsFRbxmq6WpmbWlEXlaGX2lJpaQcUKVzsnBvuzs7OzsyOs+PMzts3Y9rh
-        gwf+//2+94X/+xkATLyNmUSUEX1EDzHF1P+GtJm/+91E6rjO8A+ZFOJS/LVtaDTyFPKrrJB0Y9ELPT/P
-        r+Xlcpr9CDeac8gvXpv3TH5zJDLywcHRfDcx1woI3WNOC90HgupwG8QXNj56fbYku89BrLsKvrkWfJMX
-        Qs1liGeLEfFOk+O9DlnqLQqT7y2RwvzwMSVin4OL+m18qHqOJtyqgvj4LlSPC0ZhLoz8w0hcLIFw/za4
-        2hMIN69OKt/v68OPlwXIm8p8qmM2fPamBIY8M2ThViXkBz7Em24iMfQdmjoKPaFC+fYVkqcCcn0Vhqv3
-        YqhuceJz1eR35E0dW1DRfnfc7YT46A7i9TUkAbqug2VZ62yWkUxCcJ1HrOkGIoXZ4DetO08yYwXoebl+
-        obYCCVcJRj5+sQxmNTQ0QFVV69ze3g7+XR+UYzngXOUQ0jL8JI8FmJvmG70wDmUhOapZBrOcTidaWlpQ
-        WlqKnp4eSBwPY3MGWO9VxFalczQyFkDfxPG3a2Ds3QlNSVhmRVHgdrstc39/v6UJwyyMDWkI19APLV/z
-        J0A9eNAfq7yIRMFRRN/2WcOapqGrqwuSJFl3cyehjk4o+zLBljsQXbLyzxMSWfvLxJJT4O76wJ8sRlJP
-        Wqa/y9Q4ux0/G+oRyc4Gt3B5GcljAcruPWkjuzLfRysvIeq5YoXEPwzAMAyL+EAA0cIChC+4wLrOkHnZ
-        +8jcJWkTASby9h32UPFJmfW48bPZByUnC8a2DBhb06HYMvHD50PwmgfB3TaZzPZx30QAvXeLuazu9g49
-        UpCPyDknwtUVFqzTgWDBcbx8/tzo6uw0aHbjPwGtra3TCWlwcBBtT55wsfT15bGVa/3mpmlZHLdohZ+b
-        v7SMemIgEADNasTiiYDGxsapxAChEivG0/+HeguIGBEkZgFgfgHvC+0h9OzJ9gAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="UploadSkippedToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
-  </data>
-  <data name="UploadSkippedToolStripStatusLabel.ToolTipText" xml:space="preserve">
-    <value>Upload is being skipped temporarily.</value>
-  </data>
-  <data name="UploadSkippedToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="UploadFolderErrorToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -1511,12 +1483,6 @@
     <value>UploadRunningToolStripStatusLabel</value>
   </data>
   <data name="&gt;&gt;UploadRunningToolStripStatusLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UploadSkippedToolStripStatusLabel.Name" xml:space="preserve">
-    <value>UploadSkippedToolStripStatusLabel</value>
-  </data>
-  <data name="&gt;&gt;UploadSkippedToolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;UploadFolderErrorToolStripStatusLabel.Name" xml:space="preserve">
