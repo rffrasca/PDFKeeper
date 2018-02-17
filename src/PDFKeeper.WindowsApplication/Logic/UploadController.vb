@@ -23,4 +23,10 @@ Public NotInheritable Class UploadController
     End Sub
 
     Public Shared Property UploadRunning
+
+    Public Shared Sub WaitWhileUploadRunning()
+        Do While UploadRunning = True
+            Threading.Thread.Sleep(1000)
+        Loop
+    End Sub
 End Class

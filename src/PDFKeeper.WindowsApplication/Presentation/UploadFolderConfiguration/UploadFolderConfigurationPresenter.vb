@@ -72,6 +72,7 @@ Public Class UploadFolderConfigurationPresenter
     End Sub
 
     Public Sub SaveFolderConfiguration()
+        UploadController.WaitWhileUploadRunning()
         If Not view.EditFolderName Is Nothing Then
             UploadConfigDirectory.DeleteConfig(view.EditFolderName)
             If Not view.EditFolderName = view.FolderName Then

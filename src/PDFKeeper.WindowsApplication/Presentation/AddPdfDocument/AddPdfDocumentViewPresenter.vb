@@ -72,9 +72,7 @@ Public Class AddPdfDocumentViewPresenter
     End Sub
 
     Public Sub SaveOutputPdf()
-        Do While UploadController.UploadRunning = True
-            Threading.Thread.Sleep(1000)
-        Loop
+        UploadController.WaitWhileUploadRunning()
         TerminateViewer()
         Dim writer As PdfFileInfoPropertiesWriter
         If view.OriginalPdfFilePassword Is Nothing Then
