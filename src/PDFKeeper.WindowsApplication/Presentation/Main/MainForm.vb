@@ -70,9 +70,10 @@ Public Class MainForm
     End Sub
 
     Private Sub UploadTimer_Tick(sender As Object, e As EventArgs) Handles UploadTimer.Tick
-        UploadTimer.Stop()  ' Prevents multiple upload instances from running.
-        uploadPresenter.DoUpload()
-        UploadTimer.Start()
+        If UploadController.UploadRunning = False Then
+            Dim uploadThread As New Threading.Thread(AddressOf uploadPresenter.DoUpload)
+            uploadThread.Start()
+        End If
     End Sub
 
     Private Function IsSaveEnabled() As Boolean
