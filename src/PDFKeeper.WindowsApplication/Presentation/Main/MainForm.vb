@@ -1041,11 +1041,6 @@ Public Class MainForm
             Return UploadRunningToolStripStatusLabel.Visible
         End Get
         Set(value As Boolean)
-            If value Then
-                toolStripStateManager.SetUploadStartedState()
-            Else
-                toolStripStateManager.SetUploadStoppedState()
-            End If
             UploadRunningToolStripStatusLabel.Visible = value
         End Set
     End Property
