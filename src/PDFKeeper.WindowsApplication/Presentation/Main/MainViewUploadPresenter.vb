@@ -60,10 +60,14 @@ Public Class MainViewUploadPresenter
         If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.Upload, _
                                            SearchOption.AllDirectories) > 0 Then
             view.UploadFolderErrorVisible = True
+        Else
+            view.UploadFolderErrorVisible = False
         End If
         If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.UploadStaging, _
                                            SearchOption.AllDirectories) > 0 Then
             view.UploadStagingFolderErrorVisible = True
+        Else
+            view.UploadStagingFolderErrorVisible = False
         End If
     End Sub
 End Class
