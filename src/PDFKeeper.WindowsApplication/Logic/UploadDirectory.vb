@@ -22,6 +22,10 @@ Public NotInheritable Class UploadDirectory
         ' Required by Code Analysis.
     End Sub
 
+    Public Shared Sub Explore()
+        Process.Start(ApplicationDirectories.Upload)
+    End Sub
+
     Public Shared Sub CreateChildDirectory(ByVal folderName As String)
         Directory.CreateDirectory(Path.Combine(ApplicationDirectories.Upload, _
                                                folderName))

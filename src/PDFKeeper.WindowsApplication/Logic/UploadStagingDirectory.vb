@@ -22,6 +22,10 @@ Public NotInheritable Class UploadStagingDirectory
         ' Required by Code Analysis.
     End Sub
 
+    Public Shared Sub Explore()
+        Process.Start(ApplicationDirectories.UploadStaging)
+    End Sub
+
     Public Shared Sub UploadAllPdfFiles()
         Dim files = Directory.GetFiles(ApplicationDirectories.UploadStaging, _
                                        "*.pdf", _

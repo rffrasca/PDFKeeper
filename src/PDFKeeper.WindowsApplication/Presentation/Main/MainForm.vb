@@ -599,6 +599,14 @@ Public Class MainForm
     Private Sub StatusStrip_VisibleChanged(sender As Object, e As EventArgs) Handles StatusStrip.VisibleChanged
         ViewStatusBarToolStripMenuItem.Checked = StatusStrip.Visible
     End Sub
+
+    Private Sub UploadFolderErrorToolStripStatusLabel_Click(sender As Object, e As EventArgs) Handles UploadFolderErrorToolStripStatusLabel.Click
+        UploadDirectory.Explore()
+    End Sub
+
+    Private Sub UploadStagingFolderErrorToolStripStatusLabel_Click(sender As Object, e As EventArgs) Handles UploadStagingFolderErrorToolStripStatusLabel.Click
+        UploadStagingDirectory.Explore()
+    End Sub
 #End Region
 
 #Region "IMainViewUnboundSettings members get/set by MainViewUnboundSettingsPresenter"
