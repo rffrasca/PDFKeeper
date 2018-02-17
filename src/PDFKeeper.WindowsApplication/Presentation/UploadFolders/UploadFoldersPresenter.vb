@@ -65,9 +65,12 @@ Public Class UploadFoldersPresenter
         result = displayService.ShowQuestion(My.Resources.DeleteUploadConfigurationPrompt, _
                                              False)
         If result = Windows.Forms.DialogResult.Yes Then
-            UploadConfigDirectory.DeleteConfig(view.Folder)
-            UploadDirectory.DeleteChildDirectory(view.Folder)
-            FillFolders()
+            If UploadDirectory.DeleteChildDirectory(view.Folder) Then
+                UploadConfigDirectory.DeleteConfig(view.Folder)
+                FillFolders()
+            Else
+                displayService.ShowError(My.Resources.UploadFolderCannotBeDeleted)
+            End If
         End If
     End Sub
 End Class

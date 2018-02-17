@@ -202,7 +202,7 @@ Do you want to save changes before closing?</value>
     <value>Are you sure you want to cancel and discard all changes?</value>
   </data>
   <data name="DeleteUploadConfigurationPrompt" xml:space="preserve">
-    <value>Are you sure you want to delete the selected configuration, including any staged PDF documents in the configuration folder?</value>
+    <value>Are you sure you want to delete the selected Upload folder and configuration?</value>
   </data>
   <data name="Cache" xml:space="preserve">
     <value>Cache</value>
@@ -215,5 +215,8 @@ Do you want to save changes before closing?</value>
   </data>
   <data name="UploadConfig" xml:space="preserve">
     <value>UploadConfig</value>
+  </data>
+  <data name="UploadFolderCannotBeDeleted" xml:space="preserve">
+    <value>Upload folder cannot be deleted because it contains one or more files.</value>
   </data>
 </root>

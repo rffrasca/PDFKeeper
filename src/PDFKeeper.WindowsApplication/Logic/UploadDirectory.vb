@@ -31,13 +31,27 @@ Public NotInheritable Class UploadDirectory
                                                folderName))
     End Sub
 
-    Public Shared Sub DeleteChildDirectory(ByVal folderName As String)
+    ''' <summary>
+    ''' Deletes a directory, including any sub directories from the Upload directory.
+    ''' </summary>
+    ''' <param name="directoryName">Directory to delete.</param>
+    ''' <returns>
+    ''' True when directory does not exist or was deleted.
+    ''' False when folder cannot be deleted because it contains one or more files.
+    ''' </returns>
+    ''' <remarks></remarks>
+    Public Shared Function DeleteChildDirectory(ByVal directoryName As String) As Boolean
         Dim dirName As String = Path.Combine(ApplicationDirectories.Upload, _
-                                             folderName)
+                                             directoryName)
         If Directory.Exists(dirName) Then
-            Directory.Delete(dirName, True)
+            If DirectoryHelper.GetCountOfFiles(dirName, SearchOption.AllDirectories) = 0 Then
+                Directory.Delete(dirName, True)
+            Else
+                Return False
+            End If
         End If
-    End Sub
+        Return True
+    End Function
 
     Public Shared Sub RenameChildDirectory(ByVal sourceFolderName As String, _
                                            ByVal targetFolderName As String)

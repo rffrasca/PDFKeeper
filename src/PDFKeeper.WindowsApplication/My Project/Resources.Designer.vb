@@ -133,7 +133,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Are you sure you want to delete the selected configuration, including any staged PDF documents in the configuration folder?.
+        '''  Looks up a localized string similar to Are you sure you want to delete the selected Upload folder and configuration?.
         '''</summary>
         Friend ReadOnly Property DeleteUploadConfigurationPrompt() As String
             Get
@@ -330,6 +330,15 @@ Namespace My.Resources
         Friend ReadOnly Property UploadConfig() As String
             Get
                 Return ResourceManager.GetString("UploadConfig", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Upload folder cannot be deleted because it contains one or more files..
+        '''</summary>
+        Friend ReadOnly Property UploadFolderCannotBeDeleted() As String
+            Get
+                Return ResourceManager.GetString("UploadFolderCannotBeDeleted", resourceCulture)
             End Get
         End Property
         
