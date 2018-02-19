@@ -21,7 +21,7 @@ rem ***************************************************************************
 rem
 rem Start of localized strings
 rem
-set title=Oracle Database Basic to World Lexer Switch for PDFKeeper
+set title=Oracle Database Schema Setup for PDFKeeper
 set instructions1=Enter the database connect string in the format:
 set instructions2=username@host:port
 set instructions3=username: database account that must be a member of SYSDBA.
@@ -59,7 +59,7 @@ if "%connectString%"=="" (
 	echo.
 	goto End
 )
-sqlplus %connectString% @OracleDatabaseBasicToWorldLexerSwitch.sql
+sqlplus %connectString% @OracleDBSchemaSetup.sql
 :End
 set connectString=
 del sqlnet.log 2>nul

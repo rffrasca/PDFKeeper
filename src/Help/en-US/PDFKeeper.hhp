@@ -22,8 +22,9 @@ Sumatra PDF.html
 pdftopng from Xpdf tools.html
 Database Setup.html
 Database Setup-Oracle Database Express Edition.html
-OracleDatabaseSchemaSetup.cmd
-OracleDatabaseBasicToWorldLexerSwitch.cmd
+OracleDBSchemaSetup.cmd
+OracleDBBasicToWorldLexerSwitch.cmd
+OracleDBChangeSchemaAccountPassword.cmd
 Additional Client Prerequisites.html
 Database User Administration.html
 Database User Administration-Oracle Database Express Edition.html
