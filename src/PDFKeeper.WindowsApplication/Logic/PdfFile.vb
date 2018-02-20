@@ -126,6 +126,7 @@ Public Class PdfFile
             sumatraPdf.StartInfo.FileName = Path.Combine(Application.StartupPath, _
                                                          "SumatraPDF.exe")
             sumatraPdf.StartInfo.Arguments = param
+            sumatraPdf.StartInfo.UseShellExecute = False
             sumatraPdf.Start()
             Return sumatraPdf.Id    ' Process ID
         End Using
