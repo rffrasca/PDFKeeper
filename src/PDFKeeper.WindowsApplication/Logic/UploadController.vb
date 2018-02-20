@@ -22,6 +22,7 @@ Public NotInheritable Class UploadController
         ' Required by Code Analysis.
     End Sub
 
+    Public Shared Property UploadPaused
     Public Shared Property UploadRunning
 
     Public Shared Sub WaitWhileUploadRunning()

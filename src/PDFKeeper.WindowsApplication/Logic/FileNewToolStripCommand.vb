@@ -44,7 +44,9 @@ Public Class FileNewToolStripCommand
                 If containsPassword = False Then
                     selectedPdfFilePassword = Nothing
                 End If
+                UploadController.UploadPaused = True
                 ShowAddPdfDocumentDialog(selectedPdfFile, selectedPdfFilePassword)
+                UploadController.UploadPaused = False
             Catch ex As BadPasswordException
                 Dim displayService As IMessageDisplayService = New MessageDisplayService
                 displayService.ShowError(ex.Message)
