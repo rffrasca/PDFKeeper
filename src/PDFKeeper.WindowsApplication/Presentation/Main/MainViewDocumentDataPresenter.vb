@@ -28,11 +28,14 @@ Public Class MainViewDocumentDataPresenter
 
     Public Sub GetSelectedDocumentData()
         If view.DocumentId > 0 Then
-            GetDocumentNotes()
-            GetDocumentKeywords()
-            GetDocumentPdf()
-            GetDocumentPdfPreview()
-            GetDocumentPdfText()
+            Dim tasks(5) As Task
+            tasks(1) = Task.Run(Sub() GetDocumentPdf())
+            tasks(2) = Task.Run(Sub() GetDocumentNotes())
+            tasks(3) = Task.Run(Sub() GetDocumentKeywords())
+            tasks(1).Wait()
+            tasks(4) = Task.Run(Sub() GetDocumentPdfPreview())
+            tasks(5) = Task.Run(Sub() GetDocumentPdfText())
+            tasks(2).Wait()
             view.DocumentDataPanelEnabled = True
         Else
             lastDocumentNotes = Nothing
@@ -54,7 +57,7 @@ Public Class MainViewDocumentDataPresenter
     End Sub
 
     Public Sub ReloadPreview()
-        GetDocumentPdfPreview()
+        Task.Run(Sub() GetDocumentPdfPreview())
     End Sub
 
     Public Sub SetDocumentNotes()
@@ -94,6 +97,28 @@ Public Class MainViewDocumentDataPresenter
         End If
     End Function
 
+    Private Sub GetDocumentPdf()
+        Dim cached As Boolean = False
+        Dim pdfFile As New PdfFile( _
+            FilePathNameGenerator.GenerateCachePdfFilePathName(view.DocumentId))
+        If pdfFile.Exists Then
+            If pdfFile.ComputeHash = fileHashes.GetItem(pdfFile.FullName) Then
+                cached = True
+            End If
+        End If
+        If cached = False Then
+            Try
+                Dim queryService As IQueryService = Nothing
+                QueryServiceHelper.SetQueryService(queryService)
+                queryService.GetDocumentPdf(view.DocumentId, pdfFile.FullName)
+            Catch ex As OracleException
+                Dim displayService As IMessageDisplayService = New MessageDisplayService
+                displayService.ShowError(ex.Message)
+            End Try
+            fileHashes.SetItem(pdfFile.FullName, pdfFile.ComputeHash)
+        End If
+    End Sub
+
     Private Sub GetDocumentNotes()
         Try
             Dim queryService As IQueryService = Nothing
@@ -120,28 +145,6 @@ Public Class MainViewDocumentDataPresenter
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(ex.Message)
         End Try
-    End Sub
-
-    Private Sub GetDocumentPdf()
-        Dim cached As Boolean = False
-        Dim pdfFile As New PdfFile( _
-            FilePathNameGenerator.GenerateCachePdfFilePathName(view.DocumentId))
-        If pdfFile.Exists Then
-            If pdfFile.ComputeHash = fileHashes.GetItem(pdfFile.FullName) Then
-                cached = True
-            End If
-        End If
-        If cached = False Then
-            Try
-                Dim queryService As IQueryService = Nothing
-                QueryServiceHelper.SetQueryService(queryService)
-                queryService.GetDocumentPdf(view.DocumentId, pdfFile.FullName)
-            Catch ex As OracleException
-                Dim displayService As IMessageDisplayService = New MessageDisplayService
-                displayService.ShowError(ex.Message)
-            End Try
-            fileHashes.SetItem(pdfFile.FullName, pdfFile.ComputeHash)
-        End If
     End Sub
 
     Private Sub GetDocumentPdfPreview()
