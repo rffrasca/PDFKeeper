@@ -11,7 +11,6 @@ PDFKeeper integrates with a compatible, relational database management system to
 * Notes can be added to document records, including a Date and Time stamp that includes the database user account name. All Notes can be edited and are indexed by the database, making the text searchable. Notes can be saved to a text file, printed, and can be uploaded with a name matching PDF document.
 * Text extracted from the PDF document can be printed and saved to a text file.
 * PDF documents and their Notes can be exported from the database.
-* Querying of the entire database can be disabled by applying a policy to each client.
 
 ## Installing
 ### Client Prerequisites
