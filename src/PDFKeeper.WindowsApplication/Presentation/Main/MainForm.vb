@@ -39,6 +39,8 @@ Public Class MainForm
         documentDataPresenter = New MainViewDocumentDataPresenter(Me)
         uploadPresenter = New MainViewUploadPresenter(Me)
         HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
+        'TODO: Remove comment once ready for implementation.
+        'AutoUpdaterHelper.StartUpdater()
     End Sub
 
 #Region "Form events and protected and private methods"

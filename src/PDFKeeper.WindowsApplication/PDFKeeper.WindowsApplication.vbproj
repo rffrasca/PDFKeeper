@@ -75,6 +75,9 @@
     <AssemblyOriginatorKeyFile>PDFKeeper.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoUpdater.NET">
+      <HintPath>..\packages\Autoupdater.NET.Official.1.4.7\lib\net452\AutoUpdater.NET.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
@@ -149,6 +152,7 @@
     <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="Logic\ApplicationDirectories.vb" />
     <Compile Include="Logic\ApplicationPolicy.vb" />
+    <Compile Include="Logic\AutoUpdaterHelper.vb" />
     <Compile Include="Logic\DirectoryHelper.vb" />
     <Compile Include="Logic\FileBase.vb" />
     <Compile Include="Logic\FileDeleteToolStripCommand.vb" />
