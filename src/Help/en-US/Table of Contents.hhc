@@ -287,6 +287,18 @@
 					<param name="ImageNumber" value="17">
 					</OBJECT>
 			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="AutoUpdater.NET">
+				<param name="Local" value="AutoUpdater.NET.html">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="License">
+					<param name="Local" value="AutoUpdater.NET License.html">
+					<param name="ImageNumber" value="17">
+					</OBJECT>
+			</UL>
 		</UL>
 	</UL>
 </UL>
