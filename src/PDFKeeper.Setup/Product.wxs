@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+*******************************************************************************
+* PDFKeeper - Open Source PDF Document Storage Solution
+* Copyright (C) 2009-2018  Robert F. Frasca
+*
+* This file is part of PDFKeeper.
+*
+* PDFKeeper is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* PDFKeeper is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
+*******************************************************************************
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+  <?define PDFKeeper.WindowsApplication_TargetDir=$(var.PDFKeeper.WindowsApplication.TargetDir)?>
+  <Product Id="*"
+           Name="PDFKeeper" 
+           Language="1033"
+           Version="4.0.0.0"
+           Manufacturer="Robert F. Frasca"
+           UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2">
+    
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perUser" />
+		
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		
+    <MediaTemplate EmbedCab="yes" />
+    
+    <Icon Id="PDFKeeper.ico" SourceFile="$(var.PDFKeeper.WindowsApplication_TargetDir)PDFKeeper.ico"/>
+    
+    <Property Id="ARPPRODUCTICON" Value="PDFKeeper.ico" />
+    <Property Id='ARPHELPLINK'>https://github.com/rffrasca/PDFKeeper/issues</Property>
+    <Property Id='ARPURLINFOABOUT'>https://github.com/rffrasca/PDFKeeper</Property>
+    <Property Id='ARPURLUPDATEINFO'>https://github.com/rffrasca/PDFKeeper/releases</Property>
+    <Property Id="ALLUSERS" Value="2" />
+    <Property Id="MSIINSTALLPERUSER" Value="1" />
+    
+    <PropertyRef Id="WIX_IS_NETFRAMEWORK_461_OR_LATER_INSTALLED" />
+    <Condition Message="[ProductName] requires .NET Framework 4.6.1 or higher.">
+      <![CDATA[Installed OR WIX_IS_NETFRAMEWORK_461_OR_LATER_INSTALLED]]>
+    </Condition>
+    
+    <Feature Id="ProductFeature" Title="PDFKeeper" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id="pdftopng_docs" />
+      <ComponentGroupRef Id="da_Dll" />
+      <ComponentGroupRef Id="de_Dll" />
+      <ComponentGroupRef Id="es_Dll" />
+      <ComponentGroupRef Id="fr_Dll" />
+      <ComponentGroupRef Id="it_Dll" />
+      <ComponentGroupRef Id="ja_JP_Dll" />
+      <ComponentGroupRef Id="ko_Dll" />
+      <ComponentGroupRef Id="nl_Dll" />
+      <ComponentGroupRef Id="pl_Dll" />
+      <ComponentGroupRef Id="pt_Dll" />
+      <ComponentGroupRef Id="ru_Dll" />
+      <ComponentGroupRef Id="sv_Dll" />
+      <ComponentGroupRef Id="tr_Dll" />
+      <ComponentGroupRef Id="zh_Dll" />
+      <ComponentRef Id="ApplicationDesktopShortcut" />
+      <ComponentRef Id="ApplicationStartMenuShortcut" />
+    </Feature>
+
+    <Component Id="ApplicationDesktopShortcut" 
+               Guid="72393B8E-4F3C-465E-878F-9EFA5370A559" 
+               Directory="DesktopFolder" >
+      <Shortcut Id="DesktopShortcut"
+                Name="PDFKeeper"
+                Description="Open Source PDF Document Storage Solution"
+                Directory="DesktopFolder"
+                Target="[INSTALLFOLDER]PDFKeeper.exe"
+                WorkingDirectory="INSTALLFOLDER"/>
+      <RegistryValue Root="HKCU"
+                     Key="Software\Robert F. Frasca\PDFKeeper"
+                     Name="installed"
+                     Type="integer"
+                     Value="1"
+                     KeyPath="yes" />
+    </Component>
+
+    <Component Id="ApplicationStartMenuShortcut"
+              Guid="4F68CEB5-6DC4-47DF-B53D-2489C70BFC1F"
+              Directory="StartMenuFolder" >
+      <Shortcut Id="StartMenuShortcut"
+                Name="PDFKeeper"
+                Description="Open Source PDF Document Storage Solution"
+                Directory="StartMenuFolder"
+                Target="[INSTALLFOLDER]PDFKeeper.exe"
+                WorkingDirectory="INSTALLFOLDER"/>
+      <RegistryValue Root="HKCU"
+                     Key="Software\Robert F. Frasca\PDFKeeper"
+                     Name="installed"
+                     Type="integer"
+                     Value="1"
+                     KeyPath="yes" />
+    </Component>
+  </Product>
+ 
+  <Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="DesktopFolder" SourceName="Desktop" />
+      <Directory Id="StartMenuFolder" SourceName="StartMenu" />
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="PDFKeeper">
+          <Directory Id="pdftopng" Name="pdftopng" />
+          <Directory Id="da" Name="da" />
+          <Directory Id="de" Name="de" />
+          <Directory Id="es" Name="es" />
+          <Directory Id="fr" Name="fr" />
+          <Directory Id="it" Name="it" />
+          <Directory Id="ja_JP" Name="ja-JP" />
+          <Directory Id="ko" Name="ko" />
+          <Directory Id="nl" Name="nl" />
+          <Directory Id="pl" Name="pl" />
+          <Directory Id="pt" Name="pt" />
+          <Directory Id="ru" Name="ru" />
+          <Directory Id="sv" Name="sv" />
+          <Directory Id="tr" Name="tr" />
+          <Directory Id="zh" Name="zh" />
+        </Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+  <Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Component Id="SumatraPDF.exe" Guid="ff1d2f6f-03bb-45af-a5fc-29b65fab3745">
+			  <File Id="SumatraPDF.exe" Name="SumatraPDF.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)SumatraPDF.exe" />
+			</Component>
+			<Component Id="pdftopng.exe" Guid="dc8e8178-d036-422a-9b13-2852d345bad2">
+			  <File Id="pdftopng.exe" Name="pdftopng.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)pdftopng.exe" />
+			</Component>
+			<Component Id="SumatraPDF_settings.txt" Guid="6a6d167b-3b87-495a-b17f-68b5cedf5cc9">
+			  <File Id="SumatraPDF_settings.txt" Name="SumatraPDF-settings.txt" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)SumatraPDF-settings.txt" />
+			</Component>
+			<Component Id="PDFKeeper.en_US.chm" Guid="df6a5fd4-7f93-4541-80ab-2018dc64d0b7">
+			  <File Id="PDFKeeper.en_US.chm" Name="PDFKeeper.en-US.chm" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)PDFKeeper.en-US.chm" />
+			</Component>
+			<Component Id="PDFKeeper.exe" Guid="5f73ddef-5a96-4219-a496-eb844afcff3d">
+			  <File Id="PDFKeeper.exe" Name="PDFKeeper.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)PDFKeeper.exe" />
+			</Component>
+			<Component Id="PDFKeeper.exe.config" Guid="e3d211cb-43d4-4fe3-987c-2a4e63e4e12a">
+			  <File Id="PDFKeeper.exe.config" Name="PDFKeeper.exe.config" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)PDFKeeper.exe.config" />
+			</Component>
+			<Component Id="AutoUpdater.NET.dll" Guid="934e759b-4d49-43d0-b49c-bfa2896192c5">
+			  <File Id="AutoUpdater.NET.dll" Name="AutoUpdater.NET.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)AutoUpdater.NET.dll" />
+			</Component>
+			<Component Id="itextsharp.dll" Guid="79db00d3-1bc8-4d0a-a257-a37ca1562ac5">
+			  <File Id="itextsharp.dll" Name="itextsharp.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)itextsharp.dll" />
+			</Component>
+			<Component Id="PDFKeeper.ico" Guid="27f9fd6f-53f6-42cf-acbd-9e13061e25b8">
+			  <File Id="PDFKeeper.ico" Name="PDFKeeper.ico" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)PDFKeeper.ico" />
+			</Component>
+			<Component Id="sumatrapdfrestrict.ini" Guid="16a0b917-b9c6-42f3-bfa4-e514b36547a8">
+			  <File Id="sumatrapdfrestrict.ini" Name="sumatrapdfrestrict.ini" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)sumatrapdfrestrict.ini" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="pdftopng_docs" Directory="pdftopng">
+      <Component Id="pdftopng_pdftopng.txt" Guid="71b9184c-bdf9-4a4a-a880-083b3620c988">
+        <File Id="pdftopng_pdftopng.txt" Name="pdftopng.txt" Source="..\..\..\..\vendor\xpdf-tools-win-4.00\doc\pdftopng.txt" />
+      </Component>
+      <Component Id="pdftopng_COPYING" Guid="f46a2ad4-adfd-45e7-8b7f-da19e4ca58bd">
+        <File Id="pdftopng_COPYING" Name="COPYING" Source="..\..\..\..\vendor\xpdf-tools-win-4.00\COPYING" />
+      </Component>
+      <Component Id="pdftopng_COPYING3" Guid="d150ee8b-7edd-4fdc-ac02-e5d3d1fcae0f">
+        <File Id="pdftopng_COPYING3" Name="COPYING3" Source="..\..\..\..\vendor\xpdf-tools-win-4.00\COPYING3" />
+      </Component>
+      <Component Id="pdftopng_README" Guid="f1c475b3-6b8a-42a0-9220-20e49614a42c">
+        <File Id="pdftopng_README" Name="README" Source="..\..\..\..\vendor\xpdf-tools-win-4.00\README" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="da_Dll" Directory="da">
+      <Component Id="da_AutoUpdater.NET.resources.dll" Guid="E5053E60-3BD9-44A2-AE0D-7EBBE61F674F">
+        <File Id="da_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)da\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="de_Dll" Directory="de">
+      <Component Id="de_AutoUpdater.NET.resources.dll" Guid="E330C7B7-3634-43BE-A4B7-7A9E0B4B7757">
+        <File Id="de_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)de\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="es_Dll" Directory="es">
+      <Component Id="es_AutoUpdater.NET.resources.dll" Guid="812C0F0B-D5F6-4BC9-8BBA-C5C644A65559">
+        <File Id="es_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)es\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="fr_Dll" Directory="fr">
+      <Component Id="fr_AutoUpdater.NET.resources.dll" Guid="AA6AA3C9-8E96-47D1-A7C3-07186AFB3D94">
+        <File Id="fr_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)fr\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="it_Dll" Directory="it">
+      <Component Id="it_AutoUpdater.NET.resources.dll" Guid="D438A096-5890-4F0E-904C-1DFD6AB80A73">
+        <File Id="it_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)it\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ja_JP_Dll" Directory="ja_JP">
+      <Component Id="ja_JP_AutoUpdater.NET.resources.dll" Guid="23F002D5-DE92-4611-B771-68527BB845CD">
+        <File Id="ja_JP_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)ja-JP\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ko_Dll" Directory="ko">
+      <Component Id="ko_AutoUpdater.NET.resources.dll" Guid="27A51581-1416-4974-A067-B8E94F39CD99">
+        <File Id="ko_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)ko\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="nl_Dll" Directory="nl">
+      <Component Id="nl_AutoUpdater.NET.resources.dll" Guid="912D61AA-1434-4472-A367-8923A06371AF">
+        <File Id="nl_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)nl\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="pl_Dll" Directory="pl">
+      <Component Id="pl_AutoUpdater.NET.resources.dll" Guid="8AF7156C-11EF-46AD-BD2E-708F9B22353E">
+        <File Id="pl_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)pl\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="pt_Dll" Directory="pt">
+      <Component Id="pt_AutoUpdater.NET.resources.dll" Guid="B9FEACAB-B8F9-4D8E-83FD-AE64A7C62B03">
+        <File Id="pt_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)pt\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ru_Dll" Directory="ru">
+      <Component Id="ru_AutoUpdater.NET.resources.dll" Guid="68CC055F-C56C-4DA4-8636-63BF1A37DF3A">
+        <File Id="ru_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)ru\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="sv_Dll" Directory="sv">
+      <Component Id="sv_AutoUpdater.NET.resources.dll" Guid="AF096C87-5A52-40C8-972D-FB1D9BE2325F">
+        <File Id="sv_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)sv\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="tr_Dll" Directory="tr">
+      <Component Id="tr_AutoUpdater.NET.resources.dll" Guid="3FE3546B-F73F-4505-814A-9DE377C76731">
+        <File Id="tr_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)tr\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="zh_Dll" Directory="zh">
+      <Component Id="zh_AutoUpdater.NET.resources.dll" Guid="70C6B11F-CFA3-4D8E-868D-FD1523A07F44">
+        <File Id="zh_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)zh\AutoUpdater.NET.resources.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

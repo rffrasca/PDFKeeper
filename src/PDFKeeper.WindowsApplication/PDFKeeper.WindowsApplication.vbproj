@@ -337,10 +337,13 @@
       <Link>PDFKeeper.en-US.chm</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="..\Config\sumatrapdfrestrict.ini">
+    <Content Include="PDFKeeper.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Config\sumatrapdfrestrict.ini">
       <Link>sumatrapdfrestrict.ini</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="app.config" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
@@ -369,9 +372,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="PDFKeeper.ico" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">

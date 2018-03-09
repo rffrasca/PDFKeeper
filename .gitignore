@@ -6,3 +6,5 @@
 /src/PDFKeeper.WindowsApplication/obj
 *.user
 *.chm
+bin
+obj
