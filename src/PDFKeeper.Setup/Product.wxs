@@ -42,6 +42,8 @@
     <Property Id='ARPHELPLINK'>https://github.com/rffrasca/PDFKeeper/issues</Property>
     <Property Id='ARPURLINFOABOUT'>https://github.com/rffrasca/PDFKeeper</Property>
     <Property Id='ARPURLUPDATEINFO'>https://github.com/rffrasca/PDFKeeper/releases</Property>
+    <Property Id="ARPNOREPAIR" Value="yes" Secure="yes" /> 
+    <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />
     <Property Id="ALLUSERS" Value="2" />
     <Property Id="MSIINSTALLPERUSER" Value="1" />
     
@@ -134,7 +136,10 @@
 
   <Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<Component Id="SumatraPDF.exe" Guid="ff1d2f6f-03bb-45af-a5fc-29b65fab3745">
+      <Component Id="COPYING" Guid="fb2756c9-2b56-49ab-aa77-b79303d52016">
+			  <File Id="COPYING" Name="COPYING" Source="..\..\..\..\COPYING" />
+			</Component>
+      <Component Id="SumatraPDF.exe" Guid="ff1d2f6f-03bb-45af-a5fc-29b65fab3745">
 			  <File Id="SumatraPDF.exe" Name="SumatraPDF.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)SumatraPDF.exe" />
 			</Component>
 			<Component Id="pdftopng.exe" Guid="dc8e8178-d036-422a-9b13-2852d345bad2">
