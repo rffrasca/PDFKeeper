@@ -6,7 +6,7 @@
 	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.3  (Win32)">
 	<META NAME="CREATED" CONTENT="20180115;13124628">
 	<META NAME="CHANGEDBY" CONTENT="Robert Frasca">
-	<META NAME="CHANGED" CONTENT="20180210;7545562">
+	<META NAME="CHANGED" CONTENT="20180310;16441212">
 	<META NAME="DESCRIPTION" CONTENT="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Storage Solution
@@ -30,12 +30,37 @@
 </HEAD>
 <BODY LANG="en-US" DIR="LTR">
 <H1><FONT FACE="Segoe UI, sans-serif"><B>Updating PDFKeeper</B></FONT></H1>
-<P><FONT FACE="Segoe UI, sans-serif">PDFKeeper was redesigned to be a
-service application that will check if an update is available during
-application startup.  When an update is available, it will be
-downloaded in the background and become active the next time
-PDFKeeper is launched.  The objective is to ensure the latest version
-of PDFKeeper is installed without user interaction. </FONT>
-</P>
+<P><FONT FACE="Segoe UI, sans-serif">PDFKeeper is designed to
+periodically check to see if an update is available while the main
+form is open.  Updating PDFKeeper can be performed as a standard user
+and unless specified, you can begin to use the new version right
+after the update without any configuration.</FONT></P>
+<P><FONT FACE="Segoe UI, sans-serif">When an update is available, a
+dialog will be displayed with the following options:</FONT></P>
+<UL>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><B>Skip this version</B> &ndash;
+	When this button is selected, PDFKeeper will no longer inform you
+	that the newer version is available.  If this button is not
+	available, than the update is mandatory and cannot be skipped. If
+	this option is selected accidentally, then delete the <B>skip</B>
+	key from the registry located in <B>HKEY_CURRENT_USER\Software\Robert
+	F. Frasca\PDFKeeper\AutoUpdater</B>.</FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><B>Remind me later</B><SPAN STYLE="font-weight: normal">
+	&ndash; When this button is selected, you can either choose to be
+	reminded after </SPAN><B>30 minutes</B><SPAN STYLE="font-weight: normal">,
+	</SPAN><B>1 day</B><SPAN STYLE="font-weight: normal">, </SPAN><B>2
+	days</B><SPAN STYLE="font-weight: normal">, </SPAN><B>4 days</B><SPAN STYLE="font-weight: normal">,
+	</SPAN><B>8 days</B><SPAN STYLE="font-weight: normal">, or </SPAN><B>10
+	days</B><SPAN STYLE="font-weight: normal">; or you can select
+	</SPAN><B>download updates now</B><SPAN STYLE="font-weight: normal">.</SPAN></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><B>Update</B><SPAN STYLE="font-weight: normal">
+	&ndash; When this button is selected, the update process will
+	download the installer for the new version, close PDFKeeper, and
+	execute the installer.  The installer will remove the current
+	version and install the new version.  Once completed, you can launch
+	PDFKeeper and log back in and begin using the new version.  If any
+	configuration is needed, you will be instructed on what needs to be
+	done when the new version is launched.</SPAN></FONT></P>
+</UL>
 </BODY>
 </HTML>
