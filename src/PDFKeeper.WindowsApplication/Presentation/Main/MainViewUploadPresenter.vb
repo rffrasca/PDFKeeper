@@ -35,7 +35,7 @@ Public Class MainViewUploadPresenter
     Public Sub DoUpload()
         If UploadController.UploadPaused = False Then
             If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.Upload, _
-                                           SearchOption.AllDirectories) > 0 Then
+                                               SearchOption.AllDirectories) > 0 Then
                 view.UploadRunningVisible = True
             End If
             If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.UploadStaging, _
