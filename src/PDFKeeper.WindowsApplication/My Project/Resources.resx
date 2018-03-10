@@ -173,8 +173,8 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="Version" xml:space="preserve">
     <value>Version {0}</value>
   </data>
-  <data name="FeatureBlockedByPolicy" xml:space="preserve">
-    <value>This feature is blocked by policy.</value>
+  <data name="FeatureDisabledByPolicy" xml:space="preserve">
+    <value>This feature is disabled by policy.</value>
   </data>
   <data name="DocumentNotesModified" xml:space="preserve">
     <value>Document Notes have been modified.

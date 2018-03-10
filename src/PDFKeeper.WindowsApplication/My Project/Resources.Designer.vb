@@ -181,11 +181,11 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to This feature is blocked by policy..
+        '''  Looks up a localized string similar to This feature is disabled by policy..
         '''</summary>
-        Friend ReadOnly Property FeatureBlockedByPolicy() As String
+        Friend ReadOnly Property FeatureDisabledByPolicy() As String
             Get
-                Return ResourceManager.GetString("FeatureBlockedByPolicy", resourceCulture)
+                Return ResourceManager.GetString("FeatureDisabledByPolicy", resourceCulture)
             End Get
         End Property
         

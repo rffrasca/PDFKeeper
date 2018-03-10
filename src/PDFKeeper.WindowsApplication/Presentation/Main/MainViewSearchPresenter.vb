@@ -167,7 +167,7 @@ Public Class MainViewSearchPresenter
     Public Sub GetDBDocumentRecordsCount()
         ResetSearchResultsView()
         If ApplicationPolicy.DisableQueryAllDocuments Then
-            view.DBDocumentRecordsCountMessage = My.Resources.FeatureBlockedByPolicy
+            view.DBDocumentRecordsCountMessage = My.Resources.FeatureDisabledByPolicy
             view.QueryAllDocumentsVisible = False
         Else
             view.QueryAllDocumentsVisible = True
