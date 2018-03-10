@@ -29,7 +29,7 @@ Public NotInheritable Class ApplicationPolicy
     End Property
 
     Private Shared Function GetPolicyValue(ByVal policy As String) As Boolean
-        If My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\" & _
+        If My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Policies\" & _
                                          My.Application.Info.CompanyName & "\" & _
                                          My.Application.Info.ProductName, _
                                          policy, _
