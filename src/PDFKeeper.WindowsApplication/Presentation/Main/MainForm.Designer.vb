@@ -154,6 +154,7 @@ Partial Class MainForm
         Me.HelpContentsToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.UploadTimer = New System.Windows.Forms.Timer(Me.components)
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.AutoUpdateCheckTimer = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip.SuspendLayout()
         CType(Me.SearchStringErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -848,6 +849,11 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.HelpProvider, "HelpProvider")
         '
+        'AutoUpdateCheckTimer
+        '
+        Me.AutoUpdateCheckTimer.Enabled = True
+        Me.AutoUpdateCheckTimer.Interval = 60000
+        '
         'MainForm
         '
         Me.AcceptButton = Me.SearchButton
@@ -1008,4 +1014,5 @@ Partial Class MainForm
     Friend WithEvents UploadStagingFolderErrorToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents FillerToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
+    Friend WithEvents AutoUpdateCheckTimer As System.Windows.Forms.Timer
 End Class

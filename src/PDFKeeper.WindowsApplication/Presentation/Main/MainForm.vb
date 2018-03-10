@@ -39,7 +39,6 @@ Public Class MainForm
         documentDataPresenter = New MainViewDocumentDataPresenter(Me)
         uploadPresenter = New MainViewUploadPresenter(Me)
         HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
-        AutoUpdaterHelper.StartUpdater()
     End Sub
 
 #Region "Form events and protected and private methods"
@@ -75,6 +74,10 @@ Public Class MainForm
             Dim uploadThread As New Threading.Thread(AddressOf uploadPresenter.DoUpload)
             uploadThread.Start()
         End If
+    End Sub
+
+    Private Sub AutoUpdateCheckTimer_Tick(sender As Object, e As EventArgs) Handles AutoUpdateCheckTimer.Tick
+        AutoUpdaterHelper.StartUpdater()
     End Sub
 
     Private Function IsSaveEnabled() As Boolean
