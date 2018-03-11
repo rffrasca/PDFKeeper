@@ -23,6 +23,7 @@ PDFKeeper integrates with a compatible, relational database management system to
 Setup instructions are available in the Help file, post deployment.
 
 At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database Express Edition (XE) has been tested. Future releases will include support for additional relational database management systems. For a database to be considered, please open an new issue, unless one was already opened. If your database has already been requested, please update the existing issue.
+At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database Express Edition (XE) has been tested. Future releases may include support for additional relational database management systems based on user request and the feasibility of implementation. For a database to be considered, please open an new issue.
 
 ### Downloads
 New version 4.0.0 will be available soon!
