@@ -1,12 +1,16 @@
 Before submitting an issue, please make sure:
-
 - [ ] I am running the latest version.
-- [ ] I checked the help file and found no answer to my problem. 
+- [ ] I checked the help file and found no answer. 
 - [ ] I checked to make sure that this issue has not already been filed.
 
 ### Description
 
-### Operating System
+Please describe the problem or enhancement request.
+
+### System Setup
+
+Operating System:
+Database Mangement System:
 
 ### Expected Behavior
 
@@ -14,7 +18,10 @@ Before submitting an issue, please make sure:
 
 ### Steps to reproduce the error
 
-### Error message
+### Attachments
 
-Please attach a screenshot of the error message.
-For an unhandled exception, please also attach PDFKeeper.log, located in %APPDATA%\Robert F. Frasca\PDFKeeper\<version>
+Please attach:
+- screenshot of the error message.
+- PDFKeeper.log, located in %APPDATA%\Robert F. Frasca\PDFKeeper\<version> (for an unhandled exception only).
+- PDF document example that can be used to reproduce the problem.
+  *** DO NOT ATTACH ANY PDF DOCUMENT THAT CONTAINS PERSONAL INFORMATION ***
