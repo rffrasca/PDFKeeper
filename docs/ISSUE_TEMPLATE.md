@@ -22,6 +22,6 @@ Database Mangement System:
 
 Please attach:
 - Screenshot of the error message.
-- PDFKeeper.log, if it exists, located in %APPDATA%\Robert F. Frasca\PDFKeeper\<version>
+- PDFKeeper.log that contains logged, unhandled exceptions.  (located in %APPDATA%\Robert F. Frasca\PDFKeeper\<version>)
 - PDF document example that can be used to reproduce the problem.
   *** DO NOT ATTACH ANY PDF DOCUMENT THAT CONTAINS PERSONAL INFORMATION ***
