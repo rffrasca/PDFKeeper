@@ -39,6 +39,7 @@ Public Class MainForm
         documentDataPresenter = New MainViewDocumentDataPresenter(Me)
         uploadPresenter = New MainViewUploadPresenter(Me)
         HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
+        AutoUpdaterHelper.StartUpdater()    ' Also called on a timer every 30 minutes.
     End Sub
 
 #Region "Form events and protected and private methods"

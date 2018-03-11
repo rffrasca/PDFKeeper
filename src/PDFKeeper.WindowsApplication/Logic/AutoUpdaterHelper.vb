@@ -24,7 +24,7 @@ Public NotInheritable Class AutoUpdaterHelper
 
     Private Shared ReadOnly Property ConfigUrl As String
         Get
-            Return Nothing  'TODO: Change Nothing to URL of XML configuration.
+            Return "https://raw.githubusercontent.com/rffrasca/PDFKeeper/master/config/PDFKeeper.AutoUpdater.config.xml"
         End Get
     End Property
 

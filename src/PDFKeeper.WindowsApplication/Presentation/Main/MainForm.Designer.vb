@@ -852,7 +852,7 @@ Partial Class MainForm
         'AutoUpdateCheckTimer
         '
         Me.AutoUpdateCheckTimer.Enabled = True
-        Me.AutoUpdateCheckTimer.Interval = 60000
+        Me.AutoUpdateCheckTimer.Interval = 1800000
         '
         'MainForm
         '
