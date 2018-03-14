@@ -11,9 +11,9 @@ When reporting an unhandled exception, please make sure to attach:
 %APPDATA%\Robert F. Frasca\PDFKeeper<version>\PDFKeeper.log
 
 Please delete all text above the line and fill in the template below.
-
 ------------------------
 ### Description
+Description of issue.
 
 ### Environment
 Any relevant information about your operating system, database management system, etc.
