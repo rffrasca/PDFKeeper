@@ -20,10 +20,10 @@ Description of issue.
 Any relevant information about your operating system, database management system, etc.
 
 ### Expected behavior
-Delete if not reporting a problem.
+Delete when not reporting a problem.
 
 ### Actual behavior
-Delete if not reporting a problem.
+Delete when not reporting a problem.
 
 ### Steps to reproduce the behavior
-Delete if not reporting a problem.
+Delete when not reporting a problem.
