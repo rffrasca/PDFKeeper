@@ -14,7 +14,7 @@ PDFKeeper integrates with a compatible, relational database management system to
 
 ## Installing
 ### Client Prerequisites
-* Windows Operating System (32 or 64 bit) with .NET Framework 4.6.1 or higher.
+* Windows 32 or 64 bit with .NET Framework 4.6.1 or higher.
 * Any additional requirements will be referenced in the Help file (available in the binary release). 
 
 ### Supported Database Management Systems
