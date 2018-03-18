@@ -706,7 +706,8 @@ Public Class MainForm
             Return SearchStringComboBox.Items
         End Get
         Set(value As Object)
-            SearchStringComboBox.Items.Clear()
+            SearchStringComboBox.Items.Clear()  ' Need to clear twice to work around duplicates
+            SearchStringComboBox.Items.Clear()  ' from being displayed in the drop down.
             SearchStringComboBox.Items.AddRange(value)
         End Set
     End Property
