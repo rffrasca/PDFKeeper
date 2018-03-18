@@ -91,16 +91,22 @@ Public NotInheritable Class UploadDirectory
     Private Shared Sub ProcessPdfFile(ByVal file As String)
         Dim pdfFile As New PdfFile(file)
         If pdfFile.ContainsOwnerPassword = False Then
-            Dim folderName As New DirectoryInfo(Path.GetDirectoryName(file))
+            Dim folderName As String = Nothing
+            folderName = file.Substring(ApplicationDirectories.Upload.Length + 1)
+            If folderName = Path.GetFileName(file) Then
+                folderName = ApplicationDirectories.Upload
+            Else
+                folderName = folderName.Substring(0, folderName.IndexOf(Path.DirectorySeparatorChar))
+            End If
             Try
                 Dim pdfReader As New PdfFileInfoPropertiesReader(file)
-                If UploadConfigDirectory.IsFolderConfigured(folderName.Name) Then
+                If UploadConfigDirectory.IsFolderConfigured(folderName) Then
                     Dim outputPdfFile As String = _
                         FileHelper.AddGuidToFileName( _
                             FileHelper.ChangeDirectoryName(file, _
                                                            ApplicationDirectories.UploadStaging), _
                                                        Nothing)
-                    WritePdfUsingFolderConfig(file, folderName.Name, outputPdfFile)
+                    WritePdfUsingFolderConfig(file, folderName, outputPdfFile)
                     Dim txtFile As String = Path.ChangeExtension(file, "txt")
                     If IO.File.Exists(txtFile) Then
                         Dim guid As Guid = FileHelper.GetGuidFromFileName(outputPdfFile)
