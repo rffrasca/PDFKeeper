@@ -4,6 +4,8 @@ Open Source PDF Document Storage Solution
 ## Overview
 PDFKeeper integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents.
 
+![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot.png)
+
 ## Features
 * PDF documents are stored and indexed in a compatible, relational database where they can be searched by String, Author, Subject, Author and Subject, Date Added, and by querying all documents.
 * PDF documents can be uploaded individually or in bulk, with or without using configured Upload folders.
