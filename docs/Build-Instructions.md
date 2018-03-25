@@ -33,4 +33,4 @@ Clone the https://github.com/rffrasca/PDFKeeper repository to your development s
 2. Use "Restore" in "NuGet Package Manager" to download NuGet packages.
 3. Set configuration to Release, and then Build the Solution.
 
-    After a successful build, "PDFKeeper-4.0.0.msi" will exist in "Projects\PDFKeeper\src\PDFKeeper.Setup\bin\Release".    
+    After a successful build, "PDFKeeper-4.0.0.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".    
