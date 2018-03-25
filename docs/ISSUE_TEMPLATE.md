@@ -1,13 +1,13 @@
 You may open an issue:
-- to report a problem with PDFKeeper;
+- to report a problem or bug with PDFKeeper;
 - to request a new feature be added to PDFKeeper;
 - to request support be added to PDFKeeper for a database management system.
 
-Do not open an issue for questions; instead, please send questions to [Robert F. Frasca](mailto:rffrasca@gmail.com).
+Do not open an issue for how to or general questions; instead, please send questions to [Robert F. Frasca](mailto:rffrasca@gmail.com).
 
-Before opening an issue, please make sure you're using the latest version of PDFKeeper, released by Robert F. Frasca.
+Before opening an issue, please make sure you're using the latest version of PDFKeeper.
 
-When reporting an unhandled exception, please make sure to attach:
+When reporting an unhandled exception (bug), please make sure to attach:
 %APPDATA%\Robert F. Frasca\PDFKeeper<version>\PDFKeeper.log
 
 Please delete all text above the line and fill in the template below.
