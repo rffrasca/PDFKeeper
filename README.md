@@ -14,22 +14,18 @@ PDFKeeper integrates with a compatible, relational database management system to
 * Text extracted from the PDF document can be printed and saved to a text file.
 * PDF documents and their Notes can be exported from the database.
 
-## Installing
-### Client Prerequisites
+## Client Prerequisites
 * Windows (32 or 64 bit) with .NET Framework 4.6.1 or higher.
 * Any additional requirements will be referenced in the Help file (available in the binary release). 
 
-### Supported Database Management Systems
+## Supported Database Management Systems
 * Oracle Database 11g Express Edition
 
 Setup instructions are available in the Help file (available in the binary release).
 
 At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database Express Edition (XE) has been tested. Future releases may include support for additional relational database management systems based on user request and the feasibility of implementation. For a database to be considered, please open an new issue, unless one was already opened. If your database has already been requested, please update the existing issue.
 
-### Downloads
-New version 4.0.0 will be available soon!
-
-## Building
+## Building PDFKeeper
 Build Instructions for version 4.0.0 are available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions.md).
 
 ## License
