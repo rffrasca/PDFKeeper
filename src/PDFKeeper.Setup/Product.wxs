@@ -39,9 +39,9 @@
     <Icon Id="PDFKeeper.ico" SourceFile="$(var.PDFKeeper.WindowsApplication_TargetDir)PDFKeeper.ico"/>
     
     <Property Id="ARPPRODUCTICON" Value="PDFKeeper.ico" />
-    <Property Id='ARPHELPLINK'>https://github.com/rffrasca/PDFKeeper/issues</Property>
-    <Property Id='ARPURLINFOABOUT'>https://github.com/rffrasca/PDFKeeper</Property>
-    <Property Id='ARPURLUPDATEINFO'>https://github.com/rffrasca/PDFKeeper/releases</Property>
+    <Property Id='ARPHELPLINK'>https://www.pdfkeeper.org/</Property>
+    <Property Id='ARPURLINFOABOUT'>https://www.pdfkeeper.org/</Property>
+    <Property Id='ARPURLUPDATEINFO'>https://www.pdfkeeper.org/</Property>
     <Property Id="ARPNOREPAIR" Value="yes" Secure="yes" /> 
     <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />
     <Property Id="ALLUSERS" Value="2" />
