@@ -100,15 +100,14 @@ Public Class PdfFile
     ''' <param name="useDefaultApp">
     ''' True to use default application or False to use "Sumatra PDF".
     ''' </param>
-    ''' <returns>Process ID</returns>
     ''' <remarks></remarks>
-    Public Function Open(ByVal useDefaultApp As Boolean) As Integer
+    Public Sub Open(ByVal useDefaultApp As Boolean)
         If useDefaultApp = False Then
-            Return OpenSumatraPdf(Chr(34) & FullName & Chr(34))
+            OpenSumatraPdf(Chr(34) & FullName & Chr(34))
         Else
-            Return Process.Start(FullName).Id
+            Process.Start(FullName)
         End If
-    End Function
+    End Sub
 
     ''' <summary>
     ''' Opens PDF file for restricted viewing.
