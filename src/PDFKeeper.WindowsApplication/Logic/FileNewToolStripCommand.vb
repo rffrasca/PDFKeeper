@@ -24,6 +24,8 @@ Public Class FileNewToolStripCommand
         AddSelectedPdfFile()
     End Sub
 
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
+        "CA1804:RemoveUnusedLocals", MessageId:="reader")> _
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", _
         "CA2000:Dispose objects before losing scope")> _
     Private Sub AddSelectedPdfFile()
@@ -41,7 +43,14 @@ Public Class FileNewToolStripCommand
                         Exit Sub
                     End If
                 End If
-                If containsPassword = False Then
+                If containsPassword Then
+                    ' Validate the password entered matches the OWNER
+                    ' password in the PDF document by instantiating
+                    ' a PdfFileInfoPropertiesReader object.
+                    Dim reader As PdfFileInfoPropertiesReader = _
+                        New PdfFileInfoPropertiesReader(selectedPdfFile, _
+                                                        selectedPdfFilePassword)
+                Else
                     selectedPdfFilePassword = Nothing
                 End If
                 UploadController.UploadPaused = True
