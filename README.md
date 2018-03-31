@@ -1,7 +1,7 @@
 # ![Logo](https://github.com/robertfrasca/PDFKeeper/blob/master/src/Resources/Logo/PDFKeeper.bmp)  PDFKeeper
 Open Source PDF Document Storage Solution
 
-## Overview
+## About
 PDFKeeper integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents.
 
 ![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot.png)
@@ -14,11 +14,11 @@ PDFKeeper integrates with a compatible, relational database management system to
 * Text extracted from the PDF document can be printed and saved to a text file.
 * PDF documents and their Notes can be exported from the database.
 
-## Client Prerequisites
+## Client Requirements
 * Windows (32 or 64 bit) with .NET Framework 4.6.1 or higher.
 * Any additional requirements will be referenced in the Help file (available in the binary release). 
 
-## Supported Database Management Systems
+## Compatible Database Management Systems
 * Oracle Database 11g Express Edition
 
 Setup instructions are available in the Help file (available in the binary release).
