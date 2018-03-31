@@ -29,7 +29,7 @@ At this time, PDFKeeper has been designed for use with the Oracle Database and o
 Build Instructions for version 4.0.0 are available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions.md).
 
 ## License
-PDFKeeper is [OSI certified](https://opensource.org/licenses) open source software licensed under the [GNU General Public License v3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
+PDFKeeper is [OSI certified](https://opensource.org/licenses), open source software, licensed under the [GNU General Public License v3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
 
 ![Logo](https://opensource.org/trademarks/osi-certified/web/osi-certified-120x100.png)
 
