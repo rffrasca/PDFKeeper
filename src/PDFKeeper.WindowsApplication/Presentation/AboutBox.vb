@@ -39,8 +39,7 @@ Public NotInheritable Class AboutBox
                                              Application.ProductVersion)
         Me.LabelCopyright.Text = My.Application.Info.Copyright
         Me.LabelCompanyName.Text = My.Application.Info.CompanyName
-        Me.TextBoxDescription.Text = My.Application.Info.Description & _
-            vbCrLf & vbCrLf & My.Resources.DescriptionDetail
+        Me.TextBoxDescription.Text = My.Resources.DescriptionDetail
         'Position License and Third-Party Components link labels.
         LicenseLinkLabel.Parent = LogoPictureBox
         LicenseLinkLabel.BackColor = Color.Transparent
