@@ -1,5 +1,5 @@
 <p align="center">
-  img src="https://github.com/robertfrasca/PDFKeeper/blob/master/src/Resources/Logo/PDFKeeper.bmp">
+  <img src="https://github.com/robertfrasca/PDFKeeper/blob/master/src/Resources/Logo/PDFKeeper.bmp">
 </p>
 # ![Logo](https://github.com/robertfrasca/PDFKeeper/blob/master/src/Resources/Logo/PDFKeeper.bmp)  PDFKeeper
 Open Source PDF Document Storage Solution
