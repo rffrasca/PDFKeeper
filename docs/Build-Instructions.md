@@ -1,8 +1,6 @@
 # Building PDFKeeper from Source
 This document contains instructions for setting up the development environment and building PDFKeeper 4.0.0 from source.
 
-At this time, source code for PDFKeeper is only available on the repository as version 4.0.0 has not been released yet.
-
 ##  Install Development Applications and Tools
 1. Microsoft Visual Studio 2013 - https://www.visualstudio.com/downloads/
 2. Microsoft .NET Framework 4.6.1 Developer Pack - https://www.microsoft.com/en-us/download/details.aspx?id=49978
@@ -18,7 +16,7 @@ At this time, source code for PDFKeeper is only available on the repository as v
     using Run as administrator. In addition, when installing, the machine_wide_configuration argument must be true to install into the Global Assembly Cache (GAC).
 
 ## Get the Source
-Clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git.
+Clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git or download the source code for a release from [here](https://github.com/rffrasca/PDFKeeper/releases).
 
 ## Download and Extract Third-Party Components
 1. Sumatra PDF 3.1.2 (32-bit Portable Version) - http://www.sumatrapdfreader.org/download-free-pdf-viewer.html
