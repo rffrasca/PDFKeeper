@@ -18,7 +18,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ## 2.5.1 - 2012-04-14
 - This is a bug fix release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.1).
-- This version has been retired.
+- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Fixed
 - Information Properties Editor Folder Watcher detecting duplicate events.
@@ -29,7 +29,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ## 2.5.0 - 2012-03-24
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.0).
-- This version has been retired.
+- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Encrypt PDF document when retrieved from the database during an "open" operation on EFS supported operating systems.
@@ -50,7 +50,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ## 2.4.0 - 2011-12-24
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.4.0).
-- This version has been retired.
+- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Changed
 - Information Properties Editor: Make form modeless.
@@ -67,7 +67,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ## 2.3.0 - 2011-09-24
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.3.0).
-- This version has been retired.
+- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Changed
 - Main Form: Enhance the Upload process to execute on a separate thread.
@@ -80,7 +80,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ## 2.2.0 - 2011-06-25
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.2.0).
-- This version has been retired.
+- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Changed
 - Third-Party software update in binary release: Sumatra PDF 1.6.
@@ -95,7 +95,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ## 2.1.0 - 2011-03-25
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.1.0).
-- This version has been retired.
+- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Document Notes Form: Add Date/Time stamp feature.
@@ -115,7 +115,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ## 2.0.0 - 2010-11-22
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.0.0).
-- This version has been retired.
+- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Add document upload capability to the client.
@@ -140,7 +140,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ## 1.1.0 - 2010-04-29
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/1.1.0).
-- This version has been retired.
+- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Add functionality to "Check" and "Uncheck" all list view items on Search dialog.
@@ -174,5 +174,5 @@ All notable changes to PDFKeeper will be documented in this file.
 ## 1.0.0 - 2009-10-24
 - First, full release of this product to the public.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/1.0.0).
-- This version has been retired.
+- This version is no longer supported.
 - Binary release is no longer available for distribution.
