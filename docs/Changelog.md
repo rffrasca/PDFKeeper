@@ -12,32 +12,36 @@ All notable changes to PDFKeeper will be documented in this file.
 
 
 
-
-
-
-Summary:
-
-◾This is a minor release including fixes and enhancements. 
-◾Upload folder watcher has been added that will directly upload PDF documents using defined information properties. 
-◾When enabled, folder watchers will now check for PDF documents to process. 
-◾Sumatra PDF has been updated, now at version 2.1.1
-◾iTextSharp has been updated, now at version 5.3.0
-◾Improvements to the product's quality and reliability.
-•Details:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 3.0.0 - 2013-12-21
+- This is a major release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.0.0).
+- This version is no longer supported.
+- Binary release is no longer available for distribution.
+### Added
+- Prompt for password when PDF document contains an OWNER password.
+- Window-level help system for application forms replacing the User Guide.
+- Seamless XPS to PDF document conversion to Document Capture using GhostXPS.
+- Seamed HTML to PDF document conversion to Document Capture using wkhtmltopdf.
+- Create "Document Capture"; a centralized, document intake process.
+- Menu item for reporting new issue.
+- Created "Direct Upload" that will replace the "PDF Document Upload folder watcher.
+### Changed
+- Trap all unhandled exceptions and display to user.
+- Modify update check to use new project site for verification.
+- Target .NET Framework 4 Client Profile when building application.
+- Migrate installation from InnoSetup to Windows Installer.
+- Oracle Data Provider for .NET, Managed Driver is now required in place of Oracle Data Access Components.
+- Enable database connection pooling to improve performance.
+- Third-Party software update in binary release: Sumatra PDF 2.4.
+- Third-Party software update in binary release: iTextSharp 5.4.5.
+- Redesign About Form.
+- Set form font to SystemFonts.MessageBoxFont to improve appearance on Windows Vista and later.
+### Fixed
+- Update links in source and documentation to new project site.
+- Using mouse scroll wheel following search results in scrolling in Search Text combo box instead of list view.
+- Database Setup: 'sqlplus' is not recognized as an internal or external command, operable program or batch file.
+- Improve Database Connection form password handling.
+- Main Form status bar getting cut off when vertical screen resolution value is 800.
 
 ## 2.7.0 - 2012-09-29
 - This is a minor release.
