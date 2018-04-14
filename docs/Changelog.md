@@ -15,6 +15,70 @@ All notable changes to PDFKeeper will be documented in this file.
 
 
 
+Summary:
+
+◾This is a minor release including fixes and enhancements. 
+◾Upload folder watcher has been added that will directly upload PDF documents using defined information properties. 
+◾When enabled, folder watchers will now check for PDF documents to process. 
+◾Sumatra PDF has been updated, now at version 2.1.1
+◾iTextSharp has been updated, now at version 5.3.0
+◾Improvements to the product's quality and reliability.
+•Details:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 2.7.0 - 2012-09-29
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.7.0).
+- This version is no longer supported.
+- Binary release is no longer available for distribution.
+### Added
+- Main Form: Add a folder watcher that will directly upload PDF documents.
+### Changed
+- Set InitialDirectory property to last folder selected in Open and Save dialogs.
+- Third-Party software update in binary release: Sumatra PDF 2.1.1.
+- Third-Party software update in binary release: iTextSharp 5.3.0.
+- Prompt to process existing PDF's when folder watchers are enabled.
+- Installer: Move uninstall of existing version to just before start of installing files.
+- Information Properties Editor and folder watcher; upload folder watcher file saving modifications.
+### Fixed
+- Main Form: ListView sort order being reset on new search.
+- Main Form: Form flicker during a lengthy operation.
+- Information Properties Editor Form: Form flicker when selecting Author or Subject combo box.
+- Information Properties Editor Folder Watcher: PDF not found as file or resource.
+
+## 2.6.0 - 2012-06-30
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.6.0).
+- This version is no longer supported.
+- Binary release is no longer available for distribution.
+### Added
+- Information Properties Editor Form: Add checkbox that when checked will upload PDF document to the database after saving.
+- Implement logging for the PDF upload process.
+- Main Form and Information Properties Editor Form: Add option to delete PDF document after being uploaded.
+- Information Properties Editor Form: Add checkbox that will delete the source file after saving the target file.
+- Main Form: Information Properties Editor Folder Watcher: Add event to status bar icon to open watched folder.
+- Main Form: Implement a centralized document upload process.
+### Changed
+- Third-Party software update in binary release: Sumatra PDF 2.0.1.
+- Third-Party software update in binary release: iTextSharp 5.2.1.
+- Installer to prompt user to close applications in use during installation on Windows Vista and newer.
+### Fixed
+- PDFKeeper not responsive after opening PDF document.
+- PDFKeeper not responsive after opening Help or Windows Explorer on non-English version of Windows.
+
 ## 2.5.1 - 2012-04-14
 - This is a bug fix release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.1).
