@@ -12,9 +12,43 @@ All notable changes to PDFKeeper will be documented in this file.
 
 
 
-## 2.1.0 - 2011-03-25 (Retired)
+
+
+
+
+
+## 2.3.0 - 2011-09-24
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.3.0).
+- This version has been retired.
+- Binary release is no longer available for distribution.
+### Changed
+- Main Form: Enhance the Upload process to execute on a separate thread.
+- Third-Party software update in binary release: Sumatra PDF 1.7.
+- Third-Party software update in binary release: iTextSharp 5.1.2.
+### Fixed
+- Main Form: Document Notes text is highlighted after update.
+- Main Form: Check for update not detecting newer version on project site.
+
+## 2.2.0 - 2011-06-25
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.2.0).
+- This version has been retired.
+- Binary release is no longer available for distribution.
+### Changed
+- Third-Party software update in binary release: Sumatra PDF 1.6.
+- Consolidate Document Notes and Document Keywords functionality into Main Form.
+- Third-Party software update in binary release: iTextSharp 5.1.1.
+### Fixed
+- Information Properties Editor: Unhandled Exception: Access to the path is denied.
+- Information Properties Editor: On occasion, the Author has to be chosen twice.
+- Main Form: Search Text combo box does not resize.
+- Database Setup: Only works if either Oracle XE server or client is installed.
+
+## 2.1.0 - 2011-03-25
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.1.0).
+- This version has been retired.
 - Binary release is no longer available for distribution.
 ### Added
 - Document Notes Form: Add Date/Time stamp feature.
@@ -31,9 +65,10 @@ All notable changes to PDFKeeper will be documented in this file.
 - Database Connection Form: Unhandled exception following second failed logon attempt.
 - Main Form: When opening a PDF document already open, a second window is opening.
 
-## 2.0.0 - 2010-11-22 (Retired)
+## 2.0.0 - 2010-11-22
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.0.0).
+- This version has been retired.
 - Binary release is no longer available for distribution.
 ### Added
 - Add document upload capability to the client.
@@ -55,9 +90,10 @@ All notable changes to PDFKeeper will be documented in this file.
 - Remove server-side upload components.
 - Rexx/SQL is no longer used and has been removed from the binary release.
 
-## 1.1.0 - 2010-04-29 (Retired)
+## 1.1.0 - 2010-04-29
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/1.1.0).
+- This version has been retired.
 - Binary release is no longer available for distribution.
 ### Added
 - Add functionality to "Check" and "Uncheck" all list view items on Search dialog.
@@ -88,7 +124,8 @@ All notable changes to PDFKeeper will be documented in this file.
 - Error when selecting multiple files for summary edit.
 - Win7 - Unable to select upload folder.
 
-## 1.0.0 - 2009-10-24 (Retired)
+## 1.0.0 - 2009-10-24
 - First, full release of this product to the public.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/1.0.0).
+- This version has been retired.
 - Binary release is no longer available for distribution.
