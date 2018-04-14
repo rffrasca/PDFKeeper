@@ -12,6 +12,33 @@ All notable changes to PDFKeeper will be documented in this file.
 
 
 
+
+
+
+
+
+
+
+
+
+
+## 3.0.1 - 2014-11-22
+- This is a bug fix release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.0.1).
+- This version is no longer supported.
+- Binary release is no longer available for distribution.
+### Known Issues
+- HTML Converter menu item does not enable on 64-bit Windows even though the correct version of wkhtmltopdf is installed.
+### Fixed
+- Unhandled Exception when renaming a PDF that is selected in Document Capture.
+- Simplify HTML Converter setup by requiring wkhtmltopdf 0.12.1 or higher.
+- Document Search: number of checked list view items should be displayed on status bar.
+- Document Capture: if selected document does not contain a Title in Information Properties, the filename should be displayed in Title text box.
+- Direct Upload Configuration: unable to scroll horizontally when folder name exceeds width of list box.
+- Document Search: Search Text history not sorted.
+- Unhandled Exception when saving PDF document to disk in Document Search.
+- Unhandled Exception when opening PDF document for viewing in Document Search.
+
 ## 3.0.0 - 2013-12-21
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.0.0).
