@@ -15,7 +15,54 @@ All notable changes to PDFKeeper will be documented in this file.
 
 
 
+## 2.5.1 - 2012-04-14
+- This is a bug fix release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.1).
+- This version has been retired.
+- Binary release is no longer available for distribution.
+### Fixed
+- Information Properties Editor Folder Watcher detecting duplicate events.
+- Information Properties Editor Folder Watcher launching Information Properties Editor while PDF is being written.
+- Folder Watcher log file only contains the last error logged.
+- Folder Watcher Unhandled Exception: System.ArgumentOutOfRangeException: startIndex can not be less than zero.
 
+## 2.5.0 - 2012-03-24
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.0).
+- This version has been retired.
+- Binary release is no longer available for distribution.
+### Added
+- Encrypt PDF document when retrieved from the database during an "open" operation on EFS supported operating systems.
+- Main Form: Add a folder watcher that will call the Information Properties Editor.
+### Changed
+- Store user settings in an XML file instead of the registry.
+- Information Properties Editor: remember the last state of the "After saving, open PDF document in viewer" check box.
+- Third-Party software update in binary release: iTextSharp 5.2.0.
+### Fixed
+- Disable some of Sumatra PDF's functionality.
+- PdfKeeper.exe is not removed if in use during uninstall.
+- "DeleteFile failed; code 5. Access is denied." during upgrade if PDFKeeper is in use.
+- Main Form: (Not Responding) after opening PDF document.
+- Move PDF document cache to location in user profile that remains local.
+- Information Properties Editor not waiting for user to close PDF viewer when "After saving, open PDF document in viewer." is checked.
+- Information Properties Editing: Modify to not rename original file and to append "modified_by_pdfkeeper" to the filename of the new copy.
+
+## 2.4.0 - 2011-12-24
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.4.0).
+- This version has been retired.
+- Binary release is no longer available for distribution.
+### Changed
+- Information Properties Editor: Make form modeless.
+- Use Cache folder instead of TEMP folder for opened PDF documents.
+- Enable caching of opened PDF documents.
+- Update documentation for ODAC 11.2 Release 3 (11.2.0.2.1).
+- Update documentation for Oracle Database Express Edition 11g Release 2.
+- Third-Party software update in binary release: Sumatra PDF 1.9.
+- Third-Party software update in binary release: iTextSharp 5.1.3.
+### Fixed
+- Main Form: Display Document Upload results on status bar, not in message box.
+- About Form: Graphic, text, and OK button not centered.
 
 ## 2.3.0 - 2011-09-24
 - This is a minor release.
