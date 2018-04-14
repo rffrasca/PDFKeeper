@@ -12,6 +12,50 @@ All notable changes to PDFKeeper will be documented in this file.
 
 
 
+## 3.1.2 - 2015-07-11
+- This is a bug fix release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.1).
+- This version is no longer supported.
+- Binary release is no longer available for distribution.
+### Changed
+- Third-Party software update in binary release: Ghostscript 9.16.
+### Fixed
+- Document Search: listview not scrolling when selected item is off the screen.
+- Document Search: selected listview item becomes deselected after refresh.
+
+## 3.1.1 - 2015-03-21
+- This is a bug fix release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.1).
+- This version is no longer supported.
+- Binary release is no longer available for distribution.
+### Fixed
+- Losing focus from Document Search list view when arrowing up or down.
+- Document Capture: Unhandled Exception.
+
+
+
+
+
+
+
+
+
+v3.1.0 - February 7th, 2015
+
+Summary:
+◾This is a minor release including enhancements and deprecated features.
+◾Document Preview and Text-Only View features have been added for stepping through each document returned from a search, viewing the first page of the PDF or just the text without opening the actual PDF document. When the desired document is found just double click the preview or text box to open the actual PDF document with the bundled viewer.
+◾XPS and HTML Converters have been deprecated.
+◾iTextSharp has been updated.
+◾Sumatra PDF has been updated.
+◾Improvements to the product's quality and reliability.
+
+Details:
+◾ADDED 1466 Add Document Preview to Main Form
+◾ADDED 1644 Add Document Text View to Main Form
+◾CHANGED 1635 Third-Party Software Update: iTextSharp
+◾CHANGED 1636 Third-Party Software Update: Sumatra PDF
+◾REMOVED 1662 Deprecate XPS and HTML converters
 
 
 
@@ -22,7 +66,11 @@ All notable changes to PDFKeeper will be documented in this file.
 
 
 
-## 3.0.1 - 2014-11-22
+
+
+
+
+## [3.0.1] - 2014-11-22
 - This is a bug fix release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.0.1).
 - This version is no longer supported.
