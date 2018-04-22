@@ -30,6 +30,9 @@ At this time, PDFKeeper has been designed for use with the Oracle Database and o
 ## Building from Source
 Build Instructions for version 4.0.0 are available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions.md).
 
+## Feedback
+Please send all feedback, comments, suggestions, and testimonials [here](mailto:rffrasca@gmail.com).
+
 ## Links
 [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md)
 
