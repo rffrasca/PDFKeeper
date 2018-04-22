@@ -34,7 +34,7 @@ Build Instructions for version 4.0.0 are available [here](https://github.com/rff
 [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md)
 
 ## License
-PDFKeeper is [OSI Certified Open Source Software](https://opensource.org/licenses), licensed under the [GNU General Public License v3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
+PDFKeeper is [OSI Certified Open Source Software](https://opensource.org/licenses), distributed under the terms of the [GNU General Public License v3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
 
 ![Logo](https://opensource.org/trademarks/osi-certified/web/osi-certified-120x100.png)
 
