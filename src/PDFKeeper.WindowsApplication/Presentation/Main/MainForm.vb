@@ -439,6 +439,7 @@ Public Class MainForm
             If SearchResultsDataGridView.Columns(5).Displayed = True Then
                 SearchResultsDataGridView.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             End If
+            SearchResultsDataGridView.Columns(5).MinimumWidth = SearchResultsDataGridView.Columns(5).FillWeight + 20
         End If
         toolStripStateManager.SetPostSearchState()
     End Sub
