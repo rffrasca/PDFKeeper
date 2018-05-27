@@ -28,6 +28,7 @@ Namespace My
     ' NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
     Partial Friend Class MyApplication
         Private Sub MyApplication_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
+            SettingsHelper.UpgradeUserSettings()
             If My.Settings.LoginDatasource.Length = 0 Then
                 HelpProviderHelper.OpenHelpFileAndWait()
             End If
