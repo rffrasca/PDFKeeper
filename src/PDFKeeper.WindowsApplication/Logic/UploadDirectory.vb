@@ -80,7 +80,18 @@ Public NotInheritable Class UploadDirectory
             Directory.GetDirectories(ApplicationDirectories.Upload)
         For Each childDirectory In childDirectories
             Dim dirInfo As New DirectoryInfo(childDirectory)
-            If UploadConfigDirectory.IsFolderConfigured(dirInfo.Name) = False Then
+            If UploadConfigDirectory.IsFolderConfigured(dirInfo.Name) Then
+                ' When the directory is a configured folder then only
+                ' delete empty sub directories under the configured
+                ' directory.
+                Dim subDirectories As String() = _
+                    Directory.GetDirectories(childDirectory)
+                For Each subDirectory In subDirectories
+                    If Directory.GetFiles(subDirectory).Count = 0 Then
+                        DeleteChildDirectory(subDirectory)
+                    End If
+                Next
+            Else
                 If Directory.GetFiles(childDirectory).Count = 0 Then
                     DeleteChildDirectory(childDirectory)
                 End If
