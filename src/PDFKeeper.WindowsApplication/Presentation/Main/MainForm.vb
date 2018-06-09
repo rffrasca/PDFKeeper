@@ -359,8 +359,22 @@ Public Class MainForm
         Me.Cursor = Cursors.Default
     End Sub
 
+    Private Sub Subject1ComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles Subject1ComboBox.KeyDown
+        ' ComboBox will only drop down when the down arrow is pressed.
+        If e.KeyCode = 40 Then
+            Subject1ComboBox.DroppedDown = True
+        End If
+    End Sub
+
     Private Sub Subject1ComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles Subject1ComboBox.KeyUp
-        Subject1ComboBox_DropDownClosed(Me, Nothing)
+        ' Pressing the up arrow when ComboBox has focus will select the previous Subject in the
+        ' collection when the drop down is in the closed position.  When drop down is in the
+        ' open position, the up arrow will move selector up the list.
+        If e.KeyCode = 38 Then
+            If Subject1ComboBox.DroppedDown = False Then
+                Subject1ComboBox_DropDownClosed(Me, Nothing)
+            End If
+        End If
     End Sub
 
     Private Sub Subject1ComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles Subject1ComboBox.MouseWheel
