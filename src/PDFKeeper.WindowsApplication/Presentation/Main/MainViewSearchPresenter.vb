@@ -102,7 +102,6 @@ Public Class MainViewSearchPresenter
                 view.ClearSubject2Selection()
             End If
             lastAuthor2Selected = view.Author2
-        Else
             view.ClearSubject2Selection()
         End If
     End Sub
