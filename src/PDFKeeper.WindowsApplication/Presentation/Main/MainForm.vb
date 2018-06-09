@@ -322,7 +322,21 @@ Public Class MainForm
     End Sub
 
     Private Sub Author1ComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles Author1ComboBox.KeyDown
-        Author1ComboBox.DroppedDown = True
+        ' ComboBox will only drop down when the down arrow is pressed.
+        If e.KeyCode = 40 Then
+            Author1ComboBox.DroppedDown = True
+        End If
+    End Sub
+
+    Private Sub Author1ComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles Author1ComboBox.KeyUp
+        ' Pressing the up arrow when ComboBox has focus will select the previous Author in the
+        ' collection when the drop down is in the closed position.  When drop down is in the
+        ' open position, the up arrow will move selector up the list.
+        If e.KeyCode = 38 Then
+            If Author1ComboBox.DroppedDown = False Then
+                Author1ComboBox_DropDownClosed(Me, Nothing)
+            End If
+        End If
     End Sub
 
     Private Sub Author1ComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles Author1ComboBox.MouseWheel
