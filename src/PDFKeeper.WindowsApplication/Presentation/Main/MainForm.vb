@@ -442,6 +442,7 @@ Public Class MainForm
             SearchResultsDataGridView.Columns(5).MinimumWidth = SearchResultsDataGridView.Columns(5).FillWeight + 20
         End If
         toolStripStateManager.SetPostSearchState()
+        SearchResultsDataGridView.Focus()
     End Sub
 
     Private Sub SearchResultsDataGridView_Sorted(sender As Object, e As EventArgs) Handles SearchResultsDataGridView.Sorted
