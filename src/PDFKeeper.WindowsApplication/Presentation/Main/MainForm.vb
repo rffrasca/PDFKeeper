@@ -321,8 +321,8 @@ Public Class MainForm
         Me.Cursor = Cursors.Default
     End Sub
 
-    Private Sub Author1ComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles Author1ComboBox.KeyUp
-        Author1ComboBox_DropDownClosed(Me, Nothing)
+    Private Sub Author1ComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles Author1ComboBox.KeyDown
+        Author1ComboBox.DroppedDown = True
     End Sub
 
     Private Sub Author1ComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles Author1ComboBox.MouseWheel
