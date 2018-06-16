@@ -66,16 +66,6 @@ Module StringExtension
             text.StartsWith("ACCUM ", StringComparison.CurrentCulture) Or _
             text.StartsWith("FUZZY ", StringComparison.CurrentCulture) Or _
             text.StartsWith("ABOUT ", StringComparison.CurrentCulture) Or _
-            text.EndsWith("MINUS", StringComparison.CurrentCulture) Or _
-            text.EndsWith("NEAR", StringComparison.CurrentCulture) Or _
-            text.EndsWith("NOT", StringComparison.CurrentCulture) Or _
-            text.EndsWith("AND", StringComparison.CurrentCulture) Or _
-            text.EndsWith("EQUIV", StringComparison.CurrentCulture) Or _
-            text.EndsWith("WITHIN", StringComparison.CurrentCulture) Or _
-            text.EndsWith("OR", StringComparison.CurrentCulture) Or _
-            text.EndsWith("ACCUM", StringComparison.CurrentCulture) Or _
-            text.EndsWith("FUZZY", StringComparison.CurrentCulture) Or _
-            text.EndsWith("ABOUT", StringComparison.CurrentCulture) Or _
             text.IndexOf("{}", StringComparison.Ordinal) <> -1 Or _
             text.IndexOf("()", StringComparison.Ordinal) <> -1 Or _
             text.Substring(0, 1) = "=" Or _
