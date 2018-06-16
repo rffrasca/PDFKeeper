@@ -550,7 +550,8 @@ Public Class MainForm
 #End Region
 
 #Region "Document Data events and private methods"
-    Private Sub NotesTextBox_Enter(sender As Object, e As EventArgs) Handles NotesTextBox.Enter
+    Private Sub NotesTextBox_Enter(sender As Object, e As EventArgs) Handles NotesTextBox.Enter, _
+                                                                             NotesTextBox.GotFocus
         toolStripStateManager.SetTextBoxEnterState(NotesTextBox.ReadOnly, _
                                                    NotesTextBox.TextLength)
         If NotesTextBox.TextLength > 0 Then
