@@ -2,7 +2,7 @@
 All notable changes to PDFKeeper will be documented in this file.
 
 ## v4.0.1 - 2018-08-04
-- This is a fixes only release.
+- This is a bug fix release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.1).
 ### Added
