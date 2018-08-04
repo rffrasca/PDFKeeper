@@ -2,7 +2,7 @@
 <item>
     <version>4.0.1.0</version>
     <url>https://github.com/rffrasca/PDFKeeper/releases/download/v4.0.1/PDFKeeper-4.0.1.msi</url>
-    <changelog>https://github.com/rffrasca/PDFKeeper/releases</changelog>
+    <changelog>https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.1</changelog>
     <mandatory>false</mandatory>
     <checksum algorithm="SHA1">c339620a643221f286b2b76ee829d79ec178567a</checksum>
 </item>
