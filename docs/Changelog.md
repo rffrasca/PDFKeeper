@@ -1,6 +1,24 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v4.0.1 - 2018-08-04
+- This is a fixes only release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.1).
+### Added
+- Added support to migrate user settings from prior version starting with version 4.0.0.
+### Changed
+- Horizontal slide bar is now being displayed on the search results data grid view when the combined length of the search results exceed the width of the main form.
+- Empty sub-folder(s) are now being removed from configured upload folder(s) by the upload process.
+- Search Results Data Grid View now gets focus after a search.
+- Author Combo Box on the "Search by Author" tab now drops down when a key is pressed after receiving focus.
+- Subject Combo Box on the "Search by Subject" tab now drops down when a key is pressed after receiving focus.
+- Author and Subject Combo Boxes on the "Search by Author and Subject" tab now drops down when down arrow key is pressed after receiving focus.
+- Subject combo box drop down on the "Search by Author and Subject" tab will now always show correct subjects for the selected author when navigating with the keyboard.
+- "Improper usage of query operators and/or characters" error notification on the "Search by String" tab is no longer being displayed for strings that end in characters that match a character based query operator.
+- Paste menu and tool bar items are now always enabled when Notes text box has focus and the clipboard contains text.
+- Corrected the Sumatra PDF usage description on its help topic.
+
 ## v4.0.0 - 2018-03-31
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.0).
