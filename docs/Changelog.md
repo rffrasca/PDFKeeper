@@ -2,7 +2,7 @@
 All notable changes to PDFKeeper will be documented in this file.
 
 ## v4.0.1 - 2018-08-04
-- This is a bug fix release.
+- This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.1).
 ### Added
@@ -42,7 +42,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Nini is no longer used to read and write XML configuration files and has been removed from the binary release.  This functionality is now performed using .NET Framework serialization.
 
 ## v3.1.2 - 2015-07-11
-- This is a bug fix release.
+- This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.1).
 - This version is no longer supported.
 - Binary release is no longer available for distribution.
@@ -53,7 +53,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Document Search: selected listview item becomes deselected after refresh.
 
 ## v3.1.1 - 2015-03-21
-- This is a bug fix release.
+- This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.1).
 - This version is no longer supported.
 - Binary release is no longer available for distribution.
@@ -76,7 +76,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - XPS and HTML converters.
 
 ## v3.0.1 - 2014-11-22
-- This is a bug fix release.
+- This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.0.1).
 - This version is no longer supported.
 - Binary release is no longer available for distribution.
@@ -164,7 +164,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - PDFKeeper not responsive after opening Help or Windows Explorer on non-English version of Windows.
 
 ## v2.5.1 - 2012-04-14
-- This is a bug fix release.
+- This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.1).
 - This version is no longer supported.
 - Binary release is no longer available for distribution.
