@@ -30,16 +30,17 @@ Public Class FileSaveAsToolStripCommand
     Public Sub Execute() Implements ICommand.Execute
         Dim targetExtension As String
         Dim targetFile As String
+        Dim pdfFile As New PdfFile( _
+                    FilePathNameGenerator.GenerateCachePdfFilePathName(m_id))
+        Dim pdfInfo As New PdfFileInfoPropertiesReader(pdfFile.FullName)
         If m_text Is Nothing Then
             targetExtension = "pdf"
         Else
             targetExtension = "txt"
         End If
-        targetFile = GetTargetFileName(targetExtension)
+        targetFile = GetTargetFileName(pdfInfo.Title, targetExtension)
         If targetFile.Length > 0 Then
             If m_text Is Nothing Then
-                Dim pdfFile As New PdfFile( _
-                    FilePathNameGenerator.GenerateCachePdfFilePathName(m_id))
                 pdfFile.CopyTo(targetFile)
             Else
                 m_text.SaveToFile(targetFile)
@@ -55,9 +56,10 @@ Public Class FileSaveAsToolStripCommand
         "CA1822:MarkMembersAsStatic")> _
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", _
         "CA2000:Dispose objects before losing scope")> _
-    Private Function GetTargetFileName(ByVal fileExtension As String) As String
+    Private Function GetTargetFileName(ByVal fileNamePrefill As String, _
+                                       ByVal fileExtension As String) As String
         Dim fileService As IFileDialogDisplayService = _
-            New FileDialogDisplayService(fileExtension)
+            New FileDialogDisplayService(fileNamePrefill, fileExtension)
         Return fileService.SaveDialog
     End Function
 End Class

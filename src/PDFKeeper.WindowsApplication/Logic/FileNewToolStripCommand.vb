@@ -72,7 +72,8 @@ Public Class FileNewToolStripCommand
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", _
         "CA2000:Dispose objects before losing scope")> _
     Private Function SelectPdfFile() As String
-        Dim fileService As IFileDialogDisplayService = New FileDialogDisplayService("pdf")
+        Dim fileService As IFileDialogDisplayService = New FileDialogDisplayService(Nothing, _
+                                                                                    "pdf")
         Return fileService.OpenDialog
     End Function
 

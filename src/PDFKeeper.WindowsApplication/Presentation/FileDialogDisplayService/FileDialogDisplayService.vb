@@ -20,9 +20,12 @@
 Public Class FileDialogDisplayService
     Implements IDisposable, IFileDialogDisplayService
     Private fileDialog As FileDialog
+    Private m_FileName As String
     Private m_Filter As String
 
-    Public Sub New(ByVal filterExtension As String)
+    Public Sub New(ByVal fileNamePrefill As String, _
+                   ByVal filterExtension As String)
+        m_FileName = fileNamePrefill
         If filterExtension Is Nothing Then
             Throw New ArgumentNullException(filterExtension)
         End If
@@ -43,8 +46,11 @@ Public Class FileDialogDisplayService
     End Function
 
     Private Function Show() As String
+        fileDialog.FileName = m_FileName
         fileDialog.Filter = m_Filter
-        fileDialog.ShowDialog()
+        If fileDialog.ShowDialog() = DialogResult.Cancel Then
+            fileDialog.FileName = Nothing
+        End If
         Return fileDialog.FileName
     End Function
 
