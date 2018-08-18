@@ -32,7 +32,7 @@ Public Class AddPdfDocumentDialog
         m_OriginalPdfFile = originalPdfFile
         m_OriginalPdfFilePassword = originalPdfFilePassword
         HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
-        TitleTextBox.Select()
+        ViewOriginalButton.Select()
     End Sub
 
     Private Sub AddPdfDocumentDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
