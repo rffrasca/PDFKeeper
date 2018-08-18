@@ -26,7 +26,7 @@
   <Product Id="*"
            Name="PDFKeeper" 
            Language="1033"
-           Version="4.0.1"
+           Version="4.0.2"
            Manufacturer="Robert F. Frasca"
            UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2">
     
