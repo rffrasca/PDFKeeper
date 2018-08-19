@@ -47,6 +47,6 @@ Public MustInherit Class FileBase
     End Function
 
     Public Sub CopyTo(ByVal targetFile As String)
-        IO.File.Copy(m_FullName, targetFile)
+        IO.File.Copy(m_FullName, targetFile, True)
     End Sub
 End Class
