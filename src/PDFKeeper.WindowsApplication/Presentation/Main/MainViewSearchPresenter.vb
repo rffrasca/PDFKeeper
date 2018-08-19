@@ -56,9 +56,16 @@ Public Class MainViewSearchPresenter
         End If
         If view.SearchString.Length > 0 Then
             Try
+                ' Need to capture view.SearchString into a new string and set
+                ' view.SearchString to that string after the query to prevent
+                ' the Search String combox box from selecting the first string
+                ' in the drop down list that contains the string in the text
+                ' box after the query.
+                Dim currentSearchString As String = view.SearchString
                 Dim queryService As IQueryService = Nothing
                 QueryServiceHelper.SetQueryService(queryService)
                 FillSearchResults(queryService.GetSearchResultsBySearchString(view.SearchString))
+                view.SearchString = currentSearchString
                 If view.SearchResultsViewRowCount > 0 Then
                     searchStringHistory.Add(view.SearchString)
                 End If
