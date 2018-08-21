@@ -55,20 +55,6 @@
     <Feature Id="ProductFeature" Title="PDFKeeper" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 			<ComponentGroupRef Id="pdftopng_docs" />
-      <ComponentGroupRef Id="da_Dll" />
-      <ComponentGroupRef Id="de_Dll" />
-      <ComponentGroupRef Id="es_Dll" />
-      <ComponentGroupRef Id="fr_Dll" />
-      <ComponentGroupRef Id="it_Dll" />
-      <ComponentGroupRef Id="ja_JP_Dll" />
-      <ComponentGroupRef Id="ko_Dll" />
-      <ComponentGroupRef Id="nl_Dll" />
-      <ComponentGroupRef Id="pl_Dll" />
-      <ComponentGroupRef Id="pt_Dll" />
-      <ComponentGroupRef Id="ru_Dll" />
-      <ComponentGroupRef Id="sv_Dll" />
-      <ComponentGroupRef Id="tr_Dll" />
-      <ComponentGroupRef Id="zh_Dll" />
       <ComponentRef Id="ApplicationDesktopShortcut" />
       <ComponentRef Id="ApplicationStartMenuShortcut" />
     </Feature>
@@ -198,118 +184,6 @@
       </Component>
       <Component Id="pdftopng_README" Guid="f1c475b3-6b8a-42a0-9220-20e49614a42c">
         <File Id="pdftopng_README" Name="README" Source="..\..\..\..\vendor\xpdf-tools-win-4.00\README" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="da_Dll" Directory="da">
-      <Component Id="da_AutoUpdater.NET.resources.dll" Guid="E5053E60-3BD9-44A2-AE0D-7EBBE61F674F">
-        <File Id="da_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)da\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="de_Dll" Directory="de">
-      <Component Id="de_AutoUpdater.NET.resources.dll" Guid="E330C7B7-3634-43BE-A4B7-7A9E0B4B7757">
-        <File Id="de_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)de\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="es_Dll" Directory="es">
-      <Component Id="es_AutoUpdater.NET.resources.dll" Guid="812C0F0B-D5F6-4BC9-8BBA-C5C644A65559">
-        <File Id="es_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)es\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="fr_Dll" Directory="fr">
-      <Component Id="fr_AutoUpdater.NET.resources.dll" Guid="AA6AA3C9-8E96-47D1-A7C3-07186AFB3D94">
-        <File Id="fr_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)fr\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="it_Dll" Directory="it">
-      <Component Id="it_AutoUpdater.NET.resources.dll" Guid="D438A096-5890-4F0E-904C-1DFD6AB80A73">
-        <File Id="it_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)it\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="ja_JP_Dll" Directory="ja_JP">
-      <Component Id="ja_JP_AutoUpdater.NET.resources.dll" Guid="23F002D5-DE92-4611-B771-68527BB845CD">
-        <File Id="ja_JP_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)ja-JP\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="ko_Dll" Directory="ko">
-      <Component Id="ko_AutoUpdater.NET.resources.dll" Guid="27A51581-1416-4974-A067-B8E94F39CD99">
-        <File Id="ko_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)ko\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="nl_Dll" Directory="nl">
-      <Component Id="nl_AutoUpdater.NET.resources.dll" Guid="912D61AA-1434-4472-A367-8923A06371AF">
-        <File Id="nl_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)nl\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="pl_Dll" Directory="pl">
-      <Component Id="pl_AutoUpdater.NET.resources.dll" Guid="8AF7156C-11EF-46AD-BD2E-708F9B22353E">
-        <File Id="pl_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)pl\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="pt_Dll" Directory="pt">
-      <Component Id="pt_AutoUpdater.NET.resources.dll" Guid="B9FEACAB-B8F9-4D8E-83FD-AE64A7C62B03">
-        <File Id="pt_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)pt\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="ru_Dll" Directory="ru">
-      <Component Id="ru_AutoUpdater.NET.resources.dll" Guid="68CC055F-C56C-4DA4-8636-63BF1A37DF3A">
-        <File Id="ru_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)ru\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="sv_Dll" Directory="sv">
-      <Component Id="sv_AutoUpdater.NET.resources.dll" Guid="AF096C87-5A52-40C8-972D-FB1D9BE2325F">
-        <File Id="sv_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)sv\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="tr_Dll" Directory="tr">
-      <Component Id="tr_AutoUpdater.NET.resources.dll" Guid="3FE3546B-F73F-4505-814A-9DE377C76731">
-        <File Id="tr_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)tr\AutoUpdater.NET.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="zh_Dll" Directory="zh">
-      <Component Id="zh_AutoUpdater.NET.resources.dll" Guid="70C6B11F-CFA3-4D8E-868D-FD1523A07F44">
-        <File Id="zh_AutoUpdater.NET.resources.dll" Name="AutoUpdater.NET.resources.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)zh\AutoUpdater.NET.resources.dll" />
       </Component>
     </ComponentGroup>
   </Fragment>
