@@ -1,6 +1,20 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v4.0.2 - 2018-09-08
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.2).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.2).
+### Changed
+- Updated links in the Oracle Database Express Edition (XE) Database Setup and Database User Administration help topics.
+- The View Original button is now selected in place of the Title text box	when the Add PDF Document dialog loads.
+- Default file name in Save As dialog is now set to the title of the PDF for the selected document record.
+- iTextSharp was updated to 5.5.13 in the binary release.
+- AutoUpdater.NET was updated to 1.4.11 in the binary release.
+### Fixed
+- Fixed an Unhandled Exception that would occur when saving a PDF for the	selected document record to a file system and the target file name already existed.
+- Combo box on "Search by String" tab is no longer selecting the first string in the drop down list that contains the text in text box, overwriting the text in the text box when the Search button is selected.
+
 ## v4.0.1 - 2018-08-04
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.1).
