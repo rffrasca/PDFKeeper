@@ -6,7 +6,7 @@
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>97756c6a-853a-4cba-8507-d33b20b6dd07</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>PDFKeeper-4.0.2</OutputName>
+    <OutputName>PDFKeeper-4.1.0</OutputName>
     <OutputType>Package</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
