@@ -21,12 +21,12 @@ Imports System.Windows.Forms
 
 Public Class UploadFolderConfigurationDialog
     Implements IUploadFolderConfigurationView
-    Private presenter As UploadFolderConfigurationPresenter
+    Private presenter As UploadFolderConfigurationViewPresenter
     Private m_EditUploadFolderConfig As String
 
     Public Sub New(ByVal editUploadFolderConfig As String)
         InitializeComponent()
-        presenter = New UploadFolderConfigurationPresenter(Me)
+        presenter = New UploadFolderConfigurationViewPresenter(Me)
         m_EditUploadFolderConfig = editUploadFolderConfig
         HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
         FolderNameTextBox.Select()

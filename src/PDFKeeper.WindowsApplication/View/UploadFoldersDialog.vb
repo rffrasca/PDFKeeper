@@ -21,11 +21,11 @@ Imports System.Windows.Forms
 
 Public Class UploadFoldersDialog
     Implements IUploadFoldersView
-    Private presenter As UploadFoldersPresenter
+    Private presenter As UploadFoldersViewPresenter
 
     Public Sub New()
         InitializeComponent()
-        presenter = New UploadFoldersPresenter(Me)
+        presenter = New UploadFoldersViewPresenter(Me)
         HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
         FoldersListBox.Select()
         presenter.FillFolders()
@@ -47,7 +47,7 @@ Public Class UploadFoldersDialog
         presenter.DeleteFolder()
     End Sub
 
-#Region "IUploadFoldersManagerView members get/set by UploadFoldersManagerPresenter"
+#Region "IUploadFoldersManagerView members get/set by UploadFoldersViewPresenter"
     Public Property Folders As Object Implements IUploadFoldersView.Folders
         Get
             Return FoldersListBox.Items
