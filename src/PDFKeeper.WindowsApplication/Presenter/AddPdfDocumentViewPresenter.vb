@@ -32,8 +32,7 @@ Public Class AddPdfDocumentViewPresenter
     End Sub
 
     Public Sub ViewOriginalPdf()
-        Dim pdfFile As New PdfFile(view.OriginalPdfFile)
-        viewerId = pdfFile.OpenRestricted()
+        ViewPdf(view.OriginalPdfFile)
     End Sub
 
     Public Sub TextChanged()
@@ -94,8 +93,7 @@ Public Class AddPdfDocumentViewPresenter
     End Sub
 
     Public Sub ViewOutputPdf()
-        Dim pdfFile As New PdfFile(outputPdfFile)
-        viewerId = pdfFile.OpenRestricted()
+        ViewPdf(outputPdfFile)
     End Sub
 
     Public Sub DeleteOriginalPdf()
@@ -134,9 +132,27 @@ Public Class AddPdfDocumentViewPresenter
                                        Nothing)
     End Sub
 
+    Private Sub ViewPdf(ByVal file As String)
+        If viewerId > 0 Then
+            If ProcessHelper.IsProcessExpired(viewerId) Then
+                viewerId = 0
+            End If
+        End If
+        Dim pdfFile As New PdfFile(file)
+        If viewerId > 0 Then
+            ' Set viewerId to instance of viewer still open. Otherwise, viewer
+            ' will not be killed by TerminateViewer.
+            Dim currentId As Integer = viewerId
+            viewerId = pdfFile.OpenRestricted()
+            viewerId = currentId
+        Else
+            viewerId = pdfFile.OpenRestricted()
+        End If
+    End Sub
+
     Private Sub TerminateViewer()
         If viewerId > 0 Then
-            ProcessHelper.Kill(viewerId)
+            ProcessHelper.Close(viewerId)
         End If
     End Sub
 End Class

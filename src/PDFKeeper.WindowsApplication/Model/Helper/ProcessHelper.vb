@@ -22,11 +22,23 @@ Public NotInheritable Class ProcessHelper
         ' Required by Code Analysis.
     End Sub
 
-    Public Shared Sub Kill(ByVal processId As Integer)
+    Public Shared Function IsProcessExpired(ByVal processId As Integer) As Boolean
         Try
             Dim process As System.Diagnostics.Process
             process = System.Diagnostics.Process.GetProcessById(processId)
-            process.Kill()
+            process.Dispose()
+            Return False
+        Catch ex As ArgumentException
+            Return True
+        End Try
+    End Function
+
+    Public Shared Sub Close(ByVal processId As Integer)
+        Try
+            Dim process As System.Diagnostics.Process
+            process = System.Diagnostics.Process.GetProcessById(processId)
+            process.CloseMainWindow()
+            process.Close()
         Catch ex As ArgumentException
         End Try
     End Sub
