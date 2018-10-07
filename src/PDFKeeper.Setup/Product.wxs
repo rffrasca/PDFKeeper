@@ -99,20 +99,6 @@
       <Directory Id="ProgramFilesFolder">
         <Directory Id="INSTALLFOLDER" Name="PDFKeeper">
           <Directory Id="pdftopng" Name="pdftopng" />
-          <Directory Id="da" Name="da" />
-          <Directory Id="de" Name="de" />
-          <Directory Id="es" Name="es" />
-          <Directory Id="fr" Name="fr" />
-          <Directory Id="it" Name="it" />
-          <Directory Id="ja_JP" Name="ja-JP" />
-          <Directory Id="ko" Name="ko" />
-          <Directory Id="nl" Name="nl" />
-          <Directory Id="pl" Name="pl" />
-          <Directory Id="pt" Name="pt" />
-          <Directory Id="ru" Name="ru" />
-          <Directory Id="sv" Name="sv" />
-          <Directory Id="tr" Name="tr" />
-          <Directory Id="zh" Name="zh" />
         </Directory>
 			</Directory>
 		</Directory>
