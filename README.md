@@ -10,13 +10,14 @@ PDFKeeper integrates with a compatible, relational database management system to
 * Notes can be added to document records, including a Date and Time stamp that includes the database user account name. All Notes can be edited and are indexed by the database, making the text searchable. Notes can be saved to a text file, printed, and can be uploaded with a name matching PDF document.
 * Text extracted from the PDF document can be printed and saved to a text file.
 * PDF documents and their Notes can be exported from the database.
+
 ![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot.png)
 
 ## Download
 Download the latest version from [here](https://github.com/rffrasca/PDFKeeper/releases/latest).
 
 ### Client Requirements and Compatible Database Management Systems
-* See the release notes listed for each available release.
+* See the release notes specific to an available release.
 
 At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database 11g Express Edition (XE) has been tested. Future releases will include support for additional relational database management systems based on user request and the feasibility of implementation. For a database to be considered, please open an new issue, unless one was already opened. If your database has already been requested, please update the existing issue.
 
