@@ -22,7 +22,9 @@ create user pdfkeeper
 	default tablespace users
 	identified by pdfkeeper;
 
-grant connect, resource to pdfkeeper;
+grant create session to pdfkeeper;
+grant unlimited tablespace to pdfkeeper;
+grant create table to pdfkeeper;
 
 create sequence pdfkeeper.docs_seq
 	start with 1

@@ -6,7 +6,7 @@
 	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.3  (Win32)">
 	<META NAME="CREATED" CONTENT="20180115;13124628">
 	<META NAME="CHANGEDBY" CONTENT="Robert Frasca">
-	<META NAME="CHANGED" CONTENT="20180818;11072043">
+	<META NAME="CHANGED" CONTENT="20181111;8503386">
 	<META NAME="DESCRIPTION" CONTENT="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Storage Solution
@@ -63,11 +63,11 @@ any user that will need access to the <B>pdfkeeper</B> schema:</FONT></P>
 	</B><SPAN STYLE="font-weight: normal">(optional) is the TCP port
 	number on which the Oracle Net listener is listening (the default
 	port number is 1521).</SPAN></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">For
+	a new user, enter </SPAN><B>create user </B><I><B>user_name</B></I>
+	<B>default tablespace users identified by </B><I><B>&quot;password&quot;</B></I><B>;</B></FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">Enter
-	</SPAN><B>create user </B><I><B>user_name</B></I> <B>default
-	tablespace users identified by </B><I><B>&quot;password&quot;</B></I><B>;</B></FONT></P>
-	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">Enter
-	</SPAN><B>grant connect, resource to </B><I><B>user_name</B></I><B>;</B></FONT></P>
+	</SPAN><B>grant create session to </B><I><B>user_name</B></I><B>;</B></FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">Enter
 	</SPAN><B>quit</B></FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">From
