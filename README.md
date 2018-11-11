@@ -16,10 +16,7 @@ PDFKeeper integrates with a compatible, relational database management system to
 ## Download
 Download the latest version from [here](https://github.com/rffrasca/PDFKeeper/releases/latest).
 
-### Client Requirements
-* Listed in the release notes for each available release.
-
-### Compatible Database Management Systems
+### Client Requirements and Compatible Database Management Systems
 * Listed in the release notes for each available release.
 
 At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database 11g Express Edition (XE) has been tested. Future releases will include support for additional relational database management systems based on user request and the feasibility of implementation. For a database to be considered, please open an new issue, unless one was already opened. If your database has already been requested, please update the existing issue.
