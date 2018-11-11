@@ -30,7 +30,7 @@ create sequence pdfkeeper.docs_seq
 	nocache;
 
 create table pdfkeeper.docs(
-	doc_id numeric(28) not null primary key,
+	doc_id number(28) not null primary key,
 	doc_title varchar2(2000) not null,
 	doc_author varchar2(2000) not null,
 	doc_subject varchar2(2000) not null,
