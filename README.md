@@ -18,7 +18,7 @@ Download the latest version from [here](https://github.com/rffrasca/PDFKeeper/re
 
 ### Client Requirements
 * Windows (32 or 64 bit) with .NET Framework 4.6.1 or higher.
-* Any additional requirements will be referenced in the Help file (available in the binary release). 
+* Any additional requirements will be referenced in the Help file (available in all binary releases). 
 
 ### Compatible Database Management Systems
 * Listed in the release notes for each available release.
