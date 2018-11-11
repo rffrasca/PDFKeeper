@@ -17,15 +17,12 @@ PDFKeeper integrates with a compatible, relational database management system to
 Download the latest version from [here](https://github.com/rffrasca/PDFKeeper/releases/latest).
 
 ### Client Requirements
-* Windows (32 or 64 bit) with .NET Framework 4.6.1 or higher.
-* Any additional requirements will be referenced in the Help file (available in all binary releases). 
+* Listed in the release notes for each available release.
 
 ### Compatible Database Management Systems
 * Listed in the release notes for each available release.
 
-Setup instructions are available in the Help file (available in all binary releases).
-
-At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database Express Edition (XE) has been tested. Future releases may include support for additional relational database management systems based on user request and the feasibility of implementation. For a database to be considered, please open an new issue, unless one was already opened. If your database has already been requested, please update the existing issue.
+At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database 11g Express Edition (XE) has been tested. Future releases will include support for additional relational database management systems based on user request and the feasibility of implementation. For a database to be considered, please open an new issue, unless one was already opened. If your database has already been requested, please update the existing issue.
 
 ## Building from Source
 Build Instructions for version 4.0.x are available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions.md).
