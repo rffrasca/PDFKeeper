@@ -21,7 +21,7 @@ Download the latest version from [here](https://github.com/rffrasca/PDFKeeper/re
 * Any additional requirements will be referenced in the Help file (available in the binary release). 
 
 ### Compatible Database Management Systems
-* Oracle Database 11g Express Edition
+* Compatible Database Management Systems are listed in the release notes for each available release.
 
 Setup instructions are available in the Help file (available in the binary release).
 
