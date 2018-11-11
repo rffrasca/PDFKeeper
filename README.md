@@ -23,7 +23,7 @@ Download the latest version from [here](https://github.com/rffrasca/PDFKeeper/re
 ### Compatible Database Management Systems
 * Compatible Database Management Systems are listed in the release notes for each available release.
 
-Setup instructions are available in the Help file (available in the binary release).
+Setup instructions are available in the Help file (available in binary releases).
 
 At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database Express Edition (XE) has been tested. Future releases may include support for additional relational database management systems based on user request and the feasibility of implementation. For a database to be considered, please open an new issue, unless one was already opened. If your database has already been requested, please update the existing issue.
 
