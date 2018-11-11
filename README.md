@@ -3,7 +3,7 @@
 
 PDFKeeper integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents.
 
-## Screenshot*
+## Main Window*
 ![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot.png)
 
 ## Features*
@@ -40,4 +40,4 @@ PDFKeeper is [OSI Certified Open Source Software](https://opensource.org/license
 
 ![Logo](http://www.gnu.org/graphics/gplv3-127x51.png)
 
- * Starting with PDFKeeper 4.0.0
+* Starting with PDFKeeper 4.0.0
