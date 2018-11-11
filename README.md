@@ -3,16 +3,14 @@
 
 PDFKeeper integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents.
 
-## Screenshot of Main Window*
-![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot.png)
-
-## Features*
+## Features (version 4.0.0 and above)
 * PDF documents are stored and indexed in a compatible, relational database where they can be searched by String, Author, Subject, Author and Subject, Date Added, and by querying all documents.
 * PDF documents can be uploaded individually or in bulk, with or without using configured Upload folders.
 * Document record functions include, PDF document viewing with the bundled or default viewer, Notes editing, Keywords viewing, PDF document Preview image viewing, and viewing of Text extracted from the PDF document.
 * Notes can be added to document records, including a Date and Time stamp that includes the database user account name. All Notes can be edited and are indexed by the database, making the text searchable. Notes can be saved to a text file, printed, and can be uploaded with a name matching PDF document.
 * Text extracted from the PDF document can be printed and saved to a text file.
 * PDF documents and their Notes can be exported from the database.
+![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot.png)
 
 ## Download
 Download the latest version from [here](https://github.com/rffrasca/PDFKeeper/releases/latest).
@@ -39,5 +37,3 @@ PDFKeeper is [OSI Certified Open Source Software](https://opensource.org/license
 ![Logo](https://opensource.org/trademarks/osi-certified/web/osi-certified-120x100.png)
 
 ![Logo](http://www.gnu.org/graphics/gplv3-127x51.png)
-
-  * Starting with PDFKeeper 4.0.0
