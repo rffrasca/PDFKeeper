@@ -38,7 +38,7 @@ Namespace My
         End Sub
 
         Private Sub MyApplication_Shutdown(sender As Object, e As EventArgs) Handles Me.Shutdown
-            IO.File.Delete(ApplicationDirectories.UploadShortcut)
+            ApplicationDirectories.DeleteUploadShortcut()
             Dim success As Boolean = False
             Do Until success = True
                 Try

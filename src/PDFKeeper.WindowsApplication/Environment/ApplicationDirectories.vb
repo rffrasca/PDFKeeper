@@ -80,4 +80,11 @@ Public NotInheritable Class ApplicationDirectories
             Return folder.ToString
         End Get
     End Property
+
+    Public Shared Sub DeleteUploadShortcut()
+        Try
+            IO.File.Delete(ApplicationDirectories.UploadShortcut)
+        Catch ex As IOException
+        End Try
+    End Sub
 End Class
