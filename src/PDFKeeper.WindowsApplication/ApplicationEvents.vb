@@ -39,14 +39,7 @@ Namespace My
 
         Private Sub MyApplication_Shutdown(sender As Object, e As EventArgs) Handles Me.Shutdown
             ApplicationDirectories.DeleteUploadShortcut()
-            Dim success As Boolean = False
-            Do Until success = True
-                Try
-                    Directory.Delete(ApplicationDirectories.Cache, True)
-                    success = True
-                Catch ex As IOException
-                End Try
-            Loop
+            ApplicationDirectories.DeleteCacheFolder()
         End Sub
 
         Private Sub MyApplication_UnhandledException(sender As Object, e As ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException

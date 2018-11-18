@@ -87,4 +87,11 @@ Public NotInheritable Class ApplicationDirectories
         Catch ex As IOException
         End Try
     End Sub
+
+    Public Shared Sub DeleteCacheFolder()
+        Try
+            Directory.Delete(ApplicationDirectories.Cache, True)
+        Catch ex As IOException
+        End Try
+    End Sub
 End Class
