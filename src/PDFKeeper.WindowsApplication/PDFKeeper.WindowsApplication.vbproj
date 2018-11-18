@@ -146,7 +146,7 @@
     <Compile Include="Model\Data\QueryServiceHelper.vb" />
     <Compile Include="Model\Data\SharedPresenterQueries.vb" />
     <Compile Include="Extension\SecureStringExtension.vb" />
-    <Compile Include="Model\StringExtension.vb" />
+    <Compile Include="Model\Extension\StringExtension.vb" />
     <Compile Include="Model\Generic\GenericDictionaryList.vb" />
     <Compile Include="Model\Generic\GenericList.vb" />
     <Compile Include="Model\Generic\GenericSerializer.vb" />
