@@ -221,15 +221,11 @@ Public Class MainViewSearchPresenter
 
     Public Sub ExportSelectedDocuments()
         Dim displayService As IMessageDisplayService = New MessageDisplayService
-        Try
-            ProcessSelectedDocuments(Enums.SelectedDocumentsFunction.Export)
-            view.SelectNoneInSearchResultsView()
-            displayService.ShowInformation(String.Format(CultureInfo.CurrentCulture, _
-                                                         My.Resources.ResourceManager.GetString("SelectedFilesHaveBeenExported"), _
-                                                         exportFolder))
-        Catch ex As OracleException
-            displayService.ShowError(ex.Message)
-        End Try
+        ProcessSelectedDocuments(Enums.SelectedDocumentsFunction.Export)
+        view.SelectNoneInSearchResultsView()
+        displayService.ShowInformation(String.Format(CultureInfo.CurrentCulture, _
+                                                     My.Resources.ResourceManager.GetString("SelectedFilesHaveBeenExported"), _
+                                                     exportFolder))
     End Sub
 
     Private Sub ResetSearchResultsView()
@@ -284,11 +280,23 @@ Public Class MainViewSearchPresenter
     End Sub
 
     Private Sub ExportDocumentPdf(ByVal id As Integer)
-        Dim pdfFile As New PdfFile(Path.Combine(exportFolder, _
+        Try
+            Dim pdfFile As New PdfFile(Path.Combine(exportFolder, _
                                                 My.Application.Info.ProductName & id & ".pdf"))
-        Dim queryService As IQueryService = Nothing
-        QueryServiceHelper.SetQueryService(queryService)
-        queryService.GetDocumentPdf(id, pdfFile.FullName)
+            Dim queryService As IQueryService = Nothing
+            QueryServiceHelper.SetQueryService(queryService)
+            queryService.GetDocumentPdf(id, pdfFile.FullName)
+        Catch ex As InvalidOperationException
+            Dim displayService As IMessageDisplayService = New MessageDisplayService
+            displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _
+                                                   My.Resources.ResourceManager.GetString("DocumentIdException"), _
+                                                   id, ex.Message))
+        Catch ex As OracleException
+            Dim displayService As IMessageDisplayService = New MessageDisplayService
+            displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _
+                                                   My.Resources.ResourceManager.GetString("DocumentIdException"), _
+                                                   id, ex.Message))
+        End Try
     End Sub
 
     Private Sub ExportDocumentPdfText(ByVal id As Integer)
@@ -302,9 +310,16 @@ Public Class MainViewSearchPresenter
                 documentNotes.SaveToFile(Path.Combine(exportFolder, _
                                                       My.Application.Info.ProductName & id & ".txt"))
             End If
+        Catch ex As IndexOutOfRangeException
+            Dim displayService As IMessageDisplayService = New MessageDisplayService
+            displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _
+                                                   My.Resources.ResourceManager.GetString("DocumentIdException"), _
+                                                   id, ex.Message))
         Catch ex As OracleException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
-            displayService.ShowError(ex.Message)
+            displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _
+                                                   My.Resources.ResourceManager.GetString("DocumentIdException"), _
+                                                   id, ex.Message))
         End Try
     End Sub
 

@@ -219,4 +219,7 @@ Do you want to save changes before closing?</value>
   <data name="UploadFolderCannotBeDeleted" xml:space="preserve">
     <value>Upload folder cannot be deleted because it contains one or more files.</value>
   </data>
+  <data name="DocumentIdException" xml:space="preserve">
+    <value>Document ID: {0} - {1}</value>
+  </data>
 </root>

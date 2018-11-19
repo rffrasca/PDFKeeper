@@ -153,6 +153,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Document ID: {0} - {1}.
+        '''</summary>
+        Friend ReadOnly Property DocumentIdException() As String
+            Get
+                Return ResourceManager.GetString("DocumentIdException", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Document Notes have been modified.
         '''Do you want to save changes before closing?.
         '''</summary>
