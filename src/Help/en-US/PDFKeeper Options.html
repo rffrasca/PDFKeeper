@@ -6,7 +6,7 @@
 	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.3  (Win32)">
 	<META NAME="CREATED" CONTENT="20180115;13124628">
 	<META NAME="CHANGEDBY" CONTENT="Robert Frasca">
-	<META NAME="CHANGED" CONTENT="20180210;11083818">
+	<META NAME="CHANGED" CONTENT="20181119;10214298">
 	<META NAME="DESCRIPTION" CONTENT="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Storage Solution
@@ -31,8 +31,8 @@
 <BODY LANG="en-US" DIR="LTR">
 <H1><FONT FACE="Segoe UI, sans-serif"><B>PDFKeeper Options</B></FONT></H1>
 <P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">The
-following options can be changed from the </SPAN><B>Options</B><SPAN STYLE="font-weight: normal">
-dialog:</SPAN></FONT></P>
+following options can be changed from the </SPAN><B>Options</B>
+<SPAN STYLE="font-weight: normal">dialog:</SPAN></FONT></P>
 <P><FONT FACE="Segoe UI, sans-serif"><B>Select last row when
 displaying Search Results.</B></FONT></P>
 <UL>
@@ -54,6 +54,16 @@ default application.</B></FONT></P>
 	unchecked, any PDF document associated with a document record in the
 	Search Results view will be opened using the user's default PDF
 	application.</FONT></P>
+</UL>
+<P><FONT FACE="Segoe UI, sans-serif"><B>Do not upload PDF 1.7
+documents.</B></FONT></P>
+<UL>
+	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">When
+	checked, any PDF document with a version of 1.7 will not be uploaded
+	to the database. This option is provided as Oracle Text in Oracle
+	Databases prior to version 12c do not index PDF 1.7 documents
+	resulting in the document not being searchable by text contained
+	within the document.</FONT></P>
 </UL>
 </BODY>
 </HTML>

@@ -33,7 +33,19 @@ Public NotInheritable Class UploadStagingDirectory
                                        Function(f) New FileInfo(f).LastWriteTime)
         For Each file In files
             FileHelper.WaitWhileFileIsInUse(file)
-            UploadPdfFile(file)
+            ' Skip uploading the PDF document if the option is set to not upload
+            ' PDF 1.7 documents. This option was added in v5.0.0 as Oracle Text
+            ' in Oracle Databases prior to version 12c do not index PDF 1.7 
+            ' documents. This PDF version check will be deprecated once Oracle
+            ' drops support for 11g and eventually will be removed.
+            If My.Settings.DoNotUploadPdf17Documents Then
+                Dim pdfFile As New PdfFile(file)
+                If pdfFile.PdfVersion <> "7" Then
+                    UploadPdfFile(file)
+                End If
+            Else
+                UploadPdfFile(file)
+            End If
         Next
     End Sub
 

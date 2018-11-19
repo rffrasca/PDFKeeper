@@ -47,6 +47,7 @@ Partial Class OptionsDialog
         Me.CheckBoxOpenPdfWithDefaultApplication = New System.Windows.Forms.CheckBox()
         Me.CheckBoxSearchResultsSelectLastRow = New System.Windows.Forms.CheckBox()
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.CheckBoxDoNotUploadPdf17Documents = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -77,12 +78,22 @@ Partial Class OptionsDialog
         Me.CheckBoxSearchResultsSelectLastRow.Name = "CheckBoxSearchResultsSelectLastRow"
         Me.CheckBoxSearchResultsSelectLastRow.UseVisualStyleBackColor = True
         '
+        'CheckBoxDoNotUploadPdf17Documents
+        '
+        resources.ApplyResources(Me.CheckBoxDoNotUploadPdf17Documents, "CheckBoxDoNotUploadPdf17Documents")
+        Me.CheckBoxDoNotUploadPdf17Documents.Checked = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.DoNotUploadPdf17Documents
+        Me.CheckBoxDoNotUploadPdf17Documents.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "DoNotUploadPdf17Documents", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.CheckBoxDoNotUploadPdf17Documents.Name = "CheckBoxDoNotUploadPdf17Documents"
+        Me.HelpProvider.SetShowHelp(Me.CheckBoxDoNotUploadPdf17Documents, CType(resources.GetObject("CheckBoxDoNotUploadPdf17Documents.ShowHelp"), Boolean))
+        Me.CheckBoxDoNotUploadPdf17Documents.UseVisualStyleBackColor = True
+        '
         'OptionsDialog
         '
         Me.AcceptButton = Me.OK_Button
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ControlBox = False
+        Me.Controls.Add(Me.CheckBoxDoNotUploadPdf17Documents)
         Me.Controls.Add(Me.CheckBoxOpenPdfWithDefaultApplication)
         Me.Controls.Add(Me.CheckBoxSearchResultsSelectLastRow)
         Me.Controls.Add(Me.TableLayoutPanel)
@@ -104,5 +115,6 @@ Partial Class OptionsDialog
     Friend WithEvents CheckBoxSearchResultsSelectLastRow As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxOpenPdfWithDefaultApplication As System.Windows.Forms.CheckBox
     Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
+    Friend WithEvents CheckBoxDoNotUploadPdf17Documents As System.Windows.Forms.CheckBox
 
 End Class
