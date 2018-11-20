@@ -172,6 +172,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Document record may have been deleted..
+        '''</summary>
+        Friend ReadOnly Property DocumentRecordMayHaveBeenDeleted() As String
+            Get
+                Return ResourceManager.GetString("DocumentRecordMayHaveBeenDeleted", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
         '''  Looks up a localized string similar to Enter Owner Password:.
         '''</summary>
         Friend ReadOnly Property EnterOwnerPassword() As String
@@ -179,7 +188,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("EnterOwnerPassword", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Export.
         '''</summary>
@@ -188,7 +197,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("Export", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to This feature is disabled by policy..
         '''</summary>
@@ -197,7 +206,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FeatureDisabledByPolicy", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to &lt;FileName&gt;.
         '''</summary>
@@ -206,7 +215,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FileNameToken", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to File not found exception has occurred in the application..
         '''</summary>
@@ -215,7 +224,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FileNotFoundException", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to {0} was saved..
         '''</summary>
@@ -224,7 +233,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FileSaved", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to {0} files (*.{1})|*.{1}.
         '''</summary>
@@ -233,7 +242,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FilterExtension", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Folder name contains invalid characters..
         '''</summary>
@@ -242,7 +251,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FolderNameContainsInvalidChars", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Are you sure you want to cancel and discard all changes?.
         '''</summary>
@@ -251,7 +260,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("GenericFormCancellingPrompt", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to ID.
         '''</summary>
@@ -260,7 +269,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("ID", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to PDF Owner Password.
         '''</summary>
@@ -269,7 +278,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("PdfOwnerPassword", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Improper usage of query operators and/or characters..
         '''</summary>

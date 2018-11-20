@@ -38,7 +38,12 @@ Public Class MainViewDocumentDataPresenter
                 For Each e In ex.InnerExceptions
                     Dim displayService As IMessageDisplayService = _
                         New MessageDisplayService
-                    displayService.ShowError(e.Message)
+                    If e.GetType.Name = "InvalidOperationException" Then
+                        displayService.ShowError(e.Message & ".  " & _
+                                                 My.Resources.DocumentRecordMayHaveBeenDeleted)
+                    Else
+                        displayService.ShowError(e.Message)
+                    End If
                 Next
                 ResetDocumentDataPanel()
                 Exit Sub

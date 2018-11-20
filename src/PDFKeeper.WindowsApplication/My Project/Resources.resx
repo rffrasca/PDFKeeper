@@ -222,4 +222,7 @@ Do you want to save changes before closing?</value>
   <data name="DocumentIdException" xml:space="preserve">
     <value>Document ID: {0} - {1}</value>
   </data>
+  <data name="DocumentRecordMayHaveBeenDeleted" xml:space="preserve">
+    <value>Document record may have been deleted.</value>
+  </data>
 </root>
