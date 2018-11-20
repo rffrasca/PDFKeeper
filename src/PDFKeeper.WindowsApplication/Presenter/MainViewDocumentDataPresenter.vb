@@ -32,18 +32,33 @@ Public Class MainViewDocumentDataPresenter
             tasks(1) = Task.Run(Sub() GetDocumentPdf())
             tasks(2) = Task.Run(Sub() GetDocumentNotes())
             tasks(3) = Task.Run(Sub() GetDocumentKeywords())
-            tasks(1).Wait()
+            Try
+                tasks(1).Wait()
+            Catch ex As AggregateException
+                For Each e In ex.InnerExceptions
+                    Dim displayService As IMessageDisplayService = _
+                        New MessageDisplayService
+                    displayService.ShowError(e.Message)
+                Next
+                ResetDocumentDataPanel()
+                Exit Sub
+            End Try
             tasks(4) = Task.Run(Sub() GetDocumentPdfPreview())
             tasks(5) = Task.Run(Sub() GetDocumentPdfText())
-            tasks(2).Wait()
+            Try
+                tasks(2).Wait()
+            Catch ex As AggregateException
+                For Each e In ex.InnerExceptions
+                    Dim displayService As IMessageDisplayService = _
+                        New MessageDisplayService
+                    displayService.ShowError(e.Message)
+                Next
+                ResetDocumentDataPanel()
+                Exit Sub
+            End Try
             view.DocumentDataPanelEnabled = True
         Else
-            lastDocumentNotes = Nothing
-            view.DocumentDataPanelEnabled = False
-            view.DocumentNotes = Nothing
-            view.DocumentKeywords = Nothing
-            view.DocumentPreview = Nothing
-            view.DocumentText = Nothing
+            ResetDocumentDataPanel()
         End If
     End Sub
 
@@ -62,15 +77,10 @@ Public Class MainViewDocumentDataPresenter
 
     Public Sub SetDocumentNotes()
         view.DocumentNotes = view.DocumentNotes.Trim
-        Try
-            Dim nonQueryService As INonQueryService = Nothing
-            NonQueryServiceHelper.SetNonQueryService(nonQueryService)
-            nonQueryService.SetDocumentNotes(view.DocumentId, view.DocumentNotes)
-            lastDocumentNotes = view.DocumentNotes
-        Catch ex As OracleException
-            Dim displayService As IMessageDisplayService = New MessageDisplayService
-            displayService.ShowError(ex.Message)
-        End Try
+        Dim nonQueryService As INonQueryService = Nothing
+        NonQueryServiceHelper.SetNonQueryService(nonQueryService)
+        nonQueryService.SetDocumentNotes(view.DocumentId, view.DocumentNotes)
+        lastDocumentNotes = view.DocumentNotes
     End Sub
 
     Public Sub RestoreDocumentNotes()
@@ -97,6 +107,15 @@ Public Class MainViewDocumentDataPresenter
         End If
     End Function
 
+    Private Sub ResetDocumentDataPanel()
+        lastDocumentNotes = Nothing
+        view.DocumentDataPanelEnabled = False
+        view.DocumentNotes = Nothing
+        view.DocumentKeywords = Nothing
+        view.DocumentPreview = Nothing
+        view.DocumentText = Nothing
+    End Sub
+
     Private Sub GetDocumentPdf()
         Dim cached As Boolean = False
         Dim pdfFile As New PdfFile( _
@@ -107,44 +126,29 @@ Public Class MainViewDocumentDataPresenter
             End If
         End If
         If cached = False Then
-            Try
-                Dim queryService As IQueryService = Nothing
-                QueryServiceHelper.SetQueryService(queryService)
-                queryService.GetDocumentPdf(view.DocumentId, pdfFile.FullName)
-            Catch ex As OracleException
-                Dim displayService As IMessageDisplayService = New MessageDisplayService
-                displayService.ShowError(ex.Message)
-            End Try
+            Dim queryService As IQueryService = Nothing
+            QueryServiceHelper.SetQueryService(queryService)
+            queryService.GetDocumentPdf(view.DocumentId, pdfFile.FullName)
             fileHashes.SetItem(pdfFile.FullName, pdfFile.ComputeHash)
         End If
     End Sub
 
     Private Sub GetDocumentNotes()
-        Try
-            Dim queryService As IQueryService = Nothing
-            QueryServiceHelper.SetQueryService(queryService)
-            Dim dataTableNotes As DataTable = queryService.GetDocumentNotes(view.DocumentId)
-            view.DocumentNotes = Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
-                                                  CultureInfo.CurrentCulture)
-            lastDocumentNotes = view.DocumentNotes
-            view.DocumentNotesChanged = False
-        Catch ex As OracleException
-            Dim displayService As IMessageDisplayService = New MessageDisplayService
-            displayService.ShowError(ex.Message)
-        End Try
+        Dim queryService As IQueryService = Nothing
+        QueryServiceHelper.SetQueryService(queryService)
+        Dim dataTableNotes As DataTable = queryService.GetDocumentNotes(view.DocumentId)
+        view.DocumentNotes = Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
+                                              CultureInfo.CurrentCulture)
+        lastDocumentNotes = view.DocumentNotes
+        view.DocumentNotesChanged = False
     End Sub
 
     Private Sub GetDocumentKeywords()
-        Try
-            Dim queryService As IQueryService = Nothing
-            QueryServiceHelper.SetQueryService(queryService)
-            Dim dataTableKeywords As DataTable = queryService.GetDocumentKeywords(view.DocumentId)
-            view.DocumentKeywords = Convert.ToString(dataTableKeywords.Rows(0)("doc_keywords"), _
-                                                     CultureInfo.CurrentCulture)
-        Catch ex As OracleException
-            Dim displayService As IMessageDisplayService = New MessageDisplayService
-            displayService.ShowError(ex.Message)
-        End Try
+        Dim queryService As IQueryService = Nothing
+        QueryServiceHelper.SetQueryService(queryService)
+        Dim dataTableKeywords As DataTable = queryService.GetDocumentKeywords(view.DocumentId)
+        view.DocumentKeywords = Convert.ToString(dataTableKeywords.Rows(0)("doc_keywords"), _
+                                                 CultureInfo.CurrentCulture)
     End Sub
 
     Private Sub GetDocumentPdfPreview()
