@@ -180,9 +180,10 @@ Public Class MainViewSearchPresenter
             Try
                 Dim queryService As IQueryService = Nothing
                 QueryServiceHelper.SetQueryService(queryService)
-                view.DBDocumentRecordsCountMessage = String.Format(CultureInfo.CurrentCulture, _
-                                                                   My.Resources.ResourceManager.GetString("DBDocumentRecordsCountMessage"), _
-                                                                   queryService.DBDocumentRecordsCount)
+                view.DBDocumentRecordsCountMessage = _
+                    String.Format(CultureInfo.CurrentCulture, _
+                                  My.Resources.ResourceManager.GetString("DBDocumentRecordsCountMessage"), _
+                                  queryService.DBDocumentRecordsCount)
                 view.QueryAllDocumentsEnabled = True
             Catch ex As OracleException
                 Dim displayService As IMessageDisplayService = New MessageDisplayService
@@ -289,12 +290,14 @@ Public Class MainViewSearchPresenter
         Catch ex As InvalidOperationException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _
-                                                   My.Resources.ResourceManager.GetString("DocumentIdException"), _
-                                                   id, ex.Message))
+                                                   My.Resources.ResourceManager.GetString( _
+                                                       "ExportDocumentRecordMayHaveBeenDeleted"), _
+                                                   ex.Message, id))
         Catch ex As OracleException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _
-                                                   My.Resources.ResourceManager.GetString("DocumentIdException"), _
+                                                   My.Resources.ResourceManager.GetString( _
+                                                       "DocumentIdException"), _
                                                    id, ex.Message))
         End Try
     End Sub
@@ -313,12 +316,14 @@ Public Class MainViewSearchPresenter
         Catch ex As IndexOutOfRangeException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _
-                                                   My.Resources.ResourceManager.GetString("DocumentIdException"), _
-                                                   id, ex.Message))
+                                                   My.Resources.ResourceManager.GetString( _
+                                                       "ExportDocumentRecordMayHaveBeenDeleted"), _
+                                                   ex.Message, id))
         Catch ex As OracleException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _
-                                                   My.Resources.ResourceManager.GetString("DocumentIdException"), _
+                                                   My.Resources.ResourceManager.GetString( _
+                                                       "DocumentIdException"), _
                                                    id, ex.Message))
         End Try
     End Sub

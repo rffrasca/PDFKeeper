@@ -153,14 +153,14 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Document ID: {0} - {1}.
+        '''  Looks up a localized string similar to Document ID: {0} - Error: {1}.
         '''</summary>
         Friend ReadOnly Property DocumentIdException() As String
             Get
                 Return ResourceManager.GetString("DocumentIdException", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Document Notes have been modified.
         '''Do you want to save changes before closing?.
@@ -170,7 +170,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentNotesModified", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Document record may have been deleted..
         '''</summary>
@@ -195,6 +195,15 @@ Namespace My.Resources
         Friend ReadOnly Property Export() As String
             Get
                 Return ResourceManager.GetString("Export", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized string similar to {0}.  Document ID {1} may have been deleted..
+        '''</summary>
+        Friend ReadOnly Property ExportDocumentRecordMayHaveBeenDeleted() As String
+            Get
+                Return ResourceManager.GetString("ExportDocumentRecordMayHaveBeenDeleted", resourceCulture)
             End Get
         End Property
 
