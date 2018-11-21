@@ -25,7 +25,7 @@ Download the latest version from [here](https://github.com/rffrasca/PDFKeeper/re
 At this time, PDFKeeper has been designed for use with the Oracle Database and only the free, Oracle Database 11g Express Edition (XE) has been tested. Future releases will include support for additional relational database management systems based on user request and the feasibility of implementation. For a database to be considered, please open an new issue, unless one was already opened. If your database has already been requested, please update the existing issue.
 
 ## Building from Source
-Build Instructions for version 4.0.x are available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions.md).
+Build Instructions for version 4.x.x are available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions.md).
 
 ## Links
 [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md)
