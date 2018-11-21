@@ -39,8 +39,11 @@ Public Class MainViewDocumentDataPresenter
                     Dim displayService As IMessageDisplayService = _
                         New MessageDisplayService
                     If e.GetType.Name = "InvalidOperationException" Then
-                        displayService.ShowError(e.Message & ".  " & _
-                                                 My.Resources.DocumentRecordMayHaveBeenDeleted)
+                        displayService.ShowError(String.Format( _
+                                                 CultureInfo.CurrentCulture, _
+                                                 My.Resources.ResourceManager.GetString( _
+                                                     "DocumentRecordMayHaveBeenDeleted"), _
+                                                 e.Message))
                     Else
                         displayService.ShowError(e.Message)
                     End If
