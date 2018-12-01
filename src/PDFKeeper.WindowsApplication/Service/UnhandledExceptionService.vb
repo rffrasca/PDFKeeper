@@ -27,16 +27,20 @@ Public Class UnhandledExceptionService
     Public Sub Write()
         ' Exception is Logged to:
         ' <SystemDrive>\Users\<User>\AppData\Roaming\Robert F. Frasca\PDFKeeper\<version>\PDFKeeper.log
-        Dim logMessage As String = "(" & DateTime.Now & ")" & m_ExceptionEventArgs.Exception.StackTrace
+        Dim message As String = "(" & DateTime.Now & ") " & _
+            m_ExceptionEventArgs.Exception.GetType.Name & _
+            m_ExceptionEventArgs.Exception.StackTrace
         My.Application.Log.WriteException(m_ExceptionEventArgs.Exception, _
                                           TraceEventType.Critical, _
-                                          logMessage)
+                                          message)
     End Sub
 
     Public Sub Show()
+        Dim message As String = My.Resources.UnhandledException & vbCr & _
+            m_ExceptionEventArgs.Exception.GetType.Name & vbCr & _
+            m_ExceptionEventArgs.Exception.Message & vbCr & _
+            m_ExceptionEventArgs.Exception.StackTrace
         Dim displayService As IMessageDisplayService = New MessageDisplayService
-        displayService.ShowError(My.Resources.UnhandledException & vbCr & _
-                                 m_ExceptionEventArgs.Exception.Message & vbCr & _
-                                 m_ExceptionEventArgs.Exception.StackTrace)
+        displayService.ShowError(Message)
     End Sub
 End Class

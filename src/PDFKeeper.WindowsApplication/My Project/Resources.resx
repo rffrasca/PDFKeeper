@@ -168,7 +168,7 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
     <value>Title</value>
   </data>
   <data name="UnhandledException" xml:space="preserve">
-    <value>Unhandled exception has occurred in the application.</value>
+    <value>Unhandled exception has occurred in the application:</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Version {0}</value>

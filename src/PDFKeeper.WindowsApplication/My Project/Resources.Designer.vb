@@ -334,7 +334,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Unhandled exception has occurred in the application..
+        '''  Looks up a localized string similar to Unhandled exception has occurred in the application:.
         '''</summary>
         Friend ReadOnly Property UnhandledException() As String
             Get
