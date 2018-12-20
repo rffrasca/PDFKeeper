@@ -6,7 +6,7 @@
 	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.3  (Win32)">
 	<META NAME="CREATED" CONTENT="20180115;14243916">
 	<META NAME="CHANGEDBY" CONTENT="Robert Frasca">
-	<META NAME="CHANGED" CONTENT="20181119;10364912">
+	<META NAME="CHANGED" CONTENT="20181218;21390451">
 	<META NAME="DESCRIPTION" CONTENT="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Storage Solution
@@ -101,17 +101,14 @@ Information:</B></FONT></FONT></P>
 	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">The
 	upload process requires that all PDF documents contain an Title,
 	Author, and Subject.</FONT></P>
-	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">Oracle
-	Database does not index annotations contained within a PDF document.</FONT></P>
-	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">Oracle
-	Text in Oracle Databases prior to 12c do not index PDF 1.7 documents
-	resulting in the text contained within the document to not be
-	searchable within PDFKeeper. To work around this limitation, save
-	the PDF document to a compatible version. To prevent PDFKeeper from
-	uploading PDF 1.7 documents, see this <A HREF="PDFKeeper%20Options.html">topic</A>.</SPAN></FONT></P>
-	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">The
+	<LI><P STYLE="font-style: normal; font-weight: normal"><FONT COLOR="#24292e"><FONT FACE="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"><FONT SIZE=3>Annotations
+	in a PDF document are not filtered by Oracle Database.</FONT></FONT></FONT></P>
+	<LI><P STYLE="font-style: normal; font-weight: normal"><FONT COLOR="#24292e"><FONT FACE="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"><FONT SIZE=3>Embedded
+	fonts in a PDF document are not filtered correctly by Oracle
+	Database.</FONT></FONT></FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">The
 	upload process will check for PDF documents that need to be uploaded
-	every five seconds.</FONT></P>
+	every five seconds.</SPAN></FONT></P>
 	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif">It
 	is NOT recommended to configure the Windows Recycle Bin to delete
 	files immediately as the Upload process will delete all preprocessed

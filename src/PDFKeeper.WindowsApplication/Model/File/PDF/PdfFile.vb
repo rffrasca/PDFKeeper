@@ -45,19 +45,19 @@ Public Class PdfFile
         End Get
     End Property
 
-    ''' <summary>
-    ''' Returns the version of the PDF document.
-    ''' </summary>
-    ''' <value></value>
-    ''' <returns>Single character value. For example, 4 is = 1.4 (or Acrobat 5)</returns>
-    ''' <remarks></remarks>
-    Public ReadOnly Property PdfVersion As Char
-        Get
-            Using reader As New PdfReader(FullName)
-                Return reader.PdfVersion
-            End Using
-        End Get
-    End Property
+    ' ''' <summary>
+    ' ''' Returns the version of the PDF document.
+    ' ''' </summary>
+    ' ''' <value></value>
+    ' ''' <returns>Single character value. For example, 4 is = 1.4 (or Acrobat 5)</returns>
+    ' ''' <remarks></remarks>
+    'Public ReadOnly Property PdfVersion As Char
+    '    Get
+    '        Using reader As New PdfReader(FullName)
+    '            Return reader.PdfVersion
+    '        End Using
+    '    End Get
+    'End Property
 
     ''' <summary>
     ''' Gets the first page of the PDF file into a PNG image file.

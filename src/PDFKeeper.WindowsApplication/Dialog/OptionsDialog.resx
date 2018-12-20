@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="TableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -211,7 +211,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CheckBoxOpenPdfWithDefaultApplication.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="CheckBoxSearchResultsSelectLastRow.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -241,44 +241,11 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CheckBoxSearchResultsSelectLastRow.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="CheckBoxDoNotUploadPdf17Documents.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CheckBoxDoNotUploadPdf17Documents.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CheckBoxDoNotUploadPdf17Documents.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 65</value>
-  </data>
-  <data name="CheckBoxDoNotUploadPdf17Documents.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CheckBoxDoNotUploadPdf17Documents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 19</value>
-  </data>
-  <data name="CheckBoxDoNotUploadPdf17Documents.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="CheckBoxDoNotUploadPdf17Documents.Text" xml:space="preserve">
-    <value>Do not upload PDF 1.7 documents.</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxDoNotUploadPdf17Documents.Name" xml:space="preserve">
-    <value>CheckBoxDoNotUploadPdf17Documents</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxDoNotUploadPdf17Documents.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxDoNotUploadPdf17Documents.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;CheckBoxDoNotUploadPdf17Documents.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
