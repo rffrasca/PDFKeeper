@@ -17,7 +17,7 @@ Screenshot of main window in version 4.0.0 and above.
 These features are available in version 4.0.0 and above. 
 
 ## Download
-Download the latest version from [here](https://github.com/rffrasca/PDFKeeper/releases/latest).
+Download the latest version [here](https://github.com/rffrasca/PDFKeeper/releases/latest).
 
 ### Client Requirements and Compatible Database Management Systems
 * See the release notes specific to an available release.
