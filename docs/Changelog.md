@@ -1,6 +1,22 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v4.1.0 - 2018-12-24
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.1.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.1.0).
+### Added
+- Added compatibility for Oracle Database 18c, 12c, and 11g Release 2.
+### Changed
+- Replaced the numeric datatype with number in the database schema creation script for Oracle as numeric is deprecated.
+- Replaced all usage and references to the Oracle Database connect and resource roles in the schema creation script and Help file with only the required privileges as the connect and resource roles have been deprecated by Oracle.
+- Exception type is now displayed and logged during an unhandled exception event.
+### Fixed
+- Sumatra PDF is now being closed by the Add PDF Document form after View Original or Preview has been selected while Sumatra PDF was open.
+- Fixed unhandled exception that would occur when PDFKeeper is unable to delete the "PDFKeeper Upload" shortcut when closing.
+- Fixed unhandled exception that would occur when exporting a PDF from a document record that no longer exists.
+- Fixed unhandled exception that would occur when selecting a document record in the Search Results DataGridView that no longer exists.
+
 ## v4.0.2 - 2018-09-08
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.2).
