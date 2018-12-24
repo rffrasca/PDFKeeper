@@ -20,7 +20,7 @@ These features are available in version 4.0.0 and above.
 Download the latest version [here](https://github.com/rffrasca/PDFKeeper/releases/latest).
 
 ### Client Requirements and Compatible Database Management Systems
-* See the release notes specific to an available release.
+See the release notes specific to an available release.
 
 ## Building from Source
 Build Instructions for version 4.x.x are available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions.md).
