@@ -6,7 +6,7 @@
 	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.3  (Win32)">
 	<META NAME="CREATED" CONTENT="20180115;13124628">
 	<META NAME="CHANGEDBY" CONTENT="Robert Frasca">
-	<META NAME="CHANGED" CONTENT="20180128;16255093">
+	<META NAME="CHANGED" CONTENT="20181215;16384566">
 	<META NAME="DESCRIPTION" CONTENT="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Storage Solution
@@ -39,7 +39,8 @@ form: </FONT>
 	<LI><P><FONT FACE="Segoe UI, sans-serif">Enter your database
 	<B>Password</B>.</FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif">Enter the <B>Data source
-	</B><SPAN STYLE="font-weight: normal">specified as</SPAN> <B>host:port</B><SPAN STYLE="font-weight: normal">.</SPAN></FONT></P>
+	</B><SPAN STYLE="font-weight: normal">specified as</SPAN>
+	<B>host:port/service_name</B><SPAN STYLE="font-weight: normal">.</SPAN></FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">Select
 	</SPAN><B>OK</B> <SPAN STYLE="font-weight: normal">or press </SPAN><B>Enter
 	</B><SPAN STYLE="font-weight: normal">on the keyboard.</SPAN></FONT></P>
@@ -48,13 +49,16 @@ form: </FONT>
 Information:</B></FONT></FONT></P>
 <UL>
 	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif"><B>host</B>
-	is the host name or IP address of the computer hosting the database.
-	If connecting to the database located on the same computer, the
-	hostname or IP address would be <B>localhost</B> or <B>127.0.0.1</B>.</FONT></P>
+	is the host name or IP address of the database server computer. If
+	connecting to a database located on the same computer, the host name
+	or IP address would be <B>localhost</B> or <B>127.0.0.1</B>.</FONT></P>
 	<LI><P STYLE="font-weight: normal"><FONT FACE="Segoe UI, sans-serif"><B>port</B>
-	(optional) is the TCP port number on which the Oracle Net listener
-	is listening. If not specified, the default port number 1521 is
-	assumed.</FONT></P>
+	is the listening port number on the database server. If not
+	specified, the default port number 1521 is assumed.</FONT></P>
+	<LI><P><FONT FACE="Segoe UI, sans-serif"><B>service_name </B><SPAN STYLE="font-weight: normal">is
+	the service name of the database to access. For Oracle Database
+	Express Edition, if not specified, the default service name XE</SPAN>
+	<SPAN STYLE="font-weight: normal">is assumed.</SPAN></FONT></P>
 </UL>
 </BODY>
 </HTML>

@@ -20,15 +20,9 @@
 * along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************
 -->
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
-     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
   <?define PDFKeeper.WindowsApplication_TargetDir=$(var.PDFKeeper.WindowsApplication.TargetDir)?>
-  <Product Id="*"
-           Name="PDFKeeper" 
-           Language="1033"
-           Version="4.1.0"
-           Manufacturer="Robert F. Frasca"
-           UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2">
+  <Product Id="*" Name="PDFKeeper" Language="1033" Version="4.1.0" Manufacturer="Robert F. Frasca" UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2">
     
     <Package InstallerVersion="500" Compressed="yes" InstallScope="perUser" />
 		
@@ -36,12 +30,12 @@
 		
     <MediaTemplate EmbedCab="yes" />
     
-    <Icon Id="PDFKeeper.ico" SourceFile="$(var.PDFKeeper.WindowsApplication_TargetDir)PDFKeeper.ico"/>
+    <Icon Id="PDFKeeper.ico" SourceFile="$(var.PDFKeeper.WindowsApplication_TargetDir)PDFKeeper.ico" />
     
     <Property Id="ARPPRODUCTICON" Value="PDFKeeper.ico" />
-    <Property Id='ARPHELPLINK'>https://www.pdfkeeper.org/</Property>
-    <Property Id='ARPURLINFOABOUT'>https://www.pdfkeeper.org/</Property>
-    <Property Id='ARPURLUPDATEINFO'>https://www.pdfkeeper.org/</Property>
+    <Property Id="ARPHELPLINK">https://www.pdfkeeper.org/</Property>
+    <Property Id="ARPURLINFOABOUT">https://www.pdfkeeper.org/</Property>
+    <Property Id="ARPURLUPDATEINFO">https://www.pdfkeeper.org/</Property>
     <Property Id="ARPNOREPAIR" Value="yes" Secure="yes" /> 
     <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />
     <Property Id="ALLUSERS" Value="2" />
@@ -59,36 +53,14 @@
       <ComponentRef Id="ApplicationStartMenuShortcut" />
     </Feature>
 
-    <Component Id="ApplicationDesktopShortcut" 
-               Guid="72393B8E-4F3C-465E-878F-9EFA5370A559" 
-               Directory="DesktopFolder" >
-      <Shortcut Id="DesktopShortcut"
-                Name="PDFKeeper"
-                Description="Open Source PDF Document Storage Solution"
-                Directory="DesktopFolder"
-                Target="[INSTALLFOLDER]PDFKeeper.exe"
-                WorkingDirectory="INSTALLFOLDER"/>
-      <RegistryValue Root="HKCU"
-                     Key="Software\Robert F. Frasca\PDFKeeper"
-                     Name="installed"
-                     Type="integer"
-                     Value="1" />
+    <Component Id="ApplicationDesktopShortcut" Guid="72393B8E-4F3C-465E-878F-9EFA5370A559" Directory="DesktopFolder">
+      <Shortcut Id="DesktopShortcut" Name="PDFKeeper" Description="Open Source PDF Document Storage Solution" Directory="DesktopFolder" Target="[INSTALLFOLDER]PDFKeeper.exe" WorkingDirectory="INSTALLFOLDER" />
+      <RegistryValue Root="HKCU" Key="Software\Robert F. Frasca\PDFKeeper" Name="installed" Type="integer" Value="1" />
     </Component>
 
-    <Component Id="ApplicationStartMenuShortcut"
-              Guid="4F68CEB5-6DC4-47DF-B53D-2489C70BFC1F"
-              Directory="StartMenuFolder" >
-      <Shortcut Id="StartMenuShortcut"
-                Name="PDFKeeper"
-                Description="Open Source PDF Document Storage Solution"
-                Directory="StartMenuFolder"
-                Target="[INSTALLFOLDER]PDFKeeper.exe"
-                WorkingDirectory="INSTALLFOLDER"/>
-      <RegistryValue Root="HKCU"
-                     Key="Software\Robert F. Frasca\PDFKeeper"
-                     Name="installed"
-                     Type="integer"
-                     Value="1" />
+    <Component Id="ApplicationStartMenuShortcut" Guid="4F68CEB5-6DC4-47DF-B53D-2489C70BFC1F" Directory="StartMenuFolder">
+      <Shortcut Id="StartMenuShortcut" Name="PDFKeeper" Description="Open Source PDF Document Storage Solution" Directory="StartMenuFolder" Target="[INSTALLFOLDER]PDFKeeper.exe" WorkingDirectory="INSTALLFOLDER" />
+      <RegistryValue Root="HKCU" Key="Software\Robert F. Frasca\PDFKeeper" Name="installed" Type="integer" Value="1" />
     </Component>
   </Product>
  
@@ -139,20 +111,14 @@
       <Component Id="pdftopng.exe" Guid="dc8e8178-d036-422a-9b13-2852d345bad2">
         <File Id="pdftopng.exe" Name="pdftopng.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)pdftopng.exe" />
       </Component>
-      <Component Id="OracleDBBasicToWorldLexerSwitch.sql" Guid="e39d7014-6ce4-4c05-b646-36fb3dc75872">
-        <File Id="OracleDBBasicToWorldLexerSwitch.sql" Name="OracleDBBasicToWorldLexerSwitch.sql" Source="..\..\..\Help\OracleDBBasicToWorldLexerSwitch.sql" />
-      </Component>
-      <Component Id="OracleDBChangeSchemaAccountPassword.sql" Guid="7a13ce42-3dbb-4a96-af59-506853dbbe63">
-        <File Id="OracleDBChangeSchemaAccountPassword.sql" Name="OracleDBChangeSchemaAccountPassword.sql" Source="..\..\..\Help\OracleDBChangeSchemaAccountPassword.sql" />
-      </Component>
-      <Component Id="OracleDBSchemaSetup.sql" Guid="c9a1dcef-b245-4656-95e3-8bf3156fa370">
-        <File Id="OracleDBSchemaSetup.sql" Name="OracleDBSchemaSetup.sql" Source="..\..\..\Help\OracleDBSchemaSetup.sql" />
-      </Component>
       <Component Id="DisableQueryAllDocuments.reg" Guid="3ee0a57f-49a5-41c2-8e8a-760ab3e55e12">
         <File Id="DisableQueryAllDocuments.reg" Name="DisableQueryAllDocuments.reg" Source="..\..\..\Config\DisableQueryAllDocuments.reg" />
       </Component>
       <Component Id="EnableQueryAllDocuments.reg" Guid="6127b400-4ac1-4a1e-83ae-5947215b4c57">
         <File Id="EnableQueryAllDocuments.reg" Name="EnableQueryAllDocuments.reg" Source="..\..\..\Config\EnableQueryAllDocuments.reg" />
+      </Component>
+      <Component Id="OracleDatabaseSchemaSetup.sql" Guid="0c018a44-7840-4ef4-92a7-ce0432f9e27f">
+        <File Id="OracleDatabaseSchemaSetup.sql" Name="OracleDatabaseSchemaSetup.sql" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)OracleDatabaseSchemaSetup.sql" />
       </Component>
   	</ComponentGroup>
 	</Fragment>

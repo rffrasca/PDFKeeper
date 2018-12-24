@@ -21,13 +21,11 @@ iTextSharp.html
 Sumatra PDF.html
 pdftopng from Xpdf tools.html
 Database Setup.html
-Database Setup-Oracle Database Express Edition.html
-OracleDBSchemaSetup.cmd
-OracleDBBasicToWorldLexerSwitch.cmd
-OracleDBChangeSchemaAccountPassword.cmd
+Database Setup-Oracle Database.html
+DatabaseSchemaSetupScriptLauncher.cmd
 Additional Client Prerequisites.html
 Database User Administration.html
-Database User Administration-Oracle Database Express Edition.html
+Database User Administration-Oracle Database.html
 Installing ODP.NET Managed Driver.html
 Getting Support.html
 Using PDFKeeper.html

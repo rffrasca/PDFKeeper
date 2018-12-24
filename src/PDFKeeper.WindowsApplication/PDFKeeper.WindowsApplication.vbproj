@@ -335,6 +335,10 @@
       <Link>SumatraPDF-settings.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\Help\OracleDatabaseSchemaSetup.sql">
+      <Link>OracleDatabaseSchemaSetup.sql</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\Help\PDFKeeper.en-US.chm">
       <Link>PDFKeeper.en-US.chm</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

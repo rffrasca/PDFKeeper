@@ -18,9 +18,11 @@
 ** along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 ******************************************************************************/
 
+accept new_password char prompt 'Enter the password to set on the pdfkeeper account: '
+
 create user pdfkeeper
 	default tablespace users
-	identified by pdfkeeper;
+	identified by "&new_password";
 
 grant create session to pdfkeeper;
 grant unlimited tablespace to pdfkeeper;
@@ -57,12 +59,28 @@ begin
 					 doc_pdf');
 	ctx_ddl.set_attribute('ctxsys.pdfkeeper_multi','filter',
 			      'N,N,N,N,N,N,Y');
+	if (dbms_db_version.version >11) then
+		ctx_ddl.create_preference('ctxsys.text_search_storage',
+					  'basic_storage');
+		ctx_ddl.set_attribute('ctxsys.text_search_storage',
+				      'stage_itab',
+				      'true');
+		execute immediate 'create index pdfkeeper.docs_idx
+				   on pdfkeeper.docs(doc_dummy) 
+				   indextype is ctxsys.context 
+				   parameters (''datastore ctxsys.pdfkeeper_multi
+						 storage ctxsys.text_search_storage
+					         lexer ctxsys.pdfkeeper_lexer
+					         sync (on commit)'')';
+	else
+		execute immediate 'create index pdfkeeper.docs_idx
+				   on pdfkeeper.docs(doc_dummy) 
+				   indextype is ctxsys.context 
+				   parameters (''datastore ctxsys.pdfkeeper_multi
+					         lexer ctxsys.pdfkeeper_lexer
+					    	 sync (on commit)'')';
+	end if;
 end;
 /
-
-create index pdfkeeper.docs_idx on pdfkeeper.docs(doc_dummy) 
-indextype is ctxsys.context 
-parameters ('datastore ctxsys.pdfkeeper_multi
-	     lexer ctxsys.pdfkeeper_lexer sync (on commit)');
 
 quit

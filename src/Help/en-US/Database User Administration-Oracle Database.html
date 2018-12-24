@@ -6,7 +6,7 @@
 	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.3  (Win32)">
 	<META NAME="CREATED" CONTENT="20180115;13124628">
 	<META NAME="CHANGEDBY" CONTENT="Robert Frasca">
-	<META NAME="CHANGED" CONTENT="20181111;8503386">
+	<META NAME="CHANGED" CONTENT="20181216;13050617">
 	<META NAME="DESCRIPTION" CONTENT="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Storage Solution
@@ -30,39 +30,39 @@
 </HEAD>
 <BODY LANG="en-US" DIR="LTR">
 <H1><FONT FACE="Segoe UI, sans-serif">Database User Administration</FONT></H1>
-<P><FONT FACE="Segoe UI, sans-serif"><FONT SIZE=5><B>Oracle Database
-Express Edition (XE)</B></FONT></FONT></P>
+<P><FONT FACE="Segoe UI, sans-serif"><FONT SIZE=5><B>Oracle Database</B></FONT></FONT></P>
 <P><FONT FACE="Segoe UI, sans-serif">It is recommended that each user
-be assigned a personal database account, with only the required
+be assigned a personal database account with only the required
 privileges. The </FONT><FONT FACE="Segoe UI, sans-serif"><B>pdfkeeper</B></FONT>
 <FONT FACE="Segoe UI, sans-serif">database account should only be
 used for </FONT><FONT FACE="Segoe UI, sans-serif"><B>pdfkeeper</B></FONT>
 <FONT FACE="Segoe UI, sans-serif">schema administration, not for
 general use. For more information on Managing Users, please refer to
-the </FONT><FONT FACE="Segoe UI, sans-serif"><B>2 Day DBA </B></FONT><FONT FACE="Segoe UI, sans-serif">book
-in the <A HREF="https://docs.oracle.com/cd/E17781_01/server.112/e18804/toc.htm" TARGET="_blank">Oracle
-Database Express Edition Documentation</A>.</FONT></P>
+the <A HREF="https://docs.oracle.com/en/database/oracle/oracle-database/index.html" TARGET="_blank">Oracle
+Database Documentation</A> or <A HREF="https://docs.oracle.com/cd/E17781_01/index.htm" TARGET="_blank">Oracle
+Database Express Edition Documentation</A>. </FONT>
+</P>
 <P><FONT FACE="Segoe UI, sans-serif">Perform the following steps for
 any user that will need access to the <B>pdfkeeper</B> schema:</FONT></P>
 <OL>
 	<LI><P><FONT FACE="Segoe UI, sans-serif">From a Command Prompt,
 	execute <B>sqlplus</B></FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">When
-	logged onto the computer that has Oracle Database XE installed and
-	using the account that installed Oracle Database XE, enter</SPAN>
-	<B>connect / as sysdba</B><SPAN STYLE="font-weight: normal">.
+	logged into the database server computer using the account that
+	installed Oracle Database, enter</SPAN> <B>connect / as sysdba</B><SPAN STYLE="font-weight: normal">.
 	Otherwise, enter the database connect string in the format
-	</SPAN><B>username@host:port </B><SPAN STYLE="font-weight: normal">where
+	</SPAN><B>username/password@host:port/service_name </B><SPAN STYLE="font-weight: normal">where
 	</SPAN><B>username </B><SPAN STYLE="font-weight: normal">is a
 	database account that must be a member of SYSDBA (SYSTEM is a member
 	of SYSDBA); </SPAN><B>host </B><SPAN STYLE="font-weight: normal">is
-	the host name or IP address of the computer that is running Oracle
-	Database XE (use </SPAN><B>localhost </B><SPAN STYLE="font-weight: normal">or
+	the host name or IP address of the database server computer (use
+	</SPAN><B>localhost </B><SPAN STYLE="font-weight: normal">or
 	</SPAN><B>127.0.0.1 </B><SPAN STYLE="font-weight: normal">if logged
-	onto the same computer as Oracle Database XE); and </SPAN><B>port
-	</B><SPAN STYLE="font-weight: normal">(optional) is the TCP port
-	number on which the Oracle Net listener is listening (the default
-	port number is 1521).</SPAN></FONT></P>
+	onto the database server computer); </SPAN><B>port </B><SPAN STYLE="font-weight: normal">is
+	the listening port number on the database server (the default is
+	1521); and </SPAN><B>service_name</B> <SPAN STYLE="font-weight: normal">is
+	the service name of the database to access (for Oracle Database
+	Express Edition, the default is XE).</SPAN></FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">For
 	a new user, enter </SPAN><B>create user </B><I><B>user_name</B></I>
 	<B>default tablespace users identified by </B><I><B>&quot;password&quot;</B></I><B>;</B></FONT></P>
@@ -73,19 +73,18 @@ any user that will need access to the <B>pdfkeeper</B> schema:</FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">From
 	a Command Prompt, execute </SPAN><B>sqlplus</B></FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">When
-	logged onto the computer that has Oracle Database XE installed and
-	using the account that installed Oracle Database XE, enter</SPAN>
-	<B>connect pdfkeeper</B><SPAN STYLE="font-weight: normal">.
+	logged into the database server computer using the account that
+	installed Oracle Database, enter</SPAN> <B>connect pdfkeeper</B><SPAN STYLE="font-weight: normal">.
 	Otherwise, enter the database connect string in the format
-	</SPAN><B>pdfkeeper@host:port </B><SPAN STYLE="font-weight: normal">where
+	</SPAN><B>pdfkeeper/password@host:port/service_name </B><SPAN STYLE="font-weight: normal">where
 	</SPAN><B>host </B><SPAN STYLE="font-weight: normal">is the host
-	name or IP address of the computer that is running Oracle Database
-	XE (use </SPAN><B>localhost </B><SPAN STYLE="font-weight: normal">or
-	</SPAN><B>127.0.0.1 </B><SPAN STYLE="font-weight: normal">if logged
-	onto the same computer as Oracle Database XE); and </SPAN><B>port
-	</B><SPAN STYLE="font-weight: normal">(optional) is the TCP port
-	number on which the Oracle Net listener is listening (the default
-	port number is 1521).</SPAN></FONT></P>
+	name or IP address of the database server computer (use </SPAN><B>localhost
+	</B><SPAN STYLE="font-weight: normal">or </SPAN><B>127.0.0.1 </B><SPAN STYLE="font-weight: normal">if
+	logged onto the database server computer); </SPAN><B>port </B><SPAN STYLE="font-weight: normal">is
+	the listening port number on the database server (the default is
+	1521); and </SPAN><B>service_name</B> <SPAN STYLE="font-weight: normal">is
+	the service name of the database to access (for Oracle Database
+	Express Edition, the default is XE).</SPAN></FONT></P>
 	<LI><P><FONT FACE="Segoe UI, sans-serif"><SPAN STYLE="font-weight: normal">For
 	a new account, enter the following statement to grant the user
 	select/query access: </SPAN><B>grant select on docs to </B><I><B>user_name</B></I><B>;</B></FONT></P>

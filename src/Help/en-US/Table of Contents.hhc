@@ -26,8 +26,8 @@
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Oracle Database Express Edition (XE)">
-				<param name="Local" value="Database Setup-Oracle Database Express Edition.html">
+				<param name="Name" value="Oracle Database">
+				<param name="Local" value="Database Setup-Oracle Database.html">
 				<param name="ImageNumber" value="9">
 				</OBJECT>
 		</UL>
@@ -38,8 +38,8 @@
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Oracle Database Express Edition (XE)">
-				<param name="Local" value="Database User Administration-Oracle Database Express Edition.html">
+				<param name="Name" value="Oracle Database">
+				<param name="Local" value="Database User Administration-Oracle Database.html">
 				<param name="ImageNumber" value="9">
 				</OBJECT>
 		</UL>
