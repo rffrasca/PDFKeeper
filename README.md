@@ -17,7 +17,7 @@ Screenshot of main window in version 4.0.0 and above.
 These features are available in version 4.0.0 and above. 
 
 ### Client Requirements and Compatible Database Management Systems
-Client requirements and compatible database management systems are listed on the release page for each available version.
+Listed on the release page for each available version.
 
 ### Download
 Download the latest version [here](https://github.com/rffrasca/PDFKeeper/releases/latest).
