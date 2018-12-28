@@ -1,6 +1,6 @@
 ﻿'******************************************************************************
 '* PDFKeeper -- Open Source PDF Document Storage Solution
-'* Copyright (C) 2009-2018 Robert F. Frasca
+'* Copyright (C) 2009-2019 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
 '*
