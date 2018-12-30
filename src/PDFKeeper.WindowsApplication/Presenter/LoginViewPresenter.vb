@@ -28,11 +28,8 @@ Public Class LoginViewPresenter
         Me.view = view
     End Sub
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-        "CA1726:UsePreferredTerms", _
-        MessageId:="Login")> _
-    Public Sub Login()
-        UpdateModel()
+    Public Sub OkClick()
+        UpdateCredential()
         Try
             TestConnection()
             view.OnLoginFinished(True)
@@ -43,16 +40,14 @@ Public Class LoginViewPresenter
         End Try
     End Sub
 
-    Private Sub UpdateModel()
+    Private Sub UpdateCredential()
         model.UserName = view.UserName
         model.Password = view.Password
         model.DataSource = view.DataSource
         model.DatabaseSystem = view.DatabaseSystem
     End Sub
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
-        "CA1822:MarkMembersAsStatic")> _
-    Private Sub TestConnection()
+    Private Shared Sub TestConnection()
         Dim dataProvider As IDataProvider = Nothing
         DataProviderHelper.SetDataProvider(dataProvider)
         dataProvider.TestConnection()

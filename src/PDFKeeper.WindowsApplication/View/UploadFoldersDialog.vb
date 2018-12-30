@@ -27,24 +27,27 @@ Public Class UploadFoldersDialog
         InitializeComponent()
         presenter = New UploadFoldersViewPresenter(Me)
         HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
+    End Sub
+
+    Private Sub UploadFoldersDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        presenter.UploadFoldersViewLoad()
         FoldersListBox.Select()
-        presenter.FillFolders()
     End Sub
 
     Private Sub FoldersListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FoldersListBox.SelectedIndexChanged
-        presenter.FolderSelectionChanged()
+        presenter.FoldersListBoxSelectedIndexChanged()
     End Sub
 
     Private Sub AddButton_Click(sender As Object, e As EventArgs) Handles AddButton.Click
-        presenter.AddFolder()
+        presenter.AddButtonClick()
     End Sub
 
     Private Sub EditButton_Click(sender As Object, e As EventArgs) Handles EditButton.Click
-        presenter.EditFolder()
+        presenter.EditButtonClick()
     End Sub
 
     Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
-        presenter.DeleteFolder()
+        presenter.DeleteButtonClick()
     End Sub
 
 #Region "IUploadFoldersManagerView members get/set by UploadFoldersViewPresenter"

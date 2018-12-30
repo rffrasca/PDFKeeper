@@ -24,18 +24,11 @@ Public Class UploadFoldersViewPresenter
         Me.view = view
     End Sub
 
-    Public Sub FillFolders()
-        view.EditEnabled = False
-        view.DeleteEnabled = False
-        Dim configFileNames As String() = _
-            UploadConfigDirectory.GetConfigFileNames(True, False)
-        For Each configFileName In configFileNames
-            UploadDirectory.CreateChildDirectory(configFileName)    ' to ensure folder exists
-        Next
-        view.Folders = configFileNames
+    Public Sub UploadFoldersViewLoad()
+        FillFolders()
     End Sub
 
-    Public Sub FolderSelectionChanged()
+    Public Sub FoldersListBoxSelectedIndexChanged()
         If Not view.Folder Is Nothing Then
             view.EditEnabled = True
             view.DeleteEnabled = True
@@ -45,21 +38,21 @@ Public Class UploadFoldersViewPresenter
         End If
     End Sub
 
-    Public Sub AddFolder()
+    Public Sub AddButtonClick()
         Using uploadFolderConfigDialog As New UploadFolderConfigurationDialog(Nothing)
             uploadFolderConfigDialog.ShowDialog()
         End Using
         FillFolders()
     End Sub
 
-    Public Sub EditFolder()
+    Public Sub EditButtonClick()
         Using uploadFolderConfigDialog As New UploadFolderConfigurationDialog(view.Folder)
             uploadFolderConfigDialog.ShowDialog()
         End Using
         FillFolders()
     End Sub
 
-    Public Sub DeleteFolder()
+    Public Sub DeleteButtonClick()
         Dim result As DialogResult
         Dim displayService As IMessageDisplayService = New MessageDisplayService
         result = displayService.ShowQuestion(My.Resources.DeleteUploadConfigurationPrompt, _
@@ -73,5 +66,16 @@ Public Class UploadFoldersViewPresenter
                 displayService.ShowError(My.Resources.UploadFolderCannotBeDeleted)
             End If
         End If
+    End Sub
+
+    Private Sub FillFolders()
+        view.EditEnabled = False
+        view.DeleteEnabled = False
+        Dim configFileNames As String() = _
+            UploadConfigDirectory.GetConfigFileNames(True, False)
+        For Each configFileName In configFileNames
+            UploadDirectory.CreateChildDirectory(configFileName)    ' to ensure folder exists
+        Next
+        view.Folders = configFileNames
     End Sub
 End Class

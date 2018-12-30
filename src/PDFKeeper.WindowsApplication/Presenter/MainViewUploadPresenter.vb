@@ -24,15 +24,7 @@ Public Class MainViewUploadPresenter
         Me.view = view
     End Sub
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
-        "CA1822:MarkMembersAsStatic")> _
-    Public Sub ShowUploadFoldersDialog()
-        Using uploadFoldersDialog As New UploadFoldersDialog
-            uploadFoldersDialog.ShowDialog()
-        End Using
-    End Sub
-
-    Public Sub DoUpload()
+    Public Sub UploadTimerTick()
         If UploadController.UploadPaused = False Then
             If DirectoryHelper.GetCountOfFiles(ApplicationDirectories.Upload, _
                                                SearchOption.AllDirectories) > 0 Then
@@ -49,6 +41,14 @@ Public Class MainViewUploadPresenter
             CheckForFilesNotUploaded()
             Application.DoEvents()
         End If
+    End Sub
+
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
+        "CA1822:MarkMembersAsStatic")> _
+    Public Sub ToolsUploadFoldersToolStripMenuItemClick()
+        Using uploadFoldersDialog As New UploadFoldersDialog
+            uploadFoldersDialog.ShowDialog()
+        End Using
     End Sub
 
     Private Sub CheckForFilesNotUploaded()

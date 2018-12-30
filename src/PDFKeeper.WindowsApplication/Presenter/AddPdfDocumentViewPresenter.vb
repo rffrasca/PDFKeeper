@@ -26,16 +26,20 @@ Public Class AddPdfDocumentViewPresenter
         Me.view = view
     End Sub
 
-    Public Sub ViewLoad()
+    Public Sub AddPdfDocumentViewLoad()
         ReadOriginalPdfProperties()
         CreateOutputPdfPathName()
     End Sub
 
-    Public Sub ViewOriginalPdf()
+    Public Sub AddPdfDocumentViewClosing()
+        DeleteOutputPdf()
+    End Sub
+
+    Public Sub ViewOriginalButtonClick()
         ViewPdf(view.OriginalPdfFile)
     End Sub
 
-    Public Sub TextChanged()
+    Public Sub TextBoxesTextChanged()
         If view.PreviewEnabled Then
             TerminateViewer()
         End If
@@ -56,21 +60,21 @@ Public Class AddPdfDocumentViewPresenter
         End If
     End Sub
 
-    Public Sub SetTitleToPdfFileName()
-        view.Title = Path.GetFileNameWithoutExtension(view.OriginalPdfFile)
-    End Sub
-
-    Public Sub GetAuthors()
+    Public Sub AuthorComboBoxEnter()
         SharedPresenterQueries.GetAuthors(view.Author, view.Authors)
     End Sub
 
-    Public Sub GetSubjectsByAuthor()
+    Public Sub SubjectComboBoxEnter()
         SharedPresenterQueries.GetSubjectsByAuthor(view.Author, _
                                                    view.Subject, _
                                                    view.Subjects)
     End Sub
 
-    Public Sub SaveOutputPdf()
+    Public Sub SetToFileNameButtonClick()
+        view.Title = Path.GetFileNameWithoutExtension(view.OriginalPdfFile)
+    End Sub
+
+    Public Sub SaveButtonClick()
         UploadController.WaitWhileUploadRunning()
         TerminateViewer()
         Dim writer As PdfFileInfoPropertiesWriter
@@ -92,21 +96,14 @@ Public Class AddPdfDocumentViewPresenter
         view.OkEnabled = True
     End Sub
 
-    Public Sub ViewOutputPdf()
+    Public Sub PreviewButtonClick()
         ViewPdf(outputPdfFile)
     End Sub
 
-    Public Sub DeleteOriginalPdf()
+    Public Sub OkButtonClick()
         TerminateViewer()
         If My.Settings.DeleteOriginalPdfOnOK Then
             FileHelper.DeleteFileToRecycleBin(view.OriginalPdfFile)
-        End If
-    End Sub
-
-    Public Sub DeleteOutputPdf()
-        TerminateViewer()
-        If Not outputPdfFile Is Nothing Then
-            IO.File.Delete(outputPdfFile)
         End If
     End Sub
 
@@ -130,6 +127,13 @@ Public Class AddPdfDocumentViewPresenter
             FileHelper.ChangeDirectoryName(view.OriginalPdfFile, _
                                            ApplicationDirectories.UploadStaging), _
                                        Nothing)
+    End Sub
+
+    Private Sub DeleteOutputPdf()
+        TerminateViewer()
+        If Not outputPdfFile Is Nothing Then
+            IO.File.Delete(outputPdfFile)
+        End If
     End Sub
 
     Private Sub ViewPdf(ByVal file As String)

@@ -24,7 +24,7 @@ Public Class MainViewUnboundSettingsPresenter
         Me.view = view
     End Sub
 
-    Public Sub GetSettings()
+    Public Sub MainViewLoad()
         If Not IsNothing(My.Settings.MainLocation) Then
             ' Workaround added for an occasional bug that can cause the Main Form to
             ' be positioned off the screen.
@@ -41,7 +41,7 @@ Public Class MainViewUnboundSettingsPresenter
         view.ViewSplitterDistance = My.Settings.MainSplitterDistance
     End Sub
 
-    Public Sub SetSettings()
+    Public Sub MainViewClosing()
         My.Settings.MainSplitterDistance = view.ViewSplitterDistance
         My.Settings.MainLocation = view.ViewLocation
         If view.ViewWindowsState = FormWindowState.Normal Then

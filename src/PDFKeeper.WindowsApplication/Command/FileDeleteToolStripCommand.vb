@@ -33,7 +33,7 @@ Public Class FileDeleteToolStripCommand
         If displayService.ShowQuestion(My.Resources.DeleteSelectedDocuments, _
                                        False) = Windows.Forms.DialogResult.Yes Then
             m_parentForm.Cursor = Cursors.WaitCursor
-            m_presenter.DeleteSelectedDocuments()
+            m_presenter.FileDeleteToolStripCommandExecute()
             m_parentForm.Cursor = Cursors.Default
         End If
     End Sub

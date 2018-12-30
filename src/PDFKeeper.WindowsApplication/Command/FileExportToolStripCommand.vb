@@ -49,7 +49,7 @@ Public Class FileExportToolStripCommand
         s_ExportFolder = selectedFolder
         If Not s_ExportFolder Is Nothing Then
             m_parentForm.Cursor = Cursors.WaitCursor
-            m_presenter.ExportSelectedDocuments()
+            m_presenter.FileExportToolStripCommandExecute()
             m_parentForm.Cursor = Cursors.Default
         End If
     End Sub

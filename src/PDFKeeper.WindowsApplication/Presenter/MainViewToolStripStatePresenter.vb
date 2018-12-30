@@ -17,7 +17,7 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class MainViewToolStripStateManager
+Public Class MainViewToolStripStatePresenter
     Private toolStrip As IMainViewToolStripState
 
     ' List contains ToolStrip short names and Enabled state.

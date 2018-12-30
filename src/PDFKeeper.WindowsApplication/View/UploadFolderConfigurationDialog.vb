@@ -29,13 +29,13 @@ Public Class UploadFolderConfigurationDialog
         presenter = New UploadFolderConfigurationViewPresenter(Me)
         m_EditUploadFolderConfig = editUploadFolderConfig
         HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
-        FolderNameTextBox.Select()
     End Sub
 
     Private Sub UploadFolderConfigurationDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Not m_EditUploadFolderConfig Is Nothing Then
-            presenter.ReadFolderConfiguration()
+            presenter.UploadFolderConfigurationViewLoad()
         End If
+        FolderNameTextBox.Select()
     End Sub
 
     Private Sub UploadFolderConfigurationDialog_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -47,18 +47,18 @@ Public Class UploadFolderConfigurationDialog
     End Sub
 
     Private Sub TitleComboBox_Enter(sender As Object, e As EventArgs) Handles TitleComboBox.Enter
-        presenter.GetTitleTokens()
+        presenter.TitleComboBoxEnter()
     End Sub
 
     Private Sub AuthorComboBox_Enter(sender As Object, e As EventArgs) Handles AuthorComboBox.Enter
         Me.Cursor = Cursors.WaitCursor
-        presenter.GetAuthors()
+        presenter.AuthorComboBoxEnter()
         Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub SubjectComboBox_Enter(sender As Object, e As EventArgs) Handles SubjectComboBox.Enter
         Me.Cursor = Cursors.WaitCursor
-        presenter.GetSubjectsByAuthor()
+        presenter.SubjectComboBoxEnter()
         Me.Cursor = Cursors.Default
     End Sub
 
@@ -67,11 +67,11 @@ Public Class UploadFolderConfigurationDialog
                                                                               AuthorComboBox.TextChanged, _
                                                                               SubjectComboBox.TextChanged, _
                                                                               KeywordsTextBox.TextChanged
-        presenter.TextChanged()
+        presenter.TextBoxTextChanged()
     End Sub
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
-        presenter.SaveFolderConfiguration()
+        presenter.OkButtonClick()
         Me.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.Close()
     End Sub

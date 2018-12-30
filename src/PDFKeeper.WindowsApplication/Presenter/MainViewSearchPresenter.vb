@@ -29,7 +29,48 @@ Public Class MainViewSearchPresenter
         Me.view = view
     End Sub
 
-    Public Sub ValidateSearchString()
+    Public Sub FileDeleteToolStripCommandExecute()
+        Try
+            ProcessSelectedDocuments(Enums.SelectedDocumentsFunction.Delete)
+            view.RefreshSearchResultsView()
+        Catch ex As OracleException
+            Dim displayService As IMessageDisplayService = New MessageDisplayService
+            displayService.ShowError(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub FileExportToolStripCommandExecute()
+        Dim displayService As IMessageDisplayService = New MessageDisplayService
+        ProcessSelectedDocuments(Enums.SelectedDocumentsFunction.Export)
+        view.SelectNoneInSearchResultsView()
+        displayService.ShowInformation(String.Format(CultureInfo.CurrentCulture, _
+                                                     My.Resources.ResourceManager.GetString("SelectedFilesHaveBeenExported"), _
+                                                     exportFolder))
+    End Sub
+
+    Public Sub SearchOptionsTabControlSelected()
+        ResetSearchResultsView()
+        If ApplicationPolicy.DisableQueryAllDocuments Then
+            view.DBDocumentRecordsCountMessage = My.Resources.FeatureDisabledByPolicy
+            view.QueryAllDocumentsVisible = False
+        Else
+            view.QueryAllDocumentsVisible = True
+            Try
+                Dim queryService As IQueryService = Nothing
+                QueryServiceHelper.SetQueryService(queryService)
+                view.DBDocumentRecordsCountMessage = _
+                    String.Format(CultureInfo.CurrentCulture, _
+                                  My.Resources.ResourceManager.GetString("DBDocumentRecordsCountMessage"), _
+                                  queryService.DBDocumentRecordsCount)
+                view.QueryAllDocumentsEnabled = True
+            Catch ex As OracleException
+                Dim displayService As IMessageDisplayService = New MessageDisplayService
+                displayService.ShowError(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Public Sub SearchStringComboBoxTextChanged()
         view.SearchString = view.SearchString.TrimStart
         If view.SearchString.Length > 0 Then
             If view.SearchString.ValidateProperUsageOfQueryOperators Then
@@ -46,11 +87,11 @@ Public Class MainViewSearchPresenter
         End If
     End Sub
 
-    Public Sub GetSearchStringHistory()
-        view.SearchStringHistory = searchStringHistory.ToArray(False)
+    Public Sub SearchStringComboBoxEnter()
+        GetSearchStringHistory()
     End Sub
 
-    Public Sub GetSearchResultsBySearchString(ByVal useLastSearchString As Boolean)
+    Public Sub DoSearch(ByVal useLastSearchString As Boolean)
         If useLastSearchString Then
             view.SearchString = lastSearchString
         End If
@@ -78,9 +119,10 @@ Public Class MainViewSearchPresenter
         Else
             ResetSearchResultsView()
         End If
+        GetSearchStringHistory()
     End Sub
 
-    Public Sub GetAuthors()
+    Public Sub AuthorComboBoxDropDown()
         If view.SearchOptionsSelectedIndex = 1 Then
             SharedPresenterQueries.GetAuthors(view.Authors1)
         ElseIf view.SearchOptionsSelectedIndex = 3 Then
@@ -88,7 +130,7 @@ Public Class MainViewSearchPresenter
         End If
     End Sub
 
-    Public Sub GetSearchResultsByAuthor()
+    Public Sub Author1ComboBoxDropDownClosed()
         If view.Author1 IsNot Nothing Then
             Try
                 Dim queryService As IQueryService = Nothing
@@ -103,17 +145,7 @@ Public Class MainViewSearchPresenter
         End If
     End Sub
 
-    Public Sub OnAuthor2Changed()
-        If Not view.Author2 Is Nothing Then
-            If Not view.Author2 = lastAuthor2Selected Then
-                view.ClearSubject2Selection()
-            End If
-            lastAuthor2Selected = view.Author2
-            view.ClearSubject2Selection()
-        End If
-    End Sub
-
-    Public Sub GetSubjects()
+    Public Sub Subject1ComboBoxDropDown()
         Try
             Dim queryService As IQueryService = Nothing
             QueryServiceHelper.SetQueryService(queryService)
@@ -124,7 +156,7 @@ Public Class MainViewSearchPresenter
         End Try
     End Sub
 
-    Public Sub GetSearchResultsBySubject()
+    Public Sub Subject1ComboBoxDropDownClosed()
         If view.Subject1 IsNot Nothing Then
             Try
                 Dim queryService As IQueryService = Nothing
@@ -139,11 +171,21 @@ Public Class MainViewSearchPresenter
         End If
     End Sub
 
-    Public Sub GetSubjectsByAuthor()
+    Public Sub Author2ComboBoxDropDownClosed()
+        If Not view.Author2 Is Nothing Then
+            If Not view.Author2 = lastAuthor2Selected Then
+                view.ClearSubject2Selection()
+            End If
+            lastAuthor2Selected = view.Author2
+            view.ClearSubject2Selection()
+        End If
+    End Sub
+
+    Public Sub Subject2ComboBoxDropDown()
         SharedPresenterQueries.GetSubjectsByAuthor(view.Author2, view.Subjects2)
     End Sub
 
-    Public Sub GetSearchResultsByAuthorAndSubject()
+    Public Sub Subject2ComboBoxDropDownClosed()
         If view.Subject2 IsNot Nothing Then
             Try
                 Dim queryService As IQueryService = Nothing
@@ -159,7 +201,7 @@ Public Class MainViewSearchPresenter
         End If
     End Sub
 
-    Public Sub GetSearchResultsByDateAdded()
+    Public Sub SearchDateTimePickerValueChanged()
         Try
             Dim queryService As IQueryService = Nothing
             QueryServiceHelper.SetQueryService(queryService)
@@ -170,29 +212,7 @@ Public Class MainViewSearchPresenter
         End Try
     End Sub
 
-    Public Sub GetDBDocumentRecordsCount()
-        ResetSearchResultsView()
-        If ApplicationPolicy.DisableQueryAllDocuments Then
-            view.DBDocumentRecordsCountMessage = My.Resources.FeatureDisabledByPolicy
-            view.QueryAllDocumentsVisible = False
-        Else
-            view.QueryAllDocumentsVisible = True
-            Try
-                Dim queryService As IQueryService = Nothing
-                QueryServiceHelper.SetQueryService(queryService)
-                view.DBDocumentRecordsCountMessage = _
-                    String.Format(CultureInfo.CurrentCulture, _
-                                  My.Resources.ResourceManager.GetString("DBDocumentRecordsCountMessage"), _
-                                  queryService.DBDocumentRecordsCount)
-                view.QueryAllDocumentsEnabled = True
-            Catch ex As OracleException
-                Dim displayService As IMessageDisplayService = New MessageDisplayService
-                displayService.ShowError(ex.Message)
-            End Try
-        End If
-    End Sub
-
-    Public Sub GetAllDBDocumentRecords()
+    Public Sub QueryAllDocumentsButtonClick()
         Try
             Dim queryService As IQueryService = Nothing
             QueryServiceHelper.SetQueryService(queryService)
@@ -205,52 +225,17 @@ Public Class MainViewSearchPresenter
         End Try
     End Sub
 
-    Public Sub SetSearchResultsSortParameters()
+    Public Sub SearchResultsDataGridViewSorted()
         searchResultsSortParameters.SortedColumn = view.SearchResultsSortedColumn
         searchResultsSortParameters.SortOrder = view.SearchResultsSortOrder
     End Sub
-
-    Public Sub DeleteSelectedDocuments()
-        Try
-            ProcessSelectedDocuments(Enums.SelectedDocumentsFunction.Delete)
-            view.RefreshSearchResultsView()
-        Catch ex As OracleException
-            Dim displayService As IMessageDisplayService = New MessageDisplayService
-            displayService.ShowError(ex.Message)
-        End Try
+    
+    Public Sub SearchResultsDataGridViewRowsAdded()
+        SetTotalRecordsCountLabel()
     End Sub
 
-    Public Sub ExportSelectedDocuments()
-        Dim displayService As IMessageDisplayService = New MessageDisplayService
-        ProcessSelectedDocuments(Enums.SelectedDocumentsFunction.Export)
-        view.SelectNoneInSearchResultsView()
-        displayService.ShowInformation(String.Format(CultureInfo.CurrentCulture, _
-                                                     My.Resources.ResourceManager.GetString("SelectedFilesHaveBeenExported"), _
-                                                     exportFolder))
-    End Sub
-
-    Private Sub ResetSearchResultsView()
-        If view.SearchResults IsNot Nothing Then
-            view.SearchResults.Reset()
-        End If
-        view.ResetSearchResultsViewHeader()
-    End Sub
-
-    Private Sub FillSearchResults(ByVal dataTable As DataTable)
-        view.SearchResultsFullView = False
-        view.SearchResultsViewEnabled = False
-        view.SearchResults = dataTable
-        view.SortSearchResults(searchResultsSortParameters.SortColumnIndex, _
-                               searchResultsSortParameters.SortDirection)
-        SelectSearchResultsViewLastRowIfOptionSelected()
-    End Sub
-
-    Private Sub SelectSearchResultsViewLastRowIfOptionSelected()
-        If view.SearchResultsViewRowCount > 0 Then
-            If My.Settings.SearchResultsSelectLastRow Then
-                view.SelectSearchResultsViewLastRow()
-            End If
-        End If
+    Public Sub SearchResultsDataGridViewRowsRemoved()
+        SetTotalRecordsCountLabel()
     End Sub
 
     Private Sub ProcessSelectedDocuments(ByVal functionToPerform As Enums.SelectedDocumentsFunction)
@@ -272,9 +257,7 @@ Public Class MainViewSearchPresenter
         view.DeleteExportProgressVisible = False
     End Sub
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
-        "CA1822:MarkMembersAsStatic")> _
-    Private Sub DeleteDocument(ByVal id As Integer)
+    Private Shared Sub DeleteDocument(ByVal id As Integer)
         Dim nonQueryService As INonQueryService = Nothing
         NonQueryServiceHelper.SetNonQueryService(nonQueryService)
         nonQueryService.DeleteDocument(id)
@@ -283,7 +266,7 @@ Public Class MainViewSearchPresenter
     Private Sub ExportDocumentPdf(ByVal id As Integer)
         Try
             Dim pdfFile As New PdfFile(Path.Combine(exportFolder, _
-                                                My.Application.Info.ProductName & id & ".pdf"))
+                                                    My.Application.Info.ProductName & id & ".pdf"))
             Dim queryService As IQueryService = Nothing
             QueryServiceHelper.SetQueryService(queryService)
             queryService.GetDocumentPdf(id, pdfFile.FullName)
@@ -328,7 +311,31 @@ Public Class MainViewSearchPresenter
         End Try
     End Sub
 
-    Public Sub SetTotalRecordsCountLabel()
+    Private Sub ResetSearchResultsView()
+        If view.SearchResults IsNot Nothing Then
+            view.SearchResults.Reset()
+        End If
+        view.ResetSearchResultsViewHeader()
+    End Sub
+
+    Private Sub GetSearchStringHistory()
+        view.SearchStringHistory = searchStringHistory.ToArray(False)
+    End Sub
+
+    Private Sub FillSearchResults(ByVal dataTable As DataTable)
+        view.SearchResultsFullView = False
+        view.SearchResultsViewEnabled = False
+        view.SearchResults = dataTable
+        view.SortSearchResults(searchResultsSortParameters.SortColumnIndex, _
+                               searchResultsSortParameters.SortDirection)
+        If view.SearchResultsViewRowCount > 0 Then
+            If My.Settings.SearchResultsSelectLastRow Then
+                view.SelectSearchResultsViewLastRow()
+            End If
+        End If
+    End Sub
+
+    Private Sub SetTotalRecordsCountLabel()
         view.TotalRecordsCountLabel = view.SearchResultsViewRowCount
     End Sub
 End Class

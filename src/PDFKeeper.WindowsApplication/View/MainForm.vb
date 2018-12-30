@@ -21,7 +21,7 @@ Public Class MainForm
     Implements IMainViewUnboundSettings, IMainViewToolStripState,  _
         IMainViewSearch, IMainViewDocumentData, IMainViewUpload
     Private unboundSettingsPresenter As MainViewUnboundSettingsPresenter
-    Private toolStripStateManager As MainViewToolStripStateManager
+    Private toolStripStatePresenter As MainViewToolStripStatePresenter
     Private searchPresenter As MainViewSearchPresenter
     Private documentDataPresenter As MainViewDocumentDataPresenter
     Private uploadPresenter As MainViewUploadPresenter
@@ -34,7 +34,7 @@ Public Class MainForm
     Public Sub New()
         InitializeComponent()
         unboundSettingsPresenter = New MainViewUnboundSettingsPresenter(Me)
-        toolStripStateManager = New MainViewToolStripStateManager(Me)
+        toolStripStatePresenter = New MainViewToolStripStatePresenter(Me)
         searchPresenter = New MainViewSearchPresenter(Me)
         documentDataPresenter = New MainViewDocumentDataPresenter(Me)
         uploadPresenter = New MainViewUploadPresenter(Me)
@@ -44,18 +44,18 @@ Public Class MainForm
 
 #Region "Form events and protected and private methods"
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        unboundSettingsPresenter.GetSettings()
+        unboundSettingsPresenter.MainViewLoad()
         SearchStringComboBox.Select()
         NativeMethods.AddClipboardFormatListener(Me.Handle)
     End Sub
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If IsSaveEnabled() Then
-            If documentDataPresenter.IsOkayForViewToClose = False Then
+            If documentDataPresenter.MainViewClosing = False Then
                 e.Cancel = True
             End If
         End If
-        unboundSettingsPresenter.SetSettings()
+        unboundSettingsPresenter.MainViewClosing()
         NativeMethods.RemoveClipboardFormatListener(Me.Handle)
     End Sub
 
@@ -64,7 +64,7 @@ Public Class MainForm
         If m.Msg = WM_CLIPBOARDUPDATE Then
             If My.Computer.Clipboard.ContainsText Then
                 If NotesTextBox.Focused Then
-                    toolStripStateManager.SetPasteState(True)
+                    toolStripStatePresenter.SetPasteState(True)
                 End If
             End If
         End If
@@ -72,7 +72,7 @@ Public Class MainForm
 
     Private Sub UploadTimer_Tick(sender As Object, e As EventArgs) Handles UploadTimer.Tick
         If UploadController.UploadRunning = False Then
-            Dim uploadThread As New Threading.Thread(AddressOf uploadPresenter.DoUpload)
+            Dim uploadThread As New Threading.Thread(AddressOf uploadPresenter.UploadTimerTick)
             uploadThread.Start()
         End If
     End Sub
@@ -116,7 +116,7 @@ Public Class MainForm
     Private Sub FileSaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileSaveToolStripMenuItem.Click, _
                                                                                           FileSaveToolStripButton.Click
         Me.Cursor = Cursors.WaitCursor
-        documentDataPresenter.SetDocumentNotes()
+        documentDataPresenter.FileSaveToolStripMenuItemClick()
         Me.Cursor = Cursors.Default
         NotesTextBox_TextChanged(Me, Nothing)
         TextBoxScrollToEnd(NotesTextBox)
@@ -187,15 +187,15 @@ Public Class MainForm
 
     Private Sub EditSelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditSelectAllToolStripMenuItem.Click
         GetTextBoxWithInputFocus.SelectAll()
-        toolStripStateManager.SetTextBoxTextSelectionState(GetTextBoxWithInputFocus.ReadOnly, _
-                                                           GetTextBoxWithInputFocus.TextLength, _
-                                                           GetTextBoxWithInputFocus.SelectionLength)
+        toolStripStatePresenter.SetTextBoxTextSelectionState(GetTextBoxWithInputFocus.ReadOnly, _
+                                                             GetTextBoxWithInputFocus.TextLength, _
+                                                             GetTextBoxWithInputFocus.SelectionLength)
     End Sub
 
     Private Sub EditRestoreToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditRestoreToolStripMenuItem.Click, _
                                                                                              EditRestoreToolStripButton.Click
         RightTabControl.SelectedIndex = 0
-        documentDataPresenter.RestoreDocumentNotes()
+        documentDataPresenter.EditRestoreToolStripMenuItemClick()
         NotesTextBox_TextChanged(Me, Nothing)
         TextBoxScrollToEnd(NotesTextBox)
     End Sub
@@ -203,7 +203,7 @@ Public Class MainForm
     Private Sub EditDateTimeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditDateTimeToolStripMenuItem.Click, _
                                                                                               EditDateTimeToolStripButton.Click
         TextBoxScrollToEnd(NotesTextBox)
-        documentDataPresenter.InsertDateTimeAndTextIntoDocumentNotes()
+        documentDataPresenter.EditDateTimeToolStripMenuItemClick()
         TextBoxScrollToEnd(NotesTextBox)
     End Sub
 #End Region
@@ -225,7 +225,7 @@ Public Class MainForm
                                                                                                                PreviewPictureBox.DoubleClick
         PreviewImageResolutionDialog.ShowDialog()
         Me.Cursor = Cursors.WaitCursor
-        documentDataPresenter.ReloadPreview()
+        documentDataPresenter.ViewSetPreviewImageResolutionToolStripMenuItemClick()
         Me.Cursor = Cursors.Default
     End Sub
 
@@ -248,7 +248,7 @@ Public Class MainForm
 
     Private Sub ToolsUploadFoldersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ToolsUploadFoldersToolStripMenuItem.Click,
                                                                                                     ToolsUploadFoldersToolStripButton.Click
-        uploadPresenter.ShowUploadFoldersDialog()
+        uploadPresenter.ToolsUploadFoldersToolStripMenuItemClick()
     End Sub
 #End Region
 
@@ -263,9 +263,9 @@ Public Class MainForm
     End Sub
 #End Region
 
-#Region "Search Options events and private memebers"
+#Region "Search Options events and private members"
     Private Sub SearchOptionsTabControl_Selected(sender As Object, e As TabControlEventArgs) Handles SearchOptionsTabControl.Selected
-        toolStripStateManager.SetPreSearchState()
+        toolStripStatePresenter.SetPreSearchState()
         SplitContainer.Panel2Collapsed = False
         If SearchOptionsTabControl.SelectedIndex = 0 Then
             DoSearch(True)
@@ -282,7 +282,7 @@ Public Class MainForm
             If refreshFlag Then
                 QueryAllDocumentsButton_Click(Me, Nothing)
             Else
-                searchPresenter.GetDBDocumentRecordsCount()
+                searchPresenter.SearchOptionsTabControlSelected()
             End If
             Me.Cursor = Cursors.Default
         End If
@@ -290,12 +290,12 @@ Public Class MainForm
     End Sub
 
     Private Sub SearchStringComboBox_TextChanged(sender As Object, e As EventArgs) Handles SearchStringComboBox.TextChanged
-        toolStripStateManager.SetPreSearchState()
-        searchPresenter.ValidateSearchString()
+        toolStripStatePresenter.SetPreSearchState()
+        searchPresenter.SearchStringComboBoxTextChanged()
     End Sub
 
     Private Sub SearchStringComboBox_Enter(sender As Object, e As EventArgs) Handles SearchStringComboBox.Enter
-        searchPresenter.GetSearchStringHistory()
+        searchPresenter.SearchStringComboBoxEnter()
     End Sub
 
     Private Sub SearchButton_Click(sender As Object, e As EventArgs) Handles SearchButton.Click
@@ -304,20 +304,19 @@ Public Class MainForm
 
     Private Sub DoSearch(ByVal useLastSearchString As Boolean)
         Me.Cursor = Cursors.WaitCursor
-        searchPresenter.GetSearchResultsBySearchString(useLastSearchString)
-        searchPresenter.GetSearchStringHistory()
+        searchPresenter.DoSearch(useLastSearchString)
         Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub AuthorComboBox_DropDown(sender As Object, e As EventArgs) Handles Author1ComboBox.DropDown, Author2ComboBox.DropDown
         Me.Cursor = Cursors.WaitCursor
-        searchPresenter.GetAuthors()
+        searchPresenter.AuthorComboBoxDropDown()
         Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub Author1ComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles Author1ComboBox.DropDownClosed
         Me.Cursor = Cursors.WaitCursor
-        searchPresenter.GetSearchResultsByAuthor()
+        searchPresenter.Author1ComboBoxDropDownClosed()
         Me.Cursor = Cursors.Default
     End Sub
 
@@ -349,13 +348,13 @@ Public Class MainForm
 
     Private Sub Subject1ComboBox_DropDown(sender As Object, e As EventArgs) Handles Subject1ComboBox.DropDown
         Me.Cursor = Cursors.WaitCursor
-        searchPresenter.GetSubjects()
+        searchPresenter.Subject1ComboBoxDropDown()
         Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub Subject1ComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles Subject1ComboBox.DropDownClosed
         Me.Cursor = Cursors.WaitCursor
-        searchPresenter.GetSearchResultsBySubject()
+        searchPresenter.Subject1ComboBoxDropDownClosed()
         Me.Cursor = Cursors.Default
     End Sub
 
@@ -386,7 +385,7 @@ Public Class MainForm
     End Sub
 
     Private Sub Author2ComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles Author2ComboBox.DropDownClosed
-        searchPresenter.OnAuthor2Changed()
+        searchPresenter.Author2ComboBoxDropDownClosed()
         Subject2ComboBox_DropDownClosed(Me, Nothing)
     End Sub
 
@@ -418,13 +417,13 @@ Public Class MainForm
 
     Private Sub Subject2ComboBox_DropDown(sender As Object, e As EventArgs) Handles Subject2ComboBox.DropDown
         Me.Cursor = Cursors.WaitCursor
-        searchPresenter.GetSubjectsByAuthor()
+        searchPresenter.Subject2ComboBoxDropDown()
         Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub Subject2ComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles Subject2ComboBox.DropDownClosed
         Me.Cursor = Cursors.WaitCursor
-        searchPresenter.GetSearchResultsByAuthorAndSubject()
+        searchPresenter.Subject2ComboBoxDropDownClosed()
         Me.Cursor = Cursors.Default
     End Sub
 
@@ -456,13 +455,13 @@ Public Class MainForm
 
     Private Sub SearchDateTimePicker_ValueChanged(sender As Object, e As EventArgs) Handles SearchDateTimePicker.ValueChanged
         Me.Cursor = Cursors.WaitCursor
-        searchPresenter.GetSearchResultsByDateAdded()
+        searchPresenter.SearchDateTimePickerValueChanged()
         Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub QueryAllDocumentsButton_Click(sender As Object, e As EventArgs) Handles QueryAllDocumentsButton.Click
         Me.Cursor = Cursors.WaitCursor
-        searchPresenter.GetAllDBDocumentRecords()
+        searchPresenter.QueryAllDocumentsButtonClick()
         Me.Cursor = Cursors.Default
     End Sub
 #End Region
@@ -497,30 +496,30 @@ Public Class MainForm
             End If
             SearchResultsDataGridView.Columns(5).MinimumWidth = SearchResultsDataGridView.Columns(5).FillWeight + 20
         End If
-        toolStripStateManager.SetPostSearchState()
+        toolStripStatePresenter.SetPostSearchState()
         SearchResultsDataGridView.Focus()
     End Sub
 
     Private Sub SearchResultsDataGridView_Sorted(sender As Object, e As EventArgs) Handles SearchResultsDataGridView.Sorted
-        searchPresenter.SetSearchResultsSortParameters()
+        searchPresenter.SearchResultsDataGridViewSorted()
     End Sub
 
     Private Sub SearchResultsDataGridView_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles SearchResultsDataGridView.RowsAdded
-        searchPresenter.SetTotalRecordsCountLabel()
-        toolStripStateManager.SetSearchResultsViewRowCountChangedState(SearchResultsDataGridView.RowCount, _
+        searchPresenter.SearchResultsDataGridViewRowsAdded()
+        toolStripStatePresenter.SetSearchResultsViewRowCountChangedState(SearchResultsDataGridView.RowCount, _
                                                                        SplitContainer.Panel2Collapsed)
     End Sub
 
     Private Sub SearchResultsDataGridView_RowsRemoved(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles SearchResultsDataGridView.RowsRemoved
-        searchPresenter.SetTotalRecordsCountLabel()
-        toolStripStateManager.SetSearchResultsViewRowCountChangedState(SearchResultsDataGridView.RowCount, _
+        searchPresenter.SearchResultsDataGridViewRowsRemoved()
+        toolStripStatePresenter.SetSearchResultsViewRowCountChangedState(SearchResultsDataGridView.RowCount, _
                                                                        SplitContainer.Panel2Collapsed)
-        toolStripStateManager.SetSearchResultsSelectedState(GetSelectedSearchResultsIds.Count)
+        toolStripStatePresenter.SetSearchResultsSelectedState(GetSelectedSearchResultsIds.Count)
     End Sub
 
     Private Sub SearchResultsDataGridView_SelectionChanged(sender As Object, e As EventArgs) Handles SearchResultsDataGridView.SelectionChanged
         Me.Cursor = Cursors.WaitCursor
-        documentDataPresenter.GetSelectedDocumentData()
+        documentDataPresenter.SearchResultsDataGridViewSelectionChanged()
         Me.Cursor = Cursors.Default
     End Sub
 
@@ -531,7 +530,7 @@ Public Class MainForm
     End Sub
 
     Private Sub SearchResultsDataGridView_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles SearchResultsDataGridView.CellValueChanged
-        toolStripStateManager.SetSearchResultsSelectedState(GetSelectedSearchResultsIds.Count)
+        toolStripStatePresenter.SetSearchResultsSelectedState(GetSelectedSearchResultsIds.Count)
     End Sub
 
     Private Sub SearchResultsDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles SearchResultsDataGridView.CellDoubleClick
@@ -552,91 +551,91 @@ Public Class MainForm
 #Region "Document Data events and private methods"
     Private Sub NotesTextBox_Enter(sender As Object, e As EventArgs) Handles NotesTextBox.Enter, _
                                                                              NotesTextBox.GotFocus
-        toolStripStateManager.SetTextBoxEnterState(NotesTextBox.ReadOnly, _
-                                                   NotesTextBox.TextLength)
+        toolStripStatePresenter.SetTextBoxEnterState(NotesTextBox.ReadOnly, _
+                                                     NotesTextBox.TextLength)
         If NotesTextBox.TextLength > 0 Then
             textToSaveAsOrPrint = NotesTextBox.Text
-            toolStripStateManager.SetTextBoxPrintableState(True)
+            toolStripStatePresenter.SetTextBoxPrintableState(True)
         End If
         If My.Computer.Clipboard.ContainsText Then
-            toolStripStateManager.SetPasteState(True)
+            toolStripStatePresenter.SetPasteState(True)
         End If
-        toolStripStateManager.SetNotesTextBoxChangedState(m_DocumentNotesChanged, _
-                                                          NotesTextBox.CanUndo)
+        toolStripStatePresenter.SetNotesTextBoxChangedState(m_DocumentNotesChanged, _
+                                                            NotesTextBox.CanUndo)
     End Sub
 
     Private Sub NotesTextBox_MouseUp(sender As Object, e As MouseEventArgs) Handles NotesTextBox.MouseUp
-        toolStripStateManager.SetTextBoxTextSelectionState(NotesTextBox.ReadOnly, _
-                                                           NotesTextBox.TextLength, _
-                                                           NotesTextBox.SelectionLength)
+        toolStripStatePresenter.SetTextBoxTextSelectionState(NotesTextBox.ReadOnly, _
+                                                             NotesTextBox.TextLength, _
+                                                             NotesTextBox.SelectionLength)
     End Sub
 
     Private Sub NotesTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles NotesTextBox.KeyPress
-        toolStripStateManager.SetTextBoxTextSelectionState(NotesTextBox.ReadOnly, _
-                                                           NotesTextBox.TextLength, _
-                                                           NotesTextBox.SelectionLength)
+        toolStripStatePresenter.SetTextBoxTextSelectionState(NotesTextBox.ReadOnly, _
+                                                             NotesTextBox.TextLength, _
+                                                             NotesTextBox.SelectionLength)
     End Sub
 
     Private Sub NotesTextBox_TextChanged(sender As Object, e As EventArgs) Handles NotesTextBox.TextChanged
-        documentDataPresenter.DoNotesTextBoxTextChanged()
-        toolStripStateManager.SetTextBoxTextSelectionState(NotesTextBox.ReadOnly, _
-                                                           NotesTextBox.TextLength, _
-                                                           NotesTextBox.SelectionLength)
+        documentDataPresenter.NotesTextBoxTextChanged()
+        toolStripStatePresenter.SetTextBoxTextSelectionState(NotesTextBox.ReadOnly, _
+                                                             NotesTextBox.TextLength, _
+                                                             NotesTextBox.SelectionLength)
     End Sub
 
     Private Sub NotesTextBox_Leave(sender As Object, e As EventArgs) Handles NotesTextBox.Leave
         textToSaveAsOrPrint = Nothing
-        toolStripStateManager.SetTextBoxLeaveState()
-        toolStripStateManager.SetTextBoxPrintableState(False)
+        toolStripStatePresenter.SetTextBoxLeaveState()
+        toolStripStatePresenter.SetTextBoxPrintableState(False)
     End Sub
 
     Private Sub KeywordsTextBox_Enter(sender As Object, e As EventArgs) Handles KeywordsTextBox.Enter
-        toolStripStateManager.SetTextBoxEnterState(KeywordsTextBox.ReadOnly, _
-                                                   KeywordsTextBox.TextLength)
-        toolStripStateManager.SetTextBoxPrintableState(False)
+        toolStripStatePresenter.SetTextBoxEnterState(KeywordsTextBox.ReadOnly, _
+                                                     KeywordsTextBox.TextLength)
+        toolStripStatePresenter.SetTextBoxPrintableState(False)
     End Sub
 
     Private Sub KeywordsTextBox_MouseUp(sender As Object, e As MouseEventArgs) Handles KeywordsTextBox.MouseUp
-        toolStripStateManager.SetTextBoxTextSelectionState(KeywordsTextBox.ReadOnly, _
-                                                           KeywordsTextBox.TextLength, _
-                                                           KeywordsTextBox.SelectionLength)
+        toolStripStatePresenter.SetTextBoxTextSelectionState(KeywordsTextBox.ReadOnly, _
+                                                             KeywordsTextBox.TextLength, _
+                                                             KeywordsTextBox.SelectionLength)
     End Sub
 
     Private Sub KeywordsTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles KeywordsTextBox.KeyPress
-        toolStripStateManager.SetTextBoxTextSelectionState(KeywordsTextBox.ReadOnly, _
-                                                           KeywordsTextBox.TextLength, _
-                                                           KeywordsTextBox.SelectionLength)
+        toolStripStatePresenter.SetTextBoxTextSelectionState(KeywordsTextBox.ReadOnly, _
+                                                             KeywordsTextBox.TextLength, _
+                                                             KeywordsTextBox.SelectionLength)
     End Sub
 
     Private Sub KeywordsTextBox_Leave(sender As Object, e As EventArgs) Handles KeywordsTextBox.Leave
-        toolStripStateManager.SetTextBoxLeaveState()
+        toolStripStatePresenter.SetTextBoxLeaveState()
     End Sub
 
     Private Sub TextTextBox_Enter(sender As Object, e As EventArgs) Handles TextTextBox.Enter
-        toolStripStateManager.SetTextBoxEnterState(TextTextBox.ReadOnly, _
-                                                   TextTextBox.TextLength)
+        toolStripStatePresenter.SetTextBoxEnterState(TextTextBox.ReadOnly, _
+                                                     TextTextBox.TextLength)
         If TextTextBox.TextLength > 0 Then
             textToSaveAsOrPrint = TextTextBox.Text
-            toolStripStateManager.SetTextBoxPrintableState(True)
+            toolStripStatePresenter.SetTextBoxPrintableState(True)
         End If
     End Sub
 
     Private Sub TextTextBox_MouseUp(sender As Object, e As MouseEventArgs) Handles TextTextBox.MouseUp
-        toolStripStateManager.SetTextBoxTextSelectionState(TextTextBox.ReadOnly, _
-                                                           TextTextBox.TextLength, _
-                                                           TextTextBox.SelectionLength)
+        toolStripStatePresenter.SetTextBoxTextSelectionState(TextTextBox.ReadOnly, _
+                                                             TextTextBox.TextLength, _
+                                                             TextTextBox.SelectionLength)
     End Sub
 
     Private Sub TextTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextTextBox.KeyPress
-        toolStripStateManager.SetTextBoxTextSelectionState(TextTextBox.ReadOnly, _
-                                                           TextTextBox.TextLength, _
-                                                           TextTextBox.SelectionLength)
+        toolStripStatePresenter.SetTextBoxTextSelectionState(TextTextBox.ReadOnly, _
+                                                             TextTextBox.TextLength, _
+                                                             TextTextBox.SelectionLength)
     End Sub
 
     Private Sub TextTextBox_Leave(sender As Object, e As EventArgs) Handles TextTextBox.Leave
         textToSaveAsOrPrint = Nothing
-        toolStripStateManager.SetTextBoxLeaveState()
-        toolStripStateManager.SetTextBoxPrintableState(False)
+        toolStripStatePresenter.SetTextBoxLeaveState()
+        toolStripStatePresenter.SetTextBoxPrintableState(False)
     End Sub
 
     Private Function GetTextBoxWithInputFocus() As TextBox
@@ -1030,7 +1029,7 @@ Public Class MainForm
             Return RightTabControl.Enabled
         End Get
         Set(value As Boolean)
-            toolStripStateManager.SetDocumentSelectedState(value)
+            toolStripStatePresenter.SetDocumentSelectedState(value)
             RightTabControl.Enabled = value
         End Set
     End Property
@@ -1053,7 +1052,7 @@ Public Class MainForm
             Dim controlEnabled As Boolean = False
             If m_DocumentNotesChanged = False Then
                 controlEnabled = True
-                toolStripStateManager.SetSearchResultsSelectedState(GetSelectedSearchResultsIds.Count)
+                toolStripStatePresenter.SetSearchResultsSelectedState(GetSelectedSearchResultsIds.Count)
             End If
             ' The "If" check is needed to prevent user from having to check/uncheck checkbox in
             ' SearchResultsDataGridView when Document Notes length > 0.
@@ -1061,8 +1060,8 @@ Public Class MainForm
                 SearchOptionsTabControl.Enabled = controlEnabled
                 SearchResultsDataGridView.Enabled = controlEnabled
             End If
-            toolStripStateManager.SetNotesTextBoxChangedState(m_DocumentNotesChanged, _
-                                                              NotesTextBox.CanUndo)
+            toolStripStatePresenter.SetNotesTextBoxChangedState(m_DocumentNotesChanged, _
+                                                                NotesTextBox.CanUndo)
         End Set
     End Property
 

@@ -243,7 +243,7 @@
     </Compile>
     <Compile Include="Presenter\MainViewDocumentDataPresenter.vb" />
     <Compile Include="Presenter\MainViewSearchPresenter.vb" />
-    <Compile Include="Presenter\MainViewToolStripStateManager.vb" />
+    <Compile Include="Presenter\MainViewToolStripStatePresenter.vb" />
     <Compile Include="Presenter\MainViewUnboundSettingsPresenter.vb" />
     <Compile Include="Presenter\MainViewUploadPresenter.vb" />
     <Compile Include="Service\IMessageDisplayService.vb" />

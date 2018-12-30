@@ -33,7 +33,7 @@ Public Class LoginForm
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         Me.Cursor = Cursors.WaitCursor
-        presenter.Login()
+        presenter.OkClick()
         Me.Cursor = Cursors.Default
     End Sub
 

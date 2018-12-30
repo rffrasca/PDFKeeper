@@ -26,7 +26,39 @@ Public Class MainViewDocumentDataPresenter
         Me.view = view
     End Sub
 
-    Public Sub GetSelectedDocumentData()
+    Public Function MainViewClosing() As Boolean
+        Dim result As DialogResult
+        Dim displayService As IMessageDisplayService = New MessageDisplayService
+        result = displayService.ShowQuestion(My.Resources.DocumentNotesModified, True)
+        If result = Windows.Forms.DialogResult.Yes Then
+            SetDocumentNotes()
+            Return True
+        ElseIf result = DialogResult.No Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Sub FileSaveToolStripMenuItemClick()
+        SetDocumentNotes()
+    End Sub
+
+    Public Sub EditRestoreToolStripMenuItemClick()
+        view.DocumentNotes = lastDocumentNotes
+        lastDocumentNotes = view.DocumentNotes
+    End Sub
+
+    Public Sub EditDateTimeToolStripMenuItemClick()
+        view.DocumentNotes = _
+            view.DocumentNotes.InsertDateTimeAndText(My.Settings.LoginUsername)
+    End Sub
+
+    Public Sub ViewSetPreviewImageResolutionToolStripMenuItemClick()
+        Task.Run(Sub() GetDocumentPdfPreview())
+    End Sub
+
+    Public Sub SearchResultsDataGridViewSelectionChanged()
         If view.DocumentId > 0 Then
             Dim tasks(5) As Task
             tasks(1) = Task.Run(Sub() GetDocumentPdf())
@@ -70,7 +102,7 @@ Public Class MainViewDocumentDataPresenter
         End If
     End Sub
 
-    Public Sub DoNotesTextBoxTextChanged()
+    Public Sub NotesTextBoxTextChanged()
         view.DocumentNotes = view.DocumentNotes.TrimStart
         If view.DocumentNotes <> lastDocumentNotes Then ' IsNot would not work here.
             view.DocumentNotesChanged = True
@@ -78,42 +110,6 @@ Public Class MainViewDocumentDataPresenter
             view.DocumentNotesChanged = False
         End If
     End Sub
-
-    Public Sub ReloadPreview()
-        Task.Run(Sub() GetDocumentPdfPreview())
-    End Sub
-
-    Public Sub SetDocumentNotes()
-        view.DocumentNotes = view.DocumentNotes.Trim
-        Dim nonQueryService As INonQueryService = Nothing
-        NonQueryServiceHelper.SetNonQueryService(nonQueryService)
-        nonQueryService.SetDocumentNotes(view.DocumentId, view.DocumentNotes)
-        lastDocumentNotes = view.DocumentNotes
-    End Sub
-
-    Public Sub RestoreDocumentNotes()
-        view.DocumentNotes = lastDocumentNotes
-        lastDocumentNotes = view.DocumentNotes
-    End Sub
-
-    Public Sub InsertDateTimeAndTextIntoDocumentNotes()
-        view.DocumentNotes = _
-            view.DocumentNotes.InsertDateTimeAndText(My.Settings.LoginUsername)
-    End Sub
-
-    Public Function IsOkayForViewToClose() As Boolean
-        Dim result As DialogResult
-        Dim displayService As IMessageDisplayService = New MessageDisplayService
-        result = displayService.ShowQuestion(My.Resources.DocumentNotesModified, True)
-        If result = Windows.Forms.DialogResult.Yes Then
-            SetDocumentNotes()
-            Return True
-        ElseIf result = DialogResult.No Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
 
     Private Sub ResetDocumentDataPanel()
         lastDocumentNotes = Nothing
@@ -181,5 +177,13 @@ Public Class MainViewDocumentDataPresenter
         Dim pdfFile As New PdfFile( _
             FilePathNameGenerator.GenerateCachePdfFilePathName(view.DocumentId))
         view.DocumentText = pdfFile.GetText
+    End Sub
+
+    Private Sub SetDocumentNotes()
+        view.DocumentNotes = view.DocumentNotes.Trim
+        Dim nonQueryService As INonQueryService = Nothing
+        NonQueryServiceHelper.SetNonQueryService(nonQueryService)
+        nonQueryService.SetDocumentNotes(view.DocumentId, view.DocumentNotes)
+        lastDocumentNotes = view.DocumentNotes
     End Sub
 End Class

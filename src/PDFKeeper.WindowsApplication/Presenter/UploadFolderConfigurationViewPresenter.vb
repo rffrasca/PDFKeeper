@@ -24,7 +24,7 @@ Public Class UploadFolderConfigurationViewPresenter
         Me.view = view
     End Sub
 
-    Public Sub ReadFolderConfiguration()
+    Public Sub UploadFolderConfigurationViewLoad()
         Dim config As New UploadFolderConfiguration
         UploadConfigDirectory.ReadConfig(config, view.EditFolderName)
         view.FolderName = view.EditFolderName
@@ -34,7 +34,25 @@ Public Class UploadFolderConfigurationViewPresenter
         view.Keywords = config.KeywordsPrefill
     End Sub
 
-    Public Sub TextChanged()
+    Public Sub TitleComboBoxEnter()
+        Dim tokens As New GenericList(Of String)
+        tokens.Add(UploadFolderConfigurationTokens.DateToken)
+        tokens.Add(UploadFolderConfigurationTokens.DateTimeToken)
+        tokens.Add(UploadFolderConfigurationTokens.FileNameToken)
+        view.Titles = tokens.ToArray(False)
+    End Sub
+
+    Public Sub AuthorComboBoxEnter()
+        SharedPresenterQueries.GetAuthors(view.Author, view.Authors)
+    End Sub
+
+    Public Sub SubjectComboBoxEnter()
+        SharedPresenterQueries.GetSubjectsByAuthor(view.Author, _
+                                                   view.Subject, _
+                                                   view.Subjects)
+    End Sub
+
+    Public Sub TextBoxTextChanged()
         TrimText()
         If view.FolderName.ContainsInvalidFileNameChars Then
             view.FolderNameErrorProviderMessage = _
@@ -53,25 +71,7 @@ Public Class UploadFolderConfigurationViewPresenter
         End If
     End Sub
 
-    Public Sub GetTitleTokens()
-        Dim tokens As New GenericList(Of String)
-        tokens.Add(UploadFolderConfigurationTokens.DateToken)
-        tokens.Add(UploadFolderConfigurationTokens.DateTimeToken)
-        tokens.Add(UploadFolderConfigurationTokens.FileNameToken)
-        view.Titles = tokens.ToArray(False)
-    End Sub
-
-    Public Sub GetAuthors()
-        SharedPresenterQueries.GetAuthors(view.Author, view.Authors)
-    End Sub
-
-    Public Sub GetSubjectsByAuthor()
-        SharedPresenterQueries.GetSubjectsByAuthor(view.Author, _
-                                                   view.Subject, _
-                                                   view.Subjects)
-    End Sub
-
-    Public Sub SaveFolderConfiguration()
+    Public Sub OkButtonClick()
         UploadController.WaitWhileUploadRunning()
         If Not view.EditFolderName Is Nothing Then
             UploadConfigDirectory.DeleteConfig(view.EditFolderName)

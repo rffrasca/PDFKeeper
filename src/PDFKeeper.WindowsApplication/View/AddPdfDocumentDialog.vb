@@ -32,13 +32,13 @@ Public Class AddPdfDocumentDialog
         m_OriginalPdfFile = originalPdfFile
         m_OriginalPdfFilePassword = originalPdfFilePassword
         HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
-        ViewOriginalButton.Select()
     End Sub
 
     Private Sub AddPdfDocumentDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Cursor = Cursors.WaitCursor
-        presenter.ViewLoad()
+        presenter.AddPdfDocumentViewLoad()
         Me.Cursor = Cursors.Default
+        ViewOriginalButton.Select()
     End Sub
 
     Private Sub AddPdfDocumentDialog_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -46,14 +46,14 @@ Public Class AddPdfDocumentDialog
             If FormClosingPromptService.IsOkayToCancel = False Then
                 e.Cancel = True
             Else
-                presenter.DeleteOutputPdf()
+                presenter.AddPdfDocumentViewClosing()
             End If
         End If
     End Sub
 
     Private Sub ViewOriginalButton_Click(sender As Object, e As EventArgs) Handles ViewOriginalButton.Click
         Me.Cursor = Cursors.WaitCursor
-        presenter.ViewOriginalPdf()
+        presenter.ViewOriginalButtonClick()
         Me.Cursor = Cursors.Default
     End Sub
 
@@ -61,39 +61,39 @@ Public Class AddPdfDocumentDialog
                                                                                 AuthorComboBox.TextChanged, _
                                                                                 SubjectComboBox.TextChanged, _
                                                                                 KeywordsTextBox.TextChanged
-        presenter.TextChanged()
+        presenter.TextBoxesTextChanged()
     End Sub
 
     Private Sub AuthorComboBox_Enter(sender As Object, e As EventArgs) Handles AuthorComboBox.Enter
         Me.Cursor = Cursors.WaitCursor
-        presenter.GetAuthors()
+        presenter.AuthorComboBoxEnter()
         Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub SubjectComboBox_Enter(sender As Object, e As EventArgs) Handles SubjectComboBox.Enter
         Me.Cursor = Cursors.WaitCursor
-        presenter.GetSubjectsByAuthor()
+        presenter.SubjectComboBoxEnter()
         Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub SetToFileNameButton_Click(sender As Object, e As EventArgs) Handles SetToFileNameButton.Click
-        presenter.SetTitleToPdfFileName()
+        presenter.SetToFileNameButtonClick()
     End Sub
 
     Private Sub SaveButton_Click(sender As Object, e As EventArgs) Handles SaveButton.Click
         Me.Cursor = Cursors.WaitCursor
-        presenter.SaveOutputPdf()
+        presenter.SaveButtonClick()
         Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub PreviewButton_Click(sender As Object, e As EventArgs) Handles PreviewButton.Click
         Me.Cursor = Cursors.WaitCursor
-        presenter.ViewOutputPdf()
+        presenter.PreviewButtonClick()
         Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
-        presenter.DeleteOriginalPdf()
+        presenter.OkButtonClick()
         Me.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.Close()
     End Sub
