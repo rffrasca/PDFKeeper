@@ -43,7 +43,7 @@ Public Class AddPdfDocumentDialog
 
     Private Sub AddPdfDocumentDialog_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If Me.DialogResult = Windows.Forms.DialogResult.Cancel Then
-            If GenericFormClosingPrompt.IsOkayToCancel = False Then
+            If FormClosingPromptService.IsOkayToCancel = False Then
                 e.Cancel = True
             Else
                 presenter.DeleteOutputPdf()

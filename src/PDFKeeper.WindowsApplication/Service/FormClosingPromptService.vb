@@ -17,7 +17,7 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public NotInheritable Class GenericFormClosingPrompt
+Public NotInheritable Class FormClosingPromptService
     Private Sub New()
         ' Required by Code Analysis.
     End Sub

@@ -43,14 +43,14 @@ Public NotInheritable Class UploadConfigDirectory
         MessageId:="0#")> _
     Public Shared Sub ReadConfig(ByRef configObjName As UploadFolderConfiguration, _
                                  ByVal configName As String)
-        GenericSerializer.FromXmlToObj(configObjName, _
+        SerializerHelper.FromXmlToObj(configObjName, _
                                        Path.Combine(ApplicationDirectories.UploadConfig, _
                                             configName & ".xml"))
     End Sub
 
     Public Shared Sub WriteConfig(ByVal configObjName As UploadFolderConfiguration, _
                                   ByVal configName As String)
-        GenericSerializer.FromObjToXml(configObjName, _
+        SerializerHelper.FromObjToXml(configObjName, _
                                        Path.Combine(ApplicationDirectories.UploadConfig, _
                                             configName & ".xml"))
     End Sub
