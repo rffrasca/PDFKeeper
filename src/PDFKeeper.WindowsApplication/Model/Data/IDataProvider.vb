@@ -18,7 +18,7 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Interface IDataProvider
-    Sub TestConnection()
+    Sub Test()
     Function ExecuteQuery(ByVal sqlStatement As String) As DataTable
     Function ExecuteScalarQuery(ByVal sqlStatement As String) As Object
     Sub ExecuteBlobQuery(ByVal sqlStatement As String, _

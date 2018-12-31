@@ -56,12 +56,11 @@ Public Class MainViewSearchPresenter
         Else
             view.QueryAllDocumentsVisible = True
             Try
-                Dim queryService As IQueryService = Nothing
-                QueryServiceHelper.SetQueryService(queryService)
+                Dim docsDao As IDocsDao = New DocsDao
                 view.DBDocumentRecordsCountMessage = _
                     String.Format(CultureInfo.CurrentCulture, _
-                                  My.Resources.ResourceManager.GetString("DBDocumentRecordsCountMessage"), _
-                                  queryService.DBDocumentRecordsCount)
+                                  My.Resources.ResourceManager.GetString("DocumentRecordsCountMessage"), _
+                                  docsDao.DocumentRecordCount)
                 view.QueryAllDocumentsEnabled = True
             Catch ex As OracleException
                 Dim displayService As IMessageDisplayService = New MessageDisplayService
@@ -103,9 +102,8 @@ Public Class MainViewSearchPresenter
                 ' in the drop down list that contains the string in the text
                 ' box after the query.
                 Dim currentSearchString As String = view.SearchString
-                Dim queryService As IQueryService = Nothing
-                QueryServiceHelper.SetQueryService(queryService)
-                FillSearchResults(queryService.GetSearchResultsBySearchString(view.SearchString))
+                Dim docsDao As IDocsDao = New DocsDao
+                FillSearchResults(docsDao.GetAllRecordsBySearchString(view.SearchString))
                 view.SearchString = currentSearchString
                 If view.SearchResultsViewRowCount > 0 Then
                     searchStringHistory.Add(view.SearchString)
@@ -123,19 +121,19 @@ Public Class MainViewSearchPresenter
     End Sub
 
     Public Sub AuthorComboBoxDropDown()
+        Dim docsDao As IDocsDao = New DocsDao
         If view.SearchOptionsSelectedIndex = 1 Then
-            SharedPresenterQueries.GetAuthors(view.Authors1)
+            view.Authors1 = docsDao.GetAllAuthors
         ElseIf view.SearchOptionsSelectedIndex = 3 Then
-            SharedPresenterQueries.GetAuthors(view.Authors2)
+            view.Authors2 = docsDao.GetAllAuthors
         End If
     End Sub
 
     Public Sub Author1ComboBoxDropDownClosed()
         If view.Author1 IsNot Nothing Then
             Try
-                Dim queryService As IQueryService = Nothing
-                QueryServiceHelper.SetQueryService(queryService)
-                FillSearchResults(queryService.GetSearchResultsByAuthor(view.Author1))
+                Dim docsDao As IDocsDao = New DocsDao
+                FillSearchResults(docsDao.GetAllRecordsByAuthor(view.Author1))
             Catch ex As OracleException
                 Dim displayService As IMessageDisplayService = New MessageDisplayService
                 displayService.ShowError(ex.Message)
@@ -147,9 +145,8 @@ Public Class MainViewSearchPresenter
 
     Public Sub Subject1ComboBoxDropDown()
         Try
-            Dim queryService As IQueryService = Nothing
-            QueryServiceHelper.SetQueryService(queryService)
-            view.Subjects1 = queryService.GetSubjects
+            Dim docsDao As IDocsDao = New DocsDao
+            view.Subjects1 = docsDao.GetAllSubjects
         Catch ex As OracleException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(ex.Message)
@@ -159,9 +156,8 @@ Public Class MainViewSearchPresenter
     Public Sub Subject1ComboBoxDropDownClosed()
         If view.Subject1 IsNot Nothing Then
             Try
-                Dim queryService As IQueryService = Nothing
-                QueryServiceHelper.SetQueryService(queryService)
-                FillSearchResults(queryService.GetSearchResultsBySubject(view.Subject1))
+                Dim docsDao As IDocsDao = New DocsDao
+                FillSearchResults(docsDao.GetAllRecordsBySubject(view.Subject1))
             Catch ex As OracleException
                 Dim displayService As IMessageDisplayService = New MessageDisplayService
                 displayService.ShowError(ex.Message)
@@ -182,16 +178,16 @@ Public Class MainViewSearchPresenter
     End Sub
 
     Public Sub Subject2ComboBoxDropDown()
-        SharedPresenterQueries.GetSubjectsByAuthor(view.Author2, view.Subjects2)
+        Dim docsDao As IDocsDao = New DocsDao
+        view.Subjects2 = docsDao.GetAllSubjectsByAuthor(view.Author2)
     End Sub
 
     Public Sub Subject2ComboBoxDropDownClosed()
         If view.Subject2 IsNot Nothing Then
             Try
-                Dim queryService As IQueryService = Nothing
-                QueryServiceHelper.SetQueryService(queryService)
-                FillSearchResults(queryService.GetSearchResultsByAuthorAndSubject(view.Author2, _
-                                                                                  view.Subject2))
+                Dim docsDao As IDocsDao = New DocsDao
+                FillSearchResults(docsDao.GetAllRecordsByAuthorAndSubject(view.Author2, _
+                                                                          view.Subject2))
             Catch ex As OracleException
                 Dim displayService As IMessageDisplayService = New MessageDisplayService
                 displayService.ShowError(ex.Message)
@@ -203,9 +199,8 @@ Public Class MainViewSearchPresenter
 
     Public Sub SearchDateTimePickerValueChanged()
         Try
-            Dim queryService As IQueryService = Nothing
-            QueryServiceHelper.SetQueryService(queryService)
-            FillSearchResults(queryService.GetSearchResultsByDateAdded(view.SearchDate))
+            Dim docsDao As IDocsDao = New DocsDao
+            FillSearchResults(docsDao.GetAllRecordsByDateAdded(view.SearchDate))
         Catch ex As OracleException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(ex.Message)
@@ -214,9 +209,8 @@ Public Class MainViewSearchPresenter
 
     Public Sub QueryAllDocumentsButtonClick()
         Try
-            Dim queryService As IQueryService = Nothing
-            QueryServiceHelper.SetQueryService(queryService)
-            FillSearchResults(queryService.GetAllDBDocumentRecords)
+            Dim docsDao As IDocsDao = New DocsDao
+            FillSearchResults(docsDao.GetAllRecords)
             view.DBDocumentRecordsCountMessage = Nothing
             view.QueryAllDocumentsEnabled = False
         Catch ex As OracleException
@@ -257,19 +251,19 @@ Public Class MainViewSearchPresenter
         view.DeleteExportProgressVisible = False
     End Sub
 
-    Private Shared Sub DeleteDocument(ByVal id As Integer)
-        Dim nonQueryService As INonQueryService = Nothing
-        NonQueryServiceHelper.SetNonQueryService(nonQueryService)
-        nonQueryService.DeleteDocument(id)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
+        "CA1822:MarkMembersAsStatic")> _
+    Private Sub DeleteDocument(ByVal id As Integer)
+        Dim docsDao As IDocsDao = New DocsDao
+        docsDao.DeleteRecordById(id)
     End Sub
 
     Private Sub ExportDocumentPdf(ByVal id As Integer)
         Try
             Dim pdfFile As New PdfFile(Path.Combine(exportFolder, _
                                                     My.Application.Info.ProductName & id & ".pdf"))
-            Dim queryService As IQueryService = Nothing
-            QueryServiceHelper.SetQueryService(queryService)
-            queryService.GetDocumentPdf(id, pdfFile.FullName)
+            Dim docsDao As IDocsDao = New DocsDao
+            docsDao.GetPdfById(id, pdfFile.FullName)
         Catch ex As InvalidOperationException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _
@@ -287,9 +281,8 @@ Public Class MainViewSearchPresenter
 
     Private Sub ExportDocumentPdfText(ByVal id As Integer)
         Try
-            Dim queryService As IQueryService = Nothing
-            QueryServiceHelper.SetQueryService(queryService)
-            Dim dataTableNotes As DataTable = queryService.GetDocumentNotes(id)
+            Dim docsDao As IDocsDao = New DocsDao
+            Dim dataTableNotes As DataTable = docsDao.GetNotesById(id)
             Dim documentNotes As String = Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
                                                            CultureInfo.CurrentCulture)
             If documentNotes.Length > 0 Then

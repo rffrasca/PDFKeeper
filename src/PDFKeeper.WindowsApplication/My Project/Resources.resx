@@ -126,7 +126,7 @@
   <data name="Author" xml:space="preserve">
     <value>Author</value>
   </data>
-  <data name="DBDocumentRecordsCountMessage" xml:space="preserve">
+  <data name="DocumentRecordsCountMessage" xml:space="preserve">
     <value>Database contains {0} document records.</value>
   </data>
   <data name="DeleteSelectedDocuments" xml:space="preserve">

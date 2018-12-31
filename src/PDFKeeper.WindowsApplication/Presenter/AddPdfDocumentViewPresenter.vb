@@ -61,13 +61,17 @@ Public Class AddPdfDocumentViewPresenter
     End Sub
 
     Public Sub AuthorComboBoxEnter()
-        SharedPresenterQueries.GetAuthors(view.Author, view.Authors)
+        Dim currentAuthor As String = view.Author
+        Dim docsDao As IDocsDao = New DocsDao
+        view.Authors = docsDao.GetAllAuthors
+        view.Author = currentAuthor
     End Sub
 
     Public Sub SubjectComboBoxEnter()
-        SharedPresenterQueries.GetSubjectsByAuthor(view.Author, _
-                                                   view.Subject, _
-                                                   view.Subjects)
+        Dim currentSubject As String = view.Subject
+        Dim docsDao As IDocsDao = New DocsDao
+        view.Subjects = docsDao.GetAllSubjectsByAuthor(view.Author)
+        view.Subject = currentSubject
     End Sub
 
     Public Sub SetToFileNameButtonClick()

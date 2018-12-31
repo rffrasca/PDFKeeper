@@ -17,18 +17,18 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class DatabaseCredential
-    Private Shared s_Instance As DatabaseCredential
+Public Class DatabaseConnectionProperties
+    Private Shared s_Instance As DatabaseConnectionProperties
 
     Protected Sub New()
         ' Prevents multiple instances of this class and allows this class to
         ' be subclassed. 
     End Sub
 
-    Public Shared ReadOnly Property Instance As DatabaseCredential
+    Public Shared ReadOnly Property Instance As DatabaseConnectionProperties
         Get
             If s_Instance Is Nothing Then
-                s_Instance = New DatabaseCredential
+                s_Instance = New DatabaseConnectionProperties
             End If
             Return s_Instance
         End Get
@@ -38,4 +38,14 @@ Public Class DatabaseCredential
     Public Property Password As SecureString
     Public Property DataSource As String
     Public Property DatabaseSystem As String
+
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", _
+        "CA2000:Dispose objects before losing scope")> _
+    Public Sub Test()
+        Dim dataProvider As IDataProvider = Nothing
+        If DatabaseSystem = "Oracle" Then
+            dataProvider = New OracleDataProvider
+        End If
+        dataProvider.Test()
+    End Sub
 End Class

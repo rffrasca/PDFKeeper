@@ -22,34 +22,24 @@
     MessageId:="Login")> _
 Public Class LoginViewPresenter
     Private view As ILoginView
-    Private model As DatabaseCredential = DatabaseCredential.Instance
+    Private model As DatabaseConnectionProperties = DatabaseConnectionProperties.Instance
 
     Public Sub New(view As ILoginView)
         Me.view = view
     End Sub
 
     Public Sub OkClick()
-        UpdateCredential()
         Try
-            TestConnection()
+            model.UserName = view.UserName
+            model.Password = view.Password
+            model.DataSource = view.DataSource
+            model.DatabaseSystem = view.DatabaseSystem
+            model.Test()
             view.OnLoginFinished(True)
         Catch ex As OracleException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(ex.Message)
             view.OnLoginFinished(False)
         End Try
-    End Sub
-
-    Private Sub UpdateCredential()
-        model.UserName = view.UserName
-        model.Password = view.Password
-        model.DataSource = view.DataSource
-        model.DatabaseSystem = view.DatabaseSystem
-    End Sub
-
-    Private Shared Sub TestConnection()
-        Dim dataProvider As IDataProvider = Nothing
-        DataProviderHelper.SetDataProvider(dataProvider)
-        dataProvider.TestConnection()
     End Sub
 End Class

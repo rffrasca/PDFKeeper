@@ -115,15 +115,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Database contains {0} document records..
-        '''</summary>
-        Friend ReadOnly Property DBDocumentRecordsCountMessage() As String
-            Get
-                Return ResourceManager.GetString("DBDocumentRecordsCountMessage", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to Delete selected documents?.
         '''</summary>
         Friend ReadOnly Property DeleteSelectedDocuments() As String
@@ -131,7 +122,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DeleteSelectedDocuments", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Are you sure you want to delete the selected Upload folder and configuration?.
         '''</summary>
@@ -140,7 +131,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DeleteUploadConfigurationPrompt", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to PDFKeeper is an Open Source PDF Document Storage Solution that integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents.
         '''
@@ -151,7 +142,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DescriptionDetail", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Document ID: {0} - Error: {1}.
         '''</summary>
@@ -160,7 +151,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentIdException", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Document Notes have been modified.
         '''Do you want to save changes before closing?.
@@ -170,7 +161,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentNotesModified", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to {0}.  Document record may have been deleted..
         '''</summary>
@@ -179,7 +170,16 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentRecordMayHaveBeenDeleted", resourceCulture)
             End Get
         End Property
-        
+
+        '''<summary>
+        '''  Looks up a localized string similar to Database contains {0} document records..
+        '''</summary>
+        Friend ReadOnly Property DocumentRecordsCountMessage() As String
+            Get
+                Return ResourceManager.GetString("DocumentRecordsCountMessage", resourceCulture)
+            End Get
+        End Property
+
         '''<summary>
         '''  Looks up a localized string similar to Enter Owner Password:.
         '''</summary>

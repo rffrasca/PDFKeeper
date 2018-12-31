@@ -50,14 +50,13 @@ Public NotInheritable Class UploadStagingDirectory
                     If IO.File.Exists(txtFile) Then
                         notes = IO.File.ReadAllText(txtFile)
                     End If
-                    Dim nonQueryService As INonQueryService = Nothing
-                    NonQueryServiceHelper.SetNonQueryService(nonQueryService)
-                    nonQueryService.InsertDocument(pdfReader.Title, _
-                                                   pdfReader.Author, _
-                                                   pdfReader.Subject, _
-                                                   pdfReader.Keywords, _
-                                                   notes, _
-                                                   file)
+                    Dim docsDao As IDocsDao = New DocsDao
+                    docsDao.CreateRecord(pdfReader.Title, _
+                                         pdfReader.Author, _
+                                         pdfReader.Subject, _
+                                         pdfReader.Keywords, _
+                                         notes, _
+                                         file)
                     FileHelper.DeleteFileToRecycleBin(file)
                     FileHelper.DeleteFileToRecycleBin(txtFile)
                 End If

@@ -19,12 +19,13 @@
 '******************************************************************************
 Public Class OracleDataProvider
     Implements IDisposable, IDataProvider
-    Private credential As DatabaseCredential = DatabaseCredential.Instance
+    Private connnectionProperties As DatabaseConnectionProperties = _
+        DatabaseConnectionProperties.Instance
     Private connection As New OracleConnection
 
-    Public Sub TestConnection() Implements IDataProvider.TestConnection
-        OpenConnection()
-        CloseConnection()
+    Public Sub Test() Implements IDataProvider.Test
+        Open()
+        Close()
     End Sub
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", _
@@ -33,9 +34,9 @@ Public Class OracleDataProvider
         Using adapter As New OracleDataAdapter(sqlStatement, connection)
             Using table As New DataTable
                 table.Locale = CultureInfo.InvariantCulture
-                OpenConnection()
+                Open()
                 adapter.Fill(table)
-                CloseConnection()
+                Close()
                 Return table
             End Using
         End Using
@@ -45,9 +46,9 @@ Public Class OracleDataProvider
         "CA2100:Review SQL queries for security vulnerabilities")> _
     Public Function ExecuteScalarQuery(sqlStatement As String) As Object Implements IDataProvider.ExecuteScalarQuery
         Using Command As New OracleCommand(sqlStatement, connection)
-            OpenConnection()
+            Open()
             Return Command.ExecuteScalar
-            CloseConnection()
+            Close()
         End Using
     End Function
 
@@ -56,7 +57,7 @@ Public Class OracleDataProvider
     Public Sub ExecuteBlobQuery(sqlStatement As String, _
                                 targetPathName As String) Implements IDataProvider.ExecuteBlobQuery
         Using command As New OracleCommand(sqlStatement, connection)
-            OpenConnection()
+            Open()
             Using dataReader As OracleDataReader = command.ExecuteReader
                 dataReader.Read()
                 Dim blob As OracleBlob = dataReader.GetOracleBlob(0)
@@ -66,7 +67,7 @@ Public Class OracleDataProvider
                     End Using
                 End Using
             End Using
-            CloseConnection()
+            Close()
         End Using
     End Sub
 
@@ -76,7 +77,7 @@ Public Class OracleDataProvider
                                  sourcePathName As String) Implements IDataProvider.ExecuteBlobInsert
         Using command As New OracleCommand(sqlStatement, connection)
             Dim blob As Byte() = FileHelper.GetFileAsByteArray(sourcePathName)
-            OpenConnection()
+            Open()
 
             ' Bind the parameter to the insert statement.
             command.CommandType = CommandType.Text
@@ -86,7 +87,7 @@ Public Class OracleDataProvider
             parameter.Value = blob
 
             command.ExecuteNonQuery()
-            CloseConnection()
+            Close()
         End Using
     End Sub
 
@@ -94,22 +95,22 @@ Public Class OracleDataProvider
         "CA2100:Review SQL queries for security vulnerabilities")> _
     Public Sub ExecuteNonQuery(sqlStatement As String) Implements IDataProvider.ExecuteNonQuery
         Using command As New OracleCommand(sqlStatement, connection)
-            OpenConnection()
+            Open()
             command.ExecuteNonQuery()
-            CloseConnection()
+            Close()
         End Using
     End Sub
 
-    Private Sub OpenConnection()
+    Private Sub Open()
         connection.ConnectionString = _
-            "User Id=" + credential.UserName + ";" & _
-            "Password=" + credential.Password.ToPlainTextString + ";" & _
-            "Data Source=" + credential.DataSource + ";" & _
+            "User Id=" + connnectionProperties.UserName + ";" & _
+            "Password=" + connnectionProperties.Password.ToPlainTextString + ";" & _
+            "Data Source=" + connnectionProperties.DataSource + ";" & _
             "Persist Security Info=False;Pooling=True"
         connection.Open()
     End Sub
 
-    Private Sub CloseConnection()
+    Private Sub Close()
         Dispose()
     End Sub
 

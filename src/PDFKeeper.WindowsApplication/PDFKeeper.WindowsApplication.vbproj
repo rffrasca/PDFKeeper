@@ -134,17 +134,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Model\Data\DatabaseCredential.vb" />
-    <Compile Include="Model\Data\DataProviderHelper.vb" />
+    <Compile Include="Model\Data\DatabaseConnectionProperties.vb" />
+    <Compile Include="Model\Data\DocsDao.vb" />
     <Compile Include="Model\Data\IDataProvider.vb" />
-    <Compile Include="Model\Data\INonQueryService.vb" />
-    <Compile Include="Model\Data\IQueryService.vb" />
-    <Compile Include="Model\Data\NonQueryServiceHelper.vb" />
+    <Compile Include="Model\Data\IDocsDao.vb" />
+    <Compile Include="Model\Data\Oracle\OracleDataAccess.vb" />
     <Compile Include="Model\Data\Oracle\OracleDataProvider.vb" />
-    <Compile Include="Model\Data\Oracle\OracleNonQueryService.vb" />
-    <Compile Include="Model\Data\Oracle\OracleQueryService.vb" />
-    <Compile Include="Model\Data\QueryServiceHelper.vb" />
-    <Compile Include="Model\Data\SharedPresenterQueries.vb" />
     <Compile Include="Extension\SecureStringExtension.vb" />
     <Compile Include="Extension\StringExtension.vb" />
     <Compile Include="Generic\GenericDictionaryList.vb" />
@@ -174,7 +169,7 @@
     <Compile Include="Model\File\PDF\PdfFileInfoPropertiesReader.vb" />
     <Compile Include="Model\File\PDF\PdfFileInfoPropertiesWriter.vb" />
     <Compile Include="Helper\ProcessHelper.vb" />
-    <Compile Include="Model\SearchResultsSortParameters.vb" />
+    <Compile Include="Presenter\SearchResultsSortParameters.vb" />
     <Compile Include="Helper\SettingsHelper.vb" />
     <Compile Include="Service\UnhandledExceptionService.vb" />
     <Compile Include="Enums.vb" />

@@ -130,17 +130,15 @@ Public Class MainViewDocumentDataPresenter
             End If
         End If
         If cached = False Then
-            Dim queryService As IQueryService = Nothing
-            QueryServiceHelper.SetQueryService(queryService)
-            queryService.GetDocumentPdf(view.DocumentId, pdfFile.FullName)
+            Dim docsDao As IDocsDao = New DocsDao
+            docsDao.GetPdfById(view.DocumentId, pdfFile.FullName)
             fileHashes.SetItem(pdfFile.FullName, pdfFile.ComputeHash)
         End If
     End Sub
 
     Private Sub GetDocumentNotes()
-        Dim queryService As IQueryService = Nothing
-        QueryServiceHelper.SetQueryService(queryService)
-        Dim dataTableNotes As DataTable = queryService.GetDocumentNotes(view.DocumentId)
+        Dim docsDao As IDocsDao = New DocsDao
+        Dim dataTableNotes As DataTable = docsDao.GetNotesById(view.DocumentId)
         view.DocumentNotes = Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
                                               CultureInfo.CurrentCulture)
         lastDocumentNotes = view.DocumentNotes
@@ -148,9 +146,8 @@ Public Class MainViewDocumentDataPresenter
     End Sub
 
     Private Sub GetDocumentKeywords()
-        Dim queryService As IQueryService = Nothing
-        QueryServiceHelper.SetQueryService(queryService)
-        Dim dataTableKeywords As DataTable = queryService.GetDocumentKeywords(view.DocumentId)
+        Dim docsDao As IDocsDao = New DocsDao
+        Dim dataTableKeywords As DataTable = docsDao.GetKeywordsById(view.DocumentId)
         view.DocumentKeywords = Convert.ToString(dataTableKeywords.Rows(0)("doc_keywords"), _
                                                  CultureInfo.CurrentCulture)
     End Sub
@@ -181,9 +178,8 @@ Public Class MainViewDocumentDataPresenter
 
     Private Sub SetDocumentNotes()
         view.DocumentNotes = view.DocumentNotes.Trim
-        Dim nonQueryService As INonQueryService = Nothing
-        NonQueryServiceHelper.SetNonQueryService(nonQueryService)
-        nonQueryService.SetDocumentNotes(view.DocumentId, view.DocumentNotes)
+        Dim docsDao As IDocsDao = New DocsDao
+        docsDao.UpdateNotesById(view.DocumentId, view.DocumentNotes)
         lastDocumentNotes = view.DocumentNotes
     End Sub
 End Class
