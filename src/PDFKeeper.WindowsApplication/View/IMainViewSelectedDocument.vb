@@ -17,9 +17,9 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Interface IMainViewDocumentData
+Public Interface IMainViewSelectedDocument
     ReadOnly Property DocumentId As Integer
-    Property DocumentDataPanelEnabled As Boolean
+    Property RightTabControlEnabled As Boolean
     Property DocumentNotes As String
     Property DocumentNotesChanged As Boolean
     Property DocumentKeywords As String

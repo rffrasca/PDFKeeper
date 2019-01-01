@@ -19,11 +19,11 @@
 '******************************************************************************
 Public Class MainForm
     Implements IMainViewUnboundSettings, IMainViewToolStripState,  _
-        IMainViewSearch, IMainViewDocumentData, IMainViewUpload
+        IMainViewSearch, IMainViewSelectedDocument, IMainViewUpload
     Private unboundSettingsPresenter As MainViewUnboundSettingsPresenter
     Private toolStripStatePresenter As MainViewToolStripStatePresenter
     Private searchPresenter As MainViewSearchPresenter
-    Private documentDataPresenter As MainViewDocumentDataPresenter
+    Private documentDataPresenter As MainViewSelectedDocumentPresenter
     Private uploadPresenter As MainViewUploadPresenter
     Private refreshFlag As Boolean
     Private textToSaveAsOrPrint As String
@@ -36,7 +36,7 @@ Public Class MainForm
         unboundSettingsPresenter = New MainViewUnboundSettingsPresenter(Me)
         toolStripStatePresenter = New MainViewToolStripStatePresenter(Me)
         searchPresenter = New MainViewSearchPresenter(Me)
-        documentDataPresenter = New MainViewDocumentDataPresenter(Me)
+        documentDataPresenter = New MainViewSelectedDocumentPresenter(Me)
         uploadPresenter = New MainViewUploadPresenter(Me)
         HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
         AutoUpdaterHelper.StartUpdater()    ' Also called on a timer every 30 minutes.
@@ -1013,8 +1013,8 @@ Public Class MainForm
     End Sub
 #End Region
 
-#Region "IMainViewDocumentData members get/set by MainViewDocumentDataPresenter"
-    Public ReadOnly Property DocumentId As Integer Implements IMainViewDocumentData.DocumentId
+#Region "IMainViewSelectedDocument members get/set by MainViewSelectedDocumentPresenter"
+    Public ReadOnly Property DocumentId As Integer Implements IMainViewSelectedDocument.DocumentId
         Get
             ' Filter out null selections that occur when the DataGridView is filled.
             If SearchResultsDataGridView.SelectedRows.Count > 0 Then
@@ -1024,7 +1024,7 @@ Public Class MainForm
         End Get
     End Property
 
-    Public Property DocumentDataPanelEnabled As Boolean Implements IMainViewDocumentData.DocumentDataPanelEnabled
+    Public Property RightTabControlEnabled As Boolean Implements IMainViewSelectedDocument.RightTabControlEnabled
         Get
             Return RightTabControl.Enabled
         End Get
@@ -1034,7 +1034,7 @@ Public Class MainForm
         End Set
     End Property
 
-    Public Property DocumentNotes As String Implements IMainViewDocumentData.DocumentNotes
+    Public Property DocumentNotes As String Implements IMainViewSelectedDocument.DocumentNotes
         Get
             Return NotesTextBox.Text
         End Get
@@ -1043,7 +1043,7 @@ Public Class MainForm
         End Set
     End Property
 
-    Public Property DocumentNotesChanged As Boolean Implements IMainViewDocumentData.DocumentNotesChanged
+    Public Property DocumentNotesChanged As Boolean Implements IMainViewSelectedDocument.DocumentNotesChanged
         Get
             Return m_DocumentNotesChanged
         End Get
@@ -1065,7 +1065,7 @@ Public Class MainForm
         End Set
     End Property
 
-    Public Property DocumentKeywords As String Implements IMainViewDocumentData.DocumentKeywords
+    Public Property DocumentKeywords As String Implements IMainViewSelectedDocument.DocumentKeywords
         Get
             Return KeywordsTextBox.Text
         End Get
@@ -1074,7 +1074,7 @@ Public Class MainForm
         End Set
     End Property
 
-    Public Property DocumentPreview As Image Implements IMainViewDocumentData.DocumentPreview
+    Public Property DocumentPreview As Image Implements IMainViewSelectedDocument.DocumentPreview
         Get
             Return PreviewPictureBox.Image
         End Get
@@ -1087,7 +1087,7 @@ Public Class MainForm
         End Set
     End Property
 
-    Public Property DocumentText As String Implements IMainViewDocumentData.DocumentText
+    Public Property DocumentText As String Implements IMainViewSelectedDocument.DocumentText
         Get
             Return TextTextBox.Text
         End Get

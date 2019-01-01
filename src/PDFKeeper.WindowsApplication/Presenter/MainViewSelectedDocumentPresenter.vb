@@ -17,12 +17,12 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class MainViewDocumentDataPresenter
-    Private view As IMainViewDocumentData
+Public Class MainViewSelectedDocumentPresenter
+    Private view As IMainViewSelectedDocument
     Private fileHashes As New GenericDictionaryList(Of String, String)
     Private lastDocumentNotes As String
 
-    Public Sub New(view As IMainViewDocumentData)
+    Public Sub New(view As IMainViewSelectedDocument)
         Me.view = view
     End Sub
 
@@ -31,7 +31,7 @@ Public Class MainViewDocumentDataPresenter
         Dim displayService As IMessageDisplayService = New MessageDisplayService
         result = displayService.ShowQuestion(My.Resources.DocumentNotesModified, True)
         If result = Windows.Forms.DialogResult.Yes Then
-            SetDocumentNotes()
+            UpdateDocumentNotes()
             Return True
         ElseIf result = DialogResult.No Then
             Return True
@@ -41,7 +41,7 @@ Public Class MainViewDocumentDataPresenter
     End Function
 
     Public Sub FileSaveToolStripMenuItemClick()
-        SetDocumentNotes()
+        UpdateDocumentNotes()
     End Sub
 
     Public Sub EditRestoreToolStripMenuItemClick()
@@ -80,7 +80,7 @@ Public Class MainViewDocumentDataPresenter
                         displayService.ShowError(e.Message)
                     End If
                 Next
-                ResetDocumentDataPanel()
+                ClearSelectedDocument()
                 Exit Sub
             End Try
             tasks(4) = Task.Run(Sub() GetDocumentPdfPreview())
@@ -93,12 +93,12 @@ Public Class MainViewDocumentDataPresenter
                         New MessageDisplayService
                     displayService.ShowError(e.Message)
                 Next
-                ResetDocumentDataPanel()
+                ClearSelectedDocument()
                 Exit Sub
             End Try
-            view.DocumentDataPanelEnabled = True
+            view.RightTabControlEnabled = True
         Else
-            ResetDocumentDataPanel()
+            ClearSelectedDocument()
         End If
     End Sub
 
@@ -111,9 +111,9 @@ Public Class MainViewDocumentDataPresenter
         End If
     End Sub
 
-    Private Sub ResetDocumentDataPanel()
+    Private Sub ClearSelectedDocument()
         lastDocumentNotes = Nothing
-        view.DocumentDataPanelEnabled = False
+        view.RightTabControlEnabled = False
         view.DocumentNotes = Nothing
         view.DocumentKeywords = Nothing
         view.DocumentPreview = Nothing
@@ -176,7 +176,7 @@ Public Class MainViewDocumentDataPresenter
         view.DocumentText = pdfFile.GetText
     End Sub
 
-    Private Sub SetDocumentNotes()
+    Private Sub UpdateDocumentNotes()
         view.DocumentNotes = view.DocumentNotes.Trim
         Dim docsDao As IDocsDao = New DocsDao
         docsDao.UpdateNotesById(view.DocumentId, view.DocumentNotes)

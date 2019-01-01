@@ -225,7 +225,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presenter\LoginViewPresenter.vb" />
-    <Compile Include="View\IMainViewDocumentData.vb" />
+    <Compile Include="View\IMainViewSelectedDocument.vb" />
     <Compile Include="View\IMainViewSearch.vb" />
     <Compile Include="View\IMainViewToolStripState.vb" />
     <Compile Include="View\IMainViewUnboundSettings.vb" />
@@ -236,7 +236,7 @@
     <Compile Include="View\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presenter\MainViewDocumentDataPresenter.vb" />
+    <Compile Include="Presenter\MainViewSelectedDocumentPresenter.vb" />
     <Compile Include="Presenter\MainViewSearchPresenter.vb" />
     <Compile Include="Presenter\MainViewToolStripStatePresenter.vb" />
     <Compile Include="Presenter\MainViewUnboundSettingsPresenter.vb" />
