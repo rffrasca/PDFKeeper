@@ -22,7 +22,8 @@
 Public Class OracleDataAccess
     Implements IDocsDao
     Private dataProvider As IDataProvider
-    Private credential As DatabaseConnectionProperties = DatabaseConnectionProperties.Instance
+    Private connnectionProperties As DatabaseConnectionProperties = _
+        DatabaseConnectionProperties.Instance
     Private columnsParameter As String
     Private whereParameter As String
     Private groupByParameter As String
@@ -33,7 +34,7 @@ Public Class OracleDataAccess
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", _
         "CA2000:Dispose objects before losing scope")> _
     Public Sub New()
-        If credential.DatabaseSystem = "Oracle" Then
+        If connnectionProperties.DatabaseSystem = "Oracle" Then
             dataProvider = New OracleDataProvider
         End If
     End Sub
