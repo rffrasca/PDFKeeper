@@ -21,6 +21,7 @@ Public Class MainViewSelectedDocumentPresenter
     Private view As IMainViewSelectedDocument
     Private fileHashes As New GenericDictionaryList(Of String, String)
     Private lastDocumentNotes As String
+    Private preUpdateDocumentNotes As String
 
     Public Sub New(view As IMainViewSelectedDocument)
         Me.view = view
@@ -28,8 +29,10 @@ Public Class MainViewSelectedDocumentPresenter
 
     Public Function MainViewClosing() As Boolean
         Dim result As DialogResult
-        Dim displayService As IMessageDisplayService = New MessageDisplayService
-        result = displayService.ShowQuestion(My.Resources.DocumentNotesModified, True)
+        Dim displayService As IMessageDisplayService = _
+            New MessageDisplayService
+        result = displayService.ShowQuestion( _
+            My.Resources.DocumentNotesModified, True)
         If result = Windows.Forms.DialogResult.Yes Then
             UpdateDocumentNotes()
             Return True
@@ -41,7 +44,28 @@ Public Class MainViewSelectedDocumentPresenter
     End Function
 
     Public Sub FileSaveToolStripMenuItemClick()
-        UpdateDocumentNotes()
+        Try
+            GetDocumentNotes(False)
+        Catch ex As IndexOutOfRangeException
+            Dim displayService As IMessageDisplayService = _
+                        New MessageDisplayService
+            displayService.ShowError(String.Format( _
+                                     CultureInfo.CurrentCulture, _
+                                     My.Resources.ResourceManager.GetString( _
+                                         "DocumentRecordMayHaveBeenDeleted"), _
+                                     ex.Message))
+            ClearSelectedDocument()
+            Exit Sub
+        End Try
+        If preUpdateDocumentNotes = lastDocumentNotes Then
+            UpdateDocumentNotes()
+        Else
+            Clipboard.SetText(view.DocumentNotes.Trim)
+            GetDocumentNotes(True)
+            Dim displayService As IMessageDisplayService = _
+                New MessageDisplayService
+            displayService.ShowError(My.Resources.UnableToSaveDocumentNotes)
+        End If
     End Sub
 
     Public Sub EditRestoreToolStripMenuItemClick()
@@ -62,7 +86,7 @@ Public Class MainViewSelectedDocumentPresenter
         If view.DocumentId > 0 Then
             Dim tasks(5) As Task
             tasks(1) = Task.Run(Sub() GetDocumentPdf())
-            tasks(2) = Task.Run(Sub() GetDocumentNotes())
+            tasks(2) = Task.Run(Sub() GetDocumentNotes(True))
             tasks(3) = Task.Run(Sub() GetDocumentKeywords())
             Try
                 tasks(1).Wait()
@@ -136,13 +160,18 @@ Public Class MainViewSelectedDocumentPresenter
         End If
     End Sub
 
-    Private Sub GetDocumentNotes()
+    Private Sub GetDocumentNotes(ByVal updateView As Boolean)
         Dim docsDao As IDocsDao = New DocsDao
         Dim dataTableNotes As DataTable = docsDao.GetNotesById(view.DocumentId)
-        view.DocumentNotes = Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
-                                              CultureInfo.CurrentCulture)
-        lastDocumentNotes = view.DocumentNotes
-        view.DocumentNotesChanged = False
+        Dim notes As String = Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
+                                               CultureInfo.CurrentCulture)
+        If updateView Then
+            view.DocumentNotes = notes
+            lastDocumentNotes = view.DocumentNotes
+            view.DocumentNotesChanged = False
+        Else
+            preUpdateDocumentNotes = notes
+        End If
     End Sub
 
     Private Sub GetDocumentKeywords()

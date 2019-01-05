@@ -223,9 +223,14 @@ Do you want to save changes before closing?</value>
     <value>{0}.  Document ID {1} may have been deleted.</value>
   </data>
   <data name="DocumentRecordMayHaveBeenDeleted" xml:space="preserve">
-    <value>{0}.  Document record may have been deleted.</value>
+    <value>{0}.  Document record may have been deleted.  Please Refresh your Search Results.</value>
   </data>
   <data name="DocumentIdException" xml:space="preserve">
     <value>Document ID: {0} - Error: {1}</value>
+  </data>
+  <data name="UnableToSaveDocumentNotes" xml:space="preserve">
+    <value>The changes you made to the Notes text box cannot be saved and have been lost because another user has updated the Notes for the same record.
+
+The contents of the Notes text box prior to the attempted save operation have been copied to the Clipboard.</value>
   </data>
 </root>
