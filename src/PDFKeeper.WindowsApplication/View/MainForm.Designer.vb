@@ -75,6 +75,8 @@ Partial Class MainForm
         Me.EditRestoreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.EditDateTimeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
+        Me.EditFlagDocumentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToggleRightPanelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator23 = New System.Windows.Forms.ToolStripSeparator()
@@ -110,8 +112,9 @@ Partial Class MainForm
         Me.Author2ComboBox = New System.Windows.Forms.ComboBox()
         Me.SearchByDateAddedTabPage = New System.Windows.Forms.TabPage()
         Me.SearchDateTimePicker = New System.Windows.Forms.DateTimePicker()
-        Me.AllDocumentsTabPage = New System.Windows.Forms.TabPage()
-        Me.QueryAllDocumentsButton = New System.Windows.Forms.Button()
+        Me.AllFlaggedDocumentsTabPage = New System.Windows.Forms.TabPage()
+        Me.FlaggedDocumentsOnlyCheckBox = New System.Windows.Forms.CheckBox()
+        Me.QueryDocumentsButton = New System.Windows.Forms.Button()
         Me.DBDocumentRecordsCountLabel = New System.Windows.Forms.Label()
         Me.RightTabControl = New System.Windows.Forms.TabControl()
         Me.NotesTabPage = New System.Windows.Forms.TabPage()
@@ -169,7 +172,7 @@ Partial Class MainForm
         Me.SearchBySubjectTabPage.SuspendLayout()
         Me.SearchByAuthorAndSubjectTabPage.SuspendLayout()
         Me.SearchByDateAddedTabPage.SuspendLayout()
-        Me.AllDocumentsTabPage.SuspendLayout()
+        Me.AllFlaggedDocumentsTabPage.SuspendLayout()
         Me.RightTabControl.SuspendLayout()
         Me.NotesTabPage.SuspendLayout()
         Me.KeywordsTabPage.SuspendLayout()
@@ -281,7 +284,7 @@ Partial Class MainForm
         '
         'EditToolStripMenuItem
         '
-        Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditUndoToolStripMenuItem, Me.ToolStripSeparator7, Me.EditCutToolStripMenuItem, Me.EditCopyToolStripMenuItem, Me.EditPasteToolStripMenuItem, Me.ToolStripSeparator8, Me.EditSelectAllToolStripMenuItem, Me.ToolStripSeparator9, Me.EditRestoreToolStripMenuItem, Me.ToolStripSeparator5, Me.EditDateTimeToolStripMenuItem})
+        Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditUndoToolStripMenuItem, Me.ToolStripSeparator7, Me.EditCutToolStripMenuItem, Me.EditCopyToolStripMenuItem, Me.EditPasteToolStripMenuItem, Me.ToolStripSeparator8, Me.EditSelectAllToolStripMenuItem, Me.ToolStripSeparator9, Me.EditRestoreToolStripMenuItem, Me.ToolStripSeparator5, Me.EditDateTimeToolStripMenuItem, Me.ToolStripSeparator13, Me.EditFlagDocumentToolStripMenuItem})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
         resources.ApplyResources(Me.EditToolStripMenuItem, "EditToolStripMenuItem")
         '
@@ -339,6 +342,17 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.EditDateTimeToolStripMenuItem, "EditDateTimeToolStripMenuItem")
         Me.EditDateTimeToolStripMenuItem.Name = "EditDateTimeToolStripMenuItem"
+        '
+        'ToolStripSeparator13
+        '
+        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
+        resources.ApplyResources(Me.ToolStripSeparator13, "ToolStripSeparator13")
+        '
+        'EditFlagDocumentToolStripMenuItem
+        '
+        Me.EditFlagDocumentToolStripMenuItem.CheckOnClick = True
+        Me.EditFlagDocumentToolStripMenuItem.Name = "EditFlagDocumentToolStripMenuItem"
+        resources.ApplyResources(Me.EditFlagDocumentToolStripMenuItem, "EditFlagDocumentToolStripMenuItem")
         '
         'ViewToolStripMenuItem
         '
@@ -489,7 +503,7 @@ Partial Class MainForm
         Me.SearchOptionsTabControl.Controls.Add(Me.SearchBySubjectTabPage)
         Me.SearchOptionsTabControl.Controls.Add(Me.SearchByAuthorAndSubjectTabPage)
         Me.SearchOptionsTabControl.Controls.Add(Me.SearchByDateAddedTabPage)
-        Me.SearchOptionsTabControl.Controls.Add(Me.AllDocumentsTabPage)
+        Me.SearchOptionsTabControl.Controls.Add(Me.AllFlaggedDocumentsTabPage)
         resources.ApplyResources(Me.SearchOptionsTabControl, "SearchOptionsTabControl")
         Me.SearchOptionsTabControl.Name = "SearchOptionsTabControl"
         Me.SearchOptionsTabControl.SelectedIndex = 0
@@ -583,19 +597,27 @@ Partial Class MainForm
         resources.ApplyResources(Me.SearchDateTimePicker, "SearchDateTimePicker")
         Me.SearchDateTimePicker.Name = "SearchDateTimePicker"
         '
-        'AllDocumentsTabPage
+        'AllFlaggedDocumentsTabPage
         '
-        Me.AllDocumentsTabPage.Controls.Add(Me.QueryAllDocumentsButton)
-        Me.AllDocumentsTabPage.Controls.Add(Me.DBDocumentRecordsCountLabel)
-        resources.ApplyResources(Me.AllDocumentsTabPage, "AllDocumentsTabPage")
-        Me.AllDocumentsTabPage.Name = "AllDocumentsTabPage"
-        Me.AllDocumentsTabPage.UseVisualStyleBackColor = True
+        Me.AllFlaggedDocumentsTabPage.Controls.Add(Me.FlaggedDocumentsOnlyCheckBox)
+        Me.AllFlaggedDocumentsTabPage.Controls.Add(Me.QueryDocumentsButton)
+        Me.AllFlaggedDocumentsTabPage.Controls.Add(Me.DBDocumentRecordsCountLabel)
+        resources.ApplyResources(Me.AllFlaggedDocumentsTabPage, "AllFlaggedDocumentsTabPage")
+        Me.AllFlaggedDocumentsTabPage.Name = "AllFlaggedDocumentsTabPage"
+        Me.AllFlaggedDocumentsTabPage.UseVisualStyleBackColor = True
         '
-        'QueryAllDocumentsButton
+        'FlaggedDocumentsOnlyCheckBox
         '
-        resources.ApplyResources(Me.QueryAllDocumentsButton, "QueryAllDocumentsButton")
-        Me.QueryAllDocumentsButton.Name = "QueryAllDocumentsButton"
-        Me.QueryAllDocumentsButton.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.FlaggedDocumentsOnlyCheckBox, "FlaggedDocumentsOnlyCheckBox")
+        Me.FlaggedDocumentsOnlyCheckBox.Name = "FlaggedDocumentsOnlyCheckBox"
+        Me.FlaggedDocumentsOnlyCheckBox.UseVisualStyleBackColor = True
+        '
+        'QueryDocumentsButton
+        '
+        resources.ApplyResources(Me.QueryDocumentsButton, "QueryDocumentsButton")
+        Me.QueryDocumentsButton.Name = "QueryDocumentsButton"
+        Me.HelpProvider.SetShowHelp(Me.QueryDocumentsButton, CType(resources.GetObject("QueryDocumentsButton.ShowHelp"), Boolean))
+        Me.QueryDocumentsButton.UseVisualStyleBackColor = True
         '
         'DBDocumentRecordsCountLabel
         '
@@ -883,8 +905,8 @@ Partial Class MainForm
         Me.SearchBySubjectTabPage.ResumeLayout(False)
         Me.SearchByAuthorAndSubjectTabPage.ResumeLayout(False)
         Me.SearchByDateAddedTabPage.ResumeLayout(False)
-        Me.AllDocumentsTabPage.ResumeLayout(False)
-        Me.AllDocumentsTabPage.PerformLayout()
+        Me.AllFlaggedDocumentsTabPage.ResumeLayout(False)
+        Me.AllFlaggedDocumentsTabPage.PerformLayout()
         Me.RightTabControl.ResumeLayout(False)
         Me.NotesTabPage.ResumeLayout(False)
         Me.NotesTabPage.PerformLayout()
@@ -1000,10 +1022,10 @@ Partial Class MainForm
     Friend WithEvents ToolStripSeparator10 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents SelectionColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents DeleteExportToolStripProgressBar As System.Windows.Forms.ToolStripProgressBar
-    Friend WithEvents AllDocumentsTabPage As System.Windows.Forms.TabPage
+    Friend WithEvents AllFlaggedDocumentsTabPage As System.Windows.Forms.TabPage
     Friend WithEvents SearchBySubjectTabPage As System.Windows.Forms.TabPage
     Friend WithEvents Subject1ComboBox As System.Windows.Forms.ComboBox
-    Friend WithEvents QueryAllDocumentsButton As System.Windows.Forms.Button
+    Friend WithEvents QueryDocumentsButton As System.Windows.Forms.Button
     Friend WithEvents DBDocumentRecordsCountLabel As System.Windows.Forms.Label
     Friend WithEvents EditRestoreToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
@@ -1015,4 +1037,7 @@ Partial Class MainForm
     Friend WithEvents FillerToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
     Friend WithEvents AutoUpdateCheckTimer As System.Windows.Forms.Timer
+    Friend WithEvents ToolStripSeparator13 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents EditFlagDocumentToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FlaggedDocumentsOnlyCheckBox As System.Windows.Forms.CheckBox
 End Class

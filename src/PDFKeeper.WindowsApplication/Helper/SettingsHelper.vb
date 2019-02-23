@@ -23,10 +23,13 @@ Public NotInheritable Class SettingsHelper
     End Sub
 
     Public Shared Sub UpgradeUserSettings()
+        ' UpgradeSettings is an application user setting.
         If My.Settings.UpgradeSettings Then
             My.Settings.Upgrade()
             My.Settings.UpgradeSettings = False
             My.Settings.Save()
+            HelpProviderHelper.OpenHelpFileAndWait( _
+                "Database Schema Upgrade for Oracle Database.html")
         End If
     End Sub
 End Class

@@ -58,6 +58,7 @@ Partial Class UploadFolderConfigurationDialog
         Me.KeywordsPrefillLabel = New System.Windows.Forms.Label()
         Me.KeywordsTextBox = New System.Windows.Forms.TextBox()
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.FlagDocumentCheckBox = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.FolderNameErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -146,12 +147,19 @@ Partial Class UploadFolderConfigurationDialog
         resources.ApplyResources(Me.KeywordsTextBox, "KeywordsTextBox")
         Me.KeywordsTextBox.Name = "KeywordsTextBox"
         '
+        'FlagDocumentCheckBox
+        '
+        resources.ApplyResources(Me.FlagDocumentCheckBox, "FlagDocumentCheckBox")
+        Me.FlagDocumentCheckBox.Name = "FlagDocumentCheckBox"
+        Me.FlagDocumentCheckBox.UseVisualStyleBackColor = True
+        '
         'UploadFolderConfigurationDialog
         '
         Me.AcceptButton = Me.OK_Button
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
+        Me.Controls.Add(Me.FlagDocumentCheckBox)
         Me.Controls.Add(Me.KeywordsTextBox)
         Me.Controls.Add(Me.KeywordsPrefillLabel)
         Me.Controls.Add(Me.SubjectComboBox)
@@ -192,5 +200,6 @@ Partial Class UploadFolderConfigurationDialog
     Friend WithEvents AuthorPrefillLabel As System.Windows.Forms.Label
     Friend WithEvents TitlePrefillLabel As System.Windows.Forms.Label
     Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
+    Friend WithEvents FlagDocumentCheckBox As System.Windows.Forms.CheckBox
 
 End Class

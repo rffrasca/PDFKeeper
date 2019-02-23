@@ -102,56 +102,38 @@ Public NotInheritable Class UploadDirectory
     Private Shared Sub ProcessPdfFile(ByVal file As String)
         Dim pdfFile As New PdfFile(file)
         If pdfFile.ContainsOwnerPassword = False Then
-            Dim folderName As String = Nothing
-            folderName = file.Substring(ApplicationDirectories.Upload.Length + 1)
-            If folderName = Path.GetFileName(file) Then
-                folderName = ApplicationDirectories.Upload
+            Dim uploadFolderName As String = Nothing
+            uploadFolderName = file.Substring(ApplicationDirectories.Upload.Length + 1)
+            If uploadFolderName = Path.GetFileName(file) Then
+                uploadFolderName = ApplicationDirectories.Upload
             Else
-                folderName = folderName.Substring(0, folderName.IndexOf(Path.DirectorySeparatorChar))
+                uploadFolderName = uploadFolderName.Substring(0, _
+                                                              uploadFolderName.IndexOf( _
+                                                                  Path.DirectorySeparatorChar))
             End If
             Try
                 Dim pdfReader As New PdfFileInfoPropertiesReader(file)
-                If UploadConfigDirectory.IsFolderConfigured(folderName) Then
+                If UploadConfigDirectory.IsFolderConfigured(uploadFolderName) Then
                     Dim outputPdfFile As String = _
                         FileHelper.AddGuidToFileName( _
                             FileHelper.ChangeDirectoryName(file, _
                                                            ApplicationDirectories.UploadStaging), _
                                                        Nothing)
-                    WritePdfUsingFolderConfig(file, folderName, outputPdfFile)
-                    Dim txtFile As String = Path.ChangeExtension(file, "txt")
-                    If IO.File.Exists(txtFile) Then
-                        Dim guid As Guid = FileHelper.GetGuidFromFileName(outputPdfFile)
-                        txtFile = FileHelper.AddGuidToFileName(txtFile, guid)
-                        IO.File.Move(txtFile, _
-                                     Path.Combine(ApplicationDirectories.UploadStaging, _
-                                                  Path.GetFileName(txtFile)))
-                    End If
+                    Dim guid As Guid = FileHelper.GetGuidFromFileName(outputPdfFile)
+                    WritePdfUsingFolderConfig(file, uploadFolderName, outputPdfFile)
+                    SavePdfFileSupplementalData(Path.ChangeExtension(file, _
+                                                                     "xml"), _
+                                                                 guid, uploadFolderName)
                     FileHelper.DeleteFileToRecycleBin(file)
                 Else
                     If pdfReader.Title IsNot Nothing And _
                         pdfReader.Author IsNot Nothing And _
                         pdfReader.Subject IsNot Nothing Then
-                        MoveFileOutOfUpload(file, ApplicationDirectories.UploadStaging)
+                        StagePdfFileAndSupplementalDataXml(file)
                     End If
                 End If
             Catch ex As BadPasswordException    ' Ignore the file
             End Try
-        End If
-    End Sub
-
-    Private Shared Sub MoveFileOutOfUpload(ByVal file As String, _
-                                           ByVal targetDirectory As String)
-        Dim txtFile As String = Path.ChangeExtension(file, "txt")
-        Dim targetFile As String = FileHelper.AddGuidToFileName( _
-            FileHelper.ChangeDirectoryName(file, _
-                                           targetDirectory), _
-                                       Nothing)
-        Dim guid As Guid = FileHelper.GetGuidFromFileName(targetFile)
-        Dim txtFileTarget As String = FileHelper.AddGuidToFileName(txtFile, guid)
-        txtFileTarget = FileHelper.ChangeDirectoryName(txtFileTarget, targetDirectory)
-        IO.File.Move(file, targetFile)
-        If IO.File.Exists(txtFile) Then
-            IO.File.Move(txtFile, txtFileTarget)
         End If
     End Sub
 
@@ -177,5 +159,41 @@ Public NotInheritable Class UploadDirectory
         writer.Subject = config.SubjectPrefill
         writer.Keywords = config.KeywordsPrefill
         writer.Write()
+    End Sub
+
+    Private Shared Sub SavePdfFileSupplementalData(ByVal xmlFile As String, _
+                                                   ByVal guid As Guid, _
+                                                   ByVal configfolderName As String)
+        xmlFile = FileHelper.AddGuidToFileName(xmlFile, guid)
+        xmlFile = FileHelper.ChangeDirectoryName(xmlFile, _
+                                                 ApplicationDirectories.UploadStaging)
+        Dim config As New UploadFolderConfiguration
+        Dim suppData As New PdfFileSupplementalData
+        UploadConfigDirectory.ReadConfig(config, configfolderName.ToString)
+        suppData.Notes = String.Empty
+        Dim flag As String = config.FlagDocument.ToString
+        If flag Then
+            suppData.FlagState = 1
+        Else
+            suppData.FlagState = 0
+        End If
+        SerializerHelper.FromObjToXml(suppData, xmlFile)
+    End Sub
+
+    Private Shared Sub StagePdfFileAndSupplementalDataXml(ByVal pdfFile As String)
+        Dim xmlFile As String = Path.ChangeExtension(pdfFile, "xml")
+        Dim targetPdfFile As String = _
+            FileHelper.AddGuidToFileName( _
+                FileHelper.ChangeDirectoryName(pdfFile, _
+                                               ApplicationDirectories.UploadStaging), _
+                                           Nothing)
+        Dim guid As Guid = FileHelper.GetGuidFromFileName(targetPdfFile)
+        Dim targetXmlFile As String = FileHelper.AddGuidToFileName(xmlFile, guid)
+        targetXmlFile = FileHelper.ChangeDirectoryName(targetXmlFile, _
+                                                       ApplicationDirectories.UploadStaging)
+        IO.File.Move(pdfFile, targetPdfFile)
+        If IO.File.Exists(xmlFile) Then
+            IO.File.Move(xmlFile, targetXmlFile)
+        End If
     End Sub
 End Class

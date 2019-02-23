@@ -45,15 +45,18 @@ Public NotInheritable Class HelpProviderHelper
     End Property
 
     ''' <summary>
-    ''' Opens the help file at the starting topic page and waits until closed.
+    ''' Opens the help file at the specified topic page and waits until closed.
     ''' </summary>
+    ''' <param name="helpTopic">
+    ''' Topic file with extension contained in help file to display.
+    ''' </param>
     ''' <remarks></remarks>
-    Public Shared Sub OpenHelpFileAndWait()
+    Public Shared Sub OpenHelpFileAndWait(ByVal helpTopic As String)
         Using htmlHelp As New Process
             htmlHelp.StartInfo.FileName = Path.Combine( _
                 Environment.GetFolderPath(Environment.SpecialFolder.Windows), _
                 "hh.exe")
-            htmlHelp.StartInfo.Arguments = HelpFile
+            htmlHelp.StartInfo.Arguments = "ms-its:" & HelpFile & "::" & helpTopic
             htmlHelp.Start()
             htmlHelp.WaitForExit()
         End Using

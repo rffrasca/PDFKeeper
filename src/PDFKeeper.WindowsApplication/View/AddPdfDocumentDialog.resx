@@ -300,7 +300,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="TableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="PreviewButton" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="Cancel_Button" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="SaveButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,Percent,25,Percent,25,Percent,25" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -333,7 +333,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;OriginalPdfPathNameLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="OriginalPdfPathNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 27</value>
@@ -354,7 +354,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;OriginalPdfPathNameTextBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="ViewOriginalButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -397,7 +397,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ViewOriginalButton.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="TitleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -427,7 +427,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TitleLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="TitleTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 81</value>
@@ -448,7 +448,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TitleTextBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="SetToFileNameButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -475,7 +475,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SetToFileNameButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="AuthorLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -505,7 +505,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AuthorLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="AuthorComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 140</value>
@@ -526,7 +526,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AuthorComboBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="SubjectComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 193</value>
@@ -547,7 +547,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SubjectComboBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="SubjectLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -577,7 +577,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SubjectLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="KeywordsLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -607,7 +607,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;KeywordsLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="KeywordsTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 251</value>
@@ -631,7 +631,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;KeywordsTextBox.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="DeleteOriginalPdfOnOKCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -646,7 +646,7 @@
     <value>292, 19</value>
   </data>
   <data name="DeleteOriginalPdfOnOKCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="DeleteOriginalPdfOnOKCheckBox.Text" xml:space="preserve">
     <value>Delete original PDF document when OK is selected</value>
@@ -661,11 +661,44 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DeleteOriginalPdfOnOKCheckBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="FlagDocumentCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="FlagDocumentCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="FlagDocumentCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 405</value>
+  </data>
+  <data name="FlagDocumentCheckBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="FlagDocumentCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 19</value>
+  </data>
+  <data name="FlagDocumentCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="FlagDocumentCheckBox.Text" xml:space="preserve">
+    <value>Flag Document</value>
+  </data>
+  <data name="&gt;&gt;FlagDocumentCheckBox.Name" xml:space="preserve">
+    <value>FlagDocumentCheckBox</value>
+  </data>
+  <data name="&gt;&gt;FlagDocumentCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FlagDocumentCheckBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FlagDocumentCheckBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

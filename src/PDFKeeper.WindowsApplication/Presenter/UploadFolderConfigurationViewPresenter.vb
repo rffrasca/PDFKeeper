@@ -32,6 +32,7 @@ Public Class UploadFolderConfigurationViewPresenter
         view.Author = config.AuthorPrefill
         view.Subject = config.SubjectPrefill
         view.Keywords = config.KeywordsPrefill
+        view.FlagDocument = config.FlagDocument
     End Sub
 
     Public Sub TitleComboBoxEnter()
@@ -89,6 +90,7 @@ Public Class UploadFolderConfigurationViewPresenter
         config.AuthorPrefill = view.Author
         config.SubjectPrefill = view.Subject
         config.KeywordsPrefill = view.Keywords
+        config.FlagDocument = view.FlagDocument
         UploadConfigDirectory.WriteConfig(config, view.FolderName)
         UploadDirectory.CreateChildDirectory(view.FolderName)
     End Sub

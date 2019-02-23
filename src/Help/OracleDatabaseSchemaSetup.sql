@@ -42,7 +42,9 @@ create table pdfkeeper.docs(
 	doc_added varchar2(19) not null,
 	doc_notes varchar2(4000),
 	doc_pdf blob not null,
-	doc_dummy varchar2(1));
+	doc_dummy varchar2(1),
+	doc_flag number(1) default 0 not null
+	constraint doc_flag_ck check (doc_flag in (0,1)));
 
 begin
 	ctx_ddl.create_preference('ctxsys.pdfkeeper_lexer',

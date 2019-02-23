@@ -205,7 +205,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="TableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Cancel_Button" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -229,7 +229,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FolderNameTextBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <metadata name="FolderNameErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -242,6 +242,33 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>610, 384</value>
+  </data>
+  <data name="FlagDocumentCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="FlagDocumentCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 339</value>
+  </data>
+  <data name="FlagDocumentCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 19</value>
+  </data>
+  <data name="FlagDocumentCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="FlagDocumentCheckBox.Text" xml:space="preserve">
+    <value>Flag Document</value>
+  </data>
+  <data name="&gt;&gt;FlagDocumentCheckBox.Name" xml:space="preserve">
+    <value>FlagDocumentCheckBox</value>
+  </data>
+  <data name="&gt;&gt;FlagDocumentCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FlagDocumentCheckBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FlagDocumentCheckBox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="KeywordsTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 218</value>
@@ -265,7 +292,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;KeywordsTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="KeywordsPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -292,7 +319,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;KeywordsPrefillLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="SubjectComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 169</value>
@@ -313,7 +340,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SubjectComboBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="SubjectPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -340,7 +367,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SubjectPrefillLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="AuthorComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 120</value>
@@ -361,7 +388,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AuthorComboBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="AuthorPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -388,7 +415,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AuthorPrefillLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="TitleComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 71</value>
@@ -409,7 +436,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TitleComboBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="TitlePrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -436,7 +463,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TitlePrefillLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="FolderNameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -463,7 +490,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FolderNameLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

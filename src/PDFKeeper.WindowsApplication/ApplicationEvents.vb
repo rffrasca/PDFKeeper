@@ -30,7 +30,7 @@ Namespace My
         Private Sub MyApplication_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
             SettingsHelper.UpgradeUserSettings()
             If My.Settings.LoginDatasource.Length = 0 Then
-                HelpProviderHelper.OpenHelpFileAndWait()
+                HelpProviderHelper.OpenHelpFileAndWait("PDFKeeper.html")
             End If
             If LoginForm.ShowDialog = Windows.Forms.DialogResult.Cancel Then
                 e.Cancel = True

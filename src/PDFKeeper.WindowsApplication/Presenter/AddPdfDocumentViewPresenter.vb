@@ -20,6 +20,8 @@
 Public Class AddPdfDocumentViewPresenter
     Private view As IAddPdfDocumentView
     Private outputPdfFile As String
+    Private suppData As New PdfFileSupplementalData
+    Private suppDataXml As String
     Private viewerId As Integer
 
     Public Sub New(view As IAddPdfDocumentView)
@@ -28,7 +30,11 @@ Public Class AddPdfDocumentViewPresenter
 
     Public Sub AddPdfDocumentViewLoad()
         ReadOriginalPdfProperties()
-        CreateOutputPdfPathName()
+        outputPdfFile = FileHelper.AddGuidToFileName( _
+            FileHelper.ChangeDirectoryName(view.OriginalPdfFile, _
+                                           ApplicationDirectories.UploadStaging), _
+                                       Nothing)
+        suppDataXml = Path.ChangeExtension(outputPdfFile, "xml")
     End Sub
 
     Public Sub AddPdfDocumentViewClosing()
@@ -39,7 +45,7 @@ Public Class AddPdfDocumentViewPresenter
         ViewPdf(view.OriginalPdfFile)
     End Sub
 
-    Public Sub TextBoxesTextChanged()
+    Public Sub ControlValueChanged()
         If view.PreviewEnabled Then
             TerminateViewer()
         End If
@@ -81,20 +87,7 @@ Public Class AddPdfDocumentViewPresenter
     Public Sub SaveButtonClick()
         UploadController.WaitWhileUploadRunning()
         TerminateViewer()
-        Dim writer As PdfFileInfoPropertiesWriter
-        If view.OriginalPdfFilePassword Is Nothing Then
-            writer = New PdfFileInfoPropertiesWriter(view.OriginalPdfFile, _
-                                                     outputPdfFile)
-        Else
-            writer = New PdfFileInfoPropertiesWriter(view.OriginalPdfFile,
-                                                     outputPdfFile, _
-                                                     view.OriginalPdfFilePassword)
-        End If
-        writer.Title = view.Title
-        writer.Author = view.Author
-        writer.Subject = view.Subject
-        writer.Keywords = view.Keywords
-        writer.Write()
+        SaveOutputPdf()
         view.SaveEnabled = False
         view.PreviewEnabled = True
         view.OkEnabled = True
@@ -106,9 +99,10 @@ Public Class AddPdfDocumentViewPresenter
 
     Public Sub OkButtonClick()
         TerminateViewer()
-        If My.Settings.DeleteOriginalPdfOnOK Then
+        If My.Settings.AddPdfDeleteOriginalPdfOnOK Then
             FileHelper.DeleteFileToRecycleBin(view.OriginalPdfFile)
         End If
+        SavePdfFileSupplementalData()
     End Sub
 
     Private Sub ReadOriginalPdfProperties()
@@ -124,20 +118,6 @@ Public Class AddPdfDocumentViewPresenter
         view.Author = reader.Author
         view.Subject = reader.Subject
         view.Keywords = reader.Keywords
-    End Sub
-
-    Private Sub CreateOutputPdfPathName()
-        outputPdfFile = FileHelper.AddGuidToFileName( _
-            FileHelper.ChangeDirectoryName(view.OriginalPdfFile, _
-                                           ApplicationDirectories.UploadStaging), _
-                                       Nothing)
-    End Sub
-
-    Private Sub DeleteOutputPdf()
-        TerminateViewer()
-        If Not outputPdfFile Is Nothing Then
-            IO.File.Delete(outputPdfFile)
-        End If
     End Sub
 
     Private Sub ViewPdf(ByVal file As String)
@@ -161,6 +141,41 @@ Public Class AddPdfDocumentViewPresenter
     Private Sub TerminateViewer()
         If viewerId > 0 Then
             ProcessHelper.Close(viewerId)
+        End If
+    End Sub
+
+    Private Sub SaveOutputPdf()
+        Dim writer As PdfFileInfoPropertiesWriter
+        If view.OriginalPdfFilePassword Is Nothing Then
+            writer = New PdfFileInfoPropertiesWriter(view.OriginalPdfFile, _
+                                                     outputPdfFile)
+        Else
+            writer = New PdfFileInfoPropertiesWriter(view.OriginalPdfFile,
+                                                     outputPdfFile, _
+                                                     view.OriginalPdfFilePassword)
+        End If
+        writer.Title = view.Title
+        writer.Author = view.Author
+        writer.Subject = view.Subject
+        writer.Keywords = view.Keywords
+        writer.Write()
+    End Sub
+
+    Private Sub SavePdfFileSupplementalData()
+        suppData.Notes = String.Empty
+        Dim flag As String = My.Settings.AddPdfFlagDocument
+        If flag Then
+            suppData.FlagState = 1
+        Else
+            suppData.FlagState = 0
+        End If
+        SerializerHelper.FromObjToXml(suppData, suppDataXml)
+    End Sub
+
+    Private Sub DeleteOutputPdf()
+        TerminateViewer()
+        If Not outputPdfFile Is Nothing Then
+            IO.File.Delete(outputPdfFile)
         End If
     End Sub
 End Class

@@ -57,11 +57,11 @@ Public Class AddPdfDocumentDialog
         Me.Cursor = Cursors.Default
     End Sub
 
-    Private Sub TextBoxes_TextChanged(sender As Object, e As EventArgs) Handles TitleTextBox.TextChanged, _
-                                                                                AuthorComboBox.TextChanged, _
-                                                                                SubjectComboBox.TextChanged, _
-                                                                                KeywordsTextBox.TextChanged
-        presenter.TextBoxesTextChanged()
+    Private Sub Control_ValueChanged(sender As Object, e As EventArgs) Handles TitleTextBox.TextChanged, _
+                                                                               AuthorComboBox.TextChanged, _
+                                                                               SubjectComboBox.TextChanged, _
+                                                                               KeywordsTextBox.TextChanged
+        presenter.ControlValueChanged()
     End Sub
 
     Private Sub AuthorComboBox_Enter(sender As Object, e As EventArgs) Handles AuthorComboBox.Enter

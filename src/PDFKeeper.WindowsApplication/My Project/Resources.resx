@@ -127,7 +127,7 @@
     <value>Author</value>
   </data>
   <data name="DocumentRecordsCountMessage" xml:space="preserve">
-    <value>Database contains {0} document records.</value>
+    <value>Total records: {0} - Flagged records: {1}</value>
   </data>
   <data name="DeleteSelectedDocuments" xml:space="preserve">
     <value>Delete selected documents?</value>

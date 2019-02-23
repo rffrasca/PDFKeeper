@@ -18,7 +18,8 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Interface IDocsDao
-    ReadOnly Property DocumentRecordCount As Integer
+    ReadOnly Property TotalRecordCount As Integer
+    ReadOnly Property FlaggedRecordCount As Integer
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
                                                      "CA1024:UsePropertiesWhereAppropriate")> _
     Function GetAllAuthors() As DataTable
@@ -35,15 +36,33 @@ Public Interface IDocsDao
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
                                                      "CA1024:UsePropertiesWhereAppropriate")> _
     Function GetAllRecords() As DataTable
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
+                                                     "CA1024:UsePropertiesWhereAppropriate")> _
+    Function GetAllFlaggedRecords() As DataTable
     Function GetNotesById(ByVal id As Integer) As DataTable
     Function GetKeywordsById(ByVal id As Integer) As DataTable
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
+                                                     "CA1726:UsePreferredTerms", _
+                                                     MessageId:="Flag")> _
+    Function GetFlagStateById(ByVal id As Integer) As DataTable
     Sub GetPdfById(ByVal id As Integer, ByVal pdfFile As String)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
+                                                     "CA1726:UsePreferredTerms", _
+                                                     MessageId:="flag")> _
     Sub CreateRecord(ByVal title As String, _
                      ByVal author As String, _
                      ByVal subject As String, _
                      ByVal keywords As String, _
                      ByVal notes As String, _
-                     ByVal pdfFile As String)
+                     ByVal pdfFile As String, _
+                     ByVal flag As Integer)
     Sub UpdateNotesById(ByVal id As Integer, ByVal notes As String)
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
+                                                     "CA1726:UsePreferredTerms", _
+                                                     MessageId:="Flag")> _
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
+                                                     "CA1726:UsePreferredTerms", _
+                                                     MessageId:="flag")> _
+    Sub UpdateFlagStateById(ByVal id As Integer, ByVal flag As Integer)
     Sub DeleteRecordById(ByVal id As Integer)
 End Interface

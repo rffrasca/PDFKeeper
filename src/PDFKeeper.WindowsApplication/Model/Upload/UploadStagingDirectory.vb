@@ -46,9 +46,14 @@ Public NotInheritable Class UploadStagingDirectory
                     pdfReader.Author IsNot Nothing And _
                     pdfReader.Subject IsNot Nothing Then
                     Dim notes As String = Nothing
-                    Dim txtFile As String = Path.ChangeExtension(file, "txt")
-                    If IO.File.Exists(txtFile) Then
-                        notes = IO.File.ReadAllText(txtFile)
+                    Dim flag As Integer = 0
+                    Dim suppData As New PdfFileSupplementalData
+                    Dim suppDataXml As String = Path.ChangeExtension(file, _
+                                                                     "xml")
+                    If IO.File.Exists(suppDataXml) Then
+                        SerializerHelper.FromXmlToObj(suppData, suppDataXml)
+                        notes = suppData.Notes
+                        flag = suppData.FlagState
                     End If
                     Dim docsDao As IDocsDao = New DocsDao
                     docsDao.CreateRecord(pdfReader.Title, _
@@ -56,9 +61,14 @@ Public NotInheritable Class UploadStagingDirectory
                                          pdfReader.Subject, _
                                          pdfReader.Keywords, _
                                          notes, _
-                                         file)
+                                         file, _
+                                         flag)
                     FileHelper.DeleteFileToRecycleBin(file)
-                    FileHelper.DeleteFileToRecycleBin(txtFile)
+                    If notes.Length > 0 Then
+                        FileHelper.DeleteFileToRecycleBin(suppDataXml)
+                    Else
+                        IO.File.Delete(suppDataXml)
+                    End If
                 End If
             Catch ex As BadPasswordException    ' Ignore the file.
             Catch ex As OracleException

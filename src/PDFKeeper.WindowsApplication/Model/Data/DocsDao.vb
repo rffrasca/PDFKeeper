@@ -29,9 +29,15 @@ Public Class DocsDao
         End If
     End Sub
 
-    Public ReadOnly Property DocumentRecordCount As Integer Implements IDocsDao.DocumentRecordCount
+    Public ReadOnly Property TotalRecordCount As Integer Implements IDocsDao.TotalRecordCount
         Get
-            Return dataAccess.DocumentRecordCount
+            Return dataAccess.TotalRecordCount
+        End Get
+    End Property
+
+    Public ReadOnly Property FlaggedRecordCount As Integer Implements IDocsDao.FlaggedRecordCount
+        Get
+            Return dataAccess.FlaggedRecordCount
         End Get
     End Property
 
@@ -71,6 +77,10 @@ Public Class DocsDao
         Return dataAccess.GetAllRecords
     End Function
 
+    Public Function GetAllFlaggedRecords() As DataTable Implements IDocsDao.GetAllFlaggedRecords
+        Return dataAccess.GetAllFlaggedRecords
+    End Function
+
     Public Function GetNotesById(id As Integer) As DataTable Implements IDocsDao.GetNotesById
         Return dataAccess.GetNotesById(id)
     End Function
@@ -79,16 +89,24 @@ Public Class DocsDao
         Return dataAccess.GetKeywordsById(id)
     End Function
 
+    Public Function GetFlagStateById(id As Integer) As DataTable Implements IDocsDao.GetFlagStateById
+        Return dataAccess.GetFlagStateById(id)
+    End Function
+
     Public Sub GetPdfById(id As Integer, pdfFile As String) Implements IDocsDao.GetPdfById
         dataAccess.GetPdfById(id, pdfFile)
     End Sub
 
-    Public Sub CreateRecord(title As String, author As String, subject As String, keywords As String, notes As String, pdfFile As String) Implements IDocsDao.CreateRecord
-        dataAccess.CreateRecord(title, author, subject, keywords, notes, pdfFile)
+    Public Sub CreateRecord(title As String, author As String, subject As String, keywords As String, notes As String, pdfFile As String, flag As Integer) Implements IDocsDao.CreateRecord
+        dataAccess.CreateRecord(title, author, subject, keywords, notes, pdfFile, flag)
     End Sub
 
     Public Sub UpdateNotesById(id As Integer, notes As String) Implements IDocsDao.UpdateNotesById
         dataAccess.UpdateNotesById(id, notes)
+    End Sub
+
+    Public Sub UpdateFlagStateById(id As Integer, flag As Integer) Implements IDocsDao.UpdateFlagStateById
+        dataAccess.UpdateFlagStateById(id, flag)
     End Sub
 
     Public Sub DeleteRecordById(id As Integer) Implements IDocsDao.DeleteRecordById

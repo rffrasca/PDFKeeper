@@ -46,6 +46,7 @@ Public Class MainViewToolStripStatePresenter
         shortNames.SetItem("EditSelectAll", False)
         shortNames.SetItem("EditRestore", False)
         shortNames.SetItem("EditDateTime", False)
+        shortNames.SetItem("EditFlagDocument", False)
         shortNames.SetItem("ViewToggleRightPanel", False)
         shortNames.SetItem("ViewRefresh", False)
         shortNames.SetItem("ViewSetPreviewImageResolution", False)
@@ -93,6 +94,7 @@ Public Class MainViewToolStripStatePresenter
     Public Sub SetDocumentSelectedState(ByVal documentSelected As Boolean)
         shortNames.SetItem("FileOpen", documentSelected)
         shortNames.SetItem("FileSaveAs", documentSelected)
+        shortNames.SetItem("EditFlagDocument", documentSelected)
         shortNames.SetItem("ViewSetPreviewImageResolution", documentSelected)
         ApplyState()
     End Sub

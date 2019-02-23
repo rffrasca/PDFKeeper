@@ -198,27 +198,39 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property DeleteOriginalPdfOnOK() As Boolean
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")> _
+        Public Property AddPdfDeleteOriginalPdfOnOK() As Boolean
             Get
-                Return CType(Me("DeleteOriginalPdfOnOK"),Boolean)
+                Return CType(Me("AddPdfDeleteOriginalPdfOnOK"), Boolean)
             End Get
-            Set
-                Me("DeleteOriginalPdfOnOK") = value
+            Set(value As Boolean)
+                Me("AddPdfDeleteOriginalPdfOnOK") = value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")> _
         Public Property UpgradeSettings() As Boolean
             Get
-                Return CType(Me("UpgradeSettings"),Boolean)
+                Return CType(Me("UpgradeSettings"), Boolean)
             End Get
-            Set
+            Set(value As Boolean)
                 Me("UpgradeSettings") = value
+            End Set
+        End Property
+
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")> _
+        Public Property AddPdfFlagDocument() As Boolean
+            Get
+                Return CType(Me("AddPdfFlagDocument"), Boolean)
+            End Get
+            Set(value As Boolean)
+                Me("AddPdfFlagDocument") = value
             End Set
         End Property
     End Class

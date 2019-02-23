@@ -23,7 +23,7 @@ Public Class MainForm
     Private unboundSettingsPresenter As MainViewUnboundSettingsPresenter
     Private toolStripStatePresenter As MainViewToolStripStatePresenter
     Private searchPresenter As MainViewSearchPresenter
-    Private documentDataPresenter As MainViewSelectedDocumentPresenter
+    Private selectedDocumentPresenter As MainViewSelectedDocumentPresenter
     Private uploadPresenter As MainViewUploadPresenter
     Private refreshFlag As Boolean
     Private textToSaveAsOrPrint As String
@@ -36,7 +36,7 @@ Public Class MainForm
         unboundSettingsPresenter = New MainViewUnboundSettingsPresenter(Me)
         toolStripStatePresenter = New MainViewToolStripStatePresenter(Me)
         searchPresenter = New MainViewSearchPresenter(Me)
-        documentDataPresenter = New MainViewSelectedDocumentPresenter(Me)
+        selectedDocumentPresenter = New MainViewSelectedDocumentPresenter(Me)
         uploadPresenter = New MainViewUploadPresenter(Me)
         HelpProvider.HelpNamespace = HelpProviderHelper.HelpFile
         AutoUpdaterHelper.StartUpdater()    ' Also called on a timer every 30 minutes.
@@ -51,7 +51,7 @@ Public Class MainForm
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If IsSaveEnabled() Then
-            If documentDataPresenter.MainViewClosing = False Then
+            If selectedDocumentPresenter.MainViewClosing = False Then
                 e.Cancel = True
             End If
         End If
@@ -116,7 +116,7 @@ Public Class MainForm
     Private Sub FileSaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileSaveToolStripMenuItem.Click, _
                                                                                           FileSaveToolStripButton.Click
         Me.Cursor = Cursors.WaitCursor
-        documentDataPresenter.FileSaveToolStripMenuItemClick()
+        selectedDocumentPresenter.FileSaveToolStripMenuItemClick()
         Me.Cursor = Cursors.Default
         NotesTextBox_TextChanged(Me, Nothing)
         TextBoxScrollToEnd(NotesTextBox)
@@ -195,7 +195,7 @@ Public Class MainForm
     Private Sub EditRestoreToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditRestoreToolStripMenuItem.Click, _
                                                                                              EditRestoreToolStripButton.Click
         RightTabControl.SelectedIndex = 0
-        documentDataPresenter.EditRestoreToolStripMenuItemClick()
+        selectedDocumentPresenter.EditRestoreToolStripMenuItemClick()
         NotesTextBox_TextChanged(Me, Nothing)
         TextBoxScrollToEnd(NotesTextBox)
     End Sub
@@ -203,8 +203,14 @@ Public Class MainForm
     Private Sub EditDateTimeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditDateTimeToolStripMenuItem.Click, _
                                                                                               EditDateTimeToolStripButton.Click
         TextBoxScrollToEnd(NotesTextBox)
-        documentDataPresenter.EditDateTimeToolStripMenuItemClick()
+        selectedDocumentPresenter.EditDateTimeToolStripMenuItemClick()
         TextBoxScrollToEnd(NotesTextBox)
+    End Sub
+
+    Private Sub EditFlagDocumentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditFlagDocumentToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+        selectedDocumentPresenter.EditFlagDocumentToolStripMenuItemClick()
+        Me.Cursor = Cursors.Default
     End Sub
 #End Region
 
@@ -225,7 +231,7 @@ Public Class MainForm
                                                                                                                PreviewPictureBox.DoubleClick
         PreviewImageResolutionDialog.ShowDialog()
         Me.Cursor = Cursors.WaitCursor
-        documentDataPresenter.ViewSetPreviewImageResolutionToolStripMenuItemClick()
+        selectedDocumentPresenter.ViewSetPreviewImageResolutionToolStripMenuItemClick()
         Me.Cursor = Cursors.Default
     End Sub
 
@@ -280,7 +286,7 @@ Public Class MainForm
         ElseIf SearchOptionsTabControl.SelectedIndex = 5 Then
             Me.Cursor = Cursors.WaitCursor
             If refreshFlag Then
-                QueryAllDocumentsButton_Click(Me, Nothing)
+                QueryAllFlaggedDocumentsButton_Click(Me, Nothing)
             Else
                 searchPresenter.SearchOptionsTabControlSelected()
             End If
@@ -459,9 +465,13 @@ Public Class MainForm
         Me.Cursor = Cursors.Default
     End Sub
 
-    Private Sub QueryAllDocumentsButton_Click(sender As Object, e As EventArgs) Handles QueryAllDocumentsButton.Click
+    Private Sub FlaggedDocumentsOnlyCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles FlaggedDocumentsOnlyCheckBox.CheckedChanged
+        SearchOptionsTabControl_Selected(Me, Nothing)
+    End Sub
+
+    Private Sub QueryAllFlaggedDocumentsButton_Click(sender As Object, e As EventArgs) Handles QueryDocumentsButton.Click
         Me.Cursor = Cursors.WaitCursor
-        searchPresenter.QueryAllDocumentsButtonClick()
+        searchPresenter.QueryDocumentsButtonClick()
         Me.Cursor = Cursors.Default
     End Sub
 #End Region
@@ -519,7 +529,7 @@ Public Class MainForm
 
     Private Sub SearchResultsDataGridView_SelectionChanged(sender As Object, e As EventArgs) Handles SearchResultsDataGridView.SelectionChanged
         Me.Cursor = Cursors.WaitCursor
-        documentDataPresenter.SearchResultsDataGridViewSelectionChanged()
+        selectedDocumentPresenter.SearchResultsDataGridViewSelectionChanged()
         Me.Cursor = Cursors.Default
     End Sub
 
@@ -548,7 +558,7 @@ Public Class MainForm
     End Function
 #End Region
 
-#Region "Document Data events and private methods"
+#Region "Selected Document events and private methods"
     Private Sub NotesTextBox_Enter(sender As Object, e As EventArgs) Handles NotesTextBox.Enter, _
                                                                              NotesTextBox.GotFocus
         toolStripStatePresenter.SetTextBoxEnterState(NotesTextBox.ReadOnly, _
@@ -577,7 +587,7 @@ Public Class MainForm
     End Sub
 
     Private Sub NotesTextBox_TextChanged(sender As Object, e As EventArgs) Handles NotesTextBox.TextChanged
-        documentDataPresenter.NotesTextBoxTextChanged()
+        selectedDocumentPresenter.NotesTextBoxTextChanged()
         toolStripStatePresenter.SetTextBoxTextSelectionState(NotesTextBox.ReadOnly, _
                                                              NotesTextBox.TextLength, _
                                                              NotesTextBox.SelectionLength)
@@ -717,7 +727,7 @@ Public Class MainForm
     End Property
 #End Region
 
-#Region "IMainViewToolStripState member called by MainViewToolStripStateManager"
+#Region "IMainViewToolStripState member called by MainViewToolStripStatePresenter"
     Public Sub SetToolStripItemsState(shortName As String, enabled As Boolean) Implements IMainViewToolStripState.SetToolStripItemsState
         Dim menuStripResults = MenuStrip.Items.Find(shortName & "ToolStripMenuItem", True).ToList
         Dim toolBarResults = ToolStrip.Items.Find(shortName & "ToolStripButton", True).ToList
@@ -875,21 +885,18 @@ Public Class MainForm
         End Set
     End Property
 
-    Public Property QueryAllDocumentsVisible As Boolean Implements IMainViewSearch.QueryAllDocumentsVisible
+    Public ReadOnly Property FlaggedDocumentsOnly As Boolean Implements IMainViewSearch.FlaggedDocumentsOnly
         Get
-            Return QueryAllDocumentsButton.Visible
+            Return FlaggedDocumentsOnlyCheckBox.Checked
         End Get
-        Set(value As Boolean)
-            QueryAllDocumentsButton.Visible = value
-        End Set
     End Property
 
-    Public Property QueryAllDocumentsEnabled As Boolean Implements IMainViewSearch.QueryAllDocumentsEnabled
+    Public Property QueryDocumentsEnabled As Boolean Implements IMainViewSearch.QueryDocumentsEnabled
         Get
-            Return QueryAllDocumentsButton.Enabled
+            Return QueryDocumentsButton.Enabled
         End Get
         Set(value As Boolean)
-            QueryAllDocumentsButton.Enabled = value
+            QueryDocumentsButton.Enabled = value
         End Set
     End Property
 
@@ -1095,6 +1102,23 @@ Public Class MainForm
             TextTextBox.Text = value
             If TextTextBox.Text.Length > 0 Then
                 TextTextBox.Text = TextTextBox.Text.Trim
+            End If
+        End Set
+    End Property
+
+    Public Property DocumentFlagState As Integer Implements IMainViewSelectedDocument.DocumentFlagState
+        Get
+            If EditFlagDocumentToolStripMenuItem.Checked Then
+                Return 1
+            Else
+                Return 0
+            End If
+        End Get
+        Set(value As Integer)
+            If value = 1 Then
+                EditFlagDocumentToolStripMenuItem.Checked = True
+            Else
+                EditFlagDocumentToolStripMenuItem.Checked = False
             End If
         End Set
     End Property

@@ -17,16 +17,11 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Interface IMainViewSelectedDocument
-    ReadOnly Property DocumentId As Integer
-    Property RightTabControlEnabled As Boolean
-    Property DocumentNotes As String
-    Property DocumentNotesChanged As Boolean
-    Property DocumentKeywords As String
-    Property DocumentPreview As System.Drawing.Image
-    Property DocumentText As String
+<Serializable> _
+Public Class PdfFileSupplementalData
+    Public Property Notes As String
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-                                                     "CA1726:UsePreferredTerms", _
-                                                     MessageId:="Flag")> _
-    Property DocumentFlagState As Integer
-End Interface
+        "CA1726:UsePreferredTerms", _
+        MessageId:="Flag")> _
+    Public Property FlagState As Integer
+End Class

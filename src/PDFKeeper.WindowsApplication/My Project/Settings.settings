@@ -38,11 +38,14 @@
     <Setting Name="OpenPdfWithDefaultApplication" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="DeleteOriginalPdfOnOK" Type="System.Boolean" Scope="User">
+    <Setting Name="AddPdfDeleteOriginalPdfOnOK" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="UpgradeSettings" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AddPdfFlagDocument" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

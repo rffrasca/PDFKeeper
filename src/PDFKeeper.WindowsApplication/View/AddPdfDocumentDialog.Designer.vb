@@ -62,6 +62,7 @@ Partial Class AddPdfDocumentDialog
         Me.KeywordsTextBox = New System.Windows.Forms.TextBox()
         Me.DeleteOriginalPdfOnOKCheckBox = New System.Windows.Forms.CheckBox()
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.FlagDocumentCheckBox = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -172,10 +173,19 @@ Partial Class AddPdfDocumentDialog
         'DeleteOriginalPdfOnOKCheckBox
         '
         resources.ApplyResources(Me.DeleteOriginalPdfOnOKCheckBox, "DeleteOriginalPdfOnOKCheckBox")
-        Me.DeleteOriginalPdfOnOKCheckBox.Checked = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.DeleteOriginalPdfOnOK
-        Me.DeleteOriginalPdfOnOKCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "DeleteOriginalPdfOnOK", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.DeleteOriginalPdfOnOKCheckBox.Checked = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.AddPdfDeleteOriginalPdfOnOK
+        Me.DeleteOriginalPdfOnOKCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "AddPdfDeleteOriginalPdfOnOK", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.DeleteOriginalPdfOnOKCheckBox.Name = "DeleteOriginalPdfOnOKCheckBox"
         Me.DeleteOriginalPdfOnOKCheckBox.UseVisualStyleBackColor = True
+        '
+        'FlagDocumentCheckBox
+        '
+        resources.ApplyResources(Me.FlagDocumentCheckBox, "FlagDocumentCheckBox")
+        Me.FlagDocumentCheckBox.Checked = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.AddPdfFlagDocument
+        Me.FlagDocumentCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "AddPdfFlagDocument", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.FlagDocumentCheckBox.Name = "FlagDocumentCheckBox"
+        Me.HelpProvider.SetShowHelp(Me.FlagDocumentCheckBox, CType(resources.GetObject("FlagDocumentCheckBox.ShowHelp"), Boolean))
+        Me.FlagDocumentCheckBox.UseVisualStyleBackColor = True
         '
         'AddPdfDocumentDialog
         '
@@ -183,6 +193,7 @@ Partial Class AddPdfDocumentDialog
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
+        Me.Controls.Add(Me.FlagDocumentCheckBox)
         Me.Controls.Add(Me.DeleteOriginalPdfOnOKCheckBox)
         Me.Controls.Add(Me.KeywordsTextBox)
         Me.Controls.Add(Me.KeywordsLabel)
@@ -229,5 +240,6 @@ Partial Class AddPdfDocumentDialog
     Friend WithEvents SaveButton As System.Windows.Forms.Button
     Friend WithEvents DeleteOriginalPdfOnOKCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
+    Friend WithEvents FlagDocumentCheckBox As System.Windows.Forms.CheckBox
 
 End Class

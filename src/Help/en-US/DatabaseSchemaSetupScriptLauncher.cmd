@@ -24,6 +24,7 @@ rem
 set Title=PDFKeeper Database Schema Setup Script Launcher
 set MenuHeader=Compatible Database Management Systems
 set MenuChoice1=1. Oracle Database
+set MenuChoice2=2. Oracle Database (only for upgrading from version 4.1.0 or earlier)
 set MenuPrompt=Select the database management system or Q to quit:
 set OracleMessage1=Enter the database connect string in the format:
 set OracleMessage2=username/password@host:port/service_name
@@ -48,10 +49,19 @@ echo  %MenuHeader%
 echo ==========================================================================
 echo.
 echo %MenuChoice1%
+echo %MenuChoice2%
 echo.
-choice /c 1q /n /m "%MenuPrompt%"
-if %ERRORLEVEL%==1 goto Oracle
-if %ERRORLEVEL%==2 exit
+choice /c 12q /n /m "%MenuPrompt%"
+if %ERRORLEVEL%==1 goto OracleSetup
+if %ERRORLEVEL%==2 goto OracleUpgrade
+if %ERRORLEVEL%==3 exit
+
+:OracleSetup
+set operation=Setup
+goto Oracle
+
+:OracleUpgrade
+set operation=Upgrade
 
 :Oracle
 echo.
@@ -78,7 +88,7 @@ if "%connectString%"=="" (
 	echo %CommonErrorMessage%
 	goto end
 )
-sqlplus %connectString% @OracleDatabaseSchemaSetup.sql
+sqlplus %connectString% @OracleDatabaseSchema%operation%.sql
 
 :end
 pause

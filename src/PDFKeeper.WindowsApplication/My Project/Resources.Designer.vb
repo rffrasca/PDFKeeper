@@ -172,7 +172,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Database contains {0} document records..
+        '''  Looks up a localized string similar to Total records: {0} - Flagged records: {1}.
         '''</summary>
         Friend ReadOnly Property DocumentRecordsCountMessage() As String
             Get

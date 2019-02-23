@@ -39,9 +39,17 @@ Public Class OracleDataAccess
         End If
     End Sub
 
-    Public ReadOnly Property DocumentRecordCount As Integer Implements IDocsDao.DocumentRecordCount
+    Public ReadOnly Property TotalRecordCount As Integer Implements IDocsDao.TotalRecordCount
         Get
             columnsParameter = "count(*)"
+            Return dataProvider.ExecuteScalarQuery(BuildQueryString)
+        End Get
+    End Property
+
+    Public ReadOnly Property FlaggedRecordCount As Integer Implements IDocsDao.FlaggedRecordCount
+        Get
+            columnsParameter = "count(doc_flag)"
+            whereParameter = "doc_flag = 1"
             Return dataProvider.ExecuteScalarQuery(BuildQueryString)
         End Get
     End Property
@@ -100,6 +108,12 @@ Public Class OracleDataAccess
         Return dataProvider.ExecuteQuery(BuildQueryString)
     End Function
 
+    Public Function GetAllFlaggedRecords() As DataTable Implements IDocsDao.GetAllFlaggedRecords
+        columnsParameter = searchColumns
+        whereParameter = "doc_flag = 1"
+        Return dataProvider.ExecuteQuery(BuildQueryString)
+    End Function
+
     Public Function GetNotesById(id As Integer) As DataTable Implements IDocsDao.GetNotesById
         columnsParameter = "doc_notes"
         whereParameter = "doc_id = " & id.ToString(CultureInfo.InvariantCulture)
@@ -112,13 +126,19 @@ Public Class OracleDataAccess
         Return dataProvider.ExecuteQuery(BuildQueryString)
     End Function
 
+    Public Function GetFlagStateById(id As Integer) As DataTable Implements IDocsDao.GetFlagStateById
+        columnsParameter = "doc_flag"
+        whereParameter = "doc_id = " & id.ToString(CultureInfo.InvariantCulture)
+        Return dataProvider.ExecuteQuery(BuildQueryString)
+    End Function
+
     Public Sub GetPdfById(id As Integer, pdfFile As String) Implements IDocsDao.GetPdfById
         columnsParameter = "doc_pdf"
         whereParameter = "doc_id = " & id.ToString(CultureInfo.InvariantCulture)
         dataProvider.ExecuteBlobQuery(BuildQueryString, pdfFile)
     End Sub
 
-    Public Sub CreateRecord(title As String, author As String, subject As String, keywords As String, notes As String, pdfFile As String) Implements IDocsDao.CreateRecord
+    Public Sub CreateRecord(title As String, author As String, subject As String, keywords As String, notes As String, pdfFile As String, flag As Integer) Implements IDocsDao.CreateRecord
         ' Create the Anonymous PL/SQL block statement for the insert.
         sqlStatement = _
             " begin " & _
@@ -130,7 +150,7 @@ Public Class OracleDataAccess
             " q'[" & keywords & "]', " & _
             " to_char(sysdate,'YYYY-MM-DD HH24:MI:SS'), " & _
             " q'[" & notes & "]', " & _
-            " :1, '') ;" & _
+            " :1, ''," & flag & ") ;" & _
             " end ;"
         dataProvider.ExecuteBlobInsert(sqlStatement, pdfFile)
     End Sub
@@ -138,6 +158,13 @@ Public Class OracleDataAccess
     Public Sub UpdateNotesById(id As Integer, notes As String) Implements IDocsDao.UpdateNotesById
         sqlStatement = "update pdfkeeper.docs " & _
             "set doc_notes =q'[" & notes & "]',doc_dummy = '' " & _
+            "where doc_id = " & id
+        dataProvider.ExecuteNonQuery(sqlStatement)
+    End Sub
+
+    Public Sub UpdateFlagStateById(id As Integer, flag As Integer) Implements IDocsDao.UpdateFlagStateById
+        sqlStatement = "update pdfkeeper.docs " & _
+            "set doc_flag = " & flag & _
             "where doc_id = " & id
         dataProvider.ExecuteNonQuery(sqlStatement)
     End Sub

@@ -48,25 +48,22 @@ Public Class MainViewSearchPresenter
                                                      exportFolder))
     End Sub
 
-    Public Sub SearchOptionsTabControlSelected()
+    Public Sub SearchOptionsTabControlSelected()    ' All/Flagged Documents tab only.
         ResetSearchResultsView()
-        If ApplicationPolicy.DisableQueryAllDocuments Then
-            view.DBDocumentRecordsCountMessage = My.Resources.FeatureDisabledByPolicy
-            view.QueryAllDocumentsVisible = False
-        Else
-            view.QueryAllDocumentsVisible = True
-            Try
-                Dim docsDao As IDocsDao = New DocsDao
-                view.DBDocumentRecordsCountMessage = _
-                    String.Format(CultureInfo.CurrentCulture, _
-                                  My.Resources.ResourceManager.GetString("DocumentRecordsCountMessage"), _
-                                  docsDao.DocumentRecordCount)
-                view.QueryAllDocumentsEnabled = True
-            Catch ex As OracleException
-                Dim displayService As IMessageDisplayService = New MessageDisplayService
-                displayService.ShowError(ex.Message)
-            End Try
-        End If
+        Try
+            Dim docsDao1 As IDocsDao = New DocsDao
+            Dim totalCount As Integer = docsDao1.TotalRecordCount
+            Dim docsDao2 As IDocsDao = New DocsDao
+            Dim flaggedCount As Integer = docsDao2.FlaggedRecordCount
+            view.DBDocumentRecordsCountMessage = _
+                String.Format(CultureInfo.CurrentCulture, _
+                              My.Resources.ResourceManager.GetString("DocumentRecordsCountMessage"), _
+                              totalCount, flaggedCount)
+            view.QueryDocumentsEnabled = True
+        Catch ex As OracleException
+            Dim displayService As IMessageDisplayService = New MessageDisplayService
+            displayService.ShowError(ex.Message)
+        End Try
     End Sub
 
     Public Sub SearchStringComboBoxTextChanged()
@@ -207,12 +204,22 @@ Public Class MainViewSearchPresenter
         End Try
     End Sub
 
-    Public Sub QueryAllDocumentsButtonClick()
+    Public Sub QueryDocumentsButtonClick()
         Try
             Dim docsDao As IDocsDao = New DocsDao
-            FillSearchResults(docsDao.GetAllRecords)
+            If view.FlaggedDocumentsOnly Then
+                FillSearchResults(docsDao.GetAllFlaggedRecords)
+            Else
+                If ApplicationPolicy.DisableQueryAllDocuments = False Then
+                    FillSearchResults(docsDao.GetAllRecords)
+                Else
+                    Dim displayService As IMessageDisplayService = New MessageDisplayService
+                    displayService.ShowError(My.Resources.FeatureDisabledByPolicy)
+                    Exit Sub
+                End If
+            End If
             view.DBDocumentRecordsCountMessage = Nothing
-            view.QueryAllDocumentsEnabled = False
+            view.QueryDocumentsEnabled = False
         Catch ex As OracleException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(ex.Message)
@@ -243,8 +250,7 @@ Public Class MainViewSearchPresenter
             If functionToPerform = Enums.SelectedDocumentsFunction.Delete Then
                 DeleteDocument(idToProcess)
             ElseIf functionToPerform = Enums.SelectedDocumentsFunction.Export Then
-                ExportDocumentPdf(id)
-                ExportDocumentPdfText(id)
+                ExportDocument(id)
             End If
             view.DeleteExportProgressPerformStep()
         Next
@@ -258,37 +264,30 @@ Public Class MainViewSearchPresenter
         docsDao.DeleteRecordById(id)
     End Sub
 
-    Private Sub ExportDocumentPdf(ByVal id As Integer)
+    Private Sub ExportDocument(ByVal id As Integer)
         Try
             Dim pdfFile As New PdfFile(Path.Combine(exportFolder, _
                                                     My.Application.Info.ProductName & id & ".pdf"))
-            Dim docsDao As IDocsDao = New DocsDao
-            docsDao.GetPdfById(id, pdfFile.FullName)
+            Dim suppDataXml As String = Path.Combine(exportFolder, _
+                                                     My.Application.Info.ProductName & id & ".xml")
+            Dim suppData As New PdfFileSupplementalData
+            Dim docsDaoPdf As IDocsDao = New DocsDao
+            docsDaoPdf.GetPdfById(id, pdfFile.FullName)
+            Dim docsDaoNotes As IDocsDao = New DocsDao
+            Dim dataTableNotes As DataTable = docsDaoNotes.GetNotesById(id)
+            suppData.Notes = Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
+                                              CultureInfo.CurrentCulture)
+            Dim docsDaoFlagState As IDocsDao = New DocsDao
+            Dim dataTableFlagState As DataTable = docsDaoFlagState.GetFlagStateById(id)
+            suppData.FlagState = Convert.ToInt32(dataTableFlagState.Rows(0)("doc_flag"), _
+                                                 CultureInfo.CurrentCulture)
+            SerializerHelper.FromObjToXml(suppData, suppDataXml)
         Catch ex As InvalidOperationException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _
                                                    My.Resources.ResourceManager.GetString( _
                                                        "ExportDocumentRecordMayHaveBeenDeleted"), _
                                                    ex.Message, id))
-        Catch ex As OracleException
-            Dim displayService As IMessageDisplayService = New MessageDisplayService
-            displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _
-                                                   My.Resources.ResourceManager.GetString( _
-                                                       "DocumentIdException"), _
-                                                   id, ex.Message))
-        End Try
-    End Sub
-
-    Private Sub ExportDocumentPdfText(ByVal id As Integer)
-        Try
-            Dim docsDao As IDocsDao = New DocsDao
-            Dim dataTableNotes As DataTable = docsDao.GetNotesById(id)
-            Dim documentNotes As String = Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
-                                                           CultureInfo.CurrentCulture)
-            If documentNotes.Length > 0 Then
-                documentNotes.SaveToFile(Path.Combine(exportFolder, _
-                                                      My.Application.Info.ProductName & id & ".txt"))
-            End If
         Catch ex As IndexOutOfRangeException
             Dim displayService As IMessageDisplayService = New MessageDisplayService
             displayService.ShowError(String.Format(CultureInfo.CurrentCulture, _

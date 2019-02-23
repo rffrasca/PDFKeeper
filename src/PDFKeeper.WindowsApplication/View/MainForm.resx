@@ -453,6 +453,15 @@
   <data name="EditDateTimeToolStripMenuItem.Text" xml:space="preserve">
     <value>Date/&amp;Time</value>
   </data>
+  <data name="ToolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 6</value>
+  </data>
+  <data name="EditFlagDocumentToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 22</value>
+  </data>
+  <data name="EditFlagDocumentToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Flag Document</value>
+  </data>
   <data name="EditToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 20</value>
   </data>
@@ -1016,10 +1025,37 @@
   <data name="&gt;&gt;SearchByDateAddedTabPage.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="QueryAllDocumentsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="FlaggedDocumentsOnlyCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="FlaggedDocumentsOnlyCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 43</value>
+  </data>
+  <data name="FlaggedDocumentsOnlyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 19</value>
+  </data>
+  <data name="FlaggedDocumentsOnlyCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="FlaggedDocumentsOnlyCheckBox.Text" xml:space="preserve">
+    <value>Flagged documents only</value>
+  </data>
+  <data name="&gt;&gt;FlaggedDocumentsOnlyCheckBox.Name" xml:space="preserve">
+    <value>FlaggedDocumentsOnlyCheckBox</value>
+  </data>
+  <data name="&gt;&gt;FlaggedDocumentsOnlyCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FlaggedDocumentsOnlyCheckBox.Parent" xml:space="preserve">
+    <value>AllFlaggedDocumentsTabPage</value>
+  </data>
+  <data name="&gt;&gt;FlaggedDocumentsOnlyCheckBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="QueryDocumentsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="QueryAllDocumentsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="QueryDocumentsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKWSURBVDhPpZJdSJNRGMdfEfKmqC6KwogMohIqhb4I
@@ -1036,38 +1072,50 @@
         CXZuqVS6h4KFEonkXEtLSw5NOXq0PhsH6pi8P/fA/Aa6Cvl7FTi5vgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="QueryAllDocumentsButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="QueryDocumentsButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="QueryAllDocumentsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="QueryDocumentsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="QueryAllDocumentsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>290, 43</value>
+  <data name="QueryDocumentsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>335, 43</value>
   </data>
-  <data name="QueryAllDocumentsButton.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+  <data name="QueryDocumentsButton.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
-  <data name="QueryAllDocumentsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 23</value>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>845, 17</value>
+  </metadata>
+  <data name="HelpProvider.HelpNamespace" xml:space="preserve">
+    <value />
   </data>
-  <data name="QueryAllDocumentsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="QueryDocumentsButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="QueryAllDocumentsButton.Text" xml:space="preserve">
-    <value>&amp;Query All Documents</value>
+  <data name="QueryDocumentsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 23</value>
   </data>
-  <data name="&gt;&gt;QueryAllDocumentsButton.Name" xml:space="preserve">
-    <value>QueryAllDocumentsButton</value>
+  <data name="QueryDocumentsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;QueryAllDocumentsButton.Type" xml:space="preserve">
+  <data name="QueryDocumentsButton.Text" xml:space="preserve">
+    <value>&amp;Query Documents</value>
+  </data>
+  <data name="QueryDocumentsButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;QueryDocumentsButton.Name" xml:space="preserve">
+    <value>QueryDocumentsButton</value>
+  </data>
+  <data name="&gt;&gt;QueryDocumentsButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;QueryAllDocumentsButton.Parent" xml:space="preserve">
-    <value>AllDocumentsTabPage</value>
+  <data name="&gt;&gt;QueryDocumentsButton.Parent" xml:space="preserve">
+    <value>AllFlaggedDocumentsTabPage</value>
   </data>
-  <data name="&gt;&gt;QueryAllDocumentsButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;QueryDocumentsButton.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="DBDocumentRecordsCountLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1091,36 +1139,36 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;DBDocumentRecordsCountLabel.Parent" xml:space="preserve">
-    <value>AllDocumentsTabPage</value>
+    <value>AllFlaggedDocumentsTabPage</value>
   </data>
   <data name="&gt;&gt;DBDocumentRecordsCountLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
-  <data name="AllDocumentsTabPage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="AllFlaggedDocumentsTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="AllDocumentsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="AllFlaggedDocumentsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="AllDocumentsTabPage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="AllFlaggedDocumentsTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>482, 81</value>
   </data>
-  <data name="AllDocumentsTabPage.TabIndex" type="System.Int32, mscorlib">
+  <data name="AllFlaggedDocumentsTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="AllDocumentsTabPage.Text" xml:space="preserve">
-    <value>All Documents</value>
+  <data name="AllFlaggedDocumentsTabPage.Text" xml:space="preserve">
+    <value>All/Flagged Documents</value>
   </data>
-  <data name="&gt;&gt;AllDocumentsTabPage.Name" xml:space="preserve">
-    <value>AllDocumentsTabPage</value>
+  <data name="&gt;&gt;AllFlaggedDocumentsTabPage.Name" xml:space="preserve">
+    <value>AllFlaggedDocumentsTabPage</value>
   </data>
-  <data name="&gt;&gt;AllDocumentsTabPage.Type" xml:space="preserve">
+  <data name="&gt;&gt;AllFlaggedDocumentsTabPage.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;AllDocumentsTabPage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;AllFlaggedDocumentsTabPage.Parent" xml:space="preserve">
     <value>SearchOptionsTabControl</value>
   </data>
-  <data name="&gt;&gt;AllDocumentsTabPage.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;AllFlaggedDocumentsTabPage.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="SearchOptionsTabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -2036,12 +2084,6 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>845, 17</value>
-  </metadata>
-  <data name="HelpProvider.HelpNamespace" xml:space="preserve">
-    <value />
-  </data>
   <data name="$this.HelpKeyword" xml:space="preserve">
     <value>Using PDFKeeper.html</value>
   </data>
@@ -2308,6 +2350,18 @@
     <value>EditDateTimeToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;EditDateTimeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator13.Name" xml:space="preserve">
+    <value>ToolStripSeparator13</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EditFlagDocumentToolStripMenuItem.Name" xml:space="preserve">
+    <value>EditFlagDocumentToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;EditFlagDocumentToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ViewToolStripMenuItem.Name" xml:space="preserve">

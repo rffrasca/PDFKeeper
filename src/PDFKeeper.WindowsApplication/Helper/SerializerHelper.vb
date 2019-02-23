@@ -24,7 +24,9 @@ Public NotInheritable Class SerializerHelper
 
     Public Shared Sub FromObjToXml(Of T As New)(ByVal objName As T, _
                                                 ByVal xmlFile As String)
-        Using writer As New StreamWriter(xmlFile)
+        Dim writerSettings As New XmlWriterSettings
+        writerSettings.NewLineHandling = NewLineHandling.Entitize
+        Using writer As XmlWriter = XmlWriter.Create(xmlFile, writerSettings)
             Dim serializer As New XmlSerializer(GetType(T))
             serializer.Serialize(writer, objName)
         End Using
@@ -35,7 +37,7 @@ Public NotInheritable Class SerializerHelper
         MessageId:="0#")> _
     Public Shared Sub FromXmlToObj(Of T)(ByRef objName As T, _
                                          ByVal xmlFile As String)
-        Using reader As New StreamReader(xmlFile)
+        Using reader As XmlReader = XmlReader.Create(xmlFile)
             Dim serializer As New XmlSerializer(objName.GetType)
             objName = CType(serializer.Deserialize(reader), T)
         End Using

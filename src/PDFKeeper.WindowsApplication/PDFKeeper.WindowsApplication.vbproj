@@ -128,6 +128,7 @@
     <Import Include="System.Text" />
     <Import Include="System.Windows.Forms" />
     <Import Include="System.Linq" />
+    <Import Include="System.Xml" />
     <Import Include="System.Xml.Linq" />
     <Import Include="System.Threading.Tasks" />
     <Import Include="System.Xml.Serialization" />
@@ -156,6 +157,7 @@
     <Compile Include="Helper\FileHelper.vb" />
     <Compile Include="Command\FileNewToolStripCommand.vb" />
     <Compile Include="Command\FileOpenToolStripCommand.vb" />
+    <Compile Include="Model\File\PDF\PdfFileSupplementalData.vb" />
     <Compile Include="Utility\FilePathNameGenerator.vb" />
     <Compile Include="Command\FilePrintToolStripCommand.vb" />
     <Compile Include="Command\FileSaveAsToolStripCommand.vb" />
@@ -332,6 +334,10 @@
     </Content>
     <Content Include="..\Help\OracleDatabaseSchemaSetup.sql">
       <Link>OracleDatabaseSchemaSetup.sql</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Help\OracleDatabaseSchemaUpgrade.sql">
+      <Link>OracleDatabaseSchemaUpgrade.sql</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\Help\PDFKeeper.en-US.chm">

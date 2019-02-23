@@ -78,16 +78,25 @@ Public Class MainViewSelectedDocumentPresenter
             view.DocumentNotes.InsertDateTimeAndText(My.Settings.LoginUsername)
     End Sub
 
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
+        "CA1726:UsePreferredTerms", _
+        MessageId:="Flag")> _
+    Public Sub EditFlagDocumentToolStripMenuItemClick()
+        Dim docsDao As IDocsDao = New DocsDao
+        docsDao.UpdateFlagStateById(view.DocumentId, view.DocumentFlagState)
+    End Sub
+
     Public Sub ViewSetPreviewImageResolutionToolStripMenuItemClick()
         Task.Run(Sub() GetDocumentPdfPreview())
     End Sub
 
     Public Sub SearchResultsDataGridViewSelectionChanged()
         If view.DocumentId > 0 Then
-            Dim tasks(5) As Task
+            Dim tasks(6) As Task
             tasks(1) = Task.Run(Sub() GetDocumentPdf())
             tasks(2) = Task.Run(Sub() GetDocumentNotes(True))
             tasks(3) = Task.Run(Sub() GetDocumentKeywords())
+            tasks(4) = Task.Run(Sub() GetFlagState())
             Try
                 tasks(1).Wait()
             Catch ex As AggregateException
@@ -107,8 +116,8 @@ Public Class MainViewSelectedDocumentPresenter
                 ClearSelectedDocument()
                 Exit Sub
             End Try
-            tasks(4) = Task.Run(Sub() GetDocumentPdfPreview())
-            tasks(5) = Task.Run(Sub() GetDocumentPdfText())
+            tasks(5) = Task.Run(Sub() GetDocumentPdfPreview())
+            tasks(6) = Task.Run(Sub() GetDocumentPdfText())
             Try
                 tasks(2).Wait()
             Catch ex As AggregateException
@@ -142,6 +151,7 @@ Public Class MainViewSelectedDocumentPresenter
         view.DocumentKeywords = Nothing
         view.DocumentPreview = Nothing
         view.DocumentText = Nothing
+        view.DocumentFlagState = Nothing
     End Sub
 
     Private Sub GetDocumentPdf()
@@ -178,6 +188,13 @@ Public Class MainViewSelectedDocumentPresenter
         Dim docsDao As IDocsDao = New DocsDao
         Dim dataTableKeywords As DataTable = docsDao.GetKeywordsById(view.DocumentId)
         view.DocumentKeywords = Convert.ToString(dataTableKeywords.Rows(0)("doc_keywords"), _
+                                                 CultureInfo.CurrentCulture)
+    End Sub
+
+    Private Sub GetFlagState()
+        Dim docsDao As IDocsDao = New DocsDao
+        Dim dataTableFlagState As DataTable = docsDao.GetFlagStateById(view.DocumentId)
+        view.DocumentFlagState = Convert.ToInt32(dataTableFlagState.Rows(0)("doc_flag"), _
                                                  CultureInfo.CurrentCulture)
     End Sub
 

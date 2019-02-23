@@ -176,6 +176,15 @@ Public Class UploadFolderConfigurationDialog
         End Set
     End Property
 
+    Public Property FlagDocument As Boolean Implements IUploadFolderConfigurationView.FlagDocument
+        Get
+            Return FlagDocumentCheckBox.Checked
+        End Get
+        Set(value As Boolean)
+            FlagDocumentCheckBox.Checked = value
+        End Set
+    End Property
+
     Public Property OkEnabled As Boolean Implements IUploadFolderConfigurationView.OkEnabled
         Get
             Return OK_Button.Enabled

@@ -33,8 +33,8 @@ Public Interface IMainViewSearch
     ReadOnly Property Subject2 As String
     ReadOnly Property SearchDate As String
     Property DBDocumentRecordsCountMessage As String
-    Property QueryAllDocumentsVisible As Boolean
-    Property QueryAllDocumentsEnabled As Boolean
+    ReadOnly Property FlaggedDocumentsOnly As Boolean
+    Property QueryDocumentsEnabled As Boolean   ' On the All/Flagged Documents tab.
     Property SearchResultsFullView As Boolean
     Property SearchResultsViewEnabled As Boolean
     Property SearchResults As DataTable

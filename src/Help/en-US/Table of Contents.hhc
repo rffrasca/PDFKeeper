@@ -56,6 +56,11 @@
 				</OBJECT>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Database Schema Upgrade for Oracle Database">
+			<param name="Local" value="Database Schema Upgrade for Oracle Database.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Logging into PDFKeeper">
 			<param name="Local" value="Logging into PDFKeeper.html">
 			<param name="ImageNumber" value="9">
@@ -175,6 +180,11 @@
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Change Flag Document State">
+					<param name="Local" value="Change Flag Document State.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Saving PDF Document outside of PDFKeeper">
 					<param name="Local" value="Saving PDF Document outside of PDFKeeper.html">
 					<param name="ImageNumber" value="9">
@@ -185,8 +195,8 @@
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Exporting PDF Documents and Notes">
-					<param name="Local" value="Exporting PDF Documents and Notes.html">
+					<param name="Name" value="Exporting PDF Documents and Supplemental Data">
+					<param name="Local" value="Exporting PDF Documents and Supplemental Data.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 			</UL>
