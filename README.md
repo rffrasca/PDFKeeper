@@ -38,4 +38,4 @@ PDFKeeper is [OSI Certified Open Source Software](https://opensource.org/license
 
 ![Logo](https://opensource.org/trademarks/osi-certified/web/osi-certified-120x100.png)
 
-![Logo](http://www.gnu.org/graphics/gplv3-127x51.png)
+![Logo](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)
