@@ -1,5 +1,5 @@
 ﻿'******************************************************************************
-'* PDFKeeper -- Open Source PDF Document Storage Solution
+'* PDFKeeper -- Open Source PDF Document Management System
 '* Copyright (C) 2009-2019 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
@@ -30,7 +30,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("PDFKeeper")> 
-<Assembly: AssemblyDescription("Open Source PDF Document Storage Solution")> 
+<Assembly: AssemblyDescription("Open Source PDF Document Management System")> 
 <Assembly: AssemblyCompany("Robert F. Frasca")> 
 <Assembly: AssemblyProduct("PDFKeeper")> 
 <Assembly: AssemblyCopyright("Copyright © 2009-2019  Robert F. Frasca")> 

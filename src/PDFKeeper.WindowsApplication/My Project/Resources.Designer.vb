@@ -133,7 +133,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to PDFKeeper is an Open Source PDF Document Storage Solution that integrates with a compatible, relational database management system to provide an upload, index, and search solution for PDF documents.
+        '''  Looks up a localized string similar to PDFKeeper is an &quot;Open Source PDF Document Management System&quot; that integrates with a compatible, relational database to provide an upload, index, and search solution for PDF documents.
         '''
         '''This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you are welcome to redistribute it under certain conditions; for details, select License..
         '''</summary>
