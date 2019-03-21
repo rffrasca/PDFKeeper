@@ -17,15 +17,21 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-<Serializable> _
-Public Class UploadFolderConfiguration
-    Public Property TitlePrefill As String
-    Public Property AuthorPrefill As String
-    Public Property SubjectPrefill As String
-    Public Property KeywordsPrefill As String
-    Public Property CategoryPrefill As String
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-        "CA1726:UsePreferredTerms", _
-        MessageId:="Flag")> _
-    Public Property FlagDocument As Boolean
+Public Class SetClearCategoryViewPresenter
+    Private view As ISetClearCategoryView
+
+    Public Sub New(view As ISetClearCategoryView)
+        Me.view = view
+    End Sub
+
+    Public Sub CategoryComboBoxEnter()
+        Dim currentCategory As String = view.Category
+        Dim docsDao As IDocsDao = New DocsDao
+        view.Categories = docsDao.GetAllCategories
+        view.Category = currentCategory
+    End Sub
+
+    Public Sub CategoryComboBoxTextChanged()
+        view.Category = view.Category.TrimStart
+    End Sub
 End Class

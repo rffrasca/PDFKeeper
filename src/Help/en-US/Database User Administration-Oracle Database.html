@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
 	<title>Database User Administration-Oracle Database</title>
-	<meta name="generator" content="LibreOffice 6.0.7.3 (Windows)"/>
+	<meta name="generator" content="LibreOffice 6.1.5.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2019-02-10T10:08:06.251000000"/>
+	<meta name="changed" content="2019-03-05T20:54:50.179000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management System
@@ -27,8 +27,8 @@
 * along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
 *******************************************************************************"/>
 </head>
-<body lang="en-US" dir="ltr">
-<h1><font face="Segoe UI, sans-serif">Database User Administration</font></h1>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif">Database
+User Administration</font></h1>
 <p><font face="Segoe UI, sans-serif"><font size="5" style="font-size: 18pt"><b>Oracle
 Database</b></font></font></p>
 <p><font face="Segoe UI, sans-serif">It is recommended that each user
@@ -45,11 +45,9 @@ Database Express Edition Documentation</a>. </font>
 <p><font face="Segoe UI, sans-serif">Perform the following steps for
 any user that will need access to the <b>pdfkeeper</b> schema:</font></p>
 <ol>
-	<li/>
-<p><font face="Segoe UI, sans-serif">From a Command Prompt,
+	<li><p><font face="Segoe UI, sans-serif">From a Command Prompt,
 	execute <b>sqlplus</b></font></p>
-	<li/>
-<p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">When
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">When
 	logged into the database server computer using the account that
 	installed Oracle Database, enter</span> <b>connect / as sysdba</b><span style="font-weight: normal">.
 	Otherwise, enter the database connect string in the format
@@ -65,21 +63,16 @@ any user that will need access to the <b>pdfkeeper</b> schema:</font></p>
 	1521); and </span><b>service_name</b> <span style="font-weight: normal">is
 	the service name of the database to access (for Oracle Database
 	Express Edition, the default is XE).</span></font></p>
-	<li/>
-<p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
 	a new user, enter </span><b>create user </b><i><b>user_name</b></i>
 	<b>default tablespace users identified by </b><i><b>&quot;password&quot;</b></i><b>;</b></font></p>
-	<li/>
-<p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
 	</span><b>grant create session to </b><i><b>user_name</b></i><b>;</b></font></p>
-	<li/>
-<p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
 	</span><b>quit</b></font></p>
-	<li/>
-<p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">From
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">From
 	a Command Prompt, execute </span><b>sqlplus</b></font></p>
-	<li/>
-<p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">When
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">When
 	logged into the database server computer using the account that
 	installed Oracle Database, enter</span> <b>connect pdfkeeper</b><span style="font-weight: normal">.
 	Otherwise, enter the database connect string in the format
@@ -92,36 +85,29 @@ any user that will need access to the <b>pdfkeeper</b> schema:</font></p>
 	1521); and </span><b>service_name</b> <span style="font-weight: normal">is
 	the service name of the database to access (for Oracle Database
 	Express Edition, the default is XE).</span></font></p>
-	<li/>
-<p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
 	a new account, enter the following statement to grant the user
 	select/query access: </span><b>grant select on docs to </b><i><b>user_name</b></i><b>;</b></font></p>
-	<li/>
-<p style="font-weight: normal"><font face="Segoe UI, sans-serif">To
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">To
 	give the user the ability to upload documents, enter the following
 	statements: <b>grant insert on docs to </b><i><b>user_name</b></i><b>;
 	</b>and <b>grant select on docs_seq to </b><i><b>user_name</b></i><b>;</b></font></p>
-	<li/>
-<p style="font-weight: normal"><font face="Segoe UI, sans-serif">To
-	give the user the ability to edit document notes and set the
-	document follow-up state, enter the following statement: <b>grant
-	update on docs to </b><i><b>user_name</b></i><b>;</b></font></p>
-	<li/>
-<p style="font-weight: normal"><font face="Segoe UI, sans-serif">To
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">To
+	give the user the ability to edit notes, assign a category, and set
+	the follow-up state, enter the following statement: <b>grant update
+	on docs to </b><i><b>user_name</b></i><b>;</b></font></p>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">To
 	give the user the ability to delete documents, enter the following
 	statement: <b>grant delete on docs to </b><i><b>user_name</b></i><b>;</b></font></p>
-	<li/>
-<p style="font-weight: normal"><font face="Segoe UI, sans-serif">To
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">To
 	prevent the user from uploading documents, enter the following
 	statements: <b>revoke insert on docs from </b><i><b>user_name</b></i><b>;
 	</b>and <b>revoke select on docs_seq from </b><i><b>user_name</b></i><b>;</b></font></p>
-	<li/>
-<p style="font-weight: normal"><font face="Segoe UI, sans-serif">To
-	prevent the user from editing document notes and setting the
-	document follow-up state, enter the following statement: <b>revoke
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">To
+	prevent the user from editing notes, assigning a category, and
+	setting the follow-up state, enter the following statement: <b>revoke
 	update on docs from </b><i><b>user_name</b></i><b>;</b></font></p>
-	<li/>
-<p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">To
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">To
 	prevent the user from deleting documents, enter the following
 	statement: </span><b>revoke delete on docs from </b><i><b>user_name</b></i><b>;</b></font></p>
 </ol>

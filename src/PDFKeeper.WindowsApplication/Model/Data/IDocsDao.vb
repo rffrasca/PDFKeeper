@@ -27,11 +27,15 @@ Public Interface IDocsDao
                                                      "CA1024:UsePropertiesWhereAppropriate")> _
     Function GetAllSubjects() As DataTable
     Function GetAllSubjectsByAuthor(ByVal author As String) As DataTable
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
+                                                     "CA1024:UsePropertiesWhereAppropriate")> _
+    Function GetAllCategories() As DataTable
     Function GetAllRecordsBySearchString(ByVal searchValue As String) As DataTable
     Function GetAllRecordsByAuthor(ByVal author As String) As DataTable
     Function GetAllRecordsBySubject(ByVal subject As String) As DataTable
     Function GetAllRecordsByAuthorAndSubject(ByVal author As String, _
                                              ByVal subject As String) As DataTable
+    Function GetAllRecordsByCategory(ByVal category As String) As DataTable
     Function GetAllRecordsByDateAdded(ByVal dateAdded As String) As DataTable
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
                                                      "CA1024:UsePropertiesWhereAppropriate")> _
@@ -41,6 +45,7 @@ Public Interface IDocsDao
     Function GetAllFlaggedRecords() As DataTable
     Function GetNotesById(ByVal id As Integer) As DataTable
     Function GetKeywordsById(ByVal id As Integer) As DataTable
+    Function GetCategoryById(ByVal id As Integer) As DataTable
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
                                                      "CA1726:UsePreferredTerms", _
                                                      MessageId:="Flag")> _
@@ -55,8 +60,10 @@ Public Interface IDocsDao
                      ByVal keywords As String, _
                      ByVal notes As String, _
                      ByVal pdfFile As String, _
+                     ByVal category As String, _
                      ByVal flag As Integer)
     Sub UpdateNotesById(ByVal id As Integer, ByVal notes As String)
+    Sub UpdateCategoryById(ByVal id As Integer, ByVal category As String)
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
                                                      "CA1726:UsePreferredTerms", _
                                                      MessageId:="Flag")> _

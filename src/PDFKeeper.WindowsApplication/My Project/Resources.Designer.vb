@@ -97,6 +97,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Category.
+        '''</summary>
+        Friend ReadOnly Property Category() As String
+            Get
+                Return ResourceManager.GetString("Category", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to &lt;Date_Time&gt;.
         '''</summary>
         Friend ReadOnly Property DateTimeToken() As String

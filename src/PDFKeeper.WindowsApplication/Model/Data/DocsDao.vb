@@ -53,6 +53,10 @@ Public Class DocsDao
         Return dataAccess.GetAllSubjectsByAuthor(author)
     End Function
 
+    Public Function GetAllCategories() As DataTable Implements IDocsDao.GetAllCategories
+        Return dataAccess.GetAllCategories
+    End Function
+
     Public Function GetAllRecordsBySearchString(searchValue As String) As DataTable Implements IDocsDao.GetAllRecordsBySearchString
         Return dataAccess.GetAllRecordsBySearchString(searchValue)
     End Function
@@ -67,6 +71,10 @@ Public Class DocsDao
 
     Public Function GetAllRecordsByAuthorAndSubject(author As String, subject As String) As DataTable Implements IDocsDao.GetAllRecordsByAuthorAndSubject
         Return dataAccess.GetAllRecordsByAuthorAndSubject(author, subject)
+    End Function
+
+    Public Function GetAllRecordsByCategory(category As String) As DataTable Implements IDocsDao.GetAllRecordsByCategory
+        Return dataAccess.GetAllRecordsByCategory(category)
     End Function
 
     Public Function GetAllRecordsByDateAdded(dateAdded As String) As DataTable Implements IDocsDao.GetAllRecordsByDateAdded
@@ -89,6 +97,10 @@ Public Class DocsDao
         Return dataAccess.GetKeywordsById(id)
     End Function
 
+    Public Function GetCategoryById(id As Integer) As DataTable Implements IDocsDao.GetCategoryById
+        Return dataAccess.GetCategoryById(id)
+    End Function
+
     Public Function GetFlagStateById(id As Integer) As DataTable Implements IDocsDao.GetFlagStateById
         Return dataAccess.GetFlagStateById(id)
     End Function
@@ -97,12 +109,16 @@ Public Class DocsDao
         dataAccess.GetPdfById(id, pdfFile)
     End Sub
 
-    Public Sub CreateRecord(title As String, author As String, subject As String, keywords As String, notes As String, pdfFile As String, flag As Integer) Implements IDocsDao.CreateRecord
-        dataAccess.CreateRecord(title, author, subject, keywords, notes, pdfFile, flag)
+    Public Sub CreateRecord(title As String, author As String, subject As String, keywords As String, notes As String, pdfFile As String, category As String, flag As Integer) Implements IDocsDao.CreateRecord
+        dataAccess.CreateRecord(title, author, subject, keywords, notes, pdfFile, category, flag)
     End Sub
 
     Public Sub UpdateNotesById(id As Integer, notes As String) Implements IDocsDao.UpdateNotesById
         dataAccess.UpdateNotesById(id, notes)
+    End Sub
+
+    Public Sub UpdateCategoryById(id As Integer, category As String) Implements IDocsDao.UpdateCategoryById
+        dataAccess.UpdateCategoryById(id, category)
     End Sub
 
     Public Sub UpdateFlagStateById(id As Integer, flag As Integer) Implements IDocsDao.UpdateFlagStateById

@@ -62,12 +62,19 @@ Public Class UploadFolderConfigurationDialog
         Me.Cursor = Cursors.Default
     End Sub
 
-    Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles FolderNameTextBox.TextChanged, _
-                                                                              TitleComboBox.TextChanged, _
-                                                                              AuthorComboBox.TextChanged, _
-                                                                              SubjectComboBox.TextChanged, _
-                                                                              KeywordsTextBox.TextChanged
-        presenter.TextBoxTextChanged()
+    Private Sub CategoryComboBox_Enter(sender As Object, e As EventArgs) Handles CategoryComboBox.Enter
+        Me.Cursor = Cursors.WaitCursor
+        presenter.CategoryComboBoxEnter()
+        Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub Control_ValueChanged(sender As Object, e As EventArgs) Handles FolderNameTextBox.TextChanged, _
+                                                                               TitleComboBox.TextChanged, _
+                                                                               AuthorComboBox.TextChanged, _
+                                                                               SubjectComboBox.TextChanged, _
+                                                                               KeywordsTextBox.TextChanged, _
+                                                                               CategoryComboBox.TextChanged
+        presenter.ControlValueChanged()
     End Sub
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
@@ -173,6 +180,25 @@ Public Class UploadFolderConfigurationDialog
         End Get
         Set(value As String)
             KeywordsTextBox.Text = value
+        End Set
+    End Property
+
+    Public Property Categories As DataTable Implements IUploadFolderConfigurationView.Categories
+        Get
+            Return CategoryComboBox.DataSource
+        End Get
+        Set(value As DataTable)
+            CategoryComboBox.DataSource = value
+            CategoryComboBox.DisplayMember = "doc_category"
+        End Set
+    End Property
+
+    Public Property Category As String Implements IUploadFolderConfigurationView.Category
+        Get
+            Return CategoryComboBox.Text
+        End Get
+        Set(value As String)
+            CategoryComboBox.Text = value
         End Set
     End Property
 

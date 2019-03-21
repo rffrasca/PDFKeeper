@@ -233,4 +233,7 @@ Do you want to save changes before closing?</value>
 
 The contents of the Notes text box prior to the attempted save operation have been copied to the Clipboard.</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
 </root>

@@ -46,6 +46,7 @@ Public NotInheritable Class UploadStagingDirectory
                     pdfReader.Author IsNot Nothing And _
                     pdfReader.Subject IsNot Nothing Then
                     Dim notes As String = Nothing
+                    Dim category As String = Nothing
                     Dim flag As Integer = 0
                     Dim suppData As New PdfFileSupplementalData
                     Dim suppDataXml As String = Path.ChangeExtension(file, _
@@ -53,6 +54,7 @@ Public NotInheritable Class UploadStagingDirectory
                     If IO.File.Exists(suppDataXml) Then
                         SerializerHelper.FromXmlToObj(suppData, suppDataXml)
                         notes = suppData.Notes
+                        category = suppData.Category
                         flag = suppData.FlagState
                     End If
                     Dim docsDao As IDocsDao = New DocsDao
@@ -62,6 +64,7 @@ Public NotInheritable Class UploadStagingDirectory
                                          pdfReader.Keywords, _
                                          notes, _
                                          file, _
+                                         category, _
                                          flag)
                     FileHelper.DeleteFileToRecycleBin(file)
                     If notes.Length > 0 Then

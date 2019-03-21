@@ -24,6 +24,7 @@ Namespace Enums
     End Enum
 
     Public Enum SelectedDocumentsFunction
+        SetClearCategory
         Delete
         Export
     End Enum

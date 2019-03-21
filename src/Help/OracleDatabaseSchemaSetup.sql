@@ -43,6 +43,7 @@ create table pdfkeeper.docs(
 	doc_notes varchar2(4000),
 	doc_pdf blob not null,
 	doc_dummy varchar2(1),
+	doc_category varchar2(2000),
 	doc_flag number(1) default 0 not null
 	constraint doc_flag_ck check (doc_flag in (0,1)));
 
@@ -58,9 +59,10 @@ begin
 					 doc_keywords,
 					 doc_added,
 					 doc_notes,
-					 doc_pdf');
+					 doc_pdf,
+					 doc_category');
 	ctx_ddl.set_attribute('ctxsys.pdfkeeper_multi','filter',
-			      'N,N,N,N,N,N,Y');
+			      'N,N,N,N,N,N,Y,N');
 	if (dbms_db_version.version >11) then
 		ctx_ddl.create_preference('ctxsys.text_search_storage',
 					  'basic_storage');

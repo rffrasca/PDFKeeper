@@ -23,10 +23,21 @@ Public Class MainViewSearchPresenter
     Private lastSearchString As String = String.Empty
     Private lastAuthor2Selected As String
     Private searchResultsSortParameters As New SearchResultsSortParameters
+    Private category As String
     Private exportFolder As String
 
     Public Sub New(view As IMainViewSearch)
         Me.view = view
+    End Sub
+
+    Public Sub FileSetClearCategoryCommandExecute()
+        Try
+            ProcessSelectedDocuments(Enums.SelectedDocumentsFunction.SetClearCategory)
+            view.RefreshSearchResultsView()
+        Catch ex As OracleException
+            Dim displayService As IMessageDisplayService = New MessageDisplayService
+            displayService.ShowError(ex.Message)
+        End Try
     End Sub
 
     Public Sub FileDeleteToolStripCommandExecute()
@@ -118,12 +129,17 @@ Public Class MainViewSearchPresenter
     End Sub
 
     Public Sub AuthorComboBoxDropDown()
-        Dim docsDao As IDocsDao = New DocsDao
-        If view.SearchOptionsSelectedIndex = 1 Then
-            view.Authors1 = docsDao.GetAllAuthors
-        ElseIf view.SearchOptionsSelectedIndex = 3 Then
-            view.Authors2 = docsDao.GetAllAuthors
-        End If
+        Try
+            Dim docsDao As IDocsDao = New DocsDao
+            If view.SearchOptionsSelectedIndex = 1 Then
+                view.Authors1 = docsDao.GetAllAuthors
+            ElseIf view.SearchOptionsSelectedIndex = 3 Then
+                view.Authors2 = docsDao.GetAllAuthors
+            End If
+        Catch ex As OracleException
+            Dim displayService As IMessageDisplayService = New MessageDisplayService
+            displayService.ShowError(ex.Message)
+        End Try
     End Sub
 
     Public Sub Author1ComboBoxDropDownClosed()
@@ -175,8 +191,13 @@ Public Class MainViewSearchPresenter
     End Sub
 
     Public Sub Subject2ComboBoxDropDown()
-        Dim docsDao As IDocsDao = New DocsDao
-        view.Subjects2 = docsDao.GetAllSubjectsByAuthor(view.Author2)
+        Try
+            Dim docsDao As IDocsDao = New DocsDao
+            view.Subjects2 = docsDao.GetAllSubjectsByAuthor(view.Author2)
+        Catch ex As OracleException
+            Dim displayService As IMessageDisplayService = New MessageDisplayService
+            displayService.ShowError(ex.Message)
+        End Try
     End Sub
 
     Public Sub Subject2ComboBoxDropDownClosed()
@@ -185,6 +206,30 @@ Public Class MainViewSearchPresenter
                 Dim docsDao As IDocsDao = New DocsDao
                 FillSearchResults(docsDao.GetAllRecordsByAuthorAndSubject(view.Author2, _
                                                                           view.Subject2))
+            Catch ex As OracleException
+                Dim displayService As IMessageDisplayService = New MessageDisplayService
+                displayService.ShowError(ex.Message)
+            End Try
+        Else
+            ResetSearchResultsView()
+        End If
+    End Sub
+
+    Public Sub CategoryComboBoxDropDown()
+        Try
+            Dim docsDao As IDocsDao = New DocsDao
+            view.Categories = docsDao.GetAllCategories
+        Catch ex As OracleException
+            Dim displayService As IMessageDisplayService = New MessageDisplayService
+            displayService.ShowError(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub CategoryComboBoxDropDownClosed()
+        If view.Category IsNot Nothing Then
+            Try
+                Dim docsDao As IDocsDao = New DocsDao
+                FillSearchResults(docsDao.GetAllRecordsByCategory(view.Category))
             Catch ex As OracleException
                 Dim displayService As IMessageDisplayService = New MessageDisplayService
                 displayService.ShowError(ex.Message)
@@ -240,6 +285,9 @@ Public Class MainViewSearchPresenter
     End Sub
 
     Private Sub ProcessSelectedDocuments(ByVal functionToPerform As Enums.SelectedDocumentsFunction)
+        If functionToPerform = Enums.SelectedDocumentsFunction.SetClearCategory Then
+            category = FileSetClearCategoryToolStripCommand.Category
+        End If
         If functionToPerform = Enums.SelectedDocumentsFunction.Export Then
             exportFolder = FileExportToolStripCommand.ExportFolder
         End If
@@ -247,7 +295,9 @@ Public Class MainViewSearchPresenter
         view.DeleteExportProgressMaximum = view.SelectedSearchResultsIdsCount
         For Each id As Object In view.SelectedSearchResultsIds
             Dim idToProcess As Integer = CInt(id)
-            If functionToPerform = Enums.SelectedDocumentsFunction.Delete Then
+            If functionToPerform = Enums.SelectedDocumentsFunction.SetClearCategory Then
+                SetCategoryOnDocument(idToProcess, category)
+            ElseIf functionToPerform = Enums.SelectedDocumentsFunction.Delete Then
                 DeleteDocument(idToProcess)
             ElseIf functionToPerform = Enums.SelectedDocumentsFunction.Export Then
                 ExportDocument(id)
@@ -255,6 +305,13 @@ Public Class MainViewSearchPresenter
             view.DeleteExportProgressPerformStep()
         Next
         view.DeleteExportProgressVisible = False
+    End Sub
+
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
+        "CA1822:MarkMembersAsStatic")> _
+    Private Sub SetCategoryOnDocument(ByVal id As Integer, ByVal newCategory As String)
+        Dim docsDao As IDocsDao = New DocsDao
+        docsDao.UpdateCategoryById(id, newCategory)
     End Sub
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
@@ -277,6 +334,10 @@ Public Class MainViewSearchPresenter
             Dim dataTableNotes As DataTable = docsDaoNotes.GetNotesById(id)
             suppData.Notes = Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
                                               CultureInfo.CurrentCulture)
+            Dim docsDaoCategory As IDocsDao = New DocsDao
+            Dim dataTableCategory As DataTable = docsDaoCategory.GetCategoryById(id)
+            suppData.Category = Convert.ToString(dataTableCategory.Rows(0)("doc_category"), _
+                                                 CultureInfo.CurrentCulture)
             Dim docsDaoFlagState As IDocsDao = New DocsDao
             Dim dataTableFlagState As DataTable = docsDaoFlagState.GetFlagStateById(id)
             suppData.FlagState = Convert.ToInt32(dataTableFlagState.Rows(0)("doc_flag"), _

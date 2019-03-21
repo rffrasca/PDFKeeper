@@ -37,6 +37,7 @@ Public Class MainViewToolStripStatePresenter
         shortNames.SetItem("FileSelect", False)
         shortNames.SetItem("FileSelectAll", False)
         shortNames.SetItem("FileSelectNone", False)
+        shortNames.SetItem("FileSetClearCategory", False)
         shortNames.SetItem("FileDelete", False)
         shortNames.SetItem("FileExport", False)
         shortNames.SetItem("EditUndo", False)
@@ -82,9 +83,11 @@ Public Class MainViewToolStripStatePresenter
 
     Public Sub SetSearchResultsSelectedState(ByVal selectedRows As Integer)
         If selectedRows > 0 Then
+            shortNames.SetItem("FileSetClearCategory", True)
             shortNames.SetItem("FileDelete", True)
             shortNames.SetItem("FileExport", True)
         Else
+            shortNames.SetItem("FileSetClearCategory", False)
             shortNames.SetItem("FileDelete", False)
             shortNames.SetItem("FileExport", False)
         End If
@@ -164,6 +167,7 @@ Public Class MainViewToolStripStatePresenter
         If documentNotesChanged = False Then
             controlEnabled = True
         Else
+            shortNames.SetItem("FileSetClearCategory", controlEnabled)
             shortNames.SetItem("FileDelete", controlEnabled)
             shortNames.SetItem("FileExport", controlEnabled)
         End If

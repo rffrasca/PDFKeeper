@@ -148,6 +148,11 @@ Public Class MainForm
         command.Execute()
     End Sub
 
+    Private Sub FileSetClearCategoryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileSetClearCategoryToolStripMenuItem.Click
+        Dim command As ICommand = New FileSetClearCategoryToolStripCommand(Me, searchPresenter)
+        command.Execute()
+    End Sub
+
     Private Sub FileDeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileDeleteToolStripMenuItem.Click, _
                                                                                             FileDeleteToolStripButton.Click
         Dim command As ICommand = New FileDeleteToolStripCommand(Me, searchPresenter)
@@ -272,6 +277,10 @@ Public Class MainForm
 #Region "Search Options events and private members"
     Private Sub SearchOptionsTabControl_Selected(sender As Object, e As TabControlEventArgs) Handles SearchOptionsTabControl.Selected
         toolStripStatePresenter.SetPreSearchState()
+        Dim panel2CollapsedStateChanged As Boolean
+        If SplitContainer.Panel2Collapsed = True Then
+            panel2CollapsedStateChanged = True
+        End If
         SplitContainer.Panel2Collapsed = False
         If SearchOptionsTabControl.SelectedIndex = 0 Then
             DoSearch(True)
@@ -282,8 +291,10 @@ Public Class MainForm
         ElseIf SearchOptionsTabControl.SelectedIndex = 3 Then
             Subject2ComboBox_DropDownClosed(Me, Nothing)
         ElseIf SearchOptionsTabControl.SelectedIndex = 4 Then
-            SearchDateTimePicker_ValueChanged(Me, Nothing)
+            CategoryComboBox_DropDownClosed(Me, Nothing)
         ElseIf SearchOptionsTabControl.SelectedIndex = 5 Then
+            SearchDateTimePicker_ValueChanged(Me, Nothing)
+        ElseIf SearchOptionsTabControl.SelectedIndex = 6 Then
             Me.Cursor = Cursors.WaitCursor
             If refreshFlag Then
                 QueryAllFlaggedDocumentsButton_Click(Me, Nothing)
@@ -293,6 +304,13 @@ Public Class MainForm
             Me.Cursor = Cursors.Default
         End If
         refreshFlag = False
+        ' Deselect and select the selected tab to ensure the selected tab is
+        ' still visible when the right panel collpased state has changed.
+        If panel2CollapsedStateChanged Then
+            Dim selectedTabIndex As Integer = SearchOptionsTabControl.SelectedIndex
+            SearchOptionsTabControl.DeselectTab(selectedTabIndex)
+            SearchOptionsTabControl.SelectTab(selectedTabIndex)
+        End If
     End Sub
 
     Private Sub SearchStringComboBox_TextChanged(sender As Object, e As EventArgs) Handles SearchStringComboBox.TextChanged
@@ -459,6 +477,44 @@ Public Class MainForm
         End If
     End Sub
 
+    Private Sub CategoryComboBox_DropDown(sender As Object, e As EventArgs) Handles CategoryComboBox.DropDown
+        Me.Cursor = Cursors.WaitCursor
+        searchPresenter.CategoryComboBoxDropDown()
+        Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub CategoryComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles CategoryComboBox.DropDownClosed
+        Me.Cursor = Cursors.WaitCursor
+        searchPresenter.CategoryComboBoxDropDownClosed()
+        Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub CategoryComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles CategoryComboBox.KeyDown
+        ' ComboBox will only drop down when the down arrow is pressed.
+        If e.KeyCode = 40 Then
+            CategoryComboBox.DroppedDown = True
+        End If
+    End Sub
+
+    Private Sub CategoryComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles CategoryComboBox.KeyUp
+        ' Pressing the up arrow when ComboBox has focus will select the previous Category in the
+        ' collection when the drop down is in the closed position.  When drop down is in the
+        ' open position, the up arrow will move selector up the list.
+        If e.KeyCode = 38 Then
+            If CategoryComboBox.DroppedDown = False Then
+                CategoryComboBox_DropDownClosed(Me, Nothing)
+            End If
+        End If
+    End Sub
+
+    Private Sub CategoryComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles CategoryComboBox.MouseWheel
+        ' This will prevent mouse wheel scrolling while drop down is closed.
+        If Not CategoryComboBox.DroppedDown Then
+            Dim handledMouseEventArgs As HandledMouseEventArgs = DirectCast(e, HandledMouseEventArgs)
+            handledMouseEventArgs.Handled = True
+        End If
+    End Sub
+
     Private Sub SearchDateTimePicker_ValueChanged(sender As Object, e As EventArgs) Handles SearchDateTimePicker.ValueChanged
         Me.Cursor = Cursors.WaitCursor
         searchPresenter.SearchDateTimePickerValueChanged()
@@ -489,22 +545,24 @@ Public Class MainForm
             .Columns(3).ReadOnly = True
             .Columns(4).HeaderCell.Value = My.Resources.Subject
             .Columns(4).ReadOnly = True
-            .Columns(5).HeaderCell.Value = My.Resources.Added
-            .Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns(5).HeaderCell.Value = My.Resources.Category
             .Columns(5).ReadOnly = True
+            .Columns(6).HeaderCell.Value = My.Resources.Added
+            .Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns(6).ReadOnly = True
         End With
         If SearchResultsDataGridView.RowCount > 0 Then
             SearchResultsDataGridView.Enabled = True
-            SearchResultsDataGridView.Columns(5).AutoSizeMode = _
+            SearchResultsDataGridView.Columns(6).AutoSizeMode = _
                 DataGridViewAutoSizeColumnMode.DisplayedCells
             If SearchResultsDataGridView.Columns.GetColumnsWidth(DataGridViewElementStates.Displayed) > _
                 SearchResultsDataGridView.Size.Width Then
                 SplitContainer.Panel2Collapsed = True
             End If
-            If SearchResultsDataGridView.Columns(5).Displayed = True Then
-                SearchResultsDataGridView.Columns(5).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            If SearchResultsDataGridView.Columns(6).Displayed = True Then
+                SearchResultsDataGridView.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             End If
-            SearchResultsDataGridView.Columns(5).MinimumWidth = SearchResultsDataGridView.Columns(5).FillWeight + 20
+            SearchResultsDataGridView.Columns(6).MinimumWidth = SearchResultsDataGridView.Columns(6).FillWeight + 20
         End If
         toolStripStatePresenter.SetPostSearchState()
         SearchResultsDataGridView.Focus()
@@ -863,6 +921,26 @@ Public Class MainForm
         Get
             If Not Subject2ComboBox.SelectedItem Is Nothing Then
                 Return Convert.ToString(Subject2ComboBox.SelectedItem("doc_subject"), _
+                                        CultureInfo.CurrentCulture)
+            End If
+            Return Nothing
+        End Get
+    End Property
+
+    Public Property Categories As DataTable Implements IMainViewSearch.Categories
+        Get
+            Return CategoryComboBox.DataSource
+        End Get
+        Set(value As DataTable)
+            CategoryComboBox.DataSource = value
+            CategoryComboBox.DisplayMember = "doc_category"
+        End Set
+    End Property
+
+    Public ReadOnly Property Category As String Implements IMainViewSearch.Category
+        Get
+            If Not CategoryComboBox.SelectedItem Is Nothing Then
+                Return Convert.ToString(CategoryComboBox.SelectedItem("doc_category"), _
                                         CultureInfo.CurrentCulture)
             End If
             Return Nothing

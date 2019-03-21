@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
 	<title>Database Schema Upgrade for Oracle Database</title>
-	<meta name="generator" content="LibreOffice 6.0.7.3 (Windows)"/>
+	<meta name="generator" content="LibreOffice 6.1.5.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2019-02-17T14:53:31.825000000"/>
+	<meta name="changed" content="2019-03-05T20:56:33.154000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management System
@@ -27,35 +27,29 @@
 * along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
 *******************************************************************************"/>
 </head>
-<body lang="en-US" dir="ltr">
-<h1><font face="Segoe UI, sans-serif"><b>Database Schema Upgrade for
-Oracle Database</b></font></h1>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Database
+Schema Upgrade for Oracle Database</b></font></h1>
 <p><font face="Segoe UI, sans-serif">This topic provides the steps
-that need to be performed </font><font face="Segoe UI, sans-serif">by
-an individual responsible for the administration of the Oracle
-Database </font><font face="Segoe UI, sans-serif">when upgrading from
-PDFKeeper 4.1.0 or earlier. This schema upgrade adds support for the
-flag document feature introduced in PDFKeeper 5.0.0.</font></p>
+that need to be performed by an individual responsible for the
+administration of the Oracle Database when upgrading from PDFKeeper
+4.1.0 or earlier. This schema upgrade adds support for the </font><font face="Segoe UI, sans-serif">category
+and </font><font face="Segoe UI, sans-serif">flag document feature</font><font face="Segoe UI, sans-serif">s</font><font face="Segoe UI, sans-serif">
+introduced in PDFKeeper 5.0.0.</font></p>
 <ol>
-	<li/>
-<p><font face="Segoe UI, sans-serif">If </font><font face="Segoe UI, sans-serif">the
-	</font><font face="Segoe UI, sans-serif">Oracle Database used to
-	store PDFKeeper data was installed on a different computer, you will
-	need to download <a href="http://www.oracle.com/technetwork/database/database-technologies/instant-client/downloads/index.html" target="_blank">Oracle
+	<li><p><font face="Segoe UI, sans-serif">If the Oracle Database used
+	to store PDFKeeper data was installed on a different computer, you
+	will need to download <a href="http://www.oracle.com/technetwork/database/database-technologies/instant-client/downloads/index.html" target="_blank">Oracle
 	Instant Client Basic or Basic Lite and SQL*Plus packages</a> to this
 	computer, extract the ZIP files into an empty folder, and then add
 	that folder to the PATH; however, you can skip this if you can open
-	a command prompt, </font><font face="Segoe UI, sans-serif">and then
-	</font><font face="Segoe UI, sans-serif">type </font><font face="Segoe UI, sans-serif"><b>sqlplus</b></font>
+	a command prompt, and then type </font><font face="Segoe UI, sans-serif"><b>sqlplus</b></font>
 	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">to
 	</span></font><font face="Segoe UI, sans-serif">confirm the command
 	is available.</font> <font face="Segoe UI, sans-serif">As an
 	alternative, you can install this version of PDFKeeper on the same
 	computer as the Oracle Database used to store PDFKeeper data, and
-	</font><font face="Segoe UI, sans-serif">then </font><font face="Segoe UI, sans-serif">perform
-	the schema upgrade on that computer.</font></p>
-	<li/>
-<p><font face="Segoe UI, sans-serif">Run the <a href="/DatabaseSchemaSetupScriptLauncher.cmd">Database
+	then perform the schema upgrade on that computer.</font></p>
+	<li><p><font face="Segoe UI, sans-serif">Run the <a href="/DatabaseSchemaSetupScriptLauncher.cmd">Database
 	Schema </a><a href="/DatabaseSchemaSetupScriptLauncher.cmd">Upgrade</a>.
 	To perform the upgrade, select option </font><font face="Segoe UI, sans-serif"><b>2</b></font>
 	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">from
@@ -63,8 +57,7 @@ flag document feature introduced in PDFKeeper 5.0.0.</font></p>
 </ol>
 <p><font face="Segoe UI, sans-serif"><b>Additional Information:</b></font></p>
 <ul>
-	<li/>
-<p style="font-weight: normal"><font face="Segoe UI, sans-serif">If
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">If
 	the message &ldquo;<b>This page can&rsquo;t be displayed&rdquo;
 	</b>appears in the Help window after selecting <b>Database Schema
 	Upgrade</b> in step 2, then restart this computer and try again.</font></p>

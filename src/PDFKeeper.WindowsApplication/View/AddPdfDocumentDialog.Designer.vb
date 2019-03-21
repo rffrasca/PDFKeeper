@@ -63,6 +63,8 @@ Partial Class AddPdfDocumentDialog
         Me.DeleteOriginalPdfOnOKCheckBox = New System.Windows.Forms.CheckBox()
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.FlagDocumentCheckBox = New System.Windows.Forms.CheckBox()
+        Me.CategoryComboBox = New System.Windows.Forms.ComboBox()
+        Me.CategoryLabel = New System.Windows.Forms.Label()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -187,12 +189,30 @@ Partial Class AddPdfDocumentDialog
         Me.HelpProvider.SetShowHelp(Me.FlagDocumentCheckBox, CType(resources.GetObject("FlagDocumentCheckBox.ShowHelp"), Boolean))
         Me.FlagDocumentCheckBox.UseVisualStyleBackColor = True
         '
+        'CategoryComboBox
+        '
+        Me.CategoryComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.CategoryComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.CategoryComboBox.FormattingEnabled = True
+        resources.ApplyResources(Me.CategoryComboBox, "CategoryComboBox")
+        Me.CategoryComboBox.Name = "CategoryComboBox"
+        Me.HelpProvider.SetShowHelp(Me.CategoryComboBox, CType(resources.GetObject("CategoryComboBox.ShowHelp"), Boolean))
+        Me.CategoryComboBox.Sorted = True
+        '
+        'CategoryLabel
+        '
+        resources.ApplyResources(Me.CategoryLabel, "CategoryLabel")
+        Me.CategoryLabel.Name = "CategoryLabel"
+        Me.HelpProvider.SetShowHelp(Me.CategoryLabel, CType(resources.GetObject("CategoryLabel.ShowHelp"), Boolean))
+        '
         'AddPdfDocumentDialog
         '
         Me.AcceptButton = Me.OK_Button
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
+        Me.Controls.Add(Me.CategoryComboBox)
+        Me.Controls.Add(Me.CategoryLabel)
         Me.Controls.Add(Me.FlagDocumentCheckBox)
         Me.Controls.Add(Me.DeleteOriginalPdfOnOKCheckBox)
         Me.Controls.Add(Me.KeywordsTextBox)
@@ -241,5 +261,7 @@ Partial Class AddPdfDocumentDialog
     Friend WithEvents DeleteOriginalPdfOnOKCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
     Friend WithEvents FlagDocumentCheckBox As System.Windows.Forms.CheckBox
+    Friend WithEvents CategoryComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents CategoryLabel As System.Windows.Forms.Label
 
 End Class

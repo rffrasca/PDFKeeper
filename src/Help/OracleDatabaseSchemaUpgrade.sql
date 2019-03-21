@@ -19,7 +19,43 @@
 ******************************************************************************/
 
 alter table pdfkeeper.docs add(
+	doc_category varchar2(2000),
 	doc_flag number(1) default 0 not null
 	constraint doc_flag_ck check (doc_flag in (0,1)));
+
+drop index pdfkeeper.docs_idx;
+
+begin
+	ctx_ddl.unset_attribute('ctxsys.pdfkeeper_multi','columns');
+	ctx_ddl.unset_attribute('ctxsys.pdfkeeper_multi','filter');
+	ctx_ddl.set_attribute('ctxsys.pdfkeeper_multi',
+			      'columns','doc_title,
+					 doc_author,
+					 doc_subject,
+					 doc_keywords,
+					 doc_added,
+					 doc_notes,
+					 doc_pdf,
+					 doc_category');
+	ctx_ddl.set_attribute('ctxsys.pdfkeeper_multi','filter',
+			      'N,N,N,N,N,N,Y,N');
+	if (dbms_db_version.version >11) then
+		execute immediate 'create index pdfkeeper.docs_idx
+				   on pdfkeeper.docs(doc_dummy) 
+				   indextype is ctxsys.context 
+				   parameters (''datastore ctxsys.pdfkeeper_multi
+						 storage ctxsys.text_search_storage
+					         lexer ctxsys.pdfkeeper_lexer
+					         sync (on commit)'')';
+	else
+		execute immediate 'create index pdfkeeper.docs_idx
+				   on pdfkeeper.docs(doc_dummy) 
+				   indextype is ctxsys.context 
+				   parameters (''datastore ctxsys.pdfkeeper_multi
+					         lexer ctxsys.pdfkeeper_lexer
+					    	 sync (on commit)'')';
+	end if;
+end;
+/
 
 quit

@@ -22,21 +22,18 @@
 Public Class OracleDataAccess
     Implements IDocsDao
     Private dataProvider As IDataProvider
-    Private connnectionProperties As DatabaseConnectionProperties = _
-        DatabaseConnectionProperties.Instance
     Private columnsParameter As String
     Private whereParameter As String
     Private groupByParameter As String
+    Private havingParameter As String
     Private searchColumns As String = _
-        "doc_id,doc_title,doc_author,doc_subject,doc_added"
+        "doc_id,doc_title,doc_author,doc_subject,doc_category,doc_added"
     Private sqlStatement As String
 
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", _
         "CA2000:Dispose objects before losing scope")> _
     Public Sub New()
-        If connnectionProperties.DatabaseSystem = "Oracle" Then
-            dataProvider = New OracleDataProvider
-        End If
+        dataProvider = New OracleDataProvider
     End Sub
 
     Public ReadOnly Property TotalRecordCount As Integer Implements IDocsDao.TotalRecordCount
@@ -73,6 +70,13 @@ Public Class OracleDataAccess
         Return dataProvider.ExecuteQuery(BuildQueryString)
     End Function
 
+    Public Function GetAllCategories() As DataTable Implements IDocsDao.GetAllCategories
+        columnsParameter = "doc_category,count(doc_category)"
+        groupByParameter = "doc_category"
+        havingParameter = "count(doc_category) > 0"
+        Return dataProvider.ExecuteQuery(BuildQueryString)
+    End Function
+
     Public Function GetAllRecordsBySearchString(searchValue As String) As DataTable Implements IDocsDao.GetAllRecordsBySearchString
         columnsParameter = searchColumns
         whereParameter = "(contains(doc_dummy,q'[" & searchValue & "]'))>0"
@@ -94,6 +98,12 @@ Public Class OracleDataAccess
     Public Function GetAllRecordsByAuthorAndSubject(author As String, subject As String) As DataTable Implements IDocsDao.GetAllRecordsByAuthorAndSubject
         columnsParameter = searchColumns
         whereParameter = "doc_author = q'[" & author & "]' and doc_subject = q'[" & subject & "]'"
+        Return dataProvider.ExecuteQuery(BuildQueryString)
+    End Function
+
+    Public Function GetAllRecordsByCategory(category As String) As DataTable Implements IDocsDao.GetAllRecordsByCategory
+        columnsParameter = searchColumns
+        whereParameter = "doc_category = q'[" & category & "]'"
         Return dataProvider.ExecuteQuery(BuildQueryString)
     End Function
 
@@ -126,6 +136,12 @@ Public Class OracleDataAccess
         Return dataProvider.ExecuteQuery(BuildQueryString)
     End Function
 
+    Public Function GetCategoryById(id As Integer) As DataTable Implements IDocsDao.GetCategoryById
+        columnsParameter = "doc_category"
+        whereParameter = "doc_id = " & id.ToString(CultureInfo.InvariantCulture)
+        Return dataProvider.ExecuteQuery(BuildQueryString)
+    End Function
+
     Public Function GetFlagStateById(id As Integer) As DataTable Implements IDocsDao.GetFlagStateById
         columnsParameter = "doc_flag"
         whereParameter = "doc_id = " & id.ToString(CultureInfo.InvariantCulture)
@@ -138,7 +154,7 @@ Public Class OracleDataAccess
         dataProvider.ExecuteBlobQuery(BuildQueryString, pdfFile)
     End Sub
 
-    Public Sub CreateRecord(title As String, author As String, subject As String, keywords As String, notes As String, pdfFile As String, flag As Integer) Implements IDocsDao.CreateRecord
+    Public Sub CreateRecord(title As String, author As String, subject As String, keywords As String, notes As String, pdfFile As String, category As String, flag As Integer) Implements IDocsDao.CreateRecord
         ' Create the Anonymous PL/SQL block statement for the insert.
         sqlStatement = _
             " begin " & _
@@ -150,7 +166,7 @@ Public Class OracleDataAccess
             " q'[" & keywords & "]', " & _
             " to_char(sysdate,'YYYY-MM-DD HH24:MI:SS'), " & _
             " q'[" & notes & "]', " & _
-            " :1, ''," & flag & ") ;" & _
+            " :1, '',q'[" & category & "]'," & flag & ") ;" & _
             " end ;"
         dataProvider.ExecuteBlobInsert(sqlStatement, pdfFile)
     End Sub
@@ -158,6 +174,13 @@ Public Class OracleDataAccess
     Public Sub UpdateNotesById(id As Integer, notes As String) Implements IDocsDao.UpdateNotesById
         sqlStatement = "update pdfkeeper.docs " & _
             "set doc_notes =q'[" & notes & "]',doc_dummy = '' " & _
+            "where doc_id = " & id
+        dataProvider.ExecuteNonQuery(sqlStatement)
+    End Sub
+
+    Public Sub UpdateCategoryById(id As Integer, category As String) Implements IDocsDao.UpdateCategoryById
+        sqlStatement = "update pdfkeeper.docs " & _
+            "set doc_category =q'[" & category & "]',doc_dummy = '' " & _
             "where doc_id = " & id
         dataProvider.ExecuteNonQuery(sqlStatement)
     End Sub
@@ -182,6 +205,9 @@ Public Class OracleDataAccess
         End If
         If Not groupByParameter Is Nothing Then
             query = query & " group by " & groupByParameter
+        End If
+        If Not havingParameter Is Nothing Then
+            query = query & " having " & havingParameter
         End If
         Return query
     End Function

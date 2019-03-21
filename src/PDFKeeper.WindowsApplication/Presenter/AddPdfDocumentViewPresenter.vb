@@ -45,27 +45,6 @@ Public Class AddPdfDocumentViewPresenter
         ViewPdf(view.OriginalPdfFile)
     End Sub
 
-    Public Sub ControlValueChanged()
-        If view.PreviewEnabled Then
-            TerminateViewer()
-        End If
-        view.Title = view.Title.TrimStart
-        view.Author = view.Author.TrimStart
-        view.Subject = view.Subject.TrimStart
-        view.Keywords = view.Keywords.TrimStart
-        If view.Title.Length > 0 And _
-            view.Author.Length > 0 And _
-            view.Subject.Length > 0 Then
-            view.SaveEnabled = True
-            view.PreviewEnabled = False
-            view.OkEnabled = False
-        Else
-            view.SaveEnabled = False
-            view.PreviewEnabled = False
-            view.OkEnabled = False
-        End If
-    End Sub
-
     Public Sub AuthorComboBoxEnter()
         Dim currentAuthor As String = view.Author
         Dim docsDao As IDocsDao = New DocsDao
@@ -82,6 +61,35 @@ Public Class AddPdfDocumentViewPresenter
 
     Public Sub SetToFileNameButtonClick()
         view.Title = Path.GetFileNameWithoutExtension(view.OriginalPdfFile)
+    End Sub
+
+    Public Sub CategoryComboBoxEnter()
+        Dim currentCategory As String = view.Category
+        Dim docsDao As IDocsDao = New DocsDao
+        view.Categories = docsDao.GetAllCategories
+        view.Category = currentCategory
+    End Sub
+
+    Public Sub ControlValueChanged()
+        If view.PreviewEnabled Then
+            TerminateViewer()
+        End If
+        view.Title = view.Title.TrimStart
+        view.Author = view.Author.TrimStart
+        view.Subject = view.Subject.TrimStart
+        view.Keywords = view.Keywords.TrimStart
+        view.Category = view.Category.TrimStart
+        If view.Title.Length > 0 And _
+            view.Author.Length > 0 And _
+            view.Subject.Length > 0 Then
+            view.SaveEnabled = True
+            view.PreviewEnabled = False
+            view.OkEnabled = False
+        Else
+            view.SaveEnabled = False
+            view.PreviewEnabled = False
+            view.OkEnabled = False
+        End If
     End Sub
 
     Public Sub SaveButtonClick()
@@ -163,6 +171,7 @@ Public Class AddPdfDocumentViewPresenter
 
     Private Sub SavePdfFileSupplementalData()
         suppData.Notes = String.Empty
+        suppData.Category = view.Category
         Dim flag As String = My.Settings.AddPdfFlagDocument
         If flag Then
             suppData.FlagState = 1

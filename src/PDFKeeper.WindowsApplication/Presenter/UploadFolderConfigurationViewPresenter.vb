@@ -32,6 +32,7 @@ Public Class UploadFolderConfigurationViewPresenter
         view.Author = config.AuthorPrefill
         view.Subject = config.SubjectPrefill
         view.Keywords = config.KeywordsPrefill
+        view.Category = config.CategoryPrefill
         view.FlagDocument = config.FlagDocument
     End Sub
 
@@ -57,7 +58,14 @@ Public Class UploadFolderConfigurationViewPresenter
         view.Subject = currentSubject
     End Sub
 
-    Public Sub TextBoxTextChanged()
+    Public Sub CategoryComboBoxEnter()
+        Dim currentCategory As String = view.Category
+        Dim docsDao As IDocsDao = New DocsDao
+        view.Categories = docsDao.GetAllCategories
+        view.Category = currentCategory
+    End Sub
+
+    Public Sub ControlValueChanged()
         TrimText()
         If view.FolderName.ContainsInvalidFileNameChars Then
             view.FolderNameErrorProviderMessage = _
@@ -90,6 +98,7 @@ Public Class UploadFolderConfigurationViewPresenter
         config.AuthorPrefill = view.Author
         config.SubjectPrefill = view.Subject
         config.KeywordsPrefill = view.Keywords
+        config.CategoryPrefill = view.Category
         config.FlagDocument = view.FlagDocument
         UploadConfigDirectory.WriteConfig(config, view.FolderName)
         UploadDirectory.CreateChildDirectory(view.FolderName)
@@ -101,5 +110,6 @@ Public Class UploadFolderConfigurationViewPresenter
         view.Author = view.Author.TrimStart
         view.Subject = view.Subject.TrimStart
         view.Keywords = view.Keywords.TrimStart
+        view.Category = view.Category.TrimStart
     End Sub
 End Class

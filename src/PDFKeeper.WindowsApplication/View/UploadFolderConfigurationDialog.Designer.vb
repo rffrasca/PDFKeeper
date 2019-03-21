@@ -59,6 +59,8 @@ Partial Class UploadFolderConfigurationDialog
         Me.KeywordsTextBox = New System.Windows.Forms.TextBox()
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.FlagDocumentCheckBox = New System.Windows.Forms.CheckBox()
+        Me.CategoryComboBox = New System.Windows.Forms.ComboBox()
+        Me.CategoryPrefillLabel = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.FolderNameErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -153,12 +155,30 @@ Partial Class UploadFolderConfigurationDialog
         Me.FlagDocumentCheckBox.Name = "FlagDocumentCheckBox"
         Me.FlagDocumentCheckBox.UseVisualStyleBackColor = True
         '
+        'CategoryComboBox
+        '
+        Me.CategoryComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.CategoryComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.CategoryComboBox.FormattingEnabled = True
+        resources.ApplyResources(Me.CategoryComboBox, "CategoryComboBox")
+        Me.CategoryComboBox.Name = "CategoryComboBox"
+        Me.HelpProvider.SetShowHelp(Me.CategoryComboBox, CType(resources.GetObject("CategoryComboBox.ShowHelp"), Boolean))
+        Me.CategoryComboBox.Sorted = True
+        '
+        'CategoryPrefillLabel
+        '
+        resources.ApplyResources(Me.CategoryPrefillLabel, "CategoryPrefillLabel")
+        Me.CategoryPrefillLabel.Name = "CategoryPrefillLabel"
+        Me.HelpProvider.SetShowHelp(Me.CategoryPrefillLabel, CType(resources.GetObject("CategoryPrefillLabel.ShowHelp"), Boolean))
+        '
         'UploadFolderConfigurationDialog
         '
         Me.AcceptButton = Me.OK_Button
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
+        Me.Controls.Add(Me.CategoryComboBox)
+        Me.Controls.Add(Me.CategoryPrefillLabel)
         Me.Controls.Add(Me.FlagDocumentCheckBox)
         Me.Controls.Add(Me.KeywordsTextBox)
         Me.Controls.Add(Me.KeywordsPrefillLabel)
@@ -201,5 +221,7 @@ Partial Class UploadFolderConfigurationDialog
     Friend WithEvents TitlePrefillLabel As System.Windows.Forms.Label
     Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
     Friend WithEvents FlagDocumentCheckBox As System.Windows.Forms.CheckBox
+    Friend WithEvents CategoryComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents CategoryPrefillLabel As System.Windows.Forms.Label
 
 End Class

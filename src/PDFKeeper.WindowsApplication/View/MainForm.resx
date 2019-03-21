@@ -142,13 +142,13 @@
     <value>Ctrl+N</value>
   </data>
   <data name="FileNewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="FileNewToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;New...</value>
   </data>
   <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>253, 6</value>
   </data>
   <data name="FileOpenToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -164,13 +164,13 @@
     <value>Ctrl+O</value>
   </data>
   <data name="FileOpenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="FileOpenToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Open</value>
   </data>
   <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>253, 6</value>
   </data>
   <data name="FileSaveToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -195,19 +195,19 @@
     <value>Ctrl+S</value>
   </data>
   <data name="FileSaveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="FileSaveToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
   <data name="FileSaveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="FileSaveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Save &amp;As...</value>
   </data>
   <data name="ToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>253, 6</value>
   </data>
   <data name="FilePrintToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -223,19 +223,19 @@
     <value>Ctrl+P</value>
   </data>
   <data name="FilePrintToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="FilePrintToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Print...</value>
   </data>
   <data name="FilePrintPreviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="FilePrintPreviewToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Print Pre&amp;view...</value>
   </data>
   <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>253, 6</value>
   </data>
   <data name="FileSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 22</value>
@@ -250,10 +250,19 @@
     <value>&amp;None</value>
   </data>
   <data name="FileSelectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="FileSelectToolStripMenuItem.Text" xml:space="preserve">
     <value>Sele&amp;ct</value>
+  </data>
+  <data name="FileSetClearCategoryToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+C</value>
+  </data>
+  <data name="FileSetClearCategoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 22</value>
+  </data>
+  <data name="FileSetClearCategoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Set/Clear Category...</value>
   </data>
   <data name="FileDeleteToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -276,22 +285,22 @@
     <value>Ctrl+D</value>
   </data>
   <data name="FileDeleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="FileDeleteToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Delete</value>
   </data>
   <data name="FileExportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="FileExportToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Export...</value>
   </data>
   <data name="ToolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>253, 6</value>
   </data>
   <data name="FileExitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>256, 22</value>
   </data>
   <data name="FileExitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
@@ -607,16 +616,16 @@
 </value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Contents</value>
   </data>
   <data name="ToolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="HelpAboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="HelpAboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About ...</value>
@@ -977,6 +986,63 @@
   <data name="&gt;&gt;SearchByAuthorAndSubjectTabPage.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="CategoryComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="CategoryComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 14</value>
+  </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>845, 17</value>
+  </metadata>
+  <data name="HelpProvider.HelpNamespace" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CategoryComboBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CategoryComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>457, 23</value>
+  </data>
+  <data name="CategoryComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;CategoryComboBox.Name" xml:space="preserve">
+    <value>CategoryComboBox</value>
+  </data>
+  <data name="&gt;&gt;CategoryComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CategoryComboBox.Parent" xml:space="preserve">
+    <value>SearchByCategoryTabPage</value>
+  </data>
+  <data name="&gt;&gt;CategoryComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="SearchByCategoryTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="SearchByCategoryTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 81</value>
+  </data>
+  <data name="SearchByCategoryTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="SearchByCategoryTabPage.Text" xml:space="preserve">
+    <value>Search by Category</value>
+  </data>
+  <data name="&gt;&gt;SearchByCategoryTabPage.Name" xml:space="preserve">
+    <value>SearchByCategoryTabPage</value>
+  </data>
+  <data name="&gt;&gt;SearchByCategoryTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SearchByCategoryTabPage.Parent" xml:space="preserve">
+    <value>SearchOptionsTabControl</value>
+  </data>
+  <data name="&gt;&gt;SearchByCategoryTabPage.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="SearchDateTimePicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -1023,7 +1089,7 @@
     <value>SearchOptionsTabControl</value>
   </data>
   <data name="&gt;&gt;SearchByDateAddedTabPage.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="FlaggedDocumentsOnlyCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1083,12 +1149,6 @@
   </data>
   <data name="QueryDocumentsButton.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
-  </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>845, 17</value>
-  </metadata>
-  <data name="HelpProvider.HelpNamespace" xml:space="preserve">
-    <value />
   </data>
   <data name="QueryDocumentsButton.ShowHelp" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1169,13 +1229,16 @@
     <value>SearchOptionsTabControl</value>
   </data>
   <data name="&gt;&gt;AllFlaggedDocumentsTabPage.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="SearchOptionsTabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
   <data name="SearchOptionsTabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
+  </data>
+  <data name="SearchOptionsTabControl.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
   </data>
   <data name="SearchOptionsTabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>490, 109</value>
@@ -2657,6 +2720,12 @@
   </data>
   <data name="&gt;&gt;AutoUpdateCheckTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FileSetClearCategoryToolStripMenuItem.Name" xml:space="preserve">
+    <value>FileSetClearCategoryToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;FileSetClearCategoryToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

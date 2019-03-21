@@ -28,6 +28,8 @@ Public Interface IUploadFolderConfigurationView
     Property Subjects As DataTable
     Property Subject As String
     Property Keywords As String
+    Property Categories As DataTable
+    Property Category As String
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
                                                      "CA1726:UsePreferredTerms", _
                                                      MessageId:="Flag")> _

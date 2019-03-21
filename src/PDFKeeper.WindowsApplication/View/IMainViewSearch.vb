@@ -31,6 +31,8 @@ Public Interface IMainViewSearch
     ReadOnly Property Author2 As String
     Property Subjects2 As DataTable
     ReadOnly Property Subject2 As String
+    Property Categories As DataTable
+    ReadOnly Property Category As String
     ReadOnly Property SearchDate As String
     Property DBDocumentRecordsCountMessage As String
     ReadOnly Property FlaggedDocumentsOnly As Boolean

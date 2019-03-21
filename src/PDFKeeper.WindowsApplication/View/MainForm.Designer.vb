@@ -110,6 +110,8 @@ Partial Class MainForm
         Me.SearchByAuthorAndSubjectTabPage = New System.Windows.Forms.TabPage()
         Me.Subject2ComboBox = New System.Windows.Forms.ComboBox()
         Me.Author2ComboBox = New System.Windows.Forms.ComboBox()
+        Me.SearchByCategoryTabPage = New System.Windows.Forms.TabPage()
+        Me.CategoryComboBox = New System.Windows.Forms.ComboBox()
         Me.SearchByDateAddedTabPage = New System.Windows.Forms.TabPage()
         Me.SearchDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.AllFlaggedDocumentsTabPage = New System.Windows.Forms.TabPage()
@@ -158,6 +160,7 @@ Partial Class MainForm
         Me.UploadTimer = New System.Windows.Forms.Timer(Me.components)
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.AutoUpdateCheckTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.FileSetClearCategoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.SearchStringErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -171,6 +174,7 @@ Partial Class MainForm
         Me.SearchByAuthorTabPage.SuspendLayout()
         Me.SearchBySubjectTabPage.SuspendLayout()
         Me.SearchByAuthorAndSubjectTabPage.SuspendLayout()
+        Me.SearchByCategoryTabPage.SuspendLayout()
         Me.SearchByDateAddedTabPage.SuspendLayout()
         Me.AllFlaggedDocumentsTabPage.SuspendLayout()
         Me.RightTabControl.SuspendLayout()
@@ -192,7 +196,7 @@ Partial Class MainForm
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileNewToolStripMenuItem, Me.ToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.ToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.ToolStripSeparator4, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.ToolStripSeparator3, Me.FileSelectToolStripMenuItem, Me.FileDeleteToolStripMenuItem, Me.FileExportToolStripMenuItem, Me.ToolStripSeparator6, Me.FileExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileNewToolStripMenuItem, Me.ToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.ToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.ToolStripSeparator4, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.ToolStripSeparator3, Me.FileSelectToolStripMenuItem, Me.FileSetClearCategoryToolStripMenuItem, Me.FileDeleteToolStripMenuItem, Me.FileExportToolStripMenuItem, Me.ToolStripSeparator6, Me.FileExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         resources.ApplyResources(Me.FileToolStripMenuItem, "FileToolStripMenuItem")
         '
@@ -502,6 +506,7 @@ Partial Class MainForm
         Me.SearchOptionsTabControl.Controls.Add(Me.SearchByAuthorTabPage)
         Me.SearchOptionsTabControl.Controls.Add(Me.SearchBySubjectTabPage)
         Me.SearchOptionsTabControl.Controls.Add(Me.SearchByAuthorAndSubjectTabPage)
+        Me.SearchOptionsTabControl.Controls.Add(Me.SearchByCategoryTabPage)
         Me.SearchOptionsTabControl.Controls.Add(Me.SearchByDateAddedTabPage)
         Me.SearchOptionsTabControl.Controls.Add(Me.AllFlaggedDocumentsTabPage)
         resources.ApplyResources(Me.SearchOptionsTabControl, "SearchOptionsTabControl")
@@ -584,6 +589,22 @@ Partial Class MainForm
         Me.Author2ComboBox.FormattingEnabled = True
         Me.Author2ComboBox.Name = "Author2ComboBox"
         Me.Author2ComboBox.Sorted = True
+        '
+        'SearchByCategoryTabPage
+        '
+        Me.SearchByCategoryTabPage.Controls.Add(Me.CategoryComboBox)
+        resources.ApplyResources(Me.SearchByCategoryTabPage, "SearchByCategoryTabPage")
+        Me.SearchByCategoryTabPage.Name = "SearchByCategoryTabPage"
+        Me.SearchByCategoryTabPage.UseVisualStyleBackColor = True
+        '
+        'CategoryComboBox
+        '
+        resources.ApplyResources(Me.CategoryComboBox, "CategoryComboBox")
+        Me.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CategoryComboBox.FormattingEnabled = True
+        Me.CategoryComboBox.Name = "CategoryComboBox"
+        Me.HelpProvider.SetShowHelp(Me.CategoryComboBox, CType(resources.GetObject("CategoryComboBox.ShowHelp"), Boolean))
+        Me.CategoryComboBox.Sorted = True
         '
         'SearchByDateAddedTabPage
         '
@@ -876,6 +897,11 @@ Partial Class MainForm
         Me.AutoUpdateCheckTimer.Enabled = True
         Me.AutoUpdateCheckTimer.Interval = 1800000
         '
+        'FileSetClearCategoryToolStripMenuItem
+        '
+        Me.FileSetClearCategoryToolStripMenuItem.Name = "FileSetClearCategoryToolStripMenuItem"
+        resources.ApplyResources(Me.FileSetClearCategoryToolStripMenuItem, "FileSetClearCategoryToolStripMenuItem")
+        '
         'MainForm
         '
         Me.AcceptButton = Me.SearchButton
@@ -904,6 +930,7 @@ Partial Class MainForm
         Me.SearchByAuthorTabPage.ResumeLayout(False)
         Me.SearchBySubjectTabPage.ResumeLayout(False)
         Me.SearchByAuthorAndSubjectTabPage.ResumeLayout(False)
+        Me.SearchByCategoryTabPage.ResumeLayout(False)
         Me.SearchByDateAddedTabPage.ResumeLayout(False)
         Me.AllFlaggedDocumentsTabPage.ResumeLayout(False)
         Me.AllFlaggedDocumentsTabPage.PerformLayout()
@@ -1040,4 +1067,7 @@ Partial Class MainForm
     Friend WithEvents ToolStripSeparator13 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents EditFlagDocumentToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FlaggedDocumentsOnlyCheckBox As System.Windows.Forms.CheckBox
+    Friend WithEvents SearchByCategoryTabPage As System.Windows.Forms.TabPage
+    Friend WithEvents CategoryComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents FileSetClearCategoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

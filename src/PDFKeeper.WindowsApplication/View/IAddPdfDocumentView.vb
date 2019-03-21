@@ -27,6 +27,8 @@ Public Interface IAddPdfDocumentView
     Property Subjects As DataTable
     Property Subject As String
     Property Keywords As String
+    Property Categories As DataTable
+    Property Category As String
     Property SaveEnabled As Boolean
     Property PreviewEnabled As Boolean
     Property OkEnabled As Boolean

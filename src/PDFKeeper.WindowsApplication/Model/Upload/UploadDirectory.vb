@@ -171,6 +171,7 @@ Public NotInheritable Class UploadDirectory
         Dim suppData As New PdfFileSupplementalData
         UploadConfigDirectory.ReadConfig(config, configfolderName.ToString)
         suppData.Notes = String.Empty
+        suppData.Category = config.CategoryPrefill
         Dim flag As String = config.FlagDocument.ToString
         If flag Then
             suppData.FlagState = 1

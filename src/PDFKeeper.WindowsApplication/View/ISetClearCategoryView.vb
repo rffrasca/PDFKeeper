@@ -17,15 +17,7 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-<Serializable> _
-Public Class UploadFolderConfiguration
-    Public Property TitlePrefill As String
-    Public Property AuthorPrefill As String
-    Public Property SubjectPrefill As String
-    Public Property KeywordsPrefill As String
-    Public Property CategoryPrefill As String
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-        "CA1726:UsePreferredTerms", _
-        MessageId:="Flag")> _
-    Public Property FlagDocument As Boolean
-End Class
+Public Interface ISetClearCategoryView
+    Property Categories As DataTable
+    Property Category As String
+End Interface

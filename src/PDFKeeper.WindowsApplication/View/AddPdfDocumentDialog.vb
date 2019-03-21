@@ -57,13 +57,6 @@ Public Class AddPdfDocumentDialog
         Me.Cursor = Cursors.Default
     End Sub
 
-    Private Sub Control_ValueChanged(sender As Object, e As EventArgs) Handles TitleTextBox.TextChanged, _
-                                                                               AuthorComboBox.TextChanged, _
-                                                                               SubjectComboBox.TextChanged, _
-                                                                               KeywordsTextBox.TextChanged
-        presenter.ControlValueChanged()
-    End Sub
-
     Private Sub AuthorComboBox_Enter(sender As Object, e As EventArgs) Handles AuthorComboBox.Enter
         Me.Cursor = Cursors.WaitCursor
         presenter.AuthorComboBoxEnter()
@@ -78,6 +71,20 @@ Public Class AddPdfDocumentDialog
 
     Private Sub SetToFileNameButton_Click(sender As Object, e As EventArgs) Handles SetToFileNameButton.Click
         presenter.SetToFileNameButtonClick()
+    End Sub
+
+    Private Sub CategoryComboBox_Enter(sender As Object, e As EventArgs) Handles CategoryComboBox.Enter
+        Me.Cursor = Cursors.WaitCursor
+        presenter.CategoryComboBoxEnter()
+        Me.Cursor = Cursors.Default
+    End Sub
+
+    Private Sub Control_ValueChanged(sender As Object, e As EventArgs) Handles TitleTextBox.TextChanged, _
+                                                                               AuthorComboBox.TextChanged, _
+                                                                               SubjectComboBox.TextChanged, _
+                                                                               KeywordsTextBox.TextChanged, _
+                                                                               CategoryComboBox.TextChanged
+        presenter.ControlValueChanged()
     End Sub
 
     Private Sub SaveButton_Click(sender As Object, e As EventArgs) Handles SaveButton.Click
@@ -178,6 +185,25 @@ Public Class AddPdfDocumentDialog
         End Get
         Set(value As String)
             KeywordsTextBox.Text = value
+        End Set
+    End Property
+
+    Public Property Categories As DataTable Implements IAddPdfDocumentView.Categories
+        Get
+            Return CategoryComboBox.DataSource
+        End Get
+        Set(value As DataTable)
+            CategoryComboBox.DataSource = value
+            CategoryComboBox.DisplayMember = "doc_category"
+        End Set
+    End Property
+
+    Public Property Category As String Implements IAddPdfDocumentView.Category
+        Get
+            Return CategoryComboBox.Text
+        End Get
+        Set(value As String)
+            CategoryComboBox.Text = value
         End Set
     End Property
 

@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Command\FileSetClearCategoryToolStripCommand.vb" />
     <Compile Include="Model\Data\DatabaseConnectionProperties.vb" />
     <Compile Include="Model\Data\DocsDao.vb" />
     <Compile Include="Model\Data\IDataProvider.vb" />
@@ -158,6 +159,7 @@
     <Compile Include="Command\FileNewToolStripCommand.vb" />
     <Compile Include="Command\FileOpenToolStripCommand.vb" />
     <Compile Include="Model\File\PDF\PdfFileSupplementalData.vb" />
+    <Compile Include="Presenter\SetClearCategoryViewPresenter.vb" />
     <Compile Include="Utility\FilePathNameGenerator.vb" />
     <Compile Include="Command\FilePrintToolStripCommand.vb" />
     <Compile Include="Command\FileSaveAsToolStripCommand.vb" />
@@ -220,6 +222,7 @@
     <Compile Include="Service\IFolderBrowserDialogDisplayService.vb" />
     <Compile Include="Service\FormClosingPromptService.vb" />
     <Compile Include="View\ILoginView.vb" />
+    <Compile Include="View\ISetClearCategoryView.vb" />
     <Compile Include="View\LoginForm.designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
@@ -267,6 +270,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\IUploadFolderConfigurationView.vb" />
+    <Compile Include="View\SetClearCategoryDialog.Designer.vb">
+      <DependentUpon>SetClearCategoryDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetClearCategoryDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\UploadFolderConfigurationDialog.Designer.vb">
       <DependentUpon>UploadFolderConfigurationDialog.vb</DependentUpon>
     </Compile>
@@ -310,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\PreviewImageResolutionDialog.resx">
       <DependentUpon>PreviewImageResolutionDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SetClearCategoryDialog.resx">
+      <DependentUpon>SetClearCategoryDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UploadFolderConfigurationDialog.resx">
       <DependentUpon>UploadFolderConfigurationDialog.vb</DependentUpon>

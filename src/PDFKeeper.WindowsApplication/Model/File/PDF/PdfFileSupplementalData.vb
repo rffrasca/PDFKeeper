@@ -20,6 +20,7 @@
 <Serializable> _
 Public Class PdfFileSupplementalData
     Public Property Notes As String
+    Public Property Category As String
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
         "CA1726:UsePreferredTerms", _
         MessageId:="Flag")> _
