@@ -304,13 +304,6 @@ Public Class MainForm
             Me.Cursor = Cursors.Default
         End If
         refreshFlag = False
-        ' Deselect and select the selected tab to ensure the selected tab is
-        ' still visible when the right panel collpased state has changed.
-        If panel2CollapsedStateChanged Then
-            Dim selectedTabIndex As Integer = SearchOptionsTabControl.SelectedIndex
-            SearchOptionsTabControl.DeselectTab(selectedTabIndex)
-            SearchOptionsTabControl.SelectTab(selectedTabIndex)
-        End If
     End Sub
 
     Private Sub SearchStringComboBox_TextChanged(sender As Object, e As EventArgs) Handles SearchStringComboBox.TextChanged
