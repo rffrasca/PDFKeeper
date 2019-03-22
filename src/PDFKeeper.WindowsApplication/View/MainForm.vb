@@ -277,10 +277,6 @@ Public Class MainForm
 #Region "Search Options events and private members"
     Private Sub SearchOptionsTabControl_Selected(sender As Object, e As TabControlEventArgs) Handles SearchOptionsTabControl.Selected
         toolStripStatePresenter.SetPreSearchState()
-        Dim panel2CollapsedStateChanged As Boolean
-        If SplitContainer.Panel2Collapsed = True Then
-            panel2CollapsedStateChanged = True
-        End If
         SplitContainer.Panel2Collapsed = False
         If SearchOptionsTabControl.SelectedIndex = 0 Then
             DoSearch(True)
