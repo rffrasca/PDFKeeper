@@ -31,12 +31,11 @@ Getting Support.html
 Using PDFKeeper.html
 Logging into PDFKeeper.html
 Uploading PDF Documents.html
-Uploading a PDF Document from within PDFKeeper.html
-Entering PDF Document Information Properties.html
+Uploading PDF Documents from within PDFKeeper.html
+Selecting and Adding PDF Documents to PDFKeeper.html
 Uploading PDF Documents from outside of PDFKeeper.html
 Uploading PDF Documents using Configured Folders.html
 Configuring Upload Folders.html
-Adding, Editing, and Deleting Configured Folders.html
 Automating with the PDFKeeper Upload Process.html
 Configuring an Upload Folder.html
 Updating PDFKeeper.html
@@ -61,7 +60,8 @@ AutoUpdater.NET.html
 AutoUpdater.NET License.html
 Change Flag Document State.html
 Database Schema Upgrade for Oracle Database.html
-SetClear Category on Document Records.html
+Set Category on Document Records.html
+Adding, Editing, and Deleting Upload Folder Configurations.html
 
 [INFOTYPES]
 

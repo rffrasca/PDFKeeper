@@ -28,9 +28,11 @@ Namespace My
     ' NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
     Partial Friend Class MyApplication
         Private Sub MyApplication_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
-            SettingsHelper.UpgradeUserSettings()
-            If My.Settings.LoginDatasource.Length = 0 Then
-                HelpProviderHelper.OpenHelpFileAndWait("PDFKeeper.html")
+            Dim upgradeSettings As ICommand = New UserSettingsUpgradeCommand
+            upgradeSettings.Execute()
+            If My.Settings.Datasource.Length = 0 Then
+                Dim help As New HelpFile
+                help.ShowAndWait("PDFKeeper.html")
             End If
             If LoginForm.ShowDialog = Windows.Forms.DialogResult.Cancel Then
                 e.Cancel = True
@@ -38,14 +40,14 @@ Namespace My
         End Sub
 
         Private Sub MyApplication_Shutdown(sender As Object, e As EventArgs) Handles Me.Shutdown
-            ApplicationDirectories.DeleteUploadShortcut()
-            ApplicationDirectories.DeleteCacheFolder()
+            UserProfile.DeleteUploadShortcut()
+            UserProfile.DeleteCacheFolder()
         End Sub
 
         Private Sub MyApplication_UnhandledException(sender As Object, e As ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
-            Dim exceptionService As New UnhandledExceptionService(e)
-            exceptionService.Write()
-            exceptionService.Show()
+            Dim exceptionHandler As New UnhandledExceptionHandler(e)
+            exceptionHandler.WriteToLog()
+            exceptionHandler.Show()
         End Sub
     End Class
 End Namespace

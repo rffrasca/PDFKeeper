@@ -78,14 +78,14 @@
 				</OBJECT>
 			<UL>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Uploading a PDF Document from within PDFKeeper">
-					<param name="Local" value="Uploading a PDF Document from within PDFKeeper.html">
+					<param name="Name" value="Uploading PDF Documents from within PDFKeeper">
+					<param name="Local" value="Uploading PDF Documents from within PDFKeeper.html">
 					<param name="ImageNumber" value="1">
 					</OBJECT>
 				<UL>
 					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="Entering PDF Document Information Properties">
-						<param name="Local" value="Entering PDF Document Information Properties.html">
+						<param name="Name" value="Selecting and Adding PDF Documents to PDFKeeper">
+						<param name="Local" value="Selecting and Adding PDF Documents to PDFKeeper.html">
 						<param name="ImageNumber" value="9">
 						</OBJECT>
 				</UL>
@@ -107,8 +107,8 @@
 						</OBJECT>
 					<UL>
 						<LI> <OBJECT type="text/sitemap">
-							<param name="Name" value="Adding, Editing, and Deleting Configured Folders">
-							<param name="Local" value="Adding, Editing, and Deleting Configured Folders.html">
+							<param name="Name" value="Adding, Editing, and Deleting Upload Folder Configurations">
+							<param name="Local" value="Adding, Editing, and Deleting Upload Folder Configurations.html">
 							<param name="ImageNumber" value="1">
 							</OBJECT>
 						<UL>
@@ -195,8 +195,8 @@
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Set/Clear Category on Document Records">
-					<param name="Local" value="SetClear Category on Document Records.html">
+					<param name="Name" value="Set Category on Document Records">
+					<param name="Local" value="Set Category on Document Records.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">

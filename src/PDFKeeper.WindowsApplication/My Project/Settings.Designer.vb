@@ -56,30 +56,6 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property LoginUsername() As String
-            Get
-                Return CType(Me("LoginUsername"),String)
-            End Get
-            Set
-                Me("LoginUsername") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property LoginDatasource() As String
-            Get
-                Return CType(Me("LoginDatasource"),String)
-            End Get
-            Set
-                Me("LoginDatasource") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("492")>  _
         Public Property MainSplitterDistance() As Integer
             Get
@@ -129,12 +105,12 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property LoginDatabaseManagementSystem() As String
+        Public Property DatabaseManagementSystem() As String
             Get
-                Return CType(Me("LoginDatabaseManagementSystem"),String)
+                Return CType(Me("DatabaseManagementSystem"),String)
             End Get
             Set
-                Me("LoginDatabaseManagementSystem") = value
+                Me("DatabaseManagementSystem") = value
             End Set
         End Property
         
@@ -198,39 +174,63 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(), _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")> _
-        Public Property AddPdfDeleteOriginalPdfOnOK() As Boolean
-            Get
-                Return CType(Me("AddPdfDeleteOriginalPdfOnOK"), Boolean)
-            End Get
-            Set(value As Boolean)
-                Me("AddPdfDeleteOriginalPdfOnOK") = value
-            End Set
-        End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(), _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.Configuration.DefaultSettingValueAttribute("True")> _
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
         Public Property UpgradeSettings() As Boolean
             Get
-                Return CType(Me("UpgradeSettings"), Boolean)
+                Return CType(Me("UpgradeSettings"),Boolean)
             End Get
-            Set(value As Boolean)
+            Set
                 Me("UpgradeSettings") = value
             End Set
         End Property
-
-        <Global.System.Configuration.UserScopedSettingAttribute(), _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")> _
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
         Public Property AddPdfFlagDocument() As Boolean
             Get
-                Return CType(Me("AddPdfFlagDocument"), Boolean)
+                Return CType(Me("AddPdfFlagDocument"),Boolean)
             End Get
-            Set(value As Boolean)
+            Set
                 Me("AddPdfFlagDocument") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property AddPdfDeleteInputPdfOnOK() As Boolean
+            Get
+                Return CType(Me("AddPdfDeleteInputPdfOnOK"),Boolean)
+            End Get
+            Set
+                Me("AddPdfDeleteInputPdfOnOK") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Username() As String
+            Get
+                Return CType(Me("Username"),String)
+            End Get
+            Set
+                Me("Username") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Datasource() As String
+            Get
+                Return CType(Me("Datasource"),String)
+            End Get
+            Set
+                Me("Datasource") = value
             End Set
         End Property
     End Class

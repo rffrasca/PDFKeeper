@@ -198,11 +198,11 @@ Do you want to save changes before closing?</value>
   <data name="FolderNameContainsInvalidChars" xml:space="preserve">
     <value>Folder name contains invalid characters.</value>
   </data>
-  <data name="GenericFormCancellingPrompt" xml:space="preserve">
-    <value>Are you sure you want to cancel and discard all changes?</value>
+  <data name="GenericClosePrompt" xml:space="preserve">
+    <value>Are you sure you want to close and discard all changes?</value>
   </data>
-  <data name="DeleteUploadConfigurationPrompt" xml:space="preserve">
-    <value>Are you sure you want to delete the selected Upload folder and configuration?</value>
+  <data name="DeleteUploadFolderConfigurationPrompt" xml:space="preserve">
+    <value>Are you sure you want to delete the selected Upload Folder Configuration?</value>
   </data>
   <data name="Cache" xml:space="preserve">
     <value>Cache</value>
@@ -235,5 +235,11 @@ The contents of the Notes text box prior to the attempted save operation have be
   </data>
   <data name="Category" xml:space="preserve">
     <value>Category</value>
+  </data>
+  <data name="UploadCannotBeStarted" xml:space="preserve">
+    <value>Upload cannot be started at this time.</value>
+  </data>
+  <data name="GenericDiscardChangesPrompt" xml:space="preserve">
+    <value>Do you wish to discard all changes?</value>
   </data>
 </root>
