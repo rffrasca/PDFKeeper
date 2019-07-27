@@ -1,5 +1,5 @@
 *.exe
-/vendor/xpdf-tools-win-4.00
+/vendor/xpdf-tools-win
 *.suo
 /src/packages
 /src/PDFKeeper.WindowsApplication/bin
