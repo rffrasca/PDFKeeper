@@ -1,4 +1,4 @@
-# Building PDFKeeper 4.x.x from Source
+# Building PDFKeeper 5.x.x from Source
 
 ##  Install Development Applications and Tools
 1. Microsoft Visual Studio 2013 - https://www.visualstudio.com/downloads/
@@ -15,7 +15,7 @@
     using Run as administrator. In addition, when installing, the machine_wide_configuration argument must be true to install into the Global Assembly Cache (GAC).
 
 ## Get the Source
-Clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git or download the source code for a release from [here](https://github.com/rffrasca/PDFKeeper/releases).
+Clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git or download the source code for a 5.x.x release (when available) from [here](https://github.com/rffrasca/PDFKeeper/releases).
 
 ## Download and Extract Third-Party Components
 1. Sumatra PDF 3.1.2 (32-bit Portable Version) - http://www.sumatrapdfreader.org/download-free-pdf-viewer.html
@@ -30,4 +30,4 @@ Clone the https://github.com/rffrasca/PDFKeeper repository to your development s
 2. Use "Restore" in "NuGet Package Manager" to download NuGet packages.
 3. Set configuration to Release, and then Build the Solution.
 
-    After a successful build, "PDFKeeper-4.x.x.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".    
+    After a successful build, "PDFKeeper-5.x.x.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".    
