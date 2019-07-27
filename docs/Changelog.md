@@ -71,10 +71,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Application update is now handled by AutoUpdater.NET 1.4.7 in the binary release.
 - Nini is no longer used to read and write XML configuration files and has been removed from the binary release.  This functionality is now performed using .NET Framework serialization.
 
-## v3.1.2 - 2015-07-11 (retired)
+## v3.1.2 - 2015-07-11 (no support available)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.1).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Changed
 - Third-Party software update in binary release: Ghostscript 9.16.
@@ -82,19 +81,17 @@ All notable changes to PDFKeeper will be documented in this file.
 - Document Search: listview not scrolling when selected item is off the screen.
 - Document Search: selected listview item becomes deselected after refresh.
 
-## v3.1.1 - 2015-03-21 (retired)
+## v3.1.1 - 2015-03-21 (no support available)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.1).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Fixed
 - Losing focus from Document Search list view when arrowing up or down.
 - Document Capture: Unhandled Exception.
 
-## v3.1.0 - 2015-02-07 (retired)
+## v3.1.0 - 2015-02-07 (no support available)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Document Preview to Main Form.
@@ -105,10 +102,9 @@ All notable changes to PDFKeeper will be documented in this file.
 ### Removed
 - XPS and HTML converters.
 
-## v3.0.1 - 2014-11-22 (retired)
+## v3.0.1 - 2014-11-22 (no support available)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.0.1).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Known Issues
 - HTML Converter menu item does not enable on 64-bit Windows even though the correct version of wkhtmltopdf is installed.
@@ -122,10 +118,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Unhandled Exception when saving PDF document to disk in Document Search.
 - Unhandled Exception when opening PDF document for viewing in Document Search.
 
-## v3.0.0 - 2013-12-21 (retired)
+## v3.0.0 - 2013-12-21 (no support available)
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.0.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Prompt for password when PDF document contains an OWNER password.
@@ -153,10 +148,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Improve Database Connection form password handling.
 - Main Form status bar getting cut off when vertical screen resolution value is 800.
 
-## v2.7.0 - 2012-09-29 (retired)
+## v2.7.0 - 2012-09-29 (no support available)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.7.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Main Form: Add a folder watcher that will directly upload PDF documents.
@@ -173,10 +167,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Information Properties Editor Form: Form flicker when selecting Author or Subject combo box.
 - Information Properties Editor Folder Watcher: PDF not found as file or resource.
 
-## v2.6.0 - 2012-06-30 (retired)
+## v2.6.0 - 2012-06-30 (no support available)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.6.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Information Properties Editor Form: Add checkbox that when checked will upload PDF document to the database after saving.
@@ -193,10 +186,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - PDFKeeper not responsive after opening PDF document.
 - PDFKeeper not responsive after opening Help or Windows Explorer on non-English version of Windows.
 
-## v2.5.1 - 2012-04-14 (retired)
+## v2.5.1 - 2012-04-14 (no support available)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.1).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Fixed
 - Information Properties Editor Folder Watcher detecting duplicate events.
@@ -204,10 +196,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Folder Watcher log file only contains the last error logged.
 - Folder Watcher Unhandled Exception: System.ArgumentOutOfRangeException: startIndex can not be less than zero.
 
-## v2.5.0 - 2012-03-24 (retired)
+## v2.5.0 - 2012-03-24 (no support available)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Encrypt PDF document when retrieved from the database during an "open" operation on EFS supported operating systems.
@@ -225,10 +216,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Information Properties Editor not waiting for user to close PDF viewer when "After saving, open PDF document in viewer." is checked.
 - Information Properties Editing: Modify to not rename original file and to append "modified_by_pdfkeeper" to the filename of the new copy.
 
-## v2.4.0 - 2011-12-24 (retired)
+## v2.4.0 - 2011-12-24 (no support available)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.4.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Changed
 - Information Properties Editor: Make form modeless.
@@ -242,10 +232,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Main Form: Display Document Upload results on status bar, not in message box.
 - About Form: Graphic, text, and OK button not centered.
 
-## v2.3.0 - 2011-09-24 (retired)
+## v2.3.0 - 2011-09-24 (no support available)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.3.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Changed
 - Main Form: Enhance the Upload process to execute on a separate thread.
@@ -255,10 +244,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Main Form: Document Notes text is highlighted after update.
 - Main Form: Check for update not detecting newer version on project site.
 
-## v2.2.0 - 2011-06-25 (retired)
+## v2.2.0 - 2011-06-25 (no support available)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.2.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Changed
 - Third-Party software update in binary release: Sumatra PDF 1.6.
@@ -270,10 +258,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Main Form: Search Text combo box does not resize.
 - Database Setup: Only works if either Oracle XE server or client is installed.
 
-## v2.1.0 - 2011-03-25 (retired)
+## v2.1.0 - 2011-03-25 (no support available)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.1.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Document Notes Form: Add Date/Time stamp feature.
@@ -290,10 +277,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Database Connection Form: Unhandled exception following second failed logon attempt.
 - Main Form: When opening a PDF document already open, a second window is opening.
 
-## v2.0.0 - 2010-11-22 (retired)
+## v2.0.0 - 2010-11-22 (no support available)
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.0.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Add document upload capability to the client.
@@ -315,10 +301,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Remove server-side upload components.
 - Rexx/SQL is no longer used and has been removed from the binary release.
 
-## v1.1.0 - 2010-04-29 (retired)
+## v1.1.0 - 2010-04-29 (no support available)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/1.1.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
 ### Added
 - Add functionality to "Check" and "Uncheck" all list view items on Search dialog.
@@ -349,8 +334,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Error when selecting multiple files for summary edit.
 - Win7 - Unable to select upload folder.
 
-## v1.0.0 - 2009-10-24 (retired)
+## v1.0.0 - 2009-10-24 (no support available)
 - First, full release of this product to the public.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/1.0.0).
-- This version is no longer supported.
 - Binary release is no longer available for distribution.
