@@ -23,7 +23,7 @@ Download the source code for a 4.x.x release from [here](https://github.com/rffr
     Extract into the "vendor" folder in the PDFKeeper Solution.
 2. Xpdf command line tools (Windows 32/64-bit) - http://www.xpdfreader.com/download.html
 
-    Extract the entire archive into into the "vendor" folder in the PDFKeeper Solution, maintaining the folder structure in the archive. Make sure the parent folder that was extracted is named "xpdf-tools-win-4.00"; otherwise, PDFKeeper will fail to build.
+    Extract the entire archive into into the "vendor" folder in the PDFKeeper Solution, maintaining the folder structure. Next, rename the "xpdf-tools-win-x.xx.xx" folder in the "vendor" folder to "xpdf-tools-win-4.00"; otherwise, PDFKeeper will fail to build.
 
 ## Build PDFKeeper
 1. Open "PDFKeeper.sln" with Visual Studio.
