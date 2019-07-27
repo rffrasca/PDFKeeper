@@ -15,7 +15,7 @@
     using Run as administrator. In addition, when installing, the machine_wide_configuration argument must be true to install into the Global Assembly Cache (GAC).
 
 ## Get the Source
-Clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git or download the source code for a release from [here](https://github.com/rffrasca/PDFKeeper/releases).
+Download the source code for a 4.x.x release from [here](https://github.com/rffrasca/PDFKeeper/releases).
 
 ## Download and Extract Third-Party Components
 1. Sumatra PDF 3.1.2 (32-bit Portable Version) - http://www.sumatrapdfreader.org/download-free-pdf-viewer.html
