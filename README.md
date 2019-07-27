@@ -24,6 +24,7 @@ Download the latest version [here](https://github.com/rffrasca/PDFKeeper/release
 
 ### Building from Source
 Build Instructions for version 5.x.x (still in development) are available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-5.x.x.md).
+
 Build Instructions for version 4.x.x are available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-4.x.x.md).
 
 ### Links
