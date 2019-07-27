@@ -126,16 +126,16 @@
   <Fragment>
     <ComponentGroup Id="pdftopng_docs" Directory="pdftopng">
       <Component Id="pdftopng_pdftopng.txt" Guid="71b9184c-bdf9-4a4a-a880-083b3620c988">
-        <File Id="pdftopng_pdftopng.txt" Name="pdftopng.txt" Source="..\..\..\..\vendor\xpdf-tools-win-4.00\doc\pdftopng.txt" />
+        <File Id="pdftopng_pdftopng.txt" Name="pdftopng.txt" Source="..\..\..\..\vendor\xpdf-tools-win\doc\pdftopng.txt" />
       </Component>
       <Component Id="pdftopng_COPYING" Guid="f46a2ad4-adfd-45e7-8b7f-da19e4ca58bd">
-        <File Id="pdftopng_COPYING" Name="COPYING" Source="..\..\..\..\vendor\xpdf-tools-win-4.00\COPYING" />
+        <File Id="pdftopng_COPYING" Name="COPYING" Source="..\..\..\..\vendor\xpdf-tools-win\COPYING" />
       </Component>
       <Component Id="pdftopng_COPYING3" Guid="d150ee8b-7edd-4fdc-ac02-e5d3d1fcae0f">
-        <File Id="pdftopng_COPYING3" Name="COPYING3" Source="..\..\..\..\vendor\xpdf-tools-win-4.00\COPYING3" />
+        <File Id="pdftopng_COPYING3" Name="COPYING3" Source="..\..\..\..\vendor\xpdf-tools-win\COPYING3" />
       </Component>
       <Component Id="pdftopng_README" Guid="f1c475b3-6b8a-42a0-9220-20e49614a42c">
-        <File Id="pdftopng_README" Name="README" Source="..\..\..\..\vendor\xpdf-tools-win-4.00\README" />
+        <File Id="pdftopng_README" Name="README" Source="..\..\..\..\vendor\xpdf-tools-win\README" />
       </Component>
     </ComponentGroup>
   </Fragment>

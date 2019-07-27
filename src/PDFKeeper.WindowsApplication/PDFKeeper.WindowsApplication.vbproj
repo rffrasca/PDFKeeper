@@ -327,7 +327,7 @@
       <Link>SumatraPDF.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\vendor\xpdf-tools-win-4.00\bin32\pdftopng.exe">
+    <Content Include="..\..\vendor\xpdf-tools-win\bin32\pdftopng.exe">
       <Link>pdftopng.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
