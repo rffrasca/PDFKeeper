@@ -17,15 +17,14 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class DatabaseConnectionProperties
+Friend NotInheritable Class DatabaseConnectionProperties
     Private Shared s_Instance As DatabaseConnectionProperties
 
     ''' <summary>
-    ''' Prevents multiple instances of this class and allows this class to be
-    ''' subclassed.
+    ''' Prevents multiple instances of this class.
     ''' </summary>
     ''' <remarks></remarks>
-    Protected Sub New()
+    Private Sub New()
     End Sub
 
     ''' <summary>

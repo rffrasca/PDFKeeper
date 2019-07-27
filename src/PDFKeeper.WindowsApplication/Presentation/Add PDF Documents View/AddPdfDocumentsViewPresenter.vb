@@ -70,8 +70,10 @@ Public Class AddPdfDocumentsViewPresenter
                     passwordPrompt.TextLabel = My.Resources.EnterOwnerPassword
                     selectedPdfPassword = passwordPrompt.Show
                     If Not selectedPdfPassword Is Nothing Then
+                        selectedPdfPassword.MakeReadOnly()
                         containsPassword = True
                     Else
+                        view.SelectedPdfPath = Nothing
                         Exit Sub
                     End If
                 End If
@@ -84,8 +86,6 @@ Public Class AddPdfDocumentsViewPresenter
                     Dim reader As New PdfInformationPropertiesReader(view.SelectedPdfPath, _
                                                                      selectedPdfPassword)
                     reader = reader    'Added to address CA1804 violation.
-                Else
-                    selectedPdfPassword = Nothing
                 End If
                 view.OnLongRunningOperationStarted()
                 ReadPdfInformationPropertiesIntoModel(view.SelectedPdfPath, _
@@ -93,8 +93,12 @@ Public Class AddPdfDocumentsViewPresenter
                 UpdateView()
                 uploadFacade.PauseUpload(True)
             Catch ex As BadPasswordException
+                view.SelectedPdfPath = Nothing
                 messageDisplay.Show(ex.Message, True)
             Finally
+                If containsPassword Then
+                    selectedPdfPassword.Dispose()
+                End If
                 view.OnLongRunningOperationFinished()
             End Try
         End If

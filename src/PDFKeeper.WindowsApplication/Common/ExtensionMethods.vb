@@ -17,7 +17,7 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Module ExtensionMethods
+Public Module ExtensionMethods
 
 #Region "DirectoryInfo"
     ''' <summary>
@@ -29,6 +29,9 @@ Module ExtensionMethods
     ''' <remarks></remarks>
     <Extension()> _
     Public Function ContainsFiles(ByVal dirInfoParam As DirectoryInfo) As Boolean
+        If dirInfoParam Is Nothing Then
+            Throw New ArgumentNullException("dirInfoParam")
+        End If
         If dirInfoParam.GetFiles("*", SearchOption.AllDirectories).Count > 0 Then
             Return True
         Else
@@ -41,8 +44,13 @@ Module ExtensionMethods
     ''' </summary>
     ''' <param name="dirInfoParam"></param>
     ''' <remarks></remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
+        "CA1011:ConsiderPassingBaseTypesAsParameters")> _
     <Extension()> _
     Public Sub Explore(ByVal dirInfoParam As DirectoryInfo)
+        If dirInfoParam Is Nothing Then
+            Throw New ArgumentNullException("dirInfoParam")
+        End If
         Process.Start(dirInfoParam.FullName)
     End Sub
 
@@ -55,6 +63,9 @@ Module ExtensionMethods
     <Extension()> _
     Public Sub Rename(ByVal dirInfoParam As DirectoryInfo, _
                       ByVal newPath As String)
+        If dirInfoParam Is Nothing Then
+            Throw New ArgumentNullException("dirInfoParam")
+        End If
         If dirInfoParam.Exists Then
             dirInfoParam.MoveTo(newPath)
         End If
@@ -72,9 +83,14 @@ Module ExtensionMethods
     ''' </param>
     ''' <returns></returns>
     ''' <remarks></remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
+        "CA1011:ConsiderPassingBaseTypesAsParameters")> _
     <Extension()> _
     Public Function AppendGuidToName(ByVal fileInfoParam As FileInfo, _
                                      ByVal value As Guid) As String
+        If fileInfoParam Is Nothing Then
+            Throw New ArgumentNullException("fileInfoParam")
+        End If
         If value = Nothing Then
             value = Guid.NewGuid
         End If
@@ -90,8 +106,13 @@ Module ExtensionMethods
     ''' <param name="fileInfoParam"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
+        "CA1011:ConsiderPassingBaseTypesAsParameters")> _
     <Extension()> _
     Public Function ComputeHash(ByVal fileInfoParam As FileInfo) As String
+        If fileInfoParam Is Nothing Then
+            Throw New ArgumentNullException("fileInfoParam")
+        End If
         Using algorithm As HashAlgorithm = HashAlgorithm.Create("SHA1")
             Using inputStream As New FileStream(fileInfoParam.FullName, _
                                                 FileMode.Open, _
@@ -109,6 +130,9 @@ Module ExtensionMethods
     ''' <remarks></remarks>
     <Extension()> _
     Public Sub DeleteToRecycleBin(ByVal fileInfoParam As FileInfo)
+        If fileInfoParam Is Nothing Then
+            Throw New ArgumentNullException("fileInfoParam")
+        End If
         If fileInfoParam.Exists Then
             My.Computer.FileSystem.DeleteFile(fileInfoParam.FullName, _
                                               FileIO.UIOption.OnlyErrorDialogs, _
@@ -140,6 +164,9 @@ Module ExtensionMethods
     ''' <remarks></remarks>
     <Extension()> _
     Public Function IsInUse(ByVal fileInfoParam As FileInfo) As Boolean
+        If fileInfoParam Is Nothing Then
+            Throw New ArgumentNullException("fileInfoParam")
+        End If
         If fileInfoParam.Exists Then
             Try
                 Using stream As New FileStream(fileInfoParam.FullName, _
@@ -164,9 +191,14 @@ Module ExtensionMethods
     ''' <param name="newFolderPathName"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
+        "CA1011:ConsiderPassingBaseTypesAsParameters")> _
     <Extension()> _
     Public Function SwitchFolderPathName(ByVal fileInfoParam As FileInfo, _
                                          ByVal newFolderPathName As String) As String
+        If fileInfoParam Is Nothing Then
+            Throw New ArgumentNullException("fileInfoParam")
+        End If
         Return Path.Combine(newFolderPathName, Path.GetFileName(fileInfoParam.FullName))
     End Function
 
@@ -176,8 +208,13 @@ Module ExtensionMethods
     ''' <param name="fileInfoParam"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
+        "CA1011:ConsiderPassingBaseTypesAsParameters")> _
     <Extension()> _
     Public Function ToByteArray(ByVal fileInfoParam As FileInfo) As Byte()
+        If fileInfoParam Is Nothing Then
+            Throw New ArgumentNullException("fileInfoParam")
+        End If
         Dim byteArray As Byte()
         Using stream As FileStream = New FileStream(fileInfoParam.FullName, _
                                                     FileMode.Open, _
@@ -209,7 +246,7 @@ Module ExtensionMethods
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Extension()> _
-    Function SecureStringToString(ByVal secureStringParam As SecureString) As String
+    Friend Function SecureStringToString(ByVal secureStringParam As SecureString) As String
         Dim secureStringPtr As IntPtr
         Try
             secureStringPtr = _
@@ -226,30 +263,36 @@ Module ExtensionMethods
     ''' Returns a new String containing a carriage return, followed by the
     ''' date, time, and specified text appended to the String object.
     ''' </summary>
-    ''' <param name="stringParam"></param>
-    ''' <param name="stringToAppend"></param>
+    ''' <param name="valueParam"></param>
+    ''' <param name="valueToAppend"></param>
     ''' <returns>Appended string</returns>
     ''' <remarks></remarks>
     <Extension()> _
-    Public Function AppendDateTimeAndTextToString(ByVal stringParam As String, _
-                                                  ByVal stringToAppend As String) As String
-        If stringParam.Length > 0 Then
-            stringParam = stringParam & vbCrLf & vbCrLf
+    Public Function AppendDateTimeAndTextToString(ByVal valueParam As String, _
+                                                  ByVal valueToAppend As String) As String
+        If valueParam Is Nothing Then
+            Throw New ArgumentNullException("valueParam")
         End If
-        Return stringParam & "--- " & Date.Now & " (" & _
-            stringToAppend & ") ---" & vbCrLf
+        If valueParam.Length > 0 Then
+            valueParam = valueParam & vbCrLf & vbCrLf
+        End If
+        Return valueParam & "--- " & Date.Now & " (" & _
+            valueToAppend & ") ---" & vbCrLf
     End Function
 
     ''' <summary>
     ''' Verifies String object contains characters not allowed in file names.
     ''' </summary>
-    ''' <param name="stringParam"></param>
+    ''' <param name="valueParam"></param>
     ''' <returns>True or False</returns>
     ''' <remarks></remarks>
     <Extension()> _
-    Public Function ContainsInvalidFileNameChars(ByVal stringParam As String) As Boolean
+    Public Function ContainsInvalidFileNameChars(ByVal valueParam As String) As Boolean
+        If valueParam Is Nothing Then
+            Throw New ArgumentNullException("valueParam")
+        End If
         For Each invalidChar In Path.GetInvalidFileNameChars()
-            If stringParam.Contains(invalidChar) Then
+            If valueParam.Contains(invalidChar) Then
                 Return True
             End If
         Next
@@ -259,85 +302,88 @@ Module ExtensionMethods
     ''' <summary>
     ''' Prints the string object to the selected printer.
     ''' </summary>
-    ''' <param name="stringParam"></param>
+    ''' <param name="valueParam"></param>
     ''' <remarks></remarks>
     <Extension()> _
-    Public Sub Print(ByVal stringParam As String)
-        Dim print As IPrintString = New PrintString(stringParam)
+    Public Sub Print(ByVal valueParam As String)
+        Dim print As IPrintString = New PrintString(valueParam)
         print.Print()
     End Sub
 
     ''' <summary>
     ''' Previews the string object for printing using the default printer.
     ''' </summary>
-    ''' <param name="stringParam"></param>
+    ''' <param name="valueParam"></param>
     ''' <param name="printPreviewFormSize"></param>
     ''' <remarks></remarks>
     <Extension()> _
-    Public Sub PrintPreview(ByVal stringParam As String, _
+    Public Sub PrintPreview(ByVal valueParam As String, _
                             ByVal printPreviewFormSize As System.Drawing.Size)
-        Dim printPreview As IPrintString = New PrintString(stringParam)
+        Dim printPreview As IPrintString = New PrintString(valueParam)
         printPreview.PrintPreview(printPreviewFormSize)
     End Sub
 
     ''' <summary>
     ''' Writes the String object to the specified file path.
     ''' </summary>
-    ''' <param name="stringParam"></param>
+    ''' <param name="valueParam"></param>
     ''' <param name="filePath"></param>
     ''' <remarks></remarks>
     <Extension()> _
-    Public Sub WriteToFile(ByVal stringParam As String, _
+    Public Sub WriteToFile(ByVal valueParam As String, _
                            ByVal filePath As String)
-        IO.File.WriteAllText(filePath, stringParam)
+        IO.File.WriteAllText(filePath, valueParam)
     End Sub
 
     ''' <summary>
     ''' Verifies proper usage of query operators in String object.
     ''' </summary>
-    ''' <param name="stringParam"></param>
+    ''' <param name="valueParam"></param>
     ''' <returns>True or False</returns>
     ''' <remarks>
     ''' These query operators are specific to the Oracle Database.
     ''' </remarks>
     <Extension()> _
-    Public Function VerifyProperUsageOfQueryOperators(ByVal stringParam As String) As Boolean
-        stringParam = stringParam.ToUpper(CultureInfo.CurrentCulture)
-        If stringParam = "MINUS" Or _
-            stringParam = "NEAR" Or _
-            stringParam = "NOT" Or _
-            stringParam = "AND" Or _
-            stringParam = "EQUIV" Or _
-            stringParam = "WITHIN" Or _
-            stringParam = "OR" Or _
-            stringParam = "ACCUM" Or _
-            stringParam = "FUZZY" Or _
-            stringParam = "ABOUT" Or _
-            stringParam.StartsWith("MINUS ", StringComparison.CurrentCulture) Or _
-            stringParam.StartsWith("NEAR ", StringComparison.CurrentCulture) Or _
-            stringParam.StartsWith("NOT ", StringComparison.CurrentCulture) Or _
-            stringParam.StartsWith("AND ", StringComparison.CurrentCulture) Or _
-            stringParam.StartsWith("EQUIV ", StringComparison.CurrentCulture) Or _
-            stringParam.StartsWith("WITHIN ", StringComparison.CurrentCulture) Or _
-            stringParam.StartsWith("OR ", StringComparison.CurrentCulture) Or _
-            stringParam.StartsWith("ACCUM ", StringComparison.CurrentCulture) Or _
-            stringParam.StartsWith("FUZZY ", StringComparison.CurrentCulture) Or _
-            stringParam.StartsWith("ABOUT ", StringComparison.CurrentCulture) Or _
-            stringParam.IndexOf("{}", StringComparison.Ordinal) <> -1 Or _
-            stringParam.IndexOf("()", StringComparison.Ordinal) <> -1 Or _
-            stringParam.Substring(0, 1) = "=" Or _
-            stringParam.Substring(0, 1) = ";" Or _
-            stringParam.Substring(0, 1) = ">" Or _
-            stringParam.Substring(0, 1) = "-" Or _
-            stringParam.Substring(0, 1) = "~" Or _
-            stringParam.Substring(0, 1) = "&" Or _
-            stringParam.Substring(0, 1) = "|" Or _
-            stringParam.Substring(0, 1) = "," Or _
-            stringParam.Substring(0, 1) = "!" Or _
-            stringParam.Substring(0, 1) = "{" Or _
-            stringParam.Substring(0, 1) = "(" Or _
-            stringParam = "?" Or _
-            stringParam = "$" Then
+    Public Function VerifyProperUsageOfQueryOperators(ByVal valueParam As String) As Boolean
+        If valueParam Is Nothing Then
+            Throw New ArgumentNullException("valueParam")
+        End If
+        valueParam = valueParam.ToUpper(CultureInfo.CurrentCulture)
+        If valueParam = "MINUS" Or _
+            valueParam = "NEAR" Or _
+            valueParam = "NOT" Or _
+            valueParam = "AND" Or _
+            valueParam = "EQUIV" Or _
+            valueParam = "WITHIN" Or _
+            valueParam = "OR" Or _
+            valueParam = "ACCUM" Or _
+            valueParam = "FUZZY" Or _
+            valueParam = "ABOUT" Or _
+            valueParam.StartsWith("MINUS ", StringComparison.CurrentCulture) Or _
+            valueParam.StartsWith("NEAR ", StringComparison.CurrentCulture) Or _
+            valueParam.StartsWith("NOT ", StringComparison.CurrentCulture) Or _
+            valueParam.StartsWith("AND ", StringComparison.CurrentCulture) Or _
+            valueParam.StartsWith("EQUIV ", StringComparison.CurrentCulture) Or _
+            valueParam.StartsWith("WITHIN ", StringComparison.CurrentCulture) Or _
+            valueParam.StartsWith("OR ", StringComparison.CurrentCulture) Or _
+            valueParam.StartsWith("ACCUM ", StringComparison.CurrentCulture) Or _
+            valueParam.StartsWith("FUZZY ", StringComparison.CurrentCulture) Or _
+            valueParam.StartsWith("ABOUT ", StringComparison.CurrentCulture) Or _
+            valueParam.IndexOf("{}", StringComparison.Ordinal) <> -1 Or _
+            valueParam.IndexOf("()", StringComparison.Ordinal) <> -1 Or _
+            valueParam.Substring(0, 1) = "=" Or _
+            valueParam.Substring(0, 1) = ";" Or _
+            valueParam.Substring(0, 1) = ">" Or _
+            valueParam.Substring(0, 1) = "-" Or _
+            valueParam.Substring(0, 1) = "~" Or _
+            valueParam.Substring(0, 1) = "&" Or _
+            valueParam.Substring(0, 1) = "|" Or _
+            valueParam.Substring(0, 1) = "," Or _
+            valueParam.Substring(0, 1) = "!" Or _
+            valueParam.Substring(0, 1) = "{" Or _
+            valueParam.Substring(0, 1) = "(" Or _
+            valueParam = "?" Or _
+            valueParam = "$" Then
             Return False
         Else
             Return True
