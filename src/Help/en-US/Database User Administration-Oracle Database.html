@@ -5,7 +5,7 @@
 	<title>Database User Administration-Oracle Database</title>
 	<meta name="generator" content="LibreOffice 6.1.6.3 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2019-08-04T09:34:32.423000000"/>
+	<meta name="changed" content="2019-08-04T10:42:29.010000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management System
@@ -59,8 +59,10 @@ any user that will need access to the <b>pdfkeeper</b> schema:</font></p>
 	onto the database server computer); </span><b>port </b><span style="font-weight: normal">is
 	the listening port number on the database server (the default is
 	1521); and </span><b>service_name</b> <span style="font-weight: normal">is
-	the service name of the database to access (for Oracle Database
-	Express Edition, the default is XE).</span></font></p>
+	the service name of the database instance or pluggable database to
+	access (for Oracle Database Express Edition, the default is XE). For
+	Oracle Database 18c Express Edition, it is recommended to use the
+	default pluggable database </span><b>XEPDB1</b><span style="font-weight: normal">.</span></font></p>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
 	a new user, enter </span><b>create user </b><i><b>user_name</b></i>
 	<b>default tablespace users identified by </b><i><b>&quot;password&quot;</b></i><b>;</b></font></p>
@@ -81,8 +83,10 @@ any user that will need access to the <b>pdfkeeper</b> schema:</font></p>
 	logged onto the database server computer); </span><b>port </b><span style="font-weight: normal">is
 	the listening port number on the database server (the default is
 	1521); and </span><b>service_name</b> <span style="font-weight: normal">is
-	the service name of the database to access (for Oracle Database
-	Express Edition, the default is XE).</span></font></p>
+	the service name of the database instance or pluggable database to
+	access (for Oracle Database Express Edition, the default is XE). For
+	Oracle Database 18c Express Edition, it is recommended to use the
+	default pluggable database </span><b>XEPDB1</b><span style="font-weight: normal">.</span></font></p>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
 	a new account, enter the following statement to grant the user
 	select/query access: </span><b>grant select on docs to </b><i><b>user_name</b></i><b>;</b></font></p>

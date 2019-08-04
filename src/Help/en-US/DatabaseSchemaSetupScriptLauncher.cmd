@@ -35,9 +35,12 @@ set OracleMessage6=If connecting to a database located on the same computer,
 set OracleMessage7=the host name or IP address would be localhost or 127.0.0.1.
 set OracleMessage8=port: listening port number on the database server.
 set OracleMessage9=If not specified, the default port number 1521 is assumed.
-set OracleMessage10=service_name: service name of the database to access.
-set OracleMessage11=For Oracle Database Express Edition, if not specified, the
-set OracleMessage12=default service name XE is assumed.
+set OracleMessage10=service_name: service name of the database instance or
+set OracleMessage11=pluggable database to access.
+set OracleMessage12=For Oracle Database Express Edition, if not specified, the
+set OracleMessage13=default service name XE is assumed.
+set OracleMessage14=For Oracle Database 18c Express Edition, it is recommended
+set OracleMessage15=to use the default pluggable database XEPDB1.
 set CommonMessage=Enter connect string:
 set CommonErrorMessage=Error: Database connect string not specified.
 rem
@@ -82,6 +85,9 @@ echo.
 echo * %OracleMessage10%
 echo   %OracleMessage11%
 echo   %OracleMessage12%
+echo   %OracleMessage13%
+echo   %OracleMessage14%
+echo   %OracleMessage15%
 echo.
 set /p connectString=%CommonMessage% 
 if "%connectString%"=="" (
