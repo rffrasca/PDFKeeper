@@ -96,9 +96,6 @@ Public Class AddPdfDocumentsViewPresenter
                 view.SelectedPdfPath = Nothing
                 messageDisplay.Show(ex.Message, True)
             Finally
-                If containsPassword Then
-                    selectedPdfPassword.Dispose()
-                End If
                 view.OnLongRunningOperationFinished()
             End Try
         End If
