@@ -647,10 +647,10 @@ Public Class MainViewPresenter
         If dirInfoUpload.ContainsFiles Or _
             dirInfoUploadStaging.ContainsFiles Then
             view.UploadRunningVisible = True
+            Application.DoEvents()
+            uploadFacade.ExecuteUpload()
+            view.UploadRunningVisible = False
         End If
-        Application.DoEvents()
-        uploadFacade.ExecuteUpload()
-        view.UploadRunningVisible = False
         If dirInfoUpload.ContainsFiles Then
             view.UploadFolderErrorVisible = True
         Else
