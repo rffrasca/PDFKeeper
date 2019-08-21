@@ -663,6 +663,23 @@ Public Class MainViewPresenter
         End If
         Application.DoEvents()
     End Sub
+
+    Public Sub FlaggedDocumentsCheck()
+        Try
+            Dim dataClient As IDataClient = New DataClient
+            Dim flaggedCount As Integer = dataClient.GetFlaggedRecordsCount
+            If flaggedCount > 0 Then
+                view.FlaggedDocumentsExistVisible = True
+            Else
+                view.FlaggedDocumentsExistVisible = False
+            End If
+            Application.DoEvents()
+        Catch ex As AggregateException
+            For Each e In ex.InnerExceptions
+                messageDisplay.Show(e.Message, True)
+            Next
+        End Try
+    End Sub
 #End Region
 
     Public Function ViewClosingPrompt() As Boolean

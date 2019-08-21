@@ -136,6 +136,7 @@ Partial Class MainForm
         Me.UploadRunningToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.UploadFolderErrorToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.UploadStagingFolderErrorToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.FlaggedDocumentsExistToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
         Me.FileNewToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.FileOpenToolStripButton = New System.Windows.Forms.ToolStripButton()
@@ -160,6 +161,7 @@ Partial Class MainForm
         Me.UploadTimer = New System.Windows.Forms.Timer(Me.components)
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.AutoUpdateCheckTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.FlaggedDocumentsCheckTimer = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip.SuspendLayout()
         CType(Me.SearchStringErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -720,7 +722,7 @@ Partial Class MainForm
         'StatusStrip
         '
         Me.StatusStrip.DataBindings.Add(New System.Windows.Forms.Binding("Visible", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "MainStatusBarVisible", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TotalRecordsToolStripStatusLabel, Me.TotalRecordsCountToolStripStatusLabel, Me.DeleteExportToolStripProgressBar, Me.FillerToolStripStatusLabel, Me.UploadRunningToolStripStatusLabel, Me.UploadFolderErrorToolStripStatusLabel, Me.UploadStagingFolderErrorToolStripStatusLabel})
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TotalRecordsToolStripStatusLabel, Me.TotalRecordsCountToolStripStatusLabel, Me.DeleteExportToolStripProgressBar, Me.FillerToolStripStatusLabel, Me.UploadRunningToolStripStatusLabel, Me.UploadFolderErrorToolStripStatusLabel, Me.UploadStagingFolderErrorToolStripStatusLabel, Me.FlaggedDocumentsExistToolStripStatusLabel})
         resources.ApplyResources(Me.StatusStrip, "StatusStrip")
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.ShowItemToolTips = True
@@ -762,6 +764,11 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.UploadStagingFolderErrorToolStripStatusLabel, "UploadStagingFolderErrorToolStripStatusLabel")
         Me.UploadStagingFolderErrorToolStripStatusLabel.Name = "UploadStagingFolderErrorToolStripStatusLabel"
+        '
+        'FlaggedDocumentsExistToolStripStatusLabel
+        '
+        resources.ApplyResources(Me.FlaggedDocumentsExistToolStripStatusLabel, "FlaggedDocumentsExistToolStripStatusLabel")
+        Me.FlaggedDocumentsExistToolStripStatusLabel.Name = "FlaggedDocumentsExistToolStripStatusLabel"
         '
         'ToolStrip
         '
@@ -900,6 +907,11 @@ Partial Class MainForm
         '
         Me.AutoUpdateCheckTimer.Enabled = True
         Me.AutoUpdateCheckTimer.Interval = 1800000
+        '
+        'FlaggedDocumentsCheckTimer
+        '
+        Me.FlaggedDocumentsCheckTimer.Enabled = True
+        Me.FlaggedDocumentsCheckTimer.Interval = 10000
         '
         'MainForm
         '
@@ -1069,4 +1081,6 @@ Partial Class MainForm
     Friend WithEvents SearchByCategoryTabPage As System.Windows.Forms.TabPage
     Friend WithEvents CategoryComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents FileSetCategoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FlaggedDocumentsExistToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents FlaggedDocumentsCheckTimer As System.Windows.Forms.Timer
 End Class

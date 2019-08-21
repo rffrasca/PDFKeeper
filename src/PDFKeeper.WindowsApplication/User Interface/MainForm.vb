@@ -526,6 +526,15 @@ Public Class MainForm
         End Set
     End Property
 
+    Public Property FlaggedDocumentsExistVisible As Boolean Implements IMainView.FlaggedDocumentsExistVisible
+        Get
+            Return FlaggedDocumentsExistToolStripStatusLabel.Visible
+        End Get
+        Set(value As Boolean)
+            FlaggedDocumentsExistToolStripStatusLabel.Visible = value
+        End Set
+    End Property
+
     Public ReadOnly Property ActiveElement As String Implements ICommonView.ActiveElement
         Get
             Return SplitContainer.ActiveControl.Name
@@ -1157,6 +1166,10 @@ Public Class MainForm
 
     Private Sub AutoUpdateCheckTimer_Tick(sender As Object, e As EventArgs) Handles AutoUpdateCheckTimer.Tick
         updateCheck.Execute()
+    End Sub
+
+    Private Sub FlaggedDocumentsCheckTimer_Tick(sender As Object, e As EventArgs) Handles FlaggedDocumentsCheckTimer.Tick
+        presenter.FlaggedDocumentsCheck()
     End Sub
 #End Region
 

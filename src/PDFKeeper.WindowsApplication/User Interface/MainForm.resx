@@ -1720,6 +1720,24 @@
   <data name="UploadStagingFolderErrorToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="FlaggedDocumentsExistToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQfAPNRUfNMTMhSS/Ofnvzl5ettbbgGBvNZWfN7e/NVVfNjY/KKifnT0/NtbfNdXVQz
+        GPSXl/WysptFNGA7HMkODv3q6vvg4N8jI/nOzosvHek1NdgbG7F2RVk2Gf///////yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIkgA/CBxIsKBADwgTKlR4cACEBQgQNFBwAECHix4OQqhg
+        gQADDANCCuDQIeMHDwssKHBwoCKAACMnmPSAgAHLAwkAvJTAQebBBhFa5nwZgKfPkwoG4NRJlGfJgw4g
+        MA1AtSiHBzMTLCjAtWuBDFdnariwgYJZA2g7hD24UKFarAYLenhrMu5BtU/t3sWol23CDwEBADs=
+</value>
+  </data>
+  <data name="FlaggedDocumentsExistToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 17</value>
+  </data>
+  <data name="FlaggedDocumentsExistToolStripStatusLabel.ToolTipText" xml:space="preserve">
+    <value>Database contains document records that are flagged.</value>
+  </data>
+  <data name="FlaggedDocumentsExistToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="StatusStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 640</value>
   </data>
@@ -2583,6 +2601,12 @@
   <data name="&gt;&gt;UploadStagingFolderErrorToolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;FlaggedDocumentsExistToolStripStatusLabel.Name" xml:space="preserve">
+    <value>FlaggedDocumentsExistToolStripStatusLabel</value>
+  </data>
+  <data name="&gt;&gt;FlaggedDocumentsExistToolStripStatusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;FileNewToolStripButton.Name" xml:space="preserve">
     <value>FileNewToolStripButton</value>
   </data>
@@ -2721,6 +2745,12 @@
   <data name="&gt;&gt;AutoUpdateCheckTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;FlaggedDocumentsCheckTimer.Name" xml:space="preserve">
+    <value>FlaggedDocumentsCheckTimer</value>
+  </data>
+  <data name="&gt;&gt;FlaggedDocumentsCheckTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
   </data>
@@ -2732,5 +2762,8 @@
   </metadata>
   <metadata name="AutoUpdateCheckTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>663, 17</value>
+  </metadata>
+  <metadata name="FlaggedDocumentsCheckTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>967, 17</value>
   </metadata>
 </root>
