@@ -57,11 +57,7 @@ Public Class UploadFacade
 
     Public Sub PauseUpload(ByVal value As Boolean)
         WaitForUploadToFinish()
-        If value Then
-            paused = True
-        Else
-            paused = False
-        End If
+        paused = value
     End Sub
 
     Public Sub ExecuteUpload()
