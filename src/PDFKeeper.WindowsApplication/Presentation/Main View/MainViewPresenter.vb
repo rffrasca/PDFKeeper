@@ -674,10 +674,10 @@ Public Class MainViewPresenter
                 view.FlaggedDocumentsExistVisible = False
             End If
             Application.DoEvents()
-        Catch ex As AggregateException
-            For Each e In ex.InnerExceptions
-                messageDisplay.Show(e.Message, True)
-            Next
+        Catch ex As OracleException
+            view.FlaggedDocumentsCheckTimerEnabled = False
+            messageDisplay.Show(ex.Message, True)
+            view.FlaggedDocumentsCheckTimerEnabled = True
         End Try
     End Sub
 #End Region

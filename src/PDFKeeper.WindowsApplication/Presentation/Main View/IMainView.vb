@@ -55,6 +55,7 @@ Public Interface IMainView
     Property UploadFolderErrorVisible As Boolean
     Property UploadStagingFolderErrorVisible As Boolean
     Property FlaggedDocumentsExistVisible As Boolean
+    Property FlaggedDocumentsCheckTimerEnabled As Boolean
     Sub SelectSearchResultsLastRow()
     Sub SelectDeselectAllSearchResults(ByVal selectionState _
                                        As Enums.SelectionState)

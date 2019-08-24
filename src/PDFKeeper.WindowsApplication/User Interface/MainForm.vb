@@ -535,6 +535,15 @@ Public Class MainForm
         End Set
     End Property
 
+    Public Property FlaggedDocumentsCheckTimerEnabled As Boolean Implements IMainView.FlaggedDocumentsCheckTimerEnabled
+        Get
+            Return FlaggedDocumentsCheckTimer.Enabled
+        End Get
+        Set(value As Boolean)
+            FlaggedDocumentsCheckTimer.Enabled = value
+        End Set
+    End Property
+
     Public ReadOnly Property ActiveElement As String Implements ICommonView.ActiveElement
         Get
             Return SplitContainer.ActiveControl.Name
