@@ -7,12 +7,11 @@
 4. WiX Toolset Visual Studio 2013 Extension - http://wixtoolset.org/releases/
 5. Wax - https://marketplace.visualstudio.com/items?itemName=TomEnglert.Wax
 6. Microsoft HTML Help Workshop - http://www.microsoft.com/en-us/download/details.aspx?id=21138
-7. ODP.NET, Managed Driver - http://www.oracle.com/technetwork/database/windows/downloads/utilsoft-087491.html
-    Download the latest xcopy version of the ODP.NET, Managed Driver, then unblock and unzip the file.
-    For installation instructions, refer to readme.htm that is included with the xcopy ZIP file.
+7. Oracle Data Provider for .NET - https://www.oracle.com/database/technologies/dotnet-odacdeploy-downloads.html
+    Download 64-bit ODAC 19.3 or 32-bit ODAC 19.3 from the ODAC Xcopy section to a folder for staging, then unblock and unzip the file.
+    For installation instructions, refer to readme.htm that is included in the zip file.
     
-    Note, when installing on a UAC (User Access Control) enabled Windows system, make sure to perform the installation with a Command Prompt session that was opened 
-    using Run as administrator. In addition, when installing, the machine_wide_configuration argument must be true to install into the Global Assembly Cache (GAC).
+    Note, Make sure to perform the installation using a Command Prompt session that was opened using Run as administrator. In addition, it is not necessary to install the full ODAC product, only ODP.NET4 is required.
 
 ## Get the Source
 Clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git or download the source code for a 5.x.x release (when available) from [here](https://github.com/rffrasca/PDFKeeper/releases).
