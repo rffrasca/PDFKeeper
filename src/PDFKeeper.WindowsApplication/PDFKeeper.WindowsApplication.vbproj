@@ -83,9 +83,8 @@
       <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="oracle.manageddataaccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Oracle.ManagedDataAccess\v4.0_4.122.1.0__89b483f429c47342\oracle.manageddataaccess.dll</HintPath>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -158,6 +157,7 @@
     <Compile Include="Domain Model\Database\DataClient.vb" />
     <Compile Include="Domain Model\Database\DataClientFactory.vb" />
     <Compile Include="Domain Model\Database\IDataClient.vb" />
+    <Compile Include="Domain Model\Database\Oracle\OracleManagedDataAccessAssembly.vb" />
     <Compile Include="Domain Model\Database\Oracle\OracleDataClient.vb" />
     <Compile Include="Domain Model\Database\Oracle\OracleDataClientBase.vb" />
     <Compile Include="Domain Model\PDF Information Properties\PdfInformationPropertiesHelper.vb" />

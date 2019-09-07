@@ -36,7 +36,6 @@ Public Class LoginViewPresenter
             view.OnLoginStarted()
             UpdateModel()
             DatabaseConnectionPropertiesUtil.Validate()
-            model.Password.MakeReadOnly()
             view.OnLoginSuccessful()
         Catch ex As OracleException
             messageDisplay.Show(ex.Message, True)

@@ -19,6 +19,10 @@
 '******************************************************************************
 Friend NotInheritable Class DatabaseConnectionProperties
     Private Shared s_Instance As DatabaseConnectionProperties
+    Private m_UserName As String
+    Private m_Password As SecureString
+    Private m_DataSource As String
+    Private m_DatabaseManagementSystem As String
 
     ''' <summary>
     ''' Prevents multiple instances of this class.
@@ -43,7 +47,39 @@ Friend NotInheritable Class DatabaseConnectionProperties
     End Property
 
     Public Property UserName As String
+        Get
+            Return m_UserName
+        End Get
+        Set(value As String)
+            m_UserName = value
+        End Set
+    End Property
+
     Public Property Password As SecureString
+        Get
+            Return m_Password
+        End Get
+        Set(value As SecureString)
+            m_Password = value
+            m_Password.MakeReadOnly()
+        End Set
+    End Property
+
     Public Property DataSource As String
+        Get
+            Return m_DataSource
+        End Get
+        Set(value As String)
+            m_DataSource = value
+        End Set
+    End Property
+
     Public Property DatabaseManagementSystem As String
+        Get
+            Return m_DatabaseManagementSystem
+        End Get
+        Set(value As String)
+            m_DatabaseManagementSystem = value
+        End Set
+    End Property
 End Class

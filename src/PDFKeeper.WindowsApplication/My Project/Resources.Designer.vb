@@ -140,7 +140,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DeleteUploadFolderConfigurationPrompt", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to PDFKeeper is an &quot;Open Source PDF Document Management System&quot; that integrates with a compatible, relational database to provide an upload, index, and search solution for PDF documents.
         '''
@@ -151,7 +151,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DescriptionDetail", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to Document ID: {0} - Error: {1}.
         '''</summary>
@@ -160,7 +160,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentIdException", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to Document Notes have been modified.
         '''Do you want to save changes before closing?.
@@ -170,7 +170,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentNotesModified", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to {0}.  Document record may have been deleted.  Please Refresh your Search Results..
         '''</summary>
@@ -179,7 +179,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentRecordMayHaveBeenDeleted", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to Total records: {0} - Flagged records: {1}.
         '''</summary>
@@ -188,7 +188,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentRecordsCountMessage", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to Enter Owner Password:.
         '''</summary>
@@ -197,7 +197,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("EnterOwnerPassword", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to Export.
         '''</summary>
@@ -206,7 +206,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("Export", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to {0}.  Document ID {1} may have been deleted..
         '''</summary>
@@ -215,7 +215,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("ExportDocumentRecordMayHaveBeenDeleted", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to This feature is disabled by policy..
         '''</summary>
@@ -224,7 +224,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FeatureDisabledByPolicy", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to &lt;FileName&gt;.
         '''</summary>
@@ -233,7 +233,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FileNameToken", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to File not found exception has occurred in the application..
         '''</summary>
@@ -242,7 +242,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FileNotFoundException", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to {0} was saved..
         '''</summary>
@@ -251,7 +251,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FileSaved", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to {0} files (*.{1})|*.{1}.
         '''</summary>
@@ -260,7 +260,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FilterExtension", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to Folder name contains invalid characters..
         '''</summary>
@@ -269,7 +269,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FolderNameContainsInvalidChars", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to Are you sure you want to close and discard all changes?.
         '''</summary>
@@ -278,7 +278,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("GenericClosePrompt", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to Do you wish to discard all changes?.
         '''</summary>
@@ -287,13 +287,26 @@ Namespace My.Resources
                 Return ResourceManager.GetString("GenericDiscardChangesPrompt", resourceCulture)
             End Get
         End Property
-
+        
         '''<summary>
         '''  Looks up a localized string similar to ID.
         '''</summary>
         Friend ReadOnly Property ID() As String
             Get
                 Return ResourceManager.GetString("ID", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Oracle Data Provider for .NET is missing and needs to be installed.
+        '''
+        '''Please refer to the &quot;Additional Client Prerequisites&quot; section in the help file for instructions.
+        '''
+        '''To access help, press F1 at the PDFKeeper Login form..
+        '''</summary>
+        Friend ReadOnly Property ODPMissing() As String
+            Get
+                Return ResourceManager.GetString("ODPMissing", resourceCulture)
             End Get
         End Property
         

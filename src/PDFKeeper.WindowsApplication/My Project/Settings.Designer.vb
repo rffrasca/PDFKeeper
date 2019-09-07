@@ -233,6 +233,15 @@ Namespace My
                 Me("Datasource") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("4.122.19.1")>  _
+        Public ReadOnly Property ODPMVersion() As String
+            Get
+                Return CType(Me("ODPMVersion"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

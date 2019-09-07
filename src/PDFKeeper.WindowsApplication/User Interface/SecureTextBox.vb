@@ -19,7 +19,7 @@
 '******************************************************************************
 Public Class SecureTextBox
     Inherits System.Windows.Forms.TextBox
-    Private m_SecureText As New SecureString
+    Private m_SecureText As SecureString
 
     Public Sub New()
         Me.ShortcutsEnabled = False
@@ -30,6 +30,18 @@ Public Class SecureTextBox
             Return m_SecureText
         End Get
     End Property
+
+    ''' <summary>
+    ''' Constructs the SecureText SecureString.
+    ''' 
+    ''' This method must be called in the constructor of the LoginForm and
+    ''' after the SecureString has been disposed following a failure of the
+    ''' Database Connection Properties Validate method.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub ConstructSecureText()
+        m_SecureText = New SecureString
+    End Sub
 
     Protected Overrides Sub OnKeyDown(ByVal e As System.Windows.Forms.KeyEventArgs)
         If e Is Nothing Then

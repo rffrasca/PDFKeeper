@@ -21,7 +21,17 @@ Public MustInherit Class OracleDataClientBase
     Implements IDisposable
     Private connnectionProperties As DatabaseConnectionProperties = _
        DatabaseConnectionProperties.Instance
-    Private m_Connection As New OracleConnection
+    Private connectionString As String = _
+        "Data Source=" + connnectionProperties.DataSource + ";" & _
+        "Persist Security Info=False;Pooling=True"
+    Private credential As OracleCredential
+    Private m_Connection As OracleConnection
+
+    Protected Sub New()
+        credential = New OracleCredential(connnectionProperties.UserName, _
+                                          connnectionProperties.Password)
+        m_Connection = New OracleConnection(connectionString, credential)
+    End Sub
 
     Protected ReadOnly Property Connection As OracleConnection
         Get
@@ -30,11 +40,6 @@ Public MustInherit Class OracleDataClientBase
     End Property
 
     Protected Sub Open()
-        Connection.ConnectionString = _
-            "User Id=" + connnectionProperties.UserName + ";" & _
-            "Password=" + connnectionProperties.Password.SecureStringToString + ";" & _
-            "Data Source=" + connnectionProperties.DataSource + ";" & _
-            "Persist Security Info=False;Pooling=True"
         Connection.Open()
     End Sub
 
