@@ -50,8 +50,8 @@
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Installing ODP.NET Managed Driver">
-				<param name="Local" value="Installing ODP.NET Managed Driver.html">
+				<param name="Name" value="Installing Oracle Data Provider for .NET">
+				<param name="Local" value="Installing Oracle Data Provider for .NET.html">
 				<param name="ImageNumber" value="9">
 				</OBJECT>
 		</UL>
