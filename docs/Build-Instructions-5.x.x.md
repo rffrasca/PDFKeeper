@@ -11,7 +11,7 @@
     Download 64-bit ODAC 19.3 or 32-bit ODAC 19.3 from the ODAC Xcopy section to a folder for staging, then unblock and unzip the file.
     For installation instructions, refer to readme.htm that is included in the zip file.
     
-    Note, Make sure to perform the installation using a Command Prompt session that was opened using Run as administrator. In addition, it is not necessary to install the full ODAC product, only ODP.NET4 is required.
+    Note, make sure to perform the installation using a Command Prompt session that was opened using Run as administrator. In addition, it is not necessary to install the full ODAC product, only ODP.NET4 is required.
 
 ## Get the Source
 Clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git or download the source code for a 5.x.x release (when available) from [here](https://github.com/rffrasca/PDFKeeper/releases).
