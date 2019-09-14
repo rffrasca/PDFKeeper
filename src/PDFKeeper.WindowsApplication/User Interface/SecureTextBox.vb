@@ -23,6 +23,7 @@ Public Class SecureTextBox
 
     Public Sub New()
         Me.ShortcutsEnabled = False
+        ConstructSecureString()
     End Sub
 
     Public ReadOnly Property SecureText As SecureString
@@ -32,14 +33,15 @@ Public Class SecureTextBox
     End Property
 
     ''' <summary>
-    ''' Constructs the SecureText SecureString.
+    ''' Constructs the SecureString for the instance of this class.
     ''' 
-    ''' This method must be called in the constructor of the LoginForm and
-    ''' after the SecureString has been disposed following a failure of the
-    ''' Database Connection Properties Validate method.
+    ''' This method is called by the constructor of this class and is to be
+    ''' called when the SecureString needs to be constructed after it has been
+    ''' disposed, allowing for re-entry in the same instance of the
+    ''' implementing form.
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub ConstructSecureText()
+    Public Sub ConstructSecureString()
         m_SecureText = New SecureString
     End Sub
 

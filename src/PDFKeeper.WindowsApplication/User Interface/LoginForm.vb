@@ -25,7 +25,6 @@ Public Class LoginForm
     Public Sub New()
         InitializeComponent()
         presenter = New LoginViewPresenter(Me)
-        PasswordSecureTextBox.ConstructSecureText()
         HelpProvider.HelpNamespace = help.Name
     End Sub
 
@@ -68,7 +67,7 @@ Public Class LoginForm
     Public Sub OnLoginFailed() Implements ILoginView.OnLoginFailed
         PasswordSecureTextBox.SecureText.Dispose()
         PasswordSecureTextBox.Text = Nothing
-        PasswordSecureTextBox.ConstructSecureText()
+        PasswordSecureTextBox.ConstructSecureString()
         UsernameTextBox.Select()
         Me.Cursor = Cursors.Default
     End Sub
