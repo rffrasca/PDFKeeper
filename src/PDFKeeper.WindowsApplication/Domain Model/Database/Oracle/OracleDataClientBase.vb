@@ -23,7 +23,7 @@ Public MustInherit Class OracleDataClientBase
        DatabaseConnectionProperties.Instance
     Private connectionString As String = _
         "Data Source=" + connnectionProperties.DataSource + ";" & _
-        "Persist Security Info=False;Pooling=True"
+        "Pooling=True"
     Private credential As OracleCredential
     Private m_Connection As OracleConnection
 
