@@ -153,7 +153,6 @@
     <Compile Include="Common\Shortcut.vb" />
     <Compile Include="Common\UserSettingsUpgradeCommand.vb" />
     <Compile Include="Common\XmlFileSerializer.vb" />
-    <Compile Include="Domain Model\Database\Database Connection Properties\DatabaseConnectionPropertiesUtil.vb" />
     <Compile Include="Domain Model\Database\DataClient.vb" />
     <Compile Include="Domain Model\Database\DataClientFactory.vb" />
     <Compile Include="Domain Model\Database\IDataClient.vb" />
@@ -179,7 +178,7 @@
     <Compile Include="Presentation\Common View\ICommonView.vb" />
     <Compile Include="Common\Password Prompt\IPasswordPrompt.vb" />
     <Compile Include="Presentation\Main View\ProcessSelectedSearchResultsCommand.vb" />
-    <Compile Include="Domain Model\Database\Database Connection Properties\DatabaseConnectionProperties.vb" />
+    <Compile Include="Domain Model\Database\DatabaseConnectionProperties.vb" />
     <Compile Include="Common\PDF Viewer\PdfViewerBase.vb" />
     <Compile Include="Common\PDF Viewer\RestrictedPdfViewer.vb" />
     <Compile Include="Common\GenericDictionaryList.vb" />

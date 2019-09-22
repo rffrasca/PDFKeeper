@@ -82,4 +82,16 @@ Friend NotInheritable Class DatabaseConnectionProperties
             m_DatabaseManagementSystem = value
         End Set
     End Property
+
+    ''' <summary>
+    ''' Validates the Database Connection Properties by opening a connection to
+    ''' the database, and then closing it.
+    ''' </summary>
+    ''' <remarks></remarks>
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
+        "CA1822:MarkMembersAsStatic")> _
+    Public Sub Validate()
+        Dim dataClient As IDataClient = New DataClient
+        dataClient.TestConnection()
+    End Sub
 End Class

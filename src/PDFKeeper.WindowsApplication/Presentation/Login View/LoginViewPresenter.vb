@@ -35,7 +35,7 @@ Public Class LoginViewPresenter
         Try
             view.OnLoginStarted()
             UpdateModel()
-            DatabaseConnectionPropertiesUtil.Validate()
+            model.Validate()
             view.OnLoginSuccessful()
         Catch ex As OracleException
             messageDisplay.Show(ex.Message, True)
