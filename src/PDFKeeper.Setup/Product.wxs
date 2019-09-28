@@ -120,6 +120,9 @@
       <Component Id="OracleDatabaseSchemaSetup.sql" Guid="0c018a44-7840-4ef4-92a7-ce0432f9e27f">
         <File Id="OracleDatabaseSchemaSetup.sql" Name="OracleDatabaseSchemaSetup.sql" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)OracleDatabaseSchemaSetup.sql" />
       </Component>
+      <Component Id="OracleDatabaseSchemaUpgrade.sql" Guid="75121a74-f2e3-469e-bacc-b5567cdaaf7a">
+        <File Id="OracleDatabaseSchemaUpgrade.sql" Name="OracleDatabaseSchemaUpgrade.sql" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)OracleDatabaseSchemaUpgrade.sql" />
+      </Component>
   	</ComponentGroup>
 	</Fragment>
 
