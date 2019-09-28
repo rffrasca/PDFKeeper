@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
 	<title>Database Schema Upgrade for Oracle Database</title>
-	<meta name="generator" content="LibreOffice 6.1.5.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 6.2.7.1 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2019-03-05T20:56:33.154000000"/>
+	<meta name="changed" content="2019-09-28T09:46:07.157000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management System
@@ -32,9 +32,15 @@ Schema Upgrade for Oracle Database</b></font></h1>
 <p><font face="Segoe UI, sans-serif">This topic provides the steps
 that need to be performed by an individual responsible for the
 administration of the Oracle Database when upgrading from PDFKeeper
-4.1.0 or earlier. This schema upgrade adds support for the </font><font face="Segoe UI, sans-serif">category
-and </font><font face="Segoe UI, sans-serif">flag document feature</font><font face="Segoe UI, sans-serif">s</font><font face="Segoe UI, sans-serif">
-introduced in PDFKeeper 5.0.0.</font></p>
+4.1.0 or earlier. This schema upgrade adds support for the category
+and flag document features</font> <font face="Segoe UI, sans-serif">introduced
+in PDFKeeper 5.0.0.</font></p>
+<p><font face="Segoe UI, sans-serif">Before proceeding, it&rsquo;s
+highly recommended that the Oracle Database be backed using RMAN,
+then backup the Fast Recovery Area to an alternate location.  For
+information on backing up the database using RMAN, please consult the
+<a href="https://www.oracle.com/database/technologies/">online
+documentation</a> for the database version being used.</font></p>
 <ol>
 	<li><p><font face="Segoe UI, sans-serif">If the Oracle Database used
 	to store PDFKeeper data was installed on a different computer, you
