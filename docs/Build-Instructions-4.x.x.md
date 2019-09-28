@@ -3,9 +3,10 @@
 ##  Install Development Applications and Tools
 1. Microsoft Visual Studio 2013 - https://www.visualstudio.com/downloads/
 2. Microsoft .NET Framework 4.6.1 Developer Pack - https://www.microsoft.com/en-us/download/details.aspx?id=49978
-3. WiX Toolset v3.11.1 - http://wixtoolset.org/releases/
-4. WiX Toolset Visual Studio 2013 Extension - http://wixtoolset.org/releases/
-5. Wax - https://marketplace.visualstudio.com/items?itemName=TomEnglert.Wax
+3. WiX Toolset v3.11.2 - http://wixtoolset.org/releases/
+4. WiX Toolset Visual Studio 2013 Extension 1.0.0.4 - https://github.com/wixtoolset/VisualStudioExtension/releases/tag/v1.0.0.4
+5. Wax - https://github.com/tom-englert/Wax/releases
+    Version must be earlier than 1.3, but a binary release of 1.2 is not available from the author.
 6. Microsoft HTML Help Workshop - http://www.microsoft.com/en-us/download/details.aspx?id=21138
 7. ODP.NET, Managed Driver - http://www.oracle.com/technetwork/database/windows/downloads/utilsoft-087491.html
     Download the latest xcopy version of the ODP.NET, Managed Driver, then unblock and unzip the file.
