@@ -66,13 +66,12 @@ Public Class UploadStagedPdfsCommand
                                             pdfPath, _
                                             category, _
                                             flag)
-                    fileInfo = New FileInfo(pdfPath)
                     fileInfo.DeleteToRecycleBin()
                     Dim suppDataXmlPath As String = _
                         Path.ChangeExtension(pdfPath, "xml")
-                    If notes.Length > 0 Then
-                        fileInfo = New FileInfo(suppDataXmlPath)
-                        fileInfo.DeleteToRecycleBin()
+                    If suppData IsNot Nothing Then
+                        Dim xmlFileInfo As New FileInfo(suppDataXmlPath)
+                        xmlFileInfo.DeleteToRecycleBin()
                     Else
                         IO.File.Delete(suppDataXmlPath)
                     End If
