@@ -37,6 +37,9 @@ Public Class LoginViewPresenter
             UpdateModel()
             model.Validate()
             view.OnLoginSuccessful()
+        Catch ex As ArgumentException
+            messageDisplay.Show(ex.Message, True)
+            view.OnLoginFailed()
         Catch ex As OracleException
             messageDisplay.Show(ex.Message, True)
             view.OnLoginFailed()
