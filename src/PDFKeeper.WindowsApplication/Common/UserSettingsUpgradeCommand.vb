@@ -32,8 +32,8 @@ Public Class UserSettingsUpgradeCommand
             My.Settings.Upgrade()
             My.Settings.UpgradeSettings = False
             My.Settings.Save()
-            Dim help As New HelpFile
-            help.ShowAndWait("Database Schema Upgrade for Oracle Database.html")
+            Dim messageDisplay As IMessageDisplay = New MessageDisplay
+            messageDisplay.Show(My.Resources.UpgradeMessage, False)
         End If
     End Sub
 End Class

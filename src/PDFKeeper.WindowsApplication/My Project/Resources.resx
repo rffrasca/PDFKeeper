@@ -249,4 +249,13 @@ Please refer to the "Additional Client Prerequisites" section in the help file f
 
 To access help, press F1 at the PDFKeeper Login form.</value>
   </data>
+  <data name="UpgradeMessage" xml:space="preserve">
+    <value>PDFKeeper has detected that you're upgrading from version 4.1.0 or earlier.
+
+PDFKeeper 5.0.0 requires the following:
+
+* The database schema must be upgraded to the PDFKeeper 5.0.0 schema by an individual responsible for the administration of the Oracle Database.  Please see the "Database Schema Upgrade for Oracle Database" help topic.
+
+* The Oracle Data Provider for .NET must be upgraded on this computer.  Please see the "Installing Oracle Data Provider for .NET" help topic located in "Additional Client Prerequisites".</value>
+  </data>
 </root>
