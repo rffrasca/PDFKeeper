@@ -32,17 +32,10 @@
 				</OBJECT>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Database User Administration">
-			<param name="Local" value="Database User Administration.html">
-			<param name="ImageNumber" value="1">
+			<param name="Name" value="Database Schema Upgrade for Oracle Database">
+			<param name="Local" value="Database Schema Upgrade for Oracle Database.html">
+			<param name="ImageNumber" value="9">
 			</OBJECT>
-		<UL>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Oracle Database">
-				<param name="Local" value="Database User Administration-Oracle Database.html">
-				<param name="ImageNumber" value="9">
-				</OBJECT>
-		</UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Additional Client Prerequisites">
 			<param name="Local" value="Additional Client Prerequisites.html">
@@ -56,10 +49,17 @@
 				</OBJECT>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Database Schema Upgrade for Oracle Database">
-			<param name="Local" value="Database Schema Upgrade for Oracle Database.html">
-			<param name="ImageNumber" value="9">
+			<param name="Name" value="Database User Administration">
+			<param name="Local" value="Database User Administration.html">
+			<param name="ImageNumber" value="1">
 			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Oracle Database">
+				<param name="Local" value="Database User Administration-Oracle Database.html">
+				<param name="ImageNumber" value="9">
+				</OBJECT>
+		</UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Logging into PDFKeeper">
 			<param name="Local" value="Logging into PDFKeeper.html">
