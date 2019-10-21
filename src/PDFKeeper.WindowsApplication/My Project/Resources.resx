@@ -250,7 +250,7 @@ Please refer to the "Additional Client Prerequisites" section in the help file f
 To access help, press F1 at the PDFKeeper Login form.</value>
   </data>
   <data name="UpgradeMessage" xml:space="preserve">
-    <value>PDFKeeper has detected that you're upgrading from version 4.1.0 or earlier.
+    <value>PDFKeeper has detected that you've upgraded from an older version.
 
 PDFKeeper 5.0.0 requires the following:
 
