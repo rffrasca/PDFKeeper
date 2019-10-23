@@ -32,8 +32,14 @@ Public Class UserSettingsUpgradeCommand
             My.Settings.Upgrade()
             My.Settings.UpgradeSettings = False
             My.Settings.Save()
-            Dim messageDisplay As IMessageDisplay = New MessageDisplay
-            messageDisplay.Show(My.Resources.UpgradeMessage, False)
+            If Directory.Exists(Path.Combine( _
+                                Environment.GetFolderPath( _
+                                    Environment.SpecialFolder.ApplicationData), _
+                                My.Application.Info.CompanyName, _
+                                Application.ProductName)) Then
+                Dim messageDisplay As IMessageDisplay = New MessageDisplay
+                messageDisplay.Show(My.Resources.UpgradeMessage, False)
+            End If
         End If
     End Sub
 End Class
