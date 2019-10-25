@@ -3,8 +3,8 @@
 
 PDFKeeper integrates with a compatible, relational database to provide an upload, index, and search solution for PDF documents.
 
-![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot.png)
-Screenshot of main window in version 4.0.0 and above.
+![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot-5.0.0.png)
+Screenshot of main window in version 5.0.0 and above.
 
 ### Features
 * Store PDF documents in a compatible, relational database where they’re indexed and can be managed by any computer that has PDFKeeper installed on your network.
