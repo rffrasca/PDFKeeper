@@ -8,7 +8,7 @@
 5. Wax - https://github.com/tom-englert/Wax/releases. Version must be earlier than 1.3, but a binary release of 1.2 is not available from the author.
 6. Microsoft HTML Help Workshop - http://www.microsoft.com/en-us/download/details.aspx?id=21138
 7. Oracle Data Provider for .NET - https://www.oracle.com/database/technologies/dotnet-odacdeploy-downloads.html
-    Download 64-bit ODAC 19.3 or 32-bit ODAC 19.3 from the ODAC Xcopy section to a folder for staging, then unblock and unzip the file.
+    Download 32-bit ODAC 19.3 (must be 32-bit) from the ODAC Xcopy section to a folder for staging, then unblock and unzip the file.
     For installation instructions, refer to readme.htm that is included in the zip file.
     
     Note, make sure to perform the installation using a Command Prompt session that was opened using Run as administrator. In addition, it is not necessary to install the full ODAC product, only ODP.NET4 is required.
