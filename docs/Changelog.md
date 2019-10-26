@@ -1,6 +1,32 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v5.0.0 - 2019-10-24
+- This is a major release and the 10th year anniversary edition, officially released on the 10th year anniversary of PDFKeeper.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.0).
+### Added
+- Added compatibility for Oracle Database 18c Express Edition and 19c.
+- Flag Document feature has been added for setting the flag state on a selected document record and when PDF documents are uploaded as a way to mark for follow-up.
+- Category feature has been added for setting or clearing the category on one or more selected document records.
+- Optimistic concurrency has been added to Document Notes editing for preventing data loss during a save operation.
+### Changed
+- Logo for PDFKeeper has been changed.
+- Description of PDFKeeper has been changed to "Open Source PDF Document Management System".
+- Manage Upload Folder Configurations form has replaced the Upload Folders and Upload Folder Configuration forms.
+- Add PDF Documents form has been redesigned to allow adding more than one PDF document without leaving the form.
+- Updated help file to instruct user to not restore documents from the recycle bin while PDFKeeper is open.
+- Improvements have been made to the handling of SecureStrings.
+- Oracle Data Provider for .NET, included in Oracle Data Access Components Runtime 19.3 is now required offering better performance and security.
+- Entire application source code has been refactored and reorganized.
+- AutoUpdater.NET was updated to 1.5.7 in the binary release.
+- iTextSharp was updated to 5.5.13.1 in the binary release.
+- pdftopng from Xpdf Tools was updated to 4.01.01 in the binary release.
+### Fixed
+- All SQL statements that accept parameters have been parameterized to address SQL Injection concerns flagged by Code Analysis.
+- Oracle Database user password is now being passed securely when connecting to the database preventing exposure in a page file swap or crash dump.
+- Fixed issue with PDFKeeper incorrectly detecting that an upgrade was performed from a prior version when no user settings exist from a prior version.
+
 ## v4.1.0 - 2018-12-24
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.1.0).
