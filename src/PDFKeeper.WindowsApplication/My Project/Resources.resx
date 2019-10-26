@@ -250,9 +250,9 @@ Please refer to the "Additional Client Prerequisites" section in the help file f
 To access help, press F1 at the PDFKeeper Login form.</value>
   </data>
   <data name="UpgradeMessage" xml:space="preserve">
-    <value>PDFKeeper has detected that you've upgraded from an older version.
+    <value>PDFKeeper has detected that you've upgraded from an older version that requires some additional updates.
 
-PDFKeeper 5.0.0 requires the following:
+This version of PDFKeeper requires the following:
 
 * The database schema must be upgraded to the PDFKeeper 5.0.0 schema by an individual responsible for the administration of the Oracle Database.  Please see the "Database Schema Upgrade for Oracle Database" help topic.
 
