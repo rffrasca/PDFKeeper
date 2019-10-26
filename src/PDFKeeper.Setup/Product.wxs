@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 *******************************************************************************
-* PDFKeeper - Open Source PDF Document Management System
+* PDFKeeper - Open Source PDF Document Management
 * Copyright (C) 2009-2019  Robert F. Frasca
 *
 * This file is part of PDFKeeper.
@@ -54,12 +54,12 @@
     </Feature>
 
     <Component Id="ApplicationDesktopShortcut" Guid="72393B8E-4F3C-465E-878F-9EFA5370A559" Directory="DesktopFolder">
-      <Shortcut Id="DesktopShortcut" Name="PDFKeeper" Description="Open Source PDF Document Management System" Directory="DesktopFolder" Target="[INSTALLFOLDER]PDFKeeper.exe" WorkingDirectory="INSTALLFOLDER" />
+      <Shortcut Id="DesktopShortcut" Name="PDFKeeper" Description="Open Source PDF Document Management" Directory="DesktopFolder" Target="[INSTALLFOLDER]PDFKeeper.exe" WorkingDirectory="INSTALLFOLDER" />
       <RegistryValue Root="HKCU" Key="Software\Robert F. Frasca\PDFKeeper" Name="installed" Type="integer" Value="1" />
     </Component>
 
     <Component Id="ApplicationStartMenuShortcut" Guid="4F68CEB5-6DC4-47DF-B53D-2489C70BFC1F" Directory="StartMenuFolder">
-      <Shortcut Id="StartMenuShortcut" Name="PDFKeeper" Description="Open Source PDF Document Management System" Directory="StartMenuFolder" Target="[INSTALLFOLDER]PDFKeeper.exe" WorkingDirectory="INSTALLFOLDER" />
+      <Shortcut Id="StartMenuShortcut" Name="PDFKeeper" Description="Open Source PDF Document Management" Directory="StartMenuFolder" Target="[INSTALLFOLDER]PDFKeeper.exe" WorkingDirectory="INSTALLFOLDER" />
       <RegistryValue Root="HKCU" Key="Software\Robert F. Frasca\PDFKeeper" Name="installed" Type="integer" Value="1" />
     </Component>
   </Product>
