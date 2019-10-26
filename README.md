@@ -1,5 +1,5 @@
 # ![Logo](https://github.com/robertfrasca/PDFKeeper/blob/master/src/Resources/Logo/PDFKeeper_100x100.png) PDFKeeper
-## Open Source PDF Document Management System
+## Open Source PDF Document Management
 
 PDFKeeper integrates with a compatible, relational database to provide an upload, index, and search solution for PDF documents.
 
