@@ -79,6 +79,21 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to PDFKeeper has detected that you&apos;ve upgraded from an older version that requires some additional updates.
+        '''
+        '''This version of PDFKeeper requires the following:
+        '''
+        '''* The database schema must be upgraded to the PDFKeeper 5.x.x schema by an individual responsible for the administration of the Oracle Database.  Please see the &quot;Database Schema Upgrade for Oracle Database&quot; help topic.
+        '''
+        '''* The Oracle Data Provider for .NET must be upgraded on this computer.  Please see the &quot;Installing Oracle Data Provider for .NET&quot; [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property AdditionalUpdatesRequiredMessage() As String
+            Get
+                Return ResourceManager.GetString("AdditionalUpdatesRequiredMessage", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
         '''  Looks up a localized string similar to Author.
         '''</summary>
         Friend ReadOnly Property Author() As String
@@ -86,7 +101,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("Author", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Cache.
         '''</summary>
@@ -95,7 +110,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("Cache", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Category.
         '''</summary>
@@ -104,7 +119,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("Category", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to &lt;Date_Time&gt;.
         '''</summary>
@@ -113,7 +128,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DateTimeToken", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to &lt;Date&gt;.
         '''</summary>
@@ -122,7 +137,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DateToken", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Delete selected documents?.
         '''</summary>
@@ -131,7 +146,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DeleteSelectedDocuments", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Are you sure you want to delete the selected Upload Folder Configuration?.
         '''</summary>
@@ -140,7 +155,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DeleteUploadFolderConfigurationPrompt", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to PDFKeeper is Open Source PDF Document Management software that integrates with a compatible, relational database to provide an upload, index, and search solution for PDF documents.
         '''
@@ -151,7 +166,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DescriptionDetail", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Document ID: {0} - Error: {1}.
         '''</summary>
@@ -160,7 +175,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentIdException", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Document Notes have been modified.
         '''Do you want to save changes before closing?.
@@ -170,7 +185,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentNotesModified", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to {0}.  Document record may have been deleted.  Please Refresh your Search Results..
         '''</summary>
@@ -179,7 +194,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentRecordMayHaveBeenDeleted", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Total records: {0} - Flagged records: {1}.
         '''</summary>
@@ -188,7 +203,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("DocumentRecordsCountMessage", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Enter Owner Password:.
         '''</summary>
@@ -197,7 +212,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("EnterOwnerPassword", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Export.
         '''</summary>
@@ -206,7 +221,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("Export", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to {0}.  Document ID {1} may have been deleted..
         '''</summary>
@@ -215,7 +230,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("ExportDocumentRecordMayHaveBeenDeleted", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to This feature is disabled by policy..
         '''</summary>
@@ -224,7 +239,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FeatureDisabledByPolicy", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to &lt;FileName&gt;.
         '''</summary>
@@ -233,7 +248,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FileNameToken", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to File not found exception has occurred in the application..
         '''</summary>
@@ -242,7 +257,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FileNotFoundException", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to {0} was saved..
         '''</summary>
@@ -251,7 +266,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FileSaved", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to {0} files (*.{1})|*.{1}.
         '''</summary>
@@ -260,7 +275,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FilterExtension", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Folder name contains invalid characters..
         '''</summary>
@@ -269,7 +284,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("FolderNameContainsInvalidChars", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Are you sure you want to close and discard all changes?.
         '''</summary>
@@ -278,7 +293,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("GenericClosePrompt", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Do you wish to discard all changes?.
         '''</summary>
@@ -287,7 +302,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("GenericDiscardChangesPrompt", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to ID.
         '''</summary>
@@ -296,7 +311,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("ID", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Oracle Data Provider for .NET is missing and needs to be installed.
         '''
@@ -309,7 +324,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("ODPMissing", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to PDF Owner Password.
         '''</summary>
@@ -318,7 +333,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("PdfOwnerPassword", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Improper usage of query operators and/or characters..
         '''</summary>
@@ -327,7 +342,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("SearchStringImproperUsageOfQueryOperators", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Selected files have been exported to: {0}.
         '''</summary>
@@ -336,7 +351,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("SelectedFilesHaveBeenExported", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Select the location where the export folder will be created:.
         '''</summary>
@@ -345,7 +360,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("SelectExportFolder", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Subject.
         '''</summary>
@@ -354,7 +369,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("Subject", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Title.
         '''</summary>
@@ -363,7 +378,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("Title", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to The changes you made to the Notes text box cannot be saved and have been lost because another user has updated the Notes for the same record.
         '''
@@ -374,7 +389,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("UnableToSaveDocumentNotes", resourceCulture)
             End Get
         End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Unhandled exception has occurred in the application:.
         '''</summary>
@@ -383,22 +398,7 @@ Namespace My.Resources
                 Return ResourceManager.GetString("UnhandledException", resourceCulture)
             End Get
         End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to PDFKeeper has detected that you&apos;ve upgraded from an older version that requires some additional updates.
-        '''
-        '''This version of PDFKeeper requires the following:
-        '''
-        '''* The database schema must be upgraded to the PDFKeeper 5.0.0 schema by an individual responsible for the administration of the Oracle Database.  Please see the &quot;Database Schema Upgrade for Oracle Database&quot; help topic.
-        '''
-        '''* The Oracle Data Provider for .NET must be upgraded on this computer.  Please see the &quot;Installing Oracle Data Provider for .NET&quot; [rest of string was truncated]&quot;;.
-        '''</summary>
-        Friend ReadOnly Property UpgradeMessage() As String
-            Get
-                Return ResourceManager.GetString("UpgradeMessage", resourceCulture)
-            End Get
-        End Property
-        
+
         '''<summary>
         '''  Looks up a localized string similar to Upload.
         '''</summary>

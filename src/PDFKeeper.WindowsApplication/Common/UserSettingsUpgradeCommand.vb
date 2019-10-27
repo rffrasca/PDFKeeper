@@ -18,28 +18,56 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 ''' <summary>
-''' Upgrades the user settings when the UpgradeSettings value in the user
-''' settings file is True and opens the Database Schema Upgrade for Oracle
-''' Database help topic.
+''' Upgrades the user settings when user.config does not exist for the current
+''' version and the UpgradeSettings value in user.config is True.
+''' 
+''' When an upgrade is performed and the major version of the previous
+''' user.config file is less than the major version of the current version,
+''' then display the "additional updates required" message.
 ''' </summary>
 ''' <remarks></remarks>
 Public Class UserSettingsUpgradeCommand
     Implements ICommand
 
     Public Sub Execute() Implements ICommand.Execute
-        ' UpgradeSettings is an application user setting.
-        If My.Settings.UpgradeSettings Then
-            My.Settings.Upgrade()
-            My.Settings.UpgradeSettings = False
-            My.Settings.Save()
-            If Directory.Exists(Path.Combine( _
-                                Environment.GetFolderPath( _
-                                    Environment.SpecialFolder.ApplicationData), _
-                                My.Application.Info.CompanyName, _
-                                Application.ProductName)) Then
-                Dim messageDisplay As IMessageDisplay = New MessageDisplay
-                messageDisplay.Show(My.Resources.UpgradeMessage, False)
+        If IsUserConfigFound() = False Then
+            ' UpgradeSettings is an application user setting.
+            If My.Settings.UpgradeSettings Then
+                My.Settings.Upgrade()
+                My.Settings.UpgradeSettings = False
+                My.Settings.Save()
+                If Not GetLastUserConfigMajorVersion() Is Nothing And _
+                    GetLastUserConfigMajorVersion() < _
+                    Left(Application.ProductVersion, 1) Then
+                    Dim messageDisplay As IMessageDisplay = New MessageDisplay
+                    messageDisplay.Show( _
+                        My.Resources.AdditionalUpdatesRequiredMessage, False)
+                End If
             End If
         End If
     End Sub
+
+    Private Function IsUserConfigFound() As Boolean
+        Dim userConfig = _
+           ConfigurationManager.OpenExeConfiguration( _
+               ConfigurationUserLevel.PerUserRoamingAndLocal)
+        Return userConfig.HasFile
+    End Function
+
+    Private Function GetLastUserConfigMajorVersion() As String
+        Dim majorVersion As String = Nothing
+        Dim version As String = Nothing
+        Dim userConfig = ConfigurationManager.OpenExeConfiguration( _
+           ConfigurationUserLevel.PerUserRoamingAndLocal)
+        Dim userConfigFolderParent = _
+            Directory.GetParent(Path.GetDirectoryName(userConfig.FilePath))
+        For Each folderPath As String In Directory.GetDirectories( _
+            userConfigFolderParent.ToString)
+            version = folderPath.Split(Path.DirectorySeparatorChar).Last
+            If Not version = Application.ProductVersion Then
+                majorVersion = Left(version, 1)
+            End If
+        Next
+        Return majorVersion
+    End Function
 End Class
