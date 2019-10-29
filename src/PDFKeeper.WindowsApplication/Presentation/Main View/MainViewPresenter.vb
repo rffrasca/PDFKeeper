@@ -21,6 +21,9 @@ Public Class MainViewPresenter
     Implements IDisposable
     Private view As IMainView
     Private uploadFacade As UploadFacade = uploadFacade.Instance
+    Private uploadDirInfo As New DirectoryInfo(UserProfile.UploadPath)
+    Private uploadStagingDirInfo As New DirectoryInfo( _
+        UserProfile.UploadStagingPath)
     Private searchStringHistory As New GenericList(Of String)
     Private messageDisplay As IMessageDisplay = New MessageDisplay
     Private questionDisplay As IQuestionDisplay = New QuestionDisplay
@@ -636,32 +639,30 @@ Public Class MainViewPresenter
                 For Each e In ex.InnerExceptions
                     messageDisplay.Show(e.Message, True)
                 Next
+            Finally
+                view.UploadRunningVisible = False
+                If uploadDirInfo.ContainsFiles Then
+                    view.UploadFolderErrorVisible = True
+                Else
+                    view.UploadFolderErrorVisible = False
+                End If
+                If uploadStagingDirInfo.ContainsFiles Then
+                    view.UploadStagingFolderErrorVisible = True
+                Else
+                    view.UploadStagingFolderErrorVisible = False
+                End If
+                Application.DoEvents()
             End Try
         End If
     End Sub
 
     Private Sub UploadStagedDocuments()
-        Dim dirInfoUpload As New DirectoryInfo(UserProfile.UploadPath)
-        Dim dirInfoUploadStaging _
-            As New DirectoryInfo(UserProfile.UploadStagingPath)
-        If dirInfoUpload.ContainsFiles Or _
-            dirInfoUploadStaging.ContainsFiles Then
+        If uploadDirInfo.ContainsFiles Or _
+            uploadStagingDirInfo.ContainsFiles Then
             view.UploadRunningVisible = True
             Application.DoEvents()
             uploadFacade.ExecuteUpload()
-            view.UploadRunningVisible = False
         End If
-        If dirInfoUpload.ContainsFiles Then
-            view.UploadFolderErrorVisible = True
-        Else
-            view.UploadFolderErrorVisible = False
-        End If
-        If dirInfoUploadStaging.ContainsFiles Then
-            view.UploadStagingFolderErrorVisible = True
-        Else
-            view.UploadStagingFolderErrorVisible = False
-        End If
-        Application.DoEvents()
     End Sub
 
     Public Sub FlaggedDocumentsCheck()
