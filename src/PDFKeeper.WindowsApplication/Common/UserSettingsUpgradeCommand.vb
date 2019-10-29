@@ -47,14 +47,14 @@ Public Class UserSettingsUpgradeCommand
         End If
     End Sub
 
-    Private Function IsUserConfigFound() As Boolean
+    Private Shared Function IsUserConfigFound() As Boolean
         Dim userConfig = _
            ConfigurationManager.OpenExeConfiguration( _
                ConfigurationUserLevel.PerUserRoamingAndLocal)
         Return userConfig.HasFile
     End Function
 
-    Private Function GetLastUserConfigMajorVersion() As String
+    Private Shared Function GetLastUserConfigMajorVersion() As String
         Dim majorVersion As String = Nothing
         Dim version As String = Nothing
         Dim userConfig = ConfigurationManager.OpenExeConfiguration( _
