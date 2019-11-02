@@ -66,15 +66,10 @@ Public Class UploadStagedPdfsCommand
                                             pdfPath, _
                                             category, _
                                             flag)
-                    fileInfo.DeleteToRecycleBin()
+                    IO.File.Delete(pdfPath)
                     Dim suppDataXmlPath As String = _
                         Path.ChangeExtension(pdfPath, "xml")
-                    If suppData IsNot Nothing Then
-                        Dim xmlFileInfo As New FileInfo(suppDataXmlPath)
-                        xmlFileInfo.DeleteToRecycleBin()
-                    Else
-                        IO.File.Delete(suppDataXmlPath)
-                    End If
+                    IO.File.Delete(suppDataXmlPath)
                 End If
             Catch ex As BadPasswordException    ' Ignore the file.            
             End Try
