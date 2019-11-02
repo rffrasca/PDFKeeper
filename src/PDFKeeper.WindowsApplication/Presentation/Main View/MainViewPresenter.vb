@@ -640,10 +640,7 @@ Public Class MainViewPresenter
                     Using uploadTask As Task = Task.Run(Sub() uploadFacade.ExecuteUpload())
                         Await uploadTask
                     End Using
-                Catch ex As AggregateException
-                    For Each e In ex.InnerExceptions
-                        messageDisplay.Show(e.Message, True)
-                    Next
+                Catch ex As InvalidOperationException
                 Finally
                     view.UploadRunningVisible = False
                     If uploadDirInfo.ContainsFiles Then
