@@ -1170,7 +1170,7 @@ Public Class MainForm
 
 #Region "Timer Events"
     Private Sub UploadTimer_Tick(sender As Object, e As EventArgs) Handles UploadTimer.Tick
-        presenter.RunUpload()
+        presenter.UploadAsync()
     End Sub
 
     Private Sub AutoUpdateCheckTimer_Tick(sender As Object, e As EventArgs) Handles AutoUpdateCheckTimer.Tick

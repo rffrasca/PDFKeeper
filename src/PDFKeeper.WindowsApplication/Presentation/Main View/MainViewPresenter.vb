@@ -20,7 +20,7 @@
 Public Class MainViewPresenter
     Implements IDisposable
     Private view As IMainView
-    Private uploadFacade As UploadFacade = uploadFacade.Instance
+    Private uploadFacade As UploadFacade = UploadFacade.Instance
     Private uploadDirInfo As New DirectoryInfo(UserProfile.UploadPath)
     Private uploadStagingDirInfo As New DirectoryInfo( _
         UserProfile.UploadStagingPath)
@@ -630,38 +630,35 @@ Public Class MainViewPresenter
 #End Region
 
 #Region "View Timer Members"
-    Public Sub RunUpload()
+    Public Async Sub UploadAsync()
         If uploadFacade.CanUploadBeExecuted Then
-            Dim uploadTask As Task = Task.Run(Sub() UploadStagedDocuments())
-            Try
-                uploadTask.Wait()
-            Catch ex As AggregateException
-                For Each e In ex.InnerExceptions
-                    messageDisplay.Show(e.Message, True)
-                Next
-            Finally
-                view.UploadRunningVisible = False
-                If uploadDirInfo.ContainsFiles Then
-                    view.UploadFolderErrorVisible = True
-                Else
-                    view.UploadFolderErrorVisible = False
-                End If
-                If uploadStagingDirInfo.ContainsFiles Then
-                    view.UploadStagingFolderErrorVisible = True
-                Else
-                    view.UploadStagingFolderErrorVisible = False
-                End If
-                Application.DoEvents()
-            End Try
-        End If
-    End Sub
-
-    Private Sub UploadStagedDocuments()
-        If uploadDirInfo.ContainsFiles Or _
-            uploadStagingDirInfo.ContainsFiles Then
-            view.UploadRunningVisible = True
-            Application.DoEvents()
-            uploadFacade.ExecuteUpload()
+            If uploadDirInfo.ContainsFiles Or _
+                uploadStagingDirInfo.ContainsFiles Then
+                Try
+                    view.UploadRunningVisible = True
+                    Application.DoEvents()
+                    Using uploadTask As Task = Task.Run(Sub() uploadFacade.ExecuteUpload())
+                        Await uploadTask
+                    End Using
+                Catch ex As AggregateException
+                    For Each e In ex.InnerExceptions
+                        messageDisplay.Show(e.Message, True)
+                    Next
+                Finally
+                    view.UploadRunningVisible = False
+                    If uploadDirInfo.ContainsFiles Then
+                        view.UploadFolderErrorVisible = True
+                    Else
+                        view.UploadFolderErrorVisible = False
+                    End If
+                    If uploadStagingDirInfo.ContainsFiles Then
+                        view.UploadStagingFolderErrorVisible = True
+                    Else
+                        view.UploadStagingFolderErrorVisible = False
+                    End If
+                    Application.DoEvents()
+                End Try
+            End If
         End If
     End Sub
 
