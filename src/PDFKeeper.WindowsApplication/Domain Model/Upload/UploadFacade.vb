@@ -17,35 +17,15 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class UploadFacade
-    Private Shared s_Instance As UploadFacade
-    Private executing As Boolean
-    Private paused As Boolean
+Public NotInheritable Class UploadFacade
+    Private Shared executing As Boolean
+    Private Shared paused As Boolean
 
-    ''' <summary>
-    ''' Prevents multiple instances of this class and allows this class to be
-    ''' subclassed. 
-    ''' </summary>
-    ''' <remarks></remarks>
-    Protected Sub New()
+    Private Sub New()
+        ' Required by Code Analysis.
     End Sub
 
-    ''' <summary>
-    ''' Allows single instance access to the class.
-    ''' </summary>
-    ''' <value></value>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Public Shared ReadOnly Property Instance As UploadFacade
-        Get
-            If s_Instance Is Nothing Then
-                s_Instance = New UploadFacade
-            End If
-            Return s_Instance
-        End Get
-    End Property
-
-    ReadOnly Property CanUploadBeExecuted As Boolean
+    Public Shared ReadOnly Property CanUploadBeExecuted As Boolean
         Get
             If executing Or paused Then
                 Return False
@@ -55,23 +35,22 @@ Public Class UploadFacade
         End Get
     End Property
 
-    Public Sub PauseUpload(ByVal value As Boolean)
+    Public Shared Sub PauseUpload(ByVal value As Boolean)
         WaitForUploadToFinish()
         paused = value
     End Sub
 
-    Public Sub ExecuteUpload()
+    Public Shared Sub ExecuteUpload()
         If CanUploadBeExecuted = False Then
             Throw New InvalidOperationException( _
                 My.Resources.UploadCannotBeStarted)
         End If
         executing = True
-        Dim upload As ICommand = New UploadCommand
-        upload.Execute()
+        Upload.Execute()
         executing = False
     End Sub
 
-    Public Sub WaitForUploadToFinish()
+    Public Shared Sub WaitForUploadToFinish()
         Do While executing
             Threading.Thread.Sleep(1000)
         Loop

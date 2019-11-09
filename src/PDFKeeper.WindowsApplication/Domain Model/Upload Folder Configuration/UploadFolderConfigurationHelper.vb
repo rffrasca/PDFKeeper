@@ -18,7 +18,6 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class UploadFolderConfigurationHelper
-    Private Shared uploadFacade As UploadFacade = uploadFacade.Instance
     Private serializer As XmlFileSerializer
     Private m_ConfigName As String
     Private configXmlPath As String
@@ -65,7 +64,7 @@ Public Class UploadFolderConfigurationHelper
     ''' <remarks></remarks>
     Public Sub Save(ByVal config As UploadFolderConfiguration, _
                     ByVal originalConfigName As String)
-        uploadFacade.WaitForUploadToFinish()
+        UploadFacade.WaitForUploadToFinish()
         If Not originalConfigName Is Nothing Then
             IO.File.Delete(Path.Combine(UserProfile.UploadConfigPath, _
                                         originalConfigName & ".xml"))
@@ -92,7 +91,7 @@ Public Class UploadFolderConfigurationHelper
     ''' </returns>
     ''' <remarks></remarks>
     Public Function Delete() As Boolean
-        uploadFacade.WaitForUploadToFinish()
+        UploadFacade.WaitForUploadToFinish()
         Dim dirInfo As New DirectoryInfo(configFolderPath)
         If dirInfo.Exists Then
             If dirInfo.ContainsFiles = False Then

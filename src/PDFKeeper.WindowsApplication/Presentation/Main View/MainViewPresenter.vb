@@ -20,7 +20,6 @@
 Public Class MainViewPresenter
     Implements IDisposable
     Private view As IMainView
-    Private uploadFacade As UploadFacade = UploadFacade.Instance
     Private uploadDirInfo As New DirectoryInfo(UserProfile.UploadPath)
     Private uploadStagingDirInfo As New DirectoryInfo( _
         UserProfile.UploadStagingPath)
@@ -631,13 +630,13 @@ Public Class MainViewPresenter
 
 #Region "View Timer Members"
     Public Async Sub UploadAsync()
-        If uploadFacade.CanUploadBeExecuted Then
+        If UploadFacade.CanUploadBeExecuted Then
             If uploadDirInfo.ContainsFiles Or _
                 uploadStagingDirInfo.ContainsFiles Then
                 Try
                     view.UploadRunningVisible = True
                     Application.DoEvents()
-                    Using uploadTask As Task = Task.Run(Sub() uploadFacade.ExecuteUpload())
+                    Using uploadTask As Task = Task.Run(Sub() UploadFacade.ExecuteUpload())
                         Await uploadTask
                     End Using
                 Catch ex As InvalidOperationException
