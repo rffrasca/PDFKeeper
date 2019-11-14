@@ -165,8 +165,7 @@
     <Compile Include="Domain Model\PDF Supplemental Data\PdfSupplementalDataHelper.vb" />
     <Compile Include="Domain Model\Upload Folder Configuration\UploadFolderConfigurationHelper.vb" />
     <Compile Include="Domain Model\Upload Folder Configuration\UploadFolderConfigurationUtil.vb" />
-    <Compile Include="Domain Model\Upload\Upload.vb" />
-    <Compile Include="Domain Model\Upload\UploadFacade.vb" />
+    <Compile Include="Services\UploadService.vb" />
     <Compile Include="Common\ICommand.vb" />
     <Compile Include="Common\ExtensionMethods.vb" />
     <Compile Include="Common\HelpFile.vb" />

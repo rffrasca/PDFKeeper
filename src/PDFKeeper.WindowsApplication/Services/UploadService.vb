@@ -17,16 +17,46 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public NotInheritable Class Upload
+Public NotInheritable Class UploadService
+    Private Shared executing As Boolean
+    Private Shared paused As Boolean
+
     Private Sub New()
         ' Required by Code Analysis.
     End Sub
 
-    Public Shared Sub Execute()
+    Public Shared ReadOnly Property CanUploadBeExecuted As Boolean
+        Get
+            If executing Or paused Then
+                Return False
+            Else
+                Return True
+            End If
+        End Get
+    End Property
+
+    Public Shared Sub ExecuteUpload()
+        If CanUploadBeExecuted = False Then
+            Throw New InvalidOperationException( _
+                My.Resources.UploadCannotBeStarted)
+        End If
+        executing = True
         EnsureConfiguredUploadFoldersExist()
         StagePdfsAndSupplementalDataForUpload()
         UploadFoldersCleanup()
         UploadStagedPdfsAndSupplementalData()
+        executing = False
+    End Sub
+
+    Public Shared Sub PauseUpload(ByVal value As Boolean)
+        WaitForUploadToFinish()
+        paused = value
+    End Sub
+
+    Public Shared Sub WaitForUploadToFinish()
+        Do While executing
+            Threading.Thread.Sleep(1000)
+        Loop
     End Sub
 
 #Region "Step 1: EnsureConfiguredUploadFoldersExist"
