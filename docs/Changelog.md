@@ -1,6 +1,20 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v5.0.1 - 2019-11-16
+- This is a maintenance release that includes fixes and improvements to the Upload process and third-party updates.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.1).
+### Changed
+- Modified PDF file and application generated supplemental data will now be permanently deleted from the UploadStaging folder after being uploaded.
+- pdftopng from Xpdf Tools was updated to 4.02 in the binary release.
+- AutoUpdater.NET was updated to 1.5.8 in the binary release.
+### Fixed
+- Fixed "PDFKeeper has detected that you've upgraded from an older version" message box from being displayed when PDFKeeper was upgraded from version 5.0.0 or above.
+- Upload status no longer shows running after one or more PDF documents fail to upload.
+- Fixed User Interface hanging while the Upload process is running.
+- Fixed unhandled InvalidOperationException during an upload that needs to be caught without displaying an error.
+
 ## v5.0.0 - 2019-10-24
 - This is a major release and the 10th year anniversary edition, officially released on the 10th year anniversary of PDFKeeper.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.0).
