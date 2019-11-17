@@ -122,7 +122,6 @@
     <Import Include="System.Drawing.Printing" />
     <Import Include="System.Globalization" />
     <Import Include="System.IO" />
-    <Import Include="System.Net.Mail" />
     <Import Include="System.Runtime.CompilerServices" />
     <Import Include="System.Runtime.InteropServices" />
     <Import Include="System.Security" />
