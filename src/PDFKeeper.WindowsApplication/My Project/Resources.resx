@@ -133,7 +133,7 @@
     <value>Delete selected documents?</value>
   </data>
   <data name="DescriptionDetail" xml:space="preserve">
-    <value>PDFKeeper is Open Source PDF Document Management software that integrates with a compatible, relational database to provide an upload, index, and search solution for PDF documents.
+    <value>PDFKeeper is free, open source document management software that integrates with a compatible, relational database to provide a centralized storage and management solution for PDF documents.
 
 This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you are welcome to redistribute it under certain conditions; for details, select License.</value>
   </data>
