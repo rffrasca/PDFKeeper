@@ -17,9 +17,7 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public NotInheritable Class OracleManagedDataAccessAssembly
-    Private Shared messageDisplay As IMessageDisplay = New MessageDisplay
-
+Public NotInheritable Class ExternalDependencyLocator
     Private Sub New()
         ' Required by Code Analysis.
     End Sub
@@ -29,7 +27,7 @@ Public NotInheritable Class OracleManagedDataAccessAssembly
         MessageId:="System.Reflection.Assembly.LoadFile")> _
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
         "CA1024:UsePropertiesWhereAppropriate")> _
-    Public Shared Function GetPath() As Reflection.Assembly
+    Public Shared Function GetOracleDataAccessAssemblyPath() As Reflection.Assembly
         Try
             Dim odpDllPath As String = My.Computer.Registry.GetValue( _
                 "HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\ODP.NET\" & _
@@ -45,6 +43,7 @@ Public NotInheritable Class OracleManagedDataAccessAssembly
                 "\odp.net\managed\common\Oracle.ManagedDataAccess.dll"
             Return Reflection.Assembly.LoadFile(assemblyPath)
         Catch ex As FileNotFoundException
+            Dim messageDisplay As IMessageDisplay = New MessageDisplay
             messageDisplay.Show(My.Resources.ODPMissing, True)
             Return Nothing
         End Try

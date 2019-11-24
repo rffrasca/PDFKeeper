@@ -34,7 +34,8 @@ Namespace My
                 Dim help As New HelpFile
                 help.ShowAndWait("PDFKeeper.html")
             End If
-            AddHandler AppDomain.CurrentDomain.AssemblyResolve, AddressOf OracleManagedDataAccessAssembly.GetPath
+            AddHandler AppDomain.CurrentDomain.AssemblyResolve, _
+                AddressOf ExternalDependencyLocator.GetOracleDataAccessAssemblyPath
             If LoginForm.ShowDialog = Windows.Forms.DialogResult.Cancel Then
                 e.Cancel = True
             End If

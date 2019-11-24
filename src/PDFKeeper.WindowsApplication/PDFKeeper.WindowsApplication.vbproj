@@ -157,7 +157,6 @@
     <Compile Include="Domain Model\Database\DataClient.vb" />
     <Compile Include="Domain Model\Database\DataClientFactory.vb" />
     <Compile Include="Domain Model\Database\IDataClient.vb" />
-    <Compile Include="Domain Model\Database\Oracle\OracleManagedDataAccessAssembly.vb" />
     <Compile Include="Domain Model\Database\Oracle\OracleDataClient.vb" />
     <Compile Include="Domain Model\Database\Oracle\OracleDataClientBase.vb" />
     <Compile Include="Domain Model\PDF Information Properties\PdfInformationPropertiesHelper.vb" />
@@ -280,6 +279,7 @@
     <Compile Include="User Interface\SetCategoryDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Utilities\ExternalDependencyLocator.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
