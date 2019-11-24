@@ -50,5 +50,8 @@
     <Setting Name="ODPMVersion" Type="System.String" Scope="Application">
       <Value Profile="(Default)">4.122.19.1</Value>
     </Setting>
+    <Setting Name="Pooling" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

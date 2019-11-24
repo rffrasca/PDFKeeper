@@ -242,6 +242,15 @@ Namespace My
                 Return CType(Me("ODPMVersion"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public ReadOnly Property Pooling() As String
+            Get
+                Return CType(Me("Pooling"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 
