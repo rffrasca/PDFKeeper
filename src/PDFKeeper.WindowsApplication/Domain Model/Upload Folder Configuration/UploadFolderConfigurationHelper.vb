@@ -64,7 +64,7 @@ Public Class UploadFolderConfigurationHelper
     ''' <remarks></remarks>
     Public Sub Save(ByVal config As UploadFolderConfiguration, _
                     ByVal originalConfigName As String)
-        UploadService.WaitForUploadToFinish()
+        UploadService.Instance.WaitUntilUploadCycleIsNotExecuting()
         If Not originalConfigName Is Nothing Then
             IO.File.Delete(Path.Combine(UserProfile.UploadConfigPath, _
                                         originalConfigName & ".xml"))
@@ -91,7 +91,7 @@ Public Class UploadFolderConfigurationHelper
     ''' </returns>
     ''' <remarks></remarks>
     Public Function Delete() As Boolean
-        UploadService.WaitForUploadToFinish()
+        UploadService.Instance.WaitUntilUploadCycleIsNotExecuting()
         Dim dirInfo As New DirectoryInfo(configFolderPath)
         If dirInfo.Exists Then
             If dirInfo.ContainsFiles = False Then

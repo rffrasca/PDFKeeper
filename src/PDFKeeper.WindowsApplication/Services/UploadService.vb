@@ -18,43 +18,64 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public NotInheritable Class UploadService
-    Private Shared executing As Boolean
-    Private Shared paused As Boolean
+    Private Shared s_Instance As UploadService
+    Private m_CanUploadCycleStart As Boolean = True
+    Private isUploadCycleExecuting As Boolean
 
     Private Sub New()
-        ' Required by Code Analysis.
+        ' Prevents multiple instances of this class.
     End Sub
 
-    Public Shared ReadOnly Property CanUploadBeExecuted As Boolean
+    ''' <summary>
+    ''' Allows single instance access to the class.
+    ''' </summary>
+    ''' <value></value>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared ReadOnly Property Instance As UploadService
         Get
-            If executing Or paused Then
+            If s_Instance Is Nothing Then
+                s_Instance = New UploadService
+            End If
+            Return s_Instance
+        End Get
+    End Property
+
+    ''' <summary>
+    ''' Gets/Sets if the upload cycle can start.
+    ''' </summary>
+    ''' <value>True or False</value>
+    ''' <returns>True or False</returns>
+    ''' <remarks></remarks>
+    Public Property CanUploadCycleStart As Boolean
+        Get
+            If m_CanUploadCycleStart = False Or isUploadCycleExecuting Then
                 Return False
             Else
                 Return True
             End If
         End Get
+        Set(value As Boolean)
+            WaitUntilUploadCycleIsNotExecuting()
+            m_CanUploadCycleStart = value
+        End Set
     End Property
 
-    Public Shared Sub ExecuteUpload()
-        If CanUploadBeExecuted = False Then
+    Public Sub ExecuteUploadCycle()
+        If CanUploadCycleStart = False Then
             Throw New InvalidOperationException( _
-                My.Resources.UploadCannotBeStarted)
+                My.Resources.UploadCycleCannotBeStarted)
         End If
-        executing = True
-        EnsureConfiguredUploadFoldersExist()
-        StagePdfsAndSupplementalDataForUpload()
-        UploadFoldersCleanup()
-        UploadStagedPdfsAndSupplementalData()
-        executing = False
+        isUploadCycleExecuting = True
+        EnsureConfiguredUploadFoldersExist()    ' Step 1
+        StagePdfsAndSupplementalDataForUpload() ' Step 2
+        UploadFoldersCleanup()                  ' Step 3
+        UploadStagedPdfsAndSupplementalData()   ' Step 4
+        isUploadCycleExecuting = False
     End Sub
 
-    Public Shared Sub PauseUpload(ByVal value As Boolean)
-        WaitForUploadToFinish()
-        paused = value
-    End Sub
-
-    Public Shared Sub WaitForUploadToFinish()
-        Do While executing
+    Public Sub WaitUntilUploadCycleIsNotExecuting()
+        Do While isUploadCycleExecuting
             Threading.Thread.Sleep(1000)
         Loop
     End Sub
@@ -75,49 +96,50 @@ Public NotInheritable Class UploadService
 #End Region
 
 #Region "Step 2: StagePdfsAndSupplementalDataForUpload"
+    ''' <summary>
+    ''' Stages each PDF and its cooresponding supplemental data to the Upload
+    ''' Staging folder.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Shared Sub StagePdfsAndSupplementalDataForUpload()
         Dim pdfs = Directory.GetFiles(UserProfile.UploadPath, _
                                       "*.pdf", _
                                       SearchOption.AllDirectories).OrderBy( _
                                       Function(f) New FileInfo(f).LastWriteTime)
-        For Each pdf In pdfs
-            StagePdfAndSupplementalData(pdf)
-        Next
-    End Sub
-
-    Private Shared Sub StagePdfAndSupplementalData(ByVal pdfPath As String)
-        Dim fileInfo As New FileInfo(pdfPath)
-        fileInfo.WaitWhileIsInUse()
-        Dim pdfInfo As New PdfFileInfo(pdfPath)
-        If pdfInfo.ContainsOwnerPassword = False Then
-            Dim uploadFolderName As String = _
-                pdfPath.Substring(UserProfile.UploadPath.Length + 1)
-            If uploadFolderName = Path.GetFileName(pdfPath) Then
-                uploadFolderName = UserProfile.UploadPath
-            Else
-                uploadFolderName = _
-                    uploadFolderName.Substring(0, _
-                                               uploadFolderName.IndexOf( _
-                                                   Path.DirectorySeparatorChar))
-            End If
-            Try
-                Dim outputPdfPath As String = fileInfo.GenerateUploadStagingFilePath
-                Dim pdfReader As New PdfInformationPropertiesReader(pdfPath)
-                If UploadFolderConfigurationUtil.IsFolderConfigured(uploadFolderName) Then
-                    WriteNewPdfAndSupplementalData(pdfPath, _
-                                                   outputPdfPath, _
-                                                   uploadFolderName)
+        For Each pdfPath In pdfs
+            Dim fileInfo As New FileInfo(pdfPath)
+            fileInfo.WaitWhileIsInUse()
+            Dim pdfInfo As New PdfFileInfo(pdfPath)
+            If pdfInfo.ContainsOwnerPassword = False Then
+                Dim uploadFolderName As String = _
+                    pdfPath.Substring(UserProfile.UploadPath.Length + 1)
+                If uploadFolderName = Path.GetFileName(pdfPath) Then
+                    uploadFolderName = UserProfile.UploadPath
                 Else
-                    If pdfReader.Title IsNot Nothing And _
-                        pdfReader.Author IsNot Nothing And _
-                        pdfReader.Subject IsNot Nothing Then
-                        StageExistingPdfAndSupplementalData(pdfPath, _
-                                                            outputPdfPath)
-                    End If
+                    uploadFolderName = _
+                        uploadFolderName.Substring(0, _
+                                                   uploadFolderName.IndexOf( _
+                                                       Path.DirectorySeparatorChar))
                 End If
-            Catch ex As BadPasswordException    ' Ignore the file.            
-            End Try
-        End If
+                Try
+                    Dim outputPdfPath As String = fileInfo.GenerateUploadStagingFilePath
+                    Dim pdfReader As New PdfInformationPropertiesReader(pdfPath)
+                    If UploadFolderConfigurationUtil.IsFolderConfigured(uploadFolderName) Then
+                        WriteNewPdfAndSupplementalData(pdfPath, _
+                                                       outputPdfPath, _
+                                                       uploadFolderName)
+                    Else
+                        If pdfReader.Title IsNot Nothing And _
+                            pdfReader.Author IsNot Nothing And _
+                            pdfReader.Subject IsNot Nothing Then
+                            StageExistingPdfAndSupplementalData(pdfPath, _
+                                                                outputPdfPath)
+                        End If
+                    End If
+                Catch ex As BadPasswordException    ' Ignore the file.            
+                End Try
+            End If
+        Next
     End Sub
 
     Private Shared Sub WriteNewPdfAndSupplementalData(ByVal inputPdfPath As String, _
@@ -193,58 +215,52 @@ Public NotInheritable Class UploadService
 #Region "Step 4: UploadStagedPdfsAndSupplementalData"
     ''' <summary>
     ''' Uploads all PDF files and supplemental data in the UploadStaging
-    ''' folder. 
+    ''' folder except password protected PDF files.
     ''' </summary>
-    ''' <remarks>
-    ''' Password protected PDF files will not be uploaded.
-    ''' </remarks>
+    ''' <remarks></remarks>
     Private Shared Sub UploadStagedPdfsAndSupplementalData()
         Dim pdfs = Directory.GetFiles(UserProfile.UploadStagingPath, _
-                                          "*.pdf", _
-                                          SearchOption.TopDirectoryOnly).OrderBy( _
-                                          Function(f) New FileInfo(f).LastWriteTime)
-        For Each pdf In pdfs
-            UploadPdfAndSupplementalData(pdf)
-        Next
-    End Sub
-
-    Private Shared Sub UploadPdfAndSupplementalData(ByVal pdfPath As String)
-        Dim fileInfo As New FileInfo(pdfPath)
-        fileInfo.WaitWhileIsInUse()
-        Dim pdfInfo As New PdfFileInfo(pdfPath)
-        If pdfInfo.ContainsOwnerPassword = False Then
-            Try
-                Dim pdfReader As New PdfInformationPropertiesReader(pdfPath)
-                If pdfReader.Title IsNot Nothing And _
-                    pdfReader.Author IsNot Nothing And _
-                    pdfReader.Subject IsNot Nothing Then
-                    Dim notes As String = Nothing
-                    Dim category As String = Nothing
-                    Dim flag As Integer = 0
-                    Dim suppDataHelper As New PdfSupplementalDataHelper(pdfPath)
-                    Dim suppData As PdfSupplementalData = suppDataHelper.Read
-                    If suppData IsNot Nothing Then
-                        notes = suppData.Notes
-                        category = suppData.Category
-                        flag = suppData.FlagState
+                                      "*.pdf", _
+                                      SearchOption.TopDirectoryOnly).OrderBy( _
+                                      Function(f) New FileInfo(f).LastWriteTime)
+        For Each pdfPath In pdfs
+            Dim fileInfo As New FileInfo(pdfPath)
+            fileInfo.WaitWhileIsInUse()
+            Dim pdfInfo As New PdfFileInfo(pdfPath)
+            If pdfInfo.ContainsOwnerPassword = False Then
+                Try
+                    Dim pdfReader As New PdfInformationPropertiesReader(pdfPath)
+                    If pdfReader.Title IsNot Nothing And _
+                        pdfReader.Author IsNot Nothing And _
+                        pdfReader.Subject IsNot Nothing Then
+                        Dim notes As String = Nothing
+                        Dim category As String = Nothing
+                        Dim flag As Integer = 0
+                        Dim suppDataHelper As New PdfSupplementalDataHelper(pdfPath)
+                        Dim suppData As PdfSupplementalData = suppDataHelper.Read
+                        If suppData IsNot Nothing Then
+                            notes = suppData.Notes
+                            category = suppData.Category
+                            flag = suppData.FlagState
+                        End If
+                        Dim dataClient As IDataClient = New DataClient
+                        dataClient.CreateRecord(pdfReader.Title, _
+                                                pdfReader.Author, _
+                                                pdfReader.Subject, _
+                                                pdfReader.Keywords, _
+                                                notes, _
+                                                pdfPath, _
+                                                category, _
+                                                flag)
+                        IO.File.Delete(pdfPath)
+                        Dim suppDataXmlPath As String = _
+                            Path.ChangeExtension(pdfPath, "xml")
+                        IO.File.Delete(suppDataXmlPath)
                     End If
-                    Dim dataClient As IDataClient = New DataClient
-                    dataClient.CreateRecord(pdfReader.Title, _
-                                            pdfReader.Author, _
-                                            pdfReader.Subject, _
-                                            pdfReader.Keywords, _
-                                            notes, _
-                                            pdfPath, _
-                                            category, _
-                                            flag)
-                    IO.File.Delete(pdfPath)
-                    Dim suppDataXmlPath As String = _
-                        Path.ChangeExtension(pdfPath, "xml")
-                    IO.File.Delete(suppDataXmlPath)
-                End If
-            Catch ex As BadPasswordException    ' Ignore the file.            
-            End Try
-        End If
+                Catch ex As BadPasswordException    ' Ignore the file.            
+                End Try
+            End If
+        Next
     End Sub
 #End Region
 

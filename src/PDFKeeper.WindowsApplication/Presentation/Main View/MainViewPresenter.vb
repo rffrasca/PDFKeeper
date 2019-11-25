@@ -630,13 +630,13 @@ Public Class MainViewPresenter
 
 #Region "View Timer Members"
     Public Async Sub UploadAsync()
-        If UploadService.CanUploadBeExecuted Then
+        If UploadService.Instance.CanUploadCycleStart Then
             If uploadDirInfo.ContainsFiles Or _
                 uploadStagingDirInfo.ContainsFiles Then
                 Try
                     view.UploadRunningVisible = True
                     Application.DoEvents()
-                    Using uploadTask As Task = Task.Run(Sub() UploadService.ExecuteUpload())
+                    Using uploadTask As Task = Task.Run(Sub() UploadService.Instance.ExecuteUploadCycle())
                         Await uploadTask
                     End Using
                 Catch ex As InvalidOperationException

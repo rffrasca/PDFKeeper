@@ -409,20 +409,20 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Upload cannot be started at this time..
-        '''</summary>
-        Friend ReadOnly Property UploadCannotBeStarted() As String
-            Get
-                Return ResourceManager.GetString("UploadCannotBeStarted", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to UploadConfig.
         '''</summary>
         Friend ReadOnly Property UploadConfig() As String
             Get
                 Return ResourceManager.GetString("UploadConfig", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized string similar to Upload cycle cannot be started at this time because it is already executing or blocked from starting..
+        '''</summary>
+        Friend ReadOnly Property UploadCycleCannotBeStarted() As String
+            Get
+                Return ResourceManager.GetString("UploadCycleCannotBeStarted", resourceCulture)
             End Get
         End Property
         

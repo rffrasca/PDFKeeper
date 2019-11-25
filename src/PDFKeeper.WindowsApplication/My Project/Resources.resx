@@ -236,8 +236,8 @@ The contents of the Notes text box prior to the attempted save operation have be
   <data name="Category" xml:space="preserve">
     <value>Category</value>
   </data>
-  <data name="UploadCannotBeStarted" xml:space="preserve">
-    <value>Upload cannot be started at this time.</value>
+  <data name="UploadCycleCannotBeStarted" xml:space="preserve">
+    <value>Upload cycle cannot be started at this time because it is already executing or blocked from starting.</value>
   </data>
   <data name="GenericDiscardChangesPrompt" xml:space="preserve">
     <value>Do you wish to discard all changes?</value>

@@ -90,7 +90,7 @@ Public Class AddPdfDocumentsViewPresenter
                 ReadPdfInformationPropertiesIntoModel(view.SelectedPdfPath, _
                                                       selectedPdfPassword)
                 UpdateView()
-                UploadService.PauseUpload(True)
+                UploadService.Instance.CanUploadCycleStart = False
             Catch ex As BadPasswordException
                 view.SelectedPdfPath = Nothing
                 messageDisplay.Show(ex.Message, True)
@@ -147,7 +147,7 @@ Public Class AddPdfDocumentsViewPresenter
         WriteStagedPdfSupplementalData()
         DeleteSelectedPdf()
         ResetView()
-        UploadService.PauseUpload(False)
+        UploadService.Instance.CanUploadCycleStart = True
         view.OnLongRunningOperationFinished()
     End Sub
 
@@ -157,7 +157,7 @@ Public Class AddPdfDocumentsViewPresenter
             pdfViewer.Close()
             DiscardStagedPdf()
             ResetView()
-            UploadService.PauseUpload(False)
+            UploadService.Instance.CanUploadCycleStart = True
         End If
     End Sub
 
@@ -165,7 +165,7 @@ Public Class AddPdfDocumentsViewPresenter
         If questionDisplay.ShowFormClosingPrompt Then
             pdfViewer.Close()
             DiscardStagedPdf()
-            UploadService.PauseUpload(False)
+            UploadService.Instance.CanUploadCycleStart = True
             Return True
         Else
             Return False
