@@ -25,6 +25,7 @@ Partial Class MainForm
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
+                commonPresenter.Dispose()
                 presenter.Dispose()
                 components.Dispose()
             End If

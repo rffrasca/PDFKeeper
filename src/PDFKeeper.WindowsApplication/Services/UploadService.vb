@@ -243,8 +243,9 @@ Public NotInheritable Class UploadService
                             category = suppData.Category
                             flag = suppData.FlagState
                         End If
-                        Dim dataClient As IDataClient = New DataClient
-                        dataClient.CreateRecord(pdfReader.Title, _
+                        Using repository As IDocumentRepository = _
+                            New DocumentRepository
+                            repository.CreateRecord(pdfReader.Title, _
                                                 pdfReader.Author, _
                                                 pdfReader.Subject, _
                                                 pdfReader.Keywords, _
@@ -252,6 +253,7 @@ Public NotInheritable Class UploadService
                                                 pdfPath, _
                                                 category, _
                                                 flag)
+                        End Using
                         IO.File.Delete(pdfPath)
                         Dim suppDataXmlPath As String = _
                             Path.ChangeExtension(pdfPath, "xml")

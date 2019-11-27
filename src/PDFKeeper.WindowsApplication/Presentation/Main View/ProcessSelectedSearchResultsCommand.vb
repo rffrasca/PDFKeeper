@@ -105,33 +105,44 @@ Public Class ProcessSelectedSearchResultsCommand
 
     Private Shared Sub SetCategoryOnDocument(ByVal id As Integer, _
                                              ByVal newCategory As String)
-        Dim dataClient As IDataClient = New DataClient
-        dataClient.UpdateCategoryById(id, newCategory)
+        Using model As IDocumentRepository = New DocumentRepository
+            model.UpdateCategoryById(id, newCategory)
+        End Using
     End Sub
 
     Private Shared Sub DeleteDocument(ByVal id As Integer)
-        Dim dataClient As IDataClient = New DataClient
-        dataClient.DeleteRecordById(id)
+        Using model As IDocumentRepository = New DocumentRepository
+            model.DeleteRecordById(id)
+        End Using
     End Sub
 
     Private Shared Sub ExportDocument(ByVal id As Integer, ByVal exportFolder As String)
-        Dim pdfInfo As New PdfFileInfo(Path.Combine(exportFolder, _
-                                                    My.Application.Info.ProductName & id & ".pdf"))
-        Dim dataClientPdf As IDataClient = New DataClient
-        dataClientPdf.GetPdfById(id, pdfInfo.FullName)
-        Dim dataClientNotes As IDataClient = New DataClient
-        Dim dataTableNotes As DataTable = dataClientNotes.GetNotesById(id)
-        Dim notes As String = Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
-                                               CultureInfo.CurrentCulture)
-        Dim dataClientCategory As IDataClient = New DataClient
-        Dim dataTableCategory As DataTable = dataClientCategory.GetCategoryById(id)
-        Dim category As String = Convert.ToString(dataTableCategory.Rows(0)("doc_category"), _
-                                                  CultureInfo.CurrentCulture)
-        Dim dataClientFlagState As IDataClient = New DataClient
-        Dim dataTableFlagState As DataTable = dataClientFlagState.GetFlagStateById(id)
-        Dim flagState As String = Convert.ToInt32(dataTableFlagState.Rows(0)("doc_flag"), _
-                                                  CultureInfo.CurrentCulture)
-        Dim suppDataHelper As New PdfSupplementalDataHelper(pdfInfo.FullName)
-        suppDataHelper.Write(notes, category, flagState)
+        Dim pdfInfo As New PdfFileInfo( _
+            Path.Combine(exportFolder, _
+                         My.Application.Info.ProductName & id & ".pdf"))
+        Using modelInstance1 As IDocumentRepository = New DocumentRepository
+            modelInstance1.GetPdfById(id, pdfInfo.FullName)
+            Using modelInstance2 As IDocumentRepository = New DocumentRepository
+                Dim dataTableNotes As DataTable = modelInstance2.GetNotesById(id)
+                Dim notes As String = _
+                    Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
+                                     CultureInfo.CurrentCulture)
+                Using modelInstance3 As IDocumentRepository = New DocumentRepository
+                    Dim dataTableCategory As DataTable = modelInstance3.GetCategoryById(id)
+                    Dim category As String = _
+                        Convert.ToString(dataTableCategory.Rows(0)("doc_category"), _
+                                         CultureInfo.CurrentCulture)
+                    Using modelInstance4 As IDocumentRepository = New DocumentRepository
+                        Dim dataTableFlagState As DataTable = _
+                            modelInstance4.GetFlagStateById(id)
+                        Dim flagState As String = _
+                            Convert.ToInt32(dataTableFlagState.Rows(0)("doc_flag"), _
+                                            CultureInfo.CurrentCulture)
+                        Dim suppDataHelper As New PdfSupplementalDataHelper(pdfInfo.FullName)
+                        suppDataHelper.Write(notes, category, flagState)
+                    End Using
+                End Using
+            End Using
+        End Using
     End Sub
 End Class

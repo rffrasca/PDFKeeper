@@ -26,6 +26,7 @@ Partial Class ManageUploadFolderConfigurationsDialog
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
+                commonPresenter.Dispose()
                 components.Dispose()
             End If
         Finally

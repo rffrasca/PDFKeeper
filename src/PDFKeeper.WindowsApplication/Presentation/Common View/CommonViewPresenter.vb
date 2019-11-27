@@ -18,8 +18,9 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class CommonViewPresenter
+    Implements IDisposable
     Private view As ICommonView
-    Private model As IDataClient
+    Private model As IDocumentRepository
     Private messageDisplay As IMessageDisplay = New MessageDisplay
 
     Public Sub New(view As ICommonView)
@@ -29,7 +30,7 @@ Public Class CommonViewPresenter
     Public Sub GetColumnItemsByGroup()
         'Called by <Name>ComboBox.Enter
         Try
-            model = New DataClient
+            model = New DocumentRepository
             view.OnLongRunningOperationStarted()
             If view.ActiveElement.StartsWith("AuthorPaired", _
                                              StringComparison.Ordinal) Then
@@ -157,4 +158,32 @@ Public Class CommonViewPresenter
             view.Category = view.Category.TrimEnd
         End If
     End Sub
+
+#Region "IDisposable Support"
+    Private disposedValue As Boolean ' To detect redundant calls
+
+    ' IDisposable
+    Protected Overridable Sub Dispose(disposing As Boolean)
+        If Not Me.disposedValue Then
+            If disposing Then
+                model.Dispose()
+            End If
+        End If
+        Me.disposedValue = True
+    End Sub
+
+    Protected Overrides Sub Finalize()
+        ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
+        Dispose(False)
+        MyBase.Finalize()
+    End Sub
+
+    ' This code added by Visual Basic to correctly implement the disposable pattern.
+    Public Sub Dispose() Implements IDisposable.Dispose
+        ' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
+        Dispose(True)
+        GC.SuppressFinalize(Me)
+    End Sub
+#End Region
+
 End Class

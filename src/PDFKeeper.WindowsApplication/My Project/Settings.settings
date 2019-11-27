@@ -14,7 +14,7 @@
     <Setting Name="MainWindowState" Type="System.Windows.Forms.FormWindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>
     </Setting>
-    <Setting Name="DatabaseManagementSystem" Type="System.String" Scope="User">
+    <Setting Name="DbManagementSystem" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="PreviewImageResolution" Type="System.Decimal" Scope="User">
@@ -51,7 +51,7 @@
       <Value Profile="(Default)">4.122.19.1</Value>
     </Setting>
     <Setting Name="Pooling" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

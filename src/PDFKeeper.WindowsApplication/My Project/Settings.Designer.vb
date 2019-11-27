@@ -105,12 +105,12 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property DatabaseManagementSystem() As String
+        Public Property DbManagementSystem() As String
             Get
-                Return CType(Me("DatabaseManagementSystem"),String)
+                Return CType(Me("DbManagementSystem"),String)
             End Get
             Set
-                Me("DatabaseManagementSystem") = value
+                Me("DbManagementSystem") = value
             End Set
         End Property
         
@@ -245,7 +245,7 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
         Public ReadOnly Property Pooling() As String
             Get
                 Return CType(Me("Pooling"),String)

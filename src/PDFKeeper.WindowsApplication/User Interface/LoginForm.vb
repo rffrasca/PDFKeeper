@@ -49,10 +49,7 @@ Public Class LoginForm
 
     Public ReadOnly Property DatabaseManagementSystem As String Implements ILoginView.DatabaseManagementSystem
         Get
-            ' NOTE: Oracle is the only supported RDBMS at this time.  To add future systems, add a ComboBox
-            ' to LoginForm containing the supported Databases and bind it to the LoginDatabase setting.
-            My.Settings.DatabaseManagementSystem = "Oracle"
-            Return My.Settings.DatabaseManagementSystem
+            Return My.Settings.DbManagementSystem
         End Get
     End Property
 

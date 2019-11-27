@@ -17,8 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Interface IDataClient
-    Sub TestConnection()
+Public Interface IDocumentRepository
+    Inherits IDisposable
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
                                                      "CA1024:UsePropertiesWhereAppropriate")> _
     Function GetAllAuthors() As DataTable
@@ -71,10 +71,10 @@ Public Interface IDataClient
     Sub UpdateCategoryById(ByVal id As Integer, ByVal category As String)
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
                                                      "CA1726:UsePreferredTerms", _
-                                                     MessageId:="flag")> _
+                                                     MessageId:="Flag")> _
     <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
                                                      "CA1726:UsePreferredTerms", _
-                                                     MessageId:="Flag")> _
+                                                     MessageId:="flag")> _
     Sub UpdateFlagStateById(ByVal id As Integer, ByVal flag As Integer)
     Sub DeleteRecordById(ByVal id As Integer)
 End Interface

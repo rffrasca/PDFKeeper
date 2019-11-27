@@ -218,9 +218,10 @@ Public Class MainViewPresenter
     Public Sub SetFlagStateOnSelectedDocument()
         Try
             view.OnLongRunningOperationStarted()
-            Dim dataClient As IDataClient = New DataClient
-            dataClient.UpdateFlagStateById(view.DocumentRecordId, _
-                                           view.DocumentRecordFlagState)
+            Using model As IDocumentRepository = New DocumentRepository
+                model.UpdateFlagStateById(view.DocumentRecordId, _
+                                          view.DocumentRecordFlagState)
+            End Using
             view.OnLongRunningOperationFinished()
         Catch ex As OracleException
             view.OnLongRunningOperationFinished()
@@ -298,8 +299,9 @@ Public Class MainViewPresenter
                 ' in the drop down list that contains the string in the text
                 ' box after the query.
                 Dim currentSearchString As String = view.SearchString
-                Dim dataClient As IDataClient = New DataClient
-                FillSearchResults(dataClient.GetAllRecordsBySearchString(view.SearchString))
+                Using model As IDocumentRepository = New DocumentRepository
+                    FillSearchResults(model.GetAllRecordsBySearchString(view.SearchString))
+                End Using
                 view.SearchString = currentSearchString
                 If view.SearchResultsRowCount > 0 Then
                     searchStringHistory.Add(view.SearchString)
@@ -321,8 +323,9 @@ Public Class MainViewPresenter
         If view.Author IsNot Nothing Then
             Try
                 view.OnLongRunningOperationStarted()
-                Dim dataClient As IDataClient = New DataClient
-                FillSearchResults(dataClient.GetAllRecordsByAuthor(view.Author))
+                Using model As IDocumentRepository = New DocumentRepository
+                    FillSearchResults(model.GetAllRecordsByAuthor(view.Author))
+                End Using
                 view.OnLongRunningOperationFinished()
             Catch ex As OracleException
                 view.OnLongRunningOperationFinished()
@@ -337,8 +340,9 @@ Public Class MainViewPresenter
         If view.Subject IsNot Nothing Then
             Try
                 view.OnLongRunningOperationStarted()
-                Dim dataClient As IDataClient = New DataClient
-                FillSearchResults(dataClient.GetAllRecordsBySubject(view.Subject))
+                Using model As IDocumentRepository = New DocumentRepository
+                    FillSearchResults(model.GetAllRecordsBySubject(view.Subject))
+                End Using
                 view.OnLongRunningOperationFinished()
             Catch ex As OracleException
                 view.OnLongRunningOperationFinished()
@@ -363,9 +367,11 @@ Public Class MainViewPresenter
         If view.SubjectPaired IsNot Nothing Then
             Try
                 view.OnLongRunningOperationStarted()
-                Dim dataClient As IDataClient = New DataClient
-                FillSearchResults(dataClient.GetAllRecordsByAuthorAndSubject(view.AuthorPaired, _
-                                                                             view.SubjectPaired))
+                Using model As IDocumentRepository = New DocumentRepository
+                    FillSearchResults( _
+                        model.GetAllRecordsByAuthorAndSubject(view.AuthorPaired, _
+                                                              view.SubjectPaired))
+                End Using
                 view.OnLongRunningOperationFinished()
             Catch ex As OracleException
                 view.OnLongRunningOperationFinished()
@@ -380,8 +386,9 @@ Public Class MainViewPresenter
         If view.Category IsNot Nothing Then
             Try
                 view.OnLongRunningOperationStarted()
-                Dim dataClient As IDataClient = New DataClient
-                FillSearchResults(dataClient.GetAllRecordsByCategory(view.Category))
+                Using model As IDocumentRepository = New DocumentRepository
+                    FillSearchResults(model.GetAllRecordsByCategory(view.Category))
+                End Using
                 view.OnLongRunningOperationFinished()
             Catch ex As OracleException
                 view.OnLongRunningOperationFinished()
@@ -395,8 +402,9 @@ Public Class MainViewPresenter
     Public Sub GetSearchResultsByDateAdded()
         Try
             view.OnLongRunningOperationStarted()
-            Dim dataClient As IDataClient = New DataClient
-            FillSearchResults(dataClient.GetAllRecordsByDateAdded(view.SearchDate))
+            Using model As IDocumentRepository = New DocumentRepository
+                FillSearchResults(model.GetAllRecordsByDateAdded(view.SearchDate))
+            End Using
             view.OnLongRunningOperationFinished()
         Catch ex As OracleException
             view.OnLongRunningOperationFinished()
@@ -407,19 +415,20 @@ Public Class MainViewPresenter
     Public Sub QueryAllOrFlaggedDocumentRecords()
         Try
             view.OnLongRunningOperationStarted()
-            Dim dataClient As IDataClient = New DataClient
-            If view.FlaggedDocumentsOnly Then
-                FillSearchResults(dataClient.GetAllFlaggedRecords)
-            Else
-                If ApplicationPolicy.DisableQueryAllDocuments = False Then
-                    FillSearchResults(dataClient.GetAllRecords)
+            Using model As IDocumentRepository = New DocumentRepository
+                If view.FlaggedDocumentsOnly Then
+                    FillSearchResults(model.GetAllFlaggedRecords)
                 Else
-                    view.OnLongRunningOperationFinished()
-                    messageDisplay.Show(My.Resources.FeatureDisabledByPolicy, _
-                                        False)
-                    Exit Sub
+                    If ApplicationPolicy.DisableQueryAllDocuments = False Then
+                        FillSearchResults(model.GetAllRecords)
+                    Else
+                        view.OnLongRunningOperationFinished()
+                        messageDisplay.Show(My.Resources.FeatureDisabledByPolicy, _
+                                            False)
+                        Exit Sub
+                    End If
                 End If
-            End If
+            End Using
             view.DBDocumentRecordsCountMessage = Nothing
             view.QueryDocumentsEnabled = False
             view.OnLongRunningOperationFinished()
@@ -433,14 +442,18 @@ Public Class MainViewPresenter
         ResetSearchResults()
         Try
             view.OnLongRunningOperationStarted()
-            Dim dataClientTotal As IDataClient = New DataClient
-            Dim totalCount As Integer = dataClientTotal.GetTotalRecordsCount
-            Dim dataClientFlagged As IDataClient = New DataClient
-            Dim flaggedCount As Integer = dataClientFlagged.GetFlaggedRecordsCount
-            view.DBDocumentRecordsCountMessage = _
-                String.Format(CultureInfo.CurrentCulture, _
-                              My.Resources.ResourceManager.GetString("DocumentRecordsCountMessage"), _
-                              totalCount, flaggedCount)
+            Using modelInstance1 As IDocumentRepository = New DocumentRepository
+                Dim totalCount As Integer = modelInstance1.GetTotalRecordsCount
+                Using modelInstance2 As IDocumentRepository = New DocumentRepository
+                    Dim flaggedCount As Integer = modelInstance2.GetFlaggedRecordsCount
+                    view.DBDocumentRecordsCountMessage = _
+                        String.Format(CultureInfo.CurrentCulture, _
+                                      My.Resources.ResourceManager.GetString( _
+                                          "DocumentRecordsCountMessage"), _
+                                      totalCount, _
+                                      flaggedCount)
+                End Using
+            End Using
             view.QueryDocumentsEnabled = True
             view.OnLongRunningOperationFinished()
         Catch ex As OracleException
@@ -539,8 +552,9 @@ Public Class MainViewPresenter
             End If
         End If
         If cached = False Then
-            Dim dataClient As IDataClient = New DataClient
-            dataClient.GetPdfById(view.DocumentRecordId, pdfInfo.FullName)
+            Using model As IDocumentRepository = New DocumentRepository
+                model.GetPdfById(view.DocumentRecordId, pdfInfo.FullName)
+            End Using
             fileHashes.SetItem(pdfInfo.FullName, pdfInfo.ComputeHash)
         End If
     End Sub
@@ -548,17 +562,20 @@ Public Class MainViewPresenter
     Private Sub GetDocumentRecordNotes(ByVal updateView As Boolean)
         Try
             view.OnLongRunningOperationStarted()
-            Dim dataClient As IDataClient = New DataClient
-            Dim dataTableNotes As DataTable = dataClient.GetNotesById(view.DocumentRecordId)
-            Dim notes As String = Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
-                                                   CultureInfo.CurrentCulture)
-            If updateView Then
-                view.DocumentRecordNotes = notes
-                lastDocumentNotes = view.DocumentRecordNotes
-                view.DocumentRecordNotesChanged = False
-            Else
-                preUpdateDocumentNotes = notes
-            End If
+            Using model As IDocumentRepository = New DocumentRepository
+                Dim dataTableNotes As DataTable = _
+                    model.GetNotesById(view.DocumentRecordId)
+                Dim notes As String = _
+                    Convert.ToString(dataTableNotes.Rows(0)("doc_notes"), _
+                                     CultureInfo.CurrentCulture)
+                If updateView Then
+                    view.DocumentRecordNotes = notes
+                    lastDocumentNotes = view.DocumentRecordNotes
+                    view.DocumentRecordNotesChanged = False
+                Else
+                    preUpdateDocumentNotes = notes
+                End If
+            End Using
             view.OnLongRunningOperationFinished()
         Catch ex As OracleException
             view.OnLongRunningOperationFinished()
@@ -567,17 +584,23 @@ Public Class MainViewPresenter
     End Sub
 
     Private Sub GetDocumentRecordKeywords()
-        Dim dataClient As IDataClient = New DataClient
-        Dim dataTableKeywords As DataTable = dataClient.GetKeywordsById(view.DocumentRecordId)
-        view.DocumentRecordKeywords = Convert.ToString(dataTableKeywords.Rows(0)("doc_keywords"), _
-                                                       CultureInfo.CurrentCulture)
+        Using model As IDocumentRepository = New DocumentRepository
+            Dim dataTableKeywords As DataTable = _
+                model.GetKeywordsById(view.DocumentRecordId)
+            view.DocumentRecordKeywords = _
+                Convert.ToString(dataTableKeywords.Rows(0)("doc_keywords"), _
+                                 CultureInfo.CurrentCulture)
+        End Using
     End Sub
 
     Private Sub GetDocumentRecordFlagState()
-        Dim dataClient As IDataClient = New DataClient
-        Dim dataTableFlagState As DataTable = dataClient.GetFlagStateById(view.DocumentRecordId)
-        view.DocumentRecordFlagState = Convert.ToInt32(dataTableFlagState.Rows(0)("doc_flag"), _
-                                                       CultureInfo.CurrentCulture)
+        Using model As IDocumentRepository = New DocumentRepository
+            Dim dataTableFlagState As DataTable = _
+                model.GetFlagStateById(view.DocumentRecordId)
+            view.DocumentRecordFlagState = _
+                Convert.ToInt32(dataTableFlagState.Rows(0)("doc_flag"), _
+                                CultureInfo.CurrentCulture)
+        End Using
     End Sub
 
     Private Sub GetDocumentPreview()
@@ -607,8 +630,10 @@ Public Class MainViewPresenter
         Try
             view.OnLongRunningOperationStarted()
             view.DocumentRecordNotes = view.DocumentRecordNotes.Trim
-            Dim dataClient As IDataClient = New DataClient
-            dataClient.UpdateNotesById(view.DocumentRecordId, view.DocumentRecordNotes)
+            Using model As IDocumentRepository = New DocumentRepository
+                model.UpdateNotesById(view.DocumentRecordId, _
+                                      view.DocumentRecordNotes)
+            End Using
             lastDocumentNotes = view.DocumentRecordNotes
             view.OnLongRunningOperationFinished()
         Catch ex As OracleException
@@ -660,13 +685,14 @@ Public Class MainViewPresenter
 
     Public Sub FlaggedDocumentsCheck()
         Try
-            Dim dataClient As IDataClient = New DataClient
-            Dim flaggedCount As Integer = dataClient.GetFlaggedRecordsCount
-            If flaggedCount > 0 Then
-                view.FlaggedDocumentsExistVisible = True
-            Else
-                view.FlaggedDocumentsExistVisible = False
-            End If
+            Using model As IDocumentRepository = New DocumentRepository
+                Dim flaggedCount As Integer = model.GetFlaggedRecordsCount
+                If flaggedCount > 0 Then
+                    view.FlaggedDocumentsExistVisible = True
+                Else
+                    view.FlaggedDocumentsExistVisible = False
+                End If
+            End Using
             Application.DoEvents()
         Catch ex As OracleException
             view.FlaggedDocumentsCheckTimerEnabled = False

@@ -21,8 +21,6 @@
     "CA1726:UsePreferredTerms", MessageId:="Login")> _
 Public Class LoginViewPresenter
     Private view As ILoginView
-    Private model As DatabaseConnectionProperties = _
-        DatabaseConnectionProperties.Instance
     Private messageDisplay As IMessageDisplay = New MessageDisplay
 
     Public Sub New(ByVal view As ILoginView)
@@ -34,24 +32,20 @@ Public Class LoginViewPresenter
     Public Sub Login()
         Try
             view.OnLoginStarted()
-            UpdateModel()
-            model.Validate()
+            ' NOTE: Oracle is the only supported RDBMS at this time.  To add future systems, add a ComboBox
+            ' to LoginForm containing the supported Databases and bind it to the LoginDatabase setting.
+            My.Settings.DbManagementSystem = "Oracle Database"
+            DbManagementSystem.Password = view.Password
+            DbManagementSystem.TestConnection()
             view.OnLoginSuccessful()
         Catch ex As ArgumentException
+            DbManagementSystem.ResetCredential()
             messageDisplay.Show(ex.Message, True)
             view.OnLoginFailed()
         Catch ex As OracleException
+            DbManagementSystem.ResetCredential()
             messageDisplay.Show(ex.Message, True)
             view.OnLoginFailed()
         End Try
-    End Sub
-
-    Private Sub UpdateModel()
-        With model
-            .UserName = view.UserName
-            .Password = view.Password
-            .DataSource = view.DataSource
-            .DatabaseManagementSystem = view.DatabaseManagementSystem
-        End With
     End Sub
 End Class
