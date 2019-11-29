@@ -17,7 +17,7 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public NotInheritable Class DbManagementSystem
+Public NotInheritable Class DbInstance
     Private Shared s_Password As SecureString
 
     Private Sub New()
@@ -30,7 +30,7 @@ Public NotInheritable Class DbManagementSystem
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Shared ReadOnly Property Name As String
+    Public Shared ReadOnly Property DbManagementSystem As String
         Get
             Return My.Settings.DbManagementSystem
         End Get
@@ -76,7 +76,7 @@ Public NotInheritable Class DbManagementSystem
     Public Shared ReadOnly Property ConnectionString As String
         Get
             Dim m_ConnectionString As String = Nothing
-            If Name = "Oracle Database" Then
+            If DbManagementSystem = "Oracle Database" Then
                 m_ConnectionString = _
                     "Data Source=" + My.Settings.Datasource + ";" & _
                     "Pooling=" + My.Settings.Pooling
@@ -90,7 +90,7 @@ Public NotInheritable Class DbManagementSystem
     ''' </summary>
     ''' <remarks></remarks>
     Public Shared Sub TestConnection()
-        If DbManagementSystem.Name = "Oracle Database" Then
+        If DbInstance.DbManagementSystem = "Oracle Database" Then
             Using provider As New OracleDbDataProvider
                 provider.TestConnection()
             End Using
@@ -104,7 +104,7 @@ Public NotInheritable Class DbManagementSystem
     ''' </summary>
     ''' <remarks></remarks>
     Public Shared Sub ResetCredential()
-        If DbManagementSystem.Name = "Oracle Database" Then
+        If DbInstance.DbManagementSystem = "Oracle Database" Then
             Using provider As New OracleDbDataProvider
                 provider.ResetCredential()
             End Using

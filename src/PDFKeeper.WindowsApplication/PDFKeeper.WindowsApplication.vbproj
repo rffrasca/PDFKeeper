@@ -154,7 +154,7 @@
     <Compile Include="Common\Shortcut.vb" />
     <Compile Include="Common\UserSettingsUpgradeCommand.vb" />
     <Compile Include="Common\XmlFileSerializer.vb" />
-    <Compile Include="Domain Model\Data Access\DbManagementSystem.vb" />
+    <Compile Include="Domain Model\Data Access\DbInstance.vb" />
     <Compile Include="Domain Model\Data Access\DocumentRepository.vb" />
     <Compile Include="Domain Model\Data Access\IDocumentRepository.vb" />
     <Compile Include="Domain Model\Data Access\Oracle Database\OracleDbDataProvider.vb" />

@@ -24,12 +24,12 @@ Public NotInheritable Class OracleDbDataProvider
 
     Public Sub New()
         If credential Is Nothing Then
-            credential = New OracleCredential(DbManagementSystem.UserName, _
-                                              DbManagementSystem.Password)
+            credential = New OracleCredential(DbInstance.UserName, _
+                                              DbInstance.Password)
         End If
         If m_Connection Is Nothing Then
             m_Connection = New OracleConnection( _
-                DbManagementSystem.ConnectionString, _
+                DbInstance.ConnectionString, _
                 credential)
         End If
     End Sub

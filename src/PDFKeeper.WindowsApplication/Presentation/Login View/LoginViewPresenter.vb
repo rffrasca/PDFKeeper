@@ -35,15 +35,15 @@ Public Class LoginViewPresenter
             ' NOTE: Oracle is the only supported RDBMS at this time.  To add future systems, add a ComboBox
             ' to LoginForm containing the supported Databases and bind it to the LoginDatabase setting.
             My.Settings.DbManagementSystem = "Oracle Database"
-            DbManagementSystem.Password = view.Password
-            DbManagementSystem.TestConnection()
+            DbInstance.Password = view.Password
+            DbInstance.TestConnection()
             view.OnLoginSuccessful()
         Catch ex As ArgumentException
-            DbManagementSystem.ResetCredential()
+            DbInstance.ResetCredential()
             messageDisplay.Show(ex.Message, True)
             view.OnLoginFailed()
         Catch ex As OracleException
-            DbManagementSystem.ResetCredential()
+            DbInstance.ResetCredential()
             messageDisplay.Show(ex.Message, True)
             view.OnLoginFailed()
         End Try

@@ -22,7 +22,7 @@ Public NotInheritable Class DocumentRepository
     Private repository As IDocumentRepository = Nothing
 
     Public Sub New()
-        If DbManagementSystem.Name = "Oracle Database" Then
+        If DbInstance.DbManagementSystem = "Oracle Database" Then
             repository = New OracleDbDocumentRepository
         End If
     End Sub
