@@ -300,6 +300,7 @@ Public Class AddPdfDocumentsDialog
 
     Private Sub SelectButton_Click(sender As Object, e As EventArgs) Handles SelectButton.Click
         presenter.SelectPdf()
+        Me.Focus()
         ViewButton.Select()
     End Sub
 
