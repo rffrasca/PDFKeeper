@@ -27,6 +27,7 @@ Public Class MainForm
     Private presenter As MainViewPresenter
     Private help As New HelpFile
     Private updateCheck As ICommand = New ProductUpdateCheckCommand
+    Private skipSearchOptionsTabControlSelectedActions As Boolean
     Private m_DocumentRecordNotesChanged As String
     ' Message that is sent when the contents of the clipboard have changed.
     Private Const WM_CLIPBOARDUPDATE As Integer = &H31D
@@ -299,7 +300,15 @@ Public Class MainForm
             Return SplitContainer.Panel2Collapsed
         End Get
         Set(value As Boolean)
+            ' This property must be set instead of setting the
+            ' SplitContainer.Panel2Collapsed property to ensure the selected
+            ' Search Options tab is visible to the user.
+            skipSearchOptionsTabControlSelectedActions = True
             SplitContainer.Panel2Collapsed = value
+            Dim selectedTabIndex As Integer = SearchOptionsTabControl.SelectedIndex
+            SearchOptionsTabControl.DeselectTab(selectedTabIndex)
+            SearchOptionsTabControl.SelectTab(selectedTabIndex)
+            skipSearchOptionsTabControlSelectedActions = False
         End Set
     End Property
 
@@ -723,9 +732,9 @@ Public Class MainForm
         SearchResultsDataGridView.Columns(6).AutoSizeMode = _
             DataGridViewAutoSizeColumnMode.DisplayedCells
         If SplitContainer.Panel2Collapsed Then
-            SplitContainer.Panel2Collapsed = False
+            SearchResultsExpanded = False
         Else
-            SplitContainer.Panel2Collapsed = True
+            SearchResultsExpanded = True
             SearchResultsDataGridView.Columns(6).AutoSizeMode = _
                 DataGridViewAutoSizeColumnMode.Fill
         End If
@@ -781,9 +790,11 @@ Public Class MainForm
 
 #Region "Search Options Events and Members"
     Private Sub SearchOptionsTabControl_Selected(sender As Object, e As TabControlEventArgs) Handles SearchOptionsTabControl.Selected
-        toolStripState.SetPreSearchState()
-        SplitContainer.Panel2Collapsed = False
-        presenter.SearchOptionSelected()
+        If skipSearchOptionsTabControlSelectedActions = False Then
+            toolStripState.SetPreSearchState()
+            SearchResultsExpanded = False
+            presenter.SearchOptionSelected()
+        End If
     End Sub
 
     Private Sub SearchStringComboBox_Enter(sender As Object, e As EventArgs) Handles SearchStringComboBox.Enter
@@ -1009,7 +1020,7 @@ Public Class MainForm
                 DataGridViewAutoSizeColumnMode.DisplayedCells
             If SearchResultsDataGridView.Columns.GetColumnsWidth(DataGridViewElementStates.None) > _
                 SearchResultsDataGridView.Size.Width Then
-                SplitContainer.Panel2Collapsed = True
+                SearchResultsExpanded = True
             End If
         If SearchResultsDataGridView.Columns(6).Displayed = True Then
             SearchResultsDataGridView.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
