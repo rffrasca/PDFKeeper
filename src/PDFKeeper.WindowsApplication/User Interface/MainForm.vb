@@ -720,13 +720,13 @@ Public Class MainForm
 
     Private Sub ViewToggleRightPanelToolStrip_Click(sender As Object, e As EventArgs) Handles ViewToggleRightPanelToolStripMenuItem.Click, _
                                                                                               ViewToggleRightPanelToolStripButton.Click
-        SearchResultsDataGridView.Columns(5).AutoSizeMode = _
+        SearchResultsDataGridView.Columns(6).AutoSizeMode = _
             DataGridViewAutoSizeColumnMode.DisplayedCells
         If SplitContainer.Panel2Collapsed Then
             SplitContainer.Panel2Collapsed = False
         Else
             SplitContainer.Panel2Collapsed = True
-            SearchResultsDataGridView.Columns(5).AutoSizeMode = _
+            SearchResultsDataGridView.Columns(6).AutoSizeMode = _
                 DataGridViewAutoSizeColumnMode.Fill
         End If
     End Sub
