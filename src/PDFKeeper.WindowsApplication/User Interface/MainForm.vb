@@ -1007,14 +1007,14 @@ Public Class MainForm
             SearchResultsDataGridView.Enabled = True
             SearchResultsDataGridView.Columns(6).AutoSizeMode = _
                 DataGridViewAutoSizeColumnMode.DisplayedCells
-            If SearchResultsDataGridView.Columns.GetColumnsWidth(DataGridViewElementStates.Displayed) > _
+            If SearchResultsDataGridView.Columns.GetColumnsWidth(DataGridViewElementStates.None) > _
                 SearchResultsDataGridView.Size.Width Then
                 SplitContainer.Panel2Collapsed = True
             End If
-            If SearchResultsDataGridView.Columns(6).Displayed = True Then
-                SearchResultsDataGridView.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-            End If
-            SearchResultsDataGridView.Columns(6).MinimumWidth = SearchResultsDataGridView.Columns(6).FillWeight + 20
+        If SearchResultsDataGridView.Columns(6).Displayed = True Then
+            SearchResultsDataGridView.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        End If
+        SearchResultsDataGridView.Columns(6).MinimumWidth = SearchResultsDataGridView.Columns(6).FillWeight + 20
         End If
         toolStripState.SetPostSearchState()
         SearchResultsDataGridView.Focus()
