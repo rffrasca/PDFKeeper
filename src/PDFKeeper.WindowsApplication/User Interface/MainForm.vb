@@ -564,6 +564,14 @@ Public Class MainForm
         SearchResultsDataGridView.FirstDisplayedScrollingRowIndex = SearchResultsDataGridView.RowCount - 1
     End Sub
 
+    Public Sub SelectSearchResultRowById(id As Integer) Implements IMainView.SelectSearchResultRowById
+        For Each row As DataGridViewRow In SearchResultsDataGridView.Rows
+            If row.Cells(1).Value = id Then
+                row.Selected = True
+            End If
+        Next
+    End Sub
+
     Public Sub SelectDeselectAllSearchResults(selectionState As SelectionState) Implements IMainView.SelectDeselectAllSearchResults
         For Each row As DataGridViewRow In SearchResultsDataGridView.Rows
             If selectionState = Enums.SelectionState.SelectAll Then
@@ -1022,10 +1030,10 @@ Public Class MainForm
                 SearchResultsDataGridView.Size.Width Then
                 SearchResultsExpanded = True
             End If
-        If SearchResultsDataGridView.Columns(6).Displayed = True Then
-            SearchResultsDataGridView.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        End If
-        SearchResultsDataGridView.Columns(6).MinimumWidth = SearchResultsDataGridView.Columns(6).FillWeight + 20
+            If SearchResultsDataGridView.Columns(6).Displayed = True Then
+                SearchResultsDataGridView.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            End If
+            SearchResultsDataGridView.Columns(6).MinimumWidth = SearchResultsDataGridView.Columns(6).FillWeight + 20
         End If
         toolStripState.SetPostSearchState()
         SearchResultsDataGridView.Focus()

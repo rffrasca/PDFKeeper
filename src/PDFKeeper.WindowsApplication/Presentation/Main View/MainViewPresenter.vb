@@ -243,6 +243,7 @@ Public Class MainViewPresenter
 
 #Region "View Search Options Members"
     Public Sub SearchOptionSelected()
+        Dim lastSelectedId As Integer = view.DocumentRecordId
         If view.SelectedSearchOption = 0 Then
             GetSearchResultsByString(True)
         ElseIf view.SelectedSearchOption = 1 Then
@@ -261,6 +262,9 @@ Public Class MainViewPresenter
             Else
                 ShowTotalAndFlaggedRecordCounts()
             End If
+        End If
+        If refreshFlag Then
+            view.SelectSearchResultRowById(lastSelectedId)
         End If
         refreshFlag = False
     End Sub

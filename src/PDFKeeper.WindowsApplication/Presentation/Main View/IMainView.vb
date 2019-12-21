@@ -57,6 +57,7 @@ Public Interface IMainView
     Property FlaggedDocumentsExistVisible As Boolean
     Property FlaggedDocumentsCheckTimerEnabled As Boolean
     Sub SelectSearchResultsLastRow()
+    Sub SelectSearchResultRowById(ByVal id As Integer)
     Sub SelectDeselectAllSearchResults(ByVal selectionState _
                                        As Enums.SelectionState)
     Sub SortSearchResults(ByVal sortColumnIndex As Integer, _
