@@ -1,6 +1,17 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v5.0.3 - 2019-12-27
+- This is a maintenance release that addresses issues with the User Interface.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.3).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.3).
+### Fixed
+- Fixed an issue with Add PDF Documents dialog not having focus after selecting a PDF document.
+- Fixed left panel of main form not always opening full width after Search Results grid view is filled when the width of the columns exceeded the width of Search Results grid view.
+- Fixed Search Results grid view Category column not sizing correctly after selecting Toggle Right Panel to show right panel and then selecting Toggle Right Panel again to hide right panel.
+- Fixed selected Search tab on main form not always being visible after the right panel collapsed state has changed.
+When Search Results is refreshed, the previously selected document record will be selected.
+
 ## v5.0.2 - 2019-11-30
 - This is a maintenance release that primarily addresses unresolved issues from version 5.0.0.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.2).
