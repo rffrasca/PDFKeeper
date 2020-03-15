@@ -2,9 +2,9 @@
 
 ##  Install Development Applications and Tools
 1. Microsoft Visual Studio 2019 - https://www.visualstudio.com/downloads/
-2. WiX Toolset Build Tools - Download and install v3.11.2 using Manage Extensions in Visual Studio.
-3. Wix Toolset Visual Studio 2019 Extension - Download and install using Manage Extensions in Visual Studio.
-4. Wax - Download and install using Manage Extensions in Visual Studio.
+2. WiX Toolset Build Tools - Download and install v3.11.2 using "Manage Extensions" in Visual Studio.
+3. Wix Toolset Visual Studio 2019 Extension - Download and install using "Manage Extensions" in Visual Studio.
+4. Wax - Download and install using "Manage Extensions" in Visual Studio.
 5. Microsoft HTML Help Workshop - http://www.microsoft.com/en-us/download/details.aspx?id=21138
 6. Oracle Data Provider for .NET - https://www.oracle.com/database/technologies/dotnet-odacdeploy-downloads.html
     Download 32-bit ODAC 19.3 (must be 32-bit) from the ODAC Xcopy section to a folder for staging, then unblock and unzip the file.
@@ -25,7 +25,7 @@ Clone the https://github.com/rffrasca/PDFKeeper repository to your development s
 
 ## Build PDFKeeper
 1. Open "PDFKeeper.sln" with Visual Studio.
-2. Use "Restore" in "NuGet Package Manager" to download NuGet packages.
+2. Use "Manage NuGet Packages for Solution" from "NuGet Package Manager" menu to download required NuGet packages.
 3. Set configuration to Release, and then Build the Solution.
 
     After a successful build, "PDFKeeper-6.x.x.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".
