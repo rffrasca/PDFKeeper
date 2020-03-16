@@ -18,7 +18,7 @@ rem *
 rem * You should have received a copy of the GNU General Public License
 rem * along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 rem ***************************************************************************
-for /f "tokens=3*" %%f in ('reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Components\28E7A37130464D115AF3000972A8B18B /v 464395C9F2F73B73988FE798E4B390AE') do (
-    "%%f %%g" "..\..\..\Help\en-US\PDFKeeper.hhp"
+for /f "tokens=3*" %%f in ('reg query "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\hhw.exe" /v Path') do (
+	"%%f %%g\hhc" "..\..\..\Help\en-US\PDFKeeper.hhp"
 )
 exit 0
