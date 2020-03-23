@@ -40,10 +40,10 @@
     <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />
     <Property Id="ALLUSERS" Value="2" />
     <Property Id="MSIINSTALLPERUSER" Value="1" />
-    
-    <PropertyRef Id="WIX_IS_NETFRAMEWORK_461_OR_LATER_INSTALLED" />
-    <Condition Message="[ProductName] requires .NET Framework 4.6.1 or higher.">
-      <![CDATA[Installed OR WIX_IS_NETFRAMEWORK_461_OR_LATER_INSTALLED]]>
+
+    <PropertyRef Id="WIXNETFX4RELEASEINSTALLED" />
+    <Condition Message="[ProductName] requires .NET Framework 4.8 to be installed.">
+      <![CDATA[Installed OR (WIXNETFX4RELEASEINSTALLED >= "#528040")]]>
     </Condition>
     
     <Feature Id="ProductFeature" Title="PDFKeeper" Level="1">
