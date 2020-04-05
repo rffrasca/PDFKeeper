@@ -28,13 +28,15 @@ Namespace My
     ' NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
     Partial Friend Class MyApplication
         Private Sub MyApplication_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
-            Dim upgradeSettings As ICommand = New UserSettingsUpgradeCommand
-            upgradeSettings.Execute()
-            If My.Settings.Datasource.Length = 0 Then
-                Dim help As New HelpFile
+            Dim help As New HelpFile
+            Dim previousVersion As String = UserConfig.CurrentVersion
+            UserConfig.Upgrade()
+            If UserConfig.IsFirstUse Then
                 help.ShowAndWait("PDFKeeper.html")
+            ElseIf previousVersion < "5.0.0.0" Then
+                help.ShowAndWait("Database Schema Upgrade for Oracle Database.html")
             End If
-            AddHandler AppDomain.CurrentDomain.AssemblyResolve, _
+            AddHandler AppDomain.CurrentDomain.AssemblyResolve,
                 AddressOf ExternalDependencyLocator.GetOracleDataAccessAssemblyPath
             If LoginForm.ShowDialog = Windows.Forms.DialogResult.Cancel Then
                 e.Cancel = True

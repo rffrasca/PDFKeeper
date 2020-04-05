@@ -154,7 +154,6 @@
     <Compile Include="Common\Set Category\ISetCategory.vb" />
     <Compile Include="Common\Set Category\SetCategory.vb" />
     <Compile Include="Common\Shortcut.vb" />
-    <Compile Include="Common\UserSettingsUpgradeCommand.vb" />
     <Compile Include="Common\XmlFileSerializer.vb" />
     <Compile Include="Domain Model\Data Access\DbInstance.vb" />
     <Compile Include="Domain Model\Data Access\DocumentRepository.vb" />
@@ -282,6 +281,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Utilities\ExternalDependencyLocator.vb" />
+    <Compile Include="Utilities\UserConfig.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
