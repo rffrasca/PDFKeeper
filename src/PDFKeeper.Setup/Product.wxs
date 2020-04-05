@@ -68,11 +68,11 @@
 		<Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="DesktopFolder" SourceName="Desktop" />
       <Directory Id="StartMenuFolder" SourceName="StartMenu" />
-      <Directory Id="ProgramFilesFolder">
+      <Directory Id="ProgramFiles64Folder">
         <Directory Id="INSTALLFOLDER" Name="PDFKeeper">
           <Directory Id="pdftopng" Name="pdftopng" />
         </Directory>
-			</Directory>
+      </Directory>
 		</Directory>
 	</Fragment>
 
