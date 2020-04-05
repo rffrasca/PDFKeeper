@@ -79,21 +79,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to PDFKeeper has detected that you&apos;ve upgraded from an older version that requires some additional updates.
-        '''
-        '''This version of PDFKeeper requires the following:
-        '''
-        '''* The database schema must be upgraded to the PDFKeeper 5.x.x schema by an individual responsible for the administration of the Oracle Database.  Please see the &quot;Database Schema Upgrade for Oracle Database&quot; help topic.
-        '''
-        '''* The Oracle Data Provider for .NET must be upgraded on this computer.  Please see the &quot;Installing Oracle Data Provider for .NET&quot; [rest of string was truncated]&quot;;.
-        '''</summary>
-        Friend ReadOnly Property AdditionalUpdatesRequiredMessage() As String
-            Get
-                Return ResourceManager.GetString("AdditionalUpdatesRequiredMessage", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to Author.
         '''</summary>
         Friend ReadOnly Property Author() As String
@@ -313,7 +298,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Oracle Data Provider for .NET is missing and needs to be installed.
+        '''  Looks up a localized string similar to The required Oracle Data Provider for .NET is missing and needs to be installed.
         '''
         '''Please refer to the &quot;Additional Client Prerequisites&quot; section in the help file for instructions.
         '''

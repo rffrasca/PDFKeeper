@@ -243,19 +243,10 @@ The contents of the Notes text box prior to the attempted save operation have be
     <value>Do you wish to discard all changes?</value>
   </data>
   <data name="ODPMissing" xml:space="preserve">
-    <value>Oracle Data Provider for .NET is missing and needs to be installed.
+    <value>The required Oracle Data Provider for .NET is missing and needs to be installed.
 
 Please refer to the "Additional Client Prerequisites" section in the help file for instructions.
 
 To access help, press F1 at the PDFKeeper Login form.</value>
-  </data>
-  <data name="AdditionalUpdatesRequiredMessage" xml:space="preserve">
-    <value>PDFKeeper has detected that you've upgraded from an older version that requires some additional updates.
-
-This version of PDFKeeper requires the following:
-
-* The database schema must be upgraded to the PDFKeeper 5.x.x schema by an individual responsible for the administration of the Oracle Database.  Please see the "Database Schema Upgrade for Oracle Database" help topic.
-
-* The Oracle Data Provider for .NET must be upgraded on this computer.  Please see the "Installing Oracle Data Provider for .NET" help topic located in "Additional Client Prerequisites".</value>
   </data>
 </root>
