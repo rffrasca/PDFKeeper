@@ -1,5 +1,5 @@
 ﻿'******************************************************************************
-'* PDFKeeper -- Open Source PDF Document Management
+'* PDFKeeper -- Open Source PDF Document Storage and Management
 '* Copyright (C) 2009-2020  Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.

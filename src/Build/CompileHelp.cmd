@@ -1,6 +1,6 @@
 @echo off
 rem ***************************************************************************
-rem * PDFKeeper -- Open Source PDF Document Management
+rem * PDFKeeper -- Open Source PDF Document Storage and Management
 rem * Copyright (C) 2009-2020  Robert F. Frasca
 rem *
 rem * This file is part of PDFKeeper.
