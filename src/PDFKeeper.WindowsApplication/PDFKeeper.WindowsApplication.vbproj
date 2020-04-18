@@ -106,6 +106,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Import Include="AutoUpdaterDotNET" />
     <Import Include="iTextSharp.text.exceptions" />
     <Import Include="iTextSharp.text.pdf" />
     <Import Include="IWshRuntimeLibrary" />
@@ -138,102 +139,107 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Common\CacheFilePathName.vb" />
-    <Compile Include="Common\Common Dialogs\FileSelect.vb" />
-    <Compile Include="Common\Common Dialogs\FolderSelect.vb" />
-    <Compile Include="Common\Common Dialogs\IFileSelect.vb" />
-    <Compile Include="Common\Common Dialogs\IFolderSelect.vb" />
-    <Compile Include="Common\Common Dialogs\IPrintString.vb" />
-    <Compile Include="Common\Common Dialogs\IQuestionDisplay.vb" />
-    <Compile Include="Common\Common Dialogs\MessageDisplay.vb" />
-    <Compile Include="Common\Common Dialogs\PrintString.vb" />
-    <Compile Include="Common\Common Dialogs\QuestionDisplay.vb" />
-    <Compile Include="Common\PDF Viewer\IPdfViewer.vb" />
-    <Compile Include="Common\PDF Viewer\IRestrictedPdfViewer.vb" />
-    <Compile Include="Common\ProductUpdateCheckCommand.vb" />
-    <Compile Include="Common\Set Category\ISetCategory.vb" />
-    <Compile Include="Common\Set Category\SetCategory.vb" />
-    <Compile Include="Common\Shortcut.vb" />
-    <Compile Include="Common\XmlFileSerializer.vb" />
-    <Compile Include="Domain Model\Data Access\DbInstance.vb" />
-    <Compile Include="Domain Model\Data Access\DocumentRepository.vb" />
-    <Compile Include="Domain Model\Data Access\IDocumentRepository.vb" />
-    <Compile Include="Domain Model\Data Access\Oracle Database\OracleDbDataProvider.vb" />
-    <Compile Include="Domain Model\Data Access\Oracle Database\OracleDbDocumentRepository.vb" />
-    <Compile Include="Domain Model\PDF Information Properties\PdfInformationPropertiesHelper.vb" />
-    <Compile Include="Domain Model\PDF Supplemental Data\PdfSupplementalDataHelper.vb" />
-    <Compile Include="Domain Model\Upload Folder Configuration\UploadFolderConfigurationHelper.vb" />
-    <Compile Include="Domain Model\Upload Folder Configuration\UploadFolderConfigurationUtil.vb" />
+    <Compile Include="Data Access\DbInstanceProperties.vb" />
+    <Compile Include="Data Access\DbInstanceUtil.vb" />
+    <Compile Include="Enums\SelectedDocumentsFunctionEnum.vb" />
+    <Compile Include="Enums\SelectionStateEnum.vb" />
+    <Compile Include="Extensions\DirectoryInfoExtensions.vb" />
+    <Compile Include="Extensions\FileInfoExtensions.vb" />
+    <Compile Include="Extensions\SecureStringExtensions.vb" />
+    <Compile Include="Extensions\StringExtensions.vb" />
+    <Compile Include="Models\Login.vb" />
+    <Compile Include="Services\HelpDisplayService.vb" />
+    <Compile Include="Services\IHelpDisplayService.vb" />
+    <Compile Include="Services\IMessageDisplayService.vb" />
+    <Compile Include="Services\IPasswordPromptDisplayService.vb" />
+    <Compile Include="Services\ISetCategoryDisplayService.vb" />
+    <Compile Include="Services\MessageDisplayService.vb" />
+    <Compile Include="Environment\ProductUpdate.vb" />
+    <Compile Include="Environment\CacheFilePathName.vb" />
+    <Compile Include="Services\PasswordPromptDisplayService.vb" />
+    <Compile Include="Services\SetCategoryDisplayService.vb" />
+    <Compile Include="Services\FileSelectDisplayService.vb" />
+    <Compile Include="Services\FolderBrowserDisplayService.vb" />
+    <Compile Include="Services\IFileSelectDisplayService.vb" />
+    <Compile Include="Services\IFolderBrowserDisplayService.vb" />
+    <Compile Include="Services\IStringPrintService.vb" />
+    <Compile Include="Services\IQuestionDisplayService.vb" />
+    <Compile Include="Services\StringPrintService.vb" />
+    <Compile Include="Services\QuestionDisplayService.vb" />
+    <Compile Include="Services\IPdfViewerService.vb" />
+    <Compile Include="Services\IRestrictedPdfViewerService.vb" />
+    <Compile Include="Utilities\ShortcutUtil.vb" />
+    <Compile Include="Helpers\XmlSerializerHelper.vb" />
+    <Compile Include="Data Access\DocumentRepository.vb" />
+    <Compile Include="Models\IDocumentRepository.vb" />
+    <Compile Include="Data Access\Oracle\OracleDbDataProvider.vb" />
+    <Compile Include="Data Access\Oracle\OracleDbDocumentRepository.vb" />
+    <Compile Include="Helpers\PdfInformationPropertiesHelper.vb" />
+    <Compile Include="Helpers\PdfSupplementalDataHelper.vb" />
+    <Compile Include="Helpers\UploadFolderConfigurationHelper.vb" />
+    <Compile Include="Utilities\UploadFolderConfigurationUtil.vb" />
     <Compile Include="Services\UploadService.vb" />
-    <Compile Include="Common\ICommand.vb" />
-    <Compile Include="Common\ExtensionMethods.vb" />
-    <Compile Include="Common\HelpFile.vb" />
-    <Compile Include="Common\Common Dialogs\IMessageDisplay.vb" />
     <Compile Include="GlobalSuppressions.vb" />
-    <Compile Include="Presentation\Common View\CommonViewPresenter.vb" />
-    <Compile Include="Presentation\Common View\ICommonView.vb" />
-    <Compile Include="Common\Password Prompt\IPasswordPrompt.vb" />
-    <Compile Include="Presentation\Main View\ProcessSelectedSearchResultsCommand.vb" />
-    <Compile Include="Common\PDF Viewer\PdfViewerBase.vb" />
-    <Compile Include="Common\PDF Viewer\RestrictedPdfViewer.vb" />
-    <Compile Include="Common\GenericDictionaryList.vb" />
-    <Compile Include="Common\GenericList.vb" />
-    <Compile Include="Common\Password Prompt\PasswordPrompt.vb" />
-    <Compile Include="Presentation\Manage Upload Folder Configurations\IManageUploadFolderConfigurationsView.vb" />
-    <Compile Include="Presentation\Manage Upload Folder Configurations\ManageUploadFolderConfigurationsPresenter.vb" />
-    <Compile Include="User Interface\AboutBox.designer.vb">
+    <Compile Include="Presenters\CommonPresenter.vb" />
+    <Compile Include="Views\ICommonView.vb" />
+    <Compile Include="Presenters\MainSelectedSearchResultsProcessPresenter.vb" />
+    <Compile Include="Services\PdfViewerServiceBase.vb" />
+    <Compile Include="Services\RestrictedPdfViewerService.vb" />
+    <Compile Include="Generics\GenericDictionaryList.vb" />
+    <Compile Include="Generics\GenericList.vb" />
+    <Compile Include="Views\IManageUploadFolderConfigurationsView.vb" />
+    <Compile Include="Presenters\ManageUploadFolderConfigurationsPresenter.vb" />
+    <Compile Include="Dialogs\AboutBox.designer.vb">
       <DependentUpon>AboutBox.vb</DependentUpon>
     </Compile>
-    <Compile Include="User Interface\AboutBox.vb">
+    <Compile Include="Dialogs\AboutBox.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User Interface\AddPdfDocumentsDialog.designer.vb">
+    <Compile Include="Dialogs\AddPdfDocumentsDialog.designer.vb">
       <DependentUpon>AddPdfDocumentsDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="User Interface\AddPdfDocumentsDialog.vb">
+    <Compile Include="Dialogs\AddPdfDocumentsDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User Interface\LoginForm.designer.vb">
+    <Compile Include="Forms\LoginForm.designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="User Interface\LoginForm.vb">
+    <Compile Include="Forms\LoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User Interface\ManageUploadFolderConfigurationsDialog.Designer.vb">
+    <Compile Include="Dialogs\ManageUploadFolderConfigurationsDialog.Designer.vb">
       <DependentUpon>ManageUploadFolderConfigurationsDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="User Interface\ManageUploadFolderConfigurationsDialog.vb">
+    <Compile Include="Dialogs\ManageUploadFolderConfigurationsDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User Interface\OptionsDialog.designer.vb">
+    <Compile Include="Dialogs\OptionsDialog.designer.vb">
       <DependentUpon>OptionsDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="User Interface\OptionsDialog.vb">
+    <Compile Include="Dialogs\OptionsDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User Interface\PasswordDialog.designer.vb">
+    <Compile Include="Forms\PasswordDialog.designer.vb">
       <DependentUpon>PasswordDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="User Interface\PasswordDialog.vb">
+    <Compile Include="Forms\PasswordDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Common\UserProfile.vb" />
-    <Compile Include="Common\ApplicationPolicy.vb" />
-    <Compile Include="Domain Model\PDF Supplemental Data\PdfSupplementalData.vb" />
-    <Compile Include="Presentation\Main View\MainViewPresenter.vb" />
-    <Compile Include="Presentation\Main View\IProcessSelectedSearchResultsCommand.vb" />
-    <Compile Include="Domain Model\ImageFileInfo.vb" />
-    <Compile Include="Common\NativeMethods.vb" />
-    <Compile Include="Domain Model\PdfFileInfo.vb" />
-    <Compile Include="Domain Model\PDF Information Properties\PdfInformationProperties.vb" />
-    <Compile Include="Domain Model\PDF Information Properties\PdfInformationPropertiesReader.vb" />
-    <Compile Include="Domain Model\PDF Information Properties\PdfInformationPropertiesWriter.vb" />
-    <Compile Include="Presentation\Main View\DataGridViewSortParameters.vb" />
-    <Compile Include="Common\PDF Viewer\PdfViewer.vb" />
-    <Compile Include="Common\UnhandledExceptionHandler.vb" />
-    <Compile Include="Common\Enums.vb" />
-    <Compile Include="Domain Model\Upload Folder Configuration\UploadFolderConfiguration.vb" />
-    <Compile Include="Domain Model\Upload Folder Configuration\UploadFolderConfigurationTokens.vb" />
+    <Compile Include="Environment\UserProfile.vb" />
+    <Compile Include="Environment\ApplicationPolicy.vb" />
+    <Compile Include="Models\PdfSupplementalData.vb" />
+    <Compile Include="Presenters\MainPresenter.vb" />
+    <Compile Include="Extensions\ImageFileInfo.vb" />
+    <Compile Include="NativeMethods.vb" />
+    <Compile Include="Extensions\PdfFileInfo.vb" />
+    <Compile Include="Models\PdfInformationPropertiesBase.vb" />
+    <Compile Include="Models\PdfInformationPropertiesReader.vb" />
+    <Compile Include="Models\PdfInformationPropertiesWriter.vb" />
+    <Compile Include="Presenters\DataGridViewSortParameters.vb" />
+    <Compile Include="Services\PdfViewerService.vb" />
+    <Compile Include="Services\UnhandledExceptionHandler.vb" />
+    <Compile Include="Models\UploadFolderConfiguration.vb" />
+    <Compile Include="Presenters\UploadFolderConfigurationTokens.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -250,38 +256,38 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Presentation\Add PDF Documents View\AddPdfDocumentsViewPresenter.vb" />
-    <Compile Include="Presentation\Add PDF Documents View\IAddPdfDocumentsView.vb" />
-    <Compile Include="Presentation\Login View\ILoginView.vb" />
-    <Compile Include="Presentation\Main View\IMainView.vb" />
-    <Compile Include="Presentation\Login View\LoginViewPresenter.vb" />
-    <Compile Include="Presentation\Main View\IViewToolStripState.vb" />
-    <Compile Include="Presentation\Main View\IViewWindowState.vb" />
-    <Compile Include="User Interface\MainForm.Designer.vb">
+    <Compile Include="Presenters\AddPdfDocumentsPresenter.vb" />
+    <Compile Include="Views\IAddPdfDocumentsView.vb" />
+    <Compile Include="Views\ILoginView.vb" />
+    <Compile Include="Views\IMainView.vb" />
+    <Compile Include="Presenters\LoginPresenter.vb" />
+    <Compile Include="Views\IToolStripStateView.vb" />
+    <Compile Include="Views\IMainWindowStateView.vb" />
+    <Compile Include="Forms\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="User Interface\MainForm.vb">
+    <Compile Include="Forms\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\Main View\MainViewToolStripState.vb" />
-    <Compile Include="Presentation\Main View\MainViewWindowState.vb" />
-    <Compile Include="User Interface\PreviewImageResolutionDialog.Designer.vb">
+    <Compile Include="Presenters\MainToolStripStatePresenter.vb" />
+    <Compile Include="Presenters\MainWindowStatePresenter.vb" />
+    <Compile Include="Dialogs\PreviewImageResolutionDialog.Designer.vb">
       <DependentUpon>PreviewImageResolutionDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="User Interface\PreviewImageResolutionDialog.vb">
+    <Compile Include="Dialogs\PreviewImageResolutionDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User Interface\SecureTextBox.vb">
+    <Compile Include="Components\SecureTextBox.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="User Interface\SetCategoryDialog.Designer.vb">
+    <Compile Include="Forms\SetCategoryDialog.Designer.vb">
       <DependentUpon>SetCategoryDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="User Interface\SetCategoryDialog.vb">
+    <Compile Include="Forms\SetCategoryDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utilities\ExternalDependencyLocator.vb" />
-    <Compile Include="Utilities\UserConfig.vb" />
+    <Compile Include="Environment\ExternalDependencyLocator.vb" />
+    <Compile Include="Environment\UserConfig.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -290,32 +296,32 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\ManageUploadFolderConfigurationsDialog.resx">
+    <EmbeddedResource Include="Dialogs\ManageUploadFolderConfigurationsDialog.resx">
       <DependentUpon>ManageUploadFolderConfigurationsDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\PreviewImageResolutionDialog.resx">
+    <EmbeddedResource Include="Dialogs\PreviewImageResolutionDialog.resx">
       <DependentUpon>PreviewImageResolutionDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\SetCategoryDialog.resx">
+    <EmbeddedResource Include="Forms\SetCategoryDialog.resx">
       <DependentUpon>SetCategoryDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\AboutBox.resx">
+    <EmbeddedResource Include="Dialogs\AboutBox.resx">
       <DependentUpon>AboutBox.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\AddPdfDocumentsDialog.resx">
+    <EmbeddedResource Include="Dialogs\AddPdfDocumentsDialog.resx">
       <DependentUpon>AddPdfDocumentsDialog.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\OptionsDialog.resx">
+    <EmbeddedResource Include="Dialogs\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User Interface\PasswordDialog.resx">
+    <EmbeddedResource Include="Forms\PasswordDialog.resx">
       <DependentUpon>PasswordDialog.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
