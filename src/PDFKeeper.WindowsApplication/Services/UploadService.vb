@@ -129,10 +129,10 @@ Public NotInheritable Class UploadService
                                                        outputPdfPath, _
                                                        uploadFolderName)
                     Else
-                        If pdfReader.Title IsNot Nothing And _
-                            pdfReader.Author IsNot Nothing And _
-                            pdfReader.Subject IsNot Nothing Then
-                            StageExistingPdfAndSupplementalData(pdfPath, _
+                        If pdfReader.Title.Length > 0 And
+                            pdfReader.Author.Length > 0 And
+                            pdfReader.Subject.Length > 0 Then
+                            StageExistingPdfAndSupplementalData(pdfPath,
                                                                 outputPdfPath)
                         End If
                     End If
