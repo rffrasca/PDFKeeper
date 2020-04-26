@@ -45,7 +45,7 @@ Namespace My
 
         Private Sub MyApplication_Shutdown(sender As Object, e As EventArgs) Handles Me.Shutdown
             UserProfile.DeleteUploadShortcut()
-            UserProfile.DeleteCacheFolder()
+            UserProfile.DeleteCachedFiles()
         End Sub
 
         Private Sub MyApplication_UnhandledException(sender As Object, e As ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException

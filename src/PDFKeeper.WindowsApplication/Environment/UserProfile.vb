@@ -114,14 +114,29 @@ Public NotInheritable Class UserProfile
     End Sub
 
     ''' <summary>
-    ''' Deletes the Cache folder including all of its contents.
+    ''' Deletes all cached files from the Cache folder.
+    ''' 
+    ''' For each cached file that cannot be deleted, its extension will be
+    ''' changed to "pending" and will be deleted the next time the application
+    ''' is closed.
     ''' </summary>
-    ''' <remarks>Called during application shutdown.</remarks>
-    Public Shared Sub DeleteCacheFolder()
-        Try
-            Directory.Delete(UserProfile.CachePath, True)
-        Catch ex As IOException
-        End Try
+    Public Shared Sub DeleteCachedFiles()
+        For Each cachedFile In Directory.GetFiles(UserProfile.CachePath,
+                                                  Application.ProductName & "*.*")
+            Try
+                IO.File.Delete(cachedFile)
+            Catch ex As IOException
+            Catch ex As UnauthorizedAccessException
+            End Try
+            If IO.File.Exists(cachedFile) Then
+                Try
+                    IO.File.Move(cachedFile,
+                                 Path.ChangeExtension(cachedFile, "deleted"))
+                Catch ex As IOException
+                Catch ex As UnauthorizedAccessException
+                End Try
+            End If
+        Next
     End Sub
 
     Private Shared ReadOnly Property ApplicationDataRoot As String
