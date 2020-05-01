@@ -117,7 +117,7 @@ Public NotInheritable Class UserProfile
     ''' Deletes all cached files from the Cache folder.
     ''' 
     ''' For each cached file that cannot be deleted, its extension will be
-    ''' changed to "pending" and will be deleted the next time the application
+    ''' changed to "delete" and will be deleted the next time the application
     ''' is closed.
     ''' </summary>
     Public Shared Sub DeleteCachedFiles()
@@ -131,7 +131,7 @@ Public NotInheritable Class UserProfile
             If IO.File.Exists(cachedFile) Then
                 Try
                     IO.File.Move(cachedFile,
-                                 Path.ChangeExtension(cachedFile, "deleted"))
+                                 Path.ChangeExtension(cachedFile, "delete"))
                 Catch ex As IOException
                 Catch ex As UnauthorizedAccessException
                 End Try
