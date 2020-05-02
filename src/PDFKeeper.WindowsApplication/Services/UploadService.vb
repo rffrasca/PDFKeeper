@@ -69,8 +69,9 @@ Public NotInheritable Class UploadService
         isUploadCycleExecuting = True
         EnsureConfiguredUploadFoldersExist()    ' Step 1
         StagePdfsAndSupplementalDataForUpload() ' Step 2
-        UploadFoldersCleanup()                  ' Step 3
-        UploadStagedPdfsAndSupplementalData()   ' Step 4
+        RemoveDeleteFilesFromUploadFolders()      ' Step 3
+        UploadFoldersCleanup()                  ' Step 4
+        UploadStagedPdfsAndSupplementalData()   ' Step 5
         isUploadCycleExecuting = False
     End Sub
 
@@ -142,14 +143,14 @@ Public NotInheritable Class UploadService
         Next
     End Sub
 
-    Private Shared Sub WriteNewPdfAndSupplementalData(ByVal inputPdfPath As String, _
-                                                      ByVal outputPdfPath As String, _
+    Private Shared Sub WriteNewPdfAndSupplementalData(ByVal inputPdfPath As String,
+                                                      ByVal outputPdfPath As String,
                                                       ByVal uploadFolderConfigName As String)
         Dim pdfInfoPropHelper As New PdfInformationPropertiesHelper(inputPdfPath, Nothing)
         pdfInfoPropHelper.Write(outputPdfPath, uploadFolderConfigName)
         Dim uploadFolderConfigHelper As _
             New UploadFolderConfigurationHelper(uploadFolderConfigName)
-        Dim uploadFolderConfig As UploadFolderConfiguration = _
+        Dim uploadFolderConfig As UploadFolderConfiguration =
             uploadFolderConfigHelper.Read
         Dim suppDataHelper As New PdfSupplementalDataHelper(outputPdfPath)
         Dim suppData As New PdfSupplementalData
@@ -163,11 +164,20 @@ Public NotInheritable Class UploadService
             .Category = uploadFolderConfig.CategoryPrefill
             .FlagState = state
         End With
-        suppDataHelper.Write(suppData.Notes, _
-                             suppData.Category, _
+        suppDataHelper.Write(suppData.Notes,
+                             suppData.Category,
                              suppData.FlagState)
-        Dim fileInfo As New FileInfo(inputPdfPath)
+        Dim inputPdfGuidPath As String =
+            New FileInfo(inputPdfPath).AppendGuidToName(Nothing)
+        IO.File.Copy(inputPdfPath, inputPdfGuidPath)
+        Dim fileInfo As New FileInfo(inputPdfGuidPath)
         fileInfo.DeleteToRecycleBin()
+        Try
+            IO.File.Move(inputPdfPath,
+                         Path.ChangeExtension(inputPdfPath, "delete"))
+        Catch ex As IOException
+        Catch ex As UnauthorizedAccessException
+        End Try
     End Sub
 
     Private Shared Sub StageExistingPdfAndSupplementalData(ByVal sourcePdfPath As String, _
@@ -181,7 +191,25 @@ Public NotInheritable Class UploadService
     End Sub
 #End Region
 
-#Region "Step 3: UploadFoldersCleanup"
+#Region "Step 3: RemoveDeleteFilesFromUploadFolders"
+    ''' <summary>
+    ''' Deletes all files with a "delete" extension that are not in use from
+    ''' the Upload folder and its sub-folders.
+    ''' </summary>
+    Private Shared Sub RemoveDeleteFilesFromUploadFolders()
+        For Each deleteFile In Directory.GetFiles(UserProfile.UploadPath,
+                                                  "*.delete",
+                                                  SearchOption.AllDirectories)
+            Try
+                IO.File.Delete(deleteFile)
+            Catch ex As IOException
+            Catch ex As UnauthorizedAccessException
+            End Try
+        Next
+    End Sub
+#End Region
+
+#Region "Step 4: UploadFoldersCleanup"
     ''' <summary>
     ''' Deletes all empty non configured folders from the Upload folder and any
     ''' empty sub-folders under each configured upload folder.
@@ -212,7 +240,7 @@ Public NotInheritable Class UploadService
     End Sub
 #End Region
 
-#Region "Step 4: UploadStagedPdfsAndSupplementalData"
+#Region "Step 5: UploadStagedPdfsAndSupplementalData"
     ''' <summary>
     ''' Uploads all PDF files and supplemental data in the UploadStaging
     ''' folder except password protected PDF files.

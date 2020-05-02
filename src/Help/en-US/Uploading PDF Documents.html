@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
 	<title>Uploading PDF Documents</title>
-	<meta name="generator" content="LibreOffice 6.2.8.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 6.3.6.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.014243916"/>
-	<meta name="changed" content="2019-11-02T15:43:46.452000000"/>
+	<meta name="changed" content="2020-05-02T13:18:02.314000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Storage and Management
@@ -113,10 +113,18 @@ Information:</b></font></font></p>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">The
 	upload process will check for PDF documents that need to be uploaded
 	every five seconds.</font></p>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Each
+	preprocessed PDF document in the <b>Upload</b> folder will be copied
+	to <span style="font-style: normal"><b>&lt;</b></span><i><b>original
+	name</b></i><span style="font-style: normal"><b>&gt;-&lt;</b></span><i><b>GUID</b></i><span style="font-style: normal"><b>&gt;.pdf</b></span>
+	and then renamed to <span style="font-style: normal"><b>&lt;</b></span><i><b>original
+	name</b></i><span style="font-style: normal"><b>&gt;.delete</b></span><span style="font-style: normal">
+	to avoid a file in use prompt during the upload cycle.  The copied
+	PDF document will be </span>deleted to the Windows Recycle Bin after
+	being processed.</font></p>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">It
-	is NOT recommended to configure the Windows Recycle Bin to delete
-	files immediately as the Upload process will delete preprocessed PDF
-	documents to the Recycle Bin.</font></p>
+	is NOT recommended to configure the Windows Recycle Bin to <b>remove</b><b>
+	files immediately </b><b>when deleted</b>.</font></p>
 	<li><p align="left" style="font-weight: normal"><font face="Segoe UI, sans-serif">Before
 	restoring preprocessed PDF documents from the Recycle Bin, make sure
 	to close PDFKeeper. After restoring, move the file(s) out of the

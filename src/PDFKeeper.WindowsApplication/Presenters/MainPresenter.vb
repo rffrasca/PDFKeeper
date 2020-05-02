@@ -674,7 +674,7 @@ Public Class MainPresenter
                 Catch ex As InvalidOperationException
                 Finally
                     view.UploadRunningVisible = False
-                    If uploadDirInfo.ContainsFiles Then
+                    If uploadDirInfo.ContainsFiles("*.delete") Then
                         view.UploadFolderErrorVisible = True
                     Else
                         view.UploadFolderErrorVisible = False

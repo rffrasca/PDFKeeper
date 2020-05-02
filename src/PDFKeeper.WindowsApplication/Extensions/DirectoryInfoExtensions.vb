@@ -38,6 +38,33 @@ Module DirectoryInfoExtensions
     End Function
 
     ''' <summary>
+    ''' Returns True or False if the DirectoryInfo object, including
+    ''' sub-folders and excluding the specified search pattern contains files.
+    ''' </summary>
+    ''' <param name="dirInfoParam"></param>
+    ''' <param name="excludeSearchPattern">Search string to exclude.</param>
+    ''' <returns></returns>
+    <Extension()>
+    Public Function ContainsFiles(ByVal dirInfoParam As DirectoryInfo,
+                                  ByVal excludeSearchPattern As String) As Boolean
+        If dirInfoParam Is Nothing Then
+            Throw New ArgumentNullException("dirInfoParam")
+        End If
+        If excludeSearchPattern Is Nothing Then
+            Throw New ArgumentNullException("searchPattern")
+        End If
+        If dirInfoParam.GetFiles("*",
+                                 SearchOption.AllDirectories).Count -
+                                 dirInfoParam.GetFiles(
+                                 excludeSearchPattern,
+                                 SearchOption.AllDirectories).Count > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    ''' <summary>
     ''' Opens the DirectoryInfo object using the operating system.
     ''' </summary>
     ''' <param name="dirInfoParam"></param>
