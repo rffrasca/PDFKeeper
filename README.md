@@ -39,11 +39,6 @@ Please send all feedback, comments, suggestions, and testimonials [here](mailto:
 
 Follow PDFKeeper on [Twitter](https://twitter.com/PDFKeeper).
 
-### Donate
-Please support PDFKeeper by becoming a [Patron!](https://www.patreon.com/PDFKeeper)
-
-In return for your recurring donation, you will gain access to content such as development plans, status updates, polls, and pre-release builds.
-
 ### License
 PDFKeeper is [OSI Certified Open Source Software](https://opensource.org/licenses), distributed under the terms of the [GNU General Public License v3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
 
