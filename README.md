@@ -40,8 +40,8 @@ Please send all feedback, comments, suggestions, and testimonials [here](mailto:
 Follow PDFKeeper on [Twitter](https://twitter.com/PDFKeeper).
 
 ### License
-Developed as [OSI Certified Open Source Software](https://opensource.org/licenses), PDFKeeper is licensed under the terms of the [GNU General Public License v3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
-
-![Logo](https://opensource.org/trademarks/osi-certified/web/osi-certified-120x100.png)
+Licensed under the terms of the [GNU General Public License (GPL) Version 3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING), PDFKeeper is [OSI Certified Open Source Software](https://opensource.org/licenses).
 
 ![Logo](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)
+
+![Logo](https://opensource.org/trademarks/osi-certified/web/osi-certified-120x100.png)
