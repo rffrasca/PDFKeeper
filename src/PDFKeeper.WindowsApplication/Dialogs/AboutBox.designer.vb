@@ -59,11 +59,12 @@ Partial Class AboutBox
         Me.LabelCompanyName = New System.Windows.Forms.Label()
         Me.TextBoxDescription = New System.Windows.Forms.TextBox()
         Me.OKButton = New System.Windows.Forms.Button()
+        Me.BecomePatronLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.LicenseLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.ThirdPartyLinkLabel = New System.Windows.Forms.LinkLabel()
-        Me.TableLayoutPanel.SuspendLayout
-        CType(Me.LogoPictureBox,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.TableLayoutPanel.SuspendLayout()
+        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'TableLayoutPanel
         '
@@ -73,8 +74,9 @@ Partial Class AboutBox
         Me.TableLayoutPanel.Controls.Add(Me.LabelVersion, 1, 1)
         Me.TableLayoutPanel.Controls.Add(Me.LabelCopyright, 1, 2)
         Me.TableLayoutPanel.Controls.Add(Me.LabelCompanyName, 1, 3)
-        Me.TableLayoutPanel.Controls.Add(Me.TextBoxDescription, 1, 4)
-        Me.TableLayoutPanel.Controls.Add(Me.OKButton, 1, 5)
+        Me.TableLayoutPanel.Controls.Add(Me.TextBoxDescription, 1, 5)
+        Me.TableLayoutPanel.Controls.Add(Me.OKButton, 1, 6)
+        Me.TableLayoutPanel.Controls.Add(Me.BecomePatronLinkLabel, 1, 4)
         Me.TableLayoutPanel.Name = "TableLayoutPanel"
         '
         'LogoPictureBox
@@ -82,8 +84,8 @@ Partial Class AboutBox
         Me.LogoPictureBox.BackColor = System.Drawing.SystemColors.ActiveBorder
         resources.ApplyResources(Me.LogoPictureBox, "LogoPictureBox")
         Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.TableLayoutPanel.SetRowSpan(Me.LogoPictureBox, 6)
-        Me.LogoPictureBox.TabStop = false
+        Me.TableLayoutPanel.SetRowSpan(Me.LogoPictureBox, 7)
+        Me.LogoPictureBox.TabStop = False
         '
         'LabelProductName
         '
@@ -109,8 +111,8 @@ Partial Class AboutBox
         '
         resources.ApplyResources(Me.TextBoxDescription, "TextBoxDescription")
         Me.TextBoxDescription.Name = "TextBoxDescription"
-        Me.TextBoxDescription.ReadOnly = true
-        Me.TextBoxDescription.TabStop = false
+        Me.TextBoxDescription.ReadOnly = True
+        Me.TextBoxDescription.TabStop = False
         '
         'OKButton
         '
@@ -118,17 +120,23 @@ Partial Class AboutBox
         Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.OKButton.Name = "OKButton"
         '
+        'BecomePatronLinkLabel
+        '
+        resources.ApplyResources(Me.BecomePatronLinkLabel, "BecomePatronLinkLabel")
+        Me.BecomePatronLinkLabel.Name = "BecomePatronLinkLabel"
+        Me.BecomePatronLinkLabel.TabStop = True
+        '
         'LicenseLinkLabel
         '
         resources.ApplyResources(Me.LicenseLinkLabel, "LicenseLinkLabel")
         Me.LicenseLinkLabel.Name = "LicenseLinkLabel"
-        Me.LicenseLinkLabel.TabStop = true
+        Me.LicenseLinkLabel.TabStop = True
         '
         'ThirdPartyLinkLabel
         '
         resources.ApplyResources(Me.ThirdPartyLinkLabel, "ThirdPartyLinkLabel")
         Me.ThirdPartyLinkLabel.Name = "ThirdPartyLinkLabel"
-        Me.ThirdPartyLinkLabel.TabStop = true
+        Me.ThirdPartyLinkLabel.TabStop = True
         '
         'AboutBox
         '
@@ -152,5 +160,5 @@ Partial Class AboutBox
 End Sub
     Friend WithEvents LicenseLinkLabel As System.Windows.Forms.LinkLabel
     Friend WithEvents ThirdPartyLinkLabel As System.Windows.Forms.LinkLabel
-
+    Friend WithEvents BecomePatronLinkLabel As LinkLabel
 End Class
