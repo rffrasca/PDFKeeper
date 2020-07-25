@@ -334,13 +334,13 @@
     <value>Ctrl+Z</value>
   </data>
   <data name="EditUndoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="EditUndoToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Undo</value>
   </data>
   <data name="ToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="EditCutToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -356,7 +356,7 @@
     <value>Ctrl+X</value>
   </data>
   <data name="EditCutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="EditCutToolStripMenuItem.Text" xml:space="preserve">
     <value>Cu&amp;t</value>
@@ -375,7 +375,7 @@
     <value>Ctrl+C</value>
   </data>
   <data name="EditCopyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="EditCopyToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Copy</value>
@@ -394,25 +394,25 @@
     <value>Ctrl+V</value>
   </data>
   <data name="EditPasteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="EditPasteToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Paste</value>
   </data>
   <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="EditSelectAllToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+A</value>
   </data>
   <data name="EditSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="EditSelectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>Select &amp;All</value>
   </data>
   <data name="ToolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="EditRestoreToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -433,13 +433,13 @@
     <value>Ctrl+R</value>
   </data>
   <data name="EditRestoreToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="EditRestoreToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Restore</value>
   </data>
   <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="EditDateTimeToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -457,16 +457,16 @@
     <value>Ctrl+T</value>
   </data>
   <data name="EditDateTimeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="EditDateTimeToolStripMenuItem.Text" xml:space="preserve">
     <value>Date/&amp;Time</value>
   </data>
   <data name="ToolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="EditFlagDocumentToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>169, 22</value>
   </data>
   <data name="EditFlagDocumentToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Flag Document</value>
@@ -476,32 +476,6 @@
   </data>
   <data name="EditToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Edit</value>
-  </data>
-  <data name="ViewToggleRightPanelToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGzSURBVDhPpY7ZS1tBGMW/P00qCq2gWESp4tJICZJW
-        2gaXh+ASY2okbWOrxIqXiyGJXjWGuEatGrVuCJXSVlyqiTe+NMa3vMrpnem8zQ0I/uDMORzm+2YIwINE
-        Fs+qLbR1nRtaSaMvegL31DG6tV/wRY5y9a64pq7puffzV+ifvYIj8ANt6ne4Age5yvaojS9Q16/vtP1b
-        TOz91/huFqGdLILfsvDHdYxt30DdvIGSyGB0I4OR9QyG1/7CPrh9xxcMLacxaOhzPI2BJR2+RR0fFnR4
-        59irKXhiKbyLJtE7k4Rz+hJdUxfo0C5g9SaMeWPBJ2MgH+5IUiSZ565VZkQf51O8MMM5+UckmZrORWZE
-        3tglL8zoCJ+JJFPZFmNG5I6c88KM9rFjkWSevo4wI3Jqp7www678FEmm1DbBjMgR/M0LM5qHj0SSeWIN
-        MiNqUfJfsvr2RZIpalCYEb3xH/LCjEbPjkgyhbVfmBHZBvK/UufaFEmmoNrPjKj0VViz9CVQ3/MVZS/D
-        KGkK4PELFcUWxfjmqF7lWEZF6wLK386isG4Ej2r8KHjGpfEF7HiITMv7C/QPx0Fblrtb9ewAAAAASUVO
-        RK5CYII=
-</value>
-  </data>
-  <data name="ViewToggleRightPanelToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>F12</value>
-  </data>
-  <data name="ViewToggleRightPanelToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>275, 22</value>
-  </data>
-  <data name="ViewToggleRightPanelToolStripMenuItem.Text" xml:space="preserve">
-    <value>Toggle Right &amp;Panel</value>
-  </data>
-  <data name="ToolStripSeparator23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 6</value>
   </data>
   <data name="ViewRefreshToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -600,7 +574,7 @@
     <value>Manage &amp;Upload Folder Configurations...</value>
   </data>
   <data name="ToolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
+    <value>46, 20</value>
   </data>
   <data name="ToolsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Tools</value>
@@ -659,9 +633,9 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
-  <metadata name="SearchStringErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="SearchTextErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>349, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -670,63 +644,11 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>48</value>
   </metadata>
-  <data name="SearchButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="SearchButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="SearchButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQfAHaXtLzd/MXi/dXo+IivyNXb5FZtjbiCVu31/Yt3aE1bc+Xt9fX5/PH1+mdLM4m7
-        7J+Pg+vx+Oby/Vs7Iq7T5UNMXfv9/rF3RprA1qjL3oFrW3hfS7HY/LDR4////////yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIsgA9CBxIcOCHgx4GUOiQAQMGAgQASARgASGFAQsiZNS4
-        oOMDAx4+eOiwQIBJkwFSInjwUWAGBidPqkTQAKQHDDBjogzAoYECgThjQkiQQEOCnj89EGhwEgIEDxYQ
-        GPUpcOnJBAwsMJAwwIGHpAAQpAyAlcHWrh4qCAQQYeyGCAi4olXrge3YBBvkHpiQdi2DlBw4aHBAeMIF
-        vgINFGjAsaBhxAAMSFZAWUGFyx4MF9y8OSAAOw==
-</value>
-  </data>
-  <data name="SearchButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="SearchButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="SearchButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>365, 43</value>
-  </data>
-  <data name="SearchButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 23</value>
-  </data>
-  <data name="SearchButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="SearchButton.Text" xml:space="preserve">
-    <value>&amp;Search</value>
-  </data>
-  <data name="&gt;&gt;SearchButton.Name" xml:space="preserve">
-    <value>SearchButton</value>
-  </data>
-  <data name="&gt;&gt;SearchButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchButton.Parent" xml:space="preserve">
-    <value>SearchByStringTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>984, 662</value>
-  </data>
-  <data name="SplitContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="SplitContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 49</value>
   </data>
   <metadata name="SelectionColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -738,13 +660,13 @@
     <value>Fill</value>
   </data>
   <data name="SearchResultsDataGridView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 106</value>
+    <value>0, 0</value>
   </data>
   <data name="SearchResultsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 483</value>
+    <value>984, 286</value>
   </data>
   <data name="SearchResultsDataGridView.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;SearchResultsDataGridView.Name" xml:space="preserve">
     <value>SearchResultsDataGridView</value>
@@ -753,372 +675,144 @@
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;SearchResultsDataGridView.Parent" xml:space="preserve">
-    <value>SplitContainer.Panel1</value>
+    <value>SearchResultsPanel</value>
   </data>
   <data name="&gt;&gt;SearchResultsDataGridView.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="SearchStringComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="SearchResultsPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="SearchStringComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 14</value>
+  <data name="SearchResultsPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 354</value>
   </data>
-  <data name="SearchStringComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 23</value>
+  <data name="SearchResultsPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>984, 286</value>
   </data>
-  <data name="SearchStringComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;SearchStringComboBox.Name" xml:space="preserve">
-    <value>SearchStringComboBox</value>
-  </data>
-  <data name="&gt;&gt;SearchStringComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchStringComboBox.Parent" xml:space="preserve">
-    <value>SearchByStringTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchStringComboBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="SearchByStringTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="SearchByStringTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 81</value>
-  </data>
-  <data name="SearchByStringTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="SearchByStringTabPage.Text" xml:space="preserve">
-    <value>Search by String</value>
-  </data>
-  <data name="&gt;&gt;SearchByStringTabPage.Name" xml:space="preserve">
-    <value>SearchByStringTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchByStringTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchByStringTabPage.Parent" xml:space="preserve">
-    <value>SearchOptionsTabControl</value>
-  </data>
-  <data name="&gt;&gt;SearchByStringTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="AuthorComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="AuthorComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 14</value>
-  </data>
-  <data name="AuthorComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 23</value>
-  </data>
-  <data name="AuthorComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;AuthorComboBox.Name" xml:space="preserve">
-    <value>AuthorComboBox</value>
-  </data>
-  <data name="&gt;&gt;AuthorComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AuthorComboBox.Parent" xml:space="preserve">
-    <value>SearchByAuthorTabPage</value>
-  </data>
-  <data name="&gt;&gt;AuthorComboBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="SearchByAuthorTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="SearchByAuthorTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="SearchByAuthorTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 81</value>
-  </data>
-  <data name="SearchByAuthorTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="SearchByAuthorTabPage.Text" xml:space="preserve">
-    <value>Search by Author</value>
-  </data>
-  <data name="&gt;&gt;SearchByAuthorTabPage.Name" xml:space="preserve">
-    <value>SearchByAuthorTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchByAuthorTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchByAuthorTabPage.Parent" xml:space="preserve">
-    <value>SearchOptionsTabControl</value>
-  </data>
-  <data name="&gt;&gt;SearchByAuthorTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="SubjectComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="SubjectComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 14</value>
-  </data>
-  <data name="SubjectComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 23</value>
-  </data>
-  <data name="SubjectComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;SubjectComboBox.Name" xml:space="preserve">
-    <value>SubjectComboBox</value>
-  </data>
-  <data name="&gt;&gt;SubjectComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SubjectComboBox.Parent" xml:space="preserve">
-    <value>SearchBySubjectTabPage</value>
-  </data>
-  <data name="&gt;&gt;SubjectComboBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="SearchBySubjectTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="SearchBySubjectTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="SearchBySubjectTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 81</value>
-  </data>
-  <data name="SearchBySubjectTabPage.TabIndex" type="System.Int32, mscorlib">
+  <data name="SearchResultsPanel.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="SearchBySubjectTabPage.Text" xml:space="preserve">
-    <value>Search by Subject</value>
+  <data name="&gt;&gt;SearchResultsPanel.Name" xml:space="preserve">
+    <value>SearchResultsPanel</value>
   </data>
-  <data name="&gt;&gt;SearchBySubjectTabPage.Name" xml:space="preserve">
-    <value>SearchBySubjectTabPage</value>
+  <data name="&gt;&gt;SearchResultsPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;SearchBySubjectTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;SearchResultsPanel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;SearchBySubjectTabPage.Parent" xml:space="preserve">
-    <value>SearchOptionsTabControl</value>
-  </data>
-  <data name="&gt;&gt;SearchBySubjectTabPage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="SubjectPairedComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="SubjectPairedComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 43</value>
-  </data>
-  <data name="SubjectPairedComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 23</value>
-  </data>
-  <data name="SubjectPairedComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;SubjectPairedComboBox.Name" xml:space="preserve">
-    <value>SubjectPairedComboBox</value>
-  </data>
-  <data name="&gt;&gt;SubjectPairedComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SubjectPairedComboBox.Parent" xml:space="preserve">
-    <value>SearchByAuthorAndSubjectTabPage</value>
-  </data>
-  <data name="&gt;&gt;SubjectPairedComboBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;SearchResultsPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="AuthorPairedComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="SplitContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="AuthorPairedComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 14</value>
+  <data name="SplitContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 49</value>
   </data>
-  <data name="AuthorPairedComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 23</value>
-  </data>
-  <data name="AuthorPairedComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;AuthorPairedComboBox.Name" xml:space="preserve">
-    <value>AuthorPairedComboBox</value>
-  </data>
-  <data name="&gt;&gt;AuthorPairedComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AuthorPairedComboBox.Parent" xml:space="preserve">
-    <value>SearchByAuthorAndSubjectTabPage</value>
-  </data>
-  <data name="&gt;&gt;AuthorPairedComboBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="SearchByAuthorAndSubjectTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="SearchByAuthorAndSubjectTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="SearchByAuthorAndSubjectTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 81</value>
-  </data>
-  <data name="SearchByAuthorAndSubjectTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="SearchByAuthorAndSubjectTabPage.Text" xml:space="preserve">
-    <value>Search by Author and Subject</value>
-  </data>
-  <data name="&gt;&gt;SearchByAuthorAndSubjectTabPage.Name" xml:space="preserve">
-    <value>SearchByAuthorAndSubjectTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchByAuthorAndSubjectTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchByAuthorAndSubjectTabPage.Parent" xml:space="preserve">
-    <value>SearchOptionsTabControl</value>
-  </data>
-  <data name="&gt;&gt;SearchByAuthorAndSubjectTabPage.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="CategoryComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="CategoryComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 14</value>
-  </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>845, 17</value>
-  </metadata>
-  <data name="HelpProvider.HelpNamespace" xml:space="preserve">
-    <value />
-  </data>
-  <data name="CategoryComboBox.ShowHelp" type="System.Boolean, mscorlib">
+  <data name="DateLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="CategoryComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 23</value>
+  <data name="DateLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 273</value>
   </data>
-  <data name="CategoryComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="DateLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 15</value>
   </data>
-  <data name="&gt;&gt;CategoryComboBox.Name" xml:space="preserve">
-    <value>CategoryComboBox</value>
+  <data name="DateLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
-  <data name="&gt;&gt;CategoryComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="DateLabel.Text" xml:space="preserve">
+    <value>Date:</value>
   </data>
-  <data name="&gt;&gt;CategoryComboBox.Parent" xml:space="preserve">
-    <value>SearchByCategoryTabPage</value>
+  <data name="&gt;&gt;DateLabel.Name" xml:space="preserve">
+    <value>DateLabel</value>
   </data>
-  <data name="&gt;&gt;CategoryComboBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;DateLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DateLabel.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;DateLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="SearchByCategoryTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="SearchByCategoryTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 81</value>
-  </data>
-  <data name="SearchByCategoryTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="SearchByCategoryTabPage.Text" xml:space="preserve">
-    <value>Search by Category</value>
-  </data>
-  <data name="&gt;&gt;SearchByCategoryTabPage.Name" xml:space="preserve">
-    <value>SearchByCategoryTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchByCategoryTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchByCategoryTabPage.Parent" xml:space="preserve">
-    <value>SearchOptionsTabControl</value>
-  </data>
-  <data name="&gt;&gt;SearchByCategoryTabPage.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="SearchDateTimePicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="SearchDateTimePicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 14</value>
-  </data>
-  <data name="SearchDateTimePicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 23</value>
-  </data>
-  <data name="SearchDateTimePicker.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;SearchDateTimePicker.Name" xml:space="preserve">
-    <value>SearchDateTimePicker</value>
-  </data>
-  <data name="&gt;&gt;SearchDateTimePicker.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchDateTimePicker.Parent" xml:space="preserve">
-    <value>SearchByDateAddedTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchDateTimePicker.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="SearchByDateAddedTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="SearchByDateAddedTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 81</value>
-  </data>
-  <data name="SearchByDateAddedTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="SearchByDateAddedTabPage.Text" xml:space="preserve">
-    <value>Search by Date Added</value>
-  </data>
-  <data name="&gt;&gt;SearchByDateAddedTabPage.Name" xml:space="preserve">
-    <value>SearchByDateAddedTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchByDateAddedTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchByDateAddedTabPage.Parent" xml:space="preserve">
-    <value>SearchOptionsTabControl</value>
-  </data>
-  <data name="&gt;&gt;SearchByDateAddedTabPage.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="FlaggedDocumentsOnlyCheckBox.AutoSize" type="System.Boolean, mscorlib">
+  <data name="TextLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="FlaggedDocumentsOnlyCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 43</value>
+  <data name="TextLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 110</value>
   </data>
-  <data name="FlaggedDocumentsOnlyCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 19</value>
+  <data name="TextLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 15</value>
   </data>
-  <data name="FlaggedDocumentsOnlyCheckBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="TextLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="TextLabel.Text" xml:space="preserve">
+    <value>Text:</value>
+  </data>
+  <data name="&gt;&gt;TextLabel.Name" xml:space="preserve">
+    <value>TextLabel</value>
+  </data>
+  <data name="&gt;&gt;TextLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TextLabel.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;TextLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="FlaggedDocumentsOnlyCheckBox.Text" xml:space="preserve">
-    <value>Flagged documents only</value>
+  <data name="SearchFunctionsListBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="&gt;&gt;FlaggedDocumentsOnlyCheckBox.Name" xml:space="preserve">
-    <value>FlaggedDocumentsOnlyCheckBox</value>
+  <data name="SearchFunctionsListBox.HorizontalScrollbar" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;FlaggedDocumentsOnlyCheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="SearchFunctionsListBox.ItemHeight" type="System.Int32, mscorlib">
+    <value>15</value>
   </data>
-  <data name="&gt;&gt;FlaggedDocumentsOnlyCheckBox.Parent" xml:space="preserve">
-    <value>AllFlaggedDocumentsTabPage</value>
+  <data name="SearchFunctionsListBox.Items" xml:space="preserve">
+    <value>Documents by Text</value>
   </data>
-  <data name="&gt;&gt;FlaggedDocumentsOnlyCheckBox.ZOrder" xml:space="preserve">
+  <data name="SearchFunctionsListBox.Items1" xml:space="preserve">
+    <value>Documents by Selections</value>
+  </data>
+  <data name="SearchFunctionsListBox.Items2" xml:space="preserve">
+    <value>Documents by Date Added</value>
+  </data>
+  <data name="SearchFunctionsListBox.Items3" xml:space="preserve">
+    <value>Flagged Documents</value>
+  </data>
+  <data name="SearchFunctionsListBox.Items4" xml:space="preserve">
+    <value>All Documents</value>
+  </data>
+  <data name="SearchFunctionsListBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="SearchFunctionsListBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>484, 79</value>
+  </data>
+  <data name="SearchFunctionsListBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="QueryDocumentsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="&gt;&gt;SearchFunctionsListBox.Name" xml:space="preserve">
+    <value>SearchFunctionsListBox</value>
   </data>
-  <data name="QueryDocumentsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="&gt;&gt;SearchFunctionsListBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SearchFunctionsListBox.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;SearchFunctionsListBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="SearchBySelectionsButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SearchBySelectionsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKWSURBVDhPpZJdSJNRGMdfEfKmqC6KwogMohIqhb4I
@@ -1135,149 +829,376 @@
         CXZuqVS6h4KFEonkXEtLSw5NOXq0PhsH6pi8P/fA/Aa6Cvl7FTi5vgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="QueryDocumentsButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="SearchBySelectionsButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="QueryDocumentsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="SearchBySelectionsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="QueryDocumentsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>335, 43</value>
+  <data name="SearchBySelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>344, 235</value>
   </data>
-  <data name="QueryDocumentsButton.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
+  <data name="SearchBySelectionsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 23</value>
   </data>
-  <data name="QueryDocumentsButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="SearchBySelectionsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="QueryDocumentsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 23</value>
+  <data name="SearchBySelectionsButton.Text" xml:space="preserve">
+    <value>Search b&amp;y Selections</value>
   </data>
-  <data name="QueryDocumentsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="QueryDocumentsButton.Text" xml:space="preserve">
-    <value>&amp;Query Documents</value>
-  </data>
-  <data name="QueryDocumentsButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="SearchBySelectionsButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
-  <data name="&gt;&gt;QueryDocumentsButton.Name" xml:space="preserve">
-    <value>QueryDocumentsButton</value>
+  <data name="&gt;&gt;SearchBySelectionsButton.Name" xml:space="preserve">
+    <value>SearchBySelectionsButton</value>
   </data>
-  <data name="&gt;&gt;QueryDocumentsButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;SearchBySelectionsButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;QueryDocumentsButton.Parent" xml:space="preserve">
-    <value>AllFlaggedDocumentsTabPage</value>
+  <data name="&gt;&gt;SearchBySelectionsButton.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
   </data>
-  <data name="&gt;&gt;QueryDocumentsButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;SearchBySelectionsButton.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="DBDocumentRecordsCountLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="SearchByTextButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
-  <data name="DBDocumentRecordsCountLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 14</value>
+  <data name="SearchByTextButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="DBDocumentRecordsCountLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 15</value>
+  <data name="SearchByTextButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKWSURBVDhPpZJdSJNRGMdfEfKmqC6KwogMohIqhb4I
+        vSpGeBMEElQUGakk6I03YpE5olJLB/kxRLeX9WJr7sN9Oecg2+jDZNOBDmFsOMUpZ6lDNzX38e+8L7gc
+        C7rowOHwwPn9zvM852EA/NdOC2w2W87w8HCp1WrVWCwWz+DgYMxsNv8yGo1Og8GgHBgYEGm12uydzE44
+        n8LuiYkJLC4uYm1tDYlEAvF4HEtLS5iZmYHdbodarXb09/fnZgjoq58CgQCSySQN/75isRjGx8ehVCpZ
+        GqYLhoaGyObm5j8FhBD09fURGqYLaL1kY2MDCwsLWFlZwfr6ugBsbW0hHA7D7/fD4XAgGAyC47hMgclk
+        IjwUCoWEyx6PB1NTU3C73QJIe4SRkRHMz89DoVBkCminSTQaxfLysvDK7OyscPJ9cTqdqH5fhEeyQvgD
+        Psjl8kyBXq8nkUhEqJGHfD4f5ubmhGxGR0dRIb+I54bbuNV1Ct290lCGQKfTEf7r+B7wcA1XjGrFZVSy
+        51HWU4An2lJ8HJOgVnUDotZDKG7evztNoNFoyOrqqpD69PQ0qhSXoHN1QO18J4AfxtrQZqsF+60JlZwI
+        F17mJM6Is/amBHQ4yHa3Jycn8ZDWy8NvrTV4banCC3M5GgwP0GiqQJddjLvyIpx4xsRTAjochIf5Mrxe
+        L+50n4byRxu472/Afm1C75dXVPIYnfZGlHPXkfeUIbl1TEFKQIejhP5vxOVyCaN7s/M4SiRHcK31IIqa
+        9+Ge7Ao6PjegTCGicPbPw3VMPs+lBPym/5vHsmyPTCYL0xMqlYqfOrS3t+OseFfyPnsVx+qzghQ+uc2k
+        CXZuqVS6h4KFEonkXEtLSw5NOXq0PhsH6pi8P/fA/Aa6Cvl7FTi5vgAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="DBDocumentRecordsCountLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="SearchByTextButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
-  <data name="DBDocumentRecordsCountLabel.Text" xml:space="preserve">
-    <value>NULL</value>
+  <data name="SearchByTextButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;DBDocumentRecordsCountLabel.Name" xml:space="preserve">
-    <value>DBDocumentRecordsCountLabel</value>
+  <data name="SearchByTextButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>369, 110</value>
   </data>
-  <data name="&gt;&gt;DBDocumentRecordsCountLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="SearchByTextButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 23</value>
   </data>
-  <data name="&gt;&gt;DBDocumentRecordsCountLabel.Parent" xml:space="preserve">
-    <value>AllFlaggedDocumentsTabPage</value>
-  </data>
-  <data name="&gt;&gt;DBDocumentRecordsCountLabel.ZOrder" xml:space="preserve">
+  <data name="SearchByTextButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="AllFlaggedDocumentsTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
+  <data name="SearchByTextButton.Text" xml:space="preserve">
+    <value>Search &amp;by Text</value>
   </data>
-  <data name="AllFlaggedDocumentsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="SearchByTextButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
   </data>
-  <data name="AllFlaggedDocumentsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 81</value>
+  <data name="&gt;&gt;SearchByTextButton.Name" xml:space="preserve">
+    <value>SearchByTextButton</value>
   </data>
-  <data name="AllFlaggedDocumentsTabPage.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;SearchByTextButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SearchByTextButton.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;SearchByTextButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="AllFlaggedDocumentsTabPage.Text" xml:space="preserve">
-    <value>All/Flagged Documents</value>
+  <data name="SearchDateTimePicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="&gt;&gt;AllFlaggedDocumentsTabPage.Name" xml:space="preserve">
-    <value>AllFlaggedDocumentsTabPage</value>
+  <data name="SearchDateTimePicker.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;AllFlaggedDocumentsTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="SearchDateTimePicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 273</value>
   </data>
-  <data name="&gt;&gt;AllFlaggedDocumentsTabPage.Parent" xml:space="preserve">
-    <value>SearchOptionsTabControl</value>
+  <data name="SearchDateTimePicker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>404, 23</value>
   </data>
-  <data name="&gt;&gt;AllFlaggedDocumentsTabPage.ZOrder" xml:space="preserve">
+  <data name="SearchDateTimePicker.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;SearchDateTimePicker.Name" xml:space="preserve">
+    <value>SearchDateTimePicker</value>
+  </data>
+  <data name="&gt;&gt;SearchDateTimePicker.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SearchDateTimePicker.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;SearchDateTimePicker.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="ClearSelectionsButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ClearSelectionsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ClearSelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 235</value>
+  </data>
+  <data name="ClearSelectionsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 23</value>
+  </data>
+  <data name="ClearSelectionsButton.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="SearchOptionsTabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="ClearSelectionsButton.Text" xml:space="preserve">
+    <value>&amp;Clear Selections</value>
   </data>
-  <data name="SearchOptionsTabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;ClearSelectionsButton.Name" xml:space="preserve">
+    <value>ClearSelectionsButton</value>
   </data>
-  <data name="SearchOptionsTabControl.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
+  <data name="&gt;&gt;ClearSelectionsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="SearchOptionsTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 109</value>
+  <data name="&gt;&gt;ClearSelectionsButton.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
   </data>
-  <data name="SearchOptionsTabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;ClearSelectionsButton.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;SearchOptionsTabControl.Name" xml:space="preserve">
-    <value>SearchOptionsTabControl</value>
+  <data name="SubjectGroupComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="&gt;&gt;SearchOptionsTabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="SubjectGroupComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;SearchOptionsTabControl.Parent" xml:space="preserve">
-    <value>SearchPanel</value>
+  <data name="SubjectGroupComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 177</value>
   </data>
-  <data name="&gt;&gt;SearchOptionsTabControl.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="SubjectGroupComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>404, 23</value>
   </data>
-  <data name="SearchPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="SubjectGroupComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="SearchPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;SubjectGroupComboBox.Name" xml:space="preserve">
+    <value>SubjectGroupComboBox</value>
   </data>
-  <data name="SearchPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 106</value>
+  <data name="&gt;&gt;SubjectGroupComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="SearchPanel.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;SubjectGroupComboBox.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;SubjectGroupComboBox.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="CategoryGroupComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="CategoryGroupComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="CategoryGroupComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 206</value>
+  </data>
+  <data name="CategoryGroupComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>404, 23</value>
+  </data>
+  <data name="CategoryGroupComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;CategoryGroupComboBox.Name" xml:space="preserve">
+    <value>CategoryGroupComboBox</value>
+  </data>
+  <data name="&gt;&gt;CategoryGroupComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CategoryGroupComboBox.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;CategoryGroupComboBox.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="CategoryLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CategoryLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CategoryLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 206</value>
+  </data>
+  <data name="CategoryLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 15</value>
+  </data>
+  <data name="CategoryLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="CategoryLabel.Text" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="&gt;&gt;CategoryLabel.Name" xml:space="preserve">
+    <value>CategoryLabel</value>
+  </data>
+  <data name="&gt;&gt;CategoryLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CategoryLabel.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;CategoryLabel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="SubjectLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SubjectLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SubjectLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 179</value>
+  </data>
+  <data name="SubjectLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="SubjectLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="SubjectLabel.Text" xml:space="preserve">
+    <value>Subject:</value>
+  </data>
+  <data name="&gt;&gt;SubjectLabel.Name" xml:space="preserve">
+    <value>SubjectLabel</value>
+  </data>
+  <data name="&gt;&gt;SubjectLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SubjectLabel.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;SubjectLabel.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="AuthorGroupComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="AuthorGroupComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="AuthorGroupComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 148</value>
+  </data>
+  <data name="AuthorGroupComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>404, 23</value>
+  </data>
+  <data name="AuthorGroupComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;AuthorGroupComboBox.Name" xml:space="preserve">
+    <value>AuthorGroupComboBox</value>
+  </data>
+  <data name="&gt;&gt;AuthorGroupComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AuthorGroupComboBox.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;AuthorGroupComboBox.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="AuthorLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AuthorLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AuthorLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 148</value>
+  </data>
+  <data name="AuthorLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 15</value>
+  </data>
+  <data name="AuthorLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="AuthorLabel.Text" xml:space="preserve">
+    <value>Author:</value>
+  </data>
+  <data name="&gt;&gt;AuthorLabel.Name" xml:space="preserve">
+    <value>AuthorLabel</value>
+  </data>
+  <data name="&gt;&gt;AuthorLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AuthorLabel.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;AuthorLabel.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="SearchTextComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="SearchTextComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SearchTextComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 110</value>
+  </data>
+  <data name="SearchTextComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>271, 23</value>
+  </data>
+  <data name="SearchTextComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;SearchPanel.Name" xml:space="preserve">
-    <value>SearchPanel</value>
+  <data name="&gt;&gt;SearchTextComboBox.Name" xml:space="preserve">
+    <value>SearchTextComboBox</value>
   </data>
-  <data name="&gt;&gt;SearchPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;SearchTextComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;SearchPanel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SearchTextComboBox.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;SearchTextComboBox.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="SearchGroupBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="SearchGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="SearchGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>490, 303</value>
+  </data>
+  <data name="SearchGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="SearchGroupBox.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="&gt;&gt;SearchGroupBox.Name" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;SearchGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SearchGroupBox.Parent" xml:space="preserve">
     <value>SplitContainer.Panel1</value>
   </data>
-  <data name="&gt;&gt;SearchPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;SearchGroupBox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;SplitContainer.Panel1.Name" xml:space="preserve">
     <value>SplitContainer.Panel1</value>
@@ -1304,10 +1225,10 @@
     <value>Vertical</value>
   </data>
   <data name="NotesTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 555</value>
+    <value>471, 269</value>
   </data>
   <data name="NotesTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;NotesTextBox.Name" xml:space="preserve">
     <value>NotesTextBox</value>
@@ -1328,7 +1249,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="NotesTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>477, 561</value>
+    <value>477, 275</value>
   </data>
   <data name="NotesTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1343,7 +1264,7 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;NotesTabPage.Parent" xml:space="preserve">
-    <value>RightTabControl</value>
+    <value>SelectedDocumentTabControl</value>
   </data>
   <data name="&gt;&gt;NotesTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1361,7 +1282,7 @@
     <value>Vertical</value>
   </data>
   <data name="KeywordsTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 555</value>
+    <value>471, 269</value>
   </data>
   <data name="KeywordsTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1385,7 +1306,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="KeywordsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>477, 561</value>
+    <value>477, 275</value>
   </data>
   <data name="KeywordsTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1400,7 +1321,7 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;KeywordsTabPage.Parent" xml:space="preserve">
-    <value>RightTabControl</value>
+    <value>SelectedDocumentTabControl</value>
   </data>
   <data name="&gt;&gt;KeywordsTabPage.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1415,7 +1336,7 @@
     <value>8, 8</value>
   </data>
   <data name="PreviewPictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 555</value>
+    <value>471, 255</value>
   </data>
   <data name="PreviewPictureBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>AutoSize</value>
@@ -1442,7 +1363,7 @@
     <value>3, 3</value>
   </data>
   <data name="PreviewPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 555</value>
+    <value>471, 269</value>
   </data>
   <data name="PreviewPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1466,7 +1387,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="PreviewTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>477, 561</value>
+    <value>477, 275</value>
   </data>
   <data name="PreviewTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1481,7 +1402,7 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;PreviewTabPage.Parent" xml:space="preserve">
-    <value>RightTabControl</value>
+    <value>SelectedDocumentTabControl</value>
   </data>
   <data name="&gt;&gt;PreviewTabPage.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1499,7 +1420,7 @@
     <value>Both</value>
   </data>
   <data name="TextTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 555</value>
+    <value>471, 269</value>
   </data>
   <data name="TextTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1523,7 +1444,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TextTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>477, 561</value>
+    <value>477, 275</value>
   </data>
   <data name="TextTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1538,36 +1459,36 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TextTabPage.Parent" xml:space="preserve">
-    <value>RightTabControl</value>
+    <value>SelectedDocumentTabControl</value>
   </data>
   <data name="&gt;&gt;TextTabPage.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="RightTabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="SelectedDocumentTabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="RightTabControl.Enabled" type="System.Boolean, mscorlib">
+  <data name="SelectedDocumentTabControl.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="RightTabControl.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="SelectedDocumentTabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="RightTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>485, 589</value>
+  <data name="SelectedDocumentTabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>485, 303</value>
   </data>
-  <data name="RightTabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="SelectedDocumentTabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;RightTabControl.Name" xml:space="preserve">
-    <value>RightTabControl</value>
+  <data name="&gt;&gt;SelectedDocumentTabControl.Name" xml:space="preserve">
+    <value>SelectedDocumentTabControl</value>
   </data>
-  <data name="&gt;&gt;RightTabControl.Type" xml:space="preserve">
+  <data name="&gt;&gt;SelectedDocumentTabControl.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RightTabControl.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SelectedDocumentTabControl.Parent" xml:space="preserve">
     <value>SplitContainer.Panel2</value>
   </data>
-  <data name="&gt;&gt;RightTabControl.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;SelectedDocumentTabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;SplitContainer.Panel2.Name" xml:space="preserve">
@@ -1583,7 +1504,7 @@
     <value>1</value>
   </data>
   <data name="SplitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>984, 591</value>
+    <value>984, 305</value>
   </data>
   <data name="SplitContainer.SplitterDistance" type="System.Int32, mscorlib">
     <value>492</value>
@@ -1604,13 +1525,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SplitContainer.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="StatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>239, 17</value>
   </metadata>
   <data name="TotalRecordsToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 17</value>
+    <value>77, 17</value>
   </data>
   <data name="TotalRecordsToolStripStatusLabel.Text" xml:space="preserve">
     <value>Total records:</value>
@@ -1631,7 +1552,7 @@
     <value>False</value>
   </data>
   <data name="FillerToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>875, 17</value>
+    <value>877, 17</value>
   </data>
   <data name="UploadRunningToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1748,7 +1669,7 @@
     <value>984, 22</value>
   </data>
   <data name="StatusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;StatusStrip.Name" xml:space="preserve">
     <value>StatusStrip</value>
@@ -1760,7 +1681,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;StatusStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="ToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
@@ -2021,28 +1942,6 @@
   <data name="ToolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
-  <data name="ViewToggleRightPanelToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGZSURBVDhPxY3JS0JBAIf9z2yhoIKiaMFsj5AwooWyg1hZ
-        2YKVLfYqekhh5steYWlpm7ZYQVBECy2W+jxldvMav8qZ2+CpQx8MfPyY+Ub2Z2oHverl42DCvBvF0MYj
-        DI4H9Ap3MImBRHWfR5g5CCZGXRGMbEagXbqBxnKF7plAokQjqpMBy6HvS7j4hP2cnJWzOJYDcVhP4+A8
-        EhZPPmA5+gDvj2HBF8P8YQyzB++QT/u+kgGzN4rpnzPliWJiR4JpW8KYW4Jx6/fXMIadYQxuhDCwHoJ+
-        7Q09jlfohFeojH4kA5M/D1JhEEPUWGr790hg3BWmE4t+NUiNRdm9TQJG5xudWHS2Z2ospRonCRjEFzqx
-        dC0+UGMpahFJQC880Ymlnb+lxpKvtpOA1npPJ5bm2WtqLLkqKwl08KkvqUwX1FiyangSaOUu6cRSPxyg
-        xpJZOUcC6onUv1T1H1FjSSvnSCC/ySrUDflR3bePgiYb8hqXkNNgQXYdj/SKOalM60VxpxuFbZvIrJpH
-        hpJDmoKDXGEWkoF/Rib7BmqqpJC0v6YbAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="ViewToggleRightPanelToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="ViewToggleRightPanelToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="ViewToggleRightPanelToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Toggle Right Panel</value>
-  </data>
   <data name="ViewRefreshToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -2154,11 +2053,14 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ToolStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>845, 17</value>
+  </metadata>
   <data name="$this.HelpKeyword" xml:space="preserve">
     <value>Using PDFKeeper.html</value>
   </data>
@@ -2451,18 +2353,6 @@
   <data name="&gt;&gt;ViewToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ViewToggleRightPanelToolStripMenuItem.Name" xml:space="preserve">
-    <value>ViewToggleRightPanelToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;ViewToggleRightPanelToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator23.Name" xml:space="preserve">
-    <value>ToolStripSeparator23</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;ViewRefreshToolStripMenuItem.Name" xml:space="preserve">
     <value>ViewRefreshToolStripMenuItem</value>
   </data>
@@ -2547,17 +2437,17 @@
   <data name="&gt;&gt;HelpAboutToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;SearchStringErrorProvider.Name" xml:space="preserve">
-    <value>SearchStringErrorProvider</value>
+  <data name="&gt;&gt;SearchTextErrorProvider.Name" xml:space="preserve">
+    <value>SearchTextErrorProvider</value>
   </data>
-  <data name="&gt;&gt;SearchStringErrorProvider.Type" xml:space="preserve">
+  <data name="&gt;&gt;SearchTextErrorProvider.Type" xml:space="preserve">
     <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;SelectionColumn.Name" xml:space="preserve">
-    <value>SelectionColumn</value>
+  <data name="&gt;&gt;UploadTimer.Name" xml:space="preserve">
+    <value>UploadTimer</value>
   </data>
-  <data name="&gt;&gt;SelectionColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;UploadTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TotalRecordsToolStripStatusLabel.Name" xml:space="preserve">
     <value>TotalRecordsToolStripStatusLabel</value>
@@ -2685,12 +2575,6 @@
   <data name="&gt;&gt;ToolStripSeparator20.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ViewToggleRightPanelToolStripButton.Name" xml:space="preserve">
-    <value>ViewToggleRightPanelToolStripButton</value>
-  </data>
-  <data name="&gt;&gt;ViewToggleRightPanelToolStripButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;ViewRefreshToolStripButton.Name" xml:space="preserve">
     <value>ViewRefreshToolStripButton</value>
   </data>
@@ -2727,17 +2611,11 @@
   <data name="&gt;&gt;HelpContentsToolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;UploadTimer.Name" xml:space="preserve">
-    <value>UploadTimer</value>
+  <data name="&gt;&gt;SelectionColumn.Name" xml:space="preserve">
+    <value>SelectionColumn</value>
   </data>
-  <data name="&gt;&gt;UploadTimer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;HelpProvider.Name" xml:space="preserve">
-    <value>HelpProvider</value>
-  </data>
-  <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
-    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;SelectionColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AutoUpdateCheckTimer.Name" xml:space="preserve">
     <value>AutoUpdateCheckTimer</value>
@@ -2750,6 +2628,12 @@
   </data>
   <data name="&gt;&gt;FlaggedDocumentsCheckTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HelpProvider.Name" xml:space="preserve">
+    <value>HelpProvider</value>
+  </data>
+  <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
@@ -2764,6 +2648,6 @@
     <value>663, 17</value>
   </metadata>
   <metadata name="FlaggedDocumentsCheckTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>967, 17</value>
+    <value>17, 56</value>
   </metadata>
 </root>

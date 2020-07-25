@@ -29,45 +29,9 @@ Public Class SetCategoryDialog
     End Sub
 
 #Region "Interface Members"
-    Public Property Authors As DataTable Implements ICommonView.Authors
-        Get
-            Return Nothing
-        End Get
-        Set(value As DataTable)
-            Throw New NotImplementedException
-        End Set
-    End Property
-
-    Public Property Author As String Implements ICommonView.Author
-        Get
-            Return Nothing
-        End Get
-        Set(value As String)
-            Throw New NotImplementedException
-        End Set
-    End Property
-
-    Public Property Subjects As DataTable Implements ICommonView.Subjects
-        Get
-            Return Nothing
-        End Get
-        Set(value As DataTable)
-            Throw New NotImplementedException
-        End Set
-    End Property
-
-    Public Property Subject As String Implements ICommonView.Subject
-        Get
-            Return Nothing
-        End Get
-        Set(value As String)
-            Throw New NotImplementedException
-        End Set
-    End Property
-
     Public Property AuthorsPaired As DataTable Implements ICommonView.AuthorsPaired
         Get
-            Return Nothing
+            Throw New NotImplementedException
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException
@@ -76,7 +40,7 @@ Public Class SetCategoryDialog
 
     Public Property AuthorPaired As String Implements ICommonView.AuthorPaired
         Get
-            Return Nothing
+            Throw New NotImplementedException
         End Get
         Set(value As String)
             Throw New NotImplementedException
@@ -85,7 +49,7 @@ Public Class SetCategoryDialog
 
     Public Property SubjectsPaired As DataTable Implements ICommonView.SubjectsPaired
         Get
-            Return Nothing
+            Throw New NotImplementedException
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException
@@ -94,10 +58,46 @@ Public Class SetCategoryDialog
 
     Public Property SubjectPaired As String Implements ICommonView.SubjectPaired
         Get
-            Return Nothing
+            Throw New NotImplementedException
         End Get
         Set(value As String)
             Throw New NotImplementedException
+        End Set
+    End Property
+
+    Public Property AuthorsGroup As DataTable Implements ICommonView.AuthorsGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property AuthorGroup As String Implements ICommonView.AuthorGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property SubjectsGroup As DataTable Implements ICommonView.SubjectsGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property SubjectGroup As String Implements ICommonView.SubjectGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
         End Set
     End Property
 
@@ -124,6 +124,24 @@ Public Class SetCategoryDialog
         Get
             Return Me.ActiveControl.Name
         End Get
+    End Property
+
+    Public Property CategoriesGroup As DataTable Implements ICommonView.CategoriesGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property CategoryGroup As String Implements ICommonView.CategoryGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
+        End Set
     End Property
 
     Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor

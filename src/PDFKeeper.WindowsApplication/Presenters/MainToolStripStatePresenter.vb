@@ -48,7 +48,6 @@ Public Class MainToolStripStatePresenter
         shortNames.SetItem("EditRestore", False)
         shortNames.SetItem("EditDateTime", False)
         shortNames.SetItem("EditFlagDocument", False)
-        shortNames.SetItem("ViewToggleRightPanel", False)
         shortNames.SetItem("ViewRefresh", False)
         shortNames.SetItem("ViewSetPreviewImageResolution", False)
     End Sub
@@ -68,8 +67,7 @@ Public Class MainToolStripStatePresenter
         ApplyState()
     End Sub
 
-    Public Sub SetSearchResultsRowCountChangedState(ByVal rowCount As Integer, _
-                                                    ByVal rightPanelCollapsed As Boolean)
+    Public Sub SetSearchResultsRowCountChangedState(ByVal rowCount As Integer)
         Dim itemState As Boolean = False
         If rowCount > 0 Then
             itemState = True
@@ -77,7 +75,6 @@ Public Class MainToolStripStatePresenter
         shortNames.SetItem("FileSelect", itemState)
         shortNames.SetItem("FileSelectAll", itemState)
         shortNames.SetItem("FileSelectNone", itemState)
-        shortNames.SetItem("ViewToggleRightPanel", rightPanelCollapsed)
         ApplyState()
     End Sub
 

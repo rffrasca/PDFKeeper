@@ -19,16 +19,19 @@
 '******************************************************************************
 Public Interface IMainView
     Inherits ICommonView
-    ReadOnly Property SelectedSearchOption As Integer
-    Property SearchStringHistory As Object
-    Property SearchString As String
-    Property SearchStringErrorProviderMessage As String
+    ReadOnly Property SelectedSearchFunction As Integer
+    Property SearchTextControlEnabled As Boolean
+    Property SearchTextHistory As Object
+    Property SearchText As String
+    Property SearchTextErrorProviderMessage As String
     Property SearchEnabled As Boolean
+    Property AuthorEnabled As Boolean
+    Property SubjectEnabled As Boolean
+    Property CategoryEnabled As Boolean
+    Property ClearSelectionsEnabled As Boolean
+    Property SearchBySelectionsEnabled As Boolean
+    Property SearchDatePickerEnabled As Boolean
     ReadOnly Property SearchDate As String
-    Property DBDocumentRecordsCountMessage As String    'All/Flagged Documents
-    ReadOnly Property FlaggedDocumentsOnly As Boolean
-    Property QueryDocumentsEnabled As Boolean
-    Property SearchResultsExpanded As Boolean
     Property SearchResultsEnabled As Boolean
     Property SearchResults As DataTable
     ReadOnly Property SearchResultsSortedColumn As DataGridViewColumn
@@ -56,6 +59,7 @@ Public Interface IMainView
     Property UploadStagingFolderErrorVisible As Boolean
     Property FlaggedDocumentsExistVisible As Boolean
     Property FlaggedDocumentsCheckTimerEnabled As Boolean
+    Sub RemoveAllDocumentsFromSearchFunctions()
     Sub SelectSearchResultsLastRow()
     Sub SelectSearchResultRowById(ByVal id As Integer)
     Sub SelectDeselectAllSearchResults(ByVal selectionState _

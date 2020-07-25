@@ -140,42 +140,6 @@ Public Class ManageUploadFolderConfigurationsDialog
         End Set
     End Property
 
-    Public Property Authors As DataTable Implements ICommonView.Authors
-        Get
-            Return Nothing
-        End Get
-        Set(value As DataTable)
-            Throw New NotImplementedException
-        End Set
-    End Property
-
-    Public Property Author As String Implements ICommonView.Author
-        Get
-            Return Nothing
-        End Get
-        Set(value As String)
-            Throw New NotImplementedException
-        End Set
-    End Property
-
-    Public Property Subjects As DataTable Implements ICommonView.Subjects
-        Get
-            Return Nothing
-        End Get
-        Set(value As DataTable)
-            Throw New NotImplementedException
-        End Set
-    End Property
-
-    Public Property Subject As String Implements ICommonView.Subject
-        Get
-            Return Nothing
-        End Get
-        Set(value As String)
-            Throw New NotImplementedException
-        End Set
-    End Property
-
     Public Property AuthorsPaired As DataTable Implements ICommonView.AuthorsPaired
         Get
             Return AuthorPairedComboBox.DataSource
@@ -264,6 +228,60 @@ Public Class ManageUploadFolderConfigurationsDialog
         Get
             Return Me.ActiveControl.Name
         End Get
+    End Property
+
+    Public Property AuthorsGroup As DataTable Implements ICommonView.AuthorsGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property AuthorGroup As String Implements ICommonView.AuthorGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property SubjectsGroup As DataTable Implements ICommonView.SubjectsGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property SubjectGroup As String Implements ICommonView.SubjectGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property CategoriesGroup As DataTable Implements ICommonView.CategoriesGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property CategoryGroup As String Implements ICommonView.CategoryGroup
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
+        End Set
     End Property
 
     Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor

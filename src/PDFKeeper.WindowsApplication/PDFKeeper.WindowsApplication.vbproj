@@ -219,10 +219,10 @@
     <Compile Include="Dialogs\OptionsDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PasswordDialog.designer.vb">
+    <Compile Include="Dialogs\PasswordDialog.designer.vb">
       <DependentUpon>PasswordDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PasswordDialog.vb">
+    <Compile Include="Dialogs\PasswordDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Environment\UserProfile.vb" />
@@ -280,10 +280,10 @@
     <Compile Include="Components\SecureTextBox.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\SetCategoryDialog.Designer.vb">
+    <Compile Include="Dialogs\SetCategoryDialog.Designer.vb">
       <DependentUpon>SetCategoryDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SetCategoryDialog.vb">
+    <Compile Include="Dialogs\SetCategoryDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Environment\ExternalDependencyLocator.vb" />
@@ -305,7 +305,7 @@
     <EmbeddedResource Include="Dialogs\PreviewImageResolutionDialog.resx">
       <DependentUpon>PreviewImageResolutionDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SetCategoryDialog.resx">
+    <EmbeddedResource Include="Dialogs\SetCategoryDialog.resx">
       <DependentUpon>SetCategoryDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\AboutBox.resx">
@@ -321,7 +321,7 @@
     <EmbeddedResource Include="Dialogs\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PasswordDialog.resx">
+    <EmbeddedResource Include="Dialogs\PasswordDialog.resx">
       <DependentUpon>PasswordDialog.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

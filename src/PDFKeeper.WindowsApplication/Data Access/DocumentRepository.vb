@@ -31,6 +31,18 @@ Public NotInheritable Class DocumentRepository
         Return repository.GetAllAuthors
     End Function
 
+    Public Function GetAllAuthorsBySubject(subject As String) As DataTable Implements IDocumentRepository.GetAllAuthorsBySubject
+        Return repository.GetAllAuthorsBySubject(subject)
+    End Function
+
+    Public Function GetAllAuthorsByCategory(category As String) As DataTable Implements IDocumentRepository.GetAllAuthorsByCategory
+        Return repository.GetAllAuthorsByCategory(category)
+    End Function
+
+    Public Function GetAllAuthorsBySubjectAndCategory(subject As String, category As String) As Object Implements IDocumentRepository.GetAllAuthorsBySubjectAndCategory
+        Return repository.GetAllAuthorsBySubjectAndCategory(subject, category)
+    End Function
+
     Public Function GetAllSubjects() As DataTable Implements IDocumentRepository.GetAllSubjects
         Return repository.GetAllSubjects
     End Function
@@ -39,48 +51,52 @@ Public NotInheritable Class DocumentRepository
         Return repository.GetAllSubjectsByAuthor(author)
     End Function
 
+    Public Function GetAllSubjectsByCategory(category As String) As Object Implements IDocumentRepository.GetAllSubjectsByCategory
+        Return repository.GetAllSubjectsByCategory(category)
+    End Function
+
+    Public Function GetAllSubjectsByAuthorAndCategory(author As String, category As String) As Object Implements IDocumentRepository.GetAllSubjectsByAuthorAndCategory
+        Return repository.GetAllSubjectsByAuthorAndCategory(author, category)
+    End Function
+
     Public Function GetAllCategories() As DataTable Implements IDocumentRepository.GetAllCategories
         Return repository.GetAllCategories
     End Function
 
-    Public Function GetAllRecordsBySearchString(searchValue As String) As DataTable Implements IDocumentRepository.GetAllRecordsBySearchString
-        Return repository.GetAllRecordsBySearchString(searchValue)
+    Public Function GetAllCategoriesByAuthor(author As String) As Object Implements IDocumentRepository.GetAllCategoriesByAuthor
+        Return repository.GetAllCategoriesByAuthor(author)
     End Function
 
-    Public Function GetAllRecordsByAuthor(author As String) As DataTable Implements IDocumentRepository.GetAllRecordsByAuthor
-        Return repository.GetAllRecordsByAuthor(author)
+    Public Function GetAllCategoriesBySubject(subject As String) As Object Implements IDocumentRepository.GetAllCategoriesBySubject
+        Return repository.GetAllCategoriesBySubject(subject)
     End Function
 
-    Public Function GetAllRecordsBySubject(subject As String) As DataTable Implements IDocumentRepository.GetAllRecordsBySubject
-        Return repository.GetAllRecordsBySubject(subject)
+    Public Function GetAllCategoriesByAuthorAndSubject(author As String, subject As String) As Object Implements IDocumentRepository.GetAllCategoriesByAuthorAndSubject
+        Return repository.GetAllCategoriesByAuthorAndSubject(author, subject)
     End Function
 
-    Public Function GetAllRecordsByAuthorAndSubject(author As String, subject As String) As DataTable Implements IDocumentRepository.GetAllRecordsByAuthorAndSubject
-        Return repository.GetAllRecordsByAuthorAndSubject(author, subject)
+    Public Function GetAllRecordsBySearchText(searchValue As String) As DataTable Implements IDocumentRepository.GetAllRecordsBySearchText
+        Return repository.GetAllRecordsBySearchText(searchValue)
     End Function
 
-    Public Function GetAllRecordsByCategory(category As String) As DataTable Implements IDocumentRepository.GetAllRecordsByCategory
-        Return repository.GetAllRecordsByCategory(category)
+    Public Function GetAllRecordsByAuthorSubjectAndCategory(author As String, subject As String, category As String) As DataTable Implements IDocumentRepository.GetAllRecordsByAuthorSubjectAndCategory
+        Return repository.GetAllRecordsByAuthorSubjectAndCategory(author, subject, category)
     End Function
 
     Public Function GetAllRecordsByDateAdded(dateAdded As String) As DataTable Implements IDocumentRepository.GetAllRecordsByDateAdded
         Return repository.GetAllRecordsByDateAdded(dateAdded)
     End Function
 
-    Public Function GetTotalRecordsCount() As Integer Implements IDocumentRepository.GetTotalRecordsCount
-        Return repository.GetTotalRecordsCount
-    End Function
-
-    Public Function GetFlaggedRecordsCount() As Integer Implements IDocumentRepository.GetFlaggedRecordsCount
-        Return repository.GetFlaggedRecordsCount
+    Public Function GetAllFlaggedRecords() As DataTable Implements IDocumentRepository.GetAllFlaggedRecords
+        Return repository.GetAllFlaggedRecords
     End Function
 
     Public Function GetAllRecords() As DataTable Implements IDocumentRepository.GetAllRecords
         Return repository.GetAllRecords
     End Function
 
-    Public Function GetAllFlaggedRecords() As DataTable Implements IDocumentRepository.GetAllFlaggedRecords
-        Return repository.GetAllFlaggedRecords
+    Public Function GetFlaggedRecordsCount() As Integer Implements IDocumentRepository.GetFlaggedRecordsCount
+        Return repository.GetFlaggedRecordsCount
     End Function
 
     Public Function GetNotesById(id As Integer) As DataTable Implements IDocumentRepository.GetNotesById

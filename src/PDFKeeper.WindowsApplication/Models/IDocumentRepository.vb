@@ -19,62 +19,44 @@
 '******************************************************************************
 Public Interface IDocumentRepository
     Inherits IDisposable
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
-                                                     "CA1024:UsePropertiesWhereAppropriate")> _
     Function GetAllAuthors() As DataTable
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
-                                                     "CA1024:UsePropertiesWhereAppropriate")> _
+    Function GetAllAuthorsBySubject(ByVal subject As String) As DataTable
+    Function GetAllAuthorsByCategory(ByVal category As String) As DataTable
+    Function GetAllAuthorsBySubjectAndCategory(ByVal subject As String,
+                                               ByVal category As String)
     Function GetAllSubjects() As DataTable
     Function GetAllSubjectsByAuthor(ByVal author As String) As DataTable
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
-                                                     "CA1024:UsePropertiesWhereAppropriate")> _
+    Function GetAllSubjectsByCategory(ByVal category As String)
+    Function GetAllSubjectsByAuthorAndCategory(ByVal author As String,
+                                               ByVal category As String)
     Function GetAllCategories() As DataTable
-    Function GetAllRecordsBySearchString(ByVal searchValue As String) As DataTable
-    Function GetAllRecordsByAuthor(ByVal author As String) As DataTable
-    Function GetAllRecordsBySubject(ByVal subject As String) As DataTable
-    Function GetAllRecordsByAuthorAndSubject(ByVal author As String, _
-                                             ByVal subject As String) As DataTable
-    Function GetAllRecordsByCategory(ByVal category As String) As DataTable
+    Function GetAllCategoriesByAuthor(ByVal author As String)
+    Function GetAllCategoriesBySubject(ByVal subject As String)
+    Function GetAllCategoriesByAuthorAndSubject(ByVal author As String,
+                                                ByVal subject As String)
+    Function GetAllRecordsBySearchText(ByVal searchValue As String) As DataTable
+    Function GetAllRecordsByAuthorSubjectAndCategory(ByVal author As String,
+                                                     ByVal subject As String,
+                                                     ByVal category As String) As DataTable
     Function GetAllRecordsByDateAdded(ByVal dateAdded As String) As DataTable
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
-                                                     "CA1024:UsePropertiesWhereAppropriate")> _
-    Function GetTotalRecordsCount() As Integer
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
-                                                     "CA1024:UsePropertiesWhereAppropriate")> _
-    Function GetFlaggedRecordsCount() As Integer
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
-                                                     "CA1024:UsePropertiesWhereAppropriate")> _
-    Function GetAllRecords() As DataTable
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
-                                                     "CA1024:UsePropertiesWhereAppropriate")> _
     Function GetAllFlaggedRecords() As DataTable
+    Function GetAllRecords() As DataTable
+    Function GetFlaggedRecordsCount() As Integer
     Function GetNotesById(ByVal id As Integer) As DataTable
     Function GetKeywordsById(ByVal id As Integer) As DataTable
     Function GetCategoryById(ByVal id As Integer) As DataTable
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-                                                     "CA1726:UsePreferredTerms", _
-                                                     MessageId:="Flag")> _
     Function GetFlagStateById(ByVal id As Integer) As DataTable
     Sub GetPdfById(ByVal id As Integer, ByVal pdfFile As String)
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-                                                     "CA1726:UsePreferredTerms", _
-                                                     MessageId:="flag")> _
-    Sub CreateRecord(ByVal title As String, _
-                     ByVal author As String, _
-                     ByVal subject As String, _
-                     ByVal keywords As String, _
-                     ByVal notes As String, _
-                     ByVal pdfFile As String, _
-                     ByVal category As String, _
+    Sub CreateRecord(ByVal title As String,
+                     ByVal author As String,
+                     ByVal subject As String,
+                     ByVal keywords As String,
+                     ByVal notes As String,
+                     ByVal pdfFile As String,
+                     ByVal category As String,
                      ByVal flag As Integer)
     Sub UpdateNotesById(ByVal id As Integer, ByVal notes As String)
     Sub UpdateCategoryById(ByVal id As Integer, ByVal category As String)
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-                                                     "CA1726:UsePreferredTerms", _
-                                                     MessageId:="Flag")> _
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-                                                     "CA1726:UsePreferredTerms", _
-                                                     MessageId:="flag")> _
     Sub UpdateFlagStateById(ByVal id As Integer, ByVal flag As Integer)
     Sub DeleteRecordById(ByVal id As Integer)
 End Interface

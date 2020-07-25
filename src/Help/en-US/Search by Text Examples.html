@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
+	<title>Search by Text Examples</title>
+	<meta name="generator" content="LibreOffice 6.3.6.2 (Windows)"/>
+	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
+	<meta name="changed" content="2020-06-28T14:06:25.436000000"/>
+	<meta name="description" content="
+*******************************************************************************
+* PDFKeeper -- Open Source PDF Document Storage and Management
+* Copyright (C) 2009-2020  Robert F. Frasca
+*
+* This file is part of PDFKeeper.
+*
+* PDFKeeper is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* PDFKeeper is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*******************************************************************************"/>
+</head>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Search
+by Text Examples</b></font></h1>
+<p style="font-weight: normal"><font face="Segoe UI, sans-serif">Document
+records can be searched for by text, meaning any plain text that was
+extracted from each PDF document when uploaded to the database,
+including Information Properties, and any notes added to the document
+record after uploading.</font></p>
+<p><font face="Segoe UI, sans-serif"><b>Below are examples on how to
+search by text:</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>about(insurance)</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents about <i>insurance</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">The
+about operator supports single words, phrases, and can be combined
+with other operators, such as AND, OR, or NOT. Any query operators
+included in a phrase will be ignored; however, you can use other
+operators, such as AND, OR, or NOT to combine ABOUT queries with word
+queries.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>about(insurance)
+and banking</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents about <i>insurance</i>, and <i>banking</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>about(insurance)
+and about(banking)</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents about <i>insurance,</i> and about <i>banking</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>about(insurance)
+not about(homeowners)</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents about <i>insurance</i>, and not about <i>homeowners.</i></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>auto
+and home </b><span style="font-weight: normal">or </span><b>auto &amp;
+home</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents that contain <i>auto</i> and <i>home</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>maine
+equiv vermont is a new england state </b><span style="font-weight: normal">or
+</span><b>maine=vermont is a new england state</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents that contain either the phrase; <i>maine is a new
+england state</i>, or <i>vermont is a new england state</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>?product</b>
+</font>
+</p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents that match a fuzzy expansion of <i>product</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>insurance
+not auto </b><span style="font-weight: normal">or </span><b>insurance
+~ auto</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents that contain <i>insurance</i> and not <i>auto</i></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>cars
+| trains </b><span style="font-weight: normal">or </span><b>cars or
+trains</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents that contain <i>cars</i> or <i>trains</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>!edgartown</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents that sound like <i>edgartown</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>$produce</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents that contain the same root word as <i>produce</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>grocer%</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents that contain the term, beginning with <i>grocer</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>_rain</b></font></p>
+<p align="left" style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents that contain the term, ending in rain.</font></p>
+<p><font face="Segoe UI, sans-serif"><b>Notes on special characters:</b></font></p>
+<ul>
+	<li><p><font face="Segoe UI, sans-serif"><b>% </b><span style="font-weight: normal">is
+	a multiple wild card character;</span></font></p>
+	<li><p><font face="Segoe UI, sans-serif"><b>_</b> <span style="font-weight: normal">is
+	a single wild card character;</span></font></p>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Parenthesis
+	characters </span><b>()</b> <span style="font-weight: normal">can be
+	used to group terms and operators;</span></font></p>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Braces
+	</span><b>{}</b> <span style="font-weight: normal">can be used to
+	escape a string of characters or symbols;</span></font></p>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">A
+	forward slash </span><b>/</b> <span style="font-weight: normal">can
+	be used to escape a single character.</span></font></p>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Common
+	characters, such as </span>&ndash; <span style="font-weight: normal">(dash)
+	and </span><b>&amp; </b><span style="font-weight: normal">that are
+	part of a string, need to be escaped. For example, </span><i><span style="font-weight: normal">2009-10-01</span></i>
+	<span style="font-weight: normal">needs to be specified as
+	</span><i><span style="font-weight: normal">2009/10/01</span></i><span style="font-weight: normal">.
+	With the BASIC_LEXER, a print-join attribute is used requiring any </span>&ndash;
+	<span style="font-weight: normal">(dash) in a string to be escaped
+	with an </span><b>_</b> <span style="font-weight: normal">(underscore).
+	For example, a </span><i><span style="font-weight: normal">2009-10-01</span></i>
+	<span style="font-weight: normal">needs to be specified as
+	</span><i><span style="font-weight: normal">2009_10_01</span></i><span style="font-weight: normal">.</span></font></p>
+</ul>
+</body>
+</html>

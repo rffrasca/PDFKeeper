@@ -21,9 +21,9 @@ Public Class MainPresenter
     Implements IDisposable
     Private view As IMainView
     Private uploadDirInfo As New DirectoryInfo(UserProfile.UploadPath)
-    Private uploadStagingDirInfo As New DirectoryInfo( _
+    Private uploadStagingDirInfo As New DirectoryInfo(
         UserProfile.UploadStagingPath)
-    Private searchStringHistory As New GenericList(Of String)
+    Private searchTextHistory As New GenericList(Of String)
     Private message As IMessageDisplayService = New MessageDisplayService
     Private question As IQuestionDisplayService = New QuestionDisplayService
     Private folderBrowser As IFolderBrowserDisplayService = New FolderBrowserDisplayService
@@ -33,14 +33,20 @@ Public Class MainPresenter
     Private searchResultsSortParameters As New DataGridViewSortParameters
     Private fileHashes As New GenericDictionaryList(Of String, String)
     Private cachePathName As CacheFilePathName
+    Private searchBySelectionPerformed As Boolean
     Private refreshFlag As Boolean
-    Private lastSearchString As String = String.Empty
-    Private lastAuthorPairSelected As String
+    Private lastSearchText As String = String.Empty
     Private lastDocumentNotes As String
     Private preUpdateDocumentNotes As String
 
     Public Sub New(view As IMainView)
         Me.view = view
+    End Sub
+
+    Public Sub ApplyPolicy()
+        If ApplicationPolicy.DisableQueryAllDocuments Then
+            view.RemoveAllDocumentsFromSearchFunctions()
+        End If
     End Sub
 
 #Region "View ToolStrip Members"
@@ -234,7 +240,22 @@ Public Class MainPresenter
 
     Public Sub RefreshSearchResults()
         refreshFlag = True
-        SearchOptionSelected()
+        Dim lastSelectedId As Integer = view.DocumentRecordId
+        If view.SelectedSearchFunction = 0 Then     ' Documents by Text
+            GetSearchResultsByString(True)
+        ElseIf view.SelectedSearchFunction = 1 Then ' Documents by Selections
+            GetSearchResultsBySearchSelection()
+        ElseIf view.SelectedSearchFunction = 2 Then ' Documents by Date Added
+            GetDocumentRecordsByDateAdded()
+        ElseIf view.SelectedSearchFunction = 3 Then ' Flagged Documents
+            GetFlaggedDocumentRecords()
+        ElseIf view.SelectedSearchFunction = 4 Then ' All Documents
+            GetAllDocumentRecords()
+        End If
+        If refreshFlag Then
+            view.SelectSearchResultRowById(lastSelectedId)
+        End If
+        refreshFlag = False
     End Sub
 
     Public Sub ReloadDocumentPreview()
@@ -244,76 +265,86 @@ Public Class MainPresenter
     End Sub
 #End Region
 
-#Region "View Search Options Members"
-    Public Sub SearchOptionSelected()
-        Dim lastSelectedId As Integer = view.DocumentRecordId
-        If view.SelectedSearchOption = 0 Then
+#Region "View Search Functions Members"
+    Public Sub SearchFunctionSelected()
+        With view
+            .SearchTextControlEnabled = False
+            .AuthorEnabled = False
+            .SubjectEnabled = False
+            .CategoryEnabled = False
+            .ClearSelectionsEnabled = False
+            .SearchBySelectionsEnabled = False
+            .SearchDatePickerEnabled = False
+        End With
+        If view.SelectedSearchFunction = 0 Then     ' Documents by Text
+            SearchTextChanged()
             GetSearchResultsByString(True)
-        ElseIf view.SelectedSearchOption = 1 Then
-            GetSearchResultsByAuthor()
-        ElseIf view.SelectedSearchOption = 2 Then
-            GetSearchResultsBySubject()
-        ElseIf view.SelectedSearchOption = 3 Then
-            GetSearchResultsByAuthorAndSubject()
-        ElseIf view.SelectedSearchOption = 4 Then
-            GetSearchResultsByCategory()
-        ElseIf view.SelectedSearchOption = 5 Then
-            GetSearchResultsByDateAdded()
-        ElseIf view.SelectedSearchOption = 6 Then
-            If refreshFlag Then
-                QueryAllOrFlaggedDocumentRecords()
-            Else
-                ShowTotalAndFlaggedRecordCounts()
+        ElseIf view.SelectedSearchFunction = 1 Then ' Documents by Selections
+            Dim capturesearchBySelectionPerformed As Boolean =
+                searchBySelectionPerformed
+            With view
+                .AuthorEnabled = True
+                .SubjectEnabled = True
+                .CategoryEnabled = True
+            End With
+            SetSearchBySelectionsButtonsState()
+            searchBySelectionPerformed = capturesearchBySelectionPerformed
+            If searchBySelectionPerformed Then
+                GetSearchResultsBySearchSelection()
             End If
+        ElseIf view.SelectedSearchFunction = 2 Then ' Documents by Date Added
+            view.SearchDatePickerEnabled = True
+            GetDocumentRecordsByDateAdded()
+        ElseIf view.SelectedSearchFunction = 3 Then ' Flagged Documents
+            GetFlaggedDocumentRecords()
+        ElseIf view.SelectedSearchFunction = 4 Then ' All Documents
+            GetAllDocumentRecords()
         End If
-        If refreshFlag Then
-            view.SelectSearchResultRowById(lastSelectedId)
-        End If
-        refreshFlag = False
     End Sub
 
     Public Sub GetSearchStringHistory()
-        view.SearchStringHistory = searchStringHistory.ToArray(False)
+        view.SearchTextHistory = searchTextHistory.ToArray(False)
     End Sub
 
-    Public Sub SearchStringTextChanged()
-        view.SearchString = view.SearchString.TrimStart
-        If view.SearchString.Length > 0 Then
-            If view.SearchString.VerifyProperUsageOfQueryOperators Then
-                view.SearchStringErrorProviderMessage = Nothing
+    Public Sub SearchTextChanged()
+        view.SearchText = view.SearchText.TrimStart
+        If view.SearchText.Length > 0 Then
+            If view.SearchText.VerifyProperUsageOfQueryOperators Then
+                view.SearchTextErrorProviderMessage = Nothing
                 view.SearchEnabled = True
             Else
-                view.SearchStringErrorProviderMessage =
-                    My.Resources.SearchStringImproperUsageOfQueryOperators
+                view.SearchTextErrorProviderMessage =
+                    My.Resources.SearchTextImproperUsageOfQueryOperators
                 view.SearchEnabled = False
             End If
         Else
-            view.SearchStringErrorProviderMessage = Nothing
+            view.SearchTextErrorProviderMessage = Nothing
             view.SearchEnabled = False
         End If
     End Sub
 
     Public Sub GetSearchResultsByString(ByVal useLastSearchString As Boolean)
         If useLastSearchString Then
-            view.SearchString = lastSearchString
+            view.SearchText = lastSearchText
         End If
-        If view.SearchString.Length > 0 Then
+        view.SearchTextControlEnabled = True
+        If view.SearchText.Length > 0 Then
             Try
                 view.SetCursor(True)
-                ' Need to capture view.SearchString into a new string and set
-                ' view.SearchString to that string after the query to prevent
-                ' the Search String combox box from selecting the first string
-                ' in the drop down list that contains the string in the text
+                ' Need to capture view.SearchText into a new string and set
+                ' view.SearchText to that string after the query to prevent
+                ' the Search Text combox box from selecting the first item
+                ' in the drop down list that contains the text in the text
                 ' box after the query.
-                Dim currentSearchString As String = view.SearchString
+                Dim currentSearchString As String = view.SearchText
                 Using model As IDocumentRepository = New DocumentRepository
-                    FillSearchResults(model.GetAllRecordsBySearchString(view.SearchString))
+                    FillSearchResults(model.GetAllRecordsBySearchText(view.SearchText))
                 End Using
-                view.SearchString = currentSearchString
+                view.SearchText = currentSearchString
                 If view.SearchResultsRowCount > 0 Then
-                    searchStringHistory.Add(view.SearchString)
+                    searchTextHistory.Add(view.SearchText)
                 End If
-                lastSearchString = view.SearchString
+                lastSearchText = view.SearchText
                 view.SearchEnabled = False
                 view.SetCursor(False)
             Catch ex As OracleException
@@ -326,87 +357,55 @@ Public Class MainPresenter
         GetSearchStringHistory()
     End Sub
 
-    Public Sub GetSearchResultsByAuthor()
-        If view.Author IsNot Nothing Then
-            Try
-                view.SetCursor(True)
-                Using model As IDocumentRepository = New DocumentRepository
-                    FillSearchResults(model.GetAllRecordsByAuthor(view.Author))
-                End Using
-                view.SetCursor(False)
-            Catch ex As OracleException
-                view.SetCursor(False)
-                message.Show(ex.Message, True)
-            End Try
-        Else
-            ResetSearchResults()
+    Public Sub SetSearchBySelectionsButtonsState()
+        Dim enabled As Boolean = False
+        If view.AuthorGroup IsNot Nothing Or
+            view.SubjectGroup IsNot Nothing Or
+            view.CategoryGroup IsNot Nothing Then
+            enabled = True
         End If
+        view.ClearSelectionsEnabled = enabled
+        view.SearchBySelectionsEnabled = enabled
+        searchBySelectionPerformed = False
+        ResetSearchResults()
     End Sub
 
-    Public Sub GetSearchResultsBySubject()
-        If view.Subject IsNot Nothing Then
-            Try
-                view.SetCursor(True)
-                Using model As IDocumentRepository = New DocumentRepository
-                    FillSearchResults(model.GetAllRecordsBySubject(view.Subject))
-                End Using
-                view.SetCursor(False)
-            Catch ex As OracleException
-                view.SetCursor(False)
-                message.Show(ex.Message, True)
-            End Try
-        Else
-            ResetSearchResults()
-        End If
+    Public Sub ClearSearchSelections()
+        With view
+            .AuthorGroup = Nothing
+            .SubjectGroup = Nothing
+            .CategoryGroup = Nothing
+            .ClearSelectionsEnabled = False
+            .SearchBySelectionsEnabled = False
+        End With
+        searchBySelectionPerformed = False
+        ResetSearchResults()
     End Sub
 
-    Public Sub ClearSubjectPairedSelection()
-        If Not view.AuthorPaired Is Nothing Then
-            If Not view.AuthorPaired = lastAuthorPairSelected Then
-                view.SubjectPaired = Nothing
-            End If
-            lastAuthorPairSelected = view.AuthorPaired
-            view.SubjectPaired = Nothing
-        End If
-    End Sub
-
-    Public Sub GetSearchResultsByAuthorAndSubject()
-        If view.SubjectPaired IsNot Nothing Then
+    Public Sub GetSearchResultsBySearchSelection()
+        If view.ClearSelectionsEnabled Then
             Try
                 view.SetCursor(True)
                 Using model As IDocumentRepository = New DocumentRepository
                     FillSearchResults(
-                        model.GetAllRecordsByAuthorAndSubject(view.AuthorPaired,
-                                                              view.SubjectPaired))
+                        model.GetAllRecordsByAuthorSubjectAndCategory(view.AuthorGroup,
+                                                                      view.SubjectGroup,
+                                                                      view.CategoryGroup))
                 End Using
                 view.SetCursor(False)
+                searchBySelectionPerformed = True
+                view.SearchBySelectionsEnabled = False
             Catch ex As OracleException
                 view.SetCursor(False)
                 message.Show(ex.Message, True)
             End Try
         Else
+            searchBySelectionPerformed = False
             ResetSearchResults()
         End If
     End Sub
 
-    Public Sub GetSearchResultsByCategory()
-        If view.Category IsNot Nothing Then
-            Try
-                view.SetCursor(True)
-                Using model As IDocumentRepository = New DocumentRepository
-                    FillSearchResults(model.GetAllRecordsByCategory(view.Category))
-                End Using
-                view.SetCursor(False)
-            Catch ex As OracleException
-                view.SetCursor(False)
-                message.Show(ex.Message, True)
-            End Try
-        Else
-            ResetSearchResults()
-        End If
-    End Sub
-
-    Public Sub GetSearchResultsByDateAdded()
+    Public Sub GetDocumentRecordsByDateAdded()
         Try
             view.SetCursor(True)
             Using model As IDocumentRepository = New DocumentRepository
@@ -419,25 +418,12 @@ Public Class MainPresenter
         End Try
     End Sub
 
-    Public Sub QueryAllOrFlaggedDocumentRecords()
+    Private Sub GetFlaggedDocumentRecords()
         Try
             view.SetCursor(True)
             Using model As IDocumentRepository = New DocumentRepository
-                If view.FlaggedDocumentsOnly Then
-                    FillSearchResults(model.GetAllFlaggedRecords)
-                Else
-                    If ApplicationPolicy.DisableQueryAllDocuments = False Then
-                        FillSearchResults(model.GetAllRecords)
-                    Else
-                        view.SetCursor(False)
-                        message.Show(My.Resources.FeatureDisabledByPolicy,
-                                            False)
-                        Exit Sub
-                    End If
-                End If
+                FillSearchResults(model.GetAllFlaggedRecords)
             End Using
-            view.DBDocumentRecordsCountMessage = Nothing
-            view.QueryDocumentsEnabled = False
             view.SetCursor(False)
         Catch ex As OracleException
             view.SetCursor(False)
@@ -445,23 +431,12 @@ Public Class MainPresenter
         End Try
     End Sub
 
-    Public Sub ShowTotalAndFlaggedRecordCounts()
-        ResetSearchResults()
+    Private Sub GetAllDocumentRecords()
         Try
             view.SetCursor(True)
-            Using modelInstance1 As IDocumentRepository = New DocumentRepository
-                Dim totalCount As Integer = modelInstance1.GetTotalRecordsCount
-                Using modelInstance2 As IDocumentRepository = New DocumentRepository
-                    Dim flaggedCount As Integer = modelInstance2.GetFlaggedRecordsCount
-                    view.DBDocumentRecordsCountMessage =
-                        String.Format(CultureInfo.CurrentCulture,
-                                      My.Resources.ResourceManager.GetString(
-                                          "DocumentRecordsCountMessage"),
-                                      totalCount,
-                                      flaggedCount)
-                End Using
+            Using model As IDocumentRepository = New DocumentRepository
+                FillSearchResults(model.GetAllRecords)
             End Using
-            view.QueryDocumentsEnabled = True
             view.SetCursor(False)
         Catch ex As OracleException
             view.SetCursor(False)
@@ -519,7 +494,6 @@ Public Class MainPresenter
     End Sub
 
     Private Sub FillSearchResults(ByVal dataTable As DataTable)
-        view.SearchResultsExpanded = False
         view.SearchResultsEnabled = False
         view.SearchResults = dataTable
         view.SortSearchResults(searchResultsSortParameters.SortColumnIndex,

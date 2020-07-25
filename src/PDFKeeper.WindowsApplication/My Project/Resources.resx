@@ -152,7 +152,7 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="ID" xml:space="preserve">
     <value>ID</value>
   </data>
-  <data name="SearchStringImproperUsageOfQueryOperators" xml:space="preserve">
+  <data name="SearchTextImproperUsageOfQueryOperators" xml:space="preserve">
     <value>Improper usage of query operators and/or characters.</value>
   </data>
   <data name="SelectedFilesHaveBeenExported" xml:space="preserve">

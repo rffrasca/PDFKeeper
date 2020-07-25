@@ -111,11 +111,11 @@
       <Component Id="pdftopng.exe" Guid="dc8e8178-d036-422a-9b13-2852d345bad2">
         <File Id="pdftopng.exe" Name="pdftopng.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)pdftopng.exe" />
       </Component>
-      <Component Id="DisableQueryAllDocuments.reg" Guid="3ee0a57f-49a5-41c2-8e8a-760ab3e55e12">
-        <File Id="DisableQueryAllDocuments.reg" Name="DisableQueryAllDocuments.reg" Source="..\..\..\Config\DisableQueryAllDocuments.reg" />
+      <Component Id="DisableAllDocumentsSearchFunction.reg" Guid="3ee0a57f-49a5-41c2-8e8a-760ab3e55e12">
+        <File Id="DisableAllDocumentsSearchFunction.reg" Name="DisableAllDocumentsSearchFunction.reg" Source="..\..\..\Config\DisableAllDocumentsSearchFunction.reg" />
       </Component>
-      <Component Id="EnableQueryAllDocuments.reg" Guid="6127b400-4ac1-4a1e-83ae-5947215b4c57">
-        <File Id="EnableQueryAllDocuments.reg" Name="EnableQueryAllDocuments.reg" Source="..\..\..\Config\EnableQueryAllDocuments.reg" />
+      <Component Id="EnableAllDocumentsSearchFunction.reg" Guid="6127b400-4ac1-4a1e-83ae-5947215b4c57">
+        <File Id="EnableAllDocumentsSearchFunction.reg" Name="EnableAllDocumentsSearchFunction.reg" Source="..\..\..\Config\EnableAllDocumentsSearchFunction.reg" />
       </Component>
       <Component Id="OracleDatabaseSchemaSetup.sql" Guid="0c018a44-7840-4ef4-92a7-ce0432f9e27f">
         <File Id="OracleDatabaseSchemaSetup.sql" Name="OracleDatabaseSchemaSetup.sql" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)OracleDatabaseSchemaSetup.sql" />

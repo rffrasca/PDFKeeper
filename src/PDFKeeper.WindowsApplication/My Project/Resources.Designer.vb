@@ -322,9 +322,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to Improper usage of query operators and/or characters..
         '''</summary>
-        Friend ReadOnly Property SearchStringImproperUsageOfQueryOperators() As String
+        Friend ReadOnly Property SearchTextImproperUsageOfQueryOperators() As String
             Get
-                Return ResourceManager.GetString("SearchStringImproperUsageOfQueryOperators", resourceCulture)
+                Return ResourceManager.GetString("SearchTextImproperUsageOfQueryOperators", resourceCulture)
             End Get
         End Property
         

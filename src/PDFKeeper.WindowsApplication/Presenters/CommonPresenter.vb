@@ -17,6 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
+Imports System.Windows
+
 Public Class CommonPresenter
     Implements IDisposable
     Private view As ICommonView
@@ -28,25 +30,28 @@ Public Class CommonPresenter
     End Sub
 
     Public Sub GetColumnItemsByGroup()
-        'Called by <Name>ComboBox.Enter
+        'Called by <Name>ComboBox.Enter and <Name>ComboBox.DropDown
         Try
             model = New DocumentRepository
             view.SetCursor(True)
-            If view.ActiveElement.StartsWith("AuthorPaired",
+            If view.ActiveElement.StartsWith("AuthorGroup",
                                              StringComparison.Ordinal) Then
-                GetAuthors(True)
+                GetAuthorsByGroup()
+            ElseIf view.ActiveElement.StartsWith("SubjectGroup",
+                                                 StringComparison.Ordinal) Then
+                GetSubjectsByGroup()
+            ElseIf view.ActiveElement.StartsWith("CategoryGroup",
+                                                 StringComparison.Ordinal) Then
+                GetCategoriesByGroup()
+            ElseIf view.ActiveElement.StartsWith("AuthorPaired",
+                                                 StringComparison.Ordinal) Then
+                GetAuthors("AuthorPaired")
             ElseIf view.ActiveElement.StartsWith("SubjectPaired",
                                                  StringComparison.Ordinal) Then
-                GetSubjectsByAuthor()
-            ElseIf view.ActiveElement.StartsWith("Author",
-                                                 StringComparison.Ordinal) Then
-                GetAuthors(False)
-            ElseIf view.ActiveElement.StartsWith("Subject",
-                                                 StringComparison.Ordinal) Then
-                GetSubjects()
+                GetSubjectsByAuthor("SubjectPaired")
             ElseIf view.ActiveElement.StartsWith("Category",
                                                  StringComparison.Ordinal) Then
-                GetCategories()
+                GetCategories("Category")
             End If
             view.SetCursor(False)
         Catch ex As OracleException
@@ -57,44 +62,103 @@ Public Class CommonPresenter
 
     Public Sub ActiveElementTextTrimStart()
         ' Called by <Name>ComboBox.TextChanged and <Name>ComboBox.TextUpdate
-        If view.ActiveElement.StartsWith("AuthorPaired", _
+        If view.ActiveElement.StartsWith("AuthorPaired",
                                          StringComparison.Ordinal) Then
             view.AuthorPaired = view.AuthorPaired.TrimStart
-        ElseIf view.ActiveElement.StartsWith("SubjectPaired", _
+        ElseIf view.ActiveElement.StartsWith("SubjectPaired",
                                              StringComparison.Ordinal) Then
             view.SubjectPaired = view.SubjectPaired.TrimStart
-        ElseIf view.ActiveElement.StartsWith("Author", _
-                                             StringComparison.Ordinal) Then
-            view.Author = view.Author.TrimStart
-        ElseIf view.ActiveElement.StartsWith("Subject", _
-                                             StringComparison.Ordinal) Then
-            view.Subject = view.Subject.TrimStart
-        ElseIf view.ActiveElement.StartsWith("Category", _
+        ElseIf view.ActiveElement.StartsWith("Category",
                                              StringComparison.Ordinal) Then
             view.Category = view.Category.TrimStart
         End If
     End Sub
 
     Public Sub AllElementsTextTrimEnd()
-        AuthorPairedTextTrimEnd()
-        SubjectPairedTextTrimEnd()
-        AuthorTextTrimEnd()
-        SubjectTextTrimEnd()
-        CategoryTextTrimEnd()
+        If Not view.Category = Nothing Then
+            view.Category = view.Category.TrimEnd
+        End If
     End Sub
 
-    Private Sub GetAuthors(ByVal paired As Boolean)
+    Private Sub GetAuthorsByGroup()
+        If view.SubjectGroup Is Nothing And view.CategoryGroup Is Nothing Then
+            GetAuthors("AuthorGroup")
+        ElseIf view.SubjectGroup IsNot Nothing And view.CategoryGroup Is Nothing Then
+            GetAuthorsBySubject()
+        ElseIf view.SubjectGroup Is Nothing And view.CategoryGroup IsNot Nothing Then
+            GetAuthorsByCategory()
+        ElseIf view.SubjectGroup IsNot Nothing And view.CategoryGroup IsNot Nothing Then
+            GetAuthorsBySubjectAndCategory()
+        End If
+    End Sub
+
+    Private Sub GetSubjectsByGroup()
+        If view.AuthorGroup Is Nothing And view.CategoryGroup Is Nothing Then
+            GetSubjects()
+        ElseIf view.AuthorGroup IsNot Nothing And view.CategoryGroup Is Nothing Then
+            GetSubjectsByAuthor("SubjectGroup")
+        ElseIf view.AuthorGroup Is Nothing And view.CategoryGroup IsNot Nothing Then
+            GetSubjectsByCategory()
+        ElseIf view.AuthorGroup IsNot Nothing And view.CategoryGroup IsNot Nothing Then
+            GetSubjectsByAuthorAndCategory()
+        End If
+    End Sub
+
+    Private Sub GetCategoriesByGroup()
+        If view.AuthorGroup Is Nothing And view.SubjectGroup Is Nothing Then
+            GetCategories("CategoryGroup")
+        ElseIf view.AuthorGroup IsNot Nothing And view.SubjectGroup Is Nothing Then
+            GetCategoriesByAuthor()
+        ElseIf view.AuthorGroup Is Nothing And view.SubjectGroup IsNot Nothing Then
+            GetCategoriesBySubject()
+        ElseIf view.AuthorGroup IsNot Nothing And view.SubjectGroup IsNot Nothing Then
+            GetCategoriesByAuthorAndSubject()
+        End If
+    End Sub
+
+    Private Sub GetAuthors(ByVal elementStart As String)
         Try
             Dim currentItem As String = Nothing
-            If paired Then
+            If elementStart = "AuthorGroup" Then
+                currentItem = view.AuthorGroup
+                view.AuthorsGroup = model.GetAllAuthors
+                view.AuthorGroup = currentItem
+            ElseIf elementStart = "AuthorPaired" Then
                 currentItem = view.AuthorPaired
                 view.AuthorsPaired = model.GetAllAuthors
                 view.AuthorPaired = currentItem
-            Else
-                currentItem = view.Author
-                view.Authors = model.GetAllAuthors
-                view.Author = currentItem
             End If
+        Catch ex As NotImplementedException ' When ComboBox is a DropDownList
+        End Try
+    End Sub
+
+    Private Sub GetAuthorsBySubject()
+        Try
+            Dim currentItem As String = Nothing
+            currentItem = view.AuthorGroup
+            view.AuthorsGroup = model.GetAllAuthorsBySubject(view.SubjectGroup)
+            view.AuthorGroup = currentItem
+        Catch ex As NotImplementedException ' When ComboBox is a DropDownList
+        End Try
+    End Sub
+
+    Private Sub GetAuthorsByCategory()
+        Try
+            Dim currentItem As String = Nothing
+            currentItem = view.AuthorGroup
+            view.AuthorsGroup = model.GetAllAuthorsByCategory(view.CategoryGroup)
+            view.AuthorGroup = currentItem
+        Catch ex As NotImplementedException ' When ComboBox is a DropDownList
+        End Try
+    End Sub
+
+    Private Sub GetAuthorsBySubjectAndCategory()
+        Try
+            Dim currentItem As String = Nothing
+            currentItem = view.AuthorGroup
+            view.AuthorsGroup = model.GetAllAuthorsBySubjectAndCategory(view.SubjectGroup,
+                                                                        view.CategoryGroup)
+            view.AuthorGroup = currentItem
         Catch ex As NotImplementedException ' When ComboBox is a DropDownList
         End Try
     End Sub
@@ -102,61 +166,95 @@ Public Class CommonPresenter
     Private Sub GetSubjects()
         Try
             Dim currentItem As String = Nothing
-            currentItem = view.Subject
-            view.Subjects = model.GetAllSubjects
-            view.Subject = currentItem
+            currentItem = view.SubjectGroup
+            view.SubjectsGroup = model.GetAllSubjects
+            view.SubjectGroup = currentItem
         Catch ex As NotImplementedException ' When ComboBox is a DropDownList
         End Try
     End Sub
 
-    Private Sub GetSubjectsByAuthor()
+    Private Sub GetSubjectsByAuthor(ByVal elementStart As String)
         Try
             Dim currentItem As String = Nothing
-            currentItem = view.SubjectPaired
-            view.SubjectsPaired = model.GetAllSubjectsByAuthor(view.AuthorPaired)
-            view.SubjectPaired = currentItem
+            If elementStart = "SubjectGroup" Then
+                currentItem = view.SubjectGroup
+                view.SubjectsGroup = model.GetAllSubjectsByAuthor(view.AuthorGroup)
+                view.SubjectGroup = currentItem
+            ElseIf elementStart = "SubjectPaired" Then
+                currentItem = view.SubjectPaired
+                view.SubjectsPaired = model.GetAllSubjectsByAuthor(view.AuthorPaired)
+                view.SubjectPaired = currentItem
+            End If
         Catch ex As NotImplementedException ' When ComboBox is a DropDownList
         End Try
     End Sub
 
-    Private Sub GetCategories()
+    Private Sub GetSubjectsByCategory()
         Try
             Dim currentItem As String = Nothing
-            currentItem = view.Category
-            view.Categories = model.GetAllCategories
-            view.Category = currentItem
+            currentItem = view.SubjectGroup
+            view.SubjectsGroup = model.GetAllSubjectsByCategory(view.CategoryGroup)
+            view.SubjectGroup = currentItem
         Catch ex As NotImplementedException ' When ComboBox is a DropDownList
         End Try
     End Sub
 
-    Private Sub AuthorPairedTextTrimEnd()
-        If Not view.AuthorPaired = Nothing Then
-            view.AuthorPaired = view.AuthorPaired.TrimEnd
-        End If
+    Private Sub GetSubjectsByAuthorAndCategory()
+        Try
+            Dim currentItem As String = Nothing
+            currentItem = view.SubjectGroup
+            view.SubjectsGroup = model.GetAllSubjectsByAuthorAndCategory(view.AuthorGroup,
+                                                                         view.CategoryGroup)
+            view.SubjectGroup = currentItem
+        Catch ex As NotImplementedException ' When ComboBox is a DropDownList
+        End Try
     End Sub
 
-    Private Sub SubjectPairedTextTrimEnd()
-        If Not view.SubjectPaired = Nothing Then
-            view.SubjectPaired = view.SubjectPaired.TrimEnd
-        End If
+    Private Sub GetCategories(ByVal elementStart As String)
+        Try
+            Dim currentItem As String = Nothing
+            If elementStart = "CategoryGroup" Then
+                currentItem = view.CategoryGroup
+                view.CategoriesGroup = model.GetAllCategories
+                view.CategoryGroup = currentItem
+            ElseIf elementStart = "Category" Then
+                currentItem = view.Category
+                view.Categories = model.GetAllCategories
+                view.Category = currentItem
+            End If
+        Catch ex As NotImplementedException ' When ComboBox is a DropDownList
+        End Try
     End Sub
 
-    Private Sub AuthorTextTrimEnd()
-        If Not view.Author = Nothing Then
-            view.Author = view.Author.TrimEnd
-        End If
+    Private Sub GetCategoriesByAuthor()
+        Try
+            Dim currentItem As String = Nothing
+            currentItem = view.CategoryGroup
+            view.CategoriesGroup = model.GetAllCategoriesByAuthor(view.AuthorGroup)
+            view.CategoryGroup = currentItem
+        Catch ex As NotImplementedException ' When ComboBox is a DropDownList
+        End Try
     End Sub
 
-    Private Sub SubjectTextTrimEnd()
-        If Not view.Subject = Nothing Then
-            view.Subject = view.Subject.TrimEnd
-        End If
+    Private Sub GetCategoriesBySubject()
+        Try
+            Dim currentItem As String = Nothing
+            currentItem = view.CategoryGroup
+            view.CategoriesGroup = model.GetAllCategoriesBySubject(view.SubjectGroup)
+            view.CategoryGroup = currentItem
+        Catch ex As NotImplementedException ' When ComboBox is a DropDownList
+        End Try
     End Sub
 
-    Private Sub CategoryTextTrimEnd()
-        If Not view.Category = Nothing Then
-            view.Category = view.Category.TrimEnd
-        End If
+    Private Sub GetCategoriesByAuthorAndSubject()
+        Try
+            Dim currentItem As String = Nothing
+            currentItem = view.CategoryGroup
+            view.CategoriesGroup = model.GetAllCategoriesByAuthorAndSubject(view.AuthorGroup,
+                                                                            view.SubjectGroup)
+            view.CategoryGroup = currentItem
+        Catch ex As NotImplementedException ' When ComboBox is a DropDownList
+        End Try
     End Sub
 
 #Region "IDisposable Support"

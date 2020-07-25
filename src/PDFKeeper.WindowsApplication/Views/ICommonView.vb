@@ -49,12 +49,14 @@ Public Interface ICommonView
     ' ActiveControlName: Return Me.ActiveControl.Name
     '                    Return <Container>.ActiveControl.Name
     '
-    ' OnLongRunningOperationStarted: Me.Cursor = Cursors.WaitCursor
-    ' OnLongRunningOperationCompleted: Me.Cursor = Cursors.Default
-    Property Authors As DataTable
-    Property Author As String
-    Property Subjects As DataTable
-    Property Subject As String
+    ' SetCursor(True) - Me.Cursor = Cursors.WaitCursor
+    ' SetCursor(False) - Me.Cursor = Cursors.Default
+    Property AuthorsGroup As DataTable
+    Property AuthorGroup As String
+    Property SubjectsGroup As DataTable
+    Property SubjectGroup As String
+    Property CategoriesGroup As DataTable
+    Property CategoryGroup As String
     Property AuthorsPaired As DataTable
     Property AuthorPaired As String
     Property SubjectsPaired As DataTable

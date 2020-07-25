@@ -133,8 +133,8 @@
 				</OBJECT>
 			<UL>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Search by String Examples">
-					<param name="Local" value="Search by String Examples.html">
+					<param name="Name" value="Search by Text Examples">
+					<param name="Local" value="Search by Text Examples.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 			</UL>
@@ -219,8 +219,8 @@
 			</UL>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Disable Querying of all Document Records by Policy">
-			<param name="Local" value="Disable Querying of all Document Records by Policy.html">
+			<param name="Name" value="Disable All Documents Search Function by Policy">
+			<param name="Local" value="Disable All Documents Search Function by Policy.html">
 			<param name="ImageNumber" value="9">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">

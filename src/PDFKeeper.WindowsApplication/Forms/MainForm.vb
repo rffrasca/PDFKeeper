@@ -17,8 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", _
-    "CA1506:AvoidExcessiveClassCoupling")> _
+<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability",
+    "CA1506:AvoidExcessiveClassCoupling")>
 Public Class MainForm
     Implements IMainWindowStateView, IToolStripStateView, IMainView
     Private windowStatePresenter As MainWindowStatePresenter
@@ -26,7 +26,6 @@ Public Class MainForm
     Private commonPresenter As CommonPresenter
     Private presenter As MainPresenter
     Private help As IHelpDisplayService = New HelpDisplayService
-    Private skipSearchOptionsTabControlSelectedActions As Boolean
     Private m_DocumentRecordNotesChanged As String
     ' Message that is sent when the contents of the clipboard have changed.
     Private Const WM_CLIPBOARDUPDATE As Integer = &H31D
@@ -38,6 +37,7 @@ Public Class MainForm
         commonPresenter = New CommonPresenter(Me)
         presenter = New MainPresenter(Me)
         HelpProvider.HelpNamespace = help.Name
+        presenter.ApplyPolicy()
         ProductUpdate.Check() ' Also called on a timer every 30 minutes.
     End Sub
 
@@ -99,216 +99,191 @@ Public Class MainForm
 #End Region
 
 #Region "Interface Members (IMainView)"
-    Public ReadOnly Property SelectedSearchOption As Integer Implements IMainView.SelectedSearchOption
+    Public ReadOnly Property SelectedSearchFunction As Integer Implements IMainView.SelectedSearchFunction
         Get
-            Return SearchOptionsTabControl.SelectedIndex
+            Return SearchFunctionsListBox.SelectedIndex
         End Get
     End Property
 
-    Public Property SearchStringHistory As Object Implements IMainView.SearchStringHistory
+    Public Property SearchTextControlEnabled As Boolean Implements IMainView.SearchTextControlEnabled
         Get
-            Return SearchStringComboBox.Items
+            Return SearchTextComboBox.Enabled
+        End Get
+        Set(value As Boolean)
+            SearchTextComboBox.Enabled = value
+        End Set
+    End Property
+
+    Public Property SearchTextHistory As Object Implements IMainView.SearchTextHistory
+        Get
+            Return SearchTextComboBox.Items
         End Get
         Set(value As Object)
-            SearchStringComboBox.Items.Clear()  ' Need to clear twice to work around duplicates
-            SearchStringComboBox.Items.Clear()  ' from being displayed in the drop down.
-            SearchStringComboBox.Items.AddRange(value)
+            SearchTextComboBox.Items.Clear()  ' Need to clear twice to work around duplicates
+            SearchTextComboBox.Items.Clear()  ' from being displayed in the drop down.
+            SearchTextComboBox.Items.AddRange(value)
         End Set
     End Property
 
-    Public Property SearchString As String Implements IMainView.SearchString
+    Public Property SearchText As String Implements IMainView.SearchText
         Get
-            Return SearchStringComboBox.Text
+            Return SearchTextComboBox.Text
         End Get
         Set(value As String)
-            SearchStringComboBox.Text = value
+            SearchTextComboBox.Text = value
         End Set
     End Property
 
-    Public Property SearchStringErrorProviderMessage As String Implements IMainView.SearchStringErrorProviderMessage
+    Public Property SearchTextErrorProviderMessage As String Implements IMainView.SearchTextErrorProviderMessage
         Get
-            Return SearchStringErrorProvider.GetError(SearchStringComboBox)
+            Return SearchTextErrorProvider.GetError(SearchTextComboBox)
         End Get
         Set(value As String)
             If value Is Nothing Then
-                SearchStringErrorProvider.Clear()
+                SearchTextErrorProvider.Clear()
             Else
-                SearchStringErrorProvider.SetError(SearchStringComboBox, value)
+                SearchTextErrorProvider.SetError(SearchTextComboBox, value)
             End If
         End Set
     End Property
 
     Public Property SearchEnabled As Boolean Implements IMainView.SearchEnabled
         Get
-            Return SearchButton.Enabled
+            Return SearchByTextButton.Enabled
         End Get
         Set(value As Boolean)
-            SearchButton.Enabled = value
+            SearchByTextButton.Enabled = value
         End Set
     End Property
 
-    Public Property Authors As DataTable Implements ICommonView.Authors
+    Public Property AuthorEnabled As Boolean Implements IMainView.AuthorEnabled
         Get
-            Return AuthorComboBox.DataSource
+            Return AuthorGroupComboBox.Enabled
+        End Get
+        Set(value As Boolean)
+            AuthorGroupComboBox.Enabled = value
+        End Set
+    End Property
+
+    Public Property AuthorsGroup As DataTable Implements ICommonView.AuthorsGroup
+        Get
+            Throw New NotImplementedException()
         End Get
         Set(value As DataTable)
-            AuthorComboBox.DataSource = value
-            AuthorComboBox.DisplayMember = "doc_author"
+            AuthorGroupComboBox.DataSource = value
+            AuthorGroupComboBox.DisplayMember = "doc_author"
         End Set
     End Property
 
-    Public Property Author As String Implements ICommonView.Author
+    Public Property AuthorGroup As String Implements ICommonView.AuthorGroup
         Get
-            If Not AuthorComboBox.SelectedItem Is Nothing Then
-                Return Convert.ToString(AuthorComboBox.SelectedItem("doc_author"), _
+            If Not AuthorGroupComboBox.SelectedItem Is Nothing Then
+                Return Convert.ToString(AuthorGroupComboBox.SelectedItem("doc_author"),
                                         CultureInfo.CurrentCulture)
             End If
             Return Nothing
         End Get
         Set(value As String)
-            Throw New NotImplementedException
+            AuthorGroupComboBox.SelectedItem = value
         End Set
     End Property
 
-    Public Property Subjects As DataTable Implements ICommonView.Subjects
+    Public Property SubjectEnabled As Boolean Implements IMainView.SubjectEnabled
         Get
-            Return SubjectComboBox.DataSource
+            Return SubjectGroupComboBox.Enabled
+        End Get
+        Set(value As Boolean)
+            SubjectGroupComboBox.Enabled = value
+        End Set
+    End Property
+
+    Public Property SubjectsGroup As DataTable Implements ICommonView.SubjectsGroup
+        Get
+            Throw New NotImplementedException()
         End Get
         Set(value As DataTable)
-            SubjectComboBox.DataSource = value
-            SubjectComboBox.DisplayMember = "doc_subject"
+            SubjectGroupComboBox.DataSource = value
+            SubjectGroupComboBox.DisplayMember = "doc_subject"
         End Set
     End Property
 
-    Public Property Subject As String Implements ICommonView.Subject
+    Public Property SubjectGroup As String Implements ICommonView.SubjectGroup
         Get
-            If Not SubjectComboBox.SelectedItem Is Nothing Then
-                Return Convert.ToString(SubjectComboBox.SelectedItem("doc_subject"), _
+            If Not SubjectGroupComboBox.SelectedItem Is Nothing Then
+                Return Convert.ToString(SubjectGroupComboBox.SelectedItem("doc_subject"),
                                         CultureInfo.CurrentCulture)
             End If
             Return Nothing
         End Get
         Set(value As String)
-            Throw New NotImplementedException
+            SubjectGroupComboBox.SelectedItem = value
         End Set
     End Property
 
-    Public Property AuthorsPaired As DataTable Implements ICommonView.AuthorsPaired
+    Public Property CategoryEnabled As Boolean Implements IMainView.CategoryEnabled
         Get
-            Return AuthorPairedComboBox.DataSource
+            Return CategoryGroupComboBox.Enabled
+        End Get
+        Set(value As Boolean)
+            CategoryGroupComboBox.Enabled = value
+        End Set
+    End Property
+
+    Public Property CategoriesGroup As DataTable Implements ICommonView.CategoriesGroup
+        Get
+            Throw New NotImplementedException()
         End Get
         Set(value As DataTable)
-            AuthorPairedComboBox.DataSource = value
-            AuthorPairedComboBox.DisplayMember = "doc_author"
+            CategoryGroupComboBox.DataSource = value
+            CategoryGroupComboBox.DisplayMember = "doc_category"
         End Set
     End Property
 
-    Public Property AuthorPaired As String Implements ICommonView.AuthorPaired
+    Public Property CategoryGroup As String Implements ICommonView.CategoryGroup
         Get
-            If Not AuthorPairedComboBox.SelectedItem Is Nothing Then
-                Return Convert.ToString(AuthorPairedComboBox.SelectedItem("doc_author"), _
+            If Not CategoryGroupComboBox.SelectedItem Is Nothing Then
+                Return Convert.ToString(CategoryGroupComboBox.SelectedItem("doc_category"),
                                         CultureInfo.CurrentCulture)
             End If
             Return Nothing
         End Get
         Set(value As String)
-            Throw New NotImplementedException
+            CategoryGroupComboBox.SelectedItem = value
         End Set
     End Property
 
-    Public Property SubjectsPaired As DataTable Implements ICommonView.SubjectsPaired
+    Public Property ClearSelectionsEnabled As Boolean Implements IMainView.ClearSelectionsEnabled
         Get
-            Return SubjectPairedComboBox.DataSource
+            Return ClearSelectionsButton.Enabled
         End Get
-        Set(value As DataTable)
-            SubjectPairedComboBox.DataSource = value
-            SubjectPairedComboBox.DisplayMember = "doc_subject"
+        Set(value As Boolean)
+            ClearSelectionsButton.Enabled = value
         End Set
     End Property
 
-    Public Property SubjectPaired As String Implements ICommonView.SubjectPaired
+    Public Property SearchBySelectionsEnabled As Boolean Implements IMainView.SearchBySelectionsEnabled
         Get
-            If Not SubjectPairedComboBox.SelectedItem Is Nothing Then
-                Return Convert.ToString(SubjectPairedComboBox.SelectedItem("doc_subject"), _
-                                        CultureInfo.CurrentCulture)
-            End If
-            Return Nothing
+            Return SearchBySelectionsButton.Enabled
         End Get
-        Set(value As String)
-            SubjectPairedComboBox.SelectedItem = value
-            SearchOptionsTabControl_Selected(Me, Nothing)
+        Set(value As Boolean)
+            SearchBySelectionsButton.Enabled = value
         End Set
     End Property
 
-    Public Property Categories As DataTable Implements ICommonView.Categories
+    Public Property SearchDatePickerEnabled As Boolean Implements IMainView.SearchDatePickerEnabled
         Get
-            Return CategoryComboBox.DataSource
+            Return SearchDateTimePicker.Enabled
         End Get
-        Set(value As DataTable)
-            CategoryComboBox.DataSource = value
-            CategoryComboBox.DisplayMember = "doc_category"
-        End Set
-    End Property
-
-    Public Property Category As String Implements ICommonView.Category
-        Get
-            If Not CategoryComboBox.SelectedItem Is Nothing Then
-                Return Convert.ToString(CategoryComboBox.SelectedItem("doc_category"), _
-                                        CultureInfo.CurrentCulture)
-            End If
-            Return Nothing
-        End Get
-        Set(value As String)
-            Throw New NotImplementedException
+        Set(value As Boolean)
+            SearchDateTimePicker.Enabled = value
         End Set
     End Property
 
     Public ReadOnly Property SearchDate As String Implements IMainView.SearchDate
         Get
-            Return SearchDateTimePicker.Value.ToString("yyyy-MM-dd", _
+            Return SearchDateTimePicker.Value.ToString("yyyy-MM-dd",
                                                        CultureInfo.CurrentCulture)
         End Get
-    End Property
-
-    Public Property DBDocumentRecordsCountMessage As String Implements IMainView.DBDocumentRecordsCountMessage
-        Get
-            Return DBDocumentRecordsCountLabel.Text
-        End Get
-        Set(value As String)
-            DBDocumentRecordsCountLabel.Text = value
-        End Set
-    End Property
-
-    Public ReadOnly Property FlaggedDocumentsOnly As Boolean Implements IMainView.FlaggedDocumentsOnly
-        Get
-            Return FlaggedDocumentsOnlyCheckBox.Checked
-        End Get
-    End Property
-
-    Public Property QueryDocumentsEnabled As Boolean Implements IMainView.QueryDocumentsEnabled
-        Get
-            Return QueryDocumentsButton.Enabled
-        End Get
-        Set(value As Boolean)
-            QueryDocumentsButton.Enabled = value
-        End Set
-    End Property
-
-    Public Property SearchResultsExpanded As Boolean Implements IMainView.SearchResultsExpanded
-        Get
-            Return SplitContainer.Panel2Collapsed
-        End Get
-        Set(value As Boolean)
-            ' This property must be set instead of setting the
-            ' SplitContainer.Panel2Collapsed property to ensure the selected
-            ' Search Options tab is visible to the user.
-            skipSearchOptionsTabControlSelectedActions = True
-            SplitContainer.Panel2Collapsed = value
-            Dim selectedTabIndex As Integer = SearchOptionsTabControl.SelectedIndex
-            SearchOptionsTabControl.DeselectTab(selectedTabIndex)
-            SearchOptionsTabControl.SelectTab(selectedTabIndex)
-            skipSearchOptionsTabControlSelectedActions = False
-        End Set
     End Property
 
     Public Property SearchResultsEnabled As Boolean Implements IMainView.SearchResultsEnabled
@@ -388,20 +363,20 @@ Public Class MainForm
 
     Public Property DocumentRecordPanelEnabled As Boolean Implements IMainView.DocumentRecordPanelEnabled
         Get
-            Return RightTabControl.Enabled
+            Return SelectedDocumentTabControl.Enabled
         End Get
         Set(value As Boolean)
             toolStripStatePresenter.SetDocumentSelectedState(value)
-            RightTabControl.Enabled = value
+            SelectedDocumentTabControl.Enabled = value
         End Set
     End Property
 
     Public Property DocumentRecordPanelSelectedTab As Integer Implements IMainView.DocumentRecordPanelSelectedTab
         Get
-            Return RightTabControl.SelectedIndex
+            Return SelectedDocumentTabControl.SelectedIndex
         End Get
         Set(value As Integer)
-            RightTabControl.SelectedIndex = value
+            SelectedDocumentTabControl.SelectedIndex = value
         End Set
     End Property
 
@@ -444,11 +419,13 @@ Public Class MainForm
             ' The "If" check is needed to prevent user from having to check/uncheck checkbox in
             ' SearchResultsDataGridView when Document Notes length > 0.
             If NotesTextBox.Focused Then
-                SearchOptionsTabControl.Enabled = controlEnabled
+                SearchGroupBox.Enabled = controlEnabled
                 SearchResultsDataGridView.Enabled = controlEnabled
             End If
-            toolStripStatePresenter.SetNotesTextBoxChangedState(m_DocumentRecordNotesChanged,
-                                                                NotesTextBox.CanUndo)
+            If DocumentRecordId > 0 Then
+                toolStripStatePresenter.SetNotesTextBoxChangedState(m_DocumentRecordNotesChanged,
+                                                                    NotesTextBox.CanUndo)
+            End If
         End Set
     End Property
 
@@ -558,6 +535,64 @@ Public Class MainForm
         End Get
     End Property
 
+    Public Property AuthorsPaired As DataTable Implements ICommonView.AuthorsPaired
+        Get
+            Throw New NotImplementedException
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException
+        End Set
+    End Property
+
+    Public Property AuthorPaired As String Implements ICommonView.AuthorPaired
+        Get
+            Throw New NotImplementedException
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException
+        End Set
+    End Property
+
+    Public Property SubjectsPaired As DataTable Implements ICommonView.SubjectsPaired
+        Get
+            Throw New NotImplementedException
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException
+        End Set
+    End Property
+
+    Public Property SubjectPaired As String Implements ICommonView.SubjectPaired
+        Get
+            Throw New NotImplementedException
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException
+        End Set
+    End Property
+
+    Public Property Categories As DataTable Implements ICommonView.Categories
+        Get
+            Throw New NotImplementedException
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException
+        End Set
+    End Property
+
+    Public Property Category As String Implements ICommonView.Category
+        Get
+            Throw New NotImplementedException
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException
+        End Set
+    End Property
+
+    Public Sub RemoveAllDocumentsFromSearchFunctions() Implements IMainView.RemoveAllDocumentsFromSearchFunctions
+        SearchFunctionsListBox.Items.RemoveAt(4)
+    End Sub
+
     Public Sub SelectSearchResultsLastRow() Implements IMainView.SelectSearchResultsLastRow
         SearchResultsDataGridView.Rows(SearchResultsDataGridView.Rows.Count - 1).Selected = True
         SearchResultsDataGridView.FirstDisplayedScrollingRowIndex = SearchResultsDataGridView.RowCount - 1
@@ -615,7 +650,6 @@ Public Class MainForm
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         windowStatePresenter.GetState()
-        SearchStringComboBox.Select()
         NativeMethods.AddClipboardFormatListener(Me.Handle)
     End Sub
 
@@ -635,17 +669,17 @@ Public Class MainForm
         ViewToolbarToolStripMenuItem.Checked = ToolStrip.Visible
     End Sub
 
-    Private Sub FileNewToolStrip_Click(sender As Object, e As EventArgs) Handles FileNewToolStripMenuItem.Click, _
+    Private Sub FileNewToolStrip_Click(sender As Object, e As EventArgs) Handles FileNewToolStripMenuItem.Click,
                                                                                  FileNewToolStripButton.Click
         AddPdfDocumentsDialog.ShowDialog()
     End Sub
 
-    Private Sub FileOpenToolStrip_Click(sender As Object, e As EventArgs) Handles FileOpenToolStripMenuItem.Click, _
+    Private Sub FileOpenToolStrip_Click(sender As Object, e As EventArgs) Handles FileOpenToolStripMenuItem.Click,
                                                                                   FileOpenToolStripButton.Click
         presenter.OpenSelectedDocumentPdf()
     End Sub
 
-    Private Sub FileSaveToolStrip_Click(sender As Object, e As EventArgs) Handles FileSaveToolStripMenuItem.Click, _
+    Private Sub FileSaveToolStrip_Click(sender As Object, e As EventArgs) Handles FileSaveToolStripMenuItem.Click,
                                                                                   FileSaveToolStripButton.Click
         presenter.SaveSelectedDocumentNotes()
         presenter.NotesTextChanged()
@@ -658,7 +692,7 @@ Public Class MainForm
         presenter.SaveSelectedDocumentPdfOrTextAs()
     End Sub
 
-    Private Sub FilePrintToolStrip_Click(sender As Object, e As EventArgs) Handles FilePrintToolStripMenuItem.Click, _
+    Private Sub FilePrintToolStrip_Click(sender As Object, e As EventArgs) Handles FilePrintToolStripMenuItem.Click,
                                                                                    FilePrintToolStripButton.Click
         presenter.PrintTextForSelectedDocument()
     End Sub
@@ -679,7 +713,7 @@ Public Class MainForm
         presenter.SetCategoryOnSelectedSearchResults()
     End Sub
 
-    Private Sub FileDeleteToolStrip_Click(sender As Object, e As EventArgs) Handles FileDeleteToolStripMenuItem.Click, _
+    Private Sub FileDeleteToolStrip_Click(sender As Object, e As EventArgs) Handles FileDeleteToolStripMenuItem.Click,
                                                                                     FileDeleteToolStripButton.Click
         presenter.DeleteSelectedSearchResults()
     End Sub
@@ -692,22 +726,22 @@ Public Class MainForm
         Me.Close()
     End Sub
 
-    Private Sub EditUndoToolStrip_Click(sender As Object, e As EventArgs) Handles EditUndoToolStripMenuItem.Click, _
+    Private Sub EditUndoToolStrip_Click(sender As Object, e As EventArgs) Handles EditUndoToolStripMenuItem.Click,
                                                                                   EditUndoToolStripButton.Click
         NotesTextBox.Undo()
     End Sub
 
-    Private Sub EditCutToolStrip_Click(sender As Object, e As EventArgs) Handles EditCutToolStripMenuItem.Click, _
+    Private Sub EditCutToolStrip_Click(sender As Object, e As EventArgs) Handles EditCutToolStripMenuItem.Click,
                                                                                  EditCutToolStripButton.Click
         NotesTextBox.Cut()
     End Sub
 
-    Private Sub EditCopyToolStrip_Click(sender As Object, e As EventArgs) Handles EditCopyToolStripMenuItem.Click, _
+    Private Sub EditCopyToolStrip_Click(sender As Object, e As EventArgs) Handles EditCopyToolStripMenuItem.Click,
                                                                                   EditCopyToolStripButton.Click
         GetTextBoxWithInputFocus.Copy()
     End Sub
 
-    Private Sub EditPasteToolStrip_Click(sender As Object, e As EventArgs) Handles EditPasteToolStripMenuItem.Click, _
+    Private Sub EditPasteToolStrip_Click(sender As Object, e As EventArgs) Handles EditPasteToolStripMenuItem.Click,
                                                                                    EditPasteToolStripButton.Click
         NotesTextBox.Paste()
     End Sub
@@ -719,13 +753,13 @@ Public Class MainForm
                                                              GetTextBoxWithInputFocus.SelectionLength)
     End Sub
 
-    Private Sub EditRestoreToolStrip_Click(sender As Object, e As EventArgs) Handles EditRestoreToolStripMenuItem.Click, _
+    Private Sub EditRestoreToolStrip_Click(sender As Object, e As EventArgs) Handles EditRestoreToolStripMenuItem.Click,
                                                                                      EditRestoreToolStripButton.Click
         presenter.RestoreSelectedDocumentNotes()
         presenter.NotesTextChanged()
     End Sub
 
-    Private Sub EditDateTimeToolStrip_Click(sender As Object, e As EventArgs) Handles EditDateTimeToolStripMenuItem.Click, _
+    Private Sub EditDateTimeToolStrip_Click(sender As Object, e As EventArgs) Handles EditDateTimeToolStripMenuItem.Click,
                                                                                       EditDateTimeToolStripButton.Click
         presenter.AppendDateTimeUserNameToSelectedDocumentNotes()
     End Sub
@@ -734,20 +768,7 @@ Public Class MainForm
         presenter.SetFlagStateOnSelectedDocument()
     End Sub
 
-    Private Sub ViewToggleRightPanelToolStrip_Click(sender As Object, e As EventArgs) Handles ViewToggleRightPanelToolStripMenuItem.Click, _
-                                                                                              ViewToggleRightPanelToolStripButton.Click
-        SearchResultsDataGridView.Columns(6).AutoSizeMode = _
-            DataGridViewAutoSizeColumnMode.DisplayedCells
-        If SplitContainer.Panel2Collapsed Then
-            SearchResultsExpanded = False
-        Else
-            SearchResultsExpanded = True
-            SearchResultsDataGridView.Columns(6).AutoSizeMode = _
-                DataGridViewAutoSizeColumnMode.Fill
-        End If
-    End Sub
-
-    Private Sub ViewRefreshToolStrip_Click(sender As Object, e As EventArgs) Handles ViewRefreshToolStripMenuItem.Click, _
+    Private Sub ViewRefreshToolStrip_Click(sender As Object, e As EventArgs) Handles ViewRefreshToolStripMenuItem.Click,
                                                                                      ViewRefreshToolStripButton.Click
         presenter.RefreshSearchResults()
     End Sub
@@ -775,17 +796,17 @@ Public Class MainForm
         StatusStrip.Visible = ViewStatusBarToolStripMenuItem.Checked
     End Sub
 
-    Private Sub ToolsOptionsToolStripButton_Click(sender As Object, e As EventArgs) Handles ToolsOptionsToolStripButton.Click, _
+    Private Sub ToolsOptionsToolStripButton_Click(sender As Object, e As EventArgs) Handles ToolsOptionsToolStripButton.Click,
                                                                                             ToolsOptionsToolStripMenuItem.Click
         OptionsDialog.ShowDialog()
     End Sub
 
-    Private Sub ToolsManageUploadFoldersToolStrip_Click(sender As Object, e As EventArgs) Handles ToolsManageUploadFolderConfigurationsToolStripMenuItem.Click, _
+    Private Sub ToolsManageUploadFoldersToolStrip_Click(sender As Object, e As EventArgs) Handles ToolsManageUploadFolderConfigurationsToolStripMenuItem.Click,
                                                                                                   ToolsManageUploadFolderConfigurationsToolStripButton.Click
         ManageUploadFolderConfigurationsDialog.ShowDialog()
     End Sub
 
-    Private Sub HelpContentsToolStrip_Click(sender As Object, e As EventArgs) Handles HelpContentsToolStripMenuItem.Click, _
+    Private Sub HelpContentsToolStrip_Click(sender As Object, e As EventArgs) Handles HelpContentsToolStripMenuItem.Click,
                                                                                       HelpContentsToolStripButton.Click
         help.Show(Me, "Using PDFKeeper.html")
     End Sub
@@ -795,210 +816,136 @@ Public Class MainForm
     End Sub
 #End Region
 
-#Region "Search Options Events and Members"
-    Private Sub SearchOptionsTabControl_Selected(sender As Object, e As TabControlEventArgs) Handles SearchOptionsTabControl.Selected
-        If skipSearchOptionsTabControlSelectedActions = False Then
-            toolStripStatePresenter.SetPreSearchState()
-            SearchResultsExpanded = False
-            presenter.SearchOptionSelected()
-        End If
+#Region "Search Functions Events and Members"
+    Private Sub SearchFunctionsListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchFunctionsListBox.SelectedIndexChanged
+        toolStripStatePresenter.SetPreSearchState()
+        presenter.SearchFunctionSelected()
     End Sub
 
-    Private Sub SearchStringComboBox_Enter(sender As Object, e As EventArgs) Handles SearchStringComboBox.Enter
+    Private Sub SearchStringComboBox_Enter(sender As Object, e As EventArgs) Handles SearchTextComboBox.Enter
         presenter.GetSearchStringHistory()
     End Sub
 
-    Private Sub SearchStringComboBox_TextChanged(sender As Object, e As EventArgs) Handles SearchStringComboBox.TextChanged
+    Private Sub SearchStringComboBox_TextChanged(sender As Object, e As EventArgs) Handles SearchTextComboBox.TextChanged
         toolStripStatePresenter.SetPreSearchState()
-        presenter.SearchStringTextChanged()
+        presenter.SearchTextChanged()
     End Sub
 
-    Private Sub SearchButton_Click(sender As Object, e As EventArgs) Handles SearchButton.Click
+    Private Sub SearchByTextButton_Click(sender As Object, e As EventArgs) Handles SearchByTextButton.Click
         presenter.GetSearchResultsByString(False)
     End Sub
 
-    Private Sub AuthorComboBox_DropDown(sender As Object, e As EventArgs) Handles AuthorComboBox.DropDown
+    Private Sub AuthorGroupComboBox_DropDown(sender As Object, e As EventArgs) Handles AuthorGroupComboBox.DropDown
         commonPresenter.GetColumnItemsByGroup()
     End Sub
 
-    Private Sub AuthorComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles AuthorComboBox.DropDownClosed
-        presenter.GetSearchResultsByAuthor()
+    Private Sub AuthorGroupComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles AuthorGroupComboBox.DropDownClosed
+        toolStripStatePresenter.SetPreSearchState()
+        presenter.SetSearchBySelectionsButtonsState()
     End Sub
 
-    Private Sub AuthorComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles AuthorComboBox.KeyDown
+    Private Sub AuthorGroupComboBox_Enter(sender As Object, e As EventArgs) Handles AuthorGroupComboBox.Enter
+        commonPresenter.GetColumnItemsByGroup()
+    End Sub
+
+    Private Sub AuthorComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles AuthorGroupComboBox.KeyDown
         ' ComboBox will only drop down when the down arrow is pressed.
         If e.KeyCode = 40 Then
-            AuthorComboBox.DroppedDown = True
+            AuthorGroupComboBox.DroppedDown = True
         End If
     End Sub
 
-    Private Sub AuthorComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles AuthorComboBox.KeyUp
-        ' Pressing the up arrow when ComboBox has focus will select the previous Author in the
-        ' collection when the drop down is in the closed position.  When drop down is in the
-        ' open position, the up arrow will move selector up the list.
-        If e.KeyCode = 38 Then
-            If AuthorComboBox.DroppedDown = False Then
-                presenter.GetSearchResultsByAuthor()
-            End If
-        End If
+    Private Sub AuthorGroupComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles AuthorGroupComboBox.KeyUp
+        toolStripStatePresenter.SetPreSearchState()
+        presenter.SetSearchBySelectionsButtonsState()
     End Sub
 
-    Private Sub AuthorComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles AuthorComboBox.MouseWheel
+    Private Sub AuthorGroupComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles AuthorGroupComboBox.MouseWheel
         ' This will prevent mouse wheel scrolling while drop down is closed.
-        If Not AuthorComboBox.DroppedDown Then
+        If Not AuthorGroupComboBox.DroppedDown Then
             Dim handledMouseEventArgs As HandledMouseEventArgs = DirectCast(e, HandledMouseEventArgs)
             handledMouseEventArgs.Handled = True
         End If
     End Sub
 
-    Private Sub SubjectComboBox_DropDown(sender As Object, e As EventArgs) Handles SubjectComboBox.DropDown
+    Private Sub SubjectGroupComboBox_DropDown(sender As Object, e As EventArgs) Handles SubjectGroupComboBox.DropDown
         commonPresenter.GetColumnItemsByGroup()
     End Sub
 
-    Private Sub SubjectComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles SubjectComboBox.DropDownClosed
-        presenter.GetSearchResultsBySubject()
+    Private Sub SubjectGroupComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles SubjectGroupComboBox.DropDownClosed
+        toolStripStatePresenter.SetPreSearchState()
+        presenter.SetSearchBySelectionsButtonsState()
     End Sub
 
-    Private Sub SubjectComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles SubjectComboBox.KeyDown
+    Private Sub SubjectGroupComboBox_Enter(sender As Object, e As EventArgs) Handles SubjectGroupComboBox.Enter
+        commonPresenter.GetColumnItemsByGroup()
+    End Sub
+
+    Private Sub SubjectGroupComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles SubjectGroupComboBox.KeyDown
         ' ComboBox will only drop down when the down arrow is pressed.
         If e.KeyCode = 40 Then
-            SubjectComboBox.DroppedDown = True
+            SubjectGroupComboBox.DroppedDown = True
         End If
     End Sub
 
-    Private Sub SubjectComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles SubjectComboBox.KeyUp
-        ' Pressing the up arrow when ComboBox has focus will select the previous Subject in the
-        ' collection when the drop down is in the closed position.  When drop down is in the
-        ' open position, the up arrow will move selector up the list.
-        If e.KeyCode = 38 Then
-            If SubjectComboBox.DroppedDown = False Then
-                presenter.GetSearchResultsBySubject()
-            End If
-        End If
+    Private Sub SubjectGroupComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles SubjectGroupComboBox.KeyUp
+        toolStripStatePresenter.SetPreSearchState()
+        presenter.SetSearchBySelectionsButtonsState()
     End Sub
 
-    Private Sub SubjectComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles SubjectComboBox.MouseWheel
+    Private Sub SubjectGroupComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles SubjectGroupComboBox.MouseWheel
         ' This will prevent mouse wheel scrolling while drop down is closed.
-        If Not SubjectComboBox.DroppedDown Then
+        If Not SubjectGroupComboBox.DroppedDown Then
             Dim handledMouseEventArgs As HandledMouseEventArgs = DirectCast(e, HandledMouseEventArgs)
             handledMouseEventArgs.Handled = True
         End If
     End Sub
 
-    Private Sub AuthorPairedComboBox_DropDown(sender As Object, e As EventArgs) Handles AuthorPairedComboBox.DropDown
+    Private Sub CategoryGroupComboBox_DropDown(sender As Object, e As EventArgs) Handles CategoryGroupComboBox.DropDown
         commonPresenter.GetColumnItemsByGroup()
     End Sub
 
-    Private Sub AuthorPairedComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles AuthorPairedComboBox.DropDownClosed
-        presenter.ClearSubjectPairedSelection()
-        presenter.GetSearchResultsByAuthorAndSubject()
+    Private Sub CategoryGroupComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles CategoryGroupComboBox.DropDownClosed
+        toolStripStatePresenter.SetPreSearchState()
+        presenter.SetSearchBySelectionsButtonsState()
     End Sub
 
-    Private Sub AuthorPairedComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles AuthorPairedComboBox.KeyDown
+    Private Sub CategoryGroupComboBox_Enter(sender As Object, e As EventArgs) Handles CategoryGroupComboBox.Enter
+        commonPresenter.GetColumnItemsByGroup()
+    End Sub
+
+    Private Sub CategoryGroupComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles CategoryGroupComboBox.KeyDown
         ' ComboBox will only drop down when the down arrow is pressed.
         If e.KeyCode = 40 Then
-            AuthorPairedComboBox.DroppedDown = True
+            CategoryGroupComboBox.DroppedDown = True
         End If
     End Sub
 
-    Private Sub AuthorPairedComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles AuthorPairedComboBox.KeyUp
-        ' Pressing the up arrow when ComboBox has focus will select the previous Author in the
-        ' collection when the drop down is in the closed position.  When drop down is in the
-        ' open position, the up arrow will move selector up the list.
-        If e.KeyCode = 38 Then
-            If AuthorPairedComboBox.DroppedDown = False Then
-                presenter.ClearSubjectPairedSelection()
-                presenter.GetSearchResultsByAuthorAndSubject()
-            End If
-        End If
+    Private Sub CategoryGroupComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles CategoryGroupComboBox.KeyUp
+        toolStripStatePresenter.SetPreSearchState()
+        presenter.SetSearchBySelectionsButtonsState()
     End Sub
 
-    Private Sub AuthorPairedComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles AuthorPairedComboBox.MouseWheel
+    Private Sub CategoryGroupComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles CategoryGroupComboBox.MouseWheel
         ' This will prevent mouse wheel scrolling while drop down is closed.
-        If Not AuthorPairedComboBox.DroppedDown Then
+        If Not CategoryGroupComboBox.DroppedDown Then
             Dim handledMouseEventArgs As HandledMouseEventArgs = DirectCast(e, HandledMouseEventArgs)
             handledMouseEventArgs.Handled = True
         End If
     End Sub
 
-    Private Sub SubjectPairedComboBox_DropDown(sender As Object, e As EventArgs) Handles SubjectPairedComboBox.DropDown
-        commonPresenter.GetColumnItemsByGroup()
+    Private Sub ClearSelectionsButton_Click(sender As Object, e As EventArgs) Handles ClearSelectionsButton.Click
+        toolStripStatePresenter.SetPreSearchState()
+        presenter.ClearSearchSelections()
+        presenter.ClearSearchSelections()
     End Sub
 
-    Private Sub SubjectPairedComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles SubjectPairedComboBox.DropDownClosed
-        presenter.GetSearchResultsByAuthorAndSubject()
-    End Sub
-
-    Private Sub SubjectPairedComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles SubjectPairedComboBox.KeyDown
-        ' ComboBox will only drop down when the down arrow is pressed.
-        If e.KeyCode = 40 Then
-            SubjectPairedComboBox.DroppedDown = True
-        End If
-    End Sub
-
-    Private Sub SubjectPairedComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles SubjectPairedComboBox.KeyUp
-        ' Pressing the up arrow when ComboBox has focus will select the previous Subject in the
-        ' collection when the drop down is in the closed position.  When drop down is in the
-        ' open position, the up arrow will move selector up the list.
-        If e.KeyCode = 38 Then
-            If SubjectPairedComboBox.DroppedDown = False Then
-                presenter.GetSearchResultsByAuthorAndSubject()
-            End If
-        End If
-    End Sub
-
-    Private Sub SubjectPairedComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles SubjectPairedComboBox.MouseWheel
-        ' This will prevent mouse wheel scrolling while drop down is closed.
-        If Not SubjectPairedComboBox.DroppedDown Then
-            Dim handledMouseEventArgs As HandledMouseEventArgs = DirectCast(e, HandledMouseEventArgs)
-            handledMouseEventArgs.Handled = True
-        End If
-    End Sub
-
-    Private Sub CategoryComboBox_DropDown(sender As Object, e As EventArgs) Handles CategoryComboBox.DropDown
-        commonPresenter.GetColumnItemsByGroup()
-    End Sub
-
-    Private Sub CategoryComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles CategoryComboBox.DropDownClosed
-        presenter.GetSearchResultsByCategory()
-    End Sub
-
-    Private Sub CategoryComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles CategoryComboBox.KeyDown
-        ' ComboBox will only drop down when the down arrow is pressed.
-        If e.KeyCode = 40 Then
-            CategoryComboBox.DroppedDown = True
-        End If
-    End Sub
-
-    Private Sub CategoryComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles CategoryComboBox.KeyUp
-        ' Pressing the up arrow when ComboBox has focus will select the previous Category in the
-        ' collection when the drop down is in the closed position.  When drop down is in the
-        ' open position, the up arrow will move selector up the list.
-        If e.KeyCode = 38 Then
-            If CategoryComboBox.DroppedDown = False Then
-                presenter.GetSearchResultsByCategory()
-            End If
-        End If
-    End Sub
-
-    Private Sub CategoryComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles CategoryComboBox.MouseWheel
-        ' This will prevent mouse wheel scrolling while drop down is closed.
-        If Not CategoryComboBox.DroppedDown Then
-            Dim handledMouseEventArgs As HandledMouseEventArgs = DirectCast(e, HandledMouseEventArgs)
-            handledMouseEventArgs.Handled = True
-        End If
+    Private Sub SearchBySelectionsButton_Click(sender As Object, e As EventArgs) Handles SearchBySelectionsButton.Click
+        presenter.GetSearchResultsBySearchSelection()
     End Sub
 
     Private Sub SearchDateTimePicker_ValueChanged(sender As Object, e As EventArgs) Handles SearchDateTimePicker.ValueChanged
-        presenter.GetSearchResultsByDateAdded()
-    End Sub
-
-    Private Sub FlaggedDocumentsOnlyCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles FlaggedDocumentsOnlyCheckBox.CheckedChanged
-        SearchOptionsTabControl_Selected(Me, Nothing)
-    End Sub
-
-    Private Sub QueryDocumentsButton_Click(sender As Object, e As EventArgs) Handles QueryDocumentsButton.Click
-        presenter.QueryAllOrFlaggedDocumentRecords()
+        presenter.GetDocumentRecordsByDateAdded()
     End Sub
 #End Region
 
@@ -1023,19 +970,14 @@ Public Class MainForm
         End With
         If SearchResultsDataGridView.RowCount > 0 Then
             SearchResultsDataGridView.Enabled = True
-            SearchResultsDataGridView.Columns(6).AutoSizeMode = _
+            SearchResultsDataGridView.Columns(6).AutoSizeMode =
                 DataGridViewAutoSizeColumnMode.DisplayedCells
-            If SearchResultsDataGridView.Columns.GetColumnsWidth(DataGridViewElementStates.None) > _
-                SearchResultsDataGridView.Size.Width Then
-                SearchResultsExpanded = True
-            End If
             If SearchResultsDataGridView.Columns(6).Displayed = True Then
                 SearchResultsDataGridView.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             End If
             SearchResultsDataGridView.Columns(6).MinimumWidth = SearchResultsDataGridView.Columns(6).FillWeight + 20
         End If
         toolStripStatePresenter.SetPostSearchState()
-        SearchResultsDataGridView.Focus()
     End Sub
 
     Private Sub SearchResultsDataGridView_Sorted(sender As Object, e As EventArgs) Handles SearchResultsDataGridView.Sorted
@@ -1044,14 +986,12 @@ Public Class MainForm
 
     Private Sub SearchResultsDataGridView_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles SearchResultsDataGridView.RowsAdded
         TotalRecordsCountToolStripStatusLabel.Text = SearchResultsDataGridView.RowCount
-        toolStripStatePresenter.SetSearchResultsRowCountChangedState(SearchResultsDataGridView.RowCount,
-                                                                     SplitContainer.Panel2Collapsed)
+        toolStripStatePresenter.SetSearchResultsRowCountChangedState(SearchResultsDataGridView.RowCount)
     End Sub
 
     Private Sub SearchResultsDataGridView_RowsRemoved(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles SearchResultsDataGridView.RowsRemoved
         TotalRecordsCountToolStripStatusLabel.Text = SearchResultsDataGridView.RowCount
-        toolStripStatePresenter.SetSearchResultsRowCountChangedState(SearchResultsDataGridView.RowCount,
-                                                                     SplitContainer.Panel2Collapsed)
+        toolStripStatePresenter.SetSearchResultsRowCountChangedState(SearchResultsDataGridView.RowCount)
         toolStripStatePresenter.SetSearchResultsSelectedState(GetSelectedSearchResultsIds.Count)
     End Sub
 
@@ -1085,7 +1025,7 @@ Public Class MainForm
 #End Region
 
 #Region "Selected Document Events and Members"
-    Private Sub NotesTextBox_Enter(sender As Object, e As EventArgs) Handles NotesTextBox.Enter, _
+    Private Sub NotesTextBox_Enter(sender As Object, e As EventArgs) Handles NotesTextBox.Enter,
                                                                              NotesTextBox.GotFocus
         toolStripStatePresenter.SetTextBoxEnterState(NotesTextBox.ReadOnly, NotesTextBox.TextLength)
         If NotesTextBox.TextLength > 0 Then
@@ -1218,7 +1158,7 @@ Public Class MainForm
 
     Private Sub MainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If FileSaveToolStripMenuItem.Enabled Then
-            RightTabControl.SelectedIndex = 0
+            SelectedDocumentTabControl.SelectedIndex = 0
             NotesTextBox.Select()
             If presenter.ViewClosingPrompt = False Then
                 e.Cancel = True
