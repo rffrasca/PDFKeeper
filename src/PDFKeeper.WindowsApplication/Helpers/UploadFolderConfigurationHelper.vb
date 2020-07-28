@@ -18,10 +18,10 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class UploadFolderConfigurationHelper
-    Private serializer As XmlSerializerHelper
-    Private m_ConfigName As String
-    Private configXmlPath As String
-    Private configFolderPath As String
+    Private ReadOnly serializer As XmlSerializerHelper
+    Private ReadOnly m_ConfigName As String
+    Private ReadOnly configXmlPath As String
+    Private ReadOnly configFolderPath As String
 
     ''' <summary>
     ''' Class constructor.
@@ -44,8 +44,8 @@ Public Class UploadFolderConfigurationHelper
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function Read() As UploadFolderConfiguration
-        Dim config As UploadFolderConfiguration = Nothing
-        config = serializer.Deserialize(Of UploadFolderConfiguration)()
+        Dim config As UploadFolderConfiguration =
+            serializer.Deserialize(Of UploadFolderConfiguration)()
         Return config
     End Function
 

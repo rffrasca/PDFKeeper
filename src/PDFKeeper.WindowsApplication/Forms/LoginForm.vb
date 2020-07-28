@@ -19,8 +19,8 @@
 '******************************************************************************
 Public Class LoginForm
     Implements ILoginView
-    Private presenter As LoginPresenter
-    Private help As IHelpDisplayService = New HelpDisplayService
+    Private ReadOnly presenter As LoginPresenter
+    Private ReadOnly help As IHelpDisplayService = New HelpDisplayService
 
     Public Sub New()
         InitializeComponent()

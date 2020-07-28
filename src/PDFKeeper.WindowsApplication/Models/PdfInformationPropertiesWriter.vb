@@ -19,10 +19,10 @@
 '******************************************************************************
 Public Class PdfInformationPropertiesWriter
     Inherits PdfInformationPropertiesBase
-    Private passwordSpecified As Boolean
-    Private m_InputPdfPath As String
-    Private m_InputPdfPassword As SecureString
-    Private m_OutputPdfPath As String
+    Private ReadOnly passwordSpecified As Boolean
+    Private ReadOnly m_InputPdfPath As String
+    Private ReadOnly m_InputPdfPassword As SecureString
+    Private ReadOnly m_OutputPdfPath As String
 
     ''' <summary>
     ''' Class constructor.
@@ -72,9 +72,7 @@ Public Class PdfInformationPropertiesWriter
         End If
     End Sub
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", _
-        "CA2000:Dispose objects before losing scope")> _
-    Private Sub Write(ByVal reader As PdfReader, _
+    Private Sub Write(ByVal reader As PdfReader,
                       ByVal outputPdfPath As String)
         Dim dictionary As New Dictionary(Of String, String)
         ' ITextSharp's PdfStamper class disposes the FileStream object causing

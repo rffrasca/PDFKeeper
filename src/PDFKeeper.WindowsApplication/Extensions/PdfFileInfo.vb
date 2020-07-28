@@ -18,7 +18,7 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class PdfFileInfo
-    Private fileInfo As FileInfo
+    Private ReadOnly fileInfo As FileInfo
 
     Public Sub New(ByVal pdfPath As String)
         fileInfo = New FileInfo(pdfPath)
@@ -119,15 +119,13 @@ Public Class PdfFileInfo
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
-        "CA1024:UsePropertiesWhereAppropriate")> _
     Public Function GetText() As String
         Using reader = New PdfReader(fileInfo.FullName)
             Dim textString As New StringBuilder
             For i As Integer = 1 To reader.NumberOfPages
-                Dim strategy As parser.ITextExtractionStrategy = _
+                Dim strategy As parser.ITextExtractionStrategy =
                     New parser.LocationTextExtractionStrategy
-                Dim currentPage As String = _
+                Dim currentPage As String =
                     parser.PdfTextExtractor.GetTextFromPage(reader, i, strategy)
                 Dim lines As String() = currentPage.Split(ControlChars.Lf)
                 For Each line As String In lines

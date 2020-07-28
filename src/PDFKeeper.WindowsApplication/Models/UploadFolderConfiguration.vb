@@ -24,7 +24,5 @@ Public Class UploadFolderConfiguration
     Public Property SubjectPrefill As String
     Public Property KeywordsPrefill As String
     Public Property CategoryPrefill As String
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-        "CA1726:UsePreferredTerms", MessageId:="Flag")> _
     Public Property FlagDocument As Boolean
 End Class

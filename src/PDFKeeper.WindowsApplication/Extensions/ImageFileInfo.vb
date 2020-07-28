@@ -18,7 +18,7 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class ImageFileInfo
-    Private fileInfo As FileInfo
+    Private ReadOnly fileInfo As FileInfo
 
     Public Sub New(ByVal imagePath As String)
         fileInfo = New FileInfo(imagePath)

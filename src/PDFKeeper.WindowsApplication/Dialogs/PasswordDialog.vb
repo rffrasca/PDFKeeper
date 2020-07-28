@@ -18,7 +18,7 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class PasswordDialog
-    Private help As IHelpDisplayService = New HelpDisplayService
+    Private ReadOnly help As IHelpDisplayService = New HelpDisplayService
 
     Public ReadOnly Property Password As SecureString
         Get

@@ -60,7 +60,7 @@ Public NotInheritable Class DbInstanceProperties
         End Get
         Set(value As SecureString)
             If value Is Nothing Then
-                Throw New ArgumentNullException("value")
+                Throw New ArgumentNullException(NameOf(value))
             End If
             s_Password = value
             s_Password.MakeReadOnly()

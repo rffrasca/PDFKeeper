@@ -19,7 +19,7 @@
 '******************************************************************************
 Public NotInheritable Class DocumentRepository
     Implements IDocumentRepository, IDisposable
-    Private repository As IDocumentRepository = Nothing
+    Private ReadOnly repository As IDocumentRepository = Nothing
 
     Public Sub New()
         If DbInstanceProperties.DbManagementSystem = "Oracle" Then

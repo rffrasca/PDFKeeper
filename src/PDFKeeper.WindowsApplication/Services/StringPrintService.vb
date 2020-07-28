@@ -20,8 +20,8 @@
 Public Class StringPrintService
     Implements IStringPrintService
     Private m_Value As String
-    Private m_ValueCopy As String
-    Private WithEvents printDocument As New PrintDocument
+    Private ReadOnly m_ValueCopy As String
+    Private WithEvents PrintDocument As New PrintDocument
 
     Public Sub New(ByVal value As String)
         m_Value = value
@@ -39,7 +39,7 @@ Public Class StringPrintService
 
     Public Sub PrintPreview(printPreviewFormSize As Size) Implements IStringPrintService.PrintPreview
         Using printPreview As New PrintPreviewDialog
-            printPreview.Document = printDocument
+            printPreview.Document = PrintDocument
             printPreview.ClientSize = printPreviewFormSize
             printPreview.ShowIcon = False
             printPreview.UseAntiAlias = True
@@ -47,28 +47,28 @@ Public Class StringPrintService
         End Using
     End Sub
 
-    Private Sub Document_PrintPage(ByVal sender As Object, _
-                                   ByVal e As PrintPageEventArgs) Handles printDocument.PrintPage
+    Private Sub Document_PrintPage(ByVal sender As Object,
+                                   ByVal e As PrintPageEventArgs) Handles PrintDocument.PrintPage
         Using font As New Font("Lucida Console", 10)
             Dim charactersOnPage As Integer = 0
             Dim linesPerPage As Integer = 0
-            e.Graphics.MeasureString(m_Value, _
-                                     font, _
-                                     e.MarginBounds.Size, _
-                                     StringFormat.GenericTypographic, _
-                                     charactersOnPage, _
+            e.Graphics.MeasureString(m_Value,
+                                     font,
+                                     e.MarginBounds.Size,
+                                     StringFormat.GenericTypographic,
+                                     charactersOnPage,
                                      linesPerPage)
-            e.Graphics.DrawString(m_Value, _
-                                  font, _
-                                  Brushes.Black, _
-                                  e.MarginBounds, _
+            e.Graphics.DrawString(m_Value,
+                                  font,
+                                  Brushes.Black,
+                                  e.MarginBounds,
                                   StringFormat.GenericTypographic)
             m_Value = m_Value.Substring(charactersOnPage)
             e.HasMorePages = m_Value.Length > 0
         End Using
     End Sub
 
-    Private Sub Document_EndPrint() Handles printDocument.EndPrint
+    Private Sub Document_EndPrint() Handles PrintDocument.EndPrint
         m_Value = m_ValueCopy
     End Sub
 End Class

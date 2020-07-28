@@ -18,9 +18,9 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class PdfSupplementalDataHelper
-    Private serializer As XmlSerializerHelper
-    Private m_PdfPath As String
-    Private suppDataXmlPath As String
+    Private ReadOnly serializer As XmlSerializerHelper
+    Private ReadOnly m_PdfPath As String
+    Private ReadOnly suppDataXmlPath As String
     Private suppData As New PdfSupplementalData
 
     ''' <summary>
@@ -60,10 +60,8 @@ Public Class PdfSupplementalDataHelper
     ''' <param name="category"></param>
     ''' <param name="flagState">0 or 1, where 1 = flagged</param>
     ''' <remarks></remarks>
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-        "CA1726:UsePreferredTerms", MessageId:="flag")> _
-    Public Sub Write(ByVal notes As String, _
-                     ByVal category As String, _
+    Public Sub Write(ByVal notes As String,
+                     ByVal category As String,
                      ByVal flagState As Integer)
         With suppData
             .Notes = notes

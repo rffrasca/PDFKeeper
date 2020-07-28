@@ -29,7 +29,7 @@ Public Class DataGridViewSortParameters
         End Get
         Set(value As DataGridViewColumn)
             If value Is Nothing Then
-                Throw New ArgumentNullException("value")
+                Throw New ArgumentNullException(NameOf(value))
             End If
             m_SortedColumn = value
             m_SortColumnIndex = value.Index

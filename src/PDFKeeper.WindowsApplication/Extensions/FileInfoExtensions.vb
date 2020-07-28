@@ -32,7 +32,7 @@ Module FileInfoExtensions
     Public Function AppendGuidToName(ByVal fileInfoParam As FileInfo,
                                      ByVal value As Guid) As String
         If fileInfoParam Is Nothing Then
-            Throw New ArgumentNullException("fileInfoParam")
+            Throw New ArgumentNullException(NameOf(fileInfoParam))
         End If
         If value = Nothing Then
             value = Guid.NewGuid
@@ -52,7 +52,7 @@ Module FileInfoExtensions
     <Extension()>
     Public Function ComputeHash(ByVal fileInfoParam As FileInfo) As String
         If fileInfoParam Is Nothing Then
-            Throw New ArgumentNullException("fileInfoParam")
+            Throw New ArgumentNullException(NameOf(fileInfoParam))
         End If
         Using algorithm As HashAlgorithm = HashAlgorithm.Create("SHA1")
             Using inputStream As New FileStream(fileInfoParam.FullName,
@@ -72,7 +72,7 @@ Module FileInfoExtensions
     <Extension()>
     Public Sub DeleteToRecycleBin(ByVal fileInfoParam As FileInfo)
         If fileInfoParam Is Nothing Then
-            Throw New ArgumentNullException("fileInfoParam")
+            Throw New ArgumentNullException(NameOf(fileInfoParam))
         End If
         If fileInfoParam.Exists Then
             My.Computer.FileSystem.DeleteFile(fileInfoParam.FullName,
@@ -106,7 +106,7 @@ Module FileInfoExtensions
     <Extension()>
     Public Function IsInUse(ByVal fileInfoParam As FileInfo) As Boolean
         If fileInfoParam Is Nothing Then
-            Throw New ArgumentNullException("fileInfoParam")
+            Throw New ArgumentNullException(NameOf(fileInfoParam))
         End If
         If fileInfoParam.Exists Then
             Try
@@ -136,7 +136,7 @@ Module FileInfoExtensions
     Public Function SwitchFolderPathName(ByVal fileInfoParam As FileInfo,
                                          ByVal newFolderPathName As String) As String
         If fileInfoParam Is Nothing Then
-            Throw New ArgumentNullException("fileInfoParam")
+            Throw New ArgumentNullException(NameOf(fileInfoParam))
         End If
         Return Path.Combine(newFolderPathName, Path.GetFileName(fileInfoParam.FullName))
     End Function
@@ -150,7 +150,7 @@ Module FileInfoExtensions
     <Extension()>
     Public Function ToByteArray(ByVal fileInfoParam As FileInfo) As Byte()
         If fileInfoParam Is Nothing Then
-            Throw New ArgumentNullException("fileInfoParam")
+            Throw New ArgumentNullException(NameOf(fileInfoParam))
         End If
         Dim byteArray As Byte()
         Using stream As FileStream = New FileStream(fileInfoParam.FullName,

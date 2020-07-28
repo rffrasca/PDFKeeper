@@ -18,8 +18,8 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class PdfInformationPropertiesHelper
-    Private m_PdfPath As String
-    Private m_PdfPassword As SecureString
+    Private ReadOnly m_PdfPath As String
+    Private ReadOnly m_PdfPassword As SecureString
 
     ''' <summary>
     ''' Class constructor.

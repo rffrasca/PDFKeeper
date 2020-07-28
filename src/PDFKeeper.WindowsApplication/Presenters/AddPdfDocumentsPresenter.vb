@@ -19,16 +19,18 @@
 '******************************************************************************
 Public Class AddPdfDocumentsPresenter
     Implements IDisposable
-    Private view As IAddPdfDocumentsView
+    Private ReadOnly view As IAddPdfDocumentsView
     Private model As PdfInformationPropertiesReader
     Private helper As PdfInformationPropertiesHelper
-    Private passwordPrompt As IPasswordPromptDisplayService =
+    Private ReadOnly passwordPrompt As IPasswordPromptDisplayService =
         New PasswordPromptDisplayService
-    Private message As IMessageDisplayService = New MessageDisplayService
-    Private question As IQuestionDisplayService = New QuestionDisplayService
-    Private fileSelect As IFileSelectDisplayService =
+    Private ReadOnly message As IMessageDisplayService =
+        New MessageDisplayService
+    Private ReadOnly question As IQuestionDisplayService =
+        New QuestionDisplayService
+    Private ReadOnly fileSelect As IFileSelectDisplayService =
         New FileSelectDisplayService
-    Private pdfViewer As IRestrictedPdfViewerService =
+    Private ReadOnly pdfViewer As IRestrictedPdfViewerService =
         New RestrictedPdfViewerService
     Private stagedPdfPath As String
 

@@ -19,7 +19,7 @@
 '******************************************************************************
 Public Class HelpDisplayService
     Implements IHelpDisplayService
-    Private chmFile As String
+    Private ReadOnly chmFile As String
 
     Public Sub New()
         chmFile = "PDFKeeper." & CultureInfo.CurrentCulture.ToString & ".chm"

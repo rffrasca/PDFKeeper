@@ -35,8 +35,11 @@ Public Class PdfInformationPropertiesReader
     ''' <param name="pdfPath">Source PDF.</param>
     ''' <param name="pdfPassword">Source PDF Owner password.</param>
     ''' <remarks></remarks>
-    Public Sub New(ByVal pdfPath As String, _
+    Public Sub New(ByVal pdfPath As String,
                    ByVal pdfPassword As SecureString)
+        If pdfPassword Is Nothing Then
+            Throw New ArgumentNullException(NameOf(pdfPassword))
+        End If
         Read(pdfPath, pdfPassword)
     End Sub
 

@@ -20,7 +20,7 @@
 Public Class RestrictedPdfViewerService
     Inherits PdfViewerServiceBase
     Implements IRestrictedPdfViewerService
-    Private processIds As New GenericList(Of Integer)
+    Private ReadOnly processIds As New GenericList(Of Integer)
 
     Public Sub Open(pdfPath As String) Implements IRestrictedPdfViewerService.Open
         Dim id As Integer = _

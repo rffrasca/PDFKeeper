@@ -47,7 +47,7 @@ Public Class SecureTextBox
 
     Protected Overrides Sub OnKeyDown(ByVal e As System.Windows.Forms.KeyEventArgs)
         If e Is Nothing Then
-            Throw New ArgumentNullException("e")
+            Throw New ArgumentNullException(NameOf(e))
         End If
         If e.KeyCode = Keys.Delete Then
             ' Remove the character after the cursor or all selected characters from
@@ -66,7 +66,7 @@ Public Class SecureTextBox
 
     Protected Overrides Sub OnKeyPress(ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If e Is Nothing Then
-            Throw New ArgumentNullException("e")
+            Throw New ArgumentNullException(NameOf(e))
         End If
         If e.KeyChar = ControlChars.Back Then
             ' Remove the character before the cursor or all selected characters from the

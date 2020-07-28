@@ -35,7 +35,7 @@ Public NotInheritable Class UserProfile
                 ApplicationDataRoot, _
                 My.Resources.Cache)
             Directory.CreateDirectory(folderPath)
-            Return folderPath.ToString
+            Return folderPath.ToString(CultureInfo.CurrentCulture)
         End Get
     End Property
 
@@ -52,7 +52,7 @@ Public NotInheritable Class UserProfile
                 My.Resources.Upload)
             Directory.CreateDirectory(folderPath)
             ShortcutUtil.Create(UploadShortcutPath, folderPath)
-            Return folderPath.ToString
+            Return folderPath.ToString(CultureInfo.CurrentCulture)
         End Get
     End Property
 
@@ -81,7 +81,7 @@ Public NotInheritable Class UserProfile
                 ApplicationDataRoot, _
                 My.Resources.UploadConfig)
             Directory.CreateDirectory(folderPath)
-            Return folderPath.ToString
+            Return folderPath.ToString(CultureInfo.CurrentCulture)
         End Get
     End Property
 
@@ -98,7 +98,7 @@ Public NotInheritable Class UserProfile
                 ApplicationDataRoot, _
                 My.Resources.UploadStaging)
             Directory.CreateDirectory(folderPath)
-            Return folderPath.ToString
+            Return folderPath.ToString(CultureInfo.CurrentCulture)
         End Get
     End Property
 
@@ -146,7 +146,7 @@ Public NotInheritable Class UserProfile
                 My.Application.Info.CompanyName, _
                 Application.ProductName)
             Directory.CreateDirectory(folderPath)
-            Return folderPath.ToString
+            Return folderPath.ToString(CultureInfo.CurrentCulture)
         End Get
     End Property
 End Class

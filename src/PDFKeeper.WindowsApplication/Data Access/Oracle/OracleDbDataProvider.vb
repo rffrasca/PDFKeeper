@@ -19,7 +19,7 @@
 '******************************************************************************
 Public NotInheritable Class OracleDbDataProvider
     Implements IDisposable
-    Private m_Connection As OracleConnection
+    Private ReadOnly m_Connection As OracleConnection
     Private Shared credential As OracleCredential
 
     Public Sub New()
@@ -51,9 +51,9 @@ Public NotInheritable Class OracleDbDataProvider
         Connection.Close()
     End Sub
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", _
-        "CA1822:MarkMembersAsStatic")> _
+#Disable Warning CA1822 ' Mark members as static
     Public Sub ResetCredential()
+#Enable Warning CA1822 ' Mark members as static
         credential = Nothing
     End Sub
 
@@ -71,7 +71,7 @@ Public NotInheritable Class OracleDbDataProvider
 
     Public Function QueryToObject(ByVal sqlCommand As OracleCommand) As Object
         If sqlCommand Is Nothing Then
-            Throw New ArgumentNullException("sqlCommand")
+            Throw New ArgumentNullException(NameOf(sqlCommand))
         End If
         Try
             Connection.Open()
@@ -84,7 +84,7 @@ Public NotInheritable Class OracleDbDataProvider
     Public Sub QueryBlobToFile(ByVal sqlCommand As OracleCommand, _
                                ByVal targetPathName As String)
         If sqlCommand Is Nothing Then
-            Throw New ArgumentNullException("sqlCommand")
+            Throw New ArgumentNullException(NameOf(sqlCommand))
         End If
         Using adapter As New OracleDataAdapter(sqlCommand)
             Connection.Open()
@@ -106,7 +106,7 @@ Public NotInheritable Class OracleDbDataProvider
 
     Public Sub ExecuteNonQuery(ByVal sqlCommand As OracleCommand)
         If sqlCommand Is Nothing Then
-            Throw New ArgumentNullException("sqlCommand")
+            Throw New ArgumentNullException(NameOf(sqlCommand))
         End If
         Connection.Open()
         sqlCommand.ExecuteNonQuery()

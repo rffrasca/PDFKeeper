@@ -40,9 +40,6 @@ Public Interface IMainView
     ReadOnly Property SelectedSearchResultsIds As Object
     ReadOnly Property SelectedSearchResultsIdsCount As Integer
     ReadOnly Property DocumentRecordId As Integer
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-                                                     "CA1726:UsePreferredTerms", _
-                                                     MessageId:="Flag")> _
     Property DocumentRecordFlagState As Integer
     Property DocumentRecordPanelEnabled As Boolean
     Property DocumentRecordPanelSelectedTab As Integer

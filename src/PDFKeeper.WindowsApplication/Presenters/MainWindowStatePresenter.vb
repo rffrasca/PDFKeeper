@@ -18,7 +18,7 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class MainWindowStatePresenter
-    Private view As IMainWindowStateView
+    Private ReadOnly view As IMainWindowStateView
 
     Public Sub New(view As IMainWindowStateView)
         Me.view = view

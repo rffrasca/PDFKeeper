@@ -18,7 +18,9 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class Login
+#Disable Warning CA1822 ' Mark members as static
     Public Property DbManagementSystem As String
+#Enable Warning CA1822 ' Mark members as static
         Get
             Return My.Settings.DbManagementSystem
         End Get
@@ -27,7 +29,9 @@ Public Class Login
         End Set
     End Property
 
+#Disable Warning CA1822 ' Mark members as static
     Public Property Password As SecureString
+#Enable Warning CA1822 ' Mark members as static
         Get
             Return DbInstanceProperties.Password
         End Get
@@ -35,12 +39,4 @@ Public Class Login
             DbInstanceProperties.Password = value
         End Set
     End Property
-
-    Public Sub TestConnection()
-        DbInstanceUtil.TestConnection()
-    End Sub
-
-    Public Sub ResetCredential()
-        DbInstanceUtil.ResetCredential()
-    End Sub
 End Class

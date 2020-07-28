@@ -18,11 +18,13 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class ManageUploadFolderConfigurationsPresenter
-    Private view As IManageUploadFolderConfigurationsView
+    Private ReadOnly view As IManageUploadFolderConfigurationsView
     Private model As New UploadFolderConfiguration
     Private helper As UploadFolderConfigurationHelper = Nothing
-    Private message As IMessageDisplayService = New MessageDisplayService
-    Private question As IQuestionDisplayService = New QuestionDisplayService
+    Private ReadOnly message As IMessageDisplayService =
+        New MessageDisplayService
+    Private ReadOnly question As IQuestionDisplayService =
+        New QuestionDisplayService
     Private origUploadFolderConfiguration As String = Nothing
 
     Public Sub New(view As IManageUploadFolderConfigurationsView)

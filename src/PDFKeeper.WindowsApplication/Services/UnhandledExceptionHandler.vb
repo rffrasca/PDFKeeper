@@ -18,8 +18,10 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class UnhandledExceptionHandler
-    Private m_ExceptionEventArgs As ApplicationServices.UnhandledExceptionEventArgs
-    Private message As IMessageDisplayService = New MessageDisplayService
+    Private ReadOnly m_ExceptionEventArgs As _
+        ApplicationServices.UnhandledExceptionEventArgs
+    Private ReadOnly message As _
+        IMessageDisplayService = New MessageDisplayService
 
     Public Sub New(ByVal exceptionEventArgs As ApplicationServices.UnhandledExceptionEventArgs)
         m_ExceptionEventArgs = exceptionEventArgs

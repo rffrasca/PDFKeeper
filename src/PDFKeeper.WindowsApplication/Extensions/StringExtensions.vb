@@ -30,7 +30,7 @@ Module StringExtensions
     Public Function AppendDateTimeAndTextToString(ByVal valueParam As String,
                                                   ByVal valueToAppend As String) As String
         If valueParam Is Nothing Then
-            Throw New ArgumentNullException("valueParam")
+            Throw New ArgumentNullException(NameOf(valueParam))
         End If
         If valueParam.Length > 0 Then
             valueParam = valueParam & vbCrLf & vbCrLf
@@ -48,7 +48,7 @@ Module StringExtensions
     <Extension()>
     Public Function ContainsInvalidFileNameChars(ByVal valueParam As String) As Boolean
         If valueParam Is Nothing Then
-            Throw New ArgumentNullException("valueParam")
+            Throw New ArgumentNullException(NameOf(valueParam))
         End If
         For Each invalidChar In Path.GetInvalidFileNameChars()
             If valueParam.Contains(invalidChar) Then
@@ -105,7 +105,7 @@ Module StringExtensions
     <Extension()>
     Public Function VerifyProperUsageOfQueryOperators(ByVal valueParam As String) As Boolean
         If valueParam Is Nothing Then
-            Throw New ArgumentNullException("valueParam")
+            Throw New ArgumentNullException(NameOf(valueParam))
         End If
         valueParam = valueParam.ToUpper(CultureInfo.CurrentCulture)
         If valueParam = "MINUS" Or

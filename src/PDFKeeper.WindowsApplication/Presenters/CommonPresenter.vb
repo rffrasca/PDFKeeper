@@ -21,9 +21,10 @@ Imports System.Windows
 
 Public Class CommonPresenter
     Implements IDisposable
-    Private view As ICommonView
+    Private ReadOnly view As ICommonView
     Private model As IDocumentRepository
-    Private message As IMessageDisplayService = New MessageDisplayService
+    Private ReadOnly message As IMessageDisplayService =
+        New MessageDisplayService
 
     Public Sub New(view As ICommonView)
         Me.view = view

@@ -19,7 +19,7 @@
 '******************************************************************************
 Public Class FolderBrowserDisplayService
     Implements IFolderBrowserDisplayService, IDisposable
-    Private folderBrowser As New FolderBrowserDialog
+    Private ReadOnly folderBrowser As New FolderBrowserDialog
 
     Public Property Description As String Implements IFolderBrowserDisplayService.Description
         Get

@@ -31,9 +31,6 @@ Public Interface IManageUploadFolderConfigurationsView
     Property Titles As Object
     Property Title As String
     Property Keywords As String
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-                                                     "CA1726:UsePreferredTerms", _
-                                                     MessageId:="Flag")> _
     Property FlagDocument As Boolean
     Property SaveEnabled As Boolean
 End Interface

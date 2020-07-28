@@ -19,8 +19,8 @@
 '******************************************************************************
 Public Class SetCategoryDialog
     Implements ICommonView
-    Private presenter As CommonPresenter
-    Private help As IHelpDisplayService = New HelpDisplayService
+    Private ReadOnly presenter As CommonPresenter
+    Private ReadOnly help As IHelpDisplayService = New HelpDisplayService
 
     Public Sub New()
         InitializeComponent()
@@ -31,7 +31,7 @@ Public Class SetCategoryDialog
 #Region "Interface Members"
     Public Property AuthorsPaired As DataTable Implements ICommonView.AuthorsPaired
         Get
-            Throw New NotImplementedException
+            Return Nothing
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException
@@ -40,7 +40,7 @@ Public Class SetCategoryDialog
 
     Public Property AuthorPaired As String Implements ICommonView.AuthorPaired
         Get
-            Throw New NotImplementedException
+            Return Nothing
         End Get
         Set(value As String)
             Throw New NotImplementedException
@@ -49,7 +49,7 @@ Public Class SetCategoryDialog
 
     Public Property SubjectsPaired As DataTable Implements ICommonView.SubjectsPaired
         Get
-            Throw New NotImplementedException
+            Return Nothing
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException
@@ -58,7 +58,7 @@ Public Class SetCategoryDialog
 
     Public Property SubjectPaired As String Implements ICommonView.SubjectPaired
         Get
-            Throw New NotImplementedException
+            Return Nothing
         End Get
         Set(value As String)
             Throw New NotImplementedException
@@ -67,7 +67,7 @@ Public Class SetCategoryDialog
 
     Public Property AuthorsGroup As DataTable Implements ICommonView.AuthorsGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException()
@@ -76,7 +76,7 @@ Public Class SetCategoryDialog
 
     Public Property AuthorGroup As String Implements ICommonView.AuthorGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As String)
             Throw New NotImplementedException()
@@ -85,7 +85,7 @@ Public Class SetCategoryDialog
 
     Public Property SubjectsGroup As DataTable Implements ICommonView.SubjectsGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException()
@@ -94,7 +94,7 @@ Public Class SetCategoryDialog
 
     Public Property SubjectGroup As String Implements ICommonView.SubjectGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As String)
             Throw New NotImplementedException()
@@ -128,7 +128,7 @@ Public Class SetCategoryDialog
 
     Public Property CategoriesGroup As DataTable Implements ICommonView.CategoriesGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException()
@@ -137,7 +137,7 @@ Public Class SetCategoryDialog
 
     Public Property CategoryGroup As String Implements ICommonView.CategoryGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As String)
             Throw New NotImplementedException()

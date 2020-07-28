@@ -18,7 +18,7 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class GenericDictionaryList(Of TKey, TValue)
-    Private m_List As New Dictionary(Of TKey, TValue)
+    Private ReadOnly m_List As New Dictionary(Of TKey, TValue)
 
     ''' <summary>
     ''' Sets the specified key and value in the Dictionary list.

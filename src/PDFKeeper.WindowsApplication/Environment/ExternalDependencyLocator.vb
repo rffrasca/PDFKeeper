@@ -22,24 +22,19 @@ Public NotInheritable Class ExternalDependencyLocator
         ' All members are shared.
     End Sub
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", _
-        "CA2001:AvoidCallingProblematicMethods", _
-        MessageId:="System.Reflection.Assembly.LoadFile")> _
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", _
-        "CA1024:UsePropertiesWhereAppropriate")> _
     Public Shared Function GetOracleDataAccessAssemblyPath() As Reflection.Assembly
         Try
-            Dim odpDllPath As String = My.Computer.Registry.GetValue( _
-                "HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\ODP.NET\" & _
-                My.Settings.ODPMVersion, _
-                "DllPath", _
+            Dim odpDllPath As String = My.Computer.Registry.GetValue(
+                "HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\ODP.NET\" &
+                My.Settings.ODPMVersion,
+                "DllPath",
                 "")
-            Dim oraHomeKey As String = "HKEY_LOCAL_MACHINE\" & _
-                My.Computer.FileSystem.ReadAllText( _
+            Dim oraHomeKey As String = "HKEY_LOCAL_MACHINE\" &
+                My.Computer.FileSystem.ReadAllText(
                     odpDllPath & "\oracle.key").TrimEnd
-            Dim assemblyPath As String = My.Computer.Registry.GetValue( _
-                oraHomeKey, _
-                "ORACLE_HOME", "") & _
+            Dim assemblyPath As String = My.Computer.Registry.GetValue(
+                oraHomeKey,
+                "ORACLE_HOME", "") &
                 "\odp.net\managed\common\Oracle.ManagedDataAccess.dll"
             Return Reflection.Assembly.LoadFile(assemblyPath)
         Catch ex As FileNotFoundException

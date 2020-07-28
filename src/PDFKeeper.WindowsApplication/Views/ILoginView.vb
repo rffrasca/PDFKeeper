@@ -17,8 +17,6 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
-    "CA1726:UsePreferredTerms", MessageId:="Login")>
 Public Interface ILoginView
     ReadOnly Property UserName As String
     ReadOnly Property Password As SecureString

@@ -19,9 +19,9 @@
 '******************************************************************************
 Public Class ManageUploadFolderConfigurationsDialog
     Implements IManageUploadFolderConfigurationsView
-    Private commonPresenter As CommonPresenter
-    Private presenter As ManageUploadFolderConfigurationsPresenter
-    Private help As IHelpDisplayService = New HelpDisplayService
+    Private ReadOnly commonPresenter As CommonPresenter
+    Private ReadOnly presenter As ManageUploadFolderConfigurationsPresenter
+    Private ReadOnly help As IHelpDisplayService = New HelpDisplayService
 
     Public Sub New()
         InitializeComponent()
@@ -232,7 +232,7 @@ Public Class ManageUploadFolderConfigurationsDialog
 
     Public Property AuthorsGroup As DataTable Implements ICommonView.AuthorsGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException()
@@ -241,7 +241,7 @@ Public Class ManageUploadFolderConfigurationsDialog
 
     Public Property AuthorGroup As String Implements ICommonView.AuthorGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As String)
             Throw New NotImplementedException()
@@ -250,7 +250,7 @@ Public Class ManageUploadFolderConfigurationsDialog
 
     Public Property SubjectsGroup As DataTable Implements ICommonView.SubjectsGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException()
@@ -259,7 +259,7 @@ Public Class ManageUploadFolderConfigurationsDialog
 
     Public Property SubjectGroup As String Implements ICommonView.SubjectGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As String)
             Throw New NotImplementedException()
@@ -268,7 +268,7 @@ Public Class ManageUploadFolderConfigurationsDialog
 
     Public Property CategoriesGroup As DataTable Implements ICommonView.CategoriesGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException()
@@ -277,7 +277,7 @@ Public Class ManageUploadFolderConfigurationsDialog
 
     Public Property CategoryGroup As String Implements ICommonView.CategoryGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As String)
             Throw New NotImplementedException()

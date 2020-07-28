@@ -18,7 +18,7 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public NotInheritable Class AboutBox
-    Private help As IHelpDisplayService = New HelpDisplayService
+    Private ReadOnly help As IHelpDisplayService = New HelpDisplayService
 
     Private Sub AboutBox_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' Set the title of the form.
@@ -29,7 +29,8 @@ Public NotInheritable Class AboutBox
             ApplicationTitle = System.IO.Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName)
         End If
         Me.Text = String.Format(CultureInfo.CurrentCulture,
-                                My.Resources.ResourceManager.GetString("About"),
+                                My.Resources.ResourceManager.GetString("About",
+                                                                       CultureInfo.CurrentCulture),
                                 ApplicationTitle)
         ' Initialize all of the text displayed on the About Box.
         Me.LabelProductName.Text = My.Application.Info.ProductName
@@ -37,7 +38,8 @@ Public NotInheritable Class AboutBox
         ' My.Application.Info.Version.ToString (x.x.x.x) to
         ' Application.ProductVersion (x.x.x).
         Me.LabelVersion.Text = String.Format(CultureInfo.CurrentCulture,
-                                             My.Resources.ResourceManager.GetString("Version"),
+                                             My.Resources.ResourceManager.GetString("Version",
+                                                                                    CultureInfo.CurrentCulture),
                                              Application.ProductVersion)
         Me.LabelCopyright.Text = My.Application.Info.Copyright
         Me.LabelCompanyName.Text = My.Application.Info.CompanyName

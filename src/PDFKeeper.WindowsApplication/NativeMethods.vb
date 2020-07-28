@@ -17,11 +17,7 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Friend NotInheritable Class NativeMethods
-    Private Sub New()
-        ' All members are shared.
-    End Sub
-
+Public NotInheritable Class NativeMethods
     ''' <summary>
     ''' Adds the specified window into the system-maintained clipboard format
     ''' listener list.
@@ -29,7 +25,7 @@ Friend NotInheritable Class NativeMethods
     ''' <param name="hwnd">Window handle of Form</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <DllImport("user32.dll", SetLastError:=True)> _
+    <DllImport("user32.dll", SetLastError:=True)>
     Friend Shared Function AddClipboardFormatListener(hwnd As IntPtr) As <MarshalAs(UnmanagedType.Bool)> Boolean
     End Function
 
@@ -40,7 +36,7 @@ Friend NotInheritable Class NativeMethods
     ''' <param name="hwnd">Window handle of Form</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <DllImport("user32.dll", SetLastError:=True)> _
+    <DllImport("user32.dll", SetLastError:=True)>
     Friend Shared Function RemoveClipboardFormatListener(hwnd As IntPtr) As <MarshalAs(UnmanagedType.Bool)> Boolean
     End Function
 End Class

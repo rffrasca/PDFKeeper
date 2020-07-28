@@ -19,19 +19,19 @@
 '******************************************************************************
 Public Class MainPresenter
     Implements IDisposable
-    Private view As IMainView
-    Private uploadDirInfo As New DirectoryInfo(UserProfile.UploadPath)
-    Private uploadStagingDirInfo As New DirectoryInfo(
-        UserProfile.UploadStagingPath)
-    Private searchTextHistory As New GenericList(Of String)
-    Private message As IMessageDisplayService = New MessageDisplayService
-    Private question As IQuestionDisplayService = New QuestionDisplayService
-    Private folderBrowser As IFolderBrowserDisplayService = New FolderBrowserDisplayService
-    Private setCategory As ISetCategoryDisplayService =
+    Private ReadOnly view As IMainView
+    Private ReadOnly uploadDirInfo As New DirectoryInfo(UserProfile.UploadPath)
+    Private ReadOnly uploadStagingDirInfo As _
+        New DirectoryInfo(UserProfile.UploadStagingPath)
+    Private ReadOnly searchTextHistory As New GenericList(Of String)
+    Private ReadOnly message As IMessageDisplayService = New MessageDisplayService
+    Private ReadOnly question As IQuestionDisplayService = New QuestionDisplayService
+    Private ReadOnly folderBrowser As IFolderBrowserDisplayService = New FolderBrowserDisplayService
+    Private ReadOnly setCategory As ISetCategoryDisplayService =
         New SetCategoryDisplayService
-    Private pdfViewer As IPdfViewerService = New PdfViewerService
-    Private searchResultsSortParameters As New DataGridViewSortParameters
-    Private fileHashes As New GenericDictionaryList(Of String, String)
+    Private ReadOnly pdfViewer As IPdfViewerService = New PdfViewerService
+    Private ReadOnly searchResultsSortParameters As New DataGridViewSortParameters
+    Private ReadOnly fileHashes As New GenericDictionaryList(Of String, String)
     Private cachePathName As CacheFilePathName
     Private searchBySelectionPerformed As Boolean
     Private refreshFlag As Boolean
@@ -72,7 +72,8 @@ Public Class MainPresenter
             view.SetCursor(False)
             message.Show(String.Format(CultureInfo.CurrentCulture,
                                               My.Resources.ResourceManager.GetString(
-                                                  "DocumentRecordMayHaveBeenDeleted"),
+                                                  "DocumentRecordMayHaveBeenDeleted",
+                                                  CultureInfo.CurrentCulture),
                                               ex.Message), True)
             ClearDocumentRecord()
         Catch ex As OracleException
@@ -107,7 +108,8 @@ Public Class MainPresenter
             view.SetCursor(False)
             message.Show(String.Format(
                                 CultureInfo.CurrentCulture,
-                                My.Resources.ResourceManager.GetString("FileSaved"),
+                                My.Resources.ResourceManager.GetString("FileSaved",
+                                                                       CultureInfo.CurrentCulture),
                                 targetFilePath), False)
         End If
     End Sub
@@ -179,7 +181,8 @@ Public Class MainPresenter
                 view.SetCursor(False)
                 message.Show(String.Format(CultureInfo.CurrentCulture,
                                            My.Resources.ResourceManager.GetString(
-                                           "SelectedFilesHaveBeenExported"),
+                                           "SelectedFilesHaveBeenExported",
+                                           CultureInfo.CurrentCulture),
                                            processPresenter.ExportFolderPath),
                              False)
                 view.SetCursor(False)
@@ -187,21 +190,24 @@ Public Class MainPresenter
                 view.SetCursor(False)
                 message.Show(String.Format(CultureInfo.CurrentCulture,
                                                   My.Resources.ResourceManager.GetString(
-                                                      "ExportDocumentRecordMayHaveBeenDeleted"),
+                                                      "ExportDocumentRecordMayHaveBeenDeleted",
+                                                      CultureInfo.CurrentCulture),
                                                   ex.Message,
                                                   processPresenter.IdBeingProcessed), True)
             Catch ex As IndexOutOfRangeException
                 view.SetCursor(False)
                 message.Show(String.Format(CultureInfo.CurrentCulture,
                                                   My.Resources.ResourceManager.GetString(
-                                                      "ExportDocumentRecordMayHaveBeenDeleted"),
+                                                      "ExportDocumentRecordMayHaveBeenDeleted",
+                                                      CultureInfo.CurrentCulture),
                                                   ex.Message,
                                                   processPresenter.IdBeingProcessed), True)
             Catch ex As OracleException
                 view.SetCursor(False)
                 message.Show(String.Format(CultureInfo.CurrentCulture,
                                                   My.Resources.ResourceManager.GetString(
-                                                      "DocumentIdException"),
+                                                      "DocumentIdException",
+                                                      CultureInfo.CurrentCulture),
                                                   ex.Message,
                                                   processPresenter.IdBeingProcessed), True)
             End Try
@@ -222,8 +228,6 @@ Public Class MainPresenter
         view.ScrollToEndInNotesElement()
     End Sub
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
-        "CA1726:UsePreferredTerms", MessageId:="Flag")>
     Public Sub SetFlagStateOnSelectedDocument()
         Try
             view.SetCursor(True)
@@ -466,7 +470,8 @@ Public Class MainPresenter
                     If e.GetType.Name = "InvalidOperationException" Then
                         message = String.Format(CultureInfo.CurrentCulture,
                                                 My.Resources.ResourceManager.GetString(
-                                                    "DocumentRecordMayHaveBeenDeleted"),
+                                                    "DocumentRecordMayHaveBeenDeleted",
+                                                    CultureInfo.CurrentCulture),
                                                 e.Message)
                     Else
                         message = e.Message
@@ -643,7 +648,7 @@ Public Class MainPresenter
                     view.UploadRunningVisible = True
                     Application.DoEvents()
                     Using uploadTask As Task = Task.Run(Sub() UploadService.Instance.ExecuteUploadCycle())
-                        Await uploadTask
+                        Await uploadTask.ConfigureAwait(True)
                     End Using
                 Catch ex As InvalidOperationException
                 Finally

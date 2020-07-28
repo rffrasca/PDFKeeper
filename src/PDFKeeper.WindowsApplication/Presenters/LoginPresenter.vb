@@ -17,19 +17,16 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
-    "CA1726:UsePreferredTerms", MessageId:="Login")>
 Public Class LoginPresenter
-    Private view As ILoginView
-    Private model As New Login
-    Private message As IMessageDisplayService = New MessageDisplayService
+    Private ReadOnly view As ILoginView
+    Private ReadOnly model As New Login
+    Private ReadOnly message As IMessageDisplayService =
+        New MessageDisplayService
 
     Public Sub New(ByVal view As ILoginView)
         Me.view = view
     End Sub
 
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming",
-        "CA1726:UsePreferredTerms", MessageId:="Login")>
     Public Sub Login()
         Try
             view.SetCursor(True)
@@ -38,8 +35,8 @@ Public Class LoginPresenter
             With model
                 .DbManagementSystem = "Oracle"
                 .Password = view.Password
-                .TestConnection()
             End With
+            DbInstanceUtil.TestConnection()
             view.SetCursor(False)
             view.DoSuccessful()
         Catch ex As ArgumentException
@@ -47,7 +44,7 @@ Public Class LoginPresenter
             message.Show(ex.Message, True)
             view.DoFailed()
         Catch ex As OracleException
-            model.ResetCredential()
+            DbInstanceUtil.ResetCredential()
             view.SetCursor(False)
             message.Show(ex.Message, True)
             view.DoFailed()

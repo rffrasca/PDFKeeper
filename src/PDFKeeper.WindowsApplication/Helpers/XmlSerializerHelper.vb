@@ -18,7 +18,7 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class XmlSerializerHelper
-    Private m_XmlFilePath As String
+    Private ReadOnly m_XmlFilePath As String
 
     Public Sub New(ByVal xmlFilePath As String)
         m_XmlFilePath = xmlFilePath
@@ -31,9 +31,10 @@ Public Class XmlSerializerHelper
     ''' <param name="objName"></param>
     ''' <remarks></remarks>
     Public Sub Serialize(Of T As New)(ByVal objName As T)
-        Dim writerSettings As New XmlWriterSettings
-        writerSettings.NewLineHandling = NewLineHandling.Entitize
-        Using writer As XmlWriter = XmlWriter.Create(m_XmlFilePath, _
+        Dim writerSettings As New XmlWriterSettings With {
+            .NewLineHandling = NewLineHandling.Entitize
+        }
+        Using writer As XmlWriter = XmlWriter.Create(m_XmlFilePath,
                                                      writerSettings)
             Dim serializer As New XmlSerializer(GetType(T))
             serializer.Serialize(writer, objName)
@@ -48,7 +49,10 @@ Public Class XmlSerializerHelper
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function Deserialize(Of T)() As T
-        Using reader As XmlReader = XmlReader.Create(m_XmlFilePath)
+        Dim readerSettings As New XmlReaderSettings With {
+            .DtdProcessing = DtdProcessing.Prohibit
+        }
+        Using reader As XmlReader = XmlReader.Create(m_XmlFilePath, readerSettings)
             Dim serializer As New XmlSerializer(GetType(T))
             Return CType(serializer.Deserialize(reader), T)
         End Using

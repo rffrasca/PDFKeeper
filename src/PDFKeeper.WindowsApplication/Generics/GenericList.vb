@@ -18,7 +18,7 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class GenericList(Of T)
-    Private m_List As New List(Of T)
+    Private ReadOnly m_List As New List(Of T)
 
     ''' <summary>
     ''' Returns a count of items in the List.
@@ -28,7 +28,7 @@ Public Class GenericList(Of T)
     ''' <remarks></remarks>
     ReadOnly Property Count As Integer
         Get
-            Return m_List.ToArray.Count
+            Return m_List.ToArray.Length
         End Get
     End Property
 

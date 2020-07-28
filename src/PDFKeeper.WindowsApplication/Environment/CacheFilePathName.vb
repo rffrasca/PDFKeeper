@@ -18,7 +18,7 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class CacheFilePathName
-    Private m_DocumentRecordId As Integer
+    Private ReadOnly m_DocumentRecordId As Integer
 
     Public Sub New(ByVal documentRecordId As Integer)
         m_DocumentRecordId = documentRecordId

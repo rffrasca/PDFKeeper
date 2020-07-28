@@ -18,9 +18,9 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class MainSelectedSearchResultsProcessPresenter
-    Private m_View As IMainView
-    Private m_FunctionToPerform As String
-    Private m_CategoryExportParam As String
+    Private ReadOnly m_View As IMainView
+    Private ReadOnly m_FunctionToPerform As String
+    Private ReadOnly m_CategoryExportParam As String
     Private m_ExportFolderPath As String
     Private m_IdBeingProcessed As Integer
 

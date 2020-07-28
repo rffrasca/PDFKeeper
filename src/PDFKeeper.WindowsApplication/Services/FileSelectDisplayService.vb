@@ -53,8 +53,9 @@ Public Class FileSelectDisplayService
 
     Private Function ShowDialog() As String
         fileDialog.FileName = m_FileName
-        fileDialog.Filter = String.Format(CultureInfo.CurrentCulture, _
-                                          My.Resources.ResourceManager.GetString("FilterExtension"), _
+        fileDialog.Filter = String.Format(CultureInfo.CurrentCulture,
+                                          My.Resources.ResourceManager.GetString("FilterExtension",
+                                                                                 CultureInfo.CurrentCulture),
                                           m_Filter.ToUpper(CultureInfo.CurrentCulture), m_Filter)
         If fileDialog.ShowDialog() = DialogResult.Cancel Then
             fileDialog.FileName = Nothing

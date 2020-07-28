@@ -21,7 +21,7 @@ Imports System.Linq.Expressions
 
 Public NotInheritable Class OracleDbDocumentRepository
     Implements IDocumentRepository, IDisposable
-    Private provider As New OracleDbDataProvider
+    Private ReadOnly provider As New OracleDbDataProvider
 
     Public Function GetAllAuthors() As DataTable Implements IDocumentRepository.GetAllAuthors
         Dim sqlStatement As String =
@@ -189,28 +189,30 @@ Public NotInheritable Class OracleDbDocumentRepository
         Dim where As String = "where "
         Dim andNeeded As Boolean = False
         If author IsNot Nothing Then
-            where = where & "doc_author = :doc_author"
+            where &= "doc_author = :doc_author"
             andNeeded = True
         End If
         If subject IsNot Nothing Then
             If andNeeded Then
-                where = where & " and doc_subject = :doc_subject"
+                where &= " and doc_subject = :doc_subject"
             Else
-                where = where & "doc_subject = :doc_subject"
+                where &= "doc_subject = :doc_subject"
             End If
             andNeeded = True
         End If
         If category IsNot Nothing Then
             If andNeeded Then
-                where = where & " and doc_category = :doc_category"
+                where &= " and doc_category = :doc_category"
             Else
-                where = where & "doc_category = :doc_category"
+                where &= "doc_category = :doc_category"
             End If
         End If
         Dim sqlStatement As String =
             "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_added " &
             "from pdfkeeper.docs " & where
+#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
             oraCommand.BindByName = True
             If author IsNot Nothing Then
                 oraCommand.Parameters.Add("doc_author", author)

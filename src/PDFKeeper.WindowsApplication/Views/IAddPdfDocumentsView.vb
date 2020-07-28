@@ -30,9 +30,6 @@ Public Interface IAddPdfDocumentsView
     Property Keywords As String
     Property KeywordsEnabled As Boolean
     Property CategoryEnabled As Boolean
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-                                                     "CA1726:UsePreferredTerms", _
-                                                     MessageId:="Flag")> _
     Property FlagDocumentEnabled As Boolean
     Property DeleteSelectedPdfOnOkEnabled As Boolean
     Property SaveEnabled As Boolean

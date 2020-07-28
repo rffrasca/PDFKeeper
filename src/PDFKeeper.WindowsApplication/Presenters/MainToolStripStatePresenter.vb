@@ -18,10 +18,10 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Class MainToolStripStatePresenter
-    Private toolStrip As IToolStripStateView
+    Private ReadOnly toolStrip As IToolStripStateView
 
     ' List contains ToolStrip short names and Enabled state.
-    Dim shortNames As New GenericDictionaryList(Of String, Boolean)
+    ReadOnly shortNames As New GenericDictionaryList(Of String, Boolean)
 
     Public Sub New(toolStrip As IToolStripStateView)
         Me.toolStrip = toolStrip

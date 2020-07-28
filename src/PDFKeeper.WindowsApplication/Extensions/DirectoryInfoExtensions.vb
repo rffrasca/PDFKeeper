@@ -28,13 +28,9 @@ Module DirectoryInfoExtensions
     <Extension()>
     Public Function ContainsFiles(ByVal dirInfoParam As DirectoryInfo) As Boolean
         If dirInfoParam Is Nothing Then
-            Throw New ArgumentNullException("dirInfoParam")
+            Throw New ArgumentNullException(NameOf(dirInfoParam))
         End If
-        If dirInfoParam.GetFiles("*", SearchOption.AllDirectories).Count > 0 Then
-            Return True
-        Else
-            Return False
-        End If
+        Return dirInfoParam.GetFiles("*", SearchOption.AllDirectories).Any
     End Function
 
     ''' <summary>
@@ -48,16 +44,16 @@ Module DirectoryInfoExtensions
     Public Function ContainsFiles(ByVal dirInfoParam As DirectoryInfo,
                                   ByVal excludeSearchPattern As String) As Boolean
         If dirInfoParam Is Nothing Then
-            Throw New ArgumentNullException("dirInfoParam")
+            Throw New ArgumentNullException(NameOf(dirInfoParam))
         End If
         If excludeSearchPattern Is Nothing Then
-            Throw New ArgumentNullException("searchPattern")
+            Throw New ArgumentNullException(NameOf(excludeSearchPattern))
         End If
         If dirInfoParam.GetFiles("*",
-                                 SearchOption.AllDirectories).Count -
+                                 SearchOption.AllDirectories).Length -
                                  dirInfoParam.GetFiles(
                                  excludeSearchPattern,
-                                 SearchOption.AllDirectories).Count > 0 Then
+                                 SearchOption.AllDirectories).Length > 0 Then
             Return True
         Else
             Return False
@@ -72,7 +68,7 @@ Module DirectoryInfoExtensions
     <Extension()>
     Public Sub Explore(ByVal dirInfoParam As DirectoryInfo)
         If dirInfoParam Is Nothing Then
-            Throw New ArgumentNullException("dirInfoParam")
+            Throw New ArgumentNullException(NameOf(dirInfoParam))
         End If
         Process.Start(dirInfoParam.FullName)
     End Sub
@@ -87,7 +83,7 @@ Module DirectoryInfoExtensions
     Public Sub Rename(ByVal dirInfoParam As DirectoryInfo,
                       ByVal newPath As String)
         If dirInfoParam Is Nothing Then
-            Throw New ArgumentNullException("dirInfoParam")
+            Throw New ArgumentNullException(NameOf(dirInfoParam))
         End If
         If dirInfoParam.Exists Then
             dirInfoParam.MoveTo(newPath)

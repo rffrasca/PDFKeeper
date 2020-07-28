@@ -21,7 +21,5 @@
 Public Class PdfSupplementalData
     Public Property Notes As String
     Public Property Category As String
-    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", _
-        "CA1726:UsePreferredTerms", MessageId:="Flag")> _
     Public Property FlagState As Integer
 End Class

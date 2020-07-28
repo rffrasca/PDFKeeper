@@ -17,15 +17,13 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability",
-    "CA1506:AvoidExcessiveClassCoupling")>
 Public Class MainForm
     Implements IMainWindowStateView, IToolStripStateView, IMainView
-    Private windowStatePresenter As MainWindowStatePresenter
-    Private toolStripStatePresenter As MainToolStripStatePresenter
-    Private commonPresenter As CommonPresenter
-    Private presenter As MainPresenter
-    Private help As IHelpDisplayService = New HelpDisplayService
+    Private ReadOnly windowStatePresenter As MainWindowStatePresenter
+    Private ReadOnly toolStripStatePresenter As MainToolStripStatePresenter
+    Private ReadOnly commonPresenter As CommonPresenter
+    Private ReadOnly presenter As MainPresenter
+    Private ReadOnly help As IHelpDisplayService = New HelpDisplayService
     Private m_DocumentRecordNotesChanged As String
     ' Message that is sent when the contents of the clipboard have changed.
     Private Const WM_CLIPBOARDUPDATE As Integer = &H31D
@@ -167,7 +165,7 @@ Public Class MainForm
 
     Public Property AuthorsGroup As DataTable Implements ICommonView.AuthorsGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As DataTable)
             AuthorGroupComboBox.DataSource = value
@@ -199,7 +197,7 @@ Public Class MainForm
 
     Public Property SubjectsGroup As DataTable Implements ICommonView.SubjectsGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As DataTable)
             SubjectGroupComboBox.DataSource = value
@@ -231,7 +229,7 @@ Public Class MainForm
 
     Public Property CategoriesGroup As DataTable Implements ICommonView.CategoriesGroup
         Get
-            Throw New NotImplementedException()
+            Return Nothing
         End Get
         Set(value As DataTable)
             CategoryGroupComboBox.DataSource = value
@@ -537,7 +535,7 @@ Public Class MainForm
 
     Public Property AuthorsPaired As DataTable Implements ICommonView.AuthorsPaired
         Get
-            Throw New NotImplementedException
+            Return Nothing
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException
@@ -546,7 +544,7 @@ Public Class MainForm
 
     Public Property AuthorPaired As String Implements ICommonView.AuthorPaired
         Get
-            Throw New NotImplementedException
+            Return Nothing
         End Get
         Set(value As String)
             Throw New NotImplementedException
@@ -555,7 +553,7 @@ Public Class MainForm
 
     Public Property SubjectsPaired As DataTable Implements ICommonView.SubjectsPaired
         Get
-            Throw New NotImplementedException
+            Return Nothing
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException
@@ -564,7 +562,7 @@ Public Class MainForm
 
     Public Property SubjectPaired As String Implements ICommonView.SubjectPaired
         Get
-            Throw New NotImplementedException
+            Return Nothing
         End Get
         Set(value As String)
             Throw New NotImplementedException
@@ -573,7 +571,7 @@ Public Class MainForm
 
     Public Property Categories As DataTable Implements ICommonView.Categories
         Get
-            Throw New NotImplementedException
+            Return Nothing
         End Get
         Set(value As DataTable)
             Throw New NotImplementedException
@@ -582,7 +580,7 @@ Public Class MainForm
 
     Public Property Category As String Implements ICommonView.Category
         Get
-            Throw New NotImplementedException
+            Return Nothing
         End Get
         Set(value As String)
             Throw New NotImplementedException

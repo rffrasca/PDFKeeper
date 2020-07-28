@@ -154,7 +154,7 @@ Public NotInheritable Class UploadService
             uploadFolderConfigHelper.Read
         Dim suppDataHelper As New PdfSupplementalDataHelper(outputPdfPath)
         Dim suppData As New PdfSupplementalData
-        Dim flag As String = uploadFolderConfig.FlagDocument.ToString
+        Dim flag As String = uploadFolderConfig.FlagDocument.ToString(CultureInfo.CurrentCulture)
         Dim state As Integer = 0
         If flag Then
             state = 1
@@ -227,12 +227,12 @@ Public NotInheritable Class UploadService
                 Dim subFoldersL2 As String() = _
                     Directory.GetDirectories(subFolder)
                 For Each subFolderL2 In subFoldersL2
-                    If Directory.GetFiles(subFolderL2).Count = 0 Then
+                    If Directory.GetFiles(subFolderL2).Any Then
                         Directory.Delete(subFolderL2, True)
                     End If
                 Next
             Else
-                If Directory.GetFiles(subFolder).Count = 0 Then
+                If Directory.GetFiles(subFolder).Any Then
                     Directory.Delete(subFolder, True)
                 End If
             End If
