@@ -1,7 +1,7 @@
 # ![Logo](https://github.com/robertfrasca/PDFKeeper/blob/master/src/Resources/Logo/PDFKeeper_100x100.png) PDFKeeper
 ## Open Source PDF Document Management
 
-PDFKeeper is free, open source document management software that integrates with a compatible, relational database to provide a centralized storage and management solution for PDF documents.
+PDFKeeper is free, open source software that integrates with a compatible database to provide a centralized storage and management solution for PDF documents.
 
 ![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot-5.0.0.png)
 Screenshot of main window in version 5.0.0 and above.
