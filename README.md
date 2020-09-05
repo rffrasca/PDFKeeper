@@ -37,7 +37,7 @@ Build Instructions for version 4.x.x is available [here](https://github.com/rffr
 ### Feedback
 Please send all feedback, comments, suggestions, and testimonials [here](mailto:rffrasca@gmail.com).
 
-![Twitter](https://img.shields.io/twitter/follow/PDFKeeper?style=social)
+[![Twitter](https://img.shields.io/twitter/follow/PDFKeeper?style=social)](https://img.shields.io/twitter/follow/PDFKeeper?style=social)
 
 ### License
 Licensed under the terms of the [GNU General Public License (GPL) Version 3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
