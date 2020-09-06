@@ -39,8 +39,6 @@ Please send all feedback, comments, suggestions, and testimonials [here](mailto:
 
 [![Twitter](https://img.shields.io/twitter/follow/PDFKeeper?style=social)](https://twitter.com/intent/follow?screen_name=PDFKeeper)
 
-If you find PDFKeeper useful, please consider a donation.
-
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/biz/fund?id=XMPJWZRCPUQAA)
 
 ### License
