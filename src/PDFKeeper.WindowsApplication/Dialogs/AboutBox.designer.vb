@@ -59,7 +59,7 @@ Partial Class AboutBox
         Me.LabelCompanyName = New System.Windows.Forms.Label()
         Me.TextBoxDescription = New System.Windows.Forms.TextBox()
         Me.OKButton = New System.Windows.Forms.Button()
-        Me.BecomePatronLinkLabel = New System.Windows.Forms.LinkLabel()
+        Me.WebsiteLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.LicenseLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.ThirdPartyLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.TableLayoutPanel.SuspendLayout()
@@ -76,7 +76,7 @@ Partial Class AboutBox
         Me.TableLayoutPanel.Controls.Add(Me.LabelCompanyName, 1, 3)
         Me.TableLayoutPanel.Controls.Add(Me.TextBoxDescription, 1, 5)
         Me.TableLayoutPanel.Controls.Add(Me.OKButton, 1, 6)
-        Me.TableLayoutPanel.Controls.Add(Me.BecomePatronLinkLabel, 1, 4)
+        Me.TableLayoutPanel.Controls.Add(Me.WebsiteLinkLabel, 1, 4)
         Me.TableLayoutPanel.Name = "TableLayoutPanel"
         '
         'LogoPictureBox
@@ -120,11 +120,11 @@ Partial Class AboutBox
         Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.OKButton.Name = "OKButton"
         '
-        'BecomePatronLinkLabel
+        'WebsiteLinkLabel
         '
-        resources.ApplyResources(Me.BecomePatronLinkLabel, "BecomePatronLinkLabel")
-        Me.BecomePatronLinkLabel.Name = "BecomePatronLinkLabel"
-        Me.BecomePatronLinkLabel.TabStop = True
+        resources.ApplyResources(Me.WebsiteLinkLabel, "WebsiteLinkLabel")
+        Me.WebsiteLinkLabel.Name = "WebsiteLinkLabel"
+        Me.WebsiteLinkLabel.TabStop = True
         '
         'LicenseLinkLabel
         '
@@ -160,5 +160,5 @@ Partial Class AboutBox
 End Sub
     Friend WithEvents LicenseLinkLabel As System.Windows.Forms.LinkLabel
     Friend WithEvents ThirdPartyLinkLabel As System.Windows.Forms.LinkLabel
-    Friend WithEvents BecomePatronLinkLabel As LinkLabel
+    Friend WithEvents WebsiteLinkLabel As LinkLabel
 End Class

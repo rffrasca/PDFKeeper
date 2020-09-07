@@ -431,37 +431,37 @@ Customize the application's assembly information in the Application pane of Proj
   <data name="&gt;&gt;OKButton.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="BecomePatronLinkLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="WebsiteLinkLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="BecomePatronLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="WebsiteLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>209, 100</value>
   </data>
-  <data name="BecomePatronLinkLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="WebsiteLinkLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>7, 0, 3, 0</value>
   </data>
-  <data name="BecomePatronLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="WebsiteLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>402, 25</value>
   </data>
-  <data name="BecomePatronLinkLabel.TabIndex" type="System.Int32, mscorlib">
+  <data name="WebsiteLinkLabel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="BecomePatronLinkLabel.Text" xml:space="preserve">
-    <value>Become a patron!</value>
+  <data name="WebsiteLinkLabel.Text" xml:space="preserve">
+    <value>PDFKeeper Website</value>
   </data>
-  <data name="BecomePatronLinkLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="WebsiteLinkLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;BecomePatronLinkLabel.Name" xml:space="preserve">
-    <value>BecomePatronLinkLabel</value>
+  <data name="&gt;&gt;WebsiteLinkLabel.Name" xml:space="preserve">
+    <value>WebsiteLinkLabel</value>
   </data>
-  <data name="&gt;&gt;BecomePatronLinkLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;WebsiteLinkLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;BecomePatronLinkLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;WebsiteLinkLabel.Parent" xml:space="preserve">
     <value>TableLayoutPanel</value>
   </data>
-  <data name="&gt;&gt;BecomePatronLinkLabel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;WebsiteLinkLabel.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
   <data name="TableLayoutPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -492,7 +492,7 @@ Customize the application's assembly information in the Application pane of Proj
     <value>2</value>
   </data>
   <data name="TableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LogoPictureBox" Row="0" RowSpan="7" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LabelProductName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelVersion" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelCopyright" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelCompanyName" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxDescription" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="OKButton" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="BecomePatronLinkLabel" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,Percent,67" /&gt;&lt;Rows Styles="Percent,8.658009,Percent,8.658009,Percent,8.658009,Percent,8.658009,Percent,8.658009,Percent,48.05194,Percent,8.658009" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LogoPictureBox" Row="0" RowSpan="7" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LabelProductName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelVersion" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelCopyright" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelCompanyName" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxDescription" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="OKButton" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="WebsiteLinkLabel" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,Percent,67" /&gt;&lt;Rows Styles="Percent,8.658009,Percent,8.658009,Percent,8.658009,Percent,8.658009,Percent,8.658009,Percent,48.05194,Percent,8.658009" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="LicenseLinkLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
