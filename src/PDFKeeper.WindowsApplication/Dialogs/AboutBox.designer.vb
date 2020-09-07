@@ -62,6 +62,7 @@ Partial Class AboutBox
         Me.WebsiteLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.LicenseLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.ThirdPartyLinkLabel = New System.Windows.Forms.LinkLabel()
+        Me.DonateLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.TableLayoutPanel.SuspendLayout()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -69,13 +70,14 @@ Partial Class AboutBox
         'TableLayoutPanel
         '
         resources.ApplyResources(Me.TableLayoutPanel, "TableLayoutPanel")
+        Me.TableLayoutPanel.Controls.Add(Me.DonateLinkLabel, 1, 5)
         Me.TableLayoutPanel.Controls.Add(Me.LogoPictureBox, 0, 0)
         Me.TableLayoutPanel.Controls.Add(Me.LabelProductName, 1, 0)
         Me.TableLayoutPanel.Controls.Add(Me.LabelVersion, 1, 1)
         Me.TableLayoutPanel.Controls.Add(Me.LabelCopyright, 1, 2)
         Me.TableLayoutPanel.Controls.Add(Me.LabelCompanyName, 1, 3)
-        Me.TableLayoutPanel.Controls.Add(Me.TextBoxDescription, 1, 5)
-        Me.TableLayoutPanel.Controls.Add(Me.OKButton, 1, 6)
+        Me.TableLayoutPanel.Controls.Add(Me.TextBoxDescription, 1, 6)
+        Me.TableLayoutPanel.Controls.Add(Me.OKButton, 1, 7)
         Me.TableLayoutPanel.Controls.Add(Me.WebsiteLinkLabel, 1, 4)
         Me.TableLayoutPanel.Name = "TableLayoutPanel"
         '
@@ -84,7 +86,7 @@ Partial Class AboutBox
         Me.LogoPictureBox.BackColor = System.Drawing.SystemColors.ActiveBorder
         resources.ApplyResources(Me.LogoPictureBox, "LogoPictureBox")
         Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.TableLayoutPanel.SetRowSpan(Me.LogoPictureBox, 7)
+        Me.TableLayoutPanel.SetRowSpan(Me.LogoPictureBox, 8)
         Me.LogoPictureBox.TabStop = False
         '
         'LabelProductName
@@ -138,6 +140,12 @@ Partial Class AboutBox
         Me.ThirdPartyLinkLabel.Name = "ThirdPartyLinkLabel"
         Me.ThirdPartyLinkLabel.TabStop = True
         '
+        'DonateLinkLabel
+        '
+        resources.ApplyResources(Me.DonateLinkLabel, "DonateLinkLabel")
+        Me.DonateLinkLabel.Name = "DonateLinkLabel"
+        Me.DonateLinkLabel.TabStop = True
+        '
         'AboutBox
         '
         resources.ApplyResources(Me, "$this")
@@ -161,4 +169,5 @@ End Sub
     Friend WithEvents LicenseLinkLabel As System.Windows.Forms.LinkLabel
     Friend WithEvents ThirdPartyLinkLabel As System.Windows.Forms.LinkLabel
     Friend WithEvents WebsiteLinkLabel As LinkLabel
+    Friend WithEvents DonateLinkLabel As LinkLabel
 End Class

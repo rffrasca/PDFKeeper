@@ -239,6 +239,11 @@
 			<param name="ImageNumber" value="9">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Donate">
+			<param name="Local" value="Donate.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="License">
 			<param name="Local" value="GNU General Public License v3_0 - GNU Project - Free Software Foundation (FSF).html">
 			<param name="ImageNumber" value="17">

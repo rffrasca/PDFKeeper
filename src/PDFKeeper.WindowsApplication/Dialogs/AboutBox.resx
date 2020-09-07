@@ -122,10 +122,46 @@
     <value>2</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DonateLinkLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DonateLinkLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="DonateLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>209, 115</value>
+  </data>
+  <data name="DonateLinkLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>7, 0, 3, 0</value>
+  </data>
+  <data name="DonateLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>402, 23</value>
+  </data>
+  <data name="DonateLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="DonateLinkLabel.Text" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="DonateLinkLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;DonateLinkLabel.Name" xml:space="preserve">
+    <value>DonateLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;DonateLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DonateLinkLabel.Parent" xml:space="preserve">
+    <value>TableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;DonateLinkLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="LogoPictureBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="LogoPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -213,7 +249,7 @@
     <value>TableLayoutPanel</value>
   </data>
   <data name="&gt;&gt;LogoPictureBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="LabelProductName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -249,13 +285,13 @@
     <value>TableLayoutPanel</value>
   </data>
   <data name="&gt;&gt;LabelProductName.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="LabelVersion.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="LabelVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 25</value>
+    <value>209, 23</value>
   </data>
   <data name="LabelVersion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>7, 0, 3, 0</value>
@@ -285,13 +321,13 @@
     <value>TableLayoutPanel</value>
   </data>
   <data name="&gt;&gt;LabelVersion.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="LabelCopyright.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="LabelCopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 50</value>
+    <value>209, 46</value>
   </data>
   <data name="LabelCopyright.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>7, 0, 3, 0</value>
@@ -321,7 +357,7 @@
     <value>TableLayoutPanel</value>
   </data>
   <data name="&gt;&gt;LabelCopyright.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="LabelCompanyName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -330,7 +366,7 @@
     <value>NoControl</value>
   </data>
   <data name="LabelCompanyName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 75</value>
+    <value>209, 69</value>
   </data>
   <data name="LabelCompanyName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>7, 0, 3, 0</value>
@@ -360,13 +396,13 @@
     <value>TableLayoutPanel</value>
   </data>
   <data name="&gt;&gt;LabelCompanyName.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="TextBoxDescription.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="TextBoxDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 128</value>
+    <value>209, 141</value>
   </data>
   <data name="TextBoxDescription.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>7, 3, 3, 3</value>
@@ -378,7 +414,7 @@
     <value>Both</value>
   </data>
   <data name="TextBoxDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 137</value>
+    <value>402, 125</value>
   </data>
   <data name="TextBoxDescription.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -399,7 +435,7 @@ Customize the application's assembly information in the Application pane of Proj
     <value>TableLayoutPanel</value>
   </data>
   <data name="&gt;&gt;TextBoxDescription.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="OKButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -408,10 +444,10 @@ Customize the application's assembly information in the Application pane of Proj
     <value>NoControl</value>
   </data>
   <data name="OKButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>524, 271</value>
+    <value>524, 272</value>
   </data>
   <data name="OKButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 24</value>
+    <value>87, 23</value>
   </data>
   <data name="OKButton.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -429,19 +465,19 @@ Customize the application's assembly information in the Application pane of Proj
     <value>TableLayoutPanel</value>
   </data>
   <data name="&gt;&gt;OKButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="WebsiteLinkLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="WebsiteLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 100</value>
+    <value>209, 92</value>
   </data>
   <data name="WebsiteLinkLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>7, 0, 3, 0</value>
   </data>
   <data name="WebsiteLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>402, 25</value>
+    <value>402, 23</value>
   </data>
   <data name="WebsiteLinkLabel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -462,7 +498,7 @@ Customize the application's assembly information in the Application pane of Proj
     <value>TableLayoutPanel</value>
   </data>
   <data name="&gt;&gt;WebsiteLinkLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="TableLayoutPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -471,7 +507,7 @@ Customize the application's assembly information in the Application pane of Proj
     <value>10, 10</value>
   </data>
   <data name="TableLayoutPanel.RowCount" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="TableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>614, 298</value>
@@ -492,7 +528,7 @@ Customize the application's assembly information in the Application pane of Proj
     <value>2</value>
   </data>
   <data name="TableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LogoPictureBox" Row="0" RowSpan="7" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LabelProductName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelVersion" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelCopyright" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelCompanyName" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxDescription" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="OKButton" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="WebsiteLinkLabel" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,Percent,67" /&gt;&lt;Rows Styles="Percent,8.658009,Percent,8.658009,Percent,8.658009,Percent,8.658009,Percent,8.658009,Percent,48.05194,Percent,8.658009" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="DonateLinkLabel" Row="5" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LogoPictureBox" Row="0" RowSpan="8" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LabelProductName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelVersion" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelCopyright" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelCompanyName" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxDescription" Row="6" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="OKButton" Row="7" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="WebsiteLinkLabel" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,33,Percent,67" /&gt;&lt;Rows Styles="Percent,7.967967,Percent,7.967968,Percent,7.967968,Percent,7.967968,Percent,7.967967,Percent,7.969985,Percent,44.22221,Percent,7.967967,Absolute,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="LicenseLinkLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
