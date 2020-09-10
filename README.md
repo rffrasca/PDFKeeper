@@ -1,3 +1,4 @@
+[![Twitter](https://img.shields.io/twitter/follow/PDFKeeper?style=social)](https://twitter.com/intent/follow?screen_name=PDFKeeper)
 # ![Logo](https://github.com/robertfrasca/PDFKeeper/blob/master/src/Resources/Logo/PDFKeeper_100x100.png) PDFKeeper
 ## Open Source PDF Document Management
 
@@ -34,11 +35,10 @@ Build Instructions for version 4.x.x is available [here](https://github.com/rffr
 ### Links
 [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md)
 
-### Feedback
+### Contact
 Please send all feedback, comments, suggestions, and testimonials [here](mailto:rffrasca@gmail.com).
 
-[![Twitter](https://img.shields.io/twitter/follow/PDFKeeper?style=social)](https://twitter.com/intent/follow?screen_name=PDFKeeper)
-
+### Donate
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/biz/fund?id=JCM6ZMCF6BHHN)
 
 ### License
