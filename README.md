@@ -38,7 +38,6 @@ Build Instructions for version 4.x.x is available [here](https://github.com/rffr
 ### Contact
 Please send all feedback, comments, suggestions, and testimonials [here](mailto:rffrasca@gmail.com).
 
-### Donate
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/biz/fund?id=JCM6ZMCF6BHHN)
 
 ### License
