@@ -5,6 +5,8 @@ All notable changes to PDFKeeper will be documented in this file.
 - This is a maintenance release that addresses issues with the User Interface.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.3).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.3).
+### Changed
+- When Search Results is refreshed, the previously selected document record will be selected.
 ### Fixed
 - Fixed an issue with Add PDF Documents dialog not having focus after selecting a PDF document.
 - Fixed left panel of main form not always opening full width after Search Results grid view is filled when the width of the columns exceeded the width of Search Results grid view.
@@ -16,10 +18,11 @@ When Search Results is refreshed, the previously selected document record will b
 - This is a maintenance release that primarily addresses unresolved issues from version 5.0.0.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.2).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.2).
+### Changed
+- Database connection pooling is now a setting in PDFKeeper.exe.config that can be set to True or False.
 ### Fixed
 - Fixed a memory and handle leak.
 - Resolved issue with how Oracle secure password handling was implemented, allowing database connection pooling to be enabled after being disabled in version 5.0.0.
-- Database connection pooling is now a setting in PDFKeeper.exe.config that can be set to True or False.
 
 ## v5.0.1 - 2019-11-16
 - This is a maintenance release that includes fixes and improvements to the Upload process and third-party updates.
