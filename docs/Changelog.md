@@ -1,6 +1,29 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v6.0.0 - 2020-09-26
+- This is a major release that includes architectural changes, a user interface redesign to improve document searching, fixes, and other miscellaneous changes.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
+### Changed
+- Converted to 64-bit; Windows (32-bit) is no longer supported!
+- Upload Service will copy each PDF in the Upload folder, appending a GUID to the file name, and then changing the extension on the original PDF to "delete" to be deleted during a future upload cycle and avoid a file in use prompt when deleting to the Windows Recycle Bin.
+- Main form was redesigned to provide more flexible searching and reduce clicks.
+- Visual Studio 2019 is used to build PDFKeeper.
+- .NET Framework 4.8 is targeted during the build.
+- Build Instructions have been edited to instruct the developer to use Manage Extensions in Visual Studio to install WiX Toolset Build Tools, Wix Toolset Visual Studio 2019 Extension, and Wax.
+- Application source folders have been reorganized; classes and interfaces have been renamed and refactored to better align with the MVP (Model-View-Presenter) pattern.
+- Database schema and Oracle Data Provider for .NET upgrade notification on startup has been reworked.
+- Secondary application description was changed to "PDFKeeper is free, open source software that integrates with a compatible database to provide a centralized storage and management solution for PDF documents."
+- "Third-Party Components" help topic was renamed to "Third-Party Attribution" and the introduction was changed to "This version of PDFKeeper uses third-party libraries or other resources that may be distributed under licenses different than the PDFKeeper software."
+- Legal notice on Welcome page in help file was changed to "PDFKeeper is OSI Certified Open Source Software, licensed under the terms of the GNU General Public License (GPL) Version 3" and added Open Source Initiative and GPLv3 logos.
+- About box contains a link to the PDFKeeper Website.
+- Help file contains a Donate topic and About box contains a link to the help topic.
+- Oracle Database 11g Express Edition compatibility testing has been discontinued.
+### Fixed
+- "Access to the path <PDF_PATH_NAME> is denied" when a document is selected in Search Results following PDFKeeper being closed while Sumatra PDF was displaying one or more selected PDF documents and PDFKeeper was opened again without closing Sumatra PDF first.
+- Unhandled Oracle Exception when the Upload Service is trying to process a PDF that was moved from the Upload folder to the Upload Staging folder that is missing one or more required information property values (Title, Author, Subject).
+
 ## v5.0.3 - 2019-12-27
 - This is a maintenance release that addresses issues with the User Interface.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.3).
