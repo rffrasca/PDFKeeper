@@ -12,11 +12,11 @@ Screenshot of main window in version 5.0.x.
 * Apply a category to selected document records and when PDF documents are uploaded.
 * Set the flag state on a selected document record and when PDF documents are uploaded to mark for follow-up.
 * Add notes to a selected document record that can include the date, time, and database user account name. All notes can be edited and are indexed by the database.
-* Search for document records by String, Author, Subject, Author and Subject, Category, or Date Added. In addition to search capabilities, the entire database can be queried or only query document records that are flagged.
+* Search for document records by Text, Selections (Author/Subject/Category), or Date Added. In addition, the user can list document records that are flagged or all document records in the database.
 * With PDFKeeper, the following functions can be performed on a selected document record: PDF document viewing with the bundled or default viewer; flag document state management; notes viewing and editing; keywords, PDF preview image, and PDF text are also displayed for viewing.
 * Export selected PDF documents with their category, notes, and flag state from the database for easy importing.
 
-These features are available in version 5.0.x. 
+These features are available in version 6.0.0. 
 
 ### Client Requirements and Compatible Database Management Systems
 Listed on the release page for each available version.
