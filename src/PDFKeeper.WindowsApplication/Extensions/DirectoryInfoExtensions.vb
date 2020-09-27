@@ -19,11 +19,11 @@
 '******************************************************************************
 Module DirectoryInfoExtensions
     ''' <summary>
-    ''' Returns True or False if the DirectoryInfo object, including
-    ''' sub-folders contains files.
+    ''' Determines wheather the DirectoryInfo object, including sub-folders
+    ''' contains files.
     ''' </summary>
     ''' <param name="dirInfoParam"></param>
-    ''' <returns></returns>
+    ''' <returns>True or False</returns>
     ''' <remarks></remarks>
     <Extension()>
     Public Function ContainsFiles(ByVal dirInfoParam As DirectoryInfo) As Boolean
@@ -34,25 +34,44 @@ Module DirectoryInfoExtensions
     End Function
 
     ''' <summary>
-    ''' Returns True or False if the DirectoryInfo object, including
-    ''' sub-folders and excluding the specified search pattern contains files.
+    ''' Determines wheather the DirectoryInfo object, including sub-folders,
+    ''' contains files matching the specified search pattern.
     ''' </summary>
     ''' <param name="dirInfoParam"></param>
-    ''' <param name="excludeSearchPattern">Search string to exclude.</param>
-    ''' <returns></returns>
+    ''' <param name="searchPattern"></param>
+    ''' <returns>True or False</returns>
     <Extension()>
-    Public Function ContainsFiles(ByVal dirInfoParam As DirectoryInfo,
-                                  ByVal excludeSearchPattern As String) As Boolean
+    Public Function ContainsFilesMatchingSearchPattern(ByVal dirInfoParam As DirectoryInfo,
+                                                       ByVal searchPattern As String) As Boolean
         If dirInfoParam Is Nothing Then
             Throw New ArgumentNullException(NameOf(dirInfoParam))
         End If
-        If excludeSearchPattern Is Nothing Then
-            Throw New ArgumentNullException(NameOf(excludeSearchPattern))
+        If searchPattern Is Nothing Then
+            Throw New ArgumentNullException(NameOf(searchPattern))
+        End If
+        Return dirInfoParam.GetFiles(searchPattern, SearchOption.AllDirectories).Any
+    End Function
+
+    ''' <summary>
+    ''' Determines wheather the DirectoryInfo object, including sub-folders,
+    ''' excluding the specified search pattern contains files.
+    ''' </summary>
+    ''' <param name="dirInfoParam"></param>
+    ''' <param name="searchPattern">Search pattern to exclude.</param>
+    ''' <returns>True or False</returns>
+    <Extension()>
+    Public Function ContainsFilesExcludingSearchPattern(ByVal dirInfoParam As DirectoryInfo,
+                                                        ByVal searchPattern As String) As Boolean
+        If dirInfoParam Is Nothing Then
+            Throw New ArgumentNullException(NameOf(dirInfoParam))
+        End If
+        If searchPattern Is Nothing Then
+            Throw New ArgumentNullException(NameOf(searchPattern))
         End If
         If dirInfoParam.GetFiles("*",
                                  SearchOption.AllDirectories).Length -
                                  dirInfoParam.GetFiles(
-                                 excludeSearchPattern,
+                                 searchPattern,
                                  SearchOption.AllDirectories).Length > 0 Then
             Return True
         Else
