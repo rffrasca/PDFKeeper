@@ -123,6 +123,9 @@
       <Component Id="OracleDatabaseSchemaUpgrade.sql" Guid="75121a74-f2e3-469e-bacc-b5567cdaaf7a">
         <File Id="OracleDatabaseSchemaUpgrade.sql" Name="OracleDatabaseSchemaUpgrade.sql" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)OracleDatabaseSchemaUpgrade.sql" />
       </Component>
+      <Component Id="BouncyCastle.Crypto.dll" Guid="aec691d9-e839-45a5-b269-205445047427">
+        <File Id="BouncyCastle.Crypto.dll" Name="BouncyCastle.Crypto.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)BouncyCastle.Crypto.dll" />
+      </Component>
   	</ComponentGroup>
 	</Fragment>
 
