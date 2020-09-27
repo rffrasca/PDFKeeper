@@ -309,6 +309,16 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>624, 527</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>202, 17</value>
+  </metadata>
+  <data name="DiscardButton.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DiscardButton.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
   <data name="DiscardButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -331,6 +341,9 @@
   </data>
   <data name="DiscardButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>516, 384</value>
+  </data>
+  <data name="DiscardButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="DiscardButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -356,6 +369,12 @@
   <data name="&gt;&gt;DiscardButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="SaveButton.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="SaveButton.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
   <data name="SaveButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIQAAJXD9Iasxm6MqnSn2lZtjVaRyEpXbYu767TX/2KZztvr/4Gy5KrT/3ut32+gzlFh
@@ -371,6 +390,9 @@
   </data>
   <data name="SaveButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>435, 384</value>
+  </data>
+  <data name="SaveButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="SaveButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -396,16 +418,18 @@
   <data name="FlagDocumentCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="FlagDocumentCheckBox.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="FlagDocumentCheckBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
   <data name="FlagDocumentCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="FlagDocumentCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 388</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>202, 17</value>
-  </metadata>
   <data name="FlagDocumentCheckBox.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -429,6 +453,12 @@
   </data>
   <data name="&gt;&gt;FlagDocumentCheckBox.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="CategoryComboBox.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="CategoryComboBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
   </data>
   <data name="CategoryComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 346</value>
@@ -456,6 +486,12 @@
   </data>
   <data name="CategoryPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="CategoryPrefillLabel.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="CategoryPrefillLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
   </data>
   <data name="CategoryPrefillLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -487,6 +523,12 @@
   <data name="&gt;&gt;CategoryPrefillLabel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="KeywordsTextBox.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="KeywordsTextBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
   <data name="KeywordsTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 244</value>
   </data>
@@ -516,6 +558,12 @@
   </data>
   <data name="KeywordsPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="KeywordsPrefillLabel.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="KeywordsPrefillLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
   </data>
   <data name="KeywordsPrefillLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -547,6 +595,12 @@
   <data name="&gt;&gt;KeywordsPrefillLabel.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="SubjectPairedComboBox.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="SubjectPairedComboBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
   <data name="SubjectPairedComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 195</value>
   </data>
@@ -573,6 +627,12 @@
   </data>
   <data name="SubjectPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="SubjectPrefillLabel.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="SubjectPrefillLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
   </data>
   <data name="SubjectPrefillLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -604,6 +664,12 @@
   <data name="&gt;&gt;SubjectPrefillLabel.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="AuthorPairedComboBox.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="AuthorPairedComboBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
   <data name="AuthorPairedComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 146</value>
   </data>
@@ -630,6 +696,12 @@
   </data>
   <data name="AuthorPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="AuthorPrefillLabel.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="AuthorPrefillLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
   </data>
   <data name="AuthorPrefillLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -661,6 +733,12 @@
   <data name="&gt;&gt;AuthorPrefillLabel.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="TitleComboBox.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="TitleComboBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
   <data name="TitleComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 96</value>
   </data>
@@ -688,6 +766,12 @@
   <data name="TitlePrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="TitlePrefillLabel.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="TitlePrefillLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
   <data name="TitlePrefillLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -698,7 +782,7 @@
     <value>True</value>
   </data>
   <data name="TitlePrefillLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 15</value>
+    <value>65, 15</value>
   </data>
   <data name="TitlePrefillLabel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -717,6 +801,12 @@
   </data>
   <data name="&gt;&gt;TitlePrefillLabel.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="FolderNameTextBox.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="FolderNameTextBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
   </data>
   <data name="FolderNameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 47</value>
@@ -744,6 +834,12 @@
   </data>
   <data name="FolderNameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="FolderNameLabel.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="FolderNameLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
   </data>
   <data name="FolderNameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -775,8 +871,17 @@
   <data name="&gt;&gt;FolderNameLabel.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <data name="UploadFolderConfigurationGroupBox.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
+  <data name="UploadFolderConfigurationGroupBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
   <data name="UploadFolderConfigurationGroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 105</value>
+  </data>
+  <data name="UploadFolderConfigurationGroupBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="UploadFolderConfigurationGroupBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>598, 414</value>

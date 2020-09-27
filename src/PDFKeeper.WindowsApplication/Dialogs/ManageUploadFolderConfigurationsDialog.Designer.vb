@@ -116,6 +116,8 @@ Partial Class ManageUploadFolderConfigurationsDialog
         '
         'FolderNameTextBox
         '
+        Me.HelpProvider.SetHelpKeyword(Me.FolderNameTextBox, resources.GetString("FolderNameTextBox.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.FolderNameTextBox, CType(resources.GetObject("FolderNameTextBox.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         resources.ApplyResources(Me.FolderNameTextBox, "FolderNameTextBox")
         Me.FolderNameTextBox.Name = "FolderNameTextBox"
         Me.HelpProvider.SetShowHelp(Me.FolderNameTextBox, CType(resources.GetObject("FolderNameTextBox.ShowHelp"), Boolean))
@@ -123,6 +125,8 @@ Partial Class ManageUploadFolderConfigurationsDialog
         'FolderNameLabel
         '
         resources.ApplyResources(Me.FolderNameLabel, "FolderNameLabel")
+        Me.HelpProvider.SetHelpKeyword(Me.FolderNameLabel, resources.GetString("FolderNameLabel.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.FolderNameLabel, CType(resources.GetObject("FolderNameLabel.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.FolderNameLabel.Name = "FolderNameLabel"
         Me.HelpProvider.SetShowHelp(Me.FolderNameLabel, CType(resources.GetObject("FolderNameLabel.ShowHelp"), Boolean))
         '
@@ -131,6 +135,8 @@ Partial Class ManageUploadFolderConfigurationsDialog
         Me.TitleComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.TitleComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.TitleComboBox.FormattingEnabled = True
+        Me.HelpProvider.SetHelpKeyword(Me.TitleComboBox, resources.GetString("TitleComboBox.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.TitleComboBox, CType(resources.GetObject("TitleComboBox.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         resources.ApplyResources(Me.TitleComboBox, "TitleComboBox")
         Me.TitleComboBox.Name = "TitleComboBox"
         Me.HelpProvider.SetShowHelp(Me.TitleComboBox, CType(resources.GetObject("TitleComboBox.ShowHelp"), Boolean))
@@ -139,6 +145,8 @@ Partial Class ManageUploadFolderConfigurationsDialog
         'TitlePrefillLabel
         '
         resources.ApplyResources(Me.TitlePrefillLabel, "TitlePrefillLabel")
+        Me.HelpProvider.SetHelpKeyword(Me.TitlePrefillLabel, resources.GetString("TitlePrefillLabel.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.TitlePrefillLabel, CType(resources.GetObject("TitlePrefillLabel.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.TitlePrefillLabel.Name = "TitlePrefillLabel"
         Me.HelpProvider.SetShowHelp(Me.TitlePrefillLabel, CType(resources.GetObject("TitlePrefillLabel.ShowHelp"), Boolean))
         '
@@ -147,6 +155,8 @@ Partial Class ManageUploadFolderConfigurationsDialog
         Me.CategoryComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.CategoryComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.CategoryComboBox.FormattingEnabled = True
+        Me.HelpProvider.SetHelpKeyword(Me.CategoryComboBox, resources.GetString("CategoryComboBox.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.CategoryComboBox, CType(resources.GetObject("CategoryComboBox.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         resources.ApplyResources(Me.CategoryComboBox, "CategoryComboBox")
         Me.CategoryComboBox.Name = "CategoryComboBox"
         Me.HelpProvider.SetShowHelp(Me.CategoryComboBox, CType(resources.GetObject("CategoryComboBox.ShowHelp"), Boolean))
@@ -155,11 +165,15 @@ Partial Class ManageUploadFolderConfigurationsDialog
         'CategoryPrefillLabel
         '
         resources.ApplyResources(Me.CategoryPrefillLabel, "CategoryPrefillLabel")
+        Me.HelpProvider.SetHelpKeyword(Me.CategoryPrefillLabel, resources.GetString("CategoryPrefillLabel.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.CategoryPrefillLabel, CType(resources.GetObject("CategoryPrefillLabel.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.CategoryPrefillLabel.Name = "CategoryPrefillLabel"
         Me.HelpProvider.SetShowHelp(Me.CategoryPrefillLabel, CType(resources.GetObject("CategoryPrefillLabel.ShowHelp"), Boolean))
         '
         'KeywordsTextBox
         '
+        Me.HelpProvider.SetHelpKeyword(Me.KeywordsTextBox, resources.GetString("KeywordsTextBox.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.KeywordsTextBox, CType(resources.GetObject("KeywordsTextBox.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         resources.ApplyResources(Me.KeywordsTextBox, "KeywordsTextBox")
         Me.KeywordsTextBox.Name = "KeywordsTextBox"
         Me.HelpProvider.SetShowHelp(Me.KeywordsTextBox, CType(resources.GetObject("KeywordsTextBox.ShowHelp"), Boolean))
@@ -167,6 +181,8 @@ Partial Class ManageUploadFolderConfigurationsDialog
         'KeywordsPrefillLabel
         '
         resources.ApplyResources(Me.KeywordsPrefillLabel, "KeywordsPrefillLabel")
+        Me.HelpProvider.SetHelpKeyword(Me.KeywordsPrefillLabel, resources.GetString("KeywordsPrefillLabel.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.KeywordsPrefillLabel, CType(resources.GetObject("KeywordsPrefillLabel.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.KeywordsPrefillLabel.Name = "KeywordsPrefillLabel"
         Me.HelpProvider.SetShowHelp(Me.KeywordsPrefillLabel, CType(resources.GetObject("KeywordsPrefillLabel.ShowHelp"), Boolean))
         '
@@ -175,6 +191,8 @@ Partial Class ManageUploadFolderConfigurationsDialog
         Me.SubjectPairedComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.SubjectPairedComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.SubjectPairedComboBox.FormattingEnabled = True
+        Me.HelpProvider.SetHelpKeyword(Me.SubjectPairedComboBox, resources.GetString("SubjectPairedComboBox.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.SubjectPairedComboBox, CType(resources.GetObject("SubjectPairedComboBox.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         resources.ApplyResources(Me.SubjectPairedComboBox, "SubjectPairedComboBox")
         Me.SubjectPairedComboBox.Name = "SubjectPairedComboBox"
         Me.HelpProvider.SetShowHelp(Me.SubjectPairedComboBox, CType(resources.GetObject("SubjectPairedComboBox.ShowHelp"), Boolean))
@@ -183,6 +201,8 @@ Partial Class ManageUploadFolderConfigurationsDialog
         'SubjectPrefillLabel
         '
         resources.ApplyResources(Me.SubjectPrefillLabel, "SubjectPrefillLabel")
+        Me.HelpProvider.SetHelpKeyword(Me.SubjectPrefillLabel, resources.GetString("SubjectPrefillLabel.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.SubjectPrefillLabel, CType(resources.GetObject("SubjectPrefillLabel.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.SubjectPrefillLabel.Name = "SubjectPrefillLabel"
         Me.HelpProvider.SetShowHelp(Me.SubjectPrefillLabel, CType(resources.GetObject("SubjectPrefillLabel.ShowHelp"), Boolean))
         '
@@ -191,6 +211,8 @@ Partial Class ManageUploadFolderConfigurationsDialog
         Me.AuthorPairedComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.AuthorPairedComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.AuthorPairedComboBox.FormattingEnabled = True
+        Me.HelpProvider.SetHelpKeyword(Me.AuthorPairedComboBox, resources.GetString("AuthorPairedComboBox.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.AuthorPairedComboBox, CType(resources.GetObject("AuthorPairedComboBox.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         resources.ApplyResources(Me.AuthorPairedComboBox, "AuthorPairedComboBox")
         Me.AuthorPairedComboBox.Name = "AuthorPairedComboBox"
         Me.HelpProvider.SetShowHelp(Me.AuthorPairedComboBox, CType(resources.GetObject("AuthorPairedComboBox.ShowHelp"), Boolean))
@@ -199,12 +221,16 @@ Partial Class ManageUploadFolderConfigurationsDialog
         'AuthorPrefillLabel
         '
         resources.ApplyResources(Me.AuthorPrefillLabel, "AuthorPrefillLabel")
+        Me.HelpProvider.SetHelpKeyword(Me.AuthorPrefillLabel, resources.GetString("AuthorPrefillLabel.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.AuthorPrefillLabel, CType(resources.GetObject("AuthorPrefillLabel.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.AuthorPrefillLabel.Name = "AuthorPrefillLabel"
         Me.HelpProvider.SetShowHelp(Me.AuthorPrefillLabel, CType(resources.GetObject("AuthorPrefillLabel.ShowHelp"), Boolean))
         '
         'FlagDocumentCheckBox
         '
         resources.ApplyResources(Me.FlagDocumentCheckBox, "FlagDocumentCheckBox")
+        Me.HelpProvider.SetHelpKeyword(Me.FlagDocumentCheckBox, resources.GetString("FlagDocumentCheckBox.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.FlagDocumentCheckBox, CType(resources.GetObject("FlagDocumentCheckBox.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.FlagDocumentCheckBox.Name = "FlagDocumentCheckBox"
         Me.HelpProvider.SetShowHelp(Me.FlagDocumentCheckBox, CType(resources.GetObject("FlagDocumentCheckBox.ShowHelp"), Boolean))
         Me.FlagDocumentCheckBox.UseVisualStyleBackColor = True
@@ -226,20 +252,29 @@ Partial Class ManageUploadFolderConfigurationsDialog
         Me.UploadFolderConfigurationGroupBox.Controls.Add(Me.TitlePrefillLabel)
         Me.UploadFolderConfigurationGroupBox.Controls.Add(Me.FolderNameTextBox)
         Me.UploadFolderConfigurationGroupBox.Controls.Add(Me.FolderNameLabel)
+        Me.HelpProvider.SetHelpKeyword(Me.UploadFolderConfigurationGroupBox, resources.GetString("UploadFolderConfigurationGroupBox.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.UploadFolderConfigurationGroupBox, CType(resources.GetObject("UploadFolderConfigurationGroupBox.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         resources.ApplyResources(Me.UploadFolderConfigurationGroupBox, "UploadFolderConfigurationGroupBox")
         Me.UploadFolderConfigurationGroupBox.Name = "UploadFolderConfigurationGroupBox"
+        Me.HelpProvider.SetShowHelp(Me.UploadFolderConfigurationGroupBox, CType(resources.GetObject("UploadFolderConfigurationGroupBox.ShowHelp"), Boolean))
         Me.UploadFolderConfigurationGroupBox.TabStop = False
         '
         'DiscardButton
         '
+        Me.HelpProvider.SetHelpKeyword(Me.DiscardButton, resources.GetString("DiscardButton.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.DiscardButton, CType(resources.GetObject("DiscardButton.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         resources.ApplyResources(Me.DiscardButton, "DiscardButton")
         Me.DiscardButton.Name = "DiscardButton"
+        Me.HelpProvider.SetShowHelp(Me.DiscardButton, CType(resources.GetObject("DiscardButton.ShowHelp"), Boolean))
         Me.DiscardButton.UseVisualStyleBackColor = True
         '
         'SaveButton
         '
+        Me.HelpProvider.SetHelpKeyword(Me.SaveButton, resources.GetString("SaveButton.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.SaveButton, CType(resources.GetObject("SaveButton.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         resources.ApplyResources(Me.SaveButton, "SaveButton")
         Me.SaveButton.Name = "SaveButton"
+        Me.HelpProvider.SetShowHelp(Me.SaveButton, CType(resources.GetObject("SaveButton.ShowHelp"), Boolean))
         Me.SaveButton.UseVisualStyleBackColor = True
         '
         'ManageUploadFolderConfigurationsDialog
