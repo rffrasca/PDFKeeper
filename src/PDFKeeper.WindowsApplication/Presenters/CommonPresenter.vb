@@ -265,7 +265,10 @@ Public Class CommonPresenter
     Protected Overridable Sub Dispose(disposing As Boolean)
         If Not Me.disposedValue Then
             If disposing Then
-                model.Dispose()
+                Try
+                    model.Dispose()
+                Catch ex As NullReferenceException
+                End Try
             End If
         End If
         Me.disposedValue = True
