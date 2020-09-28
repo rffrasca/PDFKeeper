@@ -35,7 +35,7 @@ Build Instructions for version 4.x.x is available [here](https://github.com/rffr
 [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md)
 
 ### Contact
-Please send all feedback, comments, suggestions, and testimonials [here](mailto:rffrasca@gmail.com).
+Please send all feedback, comments, suggestions, and testimonials regarding PDFKeeper [here](mailto:rffrasca@gmail.com).
 
 [![Twitter](https://img.shields.io/twitter/follow/PDFKeeper?style=social)](https://twitter.com/intent/follow?screen_name=PDFKeeper)
 
