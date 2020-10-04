@@ -20,12 +20,12 @@
 Public Class ManageUploadFolderConfigurationsPresenter
     Private ReadOnly view As IManageUploadFolderConfigurationsView
     Private model As New UploadFolderConfiguration
-    Private helper As UploadFolderConfigurationHelper = Nothing
+    Private helper As UploadFolderConfigurationHelper
     Private ReadOnly message As IMessageDisplayService =
         New MessageDisplayService
     Private ReadOnly question As IQuestionDisplayService =
         New QuestionDisplayService
-    Private origUploadFolderConfiguration As String = Nothing
+    Private origUploadFolderConfiguration As String
 
     Public Sub New(view As IManageUploadFolderConfigurationsView)
         Me.view = view
