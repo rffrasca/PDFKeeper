@@ -40,7 +40,8 @@
     <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />
     <Property Id="ALLUSERS" Value="2" />
     <Property Id="MSIINSTALLPERUSER" Value="1" />
-
+    <Property Id="MSIFASTINSTALL" Value="1" />
+        
     <PropertyRef Id="WIXNETFX4RELEASEINSTALLED" />
     <Condition Message="[ProductName] requires .NET Framework 4.8 to be installed.">
       <![CDATA[Installed OR (WIXNETFX4RELEASEINSTALLED >= "#528040")]]>
