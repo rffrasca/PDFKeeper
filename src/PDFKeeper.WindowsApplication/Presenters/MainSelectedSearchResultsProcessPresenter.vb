@@ -92,6 +92,7 @@ Public Class MainSelectedSearchResultsProcessPresenter
                 ExportDocument(m_IdBeingProcessed, m_ExportFolderPath)
             End If
             m_View.DeleteExportProgressPerformStep()
+            Application.DoEvents()
         Next
         m_View.DeleteExportProgressVisible = False
         If m_FunctionToPerform = Enums.SelectedDocumentsFunction.SetClearCategory Or
