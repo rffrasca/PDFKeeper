@@ -649,6 +649,8 @@ Public Class MainPresenter
                         uploadStagingDirInfo.ContainsFilesMatchingSearchPattern("*.pdf") Then
                         view.UploadRunningVisible = True
                     End If
+                    view.UploadFolderErrorVisible = False
+                    view.UploadStagingFolderErrorVisible = False
                     Application.DoEvents()
                     Using uploadTask As Task = Task.Run(Sub() UploadService.Instance.ExecuteUploadCycle())
                         Await uploadTask.ConfigureAwait(True)
@@ -658,13 +660,9 @@ Public Class MainPresenter
                     view.UploadRunningVisible = False
                     If uploadDirInfo.ContainsFilesExcludingSearchPattern("*.delete") Then
                         view.UploadFolderErrorVisible = True
-                    Else
-                        view.UploadFolderErrorVisible = False
                     End If
                     If uploadStagingDirInfo.ContainsFiles Then
                         view.UploadStagingFolderErrorVisible = True
-                    Else
-                        view.UploadStagingFolderErrorVisible = False
                     End If
                     Application.DoEvents()
                 End Try
