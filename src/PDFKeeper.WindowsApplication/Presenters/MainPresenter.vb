@@ -123,11 +123,15 @@ Public Class MainPresenter
     End Sub
 
     Public Sub SelectAllSearchResults()
+        view.SetCursor(True)
         view.SelectDeselectAllSearchResults(SelectionState.SelectAll)
+        view.SetCursor(False)
     End Sub
 
     Public Sub DeselectAllSearchResults()
+        view.SetCursor(True)
         view.SelectDeselectAllSearchResults(SelectionState.DeselectAll)
+        view.SetCursor(False)
     End Sub
 
     Public Sub SetCategoryOnSelectedSearchResults()
