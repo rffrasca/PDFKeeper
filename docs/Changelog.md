@@ -1,6 +1,23 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v6.0.1 - 2020-10-16
+- This is a maintenance release that includes application and installer fixes and dependency updates.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.1).
+### Changed
+- Updated iTextSharp to 5.5.13.2
+- Updated AutoUpdater.NET to 1.6.3
+### Fixed
+- NullReferenceException at PDFKeeper.WindowsApplication.CommonViewPresenter.Dispose(Boolean disposing) that is being logged to PDFKeeper.log during application shutdown.
+- Help topic not opening when F1 is pressed while Set Category dialog is open.
+- Welcome Help Topic opening instead of "Configuring an Upload Folder" topic when F1 is pressed while Manage Upload Folder Configurations dialog is open after New or Edit is selected.
+- Upload in progress status bar icon is being displayed when no PDF files need to be uploaded but other, unsupported file types exist in the Upload folder.
+- UploadFolderErrorToolStripStatusLabel will remain visible on the status bar after all of the files that cannot be uploaded were removed from the Upload folder and will remain visible until the next upload cycle runs that uploads one or more PDF files.
+- Wait cursor display delay when Select All or Deselect All is selected from the File menu.
+- Progress bar on Main Form not updating properly during a lengthy Search Results operation (Delete, Export, or setting of a Category).
+- "Failed to create restore point (Process = C:\Windows\system32\msiexec.exe /V; Description = Installed/Removed PDFKeeper; Error = 0x80042306)" is logged to Windows Application Event Log during an install and uninstall.
+
 ## v6.0.0 - 2020-09-26
 - This is a major release that includes architectural changes, a user interface redesign to improve document searching, fixes, and other miscellaneous changes.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
