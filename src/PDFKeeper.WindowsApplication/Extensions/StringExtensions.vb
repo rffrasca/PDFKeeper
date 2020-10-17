@@ -27,8 +27,8 @@ Module StringExtensions
     ''' <returns>Appended string</returns>
     ''' <remarks></remarks>
     <Extension()>
-    Public Function AppendDateTimeAndTextToString(ByVal valueParam As String,
-                                                  ByVal valueToAppend As String) As String
+    Public Function AppendDateTimeAndText(ByVal valueParam As String,
+                                          ByVal valueToAppend As String) As String
         If valueParam Is Nothing Then
             Throw New ArgumentNullException(NameOf(valueParam))
         End If
@@ -37,6 +37,28 @@ Module StringExtensions
         End If
         Return valueParam & "--- " & Date.Now & " (" &
             valueToAppend & ") ---" & vbCrLf
+    End Function
+
+    ''' <summary>
+    ''' Returns a new String containing a carriage return (only if valueParam
+    ''' doesn't end in a line feed character), followed by the specified text
+    ''' appended to the String object.
+    ''' </summary>
+    ''' <param name="valueParam"></param>
+    ''' <param name="valueToAppend"></param>
+    ''' <returns>Appended string</returns>
+    <Extension()>
+    Public Function AppendText(ByVal valueParam As String,
+                               ByVal valueToAppend As String) As String
+        If valueParam Is Nothing Then
+            Throw New ArgumentNullException(NameOf(valueParam))
+        End If
+        If valueParam.Length > 0 Then
+            If valueParam.Substring(valueParam.Length - 1) <> vbLf Then
+                valueParam &= vbCrLf
+            End If
+        End If
+        Return valueParam & valueToAppend & vbCrLf
     End Function
 
     ''' <summary>

@@ -124,6 +124,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Delete {0} to the Recycle Bin?.
+        '''</summary>
+        Friend ReadOnly Property DeleteFileToRecycleBin() As String
+            Get
+                Return ResourceManager.GetString("DeleteFileToRecycleBin", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Delete selected documents?.
         '''</summary>
         Friend ReadOnly Property DeleteSelectedDocuments() As String
@@ -307,6 +316,16 @@ Namespace My.Resources
         Friend ReadOnly Property ODPMissing() As String
             Get
                 Return ResourceManager.GetString("ODPMissing", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property page_text() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("page_text", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         

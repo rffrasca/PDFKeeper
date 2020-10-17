@@ -794,6 +794,11 @@ Public Class MainForm
         StatusStrip.Visible = ViewStatusBarToolStripMenuItem.Checked
     End Sub
 
+    Private Sub InsertTextToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InsertTextToolStripMenuItem.Click,
+                                                                                            InsertTextToolStripButton.Click
+        presenter.InsertTextFromFileIntoSelectedDocumentNotes()
+    End Sub
+
     Private Sub ToolsOptionsToolStripButton_Click(sender As Object, e As EventArgs) Handles ToolsOptionsToolStripButton.Click,
                                                                                             ToolsOptionsToolStripMenuItem.Click
         OptionsDialog.ShowDialog()

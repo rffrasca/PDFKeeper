@@ -29,27 +29,30 @@ Public Class MainToolStripStatePresenter
     End Sub
 
     Private Sub SetDefaults()
-        shortNames.SetItem("FileOpen", False)
-        shortNames.SetItem("FileSave", False)
-        shortNames.SetItem("FileSaveAs", False)
-        shortNames.SetItem("FilePrint", False)
-        shortNames.SetItem("FilePrintPreview", False)
-        shortNames.SetItem("FileSelect", False)
-        shortNames.SetItem("FileSelectAll", False)
-        shortNames.SetItem("FileSelectNone", False)
-        shortNames.SetItem("FileSetCategory", False)
-        shortNames.SetItem("FileDelete", False)
-        shortNames.SetItem("FileExport", False)
-        shortNames.SetItem("EditUndo", False)
-        shortNames.SetItem("EditCut", False)
-        shortNames.SetItem("EditCopy", False)
-        shortNames.SetItem("EditPaste", False)
-        shortNames.SetItem("EditSelectAll", False)
-        shortNames.SetItem("EditRestore", False)
-        shortNames.SetItem("EditDateTime", False)
-        shortNames.SetItem("EditFlagDocument", False)
-        shortNames.SetItem("ViewRefresh", False)
-        shortNames.SetItem("ViewSetPreviewImageResolution", False)
+        With shortNames
+            .SetItem("FileOpen", False)
+            .SetItem("FileSave", False)
+            .SetItem("FileSaveAs", False)
+            .SetItem("FilePrint", False)
+            .SetItem("FilePrintPreview", False)
+            .SetItem("FileSelect", False)
+            .SetItem("FileSelectAll", False)
+            .SetItem("FileSelectNone", False)
+            .SetItem("FileSetCategory", False)
+            .SetItem("FileDelete", False)
+            .SetItem("FileExport", False)
+            .SetItem("EditUndo", False)
+            .SetItem("EditCut", False)
+            .SetItem("EditCopy", False)
+            .SetItem("EditPaste", False)
+            .SetItem("EditSelectAll", False)
+            .SetItem("EditRestore", False)
+            .SetItem("EditDateTime", False)
+            .SetItem("EditFlagDocument", False)
+            .SetItem("ViewRefresh", False)
+            .SetItem("ViewSetPreviewImageResolution", False)
+            .SetItem("InsertText", False)
+        End With
     End Sub
 
     Public Sub SetDefaultState()
@@ -72,59 +75,71 @@ Public Class MainToolStripStatePresenter
         If rowCount > 0 Then
             itemState = True
         End If
-        shortNames.SetItem("FileSelect", itemState)
-        shortNames.SetItem("FileSelectAll", itemState)
-        shortNames.SetItem("FileSelectNone", itemState)
+        With shortNames
+            .SetItem("FileSelect", itemState)
+            .SetItem("FileSelectAll", itemState)
+            .SetItem("FileSelectNone", itemState)
+        End With
         ApplyState()
     End Sub
 
     Public Sub SetSearchResultsSelectedState(ByVal selectedRows As Integer)
-        If selectedRows > 0 Then
-            shortNames.SetItem("FileSetCategory", True)
-            shortNames.SetItem("FileDelete", True)
-            shortNames.SetItem("FileExport", True)
-        Else
-            shortNames.SetItem("FileSetCategory", False)
-            shortNames.SetItem("FileDelete", False)
-            shortNames.SetItem("FileExport", False)
-        End If
+        With shortNames
+            If selectedRows > 0 Then
+                .SetItem("FileSetCategory", True)
+                .SetItem("FileDelete", True)
+                .SetItem("FileExport", True)
+            Else
+                .SetItem("FileSetCategory", False)
+                .SetItem("FileDelete", False)
+                .SetItem("FileExport", False)
+            End If
+        End With
         ApplyState()
     End Sub
 
     Public Sub SetDocumentSelectedState(ByVal documentSelected As Boolean)
-        shortNames.SetItem("FileOpen", documentSelected)
-        shortNames.SetItem("FileSaveAs", documentSelected)
-        shortNames.SetItem("EditFlagDocument", documentSelected)
-        shortNames.SetItem("ViewSetPreviewImageResolution", documentSelected)
+        With shortNames
+            .SetItem("FileOpen", documentSelected)
+            .SetItem("FileSaveAs", documentSelected)
+            .SetItem("EditFlagDocument", documentSelected)
+            .SetItem("ViewSetPreviewImageResolution", documentSelected)
+        End With
         ApplyState()
     End Sub
 
-    Public Sub SetTextBoxEnterState(ByVal isReadOnly As Boolean, _
+    Public Sub SetTextBoxEnterState(ByVal isReadOnly As Boolean,
                                     ByVal textLength As Integer)
-        If textLength > 0 Then
-            shortNames.SetItem("EditSelectAll", True)
-        Else
-            shortNames.SetItem("EditSelectAll", False)
-        End If
-        shortNames.SetItem("EditUndo", False)
-        shortNames.SetItem("EditCut", False)
-        shortNames.SetItem("EditCopy", False)
-        If isReadOnly Then
-            shortNames.SetItem("EditDateTime", False)
-        Else
-            shortNames.SetItem("EditDateTime", True)
-        End If
+        With shortNames
+            If textLength > 0 Then
+                .SetItem("EditSelectAll", True)
+            Else
+                .SetItem("EditSelectAll", False)
+            End If
+            .SetItem("EditUndo", False)
+            .SetItem("EditCut", False)
+            .SetItem("EditCopy", False)
+            If isReadOnly Then
+                .SetItem("EditDateTime", False)
+                .SetItem("InsertText", False)
+            Else
+                .SetItem("EditDateTime", True)
+                .SetItem("InsertText", True)
+            End If
+        End With
         ApplyState()
     End Sub
 
     Public Sub SetTextBoxPrintableState(ByVal printable As Boolean)
-        If printable Then
-            shortNames.SetItem("FilePrint", True)
-            shortNames.SetItem("FilePrintPreview", True)
-        Else
-            shortNames.SetItem("FilePrint", False)
-            shortNames.SetItem("FilePrintPreview", False)
-        End If
+        With shortNames
+            If printable Then
+                .SetItem("FilePrint", True)
+                .SetItem("FilePrintPreview", True)
+            Else
+                .SetItem("FilePrint", False)
+                .SetItem("FilePrintPreview", False)
+            End If
+        End With
         ApplyState()
     End Sub
 
@@ -133,62 +148,69 @@ Public Class MainToolStripStatePresenter
         ApplyState()
     End Sub
 
-    Public Sub SetTextBoxTextSelectionState(ByVal isReadOnly As Boolean, _
-                                            ByVal textLength As Integer, _
+    Public Sub SetTextBoxTextSelectionState(ByVal isReadOnly As Boolean,
+                                            ByVal textLength As Integer,
                                             ByVal selectedTextLength As Integer)
-        If selectedTextLength > 0 Then
-            If isReadOnly = False Then
-                shortNames.SetItem("EditCut", True)
-            End If
-            shortNames.SetItem("EditCopy", True)
-            If textLength = selectedTextLength Then
-                shortNames.SetItem("EditSelectAll", False)
+        With shortNames
+            If selectedTextLength > 0 Then
+                If isReadOnly = False Then
+                    .SetItem("EditCut", True)
+                End If
+                .SetItem("EditCopy", True)
+                If textLength = selectedTextLength Then
+                    .SetItem("EditSelectAll", False)
+                Else
+                    .SetItem("EditSelectAll", True)
+                End If
             Else
-                shortNames.SetItem("EditSelectAll", True)
+                .SetItem("EditCut", False)
+                .SetItem("EditCopy", False)
+                If textLength > 0 Then
+                    .SetItem("EditSelectAll", True)
+                Else
+                    .SetItem("EditSelectAll", False)
+                End If
             End If
-        Else
-            shortNames.SetItem("EditCut", False)
-            shortNames.SetItem("EditCopy", False)
-            If textLength > 0 Then
-                shortNames.SetItem("EditSelectAll", True)
-            Else
-                shortNames.SetItem("EditSelectAll", False)
-            End If
-        End If
+        End With
         ApplyState()
     End Sub
 
-    Public Sub SetNotesTextBoxChangedState(ByVal documentNotesChanged As Boolean, _
+    Public Sub SetNotesTextBoxChangedState(ByVal documentNotesChanged As Boolean,
                                            ByVal canUndo As Boolean)
         Dim controlEnabled As Boolean = False
-        If documentNotesChanged = False Then
-            controlEnabled = True
-        Else
-            shortNames.SetItem("FileSetCategory", controlEnabled)
-            shortNames.SetItem("FileDelete", controlEnabled)
-            shortNames.SetItem("FileExport", controlEnabled)
-        End If
-        shortNames.SetItem("FileSave", documentNotesChanged)
-        shortNames.SetItem("FileSelect", controlEnabled)
-        shortNames.SetItem("FileSelectAll", controlEnabled)
-        shortNames.SetItem("FileSelectNone", controlEnabled)
-        If canUndo Then
-            shortNames.SetItem("EditUndo", True)
-        Else
-            shortNames.SetItem("EditUndo", False)
-        End If
-        shortNames.SetItem("EditRestore", documentNotesChanged)
-        shortNames.SetItem("ViewRefresh", controlEnabled)
+        With shortNames
+            If documentNotesChanged = False Then
+                controlEnabled = True
+            Else
+                .SetItem("FileSetCategory", controlEnabled)
+                .SetItem("FileDelete", controlEnabled)
+                .SetItem("FileExport", controlEnabled)
+            End If
+            .SetItem("FileSave", documentNotesChanged)
+            .SetItem("FileSelect", controlEnabled)
+            .SetItem("FileSelectAll", controlEnabled)
+            .SetItem("FileSelectNone", controlEnabled)
+            If canUndo Then
+                .SetItem("EditUndo", True)
+            Else
+                .SetItem("EditUndo", False)
+            End If
+            .SetItem("EditRestore", documentNotesChanged)
+            .SetItem("ViewRefresh", controlEnabled)
+        End With
         ApplyState()
     End Sub
 
     Public Sub SetTextBoxLeaveState()
-        shortNames.SetItem("EditUndo", False)
-        shortNames.SetItem("EditCut", False)
-        shortNames.SetItem("EditCopy", False)
-        shortNames.SetItem("EditPaste", False)
-        shortNames.SetItem("EditSelectAll", False)
-        shortNames.SetItem("EditDateTime", False)
+        With shortNames
+            .SetItem("EditUndo", False)
+            .SetItem("EditCut", False)
+            .SetItem("EditCopy", False)
+            .SetItem("EditPaste", False)
+            .SetItem("EditSelectAll", False)
+            .SetItem("EditDateTime", False)
+            .SetItem("InsertText", False)
+        End With
         ApplyState()
     End Sub
 

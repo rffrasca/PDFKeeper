@@ -24,9 +24,14 @@ Public Class MainPresenter
     Private ReadOnly uploadStagingDirInfo As _
         New DirectoryInfo(UserProfile.UploadStagingPath)
     Private ReadOnly searchTextHistory As New GenericList(Of String)
-    Private ReadOnly message As IMessageDisplayService = New MessageDisplayService
-    Private ReadOnly question As IQuestionDisplayService = New QuestionDisplayService
-    Private ReadOnly folderBrowser As IFolderBrowserDisplayService = New FolderBrowserDisplayService
+    Private ReadOnly message As IMessageDisplayService =
+        New MessageDisplayService
+    Private ReadOnly question As IQuestionDisplayService =
+        New QuestionDisplayService
+    Private ReadOnly fileSelect As IFileSelectDisplayService =
+        New FileSelectDisplayService
+    Private ReadOnly folderBrowser As IFolderBrowserDisplayService =
+        New FolderBrowserDisplayService
     Private ReadOnly setCategory As ISetCategoryDisplayService =
         New SetCategoryDisplayService
     Private ReadOnly pdfViewer As IPdfViewerService = New PdfViewerService
@@ -228,7 +233,7 @@ Public Class MainPresenter
     Public Sub AppendDateTimeUserNameToSelectedDocumentNotes()
         view.ScrollToEndInNotesElement()
         view.DocumentRecordNotes =
-            view.DocumentRecordNotes.AppendDateTimeAndTextToString(My.Settings.Username)
+            view.DocumentRecordNotes.AppendDateTimeAndText(My.Settings.Username)
         view.ScrollToEndInNotesElement()
     End Sub
 
@@ -270,6 +275,33 @@ Public Class MainPresenter
         view.SetCursor(True)
         Task.Run(Sub() GetDocumentPreview())
         view.SetCursor(False)
+    End Sub
+
+    Public Sub InsertTextFromFileIntoSelectedDocumentNotes()
+        fileSelect.Filter = "txt"
+        Dim textFile As String = fileSelect.ShowOpen
+        If textFile.Length > 0 Then
+
+            With view
+                view.SetCursor(True)
+                .ScrollToEndInNotesElement()
+                .DocumentRecordNotes =
+                    .DocumentRecordNotes.AppendText(IO.File.ReadAllText(textFile).Trim)
+                .ScrollToEndInNotesElement()
+                .SetCursor(False)
+                If question.Show(String.Format(CultureInfo.CurrentCulture,
+                                               My.Resources.ResourceManager.GetString(
+                                               "DeleteFileToRecycleBin",
+                                               CultureInfo.CurrentCulture),
+                                               textFile),
+                                 False) = DialogResult.Yes Then
+                    .SetCursor(True)
+                    Dim textFileInfo As New FileInfo(textFile)
+                    textFileInfo.DeleteToRecycleBin
+                    .SetCursor(False)
+                End If
+            End With
+        End If
     End Sub
 #End Region
 
@@ -713,6 +745,7 @@ Public Class MainPresenter
     Protected Overridable Sub Dispose(disposing As Boolean)
         If Not Me.disposedValue Then
             If disposing Then
+                fileSelect.Dispose()
                 folderBrowser.Dispose()
             End If
         End If

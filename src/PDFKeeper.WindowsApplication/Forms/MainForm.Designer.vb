@@ -85,6 +85,8 @@ Partial Class MainForm
         Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
         Me.ViewToolbarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewStatusBarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InsertToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InsertTextToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsOptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
@@ -156,6 +158,8 @@ Partial Class MainForm
         Me.FlaggedDocumentsCheckTimer = New System.Windows.Forms.Timer(Me.components)
         Me.SearchResultsPanel = New System.Windows.Forms.Panel()
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.ToolStripSeparator14 = New System.Windows.Forms.ToolStripSeparator()
+        Me.InsertTextToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.MenuStrip.SuspendLayout()
         CType(Me.SearchTextErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,7 +182,7 @@ Partial Class MainForm
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ViewToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ViewToolStripMenuItem, Me.InsertToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         resources.ApplyResources(Me.MenuStrip, "MenuStrip")
         Me.MenuStrip.Name = "MenuStrip"
         '
@@ -390,6 +394,18 @@ Partial Class MainForm
         Me.ViewStatusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.ViewStatusBarToolStripMenuItem.Name = "ViewStatusBarToolStripMenuItem"
         resources.ApplyResources(Me.ViewStatusBarToolStripMenuItem, "ViewStatusBarToolStripMenuItem")
+        '
+        'InsertToolStripMenuItem
+        '
+        Me.InsertToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InsertTextToolStripMenuItem})
+        Me.InsertToolStripMenuItem.Name = "InsertToolStripMenuItem"
+        resources.ApplyResources(Me.InsertToolStripMenuItem, "InsertToolStripMenuItem")
+        '
+        'InsertTextToolStripMenuItem
+        '
+        Me.InsertTextToolStripMenuItem.Image = Global.PDFKeeper.WindowsApplication.My.Resources.Resources.page_text
+        Me.InsertTextToolStripMenuItem.Name = "InsertTextToolStripMenuItem"
+        resources.ApplyResources(Me.InsertTextToolStripMenuItem, "InsertTextToolStripMenuItem")
         '
         'ToolsToolStripMenuItem
         '
@@ -687,7 +703,7 @@ Partial Class MainForm
         'ToolStrip
         '
         Me.ToolStrip.DataBindings.Add(New System.Windows.Forms.Binding("Visible", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "MainToolBarVisible", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileNewToolStripButton, Me.FileOpenToolStripButton, Me.FileSaveToolStripButton, Me.FilePrintToolStripButton, Me.FileDeleteToolStripButton, Me.ToolStripSeparator17, Me.EditUndoToolStripButton, Me.EditCutToolStripButton, Me.EditCopyToolStripButton, Me.EditPasteToolStripButton, Me.EditRestoreToolStripButton, Me.EditDateTimeToolStripButton, Me.ToolStripSeparator20, Me.ViewRefreshToolStripButton, Me.ToolStripSeparator21, Me.ToolsOptionsToolStripButton, Me.ToolsManageUploadFolderConfigurationsToolStripButton, Me.ToolStripSeparator22, Me.HelpContentsToolStripButton})
+        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileNewToolStripButton, Me.FileOpenToolStripButton, Me.FileSaveToolStripButton, Me.FilePrintToolStripButton, Me.FileDeleteToolStripButton, Me.ToolStripSeparator17, Me.EditUndoToolStripButton, Me.EditCutToolStripButton, Me.EditCopyToolStripButton, Me.EditPasteToolStripButton, Me.EditRestoreToolStripButton, Me.EditDateTimeToolStripButton, Me.ToolStripSeparator20, Me.ViewRefreshToolStripButton, Me.ToolStripSeparator14, Me.InsertTextToolStripButton, Me.ToolStripSeparator21, Me.ToolsOptionsToolStripButton, Me.ToolsManageUploadFolderConfigurationsToolStripButton, Me.ToolStripSeparator22, Me.HelpContentsToolStripButton})
         resources.ApplyResources(Me.ToolStrip, "ToolStrip")
         Me.ToolStrip.Name = "ToolStrip"
         Me.ToolStrip.Visible = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.MainToolBarVisible
@@ -840,6 +856,18 @@ Partial Class MainForm
         Me.SearchResultsPanel.Controls.Add(Me.SearchResultsDataGridView)
         resources.ApplyResources(Me.SearchResultsPanel, "SearchResultsPanel")
         Me.SearchResultsPanel.Name = "SearchResultsPanel"
+        '
+        'ToolStripSeparator14
+        '
+        Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
+        resources.ApplyResources(Me.ToolStripSeparator14, "ToolStripSeparator14")
+        '
+        'InsertTextToolStripButton
+        '
+        Me.InsertTextToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.InsertTextToolStripButton.Image = Global.PDFKeeper.WindowsApplication.My.Resources.Resources.page_text
+        resources.ApplyResources(Me.InsertTextToolStripButton, "InsertTextToolStripButton")
+        Me.InsertTextToolStripButton.Name = "InsertTextToolStripButton"
         '
         'MainForm
         '
@@ -997,4 +1025,8 @@ Partial Class MainForm
     Friend WithEvents TextLabel As Label
     Friend WithEvents DateLabel As Label
     Friend WithEvents HelpProvider As HelpProvider
+    Friend WithEvents InsertToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InsertTextToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator14 As ToolStripSeparator
+    Friend WithEvents InsertTextToolStripButton As ToolStripButton
 End Class
