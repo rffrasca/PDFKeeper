@@ -268,53 +268,39 @@ Public NotInheritable Class OracleDbDocumentRepository
         End Using
     End Function
 
-    Public Function GetNotesById(id As Integer) As DataTable Implements IDocumentRepository.GetNotesById
-        Dim sqlStatement As String =
-            "select doc_notes " &
-            "from pdfkeeper.docs " &
-            "where doc_id = :doc_id"
-        Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-            oraCommand.CommandType = CommandType.Text
-            oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_id", id)
-            Return provider.QueryToDataTable(oraCommand)
-        End Using
+    Public Function GetTitleById(id As Integer) As String Implements IDocumentRepository.GetTitleById
+        Return Convert.ToString(GetColumnDataById(id, "doc_title").Rows(0)("doc_title"),
+                                CultureInfo.CurrentCulture)
     End Function
 
-    Public Function GetKeywordsById(id As Integer) As DataTable Implements IDocumentRepository.GetKeywordsById
-        Dim sqlStatement As String =
-            "select doc_keywords " &
-            "from pdfkeeper.docs " &
-            "where doc_id = :doc_id"
-        Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-            oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_id", id)
-            Return provider.QueryToDataTable(oraCommand)
-        End Using
+    Public Function GetAuthorById(id As Integer) As String Implements IDocumentRepository.GetAuthorById
+        Return Convert.ToString(GetColumnDataById(id, "doc_author").Rows(0)("doc_author"),
+                                CultureInfo.CurrentCulture)
     End Function
 
-    Public Function GetCategoryById(id As Integer) As DataTable Implements IDocumentRepository.GetCategoryById
-        Dim sqlStatement As String =
-            "select doc_category " &
-            "from pdfkeeper.docs " &
-            "where doc_id = :doc_id"
-        Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-            oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_id", id)
-            Return provider.QueryToDataTable(oraCommand)
-        End Using
+    Public Function GetSubjectById(id As Integer) As String Implements IDocumentRepository.GetSubjectById
+        Return Convert.ToString(GetColumnDataById(id, "doc_subject").Rows(0)("doc_subject"),
+                                CultureInfo.CurrentCulture)
     End Function
 
-    Public Function GetFlagStateById(id As Integer) As DataTable Implements IDocumentRepository.GetFlagStateById
-        Dim sqlStatement As String =
-            "select doc_flag " &
-            "from pdfkeeper.docs " &
-            "where doc_id = :doc_id"
-        Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-            oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_id", id)
-            Return provider.QueryToDataTable(oraCommand)
-        End Using
+    Public Function GetNotesById(id As Integer) As String Implements IDocumentRepository.GetNotesById
+        Return Convert.ToString(GetColumnDataById(id, "doc_notes").Rows(0)("doc_notes"),
+                                CultureInfo.CurrentCulture)
+    End Function
+
+    Public Function GetKeywordsById(id As Integer) As String Implements IDocumentRepository.GetKeywordsById
+        Return Convert.ToString(GetColumnDataById(id, "doc_keywords").Rows(0)("doc_keywords"),
+                                CultureInfo.CurrentCulture)
+    End Function
+
+    Public Function GetCategoryById(id As Integer) As String Implements IDocumentRepository.GetCategoryById
+        Return Convert.ToString(GetColumnDataById(id, "doc_category").Rows(0)("doc_category"),
+                                CultureInfo.CurrentCulture)
+    End Function
+
+    Public Function GetFlagStateById(id As Integer) As Int32 Implements IDocumentRepository.GetFlagStateById
+        Return Convert.ToInt32(GetColumnDataById(id, "doc_flag").Rows(0)("doc_flag"),
+                               CultureInfo.CurrentCulture)
     End Function
 
     Public Sub GetPdfById(id As Integer, pdfFile As String) Implements IDocumentRepository.GetPdfById
@@ -410,6 +396,21 @@ Public NotInheritable Class OracleDbDocumentRepository
             provider.ExecuteNonQuery(oraCommand)
         End Using
     End Sub
+
+    Private Function GetColumnDataById(ByVal id As Integer, ByVal columnName As String) As DataTable
+        Dim sqlStatement As String =
+            "select " & columnName &
+            " from pdfkeeper.docs" &
+            " where doc_id = :doc_id"
+#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
+        Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
+            oraCommand.CommandType = CommandType.Text
+            oraCommand.BindByName = True
+            oraCommand.Parameters.Add("doc_id", id)
+            Return provider.QueryToDataTable(oraCommand)
+        End Using
+    End Function
 
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls

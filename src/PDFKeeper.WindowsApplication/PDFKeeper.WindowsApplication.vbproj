@@ -148,7 +148,7 @@
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="Data Access\DbInstanceProperties.vb" />
     <Compile Include="Data Access\DbInstanceUtil.vb" />
-    <Compile Include="Enums\SelectedDocumentsFunctionEnum.vb" />
+    <Compile Include="Enums\SelectedDocumentsActionEnum.vb" />
     <Compile Include="Enums\SelectionStateEnum.vb" />
     <Compile Include="Extensions\DirectoryInfoExtensions.vb" />
     <Compile Include="Extensions\FileInfoExtensions.vb" />

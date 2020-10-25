@@ -42,10 +42,13 @@ Public Interface IDocumentRepository
     Function GetAllFlaggedRecords() As DataTable
     Function GetAllRecords() As DataTable
     Function GetFlaggedRecordsCount() As Integer
-    Function GetNotesById(ByVal id As Integer) As DataTable
-    Function GetKeywordsById(ByVal id As Integer) As DataTable
-    Function GetCategoryById(ByVal id As Integer) As DataTable
-    Function GetFlagStateById(ByVal id As Integer) As DataTable
+    Function GetTitleById(ByVal id As Integer) As String
+    Function GetAuthorById(ByVal id As Integer) As String
+    Function GetSubjectById(ByVal id As Integer) As String
+    Function GetNotesById(ByVal id As Integer) As String
+    Function GetKeywordsById(ByVal id As Integer) As String
+    Function GetCategoryById(ByVal id As Integer) As String
+    Function GetFlagStateById(ByVal id As Integer) As Int32
     Sub GetPdfById(ByVal id As Integer, ByVal pdfFile As String)
     Sub CreateRecord(ByVal title As String,
                      ByVal author As String,

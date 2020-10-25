@@ -606,9 +606,9 @@ Public Class MainForm
 
     Public Sub SelectDeselectAllSearchResults(selectionState As SelectionState) Implements IMainView.SelectDeselectAllSearchResults
         For Each row As DataGridViewRow In SearchResultsDataGridView.Rows
-            If selectionState = Enums.SelectionState.SelectAll Then
+            If selectionState = SelectionState.SelectAll Then
                 row.Cells(0).Value = True
-            ElseIf selectionState = Enums.SelectionState.DeselectAll Then
+            ElseIf selectionState = SelectionState.DeselectAll Then
                 row.Cells(0).Value = False
             End If
         Next

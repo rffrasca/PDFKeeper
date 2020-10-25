@@ -146,7 +146,7 @@ Public Class MainPresenter
                 view.SetCursor(True)
                 Dim processPresenter As _
                     New MainSelectedSearchResultsProcessPresenter(view,
-                                                                  SelectedDocumentsFunction.SetClearCategory,
+                                                                  SelectedDocumentsAction.SetClearCategory,
                                                                   newCategory)
                 processPresenter.ProcessSelectedSearchResults()
                 view.SetCursor(False)
@@ -164,7 +164,7 @@ Public Class MainPresenter
                 view.SetCursor(True)
                 Dim processPresenter As _
                     New MainSelectedSearchResultsProcessPresenter(view,
-                                                                  SelectedDocumentsFunction.Delete,
+                                                                  SelectedDocumentsAction.Delete,
                                                                   Nothing)
                 processPresenter.ProcessSelectedSearchResults()
                 view.SetCursor(False)
@@ -179,13 +179,19 @@ Public Class MainPresenter
         folderBrowser.Description = My.Resources.SelectExportFolder
         Dim exportFolder As String = folderBrowser.Show
         If exportFolder IsNot Nothing Then
+            Dim exportAction As SelectedDocumentsAction = Nothing
+            If question.Show(My.Resources.ExportSupplementalData,
+                             False) = DialogResult.Yes Then
+                exportAction = SelectedDocumentsAction.ExportFull
+            Else
+                exportAction = SelectedDocumentsAction.ExportPdf
+            End If
             Dim processPresenter As MainSelectedSearchResultsProcessPresenter = Nothing
             Try
                 view.SetCursor(True)
-                processPresenter =
-                    New MainSelectedSearchResultsProcessPresenter(view,
-                                                                  SelectedDocumentsFunction.Export,
-                                                                  exportFolder)
+                processPresenter = New MainSelectedSearchResultsProcessPresenter(view,
+                                                                                 exportAction,
+                                                                                 exportFolder)
                 processPresenter.ProcessSelectedSearchResults()
                 view.SetCursor(False)
                 message.Show(String.Format(CultureInfo.CurrentCulture,
@@ -198,27 +204,30 @@ Public Class MainPresenter
             Catch ex As InvalidOperationException
                 view.SetCursor(False)
                 message.Show(String.Format(CultureInfo.CurrentCulture,
-                                                  My.Resources.ResourceManager.GetString(
-                                                      "ExportDocumentRecordMayHaveBeenDeleted",
-                                                      CultureInfo.CurrentCulture),
-                                                  ex.Message,
-                                                  processPresenter.IdBeingProcessed), True)
+                                           My.Resources.ResourceManager.GetString(
+                                           "ExportDocumentRecordMayHaveBeenDeleted",
+                                           CultureInfo.CurrentCulture),
+                                           ex.Message,
+                                           processPresenter.IdBeingProcessed),
+                             True)
             Catch ex As IndexOutOfRangeException
                 view.SetCursor(False)
                 message.Show(String.Format(CultureInfo.CurrentCulture,
-                                                  My.Resources.ResourceManager.GetString(
-                                                      "ExportDocumentRecordMayHaveBeenDeleted",
-                                                      CultureInfo.CurrentCulture),
-                                                  ex.Message,
-                                                  processPresenter.IdBeingProcessed), True)
+                                           My.Resources.ResourceManager.GetString(
+                                           "ExportDocumentRecordMayHaveBeenDeleted",
+                                           CultureInfo.CurrentCulture),
+                                           ex.Message,
+                                           processPresenter.IdBeingProcessed),
+                             True)
             Catch ex As OracleException
                 view.SetCursor(False)
                 message.Show(String.Format(CultureInfo.CurrentCulture,
-                                                  My.Resources.ResourceManager.GetString(
-                                                      "DocumentIdException",
-                                                      CultureInfo.CurrentCulture),
-                                                  ex.Message,
-                                                  processPresenter.IdBeingProcessed), True)
+                                           My.Resources.ResourceManager.GetString(
+                                           "DocumentIdException",
+                                           CultureInfo.CurrentCulture),
+                                           ex.Message,
+                                           processPresenter.IdBeingProcessed),
+                             True)
             End Try
         End If
     End Sub
@@ -585,11 +594,7 @@ Public Class MainPresenter
         Try
             view.SetCursor(True)
             Using model As IDocumentRepository = New DocumentRepository
-                Dim dataTableNotes As DataTable =
-                    model.GetNotesById(view.DocumentRecordId)
-                Dim notes As String =
-                    Convert.ToString(dataTableNotes.Rows(0)("doc_notes"),
-                                     CultureInfo.CurrentCulture)
+                Dim notes As String = model.GetNotesById(view.DocumentRecordId)
                 If updateView Then
                     view.DocumentRecordNotes = notes
                     lastDocumentNotes = view.DocumentRecordNotes
@@ -607,21 +612,13 @@ Public Class MainPresenter
 
     Private Sub GetDocumentRecordKeywords()
         Using model As IDocumentRepository = New DocumentRepository
-            Dim dataTableKeywords As DataTable =
-                model.GetKeywordsById(view.DocumentRecordId)
-            view.DocumentRecordKeywords =
-                Convert.ToString(dataTableKeywords.Rows(0)("doc_keywords"),
-                                 CultureInfo.CurrentCulture)
+            view.DocumentRecordKeywords = model.GetKeywordsById(view.DocumentRecordId)
         End Using
     End Sub
 
     Private Sub GetDocumentRecordFlagState()
         Using model As IDocumentRepository = New DocumentRepository
-            Dim dataTableFlagState As DataTable =
-                model.GetFlagStateById(view.DocumentRecordId)
-            view.DocumentRecordFlagState =
-                Convert.ToInt32(dataTableFlagState.Rows(0)("doc_flag"),
-                                CultureInfo.CurrentCulture)
+            view.DocumentRecordFlagState = model.GetFlagStateById(view.DocumentRecordId)
         End Using
     End Sub
 

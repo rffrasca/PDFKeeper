@@ -60,7 +60,7 @@ Public Interface IMainView
     Sub SelectSearchResultsLastRow()
     Sub SelectSearchResultRowById(ByVal id As Integer)
     Sub SelectDeselectAllSearchResults(ByVal selectionState _
-                                       As Enums.SelectionState)
+                                       As SelectionState)
     Sub SortSearchResults(ByVal sortColumnIndex As Integer, _
                           ByVal sortDirection As ListSortDirection)
     Sub RefreshSearchResults()

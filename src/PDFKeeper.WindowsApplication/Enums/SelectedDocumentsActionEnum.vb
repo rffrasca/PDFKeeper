@@ -19,12 +19,13 @@
 '******************************************************************************
 Namespace Enums
     ''' <summary>
-    ''' Operations that can be performed on all selected Search Results items.
+    ''' Actions that can be performed on all selected Search Results items.
     ''' </summary>
     ''' <remarks></remarks>
-    Public Enum SelectedDocumentsFunction
+    Public Enum SelectedDocumentsAction
         SetClearCategory
         Delete
-        Export
+        ExportPdf
+        ExportFull
     End Enum
 End Namespace

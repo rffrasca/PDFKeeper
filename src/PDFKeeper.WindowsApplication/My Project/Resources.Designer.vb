@@ -226,6 +226,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Export supplemental data with each PDF document?.
+        '''</summary>
+        Friend ReadOnly Property ExportSupplementalData() As String
+            Get
+                Return ResourceManager.GetString("ExportSupplementalData", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to This feature is disabled by policy..
         '''</summary>
         Friend ReadOnly Property FeatureDisabledByPolicy() As String

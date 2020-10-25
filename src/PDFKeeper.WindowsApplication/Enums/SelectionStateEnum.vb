@@ -19,7 +19,7 @@
 '******************************************************************************
 Namespace Enums
     ''' <summary>
-    ''' Operations that can be performed on all Search Results. 
+    ''' Selection state actions that can be performed on all Search Results. 
     ''' </summary>
     ''' <remarks></remarks>
     Public Enum SelectionState

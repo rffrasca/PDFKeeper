@@ -99,19 +99,31 @@ Public NotInheritable Class DocumentRepository
         Return repository.GetFlaggedRecordsCount
     End Function
 
-    Public Function GetNotesById(id As Integer) As DataTable Implements IDocumentRepository.GetNotesById
+    Public Function GetTitleById(id As Integer) As String Implements IDocumentRepository.GetTitleById
+        Return repository.GetTitleById(id)
+    End Function
+
+    Public Function GetAuthorById(id As Integer) As String Implements IDocumentRepository.GetAuthorById
+        Return repository.GetAuthorById(id)
+    End Function
+
+    Public Function GetSubjectById(id As Integer) As String Implements IDocumentRepository.GetSubjectById
+        Return repository.GetSubjectById(id)
+    End Function
+
+    Public Function GetNotesById(id As Integer) As String Implements IDocumentRepository.GetNotesById
         Return repository.GetNotesById(id)
     End Function
 
-    Public Function GetKeywordsById(id As Integer) As DataTable Implements IDocumentRepository.GetKeywordsById
+    Public Function GetKeywordsById(id As Integer) As String Implements IDocumentRepository.GetKeywordsById
         Return repository.GetKeywordsById(id)
     End Function
 
-    Public Function GetCategoryById(id As Integer) As DataTable Implements IDocumentRepository.GetCategoryById
+    Public Function GetCategoryById(id As Integer) As String Implements IDocumentRepository.GetCategoryById
         Return repository.GetCategoryById(id)
     End Function
 
-    Public Function GetFlagStateById(id As Integer) As DataTable Implements IDocumentRepository.GetFlagStateById
+    Public Function GetFlagStateById(id As Integer) As Int32 Implements IDocumentRepository.GetFlagStateById
         Return repository.GetFlagStateById(id)
     End Function
 
