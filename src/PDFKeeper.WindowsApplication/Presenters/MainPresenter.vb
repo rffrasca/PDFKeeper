@@ -179,18 +179,11 @@ Public Class MainPresenter
         folderBrowser.Description = My.Resources.SelectExportFolder
         Dim exportFolder As String = folderBrowser.Show
         If exportFolder IsNot Nothing Then
-            Dim exportAction As SelectedDocumentsAction = Nothing
-            If question.Show(My.Resources.ExportSupplementalData,
-                             False) = DialogResult.Yes Then
-                exportAction = SelectedDocumentsAction.ExportFull
-            Else
-                exportAction = SelectedDocumentsAction.ExportPdf
-            End If
             Dim processPresenter As MainSelectedSearchResultsProcessPresenter = Nothing
             Try
                 view.SetCursor(True)
                 processPresenter = New MainSelectedSearchResultsProcessPresenter(view,
-                                                                                 exportAction,
+                                                                                 SelectedDocumentsAction.Export,
                                                                                  exportFolder)
                 processPresenter.ProcessSelectedSearchResults()
                 view.SetCursor(False)

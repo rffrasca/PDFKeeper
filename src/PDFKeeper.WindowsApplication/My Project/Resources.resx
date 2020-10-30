@@ -256,7 +256,4 @@ The contents of the Notes text box prior to the attempted save operation have be
   <data name="DeleteFileToRecycleBin" xml:space="preserve">
     <value>Delete {0} to the Recycle Bin?</value>
   </data>
-  <data name="ExportSupplementalData" xml:space="preserve">
-    <value>Export supplemental data with each PDF document?</value>
-  </data>
 </root>

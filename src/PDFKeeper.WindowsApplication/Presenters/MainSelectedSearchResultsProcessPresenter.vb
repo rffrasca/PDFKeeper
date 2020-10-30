@@ -74,8 +74,7 @@ Public Class MainSelectedSearchResultsProcessPresenter
     End Property
 
     Public Sub ProcessSelectedSearchResults()
-        If m_ActionToPerform = SelectedDocumentsAction.ExportFull Or
-            SelectedDocumentsAction.ExportPdf Then
+        If m_ActionToPerform = SelectedDocumentsAction.Export Then
             m_ExportFolderPath = Path.Combine(m_CategoryExportParam,
                                               My.Application.Info.ProductName & "-" &
                                               My.Resources.Export & "_" &
@@ -91,9 +90,8 @@ Public Class MainSelectedSearchResultsProcessPresenter
                 SetCategoryOnDocument(m_IdBeingProcessed, m_CategoryExportParam)
             ElseIf m_ActionToPerform = SelectedDocumentsAction.Delete Then
                 DeleteDocument(m_IdBeingProcessed)
-            ElseIf m_ActionToPerform = SelectedDocumentsAction.ExportFull Or
-                SelectedDocumentsAction.ExportPdf Then
-                ExportDocument(m_IdBeingProcessed, m_ExportFolderPath, m_ActionToPerform)
+            ElseIf m_ActionToPerform = SelectedDocumentsAction.Export Then
+                ExportDocument(m_IdBeingProcessed, m_ExportFolderPath)
             End If
             m_View.DeleteExportProgressPerformStep()
             Application.DoEvents()
@@ -121,8 +119,7 @@ Public Class MainSelectedSearchResultsProcessPresenter
     End Sub
 
     Private Shared Sub ExportDocument(ByVal id As Integer,
-                                      ByVal exportFolder As String,
-                                      ByVal exportAction As SelectedDocumentsAction)
+                                      ByVal exportFolder As String)
         Using model As IDocumentRepository = New DocumentRepository
             Dim authorFolderInfo As New DirectoryInfo(Path.Combine(exportFolder,
                                                                    model.GetAuthorById(id)))
@@ -133,13 +130,11 @@ Public Class MainSelectedSearchResultsProcessPresenter
             Dim pdfInfo As New PdfFileInfo(Path.Combine(subjectFolderInfo.FullName,
                                                         "[" & id & "]" & model.GetTitleById(id) & ".pdf"))
             model.GetPdfById(id, pdfInfo.FullName)
-            If exportAction = SelectedDocumentsAction.ExportFull Then
-                Dim notes As String = model.GetNotesById(id)
-                Dim category As String = model.GetCategoryById(id)
-                Dim flagState As String = model.GetFlagStateById(id)
-                Dim suppDataHelper As New PdfSupplementalDataHelper(pdfInfo.FullName)
-                suppDataHelper.Write(notes, category, flagState)
-            End If
+            Dim notes As String = model.GetNotesById(id)
+            Dim category As String = model.GetCategoryById(id)
+            Dim flagState As String = model.GetFlagStateById(id)
+            Dim suppDataHelper As New PdfSupplementalDataHelper(pdfInfo.FullName)
+            suppDataHelper.Write(notes, category, flagState)
         End Using
     End Sub
 End Class

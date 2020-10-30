@@ -25,7 +25,6 @@ Namespace Enums
     Public Enum SelectedDocumentsAction
         SetClearCategory
         Delete
-        ExportPdf
-        ExportFull
+        Export
     End Enum
 End Namespace

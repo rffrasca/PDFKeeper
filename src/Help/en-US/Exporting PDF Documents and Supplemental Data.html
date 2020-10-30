@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
 	<title>Exporting PDF Documents and Supplemental Data</title>
-	<meta name="generator" content="LibreOffice 6.1.5.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 6.4.7.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2019-03-09T09:13:27.161000000"/>
+	<meta name="changed" content="2020-10-29T20:47:03.699000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -74,10 +74,12 @@ following steps:</font></p>
 	is a convenient way to transfer PDF documents and supplemental data
 	to another database system without having to use the source and
 	target database systems export/import processes. The export will
-	create a folder that contains each exported PDF document, named
-	<b>PDFKeeper&lt;ID&gt;.pdf </b>and corresponding supplemental data
-	file, <b>PDFKeeper&lt;ID&gt;.xml</b> that contains the notes,
-	category, and flag state stored in the database for that document.</font></p>
+	create a folder that contains each exported PDF document named
+	<b>[</b><i><b>&lt;ID&gt;</b></i><b>]</b><i><b>&lt;Title&gt;</b></i><b>.PDF</b><b>
+	</b>and corresponding supplemental data file <b>[</b><i><b>&lt;ID&gt;</b></i><b>]</b><i><b>&lt;Title&gt;</b></i><b>.XML</b>
+	that contains the Notes, Category, and Flag state stored in the
+	database for that document. All exported files will be organized in
+	sub-folders by Author and Subject.</font></p>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">When
 	exporting documents for transfer to another system, it is highly
 	recommended that nobody else be logged into PDFKeeper.</font></p>
