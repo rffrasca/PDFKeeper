@@ -606,6 +606,7 @@ Public Class MainForm
         For Each row As DataGridViewRow In SearchResultsDataGridView.Rows
             If row.Cells(1).Value = id Then
                 row.Selected = True
+                SearchResultsDataGridView.FirstDisplayedScrollingRowIndex = row.Index
             End If
         Next
     End Sub
