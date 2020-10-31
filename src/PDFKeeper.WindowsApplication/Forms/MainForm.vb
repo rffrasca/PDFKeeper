@@ -17,6 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
+Imports System.Drawing.Imaging
+
 Public Class MainForm
     Implements IMainWindowStateView, IToolStripStateView, IMainView
     Private ReadOnly windowStatePresenter As MainWindowStatePresenter
@@ -451,7 +453,10 @@ Public Class MainForm
             If Not PreviewPictureBox.Image Is Nothing Then
                 PreviewPictureBox.Image.Dispose()
             End If
-            PreviewPictureBox.Image = value
+            Dim imageLock As New Object
+            SyncLock imageLock  ' Required to prevent a rare InvalidOperationException.
+                PreviewPictureBox.Image = value
+            End SyncLock
         End Set
     End Property
 
