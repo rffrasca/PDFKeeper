@@ -19,6 +19,7 @@
 '******************************************************************************
 Public Interface IMainView
     Inherits ICommonView
+    ReadOnly Property SearchFunctionsEnabled As Boolean
     ReadOnly Property SelectedSearchFunction As Integer
     Property SearchTextControlEnabled As Boolean
     Property SearchTextHistory As Object

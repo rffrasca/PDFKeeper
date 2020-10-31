@@ -97,6 +97,12 @@ Public Class MainForm
 #End Region
 
 #Region "Interface Members (IMainView)"
+    Public ReadOnly Property SearchFunctionsEnabled As Boolean Implements IMainView.SearchFunctionsEnabled
+        Get
+            Return SearchFunctionsListBox.Enabled
+        End Get
+    End Property
+
     Public ReadOnly Property SelectedSearchFunction As Integer Implements IMainView.SelectedSearchFunction
         Get
             Return SearchFunctionsListBox.SelectedIndex

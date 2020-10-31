@@ -21,6 +21,7 @@ Public NotInheritable Class UploadService
     Private Shared s_Instance As UploadService
     Private m_CanUploadCycleStart As Boolean = True
     Private isUploadCycleExecuting As Boolean
+    Private Shared s_FlaggedDocumentsUploaded As Boolean
 
     Private Sub New()
         ' Prevents multiple instances of this class.
@@ -61,15 +62,28 @@ Public NotInheritable Class UploadService
         End Set
     End Property
 
+#Disable Warning CA1822 ' Mark members as static
+    ''' <summary>
+    ''' If flagged documents were uploaded during the last upload cycle.
+    ''' </summary>
+    ''' <returns>True or False</returns>
+    Public ReadOnly Property FlaggedDocumentsUploaded As Boolean
+#Enable Warning CA1822 ' Mark members as static
+        Get
+            Return s_FlaggedDocumentsUploaded
+        End Get
+    End Property
+
     Public Sub ExecuteUploadCycle()
         If CanUploadCycleStart = False Then
             Throw New InvalidOperationException( _
                 My.Resources.UploadCycleCannotBeStarted)
         End If
         isUploadCycleExecuting = True
+        s_FlaggedDocumentsUploaded = False
         EnsureConfiguredUploadFoldersExist()    ' Step 1
         StagePdfsAndSupplementalDataForUpload() ' Step 2
-        RemoveDeleteFilesFromUploadFolders()      ' Step 3
+        RemoveDeleteFilesFromUploadFolders()    ' Step 3
         UploadFoldersCleanup()                  ' Step 4
         UploadStagedPdfsAndSupplementalData()   ' Step 5
         isUploadCycleExecuting = False
@@ -258,8 +272,8 @@ Public NotInheritable Class UploadService
             If pdfInfo.ContainsOwnerPassword = False Then
                 Try
                     Dim pdfReader As New PdfInformationPropertiesReader(pdfPath)
-                    If pdfReader.Title IsNot Nothing And _
-                        pdfReader.Author IsNot Nothing And _
+                    If pdfReader.Title IsNot Nothing And
+                        pdfReader.Author IsNot Nothing And
                         pdfReader.Subject IsNot Nothing Then
                         Dim notes As String = Nothing
                         Dim category As String = Nothing
@@ -271,21 +285,24 @@ Public NotInheritable Class UploadService
                             category = suppData.Category
                             flag = suppData.FlagState
                         End If
-                        Using repository As IDocumentRepository = _
+                        Using repository As IDocumentRepository =
                             New DocumentRepository
-                            repository.CreateRecord(pdfReader.Title, _
-                                                pdfReader.Author, _
-                                                pdfReader.Subject, _
-                                                pdfReader.Keywords, _
-                                                notes, _
-                                                pdfPath, _
-                                                category, _
+                            repository.CreateRecord(pdfReader.Title,
+                                                pdfReader.Author,
+                                                pdfReader.Subject,
+                                                pdfReader.Keywords,
+                                                notes,
+                                                pdfPath,
+                                                category,
                                                 flag)
                         End Using
                         IO.File.Delete(pdfPath)
-                        Dim suppDataXmlPath As String = _
+                        Dim suppDataXmlPath As String =
                             Path.ChangeExtension(pdfPath, "xml")
                         IO.File.Delete(suppDataXmlPath)
+                        If flag = 1 Then
+                            s_FlaggedDocumentsUploaded = True
+                        End If
                     End If
                 Catch ex As BadPasswordException    ' Ignore the file.            
                 End Try

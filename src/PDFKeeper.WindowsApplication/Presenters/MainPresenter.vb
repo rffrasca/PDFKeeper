@@ -247,7 +247,7 @@ Public Class MainPresenter
                                           view.DocumentRecordFlagState)
             End Using
             view.SetCursor(False)
-            TriggerSearchResultsRefresh()
+            TriggerSearchResultsRefresh(False)
         Catch ex As OracleException
             view.SetCursor(False)
             message.Show(ex.Message, True)
@@ -307,17 +307,24 @@ Public Class MainPresenter
         End If
     End Sub
 
-    Private Sub TriggerSearchResultsRefresh()
-        If view.SearchResultsEnabled Then
-            If view.SelectedSearchFunction = 2 And
-                    view.SearchDate = Date.Now.ToString("yyyy-MM-dd",
-                                                        CultureInfo.CurrentCulture) Then
-                RefreshSearchResults()
-            ElseIf view.SelectedSearchFunction = 3 And
-                    view.DocumentRecordFlagState = 0 Then
-                If question.Show(My.Resources.RefreshSearchResults,
-                                 False) = DialogResult.Yes Then
+    Private Sub TriggerSearchResultsRefresh(ByVal postUpload As Boolean)
+        If view.SearchFunctionsEnabled Then
+            If postUpload Then
+                If view.SelectedSearchFunction = 2 And
+                        view.SearchDate = Date.Now.ToString("yyyy-MM-dd",
+                                                            CultureInfo.CurrentCulture) Then
                     RefreshSearchResults()
+                ElseIf view.SelectedSearchFunction = 3 And
+                        UploadService.Instance.FlaggedDocumentsUploaded Then
+                    RefreshSearchResults()
+                End If
+            Else
+                If view.SelectedSearchFunction = 3 And
+                        view.DocumentRecordFlagState = 0 Then
+                    If question.Show(My.Resources.RefreshSearchResults,
+                                     False) = DialogResult.Yes Then
+                        RefreshSearchResults()
+                    End If
                 End If
             End If
         End If
@@ -702,7 +709,7 @@ Public Class MainPresenter
                         Await uploadTask.ConfigureAwait(True)
                     End Using
                     If pdfFilesToUpload Then
-                        TriggerSearchResultsRefresh()
+                        TriggerSearchResultsRefresh(True)
                     End If
                 Catch ex As InvalidOperationException
                 Finally
