@@ -256,4 +256,7 @@ The contents of the Notes text box prior to the attempted save operation have be
   <data name="DeleteFileToRecycleBin" xml:space="preserve">
     <value>Delete {0} to the Recycle Bin?</value>
   </data>
+  <data name="RefreshSearchResults" xml:space="preserve">
+    <value>Refresh Search Results?</value>
+  </data>
 </root>

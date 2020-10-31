@@ -339,6 +339,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Refresh Search Results?.
+        '''</summary>
+        Friend ReadOnly Property RefreshSearchResults() As String
+            Get
+                Return ResourceManager.GetString("RefreshSearchResults", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Improper usage of query operators and/or characters..
         '''</summary>
         Friend ReadOnly Property SearchTextImproperUsageOfQueryOperators() As String

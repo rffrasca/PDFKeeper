@@ -247,6 +247,12 @@ Public Class MainPresenter
                                           view.DocumentRecordFlagState)
             End Using
             view.SetCursor(False)
+            If view.DocumentRecordFlagState = 0 And view.SelectedSearchFunction = 3 Then
+                If question.Show(My.Resources.RefreshSearchResults,
+                                 False) = DialogResult.Yes Then
+                    RefreshSearchResults()
+                End If
+            End If
         Catch ex As OracleException
             view.SetCursor(False)
             message.Show(ex.Message, True)
