@@ -317,6 +317,8 @@ Public Class MainPresenter
                 ElseIf view.SelectedSearchFunction = 3 And
                         UploadService.Instance.FlaggedDocumentsUploaded Then
                     RefreshSearchResults()
+                ElseIf view.SelectedSearchFunction = 4 Then
+                    RefreshSearchResults()
                 End If
             Else
                 If view.SelectedSearchFunction = 3 And
