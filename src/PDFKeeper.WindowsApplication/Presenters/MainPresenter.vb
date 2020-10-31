@@ -306,6 +306,23 @@ Public Class MainPresenter
             End With
         End If
     End Sub
+
+    Private Sub TriggerSearchResultsRefresh()
+        If view.SearchResultsEnabled Then
+            If view.SelectedSearchFunction = 2 And
+                    view.SearchDate = Date.Now.ToString("yyyy-MM-dd",
+                                                        CultureInfo.CurrentCulture) Then
+                RefreshSearchResults()
+            ElseIf view.SelectedSearchFunction = 3 And
+                    view.DocumentRecordFlagState = 0 Then
+                If question.Show(My.Resources.RefreshSearchResults,
+                                 False) = DialogResult.Yes Then
+                    RefreshSearchResults()
+                End If
+            End If
+        End If
+    End Sub
+
 #End Region
 
 #Region "View Search Functions Members"
@@ -672,8 +689,10 @@ Public Class MainPresenter
             If uploadDirInfo.ContainsFiles Or
                 uploadStagingDirInfo.ContainsFiles Then
                 Try
+                    Dim pdfFilesToUpload As Boolean = False
                     If uploadDirInfo.ContainsFilesMatchingSearchPattern("*.pdf") Or
                         uploadStagingDirInfo.ContainsFilesMatchingSearchPattern("*.pdf") Then
+                        pdfFilesToUpload = True
                         view.UploadRunningVisible = True
                     End If
                     view.UploadFolderErrorVisible = False
@@ -682,6 +701,9 @@ Public Class MainPresenter
                     Using uploadTask As Task = Task.Run(Sub() UploadService.Instance.ExecuteUploadCycle())
                         Await uploadTask.ConfigureAwait(True)
                     End Using
+                    If pdfFilesToUpload Then
+                        TriggerSearchResultsRefresh()
+                    End If
                 Catch ex As InvalidOperationException
                 Finally
                     view.UploadRunningVisible = False
@@ -728,15 +750,6 @@ Public Class MainPresenter
             Return False
         End If
     End Function
-
-    Private Sub TriggerSearchResultsRefresh()
-        If view.DocumentRecordFlagState = 0 And view.SelectedSearchFunction = 3 Then
-            If question.Show(My.Resources.RefreshSearchResults,
-                             False) = DialogResult.Yes Then
-                RefreshSearchResults()
-            End If
-        End If
-    End Sub
 
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls
