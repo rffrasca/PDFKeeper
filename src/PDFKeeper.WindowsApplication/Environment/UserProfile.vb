@@ -124,6 +124,7 @@ Public NotInheritable Class UserProfile
         For Each cachedFile In Directory.GetFiles(UserProfile.CachePath,
                                                   Application.ProductName & "*.*")
             Try
+                IO.File.SetAttributes(cachedFile, FileAttributes.Normal)
                 IO.File.Delete(cachedFile)
             Catch ex As IOException
             Catch ex As UnauthorizedAccessException
