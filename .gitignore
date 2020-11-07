@@ -9,3 +9,4 @@
 bin
 obj
 .vs
+/src/PDFKeeper.WindowsApplication/*.editorconfig
