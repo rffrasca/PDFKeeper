@@ -607,7 +607,6 @@ Public Class MainPresenter
                 model.GetPdfById(view.DocumentRecordId, pdfInfo.FullName)
             End Using
             fileHashes.SetItem(pdfInfo.FullName, pdfInfo.ComputeHash)
-            IO.File.SetAttributes(pdfInfo.FullName, FileAttributes.ReadOnly)
         End If
     End Sub
 
