@@ -1180,5 +1180,7 @@ Public Class MainForm
             End If
         End If
         NativeMethods.RemoveClipboardFormatListener(Me.Handle)
+        UserProfile.DeleteUploadShortcut()
+        UserProfile.DeleteCachedFiles()
     End Sub
 End Class

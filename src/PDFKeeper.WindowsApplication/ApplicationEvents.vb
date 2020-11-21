@@ -43,11 +43,6 @@ Namespace My
             End If
         End Sub
 
-        Private Sub MyApplication_Shutdown(sender As Object, e As EventArgs) Handles Me.Shutdown
-            UserProfile.DeleteUploadShortcut()
-            UserProfile.DeleteCachedFiles()
-        End Sub
-
         Private Sub MyApplication_UnhandledException(sender As Object, e As ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
             Dim exceptionHandler As New UnhandledExceptionHandler(e)
             exceptionHandler.WriteToLog()

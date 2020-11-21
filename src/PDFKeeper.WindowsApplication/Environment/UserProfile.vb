@@ -126,14 +126,12 @@ Public NotInheritable Class UserProfile
             Try
                 IO.File.Delete(cachedFile)
             Catch ex As IOException
-            Catch ex As UnauthorizedAccessException
             End Try
             If IO.File.Exists(cachedFile) Then
                 Try
                     IO.File.Move(cachedFile,
                                  Path.ChangeExtension(cachedFile, "delete"))
                 Catch ex As IOException
-                Catch ex As UnauthorizedAccessException
                 End Try
             End If
         Next
