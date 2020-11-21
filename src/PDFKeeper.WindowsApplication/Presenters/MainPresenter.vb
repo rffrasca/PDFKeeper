@@ -550,6 +550,7 @@ Public Class MainPresenter
             tasks(6) = Task.Run(Sub() GetDocumentText())
             Try
                 tasks(2).Wait()
+                tasks(5).Wait()
             Catch ex As AggregateException
                 For Each e In ex.InnerExceptions
                     message.Show(e.Message, True)
