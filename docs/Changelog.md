@@ -1,6 +1,15 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v6.1.1 - 2020-11-28
+- This is a maintenance release that includes application fixes.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.1).
+### Fixed
+- NullReferenceException at PDFKeeper.WindowsApplication.FileSelectDisplayService.Dispose(Boolean disposing) that is being logged to PDFKeeper.log during application shutdown.
+- Preview Picture Box not always displaying correct image for selected document record.
+- Cache folder not always clearing on application shutdown along with System.NullReferenceException or System.IndexOutOfRangeException being logged to Windows Application Event Log.
+
 ## v6.1.0 - 2020-11-21
 - This is a minor release that includes a new feature, application improvements and fixes, and a dependency update.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.0).
