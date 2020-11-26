@@ -1,4 +1,4 @@
-# Building PDFKeeper 5.x.x from Source
+# Building PDFKeeper 5.0.x from Source
 
 ##  Install Development Applications and Tools
 1. Microsoft Visual Studio 2013 - https://www.visualstudio.com/downloads/
@@ -14,7 +14,7 @@
     Note, make sure to perform the installation using a Command Prompt session that was opened using Run as administrator. In addition, it is not necessary to install the full ODAC product, only ODP.NET4 is required.
 
 ## Get the Source
-Download the source code for a 5.x.x release from [here](https://github.com/rffrasca/PDFKeeper/releases).
+Download the source code for a 5.0.x release from [here](https://github.com/rffrasca/PDFKeeper/releases).
 
 ## Download and Extract Third-Party Components
 1. Sumatra PDF 3.1.2 (32-bit Portable Version) - http://www.sumatrapdfreader.org/download-free-pdf-viewer.html
@@ -29,4 +29,4 @@ Download the source code for a 5.x.x release from [here](https://github.com/rffr
 2. Use "Restore" in "NuGet Package Manager" to download NuGet packages.
 3. Set configuration to Release, and then Build the Solution.
 
-    After a successful build, "PDFKeeper-5.x.x.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".    
+    After a successful build, "PDFKeeper-5.0.x.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".    
