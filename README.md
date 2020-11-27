@@ -4,7 +4,7 @@
 PDFKeeper is free, open source software that integrates with a compatible database to provide a centralized storage and management solution for PDF documents.
 
 ![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot-6.1.0.png)
-Screenshot of main window in version 6.1.0.
+Screenshot of main window in version 6.1.x.
 
 ### Features
 * Store PDF documents in a compatible, relational database where they’re indexed and can be managed by any computer that has PDFKeeper installed on your network.
