@@ -1,4 +1,4 @@
-# Building PDFKeeper 7.0.0 from Source (Do not use until after 11/28/2020!)
+# Building PDFKeeper 7.0.0 from Source
 
 ##  Install Development Applications and Tools
 1. Microsoft Visual Studio 2019 - https://www.visualstudio.com/downloads/
