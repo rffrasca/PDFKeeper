@@ -1,7 +1,7 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
-## v6.1.1 - 2020-11-28
+## v6.1.1 - 2020-11-27
 - This is a maintenance release that includes application fixes.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.1).
