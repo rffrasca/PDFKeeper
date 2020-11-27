@@ -13,7 +13,7 @@
     Note, make sure to perform the installation using a Command Prompt session that was opened using "Run as administrator". In addition, it is not necessary to install the full ODAC product, only ODP.NET4 is required.
 
 ## Get the Source
-Clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git or download the source code for a 6.x.x release from [here](https://github.com/rffrasca/PDFKeeper/releases).
+Download the source code for a 6.x.x release from [here](https://github.com/rffrasca/PDFKeeper/releases).
 
 ## Download and Extract Third-Party Components
 1. Sumatra PDF 3.1.2 (64-bit Portable Version) - http://www.sumatrapdfreader.org/download-free-pdf-viewer.html
