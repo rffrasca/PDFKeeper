@@ -17,7 +17,7 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class PdfInformationPropertiesHelper
+Public Class PdfMetadataHelper
     Private ReadOnly m_PdfPath As String
     Private ReadOnly m_PdfPassword As SecureString
 
@@ -34,20 +34,18 @@ Public Class PdfInformationPropertiesHelper
     End Sub
 
     ''' <summary>
-    ''' Reads the information properties from the PDF specified during
-    ''' instantiation into a PdfInformationPropertiesReader object.
+    ''' Reads the metadata from the PDF specified during instantiation into a
+    ''' PdfMetadataReader object.
     ''' </summary>
     ''' <returns>
-    ''' PdfInformationPropertiesReader object containing the information
-    ''' properties.
+    ''' PdfMetadataReader object containing the metadata.
     ''' </returns>
     ''' <remarks></remarks>
-    Public Function Read() As PdfInformationPropertiesReader
+    Public Function Read() As PdfMetadataReader
         If m_PdfPassword Is Nothing Then
-            Return New PdfInformationPropertiesReader(m_PdfPath)
+            Return New PdfMetadataReader(m_PdfPath)
         Else
-            Return New PdfInformationPropertiesReader(m_PdfPath, _
-                                                      m_PdfPassword)
+            Return New PdfMetadataReader(m_PdfPath, m_PdfPassword)
         End If
     End Function
 
@@ -60,8 +58,7 @@ Public Class PdfInformationPropertiesHelper
     ''' <remarks></remarks>
     Public Sub Write(ByVal outputPdfPath As String, _
                      ByVal uploadFolderConfigName As String)
-        Dim writer As New PdfInformationPropertiesWriter(m_PdfPath, _
-                                                         outputPdfPath)
+        Dim writer As New PdfMetadataWriter(m_PdfPath, outputPdfPath)
         Dim uploadConfigHelper As _
             New UploadFolderConfigurationHelper(uploadFolderConfigName)
         Dim uploadConfig As UploadFolderConfiguration = uploadConfigHelper.Read
@@ -84,8 +81,7 @@ Public Class PdfInformationPropertiesHelper
 
     ''' <summary>
     ''' Writes the specified PDF from the PDF specified during instantiation
-    ''' applying the specified information properties (title, author, subject,
-    ''' and keywords).
+    ''' applying the specified metadata (title, author, subject, and keywords).
     ''' </summary>
     ''' <param name="outputPdfPath"></param>
     ''' <param name="title"></param>
@@ -98,14 +94,13 @@ Public Class PdfInformationPropertiesHelper
                      ByVal author As String, _
                      ByVal subject As String, _
                      ByVal keywords As String)
-        Dim writer As PdfInformationPropertiesWriter = Nothing
+        Dim writer As PdfMetadataWriter = Nothing
         If m_PdfPassword Is Nothing Then
-            writer = New PdfInformationPropertiesWriter(m_PdfPath, _
-                                                        outputPdfPath)
+            writer = New PdfMetadataWriter(m_PdfPath, outputPdfPath)
         Else
-            writer = New PdfInformationPropertiesWriter(m_PdfPath, _
-                                                        m_PdfPassword, _
-                                                        outputPdfPath)
+            writer = New PdfMetadataWriter(m_PdfPath,
+                                           m_PdfPassword,
+                                           outputPdfPath)
         End If
         With writer
             .Title = title

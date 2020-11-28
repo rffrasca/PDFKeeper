@@ -17,28 +17,9 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Interface IPasswordPromptDisplayService
-    ''' <summary>
-    ''' Gets/Sets title to be displayed on the Password Prompt view.
-    ''' </summary>
-    ''' <value></value>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Property Title As String
-
-    ''' <summary>
-    ''' Gets/Sets text to be displayed above the text box on the Password
-    ''' Prompt view.
-    ''' </summary>
-    ''' <value></value>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Property TextLabel As String
-
-    ''' <summary>
-    ''' Shows the Password Prompt view.
-    ''' </summary>
-    ''' <returns>SecureString object containing the password entered.</returns>
-    ''' <remarks></remarks>
-    Function Show() As SecureString
-End Interface
+Public MustInherit Class PdfMetadataBase
+    Public Property Title As String
+    Public Property Author As String
+    Public Property Subject As String
+    Public Property Keywords As String
+End Class

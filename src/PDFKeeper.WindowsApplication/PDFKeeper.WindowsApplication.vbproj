@@ -146,8 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Data Access\DbInstanceProperties.vb" />
-    <Compile Include="Data Access\DbInstanceUtil.vb" />
+    <Compile Include="Models\DbInstanceProperties.vb" />
+    <Compile Include="Models\DbInstanceUtil.vb" />
     <Compile Include="Enums\SelectedDocumentsActionEnum.vb" />
     <Compile Include="Enums\SelectionStateEnum.vb" />
     <Compile Include="Extensions\DirectoryInfoExtensions.vb" />
@@ -158,13 +158,13 @@
     <Compile Include="Services\HelpDisplayService.vb" />
     <Compile Include="Services\IHelpDisplayService.vb" />
     <Compile Include="Services\IMessageDisplayService.vb" />
-    <Compile Include="Services\IPasswordPromptDisplayService.vb" />
-    <Compile Include="Services\ISetCategoryDisplayService.vb" />
+    <Compile Include="Dialogs\IPasswordPromptView.vb" />
+    <Compile Include="Dialogs\ISetCategoryView.vb" />
     <Compile Include="Services\MessageDisplayService.vb" />
     <Compile Include="Environment\ProductUpdate.vb" />
     <Compile Include="Environment\CacheFilePathName.vb" />
-    <Compile Include="Services\PasswordPromptDisplayService.vb" />
-    <Compile Include="Services\SetCategoryDisplayService.vb" />
+    <Compile Include="Dialogs\PasswordPromptView.vb" />
+    <Compile Include="Dialogs\SetCategoryView.vb" />
     <Compile Include="Services\FileSelectDisplayService.vb" />
     <Compile Include="Services\FolderBrowserDisplayService.vb" />
     <Compile Include="Services\IFileSelectDisplayService.vb" />
@@ -177,11 +177,11 @@
     <Compile Include="Services\IRestrictedPdfViewerService.vb" />
     <Compile Include="Utilities\ShortcutUtil.vb" />
     <Compile Include="Helpers\XmlSerializerHelper.vb" />
-    <Compile Include="Data Access\DocumentRepository.vb" />
-    <Compile Include="Models\IDocumentRepository.vb" />
-    <Compile Include="Data Access\Oracle\OracleDbDataProvider.vb" />
-    <Compile Include="Data Access\Oracle\OracleDbDocumentRepository.vb" />
-    <Compile Include="Helpers\PdfInformationPropertiesHelper.vb" />
+    <Compile Include="Models\Data Access\DocumentRepository.vb" />
+    <Compile Include="Models\Data Access\IDocumentRepository.vb" />
+    <Compile Include="Models\Data Access\Oracle\OracleDbDataProvider.vb" />
+    <Compile Include="Models\Data Access\Oracle\OracleDbDocumentRepository.vb" />
+    <Compile Include="Helpers\PdfMetadataHelper.vb" />
     <Compile Include="Helpers\PdfSupplementalDataHelper.vb" />
     <Compile Include="Helpers\UploadFolderConfigurationHelper.vb" />
     <Compile Include="Utilities\UploadFolderConfigurationUtil.vb" />
@@ -207,10 +207,10 @@
     <Compile Include="Dialogs\AddPdfDocumentsDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LoginForm.designer.vb">
+    <Compile Include="Views\LoginForm.designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LoginForm.vb">
+    <Compile Include="Views\LoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\ManageUploadFolderConfigurationsDialog.Designer.vb">
@@ -238,14 +238,14 @@
     <Compile Include="Extensions\ImageFileInfo.vb" />
     <Compile Include="NativeMethods.vb" />
     <Compile Include="Extensions\PdfFileInfo.vb" />
-    <Compile Include="Models\PdfInformationPropertiesBase.vb" />
-    <Compile Include="Models\PdfInformationPropertiesReader.vb" />
-    <Compile Include="Models\PdfInformationPropertiesWriter.vb" />
-    <Compile Include="Presenters\DataGridViewSortParameters.vb" />
+    <Compile Include="Models\PdfMetadataBase.vb" />
+    <Compile Include="Models\PdfMetadataReader.vb" />
+    <Compile Include="Models\PdfMetadataWriter.vb" />
+    <Compile Include="Models\DataGridViewSortParameters.vb" />
     <Compile Include="Services\PdfViewerService.vb" />
     <Compile Include="Services\UnhandledExceptionHandler.vb" />
     <Compile Include="Models\UploadFolderConfiguration.vb" />
-    <Compile Include="Presenters\UploadFolderConfigurationTokens.vb" />
+    <Compile Include="Models\UploadFolderConfigurationTokens.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -269,10 +269,10 @@
     <Compile Include="Presenters\LoginPresenter.vb" />
     <Compile Include="Views\IToolStripStateView.vb" />
     <Compile Include="Views\IMainWindowStateView.vb" />
-    <Compile Include="Forms\MainForm.Designer.vb">
+    <Compile Include="Views\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainForm.vb">
+    <Compile Include="Views\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presenters\MainToolStripStatePresenter.vb" />
@@ -302,7 +302,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
+    <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ManageUploadFolderConfigurationsDialog.resx">
@@ -321,7 +321,7 @@
       <DependentUpon>AddPdfDocumentsDialog.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoginForm.resx">
+    <EmbeddedResource Include="Views\LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\OptionsDialog.resx">

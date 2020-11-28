@@ -17,8 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class PdfInformationPropertiesReader
-    Inherits PdfInformationPropertiesBase
+Public Class PdfMetadataReader
+    Inherits PdfMetadataBase
 
     ''' <summary>
     ''' Class constructor.
@@ -45,20 +45,20 @@ Public Class PdfInformationPropertiesReader
 
     Private Sub Read(ByVal pdfPath As String)
         Using reader As New PdfReader(pdfPath)
-            GetProperties(reader)
+            GetMetadata(reader)
         End Using
     End Sub
 
-    Private Sub Read(ByVal pdfPath As String, _
+    Private Sub Read(ByVal pdfPath As String,
                      ByVal pdfPassword As SecureString)
-        Using reader As New PdfReader(pdfPath, _
-                                      System.Text.Encoding.ASCII.GetBytes( _
+        Using reader As New PdfReader(pdfPath,
+                                      System.Text.Encoding.ASCII.GetBytes(
                                           pdfPassword.SecureStringToString))
-            GetProperties(reader)
+            GetMetadata(reader)
         End Using
     End Sub
 
-    Private Sub GetProperties(ByVal reader As PdfReader)
+    Private Sub GetMetadata(ByVal reader As PdfReader)
         If reader.Info.ContainsKey("Title") Then
             Title = reader.Info("Title")
         Else

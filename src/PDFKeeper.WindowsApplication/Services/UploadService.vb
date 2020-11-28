@@ -138,7 +138,7 @@ Public NotInheritable Class UploadService
                 End If
                 Try
                     Dim outputPdfPath As String = fileInfo.GenerateUploadStagingFilePath
-                    Dim pdfReader As New PdfInformationPropertiesReader(pdfPath)
+                    Dim pdfReader As New PdfMetadataReader(pdfPath)
                     If UploadFolderConfigurationUtil.IsFolderConfigured(uploadFolderName) Then
                         WriteNewPdfAndSupplementalData(pdfPath, _
                                                        outputPdfPath, _
@@ -160,7 +160,7 @@ Public NotInheritable Class UploadService
     Private Shared Sub WriteNewPdfAndSupplementalData(ByVal inputPdfPath As String,
                                                       ByVal outputPdfPath As String,
                                                       ByVal uploadFolderConfigName As String)
-        Dim pdfInfoPropHelper As New PdfInformationPropertiesHelper(inputPdfPath, Nothing)
+        Dim pdfInfoPropHelper As New PdfMetadataHelper(inputPdfPath, Nothing)
         pdfInfoPropHelper.Write(outputPdfPath, uploadFolderConfigName)
         Dim uploadFolderConfigHelper As _
             New UploadFolderConfigurationHelper(uploadFolderConfigName)
@@ -271,7 +271,7 @@ Public NotInheritable Class UploadService
             Dim pdfInfo As New PdfFileInfo(pdfPath)
             If pdfInfo.ContainsOwnerPassword = False Then
                 Try
-                    Dim pdfReader As New PdfInformationPropertiesReader(pdfPath)
+                    Dim pdfReader As New PdfMetadataReader(pdfPath)
                     If pdfReader.Title IsNot Nothing And
                         pdfReader.Author IsNot Nothing And
                         pdfReader.Subject IsNot Nothing Then

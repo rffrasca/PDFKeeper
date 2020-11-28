@@ -20,10 +20,10 @@
 Public Class AddPdfDocumentsPresenter
     Implements IDisposable
     Private ReadOnly view As IAddPdfDocumentsView
-    Private model As PdfInformationPropertiesReader
-    Private helper As PdfInformationPropertiesHelper
-    Private ReadOnly passwordPrompt As IPasswordPromptDisplayService =
-        New PasswordPromptDisplayService
+    Private model As PdfMetadataReader
+    Private helper As PdfMetadataHelper
+    Private ReadOnly passwordPrompt As IPasswordPromptView =
+        New PasswordPromptView
     Private ReadOnly message As IMessageDisplayService =
         New MessageDisplayService
     Private ReadOnly question As IQuestionDisplayService =
@@ -89,7 +89,7 @@ Public Class AddPdfDocumentsPresenter
                     ' class. All that is needed is to validate the password
                     ' entered matches the OWNER password stored in the PDF
                     ' document.
-                    Dim reader As New PdfInformationPropertiesReader(view.SelectedPdfPath,
+                    Dim reader As New PdfMetadataReader(view.SelectedPdfPath,
                                                                      selectedPdfPassword)
                     reader = reader    'Added to address CA1804 violation.
                 End If
@@ -183,7 +183,7 @@ Public Class AddPdfDocumentsPresenter
                                                       ByVal pdfPassword As SecureString)
         Dim fileInfo As New FileInfo(view.SelectedPdfPath)
         stagedPdfPath = fileInfo.GenerateUploadStagingFilePath
-        helper = New PdfInformationPropertiesHelper(pdfPath, pdfPassword)
+        helper = New PdfMetadataHelper(pdfPath, pdfPassword)
         model = helper.Read
     End Sub
 

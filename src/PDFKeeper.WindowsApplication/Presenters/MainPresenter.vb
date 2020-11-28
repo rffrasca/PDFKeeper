@@ -32,8 +32,8 @@ Public Class MainPresenter
         New FileSelectDisplayService
     Private ReadOnly folderBrowser As IFolderBrowserDisplayService =
         New FolderBrowserDisplayService
-    Private ReadOnly setCategory As ISetCategoryDisplayService =
-        New SetCategoryDisplayService
+    Private ReadOnly setCategory As ISetCategoryView =
+        New SetCategoryView
     Private ReadOnly pdfViewer As IPdfViewerService = New PdfViewerService
     Private ReadOnly searchResultsSortParameters As New DataGridViewSortParameters
     Private ReadOnly fileHashes As New GenericDictionaryList(Of String, String)
@@ -92,7 +92,7 @@ Public Class MainPresenter
         Dim targetFilePath As String
         cachePathName = New CacheFilePathName(view.DocumentRecordId)
         Dim pdfInfo As New PdfFileInfo(cachePathName.Pdf)
-        Dim pdfInfoProperties As New PdfInformationPropertiesReader(pdfInfo.FullName)
+        Dim pdfInfoProperties As New PdfMetadataReader(pdfInfo.FullName)
         If view.TextElementSelectedText Is Nothing Then
             targetExtension = "pdf"
         Else

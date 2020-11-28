@@ -17,8 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class PdfInformationPropertiesWriter
-    Inherits PdfInformationPropertiesBase
+Public Class PdfMetadataWriter
+    Inherits PdfMetadataBase
     Private ReadOnly passwordSpecified As Boolean
     Private ReadOnly m_InputPdfPath As String
     Private ReadOnly m_InputPdfPassword As SecureString

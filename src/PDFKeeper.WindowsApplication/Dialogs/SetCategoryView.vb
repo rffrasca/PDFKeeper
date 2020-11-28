@@ -17,18 +17,13 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class PasswordPromptDisplayService
-    Implements IPasswordPromptDisplayService
+Public Class SetCategoryView
+    Implements ISetCategoryView
 
-    Public Property Title As String Implements IPasswordPromptDisplayService.Title
-
-    Public Property TextLabel As String Implements IPasswordPromptDisplayService.TextLabel
-
-    Public Function Show() As SecureString Implements IPasswordPromptDisplayService.Show
-        Using dialog As New PasswordDialog(Title, TextLabel)
-            dialog.ShowDialog()
-            If dialog.DialogResult = DialogResult.OK Then
-                Return dialog.Password
+    Public Function Show() As String Implements ISetCategoryView.Show
+        Using categoryDialog As New SetCategoryDialog
+            If categoryDialog.ShowDialog = DialogResult.OK Then
+                Return categoryDialog.Category
             Else
                 Return Nothing
             End If
