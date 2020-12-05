@@ -92,14 +92,15 @@ Public Class MainPresenter
         Dim targetFilePath As String
         cachePathName = New CacheFilePathName(view.DocumentRecordId)
         Dim pdfInfo As New PdfFileInfo(cachePathName.Pdf)
-        Dim pdfInfoProperties As New PdfMetadataReader(pdfInfo.FullName)
         If view.TextElementSelectedText Is Nothing Then
             targetExtension = "pdf"
         Else
             targetExtension = "txt"
         End If
         Using fileSelect As IFileSelectDisplayService = New FileSelectDisplayService
-            fileSelect.FileName = pdfInfoProperties.Title
+            Using model As IDocumentRepository = New DocumentRepository
+                fileSelect.FileName = model.GetTitleById(view.DocumentRecordId)
+            End Using
             fileSelect.Filter = targetExtension
             targetFilePath = fileSelect.ShowSave()
         End Using
