@@ -1,6 +1,6 @@
 [OPTIONS]
 Compatibility=1.1 or later
-Compiled file=..\PDFKeeper.en-US.chm
+Compiled file=\\hpz420\Frasca\Robert\My Documents\Visual Studio 2019\Source\Repos\PDFKeeper\src\Help\PDFKeeper.en-US.chm
 Contents file=Table of Contents.hhc
 Default topic=PDFKeeper.html
 Display compile progress=No
@@ -15,13 +15,8 @@ gplv3-127x51.png
 Features.html
 GNU General Public License v3_0 - GNU Project - Free Software Foundation (FSF).html
 Third-Party Attribution.html
-Mini Icons.html
-Silk Icons.html
 Attribution 3.0 Unported-legalcode.htm
 agpl-3.0-standalone.htm
-iTextSharp.html
-Sumatra PDF.html
-pdftopng from Xpdf tools.html
 Database Setup.html
 Database Setup-Oracle Database.html
 DatabaseSchemaSetupScriptLauncher.cmd
@@ -58,7 +53,6 @@ PDF Document Preview.html
 Saving PDF Document outside of PDFKeeper.html
 Deleting Document Records.html
 Exporting PDF Documents and Supplemental Data.html
-AutoUpdater.NET.html
 AutoUpdater.NET License.txt
 Change Flag Document State.html
 Database Schema Upgrade for Oracle Database.html

@@ -251,75 +251,8 @@
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Third-Party Attribution">
 			<param name="Local" value="Third-Party Attribution.html">
-			<param name="ImageNumber" value="1">
+			<param name="ImageNumber" value="9">
 			</OBJECT>
-		<UL>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Mini Icons">
-				<param name="Local" value="Mini Icons.html">
-				<param name="ImageNumber" value="17">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Silk Icons">
-				<param name="Local" value="Silk Icons.html">
-				<param name="ImageNumber" value="1">
-				</OBJECT>
-			<UL>
-				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="License">
-					<param name="Local" value="Attribution 3.0 Unported-legalcode.htm">
-					<param name="ImageNumber" value="17">
-					</OBJECT>
-			</UL>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="iTextSharp">
-				<param name="Local" value="iTextSharp.html">
-				<param name="ImageNumber" value="1">
-				</OBJECT>
-			<UL>
-				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="License">
-					<param name="Local" value="agpl-3.0-standalone.htm">
-					<param name="ImageNumber" value="17">
-					</OBJECT>
-			</UL>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Sumatra PDF">
-				<param name="Local" value="Sumatra PDF.html">
-				<param name="ImageNumber" value="1">
-				</OBJECT>
-			<UL>
-				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="License">
-					<param name="Local" value="GNU General Public License v3_0 - GNU Project - Free Software Foundation (FSF).html">
-					<param name="ImageNumber" value="17">
-					</OBJECT>
-			</UL>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="pdftopng from Xpdf tools">
-				<param name="Local" value="pdftopng from Xpdf tools.html">
-				<param name="ImageNumber" value="1">
-				</OBJECT>
-			<UL>
-				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="License">
-					<param name="Local" value="GNU General Public License v3_0 - GNU Project - Free Software Foundation (FSF).html">
-					<param name="ImageNumber" value="17">
-					</OBJECT>
-			</UL>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="AutoUpdater.NET">
-				<param name="Local" value="AutoUpdater.NET.html">
-				<param name="ImageNumber" value="1">
-				</OBJECT>
-			<UL>
-				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="License">
-					<param name="Local" value="AutoUpdater.NET License.txt">
-					<param name="ImageNumber" value="17">
-					</OBJECT>
-			</UL>
-		</UL>
 	</UL>
 </UL>
 </BODY></HTML>
