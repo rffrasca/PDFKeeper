@@ -25,7 +25,6 @@ Clone the https://github.com/rffrasca/PDFKeeper repository to your development s
 
 ## Build PDFKeeper
 1. Open "PDFKeeper.sln" with Visual Studio.
-2. Use "Manage NuGet Packages for Solution" from "NuGet Package Manager" menu to download required NuGet packages.
-3. Set configuration to Release, and then Build the Solution.
+2. Set configuration to Release, and then Build the Solution.
 
     After a successful build, "PDFKeeper-7.0.0.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".
