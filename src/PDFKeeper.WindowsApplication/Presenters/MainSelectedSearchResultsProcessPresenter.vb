@@ -130,6 +130,23 @@ Public Class MainSelectedSearchResultsProcessPresenter
             Dim pdfInfo As New PdfFileInfo(Path.Combine(subjectFolderInfo.FullName,
                                                         "[" & id & "]" & model.GetTitleById(id) & ".pdf"))
             model.GetPdfById(id, pdfInfo.FullName)
+            Dim helper As New PdfMetadataHelper(pdfInfo.FullName, Nothing)
+            Dim metadata As PdfMetadataReader = helper.Read
+            If metadata.Title <> model.GetTitleById(id) Or
+                    metadata.Author <> model.GetAuthorById(id) Or
+                    metadata.Subject <> model.GetSubjectById(id) Or
+                    metadata.Keywords <> model.GetKeywordsById(id) Then
+                Dim tempPdfFile As String = Path.Combine(Path.GetTempPath,
+                                                         Path.GetFileName(pdfInfo.FullName))
+                helper.Write(tempPdfFile,
+                             model.GetTitleById(id),
+                             model.GetAuthorById(id),
+                             model.GetSubjectById(id),
+                             model.GetKeywordsById(id))
+                'TODO: Overwrite parameter was added to File.Move in .NET5
+                IO.File.Delete(pdfInfo.FullName)
+                IO.File.Move(tempPdfFile, pdfInfo.FullName)
+            End If
             Dim notes As String = model.GetNotesById(id)
             Dim category As String = model.GetCategoryById(id)
             Dim flagState As String = model.GetFlagStateById(id)
