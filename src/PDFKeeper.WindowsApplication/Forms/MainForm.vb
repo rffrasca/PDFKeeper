@@ -38,7 +38,7 @@ Public Class MainForm
         presenter = New MainPresenter(Me)
         HelpProvider.HelpNamespace = help.Name
         presenter.ApplyPolicy()
-        ProductUpdate.Check() ' Also called on a timer every 30 minutes.
+        WindowsApplication.ProductUpdate.Start() ' Also called on a timer every 30 minutes.
     End Sub
 
 #Region "Interface Members (IMainWindowStateView)"
@@ -1147,7 +1147,7 @@ Public Class MainForm
     End Sub
 
     Private Sub AutoUpdateCheckTimer_Tick(sender As Object, e As EventArgs) Handles AutoUpdateCheckTimer.Tick
-        ProductUpdate.Check()
+        ProductUpdate.Start()
     End Sub
 
     Private Sub FlaggedDocumentsCheckTimer_Tick(sender As Object, e As EventArgs) Handles FlaggedDocumentsCheckTimer.Tick

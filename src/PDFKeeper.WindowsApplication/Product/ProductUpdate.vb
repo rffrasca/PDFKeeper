@@ -26,7 +26,7 @@ Public NotInheritable Class ProductUpdate
     ''' This method is called during the load of the MainForm and from a Timer
     ''' on the same form to check for a product update.
     ''' </summary>
-    Public Shared Sub Check()
+    Public Shared Sub Start()
         Dim configUrl As String =
             "https://raw.githubusercontent.com/rffrasca/PDFKeeper/master/config/PDFKeeper.AutoUpdater.config.xml"
         AutoUpdater.RunUpdateAsAdmin = False

@@ -37,7 +37,7 @@ Namespace My
                 help.ShowAndWait("Database Schema Upgrade for Oracle Database.html")
             End If
             AddHandler AppDomain.CurrentDomain.AssemblyResolve,
-                AddressOf ExternalDependencyLocator.GetOracleDataAccessAssemblyPath
+                AddressOf Dependency.GetOracleDataAccessAssemblyPath
             If LoginForm.ShowDialog = Windows.Forms.DialogResult.Cancel Then
                 e.Cancel = True
             End If

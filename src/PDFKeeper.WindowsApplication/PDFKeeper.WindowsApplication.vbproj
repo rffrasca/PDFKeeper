@@ -146,8 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Models\DbInstance\DbInstanceProperties.vb" />
-    <Compile Include="Models\DbInstance\DbInstanceUtil.vb" />
+    <Compile Include="Models\DbInstanceProperties.vb" />
+    <Compile Include="Utilities\DbInstanceUtil.vb" />
     <Compile Include="Enums\SelectedDocumentsActionEnum.vb" />
     <Compile Include="Enums\SelectionStateEnum.vb" />
     <Compile Include="Extensions\DirectoryInfoExtensions.vb" />
@@ -161,10 +161,10 @@
     <Compile Include="Views\IPasswordPromptView.vb" />
     <Compile Include="Views\ISetCategoryView.vb" />
     <Compile Include="Services\MessageDisplayService\MessageDisplayService.vb" />
-    <Compile Include="Environment\ProductUpdate.vb" />
-    <Compile Include="Environment\CacheFilePathName.vb" />
-    <Compile Include="Views\PasswordPrompt.vb" />
-    <Compile Include="Views\SetCategory.vb" />
+    <Compile Include="Product\ProductUpdate.vb" />
+    <Compile Include="Product\CacheFilePathName.vb" />
+    <Compile Include="Dialogs\PasswordPrompt.vb" />
+    <Compile Include="Dialogs\SetCategory.vb" />
     <Compile Include="Services\FileSelectDisplayService\FileSelectDisplayService.vb" />
     <Compile Include="Services\FolderBrowserDisplayService\FolderBrowserDisplayService.vb" />
     <Compile Include="Services\FileSelectDisplayService\IFileSelectDisplayService.vb" />
@@ -207,10 +207,10 @@
     <Compile Include="Dialogs\AddPdfDocumentsDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\LoginForm.designer.vb">
+    <Compile Include="Forms\LoginForm.designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoginForm.vb">
+    <Compile Include="Forms\LoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\ManageUploadFolderConfigurationsDialog.Designer.vb">
@@ -231,13 +231,13 @@
     <Compile Include="Dialogs\PasswordDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Environment\UserProfile.vb" />
-    <Compile Include="Environment\ApplicationPolicy.vb" />
+    <Compile Include="Product\UserProfile.vb" />
+    <Compile Include="Product\ApplicationPolicy.vb" />
     <Compile Include="Models\PdfSupplementalData.vb" />
     <Compile Include="Presenters\MainPresenter.vb" />
-    <Compile Include="Extensions\ImageFileInfo.vb" />
+    <Compile Include="File Types\ImageFileInfo.vb" />
     <Compile Include="NativeMethods.vb" />
-    <Compile Include="Extensions\PdfFileInfo.vb" />
+    <Compile Include="File Types\PdfFileInfo.vb" />
     <Compile Include="Models\PdfMetaData\PdfMetadataBase.vb" />
     <Compile Include="Models\PdfMetaData\PdfMetadataReader.vb" />
     <Compile Include="Models\PdfMetaData\PdfMetadataWriter.vb" />
@@ -269,10 +269,10 @@
     <Compile Include="Presenters\LoginPresenter.vb" />
     <Compile Include="Views\IToolStripStateView.vb" />
     <Compile Include="Views\IMainWindowStateView.vb" />
-    <Compile Include="Views\MainForm.Designer.vb">
+    <Compile Include="Forms\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainForm.vb">
+    <Compile Include="Forms\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presenters\MainToolStripStatePresenter.vb" />
@@ -292,8 +292,8 @@
     <Compile Include="Dialogs\SetCategoryDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Environment\ExternalDependencyLocator.vb" />
-    <Compile Include="Environment\UserConfig.vb" />
+    <Compile Include="Product\Dependency.vb" />
+    <Compile Include="Product\UserConfig.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -302,7 +302,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ManageUploadFolderConfigurationsDialog.resx">
@@ -321,7 +321,7 @@
       <DependentUpon>AddPdfDocumentsDialog.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\OptionsDialog.resx">

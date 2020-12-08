@@ -17,7 +17,7 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public NotInheritable Class ExternalDependencyLocator
+Public NotInheritable Class Dependency
     Private Sub New()
         ' All members are shared.
     End Sub
