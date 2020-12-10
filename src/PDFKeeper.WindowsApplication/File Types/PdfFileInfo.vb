@@ -25,11 +25,10 @@ Public Class PdfFileInfo
     End Sub
 
     ''' <summary>
-    ''' Returns True or False if the PDF file object contains an Owner
-    ''' password. 
+    ''' If the PDF file object contains an Owner password.
     ''' </summary>
     ''' <value></value>
-    ''' <returns></returns>
+    ''' <returns>True or False</returns>
     ''' <remarks>
     ''' A BadPasswordException will be thrown when PDF is protected by a User
     ''' password.
@@ -37,17 +36,19 @@ Public Class PdfFileInfo
     Public ReadOnly Property ContainsOwnerPassword As Boolean
         Get
             Using reader As New PdfReader(fileInfo.FullName)
-                If reader.IsOpenedWithFullPermissions Then
-                    Return False
-                Else
-                    Return True
-                End If
+                Using pdfDoc As New PdfDocument(reader)
+                    If reader.IsOpenedWithFullPermission Then
+                        Return False
+                    Else
+                        Return True
+                    End If
+                End Using
             End Using
         End Get
     End Property
 
     ''' <summary>
-    ''' Checks if the PDF file object exists. 
+    ''' If the PDF file object exists. 
     ''' </summary>
     ''' <value></value>
     ''' <returns>True or False</returns>
@@ -122,16 +123,20 @@ Public Class PdfFileInfo
     Public Function GetText() As String
         Using reader = New PdfReader(fileInfo.FullName)
             Dim textString As New StringBuilder
-            For i As Integer = 1 To reader.NumberOfPages
-                Dim strategy As parser.ITextExtractionStrategy =
-                    New parser.LocationTextExtractionStrategy
-                Dim currentPage As String =
-                    parser.PdfTextExtractor.GetTextFromPage(reader, i, strategy)
-                Dim lines As String() = currentPage.Split(ControlChars.Lf)
-                For Each line As String In lines
-                    textString.AppendLine(line)
+            Using pdfDoc As New PdfDocument(reader)
+                For page As Integer = 1 To pdfDoc.GetNumberOfPages
+                    Dim strategy As ITextExtractionStrategy = New SimpleTextExtractionStrategy()
+                    Dim pageText As String = PdfTextExtractor.GetTextFromPage(pdfDoc.GetPage(page),
+                                                                              strategy)
+                    pageText = Encoding.UTF8.GetString(
+                        ASCIIEncoding.Convert(Encoding.Default,
+                                              Encoding.UTF8, Encoding.Default.GetBytes(pageText)))
+                    Dim lines As String() = pageText.Split(ControlChars.Lf)
+                    For Each line In lines
+                        textString.AppendLine(line)
+                    Next
                 Next
-            Next
+            End Using
             Return textString.ToString
         End Using
     End Function

@@ -52,32 +52,19 @@ Public Class PdfMetadataReader
     Private Sub Read(ByVal pdfPath As String,
                      ByVal pdfPassword As SecureString)
         Using reader As New PdfReader(pdfPath,
-                                      System.Text.Encoding.ASCII.GetBytes(
-                                          pdfPassword.SecureStringToString))
+                                      New ReaderProperties().SetPassword(
+                                      Text.Encoding.ASCII.GetBytes(pdfPassword.SecureStringToString)))
             GetMetadata(reader)
         End Using
     End Sub
 
     Private Sub GetMetadata(ByVal reader As PdfReader)
-        If reader.Info.ContainsKey("Title") Then
-            Title = reader.Info("Title")
-        Else
-            Title = String.Empty
-        End If
-        If reader.Info.ContainsKey("Author") Then
-            Author = reader.Info("Author")
-        Else
-            Author = String.Empty
-        End If
-        If reader.Info.ContainsKey("Subject") Then
-            Subject = reader.Info("Subject")
-        Else
-            Subject = String.Empty
-        End If
-        If reader.Info.ContainsKey("Keywords") Then
-            Keywords = reader.Info("Keywords")
-        Else
-            Keywords = String.Empty
-        End If
+        Using pdfDoc As New PdfDocument(reader)
+            Dim pdfDocInfo As PdfDocumentInfo = pdfDoc.GetDocumentInfo
+            Title = pdfDocInfo.GetTitle
+            Author = pdfDocInfo.GetAuthor
+            Subject = pdfDocInfo.GetSubject
+            Keywords = pdfDocInfo.GetKeywords
+        End Using
     End Sub
 End Class

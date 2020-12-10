@@ -97,9 +97,6 @@
 			<Component Id="AutoUpdater.NET.dll" Guid="934e759b-4d49-43d0-b49c-bfa2896192c5">
 			  <File Id="AutoUpdater.NET.dll" Name="AutoUpdater.NET.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)AutoUpdater.NET.dll" />
 			</Component>
-			<Component Id="itextsharp.dll" Guid="79db00d3-1bc8-4d0a-a257-a37ca1562ac5">
-			  <File Id="itextsharp.dll" Name="itextsharp.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)itextsharp.dll" />
-			</Component>
 			<Component Id="SumatraPDF.exe" Guid="ff1d2f6f-03bb-45af-a5fc-29b65fab3745">
         <File Id="SumatraPDF.exe" Name="SumatraPDF.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)SumatraPDF.exe" />
       </Component>
@@ -126,6 +123,21 @@
       </Component>
       <Component Id="BouncyCastle.Crypto.dll" Guid="aec691d9-e839-45a5-b269-205445047427">
         <File Id="BouncyCastle.Crypto.dll" Name="BouncyCastle.Crypto.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)BouncyCastle.Crypto.dll" />
+      </Component>
+      <Component Id="BouncyCastle.Crypto.dll.bak" Guid="67914274-4eb9-4778-bbb9-e79e315d278f">
+        <File Id="BouncyCastle.Crypto.dll.bak" Name="BouncyCastle.Crypto.dll.bak" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)BouncyCastle.Crypto.dll" />
+      </Component>
+      <Component Id="itext.kernel.dll" Guid="9a044fb7-69b6-43fe-89fd-3bb91d16b098">
+        <File Id="itext.kernel.dll" Name="itext.kernel.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)itext.kernel.dll" />
+      </Component>
+      <Component Id="Common.Logging.Core.dll" Guid="31aaf0dc-9202-498d-9329-8d805a546f0f">
+        <File Id="Common.Logging.Core.dll" Name="Common.Logging.Core.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)Common.Logging.Core.dll" />
+      </Component>
+      <Component Id="itext.io.dll" Guid="53aa1b1b-b01d-402d-8174-6bb26c9b21eb">
+        <File Id="itext.io.dll" Name="itext.io.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)itext.io.dll" />
+      </Component>
+      <Component Id="Common.Logging.dll" Guid="a756aeed-977f-4bbd-97a8-b7c842555379">
+        <File Id="Common.Logging.dll" Name="Common.Logging.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)Common.Logging.dll" />
       </Component>
   	</ComponentGroup>
 	</Fragment>

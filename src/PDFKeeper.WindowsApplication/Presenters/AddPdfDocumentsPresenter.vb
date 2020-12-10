@@ -85,12 +85,12 @@ Public Class AddPdfDocumentsPresenter
                 End If
                 If containsPassword Then
                     ' reader is not used because OWNER password validation
-                    ' is performed in the constructor of iTextSharp's PdfReader
+                    ' is performed in the constructor of iText's PdfReader
                     ' class. All that is needed is to validate the password
                     ' entered matches the OWNER password stored in the PDF
                     ' document.
                     Dim reader As New PdfMetadataReader(view.SelectedPdfPath,
-                                                                     selectedPdfPassword)
+                                                        selectedPdfPassword)
                     reader = reader    'Added to address CA1804 violation.
                 End If
                 view.SetCursor(True)
