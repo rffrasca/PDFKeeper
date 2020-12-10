@@ -16,10 +16,7 @@
 Clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git.
 
 ## Download and Extract Third-Party Components
-1. Sumatra PDF 3.1.2 (64-bit Portable Version) - http://www.sumatrapdfreader.org/download-free-pdf-viewer.html
-    
-    Extract into the "vendor" folder in the PDFKeeper Solution.
-2. Xpdf command line tools (Windows 32/64-bit) - http://www.xpdfreader.com/download.html
+1. Xpdf command line tools (Windows 32/64-bit) - http://www.xpdfreader.com/download.html
 
     Extract the entire archive into the "vendor" folder in the PDFKeeper Solution, maintaining the folder structure. Next, rename the "xpdf-tools-win-x.xx.xx" folder in the "vendor" folder to "xpdf-tools-win".
 
