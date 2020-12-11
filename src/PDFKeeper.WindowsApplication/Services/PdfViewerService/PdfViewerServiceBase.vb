@@ -20,8 +20,8 @@
 Public MustInherit Class PdfViewerServiceBase
     Protected Shared Function OpenViewer(ByVal arguments As String) As Integer
         Using sumatraPdf As New Process
-            sumatraPdf.StartInfo.FileName = _
-                Path.Combine(Application.StartupPath, "SumatraPDF.exe")
+            sumatraPdf.StartInfo.FileName =
+                Path.Combine(Application.StartupPath, "SumatraPDF-3.2-64.exe")
             sumatraPdf.StartInfo.Arguments = arguments
             sumatraPdf.StartInfo.UseShellExecute = False
             sumatraPdf.Start()

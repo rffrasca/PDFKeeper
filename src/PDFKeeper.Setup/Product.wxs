@@ -97,9 +97,7 @@
 			<Component Id="AutoUpdater.NET.dll" Guid="934e759b-4d49-43d0-b49c-bfa2896192c5">
 			  <File Id="AutoUpdater.NET.dll" Name="AutoUpdater.NET.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)AutoUpdater.NET.dll" />
 			</Component>
-			<Component Id="SumatraPDF.exe" Guid="ff1d2f6f-03bb-45af-a5fc-29b65fab3745">
-        <File Id="SumatraPDF.exe" Name="SumatraPDF.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)SumatraPDF.exe" />
-      </Component>
+			
       <Component Id="SumatraPDF_settings.txt" Guid="6a6d167b-3b87-495a-b17f-68b5cedf5cc9">
         <File Id="SumatraPDF_settings.txt" Name="SumatraPDF-settings.txt" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)SumatraPDF-settings.txt" />
       </Component>
@@ -138,6 +136,9 @@
       </Component>
       <Component Id="Common.Logging.dll" Guid="a756aeed-977f-4bbd-97a8-b7c842555379">
         <File Id="Common.Logging.dll" Name="Common.Logging.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)Common.Logging.dll" />
+      </Component>
+      <Component Id="SumatraPDF_3.2_64.exe" Guid="3381adb6-44be-46e6-90eb-80fee4fc3b7e">
+        <File Id="SumatraPDF_3.2_64.exe" Name="SumatraPDF-3.2-64.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)SumatraPDF-3.2-64.exe" />
       </Component>
   	</ComponentGroup>
 	</Fragment>

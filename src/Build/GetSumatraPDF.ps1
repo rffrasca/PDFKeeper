@@ -19,10 +19,11 @@
 #******************************************************************************
 
 $folder = "..\..\..\..\vendor"
-$version = "3.1.2"
-$zipFileUrl = "https://www.sumatrapdfreader.org/dl/SumatraPDF-$version-64.zip"
+$version = "3.2"
+$zipFileUrl = "https://www.sumatrapdfreader.org/dl2/SumatraPDF-$version-64.zip"
 $zipFile = "$folder\SumatraPDF-$version-64.zip"
-$exeFile = "$folder\sumatraPDF.exe"
+$oldExeFile = "$folder\sumatraPDF.exe"
+$exeFile = "$folder\sumatraPDF-$version-64.exe"
 
 if (Test-Path $exeFile) {
     $file = Get-Item $exeFile
@@ -32,7 +33,12 @@ if (Test-Path $exeFile) {
     }
 }
 
+if (Test-Path $oldExeFile) {
+    Remove-Item -Path $oldExeFile
+}
+
 Invoke-WebRequest -Uri $zipFileUrl -OutFile $zipFile
 Expand-Archive -path $zipFile -DestinationPath $folder -Force
+Remove-Item -Path $zipFile
 
 exit 0

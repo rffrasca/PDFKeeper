@@ -366,8 +366,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\vendor\SumatraPDF.exe">
-      <Link>SumatraPDF.exe</Link>
+    <Content Include="..\..\vendor\SumatraPDF-3.2-64.exe">
+      <Link>SumatraPDF-3.2-64.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\vendor\xpdf-tools-win\bin64\pdftopng.exe">
