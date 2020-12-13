@@ -21,7 +21,7 @@ Clone the https://github.com/rffrasca/PDFKeeper repository to your development s
     After downloading, extract gsdll64.dll and gswin64c.exe from the Ghostscript installer into the vendor folder in the PDFKeeper solution using the following instructions:
     
     1. Download and install 7-Zip Portable - https://portableapps.com/apps/utilities/7-zip_portable
-    2. Open 7-Zip Portable
+    2. Open 7-Zip Portable.
     3. Select gsxxxxw64.exe in folder where downloaded.
     4. Select the File menu, and then Open Inside.
     5. Open the bin folder.
