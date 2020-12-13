@@ -16,9 +16,19 @@
 Clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git.
 
 ## Download and Extract Third-Party Components
-1. Xpdf command line tools (Windows 32/64-bit) - http://www.xpdfreader.com/download.html
-
-    Extract the entire archive into the "vendor" folder in the PDFKeeper Solution, maintaining the folder structure. Next, rename the "xpdf-tools-win-x.xx.xx" folder in the "vendor" folder to "xpdf-tools-win".
+- Ghostscript for Windows (64 bit) - https://www.ghostscript.com/download/gsdnld.html
+    
+    After downloading, extract gsdll64.dll and gswin64c.exe from the Ghostscript installer into the vendor folder in the PDFKeeper solution using the following instructions:
+    
+    1. Download and install 7-Zip Portable - https://portableapps.com/apps/utilities/7-zip_portable
+    2. Open 7-Zip Portable
+    3. Select gs<version>w64.exe in folder where downloaded.
+    4. Select the File menu, and then Open Inside.
+    5. Open the bin folder.
+    6. Select gsdll64.dll and gswin64c.exe.
+    7. Select Extract.
+    8. Select the vendor folder in the PDFKeeper solution.
+    9. Select OK.
 
 ## Build PDFKeeper
 1. Open "PDFKeeper.sln" with Visual Studio.
