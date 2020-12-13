@@ -22,7 +22,7 @@ Clone the https://github.com/rffrasca/PDFKeeper repository to your development s
     
     1. Download and install 7-Zip Portable - https://portableapps.com/apps/utilities/7-zip_portable
     2. Open 7-Zip Portable
-    3. Select gs<version>w64.exe in folder where downloaded.
+    3. Select gsxxxxw64.exe in folder where downloaded.
     4. Select the File menu, and then Open Inside.
     5. Open the bin folder.
     6. Select gsdll64.dll and gswin64c.exe.
