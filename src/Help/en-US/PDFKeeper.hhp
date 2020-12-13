@@ -13,13 +13,6 @@ PDFKeeper.html
 osi-certified-120x100.png
 gplv3-127x51.png
 Features.html
-PDFKeeper License.txt
-Third-Party Attribution.html
-AutoUpdater.NET License.txt
-Common Logging Framework License.txt
-iText License.txt
-Silk Icons License.htm
-SumatraPDF License.txt
 Database Setup.html
 Database Setup-Oracle Database.html
 DatabaseSchemaSetupScriptLauncher.cmd
@@ -61,6 +54,15 @@ Database Schema Upgrade for Oracle Database.html
 Set Category on Document Records.html
 Adding, Editing, and Deleting Upload Folder Configurations.html
 Donate.html
+PDFKeeper License.txt
+Third-Party Attribution.html
+AutoUpdater.NET License.txt
+Common Logging Framework License.txt
+Ghostscript License.txt
+iText License.txt
+Magick.NET License.txt
+Silk Icons License.htm
+SumatraPDF License.txt
 
 [INFOTYPES]
 

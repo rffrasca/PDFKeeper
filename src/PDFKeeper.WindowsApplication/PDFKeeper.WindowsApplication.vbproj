@@ -121,6 +121,12 @@
     <Reference Include="itext.svg, Version=7.1.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext7.7.1.13\lib\net40\itext.svg.dll</HintPath>
     </Reference>
+    <Reference Include="Magick.NET-Q16-AnyCPU, Version=7.22.2.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET-Q16-AnyCPU.7.22.2.2\lib\net40\Magick.NET-Q16-AnyCPU.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET.Core, Version=5.2.2.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET.Core.5.2.2\lib\net40\Magick.NET.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <Private>False</Private>
@@ -145,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Import Include="AutoUpdaterDotNET" />
+    <Import Include="ImageMagick" />
     <Import Include="iText.Kernel.Crypto" />
     <Import Include="iText.Kernel.Pdf" />
     <Import Include="iText.Kernel.Pdf.Canvas.Parser" />
@@ -366,12 +373,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\vendor\SumatraPDF-3.2-64.exe">
-      <Link>SumatraPDF-3.2-64.exe</Link>
+    <Content Include="..\..\vendor\gsdll64.dll">
+      <Link>gsdll64.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\vendor\xpdf-tools-win\bin64\pdftopng.exe">
-      <Link>pdftopng.exe</Link>
+    <Content Include="..\..\vendor\gswin64c.exe">
+      <Link>gswin64c.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\vendor\SumatraPDF-3.2-64.exe">
+      <Link>SumatraPDF-3.2-64.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\Config\SumatraPDF-settings.txt">

@@ -95,24 +95,21 @@ Public Class PdfFileInfo
     ''' </summary>
     ''' <param name="resolution">DPI of output image.</param>
     ''' <returns>Path name of file that contains the image.</returns>
-    ''' <remarks></remarks>
     Public Function GetPreviewImageToFile(ByVal resolution As Integer) As String
-        Dim outputParam As String = Path.Combine(Path.GetDirectoryName(fileInfo.FullName), _
-                                                 Path.GetFileNameWithoutExtension(fileInfo.FullName) & "-" & _
-                                                 resolution)
-        Using pdftopng As New Process
-            pdftopng.StartInfo.FileName = Path.Combine(Application.StartupPath, _
-                                                       "pdftopng.exe")
-            pdftopng.StartInfo.Arguments = _
-                "-f 1 -l 1 -r " & resolution & _
-                " " & Chr(34) & fileInfo.FullName & Chr(34) & _
-                " " & Chr(34) & outputParam & Chr(34)
-            pdftopng.StartInfo.UseShellExecute = False
-            pdftopng.StartInfo.CreateNoWindow = True
-            pdftopng.Start()
-            pdftopng.WaitForExit()
+        Dim outputParam As String = Path.Combine(Path.GetDirectoryName(fileInfo.FullName),
+                                                 Path.GetFileNameWithoutExtension(fileInfo.FullName) & "-" &
+                                                 resolution & ".png")
+        MagickNET.SetGhostscriptDirectory(Application.StartupPath)
+        Using imageCollection = New MagickImageCollection
+            Dim settings = New MagickReadSettings With {
+                .Density = New Density(resolution),
+                .FrameIndex = 0,
+                .FrameCount = 1
+            }
+            imageCollection.Read(fileInfo.FullName, settings)
+            imageCollection.Write(outputParam)
         End Using
-        Return outputParam & "-000001.png"
+        Return outputParam
     End Function
 
     ''' <summary>

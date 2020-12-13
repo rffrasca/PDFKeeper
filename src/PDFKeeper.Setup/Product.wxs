@@ -49,7 +49,6 @@
     
     <Feature Id="ProductFeature" Title="PDFKeeper" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
-			<ComponentGroupRef Id="pdftopng_docs" />
       <ComponentRef Id="ApplicationDesktopShortcut" />
       <ComponentRef Id="ApplicationStartMenuShortcut" />
     </Feature>
@@ -104,9 +103,6 @@
 			<Component Id="sumatrapdfrestrict.ini" Guid="16a0b917-b9c6-42f3-bfa4-e514b36547a8">
 			  <File Id="sumatrapdfrestrict.ini" Name="sumatrapdfrestrict.ini" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)sumatrapdfrestrict.ini" />
 			</Component>
-      <Component Id="pdftopng.exe" Guid="dc8e8178-d036-422a-9b13-2852d345bad2">
-        <File Id="pdftopng.exe" Name="pdftopng.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)pdftopng.exe" />
-      </Component>
       <Component Id="DisableAllDocumentsSearchFunction.reg" Guid="3ee0a57f-49a5-41c2-8e8a-760ab3e55e12">
         <File Id="DisableAllDocumentsSearchFunction.reg" Name="DisableAllDocumentsSearchFunction.reg" Source="..\..\..\Config\DisableAllDocumentsSearchFunction.reg" />
       </Component>
@@ -140,23 +136,18 @@
       <Component Id="SumatraPDF_3.2_64.exe" Guid="3381adb6-44be-46e6-90eb-80fee4fc3b7e">
         <File Id="SumatraPDF_3.2_64.exe" Name="SumatraPDF-3.2-64.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)SumatraPDF-3.2-64.exe" />
       </Component>
+      <Component Id="gsdll64.dll" Guid="72df3d61-ee4f-45f5-928f-d8bf4e6bb36b">
+        <File Id="gsdll64.dll" Name="gsdll64.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)gsdll64.dll" />
+      </Component>
+      <Component Id="gswin64c.exe" Guid="cc0cff9c-0958-47b6-b6e4-3f885d3a1c94">
+        <File Id="gswin64c.exe" Name="gswin64c.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)gswin64c.exe" />
+      </Component>
+      <Component Id="Magick.NET.Core.dll" Guid="7f85d8a9-f147-4e18-bb2e-fc418c024429">
+        <File Id="Magick.NET.Core.dll" Name="Magick.NET.Core.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)Magick.NET.Core.dll" />
+      </Component>
+      <Component Id="Magick.NET_Q16_AnyCPU.dll" Guid="7cc046ba-2263-48df-a63b-d54b1193c6da">
+        <File Id="Magick.NET_Q16_AnyCPU.dll" Name="Magick.NET-Q16-AnyCPU.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)Magick.NET-Q16-AnyCPU.dll" />
+      </Component>
   	</ComponentGroup>
 	</Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="pdftopng_docs" Directory="pdftopng">
-      <Component Id="pdftopng_pdftopng.txt" Guid="71b9184c-bdf9-4a4a-a880-083b3620c988">
-        <File Id="pdftopng_pdftopng.txt" Name="pdftopng.txt" Source="..\..\..\..\vendor\xpdf-tools-win\doc\pdftopng.txt" />
-      </Component>
-      <Component Id="pdftopng_COPYING" Guid="f46a2ad4-adfd-45e7-8b7f-da19e4ca58bd">
-        <File Id="pdftopng_COPYING" Name="COPYING" Source="..\..\..\..\vendor\xpdf-tools-win\COPYING" />
-      </Component>
-      <Component Id="pdftopng_COPYING3" Guid="d150ee8b-7edd-4fdc-ac02-e5d3d1fcae0f">
-        <File Id="pdftopng_COPYING3" Name="COPYING3" Source="..\..\..\..\vendor\xpdf-tools-win\COPYING3" />
-      </Component>
-      <Component Id="pdftopng_README" Guid="f1c475b3-6b8a-42a0-9220-20e49614a42c">
-        <File Id="pdftopng_README" Name="README" Source="..\..\..\..\vendor\xpdf-tools-win\README" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
 </Wix>

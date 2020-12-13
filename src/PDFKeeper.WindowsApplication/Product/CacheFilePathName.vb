@@ -42,17 +42,17 @@ Public Class CacheFilePathName
     ''' <summary>
     ''' Returns a PNG file path name combining the application Cache folder
     ''' path name and the file name of the image PNG that starts with product
-    ''' name and the document record ID followed by "-", the preview image
-    ''' resolution value, and then -000001.
+    ''' name and the document record ID followed by "-", and the the preview
+    ''' image resolution value.
     ''' </summary>
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public ReadOnly Property PdfPreview As String
         Get
-            Return Path.Combine(Path.GetDirectoryName(Pdf), _
-                                Path.GetFileNameWithoutExtension(Pdf) & "-" & _
-                                My.Settings.PreviewImageResolution & "-000001.png")
+            Return Path.Combine(Path.GetDirectoryName(Pdf),
+                                Path.GetFileNameWithoutExtension(Pdf) & "-" &
+                                My.Settings.PreviewImageResolution & ".png")
         End Get
     End Property
 End Class

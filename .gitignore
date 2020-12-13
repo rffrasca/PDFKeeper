@@ -1,5 +1,4 @@
 *.exe
-/vendor/xpdf-tools-win
 *.suo
 /src/packages
 /src/PDFKeeper.WindowsApplication/bin
@@ -10,4 +9,4 @@ bin
 obj
 .vs
 /src/PDFKeeper.WindowsApplication/*.editorconfig
-*.zip
+*.dll
