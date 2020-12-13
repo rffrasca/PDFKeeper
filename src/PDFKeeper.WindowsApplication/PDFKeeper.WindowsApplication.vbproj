@@ -377,10 +377,6 @@
       <Link>gsdll64.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\vendor\gswin64c.exe">
-      <Link>gswin64c.exe</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\..\vendor\SumatraPDF-3.2-64.exe">
       <Link>SumatraPDF-3.2-64.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

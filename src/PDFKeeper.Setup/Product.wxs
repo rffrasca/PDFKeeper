@@ -139,9 +139,7 @@
       <Component Id="gsdll64.dll" Guid="72df3d61-ee4f-45f5-928f-d8bf4e6bb36b">
         <File Id="gsdll64.dll" Name="gsdll64.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)gsdll64.dll" />
       </Component>
-      <Component Id="gswin64c.exe" Guid="cc0cff9c-0958-47b6-b6e4-3f885d3a1c94">
-        <File Id="gswin64c.exe" Name="gswin64c.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)gswin64c.exe" />
-      </Component>
+      
       <Component Id="Magick.NET.Core.dll" Guid="7f85d8a9-f147-4e18-bb2e-fc418c024429">
         <File Id="Magick.NET.Core.dll" Name="Magick.NET.Core.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)Magick.NET.Core.dll" />
       </Component>
