@@ -1179,6 +1179,7 @@ Public Class MainForm
                 e.Cancel = True
             End If
         End If
+        windowStatePresenter.SetState()
         NativeMethods.RemoveClipboardFormatListener(Me.Handle)
         UserProfile.DeleteUploadShortcut()
         UserProfile.DeleteCachedFiles()

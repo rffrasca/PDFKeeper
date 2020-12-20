@@ -97,6 +97,16 @@ Partial Class MainForm
         Me.HelpAboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchTextErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.SplitContainer = New System.Windows.Forms.SplitContainer()
+        Me.SelectedDocumentTabControl = New System.Windows.Forms.TabControl()
+        Me.NotesTabPage = New System.Windows.Forms.TabPage()
+        Me.NotesTextBox = New System.Windows.Forms.TextBox()
+        Me.KeywordsTabPage = New System.Windows.Forms.TabPage()
+        Me.KeywordsTextBox = New System.Windows.Forms.TextBox()
+        Me.PreviewTabPage = New System.Windows.Forms.TabPage()
+        Me.PreviewPanel = New System.Windows.Forms.Panel()
+        Me.PreviewPictureBox = New System.Windows.Forms.PictureBox()
+        Me.TextTabPage = New System.Windows.Forms.TabPage()
+        Me.TextTextBox = New System.Windows.Forms.TextBox()
         Me.SearchGroupBox = New System.Windows.Forms.GroupBox()
         Me.DateLabel = New System.Windows.Forms.Label()
         Me.TextLabel = New System.Windows.Forms.Label()
@@ -112,16 +122,9 @@ Partial Class MainForm
         Me.AuthorGroupComboBox = New System.Windows.Forms.ComboBox()
         Me.AuthorLabel = New System.Windows.Forms.Label()
         Me.SearchTextComboBox = New System.Windows.Forms.ComboBox()
-        Me.SelectedDocumentTabControl = New System.Windows.Forms.TabControl()
-        Me.NotesTabPage = New System.Windows.Forms.TabPage()
-        Me.NotesTextBox = New System.Windows.Forms.TextBox()
-        Me.KeywordsTabPage = New System.Windows.Forms.TabPage()
-        Me.KeywordsTextBox = New System.Windows.Forms.TextBox()
-        Me.PreviewTabPage = New System.Windows.Forms.TabPage()
-        Me.PreviewPanel = New System.Windows.Forms.Panel()
-        Me.PreviewPictureBox = New System.Windows.Forms.PictureBox()
-        Me.TextTabPage = New System.Windows.Forms.TabPage()
-        Me.TextTextBox = New System.Windows.Forms.TextBox()
+        Me.SearchResultsPanel = New System.Windows.Forms.Panel()
+        Me.SearchResultsDataGridView = New System.Windows.Forms.DataGridView()
+        Me.SelectionColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.UploadTimer = New System.Windows.Forms.Timer(Me.components)
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.TotalRecordsToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
@@ -147,26 +150,22 @@ Partial Class MainForm
         Me.EditDateTimeToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator20 = New System.Windows.Forms.ToolStripSeparator()
         Me.ViewRefreshToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator14 = New System.Windows.Forms.ToolStripSeparator()
+        Me.InsertTextToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator21 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolsOptionsToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolsManageUploadFolderConfigurationsToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator22 = New System.Windows.Forms.ToolStripSeparator()
         Me.HelpContentsToolStripButton = New System.Windows.Forms.ToolStripButton()
-        Me.SearchResultsDataGridView = New System.Windows.Forms.DataGridView()
-        Me.SelectionColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.AutoUpdateCheckTimer = New System.Windows.Forms.Timer(Me.components)
         Me.FlaggedDocumentsCheckTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.SearchResultsPanel = New System.Windows.Forms.Panel()
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
-        Me.ToolStripSeparator14 = New System.Windows.Forms.ToolStripSeparator()
-        Me.InsertTextToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.MenuStrip.SuspendLayout()
         CType(Me.SearchTextErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer.Panel1.SuspendLayout()
         Me.SplitContainer.Panel2.SuspendLayout()
         Me.SplitContainer.SuspendLayout()
-        Me.SearchGroupBox.SuspendLayout()
         Me.SelectedDocumentTabControl.SuspendLayout()
         Me.NotesTabPage.SuspendLayout()
         Me.KeywordsTabPage.SuspendLayout()
@@ -174,10 +173,11 @@ Partial Class MainForm
         Me.PreviewPanel.SuspendLayout()
         CType(Me.PreviewPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TextTabPage.SuspendLayout()
+        Me.SearchGroupBox.SuspendLayout()
+        Me.SearchResultsPanel.SuspendLayout()
+        CType(Me.SearchResultsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
-        CType(Me.SearchResultsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SearchResultsPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip
@@ -461,12 +461,91 @@ Partial Class MainForm
         '
         'SplitContainer.Panel1
         '
+        Me.SplitContainer.Panel1.Controls.Add(Me.SelectedDocumentTabControl)
         Me.SplitContainer.Panel1.Controls.Add(Me.SearchGroupBox)
         '
         'SplitContainer.Panel2
         '
-        Me.SplitContainer.Panel2.Controls.Add(Me.SelectedDocumentTabControl)
+        Me.SplitContainer.Panel2.Controls.Add(Me.SearchResultsPanel)
         Me.SplitContainer.TabStop = False
+        '
+        'SelectedDocumentTabControl
+        '
+        Me.SelectedDocumentTabControl.Controls.Add(Me.NotesTabPage)
+        Me.SelectedDocumentTabControl.Controls.Add(Me.KeywordsTabPage)
+        Me.SelectedDocumentTabControl.Controls.Add(Me.PreviewTabPage)
+        Me.SelectedDocumentTabControl.Controls.Add(Me.TextTabPage)
+        resources.ApplyResources(Me.SelectedDocumentTabControl, "SelectedDocumentTabControl")
+        Me.SelectedDocumentTabControl.Name = "SelectedDocumentTabControl"
+        Me.SelectedDocumentTabControl.SelectedIndex = 0
+        Me.HelpProvider.SetShowHelp(Me.SelectedDocumentTabControl, CType(resources.GetObject("SelectedDocumentTabControl.ShowHelp"), Boolean))
+        '
+        'NotesTabPage
+        '
+        Me.NotesTabPage.Controls.Add(Me.NotesTextBox)
+        resources.ApplyResources(Me.NotesTabPage, "NotesTabPage")
+        Me.NotesTabPage.Name = "NotesTabPage"
+        Me.HelpProvider.SetShowHelp(Me.NotesTabPage, CType(resources.GetObject("NotesTabPage.ShowHelp"), Boolean))
+        Me.NotesTabPage.UseVisualStyleBackColor = True
+        '
+        'NotesTextBox
+        '
+        Me.NotesTextBox.AcceptsReturn = True
+        resources.ApplyResources(Me.NotesTextBox, "NotesTextBox")
+        Me.NotesTextBox.Name = "NotesTextBox"
+        Me.HelpProvider.SetShowHelp(Me.NotesTextBox, CType(resources.GetObject("NotesTextBox.ShowHelp"), Boolean))
+        '
+        'KeywordsTabPage
+        '
+        Me.KeywordsTabPage.Controls.Add(Me.KeywordsTextBox)
+        resources.ApplyResources(Me.KeywordsTabPage, "KeywordsTabPage")
+        Me.KeywordsTabPage.Name = "KeywordsTabPage"
+        Me.HelpProvider.SetShowHelp(Me.KeywordsTabPage, CType(resources.GetObject("KeywordsTabPage.ShowHelp"), Boolean))
+        Me.KeywordsTabPage.UseVisualStyleBackColor = True
+        '
+        'KeywordsTextBox
+        '
+        resources.ApplyResources(Me.KeywordsTextBox, "KeywordsTextBox")
+        Me.KeywordsTextBox.Name = "KeywordsTextBox"
+        Me.KeywordsTextBox.ReadOnly = True
+        Me.HelpProvider.SetShowHelp(Me.KeywordsTextBox, CType(resources.GetObject("KeywordsTextBox.ShowHelp"), Boolean))
+        '
+        'PreviewTabPage
+        '
+        Me.PreviewTabPage.Controls.Add(Me.PreviewPanel)
+        resources.ApplyResources(Me.PreviewTabPage, "PreviewTabPage")
+        Me.PreviewTabPage.Name = "PreviewTabPage"
+        Me.HelpProvider.SetShowHelp(Me.PreviewTabPage, CType(resources.GetObject("PreviewTabPage.ShowHelp"), Boolean))
+        Me.PreviewTabPage.UseVisualStyleBackColor = True
+        '
+        'PreviewPanel
+        '
+        resources.ApplyResources(Me.PreviewPanel, "PreviewPanel")
+        Me.PreviewPanel.Controls.Add(Me.PreviewPictureBox)
+        Me.PreviewPanel.Name = "PreviewPanel"
+        Me.HelpProvider.SetShowHelp(Me.PreviewPanel, CType(resources.GetObject("PreviewPanel.ShowHelp"), Boolean))
+        '
+        'PreviewPictureBox
+        '
+        resources.ApplyResources(Me.PreviewPictureBox, "PreviewPictureBox")
+        Me.PreviewPictureBox.Name = "PreviewPictureBox"
+        Me.HelpProvider.SetShowHelp(Me.PreviewPictureBox, CType(resources.GetObject("PreviewPictureBox.ShowHelp"), Boolean))
+        Me.PreviewPictureBox.TabStop = False
+        '
+        'TextTabPage
+        '
+        Me.TextTabPage.Controls.Add(Me.TextTextBox)
+        resources.ApplyResources(Me.TextTabPage, "TextTabPage")
+        Me.TextTabPage.Name = "TextTabPage"
+        Me.HelpProvider.SetShowHelp(Me.TextTabPage, CType(resources.GetObject("TextTabPage.ShowHelp"), Boolean))
+        Me.TextTabPage.UseVisualStyleBackColor = True
+        '
+        'TextTextBox
+        '
+        resources.ApplyResources(Me.TextTextBox, "TextTextBox")
+        Me.TextTextBox.Name = "TextTextBox"
+        Me.TextTextBox.ReadOnly = True
+        Me.HelpProvider.SetShowHelp(Me.TextTextBox, CType(resources.GetObject("TextTextBox.ShowHelp"), Boolean))
         '
         'SearchGroupBox
         '
@@ -486,17 +565,20 @@ Partial Class MainForm
         Me.SearchGroupBox.Controls.Add(Me.SearchTextComboBox)
         resources.ApplyResources(Me.SearchGroupBox, "SearchGroupBox")
         Me.SearchGroupBox.Name = "SearchGroupBox"
+        Me.HelpProvider.SetShowHelp(Me.SearchGroupBox, CType(resources.GetObject("SearchGroupBox.ShowHelp"), Boolean))
         Me.SearchGroupBox.TabStop = False
         '
         'DateLabel
         '
         resources.ApplyResources(Me.DateLabel, "DateLabel")
         Me.DateLabel.Name = "DateLabel"
+        Me.HelpProvider.SetShowHelp(Me.DateLabel, CType(resources.GetObject("DateLabel.ShowHelp"), Boolean))
         '
         'TextLabel
         '
         resources.ApplyResources(Me.TextLabel, "TextLabel")
         Me.TextLabel.Name = "TextLabel"
+        Me.HelpProvider.SetShowHelp(Me.TextLabel, CType(resources.GetObject("TextLabel.ShowHelp"), Boolean))
         '
         'SearchFunctionsListBox
         '
@@ -504,28 +586,33 @@ Partial Class MainForm
         Me.SearchFunctionsListBox.FormattingEnabled = True
         Me.SearchFunctionsListBox.Items.AddRange(New Object() {resources.GetString("SearchFunctionsListBox.Items"), resources.GetString("SearchFunctionsListBox.Items1"), resources.GetString("SearchFunctionsListBox.Items2"), resources.GetString("SearchFunctionsListBox.Items3"), resources.GetString("SearchFunctionsListBox.Items4")})
         Me.SearchFunctionsListBox.Name = "SearchFunctionsListBox"
+        Me.HelpProvider.SetShowHelp(Me.SearchFunctionsListBox, CType(resources.GetObject("SearchFunctionsListBox.ShowHelp"), Boolean))
         '
         'SearchBySelectionsButton
         '
         resources.ApplyResources(Me.SearchBySelectionsButton, "SearchBySelectionsButton")
         Me.SearchBySelectionsButton.Name = "SearchBySelectionsButton"
+        Me.HelpProvider.SetShowHelp(Me.SearchBySelectionsButton, CType(resources.GetObject("SearchBySelectionsButton.ShowHelp"), Boolean))
         Me.SearchBySelectionsButton.UseVisualStyleBackColor = True
         '
         'SearchByTextButton
         '
         resources.ApplyResources(Me.SearchByTextButton, "SearchByTextButton")
         Me.SearchByTextButton.Name = "SearchByTextButton"
+        Me.HelpProvider.SetShowHelp(Me.SearchByTextButton, CType(resources.GetObject("SearchByTextButton.ShowHelp"), Boolean))
         Me.SearchByTextButton.UseVisualStyleBackColor = True
         '
         'SearchDateTimePicker
         '
         resources.ApplyResources(Me.SearchDateTimePicker, "SearchDateTimePicker")
         Me.SearchDateTimePicker.Name = "SearchDateTimePicker"
+        Me.HelpProvider.SetShowHelp(Me.SearchDateTimePicker, CType(resources.GetObject("SearchDateTimePicker.ShowHelp"), Boolean))
         '
         'ClearSelectionsButton
         '
         resources.ApplyResources(Me.ClearSelectionsButton, "ClearSelectionsButton")
         Me.ClearSelectionsButton.Name = "ClearSelectionsButton"
+        Me.HelpProvider.SetShowHelp(Me.ClearSelectionsButton, CType(resources.GetObject("ClearSelectionsButton.ShowHelp"), Boolean))
         Me.ClearSelectionsButton.UseVisualStyleBackColor = True
         '
         'SubjectGroupComboBox
@@ -534,6 +621,7 @@ Partial Class MainForm
         Me.SubjectGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.SubjectGroupComboBox.FormattingEnabled = True
         Me.SubjectGroupComboBox.Name = "SubjectGroupComboBox"
+        Me.HelpProvider.SetShowHelp(Me.SubjectGroupComboBox, CType(resources.GetObject("SubjectGroupComboBox.ShowHelp"), Boolean))
         Me.SubjectGroupComboBox.Sorted = True
         '
         'CategoryGroupComboBox
@@ -542,17 +630,20 @@ Partial Class MainForm
         Me.CategoryGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CategoryGroupComboBox.FormattingEnabled = True
         Me.CategoryGroupComboBox.Name = "CategoryGroupComboBox"
+        Me.HelpProvider.SetShowHelp(Me.CategoryGroupComboBox, CType(resources.GetObject("CategoryGroupComboBox.ShowHelp"), Boolean))
         Me.CategoryGroupComboBox.Sorted = True
         '
         'CategoryLabel
         '
         resources.ApplyResources(Me.CategoryLabel, "CategoryLabel")
         Me.CategoryLabel.Name = "CategoryLabel"
+        Me.HelpProvider.SetShowHelp(Me.CategoryLabel, CType(resources.GetObject("CategoryLabel.ShowHelp"), Boolean))
         '
         'SubjectLabel
         '
         resources.ApplyResources(Me.SubjectLabel, "SubjectLabel")
         Me.SubjectLabel.Name = "SubjectLabel"
+        Me.HelpProvider.SetShowHelp(Me.SubjectLabel, CType(resources.GetObject("SubjectLabel.ShowHelp"), Boolean))
         '
         'AuthorGroupComboBox
         '
@@ -560,12 +651,14 @@ Partial Class MainForm
         Me.AuthorGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.AuthorGroupComboBox.FormattingEnabled = True
         Me.AuthorGroupComboBox.Name = "AuthorGroupComboBox"
+        Me.HelpProvider.SetShowHelp(Me.AuthorGroupComboBox, CType(resources.GetObject("AuthorGroupComboBox.ShowHelp"), Boolean))
         Me.AuthorGroupComboBox.Sorted = True
         '
         'AuthorLabel
         '
         resources.ApplyResources(Me.AuthorLabel, "AuthorLabel")
         Me.AuthorLabel.Name = "AuthorLabel"
+        Me.HelpProvider.SetShowHelp(Me.AuthorLabel, CType(resources.GetObject("AuthorLabel.ShowHelp"), Boolean))
         '
         'SearchTextComboBox
         '
@@ -574,75 +667,38 @@ Partial Class MainForm
         Me.SearchTextComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.SearchTextComboBox.FormattingEnabled = True
         Me.SearchTextComboBox.Name = "SearchTextComboBox"
+        Me.HelpProvider.SetShowHelp(Me.SearchTextComboBox, CType(resources.GetObject("SearchTextComboBox.ShowHelp"), Boolean))
         Me.SearchTextComboBox.Sorted = True
         '
-        'SelectedDocumentTabControl
+        'SearchResultsPanel
         '
-        Me.SelectedDocumentTabControl.Controls.Add(Me.NotesTabPage)
-        Me.SelectedDocumentTabControl.Controls.Add(Me.KeywordsTabPage)
-        Me.SelectedDocumentTabControl.Controls.Add(Me.PreviewTabPage)
-        Me.SelectedDocumentTabControl.Controls.Add(Me.TextTabPage)
-        resources.ApplyResources(Me.SelectedDocumentTabControl, "SelectedDocumentTabControl")
-        Me.SelectedDocumentTabControl.Name = "SelectedDocumentTabControl"
-        Me.SelectedDocumentTabControl.SelectedIndex = 0
+        Me.SearchResultsPanel.Controls.Add(Me.SearchResultsDataGridView)
+        resources.ApplyResources(Me.SearchResultsPanel, "SearchResultsPanel")
+        Me.SearchResultsPanel.Name = "SearchResultsPanel"
         '
-        'NotesTabPage
+        'SearchResultsDataGridView
         '
-        Me.NotesTabPage.Controls.Add(Me.NotesTextBox)
-        resources.ApplyResources(Me.NotesTabPage, "NotesTabPage")
-        Me.NotesTabPage.Name = "NotesTabPage"
-        Me.NotesTabPage.UseVisualStyleBackColor = True
+        Me.SearchResultsDataGridView.AllowUserToAddRows = False
+        Me.SearchResultsDataGridView.AllowUserToDeleteRows = False
+        Me.SearchResultsDataGridView.AllowUserToResizeRows = False
+        Me.SearchResultsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.SearchResultsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window
+        Me.SearchResultsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.SearchResultsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.SearchResultsDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SelectionColumn})
+        resources.ApplyResources(Me.SearchResultsDataGridView, "SearchResultsDataGridView")
+        Me.SearchResultsDataGridView.MultiSelect = False
+        Me.SearchResultsDataGridView.Name = "SearchResultsDataGridView"
+        Me.SearchResultsDataGridView.RowHeadersVisible = False
+        Me.SearchResultsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.HelpProvider.SetShowHelp(Me.SearchResultsDataGridView, CType(resources.GetObject("SearchResultsDataGridView.ShowHelp"), Boolean))
+        Me.SearchResultsDataGridView.StandardTab = True
         '
-        'NotesTextBox
+        'SelectionColumn
         '
-        Me.NotesTextBox.AcceptsReturn = True
-        resources.ApplyResources(Me.NotesTextBox, "NotesTextBox")
-        Me.NotesTextBox.Name = "NotesTextBox"
-        '
-        'KeywordsTabPage
-        '
-        Me.KeywordsTabPage.Controls.Add(Me.KeywordsTextBox)
-        resources.ApplyResources(Me.KeywordsTabPage, "KeywordsTabPage")
-        Me.KeywordsTabPage.Name = "KeywordsTabPage"
-        Me.KeywordsTabPage.UseVisualStyleBackColor = True
-        '
-        'KeywordsTextBox
-        '
-        resources.ApplyResources(Me.KeywordsTextBox, "KeywordsTextBox")
-        Me.KeywordsTextBox.Name = "KeywordsTextBox"
-        Me.KeywordsTextBox.ReadOnly = True
-        '
-        'PreviewTabPage
-        '
-        Me.PreviewTabPage.Controls.Add(Me.PreviewPanel)
-        resources.ApplyResources(Me.PreviewTabPage, "PreviewTabPage")
-        Me.PreviewTabPage.Name = "PreviewTabPage"
-        Me.PreviewTabPage.UseVisualStyleBackColor = True
-        '
-        'PreviewPanel
-        '
-        resources.ApplyResources(Me.PreviewPanel, "PreviewPanel")
-        Me.PreviewPanel.Controls.Add(Me.PreviewPictureBox)
-        Me.PreviewPanel.Name = "PreviewPanel"
-        '
-        'PreviewPictureBox
-        '
-        resources.ApplyResources(Me.PreviewPictureBox, "PreviewPictureBox")
-        Me.PreviewPictureBox.Name = "PreviewPictureBox"
-        Me.PreviewPictureBox.TabStop = False
-        '
-        'TextTabPage
-        '
-        Me.TextTabPage.Controls.Add(Me.TextTextBox)
-        resources.ApplyResources(Me.TextTabPage, "TextTabPage")
-        Me.TextTabPage.Name = "TextTabPage"
-        Me.TextTabPage.UseVisualStyleBackColor = True
-        '
-        'TextTextBox
-        '
-        resources.ApplyResources(Me.TextTextBox, "TextTextBox")
-        Me.TextTextBox.Name = "TextTextBox"
-        Me.TextTextBox.ReadOnly = True
+        Me.SelectionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        resources.ApplyResources(Me.SelectionColumn, "SelectionColumn")
+        Me.SelectionColumn.Name = "SelectionColumn"
         '
         'UploadTimer
         '
@@ -790,6 +846,18 @@ Partial Class MainForm
         resources.ApplyResources(Me.ViewRefreshToolStripButton, "ViewRefreshToolStripButton")
         Me.ViewRefreshToolStripButton.Name = "ViewRefreshToolStripButton"
         '
+        'ToolStripSeparator14
+        '
+        Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
+        resources.ApplyResources(Me.ToolStripSeparator14, "ToolStripSeparator14")
+        '
+        'InsertTextToolStripButton
+        '
+        Me.InsertTextToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.InsertTextToolStripButton.Image = Global.PDFKeeper.WindowsApplication.My.Resources.Resources.page_text
+        resources.ApplyResources(Me.InsertTextToolStripButton, "InsertTextToolStripButton")
+        Me.InsertTextToolStripButton.Name = "InsertTextToolStripButton"
+        '
         'ToolStripSeparator21
         '
         Me.ToolStripSeparator21.Name = "ToolStripSeparator21"
@@ -818,29 +886,6 @@ Partial Class MainForm
         resources.ApplyResources(Me.HelpContentsToolStripButton, "HelpContentsToolStripButton")
         Me.HelpContentsToolStripButton.Name = "HelpContentsToolStripButton"
         '
-        'SearchResultsDataGridView
-        '
-        Me.SearchResultsDataGridView.AllowUserToAddRows = False
-        Me.SearchResultsDataGridView.AllowUserToDeleteRows = False
-        Me.SearchResultsDataGridView.AllowUserToResizeRows = False
-        Me.SearchResultsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.SearchResultsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window
-        Me.SearchResultsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.SearchResultsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.SearchResultsDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SelectionColumn})
-        resources.ApplyResources(Me.SearchResultsDataGridView, "SearchResultsDataGridView")
-        Me.SearchResultsDataGridView.MultiSelect = False
-        Me.SearchResultsDataGridView.Name = "SearchResultsDataGridView"
-        Me.SearchResultsDataGridView.RowHeadersVisible = False
-        Me.SearchResultsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.SearchResultsDataGridView.StandardTab = True
-        '
-        'SelectionColumn
-        '
-        Me.SelectionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        resources.ApplyResources(Me.SelectionColumn, "SelectionColumn")
-        Me.SelectionColumn.Name = "SelectionColumn"
-        '
         'AutoUpdateCheckTimer
         '
         Me.AutoUpdateCheckTimer.Enabled = True
@@ -851,29 +896,10 @@ Partial Class MainForm
         Me.FlaggedDocumentsCheckTimer.Enabled = True
         Me.FlaggedDocumentsCheckTimer.Interval = 10000
         '
-        'SearchResultsPanel
-        '
-        Me.SearchResultsPanel.Controls.Add(Me.SearchResultsDataGridView)
-        resources.ApplyResources(Me.SearchResultsPanel, "SearchResultsPanel")
-        Me.SearchResultsPanel.Name = "SearchResultsPanel"
-        '
-        'ToolStripSeparator14
-        '
-        Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
-        resources.ApplyResources(Me.ToolStripSeparator14, "ToolStripSeparator14")
-        '
-        'InsertTextToolStripButton
-        '
-        Me.InsertTextToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.InsertTextToolStripButton.Image = Global.PDFKeeper.WindowsApplication.My.Resources.Resources.page_text
-        resources.ApplyResources(Me.InsertTextToolStripButton, "InsertTextToolStripButton")
-        Me.InsertTextToolStripButton.Name = "InsertTextToolStripButton"
-        '
         'MainForm
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.SearchResultsPanel)
         Me.Controls.Add(Me.SplitContainer)
         Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.ToolStrip)
@@ -890,8 +916,6 @@ Partial Class MainForm
         Me.SplitContainer.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer.ResumeLayout(False)
-        Me.SearchGroupBox.ResumeLayout(False)
-        Me.SearchGroupBox.PerformLayout()
         Me.SelectedDocumentTabControl.ResumeLayout(False)
         Me.NotesTabPage.ResumeLayout(False)
         Me.NotesTabPage.PerformLayout()
@@ -903,12 +927,14 @@ Partial Class MainForm
         CType(Me.PreviewPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TextTabPage.ResumeLayout(False)
         Me.TextTabPage.PerformLayout()
+        Me.SearchGroupBox.ResumeLayout(False)
+        Me.SearchGroupBox.PerformLayout()
+        Me.SearchResultsPanel.ResumeLayout(False)
+        CType(Me.SearchResultsDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip.ResumeLayout(False)
         Me.StatusStrip.PerformLayout()
         Me.ToolStrip.ResumeLayout(False)
         Me.ToolStrip.PerformLayout()
-        CType(Me.SearchResultsDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SearchResultsPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -996,6 +1022,12 @@ Partial Class MainForm
     Friend WithEvents FileSetCategoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FlaggedDocumentsExistToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents FlaggedDocumentsCheckTimer As System.Windows.Forms.Timer
+    Friend WithEvents SearchResultsPanel As Panel
+    Friend WithEvents HelpProvider As HelpProvider
+    Friend WithEvents InsertToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InsertTextToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator14 As ToolStripSeparator
+    Friend WithEvents InsertTextToolStripButton As ToolStripButton
     Friend WithEvents SelectedDocumentTabControl As TabControl
     Friend WithEvents NotesTabPage As TabPage
     Friend WithEvents NotesTextBox As TextBox
@@ -1007,6 +1039,9 @@ Partial Class MainForm
     Friend WithEvents TextTabPage As TabPage
     Friend WithEvents TextTextBox As TextBox
     Friend WithEvents SearchGroupBox As GroupBox
+    Friend WithEvents DateLabel As Label
+    Friend WithEvents TextLabel As Label
+    Friend WithEvents SearchFunctionsListBox As ListBox
     Friend WithEvents SearchBySelectionsButton As Button
     Friend WithEvents SearchByTextButton As Button
     Friend WithEvents SearchDateTimePicker As DateTimePicker
@@ -1018,15 +1053,6 @@ Partial Class MainForm
     Friend WithEvents AuthorGroupComboBox As ComboBox
     Friend WithEvents AuthorLabel As Label
     Friend WithEvents SearchTextComboBox As ComboBox
-    Friend WithEvents SearchResultsPanel As Panel
     Friend WithEvents SearchResultsDataGridView As DataGridView
     Friend WithEvents SelectionColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents SearchFunctionsListBox As ListBox
-    Friend WithEvents TextLabel As Label
-    Friend WithEvents DateLabel As Label
-    Friend WithEvents HelpProvider As HelpProvider
-    Friend WithEvents InsertToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents InsertTextToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator14 As ToolStripSeparator
-    Friend WithEvents InsertTextToolStripButton As ToolStripButton
 End Class

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="MainSplitterDistance" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">492</Value>
+      <Value Profile="(Default)">373</Value>
     </Setting>
     <Setting Name="MainLocation" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
@@ -18,7 +18,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="PreviewImageResolution" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">150</Value>
+      <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="MainToolBarVisible" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
