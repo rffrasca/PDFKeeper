@@ -22,6 +22,10 @@ alter table pdfkeeper.docs add(
 	doc_category varchar2(2000),
 	doc_flag number(1) default 0 not null
 	constraint doc_flag_ck check (doc_flag in (0,1)));
+alter table pdfkeeper.docs add(
+	doc_tax_year number(4),
+	doc_annotations clob,
+	doc_text clob));
 
 drop index pdfkeeper.docs_idx;
 
@@ -36,9 +40,12 @@ begin
 					 doc_added,
 					 doc_notes,
 					 doc_pdf,
-					 doc_category');
+					 doc_category,
+					 doc_tax_year,
+					 doc_annotations,
+					 doc_text');
 	ctx_ddl.set_attribute('ctxsys.pdfkeeper_multi','filter',
-			      'N,N,N,N,N,N,Y,N');
+			      'N,N,N,N,N,N,Y,N,N,N,N');
 	if (dbms_db_version.version >11) then
 		execute immediate 'create index pdfkeeper.docs_idx
 				   on pdfkeeper.docs(doc_dummy) 

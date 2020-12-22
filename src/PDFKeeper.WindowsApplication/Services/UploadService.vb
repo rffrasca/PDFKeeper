@@ -288,13 +288,16 @@ Public NotInheritable Class UploadService
                         Using repository As IDocumentRepository =
                             New DocumentRepository
                             repository.CreateRecord(pdfReader.Title,
-                                                pdfReader.Author,
-                                                pdfReader.Subject,
-                                                pdfReader.Keywords,
-                                                notes,
-                                                pdfPath,
-                                                category,
-                                                flag)
+                                                    pdfReader.Author,
+                                                    pdfReader.Subject,
+                                                    pdfReader.Keywords,
+                                                    notes,
+                                                    pdfPath,
+                                                    category,
+                                                    flag,
+                                                    Nothing,
+                                                    Nothing,
+                                                    Nothing)
                         End Using
                         IO.File.Delete(pdfPath)
                         Dim suppDataXmlPath As String =

@@ -5,7 +5,7 @@
 	<title>Uploading PDF Documents</title>
 	<meta name="generator" content="LibreOffice 7.0.3.1 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.014243916"/>
-	<meta name="changed" content="2020-12-22T11:32:32.360000000"/>
+	<meta name="changed" content="2020-12-22T11:47:12.035000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -39,9 +39,9 @@ folders to allow for integration and automation.</font></p>
 <p><font face="Segoe UI, sans-serif">Configured Upload Folders are
 used to automate the uploading of PDF documents to the database. For
 each PDF document that is created in or copied into a configured
-upload folder, it will have PDF Information Properties defined for
-that folder written to a clone of the PDF file; and then the PDF file
-clone is uploaded to the database during the next upload cycle.</font></p>
+upload folder, it will have PDF Metadata defined for that folder
+written to a clone of the PDF file; and then the PDF file clone is
+uploaded to the database during the next upload cycle.</font></p>
 <p><font face="Segoe UI, sans-serif">Each document is stored in the
 database as follows:</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>ID</b>
@@ -62,12 +62,19 @@ This column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>PDF</b>
 &ndash; Content of the PDF document. This column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Category</b>
-&ndash; The optional category of the document record. This column is
+&ndash; Optional category of the document record. This column is
 searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Flag</b>
 &ndash; <span style="font-weight: normal">Flag document state. </span><b>0</b>
 <span style="font-weight: normal">= not flagged, </span><b>1</b> <span style="font-weight: normal">=
 flagged.</span></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Tax
+Year</b><span style="font-weight: normal"> &ndash; Optional tax year
+of the document record. This column is searchable.</span></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Annotations</b><span style="font-weight: normal">
+&ndash; Extracted from the PDF. This column is searchable.</span></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Text</b><span style="font-weight: normal">
+&ndash; Extracted from the PDF. This column is searchable.</span></font></p>
 <h4 class="western"><font face="Segoe UI, sans-serif">Which topic do
 you want to view?</font></h4>
 <table width="412" cellpadding="0" cellspacing="0">

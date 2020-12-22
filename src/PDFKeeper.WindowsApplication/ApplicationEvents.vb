@@ -34,7 +34,7 @@ Namespace My
             UserConfig.Upgrade()
             If UserConfig.IsFirstUse Then
                 help.ShowAndWait("PDFKeeper.html")
-            ElseIf previousVersion < "5.0.0.0" Then
+            ElseIf previousVersion < "7.0.0.0" Then
                 help.ShowAndWait("Database Schema Upgrade for Oracle Database.html")
             End If
             AddHandler AppDomain.CurrentDomain.AssemblyResolve,

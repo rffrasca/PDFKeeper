@@ -24,7 +24,7 @@ rem
 set Title=PDFKeeper Database Schema Setup Script Launcher
 set MenuHeader=Compatible Database Management Systems
 set MenuChoice1=1. Oracle Database
-set MenuChoice2=2. Oracle Database (for upgrading from PDFKeeper version 4.1.0 or earlier)
+set MenuChoice2=2. Oracle Database (for upgrading from PDFKeeper version 6.1.1 or earlier)
 set MenuPrompt=Select the database management system or Q to quit:
 set OracleMessage1=Enter the database connect string in the format:
 set OracleMessage2=username/password@host:port/service_name
