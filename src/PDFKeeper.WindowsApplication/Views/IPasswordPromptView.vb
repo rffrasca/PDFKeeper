@@ -19,7 +19,7 @@
 '******************************************************************************
 Public Interface IPasswordPromptView
     ''' <summary>
-    ''' Gets/Sets title to be displayed on the Password Prompt view.
+    ''' Gets/Sets title to be displayed on the Password Prompt dialog.
     ''' </summary>
     ''' <value></value>
     ''' <returns></returns>
@@ -28,7 +28,7 @@ Public Interface IPasswordPromptView
 
     ''' <summary>
     ''' Gets/Sets text to be displayed above the text box on the Password
-    ''' Prompt view.
+    ''' Prompt dialog.
     ''' </summary>
     ''' <value></value>
     ''' <returns></returns>
@@ -36,7 +36,7 @@ Public Interface IPasswordPromptView
     Property TextLabel As String
 
     ''' <summary>
-    ''' Shows the Password Prompt view.
+    ''' Shows the Password Prompt dialog.
     ''' </summary>
     ''' <returns>SecureString object containing the password entered.</returns>
     ''' <remarks></remarks>

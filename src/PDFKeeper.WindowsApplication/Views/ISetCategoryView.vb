@@ -19,9 +19,9 @@
 '******************************************************************************
 Public Interface ISetCategoryView
     ''' <summary>
-    ''' Shows the Set Category view.
+    ''' Shows the Set Category dialog.
     ''' </summary>
-    ''' <returns>Category string.</returns>
+    ''' <returns>Category</returns>
     ''' <remarks></remarks>
     Function Show() As String
 End Interface
