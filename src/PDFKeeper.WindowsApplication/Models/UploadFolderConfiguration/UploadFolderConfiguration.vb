@@ -24,5 +24,6 @@ Public Class UploadFolderConfiguration
     Public Property SubjectPrefill As String
     Public Property KeywordsPrefill As String
     Public Property CategoryPrefill As String
+    Public Property TaxYearPrefill As String
     Public Property FlagDocument As Boolean
 End Class

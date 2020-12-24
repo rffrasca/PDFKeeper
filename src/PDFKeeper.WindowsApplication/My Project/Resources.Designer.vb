@@ -384,6 +384,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Tax Year.
+        '''</summary>
+        Friend ReadOnly Property TaxYear() As String
+            Get
+                Return ResourceManager.GetString("TaxYear", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Title.
         '''</summary>
         Friend ReadOnly Property Title() As String

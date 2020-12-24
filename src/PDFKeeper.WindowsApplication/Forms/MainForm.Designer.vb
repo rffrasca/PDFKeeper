@@ -108,6 +108,8 @@ Partial Class MainForm
         Me.TextTabPage = New System.Windows.Forms.TabPage()
         Me.TextTextBox = New System.Windows.Forms.TextBox()
         Me.SearchGroupBox = New System.Windows.Forms.GroupBox()
+        Me.TaxYearGroupComboBox = New System.Windows.Forms.ComboBox()
+        Me.TaxYearLabel = New System.Windows.Forms.Label()
         Me.DateLabel = New System.Windows.Forms.Label()
         Me.TextLabel = New System.Windows.Forms.Label()
         Me.SearchFunctionsListBox = New System.Windows.Forms.ListBox()
@@ -160,6 +162,7 @@ Partial Class MainForm
         Me.AutoUpdateCheckTimer = New System.Windows.Forms.Timer(Me.components)
         Me.FlaggedDocumentsCheckTimer = New System.Windows.Forms.Timer(Me.components)
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.FileSetTaxYearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.SearchTextErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -188,7 +191,7 @@ Partial Class MainForm
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileNewToolStripMenuItem, Me.ToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.ToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.ToolStripSeparator4, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.ToolStripSeparator3, Me.FileSelectToolStripMenuItem, Me.FileSetCategoryToolStripMenuItem, Me.FileDeleteToolStripMenuItem, Me.FileExportToolStripMenuItem, Me.ToolStripSeparator6, Me.FileExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileNewToolStripMenuItem, Me.ToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.ToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.ToolStripSeparator4, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.ToolStripSeparator3, Me.FileSelectToolStripMenuItem, Me.FileSetCategoryToolStripMenuItem, Me.FileSetTaxYearToolStripMenuItem, Me.FileDeleteToolStripMenuItem, Me.FileExportToolStripMenuItem, Me.ToolStripSeparator6, Me.FileExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         resources.ApplyResources(Me.FileToolStripMenuItem, "FileToolStripMenuItem")
         '
@@ -549,6 +552,8 @@ Partial Class MainForm
         '
         'SearchGroupBox
         '
+        Me.SearchGroupBox.Controls.Add(Me.TaxYearGroupComboBox)
+        Me.SearchGroupBox.Controls.Add(Me.TaxYearLabel)
         Me.SearchGroupBox.Controls.Add(Me.DateLabel)
         Me.SearchGroupBox.Controls.Add(Me.TextLabel)
         Me.SearchGroupBox.Controls.Add(Me.SearchFunctionsListBox)
@@ -567,6 +572,21 @@ Partial Class MainForm
         Me.SearchGroupBox.Name = "SearchGroupBox"
         Me.HelpProvider.SetShowHelp(Me.SearchGroupBox, CType(resources.GetObject("SearchGroupBox.ShowHelp"), Boolean))
         Me.SearchGroupBox.TabStop = False
+        '
+        'TaxYearGroupComboBox
+        '
+        resources.ApplyResources(Me.TaxYearGroupComboBox, "TaxYearGroupComboBox")
+        Me.TaxYearGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.TaxYearGroupComboBox.FormattingEnabled = True
+        Me.TaxYearGroupComboBox.Name = "TaxYearGroupComboBox"
+        Me.HelpProvider.SetShowHelp(Me.TaxYearGroupComboBox, CType(resources.GetObject("TaxYearGroupComboBox.ShowHelp"), Boolean))
+        Me.TaxYearGroupComboBox.Sorted = True
+        '
+        'TaxYearLabel
+        '
+        resources.ApplyResources(Me.TaxYearLabel, "TaxYearLabel")
+        Me.TaxYearLabel.Name = "TaxYearLabel"
+        Me.HelpProvider.SetShowHelp(Me.TaxYearLabel, CType(resources.GetObject("TaxYearLabel.ShowHelp"), Boolean))
         '
         'DateLabel
         '
@@ -896,6 +916,11 @@ Partial Class MainForm
         Me.FlaggedDocumentsCheckTimer.Enabled = True
         Me.FlaggedDocumentsCheckTimer.Interval = 10000
         '
+        'FileSetTaxYearToolStripMenuItem
+        '
+        Me.FileSetTaxYearToolStripMenuItem.Name = "FileSetTaxYearToolStripMenuItem"
+        resources.ApplyResources(Me.FileSetTaxYearToolStripMenuItem, "FileSetTaxYearToolStripMenuItem")
+        '
         'MainForm
         '
         resources.ApplyResources(Me, "$this")
@@ -1055,4 +1080,7 @@ Partial Class MainForm
     Friend WithEvents SearchTextComboBox As ComboBox
     Friend WithEvents SearchResultsDataGridView As DataGridView
     Friend WithEvents SelectionColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents TaxYearGroupComboBox As ComboBox
+    Friend WithEvents TaxYearLabel As Label
+    Friend WithEvents FileSetTaxYearToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -33,42 +33,50 @@ Public NotInheritable Class OracleDbDocumentRepository
         End Using
     End Function
 
-    Public Function GetAllAuthorsBySubject(subject As String) As DataTable Implements IDocumentRepository.GetAllAuthorsBySubject
+    Public Function GetAllAuthorsBySubjectCategoryAndTaxYear(subject As String,
+                                                             category As String,
+                                                             taxYear As String) As DataTable Implements IDocumentRepository.GetAllAuthorsBySubjectCategoryAndTaxYear
+        Dim where As String = "where "
+        Dim andNeeded As Boolean = False
+        If subject IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_subject = :doc_subject"
+            Else
+                where &= "doc_subject = :doc_subject"
+            End If
+            andNeeded = True
+        End If
+        If category IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_category = :doc_category"
+            Else
+                where &= "doc_category = :doc_category"
+            End If
+            andNeeded = True
+        End If
+        If taxYear IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_tax_year = :doc_tax_year"
+            Else
+                where &= "doc_tax_year = :doc_tax_year"
+            End If
+        End If
         Dim sqlStatement As String =
             "select doc_author " &
-            "from pdfkeeper.docs " &
-            "where doc_subject = :doc_subject " &
-            "group by doc_author"
+            "from pdfkeeper.docs " & where & " group by doc_author"
+#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
             oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_subject", subject)
-            Return provider.QueryToDataTable(oraCommand)
-        End Using
-    End Function
-
-    Public Function GetAllAuthorsByCategory(category As String) As DataTable Implements IDocumentRepository.GetAllAuthorsByCategory
-        Dim sqlStatement As String =
-            "select doc_author " &
-            "from pdfkeeper.docs " &
-            "where doc_category = :doc_category " &
-            "group by doc_author"
-        Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-            oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_category", category)
-            Return provider.QueryToDataTable(oraCommand)
-        End Using
-    End Function
-
-    Public Function GetAllAuthorsBySubjectAndCategory(subject As String, category As String) As Object Implements IDocumentRepository.GetAllAuthorsBySubjectAndCategory
-        Dim sqlStatement As String =
-            "select doc_author " &
-            "from pdfkeeper.docs " &
-            "where doc_subject = :doc_subject and doc_category = :doc_category " &
-            "group by doc_author"
-        Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-            oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_subject", subject)
-            oraCommand.Parameters.Add("doc_category", category)
+            If subject IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_subject", subject)
+            End If
+            If category IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_category", category)
+            End If
+            If taxYear IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_tax_year", taxYear)
+            End If
             Return provider.QueryToDataTable(oraCommand)
         End Using
     End Function
@@ -96,29 +104,50 @@ Public NotInheritable Class OracleDbDocumentRepository
         End Using
     End Function
 
-    Public Function GetAllSubjectsByCategory(category As String) As Object Implements IDocumentRepository.GetAllSubjectsByCategory
+    Public Function GetAllSubjectsByAuthorCategoryAndTaxYear(author As String,
+                                                             category As String,
+                                                             taxYear As String) As DataTable Implements IDocumentRepository.GetAllSubjectsByAuthorCategoryAndTaxYear
+        Dim where As String = "where "
+        Dim andNeeded As Boolean = False
+        If author IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_author = :doc_author"
+            Else
+                where &= "doc_author = :doc_author"
+            End If
+            andNeeded = True
+        End If
+        If category IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_category = :doc_category"
+            Else
+                where &= "doc_category = :doc_category"
+            End If
+            andNeeded = True
+        End If
+        If taxYear IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_tax_year = :doc_tax_year"
+            Else
+                where &= "doc_tax_year = :doc_tax_year"
+            End If
+        End If
         Dim sqlStatement As String =
             "select doc_subject " &
-            "from pdfkeeper.docs " &
-            "where doc_category = :doc_category " &
-            "group by doc_subject"
+            "from pdfkeeper.docs " & where & " group by doc_subject"
+#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
             oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_category", category)
-            Return provider.QueryToDataTable(oraCommand)
-        End Using
-    End Function
-
-    Public Function GetAllSubjectsByAuthorAndCategory(author As String, category As String) As Object Implements IDocumentRepository.GetAllSubjectsByAuthorAndCategory
-        Dim sqlStatement As String =
-            "select doc_subject " &
-            "from pdfkeeper.docs " &
-            "where doc_author = :doc_author and doc_category = :doc_category " &
-            "group by doc_subject"
-        Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-            oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_author", author)
-            oraCommand.Parameters.Add("doc_category", category)
+            If author IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_author", author)
+            End If
+            If category IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_category", category)
+            End If
+            If taxYear IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_tax_year", taxYear)
+            End If
             Return provider.QueryToDataTable(oraCommand)
         End Using
     End Function
@@ -133,49 +162,115 @@ Public NotInheritable Class OracleDbDocumentRepository
         End Using
     End Function
 
-    Public Function GetAllCategoriesByAuthor(author As String) As Object Implements IDocumentRepository.GetAllCategoriesByAuthor
+    Public Function GetAllCategoriesByAuthorSubjectAndTaxYear(author As String,
+                                                              subject As String,
+                                                              taxYear As String) As DataTable Implements IDocumentRepository.GetAllCategoriesByAuthorSubjectAndTaxYear
+        Dim where As String = "where "
+        Dim andNeeded As Boolean = False
+        If author IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_author = :doc_author"
+            Else
+                where &= "doc_author = :doc_author"
+            End If
+            andNeeded = True
+        End If
+        If subject IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_subject = :doc_subject"
+            Else
+                where &= "doc_subject = :doc_subject"
+            End If
+            andNeeded = True
+        End If
+        If taxYear IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_tax_year = :doc_tax_year"
+            Else
+                where &= "doc_tax_year = :doc_tax_year"
+            End If
+        End If
         Dim sqlStatement As String =
-            "select doc_category,count(doc_category) " &
-            "from pdfkeeper.docs " &
-            "where doc_author = :doc_author " &
-            "group by doc_category having count(doc_category) > 0"
+            "select doc_category " &
+            "from pdfkeeper.docs " & where & " group by doc_category"
+#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
             oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_author", author)
+            If author IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_author", author)
+            End If
+            If subject IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_subject", subject)
+            End If
+            If taxYear IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_tax_year", taxYear)
+            End If
             Return provider.QueryToDataTable(oraCommand)
         End Using
     End Function
 
-    Public Function GetAllCategoriesBySubject(subject As String) As Object Implements IDocumentRepository.GetAllCategoriesBySubject
+    Public Function GetAllTaxYears() As DataTable Implements IDocumentRepository.GetAllTaxYears
         Dim sqlStatement As String =
-            "select doc_category,count(doc_category) " &
+            "select doc_tax_year,count(doc_tax_year) " &
             "from pdfkeeper.docs " &
-            "where doc_subject = :doc_subject " &
-            "group by doc_category having count(doc_category) > 0"
+            "group by doc_tax_year having count(doc_tax_year) > 0"
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-            oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_subject", subject)
             Return provider.QueryToDataTable(oraCommand)
         End Using
     End Function
 
-    Public Function GetAllCategoriesByAuthorAndSubject(author As String, subject As String) As Object Implements IDocumentRepository.GetAllCategoriesByAuthorAndSubject
+    Public Function GetAllTaxYearsByAuthorSubjectAndCategory(author As String,
+                                                             subject As String,
+                                                             category As String) As DataTable Implements IDocumentRepository.GetAllTaxYearsByAuthorSubjectAndCategory
+        Dim where As String = "where "
+        Dim andNeeded As Boolean = False
+        If author IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_author = :doc_author"
+            Else
+                where &= "doc_author = :doc_author"
+            End If
+            andNeeded = True
+        End If
+        If subject IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_subject = :doc_subject"
+            Else
+                where &= "doc_subject = :doc_subject"
+            End If
+            andNeeded = True
+        End If
+        If category IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_category = :doc_category"
+            Else
+                where &= "doc_category = :doc_category"
+            End If
+        End If
         Dim sqlStatement As String =
-            "select doc_category,count(doc_category) " &
-            "from pdfkeeper.docs " &
-            "where doc_author = :doc_author and doc_subject = :doc_subject " &
-            "group by doc_category having count(doc_category) > 0"
+            "select doc_tax_year " &
+            "from pdfkeeper.docs " & where & " group by doc_tax_year"
+#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
             oraCommand.BindByName = True
-            oraCommand.Parameters.Add("doc_author", author)
-            oraCommand.Parameters.Add("doc_subject", subject)
+            If author IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_author", author)
+            End If
+            If subject IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_subject", subject)
+            End If
+            If category IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_category", category)
+            End If
             Return provider.QueryToDataTable(oraCommand)
         End Using
     End Function
 
     Public Function GetAllRecordsBySearchText(searchValue As String) As DataTable Implements IDocumentRepository.GetAllRecordsBySearchText
         Dim sqlStatement As String =
-            "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_added " &
+            "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
             "from pdfkeeper.docs " &
             "where (contains(doc_dummy,:doc_dummy))>0"
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
@@ -185,7 +280,10 @@ Public NotInheritable Class OracleDbDocumentRepository
         End Using
     End Function
 
-    Public Function GetAllRecordsByAuthorSubjectAndCategory(author As String, subject As String, category As String) As DataTable Implements IDocumentRepository.GetAllRecordsByAuthorSubjectAndCategory
+    Public Function GetAllRecordsByAuthorSubjectCategoryAndTaxYear(author As String,
+                                                                   subject As String,
+                                                                   category As String,
+                                                                   taxYear As String) As DataTable Implements IDocumentRepository.GetAllRecordsByAuthorSubjectCategoryAndTaxYear
         Dim where As String = "where "
         Dim andNeeded As Boolean = False
         If author IsNot Nothing Then
@@ -206,9 +304,17 @@ Public NotInheritable Class OracleDbDocumentRepository
             Else
                 where &= "doc_category = :doc_category"
             End If
+            andNeeded = True
+        End If
+        If taxYear IsNot Nothing Then
+            If andNeeded Then
+                where &= " and doc_tax_year = :doc_tax_year"
+            Else
+                where &= "doc_tax_year = :doc_tax_year"
+            End If
         End If
         Dim sqlStatement As String =
-            "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_added " &
+            "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
             "from pdfkeeper.docs " & where
 #Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
@@ -223,13 +329,16 @@ Public NotInheritable Class OracleDbDocumentRepository
             If category IsNot Nothing Then
                 oraCommand.Parameters.Add("doc_category", category)
             End If
+            If taxYear IsNot Nothing Then
+                oraCommand.Parameters.Add("doc_tax_year", taxYear)
+            End If
             Return provider.QueryToDataTable(oraCommand)
         End Using
     End Function
 
     Public Function GetAllRecordsByDateAdded(dateAdded As String) As DataTable Implements IDocumentRepository.GetAllRecordsByDateAdded
         Dim sqlStatement As String =
-            "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_added " &
+            "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
             "from pdfkeeper.docs " &
             "where doc_added like :doc_added || '%'"
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
@@ -241,7 +350,7 @@ Public NotInheritable Class OracleDbDocumentRepository
 
     Public Function GetAllFlaggedRecords() As DataTable Implements IDocumentRepository.GetAllFlaggedRecords
         Dim sqlStatement As String =
-            "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_added " &
+            "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
             "from pdfkeeper.docs " &
             "where doc_flag = 1"
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
@@ -251,7 +360,7 @@ Public NotInheritable Class OracleDbDocumentRepository
 
     Public Function GetAllRecords() As DataTable Implements IDocumentRepository.GetAllRecords
         Dim sqlStatement As String =
-            "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_added " &
+            "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
             "from pdfkeeper.docs"
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
             Return provider.QueryToDataTable(oraCommand)
@@ -298,6 +407,11 @@ Public NotInheritable Class OracleDbDocumentRepository
                                 CultureInfo.CurrentCulture)
     End Function
 
+    Public Function GetTaxYearById(id As Integer) As String Implements IDocumentRepository.GetTaxYearById
+        Return Convert.ToString(GetColumnDataById(id, "doc_tax_year").Rows(0)("doc_tax_year"),
+                                CultureInfo.CurrentCulture)
+    End Function
+
     Public Function GetFlagStateById(id As Integer) As Int32 Implements IDocumentRepository.GetFlagStateById
         Return Convert.ToInt32(GetColumnDataById(id, "doc_flag").Rows(0)("doc_flag"),
                                CultureInfo.CurrentCulture)
@@ -315,7 +429,17 @@ Public NotInheritable Class OracleDbDocumentRepository
         End Using
     End Sub
 
-    Public Sub CreateRecord(title As String, author As String, subject As String, keywords As String, notes As String, pdfFile As String, category As String, flag As Integer) Implements IDocumentRepository.CreateRecord
+    Public Sub CreateRecord(title As String,
+                            author As String,
+                            subject As String,
+                            keywords As String,
+                            notes As String,
+                            pdfFile As String,
+                            category As String,
+                            flag As Integer,
+                            taxYear As String,
+                            annotations As String,
+                            text As String) Implements IDocumentRepository.CreateRecord
         Dim sqlStatement As String =
             " begin " &
             " insert into pdfkeeper.docs values( " &
@@ -329,7 +453,10 @@ Public NotInheritable Class OracleDbDocumentRepository
             " :doc_pdf, " &
             " '', " &
             " :doc_category, " &
-            " :doc_flag) ;" &
+            " :doc_flag, " &
+            " :doc_tax_year, " &
+            " :doc_annotations, " &
+            " :doc_text) ;" &
             " end ;"
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
             Dim fileInfo As New FileInfo(pdfFile)
@@ -343,6 +470,9 @@ Public NotInheritable Class OracleDbDocumentRepository
             oraCommand.Parameters.Add("doc_pdf", OracleDbType.Blob, blob, ParameterDirection.Input)
             oraCommand.Parameters.Add("doc_category", category)
             oraCommand.Parameters.Add("doc_flag", flag)
+            oraCommand.Parameters.Add("doc_tax_year", taxYear)
+            oraCommand.Parameters.Add("doc_annotations", annotations)
+            oraCommand.Parameters.Add("doc_text", text)
             provider.ExecuteNonQuery(oraCommand)
         End Using
     End Sub
@@ -368,6 +498,19 @@ Public NotInheritable Class OracleDbDocumentRepository
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
             oraCommand.BindByName = True
             oraCommand.Parameters.Add("doc_category", category)
+            oraCommand.Parameters.Add("doc_id", id)
+            provider.ExecuteNonQuery(oraCommand)
+        End Using
+    End Sub
+
+    Public Sub UpdateTaxYearById(id As Integer, taxYear As String) Implements IDocumentRepository.UpdateTaxYearById
+        Dim sqlStatement As String =
+            "update pdfkeeper.docs " &
+            "set doc_tax_year = :doc_tax_year,doc_dummy = '' " &
+            "where doc_id = :doc_id"
+        Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+            oraCommand.BindByName = True
+            oraCommand.Parameters.Add("doc_tax_year", taxYear)
             oraCommand.Parameters.Add("doc_id", id)
             provider.ExecuteNonQuery(oraCommand)
         End Using

@@ -65,6 +65,8 @@ Partial Class ManageUploadFolderConfigurationsDialog
         Me.AuthorPrefillLabel = New System.Windows.Forms.Label()
         Me.FlagDocumentCheckBox = New System.Windows.Forms.CheckBox()
         Me.UploadFolderConfigurationGroupBox = New System.Windows.Forms.GroupBox()
+        Me.TaxYearComboBox = New System.Windows.Forms.ComboBox()
+        Me.TaxYearPrefillLabel = New System.Windows.Forms.Label()
         Me.DiscardButton = New System.Windows.Forms.Button()
         Me.SaveButton = New System.Windows.Forms.Button()
         Me.UploadFolderConfigurationsGroupBox.SuspendLayout()
@@ -237,6 +239,8 @@ Partial Class ManageUploadFolderConfigurationsDialog
         '
         'UploadFolderConfigurationGroupBox
         '
+        Me.UploadFolderConfigurationGroupBox.Controls.Add(Me.TaxYearComboBox)
+        Me.UploadFolderConfigurationGroupBox.Controls.Add(Me.TaxYearPrefillLabel)
         Me.UploadFolderConfigurationGroupBox.Controls.Add(Me.DiscardButton)
         Me.UploadFolderConfigurationGroupBox.Controls.Add(Me.SaveButton)
         Me.UploadFolderConfigurationGroupBox.Controls.Add(Me.FlagDocumentCheckBox)
@@ -258,6 +262,24 @@ Partial Class ManageUploadFolderConfigurationsDialog
         Me.UploadFolderConfigurationGroupBox.Name = "UploadFolderConfigurationGroupBox"
         Me.HelpProvider.SetShowHelp(Me.UploadFolderConfigurationGroupBox, CType(resources.GetObject("UploadFolderConfigurationGroupBox.ShowHelp"), Boolean))
         Me.UploadFolderConfigurationGroupBox.TabStop = False
+        '
+        'TaxYearComboBox
+        '
+        Me.TaxYearComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.TaxYearComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.TaxYearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.TaxYearComboBox.FormattingEnabled = True
+        Me.HelpProvider.SetHelpKeyword(Me.TaxYearComboBox, resources.GetString("TaxYearComboBox.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me.TaxYearComboBox, CType(resources.GetObject("TaxYearComboBox.HelpNavigator"), System.Windows.Forms.HelpNavigator))
+        resources.ApplyResources(Me.TaxYearComboBox, "TaxYearComboBox")
+        Me.TaxYearComboBox.Name = "TaxYearComboBox"
+        Me.HelpProvider.SetShowHelp(Me.TaxYearComboBox, CType(resources.GetObject("TaxYearComboBox.ShowHelp"), Boolean))
+        Me.TaxYearComboBox.Sorted = True
+        '
+        'TaxYearPrefillLabel
+        '
+        resources.ApplyResources(Me.TaxYearPrefillLabel, "TaxYearPrefillLabel")
+        Me.TaxYearPrefillLabel.Name = "TaxYearPrefillLabel"
         '
         'DiscardButton
         '
@@ -321,5 +343,6 @@ Partial Class ManageUploadFolderConfigurationsDialog
     Friend WithEvents FlagDocumentCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents SaveButton As System.Windows.Forms.Button
     Friend WithEvents DiscardButton As System.Windows.Forms.Button
-
+    Friend WithEvents TaxYearComboBox As ComboBox
+    Friend WithEvents TaxYearPrefillLabel As Label
 End Class

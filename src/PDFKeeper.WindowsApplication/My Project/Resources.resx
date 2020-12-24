@@ -259,4 +259,7 @@ The contents of the Notes text box prior to the attempted save operation have be
   <data name="RefreshSearchResults" xml:space="preserve">
     <value>Refresh Search Results?</value>
   </data>
+  <data name="TaxYear" xml:space="preserve">
+    <value>Tax Year</value>
+  </data>
 </root>

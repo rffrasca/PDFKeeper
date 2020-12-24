@@ -187,7 +187,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Helpers\SetTaxYearHelper.vb" />
+    <Compile Include="Dialogs\SetTaxYearDialog.Designer.vb">
+      <DependentUpon>SetTaxYearDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SetTaxYearDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Models\DbInstanceProperties.vb" />
+    <Compile Include="Utilities\TaxYearsGenerator.vb" />
     <Compile Include="Utilities\DbInstanceUtil.vb" />
     <Compile Include="Enums\SelectedDocumentsActionEnum.vb" />
     <Compile Include="Enums\SelectionStateEnum.vb" />
@@ -200,12 +208,13 @@
     <Compile Include="Services\HelpDisplayService\IHelpDisplayService.vb" />
     <Compile Include="Services\MessageDisplayService\IMessageDisplayService.vb" />
     <Compile Include="Views\IPasswordPromptView.vb" />
+    <Compile Include="Views\ISetTaxYearView.vb" />
     <Compile Include="Views\ISetCategoryView.vb" />
     <Compile Include="Services\MessageDisplayService\MessageDisplayService.vb" />
     <Compile Include="Product\ProductUpdate.vb" />
     <Compile Include="Product\CacheFilePathName.vb" />
-    <Compile Include="Dialogs\PasswordPrompt.vb" />
-    <Compile Include="Dialogs\SetCategory.vb" />
+    <Compile Include="Helpers\PasswordPromptHelper.vb" />
+    <Compile Include="Helpers\SetCategoryHelper.vb" />
     <Compile Include="Services\FileSelectDisplayService\FileSelectDisplayService.vb" />
     <Compile Include="Services\FolderBrowserDisplayService\FolderBrowserDisplayService.vb" />
     <Compile Include="Services\FileSelectDisplayService\IFileSelectDisplayService.vb" />
@@ -337,6 +346,9 @@
     <Compile Include="Product\UserConfig.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Dialogs\SetTaxYearDialog.resx">
+      <DependentUpon>SetTaxYearDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>

@@ -29,6 +29,7 @@ Public Interface IMainView
     Property AuthorEnabled As Boolean
     Property SubjectEnabled As Boolean
     Property CategoryEnabled As Boolean
+    Property TaxYearEnabled As Boolean
     Property ClearSelectionsEnabled As Boolean
     Property SearchBySelectionsEnabled As Boolean
     Property SearchDatePickerEnabled As Boolean

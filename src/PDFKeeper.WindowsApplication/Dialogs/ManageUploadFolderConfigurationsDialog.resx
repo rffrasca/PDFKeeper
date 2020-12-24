@@ -307,15 +307,72 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>624, 527</value>
+    <value>624, 537</value>
   </data>
   <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>202, 17</value>
   </metadata>
-  <data name="DiscardButton.HelpKeyword" xml:space="preserve">
+  <data name="TaxYearComboBox.HelpKeyword" xml:space="preserve">
     <value>Configuring an Upload Folder.html</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TaxYearComboBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
+  <data name="TaxYearComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 394</value>
+  </data>
+  <data name="TaxYearComboBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TaxYearComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 23</value>
+  </data>
+  <data name="TaxYearComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;TaxYearComboBox.Name" xml:space="preserve">
+    <value>TaxYearComboBox</value>
+  </data>
+  <data name="&gt;&gt;TaxYearComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TaxYearComboBox.Parent" xml:space="preserve">
+    <value>UploadFolderConfigurationGroupBox</value>
+  </data>
+  <data name="&gt;&gt;TaxYearComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TaxYearPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TaxYearPrefillLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 376</value>
+  </data>
+  <data name="TaxYearPrefillLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 15</value>
+  </data>
+  <data name="TaxYearPrefillLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="TaxYearPrefillLabel.Text" xml:space="preserve">
+    <value>Tax Year Prefill:</value>
+  </data>
+  <data name="&gt;&gt;TaxYearPrefillLabel.Name" xml:space="preserve">
+    <value>TaxYearPrefillLabel</value>
+  </data>
+  <data name="&gt;&gt;TaxYearPrefillLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TaxYearPrefillLabel.Parent" xml:space="preserve">
+    <value>UploadFolderConfigurationGroupBox</value>
+  </data>
+  <data name="&gt;&gt;TaxYearPrefillLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="DiscardButton.HelpKeyword" xml:space="preserve">
+    <value>Configuring an Upload Folder.html</value>
+  </data>
   <data name="DiscardButton.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
   </data>
@@ -340,7 +397,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="DiscardButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>516, 384</value>
+    <value>515, 394</value>
   </data>
   <data name="DiscardButton.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -349,7 +406,7 @@
     <value>75, 23</value>
   </data>
   <data name="DiscardButton.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="DiscardButton.Text" xml:space="preserve">
     <value>Dis&amp;card</value>
@@ -367,7 +424,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;DiscardButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="SaveButton.HelpKeyword" xml:space="preserve">
     <value>Configuring an Upload Folder.html</value>
@@ -389,7 +446,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="SaveButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>435, 384</value>
+    <value>434, 394</value>
   </data>
   <data name="SaveButton.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -398,7 +455,7 @@
     <value>75, 23</value>
   </data>
   <data name="SaveButton.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="SaveButton.Text" xml:space="preserve">
     <value>&amp;Save</value>
@@ -413,7 +470,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;SaveButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="FlagDocumentCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -428,7 +485,7 @@
     <value>NoControl</value>
   </data>
   <data name="FlagDocumentCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 388</value>
+    <value>250, 399</value>
   </data>
   <data name="FlagDocumentCheckBox.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -437,7 +494,7 @@
     <value>107, 19</value>
   </data>
   <data name="FlagDocumentCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="FlagDocumentCheckBox.Text" xml:space="preserve">
     <value>Flag Document</value>
@@ -452,7 +509,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;FlagDocumentCheckBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="CategoryComboBox.HelpKeyword" xml:space="preserve">
     <value>Configuring an Upload Folder.html</value>
@@ -482,7 +539,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;CategoryComboBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="CategoryPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -521,7 +578,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;CategoryPrefillLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="KeywordsTextBox.HelpKeyword" xml:space="preserve">
     <value>Configuring an Upload Folder.html</value>
@@ -554,7 +611,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;KeywordsTextBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="KeywordsPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -593,7 +650,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;KeywordsPrefillLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="SubjectPairedComboBox.HelpKeyword" xml:space="preserve">
     <value>Configuring an Upload Folder.html</value>
@@ -623,7 +680,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;SubjectPairedComboBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="SubjectPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -662,7 +719,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;SubjectPrefillLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="AuthorPairedComboBox.HelpKeyword" xml:space="preserve">
     <value>Configuring an Upload Folder.html</value>
@@ -692,7 +749,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;AuthorPairedComboBox.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="AuthorPrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -731,7 +788,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;AuthorPrefillLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="TitleComboBox.HelpKeyword" xml:space="preserve">
     <value>Configuring an Upload Folder.html</value>
@@ -761,7 +818,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;TitleComboBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="TitlePrefillLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -800,7 +857,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;TitlePrefillLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="FolderNameTextBox.HelpKeyword" xml:space="preserve">
     <value>Configuring an Upload Folder.html</value>
@@ -830,7 +887,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;FolderNameTextBox.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="FolderNameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -869,7 +926,7 @@
     <value>UploadFolderConfigurationGroupBox</value>
   </data>
   <data name="&gt;&gt;FolderNameLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="UploadFolderConfigurationGroupBox.HelpKeyword" xml:space="preserve">
     <value>Configuring an Upload Folder.html</value>
@@ -884,7 +941,7 @@
     <value>True</value>
   </data>
   <data name="UploadFolderConfigurationGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 414</value>
+    <value>598, 424</value>
   </data>
   <data name="UploadFolderConfigurationGroupBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

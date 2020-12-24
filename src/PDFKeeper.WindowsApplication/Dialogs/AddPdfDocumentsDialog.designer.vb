@@ -67,6 +67,8 @@ Partial Class AddPdfDocumentsDialog
         Me.CategoryLabel = New System.Windows.Forms.Label()
         Me.SelectButton = New System.Windows.Forms.Button()
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.TaxYearComboBox = New System.Windows.Forms.ComboBox()
+        Me.TaxYearLabel = New System.Windows.Forms.Label()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -209,10 +211,28 @@ Partial Class AddPdfDocumentsDialog
         Me.SelectButton.Name = "SelectButton"
         Me.SelectButton.UseVisualStyleBackColor = True
         '
+        'TaxYearComboBox
+        '
+        Me.TaxYearComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.TaxYearComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.TaxYearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.TaxYearComboBox.FormattingEnabled = True
+        resources.ApplyResources(Me.TaxYearComboBox, "TaxYearComboBox")
+        Me.TaxYearComboBox.Name = "TaxYearComboBox"
+        Me.HelpProvider.SetShowHelp(Me.TaxYearComboBox, CType(resources.GetObject("TaxYearComboBox.ShowHelp"), Boolean))
+        Me.TaxYearComboBox.Sorted = True
+        '
+        'TaxYearLabel
+        '
+        resources.ApplyResources(Me.TaxYearLabel, "TaxYearLabel")
+        Me.TaxYearLabel.Name = "TaxYearLabel"
+        '
         'AddPdfDocumentsDialog
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.TaxYearComboBox)
+        Me.Controls.Add(Me.TaxYearLabel)
         Me.Controls.Add(Me.SelectButton)
         Me.Controls.Add(Me.CategoryComboBox)
         Me.Controls.Add(Me.CategoryLabel)
@@ -267,5 +287,6 @@ Partial Class AddPdfDocumentsDialog
     Public WithEvents ViewButton As System.Windows.Forms.Button
     Public WithEvents SelectButton As System.Windows.Forms.Button
     Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
-
+    Friend WithEvents TaxYearLabel As Label
+    Friend WithEvents TaxYearComboBox As ComboBox
 End Class

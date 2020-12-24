@@ -20,24 +20,27 @@
 Public Interface IDocumentRepository
     Inherits IDisposable
     Function GetAllAuthors() As DataTable
-    Function GetAllAuthorsBySubject(ByVal subject As String) As DataTable
-    Function GetAllAuthorsByCategory(ByVal category As String) As DataTable
-    Function GetAllAuthorsBySubjectAndCategory(ByVal subject As String,
-                                               ByVal category As String)
+    Function GetAllAuthorsBySubjectCategoryAndTaxYear(ByVal subject As String,
+                                                      ByVal category As String,
+                                                      ByVal taxYear As String) As DataTable
     Function GetAllSubjects() As DataTable
     Function GetAllSubjectsByAuthor(ByVal author As String) As DataTable
-    Function GetAllSubjectsByCategory(ByVal category As String)
-    Function GetAllSubjectsByAuthorAndCategory(ByVal author As String,
-                                               ByVal category As String)
+    Function GetAllSubjectsByAuthorCategoryAndTaxYear(ByVal author As String,
+                                                      ByVal category As String,
+                                                      ByVal taxYear As String) As DataTable
     Function GetAllCategories() As DataTable
-    Function GetAllCategoriesByAuthor(ByVal author As String)
-    Function GetAllCategoriesBySubject(ByVal subject As String)
-    Function GetAllCategoriesByAuthorAndSubject(ByVal author As String,
-                                                ByVal subject As String)
+    Function GetAllCategoriesByAuthorSubjectAndTaxYear(ByVal author As String,
+                                                       ByVal subject As String,
+                                                       ByVal taxYear As String) As DataTable
+    Function GetAllTaxYears() As DataTable
+    Function GetAllTaxYearsByAuthorSubjectAndCategory(ByVal author As String,
+                                                      ByVal subject As String,
+                                                      ByVal category As String) As DataTable
     Function GetAllRecordsBySearchText(ByVal searchValue As String) As DataTable
-    Function GetAllRecordsByAuthorSubjectAndCategory(ByVal author As String,
-                                                     ByVal subject As String,
-                                                     ByVal category As String) As DataTable
+    Function GetAllRecordsByAuthorSubjectCategoryAndTaxYear(ByVal author As String,
+                                                            ByVal subject As String,
+                                                            ByVal category As String,
+                                                            ByVal taxYear As String) As DataTable
     Function GetAllRecordsByDateAdded(ByVal dateAdded As String) As DataTable
     Function GetAllFlaggedRecords() As DataTable
     Function GetAllRecords() As DataTable
@@ -48,6 +51,7 @@ Public Interface IDocumentRepository
     Function GetNotesById(ByVal id As Integer) As String
     Function GetKeywordsById(ByVal id As Integer) As String
     Function GetCategoryById(ByVal id As Integer) As String
+    Function GetTaxYearById(ByVal id As Integer) As String
     Function GetFlagStateById(ByVal id As Integer) As Int32
     Sub GetPdfById(ByVal id As Integer, ByVal pdfFile As String)
     Sub CreateRecord(ByVal title As String,
@@ -57,9 +61,13 @@ Public Interface IDocumentRepository
                      ByVal notes As String,
                      ByVal pdfFile As String,
                      ByVal category As String,
-                     ByVal flag As Integer)
+                     ByVal flag As Integer,
+                     ByVal taxYear As String,
+                     ByVal annotations As String,
+                     ByVal text As String)
     Sub UpdateNotesById(ByVal id As Integer, ByVal notes As String)
     Sub UpdateCategoryById(ByVal id As Integer, ByVal category As String)
+    Sub UpdateTaxYearById(ByVal id As Integer, ByVal taxYear As String)
     Sub UpdateFlagStateById(ByVal id As Integer, ByVal flag As Integer)
     Sub DeleteRecordById(ByVal id As Integer)
 End Interface

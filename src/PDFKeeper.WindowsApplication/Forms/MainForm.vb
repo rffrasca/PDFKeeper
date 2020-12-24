@@ -258,6 +258,38 @@ Public Class MainForm
         End Set
     End Property
 
+    Public Property TaxYearEnabled As Boolean Implements IMainView.TaxYearEnabled
+        Get
+            Return TaxYearGroupComboBox.Enabled
+        End Get
+        Set(value As Boolean)
+            TaxYearGroupComboBox.Enabled = value
+        End Set
+    End Property
+
+    Public Property TaxYearsGroup As DataTable Implements ICommonView.TaxYearsGroup
+        Get
+            Return Nothing
+        End Get
+        Set(value As DataTable)
+            TaxYearGroupComboBox.DataSource = value
+            TaxYearGroupComboBox.DisplayMember = "doc_tax_year"
+        End Set
+    End Property
+
+    Public Property TaxYearGroup As String Implements ICommonView.TaxYearGroup
+        Get
+            If Not TaxYearGroupComboBox.SelectedItem Is Nothing Then
+                Return Convert.ToString(TaxYearGroupComboBox.SelectedItem("doc_tax_year"),
+                                        CultureInfo.CurrentCulture)
+            End If
+            Return Nothing
+        End Get
+        Set(value As String)
+            TaxYearGroupComboBox.SelectedItem = value
+        End Set
+    End Property
+
     Public Property ClearSelectionsEnabled As Boolean Implements IMainView.ClearSelectionsEnabled
         Get
             Return ClearSelectionsButton.Enabled
@@ -598,6 +630,24 @@ Public Class MainForm
         End Set
     End Property
 
+    Public Property TaxYears As Object Implements ICommonView.TaxYears
+        Get
+            Return Nothing
+        End Get
+        Set(value As Object)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property TaxYear As String Implements ICommonView.TaxYear
+        Get
+            Return Nothing
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
     Public Sub RemoveAllDocumentsFromSearchFunctions() Implements IMainView.RemoveAllDocumentsFromSearchFunctions
         SearchFunctionsListBox.Items.RemoveAt(4)
     End Sub
@@ -721,6 +771,10 @@ Public Class MainForm
 
     Private Sub FileSetCategoryToolStrip_Click(sender As Object, e As EventArgs) Handles FileSetCategoryToolStripMenuItem.Click
         presenter.SetCategoryOnSelectedSearchResults()
+    End Sub
+
+    Private Sub FileSetTaxYearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileSetTaxYearToolStripMenuItem.Click
+        presenter.SetTaxYearOnSelectedSearchResults()
     End Sub
 
     Private Sub FileDeleteToolStrip_Click(sender As Object, e As EventArgs) Handles FileDeleteToolStripMenuItem.Click,
@@ -949,9 +1003,42 @@ Public Class MainForm
         End If
     End Sub
 
+    Private Sub TaxYearGroupComboBox_DropDown(sender As Object, e As EventArgs) Handles TaxYearGroupComboBox.DropDown
+        commonPresenter.GetColumnItemsByGroup()
+    End Sub
+
+    Private Sub TaxYearGroupComboBox_DropDownClosed(sender As Object, e As EventArgs) Handles TaxYearGroupComboBox.DropDownClosed
+        toolStripStatePresenter.SetPreSearchState()
+        presenter.SetSearchBySelectionsButtonsState()
+    End Sub
+
+    Private Sub TaxYearGroupComboBox_Enter(sender As Object, e As EventArgs) Handles TaxYearGroupComboBox.Enter
+        commonPresenter.GetColumnItemsByGroup()
+    End Sub
+
+    Private Sub TaxYearGroupComboBox_KeyDown(sender As Object, e As KeyEventArgs) Handles TaxYearGroupComboBox.KeyDown
+        ' ComboBox will only drop down when the down arrow is pressed.
+        If e.KeyCode = 40 Then
+            TaxYearGroupComboBox.DroppedDown = True
+        End If
+    End Sub
+
+    Private Sub TaxYearGroupComboBox_KeyUp(sender As Object, e As KeyEventArgs) Handles TaxYearGroupComboBox.KeyUp
+        toolStripStatePresenter.SetPreSearchState()
+        presenter.SetSearchBySelectionsButtonsState()
+    End Sub
+
+    Private Sub TaxYearGroupComboBox_MouseWheel(sender As Object, e As MouseEventArgs) Handles TaxYearGroupComboBox.MouseWheel
+        ' This will prevent mouse wheel scrolling while drop down is closed.
+        If Not TaxYearGroupComboBox.DroppedDown Then
+            Dim handledMouseEventArgs As HandledMouseEventArgs = DirectCast(e, HandledMouseEventArgs)
+            handledMouseEventArgs.Handled = True
+        End If
+    End Sub
+
     Private Sub ClearSelectionsButton_Click(sender As Object, e As EventArgs) Handles ClearSelectionsButton.Click
         toolStripStatePresenter.SetPreSearchState()
-        presenter.ClearSearchSelections()
+        presenter.ClearSearchSelections()   ' Required two calls to clear.
         presenter.ClearSearchSelections()
     End Sub
 
@@ -979,18 +1066,20 @@ Public Class MainForm
             .Columns(4).ReadOnly = True
             .Columns(5).HeaderCell.Value = My.Resources.Category
             .Columns(5).ReadOnly = True
-            .Columns(6).HeaderCell.Value = My.Resources.Added
-            .Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns(6).HeaderCell.Value = My.Resources.TaxYear
             .Columns(6).ReadOnly = True
+            .Columns(7).HeaderCell.Value = My.Resources.Added
+            .Columns(7).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            .Columns(7).ReadOnly = True
         End With
         If SearchResultsDataGridView.RowCount > 0 Then
             SearchResultsDataGridView.Enabled = True
-            SearchResultsDataGridView.Columns(6).AutoSizeMode =
+            SearchResultsDataGridView.Columns(7).AutoSizeMode =
                 DataGridViewAutoSizeColumnMode.DisplayedCells
-            If SearchResultsDataGridView.Columns(6).Displayed = True Then
-                SearchResultsDataGridView.Columns(6).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            If SearchResultsDataGridView.Columns(7).Displayed = True Then
+                SearchResultsDataGridView.Columns(7).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             End If
-            SearchResultsDataGridView.Columns(6).MinimumWidth = SearchResultsDataGridView.Columns(6).FillWeight + 20
+            SearchResultsDataGridView.Columns(7).MinimumWidth = SearchResultsDataGridView.Columns(7).FillWeight + 20
         End If
         toolStripStatePresenter.SetPostSearchState()
     End Sub

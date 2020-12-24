@@ -23,7 +23,7 @@ Public Class AddPdfDocumentsPresenter
     Private model As PdfMetadataReader
     Private helper As PdfMetadataHelper
     Private ReadOnly passwordPrompt As IPasswordPromptView =
-        New PasswordPromptView
+        New PasswordPromptHelper
     Private ReadOnly message As IMessageDisplayService =
         New MessageDisplayService
     Private ReadOnly question As IQuestionDisplayService =
@@ -54,6 +54,8 @@ Public Class AddPdfDocumentsPresenter
             .SubjectPairedEnabled = False
             .KeywordsEnabled = False
             .CategoryEnabled = False
+            .TaxYearEnabled = False
+            .TaxYear = Nothing
             .FlagDocumentEnabled = False
             .DeleteSelectedPdfOnOkEnabled = False
             .SaveEnabled = False
@@ -201,6 +203,7 @@ Public Class AddPdfDocumentsPresenter
             .SubjectPairedEnabled = True
             .KeywordsEnabled = True
             .CategoryEnabled = True
+            .TaxYearEnabled = True
             .FlagDocumentEnabled = True
             .DeleteSelectedPdfOnOkEnabled = True
             .DiscardEnabled = True
@@ -213,7 +216,7 @@ Public Class AddPdfDocumentsPresenter
             flag = 1
         End If
         Dim suppDataHelper As New PdfSupplementalDataHelper(stagedPdfPath)
-        suppDataHelper.Write(String.Empty, view.Category, flag)
+        suppDataHelper.Write(String.Empty, view.Category, view.TaxYear, flag)
     End Sub
 
     Private Sub DeleteSelectedPdf()

@@ -30,6 +30,7 @@ Public Interface IAddPdfDocumentsView
     Property Keywords As String
     Property KeywordsEnabled As Boolean
     Property CategoryEnabled As Boolean
+    Property TaxYearEnabled As Boolean
     Property FlagDocumentEnabled As Boolean
     Property DeleteSelectedPdfOnOkEnabled As Boolean
     Property SaveEnabled As Boolean

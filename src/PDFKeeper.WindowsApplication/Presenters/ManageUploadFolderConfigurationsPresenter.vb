@@ -43,6 +43,7 @@ Public Class ManageUploadFolderConfigurationsPresenter
             .SubjectPaired = Nothing
             .Keywords = Nothing
             .Category = Nothing
+            .TaxYear = Nothing
             .FlagDocument = False
             .UploadFolderConfigurationElementsEnabled = False
         End With
@@ -152,6 +153,7 @@ Public Class ManageUploadFolderConfigurationsPresenter
             .SubjectPaired = model.SubjectPrefill
             .Keywords = model.KeywordsPrefill
             .Category = model.CategoryPrefill
+            .TaxYear = model.TaxYearPrefill
             .FlagDocument = model.FlagDocument
         End With
     End Sub
@@ -163,6 +165,7 @@ Public Class ManageUploadFolderConfigurationsPresenter
             .SubjectPrefill = view.SubjectPaired.TrimEnd
             .KeywordsPrefill = view.Keywords.TrimEnd
             .CategoryPrefill = view.Category.TrimEnd
+            .TaxYearPrefill = view.TaxYear
             .FlagDocument = view.FlagDocument
         End With
     End Sub

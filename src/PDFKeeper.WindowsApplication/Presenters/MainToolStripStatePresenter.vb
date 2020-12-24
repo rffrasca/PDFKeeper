@@ -39,6 +39,7 @@ Public Class MainToolStripStatePresenter
             .SetItem("FileSelectAll", False)
             .SetItem("FileSelectNone", False)
             .SetItem("FileSetCategory", False)
+            .SetItem("FileSetTaxYear", False)
             .SetItem("FileDelete", False)
             .SetItem("FileExport", False)
             .SetItem("EditUndo", False)
@@ -87,10 +88,12 @@ Public Class MainToolStripStatePresenter
         With shortNames
             If selectedRows > 0 Then
                 .SetItem("FileSetCategory", True)
+                .SetItem("FileSetTaxYear", True)
                 .SetItem("FileDelete", True)
                 .SetItem("FileExport", True)
             Else
                 .SetItem("FileSetCategory", False)
+                .SetItem("FileSetTaxYear", False)
                 .SetItem("FileDelete", False)
                 .SetItem("FileExport", False)
             End If
@@ -183,6 +186,7 @@ Public Class MainToolStripStatePresenter
                 controlEnabled = True
             Else
                 .SetItem("FileSetCategory", controlEnabled)
+                .SetItem("FileSetTaxYear", controlEnabled)
                 .SetItem("FileDelete", controlEnabled)
                 .SetItem("FileExport", controlEnabled)
             End If

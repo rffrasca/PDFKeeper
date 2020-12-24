@@ -180,6 +180,7 @@ Public NotInheritable Class UploadService
         End With
         suppDataHelper.Write(suppData.Notes,
                              suppData.Category,
+                             suppData.TaxYear,
                              suppData.FlagState)
         Dim inputPdfGuidPath As String =
             New FileInfo(inputPdfPath).AppendGuidToName(Nothing)
@@ -277,12 +278,14 @@ Public NotInheritable Class UploadService
                         pdfReader.Subject IsNot Nothing Then
                         Dim notes As String = Nothing
                         Dim category As String = Nothing
+                        Dim taxYear As String = Nothing
                         Dim flag As Integer = 0
                         Dim suppDataHelper As New PdfSupplementalDataHelper(pdfPath)
                         Dim suppData As PdfSupplementalData = suppDataHelper.Read
                         If suppData IsNot Nothing Then
                             notes = suppData.Notes
                             category = suppData.Category
+                            taxYear = suppData.TaxYear
                             flag = suppData.FlagState
                         End If
                         Using repository As IDocumentRepository =
@@ -295,7 +298,7 @@ Public NotInheritable Class UploadService
                                                     pdfPath,
                                                     category,
                                                     flag,
-                                                    Nothing,
+                                                    taxYear,
                                                     Nothing,
                                                     Nothing)
                         End Using

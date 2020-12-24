@@ -44,6 +44,9 @@ Public Class CommonPresenter
             ElseIf view.ActiveElement.StartsWith("CategoryGroup",
                                                  StringComparison.Ordinal) Then
                 GetCategoriesByGroup()
+            ElseIf view.ActiveElement.StartsWith("TaxYearGroup",
+                                             StringComparison.Ordinal) Then
+                GetTaxYearsByGroup()
             ElseIf view.ActiveElement.StartsWith("AuthorPaired",
                                                  StringComparison.Ordinal) Then
                 GetAuthors("AuthorPaired")
@@ -53,12 +56,21 @@ Public Class CommonPresenter
             ElseIf view.ActiveElement.StartsWith("Category",
                                                  StringComparison.Ordinal) Then
                 GetCategories("Category")
+            ElseIf view.ActiveElement.StartsWith("TaxYear",
+                                                 StringComparison.Ordinal) Then
+                GetTaxYears("TaxYear")
             End If
             view.SetCursor(False)
         Catch ex As OracleException
             view.SetCursor(False)
             message.Show(ex.Message, True)
         End Try
+    End Sub
+
+    Public Sub FillTaxYears()
+        With view
+            .TaxYears = TaxYearsGenerator.ToArray
+        End With
     End Sub
 
     Public Sub ActiveElementTextTrimStart()
@@ -72,6 +84,9 @@ Public Class CommonPresenter
         ElseIf view.ActiveElement.StartsWith("Category",
                                              StringComparison.Ordinal) Then
             view.Category = view.Category.TrimStart
+        ElseIf view.ActiveElement.StartsWith("TaxYear",
+                                             StringComparison.Ordinal) Then
+            view.TaxYear = view.TaxYear.TrimStart
         End If
     End Sub
 
@@ -82,38 +97,42 @@ Public Class CommonPresenter
     End Sub
 
     Private Sub GetAuthorsByGroup()
-        If view.SubjectGroup Is Nothing And view.CategoryGroup Is Nothing Then
+        If view.SubjectGroup Is Nothing And
+            view.CategoryGroup Is Nothing And
+            view.TaxYearGroup Is Nothing Then
             GetAuthors("AuthorGroup")
-        ElseIf view.SubjectGroup IsNot Nothing And view.CategoryGroup Is Nothing Then
-            GetAuthorsBySubject()
-        ElseIf view.SubjectGroup Is Nothing And view.CategoryGroup IsNot Nothing Then
-            GetAuthorsByCategory()
-        ElseIf view.SubjectGroup IsNot Nothing And view.CategoryGroup IsNot Nothing Then
-            GetAuthorsBySubjectAndCategory()
+        Else
+            GetAuthorsBySubjectCategoryAndTaxYear()
         End If
     End Sub
 
     Private Sub GetSubjectsByGroup()
-        If view.AuthorGroup Is Nothing And view.CategoryGroup Is Nothing Then
+        If view.AuthorGroup Is Nothing And
+            view.CategoryGroup Is Nothing And
+            view.TaxYearGroup Is Nothing Then
             GetSubjects()
-        ElseIf view.AuthorGroup IsNot Nothing And view.CategoryGroup Is Nothing Then
-            GetSubjectsByAuthor("SubjectGroup")
-        ElseIf view.AuthorGroup Is Nothing And view.CategoryGroup IsNot Nothing Then
-            GetSubjectsByCategory()
-        ElseIf view.AuthorGroup IsNot Nothing And view.CategoryGroup IsNot Nothing Then
-            GetSubjectsByAuthorAndCategory()
+        Else
+            GetSubjectsByAuthorCategoryAndTaxYear()
         End If
     End Sub
 
     Private Sub GetCategoriesByGroup()
-        If view.AuthorGroup Is Nothing And view.SubjectGroup Is Nothing Then
+        If view.AuthorGroup Is Nothing And
+            view.SubjectGroup Is Nothing And
+            view.TaxYearGroup Is Nothing Then
             GetCategories("CategoryGroup")
-        ElseIf view.AuthorGroup IsNot Nothing And view.SubjectGroup Is Nothing Then
-            GetCategoriesByAuthor()
-        ElseIf view.AuthorGroup Is Nothing And view.SubjectGroup IsNot Nothing Then
-            GetCategoriesBySubject()
-        ElseIf view.AuthorGroup IsNot Nothing And view.SubjectGroup IsNot Nothing Then
-            GetCategoriesByAuthorAndSubject()
+        Else
+            GetCategoriesByAuthorSubjectAndTaxYear()
+        End If
+    End Sub
+
+    Private Sub GetTaxYearsByGroup()
+        If view.AuthorGroup Is Nothing And
+            view.SubjectGroup Is Nothing And
+            view.CategoryGroup Is Nothing Then
+            GetTaxYears("TaxYearGroup")
+        Else
+            GetTaxYearsByAuthorSubjectAndCategory()
         End If
     End Sub
 
@@ -133,32 +152,13 @@ Public Class CommonPresenter
         End Try
     End Sub
 
-    Private Sub GetAuthorsBySubject()
+    Private Sub GetAuthorsBySubjectCategoryAndTaxYear()
         Try
             Dim currentItem As String = Nothing
             currentItem = view.AuthorGroup
-            view.AuthorsGroup = model.GetAllAuthorsBySubject(view.SubjectGroup)
-            view.AuthorGroup = currentItem
-        Catch ex As NotImplementedException ' When ComboBox is a DropDownList
-        End Try
-    End Sub
-
-    Private Sub GetAuthorsByCategory()
-        Try
-            Dim currentItem As String = Nothing
-            currentItem = view.AuthorGroup
-            view.AuthorsGroup = model.GetAllAuthorsByCategory(view.CategoryGroup)
-            view.AuthorGroup = currentItem
-        Catch ex As NotImplementedException ' When ComboBox is a DropDownList
-        End Try
-    End Sub
-
-    Private Sub GetAuthorsBySubjectAndCategory()
-        Try
-            Dim currentItem As String = Nothing
-            currentItem = view.AuthorGroup
-            view.AuthorsGroup = model.GetAllAuthorsBySubjectAndCategory(view.SubjectGroup,
-                                                                        view.CategoryGroup)
+            view.AuthorsGroup = model.GetAllAuthorsBySubjectCategoryAndTaxYear(view.SubjectGroup,
+                                                                               view.CategoryGroup,
+                                                                               view.TaxYearGroup)
             view.AuthorGroup = currentItem
         Catch ex As NotImplementedException ' When ComboBox is a DropDownList
         End Try
@@ -190,22 +190,13 @@ Public Class CommonPresenter
         End Try
     End Sub
 
-    Private Sub GetSubjectsByCategory()
+    Private Sub GetSubjectsByAuthorCategoryAndTaxYear()
         Try
             Dim currentItem As String = Nothing
             currentItem = view.SubjectGroup
-            view.SubjectsGroup = model.GetAllSubjectsByCategory(view.CategoryGroup)
-            view.SubjectGroup = currentItem
-        Catch ex As NotImplementedException ' When ComboBox is a DropDownList
-        End Try
-    End Sub
-
-    Private Sub GetSubjectsByAuthorAndCategory()
-        Try
-            Dim currentItem As String = Nothing
-            currentItem = view.SubjectGroup
-            view.SubjectsGroup = model.GetAllSubjectsByAuthorAndCategory(view.AuthorGroup,
-                                                                         view.CategoryGroup)
+            view.SubjectsGroup = model.GetAllSubjectsByAuthorCategoryAndTaxYear(view.AuthorGroup,
+                                                                                view.CategoryGroup,
+                                                                                view.TaxYearGroup)
             view.SubjectGroup = currentItem
         Catch ex As NotImplementedException ' When ComboBox is a DropDownList
         End Try
@@ -227,33 +218,42 @@ Public Class CommonPresenter
         End Try
     End Sub
 
-    Private Sub GetCategoriesByAuthor()
+    Private Sub GetCategoriesByAuthorSubjectAndTaxYear()
         Try
             Dim currentItem As String = Nothing
             currentItem = view.CategoryGroup
-            view.CategoriesGroup = model.GetAllCategoriesByAuthor(view.AuthorGroup)
+            view.CategoriesGroup = model.GetAllCategoriesByAuthorSubjectAndTaxYear(view.AuthorGroup,
+                                                                                   view.SubjectGroup,
+                                                                                   view.TaxYearGroup)
             view.CategoryGroup = currentItem
         Catch ex As NotImplementedException ' When ComboBox is a DropDownList
         End Try
     End Sub
 
-    Private Sub GetCategoriesBySubject()
+    Private Sub GetTaxYears(ByVal elementStart As String)
         Try
             Dim currentItem As String = Nothing
-            currentItem = view.CategoryGroup
-            view.CategoriesGroup = model.GetAllCategoriesBySubject(view.SubjectGroup)
-            view.CategoryGroup = currentItem
+            If elementStart = "TaxYearGroup" Then
+                currentItem = view.TaxYearGroup
+                view.TaxYearsGroup = model.GetAllTaxYears
+                view.TaxYearGroup = currentItem
+            ElseIf elementStart = "TaxYear" Then
+                currentItem = view.TaxYear
+                view.TaxYears = model.GetAllTaxYears
+                view.TaxYear = currentItem
+            End If
         Catch ex As NotImplementedException ' When ComboBox is a DropDownList
         End Try
     End Sub
 
-    Private Sub GetCategoriesByAuthorAndSubject()
+    Private Sub GetTaxYearsByAuthorSubjectAndCategory()
         Try
             Dim currentItem As String = Nothing
-            currentItem = view.CategoryGroup
-            view.CategoriesGroup = model.GetAllCategoriesByAuthorAndSubject(view.AuthorGroup,
-                                                                            view.SubjectGroup)
-            view.CategoryGroup = currentItem
+            currentItem = view.TaxYearGroup
+            view.TaxYearsGroup = model.GetAllTaxYearsByAuthorSubjectAndCategory(view.AuthorGroup,
+                                                                                view.SubjectGroup,
+                                                                                view.CategoryGroup)
+            view.TaxYearGroup = currentItem
         Catch ex As NotImplementedException ' When ComboBox is a DropDownList
         End Try
     End Sub

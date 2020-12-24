@@ -17,15 +17,16 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Namespace Enums
-    ''' <summary>
-    ''' Actions that can be performed on all selected Search Results items.
-    ''' </summary>
-    ''' <remarks></remarks>
-    Public Enum SelectedDocumentsAction
-        SetCategory
-        SetTaxYear
-        Delete
-        Export
-    End Enum
-End Namespace
+Public Class SetTaxYearHelper
+    Implements ISetTaxYearView
+
+    Public Function Show() As String Implements ISetTaxYearView.Show
+        Using dialog As New SetTaxYearDialog
+            If dialog.ShowDialog = DialogResult.OK Then
+                Return dialog.TaxYear
+            Else
+                Return Nothing
+            End If
+        End Using
+    End Function
+End Class

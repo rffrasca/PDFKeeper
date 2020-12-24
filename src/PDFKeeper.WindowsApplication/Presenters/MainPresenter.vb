@@ -33,7 +33,9 @@ Public Class MainPresenter
     Private ReadOnly folderBrowser As IFolderBrowserDisplayService =
         New FolderBrowserDisplayService
     Private ReadOnly setCategory As ISetCategoryView =
-        New SetCategoryView
+        New SetCategoryHelper
+    Private ReadOnly setTaxYear As ISetTaxYearView =
+        New SetTaxYearHelper
     Private ReadOnly pdfViewer As IPdfViewerService = New PdfViewerService
     Private ReadOnly searchResultsSortParameters As New DataGridViewSortParameters
     Private ReadOnly fileHashes As New GenericDictionaryList(Of String, String)
@@ -147,8 +149,26 @@ Public Class MainPresenter
                 view.SetCursor(True)
                 Dim processPresenter As _
                     New MainSelectedSearchResultsProcessPresenter(view,
-                                                                  SelectedDocumentsAction.SetClearCategory,
+                                                                  SelectedDocumentsAction.SetCategory,
                                                                   newCategory)
+                processPresenter.ProcessSelectedSearchResults()
+                view.SetCursor(False)
+            Catch ex As OracleException
+                view.SetCursor(False)
+                message.Show(ex.Message, True)
+            End Try
+        End If
+    End Sub
+
+    Public Sub SetTaxYearOnSelectedSearchResults()
+        Dim newTaxYear As String = setTaxYear.Show
+        If newTaxYear IsNot Nothing Then
+            Try
+                view.SetCursor(True)
+                Dim processPresenter As _
+                    New MainSelectedSearchResultsProcessPresenter(view,
+                                                                  SelectedDocumentsAction.SetTaxYear,
+                                                                  newTaxYear)
                 processPresenter.ProcessSelectedSearchResults()
                 view.SetCursor(False)
             Catch ex As OracleException
@@ -342,6 +362,7 @@ Public Class MainPresenter
             .AuthorEnabled = False
             .SubjectEnabled = False
             .CategoryEnabled = False
+            .TaxYearEnabled = False
             .ClearSelectionsEnabled = False
             .SearchBySelectionsEnabled = False
             .SearchDatePickerEnabled = False
@@ -356,6 +377,7 @@ Public Class MainPresenter
                 .AuthorEnabled = True
                 .SubjectEnabled = True
                 .CategoryEnabled = True
+                .TaxYearEnabled = True
             End With
             SetSearchBySelectionsButtonsState()
             searchBySelectionPerformed = capturesearchBySelectionPerformed
@@ -431,7 +453,8 @@ Public Class MainPresenter
         Dim enabled As Boolean = False
         If view.AuthorGroup IsNot Nothing Or
             view.SubjectGroup IsNot Nothing Or
-            view.CategoryGroup IsNot Nothing Then
+            view.CategoryGroup IsNot Nothing Or
+            view.TaxYearGroup IsNot Nothing Then
             enabled = True
         End If
         view.ClearSelectionsEnabled = enabled
@@ -445,6 +468,7 @@ Public Class MainPresenter
             .AuthorGroup = Nothing
             .SubjectGroup = Nothing
             .CategoryGroup = Nothing
+            .TaxYearGroup = Nothing
             .ClearSelectionsEnabled = False
             .SearchBySelectionsEnabled = False
         End With
@@ -458,9 +482,10 @@ Public Class MainPresenter
                 view.SetCursor(True)
                 Using model As IDocumentRepository = New DocumentRepository
                     FillSearchResults(
-                        model.GetAllRecordsByAuthorSubjectAndCategory(view.AuthorGroup,
-                                                                      view.SubjectGroup,
-                                                                      view.CategoryGroup))
+                        model.GetAllRecordsByAuthorSubjectCategoryAndTaxYear(view.AuthorGroup,
+                                                                             view.SubjectGroup,
+                                                                             view.CategoryGroup,
+                                                                             view.TaxYearGroup))
                 End Using
                 view.SetCursor(False)
                 searchBySelectionPerformed = True

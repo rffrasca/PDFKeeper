@@ -1,6 +1,6 @@
 [OPTIONS]
 Compatibility=1.1 or later
-Compiled file=\\hpz420\Frasca\Robert\My Documents\Visual Studio 2019\Source\Repos\PDFKeeper\src\Help\PDFKeeper.en-US.chm
+Compiled file=..\PDFKeeper.en-US.chm
 Contents file=Table of Contents.hhc
 Default topic=PDFKeeper.html
 Display compile progress=No
@@ -63,6 +63,7 @@ iText License.txt
 Magick.NET License.txt
 Silk Icons License.htm
 SumatraPDF License.txt
+Set Tax Year on Document Records.html
 
 [INFOTYPES]
 

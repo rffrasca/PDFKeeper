@@ -22,7 +22,7 @@ Imports System.Runtime.Remoting.Messaging
 Public Class MainSelectedSearchResultsProcessPresenter
     Private ReadOnly m_View As IMainView
     Private ReadOnly m_ActionToPerform As String
-    Private ReadOnly m_CategoryExportParam As String
+    Private ReadOnly m_ActionParam As String
     Private m_ExportFolderPath As String
     Private m_IdBeingProcessed As Integer
 
@@ -31,22 +31,25 @@ Public Class MainSelectedSearchResultsProcessPresenter
     ''' </summary>
     ''' <param name="view">IMainView object of the view.</param>
     ''' <param name="actionToPerform">
-    ''' SelectedDocumentsAction.SetClearCategory
+    ''' SelectedDocumentsAction.SetCategory
+    ''' SelectedDocumentsAction.SetTaxYear
     ''' SelectedDocumentsAction.Delete
     ''' SelectedDocumentsAction.Export
     ''' </param>
-    ''' <param name="categoryOrExportParam">
-    ''' Can be either the new category name when "actionToPerform" is
-    ''' SelectedDocumentsAction.SetClearCategory or the folder path to use for
-    ''' the export when "actionToPerform" is SelectedDocumentsAction.Export.
+    ''' <param name="actionParam">
+    ''' Can be either the category name when "actionToPerform" is
+    ''' SelectedDocumentsAction.SetCategory or the tax year when
+    ''' "actionToPerform" is SelectedDocumentsAction.SetTaxYear or the folder
+    ''' path to use for the export when "actionToPerform" is
+    ''' SelectedDocumentsAction.Export.
     ''' </param>
     ''' <remarks></remarks>
     Public Sub New(ByVal view As IMainView,
                    ByVal actionToPerform As SelectedDocumentsAction,
-                   ByVal categoryOrExportParam As String)
+                   ByVal actionParam As String)
         m_View = view
         m_ActionToPerform = actionToPerform
-        m_CategoryExportParam = categoryOrExportParam
+        m_ActionParam = actionParam
     End Sub
 
     ''' <summary>
@@ -75,7 +78,7 @@ Public Class MainSelectedSearchResultsProcessPresenter
 
     Public Sub ProcessSelectedSearchResults()
         If m_ActionToPerform = SelectedDocumentsAction.Export Then
-            m_ExportFolderPath = Path.Combine(m_CategoryExportParam,
+            m_ExportFolderPath = Path.Combine(m_ActionParam,
                                               My.Application.Info.ProductName & "-" &
                                               My.Resources.Export & "_" &
                                               DateTime.Now.ToString("yyyy-MM-dd_HH.mm",
@@ -86,8 +89,10 @@ Public Class MainSelectedSearchResultsProcessPresenter
         m_View.DeleteExportProgressMaximum = m_View.SelectedSearchResultsIdsCount
         For Each id As Object In m_View.SelectedSearchResultsIds
             m_IdBeingProcessed = CInt(id)
-            If m_ActionToPerform = SelectedDocumentsAction.SetClearCategory Then
-                SetCategoryOnDocument(m_IdBeingProcessed, m_CategoryExportParam)
+            If m_ActionToPerform = SelectedDocumentsAction.SetCategory Then
+                SetCategoryOnDocument(m_IdBeingProcessed, m_ActionParam)
+            ElseIf m_ActionToPerform = SelectedDocumentsAction.SetTaxYear Then
+                SetTaxYearOnDocument(m_IdBeingProcessed, m_ActionParam)
             ElseIf m_ActionToPerform = SelectedDocumentsAction.Delete Then
                 DeleteDocument(m_IdBeingProcessed)
             ElseIf m_ActionToPerform = SelectedDocumentsAction.Export Then
@@ -97,7 +102,7 @@ Public Class MainSelectedSearchResultsProcessPresenter
             Application.DoEvents()
         Next
         m_View.DeleteExportProgressVisible = False
-        If m_ActionToPerform = SelectedDocumentsAction.SetClearCategory Or
+        If m_ActionToPerform = SelectedDocumentsAction.SetCategory Or
             SelectedDocumentsAction.Delete Then
             m_View.RefreshSearchResults()
         Else
@@ -109,6 +114,13 @@ Public Class MainSelectedSearchResultsProcessPresenter
                                              ByVal newCategory As String)
         Using model As IDocumentRepository = New DocumentRepository
             model.UpdateCategoryById(id, newCategory)
+        End Using
+    End Sub
+
+    Private Shared Sub SetTaxYearOnDocument(ByVal id As Integer,
+                                            ByVal newTaxYear As String)
+        Using model As IDocumentRepository = New DocumentRepository
+            model.UpdateTaxYearById(id, newTaxYear)
         End Using
     End Sub
 
@@ -149,9 +161,10 @@ Public Class MainSelectedSearchResultsProcessPresenter
             End If
             Dim notes As String = model.GetNotesById(id)
             Dim category As String = model.GetCategoryById(id)
+            Dim taxYear As String = model.GetTaxYearById(id)
             Dim flagState As String = model.GetFlagStateById(id)
             Dim suppDataHelper As New PdfSupplementalDataHelper(pdfInfo.FullName)
-            suppDataHelper.Write(notes, category, flagState)
+            suppDataHelper.Write(notes, category, taxYear, flagState)
         End Using
     End Sub
 End Class

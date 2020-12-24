@@ -31,16 +31,10 @@ Public NotInheritable Class DocumentRepository
         Return repository.GetAllAuthors
     End Function
 
-    Public Function GetAllAuthorsBySubject(subject As String) As DataTable Implements IDocumentRepository.GetAllAuthorsBySubject
-        Return repository.GetAllAuthorsBySubject(subject)
-    End Function
-
-    Public Function GetAllAuthorsByCategory(category As String) As DataTable Implements IDocumentRepository.GetAllAuthorsByCategory
-        Return repository.GetAllAuthorsByCategory(category)
-    End Function
-
-    Public Function GetAllAuthorsBySubjectAndCategory(subject As String, category As String) As Object Implements IDocumentRepository.GetAllAuthorsBySubjectAndCategory
-        Return repository.GetAllAuthorsBySubjectAndCategory(subject, category)
+    Public Function GetAllAuthorsBySubjectCategoryAndTaxYear(subject As String,
+                                                             category As String,
+                                                             taxYear As String) As DataTable Implements IDocumentRepository.GetAllAuthorsBySubjectCategoryAndTaxYear
+        Return repository.GetAllAuthorsBySubjectCategoryAndTaxYear(subject, category, taxYear)
     End Function
 
     Public Function GetAllSubjects() As DataTable Implements IDocumentRepository.GetAllSubjects
@@ -51,36 +45,41 @@ Public NotInheritable Class DocumentRepository
         Return repository.GetAllSubjectsByAuthor(author)
     End Function
 
-    Public Function GetAllSubjectsByCategory(category As String) As Object Implements IDocumentRepository.GetAllSubjectsByCategory
-        Return repository.GetAllSubjectsByCategory(category)
-    End Function
-
-    Public Function GetAllSubjectsByAuthorAndCategory(author As String, category As String) As Object Implements IDocumentRepository.GetAllSubjectsByAuthorAndCategory
-        Return repository.GetAllSubjectsByAuthorAndCategory(author, category)
+    Public Function GetAllSubjectsByAuthorCategoryAndTaxYear(author As String,
+                                                             category As String,
+                                                             taxYear As String) As DataTable Implements IDocumentRepository.GetAllSubjectsByAuthorCategoryAndTaxYear
+        Return repository.GetAllSubjectsByAuthorCategoryAndTaxYear(author, category, taxYear)
     End Function
 
     Public Function GetAllCategories() As DataTable Implements IDocumentRepository.GetAllCategories
         Return repository.GetAllCategories
     End Function
 
-    Public Function GetAllCategoriesByAuthor(author As String) As Object Implements IDocumentRepository.GetAllCategoriesByAuthor
-        Return repository.GetAllCategoriesByAuthor(author)
+    Public Function GetAllCategoriesByAuthorSubjectAndTaxYear(author As String,
+                                                              subject As String,
+                                                              taxYear As String) As DataTable Implements IDocumentRepository.GetAllCategoriesByAuthorSubjectAndTaxYear
+        Return repository.GetAllCategoriesByAuthorSubjectAndTaxYear(author, subject, taxYear)
     End Function
 
-    Public Function GetAllCategoriesBySubject(subject As String) As Object Implements IDocumentRepository.GetAllCategoriesBySubject
-        Return repository.GetAllCategoriesBySubject(subject)
+    Public Function GetAllTaxYears() As DataTable Implements IDocumentRepository.GetAllTaxYears
+        Return repository.GetAllTaxYears
     End Function
 
-    Public Function GetAllCategoriesByAuthorAndSubject(author As String, subject As String) As Object Implements IDocumentRepository.GetAllCategoriesByAuthorAndSubject
-        Return repository.GetAllCategoriesByAuthorAndSubject(author, subject)
+    Public Function GetAllTaxYearsByAuthorSubjectAndCategory(author As String,
+                                                             subject As String,
+                                                             category As String) As DataTable Implements IDocumentRepository.GetAllTaxYearsByAuthorSubjectAndCategory
+        Return repository.GetAllTaxYearsByAuthorSubjectAndCategory(author, subject, category)
     End Function
 
     Public Function GetAllRecordsBySearchText(searchValue As String) As DataTable Implements IDocumentRepository.GetAllRecordsBySearchText
         Return repository.GetAllRecordsBySearchText(searchValue)
     End Function
 
-    Public Function GetAllRecordsByAuthorSubjectAndCategory(author As String, subject As String, category As String) As DataTable Implements IDocumentRepository.GetAllRecordsByAuthorSubjectAndCategory
-        Return repository.GetAllRecordsByAuthorSubjectAndCategory(author, subject, category)
+    Public Function GetAllRecordsByAuthorSubjectCategoryAndTaxYear(author As String,
+                                                                   subject As String,
+                                                                   category As String,
+                                                                   taxYear As String) As DataTable Implements IDocumentRepository.GetAllRecordsByAuthorSubjectCategoryAndTaxYear
+        Return repository.GetAllRecordsByAuthorSubjectCategoryAndTaxYear(author, subject, category, taxYear)
     End Function
 
     Public Function GetAllRecordsByDateAdded(dateAdded As String) As DataTable Implements IDocumentRepository.GetAllRecordsByDateAdded
@@ -123,6 +122,10 @@ Public NotInheritable Class DocumentRepository
         Return repository.GetCategoryById(id)
     End Function
 
+    Public Function GetTaxYearById(id As Integer) As String Implements IDocumentRepository.GetTaxYearById
+        Return repository.GetTaxYearById(id)
+    End Function
+
     Public Function GetFlagStateById(id As Integer) As Int32 Implements IDocumentRepository.GetFlagStateById
         Return repository.GetFlagStateById(id)
     End Function
@@ -131,8 +134,28 @@ Public NotInheritable Class DocumentRepository
         repository.GetPdfById(id, pdfFile)
     End Sub
 
-    Public Sub CreateRecord(title As String, author As String, subject As String, keywords As String, notes As String, pdfFile As String, category As String, flag As Integer) Implements IDocumentRepository.CreateRecord
-        repository.CreateRecord(title, author, subject, keywords, notes, pdfFile, category, flag)
+    Public Sub CreateRecord(title As String,
+                            author As String,
+                            subject As String,
+                            keywords As String,
+                            notes As String,
+                            pdfFile As String,
+                            category As String,
+                            flag As Integer,
+                            taxYear As String,
+                            annotations As String,
+                            text As String) Implements IDocumentRepository.CreateRecord
+        repository.CreateRecord(title,
+                                author,
+                                subject,
+                                keywords,
+                                notes,
+                                pdfFile,
+                                category,
+                                flag,
+                                taxYear,
+                                annotations,
+                                text)
     End Sub
 
     Public Sub UpdateNotesById(id As Integer, notes As String) Implements IDocumentRepository.UpdateNotesById
@@ -141,6 +164,10 @@ Public NotInheritable Class DocumentRepository
 
     Public Sub UpdateCategoryById(id As Integer, category As String) Implements IDocumentRepository.UpdateCategoryById
         repository.UpdateCategoryById(id, category)
+    End Sub
+
+    Public Sub UpdateTaxYearById(id As Integer, taxYear As String) Implements IDocumentRepository.UpdateTaxYearById
+        repository.UpdateTaxYearById(id, taxYear)
     End Sub
 
     Public Sub UpdateFlagStateById(id As Integer, flag As Integer) Implements IDocumentRepository.UpdateFlagStateById

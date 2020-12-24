@@ -53,19 +53,23 @@ Public Class PdfSupplementalDataHelper
     End Function
 
     ''' <summary>
-    ''' Writes the specified notes, category, and flag state to an XML file
-    ''' with the same name and in the same folder as the PDF file object.
+    ''' Writes the specified notes, category, tax year, and flag state to an
+    ''' XML file with the same name and in the same folder as the PDF file
+    ''' object.
     ''' </summary>
     ''' <param name="notes"></param>
     ''' <param name="category"></param>
+    ''' <param name="taxYear"></param>
     ''' <param name="flagState">0 or 1, where 1 = flagged</param>
     ''' <remarks></remarks>
     Public Sub Write(ByVal notes As String,
                      ByVal category As String,
+                     ByVal taxYear As String,
                      ByVal flagState As Integer)
         With suppData
             .Notes = notes
             .Category = category
+            .TaxYear = taxYear
             .FlagState = flagState
         End With
         serializer.Serialize(suppData)

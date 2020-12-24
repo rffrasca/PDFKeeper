@@ -21,5 +21,6 @@
 Public Class PdfSupplementalData
     Public Property Notes As String
     Public Property Category As String
+    Public Property TaxYear As String
     Public Property FlagState As Integer
 End Class

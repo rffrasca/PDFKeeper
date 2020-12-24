@@ -206,6 +206,25 @@ Public Class ManageUploadFolderConfigurationsDialog
         End Set
     End Property
 
+    Public Property TaxYears As Object Implements ICommonView.TaxYears
+        Get
+            Return TaxYearComboBox.Items
+        End Get
+        Set(value As Object)
+            TaxYearComboBox.Items.Clear()
+            TaxYearComboBox.Items.AddRange(value)
+        End Set
+    End Property
+
+    Public Property TaxYear As String Implements ICommonView.TaxYear
+        Get
+            Return TaxYearComboBox.Text
+        End Get
+        Set(value As String)
+            TaxYearComboBox.Text = value
+        End Set
+    End Property
+
     Public Property FlagDocument As Boolean Implements IManageUploadFolderConfigurationsView.FlagDocument
         Get
             Return FlagDocumentCheckBox.Checked
@@ -222,12 +241,6 @@ Public Class ManageUploadFolderConfigurationsDialog
         Set(value As Boolean)
             SaveButton.Enabled = value
         End Set
-    End Property
-
-    Public ReadOnly Property ActiveElement As String Implements ICommonView.ActiveElement
-        Get
-            Return Me.ActiveControl.Name
-        End Get
     End Property
 
     Public Property AuthorsGroup As DataTable Implements ICommonView.AuthorsGroup
@@ -282,6 +295,30 @@ Public Class ManageUploadFolderConfigurationsDialog
         Set(value As String)
             Throw New NotImplementedException()
         End Set
+    End Property
+
+    Public Property TaxYearsGroup As DataTable Implements ICommonView.TaxYearsGroup
+        Get
+            Return Nothing
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property TaxYearGroup As String Implements ICommonView.TaxYearGroup
+        Get
+            Return Nothing
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public ReadOnly Property ActiveElement As String Implements ICommonView.ActiveElement
+        Get
+            Return Me.ActiveControl.Name
+        End Get
     End Property
 
     Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor
@@ -353,6 +390,10 @@ Public Class ManageUploadFolderConfigurationsDialog
 
     Private Sub CategoryComboBox_TextChanged(sender As Object, e As EventArgs) Handles CategoryComboBox.TextChanged
         commonPresenter.ActiveElementTextTrimStart()
+    End Sub
+
+    Private Sub TaxYearComboBox_Enter(sender As Object, e As EventArgs) Handles TaxYearComboBox.Enter
+        commonPresenter.FillTaxYears()
     End Sub
 
     Private Sub SaveButton_Click(sender As Object, e As EventArgs) Handles SaveButton.Click

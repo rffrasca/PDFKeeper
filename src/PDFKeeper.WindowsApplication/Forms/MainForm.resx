@@ -264,6 +264,15 @@
   <data name="FileSetCategoryToolStripMenuItem.Text" xml:space="preserve">
     <value>Set &amp;Category...</value>
   </data>
+  <data name="FileSetTaxYearToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+T</value>
+  </data>
+  <data name="FileSetTaxYearToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="FileSetTaxYearToolStripMenuItem.Text" xml:space="preserve">
+    <value>Set Tax &amp;Year...</value>
+  </data>
   <data name="FileDeleteToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -690,7 +699,7 @@
     <value>True</value>
   </data>
   <data name="NotesTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 252</value>
+    <value>357, 219</value>
   </data>
   <data name="NotesTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -717,7 +726,7 @@
     <value>True</value>
   </data>
   <data name="NotesTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 258</value>
+    <value>363, 225</value>
   </data>
   <data name="NotesTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -753,7 +762,7 @@
     <value>True</value>
   </data>
   <data name="KeywordsTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 252</value>
+    <value>357, 219</value>
   </data>
   <data name="KeywordsTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -780,7 +789,7 @@
     <value>True</value>
   </data>
   <data name="KeywordsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 258</value>
+    <value>363, 225</value>
   </data>
   <data name="KeywordsTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -843,7 +852,7 @@
     <value>True</value>
   </data>
   <data name="PreviewPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 252</value>
+    <value>357, 219</value>
   </data>
   <data name="PreviewPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -870,7 +879,7 @@
     <value>True</value>
   </data>
   <data name="PreviewTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 258</value>
+    <value>363, 225</value>
   </data>
   <data name="PreviewTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -906,7 +915,7 @@
     <value>True</value>
   </data>
   <data name="TextTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 252</value>
+    <value>357, 219</value>
   </data>
   <data name="TextTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -933,7 +942,7 @@
     <value>True</value>
   </data>
   <data name="TextTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 258</value>
+    <value>363, 225</value>
   </data>
   <data name="TextTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -960,13 +969,13 @@
     <value>False</value>
   </data>
   <data name="SelectedDocumentTabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 303</value>
+    <value>0, 336</value>
   </data>
   <data name="SelectedDocumentTabControl.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="SelectedDocumentTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>371, 286</value>
+    <value>371, 253</value>
   </data>
   <data name="SelectedDocumentTabControl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -983,6 +992,69 @@
   <data name="&gt;&gt;SelectedDocumentTabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="TaxYearGroupComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="TaxYearGroupComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TaxYearGroupComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 235</value>
+  </data>
+  <data name="TaxYearGroupComboBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TaxYearGroupComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 23</value>
+  </data>
+  <data name="TaxYearGroupComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;TaxYearGroupComboBox.Name" xml:space="preserve">
+    <value>TaxYearGroupComboBox</value>
+  </data>
+  <data name="&gt;&gt;TaxYearGroupComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TaxYearGroupComboBox.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;TaxYearGroupComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TaxYearLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TaxYearLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="TaxYearLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 235</value>
+  </data>
+  <data name="TaxYearLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TaxYearLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 15</value>
+  </data>
+  <data name="TaxYearLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="TaxYearLabel.Text" xml:space="preserve">
+    <value>Tax Year:</value>
+  </data>
+  <data name="&gt;&gt;TaxYearLabel.Name" xml:space="preserve">
+    <value>TaxYearLabel</value>
+  </data>
+  <data name="&gt;&gt;TaxYearLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TaxYearLabel.Parent" xml:space="preserve">
+    <value>SearchGroupBox</value>
+  </data>
+  <data name="&gt;&gt;TaxYearLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="DateLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -990,7 +1062,7 @@
     <value>NoControl</value>
   </data>
   <data name="DateLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 273</value>
+    <value>6, 302</value>
   </data>
   <data name="DateLabel.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1014,7 +1086,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;DateLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="TextLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1047,7 +1119,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;TextLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="SearchFunctionsListBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1095,7 +1167,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;SearchFunctionsListBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="SearchBySelectionsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1127,7 +1199,7 @@
     <value>NoControl</value>
   </data>
   <data name="SearchBySelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 235</value>
+    <value>226, 264</value>
   </data>
   <data name="SearchBySelectionsButton.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1136,7 +1208,7 @@
     <value>140, 23</value>
   </data>
   <data name="SearchBySelectionsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="SearchBySelectionsButton.Text" xml:space="preserve">
     <value>Search b&amp;y Selections</value>
@@ -1154,7 +1226,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;SearchBySelectionsButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="SearchByTextButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1213,7 +1285,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;SearchByTextButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="SearchDateTimePicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1222,7 +1294,7 @@
     <value>False</value>
   </data>
   <data name="SearchDateTimePicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 273</value>
+    <value>80, 302</value>
   </data>
   <data name="SearchDateTimePicker.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1231,7 +1303,7 @@
     <value>285, 23</value>
   </data>
   <data name="SearchDateTimePicker.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;SearchDateTimePicker.Name" xml:space="preserve">
     <value>SearchDateTimePicker</value>
@@ -1243,7 +1315,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;SearchDateTimePicker.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="ClearSelectionsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1255,7 +1327,7 @@
     <value>NoControl</value>
   </data>
   <data name="ClearSelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 235</value>
+    <value>79, 264</value>
   </data>
   <data name="ClearSelectionsButton.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1264,7 +1336,7 @@
     <value>140, 23</value>
   </data>
   <data name="ClearSelectionsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="ClearSelectionsButton.Text" xml:space="preserve">
     <value>&amp;Clear Selections</value>
@@ -1279,7 +1351,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;ClearSelectionsButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="SubjectGroupComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1309,7 +1381,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;SubjectGroupComboBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="CategoryGroupComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1339,7 +1411,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;CategoryGroupComboBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="CategoryLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1372,7 +1444,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;CategoryLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="SubjectLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1405,7 +1477,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;SubjectLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="AuthorGroupComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1435,7 +1507,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;AuthorGroupComboBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="AuthorLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1468,7 +1540,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;AuthorLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="SearchTextComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1498,7 +1570,7 @@
     <value>SearchGroupBox</value>
   </data>
   <data name="&gt;&gt;SearchTextComboBox.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="SearchGroupBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1510,7 +1582,7 @@
     <value>True</value>
   </data>
   <data name="SearchGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>371, 303</value>
+    <value>371, 336</value>
   </data>
   <data name="SearchGroupBox.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2778,6 +2850,12 @@
   </data>
   <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
     <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FileSetTaxYearToolStripMenuItem.Name" xml:space="preserve">
+    <value>FileSetTaxYearToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;FileSetTaxYearToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

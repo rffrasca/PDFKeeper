@@ -17,15 +17,20 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Namespace Enums
+Public NotInheritable Class TaxYearsGenerator
     ''' <summary>
-    ''' Actions that can be performed on all selected Search Results items.
+    ''' Generates a range of tax years.
     ''' </summary>
-    ''' <remarks></remarks>
-    Public Enum SelectedDocumentsAction
-        SetCategory
-        SetTaxYear
-        Delete
-        Export
-    End Enum
-End Namespace
+    ''' <returns>Array of tax years.</returns>
+    Public Shared Function ToArray() As Object
+        Dim taxYears As New ArrayList
+        taxYears.Add(String.Empty)
+        Dim lastYear As Integer = DateTime.Now.Year
+        Dim j As Integer = 1999
+        Do While j <= lastYear
+            j += 1
+            taxYears.Add(j)
+        Loop
+        Return taxYears.ToArray
+    End Function
+End Class

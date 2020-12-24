@@ -17,7 +17,9 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class SetCategoryDialog
+Imports System.Windows.Forms
+
+Public Class SetTaxYearDialog
     Implements ICommonView
     Private ReadOnly presenter As CommonPresenter
     Private ReadOnly help As IHelpDisplayService = New HelpDisplayService
@@ -26,45 +28,45 @@ Public Class SetCategoryDialog
         InitializeComponent()
         presenter = New CommonPresenter(Me)
         HelpProvider.HelpNamespace = help.Name
+        TaxYearComboBox.Select()
     End Sub
 
 #Region "Interface Members"
-    Public Property AuthorsPaired As DataTable Implements ICommonView.AuthorsPaired
+    Public Property TaxYears As Object Implements ICommonView.TaxYears
         Get
-            Return Nothing
+            Return TaxYearComboBox.Items
         End Get
-        Set(value As DataTable)
-            Throw New NotImplementedException
+        Set(value As Object)
+            TaxYearComboBox.Items.Clear()
+            TaxYearComboBox.Items.AddRange(value)
         End Set
     End Property
 
-    Public Property AuthorPaired As String Implements ICommonView.AuthorPaired
+    Public Property TaxYear As String Implements ICommonView.TaxYear
         Get
-            Return Nothing
-        End Get
-        Set(value As String)
-            Throw New NotImplementedException
-        End Set
-    End Property
-
-    Public Property SubjectsPaired As DataTable Implements ICommonView.SubjectsPaired
-        Get
-            Return Nothing
-        End Get
-        Set(value As DataTable)
-            Throw New NotImplementedException
-        End Set
-    End Property
-
-    Public Property SubjectPaired As String Implements ICommonView.SubjectPaired
-        Get
-            Return Nothing
+            Return TaxYearComboBox.Text
         End Get
         Set(value As String)
-            Throw New NotImplementedException
+            TaxYearComboBox.Text = value
         End Set
     End Property
 
+    Public ReadOnly Property ActiveElement As String Implements ICommonView.ActiveElement
+        Get
+            Return Me.ActiveControl.Name
+        End Get
+    End Property
+
+    Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor
+        If wait Then
+            Me.Cursor = Cursors.WaitCursor
+        Else
+            Me.Cursor = Cursors.Default
+        End If
+    End Sub
+#End Region
+
+#Region "Unused Interface Members"
     Public Property AuthorsGroup As DataTable Implements ICommonView.AuthorsGroup
         Get
             Return Nothing
@@ -101,25 +103,6 @@ Public Class SetCategoryDialog
         End Set
     End Property
 
-    Public Property Categories As DataTable Implements ICommonView.Categories
-        Get
-            Return CategoryComboBox.DataSource
-        End Get
-        Set(value As DataTable)
-            CategoryComboBox.DataSource = value
-            CategoryComboBox.DisplayMember = "doc_category"
-        End Set
-    End Property
-
-    Public Property Category As String Implements ICommonView.Category
-        Get
-            Return CategoryComboBox.Text
-        End Get
-        Set(value As String)
-            CategoryComboBox.Text = value
-        End Set
-    End Property
-
     Public Property CategoriesGroup As DataTable Implements ICommonView.CategoriesGroup
         Get
             Return Nothing
@@ -130,24 +113,6 @@ Public Class SetCategoryDialog
     End Property
 
     Public Property CategoryGroup As String Implements ICommonView.CategoryGroup
-        Get
-            Return Nothing
-        End Get
-        Set(value As String)
-            Throw New NotImplementedException()
-        End Set
-    End Property
-
-    Public Property TaxYears As Object Implements ICommonView.TaxYears
-        Get
-            Return Nothing
-        End Get
-        Set(value As Object)
-            Throw New NotImplementedException()
-        End Set
-    End Property
-
-    Public Property TaxYear As String Implements ICommonView.TaxYear
         Get
             Return Nothing
         End Get
@@ -174,31 +139,66 @@ Public Class SetCategoryDialog
         End Set
     End Property
 
-    Public ReadOnly Property ActiveElement As String Implements ICommonView.ActiveElement
+    Public Property AuthorsPaired As DataTable Implements ICommonView.AuthorsPaired
         Get
-            Return Me.ActiveControl.Name
+            Return Nothing
         End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException()
+        End Set
     End Property
 
-    Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor
-        If wait Then
-            Me.Cursor = Cursors.WaitCursor
-        Else
-            Me.Cursor = Cursors.Default
-        End If
-    End Sub
+    Public Property AuthorPaired As String Implements ICommonView.AuthorPaired
+        Get
+            Return Nothing
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property SubjectsPaired As DataTable Implements ICommonView.SubjectsPaired
+        Get
+            Return Nothing
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property SubjectPaired As String Implements ICommonView.SubjectPaired
+        Get
+            Return Nothing
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property Categories As DataTable Implements ICommonView.Categories
+        Get
+            Return Nothing
+        End Get
+        Set(value As DataTable)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public Property Category As String Implements ICommonView.Category
+        Get
+            Return Nothing
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
+        End Set
+    End Property
 #End Region
 
-    Private Sub CategoryComboBox_Enter(sender As Object, e As EventArgs) Handles CategoryComboBox.Enter
-        presenter.GetColumnItemsByGroup()
-    End Sub
-
-    Private Sub CategoryComboBox_TextChanged(sender As Object, e As EventArgs) Handles CategoryComboBox.TextChanged, CategoryComboBox.TextUpdate
-        presenter.ActiveElementTextTrimStart()
+    Private Sub TaxYearComboBox_Enter(sender As Object, e As EventArgs) Handles TaxYearComboBox.Enter
+        presenter.FillTaxYears()
     End Sub
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
-        presenter.AllElementsTextTrimEnd()
         Me.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.Close()
     End Sub

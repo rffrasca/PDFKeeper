@@ -57,12 +57,16 @@ Public Interface ICommonView
     Property SubjectGroup As String
     Property CategoriesGroup As DataTable
     Property CategoryGroup As String
+    Property TaxYearsGroup As DataTable
+    Property TaxYearGroup As String
     Property AuthorsPaired As DataTable
     Property AuthorPaired As String
     Property SubjectsPaired As DataTable
     Property SubjectPaired As String
     Property Categories As DataTable
     Property Category As String
+    Property TaxYears As Object
+    Property TaxYear As String
     ReadOnly Property ActiveElement As String
     Sub SetCursor(ByVal wait As Boolean)
 End Interface
