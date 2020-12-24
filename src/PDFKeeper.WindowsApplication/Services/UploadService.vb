@@ -300,7 +300,7 @@ Public NotInheritable Class UploadService
                                                     flag,
                                                     taxYear,
                                                     Nothing,
-                                                    Nothing)
+                                                    pdfInfo.GetText)
                         End Using
                         IO.File.Delete(pdfPath)
                         Dim suppDataXmlPath As String =

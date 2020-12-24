@@ -130,6 +130,10 @@ Public NotInheritable Class DocumentRepository
         Return repository.GetFlagStateById(id)
     End Function
 
+    Public Function GetTextById(id As Integer) As String Implements IDocumentRepository.GetTextById
+        Return repository.GetTextById(id)
+    End Function
+
     Public Sub GetPdfById(id As Integer, pdfFile As String) Implements IDocumentRepository.GetPdfById
         repository.GetPdfById(id, pdfFile)
     End Sub

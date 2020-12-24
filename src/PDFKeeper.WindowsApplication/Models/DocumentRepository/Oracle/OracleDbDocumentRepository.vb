@@ -417,6 +417,11 @@ Public NotInheritable Class OracleDbDocumentRepository
                                CultureInfo.CurrentCulture)
     End Function
 
+    Public Function GetTextById(id As Integer) As String Implements IDocumentRepository.GetTextById
+        Return Convert.ToString(GetColumnDataById(id, "doc_text").Rows(0)("doc_text"),
+                                CultureInfo.CurrentCulture)
+    End Function
+
     Public Sub GetPdfById(id As Integer, pdfFile As String) Implements IDocumentRepository.GetPdfById
         Dim sqlStatement As String =
             "select doc_pdf " &

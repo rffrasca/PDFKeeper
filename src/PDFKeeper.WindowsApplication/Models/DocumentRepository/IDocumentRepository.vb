@@ -53,6 +53,7 @@ Public Interface IDocumentRepository
     Function GetCategoryById(ByVal id As Integer) As String
     Function GetTaxYearById(ByVal id As Integer) As String
     Function GetFlagStateById(ByVal id As Integer) As Int32
+    Function GetTextById(ByVal id As Integer) As String
     Sub GetPdfById(ByVal id As Integer, ByVal pdfFile As String)
     Sub CreateRecord(ByVal title As String,
                      ByVal author As String,

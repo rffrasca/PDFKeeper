@@ -687,9 +687,9 @@ Public Class MainPresenter
     End Sub
 
     Private Sub GetDocumentText()
-        cachePathName = New CacheFilePathName(view.DocumentRecordId)
-        Dim pdfInfo As New PdfFileInfo(cachePathName.Pdf)
-        view.DocumentText = pdfInfo.GetText
+        Using model As IDocumentRepository = New DocumentRepository
+            view.DocumentText = model.GetTextById(view.DocumentRecordId)
+        End Using
     End Sub
 
     Private Sub UpdateDocumentRecordNotes()
