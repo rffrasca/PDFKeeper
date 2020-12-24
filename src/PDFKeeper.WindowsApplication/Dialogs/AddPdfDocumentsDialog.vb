@@ -271,6 +271,22 @@ Public Class AddPdfDocumentsDialog
         End Set
     End Property
 
+    Public ReadOnly Property ActiveElement As String Implements ICommonView.ActiveElement
+        Get
+            Return Me.ActiveControl.Name
+        End Get
+    End Property
+
+    Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor
+        If wait Then
+            Me.Cursor = Cursors.WaitCursor
+        Else
+            Me.Cursor = Cursors.Default
+        End If
+    End Sub
+#End Region
+
+#Region "Not Implemented Interface Members"
     Public Property AuthorsGroup As DataTable Implements ICommonView.AuthorsGroup
         Get
             Return Nothing
@@ -342,20 +358,6 @@ Public Class AddPdfDocumentsDialog
             Throw New NotImplementedException()
         End Set
     End Property
-
-    Public ReadOnly Property ActiveElement As String Implements ICommonView.ActiveElement
-        Get
-            Return Me.ActiveControl.Name
-        End Get
-    End Property
-
-    Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor
-        If wait Then
-            Me.Cursor = Cursors.WaitCursor
-        Else
-            Me.Cursor = Cursors.Default
-        End If
-    End Sub
 #End Region
 
     Private Sub AddPdfDocumentsDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load

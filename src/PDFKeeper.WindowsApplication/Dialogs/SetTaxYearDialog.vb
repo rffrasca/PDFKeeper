@@ -66,7 +66,7 @@ Public Class SetTaxYearDialog
     End Sub
 #End Region
 
-#Region "Unused Interface Members"
+#Region "Not Implemented Interface Members"
     Public Property AuthorsGroup As DataTable Implements ICommonView.AuthorsGroup
         Get
             Return Nothing

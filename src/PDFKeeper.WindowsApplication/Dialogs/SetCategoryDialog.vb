@@ -29,6 +29,41 @@ Public Class SetCategoryDialog
     End Sub
 
 #Region "Interface Members"
+    Public Property Categories As DataTable Implements ICommonView.Categories
+        Get
+            Return CategoryComboBox.DataSource
+        End Get
+        Set(value As DataTable)
+            CategoryComboBox.DataSource = value
+            CategoryComboBox.DisplayMember = "doc_category"
+        End Set
+    End Property
+
+    Public Property Category As String Implements ICommonView.Category
+        Get
+            Return CategoryComboBox.Text
+        End Get
+        Set(value As String)
+            CategoryComboBox.Text = value
+        End Set
+    End Property
+
+    Public ReadOnly Property ActiveElement As String Implements ICommonView.ActiveElement
+        Get
+            Return Me.ActiveControl.Name
+        End Get
+    End Property
+
+    Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor
+        If wait Then
+            Me.Cursor = Cursors.WaitCursor
+        Else
+            Me.Cursor = Cursors.Default
+        End If
+    End Sub
+#End Region
+
+#Region "Not Implemented Interface Members"
     Public Property AuthorsPaired As DataTable Implements ICommonView.AuthorsPaired
         Get
             Return Nothing
@@ -101,25 +136,6 @@ Public Class SetCategoryDialog
         End Set
     End Property
 
-    Public Property Categories As DataTable Implements ICommonView.Categories
-        Get
-            Return CategoryComboBox.DataSource
-        End Get
-        Set(value As DataTable)
-            CategoryComboBox.DataSource = value
-            CategoryComboBox.DisplayMember = "doc_category"
-        End Set
-    End Property
-
-    Public Property Category As String Implements ICommonView.Category
-        Get
-            Return CategoryComboBox.Text
-        End Get
-        Set(value As String)
-            CategoryComboBox.Text = value
-        End Set
-    End Property
-
     Public Property CategoriesGroup As DataTable Implements ICommonView.CategoriesGroup
         Get
             Return Nothing
@@ -173,20 +189,6 @@ Public Class SetCategoryDialog
             Throw New NotImplementedException()
         End Set
     End Property
-
-    Public ReadOnly Property ActiveElement As String Implements ICommonView.ActiveElement
-        Get
-            Return Me.ActiveControl.Name
-        End Get
-    End Property
-
-    Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor
-        If wait Then
-            Me.Cursor = Cursors.WaitCursor
-        Else
-            Me.Cursor = Cursors.Default
-        End If
-    End Sub
 #End Region
 
     Private Sub CategoryComboBox_Enter(sender As Object, e As EventArgs) Handles CategoryComboBox.Enter

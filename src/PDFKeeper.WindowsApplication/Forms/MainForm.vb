@@ -576,6 +576,67 @@ Public Class MainForm
         End Get
     End Property
 
+    Public Sub RemoveAllDocumentsFromSearchFunctions() Implements IMainView.RemoveAllDocumentsFromSearchFunctions
+        SearchFunctionsListBox.Items.RemoveAt(4)
+    End Sub
+
+    Public Sub SelectSearchResultsLastRow() Implements IMainView.SelectSearchResultsLastRow
+        SearchResultsDataGridView.Rows(SearchResultsDataGridView.Rows.Count - 1).Selected = True
+        SearchResultsDataGridView.FirstDisplayedScrollingRowIndex = SearchResultsDataGridView.RowCount - 1
+    End Sub
+
+    Public Sub SelectSearchResultRowById(id As Integer) Implements IMainView.SelectSearchResultRowById
+        For Each row As DataGridViewRow In SearchResultsDataGridView.Rows
+            If row.Cells(1).Value = id Then
+                row.Selected = True
+                SearchResultsDataGridView.FirstDisplayedScrollingRowIndex = row.Index
+            End If
+        Next
+    End Sub
+
+    Public Sub SelectDeselectAllSearchResults(selectionState As SelectionState) Implements IMainView.SelectDeselectAllSearchResults
+        For Each row As DataGridViewRow In SearchResultsDataGridView.Rows
+            If selectionState = SelectionState.SelectAll Then
+                row.Cells(0).Value = True
+            ElseIf selectionState = SelectionState.DeselectAll Then
+                row.Cells(0).Value = False
+            End If
+        Next
+        SearchResultsDataGridView.RefreshEdit()
+    End Sub
+
+    Public Sub SortSearchResults(sortColumnIndex As Integer, sortDirection As ListSortDirection) Implements IMainView.SortSearchResults
+        SearchResultsDataGridView.Sort(SearchResultsDataGridView.Columns(sortColumnIndex), sortDirection)
+    End Sub
+
+    Public Sub RefreshSearchResults() Implements IMainView.RefreshSearchResults
+        ViewRefreshToolStrip_Click(Me, Nothing)
+    End Sub
+
+    Public Sub ResetSearchResultsHeader() Implements IMainView.ResetSearchResultsHeader
+        SearchResultsDataGridView.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+    End Sub
+
+    Public Sub ScrollToEndInNotesElement() Implements IMainView.ScrollToEndInNotesElement
+        NotesTextBox.Select()
+        NotesTextBox.Select(NotesTextBox.Text.Length, 0)
+        NotesTextBox.ScrollToCaret()
+    End Sub
+
+    Public Sub DeleteExportProgressPerformStep() Implements IMainView.DeleteExportProgressPerformStep
+        DeleteExportToolStripProgressBar.PerformStep()
+    End Sub
+
+    Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor
+        If wait Then
+            Me.Cursor = Cursors.WaitCursor
+        Else
+            Me.Cursor = Cursors.Default
+        End If
+    End Sub
+#End Region
+
+#Region "Not Implemented Interface Members (IMainView)"
     Public Property AuthorsPaired As DataTable Implements ICommonView.AuthorsPaired
         Get
             Return Nothing
@@ -647,65 +708,6 @@ Public Class MainForm
             Throw New NotImplementedException()
         End Set
     End Property
-
-    Public Sub RemoveAllDocumentsFromSearchFunctions() Implements IMainView.RemoveAllDocumentsFromSearchFunctions
-        SearchFunctionsListBox.Items.RemoveAt(4)
-    End Sub
-
-    Public Sub SelectSearchResultsLastRow() Implements IMainView.SelectSearchResultsLastRow
-        SearchResultsDataGridView.Rows(SearchResultsDataGridView.Rows.Count - 1).Selected = True
-        SearchResultsDataGridView.FirstDisplayedScrollingRowIndex = SearchResultsDataGridView.RowCount - 1
-    End Sub
-
-    Public Sub SelectSearchResultRowById(id As Integer) Implements IMainView.SelectSearchResultRowById
-        For Each row As DataGridViewRow In SearchResultsDataGridView.Rows
-            If row.Cells(1).Value = id Then
-                row.Selected = True
-                SearchResultsDataGridView.FirstDisplayedScrollingRowIndex = row.Index
-            End If
-        Next
-    End Sub
-
-    Public Sub SelectDeselectAllSearchResults(selectionState As SelectionState) Implements IMainView.SelectDeselectAllSearchResults
-        For Each row As DataGridViewRow In SearchResultsDataGridView.Rows
-            If selectionState = SelectionState.SelectAll Then
-                row.Cells(0).Value = True
-            ElseIf selectionState = SelectionState.DeselectAll Then
-                row.Cells(0).Value = False
-            End If
-        Next
-        SearchResultsDataGridView.RefreshEdit()
-    End Sub
-
-    Public Sub SortSearchResults(sortColumnIndex As Integer, sortDirection As ListSortDirection) Implements IMainView.SortSearchResults
-        SearchResultsDataGridView.Sort(SearchResultsDataGridView.Columns(sortColumnIndex), sortDirection)
-    End Sub
-
-    Public Sub RefreshSearchResults() Implements IMainView.RefreshSearchResults
-        ViewRefreshToolStrip_Click(Me, Nothing)
-    End Sub
-
-    Public Sub ResetSearchResultsHeader() Implements IMainView.ResetSearchResultsHeader
-        SearchResultsDataGridView.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-    End Sub
-
-    Public Sub ScrollToEndInNotesElement() Implements IMainView.ScrollToEndInNotesElement
-        NotesTextBox.Select()
-        NotesTextBox.Select(NotesTextBox.Text.Length, 0)
-        NotesTextBox.ScrollToCaret()
-    End Sub
-
-    Public Sub DeleteExportProgressPerformStep() Implements IMainView.DeleteExportProgressPerformStep
-        DeleteExportToolStripProgressBar.PerformStep()
-    End Sub
-
-    Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor
-        If wait Then
-            Me.Cursor = Cursors.WaitCursor
-        Else
-            Me.Cursor = Cursors.Default
-        End If
-    End Sub
 #End Region
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
