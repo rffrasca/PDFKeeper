@@ -28,7 +28,6 @@ Namespace My
     ' NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
     Partial Friend Class MyApplication
         Private Sub MyApplication_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
-            Dependency.RestoreBouncyCastle()
             Dim help As IHelpDisplayService = New HelpDisplayService
             Dim previousVersion As String = UserConfig.CurrentVersion
             UserConfig.Upgrade()
@@ -39,6 +38,8 @@ Namespace My
             End If
             AddHandler AppDomain.CurrentDomain.AssemblyResolve,
                 AddressOf Dependency.GetOracleDataAccessAssemblyPath
+            Dependency.RestoreBouncyCastle()
+            Dependency.SetMagickNetGhostscriptDirectory()
             If LoginForm.ShowDialog = Windows.Forms.DialogResult.Cancel Then
                 e.Cancel = True
             End If

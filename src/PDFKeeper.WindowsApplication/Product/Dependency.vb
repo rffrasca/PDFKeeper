@@ -53,4 +53,8 @@ Public NotInheritable Class Dependency
             IO.File.Copy(bouncyCastleBackup, bouncyCastle)
         End If
     End Sub
+
+    Public Shared Sub SetMagickNetGhostscriptDirectory()
+        MagickNET.SetGhostscriptDirectory(Application.StartupPath)
+    End Sub
 End Class
