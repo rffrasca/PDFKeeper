@@ -9,7 +9,7 @@
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="MainSize" Type="System.Drawing.Size" Scope="User">
-      <Value Profile="(Default)">1000, 700</Value>
+      <Value Profile="(Default)">1000, 800</Value>
     </Setting>
     <Setting Name="MainWindowState" Type="System.Windows.Forms.FormWindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>

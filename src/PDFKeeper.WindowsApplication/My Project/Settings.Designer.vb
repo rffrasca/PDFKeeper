@@ -80,7 +80,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("1000, 700")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1000, 800")>  _
         Public Property MainSize() As Global.System.Drawing.Size
             Get
                 Return CType(Me("MainSize"),Global.System.Drawing.Size)

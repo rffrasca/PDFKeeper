@@ -672,7 +672,7 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>984, 662</value>
+    <value>984, 761</value>
   </data>
   <data name="SplitContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -699,7 +699,7 @@
     <value>True</value>
   </data>
   <data name="NotesTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 219</value>
+    <value>357, 318</value>
   </data>
   <data name="NotesTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -726,7 +726,7 @@
     <value>True</value>
   </data>
   <data name="NotesTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 225</value>
+    <value>363, 324</value>
   </data>
   <data name="NotesTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -975,7 +975,7 @@
     <value>True</value>
   </data>
   <data name="SelectedDocumentTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>371, 253</value>
+    <value>371, 352</value>
   </data>
   <data name="SelectedDocumentTabControl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1633,7 +1633,7 @@
     <value>True</value>
   </data>
   <data name="SearchResultsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 589</value>
+    <value>604, 688</value>
   </data>
   <data name="SearchResultsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1657,7 +1657,7 @@
     <value>0, 0</value>
   </data>
   <data name="SearchResultsPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 589</value>
+    <value>604, 688</value>
   </data>
   <data name="SearchResultsPanel.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1687,7 +1687,7 @@
     <value>1</value>
   </data>
   <data name="SplitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>984, 591</value>
+    <value>984, 690</value>
   </data>
   <data name="SplitContainer.SplitterDistance" type="System.Int32, mscorlib">
     <value>373</value>
@@ -1843,7 +1843,7 @@
     <value>False</value>
   </data>
   <data name="StatusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 640</value>
+    <value>0, 739</value>
   </data>
   <data name="StatusStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 0, 16, 0</value>
@@ -2431,6 +2431,12 @@
   <data name="&gt;&gt;FileSetCategoryToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;FileSetTaxYearToolStripMenuItem.Name" xml:space="preserve">
+    <value>FileSetTaxYearToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;FileSetTaxYearToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;FileDeleteToolStripMenuItem.Name" xml:space="preserve">
     <value>FileDeleteToolStripMenuItem</value>
   </data>
@@ -2850,12 +2856,6 @@
   </data>
   <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
     <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FileSetTaxYearToolStripMenuItem.Name" xml:space="preserve">
-    <value>FileSetTaxYearToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;FileSetTaxYearToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

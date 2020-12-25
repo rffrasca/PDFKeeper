@@ -60,6 +60,7 @@ Partial Class MainForm
         Me.FileSelectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileSelectNoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileSetCategoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileSetTaxYearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileDeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileExportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
@@ -162,7 +163,6 @@ Partial Class MainForm
         Me.AutoUpdateCheckTimer = New System.Windows.Forms.Timer(Me.components)
         Me.FlaggedDocumentsCheckTimer = New System.Windows.Forms.Timer(Me.components)
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
-        Me.FileSetTaxYearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.SearchTextErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -265,6 +265,11 @@ Partial Class MainForm
         '
         Me.FileSetCategoryToolStripMenuItem.Name = "FileSetCategoryToolStripMenuItem"
         resources.ApplyResources(Me.FileSetCategoryToolStripMenuItem, "FileSetCategoryToolStripMenuItem")
+        '
+        'FileSetTaxYearToolStripMenuItem
+        '
+        Me.FileSetTaxYearToolStripMenuItem.Name = "FileSetTaxYearToolStripMenuItem"
+        resources.ApplyResources(Me.FileSetTaxYearToolStripMenuItem, "FileSetTaxYearToolStripMenuItem")
         '
         'FileDeleteToolStripMenuItem
         '
@@ -915,11 +920,6 @@ Partial Class MainForm
         '
         Me.FlaggedDocumentsCheckTimer.Enabled = True
         Me.FlaggedDocumentsCheckTimer.Interval = 10000
-        '
-        'FileSetTaxYearToolStripMenuItem
-        '
-        Me.FileSetTaxYearToolStripMenuItem.Name = "FileSetTaxYearToolStripMenuItem"
-        resources.ApplyResources(Me.FileSetTaxYearToolStripMenuItem, "FileSetTaxYearToolStripMenuItem")
         '
         'MainForm
         '
