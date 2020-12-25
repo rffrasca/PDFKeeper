@@ -99,7 +99,6 @@ Public Class PdfFileInfo
         Dim outputParam As String = Path.Combine(Path.GetDirectoryName(fileInfo.FullName),
                                                  Path.GetFileNameWithoutExtension(fileInfo.FullName) & "-" &
                                                  resolution & ".png")
-        MagickNET.SetGhostscriptDirectory(Application.StartupPath)
         Using imageCollection = New MagickImageCollection
             Dim settings = New MagickReadSettings With {
                 .Density = New Density(resolution),
@@ -110,6 +109,28 @@ Public Class PdfFileInfo
             imageCollection.Write(outputParam)
         End Using
         Return outputParam
+    End Function
+
+    ''' <summary>
+    ''' Returns the text annotations from PDF file object.
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function GetTextAnnotations() As String
+        Using reader = New PdfReader(fileInfo.FullName)
+            Dim textString As New StringBuilder
+            Using pdfDoc As New PdfDocument(reader)
+                For page As Integer = 1 To pdfDoc.GetNumberOfPages
+                    Dim annotPage As PdfPage = pdfDoc.GetPage(page)
+                    Dim annotations = annotPage.GetAnnotations()
+                    For Each annotation In annotations
+                        Dim annotDict As PdfDictionary = annotation.GetPdfObject
+                        Dim text As PdfString = annotDict.GetAsString(PdfName.Contents)
+                        textString.AppendLine(text.ToUnicodeString)
+                    Next
+                Next
+            End Using
+            Return textString.ToString
+        End Using
     End Function
 
     ''' <summary>

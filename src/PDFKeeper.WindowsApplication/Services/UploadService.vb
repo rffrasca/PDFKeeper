@@ -299,7 +299,7 @@ Public NotInheritable Class UploadService
                                                     category,
                                                     flag,
                                                     taxYear,
-                                                    Nothing,
+                                                    pdfInfo.GetTextAnnotations,
                                                     pdfInfo.GetText)
                         End Using
                         IO.File.Delete(pdfPath)

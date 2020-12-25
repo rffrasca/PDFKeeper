@@ -154,6 +154,7 @@
     <Import Include="ImageMagick" />
     <Import Include="iText.Kernel.Crypto" />
     <Import Include="iText.Kernel.Pdf" />
+    <Import Include="iText.Kernel.Pdf.Annot" />
     <Import Include="iText.Kernel.Pdf.Canvas.Parser" />
     <Import Include="iText.Kernel.Pdf.Canvas.Parser.Listener" />
     <Import Include="iText.Kernel.XMP" />
