@@ -24,7 +24,7 @@ alter table pdfkeeper.docs add(
 	constraint doc_flag_ck check (doc_flag in (0,1)));
 alter table pdfkeeper.docs add(
 	doc_tax_year number(4),
-	doc_annotations clob,
+	doc_text_annotations clob,
 	doc_text clob));
 
 drop index pdfkeeper.docs_idx;
@@ -42,7 +42,7 @@ begin
 					 doc_pdf,
 					 doc_category,
 					 doc_tax_year,
-					 doc_annotations,
+					 doc_text_annotations,
 					 doc_text');
 	ctx_ddl.set_attribute('ctxsys.pdfkeeper_multi','filter',
 			      'N,N,N,N,N,N,Y,N,N,N,N');

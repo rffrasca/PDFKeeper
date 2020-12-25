@@ -443,7 +443,7 @@ Public NotInheritable Class OracleDbDocumentRepository
                             category As String,
                             flag As Integer,
                             taxYear As String,
-                            annotations As String,
+                            textAnnotations As String,
                             text As String) Implements IDocumentRepository.CreateRecord
         Dim sqlStatement As String =
             " begin " &
@@ -460,7 +460,7 @@ Public NotInheritable Class OracleDbDocumentRepository
             " :doc_category, " &
             " :doc_flag, " &
             " :doc_tax_year, " &
-            " :doc_annotations, " &
+            " :doc_text_annotations, " &
             " :doc_text) ;" &
             " end ;"
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
@@ -476,7 +476,7 @@ Public NotInheritable Class OracleDbDocumentRepository
             oraCommand.Parameters.Add("doc_category", category)
             oraCommand.Parameters.Add("doc_flag", flag)
             oraCommand.Parameters.Add("doc_tax_year", taxYear)
-            oraCommand.Parameters.Add("doc_annotations", annotations)
+            oraCommand.Parameters.Add("doc_text_annotations", textAnnotations)
             oraCommand.Parameters.Add("doc_text", text)
             provider.ExecuteNonQuery(oraCommand)
         End Using

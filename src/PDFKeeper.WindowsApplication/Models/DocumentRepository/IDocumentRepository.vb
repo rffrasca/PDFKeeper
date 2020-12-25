@@ -64,7 +64,7 @@ Public Interface IDocumentRepository
                      ByVal category As String,
                      ByVal flag As Integer,
                      ByVal taxYear As String,
-                     ByVal annotations As String,
+                     ByVal textAnnotations As String,
                      ByVal text As String)
     Sub UpdateNotesById(ByVal id As Integer, ByVal notes As String)
     Sub UpdateCategoryById(ByVal id As Integer, ByVal category As String)

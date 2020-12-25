@@ -147,7 +147,7 @@ Public NotInheritable Class DocumentRepository
                             category As String,
                             flag As Integer,
                             taxYear As String,
-                            annotations As String,
+                            textAnnotations As String,
                             text As String) Implements IDocumentRepository.CreateRecord
         repository.CreateRecord(title,
                                 author,
@@ -158,7 +158,7 @@ Public NotInheritable Class DocumentRepository
                                 category,
                                 flag,
                                 taxYear,
-                                annotations,
+                                textAnnotations,
                                 text)
     End Sub
 
