@@ -25,7 +25,7 @@ alter table pdfkeeper.docs add(
 alter table pdfkeeper.docs add(
 	doc_tax_year number(4),
 	doc_text_annotations clob,
-	doc_text clob));
+	doc_text clob);
 
 drop index pdfkeeper.docs_idx;
 
