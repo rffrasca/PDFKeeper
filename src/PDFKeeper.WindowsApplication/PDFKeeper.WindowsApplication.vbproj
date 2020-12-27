@@ -417,6 +417,7 @@
       <Link>sumatrapdfrestrict.ini</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Mini Icons\table.gif" />
     <None Include="Resources\Mini Icons\page_text.gif" />
     <None Include="app.config" />
     <None Include="My Project\app.manifest" />

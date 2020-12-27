@@ -534,6 +534,33 @@ Public NotInheritable Class OracleDbDocumentRepository
         End Using
     End Sub
 
+    Public Sub UpdateTextAnnotationsById(id As Integer,
+                                         textAnnotations As String) Implements IDocumentRepository.UpdateTextAnnotationsById
+        Dim sqlStatement As String =
+            "update pdfkeeper.docs " &
+            "set doc_text_annotations = :doc_text_annotations " &
+            "where doc_id = :doc_id"
+        Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+            oraCommand.BindByName = True
+            oraCommand.Parameters.Add("doc_text_annotations", textAnnotations)
+            oraCommand.Parameters.Add("doc_id", id)
+            provider.ExecuteNonQuery(oraCommand)
+        End Using
+    End Sub
+
+    Public Sub UpdateTextById(id As Integer, text As String) Implements IDocumentRepository.UpdateTextById
+        Dim sqlStatement As String =
+            "update pdfkeeper.docs " &
+            "set doc_text = :doc_text " &
+            "where doc_id = :doc_id"
+        Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+            oraCommand.BindByName = True
+            oraCommand.Parameters.Add("doc_text", text)
+            oraCommand.Parameters.Add("doc_id", id)
+            provider.ExecuteNonQuery(oraCommand)
+        End Using
+    End Sub
+
     Public Sub DeleteRecordById(id As Integer) Implements IDocumentRepository.DeleteRecordById
         Dim sqlStatement As String =
             "delete from pdfkeeper.docs " &

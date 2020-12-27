@@ -217,15 +217,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to {0}.  Document ID {1} may have been deleted..
-        '''</summary>
-        Friend ReadOnly Property ExportDocumentRecordMayHaveBeenDeleted() As String
-            Get
-                Return ResourceManager.GetString("ExportDocumentRecordMayHaveBeenDeleted", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to This feature is disabled by policy..
         '''</summary>
         Friend ReadOnly Property FeatureDisabledByPolicy() As String
@@ -339,6 +330,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Populate new database table columns for all documents?.
+        '''</summary>
+        Friend ReadOnly Property PopulateSelectedDocuments() As String
+            Get
+                Return ResourceManager.GetString("PopulateSelectedDocuments", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to {0}.  Document ID {1} may have been deleted..
+        '''</summary>
+        Friend ReadOnly Property ProcessDocumentRecordMayHaveBeenDeleted() As String
+            Get
+                Return ResourceManager.GetString("ProcessDocumentRecordMayHaveBeenDeleted", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Refresh Search Results?.
         '''</summary>
         Friend ReadOnly Property RefreshSearchResults() As String
@@ -380,6 +389,16 @@ Namespace My.Resources
         Friend ReadOnly Property Subject() As String
             Get
                 Return ResourceManager.GetString("Subject", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property table() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("table", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         

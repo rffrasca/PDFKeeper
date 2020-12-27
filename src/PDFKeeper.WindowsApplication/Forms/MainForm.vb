@@ -86,7 +86,8 @@ Public Class MainForm
 #End Region
 
 #Region "Interface Members (IToolStripStateView)"
-    Public Sub SetToolStripItemsState(itemShortName As String, enabled As Boolean) Implements IToolStripStateView.SetToolStripItemsState
+    Public Sub SetToolStripItemsEnabledState(itemShortName As String,
+                                             enabled As Boolean) Implements IToolStripStateView.SetToolStripItemsEnabledState
         Dim menuStripResults = MenuStrip.Items.Find(itemShortName & "ToolStripMenuItem", True).ToList
         Dim toolBarResults = ToolStrip.Items.Find(itemShortName & "ToolStripButton", True).ToList
         For Each item As ToolStripItem In menuStripResults
@@ -94,6 +95,18 @@ Public Class MainForm
         Next
         For Each item As ToolStripItem In toolBarResults
             item.Enabled = enabled
+        Next
+    End Sub
+
+    Public Sub SetToolStripItemsVisibleState(itemShortName As String,
+                                             visible As Boolean) Implements IToolStripStateView.SetToolStripItemsVisibleState
+        Dim menuStripResults = MenuStrip.Items.Find(itemShortName & "ToolStripMenuItem", True).ToList
+        Dim toolBarResults = ToolStrip.Items.Find(itemShortName & "ToolStripButton", True).ToList
+        For Each item As ToolStripItem In menuStripResults
+            item.Visible = visible
+        Next
+        For Each item As ToolStripItem In toolBarResults
+            item.Visible = visible
         Next
     End Sub
 #End Region
@@ -504,24 +517,24 @@ Public Class MainForm
         End Set
     End Property
 
-    Public Property DeleteExportProgressVisible As Boolean Implements IMainView.DeleteExportProgressVisible
+    Public Property SelectedDocumentsProcessProgressVisible As Boolean Implements IMainView.SelectedDocumentsProcessProgressVisible
         Get
-            Return DeleteExportToolStripProgressBar.Visible
+            Return SelectedDocumentsProcessToolStripProgressBar.Visible
         End Get
         Set(value As Boolean)
-            DeleteExportToolStripProgressBar.Visible = value    ' Must be performed first.
+            SelectedDocumentsProcessToolStripProgressBar.Visible = value    ' Must be performed first.
             If value Then
-                DeleteExportToolStripProgressBar.Value = 0
+                SelectedDocumentsProcessToolStripProgressBar.Value = 0
             End If
         End Set
     End Property
 
-    Public Property DeleteExportProgressMaximum As Integer Implements IMainView.DeleteExportProgressMaximum
+    Public Property SelectedDocumentsProcessProgressMaximum As Integer Implements IMainView.SelectedDocumentsProcessProgressMaximum
         Get
-            Return DeleteExportToolStripProgressBar.Maximum
+            Return SelectedDocumentsProcessToolStripProgressBar.Maximum
         End Get
         Set(value As Integer)
-            DeleteExportToolStripProgressBar.Maximum = value
+            SelectedDocumentsProcessToolStripProgressBar.Maximum = value
         End Set
     End Property
 
@@ -576,6 +589,10 @@ Public Class MainForm
         End Get
     End Property
 
+    Public Sub SetPopulateNewDatabaseTableColumnsVisibleState(allDocumentsSelected As Boolean) Implements IMainView.SetPopulateNewDatabaseTableColumnsVisibleState
+        toolStripStatePresenter.SetPopulateNewDatabaseTableColumnsVisibleState(allDocumentsSelected)
+    End Sub
+
     Public Sub RemoveAllDocumentsFromSearchFunctions() Implements IMainView.RemoveAllDocumentsFromSearchFunctions
         SearchFunctionsListBox.Items.RemoveAt(4)
     End Sub
@@ -623,8 +640,8 @@ Public Class MainForm
         NotesTextBox.ScrollToCaret()
     End Sub
 
-    Public Sub DeleteExportProgressPerformStep() Implements IMainView.DeleteExportProgressPerformStep
-        DeleteExportToolStripProgressBar.PerformStep()
+    Public Sub SelectedDocumentsProcessProgressPerformStep() Implements IMainView.SelectedDocumentsProcessProgressPerformStep
+        SelectedDocumentsProcessToolStripProgressBar.PerformStep()
     End Sub
 
     Public Sub SetCursor(wait As Boolean) Implements ICommonView.SetCursor
@@ -786,6 +803,11 @@ Public Class MainForm
 
     Private Sub FileExportToolStrip_Click(sender As Object, e As EventArgs) Handles FileExportToolStripMenuItem.Click
         presenter.ExportSelectedSearchResults()
+    End Sub
+
+    Private Sub FilePopulateNewDatabaseTableColumnsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FilePopulateNewDatabaseTableColumnsToolStripMenuItem.Click,
+                                                                                                                     FilePopulateNewDatabaseTableColumnsToolStripButton.Click
+        presenter.PopulateNewDatabaseTableColumnsForSelectedSearchResults()
     End Sub
 
     Private Sub FileExitToolStrip_Click(sender As Object, e As EventArgs) Handles FileExitToolStripMenuItem.Click

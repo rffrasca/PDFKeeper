@@ -18,6 +18,8 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public Interface IToolStripStateView
-    Sub SetToolStripItemsState(ByVal itemShortName As String, _
-                               ByVal enabled As Boolean)
+    Sub SetToolStripItemsEnabledState(ByVal itemShortName As String,
+                                      ByVal enabled As Boolean)
+    Sub SetToolStripItemsVisibleState(ByVal itemShortName As String,
+                                      ByVal visible As Boolean)
 End Interface

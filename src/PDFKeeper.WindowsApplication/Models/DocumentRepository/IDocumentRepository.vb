@@ -70,5 +70,8 @@ Public Interface IDocumentRepository
     Sub UpdateCategoryById(ByVal id As Integer, ByVal category As String)
     Sub UpdateTaxYearById(ByVal id As Integer, ByVal taxYear As String)
     Sub UpdateFlagStateById(ByVal id As Integer, ByVal flag As Integer)
+    Sub UpdateTextAnnotationsById(ByVal id As Integer,
+                                  ByVal textAnnotations As String)
+    Sub UpdateTextById(ByVal id As Integer, ByVal text As String)
     Sub DeleteRecordById(ByVal id As Integer)
 End Interface

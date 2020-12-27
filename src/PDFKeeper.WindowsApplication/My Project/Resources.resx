@@ -120,6 +120,13 @@
   <data name="UploadFolderCannotBeDeleted" xml:space="preserve">
     <value>Upload folder cannot be deleted because it contains one or more files.</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="page_text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mini Icons\page_text.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FeatureDisabledByPolicy" xml:space="preserve">
+    <value>This feature is disabled by policy.</value>
+  </data>
   <data name="Author" xml:space="preserve">
     <value>Author</value>
   </data>
@@ -129,8 +136,8 @@
   <data name="DocumentRecordsCountMessage" xml:space="preserve">
     <value>Total records: {0} - Flagged records: {1}</value>
   </data>
-  <data name="DocumentIdException" xml:space="preserve">
-    <value>Document ID: {0} - Error: {1}</value>
+  <data name="GenericDiscardChangesPrompt" xml:space="preserve">
+    <value>Do you wish to discard all changes?</value>
   </data>
   <data name="Added" xml:space="preserve">
     <value>Added</value>
@@ -142,6 +149,9 @@ Please refer to the "Additional Client Prerequisites" section in the help file f
 
 To access help, press F1 at the PDFKeeper Login form.</value>
   </data>
+  <data name="DeleteFileToRecycleBin" xml:space="preserve">
+    <value>Delete {0} to the Recycle Bin?</value>
+  </data>
   <data name="FileNameToken" xml:space="preserve">
     <value>&lt;FileName&gt;</value>
   </data>
@@ -149,17 +159,14 @@ To access help, press F1 at the PDFKeeper Login form.</value>
     <value>Document Notes have been modified.
 Do you want to save changes before closing?</value>
   </data>
-  <data name="EnterOwnerPassword" xml:space="preserve">
-    <value>Enter Owner Password:</value>
+  <data name="Upload" xml:space="preserve">
+    <value>Upload</value>
   </data>
   <data name="SearchTextImproperUsageOfQueryOperators" xml:space="preserve">
     <value>Improper usage of query operators and/or characters.</value>
   </data>
-  <data name="Upload" xml:space="preserve">
-    <value>Upload</value>
-  </data>
-  <data name="ExportDocumentRecordMayHaveBeenDeleted" xml:space="preserve">
-    <value>{0}.  Document ID {1} may have been deleted.</value>
+  <data name="DocumentIdException" xml:space="preserve">
+    <value>Document ID: {0} - Error: {1}</value>
   </data>
   <data name="FileNotFoundException" xml:space="preserve">
     <value>File not found exception has occurred in the application.</value>
@@ -170,8 +177,8 @@ Do you want to save changes before closing?</value>
   <data name="Version" xml:space="preserve">
     <value>Version {0}</value>
   </data>
-  <data name="FileSaved" xml:space="preserve">
-    <value>{0} was saved.</value>
+  <data name="EnterOwnerPassword" xml:space="preserve">
+    <value>Enter Owner Password:</value>
   </data>
   <data name="FolderNameContainsInvalidChars" xml:space="preserve">
     <value>Folder name contains invalid characters.</value>
@@ -179,8 +186,14 @@ Do you want to save changes before closing?</value>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
   </data>
+  <data name="RefreshSearchResults" xml:space="preserve">
+    <value>Refresh Search Results?</value>
+  </data>
   <data name="Subject" xml:space="preserve">
     <value>Subject</value>
+  </data>
+  <data name="TaxYear" xml:space="preserve">
+    <value>Tax Year</value>
   </data>
   <data name="Category" xml:space="preserve">
     <value>Category</value>
@@ -191,14 +204,14 @@ Do you want to save changes before closing?</value>
   <data name="About" xml:space="preserve">
     <value>About {0}</value>
   </data>
-  <data name="GenericClosePrompt" xml:space="preserve">
-    <value>Are you sure you want to close and discard all changes?</value>
-  </data>
-  <data name="ID" xml:space="preserve">
-    <value>ID</value>
+  <data name="ProcessDocumentRecordMayHaveBeenDeleted" xml:space="preserve">
+    <value>{0}.  Document ID {1} may have been deleted.</value>
   </data>
   <data name="UploadConfig" xml:space="preserve">
     <value>UploadConfig</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
   </data>
   <data name="FilterExtension" xml:space="preserve">
     <value>{0} files (*.{1})|*.{1}</value>
@@ -219,20 +232,14 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
 
 The contents of the Notes text box prior to the attempted save operation have been copied to the Clipboard.</value>
   </data>
-  <data name="GenericDiscardChangesPrompt" xml:space="preserve">
-    <value>Do you wish to discard all changes?</value>
-  </data>
-  <data name="DocumentRecordMayHaveBeenDeleted" xml:space="preserve">
-    <value>{0}.  Document record may have been deleted.  Please Refresh your Search Results.</value>
-  </data>
   <data name="SelectedFilesHaveBeenExported" xml:space="preserve">
     <value>Selected files have been exported to: {0}</value>
   </data>
   <data name="Cache" xml:space="preserve">
     <value>Cache</value>
   </data>
-  <data name="FeatureDisabledByPolicy" xml:space="preserve">
-    <value>This feature is disabled by policy.</value>
+  <data name="GenericClosePrompt" xml:space="preserve">
+    <value>Are you sure you want to close and discard all changes?</value>
   </data>
   <data name="SelectExportFolder" xml:space="preserve">
     <value>Select the location where the export folder will be created:</value>
@@ -243,23 +250,22 @@ The contents of the Notes text box prior to the attempted save operation have be
   <data name="DeleteSelectedDocuments" xml:space="preserve">
     <value>Delete selected documents?</value>
   </data>
+  <data name="FileSaved" xml:space="preserve">
+    <value>{0} was saved.</value>
+  </data>
+  <data name="DocumentRecordMayHaveBeenDeleted" xml:space="preserve">
+    <value>{0}.  Document record may have been deleted.  Please Refresh your Search Results.</value>
+  </data>
   <data name="DeleteUploadFolderConfigurationPrompt" xml:space="preserve">
     <value>Are you sure you want to delete the selected Upload Folder Configuration?</value>
   </data>
   <data name="PdfOwnerPassword" xml:space="preserve">
     <value>PDF Owner Password</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="page_text" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mini Icons\page_text.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mini Icons\table.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DeleteFileToRecycleBin" xml:space="preserve">
-    <value>Delete {0} to the Recycle Bin?</value>
-  </data>
-  <data name="RefreshSearchResults" xml:space="preserve">
-    <value>Refresh Search Results?</value>
-  </data>
-  <data name="TaxYear" xml:space="preserve">
-    <value>Tax Year</value>
+  <data name="PopulateSelectedDocuments" xml:space="preserve">
+    <value>Populate new database table columns for all documents?</value>
   </data>
 </root>

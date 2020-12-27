@@ -145,54 +145,33 @@ Public Class MainPresenter
     Public Sub SetCategoryOnSelectedSearchResults()
         Dim newCategory As String = setCategory.Show
         If newCategory IsNot Nothing Then
-            Try
-                view.SetCursor(True)
-                Dim processPresenter As _
-                    New MainSelectedSearchResultsProcessPresenter(view,
-                                                                  SelectedDocumentsAction.SetCategory,
-                                                                  newCategory)
-                processPresenter.ProcessSelectedSearchResults()
-                view.SetCursor(False)
-            Catch ex As OracleException
-                view.SetCursor(False)
-                message.Show(ex.Message, True)
-            End Try
+            Dim processPresenter As _
+                New MainSelectedSearchResultsProcessPresenter(view,
+                                                              SelectedDocumentsAction.SetCategory,
+                                                              newCategory)
+            ProcessSelectedSearchResults(processPresenter)
         End If
     End Sub
 
     Public Sub SetTaxYearOnSelectedSearchResults()
         Dim newTaxYear As String = setTaxYear.Show
         If newTaxYear IsNot Nothing Then
-            Try
-                view.SetCursor(True)
-                Dim processPresenter As _
-                    New MainSelectedSearchResultsProcessPresenter(view,
-                                                                  SelectedDocumentsAction.SetTaxYear,
-                                                                  newTaxYear)
-                processPresenter.ProcessSelectedSearchResults()
-                view.SetCursor(False)
-            Catch ex As OracleException
-                view.SetCursor(False)
-                message.Show(ex.Message, True)
-            End Try
+            Dim processPresenter As _
+                New MainSelectedSearchResultsProcessPresenter(view,
+                                                              SelectedDocumentsAction.SetTaxYear,
+                                                              newTaxYear)
+            ProcessSelectedSearchResults(processPresenter)
         End If
     End Sub
 
     Public Sub DeleteSelectedSearchResults()
         If question.Show(My.Resources.DeleteSelectedDocuments,
                                 False) = DialogResult.Yes Then
-            Try
-                view.SetCursor(True)
-                Dim processPresenter As _
-                    New MainSelectedSearchResultsProcessPresenter(view,
-                                                                  SelectedDocumentsAction.Delete,
-                                                                  Nothing)
-                processPresenter.ProcessSelectedSearchResults()
-                view.SetCursor(False)
-            Catch ex As OracleException
-                view.SetCursor(False)
-                message.Show(ex.Message, True)
-            End Try
+            Dim processPresenter As _
+                New MainSelectedSearchResultsProcessPresenter(view,
+                                                              SelectedDocumentsAction.Delete,
+                                                              Nothing)
+            ProcessSelectedSearchResults(processPresenter)
         End If
     End Sub
 
@@ -200,49 +179,28 @@ Public Class MainPresenter
         folderBrowser.Description = My.Resources.SelectExportFolder
         Dim exportFolder As String = folderBrowser.Show
         If exportFolder IsNot Nothing Then
-            Dim processPresenter As MainSelectedSearchResultsProcessPresenter = Nothing
-            Try
-                view.SetCursor(True)
-                processPresenter = New MainSelectedSearchResultsProcessPresenter(view,
-                                                                                 SelectedDocumentsAction.Export,
-                                                                                 exportFolder)
-                processPresenter.ProcessSelectedSearchResults()
-                view.SetCursor(False)
-                message.Show(String.Format(CultureInfo.CurrentCulture,
-                                           My.Resources.ResourceManager.GetString(
-                                           "SelectedFilesHaveBeenExported",
-                                           CultureInfo.CurrentCulture),
-                                           processPresenter.ExportFolderPath),
-                             False)
-                view.SetCursor(False)
-            Catch ex As InvalidOperationException
-                view.SetCursor(False)
-                message.Show(String.Format(CultureInfo.CurrentCulture,
-                                           My.Resources.ResourceManager.GetString(
-                                           "ExportDocumentRecordMayHaveBeenDeleted",
-                                           CultureInfo.CurrentCulture),
-                                           ex.Message,
-                                           processPresenter.IdBeingProcessed),
-                             True)
-            Catch ex As IndexOutOfRangeException
-                view.SetCursor(False)
-                message.Show(String.Format(CultureInfo.CurrentCulture,
-                                           My.Resources.ResourceManager.GetString(
-                                           "ExportDocumentRecordMayHaveBeenDeleted",
-                                           CultureInfo.CurrentCulture),
-                                           ex.Message,
-                                           processPresenter.IdBeingProcessed),
-                             True)
-            Catch ex As OracleException
-                view.SetCursor(False)
-                message.Show(String.Format(CultureInfo.CurrentCulture,
-                                           My.Resources.ResourceManager.GetString(
-                                           "DocumentIdException",
-                                           CultureInfo.CurrentCulture),
-                                           ex.Message,
-                                           processPresenter.IdBeingProcessed),
-                             True)
-            End Try
+            Dim processPresenter As _
+                New MainSelectedSearchResultsProcessPresenter(view,
+                                                              SelectedDocumentsAction.Export,
+                                                              exportFolder)
+            ProcessSelectedSearchResults(processPresenter)
+            message.Show(String.Format(CultureInfo.CurrentCulture,
+                                       My.Resources.ResourceManager.GetString(
+                                       "SelectedFilesHaveBeenExported",
+                                       CultureInfo.CurrentCulture),
+                                       processPresenter.ExportFolderPath), False)
+        End If
+    End Sub
+
+    Public Sub PopulateNewDatabaseTableColumnsForSelectedSearchResults()
+        If question.Show(My.Resources.PopulateSelectedDocuments,
+                         False) = DialogResult.Yes Then
+            view.SelectDeselectAllSearchResults(SelectionState.SelectAll)
+            Dim processPresenter As _
+                New MainSelectedSearchResultsProcessPresenter(view,
+                                                              SelectedDocumentsAction.Populate,
+                                                              Nothing)
+            ProcessSelectedSearchResults(processPresenter)
         End If
     End Sub
 
@@ -353,11 +311,44 @@ Public Class MainPresenter
         End If
     End Sub
 
+    Private Sub ProcessSelectedSearchResults(ByVal processPresenter As MainSelectedSearchResultsProcessPresenter)
+        Try
+            view.SetCursor(True)
+            processPresenter.ProcessSelectedSearchResults()
+            view.SetCursor(False)
+        Catch ex As InvalidOperationException
+            view.SetCursor(False)
+            message.Show(String.Format(CultureInfo.CurrentCulture,
+                                       My.Resources.ResourceManager.GetString(
+                                       "ProcessDocumentRecordMayHaveBeenDeleted",
+                                       CultureInfo.CurrentCulture),
+                                       ex.Message,
+                                       processPresenter.IdBeingProcessed), True)
+        Catch ex As IndexOutOfRangeException
+            view.SetCursor(False)
+            message.Show(String.Format(CultureInfo.CurrentCulture,
+                                       My.Resources.ResourceManager.GetString(
+                                       "ProcessDocumentRecordMayHaveBeenDeleted",
+                                       CultureInfo.CurrentCulture),
+                                       ex.Message,
+                                       processPresenter.IdBeingProcessed), True)
+        Catch ex As OracleException
+            view.SetCursor(False)
+            message.Show(String.Format(CultureInfo.CurrentCulture,
+                                       My.Resources.ResourceManager.GetString(
+                                       "DocumentIdException",
+                                       CultureInfo.CurrentCulture),
+                                       ex.Message,
+                                       processPresenter.IdBeingProcessed), True)
+        End Try
+    End Sub
+
 #End Region
 
 #Region "View Search Functions Members"
     Public Sub SearchFunctionSelected()
         With view
+            .SetPopulateNewDatabaseTableColumnsVisibleState(False)
             .SearchTextControlEnabled = False
             .AuthorEnabled = False
             .SubjectEnabled = False
@@ -391,6 +382,7 @@ Public Class MainPresenter
             GetFlaggedDocumentRecords()
         ElseIf view.SelectedSearchFunction = 4 Then ' All Documents
             GetAllDocumentRecords()
+            view.SetPopulateNewDatabaseTableColumnsVisibleState(True)
         End If
     End Sub
 

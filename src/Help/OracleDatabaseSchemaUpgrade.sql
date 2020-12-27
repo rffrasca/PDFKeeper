@@ -65,4 +65,8 @@ begin
 end;
 /
 
+spool %TMP%\pdfkeeper.docs.tmp
+describe pdfkeeper.docs
+spool off
+
 quit

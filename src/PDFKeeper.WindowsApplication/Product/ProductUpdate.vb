@@ -18,9 +18,36 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Public NotInheritable Class ProductUpdate
+    Private Shared ReadOnly newDbTableColumnsTempFile As String =
+        Path.Combine(Path.GetTempPath,
+                     "PDFKeeper.docs.tmp")
+
     Private Sub New()
         ' All members are shared.
     End Sub
+
+    ''' <summary>
+    ''' Check that new database table columns can be populated.
+    ''' 
+    ''' This property should be checked when setting initial state on all
+    ''' toolstrip items.
+    ''' </summary>
+    ''' <returns>True or False</returns>
+    Public Shared ReadOnly Property NewDbTableColumnsCanBePopulated As Boolean
+        Get
+            If IO.File.Exists(newDbTableColumnsTempFile) Then
+                Dim text As String = IO.File.ReadAllText(newDbTableColumnsTempFile)
+                If text.Contains("DOC_TEXT_ANNOTATIONS") And text.Contains("DOC_TEXT") Then
+                    Return True
+                Else
+                    DeleteNewDbTableColumnsTempFile()
+                    Return False
+                End If
+            Else
+                Return False
+            End If
+        End Get
+    End Property
 
     ''' <summary>
     ''' This method is called during the load of the MainForm and from a Timer
@@ -31,5 +58,18 @@ Public NotInheritable Class ProductUpdate
             "https://raw.githubusercontent.com/rffrasca/PDFKeeper/master/config/PDFKeeper.AutoUpdater.config.xml"
         AutoUpdater.RunUpdateAsAdmin = False
         AutoUpdater.Start(configUrl)
+    End Sub
+
+    ''' <summary>
+    ''' Deletes the new database table columns temp file that is created by the
+    ''' database schema upgrade.
+    ''' 
+    ''' This method should be called after the new database table columns have
+    ''' been successfully populated.
+    ''' </summary>
+    Public Shared Sub DeleteNewDbTableColumnsTempFile()
+        If IO.File.Exists(newDbTableColumnsTempFile) Then
+            IO.File.Delete(newDbTableColumnsTempFile)
+        End If
     End Sub
 End Class

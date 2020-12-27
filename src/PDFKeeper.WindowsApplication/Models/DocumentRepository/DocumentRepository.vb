@@ -178,6 +178,15 @@ Public NotInheritable Class DocumentRepository
         repository.UpdateFlagStateById(id, flag)
     End Sub
 
+    Public Sub UpdateTextAnnotationsById(id As Integer,
+                                         textAnnotations As String) Implements IDocumentRepository.UpdateTextAnnotationsById
+        repository.UpdateTextAnnotationsById(id, textAnnotations)
+    End Sub
+
+    Public Sub UpdateTextById(id As Integer, text As String) Implements IDocumentRepository.UpdateTextById
+        repository.UpdateTextById(id, text)
+    End Sub
+
     Public Sub DeleteRecordById(id As Integer) Implements IDocumentRepository.DeleteRecordById
         repository.DeleteRecordById(id)
     End Sub

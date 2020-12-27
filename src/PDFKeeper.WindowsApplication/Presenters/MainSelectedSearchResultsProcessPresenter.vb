@@ -35,9 +35,10 @@ Public Class MainSelectedSearchResultsProcessPresenter
     ''' SelectedDocumentsAction.SetTaxYear
     ''' SelectedDocumentsAction.Delete
     ''' SelectedDocumentsAction.Export
+    ''' SelectedDocumentsAction.Populate
     ''' </param>
     ''' <param name="actionParam">
-    ''' Can be either the category name when "actionToPerform" is
+    ''' Can be either Nothing or the category name when "actionToPerform" is
     ''' SelectedDocumentsAction.SetCategory or the tax year when
     ''' "actionToPerform" is SelectedDocumentsAction.SetTaxYear or the folder
     ''' path to use for the export when "actionToPerform" is
@@ -56,7 +57,9 @@ Public Class MainSelectedSearchResultsProcessPresenter
     ''' Returns the target folder path of the export.
     ''' </summary>
     ''' <value></value>
-    ''' <returns></returns>
+    ''' <returns>
+    ''' Path or Nothing if "actionToPerform" is SelectedDocumentsAction.Export.
+    ''' </returns>
     ''' <remarks></remarks>
     Public ReadOnly Property ExportFolderPath As String
         Get
@@ -85,8 +88,8 @@ Public Class MainSelectedSearchResultsProcessPresenter
                                                                     CultureInfo.CurrentCulture))
             Directory.CreateDirectory(m_ExportFolderPath)
         End If
-        m_View.DeleteExportProgressVisible = True
-        m_View.DeleteExportProgressMaximum = m_View.SelectedSearchResultsIdsCount
+        m_View.SelectedDocumentsProcessProgressVisible = True
+        m_View.SelectedDocumentsProcessProgressMaximum = m_View.SelectedSearchResultsIdsCount
         For Each id As Object In m_View.SelectedSearchResultsIds
             m_IdBeingProcessed = CInt(id)
             If m_ActionToPerform = SelectedDocumentsAction.SetCategory Then
@@ -97,16 +100,22 @@ Public Class MainSelectedSearchResultsProcessPresenter
                 DeleteDocument(m_IdBeingProcessed)
             ElseIf m_ActionToPerform = SelectedDocumentsAction.Export Then
                 ExportDocument(m_IdBeingProcessed, m_ExportFolderPath)
+            ElseIf m_ActionToPerform = SelectedDocumentsAction.Populate Then
+                PopulateDocumentNewColumns(m_IdBeingProcessed)
             End If
-            m_View.DeleteExportProgressPerformStep()
+            m_View.SelectedDocumentsProcessProgressPerformStep()
             Application.DoEvents()
         Next
-        m_View.DeleteExportProgressVisible = False
+        m_View.SelectedDocumentsProcessProgressVisible = False
         If m_ActionToPerform = SelectedDocumentsAction.SetCategory Or
             SelectedDocumentsAction.Delete Then
             m_View.RefreshSearchResults()
         Else
             m_View.SelectDeselectAllSearchResults(SelectionState.DeselectAll)
+        End If
+        If m_ActionToPerform = SelectedDocumentsAction.Populate Then
+            ProductUpdate.DeleteNewDbTableColumnsTempFile()
+            m_View.SetPopulateNewDatabaseTableColumnsVisibleState(False)
         End If
     End Sub
 
@@ -166,5 +175,16 @@ Public Class MainSelectedSearchResultsProcessPresenter
             Dim suppDataHelper As New PdfSupplementalDataHelper(pdfInfo.FullName)
             suppDataHelper.Write(notes, category, taxYear, flagState)
         End Using
+    End Sub
+
+    Private Shared Sub PopulateDocumentNewColumns(ByVal id As Integer)
+        Dim cachePathName As New CacheFilePathName(id)
+        Dim pdfInfo As New PdfFileInfo(cachePathName.Pdf)
+        Using model As IDocumentRepository = New DocumentRepository
+            model.GetPdfById(id, pdfInfo.FullName)
+            model.UpdateTextAnnotationsById(id, pdfInfo.GetTextAnnotations)
+            model.UpdateTextById(id, pdfInfo.GetText)
+        End Using
+        IO.File.Delete(pdfInfo.FullName)
     End Sub
 End Class

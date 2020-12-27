@@ -27,5 +27,6 @@ Namespace Enums
         SetTaxYear
         Delete
         Export
+        Populate
     End Enum
 End Namespace

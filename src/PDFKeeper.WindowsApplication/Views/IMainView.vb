@@ -51,22 +51,23 @@ Public Interface IMainView
     Property DocumentRecordKeywords As String
     Property DocumentPreview As System.Drawing.Image
     Property DocumentText As String
-    Property DeleteExportProgressVisible As Boolean
-    Property DeleteExportProgressMaximum As Integer
+    Property SelectedDocumentsProcessProgressVisible As Boolean
+    Property SelectedDocumentsProcessProgressMaximum As Integer
     Property UploadRunningVisible As Boolean
     Property UploadFolderErrorVisible As Boolean
     Property UploadStagingFolderErrorVisible As Boolean
     Property FlaggedDocumentsExistVisible As Boolean
     Property FlaggedDocumentsCheckTimerEnabled As Boolean
+    Sub SetPopulateNewDatabaseTableColumnsVisibleState(ByVal allDocumentsSelected As Boolean)
     Sub RemoveAllDocumentsFromSearchFunctions()
     Sub SelectSearchResultsLastRow()
     Sub SelectSearchResultRowById(ByVal id As Integer)
     Sub SelectDeselectAllSearchResults(ByVal selectionState _
                                        As SelectionState)
-    Sub SortSearchResults(ByVal sortColumnIndex As Integer, _
+    Sub SortSearchResults(ByVal sortColumnIndex As Integer,
                           ByVal sortDirection As ListSortDirection)
     Sub RefreshSearchResults()
     Sub ResetSearchResultsHeader()
     Sub ScrollToEndInNotesElement()
-    Sub DeleteExportProgressPerformStep()
+    Sub SelectedDocumentsProcessProgressPerformStep()
 End Interface

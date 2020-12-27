@@ -142,13 +142,13 @@
     <value>Ctrl+N</value>
   </data>
   <data name="FileNewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FileNewToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;New...</value>
   </data>
   <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>350, 6</value>
   </data>
   <data name="FileOpenToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -164,13 +164,13 @@
     <value>Ctrl+O</value>
   </data>
   <data name="FileOpenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FileOpenToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Open</value>
   </data>
   <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>350, 6</value>
   </data>
   <data name="FileSaveToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -195,19 +195,19 @@
     <value>Ctrl+S</value>
   </data>
   <data name="FileSaveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FileSaveToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
   <data name="FileSaveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FileSaveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Save &amp;As...</value>
   </data>
   <data name="ToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>350, 6</value>
   </data>
   <data name="FilePrintToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -223,19 +223,19 @@
     <value>Ctrl+P</value>
   </data>
   <data name="FilePrintToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FilePrintToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Print...</value>
   </data>
   <data name="FilePrintPreviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FilePrintPreviewToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Print Pre&amp;view...</value>
   </data>
   <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>350, 6</value>
   </data>
   <data name="FileSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 22</value>
@@ -250,7 +250,7 @@
     <value>&amp;None</value>
   </data>
   <data name="FileSelectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FileSelectToolStripMenuItem.Text" xml:space="preserve">
     <value>Selec&amp;t</value>
@@ -259,7 +259,7 @@
     <value>Ctrl+Shift+C</value>
   </data>
   <data name="FileSetCategoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FileSetCategoryToolStripMenuItem.Text" xml:space="preserve">
     <value>Set &amp;Category...</value>
@@ -268,7 +268,7 @@
     <value>Ctrl+Shift+T</value>
   </data>
   <data name="FileSetTaxYearToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FileSetTaxYearToolStripMenuItem.Text" xml:space="preserve">
     <value>Set Tax &amp;Year...</value>
@@ -294,22 +294,41 @@
     <value>Ctrl+D</value>
   </data>
   <data name="FileDeleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FileDeleteToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Delete</value>
   </data>
   <data name="FileExportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FileExportToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Export...</value>
   </data>
+  <data name="FilePopulateNewDatabaseTableColumnsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQAAHan1azQ4ldvj9vp9HSQruTr80lVa+vx9pu811SRuXifuj13uYyz2VFhe4Gt2UNL
+        XPL1+Orv+ufu9YOqxYyzzNHW3SkxQz5FVWag2T6CuZe3y5G0t+Do7+r0/77a9f///yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQAAAAAACwAAAAAEAAQAAAIrwA/CBxIsKDAAQESIkBAYYICBQQICCAgMMAACQMyaswo
+        oUKDih0SZMiwoKTJBQcEVDyAoEMHDy5hdnAg4eMHBBIQeNjJcyeDAjYRRNAQs+hMoAIpRNjQs6eDAgYE
+        TshpVCYAqAIV5GzKU0GBB1klMKjqEgMHsB8IiOW60+wFgQQgIGDgoC4AABgwADjw9oOAChAkSChAmIPh
+        AxUswBXAuEEDAwYePLhwwYJNg5gFBgQAOw==
+</value>
+  </data>
+  <data name="FilePopulateNewDatabaseTableColumnsToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+P</value>
+  </data>
+  <data name="FilePopulateNewDatabaseTableColumnsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>353, 22</value>
+  </data>
+  <data name="FilePopulateNewDatabaseTableColumnsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pop&amp;ulate New Database Table Columns</value>
+  </data>
   <data name="ToolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>350, 6</value>
   </data>
   <data name="FileExitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>353, 22</value>
   </data>
   <data name="FileExitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
@@ -762,7 +781,7 @@
     <value>True</value>
   </data>
   <data name="KeywordsTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 219</value>
+    <value>357, 318</value>
   </data>
   <data name="KeywordsTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -789,7 +808,7 @@
     <value>True</value>
   </data>
   <data name="KeywordsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 225</value>
+    <value>363, 324</value>
   </data>
   <data name="KeywordsTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -852,7 +871,7 @@
     <value>True</value>
   </data>
   <data name="PreviewPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 219</value>
+    <value>357, 318</value>
   </data>
   <data name="PreviewPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -879,7 +898,7 @@
     <value>True</value>
   </data>
   <data name="PreviewTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 225</value>
+    <value>363, 324</value>
   </data>
   <data name="PreviewTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -915,7 +934,7 @@
     <value>True</value>
   </data>
   <data name="TextTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 219</value>
+    <value>357, 318</value>
   </data>
   <data name="TextTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -942,7 +961,7 @@
     <value>True</value>
   </data>
   <data name="TextTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 225</value>
+    <value>363, 324</value>
   </data>
   <data name="TextTabPage.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1725,17 +1744,17 @@
   <data name="TotalRecordsCountToolStripStatusLabel.Text" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="DeleteExportToolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="SelectedDocumentsProcessToolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 16</value>
   </data>
-  <data name="DeleteExportToolStripProgressBar.Visible" type="System.Boolean, mscorlib">
+  <data name="SelectedDocumentsProcessToolStripProgressBar.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="FillerToolStripStatusLabel.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="FillerToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>877, 17</value>
+    <value>680, 17</value>
   </data>
   <data name="UploadRunningToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1986,6 +2005,15 @@
   </data>
   <data name="FileDeleteToolStripButton.ToolTipText" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="FilePopulateNewDatabaseTableColumnsToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="FilePopulateNewDatabaseTableColumnsToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="FilePopulateNewDatabaseTableColumnsToolStripButton.Text" xml:space="preserve">
+    <value>Populate New Database Table Columns</value>
   </data>
   <data name="ToolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
@@ -2449,6 +2477,12 @@
   <data name="&gt;&gt;FileExportToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;FilePopulateNewDatabaseTableColumnsToolStripMenuItem.Name" xml:space="preserve">
+    <value>FilePopulateNewDatabaseTableColumnsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;FilePopulateNewDatabaseTableColumnsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ToolStripSeparator6.Name" xml:space="preserve">
     <value>ToolStripSeparator6</value>
   </data>
@@ -2677,10 +2711,10 @@
   <data name="&gt;&gt;TotalRecordsCountToolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;DeleteExportToolStripProgressBar.Name" xml:space="preserve">
-    <value>DeleteExportToolStripProgressBar</value>
+  <data name="&gt;&gt;SelectedDocumentsProcessToolStripProgressBar.Name" xml:space="preserve">
+    <value>SelectedDocumentsProcessToolStripProgressBar</value>
   </data>
-  <data name="&gt;&gt;DeleteExportToolStripProgressBar.Type" xml:space="preserve">
+  <data name="&gt;&gt;SelectedDocumentsProcessToolStripProgressBar.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;FillerToolStripStatusLabel.Name" xml:space="preserve">
@@ -2741,6 +2775,12 @@
     <value>FileDeleteToolStripButton</value>
   </data>
   <data name="&gt;&gt;FileDeleteToolStripButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FilePopulateNewDatabaseTableColumnsToolStripButton.Name" xml:space="preserve">
+    <value>FilePopulateNewDatabaseTableColumnsToolStripButton</value>
+  </data>
+  <data name="&gt;&gt;FilePopulateNewDatabaseTableColumnsToolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripSeparator17.Name" xml:space="preserve">

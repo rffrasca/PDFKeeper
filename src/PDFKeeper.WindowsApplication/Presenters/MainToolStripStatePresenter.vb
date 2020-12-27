@@ -21,53 +21,35 @@ Public Class MainToolStripStatePresenter
     Private ReadOnly toolStrip As IToolStripStateView
 
     ' List contains ToolStrip short names and Enabled state.
-    ReadOnly shortNames As New GenericDictionaryList(Of String, Boolean)
+    ReadOnly shortNamesEnabled As New GenericDictionaryList(Of String, Boolean)
+
+    ' List contains ToolStrip short names and Visible state.
+    ReadOnly shortNamesVisible As New GenericDictionaryList(Of String, Boolean)
 
     Public Sub New(toolStrip As IToolStripStateView)
         Me.toolStrip = toolStrip
-        SetDefaultState()
-    End Sub
-
-    Private Sub SetDefaults()
-        With shortNames
-            .SetItem("FileOpen", False)
-            .SetItem("FileSave", False)
-            .SetItem("FileSaveAs", False)
-            .SetItem("FilePrint", False)
-            .SetItem("FilePrintPreview", False)
-            .SetItem("FileSelect", False)
-            .SetItem("FileSelectAll", False)
-            .SetItem("FileSelectNone", False)
-            .SetItem("FileSetCategory", False)
-            .SetItem("FileSetTaxYear", False)
-            .SetItem("FileDelete", False)
-            .SetItem("FileExport", False)
-            .SetItem("EditUndo", False)
-            .SetItem("EditCut", False)
-            .SetItem("EditCopy", False)
-            .SetItem("EditPaste", False)
-            .SetItem("EditSelectAll", False)
-            .SetItem("EditRestore", False)
-            .SetItem("EditDateTime", False)
-            .SetItem("EditFlagDocument", False)
-            .SetItem("ViewRefresh", False)
-            .SetItem("ViewSetPreviewImageResolution", False)
-            .SetItem("InsertText", False)
-        End With
-    End Sub
-
-    Public Sub SetDefaultState()
-        SetDefaults()
+        SetEnabledStateDefaults()
+        SetVisibleStateDefaults()
         ApplyState()
     End Sub
 
     Public Sub SetPreSearchState()
-        shortNames.SetItem("ViewRefresh", False)
+        shortNamesEnabled.SetItem("ViewRefresh", False)
         ApplyState()
     End Sub
 
     Public Sub SetPostSearchState()
-        shortNames.SetItem("ViewRefresh", True)
+        shortNamesEnabled.SetItem("ViewRefresh", True)
+        ApplyState()
+    End Sub
+
+    Public Sub SetPopulateNewDatabaseTableColumnsVisibleState(ByVal allDocumentsSelected As Boolean)
+        Dim visible As Boolean = False
+        If allDocumentsSelected Then
+            visible = ProductUpdate.NewDbTableColumnsCanBePopulated
+        End If
+        shortNamesVisible.SetItem("FilePopulateNewDatabaseTableColumns",
+                                  visible)
         ApplyState()
     End Sub
 
@@ -76,7 +58,7 @@ Public Class MainToolStripStatePresenter
         If rowCount > 0 Then
             itemState = True
         End If
-        With shortNames
+        With shortNamesEnabled
             .SetItem("FileSelect", itemState)
             .SetItem("FileSelectAll", itemState)
             .SetItem("FileSelectNone", itemState)
@@ -85,7 +67,7 @@ Public Class MainToolStripStatePresenter
     End Sub
 
     Public Sub SetSearchResultsSelectedState(ByVal selectedRows As Integer)
-        With shortNames
+        With shortNamesEnabled
             If selectedRows > 0 Then
                 .SetItem("FileSetCategory", True)
                 .SetItem("FileSetTaxYear", True)
@@ -102,7 +84,7 @@ Public Class MainToolStripStatePresenter
     End Sub
 
     Public Sub SetDocumentSelectedState(ByVal documentSelected As Boolean)
-        With shortNames
+        With shortNamesEnabled
             .SetItem("FileOpen", documentSelected)
             .SetItem("FileSaveAs", documentSelected)
             .SetItem("EditFlagDocument", documentSelected)
@@ -113,7 +95,7 @@ Public Class MainToolStripStatePresenter
 
     Public Sub SetTextBoxEnterState(ByVal isReadOnly As Boolean,
                                     ByVal textLength As Integer)
-        With shortNames
+        With shortNamesEnabled
             If textLength > 0 Then
                 .SetItem("EditSelectAll", True)
             Else
@@ -134,7 +116,7 @@ Public Class MainToolStripStatePresenter
     End Sub
 
     Public Sub SetTextBoxPrintableState(ByVal printable As Boolean)
-        With shortNames
+        With shortNamesEnabled
             If printable Then
                 .SetItem("FilePrint", True)
                 .SetItem("FilePrintPreview", True)
@@ -147,14 +129,14 @@ Public Class MainToolStripStatePresenter
     End Sub
 
     Public Sub SetPasteState(ByVal textBoxSelected As Boolean)
-        shortNames.SetItem("EditPaste", textBoxSelected)
+        shortNamesEnabled.SetItem("EditPaste", textBoxSelected)
         ApplyState()
     End Sub
 
     Public Sub SetTextBoxTextSelectionState(ByVal isReadOnly As Boolean,
                                             ByVal textLength As Integer,
                                             ByVal selectedTextLength As Integer)
-        With shortNames
+        With shortNamesEnabled
             If selectedTextLength > 0 Then
                 If isReadOnly = False Then
                     .SetItem("EditCut", True)
@@ -181,7 +163,7 @@ Public Class MainToolStripStatePresenter
     Public Sub SetNotesTextBoxChangedState(ByVal documentNotesChanged As Boolean,
                                            ByVal canUndo As Boolean)
         Dim controlEnabled As Boolean = False
-        With shortNames
+        With shortNamesEnabled
             If documentNotesChanged = False Then
                 controlEnabled = True
             Else
@@ -206,7 +188,7 @@ Public Class MainToolStripStatePresenter
     End Sub
 
     Public Sub SetTextBoxLeaveState()
-        With shortNames
+        With shortNamesEnabled
             .SetItem("EditUndo", False)
             .SetItem("EditCut", False)
             .SetItem("EditCopy", False)
@@ -218,10 +200,47 @@ Public Class MainToolStripStatePresenter
         ApplyState()
     End Sub
 
+    Private Sub SetEnabledStateDefaults()
+        With shortNamesEnabled
+            .SetItem("FileOpen", False)
+            .SetItem("FileSave", False)
+            .SetItem("FileSaveAs", False)
+            .SetItem("FilePrint", False)
+            .SetItem("FilePrintPreview", False)
+            .SetItem("FileSelect", False)
+            .SetItem("FileSelectAll", False)
+            .SetItem("FileSelectNone", False)
+            .SetItem("FileSetCategory", False)
+            .SetItem("FileSetTaxYear", False)
+            .SetItem("FileDelete", False)
+            .SetItem("FileExport", False)
+            .SetItem("EditUndo", False)
+            .SetItem("EditCut", False)
+            .SetItem("EditCopy", False)
+            .SetItem("EditPaste", False)
+            .SetItem("EditSelectAll", False)
+            .SetItem("EditRestore", False)
+            .SetItem("EditDateTime", False)
+            .SetItem("EditFlagDocument", False)
+            .SetItem("ViewRefresh", False)
+            .SetItem("ViewSetPreviewImageResolution", False)
+            .SetItem("InsertText", False)
+        End With
+    End Sub
+
+    Private Sub SetVisibleStateDefaults()
+        shortNamesVisible.SetItem("FilePopulateNewDatabaseTableColumns",
+                                  False)
+    End Sub
+
     Private Sub ApplyState()
-        For Each shortName As Object In shortNames.Keys
-            toolStrip.SetToolStripItemsState(CStr(shortName), _
-                                             shortNames.GetItem(shortName))
+        For Each shortName As Object In shortNamesEnabled.Keys
+            toolStrip.SetToolStripItemsEnabledState(CStr(shortName),
+                                                    shortNamesEnabled.GetItem(shortName))
+        Next
+        For Each shortName As Object In shortNamesVisible.Keys
+            toolStrip.SetToolStripItemsVisibleState(CStr(shortName),
+                                                    shortNamesVisible.GetItem(shortName))
         Next
     End Sub
 End Class
