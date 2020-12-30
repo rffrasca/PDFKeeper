@@ -538,7 +538,7 @@ Public NotInheritable Class OracleDbDocumentRepository
                                          textAnnotations As String) Implements IDocumentRepository.UpdateTextAnnotationsById
         Dim sqlStatement As String =
             "update pdfkeeper.docs " &
-            "set doc_text_annotations = :doc_text_annotations " &
+            "set doc_text_annotations = :doc_text_annotations,doc_dummy = '' " &
             "where doc_id = :doc_id"
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
             oraCommand.BindByName = True
@@ -551,7 +551,7 @@ Public NotInheritable Class OracleDbDocumentRepository
     Public Sub UpdateTextById(id As Integer, text As String) Implements IDocumentRepository.UpdateTextById
         Dim sqlStatement As String =
             "update pdfkeeper.docs " &
-            "set doc_text = :doc_text " &
+            "set doc_text = :doc_text,doc_dummy = '' " &
             "where doc_id = :doc_id"
         Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
             oraCommand.BindByName = True
