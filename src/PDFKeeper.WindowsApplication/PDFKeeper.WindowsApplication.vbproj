@@ -417,6 +417,10 @@
       <Link>gsdll64.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\..\vendor\gswin64c.exe">
+      <Link>gswin64c.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\vendor\sqlite3.exe">
       <Link>sqlite3.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

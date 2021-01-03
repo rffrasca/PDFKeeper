@@ -158,6 +158,9 @@
       <Component Id="SQLite.Interop.dll" Guid="be550a2c-6467-441c-bdd9-e5d1bc9a45e1">
         <File Id="SQLite.Interop.dll" Name="SQLite.Interop.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)x64\SQLite.Interop.dll" />
       </Component>
+      <Component Id="gswin64c.exe" Guid="6428a10e-504d-4521-8d93-28f25fc824bd">
+        <File Id="gswin64c.exe" Name="gswin64c.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)gswin64c.exe" />
+      </Component>
   	</ComponentGroup>
 	</Fragment>
 </Wix>
