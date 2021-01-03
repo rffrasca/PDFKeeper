@@ -18,14 +18,14 @@ Clone the https://github.com/rffrasca/PDFKeeper repository to your development s
 ## Download and Extract Third-Party Components
 - Ghostscript for Windows (64 bit) - https://www.ghostscript.com/download/gsdnld.html
     
-    After downloading, extract gsdll64.dll from the Ghostscript installer into the vendor folder in the PDFKeeper solution using the following instructions:
+    After downloading, extract gswin64c.exe and gsdll64.dll from the Ghostscript installer into the vendor folder in the PDFKeeper solution using the following instructions:
     
     1. Download and install 7-Zip Portable - https://portableapps.com/apps/utilities/7-zip_portable
     2. Open 7-Zip Portable.
     3. Select gsxxxxw64.exe in folder where downloaded.
     4. Select the File menu, and then Open Inside.
     5. Open the bin folder.
-    6. Select gsdll64.dll.
+    6. Select gswin64c.exe and gsdll64.dll.
     7. Select Extract.
     8. Select the vendor folder in the PDFKeeper solution.
     9. Select OK.
