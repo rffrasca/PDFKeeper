@@ -268,4 +268,7 @@ The contents of the Notes text box prior to the attempted save operation have be
   <data name="PopulateSelectedDocuments" xml:space="preserve">
     <value>Populate new database table columns for all documents?</value>
   </data>
+  <data name="DbExceptionDefaultMessage" xml:space="preserve">
+    <value>Database Exception has occurred.</value>
+  </data>
 </root>

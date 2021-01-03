@@ -124,6 +124,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Database Exception has occurred..
+        '''</summary>
+        Friend ReadOnly Property DbExceptionDefaultMessage() As String
+            Get
+                Return ResourceManager.GetString("DbExceptionDefaultMessage", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Delete {0} to the Recycle Bin?.
         '''</summary>
         Friend ReadOnly Property DeleteFileToRecycleBin() As String

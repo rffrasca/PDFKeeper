@@ -146,6 +146,18 @@
       <Component Id="Magick.NET_Q16_AnyCPU.dll" Guid="7cc046ba-2263-48df-a63b-d54b1193c6da">
         <File Id="Magick.NET_Q16_AnyCPU.dll" Name="Magick.NET-Q16-AnyCPU.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)Magick.NET-Q16-AnyCPU.dll" />
       </Component>
+      <Component Id="sqlite3.exe" Guid="2510f4c1-cced-4e77-8d91-43ecbe3950f3">
+        <File Id="sqlite3.exe" Name="sqlite3.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)sqlite3.exe" />
+      </Component>
+      <Component Id="SqliteDatabaseSetup.sql" Guid="8adc44c7-1f53-4a25-95de-7499f861ecdc">
+        <File Id="SqliteDatabaseSetup.sql" Name="SqliteDatabaseSetup.sql" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)SqliteDatabaseSetup.sql" />
+      </Component>
+      <Component Id="System.Data.SQLite.dll" Guid="8cd4cef8-1ee3-45b8-b99e-aabb64574f66">
+        <File Id="System.Data.SQLite.dll" Name="System.Data.SQLite.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)System.Data.SQLite.dll" />
+      </Component>
+      <Component Id="SQLite.Interop.dll" Guid="be550a2c-6467-441c-bdd9-e5d1bc9a45e1">
+        <File Id="SQLite.Interop.dll" Name="SQLite.Interop.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)x64\SQLite.Interop.dll" />
+      </Component>
   	</ComponentGroup>
 	</Fragment>
 </Wix>

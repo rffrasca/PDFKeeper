@@ -27,9 +27,14 @@ Public NotInheritable Class DbInstanceUtil
     ''' </summary>
     ''' <remarks></remarks>
     Public Shared Sub TestConnection()
-        If DbInstanceProperties.DbManagementSystem = "Oracle" Then
+        If DbInstanceProperties.Platform =
+            DatabasePlatform.Oracle.ToString Then
             Using provider As New OracleDbDataProvider
-                provider.TestConnection()
+                Try
+                    provider.TestConnection()
+                Catch ex As OracleException
+                    Throw New CustomDbException(ex.Message)
+                End Try
             End Using
         End If
     End Sub
@@ -41,7 +46,8 @@ Public NotInheritable Class DbInstanceUtil
     ''' </summary>
     ''' <remarks></remarks>
     Public Shared Sub ResetCredential()
-        If DbInstanceProperties.DbManagementSystem = "Oracle" Then
+        If DbInstanceProperties.Platform =
+            DatabasePlatform.Oracle.ToString Then
             Using provider As New OracleDbDataProvider
                 provider.ResetCredential()
             End Using

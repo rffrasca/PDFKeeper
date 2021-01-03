@@ -17,22 +17,21 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Imports System.Linq.Expressions
-
-Public NotInheritable Class OracleDbDocumentRepository
+Public NotInheritable Class SqliteDocumentRepository
     Implements IDocumentRepository, IDisposable
-    Private ReadOnly provider As New OracleDbDataProvider
+    Private ReadOnly provider As New SqliteDataProvider
+    Private disposedValue As Boolean
 
     Public Function GetAllAuthors() As DataTable Implements IDocumentRepository.GetAllAuthors
         Dim sqlStatement As String =
             "select doc_author,count(doc_author) " &
-            "from pdfkeeper.docs " &
+            "from docs " &
             "group by doc_author"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                Return provider.QueryToDataTable(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -67,24 +66,23 @@ Public NotInheritable Class OracleDbDocumentRepository
         End If
         Dim sqlStatement As String =
             "select doc_author " &
-            "from pdfkeeper.docs " & where & " group by doc_author"
+            "from docs " & where & " group by doc_author"
         Try
 #Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
 #Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
-                oraCommand.BindByName = True
                 If subject IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_subject", subject)
+                    sqlCommand.Parameters.AddWithValue("doc_subject", subject)
                 End If
                 If category IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_category", category)
+                    sqlCommand.Parameters.AddWithValue("doc_category", category)
                 End If
                 If taxYear IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_tax_year", taxYear)
+                    sqlCommand.Parameters.AddWithValue("doc_tax_year", taxYear)
                 End If
-                Return provider.QueryToDataTable(oraCommand)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -92,13 +90,13 @@ Public NotInheritable Class OracleDbDocumentRepository
     Public Function GetAllSubjects() As DataTable Implements IDocumentRepository.GetAllSubjects
         Dim sqlStatement As String =
             "select doc_subject,count(doc_subject) " &
-            "from pdfkeeper.docs " &
+            "from docs " &
             "group by doc_subject"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                Return provider.QueryToDataTable(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -106,16 +104,15 @@ Public NotInheritable Class OracleDbDocumentRepository
     Public Function GetAllSubjectsByAuthor(author As String) As DataTable Implements IDocumentRepository.GetAllSubjectsByAuthor
         Dim sqlStatement As String =
             "select doc_subject " &
-            "from pdfkeeper.docs " &
+            "from docs " &
             "where doc_author = :doc_author " &
             "group by doc_subject"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_author", author)
-                Return provider.QueryToDataTable(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                sqlCommand.Parameters.AddWithValue("doc_author", author)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -150,24 +147,23 @@ Public NotInheritable Class OracleDbDocumentRepository
         End If
         Dim sqlStatement As String =
             "select doc_subject " &
-            "from pdfkeeper.docs " & where & " group by doc_subject"
+            "from docs " & where & " group by doc_subject"
         Try
 #Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
 #Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
-                oraCommand.BindByName = True
                 If author IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_author", author)
+                    sqlCommand.Parameters.AddWithValue("doc_author", author)
                 End If
                 If category IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_category", category)
+                    sqlCommand.Parameters.AddWithValue("doc_category", category)
                 End If
                 If taxYear IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_tax_year", taxYear)
+                    sqlCommand.Parameters.AddWithValue("doc_tax_year", taxYear)
                 End If
-                Return provider.QueryToDataTable(oraCommand)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -175,13 +171,13 @@ Public NotInheritable Class OracleDbDocumentRepository
     Public Function GetAllCategories() As DataTable Implements IDocumentRepository.GetAllCategories
         Dim sqlStatement As String =
             "select doc_category,count(doc_category) " &
-            "from pdfkeeper.docs " &
+            "from docs " &
             "group by doc_category having count(doc_category) > 0"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                Return provider.QueryToDataTable(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -216,24 +212,23 @@ Public NotInheritable Class OracleDbDocumentRepository
         End If
         Dim sqlStatement As String =
             "select doc_category " &
-            "from pdfkeeper.docs " & where & " group by doc_category"
+            "from docs " & where & " group by doc_category"
         Try
 #Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
 #Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
-                oraCommand.BindByName = True
                 If author IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_author", author)
+                    sqlCommand.Parameters.AddWithValue("doc_author", author)
                 End If
                 If subject IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_subject", subject)
+                    sqlCommand.Parameters.AddWithValue("doc_subject", subject)
                 End If
                 If taxYear IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_tax_year", taxYear)
+                    sqlCommand.Parameters.AddWithValue("doc_tax_year", taxYear)
                 End If
-                Return provider.QueryToDataTable(oraCommand)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -241,13 +236,13 @@ Public NotInheritable Class OracleDbDocumentRepository
     Public Function GetAllTaxYears() As DataTable Implements IDocumentRepository.GetAllTaxYears
         Dim sqlStatement As String =
             "select doc_tax_year,count(doc_tax_year) " &
-            "from pdfkeeper.docs " &
+            "from docs " &
             "group by doc_tax_year having count(doc_tax_year) > 0"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                Return provider.QueryToDataTable(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -282,40 +277,38 @@ Public NotInheritable Class OracleDbDocumentRepository
         End If
         Dim sqlStatement As String =
             "select doc_tax_year " &
-            "from pdfkeeper.docs " & where & " group by doc_tax_year"
+            "from docs " & where & " group by doc_tax_year"
         Try
 #Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
 #Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
-                oraCommand.BindByName = True
                 If author IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_author", author)
+                    sqlCommand.Parameters.AddWithValue("doc_author", author)
                 End If
                 If subject IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_subject", subject)
+                    sqlCommand.Parameters.AddWithValue("doc_subject", subject)
                 End If
                 If category IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_category", category)
+                    sqlCommand.Parameters.AddWithValue("doc_category", category)
                 End If
-                Return provider.QueryToDataTable(oraCommand)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
 
     Public Function GetAllRecordsBySearchText(searchValue As String) As DataTable Implements IDocumentRepository.GetAllRecordsBySearchText
         Dim sqlStatement As String =
-            "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
-            "from pdfkeeper.docs " &
-            "where (contains(doc_dummy,:doc_dummy))>0"
+            "select rowid,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
+            "from docs_index " &
+            "where docs_index match :doc_dummy"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_dummy", searchValue)
-                Return provider.QueryToDataTable(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                sqlCommand.Parameters.AddWithValue("doc_dummy", searchValue)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -355,27 +348,26 @@ Public NotInheritable Class OracleDbDocumentRepository
         End If
         Dim sqlStatement As String =
             "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
-            "from pdfkeeper.docs " & where
+            "from docs " & where
         Try
 #Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
 #Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
-                oraCommand.BindByName = True
                 If author IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_author", author)
+                    sqlCommand.Parameters.AddWithValue("doc_author", author)
                 End If
                 If subject IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_subject", subject)
+                    sqlCommand.Parameters.AddWithValue("doc_subject", subject)
                 End If
                 If category IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_category", category)
+                    sqlCommand.Parameters.AddWithValue("doc_category", category)
                 End If
                 If taxYear IsNot Nothing Then
-                    oraCommand.Parameters.Add("doc_tax_year", taxYear)
+                    sqlCommand.Parameters.AddWithValue("doc_tax_year", taxYear)
                 End If
-                Return provider.QueryToDataTable(oraCommand)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -383,15 +375,14 @@ Public NotInheritable Class OracleDbDocumentRepository
     Public Function GetAllRecordsByDateAdded(dateAdded As String) As DataTable Implements IDocumentRepository.GetAllRecordsByDateAdded
         Dim sqlStatement As String =
             "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
-            "from pdfkeeper.docs " &
+            "from docs " &
             "where doc_added like :doc_added || '%'"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_added", dateAdded)
-                Return provider.QueryToDataTable(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                sqlCommand.Parameters.AddWithValue("doc_added", dateAdded)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -399,13 +390,13 @@ Public NotInheritable Class OracleDbDocumentRepository
     Public Function GetAllFlaggedRecords() As DataTable Implements IDocumentRepository.GetAllFlaggedRecords
         Dim sqlStatement As String =
             "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
-            "from pdfkeeper.docs " &
+            "from docs " &
             "where doc_flag = 1"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                Return provider.QueryToDataTable(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -413,12 +404,12 @@ Public NotInheritable Class OracleDbDocumentRepository
     Public Function GetAllRecords() As DataTable Implements IDocumentRepository.GetAllRecords
         Dim sqlStatement As String =
             "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
-            "from pdfkeeper.docs"
+            "from docs"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                Return provider.QueryToDataTable(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -426,13 +417,13 @@ Public NotInheritable Class OracleDbDocumentRepository
     Public Function GetFlaggedRecordsCount() As Integer Implements IDocumentRepository.GetFlaggedRecordsCount
         Dim sqlStatement As String =
             "select count(doc_flag) " &
-            "from pdfkeeper.docs " &
+            "from docs " &
             "where doc_flag = 1"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                Return provider.QueryToObject(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                Return provider.QueryToObject(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
@@ -472,7 +463,7 @@ Public NotInheritable Class OracleDbDocumentRepository
                                 CultureInfo.CurrentCulture)
     End Function
 
-    Public Function GetFlagStateById(id As Integer) As Int32 Implements IDocumentRepository.GetFlagStateById
+    Public Function GetFlagStateById(id As Integer) As Integer Implements IDocumentRepository.GetFlagStateById
         Return Convert.ToInt32(GetColumnDataById(id, "doc_flag").Rows(0)("doc_flag"),
                                CultureInfo.CurrentCulture)
     End Function
@@ -485,15 +476,14 @@ Public NotInheritable Class OracleDbDocumentRepository
     Public Sub GetPdfById(id As Integer, pdfFile As String) Implements IDocumentRepository.GetPdfById
         Dim sqlStatement As String =
             "select doc_pdf " &
-            "from pdfkeeper.docs " &
+            "from docs " &
             "where doc_id = :doc_id"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_id", id)
-                provider.QueryBlobToFile(oraCommand, pdfFile)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                sqlCommand.Parameters.AddWithValue("doc_id", id)
+                provider.QueryBlobToFile(sqlCommand, pdfFile)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Sub
@@ -509,111 +499,111 @@ Public NotInheritable Class OracleDbDocumentRepository
                             taxYear As String,
                             textAnnotations As String,
                             text As String) Implements IDocumentRepository.CreateRecord
+        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss",
+                                                            CultureInfo.CurrentCulture)
         Dim sqlStatement As String =
-            " begin " &
-            " insert into pdfkeeper.docs values( " &
-            " pdfkeeper.docs_seq.NEXTVAL, " &
-            " :doc_title, " &
-            " :doc_author, " &
-            " :doc_subject, " &
-            " :doc_keywords, " &
-            " to_char(sysdate,'YYYY-MM-DD HH24:MI:SS'), " &
-            " :doc_notes, " &
-            " :doc_pdf, " &
-            " '', " &
-            " :doc_category, " &
-            " :doc_flag, " &
-            " :doc_tax_year, " &
-            " :doc_text_annotations, " &
-            " :doc_text) ;" &
-            " end ;"
+            "insert into docs values(null," &
+            ":doc_title," &
+            ":doc_author," &
+            ":doc_subject," &
+            ":doc_keywords," &
+            ":doc_added," &
+            ":doc_notes," &
+            ":doc_pdf," &
+            ":doc_category," &
+            ":doc_flag," &
+            ":doc_tax_year," &
+            ":doc_text_annotations," &
+            ":doc_text)"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 Dim fileInfo As New FileInfo(pdfFile)
                 Dim blob As Byte() = fileInfo.ToByteArray
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_title", title)
-                oraCommand.Parameters.Add("doc_author", author)
-                oraCommand.Parameters.Add("doc_subject", subject)
-                oraCommand.Parameters.Add("doc_keywords", keywords)
-                oraCommand.Parameters.Add("doc_notes", notes)
-                oraCommand.Parameters.Add("doc_pdf", OracleDbType.Blob, blob, ParameterDirection.Input)
-                oraCommand.Parameters.Add("doc_category", category)
-                oraCommand.Parameters.Add("doc_flag", flag)
-                oraCommand.Parameters.Add("doc_tax_year", taxYear)
-                oraCommand.Parameters.Add("doc_text_annotations", textAnnotations)
-                oraCommand.Parameters.Add("doc_text", text)
-                provider.ExecuteNonQuery(oraCommand)
+                sqlCommand.Parameters.AddWithValue(":doc_title", title)
+                sqlCommand.Parameters.AddWithValue(":doc_author", author)
+                sqlCommand.Parameters.AddWithValue(":doc_subject", subject)
+                sqlCommand.Parameters.AddWithValue(":doc_keywords", keywords)
+                sqlCommand.Parameters.AddWithValue(":doc_added", dateTimeStamp)
+                sqlCommand.Parameters.AddWithValue(":doc_notes", notes)
+                sqlCommand.Parameters.Add(":doc_pdf", DbType.Binary).Value = blob
+                sqlCommand.Parameters.AddWithValue(":doc_category", category)
+                sqlCommand.Parameters.AddWithValue(":doc_flag", flag)
+                sqlCommand.Parameters.AddWithValue(":doc_tax_year", taxYear)
+                sqlCommand.Parameters.AddWithValue(":doc_text_annotations", textAnnotations)
+                sqlCommand.Parameters.AddWithValue(":doc_text", text)
+                provider.ExecuteNonQuery(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Sub
 
-    Public Sub UpdateNotesById(id As Integer, notes As String) Implements IDocumentRepository.UpdateNotesById
+    Public Sub UpdateNotesById(id As Integer,
+                               notes As String) Implements IDocumentRepository.UpdateNotesById
         Dim sqlStatement As String =
-            "update pdfkeeper.docs " &
-            "set doc_notes = :doc_notes,doc_dummy = ''" &
+            "update docs " &
+            "set doc_notes = :doc_notes " &
             "where doc_id = :doc_id"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_notes", notes)
-                oraCommand.Parameters.Add("doc_id", id)
-                provider.ExecuteNonQuery(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                sqlCommand.Parameters.AddWithValue("doc_notes", notes)
+                sqlCommand.Parameters.AddWithValue("doc_id", id)
+                provider.ExecuteNonQuery(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Sub
 
-    Public Sub UpdateCategoryById(id As Integer, category As String) Implements IDocumentRepository.UpdateCategoryById
+    Public Sub UpdateCategoryById(id As Integer,
+                                  category As String) Implements IDocumentRepository.UpdateCategoryById
         Dim sqlStatement As String =
-            "update pdfkeeper.docs " &
-            "set doc_category = :doc_category,doc_dummy = '' " &
+            "update docs " &
+            "set doc_category = :doc_category " &
             "where doc_id = :doc_id"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_category", category)
-                oraCommand.Parameters.Add("doc_id", id)
-                provider.ExecuteNonQuery(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                sqlCommand.Parameters.AddWithValue("doc_category", category)
+                sqlCommand.Parameters.AddWithValue("doc_id", id)
+                provider.ExecuteNonQuery(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Sub
 
-    Public Sub UpdateTaxYearById(id As Integer, taxYear As String) Implements IDocumentRepository.UpdateTaxYearById
+    Public Sub UpdateTaxYearById(id As Integer,
+                                 taxYear As String) Implements IDocumentRepository.UpdateTaxYearById
         Dim sqlStatement As String =
-            "update pdfkeeper.docs " &
-            "set doc_tax_year = :doc_tax_year,doc_dummy = '' " &
+            "update docs " &
+            "set doc_tax_year = :doc_tax_year " &
             "where doc_id = :doc_id"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_tax_year", taxYear)
-                oraCommand.Parameters.Add("doc_id", id)
-                provider.ExecuteNonQuery(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                sqlCommand.Parameters.AddWithValue("doc_tax_year", taxYear)
+                sqlCommand.Parameters.AddWithValue("doc_id", id)
+                provider.ExecuteNonQuery(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Sub
 
-    Public Sub UpdateFlagStateById(id As Integer, flag As Integer) Implements IDocumentRepository.UpdateFlagStateById
+    Public Sub UpdateFlagStateById(id As Integer,
+                                   flag As Integer) Implements IDocumentRepository.UpdateFlagStateById
         Dim sqlStatement As String =
-            "update pdfkeeper.docs " &
+            "update docs " &
             "set doc_flag = :doc_flag " &
             "where doc_id = :doc_id"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_flag", flag)
-                oraCommand.Parameters.Add("doc_id", id)
-                provider.ExecuteNonQuery(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                sqlCommand.Parameters.AddWithValue("doc_flag", flag)
+                sqlCommand.Parameters.AddWithValue("doc_id", id)
+                provider.ExecuteNonQuery(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Sub
@@ -621,97 +611,82 @@ Public NotInheritable Class OracleDbDocumentRepository
     Public Sub UpdateTextAnnotationsById(id As Integer,
                                          textAnnotations As String) Implements IDocumentRepository.UpdateTextAnnotationsById
         Dim sqlStatement As String =
-            "update pdfkeeper.docs " &
-            "set doc_text_annotations = :doc_text_annotations,doc_dummy = '' " &
+            "update docs " &
+            "set doc_text_annotations = :doc_text_annotations " &
             "where doc_id = :doc_id"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_text_annotations", textAnnotations)
-                oraCommand.Parameters.Add("doc_id", id)
-                provider.ExecuteNonQuery(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                sqlCommand.Parameters.AddWithValue("doc_text_annotations", textAnnotations)
+                sqlCommand.Parameters.AddWithValue("doc_id", id)
+                provider.ExecuteNonQuery(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Sub
 
-    Public Sub UpdateTextById(id As Integer, text As String) Implements IDocumentRepository.UpdateTextById
+    Public Sub UpdateTextById(id As Integer,
+                              text As String) Implements IDocumentRepository.UpdateTextById
         Dim sqlStatement As String =
-            "update pdfkeeper.docs " &
-            "set doc_text = :doc_text,doc_dummy = '' " &
+            "update docs " &
+            "set doc_text = :doc_text " &
             "where doc_id = :doc_id"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_text", text)
-                oraCommand.Parameters.Add("doc_id", id)
-                provider.ExecuteNonQuery(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                sqlCommand.Parameters.AddWithValue("doc_text", text)
+                sqlCommand.Parameters.AddWithValue("doc_id", id)
+                provider.ExecuteNonQuery(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Sub
 
     Public Sub DeleteRecordById(id As Integer) Implements IDocumentRepository.DeleteRecordById
         Dim sqlStatement As String =
-            "delete from pdfkeeper.docs " &
+            "delete from docs " &
             "where doc_id = :doc_id"
         Try
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_id", id)
-                provider.ExecuteNonQuery(oraCommand)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
+                sqlCommand.Parameters.AddWithValue("doc_id", id)
+                provider.ExecuteNonQuery(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Sub
 
-    Private Function GetColumnDataById(ByVal id As Integer, ByVal columnName As String) As DataTable
+    Private Function GetColumnDataById(ByVal id As Integer,
+                                       ByVal columnName As String) As DataTable
         Dim sqlStatement As String =
             "select " & columnName &
-            " from pdfkeeper.docs" &
+            " from docs" &
             " where doc_id = :doc_id"
         Try
 #Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
-            Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
+            Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
 #Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
-                oraCommand.CommandType = CommandType.Text
-                oraCommand.BindByName = True
-                oraCommand.Parameters.Add("doc_id", id)
-                Return provider.QueryToDataTable(oraCommand)
+                sqlCommand.CommandType = CommandType.Text
+                sqlCommand.Parameters.AddWithValue("doc_id", id)
+                Return provider.QueryToDataTable(sqlCommand)
             End Using
-        Catch ex As OracleException
+        Catch ex As SQLiteException
             Throw New CustomDbException(ex.Message)
         End Try
     End Function
 
-#Region "IDisposable Support"
-    Private disposedValue As Boolean ' To detect redundant calls
-
-    ' IDisposable
-    Public Sub Dispose(disposing As Boolean)
-        If Not Me.disposedValue Then
+    Private Sub Dispose(disposing As Boolean)
+        If Not disposedValue Then
             If disposing Then
                 provider.Dispose()
             End If
+            disposedValue = True
         End If
-        Me.disposedValue = True
     End Sub
 
-    Protected Overrides Sub Finalize()
-        ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
-        Dispose(False)
-        MyBase.Finalize()
-    End Sub
-
-    ' This code added by Visual Basic to correctly implement the disposable pattern.
     Public Sub Dispose() Implements IDisposable.Dispose
-        ' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
-        Dispose(True)
+        ' Do not change this code. Put cleanup code in 'Dispose(disposing As Boolean)' method
+        Dispose(disposing:=True)
         GC.SuppressFinalize(Me)
     End Sub
-#End Region
-
 End Class

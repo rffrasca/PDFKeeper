@@ -22,7 +22,11 @@ Public NotInheritable Class DocumentRepository
     Private ReadOnly repository As IDocumentRepository
 
     Public Sub New()
-        If DbInstanceProperties.DbManagementSystem = "Oracle" Then
+        If DbInstanceProperties.Platform =
+            DatabasePlatform.Sqlite.ToString Then
+            repository = New SqliteDocumentRepository
+        ElseIf DbInstanceProperties.Platform =
+            DatabasePlatform.Oracle.ToString Then
             repository = New OracleDbDocumentRepository
         End If
     End Sub

@@ -2,10 +2,10 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
-	<title>Database Schema Upgrade for Oracle Database</title>
+	<title>Schema Upgrade for Oracle Database</title>
 	<meta name="generator" content="LibreOffice 7.0.3.1 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2020-12-27T10:49:17.560000000"/>
+	<meta name="changed" content="2020-12-30T15:09:37.892000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -27,10 +27,10 @@
 * along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
 *******************************************************************************"/>
 </head>
-<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Database
-Schema Upgrade for Oracle Database</b></font></h1>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Schema
+Upgrade for Oracle Database</b></font></h1>
 <p><font face="Segoe UI, sans-serif">This topic provides the steps
-that need to be performed by an individual responsible for the
+that need to be performed by the individual responsible for the
 administration of the Oracle Database when upgrading from PDFKeeper
 6.1.1</font> <font face="Segoe UI, sans-serif">or earlier. This
 schema upgrade adds support for new features introduced in PDFKeeper
@@ -55,41 +55,34 @@ documentation</a> for the database version being used.</font></p>
 	alternative, you can install this version of PDFKeeper on the same
 	computer as the Oracle Database used to store PDFKeeper data, and
 	then perform the schema upgrade on that computer.</font></p>
-	<li><p><font face="Segoe UI, sans-serif">Run the <a href="/DatabaseSchemaSetupScriptLauncher.cmd">Database
-	Schema </a><a href="/DatabaseSchemaSetupScriptLauncher.cmd">Upgrade</a>.
-	To perform the upgrade, select option </font><font face="Segoe UI, sans-serif"><b>2</b></font>
+	<li><p><font face="Segoe UI, sans-serif">Perform the schema upgrade
+	by selecting option </font><font face="Segoe UI, sans-serif"><b>2</b></font>
 	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">from
-	the menu</span></font><font face="Segoe UI, sans-serif">.</font></p>
+	the </span></font><font face="Segoe UI, sans-serif"><a href="ClientServerDatabaseSchemaSetup.cmd">menu</a>.</font></p>
 	<li><p><font face="Segoe UI, sans-serif">Login to PDFKeeper with an
 	account normally used. Note, the account must have update
 	permissions to the PDFKeeper Documents Schema. To confirm
-	permissions, please see the <a href="Database%20User%20Administration-Oracle%20Database.html">Database
-	User Administration for Oracle Database</a></font> <font face="Segoe UI, sans-serif">help
+	permissions, please see the <a href="User%20Administration%20for%20Oracle%20Database.html">User
+	Administration</a></font> <font face="Segoe UI, sans-serif">help
 	topic.</font></p>
 	<li><p><font face="Segoe UI, sans-serif">Select </font><font face="Segoe UI, sans-serif"><b>All
-	Documents</b></font><font face="Segoe UI, sans-serif"> in the Search
+	Documents</b></font> <font face="Segoe UI, sans-serif">in the Search
 	list box.</font></p>
-	<li><p><font face="Segoe UI, sans-serif">Select the </font><font face="Segoe UI, sans-serif"><b>File</b></font><font face="Segoe UI, sans-serif">
-	menu, and then select </font><font face="Segoe UI, sans-serif"><b>Populate
+	<li><p><font face="Segoe UI, sans-serif">Select the </font><font face="Segoe UI, sans-serif"><b>File</b></font>
+	<font face="Segoe UI, sans-serif">menu, and then select </font><font face="Segoe UI, sans-serif"><b>Populate
 	New Database Table Columns</b></font><font face="Segoe UI, sans-serif">;
 	or select the </font><font face="Segoe UI, sans-serif"><b>Populate
-	New Database Table Columns</b></font><font face="Segoe UI, sans-serif">
-	tool bar icon; or press </font><font face="Segoe UI, sans-serif"><b>Ctrl</b></font><font face="Segoe UI, sans-serif">
-	+ </font><font face="Segoe UI, sans-serif"><b>Shift</b></font><font face="Segoe UI, sans-serif">
-	+ </font><font face="Segoe UI, sans-serif"><b>P</b></font><font face="Segoe UI, sans-serif">
-	on the keyboard.</font></p>
-	<li><p><font face="Segoe UI, sans-serif">When prompted, select </font><font face="Segoe UI, sans-serif"><b>Yes</b></font><font face="Segoe UI, sans-serif">
-	or press </font><font face="Segoe UI, sans-serif"><b>Enter </b></font><font face="Segoe UI, sans-serif">on
-	the keyboard to perform the operation. Note, for large databases,
-	this operation will take some time to complete and can be monitored
-	by the progress bar that will appear on the status bar.</font></p>
+	New Database Table Columns</b></font> <font face="Segoe UI, sans-serif">tool
+	bar icon; or press </font><font face="Segoe UI, sans-serif"><b>Ctrl</b></font>
+	<font face="Segoe UI, sans-serif">+ </font><font face="Segoe UI, sans-serif"><b>Shift</b></font>
+	<font face="Segoe UI, sans-serif">+ </font><font face="Segoe UI, sans-serif"><b>P</b></font>
+	<font face="Segoe UI, sans-serif">on the keyboard.</font></p>
+	<li><p><font face="Segoe UI, sans-serif">When prompted, select </font><font face="Segoe UI, sans-serif"><b>Yes</b></font>
+	<font face="Segoe UI, sans-serif">or press </font><font face="Segoe UI, sans-serif"><b>Enter
+	</b></font><font face="Segoe UI, sans-serif">on the keyboard to
+	perform the operation. Note, for large databases, this operation
+	will take some time to complete and can be monitored by the progress
+	bar that will appear on the status bar.</font></p>
 </ol>
-<p><font face="Segoe UI, sans-serif"><b>Additional Information:</b></font></p>
-<ul>
-	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">If
-	the message &ldquo;<b>This page can&rsquo;t be displayed&rdquo;
-	</b>appears in the Help window after selecting <b>Database Schema
-	Upgrade</b> in step 2, then restart this computer and try again.</font></p>
-</ul>
 </body>
 </html>

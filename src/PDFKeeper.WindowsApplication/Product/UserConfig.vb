@@ -52,7 +52,7 @@ Public NotInheritable Class UserConfig
     ''' <returns>True or False</returns>
     Public Shared ReadOnly Property IsFirstUse As Boolean
         Get
-            If My.Settings.Datasource.Length = 0 Then
+            If My.Settings.DbManagementSystem.Length = 0 Then
                 Return True
             Else
                 Return False

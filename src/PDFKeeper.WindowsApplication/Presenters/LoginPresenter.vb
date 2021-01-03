@@ -33,7 +33,7 @@ Public Class LoginPresenter
             ' NOTE: Oracle is the only supported RDBMS at this time.  To add future systems, add a ComboBox
             ' to LoginForm containing the supported Databases and bind it to the LoginDatabase setting.
             With model
-                .DbManagementSystem = "Oracle"
+                .DbManagementSystem = DatabasePlatform.Oracle.ToString
                 .Password = view.Password
             End With
             DbInstanceUtil.TestConnection()
@@ -43,7 +43,7 @@ Public Class LoginPresenter
             view.SetCursor(False)
             message.Show(ex.Message, True)
             view.DoFailed()
-        Catch ex As OracleException
+        Catch ex As CustomDbException
             DbInstanceUtil.ResetCredential()
             view.SetCursor(False)
             message.Show(ex.Message, True)

@@ -23,6 +23,23 @@ Public NotInheritable Class UserProfile
     End Sub
 
     ''' <summary>
+    ''' Returns the file path of the local database or Nothing if not exists.
+    ''' </summary>
+    ''' <returns></returns>
+    Public Shared ReadOnly Property LocalDatabasePath As String
+        Get
+            Dim database As String = Path.Combine(ApplicationDataRoot,
+                                                  String.Concat(Application.ProductName,
+                                                                ".sqlite"))
+            If IO.File.Exists(database) Then
+                Return database
+            Else
+                Return Nothing
+            End If
+        End Get
+    End Property
+
+    ''' <summary>
     ''' Returns the folder path used to cache PDF and image previews from
     ''' selected document records.
     ''' </summary>

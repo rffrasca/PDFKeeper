@@ -25,15 +25,18 @@ Public NotInheritable Class DbInstanceProperties
     End Sub
 
     ''' <summary>
-    ''' Returns the database management system name being used.
+    ''' Gets/Sets the database platform being used.
     ''' </summary>
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Shared ReadOnly Property DbManagementSystem As String
+    Public Shared Property Platform As String
         Get
             Return My.Settings.DbManagementSystem
         End Get
+        Set(value As String)
+            My.Settings.DbManagementSystem = value
+        End Set
     End Property
 
     ''' <summary>
@@ -76,9 +79,11 @@ Public NotInheritable Class DbInstanceProperties
     Public Shared ReadOnly Property ConnectionString As String
         Get
             Dim result As String = Nothing
-            If DbManagementSystem = "Oracle" Then
-                result =
-                    "Data Source=" + My.Settings.Datasource + ";" &
+            If Platform = DatabasePlatform.Sqlite.ToString Then
+                result = "Data Source=" + UserProfile.LocalDatabasePath + ";" &
+                    "Version=3; + Auto Vacuum=Full"
+            ElseIf Platform = DatabasePlatform.Oracle.ToString Then
+                result = "Data Source=" + My.Settings.Datasource + ";" &
                     "Pooling=" + My.Settings.Pooling
             End If
             Return result

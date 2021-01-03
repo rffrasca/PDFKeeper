@@ -61,7 +61,7 @@ Public Class CommonPresenter
                 GetTaxYears("TaxYear")
             End If
             view.SetCursor(False)
-        Catch ex As OracleException
+        Catch ex As CustomDbException
             view.SetCursor(False)
             message.Show(ex.Message, True)
         End Try

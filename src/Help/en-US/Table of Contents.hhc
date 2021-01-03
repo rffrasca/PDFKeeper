@@ -20,57 +20,62 @@
 			<param name="ImageNumber" value="17">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Database Setup">
-			<param name="Local" value="Database Setup.html">
+			<param name="Name" value="Getting Started">
+			<param name="Local" value="Getting Started.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Oracle Database">
-				<param name="Local" value="Database Setup-Oracle Database.html">
+				<param name="Name" value="Setup Local Database">
+				<param name="Local" value="Setup Local Database.html">
 				<param name="ImageNumber" value="9">
 				</OBJECT>
-		</UL>
-		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Database Schema Upgrade for Oracle Database">
-			<param name="Local" value="Database Schema Upgrade for Oracle Database.html">
-			<param name="ImageNumber" value="9">
-			</OBJECT>
-		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Additional Client Prerequisites">
-			<param name="Local" value="Additional Client Prerequisites.html">
-			<param name="ImageNumber" value="1">
-			</OBJECT>
-		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Installing Oracle Data Provider for .NET">
-				<param name="Local" value="Installing Oracle Data Provider for .NET.html">
-				<param name="ImageNumber" value="9">
+				<param name="Name" value="Setup Client-Server Database">
+				<param name="Local" value="Setup Client-Server Database.html">
+				<param name="ImageNumber" value="1">
 				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Oracle Database">
+					<param name="Local" value="Oracle Database.html">
+					<param name="ImageNumber" value="1">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Schema Setup">
+						<param name="Local" value="Schema Setup for Oracle Database.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Schema Upgrade">
+						<param name="Local" value="Schema Upgrade for Oracle Database.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Installing Oracle Data Provider for .NET">
+						<param name="Local" value="Installing Oracle Data Provider for .NET.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="User Administration">
+						<param name="Local" value="User Administration for Oracle Database.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+				</UL>
+			</UL>
 		</UL>
-		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Database User Administration">
-			<param name="Local" value="Database User Administration.html">
-			<param name="ImageNumber" value="1">
-			</OBJECT>
-		<UL>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Oracle Database">
-				<param name="Local" value="Database User Administration-Oracle Database.html">
-				<param name="ImageNumber" value="9">
-				</OBJECT>
-		</UL>
-		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Logging into PDFKeeper">
-			<param name="Local" value="Logging into PDFKeeper.html">
-			<param name="ImageNumber" value="9">
-			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Using PDFKeeper">
 			<param name="Local" value="Using PDFKeeper.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
 		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Logging into PDFKeeper">
+				<param name="Local" value="Logging into PDFKeeper.html">
+				<param name="ImageNumber" value="9">
+				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="Uploading PDF Documents">
 				<param name="Local" value="Uploading PDF Documents.html">
@@ -133,10 +138,22 @@
 				</OBJECT>
 			<UL>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Search by Text Examples">
-					<param name="Local" value="Search by Text Examples.html">
+					<param name="Name" value="Searching by Text">
+					<param name="Local" value="Searching by Text.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Searching by Text Examples for SQLite">
+						<param name="Local" value="Searching by Text Examples for SQLite.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Searching by Text Examples for Oracle">
+						<param name="Local" value="Searching by Text Examples for Oracle.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+				</UL>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="Working with Search Results">
@@ -241,12 +258,12 @@
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Getting Support">
 			<param name="Local" value="Getting Support.html">
-			<param name="ImageNumber" value="9">
+			<param name="ImageNumber" value="17">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Donate">
 			<param name="Local" value="Donate.html">
-			<param name="ImageNumber" value="9">
+			<param name="ImageNumber" value="17">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="License">
@@ -256,7 +273,7 @@
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Third-Party Attribution">
 			<param name="Local" value="Third-Party Attribution.html">
-			<param name="ImageNumber" value="9">
+			<param name="ImageNumber" value="17">
 			</OBJECT>
 	</UL>
 </UL>

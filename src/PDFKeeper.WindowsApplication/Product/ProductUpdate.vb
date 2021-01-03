@@ -37,7 +37,8 @@ Public NotInheritable Class ProductUpdate
         Get
             If IO.File.Exists(newDbTableColumnsTempFile) Then
                 Dim text As String = IO.File.ReadAllText(newDbTableColumnsTempFile)
-                If text.Contains("DOC_TEXT_ANNOTATIONS") And text.Contains("DOC_TEXT") Then
+                If text.Contains("DOC_TEXT_ANNOTATIONS") And
+                    text.Contains("DOC_TEXT") Then
                     Return True
                 Else
                     DeleteNewDbTableColumnsTempFile()

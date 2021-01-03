@@ -50,9 +50,12 @@ Public Class MainPresenter
         Me.view = view
     End Sub
 
-    Public Sub ApplyPolicy()
-        If ApplicationPolicy.DisableQueryAllDocuments Then
-            view.RemoveAllDocumentsFromSearchFunctions()
+    Public Sub ApplyPolicy()    ' Policies do not apply when using SQLite.
+        If DbInstanceProperties.Platform IsNot
+            DatabasePlatform.Sqlite.ToString Then
+            If ApplicationPolicy.DisableQueryAllDocuments Then
+                view.RemoveAllDocumentsFromSearchFunctions()
+            End If
         End If
     End Sub
 
@@ -83,7 +86,7 @@ Public Class MainPresenter
                                                   CultureInfo.CurrentCulture),
                                               ex.Message), True)
             ClearDocumentRecord()
-        Catch ex As OracleException
+        Catch ex As CustomDbException
             view.SetCursor(False)
             message.Show(ex.Message, True)
         End Try
@@ -227,7 +230,7 @@ Public Class MainPresenter
             End Using
             view.SetCursor(False)
             TriggerSearchResultsRefresh(False)
-        Catch ex As OracleException
+        Catch ex As CustomDbException
             view.SetCursor(False)
             message.Show(ex.Message, True)
         End Try
@@ -332,7 +335,7 @@ Public Class MainPresenter
                                        CultureInfo.CurrentCulture),
                                        ex.Message,
                                        processPresenter.IdBeingProcessed), True)
-        Catch ex As OracleException
+        Catch ex As CustomDbException
             view.SetCursor(False)
             message.Show(String.Format(CultureInfo.CurrentCulture,
                                        My.Resources.ResourceManager.GetString(
@@ -393,7 +396,8 @@ Public Class MainPresenter
     Public Sub SearchTextChanged()
         view.SearchText = view.SearchText.TrimStart
         If view.SearchText.Length > 0 Then
-            If view.SearchText.VerifyProperUsageOfQueryOperators Then
+            If QueryOperatorChecker.IsSyntaxCorrect(DbInstanceProperties.Platform,
+                                                    view.SearchText) Then
                 view.SearchTextErrorProviderMessage = Nothing
                 view.SearchEnabled = True
             Else
@@ -431,7 +435,7 @@ Public Class MainPresenter
                 lastSearchText = view.SearchText
                 view.SearchEnabled = False
                 view.SetCursor(False)
-            Catch ex As OracleException
+            Catch ex As CustomDbException
                 view.SetCursor(False)
                 message.Show(ex.Message, True)
             End Try
@@ -482,7 +486,7 @@ Public Class MainPresenter
                 view.SetCursor(False)
                 searchBySelectionPerformed = True
                 view.SearchBySelectionsEnabled = False
-            Catch ex As OracleException
+            Catch ex As CustomDbException
                 view.SetCursor(False)
                 message.Show(ex.Message, True)
             End Try
@@ -499,7 +503,7 @@ Public Class MainPresenter
                 FillSearchResults(model.GetAllRecordsByDateAdded(view.SearchDate))
             End Using
             view.SetCursor(False)
-        Catch ex As OracleException
+        Catch ex As CustomDbException
             view.SetCursor(False)
             message.Show(ex.Message, True)
         End Try
@@ -512,7 +516,7 @@ Public Class MainPresenter
                 FillSearchResults(model.GetAllFlaggedRecords)
             End Using
             view.SetCursor(False)
-        Catch ex As OracleException
+        Catch ex As CustomDbException
             view.SetCursor(False)
             message.Show(ex.Message, True)
         End Try
@@ -525,7 +529,7 @@ Public Class MainPresenter
                 FillSearchResults(model.GetAllRecords)
             End Using
             view.SetCursor(False)
-        Catch ex As OracleException
+        Catch ex As CustomDbException
             view.SetCursor(False)
             message.Show(ex.Message, True)
         End Try
@@ -643,7 +647,7 @@ Public Class MainPresenter
                 End If
             End Using
             view.SetCursor(False)
-        Catch ex As OracleException
+        Catch ex As CustomDbException
             view.SetCursor(False)
             message.Show(ex.Message, True)
         End Try
@@ -694,7 +698,7 @@ Public Class MainPresenter
             End Using
             lastDocumentNotes = view.DocumentRecordNotes
             view.SetCursor(False)
-        Catch ex As OracleException
+        Catch ex As CustomDbException
             view.SetCursor(False)
             message.Show(ex.Message, True)
         End Try
@@ -758,7 +762,7 @@ Public Class MainPresenter
                 End If
             End Using
             Application.DoEvents()
-        Catch ex As OracleException
+        Catch ex As CustomDbException
             view.FlaggedDocumentsCheckTimerEnabled = False
             message.Show(ex.Message, True)
             view.FlaggedDocumentsCheckTimerEnabled = True

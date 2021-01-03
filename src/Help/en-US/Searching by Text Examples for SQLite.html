@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
+	<title>Searching by Text Examples for SQLite</title>
+	<meta name="generator" content="LibreOffice 7.0.3.1 (Windows)"/>
+	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
+	<meta name="changed" content="2021-01-02T12:00:00.508000000"/>
+	<meta name="description" content="
+*******************************************************************************
+* PDFKeeper -- Open Source PDF Document Management
+* Copyright (C) 2009-2021 Robert F. Frasca
+*
+* This file is part of PDFKeeper.
+*
+* PDFKeeper is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* PDFKeeper is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*******************************************************************************"/>
+</head>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Searching
+by Text Examples for SQLite</b></font></h1>
+<p><font face="Segoe UI, sans-serif"><b>Below are examples on how to
+search by text using the SQLite local database:</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>insurance</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><font size="3" style="font-size: 12pt"><span style="font-weight: normal">Will
+return document records that contain </span><span style="font-variant: normal"><font color="#000000"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">the
+search term</span></span></span></font></span> <i><span style="font-weight: normal">insurance</span></i><span style="font-weight: normal">.</span></font></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>auto
+home </b><span style="font-weight: normal">or</span><b> </b><b>auto
+and home </b><span style="font-weight: normal">or </span><b>auto </b><b>+</b><b>
+home</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return document records that contain <i>auto</i> and <i>home</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>insurance
+not auto</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return document records that contain <i>insurance</i> and not <i>auto</i></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>cars
+or trains</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return document records that contain <i>cars</i> or <i>trains</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>grocer*</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return document records that contain the term, beginning with <i>grocer</i>.</font></p>
+<p><font face="Segoe UI, sans-serif"><b>Notes on special characters:</b></font></p>
+<ul>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Parenthesis
+	characters </span><b>()</b> <span style="font-weight: normal">can be
+	used to group terms and operators;</span></font></p>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Common
+	characters, such as </span><b>&ndash;</b> <span style="font-weight: normal">(dash)
+	and </span><b>&amp; </b><span style="font-weight: normal">that are
+	part of a string, need to be escaped with an </span><b>_</b><span style="font-weight: normal">
+	(underscore). For example, </span><i><span style="font-weight: normal">2009-10-01</span></i>
+	<span style="font-weight: normal">needs to be specified as
+	</span><i><span style="font-weight: normal">2009_10_01</span></i><span style="font-weight: normal">.</span></font></p>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">each
+	term can begin with a column name and</span><b> :</b><span style="font-weight: normal">
+	(colon) to restrict searching for the specified term in the
+	specified column only. For example, </span><b>doc_subject:insurance
+	</b><span style="font-weight: normal">or </span><b>doc_subject:insurance
+	and doc_added:2020</b><span style="font-weight: normal">. The
+	following columns are available for text searching: </span><b>doc_title</b><span style="font-weight: normal">,
+	</span><b>doc_author</b><span style="font-weight: normal">,
+	</span><b>doc_subject</b><span style="font-weight: normal">,
+	</span><b>doc_keywords</b><span style="font-weight: normal">,
+	</span><b>doc_added</b><span style="font-weight: normal">,
+	</span><b>doc_notes</b><span style="font-weight: normal">,
+	</span><b>doc_category</b><span style="font-weight: normal">,
+	</span><b>doc_tax_year</b><span style="font-weight: normal">,
+	</span><b>doc_text_annotations</b><span style="font-weight: normal">,
+	and </span><b>doc_text</b><span style="font-weight: normal">.</span></font></p>
+</ul>
+</body>
+</html>

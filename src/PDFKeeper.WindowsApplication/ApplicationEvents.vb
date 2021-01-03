@@ -34,14 +34,23 @@ Namespace My
             If UserConfig.IsFirstUse Then
                 help.ShowAndWait("PDFKeeper.html")
             ElseIf previousVersion < "7.0.0.0" Then
-                help.ShowAndWait("Database Schema Upgrade for Oracle Database.html")
+                help.ShowAndWait("Schema Upgrade for Oracle Database.html")
             End If
-            AddHandler AppDomain.CurrentDomain.AssemblyResolve,
-                AddressOf Dependency.GetOracleDataAccessAssemblyPath
             Dependency.RestoreBouncyCastle()
             Dependency.SetMagickNetGhostscriptDirectory()
-            If LoginForm.ShowDialog = Windows.Forms.DialogResult.Cancel Then
-                e.Cancel = True
+            If DbInstanceProperties.Platform.Length = 0 Then
+                If IO.File.Exists(UserProfile.LocalDatabasePath) Then
+                    DbInstanceProperties.Platform = DatabasePlatform.Sqlite.ToString
+                End If
+            End If
+            If DbInstanceProperties.Platform <> DatabasePlatform.Sqlite.ToString Then
+                If DbInstanceProperties.Platform = DatabasePlatform.Oracle.ToString Then
+                    AddHandler AppDomain.CurrentDomain.AssemblyResolve,
+                        AddressOf Dependency.GetOracleDataAccessAssemblyPath
+                End If
+                If LoginForm.ShowDialog = Windows.Forms.DialogResult.Cancel Then
+                    e.Cancel = True
+                End If
             End If
         End Sub
 

@@ -13,12 +13,9 @@ PDFKeeper.html
 osi-certified-120x100.png
 gplv3-127x51.png
 Features.html
-Database Setup.html
-Database Setup-Oracle Database.html
-DatabaseSchemaSetupScriptLauncher.cmd
-Additional Client Prerequisites.html
-Database User Administration.html
-Database User Administration-Oracle Database.html
+Getting Started.html
+LocalDatabaseSetup.cmd
+ClientServerDatabaseSchemaSetup.cmd
 Installing Oracle Data Provider for .NET.html
 Getting Support.html
 Using PDFKeeper.html
@@ -34,7 +31,6 @@ Configuring an Upload Folder.html
 Updating PDFKeeper.html
 Uninstalling PDFKeeper.html
 Searching for Documents.html
-Search by Text Examples.html
 Disable All Documents Search Function by Policy.html
 Working with Search Results.html
 Sorting the Search Results.html
@@ -50,7 +46,6 @@ Saving PDF Document outside of PDFKeeper.html
 Deleting Document Records.html
 Exporting PDF Documents and Supplemental Data.html
 Change Flag Document State.html
-Database Schema Upgrade for Oracle Database.html
 Set Category on Document Records.html
 Adding, Editing, and Deleting Upload Folder Configurations.html
 Donate.html
@@ -64,6 +59,14 @@ Magick.NET License.txt
 Silk Icons License.htm
 SumatraPDF License.txt
 Set Tax Year on Document Records.html
+Setup Local Database.html
+Setup Client-Server Database.html
+User Administration for Oracle Database.html
+Schema Upgrade for Oracle Database.html
+Schema Setup for Oracle Database.html
+Searching by Text.html
+Searching by Text Examples for SQLite.html
+Searching by Text Examples for Oracle.html
 
 [INFOTYPES]
 

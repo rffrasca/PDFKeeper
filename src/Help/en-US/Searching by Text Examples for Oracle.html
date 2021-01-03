@@ -2,10 +2,10 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
-	<title>Search by Text Examples</title>
+	<title>Searching by Text Examples for Oracle</title>
 	<meta name="generator" content="LibreOffice 7.0.3.1 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2020-12-25T15:25:54.436000000"/>
+	<meta name="changed" content="2021-01-01T10:26:55.365000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -27,18 +27,20 @@
 * along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
 *******************************************************************************"/>
 </head>
-<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Search
-by Text Examples</b></font></h1>
-<p style="font-weight: normal"><font face="Segoe UI, sans-serif">Document
-records can be searched for by text, meaning any plain text that was
-extracted from each PDF document when uploaded to the database,
-including metadata, text annotations, and any notes added to the
-document record after uploading.</font></p>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Searching
+by Text Examples for Oracle</b></font></h1>
 <p><font face="Segoe UI, sans-serif"><b>Below are examples on how to
-search by text:</b></font></p>
+search by text using the Oracle Database:</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>insurance</b></font></p>
+<p style="margin-left: 0.49in; font-weight: normal"><font face="Segoe UI, sans-serif">Will
+return document records that contain <i>insurance</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>review
+insurance</b></font></p>
+<p style="margin-left: 0.49in; font-weight: normal"><font face="Segoe UI, sans-serif">Will
+return document records that contain <i>review i</i><i>nsurance</i>.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>about(insurance)</b></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents about <i>insurance</i>.</font></p>
+return document records about <i>insurance</i>.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">The
 about operator supports single words, phrases, and can be combined
 with other operators, such as AND, OR, or NOT. Any query operators
@@ -48,53 +50,54 @@ queries.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>about(insurance)
 and banking</b></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents about <i>insurance</i>, and <i>banking</i>.</font></p>
+return document records about <i>insurance</i>, and <i>banking</i>.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>about(insurance)
 and about(banking)</b></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents about <i>insurance,</i> and about <i>banking</i>.</font></p>
+return document records about <i>insurance,</i> and about <i>banking</i>.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>about(insurance)
 not about(homeowners)</b></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents about <i>insurance</i>, and not about <i>homeowners.</i></font></p>
+return document records about <i>insurance</i>, and not about
+<i>homeowners.</i></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>auto
 and home </b><span style="font-weight: normal">or </span><b>auto &amp;
 home</b></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents that contain <i>auto</i> and <i>home</i>.</font></p>
+return document records that contain <i>auto</i> and <i>home</i>.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>maine
 equiv vermont is a new england state </b><span style="font-weight: normal">or
 </span><b>maine=vermont is a new england state</b></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents that contain either the phrase; <i>maine is a new
-england state</i>, or <i>vermont is a new england state</i>.</font></p>
+return document records that contain either the phrase; <i>maine is a
+new england state</i>, or <i>vermont is a new england state</i>.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>?product</b>
 </font>
 </p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents that match a fuzzy expansion of <i>product</i>.</font></p>
+return document records that match a fuzzy expansion of <i>product</i>.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>insurance
 not auto </b><span style="font-weight: normal">or </span><b>insurance
 ~ auto</b></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents that contain <i>insurance</i> and not <i>auto</i></font></p>
+return document records that contain <i>insurance</i> and not <i>auto</i></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>cars
 | trains </b><span style="font-weight: normal">or </span><b>cars or
 trains</b></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents that contain <i>cars</i> or <i>trains</i>.</font></p>
+return document records that contain <i>cars</i> or <i>trains</i>.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>!edgartown</b></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents that sound like <i>edgartown</i>.</font></p>
+return document records that sound like <i>edgartown</i>.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>$produce</b></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents that contain the same root word as <i>produce</i>.</font></p>
+return document records that contain the same root word as <i>produce</i>.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>grocer%</b></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents that contain the term, beginning with <i>grocer</i>.</font></p>
+return document records that contain the term, beginning with <i>grocer</i>.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>_rain</b></font></p>
 <p align="left" style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
-return documents that contain the term, ending in rain.</font></p>
+return document records that contain the term, ending in rain.</font></p>
 <p><font face="Segoe UI, sans-serif"><b>Notes on special characters:</b></font></p>
 <ul>
 	<li><p><font face="Segoe UI, sans-serif"><b>% </b><span style="font-weight: normal">is
