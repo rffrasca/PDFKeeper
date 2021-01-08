@@ -493,14 +493,12 @@ Partial Class MainForm
         resources.ApplyResources(Me.SelectedDocumentTabControl, "SelectedDocumentTabControl")
         Me.SelectedDocumentTabControl.Name = "SelectedDocumentTabControl"
         Me.SelectedDocumentTabControl.SelectedIndex = 0
-        Me.HelpProvider.SetShowHelp(Me.SelectedDocumentTabControl, CType(resources.GetObject("SelectedDocumentTabControl.ShowHelp"), Boolean))
         '
         'NotesTabPage
         '
         Me.NotesTabPage.Controls.Add(Me.NotesTextBox)
         resources.ApplyResources(Me.NotesTabPage, "NotesTabPage")
         Me.NotesTabPage.Name = "NotesTabPage"
-        Me.HelpProvider.SetShowHelp(Me.NotesTabPage, CType(resources.GetObject("NotesTabPage.ShowHelp"), Boolean))
         Me.NotesTabPage.UseVisualStyleBackColor = True
         '
         'NotesTextBox
@@ -508,14 +506,12 @@ Partial Class MainForm
         Me.NotesTextBox.AcceptsReturn = True
         resources.ApplyResources(Me.NotesTextBox, "NotesTextBox")
         Me.NotesTextBox.Name = "NotesTextBox"
-        Me.HelpProvider.SetShowHelp(Me.NotesTextBox, CType(resources.GetObject("NotesTextBox.ShowHelp"), Boolean))
         '
         'KeywordsTabPage
         '
         Me.KeywordsTabPage.Controls.Add(Me.KeywordsTextBox)
         resources.ApplyResources(Me.KeywordsTabPage, "KeywordsTabPage")
         Me.KeywordsTabPage.Name = "KeywordsTabPage"
-        Me.HelpProvider.SetShowHelp(Me.KeywordsTabPage, CType(resources.GetObject("KeywordsTabPage.ShowHelp"), Boolean))
         Me.KeywordsTabPage.UseVisualStyleBackColor = True
         '
         'KeywordsTextBox
@@ -523,14 +519,12 @@ Partial Class MainForm
         resources.ApplyResources(Me.KeywordsTextBox, "KeywordsTextBox")
         Me.KeywordsTextBox.Name = "KeywordsTextBox"
         Me.KeywordsTextBox.ReadOnly = True
-        Me.HelpProvider.SetShowHelp(Me.KeywordsTextBox, CType(resources.GetObject("KeywordsTextBox.ShowHelp"), Boolean))
         '
         'PreviewTabPage
         '
         Me.PreviewTabPage.Controls.Add(Me.PreviewPanel)
         resources.ApplyResources(Me.PreviewTabPage, "PreviewTabPage")
         Me.PreviewTabPage.Name = "PreviewTabPage"
-        Me.HelpProvider.SetShowHelp(Me.PreviewTabPage, CType(resources.GetObject("PreviewTabPage.ShowHelp"), Boolean))
         Me.PreviewTabPage.UseVisualStyleBackColor = True
         '
         'PreviewPanel
@@ -538,13 +532,11 @@ Partial Class MainForm
         resources.ApplyResources(Me.PreviewPanel, "PreviewPanel")
         Me.PreviewPanel.Controls.Add(Me.PreviewPictureBox)
         Me.PreviewPanel.Name = "PreviewPanel"
-        Me.HelpProvider.SetShowHelp(Me.PreviewPanel, CType(resources.GetObject("PreviewPanel.ShowHelp"), Boolean))
         '
         'PreviewPictureBox
         '
         resources.ApplyResources(Me.PreviewPictureBox, "PreviewPictureBox")
         Me.PreviewPictureBox.Name = "PreviewPictureBox"
-        Me.HelpProvider.SetShowHelp(Me.PreviewPictureBox, CType(resources.GetObject("PreviewPictureBox.ShowHelp"), Boolean))
         Me.PreviewPictureBox.TabStop = False
         '
         'TextTabPage
@@ -552,7 +544,6 @@ Partial Class MainForm
         Me.TextTabPage.Controls.Add(Me.TextTextBox)
         resources.ApplyResources(Me.TextTabPage, "TextTabPage")
         Me.TextTabPage.Name = "TextTabPage"
-        Me.HelpProvider.SetShowHelp(Me.TextTabPage, CType(resources.GetObject("TextTabPage.ShowHelp"), Boolean))
         Me.TextTabPage.UseVisualStyleBackColor = True
         '
         'TextTextBox
@@ -560,7 +551,6 @@ Partial Class MainForm
         resources.ApplyResources(Me.TextTextBox, "TextTextBox")
         Me.TextTextBox.Name = "TextTextBox"
         Me.TextTextBox.ReadOnly = True
-        Me.HelpProvider.SetShowHelp(Me.TextTextBox, CType(resources.GetObject("TextTextBox.ShowHelp"), Boolean))
         '
         'SearchGroupBox
         '
@@ -582,7 +572,6 @@ Partial Class MainForm
         Me.SearchGroupBox.Controls.Add(Me.SearchTextComboBox)
         resources.ApplyResources(Me.SearchGroupBox, "SearchGroupBox")
         Me.SearchGroupBox.Name = "SearchGroupBox"
-        Me.HelpProvider.SetShowHelp(Me.SearchGroupBox, CType(resources.GetObject("SearchGroupBox.ShowHelp"), Boolean))
         Me.SearchGroupBox.TabStop = False
         '
         'TaxYearGroupComboBox
@@ -591,26 +580,22 @@ Partial Class MainForm
         Me.TaxYearGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.TaxYearGroupComboBox.FormattingEnabled = True
         Me.TaxYearGroupComboBox.Name = "TaxYearGroupComboBox"
-        Me.HelpProvider.SetShowHelp(Me.TaxYearGroupComboBox, CType(resources.GetObject("TaxYearGroupComboBox.ShowHelp"), Boolean))
         Me.TaxYearGroupComboBox.Sorted = True
         '
         'TaxYearLabel
         '
         resources.ApplyResources(Me.TaxYearLabel, "TaxYearLabel")
         Me.TaxYearLabel.Name = "TaxYearLabel"
-        Me.HelpProvider.SetShowHelp(Me.TaxYearLabel, CType(resources.GetObject("TaxYearLabel.ShowHelp"), Boolean))
         '
         'DateLabel
         '
         resources.ApplyResources(Me.DateLabel, "DateLabel")
         Me.DateLabel.Name = "DateLabel"
-        Me.HelpProvider.SetShowHelp(Me.DateLabel, CType(resources.GetObject("DateLabel.ShowHelp"), Boolean))
         '
         'TextLabel
         '
         resources.ApplyResources(Me.TextLabel, "TextLabel")
         Me.TextLabel.Name = "TextLabel"
-        Me.HelpProvider.SetShowHelp(Me.TextLabel, CType(resources.GetObject("TextLabel.ShowHelp"), Boolean))
         '
         'SearchFunctionsListBox
         '
@@ -618,33 +603,28 @@ Partial Class MainForm
         Me.SearchFunctionsListBox.FormattingEnabled = True
         Me.SearchFunctionsListBox.Items.AddRange(New Object() {resources.GetString("SearchFunctionsListBox.Items"), resources.GetString("SearchFunctionsListBox.Items1"), resources.GetString("SearchFunctionsListBox.Items2"), resources.GetString("SearchFunctionsListBox.Items3"), resources.GetString("SearchFunctionsListBox.Items4")})
         Me.SearchFunctionsListBox.Name = "SearchFunctionsListBox"
-        Me.HelpProvider.SetShowHelp(Me.SearchFunctionsListBox, CType(resources.GetObject("SearchFunctionsListBox.ShowHelp"), Boolean))
         '
         'SearchBySelectionsButton
         '
         resources.ApplyResources(Me.SearchBySelectionsButton, "SearchBySelectionsButton")
         Me.SearchBySelectionsButton.Name = "SearchBySelectionsButton"
-        Me.HelpProvider.SetShowHelp(Me.SearchBySelectionsButton, CType(resources.GetObject("SearchBySelectionsButton.ShowHelp"), Boolean))
         Me.SearchBySelectionsButton.UseVisualStyleBackColor = True
         '
         'SearchByTextButton
         '
         resources.ApplyResources(Me.SearchByTextButton, "SearchByTextButton")
         Me.SearchByTextButton.Name = "SearchByTextButton"
-        Me.HelpProvider.SetShowHelp(Me.SearchByTextButton, CType(resources.GetObject("SearchByTextButton.ShowHelp"), Boolean))
         Me.SearchByTextButton.UseVisualStyleBackColor = True
         '
         'SearchDateTimePicker
         '
         resources.ApplyResources(Me.SearchDateTimePicker, "SearchDateTimePicker")
         Me.SearchDateTimePicker.Name = "SearchDateTimePicker"
-        Me.HelpProvider.SetShowHelp(Me.SearchDateTimePicker, CType(resources.GetObject("SearchDateTimePicker.ShowHelp"), Boolean))
         '
         'ClearSelectionsButton
         '
         resources.ApplyResources(Me.ClearSelectionsButton, "ClearSelectionsButton")
         Me.ClearSelectionsButton.Name = "ClearSelectionsButton"
-        Me.HelpProvider.SetShowHelp(Me.ClearSelectionsButton, CType(resources.GetObject("ClearSelectionsButton.ShowHelp"), Boolean))
         Me.ClearSelectionsButton.UseVisualStyleBackColor = True
         '
         'SubjectGroupComboBox
@@ -653,7 +633,6 @@ Partial Class MainForm
         Me.SubjectGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.SubjectGroupComboBox.FormattingEnabled = True
         Me.SubjectGroupComboBox.Name = "SubjectGroupComboBox"
-        Me.HelpProvider.SetShowHelp(Me.SubjectGroupComboBox, CType(resources.GetObject("SubjectGroupComboBox.ShowHelp"), Boolean))
         Me.SubjectGroupComboBox.Sorted = True
         '
         'CategoryGroupComboBox
@@ -662,20 +641,17 @@ Partial Class MainForm
         Me.CategoryGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CategoryGroupComboBox.FormattingEnabled = True
         Me.CategoryGroupComboBox.Name = "CategoryGroupComboBox"
-        Me.HelpProvider.SetShowHelp(Me.CategoryGroupComboBox, CType(resources.GetObject("CategoryGroupComboBox.ShowHelp"), Boolean))
         Me.CategoryGroupComboBox.Sorted = True
         '
         'CategoryLabel
         '
         resources.ApplyResources(Me.CategoryLabel, "CategoryLabel")
         Me.CategoryLabel.Name = "CategoryLabel"
-        Me.HelpProvider.SetShowHelp(Me.CategoryLabel, CType(resources.GetObject("CategoryLabel.ShowHelp"), Boolean))
         '
         'SubjectLabel
         '
         resources.ApplyResources(Me.SubjectLabel, "SubjectLabel")
         Me.SubjectLabel.Name = "SubjectLabel"
-        Me.HelpProvider.SetShowHelp(Me.SubjectLabel, CType(resources.GetObject("SubjectLabel.ShowHelp"), Boolean))
         '
         'AuthorGroupComboBox
         '
@@ -683,14 +659,12 @@ Partial Class MainForm
         Me.AuthorGroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.AuthorGroupComboBox.FormattingEnabled = True
         Me.AuthorGroupComboBox.Name = "AuthorGroupComboBox"
-        Me.HelpProvider.SetShowHelp(Me.AuthorGroupComboBox, CType(resources.GetObject("AuthorGroupComboBox.ShowHelp"), Boolean))
         Me.AuthorGroupComboBox.Sorted = True
         '
         'AuthorLabel
         '
         resources.ApplyResources(Me.AuthorLabel, "AuthorLabel")
         Me.AuthorLabel.Name = "AuthorLabel"
-        Me.HelpProvider.SetShowHelp(Me.AuthorLabel, CType(resources.GetObject("AuthorLabel.ShowHelp"), Boolean))
         '
         'SearchTextComboBox
         '
@@ -699,7 +673,6 @@ Partial Class MainForm
         Me.SearchTextComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.SearchTextComboBox.FormattingEnabled = True
         Me.SearchTextComboBox.Name = "SearchTextComboBox"
-        Me.HelpProvider.SetShowHelp(Me.SearchTextComboBox, CType(resources.GetObject("SearchTextComboBox.ShowHelp"), Boolean))
         Me.SearchTextComboBox.Sorted = True
         '
         'SearchResultsPanel
@@ -723,7 +696,6 @@ Partial Class MainForm
         Me.SearchResultsDataGridView.Name = "SearchResultsDataGridView"
         Me.SearchResultsDataGridView.RowHeadersVisible = False
         Me.SearchResultsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.HelpProvider.SetShowHelp(Me.SearchResultsDataGridView, CType(resources.GetObject("SearchResultsDataGridView.ShowHelp"), Boolean))
         Me.SearchResultsDataGridView.StandardTab = True
         '
         'SelectionColumn
@@ -1062,7 +1034,6 @@ Partial Class MainForm
     Friend WithEvents FlaggedDocumentsExistToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents FlaggedDocumentsCheckTimer As System.Windows.Forms.Timer
     Friend WithEvents SearchResultsPanel As Panel
-    Friend WithEvents HelpProvider As HelpProvider
     Friend WithEvents InsertToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InsertTextToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator14 As ToolStripSeparator
@@ -1099,4 +1070,5 @@ Partial Class MainForm
     Friend WithEvents FileSetTaxYearToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FilePopulateNewDatabaseTableColumnsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FilePopulateNewDatabaseTableColumnsToolStripButton As ToolStripButton
+    Friend WithEvents HelpProvider As HelpProvider
 End Class

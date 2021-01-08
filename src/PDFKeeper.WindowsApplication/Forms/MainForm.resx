@@ -711,12 +711,6 @@
   <data name="NotesTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>845, 17</value>
-  </metadata>
-  <data name="NotesTextBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="NotesTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 318</value>
   </data>
@@ -740,9 +734,6 @@
   </data>
   <data name="NotesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="NotesTabPage.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="NotesTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>363, 324</value>
@@ -777,9 +768,6 @@
   <data name="KeywordsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="KeywordsTextBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="KeywordsTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 318</value>
   </data>
@@ -803,9 +791,6 @@
   </data>
   <data name="KeywordsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="KeywordsTabPage.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="KeywordsTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>363, 324</value>
@@ -837,9 +822,6 @@
   <data name="PreviewPictureBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 8</value>
   </data>
-  <data name="PreviewPictureBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="PreviewPictureBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>471, 255</value>
   </data>
@@ -867,9 +849,6 @@
   <data name="PreviewPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="PreviewPanel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="PreviewPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 318</value>
   </data>
@@ -893,9 +872,6 @@
   </data>
   <data name="PreviewTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="PreviewTabPage.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="PreviewTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>363, 324</value>
@@ -930,9 +906,6 @@
   <data name="TextTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Both</value>
   </data>
-  <data name="TextTextBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="TextTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 318</value>
   </data>
@@ -956,9 +929,6 @@
   </data>
   <data name="TextTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TextTabPage.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="TextTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>363, 324</value>
@@ -990,9 +960,6 @@
   <data name="SelectedDocumentTabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 336</value>
   </data>
-  <data name="SelectedDocumentTabControl.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="SelectedDocumentTabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>371, 352</value>
   </data>
@@ -1020,9 +987,6 @@
   <data name="TaxYearGroupComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 235</value>
   </data>
-  <data name="TaxYearGroupComboBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="TaxYearGroupComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 23</value>
   </data>
@@ -1049,9 +1013,6 @@
   </data>
   <data name="TaxYearLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 235</value>
-  </data>
-  <data name="TaxYearLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="TaxYearLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 15</value>
@@ -1083,9 +1044,6 @@
   <data name="DateLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 302</value>
   </data>
-  <data name="DateLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="DateLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 15</value>
   </data>
@@ -1115,9 +1073,6 @@
   </data>
   <data name="TextLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 110</value>
-  </data>
-  <data name="TextLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="TextLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 15</value>
@@ -1166,9 +1121,6 @@
   </data>
   <data name="SearchFunctionsListBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 19</value>
-  </data>
-  <data name="SearchFunctionsListBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="SearchFunctionsListBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>365, 79</value>
@@ -1219,9 +1171,6 @@
   </data>
   <data name="SearchBySelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>226, 264</value>
-  </data>
-  <data name="SearchBySelectionsButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="SearchBySelectionsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
@@ -1279,9 +1228,6 @@
   <data name="SearchByTextButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>250, 110</value>
   </data>
-  <data name="SearchByTextButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="SearchByTextButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 23</value>
   </data>
@@ -1315,9 +1261,6 @@
   <data name="SearchDateTimePicker.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 302</value>
   </data>
-  <data name="SearchDateTimePicker.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="SearchDateTimePicker.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 23</value>
   </data>
@@ -1347,9 +1290,6 @@
   </data>
   <data name="ClearSelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>79, 264</value>
-  </data>
-  <data name="ClearSelectionsButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="ClearSelectionsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
@@ -1381,9 +1321,6 @@
   <data name="SubjectGroupComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 177</value>
   </data>
-  <data name="SubjectGroupComboBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="SubjectGroupComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 23</value>
   </data>
@@ -1411,9 +1348,6 @@
   <data name="CategoryGroupComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 206</value>
   </data>
-  <data name="CategoryGroupComboBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="CategoryGroupComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 23</value>
   </data>
@@ -1440,9 +1374,6 @@
   </data>
   <data name="CategoryLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 206</value>
-  </data>
-  <data name="CategoryLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="CategoryLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 15</value>
@@ -1474,9 +1405,6 @@
   <data name="SubjectLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 179</value>
   </data>
-  <data name="SubjectLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="SubjectLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 15</value>
   </data>
@@ -1507,9 +1435,6 @@
   <data name="AuthorGroupComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 148</value>
   </data>
-  <data name="AuthorGroupComboBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="AuthorGroupComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 23</value>
   </data>
@@ -1536,9 +1461,6 @@
   </data>
   <data name="AuthorLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 148</value>
-  </data>
-  <data name="AuthorLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="AuthorLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 15</value>
@@ -1570,9 +1492,6 @@
   <data name="SearchTextComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 110</value>
   </data>
-  <data name="SearchTextComboBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="SearchTextComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 23</value>
   </data>
@@ -1596,9 +1515,6 @@
   </data>
   <data name="SearchGroupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
-  </data>
-  <data name="SearchGroupBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="SearchGroupBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>371, 336</value>
@@ -1647,9 +1563,6 @@
   </data>
   <data name="SearchResultsDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
-  </data>
-  <data name="SearchResultsDataGridView.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="SearchResultsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
     <value>604, 688</value>
@@ -1754,7 +1667,7 @@
     <value>False</value>
   </data>
   <data name="FillerToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>680, 17</value>
+    <value>877, 17</value>
   </data>
   <data name="UploadRunningToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2281,6 +2194,9 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>847, 19</value>
+  </metadata>
   <data name="$this.HelpKeyword" xml:space="preserve">
     <value>Using PDFKeeper.html</value>
   </data>
