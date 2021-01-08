@@ -124,8 +124,11 @@ Public Class PdfFileInfo
                     Dim annotations = annotPage.GetAnnotations()
                     For Each annotation In annotations
                         Dim annotDict As PdfDictionary = annotation.GetPdfObject
-                        Dim text As PdfString = annotDict.GetAsString(PdfName.Contents)
-                        textString.AppendLine(text.ToUnicodeString)
+                        Dim text As PdfString = Nothing
+                        text = annotDict.GetAsString(PdfName.Contents)
+                        If text IsNot Nothing Then
+                            textString.AppendLine(text.ToUnicodeString)
+                        End If
                     Next
                 Next
             End Using
