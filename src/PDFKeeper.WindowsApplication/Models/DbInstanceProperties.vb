@@ -40,14 +40,18 @@ Public NotInheritable Class DbInstanceProperties
     End Property
 
     ''' <summary>
-    ''' Returns the database user name.
+    ''' Returns the database user name or Nothing if the database platform is SQLite. 
     ''' </summary>
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Shared ReadOnly Property UserName As String
         Get
-            Return My.Settings.Username
+            If Platform = DatabasePlatform.Sqlite.ToString Then
+                Return Nothing
+            Else
+                Return My.Settings.Username
+            End If
         End Get
     End Property
 

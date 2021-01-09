@@ -217,7 +217,8 @@ Public Class MainPresenter
     Public Sub AppendDateTimeUserNameToSelectedDocumentNotes()
         view.ScrollToEndInNotesElement()
         view.DocumentRecordNotes =
-            view.DocumentRecordNotes.AppendDateTimeAndText(My.Settings.Username)
+            view.DocumentRecordNotes.AppendDateTimeAndText(
+            UserIdentification.AccountName)
         view.ScrollToEndInNotesElement()
     End Sub
 

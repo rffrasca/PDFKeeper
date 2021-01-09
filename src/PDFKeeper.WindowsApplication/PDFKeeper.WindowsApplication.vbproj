@@ -242,6 +242,7 @@
     <Compile Include="Services\HelpDisplayService\HelpDisplayService.vb" />
     <Compile Include="Services\HelpDisplayService\IHelpDisplayService.vb" />
     <Compile Include="Services\MessageDisplayService\IMessageDisplayService.vb" />
+    <Compile Include="Utilities\UserIdentification.vb" />
     <Compile Include="Views\IPasswordPromptView.vb" />
     <Compile Include="Views\ISetTaxYearView.vb" />
     <Compile Include="Views\ISetCategoryView.vb" />
