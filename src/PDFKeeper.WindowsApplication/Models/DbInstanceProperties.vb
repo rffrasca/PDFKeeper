@@ -85,7 +85,7 @@ Public NotInheritable Class DbInstanceProperties
             Dim result As String = Nothing
             If Platform = DatabasePlatform.Sqlite.ToString Then
                 result = "Data Source=" + UserProfile.LocalDatabasePath + ";" &
-                    "Version=3; + Auto Vacuum=Full"
+                    "Version=3"
             ElseIf Platform = DatabasePlatform.Oracle.ToString Then
                 result = "Data Source=" + My.Settings.Datasource + ";" &
                     "Pooling=" + My.Settings.Pooling

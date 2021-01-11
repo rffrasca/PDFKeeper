@@ -18,8 +18,6 @@
 ** along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 ******************************************************************************/
 
-pragma auto_vacuum = 1; -- Enabled and fully automatic.
-
 create table docs(
 	doc_id integer primary key autoincrement not null,
 	doc_title text not null,
