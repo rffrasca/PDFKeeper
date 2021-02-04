@@ -28,9 +28,9 @@ Public NotInheritable Class UserProfile
     ''' <returns></returns>
     Public Shared ReadOnly Property LocalDatabasePath As String
         Get
-            Dim database As String = Path.Combine(ApplicationDataRoot,
-                                                  String.Concat(Application.ProductName,
-                                                                ".sqlite"))
+            Dim database As String = IO.Path.Combine(ApplicationDataRoot,
+                                                     String.Concat(Application.ProductName,
+                                                                   ".sqlite"))
             If IO.File.Exists(database) Then
                 Return database
             Else
@@ -48,8 +48,8 @@ Public NotInheritable Class UserProfile
     ''' <remarks></remarks>
     Public Shared ReadOnly Property CachePath As String
         Get
-            Dim folderPath As String = Path.Combine( _
-                ApplicationDataRoot, _
+            Dim folderPath As String = IO.Path.Combine(
+                ApplicationDataRoot,
                 My.Resources.Cache)
             Directory.CreateDirectory(folderPath)
             Return folderPath.ToString(CultureInfo.CurrentCulture)
@@ -64,8 +64,8 @@ Public NotInheritable Class UserProfile
     ''' <remarks></remarks>
     Public Shared ReadOnly Property UploadPath As String
         Get
-            Dim folderPath As String = Path.Combine( _
-                ApplicationDataRoot, _
+            Dim folderPath As String = IO.Path.Combine(
+                ApplicationDataRoot,
                 My.Resources.Upload)
             Directory.CreateDirectory(folderPath)
             ShortcutUtil.Create(UploadShortcutPath, folderPath)
@@ -81,8 +81,8 @@ Public NotInheritable Class UserProfile
     ''' <remarks></remarks>
     Public Shared ReadOnly Property UploadShortcutPath As String
         Get
-            Return Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, _
-                                Application.ProductName & " " & My.Resources.Upload & ".lnk")
+            Return IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments,
+                                   Application.ProductName & " " & My.Resources.Upload & ".lnk")
         End Get
     End Property
 
@@ -94,8 +94,8 @@ Public NotInheritable Class UserProfile
     ''' <remarks></remarks>
     Public Shared ReadOnly Property UploadConfigPath As String
         Get
-            Dim folderPath As String = Path.Combine( _
-                ApplicationDataRoot, _
+            Dim folderPath As String = IO.Path.Combine(
+                ApplicationDataRoot,
                 My.Resources.UploadConfig)
             Directory.CreateDirectory(folderPath)
             Return folderPath.ToString(CultureInfo.CurrentCulture)
@@ -111,8 +111,8 @@ Public NotInheritable Class UserProfile
     ''' <remarks></remarks>
     Public Shared ReadOnly Property UploadStagingPath As String
         Get
-            Dim folderPath As String = Path.Combine( _
-                ApplicationDataRoot, _
+            Dim folderPath As String = IO.Path.Combine(
+                ApplicationDataRoot,
                 My.Resources.UploadStaging)
             Directory.CreateDirectory(folderPath)
             Return folderPath.ToString(CultureInfo.CurrentCulture)
@@ -147,7 +147,7 @@ Public NotInheritable Class UserProfile
             If IO.File.Exists(cachedFile) Then
                 Try
                     IO.File.Move(cachedFile,
-                                 Path.ChangeExtension(cachedFile, "delete"))
+                                 IO.Path.ChangeExtension(cachedFile, "delete"))
                 Catch ex As IOException
                 End Try
             End If
@@ -156,9 +156,9 @@ Public NotInheritable Class UserProfile
 
     Private Shared ReadOnly Property ApplicationDataRoot As String
         Get
-            Dim folderPath As String = Path.Combine( _
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), _
-                My.Application.Info.CompanyName, _
+            Dim folderPath As String = IO.Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                My.Application.Info.CompanyName,
                 Application.ProductName)
             Directory.CreateDirectory(folderPath)
             Return folderPath.ToString(CultureInfo.CurrentCulture)

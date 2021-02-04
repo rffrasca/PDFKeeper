@@ -69,7 +69,7 @@ Public Class PdfMetadataHelper
             writer.Title = DateTime.Now.ToString("yyyy-MM-dd", _
                                                  CultureInfo.CurrentCulture)
         ElseIf uploadConfig.TitlePrefill = My.Resources.FileNameToken Then
-            writer.Title = Path.GetFileNameWithoutExtension(m_PdfPath)
+            writer.Title = IO.Path.GetFileNameWithoutExtension(m_PdfPath)
         Else
             writer.Title = uploadConfig.TitlePrefill
         End If

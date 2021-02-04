@@ -19,8 +19,8 @@
 '******************************************************************************
 Public NotInheritable Class ProductUpdate
     Private Shared ReadOnly newDbTableColumnsTempFile As String =
-        Path.Combine(Path.GetTempPath,
-                     "PDFKeeper.docs.tmp")
+        IO.Path.Combine(IO.Path.GetTempPath,
+                        "PDFKeeper.docs.tmp")
 
     Private Sub New()
         ' All members are shared.

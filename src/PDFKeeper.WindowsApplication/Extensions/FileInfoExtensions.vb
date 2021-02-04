@@ -37,10 +37,10 @@ Module FileInfoExtensions
         If value = Nothing Then
             value = Guid.NewGuid
         End If
-        Dim extension As String = Path.GetExtension(fileInfoParam.FullName)
-        Return Path.Combine(Path.GetDirectoryName(fileInfoParam.FullName),
-                            Path.GetFileNameWithoutExtension(fileInfoParam.FullName) & "-" &
-                            value.ToString & extension)
+        Dim extension As String = IO.Path.GetExtension(fileInfoParam.FullName)
+        Return IO.Path.Combine(IO.Path.GetDirectoryName(fileInfoParam.FullName),
+                               IO.Path.GetFileNameWithoutExtension(fileInfoParam.FullName) & "-" &
+                               value.ToString & extension)
     End Function
 
     ''' <summary>
@@ -138,7 +138,8 @@ Module FileInfoExtensions
         If fileInfoParam Is Nothing Then
             Throw New ArgumentNullException(NameOf(fileInfoParam))
         End If
-        Return Path.Combine(newFolderPathName, Path.GetFileName(fileInfoParam.FullName))
+        Return IO.Path.Combine(newFolderPathName,
+                               IO.Path.GetFileName(fileInfoParam.FullName))
     End Function
 
     ''' <summary>

@@ -38,8 +38,8 @@ Public NotInheritable Class UploadFolderConfigurationUtil
                                "*.xml", _
                                SearchOption.TopDirectoryOnly)
         For Each configFile As String In configFiles
-            Dim configFileNameWithoutExtension As String = _
-                Path.GetFileNameWithoutExtension(configFile)
+            Dim configFileNameWithoutExtension As String =
+                IO.Path.GetFileNameWithoutExtension(configFile)
             If showFileNamesWithoutExtension Then
                 items.Add(configFileNameWithoutExtension)
             Else
@@ -57,8 +57,8 @@ Public NotInheritable Class UploadFolderConfigurationUtil
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Shared Function IsFolderConfigured(ByVal folderName As String) As Boolean
-        If IO.File.Exists(Path.Combine(UserProfile.UploadConfigPath, _
-                                       folderName & ".xml")) Then
+        If IO.File.Exists(IO.Path.Combine(UserProfile.UploadConfigPath,
+                                          folderName & ".xml")) Then
             Return True
         Else
             Return False

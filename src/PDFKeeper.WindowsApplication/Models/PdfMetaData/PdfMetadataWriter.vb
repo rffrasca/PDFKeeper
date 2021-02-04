@@ -65,8 +65,8 @@ Public Class PdfMetadataWriter
             End Using
         Else
             Using reader As New PdfReader(m_InputPdfPath,
-                                          New ReaderProperties().SetPassword(
-                                          Text.Encoding.ASCII.GetBytes(m_InputPdfPassword.SecureStringToString)))
+                                          System.Text.Encoding.ASCII.GetBytes(
+                                          m_InputPdfPassword.SecureStringToString))
                 Write(reader, m_OutputPdfPath)
             End Using
         End If
@@ -74,15 +74,17 @@ Public Class PdfMetadataWriter
 
     Private Sub Write(ByVal reader As PdfReader,
                       ByVal outputPdfPath As String)
-        Using writer As New PdfWriter(outputPdfPath)
-            Using pdfDoc As New PdfDocument(reader, writer)
-                Dim pdfDocInfo As PdfDocumentInfo = pdfDoc.GetDocumentInfo
-                pdfDocInfo.SetTitle(Title)
-                pdfDocInfo.SetAuthor(Author)
-                pdfDocInfo.SetSubject(Subject)
-                pdfDocInfo.SetKeywords(Keywords)
-                pdfDoc.SetXmpMetadata(XMPMetaFactory.Create)
-            End Using
+        Dim dictionary As New Dictionary(Of String, String)
+        ' ITextSharp's PdfStamper class disposes the FileStream object causing
+        ' a CA2000 violation. Instantiating the FileStream object in a using
+        ' block results in a CA2202 violation.
+        Dim outputPdf As New FileStream(outputPdfPath, FileMode.Create)
+        Using stamper As New PdfStamper(reader, outputPdf)
+            dictionary("Title") = Title
+            dictionary("Author") = Author
+            dictionary("Subject") = Subject
+            dictionary("Keywords") = Keywords
+            stamper.MoreInfo = dictionary
         End Using
     End Sub
 End Class

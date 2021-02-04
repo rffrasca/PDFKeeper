@@ -34,8 +34,8 @@ Public Class CacheFilePathName
     ''' <remarks></remarks>
     Public ReadOnly Property Pdf As String
         Get
-            Return Path.Combine(UserProfile.CachePath, _
-                                My.Application.Info.ProductName & m_DocumentRecordId & ".pdf")
+            Return IO.Path.Combine(UserProfile.CachePath,
+                                   My.Application.Info.ProductName & m_DocumentRecordId & ".pdf")
         End Get
     End Property
 
@@ -50,9 +50,9 @@ Public Class CacheFilePathName
     ''' <remarks></remarks>
     Public ReadOnly Property PdfPreview As String
         Get
-            Return Path.Combine(Path.GetDirectoryName(Pdf),
-                                Path.GetFileNameWithoutExtension(Pdf) & "-" &
-                                My.Settings.PreviewImageResolution & ".png")
+            Return IO.Path.Combine(IO.Path.GetDirectoryName(Pdf),
+                                   IO.Path.GetFileNameWithoutExtension(Pdf) & "-" &
+                                   My.Settings.PreviewImageResolution & ".png")
         End Get
     End Property
 End Class

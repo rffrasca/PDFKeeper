@@ -81,11 +81,11 @@ Public Class MainSelectedSearchResultsProcessPresenter
 
     Public Sub ProcessSelectedSearchResults()
         If m_ActionToPerform = SelectedDocumentsAction.Export Then
-            m_ExportFolderPath = Path.Combine(m_ActionParam,
-                                              My.Application.Info.ProductName & "-" &
-                                              My.Resources.Export & "_" &
-                                              DateTime.Now.ToString("yyyy-MM-dd_HH.mm",
-                                                                    CultureInfo.CurrentCulture))
+            m_ExportFolderPath = IO.Path.Combine(m_ActionParam,
+                                                 My.Application.Info.ProductName & "-" &
+                                                 My.Resources.Export & "_" &
+                                                 DateTime.Now.ToString("yyyy-MM-dd_HH.mm",
+                                                                       CultureInfo.CurrentCulture))
             Directory.CreateDirectory(m_ExportFolderPath)
         End If
         m_View.SelectedDocumentsProcessProgressVisible = True
@@ -142,14 +142,14 @@ Public Class MainSelectedSearchResultsProcessPresenter
     Private Shared Sub ExportDocument(ByVal id As Integer,
                                       ByVal exportFolder As String)
         Using model As IDocumentRepository = New DocumentRepository
-            Dim authorFolderInfo As New DirectoryInfo(Path.Combine(exportFolder,
-                                                                   model.GetAuthorById(id)))
-            Dim subjectFolderInfo As New DirectoryInfo(Path.Combine(authorFolderInfo.FullName,
-                                                                    model.GetSubjectById(id)))
+            Dim authorFolderInfo As New DirectoryInfo(IO.Path.Combine(exportFolder,
+                                                                      model.GetAuthorById(id)))
+            Dim subjectFolderInfo As New DirectoryInfo(IO.Path.Combine(authorFolderInfo.FullName,
+                                                                       model.GetSubjectById(id)))
             authorFolderInfo.Create()
             subjectFolderInfo.Create()
-            Dim pdfInfo As New PdfFileInfo(Path.Combine(subjectFolderInfo.FullName,
-                                                        "[" & id & "]" & model.GetTitleById(id) & ".pdf"))
+            Dim pdfInfo As New PdfFileInfo(IO.Path.Combine(subjectFolderInfo.FullName,
+                                                           "[" & id & "]" & model.GetTitleById(id) & ".pdf"))
             model.GetPdfById(id, pdfInfo.FullName)
             Dim helper As New PdfMetadataHelper(pdfInfo.FullName, Nothing)
             Dim metadata As PdfMetadataReader = helper.Read
@@ -157,8 +157,8 @@ Public Class MainSelectedSearchResultsProcessPresenter
                     metadata.Author <> model.GetAuthorById(id) Or
                     metadata.Subject <> model.GetSubjectById(id) Or
                     metadata.Keywords <> model.GetKeywordsById(id) Then
-                Dim tempPdfFile As String = Path.Combine(Path.GetTempPath,
-                                                         Path.GetFileName(pdfInfo.FullName))
+                Dim tempPdfFile As String = IO.Path.Combine(IO.Path.GetTempPath,
+                                                            IO.Path.GetFileName(pdfInfo.FullName))
                 helper.Write(tempPdfFile,
                              model.GetTitleById(id),
                              model.GetAuthorById(id),

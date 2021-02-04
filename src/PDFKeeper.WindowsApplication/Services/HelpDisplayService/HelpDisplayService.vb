@@ -36,7 +36,7 @@ Public Class HelpDisplayService
 
     Public Sub ShowAndWait(helpTopic As String) Implements IHelpDisplayService.ShowAndWait
         Using htmlHelp As New Process
-            htmlHelp.StartInfo.FileName = Path.Combine(
+            htmlHelp.StartInfo.FileName = IO.Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.Windows),
                 "hh.exe")
             htmlHelp.StartInfo.Arguments = "ms-its:" & chmFile & "::" & helpTopic

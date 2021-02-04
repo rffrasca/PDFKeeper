@@ -32,7 +32,7 @@ Public Class PdfSupplementalDataHelper
     ''' <remarks></remarks>
     Public Sub New(ByVal pdfPath As String)
         m_PdfPath = pdfPath
-        suppDataXmlPath = Path.ChangeExtension(m_PdfPath, "xml")
+        suppDataXmlPath = IO.Path.ChangeExtension(m_PdfPath, "xml")
         serializer = New XmlSerializerHelper(suppDataXmlPath)
     End Sub
 

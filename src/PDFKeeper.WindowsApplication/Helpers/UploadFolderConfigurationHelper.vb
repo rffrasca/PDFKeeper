@@ -30,10 +30,10 @@ Public Class UploadFolderConfigurationHelper
     ''' <remarks></remarks>
     Public Sub New(ByVal configName As String)
         m_ConfigName = configName
-        configXmlPath = Path.Combine(UserProfile.UploadConfigPath, _
-                                     m_ConfigName & ".xml")
-        configFolderPath = Path.Combine(UserProfile.UploadPath, _
-                                        m_ConfigName)
+        configXmlPath = IO.Path.Combine(UserProfile.UploadConfigPath,
+                                        m_ConfigName & ".xml")
+        configFolderPath = IO.Path.Combine(UserProfile.UploadPath,
+                                           m_ConfigName)
         serializer = New XmlSerializerHelper(configXmlPath)
     End Sub
 
@@ -66,11 +66,11 @@ Public Class UploadFolderConfigurationHelper
                     ByVal originalConfigName As String)
         UploadService.Instance.WaitUntilUploadCycleIsNotExecuting()
         If Not originalConfigName Is Nothing Then
-            IO.File.Delete(Path.Combine(UserProfile.UploadConfigPath, _
-                                        originalConfigName & ".xml"))
+            IO.File.Delete(IO.Path.Combine(UserProfile.UploadConfigPath,
+                                           originalConfigName & ".xml"))
             If Not m_ConfigName = originalConfigName Then
-                Dim sourcePath As String = Path.Combine(UserProfile.UploadPath, _
-                                                        originalConfigName)
+                Dim sourcePath As String = IO.Path.Combine(UserProfile.UploadPath,
+                                                           originalConfigName)
                 Dim targetPath As String = configFolderPath
                 Dim dirInfo As New DirectoryInfo(sourcePath)
                 dirInfo.Rename(targetPath)

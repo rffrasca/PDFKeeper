@@ -72,7 +72,7 @@ Module StringExtensions
         If valueParam Is Nothing Then
             Throw New ArgumentNullException(NameOf(valueParam))
         End If
-        For Each invalidChar In Path.GetInvalidFileNameChars()
+        For Each invalidChar In IO.Path.GetInvalidFileNameChars()
             If valueParam.Contains(invalidChar) Then
                 Return True
             End If

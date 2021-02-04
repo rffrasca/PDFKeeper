@@ -104,8 +104,8 @@ Public NotInheritable Class UploadService
     Private Shared Sub EnsureConfiguredUploadFoldersExist()
         For Each config As String In _
             UploadFolderConfigurationUtil.GetAllConfigFileNames(True, False)
-            Directory.CreateDirectory(Path.Combine(UserProfile.UploadPath, _
-                                                   config))
+            Directory.CreateDirectory(IO.Path.Combine(UserProfile.UploadPath,
+                                                      config))
         Next
     End Sub
 #End Region
@@ -128,13 +128,13 @@ Public NotInheritable Class UploadService
             If pdfInfo.ContainsOwnerPassword = False Then
                 Dim uploadFolderName As String = _
                     pdfPath.Substring(UserProfile.UploadPath.Length + 1)
-                If uploadFolderName = Path.GetFileName(pdfPath) Then
+                If uploadFolderName = IO.Path.GetFileName(pdfPath) Then
                     uploadFolderName = UserProfile.UploadPath
                 Else
-                    uploadFolderName = _
-                        uploadFolderName.Substring(0, _
-                                                   uploadFolderName.IndexOf( _
-                                                       Path.DirectorySeparatorChar))
+                    uploadFolderName =
+                        uploadFolderName.Substring(0,
+                                                   uploadFolderName.IndexOf(
+                                                   IO.Path.DirectorySeparatorChar))
                 End If
                 Try
                     Dim outputPdfPath As String = fileInfo.GenerateUploadStagingFilePath
@@ -189,7 +189,8 @@ Public NotInheritable Class UploadService
         fileInfo.DeleteToRecycleBin()
         Try
             IO.File.Move(inputPdfPath,
-                         Path.ChangeExtension(inputPdfPath, "delete"))
+                         IO.Path.ChangeExtension(inputPdfPath,
+                                                 "delete"))
         Catch ex As IOException
         Catch ex As UnauthorizedAccessException
         End Try
@@ -197,8 +198,8 @@ Public NotInheritable Class UploadService
 
     Private Shared Sub StageExistingPdfAndSupplementalData(ByVal sourcePdfPath As String, _
                                                            ByVal targetPdfPath As String)
-        Dim sourceXmlPath As String = Path.ChangeExtension(sourcePdfPath, "xml")
-        Dim targetXmlPath As String = Path.ChangeExtension(targetPdfPath, "xml")
+        Dim sourceXmlPath As String = IO.Path.ChangeExtension(sourcePdfPath, "xml")
+        Dim targetXmlPath As String = IO.Path.ChangeExtension(targetPdfPath, "xml")
         IO.File.Move(sourcePdfPath, targetPdfPath)
         If IO.File.Exists(sourceXmlPath) Then
             IO.File.Move(sourceXmlPath, targetXmlPath)
@@ -304,7 +305,7 @@ Public NotInheritable Class UploadService
                         End Using
                         IO.File.Delete(pdfPath)
                         Dim suppDataXmlPath As String =
-                            Path.ChangeExtension(pdfPath, "xml")
+                            IO.Path.ChangeExtension(pdfPath, "xml")
                         IO.File.Delete(suppDataXmlPath)
                         If flag = 1 Then
                             s_FlaggedDocumentsUploaded = True

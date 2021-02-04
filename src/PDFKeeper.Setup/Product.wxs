@@ -118,21 +118,6 @@
       <Component Id="BouncyCastle.Crypto.dll" Guid="aec691d9-e839-45a5-b269-205445047427">
         <File Id="BouncyCastle.Crypto.dll" Name="BouncyCastle.Crypto.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)BouncyCastle.Crypto.dll" />
       </Component>
-      <Component Id="BouncyCastle.Crypto.dll.bak" Guid="67914274-4eb9-4778-bbb9-e79e315d278f">
-        <File Id="BouncyCastle.Crypto.dll.bak" Name="BouncyCastle.Crypto.dll.bak" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)BouncyCastle.Crypto.dll" />
-      </Component>
-      <Component Id="itext.kernel.dll" Guid="9a044fb7-69b6-43fe-89fd-3bb91d16b098">
-        <File Id="itext.kernel.dll" Name="itext.kernel.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)itext.kernel.dll" />
-      </Component>
-      <Component Id="Common.Logging.Core.dll" Guid="31aaf0dc-9202-498d-9329-8d805a546f0f">
-        <File Id="Common.Logging.Core.dll" Name="Common.Logging.Core.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)Common.Logging.Core.dll" />
-      </Component>
-      <Component Id="itext.io.dll" Guid="53aa1b1b-b01d-402d-8174-6bb26c9b21eb">
-        <File Id="itext.io.dll" Name="itext.io.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)itext.io.dll" />
-      </Component>
-      <Component Id="Common.Logging.dll" Guid="a756aeed-977f-4bbd-97a8-b7c842555379">
-        <File Id="Common.Logging.dll" Name="Common.Logging.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)Common.Logging.dll" />
-      </Component>
       <Component Id="SumatraPDF_3.2_64.exe" Guid="3381adb6-44be-46e6-90eb-80fee4fc3b7e">
         <File Id="SumatraPDF_3.2_64.exe" Name="SumatraPDF-3.2-64.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)SumatraPDF-3.2-64.exe" />
       </Component>
@@ -160,6 +145,9 @@
       </Component>
       <Component Id="gswin64c.exe" Guid="6428a10e-504d-4521-8d93-28f25fc824bd">
         <File Id="gswin64c.exe" Name="gswin64c.exe" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)gswin64c.exe" />
+      </Component>
+      <Component Id="itextsharp.dll" Guid="cc562de8-822d-44c3-b238-4952254f3baf">
+        <File Id="itextsharp.dll" Name="itextsharp.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)itextsharp.dll" />
       </Component>
   	</ComponentGroup>
 	</Fragment>

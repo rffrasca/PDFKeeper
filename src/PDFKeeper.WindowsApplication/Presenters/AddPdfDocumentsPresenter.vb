@@ -114,7 +114,7 @@ Public Class AddPdfDocumentsPresenter
     End Sub
 
     Public Sub SetTitleToFileName()
-        view.Title = Path.GetFileNameWithoutExtension(view.SelectedPdfPath)
+        view.Title = IO.Path.GetFileNameWithoutExtension(view.SelectedPdfPath)
     End Sub
 
     Public Sub RequiredTextElementChanged()

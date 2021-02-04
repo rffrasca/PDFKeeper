@@ -33,11 +33,11 @@ Public NotInheritable Class UserConfig
                 Dim userConfig = ConfigurationManager.OpenExeConfiguration(
                 ConfigurationUserLevel.PerUserRoamingAndLocal)
                 Dim userConfigFolderParent =
-                    Directory.GetParent(Path.GetDirectoryName(userConfig.FilePath))
+                    Directory.GetParent(IO.Path.GetDirectoryName(userConfig.FilePath))
                 Dim version As String
                 For Each folderPath As String In Directory.GetDirectories(
                     userConfigFolderParent.ToString)
-                    version = folderPath.Split(Path.DirectorySeparatorChar).Last
+                    version = folderPath.Split(IO.Path.DirectorySeparatorChar).Last
                     lastVersion = version
                 Next
             Catch ex As DirectoryNotFoundException

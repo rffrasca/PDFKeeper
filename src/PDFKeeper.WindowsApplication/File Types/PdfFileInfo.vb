@@ -36,13 +36,11 @@ Public Class PdfFileInfo
     Public ReadOnly Property ContainsOwnerPassword As Boolean
         Get
             Using reader As New PdfReader(fileInfo.FullName)
-                Using pdfDoc As New PdfDocument(reader)
-                    If reader.IsOpenedWithFullPermission Then
-                        Return False
-                    Else
-                        Return True
-                    End If
-                End Using
+                If reader.IsOpenedWithFullPermissions Then
+                    Return False
+                Else
+                    Return True
+                End If
             End Using
         End Get
     End Property
@@ -96,9 +94,9 @@ Public Class PdfFileInfo
     ''' <param name="resolution">DPI of output image.</param>
     ''' <returns>Path name of file that contains the image.</returns>
     Public Function GetPreviewImageToFile(ByVal resolution As Integer) As String
-        Dim outputParam As String = Path.Combine(Path.GetDirectoryName(fileInfo.FullName),
-                                                 Path.GetFileNameWithoutExtension(fileInfo.FullName) & "-" &
-                                                 resolution & ".png")
+        Dim outputParam As String = IO.Path.Combine(IO.Path.GetDirectoryName(fileInfo.FullName),
+                                                    IO.Path.GetFileNameWithoutExtension(fileInfo.FullName) & "-" &
+                                                    resolution & ".png")
         Using imageCollection = New MagickImageCollection
             Dim settings = New MagickReadSettings With {
                 .Density = New Density(resolution),
@@ -111,53 +109,47 @@ Public Class PdfFileInfo
         Return outputParam
     End Function
 
-    ''' <summary>
-    ''' Returns the text annotations from PDF file object.
-    ''' </summary>
-    ''' <returns></returns>
+    '''' <summary>
+    '''' Returns the text annotations from the PDF file object.
+    '''' </summary>
+    '''' <returns></returns>
     Public Function GetTextAnnotations() As String
         Using reader = New PdfReader(fileInfo.FullName)
             Dim textString As New StringBuilder
-            Using pdfDoc As New PdfDocument(reader)
-                For page As Integer = 1 To pdfDoc.GetNumberOfPages
-                    Dim annotPage As PdfPage = pdfDoc.GetPage(page)
-                    Dim annotations = annotPage.GetAnnotations()
-                    For Each annotation In annotations
-                        Dim annotDict As PdfDictionary = annotation.GetPdfObject
-                        Dim text As PdfString = Nothing
-                        text = annotDict.GetAsString(PdfName.Contents)
+            For page As Integer = 1 To reader.NumberOfPages
+                Dim annotPage As PdfArray = reader.GetPageN(page).GetAsArray(PdfName.ANNOTS)
+                If annotPage IsNot Nothing Then
+                    For i As Integer = 0 To annotPage.Size - 1
+                        Dim annotDict As PdfDictionary = annotPage.GetAsDict(i)
+                        Dim text As PdfString = annotDict.GetAsString(PdfName.CONTENTS)
                         If text IsNot Nothing Then
                             textString.AppendLine(text.ToUnicodeString)
                         End If
                     Next
-                Next
-            End Using
+                End If
+            Next
             Return textString.ToString
         End Using
     End Function
 
     ''' <summary>
-    ''' Returns the text from PDF file object.
+    ''' Returns the text from the PDF file object.
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function GetText() As String
         Using reader = New PdfReader(fileInfo.FullName)
             Dim textString As New StringBuilder
-            Using pdfDoc As New PdfDocument(reader)
-                For page As Integer = 1 To pdfDoc.GetNumberOfPages
-                    Dim strategy As ITextExtractionStrategy = New SimpleTextExtractionStrategy()
-                    Dim pageText As String = PdfTextExtractor.GetTextFromPage(pdfDoc.GetPage(page),
-                                                                              strategy)
-                    pageText = Encoding.UTF8.GetString(
-                        ASCIIEncoding.Convert(Encoding.Default,
-                                              Encoding.UTF8, Encoding.Default.GetBytes(pageText)))
-                    Dim lines As String() = pageText.Split(ControlChars.Lf)
-                    For Each line In lines
-                        textString.AppendLine(line)
-                    Next
+            For page As Integer = 1 To reader.NumberOfPages
+                Dim strategy As ITextExtractionStrategy = New LocationTextExtractionStrategy
+                Dim pageText As String = PdfTextExtractor.GetTextFromPage(reader,
+                                                                          page,
+                                                                          strategy)
+                Dim lines As String() = pageText.Split(ControlChars.Lf)
+                For Each line In lines
+                    textString.AppendLine(line)
                 Next
-            End Using
+            Next
             Return textString.ToString
         End Using
     End Function
