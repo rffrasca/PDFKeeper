@@ -70,7 +70,6 @@
       <Directory Id="StartMenuFolder" SourceName="StartMenu" />
       <Directory Id="ProgramFiles64Folder">
         <Directory Id="INSTALLFOLDER" Name="PDFKeeper">
-          <Directory Id="pdftopng" Name="pdftopng" />
         </Directory>
       </Directory>
 		</Directory>
