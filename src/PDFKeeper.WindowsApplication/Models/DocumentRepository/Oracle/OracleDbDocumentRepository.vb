@@ -69,9 +69,7 @@ Public NotInheritable Class OracleDbDocumentRepository
             "select doc_author " &
             "from pdfkeeper.docs " & where & " group by doc_author"
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 oraCommand.BindByName = True
                 If subject IsNot Nothing Then
                     oraCommand.Parameters.Add("doc_subject", subject)
@@ -152,9 +150,7 @@ Public NotInheritable Class OracleDbDocumentRepository
             "select doc_subject " &
             "from pdfkeeper.docs " & where & " group by doc_subject"
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 oraCommand.BindByName = True
                 If author IsNot Nothing Then
                     oraCommand.Parameters.Add("doc_author", author)
@@ -218,9 +214,7 @@ Public NotInheritable Class OracleDbDocumentRepository
             "select doc_category " &
             "from pdfkeeper.docs " & where & " group by doc_category"
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 oraCommand.BindByName = True
                 If author IsNot Nothing Then
                     oraCommand.Parameters.Add("doc_author", author)
@@ -284,9 +278,7 @@ Public NotInheritable Class OracleDbDocumentRepository
             "select doc_tax_year " &
             "from pdfkeeper.docs " & where & " group by doc_tax_year"
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 oraCommand.BindByName = True
                 If author IsNot Nothing Then
                     oraCommand.Parameters.Add("doc_author", author)
@@ -357,9 +349,7 @@ Public NotInheritable Class OracleDbDocumentRepository
             "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
             "from pdfkeeper.docs " & where
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 oraCommand.BindByName = True
                 If author IsNot Nothing Then
                     oraCommand.Parameters.Add("doc_author", author)
@@ -674,9 +664,7 @@ Public NotInheritable Class OracleDbDocumentRepository
             " from pdfkeeper.docs" &
             " where doc_id = :doc_id"
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 oraCommand.CommandType = CommandType.Text
                 oraCommand.BindByName = True
                 oraCommand.Parameters.Add("doc_id", id)

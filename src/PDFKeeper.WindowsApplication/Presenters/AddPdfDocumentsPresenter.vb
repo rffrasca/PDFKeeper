@@ -77,7 +77,7 @@ Public Class AddPdfDocumentsPresenter
                     passwordPrompt.Title = My.Resources.PdfOwnerPassword
                     passwordPrompt.TextLabel = My.Resources.EnterOwnerPassword
                     selectedPdfPassword = passwordPrompt.Show
-                    If Not selectedPdfPassword Is Nothing Then
+                    If selectedPdfPassword IsNot Nothing Then
                         selectedPdfPassword.MakeReadOnly()
                         containsPassword = True
                     Else
@@ -227,7 +227,7 @@ Public Class AddPdfDocumentsPresenter
     End Sub
 
     Private Sub DiscardStagedPdf()
-        If Not stagedPdfPath Is Nothing Then
+        If stagedPdfPath IsNot Nothing Then
             IO.File.Delete(stagedPdfPath)
         End If
     End Sub

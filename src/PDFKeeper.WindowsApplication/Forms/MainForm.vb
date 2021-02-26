@@ -196,7 +196,7 @@ Public Class MainForm
 
     Public Property AuthorGroup As String Implements ICommonView.AuthorGroup
         Get
-            If Not AuthorGroupComboBox.SelectedItem Is Nothing Then
+            If AuthorGroupComboBox.SelectedItem IsNot Nothing Then
                 Return Convert.ToString(AuthorGroupComboBox.SelectedItem("doc_author"),
                                         CultureInfo.CurrentCulture)
             End If
@@ -228,7 +228,7 @@ Public Class MainForm
 
     Public Property SubjectGroup As String Implements ICommonView.SubjectGroup
         Get
-            If Not SubjectGroupComboBox.SelectedItem Is Nothing Then
+            If SubjectGroupComboBox.SelectedItem IsNot Nothing Then
                 Return Convert.ToString(SubjectGroupComboBox.SelectedItem("doc_subject"),
                                         CultureInfo.CurrentCulture)
             End If
@@ -260,7 +260,7 @@ Public Class MainForm
 
     Public Property CategoryGroup As String Implements ICommonView.CategoryGroup
         Get
-            If Not CategoryGroupComboBox.SelectedItem Is Nothing Then
+            If CategoryGroupComboBox.SelectedItem IsNot Nothing Then
                 Return Convert.ToString(CategoryGroupComboBox.SelectedItem("doc_category"),
                                         CultureInfo.CurrentCulture)
             End If
@@ -292,7 +292,7 @@ Public Class MainForm
 
     Public Property TaxYearGroup As String Implements ICommonView.TaxYearGroup
         Get
-            If Not TaxYearGroupComboBox.SelectedItem Is Nothing Then
+            If TaxYearGroupComboBox.SelectedItem IsNot Nothing Then
                 Return Convert.ToString(TaxYearGroupComboBox.SelectedItem("doc_tax_year"),
                                         CultureInfo.CurrentCulture)
             End If
@@ -495,7 +495,7 @@ Public Class MainForm
         End Get
         Set(value As Image)
             ' Dispose the PictureBox first to release memory before loading image.
-            If Not PreviewPictureBox.Image Is Nothing Then
+            If PreviewPictureBox.Image IsNot Nothing Then
                 PreviewPictureBox.Image.Dispose()
             End If
             Dim imageLock As New Object

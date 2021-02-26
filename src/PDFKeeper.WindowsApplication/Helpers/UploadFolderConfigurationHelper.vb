@@ -65,7 +65,7 @@ Public Class UploadFolderConfigurationHelper
     Public Sub Save(ByVal config As UploadFolderConfiguration, _
                     ByVal originalConfigName As String)
         UploadService.Instance.WaitUntilUploadCycleIsNotExecuting()
-        If Not originalConfigName Is Nothing Then
+        If originalConfigName IsNot Nothing Then
             IO.File.Delete(IO.Path.Combine(UserProfile.UploadConfigPath,
                                            originalConfigName & ".xml"))
             If Not m_ConfigName = originalConfigName Then

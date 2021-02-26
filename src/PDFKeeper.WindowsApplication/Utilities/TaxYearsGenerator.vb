@@ -23,8 +23,9 @@ Public NotInheritable Class TaxYearsGenerator
     ''' </summary>
     ''' <returns>Array of tax years.</returns>
     Public Shared Function ToArray() As Object
-        Dim taxYears As New ArrayList
-        taxYears.Add(String.Empty)
+        Dim taxYears As New ArrayList From {
+            String.Empty
+        }
         Dim lastYear As Integer = DateTime.Now.Year
         Dim j As Integer = 1999
         Do While j <= lastYear

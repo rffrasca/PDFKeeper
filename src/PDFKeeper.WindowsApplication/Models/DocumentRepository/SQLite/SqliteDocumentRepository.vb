@@ -68,9 +68,7 @@ Public NotInheritable Class SqliteDocumentRepository
             "select doc_author " &
             "from docs " & where & " group by doc_author"
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 If subject IsNot Nothing Then
                     sqlCommand.Parameters.AddWithValue("doc_subject", subject)
                 End If
@@ -149,9 +147,7 @@ Public NotInheritable Class SqliteDocumentRepository
             "select doc_subject " &
             "from docs " & where & " group by doc_subject"
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 If author IsNot Nothing Then
                     sqlCommand.Parameters.AddWithValue("doc_author", author)
                 End If
@@ -214,9 +210,7 @@ Public NotInheritable Class SqliteDocumentRepository
             "select doc_category " &
             "from docs " & where & " group by doc_category"
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 If author IsNot Nothing Then
                     sqlCommand.Parameters.AddWithValue("doc_author", author)
                 End If
@@ -279,9 +273,7 @@ Public NotInheritable Class SqliteDocumentRepository
             "select doc_tax_year " &
             "from docs " & where & " group by doc_tax_year"
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 If author IsNot Nothing Then
                     sqlCommand.Parameters.AddWithValue("doc_author", author)
                 End If
@@ -350,9 +342,7 @@ Public NotInheritable Class SqliteDocumentRepository
             "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
             "from docs " & where
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 If author IsNot Nothing Then
                     sqlCommand.Parameters.AddWithValue("doc_author", author)
                 End If
@@ -516,9 +506,7 @@ Public NotInheritable Class SqliteDocumentRepository
             ":doc_text_annotations," &
             ":doc_text)"
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 Dim fileInfo As New FileInfo(pdfFile)
                 Dim blob As Byte() = fileInfo.ToByteArray
                 sqlCommand.Parameters.AddWithValue(":doc_title", title)
@@ -663,9 +651,7 @@ Public NotInheritable Class SqliteDocumentRepository
             " from docs" &
             " where doc_id = :doc_id"
         Try
-#Disable Warning CA2100 ' Review SQL queries for security vulnerabilities
             Using sqlCommand As New SQLiteCommand(sqlStatement, provider.Connection)
-#Enable Warning CA2100 ' Review SQL queries for security vulnerabilities
                 sqlCommand.CommandType = CommandType.Text
                 sqlCommand.Parameters.AddWithValue("doc_id", id)
                 Return provider.QueryToDataTable(sqlCommand)
