@@ -202,7 +202,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v3.1.2 - 2015-07-11 (retired)
 - This is a maintenance release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.1).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.2).
 - Binary release is no longer available for distribution.
 ### Changed
 - Third-Party software update in binary release: Ghostscript 9.16.
@@ -212,7 +212,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v3.1.1 - 2015-03-21 (retired)
 - This is a maintenance release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.1).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.1).
 - Binary release is no longer available for distribution.
 ### Fixed
 - Losing focus from Document Search list view when arrowing up or down.
@@ -220,7 +220,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v3.1.0 - 2015-02-07 (retired)
 - This is a minor release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.0).
 - Binary release is no longer available for distribution.
 ### Added
 - Document Preview to Main Form.
@@ -233,7 +233,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v3.0.1 - 2014-11-22 (retired)
 - This is a maintenance release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.0.1).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.0.1).
 - Binary release is no longer available for distribution.
 ### Known Issues
 - HTML Converter menu item does not enable on 64-bit Windows even though the correct version of wkhtmltopdf is installed.
@@ -249,7 +249,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v3.0.0 - 2013-12-21 (retired)
 - This is a major release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.0.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.0.0).
 - Binary release is no longer available for distribution.
 ### Added
 - Prompt for password when PDF document contains an OWNER password.
@@ -279,7 +279,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v2.7.0 - 2012-09-29 (retired)
 - This is a minor release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.7.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.7.0).
 - Binary release is no longer available for distribution.
 ### Added
 - Main Form: Add a folder watcher that will directly upload PDF documents.
@@ -298,7 +298,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v2.6.0 - 2012-06-30 (retired)
 - This is a minor release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.6.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.6.0).
 - Binary release is no longer available for distribution.
 ### Added
 - Information Properties Editor Form: Add checkbox that when checked will upload PDF document to the database after saving.
@@ -317,7 +317,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v2.5.1 - 2012-04-14 (retired)
 - This is a maintenance release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.1).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.1).
 - Binary release is no longer available for distribution.
 ### Fixed
 - Information Properties Editor Folder Watcher detecting duplicate events.
@@ -327,7 +327,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v2.5.0 - 2012-03-24 (retired)
 - This is a minor release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.5.0).
 - Binary release is no longer available for distribution.
 ### Added
 - Encrypt PDF document when retrieved from the database during an "open" operation on EFS supported operating systems.
@@ -347,7 +347,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v2.4.0 - 2011-12-24 (retired)
 - This is a minor release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.4.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.4.0).
 - Binary release is no longer available for distribution.
 ### Changed
 - Information Properties Editor: Make form modeless.
@@ -363,7 +363,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v2.3.0 - 2011-09-24 (retired)
 - This is a minor release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.3.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.3.0).
 - Binary release is no longer available for distribution.
 ### Changed
 - Main Form: Enhance the Upload process to execute on a separate thread.
@@ -375,7 +375,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v2.2.0 - 2011-06-25 (retired)
 - This is a minor release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.2.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.2.0).
 - Binary release is no longer available for distribution.
 ### Changed
 - Third-Party software update in binary release: Sumatra PDF 1.6.
@@ -389,7 +389,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v2.1.0 - 2011-03-25 (retired)
 - This is a minor release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.1.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.1.0).
 - Binary release is no longer available for distribution.
 ### Added
 - Document Notes Form: Add Date/Time stamp feature.
@@ -408,7 +408,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v2.0.0 - 2010-11-22 (retired)
 - This is a major release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.0.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.0.0).
 - Binary release is no longer available for distribution.
 ### Added
 - Add document upload capability to the client.
@@ -432,7 +432,7 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v1.1.0 - 2010-04-29 (retired)
 - This is a minor release.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/1.1.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/1.1.0).
 - Binary release is no longer available for distribution.
 ### Added
 - Add functionality to "Check" and "Uncheck" all list view items on Search dialog.
@@ -465,5 +465,5 @@ When Search Results is refreshed, the previously selected document record will b
 
 ## v1.0.0 - 2009-10-24 (retired)
 - First, full release of this product to the public.
-- Source code is available [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/1.0.0).
+- Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/1.0.0).
 - Binary release is no longer available for distribution.
