@@ -130,7 +130,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Oracle Database user password is now being passed securely when connecting to the database preventing exposure in a page file swap or crash dump.
 - Fixed issue with PDFKeeper incorrectly detecting that an upgrade was performed from a prior version when no user settings exist from a prior version.
 
-## v4.1.0 - 2018-12-24
+## v4.1.0 - 2018-12-24 (legacy)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.1.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.1.0).
@@ -146,7 +146,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Fixed unhandled exception that would occur when exporting a PDF from a document record that no longer exists.
 - Fixed unhandled exception that would occur when selecting a document record in the Search Results DataGridView that no longer exists.
 
-## v4.0.2 - 2018-09-08
+## v4.0.2 - 2018-09-08 (legacy)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.2).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.2).
@@ -160,7 +160,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Fixed an Unhandled Exception that would occur when saving a PDF for the	selected document record to a file system and the target file name already existed.
 - Combo box on "Search by String" tab is no longer selecting the first string in the drop down list that contains the text in text box, overwriting the text in the text box when the Search button is selected.
 
-## v4.0.1 - 2018-08-04
+## v4.0.1 - 2018-08-04 (legacy)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.1).
@@ -178,7 +178,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Paste menu and tool bar items are now always enabled when Notes text box has focus and the clipboard contains text.
 - Corrected the Sumatra PDF usage description on its help topic.
 
-## v4.0.0 - 2018-03-31
+## v4.0.0 - 2018-03-31 (legacy)
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v4.0.0).
