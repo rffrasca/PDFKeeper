@@ -43,6 +43,9 @@ Namespace My
                 End If
             End If
             If DbInstanceProperties.Platform <> DatabasePlatform.Sqlite.ToString Then
+                ' When adding client-server database platforms, a prompt will
+                ' be needed here for the user to select the platform to use.
+                DbInstanceProperties.Platform = DatabasePlatform.Oracle.ToString
                 If DbInstanceProperties.Platform = DatabasePlatform.Oracle.ToString Then
                     AddHandler AppDomain.CurrentDomain.AssemblyResolve,
                         AddressOf Dependency.GetOracleDataAccessAssemblyPath
