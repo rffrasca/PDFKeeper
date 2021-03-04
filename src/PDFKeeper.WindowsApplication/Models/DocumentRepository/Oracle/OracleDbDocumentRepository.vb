@@ -500,23 +500,21 @@ Public NotInheritable Class OracleDbDocumentRepository
                             textAnnotations As String,
                             text As String) Implements IDocumentRepository.CreateRecord
         Dim sqlStatement As String =
-            " begin " &
-            " insert into pdfkeeper.docs values( " &
-            " pdfkeeper.docs_seq.NEXTVAL, " &
-            " :doc_title, " &
-            " :doc_author, " &
-            " :doc_subject, " &
-            " :doc_keywords, " &
-            " to_char(sysdate,'YYYY-MM-DD HH24:MI:SS'), " &
-            " :doc_notes, " &
-            " :doc_pdf, " &
-            " '', " &
-            " :doc_category, " &
-            " :doc_flag, " &
-            " :doc_tax_year, " &
-            " :doc_text_annotations, " &
-            " :doc_text) ;" &
-            " end ;"
+            "insert into pdfkeeper.docs values(" &
+            "pdfkeeper.docs_seq.NEXTVAL," &
+            ":doc_title," &
+            ":doc_author," &
+            ":doc_subject," &
+            ":doc_keywords," &
+            "to_char(sysdate,'YYYY-MM-DD HH24:MI:SS')," &
+            ":doc_notes," &
+            ":doc_pdf," &
+            "''," &
+            ":doc_category," &
+            ":doc_flag," &
+            ":doc_tax_year," &
+            ":doc_text_annotations," &
+            ":doc_text)"
         Try
             Using oraCommand As New OracleCommand(sqlStatement, provider.Connection)
                 Dim fileInfo As New FileInfo(pdfFile)
