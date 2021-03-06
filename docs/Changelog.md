@@ -2,7 +2,7 @@
 All notable changes to PDFKeeper will be documented in this file.
 
 ## v6.1.1 - 2020-11-27
-- This is a maintenance release that includes application fixes.
+- This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.1).
 ### Fixed
@@ -11,7 +11,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Cache folder not always clearing on application shutdown along with System.NullReferenceException or System.IndexOutOfRangeException being logged to Windows Application Event Log.
 
 ## v6.1.0 - 2020-11-21
-- This is a minor release that includes a new feature, application improvements and fixes, and a dependency update.
+- This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.0).
 ### Added
@@ -28,7 +28,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - InvalidOperationException at System.Drawing.Image.get_Width() or System.Drawing.Image.get_FrameDimensionsList() when document record is selected resulting in preview image failing to load into Preview Picture Box.
 
 ## v6.0.1 - 2020-10-16
-- This is a maintenance release that includes application and installer fixes and dependency updates.
+- This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.1).
 ### Changed
@@ -45,7 +45,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - "Failed to create restore point (Process = C:\Windows\system32\msiexec.exe /V; Description = Installed/Removed PDFKeeper; Error = 0x80042306)" is logged to Windows Application Event Log during an install and uninstall.
 
 ## v6.0.0 - 2020-09-26
-- This is a major release that includes architectural changes, a user interface redesign to improve document searching, fixes, and other miscellaneous changes.
+- This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
 ### Changed
@@ -68,7 +68,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Unhandled Oracle Exception when the Upload Service is trying to process a PDF that was moved from the Upload folder to the Upload Staging folder that is missing one or more required information property values (Title, Author, Subject).
 
 ## v5.0.3 - 2019-12-27
-- This is a maintenance release that addresses issues with the User Interface.
+- This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.3).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.3).
 ### Changed
@@ -81,7 +81,7 @@ All notable changes to PDFKeeper will be documented in this file.
 When Search Results is refreshed, the previously selected document record will be selected.
 
 ## v5.0.2 - 2019-11-30
-- This is a maintenance release that primarily addresses unresolved issues from version 5.0.0.
+- This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.2).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.2).
 ### Changed
@@ -91,7 +91,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Resolved issue with how Oracle secure password handling was implemented, allowing database connection pooling to be enabled after being disabled in version 5.0.0.
 
 ## v5.0.1 - 2019-11-16
-- This is a maintenance release that includes fixes and improvements to the Upload process and third-party updates.
+- This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.1).
 ### Changed
