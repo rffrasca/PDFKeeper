@@ -17,6 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
+Imports iTextSharp.text.pdf.parser.InlineImageUtils
+
 Public Class PdfFileInfo
     Private ReadOnly fileInfo As FileInfo
 
@@ -141,14 +143,17 @@ Public Class PdfFileInfo
         Using reader = New PdfReader(fileInfo.FullName)
             Dim textString As New StringBuilder
             For page As Integer = 1 To reader.NumberOfPages
-                Dim strategy As ITextExtractionStrategy = New LocationTextExtractionStrategy
-                Dim pageText As String = PdfTextExtractor.GetTextFromPage(reader,
-                                                                          page,
-                                                                          strategy)
-                Dim lines As String() = pageText.Split(ControlChars.Lf)
-                For Each line In lines
-                    textString.AppendLine(line)
-                Next
+                Try
+                    Dim strategy As ITextExtractionStrategy = New LocationTextExtractionStrategy
+                    Dim pageText As String = PdfTextExtractor.GetTextFromPage(reader,
+                                                                              page,
+                                                                              strategy)
+                    Dim lines As String() = pageText.Split(ControlChars.Lf)
+                    For Each line In lines
+                        textString.AppendLine(line)
+                    Next
+                Catch ex As InlineImageParseException
+                End Try
             Next
             Return textString.ToString
         End Using
