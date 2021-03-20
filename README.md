@@ -41,6 +41,10 @@ Please send all feedback, comments, suggestions, and testimonials regarding PDFK
 
 [![Twitter](https://img.shields.io/twitter/follow/PDFKeeper?style=social)](https://twitter.com/intent/follow?screen_name=PDFKeeper)
 
+If you find PDFKeeper useful, please consider donating to the project using PayPal, Debit, or Credit Card.
+
+Your contribution will help pay annual operating expenses and raise the needed funds to promote PDFKeeper to the PDF business community.
+
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/biz/fund?id=JCM6ZMCF6BHHN)
 
 ### License
