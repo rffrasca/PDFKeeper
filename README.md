@@ -43,9 +43,9 @@ Please send all feedback, comments, suggestions, and testimonials regarding PDFK
 
 If you find PDFKeeper useful, please consider donating to the project using PayPal, Debit, or Credit Card.
 
-Your contribution will help pay annual operating expenses and raise the needed funds to promote PDFKeeper to the PDF business community.
-
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/biz/fund?id=JCM6ZMCF6BHHN)
+
+Your contribution will help pay annual operating expenses and raise the needed funds to promote PDFKeeper to the PDF business community.
 
 ### License
 PDFKeeper is [OSI Certified Open Source Software](https://opensource.org/licenses), licensed under the terms of the [GNU General Public License (GPL) Version 3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
