@@ -8,8 +8,8 @@ All notable changes to PDFKeeper will be documented in this file.
 ### Added
 - Added a local, single user database option using SQLite.
 - Added Tax Year feature for document records.
-- Text annotations will be extracted from the PDF before uploading and stored in an indexed database column to provide support for databases that are not capable of extracting text annotations from PDF documents.
-- Text from the PDF will be extracted before uploading and stored in an indexed database column to provide support for SQLite that is not capable of indexing PDF documents and for Oracle Database that can not filter PDF documents with embedded fonts.
+- Text annotations will be extracted from the PDF before uploading and stored in an indexed database column.
+- Text from the PDF will be extracted before uploading and stored in an indexed database column.
 ### Changed
 - Consolidated Third-Party Attribution help pages into single page.
 - Modified Save As to retrieve the selected PDF Title from the database instead of PDF Metadata.
