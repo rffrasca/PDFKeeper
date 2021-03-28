@@ -1,6 +1,29 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v7.0.0 - 2021-03-28
+- This is a major release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.0.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.0.0).
+### Added
+- Added a local, single user database option using SQLite.
+- Added Tax Year feature for document records.
+- Text annotations will be extracted from the PDF before uploading and stored in an indexed database column to provide support for databases that are not capable of extracting text annotations from PDF documents.
+- Text from the PDF will be extracted before uploading and stored in an indexed database column to provide support for SQLite that is not capable of indexing PDF documents and for Oracle Database that can not filter PDF documents with embedded fonts.
+### Changed
+- Consolidated Third-Party Attribution help pages into single page.
+- Modified Save As to retrieve the selected PDF Title from the database instead of PDF Metadata.
+- Modified Export to rewrite an exported PDF with Title, Author, Subject, and Keywords from the database document record when the Title, Author, Subject, and Keywords in the PDF Metadata do not match.
+- Updated SumatraPDF to 3.2
+- Migrated from pdftopng from Xpdf Tools to Magick.NET 7.22.2.2 and Ghostscript 9.53.3
+- Moved Search Results to right side of form and moved right Tab Control (Notes, Keywords, Preview, and Text) to left side of form under Search Group Box.
+- Source code was reorganized and name changes were made.
+- Created script that will download and extract SumatraPDF during the build process if missing or not the required version, replacing manual steps in Build Instructions.
+### Removed
+- Oracle Database 18c (not XE), 12c, and 11g (not XE) has been dropped from the compatibility list.
+### Fixed
+- Unhandled InlineImageParseException: "Could not find image data or EI" during text extraction of an older PDF that does not contain text.
+
 ## v6.1.1 - 2020-11-27
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.1).
