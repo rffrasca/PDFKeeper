@@ -7,16 +7,16 @@ PDFKeeper is free, open source software that provides a storage and management s
 Screenshot of main window in version 6.1.x.
 
 ### Features
-* Store PDF documents in a compatible, relational database where they’re indexed and can be managed by any computer that has PDFKeeper installed on your network.
+* Store and manage PDF documents in a local or compatible, client-server relational database where they’re indexed to provide full-text search functionality.
 * Upload PDF documents individually or in bulk. In addition, configured folders can be setup to allow for integration and automation.
-* Apply a category to selected document records and when PDF documents are uploaded.
+* Apply a category and/or tax year to selected document records and when PDF documents are uploaded.
 * Set the flag state on a selected document record and when PDF documents are uploaded to mark for follow-up.
-* Add notes to a selected document record that can include the date, time, and database user account name. All notes can be edited and are indexed by the database.
-* Search for document records by Text, Selections (Author/Subject/Category), or Date Added. In addition, the user can list document records that are flagged or all document records in the database.
-* With PDFKeeper, the following functions can be performed on a selected document record: PDF document viewing with the bundled or default viewer; flag document state management; notes viewing and editing; keywords, PDF preview image, and PDF text are also displayed for viewing.
-* Export selected PDF documents with their category, notes, and flag state from the database for easy importing.
+* Add notes to a selected document record that can include the date, time, and user account name. All notes can be edited and are indexed by the database.
+* Search for document records by Text, Selections (Author/Subject/Category/Tax Year), or Date Added. In addition, the user can list document records that are flagged or all document records in the database.
+* With PDFKeeper, the following functions can be performed on a selected document record: PDF document viewing with the bundled or default viewer; flag document state management; notes viewing and editing; keywords, PDF preview, and PDF text are also displayed for viewing.
+* Export selected PDF documents with their category, tax year, notes, and flag state from the database for easy importing.
 
-These features are available in version 6.x.x. 
+These features are available in version 7.0.0. 
 
 ### Client Requirements and Compatible Database Management Systems
 Listed on the release page for each available version.
