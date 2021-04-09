@@ -54,7 +54,7 @@ Public NotInheritable Class AboutBox
     End Sub
 
     Private Sub LicenseLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LicenseLinkLabel.LinkClicked
-        help.Show(Me, "GNU General Public License v3_0 - GNU Project - Free Software Foundation (FSF).html")
+        help.Show(Me, "PDFKeeper License.txt")
     End Sub
 
     Private Sub ThirdPartyLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ThirdPartyLinkLabel.LinkClicked
