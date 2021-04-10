@@ -1,4 +1,4 @@
-# Building PDFKeeper 7.0.0 from Source
+# Building PDFKeeper 7.x.0 from Source
 
 ##  Install Development Applications and Tools
 1. Microsoft Visual Studio 2019 - https://www.visualstudio.com/downloads/
@@ -34,4 +34,4 @@ Download the source code for the 7.0.0 release from [here](https://github.com/rf
 1. Open "PDFKeeper.sln" with Visual Studio.
 2. Set configuration to Release, and then Build the Solution.
 
-    After a successful build, "PDFKeeper-7.0.0.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".
+    After a successful build, "PDFKeeper-7.x.0.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".
