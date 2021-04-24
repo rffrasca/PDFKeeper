@@ -39,7 +39,7 @@ Build Instructions for version 4.x.x (legacy) is available [here](https://github
 ### Contact
 [![Twitter](https://img.shields.io/twitter/follow/PDFKeeper?style=social)](https://twitter.com/intent/follow?screen_name=PDFKeeper)
 
-Please send all feedback, comments, suggestions, and testimonials regarding PDFKeeper [here](mailto:rffrasca@gmail.com).
+Please send all comments, suggestions, testimonials, and general questions regarding PDFKeeper [here](mailto:rffrasca@gmail.com).
 
 If you find PDFKeeper useful, please consider donating to the project using PayPal, Debit, or Credit Card.
 
