@@ -894,6 +894,10 @@ Public Class MainForm
         OptionsDialog.ShowDialog()
     End Sub
 
+    Private Sub ToolsMoveDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ToolsMoveDatabaseToolStripMenuItem.Click
+        presenter.MoveLocalDatabase()
+    End Sub
+
     Private Sub ToolsManageUploadFoldersToolStrip_Click(sender As Object, e As EventArgs) Handles ToolsManageUploadFolderConfigurationsToolStripMenuItem.Click,
                                                                                                   ToolsManageUploadFolderConfigurationsToolStripButton.Click
         ManageUploadFolderConfigurationsDialog.ShowDialog()

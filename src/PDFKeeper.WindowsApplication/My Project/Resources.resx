@@ -124,9 +124,6 @@
   <data name="page_text" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mini Icons\page_text.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FeatureDisabledByPolicy" xml:space="preserve">
-    <value>This feature is disabled by policy.</value>
-  </data>
   <data name="Author" xml:space="preserve">
     <value>Author</value>
   </data>
@@ -165,6 +162,9 @@ Do you want to save changes before closing?</value>
   <data name="SearchTextImproperUsageOfQueryOperators" xml:space="preserve">
     <value>Improper usage of query operators and/or characters.</value>
   </data>
+  <data name="DbExceptionDefaultMessage" xml:space="preserve">
+    <value>Database Exception has occurred.</value>
+  </data>
   <data name="DocumentIdException" xml:space="preserve">
     <value>Document ID: {0} - Error: {1}</value>
   </data>
@@ -177,6 +177,9 @@ Do you want to save changes before closing?</value>
   <data name="Version" xml:space="preserve">
     <value>Version {0}</value>
   </data>
+  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mini Icons\table.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="EnterOwnerPassword" xml:space="preserve">
     <value>Enter Owner Password:</value>
   </data>
@@ -188,6 +191,9 @@ Do you want to save changes before closing?</value>
   </data>
   <data name="RefreshSearchResults" xml:space="preserve">
     <value>Refresh Search Results?</value>
+  </data>
+  <data name="PopulateSelectedDocuments" xml:space="preserve">
+    <value>Populate new database table columns for all documents?</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Subject</value>
@@ -203,9 +209,6 @@ Do you want to save changes before closing?</value>
   </data>
   <data name="About" xml:space="preserve">
     <value>About {0}</value>
-  </data>
-  <data name="ProcessDocumentRecordMayHaveBeenDeleted" xml:space="preserve">
-    <value>{0}.  Document ID {1} may have been deleted.</value>
   </data>
   <data name="UploadConfig" xml:space="preserve">
     <value>UploadConfig</value>
@@ -232,14 +235,20 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
 
 The contents of the Notes text box prior to the attempted save operation have been copied to the Clipboard.</value>
   </data>
+  <data name="GenericClosePrompt" xml:space="preserve">
+    <value>Are you sure you want to close and discard all changes?</value>
+  </data>
+  <data name="DocumentRecordMayHaveBeenDeleted" xml:space="preserve">
+    <value>{0}.  Document record may have been deleted.  Please Refresh your Search Results.</value>
+  </data>
   <data name="SelectedFilesHaveBeenExported" xml:space="preserve">
     <value>Selected files have been exported to: {0}</value>
   </data>
-  <data name="Cache" xml:space="preserve">
-    <value>Cache</value>
+  <data name="ProcessDocumentRecordMayHaveBeenDeleted" xml:space="preserve">
+    <value>{0}.  Document ID {1} may have been deleted.</value>
   </data>
-  <data name="GenericClosePrompt" xml:space="preserve">
-    <value>Are you sure you want to close and discard all changes?</value>
+  <data name="FeatureDisabledByPolicy" xml:space="preserve">
+    <value>This feature is disabled by policy.</value>
   </data>
   <data name="SelectExportFolder" xml:space="preserve">
     <value>Select the location where the export folder will be created:</value>
@@ -253,8 +262,8 @@ The contents of the Notes text box prior to the attempted save operation have be
   <data name="FileSaved" xml:space="preserve">
     <value>{0} was saved.</value>
   </data>
-  <data name="DocumentRecordMayHaveBeenDeleted" xml:space="preserve">
-    <value>{0}.  Document record may have been deleted.  Please Refresh your Search Results.</value>
+  <data name="Cache" xml:space="preserve">
+    <value>Cache</value>
   </data>
   <data name="DeleteUploadFolderConfigurationPrompt" xml:space="preserve">
     <value>Are you sure you want to delete the selected Upload Folder Configuration?</value>
@@ -262,13 +271,10 @@ The contents of the Notes text box prior to the attempted save operation have be
   <data name="PdfOwnerPassword" xml:space="preserve">
     <value>PDF Owner Password</value>
   </data>
-  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mini Icons\table.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="database" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Silk Icons\database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PopulateSelectedDocuments" xml:space="preserve">
-    <value>Populate new database table columns for all documents?</value>
-  </data>
-  <data name="DbExceptionDefaultMessage" xml:space="preserve">
-    <value>Database Exception has occurred.</value>
+  <data name="SelectNewDatabaseFolderLocation" xml:space="preserve">
+    <value>Select the new location where the database will be stored:</value>
   </data>
 </root>

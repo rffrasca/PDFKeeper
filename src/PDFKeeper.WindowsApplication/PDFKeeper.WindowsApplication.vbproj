@@ -420,6 +420,7 @@
       <Link>sumatrapdfrestrict.ini</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Silk Icons\database.png" />
     <None Include="Resources\Mini Icons\table.gif" />
     <None Include="Resources\Mini Icons\page_text.gif" />
     <None Include="app.config" />

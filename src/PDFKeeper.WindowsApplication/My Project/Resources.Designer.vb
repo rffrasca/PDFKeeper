@@ -106,6 +106,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property database() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("database", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to &lt;Date_Time&gt;.
         '''</summary>
         Friend ReadOnly Property DateTimeToken() As String
@@ -389,6 +399,15 @@ Namespace My.Resources
         Friend ReadOnly Property SelectExportFolder() As String
             Get
                 Return ResourceManager.GetString("SelectExportFolder", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Select the new location where the database will be stored:.
+        '''</summary>
+        Friend ReadOnly Property SelectNewDatabaseFolderLocation() As String
+            Get
+                Return ResourceManager.GetString("SelectNewDatabaseFolderLocation", resourceCulture)
             End Get
         End Property
         

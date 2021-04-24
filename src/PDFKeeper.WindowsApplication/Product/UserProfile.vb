@@ -28,7 +28,11 @@ Public NotInheritable Class UserProfile
     ''' <returns></returns>
     Public Shared ReadOnly Property LocalDatabasePath As String
         Get
-            Dim database As String = IO.Path.Combine(ApplicationDataRoot,
+            Dim databaseFolder As String =
+                My.Computer.Registry.GetValue("HKEY_CURRENT_USER\SOFTWARE\Robert F. Frasca\PDFKeeper",
+                                              "LocalDatabasePath",
+                                              ApplicationDataRoot)
+            Dim database As String = IO.Path.Combine(databaseFolder,
                                                      String.Concat(Application.ProductName,
                                                                    ".sqlite"))
             If IO.File.Exists(database) Then

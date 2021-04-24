@@ -597,6 +597,12 @@
   <data name="ToolsOptionsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Options...</value>
   </data>
+  <data name="ToolsMoveDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 22</value>
+  </data>
+  <data name="ToolsMoveDatabaseToolStripMenuItem.Text" xml:space="preserve">
+    <value>Move &amp;Database</value>
+  </data>
   <data name="ToolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
     <value>282, 6</value>
   </data>
@@ -2559,6 +2565,12 @@
     <value>ToolsOptionsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;ToolsOptionsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolsMoveDatabaseToolStripMenuItem.Name" xml:space="preserve">
+    <value>ToolsMoveDatabaseToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ToolsMoveDatabaseToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripSeparator11.Name" xml:space="preserve">

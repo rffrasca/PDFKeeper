@@ -290,6 +290,29 @@ Public Class MainPresenter
         End If
     End Sub
 
+    Public Sub MoveLocalDatabase()
+        folderBrowser.Description = My.Resources.SelectNewDatabaseFolderLocation
+        Dim newDatabaseFolder As String = folderBrowser.Show
+        If newDatabaseFolder IsNot Nothing Then
+            view.SetCursor(True)
+            UploadService.Instance.CanUploadCycleStart = False
+            Try
+                IO.File.Move(UserProfile.LocalDatabasePath, IO.Path.Combine(newDatabaseFolder,
+                                                                            String.Concat(Application.ProductName,
+                                                                                          ".sqlite")))
+                My.Computer.Registry.SetValue("HKEY_CURRENT_USER\SOFTWARE\Robert F. Frasca\PDFKeeper",
+                                              "LocalDatabasePath",
+                                              newDatabaseFolder)
+                view.SetCursor(False)
+            Catch ex As IOException
+                view.SetCursor(False)
+                message.Show(ex.Message, True)
+            Finally
+                UploadService.Instance.CanUploadCycleStart = True
+            End Try
+        End If
+    End Sub
+
     Private Sub TriggerSearchResultsRefresh(ByVal postUpload As Boolean)
         If view.SearchFunctionsEnabled Then
             If postUpload Then

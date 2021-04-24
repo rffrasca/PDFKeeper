@@ -91,6 +91,7 @@ Partial Class MainForm
         Me.InsertTextToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsOptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolsMoveDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolsManageUploadFolderConfigurationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -424,7 +425,7 @@ Partial Class MainForm
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsOptionsToolStripMenuItem, Me.ToolStripSeparator11, Me.ToolsManageUploadFolderConfigurationsToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsOptionsToolStripMenuItem, Me.ToolsMoveDatabaseToolStripMenuItem, Me.ToolStripSeparator11, Me.ToolsManageUploadFolderConfigurationsToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         resources.ApplyResources(Me.ToolsToolStripMenuItem, "ToolsToolStripMenuItem")
         '
@@ -432,6 +433,12 @@ Partial Class MainForm
         '
         resources.ApplyResources(Me.ToolsOptionsToolStripMenuItem, "ToolsOptionsToolStripMenuItem")
         Me.ToolsOptionsToolStripMenuItem.Name = "ToolsOptionsToolStripMenuItem"
+        '
+        'ToolsMoveDatabaseToolStripMenuItem
+        '
+        Me.ToolsMoveDatabaseToolStripMenuItem.Image = Global.PDFKeeper.WindowsApplication.My.Resources.Resources.database
+        Me.ToolsMoveDatabaseToolStripMenuItem.Name = "ToolsMoveDatabaseToolStripMenuItem"
+        resources.ApplyResources(Me.ToolsMoveDatabaseToolStripMenuItem, "ToolsMoveDatabaseToolStripMenuItem")
         '
         'ToolStripSeparator11
         '
@@ -1071,4 +1078,5 @@ Partial Class MainForm
     Friend WithEvents FilePopulateNewDatabaseTableColumnsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FilePopulateNewDatabaseTableColumnsToolStripButton As ToolStripButton
     Friend WithEvents HelpProvider As HelpProvider
+    Friend WithEvents ToolsMoveDatabaseToolStripMenuItem As ToolStripMenuItem
 End Class

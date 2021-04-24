@@ -229,8 +229,10 @@ Public Class MainToolStripStatePresenter
     End Sub
 
     Private Sub SetVisibleStateDefaults()
-        shortNamesVisible.SetItem("FilePopulateNewDatabaseTableColumns",
-                                  False)
+        shortNamesVisible.SetItem("FilePopulateNewDatabaseTableColumns", False)
+        If DbInstanceProperties.Platform <> DatabasePlatform.Sqlite.ToString Then
+            shortNamesVisible.SetItem("ToolsMoveDatabase", False)
+        End If
     End Sub
 
     Private Sub ApplyState()
