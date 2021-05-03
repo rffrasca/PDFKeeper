@@ -471,7 +471,7 @@
   <PropertyGroup>
     <PreBuildEvent>powershell.exe -ExecutionPolicy Bypass -file "..\..\..\Build\GetSumatraPDF.ps1"
 powershell.exe -ExecutionPolicy Bypass -file "..\..\..\Build\GetSqliteShell.ps1"
-xcopy ..\..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\x64\SQLite.Interop.dll x64\*.*
+xcopy ..\..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\x64\SQLite.Interop.dll x64\*.* /Y
 call "..\..\..\Build\CompileHelp.cmd"
 </PreBuildEvent>
   </PropertyGroup>
