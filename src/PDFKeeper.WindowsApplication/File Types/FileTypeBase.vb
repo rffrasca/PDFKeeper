@@ -17,15 +17,11 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class ImageFileInfo
-    Private ReadOnly fileInfo As FileInfo
-
-    Public Sub New(ByVal imagePath As String)
-        fileInfo = New FileInfo(imagePath)
-    End Sub
+Public MustInherit Class FileTypeBase
+    Protected fileInfo As FileInfo
 
     ''' <summary>
-    ''' Checks if the image file object exists. 
+    ''' Checks if the object exists. 
     ''' </summary>
     ''' <value></value>
     ''' <returns>True or False</returns>
@@ -37,7 +33,7 @@ Public Class ImageFileInfo
     End Property
 
     ''' <summary>
-    ''' Gets the path name of the image file object.
+    ''' Gets the path name of the object.
     ''' </summary>
     ''' <value></value>
     ''' <returns></returns>
@@ -49,24 +45,20 @@ Public Class ImageFileInfo
     End Property
 
     ''' <summary>
-    ''' Returns the hash value for the image file object.
+    ''' Copies the object to a new file path.
+    ''' </summary>
+    ''' <param name="targetFilePath"></param>
+    ''' <remarks></remarks>
+    Public Sub CopyTo(ByVal targetFilePath As String)
+        fileInfo.CopyTo(targetFilePath, True)
+    End Sub
+
+    ''' <summary>
+    ''' Returns the hash value of the object.
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function ComputeHash() As String
         Return fileInfo.ComputeHash
-    End Function
-
-    ''' <summary>
-    ''' Returns an image from the image file object.
-    ''' </summary>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Public Function ToImage() As System.Drawing.Image
-        Using file As New FileStream(fileInfo.FullName, _
-                                     FileMode.Open, _
-                                     FileAccess.Read)
-            Return System.Drawing.Image.FromStream(file)
-        End Using
     End Function
 End Class

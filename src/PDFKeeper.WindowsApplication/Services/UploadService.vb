@@ -126,8 +126,8 @@ Public NotInheritable Class UploadService
         For Each pdfPath In pdfs
             Dim fileInfo As New FileInfo(pdfPath)
             fileInfo.WaitWhileIsInUse()
-            Dim pdfInfo As New PdfFileInfo(pdfPath)
-            If pdfInfo.ContainsOwnerPassword = False Then
+            Dim pdfFile As New PdfFileType(pdfPath)
+            If pdfFile.ContainsOwnerPassword = False Then
                 Dim uploadFolderName As String =
                     pdfPath.Substring(UserProfile.UploadPath.Length + 1)
                 If uploadFolderName = IO.Path.GetFileName(pdfPath) Then
@@ -272,8 +272,8 @@ Public NotInheritable Class UploadService
         For Each pdfPath In pdfs
             Dim fileInfo As New FileInfo(pdfPath)
             fileInfo.WaitWhileIsInUse()
-            Dim pdfInfo As New PdfFileInfo(pdfPath)
-            If pdfInfo.ContainsOwnerPassword = False Then
+            Dim pdfFile As New PdfFileType(pdfPath)
+            If pdfFile.ContainsOwnerPassword = False Then
                 Try
                     Dim pdfReader As New PdfMetadataReader(pdfPath)
                     If pdfReader.Title IsNot Nothing And
@@ -302,8 +302,8 @@ Public NotInheritable Class UploadService
                                                     category,
                                                     flag,
                                                     taxYear,
-                                                    pdfInfo.GetTextAnnotations,
-                                                    pdfInfo.GetText)
+                                                    pdfFile.GetTextAnnotations,
+                                                    pdfFile.GetText)
                         End Using
                         IO.File.Delete(pdfPath)
                         Dim suppDataXmlPath As String =

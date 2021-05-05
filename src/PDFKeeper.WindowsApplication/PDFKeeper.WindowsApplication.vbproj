@@ -314,9 +314,7 @@
     <Compile Include="Product\ApplicationPolicy.vb" />
     <Compile Include="Models\PdfSupplementalData.vb" />
     <Compile Include="Presenters\MainPresenter.vb" />
-    <Compile Include="File Types\ImageFileInfo.vb" />
     <Compile Include="NativeMethods.vb" />
-    <Compile Include="File Types\PdfFileInfo.vb" />
     <Compile Include="Models\PdfMetaData\PdfMetadataBase.vb" />
     <Compile Include="Models\PdfMetaData\PdfMetadataReader.vb" />
     <Compile Include="Models\PdfMetaData\PdfMetadataWriter.vb" />

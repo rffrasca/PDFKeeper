@@ -148,43 +148,43 @@ Public Class MainSelectedSearchResultsProcessPresenter
                                                                        model.GetSubjectById(id)))
             authorFolderInfo.Create()
             subjectFolderInfo.Create()
-            Dim pdfInfo As New PdfFileInfo(IO.Path.Combine(subjectFolderInfo.FullName,
+            Dim pdfFile As New PdfFileType(IO.Path.Combine(subjectFolderInfo.FullName,
                                                            "[" & id & "]" & model.GetTitleById(id) & ".pdf"))
-            model.GetPdfById(id, pdfInfo.FullName)
-            Dim helper As New PdfMetadataHelper(pdfInfo.FullName, Nothing)
+            model.GetPdfById(id, pdfFile.FullName)
+            Dim helper As New PdfMetadataHelper(pdfFile.FullName, Nothing)
             Dim metadata As PdfMetadataReader = helper.Read
             If metadata.Title <> model.GetTitleById(id) Or
                     metadata.Author <> model.GetAuthorById(id) Or
                     metadata.Subject <> model.GetSubjectById(id) Or
                     metadata.Keywords <> model.GetKeywordsById(id) Then
                 Dim tempPdfFile As String = IO.Path.Combine(IO.Path.GetTempPath,
-                                                            IO.Path.GetFileName(pdfInfo.FullName))
+                                                            IO.Path.GetFileName(pdfFile.FullName))
                 helper.Write(tempPdfFile,
                              model.GetTitleById(id),
                              model.GetAuthorById(id),
                              model.GetSubjectById(id),
                              model.GetKeywordsById(id))
                 'TODO: Overwrite parameter was added to File.Move in .NET5
-                IO.File.Delete(pdfInfo.FullName)
-                IO.File.Move(tempPdfFile, pdfInfo.FullName)
+                IO.File.Delete(pdfFile.FullName)
+                IO.File.Move(tempPdfFile, pdfFile.FullName)
             End If
             Dim notes As String = model.GetNotesById(id)
             Dim category As String = model.GetCategoryById(id)
             Dim taxYear As String = model.GetTaxYearById(id)
             Dim flagState As String = model.GetFlagStateById(id)
-            Dim suppDataHelper As New PdfSupplementalDataHelper(pdfInfo.FullName)
+            Dim suppDataHelper As New PdfSupplementalDataHelper(pdfFile.FullName)
             suppDataHelper.Write(notes, category, taxYear, flagState)
         End Using
     End Sub
 
     Private Shared Sub PopulateDocumentNewColumns(ByVal id As Integer)
         Dim cachePathName As New CacheFilePathName(id)
-        Dim pdfInfo As New PdfFileInfo(cachePathName.Pdf)
+        Dim pdfFile As New PdfFileType(cachePathName.Pdf)
         Using model As IDocumentRepository = New DocumentRepository
-            model.GetPdfById(id, pdfInfo.FullName)
-            model.UpdateTextAnnotationsById(id, pdfInfo.GetTextAnnotations)
-            model.UpdateTextById(id, pdfInfo.GetText)
+            model.GetPdfById(id, pdfFile.FullName)
+            model.UpdateTextAnnotationsById(id, pdfFile.GetTextAnnotations)
+            model.UpdateTextById(id, pdfFile.GetText)
         End Using
-        IO.File.Delete(pdfInfo.FullName)
+        IO.File.Delete(pdfFile.FullName)
     End Sub
 End Class

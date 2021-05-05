@@ -96,7 +96,7 @@ Public Class MainPresenter
         Dim targetExtension As String
         Dim targetFilePath As String
         cachePathName = New CacheFilePathName(view.DocumentRecordId)
-        Dim pdfInfo As New PdfFileInfo(cachePathName.Pdf)
+        Dim pdfFile As New PdfFileType(cachePathName.Pdf)
         If view.TextElementSelectedText Is Nothing Then
             targetExtension = "pdf"
         Else
@@ -112,7 +112,7 @@ Public Class MainPresenter
         If targetFilePath.Length > 0 Then
             view.SetCursor(True)
             If view.TextElementSelectedText Is Nothing Then
-                pdfInfo.CopyTo(targetFilePath)
+                pdfFile.CopyTo(targetFilePath)
             Else
                 view.TextElementSelectedText.WriteToFile(targetFilePath)
             End If
@@ -643,17 +643,17 @@ Public Class MainPresenter
     Private Sub GetDocumentRecordPdf()
         Dim cached As Boolean = False
         cachePathName = New CacheFilePathName(view.DocumentRecordId)
-        Dim pdfInfo As New PdfFileInfo(cachePathName.Pdf)
-        If pdfInfo.Exists Then
-            If pdfInfo.ComputeHash = fileHashes.GetItem(pdfInfo.FullName) Then
+        Dim pdfFile As New PdfFileType(cachePathName.Pdf)
+        If pdfFile.Exists Then
+            If pdfFile.ComputeHash = fileHashes.GetItem(pdfFile.FullName) Then
                 cached = True
             End If
         End If
         If cached = False Then
             Using model As IDocumentRepository = New DocumentRepository
-                model.GetPdfById(view.DocumentRecordId, pdfInfo.FullName)
+                model.GetPdfById(view.DocumentRecordId, pdfFile.FullName)
             End Using
-            fileHashes.SetItem(pdfInfo.FullName, pdfInfo.ComputeHash)
+            fileHashes.SetItem(pdfFile.FullName, pdfFile.ComputeHash)
         End If
     End Sub
 
@@ -692,15 +692,15 @@ Public Class MainPresenter
     Private Sub GetDocumentPreview()
         Dim cached As Boolean = False
         cachePathName = New CacheFilePathName(view.DocumentRecordId)
-        Dim pdfInfo As New PdfFileInfo(cachePathName.Pdf)
-        Dim imageFile As New ImageFileInfo(cachePathName.PdfPreview)
+        Dim pdfFile As New PdfFileType(cachePathName.Pdf)
+        Dim imageFile As New ImageFileType(cachePathName.PdfPreview)
         If imageFile.Exists Then
             If imageFile.ComputeHash = fileHashes.GetItem(imageFile.FullName) Then
                 cached = True
             End If
         End If
         If cached = False Then
-            pdfInfo.GetPreviewImageToFile(My.Settings.PreviewImageResolution)
+            pdfFile.GeneratePreviewImageFile(My.Settings.PreviewImageResolution)
             fileHashes.SetItem(imageFile.FullName, imageFile.ComputeHash)
         End If
         view.DocumentPreview = imageFile.ToImage

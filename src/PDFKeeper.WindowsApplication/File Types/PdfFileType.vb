@@ -21,15 +21,15 @@ Imports iText.Kernel.Pdf
 Imports iText.Kernel.Pdf.Canvas.Parser
 Imports iText.Kernel.Pdf.Canvas.Parser.Listener
 
-Public Class PdfFileInfo
-    Private ReadOnly fileInfo As FileInfo
+Public Class PdfFileType
+    Inherits FileTypeBase
 
     Public Sub New(ByVal pdfPath As String)
         fileInfo = New FileInfo(pdfPath)
     End Sub
 
     ''' <summary>
-    ''' If the PDF file object contains an Owner password.
+    ''' If the PDF contains an Owner password.
     ''' </summary>
     ''' <value></value>
     ''' <returns>True or False</returns>
@@ -52,55 +52,13 @@ Public Class PdfFileInfo
     End Property
 
     ''' <summary>
-    ''' If the PDF file object exists. 
-    ''' </summary>
-    ''' <value></value>
-    ''' <returns>True or False</returns>
-    ''' <remarks></remarks>
-    Public ReadOnly Property Exists As Boolean
-        Get
-            Return fileInfo.Exists
-        End Get
-    End Property
-
-    ''' <summary>
-    ''' Gets the path name of the PDF file object.
-    ''' </summary>
-    ''' <value></value>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Public ReadOnly Property FullName As String
-        Get
-            Return fileInfo.FullName
-        End Get
-    End Property
-
-    ''' <summary>
-    ''' Returns the hash value for the PDF file object.
-    ''' </summary>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Public Function ComputeHash() As String
-        Return fileInfo.ComputeHash
-    End Function
-
-    ''' <summary>
-    ''' Copies the PDF file object to a new file path.
-    ''' </summary>
-    ''' <param name="targetPdfPath"></param>
-    ''' <remarks></remarks>
-    Public Sub CopyTo(ByVal targetPdfPath As String)
-        fileInfo.CopyTo(targetPdfPath, True)
-    End Sub
-
-    ''' <summary>
-    ''' Creates a PNG image file containing the first page of the PDF file
-    ''' object.
+    ''' Generates a preview image in PNG format containing the first page of
+    ''' the PDF.
     ''' </summary>
     ''' <param name="resolution">DPI of output image.</param>
-    ''' <returns>Path name of file that contains the image.</returns>
-    Public Function GetPreviewImageToFile(ByVal resolution As Integer) As String
-        Dim outputParam As String = IO.Path.Combine(IO.Path.GetDirectoryName(fileInfo.FullName),
+    ''' <returns>Path name of preview file.</returns>
+    Public Function GeneratePreviewImageFile(ByVal resolution As Integer) As String
+        Dim previewFile As String = IO.Path.Combine(IO.Path.GetDirectoryName(fileInfo.FullName),
                                                     IO.Path.GetFileNameWithoutExtension(fileInfo.FullName) & "-" &
                                                     resolution & ".png")
         Using imageCollection = New MagickImageCollection
@@ -110,13 +68,13 @@ Public Class PdfFileInfo
                 .FrameCount = 1
             }
             imageCollection.Read(fileInfo.FullName, settings)
-            imageCollection.Write(outputParam)
+            imageCollection.Write(previewFile)
         End Using
-        Return outputParam
+        Return previewFile
     End Function
 
     '''' <summary>
-    '''' Returns the text annotations from the PDF file object.
+    '''' Returns the text annotations from the PDF.
     '''' </summary>
     '''' <returns></returns>
     Public Function GetTextAnnotations() As String
@@ -141,7 +99,7 @@ Public Class PdfFileInfo
     End Function
 
     ''' <summary>
-    ''' Returns the text from the PDF file object.
+    ''' Returns the text from the PDF.
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
