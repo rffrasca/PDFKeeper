@@ -36,6 +36,7 @@ Namespace My
             ElseIf previousVersion < "7.0.0.0" Then
                 help.ShowAndWait("Schema Upgrade for Oracle Database.html")
             End If
+            Dependency.RestoreBouncyCastle()
             Dependency.SetMagickNetGhostscriptDirectory()
             If DbInstanceProperties.Platform.Length = 0 Then
                 If IO.File.Exists(UserProfile.LocalDatabasePath) Then

@@ -17,6 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
+Imports iText.Kernel.Crypto
+
 Public NotInheritable Class UploadService
     Private Shared s_Instance As UploadService
     Private m_CanUploadCycleStart As Boolean = True
@@ -76,7 +78,7 @@ Public NotInheritable Class UploadService
 
     Public Sub ExecuteUploadCycle()
         If CanUploadCycleStart = False Then
-            Throw New InvalidOperationException( _
+            Throw New InvalidOperationException(
                 My.Resources.UploadCycleCannotBeStarted)
         End If
         isUploadCycleExecuting = True
@@ -102,7 +104,7 @@ Public NotInheritable Class UploadService
     ''' </summary>
     ''' <remarks></remarks>
     Private Shared Sub EnsureConfiguredUploadFoldersExist()
-        For Each config As String In _
+        For Each config As String In
             UploadFolderConfigurationUtil.GetAllConfigFileNames(True, False)
             Directory.CreateDirectory(IO.Path.Combine(UserProfile.UploadPath,
                                                       config))
@@ -117,16 +119,16 @@ Public NotInheritable Class UploadService
     ''' </summary>
     ''' <remarks></remarks>
     Private Shared Sub StagePdfsAndSupplementalDataForUpload()
-        Dim pdfs = Directory.GetFiles(UserProfile.UploadPath, _
-                                      "*.pdf", _
-                                      SearchOption.AllDirectories).OrderBy( _
+        Dim pdfs = Directory.GetFiles(UserProfile.UploadPath,
+                                      "*.pdf",
+                                      SearchOption.AllDirectories).OrderBy(
                                       Function(f) New FileInfo(f).LastWriteTime)
         For Each pdfPath In pdfs
             Dim fileInfo As New FileInfo(pdfPath)
             fileInfo.WaitWhileIsInUse()
             Dim pdfInfo As New PdfFileInfo(pdfPath)
             If pdfInfo.ContainsOwnerPassword = False Then
-                Dim uploadFolderName As String = _
+                Dim uploadFolderName As String =
                     pdfPath.Substring(UserProfile.UploadPath.Length + 1)
                 If uploadFolderName = IO.Path.GetFileName(pdfPath) Then
                     uploadFolderName = UserProfile.UploadPath
@@ -140,8 +142,8 @@ Public NotInheritable Class UploadService
                     Dim outputPdfPath As String = fileInfo.GenerateUploadStagingFilePath
                     Dim pdfReader As New PdfMetadataReader(pdfPath)
                     If UploadFolderConfigurationUtil.IsFolderConfigured(uploadFolderName) Then
-                        WriteNewPdfAndSupplementalData(pdfPath, _
-                                                       outputPdfPath, _
+                        WriteNewPdfAndSupplementalData(pdfPath,
+                                                       outputPdfPath,
                                                        uploadFolderName)
                     Else
                         If pdfReader.Title.Length > 0 And
@@ -196,7 +198,7 @@ Public NotInheritable Class UploadService
         End Try
     End Sub
 
-    Private Shared Sub StageExistingPdfAndSupplementalData(ByVal sourcePdfPath As String, _
+    Private Shared Sub StageExistingPdfAndSupplementalData(ByVal sourcePdfPath As String,
                                                            ByVal targetPdfPath As String)
         Dim sourceXmlPath As String = IO.Path.ChangeExtension(sourcePdfPath, "xml")
         Dim targetXmlPath As String = IO.Path.ChangeExtension(targetPdfPath, "xml")
@@ -232,15 +234,15 @@ Public NotInheritable Class UploadService
     ''' </summary>
     ''' <remarks></remarks>
     Private Shared Sub UploadFoldersCleanup()
-        Dim subFolders As String() = _
+        Dim subFolders As String() =
             Directory.GetDirectories(UserProfile.UploadPath)
         For Each subFolder In subFolders
             Dim dirInfo As New DirectoryInfo(subFolder)
-            If UploadFolderConfigurationUtil.IsFolderConfigured( _
+            If UploadFolderConfigurationUtil.IsFolderConfigured(
                 dirInfo.Name) Then
                 ' When the folder is a configured folder then only
                 ' delete empty sub-folders under the configured folder.
-                Dim subFoldersL2 As String() = _
+                Dim subFoldersL2 As String() =
                     Directory.GetDirectories(subFolder)
                 For Each subFolderL2 In subFoldersL2
                     If Directory.GetFiles(subFolderL2).Any Then
@@ -263,9 +265,9 @@ Public NotInheritable Class UploadService
     ''' </summary>
     ''' <remarks></remarks>
     Private Shared Sub UploadStagedPdfsAndSupplementalData()
-        Dim pdfs = Directory.GetFiles(UserProfile.UploadStagingPath, _
-                                      "*.pdf", _
-                                      SearchOption.TopDirectoryOnly).OrderBy( _
+        Dim pdfs = Directory.GetFiles(UserProfile.UploadStagingPath,
+                                      "*.pdf",
+                                      SearchOption.TopDirectoryOnly).OrderBy(
                                       Function(f) New FileInfo(f).LastWriteTime)
         For Each pdfPath In pdfs
             Dim fileInfo As New FileInfo(pdfPath)

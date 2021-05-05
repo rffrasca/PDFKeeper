@@ -44,6 +44,16 @@ Public NotInheritable Class Dependency
         End Try
     End Function
 
+    Public Shared Sub RestoreBouncyCastle()
+        Dim bouncyCastle As String = Path.Combine(Application.StartupPath,
+                                                  "BouncyCastle.Crypto.dll")
+        Dim bouncyCastleBackup As String = Path.Combine(Application.StartupPath,
+                                                        "BouncyCastle.Crypto.dll.bak")
+        If IO.File.Exists(bouncyCastle) = False Then
+            IO.File.Copy(bouncyCastleBackup, bouncyCastle)
+        End If
+    End Sub
+
     Public Shared Sub SetMagickNetGhostscriptDirectory()
         MagickNET.SetGhostscriptDirectory(Application.StartupPath)
     End Sub

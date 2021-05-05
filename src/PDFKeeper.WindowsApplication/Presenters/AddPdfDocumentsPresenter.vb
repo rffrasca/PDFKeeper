@@ -17,6 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
+Imports iText.Kernel.Crypto
+
 Public Class AddPdfDocumentsPresenter
     Implements IDisposable
     Private ReadOnly view As IAddPdfDocumentsView
@@ -181,7 +183,7 @@ Public Class AddPdfDocumentsPresenter
         End If
     End Function
 
-    Private Sub ReadPdfInformationPropertiesIntoModel(ByVal pdfPath As String, _
+    Private Sub ReadPdfInformationPropertiesIntoModel(ByVal pdfPath As String,
                                                       ByVal pdfPassword As SecureString)
         Dim fileInfo As New FileInfo(view.SelectedPdfPath)
         stagedPdfPath = fileInfo.GenerateUploadStagingFilePath

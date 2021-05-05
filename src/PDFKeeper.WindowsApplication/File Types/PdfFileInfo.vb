@@ -17,7 +17,9 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Imports iTextSharp.text.pdf.parser.InlineImageUtils
+Imports iText.Kernel.Pdf
+Imports iText.Kernel.Pdf.Canvas.Parser
+Imports iText.Kernel.Pdf.Canvas.Parser.Listener
 
 Public Class PdfFileInfo
     Private ReadOnly fileInfo As FileInfo
@@ -38,11 +40,13 @@ Public Class PdfFileInfo
     Public ReadOnly Property ContainsOwnerPassword As Boolean
         Get
             Using reader As New PdfReader(fileInfo.FullName)
-                If reader.IsOpenedWithFullPermissions Then
-                    Return False
-                Else
-                    Return True
-                End If
+                Using pdfDoc As New PdfDocument(reader)
+                    If reader.IsOpenedWithFullPermission Then
+                        Return False
+                    Else
+                        Return True
+                    End If
+                End Using
             End Using
         End Get
     End Property
@@ -118,18 +122,20 @@ Public Class PdfFileInfo
     Public Function GetTextAnnotations() As String
         Using reader = New PdfReader(fileInfo.FullName)
             Dim textString As New StringBuilder
-            For page As Integer = 1 To reader.NumberOfPages
-                Dim annotPage As PdfArray = reader.GetPageN(page).GetAsArray(PdfName.ANNOTS)
-                If annotPage IsNot Nothing Then
-                    For i As Integer = 0 To annotPage.Size - 1
-                        Dim annotDict As PdfDictionary = annotPage.GetAsDict(i)
-                        Dim text As PdfString = annotDict.GetAsString(PdfName.CONTENTS)
+            Using pdfDoc As New PdfDocument(reader)
+                For page As Integer = 1 To pdfDoc.GetNumberOfPages
+                    Dim annotPage As PdfPage = pdfDoc.GetPage(page)
+                    Dim annotations = annotPage.GetAnnotations()
+                    For Each annotation In annotations
+                        Dim annotDict As PdfDictionary = annotation.GetPdfObject
+                        Dim text As PdfString = Nothing
+                        text = annotDict.GetAsString(PdfName.Contents)
                         If text IsNot Nothing Then
                             textString.AppendLine(text.ToUnicodeString)
                         End If
                     Next
-                End If
-            Next
+                Next
+            End Using
             Return textString.ToString
         End Using
     End Function
@@ -142,19 +148,17 @@ Public Class PdfFileInfo
     Public Function GetText() As String
         Using reader = New PdfReader(fileInfo.FullName)
             Dim textString As New StringBuilder
-            For page As Integer = 1 To reader.NumberOfPages
-                Try
+            Using pdfDoc As New PdfDocument(reader)
+                For page As Integer = 1 To pdfDoc.GetNumberOfPages
                     Dim strategy As ITextExtractionStrategy = New LocationTextExtractionStrategy
-                    Dim pageText As String = PdfTextExtractor.GetTextFromPage(reader,
-                                                                              page,
+                    Dim pageText As String = PdfTextExtractor.GetTextFromPage(pdfDoc.GetPage(page),
                                                                               strategy)
                     Dim lines As String() = pageText.Split(ControlChars.Lf)
                     For Each line In lines
                         textString.AppendLine(line)
                     Next
-                Catch ex As InlineImageParseException
-                End Try
-            Next
+                Next
+            End Using
             Return textString.ToString
         End Using
     End Function
