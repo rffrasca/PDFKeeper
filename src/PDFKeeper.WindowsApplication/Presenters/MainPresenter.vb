@@ -96,7 +96,7 @@ Public Class MainPresenter
         Dim targetExtension As String
         Dim targetFilePath As String
         cachePathName = New CacheFilePathName(view.DocumentRecordId)
-        Dim pdfFile As New PdfFileType(cachePathName.Pdf)
+        Dim pdfFile As New PdfFile(cachePathName.Pdf)
         If view.TextElementSelectedText Is Nothing Then
             targetExtension = "pdf"
         Else
@@ -643,7 +643,7 @@ Public Class MainPresenter
     Private Sub GetDocumentRecordPdf()
         Dim cached As Boolean = False
         cachePathName = New CacheFilePathName(view.DocumentRecordId)
-        Dim pdfFile As New PdfFileType(cachePathName.Pdf)
+        Dim pdfFile As New PdfFile(cachePathName.Pdf)
         If pdfFile.Exists Then
             If pdfFile.ComputeHash = fileHashes.GetItem(pdfFile.FullName) Then
                 cached = True
@@ -692,8 +692,8 @@ Public Class MainPresenter
     Private Sub GetDocumentPreview()
         Dim cached As Boolean = False
         cachePathName = New CacheFilePathName(view.DocumentRecordId)
-        Dim pdfFile As New PdfFileType(cachePathName.Pdf)
-        Dim imageFile As New ImageFileType(cachePathName.PdfPreview)
+        Dim pdfFile As New PdfFile(cachePathName.Pdf)
+        Dim imageFile As New ImageFile(cachePathName.PdfPreview)
         If imageFile.Exists Then
             If imageFile.ComputeHash = fileHashes.GetItem(imageFile.FullName) Then
                 cached = True

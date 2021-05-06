@@ -74,7 +74,7 @@ Public Class AddPdfDocumentsPresenter
             Dim selectedPdfPassword As SecureString = Nothing
             Dim containsPassword As Boolean = False
             Try
-                Dim pdfFile As New PdfFileType(view.SelectedPdfPath)
+                Dim pdfFile As New PdfFile(view.SelectedPdfPath)
                 If pdfFile.ContainsOwnerPassword Then
                     passwordPrompt.Title = My.Resources.PdfOwnerPassword
                     passwordPrompt.TextLabel = My.Resources.EnterOwnerPassword

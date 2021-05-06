@@ -21,8 +21,8 @@ Imports iText.Kernel.Pdf
 Imports iText.Kernel.Pdf.Canvas.Parser
 Imports iText.Kernel.Pdf.Canvas.Parser.Listener
 
-Public Class PdfFileType
-    Inherits FileTypeBase
+Public Class PdfFile
+    Inherits FileBase
 
     Public Sub New(ByVal pdfPath As String)
         fileInfo = New FileInfo(pdfPath)
@@ -48,6 +48,20 @@ Public Class PdfFileType
                     End If
                 End Using
             End Using
+        End Get
+    End Property
+
+    ''' <summary>
+    ''' If the PDF is image-only.
+    ''' </summary>
+    ''' <returns>True or False</returns>
+    Public ReadOnly Property ImageOnly As Boolean
+        Get
+            If GetText.Length > 0 Then
+                Return True
+            Else
+                Return False
+            End If
         End Get
     End Property
 

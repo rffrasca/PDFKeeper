@@ -17,8 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Class ImageFileType
-    Inherits FileTypeBase
+Public Class ImageFile
+    Inherits FileBase
 
     Public Sub New(ByVal imagePath As String)
         fileInfo = New FileInfo(imagePath)

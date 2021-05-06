@@ -148,7 +148,7 @@ Public Class MainSelectedSearchResultsProcessPresenter
                                                                        model.GetSubjectById(id)))
             authorFolderInfo.Create()
             subjectFolderInfo.Create()
-            Dim pdfFile As New PdfFileType(IO.Path.Combine(subjectFolderInfo.FullName,
+            Dim pdfFile As New PdfFile(IO.Path.Combine(subjectFolderInfo.FullName,
                                                            "[" & id & "]" & model.GetTitleById(id) & ".pdf"))
             model.GetPdfById(id, pdfFile.FullName)
             Dim helper As New PdfMetadataHelper(pdfFile.FullName, Nothing)
@@ -179,7 +179,7 @@ Public Class MainSelectedSearchResultsProcessPresenter
 
     Private Shared Sub PopulateDocumentNewColumns(ByVal id As Integer)
         Dim cachePathName As New CacheFilePathName(id)
-        Dim pdfFile As New PdfFileType(cachePathName.Pdf)
+        Dim pdfFile As New PdfFile(cachePathName.Pdf)
         Using model As IDocumentRepository = New DocumentRepository
             model.GetPdfById(id, pdfFile.FullName)
             model.UpdateTextAnnotationsById(id, pdfFile.GetTextAnnotations)

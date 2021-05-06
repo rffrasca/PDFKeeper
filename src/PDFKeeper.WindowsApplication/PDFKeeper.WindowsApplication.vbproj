@@ -209,9 +209,9 @@
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="Enums\DatabasePlatformEnum.vb" />
     <Compile Include="Exceptions\CustomDbException.vb" />
-    <Compile Include="File Types\FileTypeBase.vb" />
-    <Compile Include="File Types\ImageFileType.vb" />
-    <Compile Include="File Types\PdfFileType.vb" />
+    <Compile Include="File Types\FileBase.vb" />
+    <Compile Include="File Types\ImageFile.vb" />
+    <Compile Include="File Types\PdfFile.vb" />
     <Compile Include="Helpers\SetTaxYearHelper.vb" />
     <Compile Include="Dialogs\SetTaxYearDialog.Designer.vb">
       <DependentUpon>SetTaxYearDialog.vb</DependentUpon>
