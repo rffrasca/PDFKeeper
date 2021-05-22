@@ -18,8 +18,7 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Imports iText.Kernel.Pdf
-Imports iText.Kernel.Pdf.Canvas.Parser
-Imports iText.Kernel.Pdf.Canvas.Parser.Listener
+Imports UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor
 
 Public Class PdfFile
     Inherits FileBase
@@ -118,20 +117,7 @@ Public Class PdfFile
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function GetText() As String
-        Using reader = New PdfReader(fileInfo.FullName)
-            Dim textString As New StringBuilder
-            Using pdfDoc As New PdfDocument(reader)
-                For page As Integer = 1 To pdfDoc.GetNumberOfPages
-                    Dim strategy As ITextExtractionStrategy = New LocationTextExtractionStrategy
-                    Dim pageText As String = PdfTextExtractor.GetTextFromPage(pdfDoc.GetPage(page),
-                                                                              strategy)
-                    Dim lines As String() = pageText.Split(ControlChars.Lf)
-                    For Each line In lines
-                        textString.AppendLine(line)
-                    Next
-                Next
-            End Using
-            Return textString.ToString
-        End Using
+        Dim factory As New PdfTextExtractorFactory(fileInfo.FullName)
+        Return factory.GetText
     End Function
 End Class
