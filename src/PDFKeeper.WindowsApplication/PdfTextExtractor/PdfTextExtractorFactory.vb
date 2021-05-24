@@ -25,9 +25,13 @@ Public Class PdfTextExtractorFactory
     End Sub
 
     ''' <summary>
-    ''' Factory method that returns the text from the PDF using the primary
-    ''' extractor, only switching to the alternate extractor when the primary
-    ''' extractor is unable to extract all of the text from the PDF due to an
+    ''' Factory method that returns the text from the PDF using the appropriate
+    ''' extractor object based on the type of PDF being processed.
+    ''' 
+    ''' Primary Extractor: used for text based PDF except when PDF contains an
+    ''' invalid encoding.
+    ''' 
+    ''' Alternate Extractor: used when PDF is text based and contains an
     ''' invalid encoding.
     ''' </summary>
     ''' <returns></returns>
