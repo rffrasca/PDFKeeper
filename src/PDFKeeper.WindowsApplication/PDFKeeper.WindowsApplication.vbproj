@@ -187,6 +187,7 @@
     </Reference>
     <Reference Include="UglyToad.PdfPig.Package, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PdfPig.0.1.4\lib\net47\UglyToad.PdfPig.Package.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UglyToad.PdfPig.Tokenization, Version=0.1.4.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
       <HintPath>..\packages\PdfPig.0.1.4\lib\net47\UglyToad.PdfPig.Tokenization.dll</HintPath>
