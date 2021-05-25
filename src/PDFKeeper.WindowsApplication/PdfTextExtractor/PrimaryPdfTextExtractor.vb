@@ -34,7 +34,7 @@ Public Class PrimaryPdfTextExtractor
     ''' <returns></returns>
     Public Overrides Function GetText() As String
         Using reader = New PdfReader(pdfFile)
-            Dim textString As New StringBuilder
+            Dim text As New StringBuilder
             Using pdfDoc As New PdfDocument(reader)
                 For page As Integer = 1 To pdfDoc.GetNumberOfPages
                     Try
@@ -45,14 +45,14 @@ Public Class PrimaryPdfTextExtractor
                                                              strategy)
                         Dim lines As String() = pageText.Split(ControlChars.Lf)
                         For Each line In lines
-                            textString.AppendLine(line)
+                            text.AppendLine(line)
                         Next
                     Catch ex As ArgumentException   ' PDF contains an invalid encoding.
                         Return Nothing
                     End Try
                 Next
             End Using
-            Return textString.ToString
+            Return text.ToString
         End Using
     End Function
 End Class

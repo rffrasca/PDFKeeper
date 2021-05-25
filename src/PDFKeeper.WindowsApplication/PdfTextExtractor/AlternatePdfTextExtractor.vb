@@ -34,11 +34,11 @@ Public Class AlternatePdfTextExtractor
     ''' <returns></returns>
     Public Overrides Function GetText() As String
         Using pdfDoc = UglyToad.PdfPig.PdfDocument.Open(pdfFile)
-            Dim textString As New StringBuilder
+            Dim text As New StringBuilder
             For Each page In pdfDoc.GetPages()
-                textString.Append(ContentOrderTextExtractor.GetText(page))
+                text.Append(ContentOrderTextExtractor.GetText(page))
             Next
-            Return textString.ToString
+            Return text.ToString
         End Using
     End Function
 End Class
