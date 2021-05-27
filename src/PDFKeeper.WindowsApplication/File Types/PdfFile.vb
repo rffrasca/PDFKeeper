@@ -51,20 +51,6 @@ Public Class PdfFile
     End Property
 
     ''' <summary>
-    ''' If the PDF is image-only.
-    ''' </summary>
-    ''' <returns>True or False</returns>
-    Public ReadOnly Property ImageOnly As Boolean
-        Get
-            If GetText.Length > 0 Then
-                Return True
-            Else
-                Return False
-            End If
-        End Get
-    End Property
-
-    ''' <summary>
     ''' Generates a preview image in PNG format containing the first page of
     ''' the PDF.
     ''' </summary>
