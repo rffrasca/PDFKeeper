@@ -18,7 +18,6 @@
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
 Imports iText.Kernel.Pdf
-Imports UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor
 
 Public Class PdfFile
     Inherits FileBase
