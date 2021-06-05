@@ -29,9 +29,9 @@ Public Class PrimaryPdfTextExtractor
     End Sub
 
     ''' <summary>
-    ''' Returns the text from the PDF using iText.
+    ''' Gets the text from the PDF using iText.
     ''' </summary>
-    ''' <returns></returns>
+    ''' <returns>Text or nothing if PDF contains an invalid encoding.</returns>
     Public Overrides Function GetText() As String
         Using reader = New PdfReader(pdfFile)
             Dim text As New StringBuilder
