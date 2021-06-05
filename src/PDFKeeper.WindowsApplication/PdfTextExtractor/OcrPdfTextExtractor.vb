@@ -63,7 +63,7 @@ Public Class OcrPdfTextExtractor
         Return imagesList
     End Function
 
-    Private Sub CleanupFiles(ByVal filePaths As ArrayList)
+    Private Shared Sub CleanupFiles(ByVal filePaths As ArrayList)
         For Each filePath As String In filePaths
             IO.File.Delete(filePath)
         Next

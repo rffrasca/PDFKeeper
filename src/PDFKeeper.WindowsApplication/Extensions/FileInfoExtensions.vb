@@ -154,9 +154,9 @@ Module FileInfoExtensions
             Throw New ArgumentNullException(NameOf(fileInfoParam))
         End If
         Dim byteArray As Byte()
-        Using stream As FileStream = New FileStream(fileInfoParam.FullName,
-                                                    FileMode.Open,
-                                                    FileAccess.Read)
+        Using stream As New FileStream(fileInfoParam.FullName,
+                                       FileMode.Open,
+                                       FileAccess.Read)
             ReDim byteArray(CInt(stream.Length))
             stream.Read(byteArray, 0, System.Convert.ToInt32(stream.Length))
             Return byteArray
