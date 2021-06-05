@@ -6,7 +6,7 @@
 3. WiX Toolset v3.11.2 - http://wixtoolset.org/releases/
 4. WiX Toolset Visual Studio 2013 Extension 1.0.0.4 - https://github.com/wixtoolset/VisualStudioExtension/releases/tag/v1.0.0.4
 5. Wax - https://github.com/tom-englert/Wax/releases. Version must be earlier than 1.3, but a binary release of 1.2 is not available from the author.
-6. Microsoft HTML Help Workshop - http://www.microsoft.com/en-us/download/details.aspx?id=21138
+6. Microsoft HTML Help Workshop - https://web.archive.org/web/20201201163924/http://www.microsoft.com/en-us/download/details.aspx?id=21138
 7. ODP.NET, Managed Driver - http://www.oracle.com/technetwork/database/windows/downloads/utilsoft-087491.html
     Download the latest xcopy version of the ODP.NET, Managed Driver, then unblock and unzip the file.
     For installation instructions, refer to readme.htm that is included with the xcopy ZIP file.
