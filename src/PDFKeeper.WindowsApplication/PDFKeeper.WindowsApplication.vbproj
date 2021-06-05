@@ -133,11 +133,11 @@
       <HintPath>..\packages\itext7.7.1.15\lib\net45\itext.svg.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Magick.NET-Q16-AnyCPU, Version=7.22.2.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
-      <HintPath>..\packages\Magick.NET-Q16-AnyCPU.7.22.2.2\lib\net40\Magick.NET-Q16-AnyCPU.dll</HintPath>
+    <Reference Include="Magick.NET-Q16-AnyCPU, Version=7.24.1.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET-Q16-AnyCPU.7.24.1\lib\net40\Magick.NET-Q16-AnyCPU.dll</HintPath>
     </Reference>
-    <Reference Include="Magick.NET.Core, Version=5.2.2.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
-      <HintPath>..\packages\Magick.NET.Core.5.2.2\lib\net40\Magick.NET.Core.dll</HintPath>
+    <Reference Include="Magick.NET.Core, Version=7.0.1.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET.Core.7.0.1\lib\net40\Magick.NET.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
