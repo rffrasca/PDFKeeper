@@ -236,6 +236,7 @@
     <Compile Include="Enums\DatabasePlatformEnum.vb" />
     <Compile Include="Exceptions\CustomDbException.vb" />
     <Compile Include="PdfTextExtractor\AlternatePdfTextExtractor.vb" />
+    <Compile Include="PdfTextExtractor\OcrPdfTextExtractor.vb" />
     <Compile Include="PdfTextExtractor\PdfTextExtractorBase.vb" />
     <Compile Include="PdfTextExtractor\PdfTextExtractorFactory.vb" />
     <Compile Include="File Types\FileBase.vb" />
@@ -531,6 +532,12 @@
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\analyzers\dotnet\vb\Microsoft.CodeAnalysis.NetAnalyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\analyzers\dotnet\vb\Microsoft.CodeAnalysis.VisualBasic.NetAnalyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PDFKeeper.OCR\PDFKeeper.OCR.vbproj">
+      <Project>{3FB5173A-889F-4015-A9C8-3E28A0FA3247}</Project>
+      <Name>PDFKeeper.OCR</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>

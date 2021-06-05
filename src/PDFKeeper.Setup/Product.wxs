@@ -21,7 +21,7 @@
 *******************************************************************************
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-  <?define PDFKeeper.WindowsApplication_TargetDir=$(var.PDFKeeper.WindowsApplication.TargetDir)?>
+  <?define PDFKeeper.WindowsApplication_TargetDir=$(var.PDFKeeper.WindowsApplication.TargetDir)?><?define PDFKeeper.OCR_TargetDir=$(var.PDFKeeper.OCR.TargetDir)?>
   <Product Id="*" Name="PDFKeeper" Language="1033" Version="7.1.0" Manufacturer="Robert F. Frasca" UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2">
     
     <Package InstallerVersion="500" Compressed="yes" InstallScope="perUser" />
@@ -178,6 +178,9 @@
       </Component>
       <Component Id="UglyToad.PdfPig.Fonts.dll" Guid="3b98c0fb-bb29-4c8f-ac65-5c316b8b7a9f">
         <File Id="UglyToad.PdfPig.Fonts.dll" Name="UglyToad.PdfPig.Fonts.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)UglyToad.PdfPig.Fonts.dll" />
+      </Component>
+      <Component Id="PDFKeeper.Ocr.dll" Guid="0b685e14-9864-46a0-aa85-de37abf34da2">
+        <File Id="PDFKeeper.Ocr.dll" Name="PDFKeeper.Ocr.dll" Source="$(var.PDFKeeper.OCR_TargetDir)PDFKeeper.Ocr.dll" />
       </Component>
   	</ComponentGroup>
 	</Fragment>

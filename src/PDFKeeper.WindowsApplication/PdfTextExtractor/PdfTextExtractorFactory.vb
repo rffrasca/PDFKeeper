@@ -33,6 +33,8 @@ Public Class PdfTextExtractorFactory
     ''' 
     ''' Alternate Extractor: used when PDF is text based and contains an
     ''' invalid encoding.
+    ''' 
+    ''' OCR Extractor: used when PDF is "Image-only".
     ''' </summary>
     ''' <returns></returns>
     Public Function GetText() As String
@@ -41,6 +43,9 @@ Public Class PdfTextExtractorFactory
         If pdfText Is Nothing Then
             Dim alternateExtractor As New AlternatePdfTextExtractor(pdfFile)
             pdfText = alternateExtractor.GetText
+        ElseIf pdfText.Trim.Length = 0 Then
+            Dim ocrExtractor As New OcrPdfTextExtractor(pdfFile)
+            pdfText = ocrExtractor.GetText
         End If
         Return pdfText
     End Function

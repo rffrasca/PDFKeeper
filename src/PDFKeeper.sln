@@ -6,6 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDFKeeper.WindowsApplication", "PDFKeeper.WindowsApplication\PDFKeeper.WindowsApplication.vbproj", "{BD8B275B-8505-49DD-9DD9-7171760959D5}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "PDFKeeper.Setup", "PDFKeeper.Setup\PDFKeeper.Setup.wixproj", "{97756C6A-853A-4CBA-8507-D33B20B6DD07}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3FB5173A-889F-4015-A9C8-3E28A0FA3247} = {3FB5173A-889F-4015-A9C8-3E28A0FA3247}
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDFKeeper.OCR", "PDFKeeper.OCR\PDFKeeper.OCR.vbproj", "{3FB5173A-889F-4015-A9C8-3E28A0FA3247}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Debug|Any CPU.Build.0 = Debug|x64
 		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Release|Any CPU.ActiveCfg = Release|x64
 		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Release|Any CPU.Build.0 = Release|x64
+		{3FB5173A-889F-4015-A9C8-3E28A0FA3247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB5173A-889F-4015-A9C8-3E28A0FA3247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB5173A-889F-4015-A9C8-3E28A0FA3247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB5173A-889F-4015-A9C8-3E28A0FA3247}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
