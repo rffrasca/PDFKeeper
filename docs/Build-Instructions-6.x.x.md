@@ -24,7 +24,10 @@ Download the source code for a 6.x.x release from [here](https://github.com/rffr
     Extract the entire archive into the "vendor" folder in the PDFKeeper Solution, maintaining the folder structure. Next, rename the "xpdf-tools-win-x.xx.xx" folder in the "vendor" folder to "xpdf-tools-win".
 
 ## Build PDFKeeper
-1. Open "PDFKeeper.sln" with Visual Studio.
-2. Set configuration to Release, and then Build the Solution.
+1. Open src\Help\en-US\PDFKeeper.hhp with HTML Help Workshop and compile.
+2. If src\Help\PDFKeeper.en-US.chm resides on a network/remote drive, copy to a local drive.
+3. Open PDFKeeper.en-US.chm. If the help file fails to open, as an Administrator, execute *regsvr32 C:\Windows\System32\hhctrl.ocx* and then repeat the compile and test again.
+4. Open "PDFKeeper.sln" with Visual Studio.
+5. Set configuration to Release, and then Build the Solution.
 
     After a successful build, "PDFKeeper-6.x.x.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".
