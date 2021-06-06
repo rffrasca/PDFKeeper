@@ -31,7 +31,10 @@ Download the source code for the 7.0.0 release from [here](https://github.com/rf
     9. Select OK.
 
 ## Build PDFKeeper
-1. Open "PDFKeeper.sln" with Visual Studio.
-2. Set configuration to Release, and then Build the Solution.
+1. Open src\Help\en-US\PDFKeeper.hhp with HTML Help Workshop and compile.
+2. If src\Help\PDFKeeper.en-US.chm resides on a network/remote drive, copy to a local drive.
+3. Open PDFKeeper.en-US.chm. If the help file fails to open, as an Administrator, execute *regsvr32 C:\Windows\System32\hhctrl.ocx* and then repeat the compile and test again.
+4. Open "PDFKeeper.sln" with Visual Studio.
+5. Set configuration to Release, and then Build the Solution.
 
     After a successful build, "PDFKeeper-7.x.0.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".
