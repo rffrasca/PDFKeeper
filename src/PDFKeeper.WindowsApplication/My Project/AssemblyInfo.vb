@@ -17,11 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Imports System.Resources
-
-Imports System
 Imports System.Reflection
-Imports System.Runtime.InteropServices
+Imports System.Resources
 
 ' General Information about an assembly is controlled through the following 
 ' set of attributes. Change these attribute values to modify the information
@@ -31,12 +28,12 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("PDFKeeper")>
 <Assembly: AssemblyDescription("Open Source PDF Document Management")>
-<Assembly: AssemblyCompany("Robert F. Frasca")> 
+<Assembly: AssemblyCompany("Robert F. Frasca")>
 <Assembly: AssemblyProduct("PDFKeeper")>
 <Assembly: AssemblyCopyright("Copyright © 2009-2021 Robert F. Frasca")>
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTrademark("")>
 
-<Assembly: ComVisible(False)> 
+<Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("da21be44-82bd-4219-b531-ca4cd5daeab2")>
@@ -54,5 +51,5 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyVersion("7.1.0.0")>
 <Assembly: AssemblyFileVersion("7.1.0.0")>
-<Assembly: CLSCompliant(True)> 
-<Assembly: NeutralResourcesLanguageAttribute("en-US")> 
+<Assembly: CLSCompliant(True)>
+<Assembly: NeutralResourcesLanguageAttribute("en-US")>

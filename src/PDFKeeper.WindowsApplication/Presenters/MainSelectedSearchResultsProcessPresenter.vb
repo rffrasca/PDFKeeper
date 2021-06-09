@@ -17,7 +17,6 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Imports System.Runtime.Remoting.Messaging
 
 Public Class MainSelectedSearchResultsProcessPresenter
     Private ReadOnly m_View As IMainView
