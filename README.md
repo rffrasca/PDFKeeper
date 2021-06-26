@@ -29,10 +29,6 @@ Build Instructions for version 7.x.0 is available [here](https://github.com/rffr
 
 Build Instructions for version 6.x.x is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-6.x.x.md).
 
-Build Instructions for version 5.0.x is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-5.0.x.md).
-
-Build Instructions for version 4.x.x (legacy) is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-4.x.x.md).
-
 ### Links
 [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md)
 
