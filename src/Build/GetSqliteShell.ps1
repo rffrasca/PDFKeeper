@@ -19,9 +19,9 @@
 #******************************************************************************
 
 $folder = "..\..\..\..\vendor"
-$version = "3.34.0"
-$archiveName = "sqlite-tools-win32-x86-3340000"
-$zipFileUrl = "https://www.sqlite.org/2020/$archiveName.zip"
+$version = "3.36.0"
+$archiveName = "sqlite-tools-win32-x86-3360000"
+$zipFileUrl = "https://www.sqlite.org/2021/$archiveName.zip"
 $zipFile = "$folder\$archiveName.zip"
 $exeFile = "$folder\sqlite3.exe"
 
@@ -36,7 +36,7 @@ if (Test-Path $exeFile) {
 Invoke-WebRequest -Uri $zipFileUrl -OutFile $zipFile
 Expand-Archive -path $zipFile -DestinationPath $folder -Force
 Remove-Item -Path $zipFile
-Move-Item -Path ($folder + "\" + $archiveName + "\sqlite3.exe") -Destination $folder
+Move-Item -Path ($folder + "\" + $archiveName + "\sqlite3.exe") -Destination $folder -Force
 Remove-Item -Path ($folder + "\" + $archiveName) -Recurse
 
 exit 0
