@@ -1,6 +1,22 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v7.1.0 - 2021-06-26
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.1.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.1.0).
+### Added
+- Text from image-only PDF will be extracted using OCR before uploading, and then stored in an indexed database column. (requires Windows 10)
+- Menu function was added to move local SQLite database to an alternate location.
+### Changed
+- Migrated from iTextSharp to iText Core/Community 7.1.15
+- PdfPig 0.1.4 was added to handle text extraction when iText throws an ArgumentException while trying to extract text from a PDF that contains an invalid encoding.
+- Magick.NET was updated to 7.24.1.0
+- Improvements were made to the File Type and PDF Text Extractor classes.
+- Help file is now compiled manually outside of build process to verify help file is not corrupt.
+### Fixed
+- Fixed License not opening from About box.
+
 ## v7.0.0 - 2021-03-28
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.0.0).
