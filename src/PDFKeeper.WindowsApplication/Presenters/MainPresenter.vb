@@ -771,6 +771,9 @@ Public Class MainPresenter
                     End If
                     Application.DoEvents()
                 End Try
+            Else
+                view.UploadFolderErrorVisible = False
+                view.UploadStagingFolderErrorVisible = False
             End If
         End If
     End Sub
