@@ -245,12 +245,12 @@ Public NotInheritable Class UploadService
                 Dim subFoldersL2 As String() =
                     Directory.GetDirectories(subFolder)
                 For Each subFolderL2 In subFoldersL2
-                    If Directory.GetFiles(subFolderL2).Any Then
+                    If Directory.GetFiles(subFolderL2).Any = False Then
                         Directory.Delete(subFolderL2, True)
                     End If
                 Next
             Else
-                If Directory.GetFiles(subFolder).Any Then
+                If Directory.GetFiles(subFolder).Any = False Then
                     Directory.Delete(subFolder, True)
                 End If
             End If
