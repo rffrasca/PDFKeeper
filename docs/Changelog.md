@@ -106,7 +106,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - "Access to the path <PDF_PATH_NAME> is denied" when a document is selected in Search Results following PDFKeeper being closed while Sumatra PDF was displaying one or more selected PDF documents and PDFKeeper was opened again without closing Sumatra PDF first.
 - Unhandled Oracle Exception when the Upload Service is trying to process a PDF that was moved from the Upload folder to the Upload Staging folder that is missing one or more required information property values (Title, Author, Subject).
 
-## v5.0.3 - 2019-12-27
+## v5.0.3 - 2019-12-27 (legacy)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.3).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.3).
@@ -119,7 +119,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Fixed selected Search tab on main form not always being visible after the right panel collapsed state has changed.
 When Search Results is refreshed, the previously selected document record will be selected.
 
-## v5.0.2 - 2019-11-30
+## v5.0.2 - 2019-11-30 (legacy)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.2).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.2).
@@ -129,7 +129,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Fixed a memory and handle leak.
 - Resolved issue with how Oracle secure password handling was implemented, allowing database connection pooling to be enabled after being disabled in version 5.0.0.
 
-## v5.0.1 - 2019-11-16
+## v5.0.1 - 2019-11-16 (legacy)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.1).
@@ -143,7 +143,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Fixed User Interface hanging while the Upload process is running.
 - Fixed unhandled InvalidOperationException during an upload that needs to be caught without displaying an error.
 
-## v5.0.0 - 2019-10-24
+## v5.0.0 - 2019-10-24 (legacy)
 - This is a major release and the 10th year anniversary edition, officially released on the 10th year anniversary of PDFKeeper.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.0).
