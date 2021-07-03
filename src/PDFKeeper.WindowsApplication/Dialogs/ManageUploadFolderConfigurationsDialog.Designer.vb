@@ -274,7 +274,6 @@ Partial Class ManageUploadFolderConfigurationsDialog
         resources.ApplyResources(Me.TaxYearComboBox, "TaxYearComboBox")
         Me.TaxYearComboBox.Name = "TaxYearComboBox"
         Me.HelpProvider.SetShowHelp(Me.TaxYearComboBox, CType(resources.GetObject("TaxYearComboBox.ShowHelp"), Boolean))
-        Me.TaxYearComboBox.Sorted = True
         '
         'TaxYearPrefillLabel
         '

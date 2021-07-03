@@ -78,7 +78,6 @@ Partial Class SetTaxYearDialog
         Me.TaxYearComboBox.FormattingEnabled = True
         resources.ApplyResources(Me.TaxYearComboBox, "TaxYearComboBox")
         Me.TaxYearComboBox.Name = "TaxYearComboBox"
-        Me.TaxYearComboBox.Sorted = True
         '
         'TaxYearLabel
         '

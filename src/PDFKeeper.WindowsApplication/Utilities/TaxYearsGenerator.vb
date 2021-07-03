@@ -19,19 +19,23 @@
 '******************************************************************************
 Public NotInheritable Class TaxYearsGenerator
     ''' <summary>
-    ''' Generates a range of tax years.
+    ''' Generates a range of tax years that includes the last 10 years and 1
+    ''' year into the future.
     ''' </summary>
-    ''' <returns>Array of tax years.</returns>
+    ''' <returns>Array of tax years sorted in descending order.</returns>
     Public Shared Function ToArray() As Object
         Dim taxYears As New ArrayList From {
             String.Empty
         }
+        Dim taxYearsTemp As New ArrayList
         Dim lastYear As Integer = DateTime.Now.Year
-        Dim j As Integer = 1999
+        Dim j As Integer = lastYear - 10
         Do While j <= lastYear
             j += 1
-            taxYears.Add(j)
+            taxYearsTemp.Add(j)
         Loop
+        taxYearsTemp.Reverse()
+        taxYears.AddRange(taxYearsTemp)
         Return taxYears.ToArray
     End Function
 End Class
