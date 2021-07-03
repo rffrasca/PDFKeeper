@@ -747,8 +747,8 @@ Public Class MainForm
         ViewToolbarToolStripMenuItem.Checked = ToolStrip.Visible
     End Sub
 
-    Private Sub FileNewToolStrip_Click(sender As Object, e As EventArgs) Handles FileNewToolStripMenuItem.Click,
-                                                                                 FileNewToolStripButton.Click
+    Private Sub FileAddToolStrip_Click(sender As Object, e As EventArgs) Handles FileAddToolStripMenuItem.Click,
+                                                                                 FileAddToolStripButton.Click
         AddPdfDocumentsDialog.ShowDialog()
     End Sub
 

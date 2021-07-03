@@ -121,7 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="FileNewToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="FileAddToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJVSURBVDhPpZLNi5JRFMYHWsyqPyBa1SqCilm1bBNR
@@ -138,14 +138,14 @@
 </value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="FileNewToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+N</value>
+  <data name="FileAddToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+A</value>
   </data>
-  <data name="FileNewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="FileAddToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>353, 22</value>
   </data>
-  <data name="FileNewToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;New...</value>
+  <data name="FileAddToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Add...</value>
   </data>
   <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>350, 6</value>
@@ -204,7 +204,7 @@
     <value>353, 22</value>
   </data>
   <data name="FileSaveAsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save &amp;As...</value>
+    <value>Sav&amp;e As...</value>
   </data>
   <data name="ToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>350, 6</value>
@@ -238,13 +238,13 @@
     <value>350, 6</value>
   </data>
   <data name="FileSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FileSelectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;All</value>
   </data>
   <data name="FileSelectNoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="FileSelectNoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;None</value>
@@ -253,7 +253,7 @@
     <value>353, 22</value>
   </data>
   <data name="FileSelectToolStripMenuItem.Text" xml:space="preserve">
-    <value>Selec&amp;t</value>
+    <value>Se&amp;lect</value>
   </data>
   <data name="FileSetCategoryToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+C</value>
@@ -303,7 +303,7 @@
     <value>353, 22</value>
   </data>
   <data name="FileExportToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Export...</value>
+    <value>Expor&amp;t...</value>
   </data>
   <data name="FilePopulateNewDatabaseTableColumnsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1807,7 +1807,7 @@
   <metadata name="ToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
-  <data name="FileNewToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="FileAddToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJRSURBVDhPrZNLiFJRHMYvtJhVtE1a1SqCYZjNtGwTFRG0
@@ -1823,14 +1823,14 @@
         VDo1t3h+ZVYiapBjk5msGYZhfgJkuke2q5AT0QAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="FileNewToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="FileAddToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="FileNewToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="FileAddToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="FileNewToolStripButton.ToolTipText" xml:space="preserve">
-    <value>New</value>
+  <data name="FileAddToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Add</value>
   </data>
   <data name="FileOpenToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2297,10 +2297,10 @@
   <data name="&gt;&gt;FileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;FileNewToolStripMenuItem.Name" xml:space="preserve">
-    <value>FileNewToolStripMenuItem</value>
+  <data name="&gt;&gt;FileAddToolStripMenuItem.Name" xml:space="preserve">
+    <value>FileAddToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;FileNewToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;FileAddToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripSeparator1.Name" xml:space="preserve">
@@ -2675,10 +2675,10 @@
   <data name="&gt;&gt;FlaggedDocumentsExistToolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;FileNewToolStripButton.Name" xml:space="preserve">
-    <value>FileNewToolStripButton</value>
+  <data name="&gt;&gt;FileAddToolStripButton.Name" xml:space="preserve">
+    <value>FileAddToolStripButton</value>
   </data>
-  <data name="&gt;&gt;FileNewToolStripButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;FileAddToolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;FileOpenToolStripButton.Name" xml:space="preserve">

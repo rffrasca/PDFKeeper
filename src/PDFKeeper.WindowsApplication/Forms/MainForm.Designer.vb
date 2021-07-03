@@ -46,7 +46,7 @@ Partial Class MainForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FileNewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileAddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.FileOpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
@@ -141,7 +141,7 @@ Partial Class MainForm
         Me.UploadStagingFolderErrorToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.FlaggedDocumentsExistToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
-        Me.FileNewToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.FileAddToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.FileOpenToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.FileSaveToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.FilePrintToolStripButton = New System.Windows.Forms.ToolStripButton()
@@ -194,14 +194,14 @@ Partial Class MainForm
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileNewToolStripMenuItem, Me.ToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.ToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.ToolStripSeparator4, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.ToolStripSeparator3, Me.FileSelectToolStripMenuItem, Me.FileSetCategoryToolStripMenuItem, Me.FileSetTaxYearToolStripMenuItem, Me.FileDeleteToolStripMenuItem, Me.FileExportToolStripMenuItem, Me.FilePopulateNewDatabaseTableColumnsToolStripMenuItem, Me.ToolStripSeparator6, Me.FileExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripMenuItem, Me.ToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.ToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.ToolStripSeparator4, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.ToolStripSeparator3, Me.FileSelectToolStripMenuItem, Me.FileSetCategoryToolStripMenuItem, Me.FileSetTaxYearToolStripMenuItem, Me.FileDeleteToolStripMenuItem, Me.FileExportToolStripMenuItem, Me.FilePopulateNewDatabaseTableColumnsToolStripMenuItem, Me.ToolStripSeparator6, Me.FileExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         resources.ApplyResources(Me.FileToolStripMenuItem, "FileToolStripMenuItem")
         '
-        'FileNewToolStripMenuItem
+        'FileAddToolStripMenuItem
         '
-        resources.ApplyResources(Me.FileNewToolStripMenuItem, "FileNewToolStripMenuItem")
-        Me.FileNewToolStripMenuItem.Name = "FileNewToolStripMenuItem"
+        resources.ApplyResources(Me.FileAddToolStripMenuItem, "FileAddToolStripMenuItem")
+        Me.FileAddToolStripMenuItem.Name = "FileAddToolStripMenuItem"
         '
         'ToolStripSeparator1
         '
@@ -770,16 +770,16 @@ Partial Class MainForm
         'ToolStrip
         '
         Me.ToolStrip.DataBindings.Add(New System.Windows.Forms.Binding("Visible", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "MainToolBarVisible", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileNewToolStripButton, Me.FileOpenToolStripButton, Me.FileSaveToolStripButton, Me.FilePrintToolStripButton, Me.FileDeleteToolStripButton, Me.FilePopulateNewDatabaseTableColumnsToolStripButton, Me.ToolStripSeparator17, Me.EditUndoToolStripButton, Me.EditCutToolStripButton, Me.EditCopyToolStripButton, Me.EditPasteToolStripButton, Me.EditRestoreToolStripButton, Me.EditDateTimeToolStripButton, Me.ToolStripSeparator20, Me.ViewRefreshToolStripButton, Me.ToolStripSeparator14, Me.InsertTextToolStripButton, Me.ToolStripSeparator21, Me.ToolsOptionsToolStripButton, Me.ToolsManageUploadFolderConfigurationsToolStripButton, Me.ToolStripSeparator22, Me.HelpContentsToolStripButton})
+        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripButton, Me.FileOpenToolStripButton, Me.FileSaveToolStripButton, Me.FilePrintToolStripButton, Me.FileDeleteToolStripButton, Me.FilePopulateNewDatabaseTableColumnsToolStripButton, Me.ToolStripSeparator17, Me.EditUndoToolStripButton, Me.EditCutToolStripButton, Me.EditCopyToolStripButton, Me.EditPasteToolStripButton, Me.EditRestoreToolStripButton, Me.EditDateTimeToolStripButton, Me.ToolStripSeparator20, Me.ViewRefreshToolStripButton, Me.ToolStripSeparator14, Me.InsertTextToolStripButton, Me.ToolStripSeparator21, Me.ToolsOptionsToolStripButton, Me.ToolsManageUploadFolderConfigurationsToolStripButton, Me.ToolStripSeparator22, Me.HelpContentsToolStripButton})
         resources.ApplyResources(Me.ToolStrip, "ToolStrip")
         Me.ToolStrip.Name = "ToolStrip"
         Me.ToolStrip.Visible = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.MainToolBarVisible
         '
-        'FileNewToolStripButton
+        'FileAddToolStripButton
         '
-        Me.FileNewToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        resources.ApplyResources(Me.FileNewToolStripButton, "FileNewToolStripButton")
-        Me.FileNewToolStripButton.Name = "FileNewToolStripButton"
+        Me.FileAddToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.FileAddToolStripButton, "FileAddToolStripButton")
+        Me.FileAddToolStripButton.Name = "FileAddToolStripButton"
         '
         'FileOpenToolStripButton
         '
@@ -962,7 +962,7 @@ Partial Class MainForm
     Friend WithEvents ToolStrip As System.Windows.Forms.ToolStrip
     Friend WithEvents StatusStrip As System.Windows.Forms.StatusStrip
     Friend WithEvents SplitContainer As System.Windows.Forms.SplitContainer
-    Friend WithEvents FileNewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents FileAddToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FileOpenToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents FileExportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -1001,7 +1001,7 @@ Partial Class MainForm
     Friend WithEvents HelpContentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator12 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents HelpAboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FileNewToolStripButton As System.Windows.Forms.ToolStripButton
+    Friend WithEvents FileAddToolStripButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents FileOpenToolStripButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents FileSaveToolStripButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents FilePrintToolStripButton As System.Windows.Forms.ToolStripButton
