@@ -238,13 +238,13 @@
     <value>350, 6</value>
   </data>
   <data name="FileSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>103, 22</value>
   </data>
   <data name="FileSelectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;All</value>
   </data>
   <data name="FileSelectNoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>103, 22</value>
   </data>
   <data name="FileSelectNoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;None</value>
@@ -1673,7 +1673,7 @@
     <value>False</value>
   </data>
   <data name="FillerToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>877, 17</value>
+    <value>680, 17</value>
   </data>
   <data name="UploadRunningToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1728,7 +1728,7 @@
     <value>16, 17</value>
   </data>
   <data name="UploadFolderErrorToolStripStatusLabel.ToolTipText" xml:space="preserve">
-    <value>Upload folder contains files that were not uploaded.  Click the icon to open the folder.</value>
+    <value>Upload folder contains one or more files that were not uploaded.  Click the icon to open the folder.</value>
   </data>
   <data name="UploadFolderErrorToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1757,7 +1757,7 @@
     <value>16, 17</value>
   </data>
   <data name="UploadStagingFolderErrorToolStripStatusLabel.ToolTipText" xml:space="preserve">
-    <value>UploadStaging folder contains files that were not uploaded.  Click the icon to open the folder.</value>
+    <value>UploadStaging folder contains one or more files that were not uploaded.  Click the icon to open the folder.</value>
   </data>
   <data name="UploadStagingFolderErrorToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1775,7 +1775,7 @@
     <value>16, 17</value>
   </data>
   <data name="FlaggedDocumentsExistToolStripStatusLabel.ToolTipText" xml:space="preserve">
-    <value>Database contains document records that are flagged.</value>
+    <value>Database contains one or more document records that are flagged.</value>
   </data>
   <data name="FlaggedDocumentsExistToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
