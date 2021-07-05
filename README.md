@@ -1,3 +1,4 @@
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/biz/fund?id=JCM6ZMCF6BHHN)
 # ![Logo](https://github.com/robertfrasca/PDFKeeper/blob/master/src/Resources/Logo/PDFKeeper_100x100.png) PDFKeeper
 ## Open Source PDF Document Management
 
