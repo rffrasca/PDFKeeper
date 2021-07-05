@@ -33,16 +33,10 @@ Build Instructions for version 6.x.x is available [here](https://github.com/rffr
 ### Links
 [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md)
 
-### Contact
 [![Twitter](https://img.shields.io/twitter/follow/PDFKeeper?style=social)](https://twitter.com/intent/follow?screen_name=PDFKeeper)
 
+### Contact
 Please send all comments, suggestions, testimonials, and general questions regarding PDFKeeper [here](mailto:rffrasca@gmail.com).
-
-If you find PDFKeeper useful, please consider donating to the project using PayPal, Debit, or Credit Card.
-
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/biz/fund?id=JCM6ZMCF6BHHN)
-
-Your contribution will help pay annual operating expenses and raise the needed funds to promote PDFKeeper to the PDF business community.
 
 ### License
 PDFKeeper is [OSI Certified Open Source Software](https://opensource.org/licenses), licensed under the terms of the [GNU General Public License (GPL) Version 3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
