@@ -1,6 +1,26 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v7.1.1 - 2021-07-18
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.1.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.1.1).
+### Changed
+- Renamed New menu and tool bar items to Add on main form.
+- Tax Year combo box drop down list on the Add PDF Documents, Set Tax Year, and Manage Upload Folder Configurations dialogs will only display the last ten years and one year into the future, sorted in descending order.
+- Changed "Upload folder contains files that were not uploaded" status message on the main form to "Upload folder contains one or more files that were not uploaded".
+- Changed "UploadStaging folder contains files that were not uploaded" status message on the main form to "UploadStaging folder contains one or more files that were not uploaded".
+- Changed "Database contains document records that are flagged" status message on the main form to "Database contains one or more document records that are flagged".
+- Updated System.Data.SQLite to 1.0.114.4
+- Updated Ghostscript to 9.54.0
+- Updated SQLite Command Line Shell to 3.36.0
+- Updated copyright year for Magick.NET in Third-Party Attribution help topic.
+- Updated support methods in Getting Support help topic.
+- Changed “Programs and Features” to “Programs and Features or Apps and Features” in the Uninstalling PDFKeeper help topic.
+### Fixed
+- Upload Service will now delete empty, non-configured folders from the Upload folder.
+- UploadFolderErrorToolStripStatusLabel is no longer visible on the status bar after a successful upload cycle.
+
 ## v7.1.0 - 2021-06-26
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.1.0).
