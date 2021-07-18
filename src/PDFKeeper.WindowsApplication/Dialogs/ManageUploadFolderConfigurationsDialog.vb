@@ -336,7 +336,7 @@ Public Class ManageUploadFolderConfigurationsDialog
         presenter.ResetView()
     End Sub
 
-    Private Sub UploadFolderConfigurationsComboBox_Enter(sender As Object, e As EventArgs) Handles UploadFolderConfigurationsComboBox.Enter
+    Private Sub UploadFolderConfigurationsComboBox_DropDown(sender As Object, e As EventArgs) Handles UploadFolderConfigurationsComboBox.DropDown
         presenter.GetConfigurations()
     End Sub
 
