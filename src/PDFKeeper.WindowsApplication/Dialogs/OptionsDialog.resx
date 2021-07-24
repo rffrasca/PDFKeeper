@@ -135,6 +135,12 @@
   <data name="OK_Button.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="OK_Button.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="OK_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
@@ -162,6 +168,9 @@
   <data name="TableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="TableLayoutPanel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="TableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 33</value>
   </data>
@@ -178,10 +187,43 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="TableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="CheckBoxShowFlaggedDocumentsOnStartup.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CheckBoxShowFlaggedDocumentsOnStartup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CheckBoxShowFlaggedDocumentsOnStartup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 64</value>
+  </data>
+  <data name="CheckBoxShowFlaggedDocumentsOnStartup.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CheckBoxShowFlaggedDocumentsOnStartup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 19</value>
+  </data>
+  <data name="CheckBoxShowFlaggedDocumentsOnStartup.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="CheckBoxShowFlaggedDocumentsOnStartup.Text" xml:space="preserve">
+    <value>Show Flagged Documents on startup.</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxShowFlaggedDocumentsOnStartup.Name" xml:space="preserve">
+    <value>CheckBoxShowFlaggedDocumentsOnStartup</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxShowFlaggedDocumentsOnStartup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxShowFlaggedDocumentsOnStartup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CheckBoxShowFlaggedDocumentsOnStartup.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="CheckBoxOpenPdfWithDefaultApplication.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -191,6 +233,9 @@
   </data>
   <data name="CheckBoxOpenPdfWithDefaultApplication.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 39</value>
+  </data>
+  <data name="CheckBoxOpenPdfWithDefaultApplication.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="CheckBoxOpenPdfWithDefaultApplication.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 19</value>
@@ -211,7 +256,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CheckBoxOpenPdfWithDefaultApplication.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="CheckBoxSearchResultsSelectLastRow.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -221,6 +266,9 @@
   </data>
   <data name="CheckBoxSearchResultsSelectLastRow.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 13</value>
+  </data>
+  <data name="CheckBoxSearchResultsSelectLastRow.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="CheckBoxSearchResultsSelectLastRow.Size" type="System.Drawing.Size, System.Drawing">
     <value>271, 19</value>
@@ -241,11 +289,8 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CheckBoxSearchResultsSelectLastRow.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -263,6 +308,9 @@
   </data>
   <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>

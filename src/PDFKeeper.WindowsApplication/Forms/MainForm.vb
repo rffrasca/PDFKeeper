@@ -729,6 +729,9 @@ Public Class MainForm
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         windowStatePresenter.GetState()
         NativeMethods.AddClipboardFormatListener(Me.Handle)
+        If My.Settings.ShowFlaggedDocumentsOnStartup Then
+            SearchFunctionsListBox.SelectedIndex = 3
+        End If
     End Sub
 
     Protected Overrides Sub WndProc(ByRef m As Message)

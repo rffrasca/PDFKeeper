@@ -44,9 +44,10 @@ Partial Class OptionsDialog
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OptionsDialog))
         Me.TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.OK_Button = New System.Windows.Forms.Button()
+        Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.CheckBoxShowFlaggedDocumentsOnStartup = New System.Windows.Forms.CheckBox()
         Me.CheckBoxOpenPdfWithDefaultApplication = New System.Windows.Forms.CheckBox()
         Me.CheckBoxSearchResultsSelectLastRow = New System.Windows.Forms.CheckBox()
-        Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -55,11 +56,22 @@ Partial Class OptionsDialog
         resources.ApplyResources(Me.TableLayoutPanel, "TableLayoutPanel")
         Me.TableLayoutPanel.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel.Name = "TableLayoutPanel"
+        Me.HelpProvider.SetShowHelp(Me.TableLayoutPanel, CType(resources.GetObject("TableLayoutPanel.ShowHelp"), Boolean))
         '
         'OK_Button
         '
         resources.ApplyResources(Me.OK_Button, "OK_Button")
         Me.OK_Button.Name = "OK_Button"
+        Me.HelpProvider.SetShowHelp(Me.OK_Button, CType(resources.GetObject("OK_Button.ShowHelp"), Boolean))
+        '
+        'CheckBoxShowFlaggedDocumentsOnStartup
+        '
+        resources.ApplyResources(Me.CheckBoxShowFlaggedDocumentsOnStartup, "CheckBoxShowFlaggedDocumentsOnStartup")
+        Me.CheckBoxShowFlaggedDocumentsOnStartup.Checked = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.ShowFlaggedDocumentsOnStartup
+        Me.CheckBoxShowFlaggedDocumentsOnStartup.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "ShowFlaggedDocumentsOnStartup", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.CheckBoxShowFlaggedDocumentsOnStartup.Name = "CheckBoxShowFlaggedDocumentsOnStartup"
+        Me.HelpProvider.SetShowHelp(Me.CheckBoxShowFlaggedDocumentsOnStartup, CType(resources.GetObject("CheckBoxShowFlaggedDocumentsOnStartup.ShowHelp"), Boolean))
+        Me.CheckBoxShowFlaggedDocumentsOnStartup.UseVisualStyleBackColor = True
         '
         'CheckBoxOpenPdfWithDefaultApplication
         '
@@ -67,6 +79,7 @@ Partial Class OptionsDialog
         Me.CheckBoxOpenPdfWithDefaultApplication.Checked = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.OpenPdfWithDefaultApplication
         Me.CheckBoxOpenPdfWithDefaultApplication.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "OpenPdfWithDefaultApplication", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.CheckBoxOpenPdfWithDefaultApplication.Name = "CheckBoxOpenPdfWithDefaultApplication"
+        Me.HelpProvider.SetShowHelp(Me.CheckBoxOpenPdfWithDefaultApplication, CType(resources.GetObject("CheckBoxOpenPdfWithDefaultApplication.ShowHelp"), Boolean))
         Me.CheckBoxOpenPdfWithDefaultApplication.UseVisualStyleBackColor = True
         '
         'CheckBoxSearchResultsSelectLastRow
@@ -75,6 +88,7 @@ Partial Class OptionsDialog
         Me.CheckBoxSearchResultsSelectLastRow.Checked = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.SearchResultsSelectLastRow
         Me.CheckBoxSearchResultsSelectLastRow.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "SearchResultsSelectLastRow", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.CheckBoxSearchResultsSelectLastRow.Name = "CheckBoxSearchResultsSelectLastRow"
+        Me.HelpProvider.SetShowHelp(Me.CheckBoxSearchResultsSelectLastRow, CType(resources.GetObject("CheckBoxSearchResultsSelectLastRow.ShowHelp"), Boolean))
         Me.CheckBoxSearchResultsSelectLastRow.UseVisualStyleBackColor = True
         '
         'OptionsDialog
@@ -83,6 +97,7 @@ Partial Class OptionsDialog
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ControlBox = False
+        Me.Controls.Add(Me.CheckBoxShowFlaggedDocumentsOnStartup)
         Me.Controls.Add(Me.CheckBoxOpenPdfWithDefaultApplication)
         Me.Controls.Add(Me.CheckBoxSearchResultsSelectLastRow)
         Me.Controls.Add(Me.TableLayoutPanel)
@@ -104,5 +119,5 @@ Partial Class OptionsDialog
     Friend WithEvents CheckBoxSearchResultsSelectLastRow As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxOpenPdfWithDefaultApplication As System.Windows.Forms.CheckBox
     Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
-
+    Friend WithEvents CheckBoxShowFlaggedDocumentsOnStartup As CheckBox
 End Class
