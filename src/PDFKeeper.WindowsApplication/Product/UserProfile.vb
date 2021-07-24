@@ -17,6 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
+Imports Microsoft.WindowsAPICodePack.Shell
+
 Public NotInheritable Class UserProfile
     Private Sub New()
         ' All members are shared.
@@ -72,20 +74,30 @@ Public NotInheritable Class UserProfile
                 ApplicationDataRoot,
                 My.Resources.Upload)
             Directory.CreateDirectory(folderPath)
-            ShortcutUtil.Create(UploadShortcutPath, folderPath)
+            ShortcutUtil.Create(DocumentsFolderUploadShortcutPath, folderPath)
+            ShortcutUtil.Create(DownloadsFolderUploadShortcutPath, folderPath)
             Return folderPath.ToString(CultureInfo.CurrentCulture)
         End Get
     End Property
 
     ''' <summary>
-    ''' Returns the "PDFKeeper Upload" shortcut file path.
+    ''' Gets the "PDFKeeper Upload" shortcut file path for the Documents folder.
     ''' </summary>
-    ''' <value></value>
     ''' <returns></returns>
-    ''' <remarks></remarks>
-    Public Shared ReadOnly Property UploadShortcutPath As String
+    Public Shared ReadOnly Property DocumentsFolderUploadShortcutPath As String
         Get
             Return IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments,
+                                   Application.ProductName & " " & My.Resources.Upload & ".lnk")
+        End Get
+    End Property
+
+    ''' <summary>
+    ''' Gets the "PDFKeeper Upload" shortcut file path for the Downloads folder.
+    ''' </summary>
+    ''' <returns></returns>
+    Public Shared ReadOnly Property DownloadsFolderUploadShortcutPath As String
+        Get
+            Return IO.Path.Combine(KnownFolders.Downloads.Path,
                                    Application.ProductName & " " & My.Resources.Upload & ".lnk")
         End Get
     End Property
@@ -124,12 +136,13 @@ Public NotInheritable Class UserProfile
     End Property
 
     ''' <summary>
-    ''' Deletes the "PDFKeeper Upload" shortcut file.
+    ''' Deletes the "PDFKeeper Upload" shortcut files.
     ''' </summary>
     ''' <remarks>Called during application shutdown.</remarks>
     Public Shared Sub DeleteUploadShortcut()
         Try
-            IO.File.Delete(UserProfile.UploadShortcutPath)
+            IO.File.Delete(UserProfile.DocumentsFolderUploadShortcutPath)
+            IO.File.Delete(UserProfile.DownloadsFolderUploadShortcutPath)
         Catch ex As IOException
         End Try
     End Sub

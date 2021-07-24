@@ -182,6 +182,12 @@
       <Component Id="PDFKeeper.Ocr.dll" Guid="0b685e14-9864-46a0-aa85-de37abf34da2">
         <File Id="PDFKeeper.Ocr.dll" Name="PDFKeeper.Ocr.dll" Source="$(var.PDFKeeper.OCR_TargetDir)PDFKeeper.Ocr.dll" />
       </Component>
+      <Component Id="Microsoft.WindowsAPICodePack.dll" Guid="77dc6a58-45fb-452b-84f8-679bd7454906">
+        <File Id="Microsoft.WindowsAPICodePack.dll" Name="Microsoft.WindowsAPICodePack.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)Microsoft.WindowsAPICodePack.dll" />
+      </Component>
+      <Component Id="Microsoft.WindowsAPICodePack.Shell.dll" Guid="a5364660-7ff9-48c0-8ec1-0abdbe78e11d">
+        <File Id="Microsoft.WindowsAPICodePack.Shell.dll" Name="Microsoft.WindowsAPICodePack.Shell.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)Microsoft.WindowsAPICodePack.Shell.dll" />
+      </Component>
   	</ComponentGroup>
 	</Fragment>
 </Wix>
