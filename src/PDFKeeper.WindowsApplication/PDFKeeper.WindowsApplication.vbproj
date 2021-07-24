@@ -498,7 +498,6 @@
       <Link>SqliteDatabaseSetup.sql</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="license.txt" />
     <Content Include="PDFKeeper.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -506,7 +505,6 @@
       <Link>sumatrapdfrestrict.ini</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Windows Logo.png" />
     <None Include="Resources\Silk Icons\database.png" />
     <None Include="Resources\Mini Icons\table.gif" />
     <None Include="Resources\Mini Icons\page_text.gif" />
