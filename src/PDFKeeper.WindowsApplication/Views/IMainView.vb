@@ -58,7 +58,6 @@ Public Interface IMainView
     Property UploadStagingFolderErrorVisible As Boolean
     Property FlaggedDocumentsExistVisible As Boolean
     Property FlaggedDocumentsCheckTimerEnabled As Boolean
-    Sub SetPopulateNewDatabaseTableColumnsVisibleState(ByVal allDocumentsSelected As Boolean)
     Sub RemoveAllDocumentsFromSearchFunctions()
     Sub SelectSearchResultsLastRow()
     Sub SelectSearchResultRowById(ByVal id As Integer)

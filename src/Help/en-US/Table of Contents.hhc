@@ -226,6 +226,11 @@
 					<param name="Local" value="Exporting PDF Documents and Supplemental Data.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Updating PDF Text Annotations and Text in the Database">
+					<param name="Local" value="Updating PDF Text Annotations and Text in the Database.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="Setting PDFKeeper Options">

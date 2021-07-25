@@ -43,16 +43,6 @@ Public Class MainToolStripStatePresenter
         ApplyState()
     End Sub
 
-    Public Sub SetPopulateNewDatabaseTableColumnsVisibleState(ByVal allDocumentsSelected As Boolean)
-        Dim visible As Boolean = False
-        If allDocumentsSelected Then
-            visible = ProductUpdate.NewDbTableColumnsCanBePopulated
-        End If
-        shortNamesVisible.SetItem("FilePopulateNewDatabaseTableColumns",
-                                  visible)
-        ApplyState()
-    End Sub
-
     Public Sub SetSearchResultsRowCountChangedState(ByVal rowCount As Integer)
         Dim itemState As Boolean = False
         If rowCount > 0 Then
@@ -73,11 +63,13 @@ Public Class MainToolStripStatePresenter
                 .SetItem("FileSetTaxYear", True)
                 .SetItem("FileDelete", True)
                 .SetItem("FileExport", True)
+                .SetItem("ToolsUpdatePdfTextAnnotAndTextInDb", True)
             Else
                 .SetItem("FileSetCategory", False)
                 .SetItem("FileSetTaxYear", False)
                 .SetItem("FileDelete", False)
                 .SetItem("FileExport", False)
+                .SetItem("ToolsUpdatePdfTextAnnotAndTextInDb", False)
             End If
         End With
         ApplyState()
@@ -171,6 +163,7 @@ Public Class MainToolStripStatePresenter
                 .SetItem("FileSetTaxYear", controlEnabled)
                 .SetItem("FileDelete", controlEnabled)
                 .SetItem("FileExport", controlEnabled)
+                .SetItem("ToolsUpdatePdfTextAnnotAndTextInDb", controlEnabled)
             End If
             .SetItem("FileSave", documentNotesChanged)
             .SetItem("FileSelect", controlEnabled)
@@ -225,11 +218,11 @@ Public Class MainToolStripStatePresenter
             .SetItem("ViewRefresh", False)
             .SetItem("ViewSetPreviewImageResolution", False)
             .SetItem("InsertText", False)
+            .SetItem("ToolsUpdatePdfTextAnnotAndTextInDb", False)
         End With
     End Sub
 
     Private Sub SetVisibleStateDefaults()
-        shortNamesVisible.SetItem("FilePopulateNewDatabaseTableColumns", False)
         If DbInstanceProperties.Platform <> DatabasePlatform.Sqlite.ToString Then
             shortNamesVisible.SetItem("ToolsMoveDatabase", False)
         End If

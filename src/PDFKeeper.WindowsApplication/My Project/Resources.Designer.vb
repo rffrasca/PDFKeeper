@@ -349,15 +349,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Populate new database table columns for all documents?.
-        '''</summary>
-        Friend ReadOnly Property PopulateSelectedDocuments() As String
-            Get
-                Return ResourceManager.GetString("PopulateSelectedDocuments", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to {0}.  Document ID {1} may have been deleted..
         '''</summary>
         Friend ReadOnly Property ProcessDocumentRecordMayHaveBeenDeleted() As String
@@ -465,6 +456,15 @@ Namespace My.Resources
         Friend ReadOnly Property UnhandledException() As String
             Get
                 Return ResourceManager.GetString("UnhandledException", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Update PDF Text Annotations and Text in Database for all selected documents?.
+        '''</summary>
+        Friend ReadOnly Property UpdateSelectedDocuments() As String
+            Get
+                Return ResourceManager.GetString("UpdateSelectedDocuments", resourceCulture)
             End Get
         End Property
         

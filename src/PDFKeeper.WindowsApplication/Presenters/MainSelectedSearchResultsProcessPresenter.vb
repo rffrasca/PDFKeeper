@@ -34,7 +34,7 @@ Public Class MainSelectedSearchResultsProcessPresenter
     ''' SelectedDocumentsAction.SetTaxYear
     ''' SelectedDocumentsAction.Delete
     ''' SelectedDocumentsAction.Export
-    ''' SelectedDocumentsAction.Populate
+    ''' SelectedDocumentsAction.Update
     ''' </param>
     ''' <param name="actionParam">
     ''' Can be either Nothing or the category name when "actionToPerform" is
@@ -99,7 +99,7 @@ Public Class MainSelectedSearchResultsProcessPresenter
                 DeleteDocument(m_IdBeingProcessed)
             ElseIf m_ActionToPerform = SelectedDocumentsAction.Export Then
                 ExportDocument(m_IdBeingProcessed, m_ExportFolderPath)
-            ElseIf m_ActionToPerform = SelectedDocumentsAction.Populate Then
+            ElseIf m_ActionToPerform = SelectedDocumentsAction.Update Then
                 PopulateDocumentNewColumns(m_IdBeingProcessed)
             End If
             m_View.SelectedDocumentsProcessProgressPerformStep()
@@ -111,10 +111,6 @@ Public Class MainSelectedSearchResultsProcessPresenter
             m_View.RefreshSearchResults()
         Else
             m_View.SelectDeselectAllSearchResults(SelectionState.DeselectAll)
-        End If
-        If m_ActionToPerform = SelectedDocumentsAction.Populate Then
-            ProductUpdate.DeleteNewDbTableColumnsTempFile()
-            m_View.SetPopulateNewDatabaseTableColumnsVisibleState(False)
         End If
     End Sub
 

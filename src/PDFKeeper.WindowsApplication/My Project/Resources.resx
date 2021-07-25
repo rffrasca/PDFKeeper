@@ -192,8 +192,8 @@ Do you want to save changes before closing?</value>
   <data name="RefreshSearchResults" xml:space="preserve">
     <value>Refresh Search Results?</value>
   </data>
-  <data name="PopulateSelectedDocuments" xml:space="preserve">
-    <value>Populate new database table columns for all documents?</value>
+  <data name="UpdateSelectedDocuments" xml:space="preserve">
+    <value>Update PDF Text Annotations and Text in Database for all selected documents?</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Subject</value>

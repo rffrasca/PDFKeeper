@@ -195,18 +195,6 @@ Public Class MainPresenter
         End If
     End Sub
 
-    Public Sub PopulateNewDatabaseTableColumnsForSelectedSearchResults()
-        If question.Show(My.Resources.PopulateSelectedDocuments,
-                         False) = DialogResult.Yes Then
-            view.SelectDeselectAllSearchResults(SelectionState.SelectAll)
-            Dim processPresenter As _
-                New MainSelectedSearchResultsProcessPresenter(view,
-                                                              SelectedDocumentsAction.Populate,
-                                                              Nothing)
-            ProcessSelectedSearchResults(processPresenter)
-        End If
-    End Sub
-
     Public Sub RestoreSelectedDocumentNotes()
         view.DocumentRecordPanelSelectedTab = 0
         view.DocumentRecordNotes = lastDocumentNotes
@@ -287,6 +275,17 @@ Public Class MainPresenter
                     .SetCursor(False)
                 End If
             End With
+        End If
+    End Sub
+
+    Public Sub UpdatePdfTextAnnotAndTextInDbForSelectedSearchResults()
+        If question.Show(My.Resources.UpdateSelectedDocuments,
+                         False) = DialogResult.Yes Then
+            Dim processPresenter As _
+                New MainSelectedSearchResultsProcessPresenter(view,
+                                                              SelectedDocumentsAction.Update,
+                                                              Nothing)
+            ProcessSelectedSearchResults(processPresenter)
         End If
     End Sub
 
@@ -375,7 +374,6 @@ Public Class MainPresenter
 #Region "View Search Functions Members"
     Public Sub SearchFunctionSelected()
         With view
-            .SetPopulateNewDatabaseTableColumnsVisibleState(False)
             .SearchTextControlEnabled = False
             .AuthorEnabled = False
             .SubjectEnabled = False
@@ -409,7 +407,6 @@ Public Class MainPresenter
             GetFlaggedDocumentRecords()
         ElseIf view.SelectedSearchFunction = 4 Then ' All Documents
             GetAllDocumentRecords()
-            view.SetPopulateNewDatabaseTableColumnsVisibleState(True)
         End If
     End Sub
 

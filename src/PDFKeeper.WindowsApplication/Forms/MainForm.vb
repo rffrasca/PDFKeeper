@@ -588,10 +588,6 @@ Public Class MainForm
         End Get
     End Property
 
-    Public Sub SetPopulateNewDatabaseTableColumnsVisibleState(allDocumentsSelected As Boolean) Implements IMainView.SetPopulateNewDatabaseTableColumnsVisibleState
-        toolStripStatePresenter.SetPopulateNewDatabaseTableColumnsVisibleState(allDocumentsSelected)
-    End Sub
-
     Public Sub RemoveAllDocumentsFromSearchFunctions() Implements IMainView.RemoveAllDocumentsFromSearchFunctions
         SearchFunctionsListBox.Items.RemoveAt(4)
     End Sub
@@ -807,11 +803,6 @@ Public Class MainForm
         presenter.ExportSelectedSearchResults()
     End Sub
 
-    Private Sub FilePopulateNewDatabaseTableColumnsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FilePopulateNewDatabaseTableColumnsToolStripMenuItem.Click,
-                                                                                                                     FilePopulateNewDatabaseTableColumnsToolStripButton.Click
-        presenter.PopulateNewDatabaseTableColumnsForSelectedSearchResults()
-    End Sub
-
     Private Sub FileExitToolStrip_Click(sender As Object, e As EventArgs) Handles FileExitToolStripMenuItem.Click
         Me.Close()
     End Sub
@@ -896,13 +887,18 @@ Public Class MainForm
         OptionsDialog.ShowDialog()
     End Sub
 
-    Private Sub ToolsMoveDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ToolsMoveDatabaseToolStripMenuItem.Click
-        presenter.MoveLocalDatabase()
-    End Sub
-
     Private Sub ToolsManageUploadFoldersToolStrip_Click(sender As Object, e As EventArgs) Handles ToolsManageUploadFolderConfigurationsToolStripMenuItem.Click,
                                                                                                   ToolsManageUploadFolderConfigurationsToolStripButton.Click
         ManageUploadFolderConfigurationsDialog.ShowDialog()
+    End Sub
+
+    Private Sub ToolsUpdatePdfTextAnnotAndTextInDbToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ToolsUpdatePdfTextAnnotAndTextInDbToolStripMenuItem.Click,
+                                                                                                                    ToolsUpdatePdfTextAnnotAndTextInDbToolStripButton.Click
+        presenter.UpdatePdfTextAnnotAndTextInDbForSelectedSearchResults()
+    End Sub
+
+    Private Sub ToolsMoveDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ToolsMoveDatabaseToolStripMenuItem.Click
+        presenter.MoveLocalDatabase()
     End Sub
 
     Private Sub HelpContentsToolStrip_Click(sender As Object, e As EventArgs) Handles HelpContentsToolStripMenuItem.Click,

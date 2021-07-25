@@ -63,7 +63,6 @@ Partial Class MainForm
         Me.FileSetTaxYearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileDeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileExportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FilePopulateNewDatabaseTableColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.FileExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -146,7 +145,7 @@ Partial Class MainForm
         Me.FileSaveToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.FilePrintToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.FileDeleteToolStripButton = New System.Windows.Forms.ToolStripButton()
-        Me.FilePopulateNewDatabaseTableColumnsToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.ToolsUpdatePdfTextAnnotAndTextInDbToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator17 = New System.Windows.Forms.ToolStripSeparator()
         Me.EditUndoToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.EditCutToolStripButton = New System.Windows.Forms.ToolStripButton()
@@ -166,6 +165,7 @@ Partial Class MainForm
         Me.AutoUpdateCheckTimer = New System.Windows.Forms.Timer(Me.components)
         Me.FlaggedDocumentsCheckTimer = New System.Windows.Forms.Timer(Me.components)
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.ToolsUpdatePdfTextAnnotAndTextInDbToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.SearchTextErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -194,7 +194,7 @@ Partial Class MainForm
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripMenuItem, Me.ToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.ToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.ToolStripSeparator4, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.ToolStripSeparator3, Me.FileSelectToolStripMenuItem, Me.FileSetCategoryToolStripMenuItem, Me.FileSetTaxYearToolStripMenuItem, Me.FileDeleteToolStripMenuItem, Me.FileExportToolStripMenuItem, Me.FilePopulateNewDatabaseTableColumnsToolStripMenuItem, Me.ToolStripSeparator6, Me.FileExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripMenuItem, Me.ToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.ToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.ToolStripSeparator4, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.ToolStripSeparator3, Me.FileSelectToolStripMenuItem, Me.FileSetCategoryToolStripMenuItem, Me.FileSetTaxYearToolStripMenuItem, Me.FileDeleteToolStripMenuItem, Me.FileExportToolStripMenuItem, Me.ToolStripSeparator6, Me.FileExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         resources.ApplyResources(Me.FileToolStripMenuItem, "FileToolStripMenuItem")
         '
@@ -283,11 +283,6 @@ Partial Class MainForm
         '
         Me.FileExportToolStripMenuItem.Name = "FileExportToolStripMenuItem"
         resources.ApplyResources(Me.FileExportToolStripMenuItem, "FileExportToolStripMenuItem")
-        '
-        'FilePopulateNewDatabaseTableColumnsToolStripMenuItem
-        '
-        resources.ApplyResources(Me.FilePopulateNewDatabaseTableColumnsToolStripMenuItem, "FilePopulateNewDatabaseTableColumnsToolStripMenuItem")
-        Me.FilePopulateNewDatabaseTableColumnsToolStripMenuItem.Name = "FilePopulateNewDatabaseTableColumnsToolStripMenuItem"
         '
         'ToolStripSeparator6
         '
@@ -425,7 +420,7 @@ Partial Class MainForm
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsOptionsToolStripMenuItem, Me.ToolsMoveDatabaseToolStripMenuItem, Me.ToolStripSeparator11, Me.ToolsManageUploadFolderConfigurationsToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsOptionsToolStripMenuItem, Me.ToolsManageUploadFolderConfigurationsToolStripMenuItem, Me.ToolStripSeparator11, Me.ToolsUpdatePdfTextAnnotAndTextInDbToolStripMenuItem, Me.ToolsMoveDatabaseToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         resources.ApplyResources(Me.ToolsToolStripMenuItem, "ToolsToolStripMenuItem")
         '
@@ -770,7 +765,7 @@ Partial Class MainForm
         'ToolStrip
         '
         Me.ToolStrip.DataBindings.Add(New System.Windows.Forms.Binding("Visible", Global.PDFKeeper.WindowsApplication.My.MySettings.Default, "MainToolBarVisible", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripButton, Me.FileOpenToolStripButton, Me.FileSaveToolStripButton, Me.FilePrintToolStripButton, Me.FileDeleteToolStripButton, Me.FilePopulateNewDatabaseTableColumnsToolStripButton, Me.ToolStripSeparator17, Me.EditUndoToolStripButton, Me.EditCutToolStripButton, Me.EditCopyToolStripButton, Me.EditPasteToolStripButton, Me.EditRestoreToolStripButton, Me.EditDateTimeToolStripButton, Me.ToolStripSeparator20, Me.ViewRefreshToolStripButton, Me.ToolStripSeparator14, Me.InsertTextToolStripButton, Me.ToolStripSeparator21, Me.ToolsOptionsToolStripButton, Me.ToolsManageUploadFolderConfigurationsToolStripButton, Me.ToolStripSeparator22, Me.HelpContentsToolStripButton})
+        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripButton, Me.FileOpenToolStripButton, Me.FileSaveToolStripButton, Me.FilePrintToolStripButton, Me.FileDeleteToolStripButton, Me.ToolStripSeparator17, Me.EditUndoToolStripButton, Me.EditCutToolStripButton, Me.EditCopyToolStripButton, Me.EditPasteToolStripButton, Me.EditRestoreToolStripButton, Me.EditDateTimeToolStripButton, Me.ToolStripSeparator20, Me.ViewRefreshToolStripButton, Me.ToolStripSeparator14, Me.InsertTextToolStripButton, Me.ToolStripSeparator21, Me.ToolsOptionsToolStripButton, Me.ToolsManageUploadFolderConfigurationsToolStripButton, Me.ToolsUpdatePdfTextAnnotAndTextInDbToolStripButton, Me.ToolStripSeparator22, Me.HelpContentsToolStripButton})
         resources.ApplyResources(Me.ToolStrip, "ToolStrip")
         Me.ToolStrip.Name = "ToolStrip"
         Me.ToolStrip.Visible = Global.PDFKeeper.WindowsApplication.My.MySettings.Default.MainToolBarVisible
@@ -805,12 +800,12 @@ Partial Class MainForm
         resources.ApplyResources(Me.FileDeleteToolStripButton, "FileDeleteToolStripButton")
         Me.FileDeleteToolStripButton.Name = "FileDeleteToolStripButton"
         '
-        'FilePopulateNewDatabaseTableColumnsToolStripButton
+        'ToolsUpdatePdfTextAnnotAndTextInDbToolStripButton
         '
-        Me.FilePopulateNewDatabaseTableColumnsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.FilePopulateNewDatabaseTableColumnsToolStripButton.Image = Global.PDFKeeper.WindowsApplication.My.Resources.Resources.table
-        resources.ApplyResources(Me.FilePopulateNewDatabaseTableColumnsToolStripButton, "FilePopulateNewDatabaseTableColumnsToolStripButton")
-        Me.FilePopulateNewDatabaseTableColumnsToolStripButton.Name = "FilePopulateNewDatabaseTableColumnsToolStripButton"
+        Me.ToolsUpdatePdfTextAnnotAndTextInDbToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolsUpdatePdfTextAnnotAndTextInDbToolStripButton.Image = Global.PDFKeeper.WindowsApplication.My.Resources.Resources.table
+        resources.ApplyResources(Me.ToolsUpdatePdfTextAnnotAndTextInDbToolStripButton, "ToolsUpdatePdfTextAnnotAndTextInDbToolStripButton")
+        Me.ToolsUpdatePdfTextAnnotAndTextInDbToolStripButton.Name = "ToolsUpdatePdfTextAnnotAndTextInDbToolStripButton"
         '
         'ToolStripSeparator17
         '
@@ -913,6 +908,11 @@ Partial Class MainForm
         '
         Me.FlaggedDocumentsCheckTimer.Enabled = True
         Me.FlaggedDocumentsCheckTimer.Interval = 10000
+        '
+        'ToolsUpdatePdfTextAnnotAndTextInDbToolStripMenuItem
+        '
+        resources.ApplyResources(Me.ToolsUpdatePdfTextAnnotAndTextInDbToolStripMenuItem, "ToolsUpdatePdfTextAnnotAndTextInDbToolStripMenuItem")
+        Me.ToolsUpdatePdfTextAnnotAndTextInDbToolStripMenuItem.Name = "ToolsUpdatePdfTextAnnotAndTextInDbToolStripMenuItem"
         '
         'MainForm
         '
@@ -1075,8 +1075,8 @@ Partial Class MainForm
     Friend WithEvents TaxYearGroupComboBox As ComboBox
     Friend WithEvents TaxYearLabel As Label
     Friend WithEvents FileSetTaxYearToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FilePopulateNewDatabaseTableColumnsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FilePopulateNewDatabaseTableColumnsToolStripButton As ToolStripButton
+    Friend WithEvents ToolsUpdatePdfTextAnnotAndTextInDbToolStripButton As ToolStripButton
     Friend WithEvents HelpProvider As HelpProvider
     Friend WithEvents ToolsMoveDatabaseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolsUpdatePdfTextAnnotAndTextInDbToolStripMenuItem As ToolStripMenuItem
 End Class
