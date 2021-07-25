@@ -36,7 +36,7 @@ Build Instructions for version 6.x.x is available [here](https://github.com/rffr
 [![Twitter](https://img.shields.io/twitter/follow/PDFKeeper?style=social)](https://twitter.com/intent/follow?screen_name=PDFKeeper)
 
 ### Contact
-To send a non-technical message regarding PDFKeeper, please email the [project owner](mailto:rffrasca@gmail.com).
+[Robert F. Frasca, Project owner and Maintainer](mailto:rffrasca@gmail.com) (non-technical messages only).
 
 ### License
 PDFKeeper is [OSI Certified Open Source Software](https://opensource.org/licenses), licensed under the terms of the [GNU General Public License (GPL) Version 3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
