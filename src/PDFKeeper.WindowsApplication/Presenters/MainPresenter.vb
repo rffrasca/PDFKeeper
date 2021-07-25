@@ -315,16 +315,7 @@ Public Class MainPresenter
     Private Sub TriggerSearchResultsRefresh(ByVal postUpload As Boolean)
         If view.SearchFunctionsEnabled Then
             If postUpload Then
-                If view.SelectedSearchFunction = 2 And
-                        view.SearchDate = Date.Now.ToString("yyyy-MM-dd",
-                                                            CultureInfo.CurrentCulture) Then
-                    RefreshSearchResults()
-                ElseIf view.SelectedSearchFunction = 3 And
-                        UploadService.Instance.FlaggedDocumentsUploaded Then
-                    RefreshSearchResults()
-                ElseIf view.SelectedSearchFunction = 4 Then
-                    RefreshSearchResults()
-                End If
+                RefreshSearchResults()
             Else
                 If view.SelectedSearchFunction = 3 And
                         view.DocumentRecordFlagState = 0 Then
