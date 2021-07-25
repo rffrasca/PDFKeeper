@@ -100,7 +100,8 @@ Public Class UploadFolderConfigurationHelper
                 Return False
             End If
         End If
-        IO.File.Delete(configXmlPath)
+        Dim configXmlPathInfo As New FileInfo(configXmlPath)
+        configXmlPathInfo.DeleteToRecycleBin
         Return True
     End Function
 End Class
