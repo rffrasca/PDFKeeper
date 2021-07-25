@@ -474,10 +474,6 @@
       <Link>sqlite3.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\vendor\SumatraPDF-3.2-64.exe">
-      <Link>SumatraPDF-3.2-64.exe</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\Config\SumatraPDF-settings.txt">
       <Link>SumatraPDF-settings.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -503,6 +499,9 @@
     </Content>
     <Content Include="..\Config\sumatrapdfrestrict.ini">
       <Link>sumatrapdfrestrict.ini</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SumatraPDF-3.3.3-64.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Silk Icons\database.png" />

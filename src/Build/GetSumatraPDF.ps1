@@ -19,8 +19,8 @@
 #******************************************************************************
 
 $folder = "..\..\..\..\vendor"
-$version = "3.2"
-$zipFileUrl = "https://www.sumatrapdfreader.org/dl2/SumatraPDF-$version-64.zip"
+$version = "3.3.3"
+$zipFileUrl = "https://kjkpubsf.sfo2.digitaloceanspaces.com/software/sumatrapdf/rel/SumatraPDF-$version-64.zip"
 $zipFile = "$folder\SumatraPDF-$version-64.zip"
 $oldExeFile = "$folder\sumatraPDF.exe"
 $exeFile = "$folder\sumatraPDF-$version-64.exe"

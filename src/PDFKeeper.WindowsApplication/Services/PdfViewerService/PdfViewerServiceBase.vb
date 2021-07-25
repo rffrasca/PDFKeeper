@@ -22,7 +22,7 @@ Public MustInherit Class PdfViewerServiceBase
         Using sumatraPdf As New Process
             sumatraPdf.StartInfo.FileName =
                 IO.Path.Combine(Application.StartupPath,
-                                "SumatraPDF-3.2-64.exe")
+                                "SumatraPDF-3.3.3-64.exe")
             sumatraPdf.StartInfo.Arguments = arguments
             sumatraPdf.StartInfo.UseShellExecute = False
             sumatraPdf.Start()
