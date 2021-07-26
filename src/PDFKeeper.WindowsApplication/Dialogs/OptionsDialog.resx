@@ -135,12 +135,6 @@
   <data name="OK_Button.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="OK_Button.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="OK_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
@@ -167,9 +161,6 @@
   </data>
   <data name="TableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="TableLayoutPanel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="TableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 33</value>
@@ -201,9 +192,6 @@
   <data name="CheckBoxShowFlaggedDocumentsOnStartup.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 64</value>
   </data>
-  <data name="CheckBoxShowFlaggedDocumentsOnStartup.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="CheckBoxShowFlaggedDocumentsOnStartup.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 19</value>
   </data>
@@ -233,9 +221,6 @@
   </data>
   <data name="CheckBoxOpenPdfWithDefaultApplication.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 39</value>
-  </data>
-  <data name="CheckBoxOpenPdfWithDefaultApplication.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="CheckBoxOpenPdfWithDefaultApplication.Size" type="System.Drawing.Size, System.Drawing">
     <value>273, 19</value>
@@ -267,9 +252,6 @@
   <data name="CheckBoxSearchResultsSelectLastRow.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 13</value>
   </data>
-  <data name="CheckBoxSearchResultsSelectLastRow.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="CheckBoxSearchResultsSelectLastRow.Size" type="System.Drawing.Size, System.Drawing">
     <value>271, 19</value>
   </data>
@@ -291,6 +273,9 @@
   <data name="&gt;&gt;CheckBoxSearchResultsSelectLastRow.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -308,9 +293,6 @@
   </data>
   <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
