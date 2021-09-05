@@ -46,8 +46,8 @@ Public Class LoginPresenter
         Catch ex As CustomDbException
             DbInstanceUtil.ResetCredential()
             view.SetCursor(False)
-            message.Show(ex.Message, True)
             view.DoFailed()
+            message.Show(ex.Message, True)
         End Try
     End Sub
 End Class

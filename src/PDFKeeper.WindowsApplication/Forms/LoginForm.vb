@@ -69,6 +69,7 @@ Public Class LoginForm
         PasswordSecureTextBox.SecureText.Dispose()
         PasswordSecureTextBox.Text = Nothing
         PasswordSecureTextBox.ConstructSecureString()
+        Me.Focus()
         UsernameTextBox.Select()
     End Sub
 #End Region
