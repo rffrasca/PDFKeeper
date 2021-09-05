@@ -730,39 +730,36 @@ Public Class MainPresenter
 #Region "View Timer Members"
     Public Async Sub UploadAsync()
         If UploadService.Instance.CanUploadCycleStart Then
-            If uploadDirInfo.ContainsFiles Or
-                uploadStagingDirInfo.ContainsFiles Then
+            Dim pdfFilesToUpload As Boolean = False
+            If uploadDirInfo.ContainsFilesMatchingSearchPattern("*.pdf") Or
+                    uploadStagingDirInfo.ContainsFilesMatchingSearchPattern("*.pdf") Then
+                pdfFilesToUpload = True
+                view.UploadRunningVisible = True
+                Application.DoEvents()
                 Try
-                    Dim pdfFilesToUpload As Boolean = False
-                    If uploadDirInfo.ContainsFilesMatchingSearchPattern("*.pdf") Or
-                        uploadStagingDirInfo.ContainsFilesMatchingSearchPattern("*.pdf") Then
-                        pdfFilesToUpload = True
-                        view.UploadRunningVisible = True
-                    End If
-                    view.UploadFolderErrorVisible = False
-                    view.UploadStagingFolderErrorVisible = False
-                    Application.DoEvents()
                     Using uploadTask As Task = Task.Run(Sub() UploadService.Instance.ExecuteUploadCycle())
                         Await uploadTask.ConfigureAwait(True)
                     End Using
+                Catch ex As InvalidOperationException
+                Finally
                     If pdfFilesToUpload Then
                         TriggerSearchResultsRefresh(True)
                     End If
-                Catch ex As InvalidOperationException
-                Finally
                     view.UploadRunningVisible = False
-                    If uploadDirInfo.ContainsFilesExcludingSearchPattern("*.delete") Then
-                        view.UploadFolderErrorVisible = True
-                    End If
-                    If uploadStagingDirInfo.ContainsFiles Then
-                        view.UploadStagingFolderErrorVisible = True
-                    End If
                     Application.DoEvents()
                 End Try
+            End If
+            If uploadDirInfo.ContainsFilesExcludingSearchPattern("*.delete") Then
+                view.UploadFolderErrorVisible = True
             Else
                 view.UploadFolderErrorVisible = False
+            End If
+            If uploadStagingDirInfo.ContainsFiles Then
+                view.UploadStagingFolderErrorVisible = True
+            Else
                 view.UploadStagingFolderErrorVisible = False
             End If
+            Application.DoEvents()
         End If
     End Sub
 
