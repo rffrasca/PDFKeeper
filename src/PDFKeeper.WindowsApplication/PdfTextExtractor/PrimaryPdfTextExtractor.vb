@@ -20,6 +20,7 @@
 Imports iText.Kernel.Pdf
 Imports iText.Kernel.Pdf.Canvas.Parser
 Imports iText.Kernel.Pdf.Canvas.Parser.Listener
+Imports iText.Kernel.Pdf.Canvas.Parser.Util.InlineImageParsingUtils
 
 Public Class PrimaryPdfTextExtractor
     Inherits PdfTextExtractorBase
@@ -48,6 +49,8 @@ Public Class PrimaryPdfTextExtractor
                             text.AppendLine(line)
                         Next
                     Catch ex As ArgumentException   ' PDF contains an invalid encoding.
+                        Return Nothing
+                    Catch ex As iText.Kernel.Pdf.Canvas.Parser.Util.InlineImageParsingUtils.InlineImageParseException
                         Return Nothing
                     End Try
                 Next
