@@ -1,6 +1,27 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v7.2.0 - 2021-09-05
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.0).
+### Added
+- Added option to show Flagged Documents on startup of PDFKeeper.
+- Added the creation of PDFKeeper Upload shortcut in the Downloads folder that will be available while PDFKeeper is open.
+### Changed
+- Renamed the “Populate New Database Table Columns” menu item to “Update PDF Text Annotations and Text in Database” and moved it to the Tools menu where it will be enabled when document records are selected in Search Results.
+- Changed Search Results to be refreshed after each Upload cycle.
+- Modified Manage Upload Folder Configurations dialog to delete selected Upload Folder Configuration file to the Windows Recycle Bin.
+- Updated Magick.NET to 8.1.0
+- Updated iText to 7.1.16
+- Updated SumatraPDF to 3.3.3
+- Updated AutoUpdater.NET to 1.7.0
+- Updated Getting Support help topic.
+- Updated Donate help topic.
+### Fixed
+- Add PDF Documents dialog is no longer being hidden after Upload cycle has completed.
+- Upload Folder Configurations drop down list on the Manage Upload Folder Configurations dialog will now update when configurations are added, renamed, or deleted outside of PDFKeeper while open.
+
 ## v7.1.1 - 2021-07-18
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.1.1).
