@@ -127,18 +127,18 @@ Public NotInheritable Class UploadService
             Dim fileInfo As New FileInfo(pdfPath)
             fileInfo.WaitWhileIsInUse()
             Dim pdfFile As New PdfFile(pdfPath)
-            If pdfFile.ContainsOwnerPassword = False Then
-                Dim uploadFolderName As String =
-                    pdfPath.Substring(UserProfile.UploadPath.Length + 1)
-                If uploadFolderName = IO.Path.GetFileName(pdfPath) Then
-                    uploadFolderName = UserProfile.UploadPath
-                Else
-                    uploadFolderName =
-                        uploadFolderName.Substring(0,
-                                                   uploadFolderName.IndexOf(
-                                                   IO.Path.DirectorySeparatorChar))
-                End If
-                Try
+            Try
+                If pdfFile.ContainsOwnerPassword = False Then
+                    Dim uploadFolderName As String =
+                        pdfPath.Substring(UserProfile.UploadPath.Length + 1)
+                    If uploadFolderName = IO.Path.GetFileName(pdfPath) Then
+                        uploadFolderName = UserProfile.UploadPath
+                    Else
+                        uploadFolderName =
+                            uploadFolderName.Substring(0,
+                                                       uploadFolderName.IndexOf(
+                                                       IO.Path.DirectorySeparatorChar))
+                    End If
                     Dim outputPdfPath As String = fileInfo.GenerateUploadStagingFilePath
                     Dim pdfReader As New PdfMetadataReader(pdfPath)
                     If UploadFolderConfigurationUtil.IsFolderConfigured(uploadFolderName) Then
@@ -147,15 +147,16 @@ Public NotInheritable Class UploadService
                                                        uploadFolderName)
                     Else
                         If pdfReader.Title.Length > 0 And
-                            pdfReader.Author.Length > 0 And
-                            pdfReader.Subject.Length > 0 Then
+                                pdfReader.Author.Length > 0 And
+                                pdfReader.Subject.Length > 0 Then
                             StageExistingPdfAndSupplementalData(pdfPath,
                                                                 outputPdfPath)
                         End If
                     End If
-                Catch ex As BadPasswordException    ' Ignore the file.            
-                End Try
-            End If
+                End If
+            Catch ex As iText.IO.IOException    ' Ignore file.
+            Catch ex As BadPasswordException    ' Ignore file.
+            End Try
         Next
     End Sub
 

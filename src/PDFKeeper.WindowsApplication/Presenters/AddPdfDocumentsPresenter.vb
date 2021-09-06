@@ -102,6 +102,9 @@ Public Class AddPdfDocumentsPresenter
                                                       selectedPdfPassword)
                 UpdateView()
                 UploadService.Instance.CanUploadCycleStart = False
+            Catch ex As iText.IO.IOException
+                view.SelectedPdfPath = Nothing
+                message.Show(ex.Message, True)
             Catch ex As BadPasswordException
                 view.SelectedPdfPath = Nothing
                 message.Show(ex.Message, True)
