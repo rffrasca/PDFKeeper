@@ -88,7 +88,8 @@ Public NotInheritable Class DbInstanceProperties
                     "Version=3"
             ElseIf Platform = DatabasePlatform.Oracle.ToString Then
                 result = "Data Source=" + My.Settings.Datasource + ";" &
-                    "Pooling=" + My.Settings.Pooling
+                    "Pooling=" + My.Settings.Pooling + ";" &
+                    "Connection Timeout=60"
             End If
             Return result
         End Get
