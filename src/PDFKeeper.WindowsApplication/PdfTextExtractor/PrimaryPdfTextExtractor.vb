@@ -20,7 +20,6 @@
 Imports iText.Kernel.Pdf
 Imports iText.Kernel.Pdf.Canvas.Parser
 Imports iText.Kernel.Pdf.Canvas.Parser.Listener
-Imports iText.Kernel.Pdf.Canvas.Parser.Util.InlineImageParsingUtils
 
 Public Class PrimaryPdfTextExtractor
     Inherits PdfTextExtractorBase
