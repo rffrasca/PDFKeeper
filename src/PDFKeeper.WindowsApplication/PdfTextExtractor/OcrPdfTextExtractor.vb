@@ -31,30 +31,31 @@ Public Class OcrPdfTextExtractor
     ''' </summary>
     ''' <returns>Text or Nothing if platform is not supported.</returns>
     Public Overrides Function GetText() As String
-        Dim jpegFiles As New ArrayList(GetAllPagesAsJpegFiles)
+        Dim tiffFiles As New ArrayList(GetAllPagesAsTiffFiles)
         Try
-            Dim ocr As New ImageTextExtractor(jpegFiles)
+            Dim ocr As New ImageTextExtractor(tiffFiles)
             Dim result As Task(Of String) = ocr.GetText
             Return result.Result
         Catch ex As PlatformNotSupportedException
             Return Nothing
         Finally
-            CleanupFiles(jpegFiles)
+            CleanupFiles(tiffFiles)
         End Try
     End Function
 
-    Private Function GetAllPagesAsJpegFiles() As ArrayList
+    Private Function GetAllPagesAsTiffFiles() As ArrayList
         Dim imagesList As New ArrayList
         Using images = New MagickImageCollection
             Dim settings = New MagickReadSettings With {
-                .Density = New Density(600, 600)
+                .Density = New Density(600, 600),
+                .Compression = CompressionMethod.LZW
                 }
             images.Read(pdfFile, settings)
             Dim page = 1
             For Each image In images
                 Dim imageFile As String =
                     Path.Combine(Path.GetTempPath,
-                                 Path.GetFileNameWithoutExtension(pdfFile) & "." & page & ".jpg")
+                                 Path.GetFileNameWithoutExtension(pdfFile) & "." & page & ".tiff")
                 image.Write(imageFile)
                 imagesList.Add(imageFile)
                 page += 1
