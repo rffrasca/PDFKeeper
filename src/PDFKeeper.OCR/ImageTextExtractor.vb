@@ -55,6 +55,7 @@ Public Class ImageTextExtractor
                 For Each line In ocrResult.Lines
                     text.AppendLine(line.Text)
                 Next
+                softwareBmp.Dispose()
             End Using
         Next
         Return text.ToString()
