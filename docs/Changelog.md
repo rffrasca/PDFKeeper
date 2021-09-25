@@ -1,6 +1,23 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v7.2.1 - 2021-09-25
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.1).
+### Added
+- Added Connection Timeout=60 to the Oracle Database Connection String to mitigate connection timeouts.
+### Changed
+- Improved PDF image extraction performance and OCR accuracy.
+- Updated Magick.NET to 8.3.0
+- Updated System.Data.SQLite to 1.0.115
+### Fixed
+- Fixed UploadRunningToolStripStatusLabel not being visible during an upload cycle and Search Results not refreshing after completing.
+- Login form error message will no longer appear behind the Login form making it impossible to acknowledge.
+- iText.IO.IOException when reading an invalid PDF is now handled.
+- iText.Kernel.Pdf.Canvas.Parser.Util.InlineImageParsingUtils.InlineImageParseException when extracting text from PDF is now handled and ignored.
+- Fixed application hang when extracting text from an “image-only” PDF while running "Update PDF Text Annotations and Text in Database".
+
 ## v7.2.0 - 2021-09-05
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.0).
