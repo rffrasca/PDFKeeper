@@ -429,7 +429,7 @@ Public Class AddPdfDocumentsDialog
     End Sub
 
     Private Sub AddPdfDocumentsDialog_Leave(sender As Object, e As EventArgs) Handles MyBase.Leave
-        Me.Focus()
+        Me.BringToFront()
     End Sub
 
     Private Sub AddPdfDocumentsDialog_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
