@@ -66,7 +66,9 @@ Public Class OcrPdfTextExtractor
 
     Private Shared Sub CleanupFiles(ByVal filePaths As ArrayList)
         For Each filePath As String In filePaths
-            IO.File.Delete(filePath)
+            Dim filePathInfo As New FileInfo(filePath)
+            filePathInfo.WaitWhileIsInUse
+            filePathInfo.Delete()
         Next
     End Sub
 End Class
