@@ -39,6 +39,17 @@ Public NotInheritable Class SqliteDataProvider
         End Get
     End Property
 
+    Public Sub RebuildIndex()
+        Dim sqlStatement As String = "insert into docs_index(docs_index) values('rebuild')"
+        Try
+            Using sqlCommand As New SQLiteCommand(sqlStatement, Connection)
+                ExecuteNonQuery(sqlCommand)
+            End Using
+        Catch ex As SQLiteException
+            Throw New CustomDbException(ex.Message)
+        End Try
+    End Sub
+
     Public Function QueryToDataTable(ByVal sqlCommand As SQLiteCommand) As DataTable
         Using adapter As New SQLiteDataAdapter(sqlCommand)
             Using table As New DataTable

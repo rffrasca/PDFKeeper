@@ -53,4 +53,15 @@ Public NotInheritable Class DbInstanceUtil
             End Using
         End If
     End Sub
+
+    ''' <summary>
+    ''' Rebuilds the SQLite FTS index. 
+    ''' </summary>
+    Public Shared Sub RebuildIndex()
+        If DbInstanceProperties.Platform = DatabasePlatform.Sqlite.ToString Then
+            Using provider As New SqliteDataProvider
+                provider.RebuildIndex()
+            End Using
+        End If
+    End Sub
 End Class

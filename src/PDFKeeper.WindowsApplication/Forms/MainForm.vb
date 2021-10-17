@@ -901,6 +901,10 @@ Public Class MainForm
         presenter.MoveLocalDatabase()
     End Sub
 
+    Private Sub ToolsRebuildFullTextSearchIndexToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ToolsRebuildFullTextSearchIndexToolStripMenuItem.Click
+        presenter.RebuildFullTextSearchIndex()
+    End Sub
+
     Private Sub HelpContentsToolStrip_Click(sender As Object, e As EventArgs) Handles HelpContentsToolStripMenuItem.Click,
                                                                                       HelpContentsToolStripButton.Click
         help.Show(Me, "Using PDFKeeper.html")

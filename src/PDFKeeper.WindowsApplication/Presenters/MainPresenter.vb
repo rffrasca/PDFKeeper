@@ -312,6 +312,20 @@ Public Class MainPresenter
         End If
     End Sub
 
+    Public Sub RebuildFullTextSearchIndex()
+        view.SetCursor(True)
+        UploadService.Instance.CanUploadCycleStart = False
+        Try
+            DbInstanceUtil.RebuildIndex()
+            view.SetCursor(False)
+        Catch ex As CustomDbException
+            view.SetCursor(False)
+            message.Show(ex.Message, True)
+        Finally
+            UploadService.Instance.CanUploadCycleStart = True
+        End Try
+    End Sub
+
     Private Sub TriggerSearchResultsRefresh(ByVal postUpload As Boolean)
         If view.SearchFunctionsEnabled Then
             If postUpload Then

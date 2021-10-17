@@ -225,6 +225,7 @@ Public Class MainToolStripStatePresenter
     Private Sub SetVisibleStateDefaults()
         If DbInstanceProperties.Platform <> DatabasePlatform.Sqlite.ToString Then
             shortNamesVisible.SetItem("ToolsMoveDatabase", False)
+            shortNamesVisible.SetItem("ToolsRebuildFullTextSearchIndex", False)
         End If
     End Sub
 
