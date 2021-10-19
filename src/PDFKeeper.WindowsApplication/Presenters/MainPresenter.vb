@@ -329,7 +329,9 @@ Public Class MainPresenter
     Private Sub TriggerSearchResultsRefresh(ByVal postUpload As Boolean)
         If view.SearchFunctionsEnabled Then
             If postUpload Then
-                RefreshSearchResults()
+                If view.SelectedSearchResultsIdsCount = 0 Then
+                    RefreshSearchResults()
+                End If
             Else
                 If view.SelectedSearchFunction = 3 And
                         view.DocumentRecordFlagState = 0 Then
