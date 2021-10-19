@@ -142,9 +142,7 @@ Public Class MainToolStripStatePresenter
             Else
                 .SetItem("EditCut", False)
                 .SetItem("EditCopy", False)
-                If textLength > 0 Then
-                    .SetItem("EditSelectAll", True)
-                Else
+                If textLength = 0 Then
                     .SetItem("EditSelectAll", False)
                 End If
             End If
