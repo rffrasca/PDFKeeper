@@ -17,6 +17,8 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
+Imports System.Threading
+
 Public Class MainPresenter
     Implements IDisposable
     Private ReadOnly view As IMainView
@@ -764,6 +766,9 @@ Public Class MainPresenter
                     view.UploadRunningVisible = False
                     Application.DoEvents()
                 End Try
+            End If
+            If uploadDirInfo.ContainsFilesMatchingSearchPattern("*.tmp") Then
+                Thread.Sleep(30000)
             End If
             If uploadDirInfo.ContainsFilesExcludingSearchPattern("*.delete") Then
                 view.UploadFolderErrorVisible = True
