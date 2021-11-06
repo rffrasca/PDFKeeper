@@ -1,6 +1,23 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v7.2.2 - 2021-11-06
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.2).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.2).
+### Added
+- Menu function was added to repair the full-text search index when the “database disk image is malformed” error is encountered.
+### Changed
+- Search Results will no longer be refreshed after an Upload cycle when document records in Search Results are checked.
+- Added 30 second sleep after the Upload of PDF files when TMP files exist in the Upload folder.
+- Updated Magick.NET to 8.3.3
+- Updated PdfPig to 0.1.5
+- Updated Ghostscript to 9.55.0
+### Fixed
+- Fixed issue with "Add PDF Documents dialog" hiding behind Main form after Search Results is automatically refreshed. (rework)
+- Fixed Unhandled IOException "The process cannot access the file because it is being used by another process." when deleting a temporary TIFF file following OCR processing.
+- Fixed Unhandled NullReferenceException “Object reference not set to an instance of an object.” when selecting "Edit" and then "Select All" following a search.
+
 ## v7.2.1 - 2021-09-25
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.1).
