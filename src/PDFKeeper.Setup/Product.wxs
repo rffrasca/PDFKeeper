@@ -22,7 +22,7 @@
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
   <?define PDFKeeper.WindowsApplication_TargetDir=$(var.PDFKeeper.WindowsApplication.TargetDir)?><?define PDFKeeper.OCR_TargetDir=$(var.PDFKeeper.OCR.TargetDir)?>
-  <Product Id="*" Name="PDFKeeper" Language="1033" Version="7.2.2" Manufacturer="Robert F. Frasca" UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2">
+  <Product Id="*" Name="PDFKeeper" Language="1033" Version="7.2.3" Manufacturer="Robert F. Frasca" UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2">
     
     <Package InstallerVersion="500" Compressed="yes" InstallScope="perUser" />
 		
