@@ -104,6 +104,9 @@
       <HintPath>..\packages\itext7.7.1.16\lib\net45\itext.barcodes.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="itext.font_asian, Version=7.1.16.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itext7.font-asian.7.1.16\lib\net45\itext.font_asian.dll</HintPath>
+    </Reference>
     <Reference Include="itext.forms, Version=7.1.16.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext7.7.1.16\lib\net45\itext.forms.dll</HintPath>
       <Private>False</Private>

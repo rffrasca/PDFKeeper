@@ -159,6 +159,9 @@
       <Component Id="itext.io.dll" Guid="d4075a7f-2f07-4da5-bed5-b2ee0889c7ef">
         <File Id="itext.io.dll" Name="itext.io.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)itext.io.dll" />
       </Component>
+      <Component Id="itext.font_asian.dll" Guid="56331123-8c8d-4428-b8cf-299e8ddb25dc">
+        <File Id="itext.font_asian.dll" Name="itext.font_asian.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)itext.font_asian.dll" />
+      </Component>
       <Component Id="UglyToad.PdfPig.Tokenization.dll" Guid="2587969f-1df3-4940-bd2c-b7e942585ce6">
         <File Id="UglyToad.PdfPig.Tokenization.dll" Name="UglyToad.PdfPig.Tokenization.dll" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)UglyToad.PdfPig.Tokenization.dll" />
       </Component>
