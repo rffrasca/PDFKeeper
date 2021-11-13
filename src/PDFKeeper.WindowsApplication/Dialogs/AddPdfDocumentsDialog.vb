@@ -428,10 +428,6 @@ Public Class AddPdfDocumentsDialog
         presenter.Discard()
     End Sub
 
-    Private Sub AddPdfDocumentsDialog_Leave(sender As Object, e As EventArgs) Handles MyBase.Leave
-        Me.BringToFront()
-    End Sub
-
     Private Sub AddPdfDocumentsDialog_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If DiscardButton.Enabled Then
             If presenter.ViewClosingPrompt = False Then

@@ -258,6 +258,7 @@ Partial Class AddPdfDocumentsDialog
         Me.Name = "AddPdfDocumentsDialog"
         Me.HelpProvider.SetShowHelp(Me, CType(resources.GetObject("$this.ShowHelp"), Boolean))
         Me.ShowInTaskbar = False
+        Me.TopMost = True
         Me.TableLayoutPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
