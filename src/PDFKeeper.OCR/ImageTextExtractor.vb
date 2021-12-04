@@ -46,17 +46,20 @@ Public Class ImageTextExtractor
     Public Async Function GetText() As Task(Of String)
         Dim text As New StringBuilder
         For Each imageFile As String In imageFiles
-            Using stream = File.Open(imageFile, FileMode.Open, FileAccess.Read)
-                Dim bmpDecoder = Await BitmapDecoder.CreateAsync(
-                    stream.AsRandomAccessStream()).AsTask.ConfigureAwait(False)
-                Using softwareBmp = Await bmpDecoder.GetSoftwareBitmapAsync
-                    Dim ocrEngine As OcrEngine = OcrEngine.TryCreateFromUserProfileLanguages
-                    Dim ocrResult = Await ocrEngine.RecognizeAsync(softwareBmp)
-                    For Each line In ocrResult.Lines
-                        text.AppendLine(line.Text)
-                    Next
+            Try
+                Using stream = File.Open(imageFile, FileMode.Open, FileAccess.Read)
+                    Dim bmpDecoder = Await BitmapDecoder.CreateAsync(
+                        stream.AsRandomAccessStream()).AsTask.ConfigureAwait(False)
+                    Using softwareBmp = Await bmpDecoder.GetSoftwareBitmapAsync
+                        Dim ocrEngine As OcrEngine = OcrEngine.TryCreateFromUserProfileLanguages
+                        Dim ocrResult = Await ocrEngine.RecognizeAsync(softwareBmp)
+                        For Each line In ocrResult.Lines
+                            text.AppendLine(line.Text)
+                        Next
+                    End Using
                 End Using
-            End Using
+            Catch ex As ArithmeticException
+            End Try
         Next
         Return text.ToString()
     End Function
