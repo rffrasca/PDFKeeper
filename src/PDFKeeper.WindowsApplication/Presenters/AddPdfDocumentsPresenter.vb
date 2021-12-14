@@ -42,6 +42,7 @@ Public Class AddPdfDocumentsPresenter
 
     Public Sub ResetView()
         With view
+            .TopMostForm = True
             .SelectedPdfPath = Nothing
             .Title = Nothing
             .AuthorPaired = Nothing
@@ -196,6 +197,7 @@ Public Class AddPdfDocumentsPresenter
 
     Private Sub UpdateView()
         With view
+            .TopMostForm = False
             .Title = model.Title
             .AuthorPaired = model.Author
             .SubjectPaired = model.Subject

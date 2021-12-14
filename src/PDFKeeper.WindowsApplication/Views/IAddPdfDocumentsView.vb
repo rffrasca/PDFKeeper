@@ -19,6 +19,7 @@
 '******************************************************************************
 Public Interface IAddPdfDocumentsView
     Inherits ICommonView
+    Property TopMostForm As Boolean
     Property SelectedPdfPath As String
     Property Title As String
     Property SelectEnabled As Boolean

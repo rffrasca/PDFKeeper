@@ -32,6 +32,15 @@ Public Class AddPdfDocumentsDialog
     End Sub
 
 #Region "Interface Members"
+    Private Overloads Property TopMostForm As Boolean Implements IAddPdfDocumentsView.TopMostForm
+        Get
+            Return Me.TopMost
+        End Get
+        Set(value As Boolean)
+            Me.TopMost = value
+        End Set
+    End Property
+
     Public Property SelectedPdfPath As String Implements IAddPdfDocumentsView.SelectedPdfPath
         Get
             Return SelectedPdfDocumentTextBox.Text
