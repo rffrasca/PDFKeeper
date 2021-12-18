@@ -54,7 +54,7 @@ Public NotInheritable Class AboutBox
     End Sub
 
     Private Sub LicenseLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LicenseLinkLabel.LinkClicked
-        help.Show(Me, "PDFKeeper License.txt")
+        help.Show(Me, "COPYING.html")
     End Sub
 
     Private Sub ThirdPartyLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ThirdPartyLinkLabel.LinkClicked

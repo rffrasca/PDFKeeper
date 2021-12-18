@@ -52,6 +52,7 @@ Partial Class AboutBox
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AboutBox))
         Me.TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
+        Me.DonateLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
         Me.LabelProductName = New System.Windows.Forms.Label()
         Me.LabelVersion = New System.Windows.Forms.Label()
@@ -62,7 +63,6 @@ Partial Class AboutBox
         Me.WebsiteLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.LicenseLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.ThirdPartyLinkLabel = New System.Windows.Forms.LinkLabel()
-        Me.DonateLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.TableLayoutPanel.SuspendLayout()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -80,6 +80,12 @@ Partial Class AboutBox
         Me.TableLayoutPanel.Controls.Add(Me.OKButton, 1, 7)
         Me.TableLayoutPanel.Controls.Add(Me.WebsiteLinkLabel, 1, 4)
         Me.TableLayoutPanel.Name = "TableLayoutPanel"
+        '
+        'DonateLinkLabel
+        '
+        resources.ApplyResources(Me.DonateLinkLabel, "DonateLinkLabel")
+        Me.DonateLinkLabel.Name = "DonateLinkLabel"
+        Me.DonateLinkLabel.TabStop = True
         '
         'LogoPictureBox
         '
@@ -139,12 +145,6 @@ Partial Class AboutBox
         resources.ApplyResources(Me.ThirdPartyLinkLabel, "ThirdPartyLinkLabel")
         Me.ThirdPartyLinkLabel.Name = "ThirdPartyLinkLabel"
         Me.ThirdPartyLinkLabel.TabStop = True
-        '
-        'DonateLinkLabel
-        '
-        resources.ApplyResources(Me.DonateLinkLabel, "DonateLinkLabel")
-        Me.DonateLinkLabel.Name = "DonateLinkLabel"
-        Me.DonateLinkLabel.TabStop = True
         '
         'AboutBox
         '
