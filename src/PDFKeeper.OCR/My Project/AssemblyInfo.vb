@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("PDFKeeper OCR Library")>
 <Assembly: AssemblyCompany("Robert F. Frasca")>
 <Assembly: AssemblyProduct("PDFKeeper")>
-<Assembly: AssemblyCopyright("Copyright © 2009-2021 Robert F. Frasca")>
+<Assembly: AssemblyCopyright("Copyright © 2009-2022 Robert F. Frasca")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

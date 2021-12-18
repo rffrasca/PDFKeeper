@@ -1,6 +1,6 @@
 ﻿'******************************************************************************
 '* PDFKeeper -- Open Source PDF Document Management
-'* Copyright (C) 2009-2021 Robert F. Frasca
+'* Copyright (C) 2009-2022 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
 '*
@@ -30,7 +30,7 @@ Imports System.Resources
 <Assembly: AssemblyDescription("Open Source PDF Document Management")>
 <Assembly: AssemblyCompany("Robert F. Frasca")>
 <Assembly: AssemblyProduct("PDFKeeper")>
-<Assembly: AssemblyCopyright("Copyright © 2009-2021 Robert F. Frasca")>
+<Assembly: AssemblyCopyright("Copyright © 2009-2022 Robert F. Frasca")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
