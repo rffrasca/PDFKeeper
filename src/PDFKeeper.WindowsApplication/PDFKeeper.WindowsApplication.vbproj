@@ -485,11 +485,11 @@
       <Link>SumatraPDF-settings.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Help\OracleDatabaseSchemaSetup.sql">
+    <Content Include="..\Config\OracleDatabaseSchemaSetup.sql">
       <Link>OracleDatabaseSchemaSetup.sql</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Help\OracleDatabaseSchemaUpgrade.sql">
+    <Content Include="..\Config\OracleDatabaseSchemaUpgrade.sql">
       <Link>OracleDatabaseSchemaUpgrade.sql</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -497,7 +497,7 @@
       <Link>PDFKeeper.en-US.chm</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Help\SqliteDatabaseSetup.sql">
+    <Content Include="..\Config\SqliteDatabaseSetup.sql">
       <Link>SqliteDatabaseSetup.sql</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
