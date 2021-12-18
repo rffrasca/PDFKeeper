@@ -1,6 +1,18 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v7.2.3 - 2021-12-18
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.3).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.3).
+### Changed
+- Updated Magick.NET to 8.4.0
+- Updated System.Data.SQLite to 1.0.115.5
+### Fixed
+- Fixed Unhandled IOException “The CMap iText.IO.Font.Cmap.UniJIS-UTF16-H was not found.” during PDF text extraction prior to uploading.
+- Fixed issue with "Add PDF Documents dialog" hiding behind Main form after Search Results is automatically refreshed. (rework)
+- Unhandled ArithmeticException “Overflow or underflow in the arithmetic operation.” during PDF to TIFF extraction prior to uploading PDF will now be handled; however, no text will be extracted from the TIFF image.
+
 ## v7.2.2 - 2021-11-06
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.2).
