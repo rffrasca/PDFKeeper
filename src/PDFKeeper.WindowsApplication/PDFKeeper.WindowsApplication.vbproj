@@ -565,7 +565,6 @@
   <PropertyGroup>
     <PreBuildEvent>powershell.exe -ExecutionPolicy Bypass -file "..\..\..\Build\GetSumatraPDF.ps1"
 powershell.exe -ExecutionPolicy Bypass -file "..\..\..\Build\GetSqliteShell.ps1"
-call "..\..\..\Build\CompileHelp.cmd"
 </PreBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
