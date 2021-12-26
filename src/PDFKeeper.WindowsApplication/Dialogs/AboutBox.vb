@@ -58,7 +58,7 @@ Public NotInheritable Class AboutBox
     End Sub
 
     Private Sub ThirdPartyLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ThirdPartyLinkLabel.LinkClicked
-        help.Show(Me, "Third-Party Attribution.html")
+        help.Show(Me, "THIRD-PARTY-LICENSES-NOTICES.html")
     End Sub
 
     Private Sub WebsiteLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles WebsiteLinkLabel.LinkClicked

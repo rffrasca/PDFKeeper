@@ -80,6 +80,9 @@
       <Component Id="COPYING" Guid="fb2756c9-2b56-49ab-aa77-b79303d52016">
 			  <File Id="COPYING" Name="COPYING" Source="..\..\..\..\COPYING" />
 			</Component>
+      <Component Id="THIRD_PARTY_LICENSES_NOTICES" Guid="f19f49ec-b6f6-449f-9fc8-927b474c240b">
+			  <File Id="THIRD_PARTY_LICENSES_NOTICES" Name="THIRD-PARTY-LICENSES-NOTICES.txt" Source="..\..\..\..\THIRD-PARTY-LICENSES-NOTICES.txt" />
+			</Component>
       <Component Id="PDFKeeper.ico" Guid="27f9fd6f-53f6-42cf-acbd-9e13061e25b8">
         <File Id="PDFKeeper.ico" Name="PDFKeeper.ico" Source="$(var.PDFKeeper.WindowsApplication_TargetDir)PDFKeeper.ico" />
       </Component>

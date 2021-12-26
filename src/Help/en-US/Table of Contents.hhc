@@ -288,8 +288,9 @@
 			<param name="ImageNumber" value="17">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Third-Party Attribution">
-			<param name="Local" value="Third-Party Attribution.html">
+			<param name="Name" value="Third-Party Licenses and Notices">
+			<param name="Local" value="THIRD-PARTY-LICENSES-NOTICES.html">
+			<param name="URL" value="THIRD-PARTY-LICENSES-NOTICES.html">
 			<param name="ImageNumber" value="17">
 			</OBJECT>
 	</UL>
