@@ -46,23 +46,14 @@ begin
 					 doc_text');
 	ctx_ddl.set_attribute('ctxsys.pdfkeeper_multi','filter',
 			      'N,N,N,N,N,N,Y,N,N,N,N');
-	if (dbms_db_version.version >11) then
-		execute immediate 'create index pdfkeeper.docs_idx
-				   on pdfkeeper.docs(doc_dummy) 
-				   indextype is ctxsys.context 
-				   parameters (''datastore ctxsys.pdfkeeper_multi
-						 storage ctxsys.text_search_storage
-					         lexer ctxsys.pdfkeeper_lexer
-					         sync (on commit)'')';
-	else
-		execute immediate 'create index pdfkeeper.docs_idx
-				   on pdfkeeper.docs(doc_dummy) 
-				   indextype is ctxsys.context 
-				   parameters (''datastore ctxsys.pdfkeeper_multi
-					         lexer ctxsys.pdfkeeper_lexer
-					    	 sync (on commit)'')';
-	end if;
 end;
 /
+
+create index pdfkeeper.docs_idx on pdfkeeper.docs(doc_dummy)
+indextype is ctxsys.context
+parameters ('datastore ctxsys.pdfkeeper_multi
+	     storage ctxsys.text_search_storage
+	     lexer ctxsys.pdfkeeper_lexer
+	     sync (on commit)');
 
 quit

@@ -52,7 +52,7 @@ create table pdfkeeper.docs(
 
 begin
 	ctx_ddl.create_preference('ctxsys.pdfkeeper_lexer',
-			      	  'world_lexer');
+				  'world_lexer');
 	ctx_ddl.create_preference('ctxsys.pdfkeeper_multi',
 				  'multi_column_datastore');
 	ctx_ddl.set_attribute('ctxsys.pdfkeeper_multi',
@@ -69,28 +69,19 @@ begin
 					 doc_text');
 	ctx_ddl.set_attribute('ctxsys.pdfkeeper_multi','filter',
 			      'N,N,N,N,N,N,Y,N,N,N,N');
-	if (dbms_db_version.version >11) then
-		ctx_ddl.create_preference('ctxsys.text_search_storage',
-					  'basic_storage');
-		ctx_ddl.set_attribute('ctxsys.text_search_storage',
-				      'stage_itab',
-				      'true');
-		execute immediate 'create index pdfkeeper.docs_idx
-				   on pdfkeeper.docs(doc_dummy) 
-				   indextype is ctxsys.context 
-				   parameters (''datastore ctxsys.pdfkeeper_multi
-						 storage ctxsys.text_search_storage
-					         lexer ctxsys.pdfkeeper_lexer
-					         sync (on commit)'')';
-	else
-		execute immediate 'create index pdfkeeper.docs_idx
-				   on pdfkeeper.docs(doc_dummy) 
-				   indextype is ctxsys.context 
-				   parameters (''datastore ctxsys.pdfkeeper_multi
-					         lexer ctxsys.pdfkeeper_lexer
-					    	 sync (on commit)'')';
-	end if;
+	ctx_ddl.create_preference('ctxsys.text_search_storage',
+				  'basic_storage');
+	ctx_ddl.set_attribute('ctxsys.text_search_storage',
+			      'stage_itab',
+			      'true');
 end;
 /
+
+create index pdfkeeper.docs_idx on pdfkeeper.docs(doc_dummy)
+indextype is ctxsys.context
+parameters ('datastore ctxsys.pdfkeeper_multi
+	     storage ctxsys.text_search_storage
+	     lexer ctxsys.pdfkeeper_lexer
+	     sync (on commit)');
 
 quit
