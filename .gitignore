@@ -1,12 +1,9 @@
 *.exe
 *.suo
-/src/packages
-/src/PDFKeeper.WindowsApplication/bin
-/src/PDFKeeper.WindowsApplication/obj
 *.user
 *.chm
 bin
 obj
 .vs
-/src/PDFKeeper.WindowsApplication/*.editorconfig
+*.editorconfig
 *.dll
