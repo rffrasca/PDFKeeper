@@ -1,11 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
 	<title>Uploading PDF Documents</title>
-	<meta name="generator" content="LibreOffice 7.2.4.1 (Windows)"/>
+	<meta name="generator" content="LibreOffice 7.3.3.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.014243916"/>
-	<meta name="changed" content="2021-12-18T12:17:37.017000000"/>
+	<meta name="changed" content="2022-05-23T19:23:05.274000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -34,50 +34,50 @@
 <body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif">Uploading
 PDF Documents</font></h1>
 <p><font face="Segoe UI, sans-serif">PDF documents can be uploaded
-individually or in bulk, with or without using configured Upload
-folders to allow for integration and automation.</font></p>
-<p><font face="Segoe UI, sans-serif">Configured Upload Folders are
-used to automate the uploading of PDF documents to the database. For
-each PDF document that is created in or copied into a configured
-upload folder, it will have PDF Metadata defined for that folder
-written to a clone of the PDF file; and then the PDF file clone is
-uploaded to the database during the next upload cycle.</font></p>
+individually or in bulk, with or without using Upload Profile folders
+to allow for integration and automation.</font></p>
+<p><font face="Segoe UI, sans-serif">Upload Profile folders are used
+to automate the uploading of PDF documents to the database. Each PDF
+that is created in or copied into an Upload Profile folder will have
+defined Information Properties written to a clone of the PDF and an
+external properties XML in the <b>UploadStaging</b> folder. After
+staging, all PDF documents in the <b>UploadStaging</b> folder will be
+uploaded to the database.</font></p>
 <p><font face="Segoe UI, sans-serif">Each document is stored in the
 database as follows:</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>ID</b>
-&ndash; Assigned to the document record by the database.</font></p>
+&ndash; Assigned to the document by the database.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Title</b>
-&ndash; Extracted from the PDF Metadata. This column is searchable.</font></p>
+&ndash; Extracted from the PDF; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Author</b>
-&ndash; Extracted from the PDF Metadata. This column is searchable.</font></p>
+&ndash; Extracted from the PDF; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Subject</b>
-&ndash; Extracted from the PDF Metadata. This column is searchable.</font></p>
+&ndash; Extracted from the PDF; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Keywords</b>
-&ndash; Extracted from the PDF Metadata. This column is searchable.</font></p>
+&ndash; Extracted from the PDF; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Added</b>
-&ndash; Date and time the document record was added to the database.
-This column is searchable.</font></p>
+&ndash; Date and time the document was added to the database; this
+column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Notes</b>
-&ndash; User editable notes. This column is searchable.</font></p>
+&ndash; User editable notes; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>PDF</b>
-&ndash; Content of the PDF document. This column is searchable except
-when using the local database option.</font></p>
+&ndash; The PDF document; this column is searchable except when using
+the local database option.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Category</b>
-&ndash; Optional category of the document record. This column is
-searchable.</font></p>
+&ndash; Optional category of the document; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Flag</b>
-&ndash; <span style="font-weight: normal">Flag document state. </span><b>0</b>
+&ndash; <span style="font-weight: normal">Flag state; </span><b>0</b>
 <span style="font-weight: normal">= not flagged, </span><b>1</b> <span style="font-weight: normal">=
 flagged.</span></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Tax
 Year</b> &ndash; <span style="font-weight: normal">Optional tax year
-of the document record. This column is searchable.</span></font></p>
+of the document; this column is searchable.</span></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Text
 Annotations</b> &ndash; <span style="font-weight: normal">Extracted
-from the PDF. This column is searchable.</span></font></p>
+from the PDF; this column is searchable.</span></font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Text</b>
-&ndash; <span style="font-weight: normal">Extracted from the PDF.
-This column is searchable.</span></font></p>
+&ndash; <span style="font-weight: normal">Extracted from the PDF;
+this column is searchable.</span></font></p>
 <h4 class="western"><font face="Segoe UI, sans-serif">Which topic do
 you want to view?</font></h4>
 <table width="412" cellpadding="0" cellspacing="0">
@@ -94,8 +94,8 @@ you want to view?</font></h4>
 		</td>
 	</tr>
 	<tr>
-		<td width="412" valign="top" style="border: none; padding: 0in"><p><a href="Uploading%20PDF%20Documents%20using%20Configured%20Folders.html"><font face="Segoe UI, sans-serif">Uploading
-			PDF Documents using Configured Folders</font></a></p>
+		<td width="412" valign="top" style="border: none; padding: 0in"><p><a href="Uploading%20PDF%20Documents%20using%20Upload%20Profile%20Folders.html"><font face="Segoe UI, sans-serif">Uploading
+			PDF Documents using Upload Profile Folders</font></a></p>
 		</td>
 	</tr>
 </table>
@@ -103,40 +103,37 @@ you want to view?</font></h4>
 Information:</b></font></font></p>
 <ul>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif"><b>USER</b>
-	password protected PDF documents are not supported by PDFKeeper. If
-	you have the legal right to remove the password, you can find plenty
-	of information on the Internet to assist you.</font></p>
-	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">The
-	upload process requires that all PDF documents contain a Title,
-	Author, and Subject.</font></p>
+	password protected PDF documents are not supported by PDFKeeper and
+	will be rejected by the upload process. If you have the legal right
+	to remove the password, you can find plenty of information on the
+	Internet to assist you.</font></p>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Each
+	PDF created in or copied into an Upload folder that is not
+	associated with an Upload Profile must contain a Title, Author, and
+	Subject; otherwise, the PDF will be rejected by the upload process.</font></p>
 	<li><p style="font-variant: normal; font-style: normal; font-weight: normal">
 	<font color="#24292e"><font face="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"><font size="3" style="font-size: 12pt">Annotations
-	in a PDF document are not filtered by Oracle Database.</font></font></font></p>
+	in a PDF document are not filtered by Oracle Database; however, text
+	annotations are extracted by PDFKeeper.</font></font></font></p>
 	<li><p style="font-variant: normal; font-style: normal; font-weight: normal">
 	<font color="#24292e"><font face="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"><font size="3" style="font-size: 12pt">Embedded
 	fonts in a PDF document are not filtered correctly by Oracle
-	Database.</font></font></font></p>
+	Database; however, text from these PDF documents will be extracted
+	by PDFKeeper.</font></font></font></p>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">The
 	upload process will check for PDF documents that need to be uploaded
-	every five seconds.</font></p>
+	every 15 seconds.</font></p>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Each
-	preprocessed PDF document in the <b>Upload</b> folder will be copied
-	to <span style="font-variant: normal"><span style="font-style: normal"><b>&lt;</b></span></span><i><b>original
-	name</b></i><span style="font-variant: normal"><span style="font-style: normal"><b>&gt;-&lt;</b></span></span><i><b>GUID</b></i><span style="font-variant: normal"><span style="font-style: normal"><b>&gt;.pdf</b></span></span>
-	and then renamed to <span style="font-variant: normal"><span style="font-style: normal"><b>&lt;</b></span></span><i><b>original
-	name</b></i><span style="font-variant: normal"><span style="font-style: normal"><b>&gt;.delete</b></span></span><span style="font-variant: normal">
-	</span><span style="font-variant: normal"><span style="font-style: normal">to
-	avoid a file in use prompt during the upload cycle. The copied PDF
-	document will be </span></span>deleted to the Windows Recycle Bin
-	after being processed.</font></p>
+	PDF in the <b>Upload</b> folder will be deleted to the Windows
+	Recycle Bin after being staged.</font></p>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">It
 	is NOT recommended to configure the Windows Recycle Bin to <b>remove</b>
 	<b>files immediately when deleted</b>.</font></p>
 	<li><p align="left" style="font-weight: normal"><font face="Segoe UI, sans-serif">Before
-	restoring preprocessed PDF documents from the Recycle Bin, make sure
-	to close PDFKeeper. After restoring, move the file(s) out of the
-	<b>Upload</b> folder to prevent PDFKeeper from uploading the PDF
-	documents to the database after PDFKeeper has been restarted.</font></p>
+	restoring PDF documents from the Recycle Bin back to the <b>Upload</b>
+	folder, make sure to close PDFKeeper. After restoring, move the
+	file(s) out of the <b>Upload</b> folder to prevent PDFKeeper from
+	uploading the PDF documents after PDFKeeper has been restarted.</font></p>
 </ul>
 </body>
 </html>
