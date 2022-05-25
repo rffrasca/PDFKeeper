@@ -85,15 +85,8 @@
 				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Uploading PDF Documents from within PDFKeeper">
 					<param name="Local" value="Uploading PDF Documents from within PDFKeeper.html">
-					<param name="ImageNumber" value="1">
+					<param name="ImageNumber" value="9">
 					</OBJECT>
-				<UL>
-					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="Selecting and Adding PDF Documents to PDFKeeper">
-						<param name="Local" value="Selecting and Adding PDF Documents to PDFKeeper.html">
-						<param name="ImageNumber" value="9">
-						</OBJECT>
-				</UL>
 				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Uploading PDF Documents from outside of PDFKeeper">
 					<param name="Local" value="Uploading PDF Documents from outside of PDFKeeper.html">
