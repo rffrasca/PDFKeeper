@@ -99,20 +99,20 @@
 					</OBJECT>
 				<UL>
 					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="Configuring Upload Folders">
-						<param name="Local" value="Configuring Upload Folders.html">
+						<param name="Name" value="Upload Profiles">
+						<param name="Local" value="Upload Profiles.html">
 						<param name="ImageNumber" value="1">
 						</OBJECT>
 					<UL>
 						<LI> <OBJECT type="text/sitemap">
-							<param name="Name" value="Adding, Editing, and Deleting Upload Folder Configurations">
-							<param name="Local" value="Adding, Editing, and Deleting Upload Folder Configurations.html">
+							<param name="Name" value="Adding, Editing, and Deleting Upload Profiles">
+							<param name="Local" value="Adding, Editing, and Deleting Upload Profiles.html">
 							<param name="ImageNumber" value="1">
 							</OBJECT>
 						<UL>
 							<LI> <OBJECT type="text/sitemap">
-								<param name="Name" value="Configuring an Upload Folder">
-								<param name="Local" value="Configuring an Upload Folder.html">
+								<param name="Name" value="Upload Profile Properties">
+								<param name="Local" value="Upload Profile Properties.html">
 								<param name="ImageNumber" value="9">
 								</OBJECT>
 						</UL>

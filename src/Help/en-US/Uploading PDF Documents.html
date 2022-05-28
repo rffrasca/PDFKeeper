@@ -5,7 +5,7 @@
 	<title>Uploading PDF Documents</title>
 	<meta name="generator" content="LibreOffice 7.3.3.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.014243916"/>
-	<meta name="changed" content="2022-05-23T19:23:05.274000000"/>
+	<meta name="changed" content="2022-05-27T17:35:58.490000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -40,7 +40,8 @@ to allow for integration and automation.</font></p>
 to automate the uploading of PDF documents to the database. Each PDF
 that is created in or copied into an Upload Profile folder will have
 defined Information Properties written to a clone of the PDF and an
-external properties XML in the <b>UploadStaging</b> folder. After
+XML containing external properties in the <b>%APPDATA%\</b><b>R</b><b>obert
+F. Frasca\PDFKeeper</b><b>\</b><b>UploadStaging</b> folder. After
 staging, all PDF documents in the <b>UploadStaging</b> folder will be
 uploaded to the database.</font></p>
 <p><font face="Segoe UI, sans-serif">Each document is stored in the
@@ -121,8 +122,9 @@ Information:</b></font></font></p>
 	Database; however, text from these PDF documents will be extracted
 	by PDFKeeper.</font></font></font></p>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">The
-	upload process will check for PDF documents that need to be uploaded
-	every 15 seconds.</font></p>
+	upload process will check for PDF documents in <b>%APPDATA%\</b><b>R</b><b>obert
+	F. Frasca\PDFKeeper</b><b>\</b><b>Upload</b> that need to be
+	uploaded every 15 seconds.</font></p>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Each
 	PDF in the <b>Upload</b> folder will be deleted to the Windows
 	Recycle Bin after being staged.</font></p>
