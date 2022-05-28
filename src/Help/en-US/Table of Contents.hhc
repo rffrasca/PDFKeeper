@@ -149,74 +149,74 @@
 				</UL>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Working with Search Results">
-				<param name="Local" value="Working with Search Results.html">
+				<param name="Name" value="Working with Retrieved Documents">
+				<param name="Local" value="Working with Retrieved Documents.html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
 			<UL>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Sorting the Search Results">
-					<param name="Local" value="Sorting the Search Results.html">
+					<param name="Name" value="Sorting the Documents List">
+					<param name="Local" value="Sorting the Documents List.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Refreshing the Search Results">
-					<param name="Local" value="Refreshing the Search Results.html">
+					<param name="Name" value="Refreshing the Documents List">
+					<param name="Local" value="Refreshing the Documents List.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="PDF Document Viewing">
-					<param name="Local" value="PDF Document Viewing.html">
+					<param name="Name" value="PDF Viewing">
+					<param name="Local" value="PDF Viewing.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Document Record Notes">
-					<param name="Local" value="Document Record Notes.html">
+					<param name="Name" value="Document Notes">
+					<param name="Local" value="Document Notes.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Document Record Keywords">
-					<param name="Local" value="Document Record Keywords.html">
+					<param name="Name" value="Document Keywords">
+					<param name="Local" value="Document Keywords.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="PDF Previewing">
-					<param name="Local" value="PDF Previewing.html">
+					<param name="Name" value="Document Previewing">
+					<param name="Local" value="Document Previewing.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="PDF Document Text">
-					<param name="Local" value="PDF Document Text.html">
+					<param name="Name" value="Document Text">
+					<param name="Local" value="Document Text.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Change Flag Document State">
-					<param name="Local" value="Change Flag Document State.html">
+					<param name="Name" value="Change Document Flag State">
+					<param name="Local" value="Change Document Flag State.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Saving PDF Document outside of PDFKeeper">
-					<param name="Local" value="Saving PDF Document outside of PDFKeeper.html">
+					<param name="Name" value="Saving PDF outside of PDFKeeper">
+					<param name="Local" value="Saving PDF outside of PDFKeeper.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Deleting Document Records">
-					<param name="Local" value="Deleting Document Records.html">
+					<param name="Name" value="Deleting Documents">
+					<param name="Local" value="Deleting Documents.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Set Category on Document Records">
-					<param name="Local" value="Set Category on Document Records.html">
+					<param name="Name" value="Set Category on Documents">
+					<param name="Local" value="Set Category on Documents.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Set Tax Year on Document Records">
-					<param name="Local" value="Set Tax Year on Document Records.html">
+					<param name="Name" value="Set Tax Year on Documents">
+					<param name="Local" value="Set Tax Year on Documents.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Exporting PDF Documents and Supplemental Data">
-					<param name="Local" value="Exporting PDF Documents and Supplemental Data.html">
+					<param name="Name" value="Exporting PDF Documents and Extension Properties">
+					<param name="Local" value="Exporting PDF Documents and Extension Properties.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">

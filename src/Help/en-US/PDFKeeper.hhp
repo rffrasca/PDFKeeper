@@ -31,26 +31,26 @@ Updating PDFKeeper.html
 Uninstalling PDFKeeper.html
 Retrieving Documents.html
 Disable All Documents Search Function by Policy.html
-Working with Search Results.html
-Sorting the Search Results.html
-Refreshing the Search Results.html
-PDF Document Viewing.html
+Working with Retrieved Documents.html
+Sorting the Documents List.html
+Refreshing the Documents List.html
+PDF Viewing.html
 PDFKeeper Options.html
 Setting PDFKeeper Options.html
-Document Record Notes.html
-Document Record Keywords.html
-PDF Document Text.html
-PDF Previewing.html
-Saving PDF Document outside of PDFKeeper.html
-Deleting Document Records.html
-Exporting PDF Documents and Supplemental Data.html
+Document Notes.html
+Document Keywords.html
+Document Text.html
+Document Previewing.html
+Saving PDF outside of PDFKeeper.html
+Deleting Documents.html
+Exporting PDF Documents and Extension Properties.html
 Updating PDF Text Columns in the Database.html
-Change Flag Document State.html
-Set Category on Document Records.html
+Change Document Flag State.html
+Set Category on Documents.html
 Adding, Editing, and Deleting Upload Profiles.html
 Donate.html
 COPYING.html
-Set Tax Year on Document Records.html
+Set Tax Year on Documents.html
 Setup Local Database.html
 Setup Client-Server Database.html
 User Administration for Oracle Database.html
