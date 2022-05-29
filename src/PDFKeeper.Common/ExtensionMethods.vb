@@ -145,7 +145,7 @@ Public Module ExtensionMethods
         If file Is Nothing Then
             Throw New ArgumentNullException(NameOf(file))
         End If
-        Using algorithm = HashAlgorithm.Create("SHA1")
+        Using algorithm = HashAlgorithm.Create("SHA512")
             Using stream = New FileStream(file.FullName, FileMode.Open, FileAccess.Read)
                 Dim hash = algorithm.ComputeHash(stream)
                 Return BitConverter.ToString(hash)
