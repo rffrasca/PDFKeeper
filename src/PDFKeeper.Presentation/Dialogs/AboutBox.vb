@@ -46,17 +46,17 @@ Public NotInheritable Class AboutBox
         LicenseLinkLabel.Parent = LogoPictureBox
         LicenseLinkLabel.BackColor = Color.Transparent
         LicenseLinkLabel.Location = New Point(0, 257)
-        ThirdPartyLinkLabel.Parent = LogoPictureBox
-        ThirdPartyLinkLabel.BackColor = Color.Transparent
-        ThirdPartyLinkLabel.Location = New Point(0, 273)
+        ThirdPartyNoticesLinkLabel.Parent = LogoPictureBox
+        ThirdPartyNoticesLinkLabel.BackColor = Color.Transparent
+        ThirdPartyNoticesLinkLabel.Location = New Point(0, 273)
     End Sub
 
     Private Sub LicenseLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LicenseLinkLabel.LinkClicked
         help.Show(HelpProvider.LicenseTopicFileName, Me)
     End Sub
 
-    Private Sub ThirdPartyLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ThirdPartyLinkLabel.LinkClicked
-        help.Show(HelpProvider.ThirdPartyLicensesTopicFileName, Me)
+    Private Sub ThirdPartyNoticesLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ThirdPartyNoticesLinkLabel.LinkClicked
+        help.Show(HelpProvider.ThirdPartyNoticesTopicFileName, Me)
     End Sub
 
     Private Sub WebsiteLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles WebsiteLinkLabel.LinkClicked

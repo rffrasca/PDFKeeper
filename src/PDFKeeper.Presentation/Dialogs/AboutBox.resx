@@ -557,31 +557,31 @@ Customize the application's assembly information in the Application pane of Proj
   <data name="&gt;&gt;LicenseLinkLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ThirdPartyLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="ThirdPartyNoticesLinkLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="ThirdPartyLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="ThirdPartyNoticesLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>63, 301</value>
   </data>
-  <data name="ThirdPartyLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 15</value>
+  <data name="ThirdPartyNoticesLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 15</value>
   </data>
-  <data name="ThirdPartyLinkLabel.TabIndex" type="System.Int32, mscorlib">
+  <data name="ThirdPartyNoticesLinkLabel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="ThirdPartyLinkLabel.Text" xml:space="preserve">
-    <value>Third-Party Attribution</value>
+  <data name="ThirdPartyNoticesLinkLabel.Text" xml:space="preserve">
+    <value>Third-Party Notices</value>
   </data>
-  <data name="&gt;&gt;ThirdPartyLinkLabel.Name" xml:space="preserve">
-    <value>ThirdPartyLinkLabel</value>
+  <data name="&gt;&gt;ThirdPartyNoticesLinkLabel.Name" xml:space="preserve">
+    <value>ThirdPartyNoticesLinkLabel</value>
   </data>
-  <data name="&gt;&gt;ThirdPartyLinkLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;ThirdPartyNoticesLinkLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ThirdPartyLinkLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ThirdPartyNoticesLinkLabel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;ThirdPartyLinkLabel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ThirdPartyNoticesLinkLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

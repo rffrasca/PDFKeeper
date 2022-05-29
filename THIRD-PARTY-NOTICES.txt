@@ -1,0 +1,87 @@
+PDFKeeper 8.0.0
+
+THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+
+**********************************************************************************************
+
+A subset of the icons from the following packages are compiled into PDFKeeper.exe:
+
+Mini Icons (http://www.famfamfam.com/lab/icons/mini/)
+    Authors: Mark James
+    License: Free use for any purpose.
+
+Silk Icons 1.3 (http://www.famfamfam.com/lab/icons/silk/)
+    Authors: Mark James
+    License: CC BY 2.5 License, full text can be found at https://creativecommons.org/licenses/by/2.5/
+    -- or --
+    License: CC BY 3.0 License, full text can be found at https://creativecommons.org/licenses/by/3.0/
+
+**********************************************************************************************
+
+The following components or a subset thereof are included in the binary release:
+
+Autoupdater.NET.Official (https://www.nuget.org/packages/Autoupdater.NET.Official/1.7.0)
+    Authors: rbsoft
+    Copyright: Copyright © 2012-2021 RBSoft
+    License: MIT License, full text can be found at https://github.com/ravibpatel/AutoUpdater.NET/blob/master/LICENSE
+
+Common.Logging (https://www.nuget.org/packages/Common.Logging/3.4.1)
+    Authors: sbohlen and mpollack
+    License: Apache License 2.0, full text can be found at https://www.apache.org/licenses/LICENSE-2.0.txt or https://www.apache.org/licenses/LICENSE-2.0.html
+
+Common.Logging.Core (https://www.nuget.org/packages/Common.Logging.Core/3.4.1)
+    Authors: sbohlen
+    License: Apache License 2.0, full text can be found at https://www.apache.org/licenses/LICENSE-2.0.txt or https://www.apache.org/licenses/LICENSE-2.0.html
+
+Ghostscript 9.55.0 (https://www.ghostscript.com/)
+    Copyright: Copyright (C) 2021 Artifex Software, Inc.  All rights reserved.
+    License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl-3.0.html
+
+itext7 (https://www.nuget.org/packages/itext7/7.1.16)
+    Authors: iText
+    Copyright: Copyright (c) 1998-2021 iText Group NV
+    License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl-3.0.html
+
+itext7.font-asian (https://www.nuget.org/packages/itext7.font-asian/7.1.16)
+    Authors: iText
+    Copyright: Copyright (c) 1998-2021 iText Group NV
+    License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl-3.0.html
+
+Magick.NET-Q16-AnyCPU (https://www.nuget.org/packages/Magick.NET-Q16-AnyCPU/8.4.0)
+    Authors: Dirk Lemstra
+    Copyright: Copyright 2013-2021 Dirk Lemstra
+    License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
+
+Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/8.4.0)
+    Authors: Dirk Lemstra
+    Copyright: Copyright 2013-2021 Dirk Lemstra
+    License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
+
+PdfPig (https://www.nuget.org/packages/PdfPig/0.1.5)
+    Authors: UglyToad
+    License: Apache License 2.0, full text can be found at https://github.com/UglyToad/PdfPig/blob/master/LICENSE
+
+Portable.BouncyCastle (https://www.nuget.org/packages/Portable.BouncyCastle/1.8.9)
+    Authors: clairernovotny
+    Copyright: © 2000-2021 Legion of the Bouncy Castle Inc.
+    License: MIT License, full text can be found at https://www.bouncycastle.org/csharp/licence.html
+
+System.Data.SQLite (https://www.nuget.org/packages/System.Data.SQLite/1.0.115.5)
+    Authors: mistachkin and SQLite
+    Copyright: Copyright © 2004-2008 Hipp, Wyrick & Company, Inc.
+    License: Public Domain, full text can be found at https://www.sqlite.org/copyright.html
+
+SQLite Command Line Shell 3.36.0 (https://www.sqlite.org/index.html)
+    License: Public Domain, full text can be found at https://www.sqlite.org/copyright.html
+
+Sumatra PDF 3.3.3 (https://www.sumatrapdfreader.org/free-pdf-reader)
+    Authors: https://github.com/sumatrapdfreader/sumatrapdf/blob/master/AUTHORS
+    Copyright: Copyright 2006-2021 SumatraPDF project authors
+    License: GPLv3 License, full text can be found at https://github.com/sumatrapdfreader/sumatrapdf/blob/master/COPYING
+    -- and --
+    License: BSD License, full text can be found at https://github.com/sumatrapdfreader/sumatrapdf/blob/master/COPYING.BSD
+
+WindowsAPICodePack (https://www.nuget.org/packages/WindowsAPICodePack/1.1.2)
+    Authors: pwagner
+    Copyright: Copyright (c) 2009 - 2010 Microsoft Coropration, then modifications by Peter William Wagner 2017 - 2021
+    License: MIT License, full text can be found at https://www.nuget.org/packages/WindowsAPICodePack/1.1.2/License

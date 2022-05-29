@@ -62,7 +62,7 @@ Partial Class AboutBox
         Me.OKButton = New System.Windows.Forms.Button()
         Me.WebsiteLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.LicenseLinkLabel = New System.Windows.Forms.LinkLabel()
-        Me.ThirdPartyLinkLabel = New System.Windows.Forms.LinkLabel()
+        Me.ThirdPartyNoticesLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.TableLayoutPanel.SuspendLayout()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -140,18 +140,18 @@ Partial Class AboutBox
         Me.LicenseLinkLabel.Name = "LicenseLinkLabel"
         Me.LicenseLinkLabel.TabStop = True
         '
-        'ThirdPartyLinkLabel
+        'ThirdPartyNoticesLinkLabel
         '
-        resources.ApplyResources(Me.ThirdPartyLinkLabel, "ThirdPartyLinkLabel")
-        Me.ThirdPartyLinkLabel.Name = "ThirdPartyLinkLabel"
-        Me.ThirdPartyLinkLabel.TabStop = True
+        resources.ApplyResources(Me.ThirdPartyNoticesLinkLabel, "ThirdPartyNoticesLinkLabel")
+        Me.ThirdPartyNoticesLinkLabel.Name = "ThirdPartyNoticesLinkLabel"
+        Me.ThirdPartyNoticesLinkLabel.TabStop = True
         '
         'AboutBox
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.OKButton
-        Me.Controls.Add(Me.ThirdPartyLinkLabel)
+        Me.Controls.Add(Me.ThirdPartyNoticesLinkLabel)
         Me.Controls.Add(Me.LicenseLinkLabel)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -167,7 +167,7 @@ Partial Class AboutBox
 
 End Sub
     Friend WithEvents LicenseLinkLabel As System.Windows.Forms.LinkLabel
-    Friend WithEvents ThirdPartyLinkLabel As System.Windows.Forms.LinkLabel
+    Friend WithEvents ThirdPartyNoticesLinkLabel As System.Windows.Forms.LinkLabel
     Friend WithEvents WebsiteLinkLabel As LinkLabel
     Friend WithEvents DonateLinkLabel As LinkLabel
 End Class

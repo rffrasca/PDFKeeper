@@ -56,12 +56,12 @@ Public Class HelpProvider
     End Property
 
     ''' <summary>
-    ''' Gets the third-party licenses topic file name.
+    ''' Gets the Third-Party Notices topic file name.
     ''' </summary>
     ''' <returns>File name</returns>
-    Public Shared ReadOnly Property ThirdPartyLicensesTopicFileName As String
+    Public Shared ReadOnly Property ThirdPartyNoticesTopicFileName As String
         Get
-            Return "THIRD-PARTY-LICENSES-NOTICES.html"
+            Return "THIRD-PARTY-NOTICES.html"
         End Get
     End Property
 
