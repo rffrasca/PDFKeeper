@@ -884,16 +884,13 @@ Public Class MainPresenter
             .WindowState = My.Settings.MainWindowState
         End With
         view.SplitterDistance = My.Settings.MainSplitterDistance
-        If DbSession.Platform <> DbSession.DbPlatform.Sqlite Then
-            If AppPolicies.GetValue(AppPolicies.AppPolicy.DisableQueryAllDocuments) Then
-                view.RemoveListAllDocumentsChoice()
-            End If
-        End If
     End Sub
 
     Private Sub StartupActions()
-        If AppPolicies.GetValue(AppPolicies.AppPolicy.DisableQueryAllDocuments) = 1 Then
-            view.RemoveListAllDocumentsChoice()
+        If DbSession.Platform <> DbSession.DbPlatform.Sqlite Then
+            If AppPolicies.GetValue(AppPolicies.AppPolicy.RemoveListAllDocuments) = 1 Then
+                view.RemoveListAllDocumentsChoice()
+            End If
         End If
         If My.Settings.ListFlaggedDocumentsOnStartup Then
             view.DocumentRetrievalChoiceSelectedIndex = 3

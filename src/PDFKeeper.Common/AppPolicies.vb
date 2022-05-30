@@ -22,7 +22,7 @@ Public NotInheritable Class AppPolicies
     ''' Application policy name type.
     ''' </summary>
     Public Enum AppPolicy
-        DisableQueryAllDocuments
+        RemoveListAllDocuments
     End Enum
 
     ''' <summary>
