@@ -20,8 +20,6 @@
 Imports PDFKeeper.Common
 
 Public Class PdfOwnerPasswordDialog
-    Private ReadOnly help As New HelpProvider
-
     ''' <summary>
     ''' Gets the password entered by the user.
     ''' </summary>
@@ -34,7 +32,6 @@ Public Class PdfOwnerPasswordDialog
 
     Public Sub New()
         InitializeComponent()
-        HelpProvider.HelpNamespace = help.HelpFileName
         PasswordSecureTextBox.Select()
     End Sub
 

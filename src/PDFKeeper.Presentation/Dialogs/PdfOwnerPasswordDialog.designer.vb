@@ -47,7 +47,6 @@ Partial Class PdfOwnerPasswordDialog
         Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.PasswordSecureTextBox = New PDFKeeper.Presentation.SecureTextBox()
         Me.EnterOwnerPasswordLabel = New System.Windows.Forms.Label()
-        Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -91,12 +90,9 @@ Partial Class PdfOwnerPasswordDialog
         Me.Controls.Add(Me.EnterOwnerPasswordLabel)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.HelpProvider.SetHelpKeyword(Me, resources.GetString("$this.HelpKeyword"))
-        Me.HelpProvider.SetHelpNavigator(Me, CType(resources.GetObject("$this.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "PdfOwnerPasswordDialog"
-        Me.HelpProvider.SetShowHelp(Me, CType(resources.GetObject("$this.ShowHelp"), Boolean))
         Me.ShowInTaskbar = False
         Me.TableLayoutPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -108,6 +104,5 @@ Partial Class PdfOwnerPasswordDialog
     Friend WithEvents Cancel_Button As System.Windows.Forms.Button
     Friend WithEvents PasswordSecureTextBox As PDFKeeper.Presentation.SecureTextBox
     Friend WithEvents EnterOwnerPasswordLabel As System.Windows.Forms.Label
-    Friend WithEvents HelpProvider As System.Windows.Forms.HelpProvider
 
 End Class
