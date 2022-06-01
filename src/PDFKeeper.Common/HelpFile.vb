@@ -21,17 +21,17 @@ Imports System.Globalization
 Imports System.IO
 Imports System.Windows.Forms
 
-Public Class HelpProvider
-    Private ReadOnly _HelpFileName As String
+Public Class HelpFile
+    Private ReadOnly _FileName As String
 
     ''' <summary>
     ''' Creates an instance of the class.
     ''' </summary>
     Public Sub New()
         Dim product = My.Application.Info.ProductName
-        _HelpFileName = String.Concat(product, CultureInfo.CurrentCulture.ToString, ".chm")
-        If File.Exists(_HelpFileName) = False Then
-            _HelpFileName = String.Concat(product, ".en-US.chm")
+        _FileName = String.Concat(product, CultureInfo.CurrentCulture.ToString, ".chm")
+        If File.Exists(_FileName) = False Then
+            _FileName = String.Concat(product, ".en-US.chm")
         End If
     End Sub
 
@@ -39,9 +39,9 @@ Public Class HelpProvider
     ''' Gets the help file name based on the current culture.
     ''' </summary>
     ''' <returns>If available, file name for current culture. Otherwise, file name for en-US.</returns>
-    Public ReadOnly Property HelpFileName As String
+    Public ReadOnly Property FileName As String
         Get
-            Return _HelpFileName
+            Return _FileName
         End Get
     End Property
 
@@ -83,7 +83,7 @@ Public Class HelpProvider
         Using hh = New Process
             With hh
                 .StartInfo.FileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "hh.exe")
-                .StartInfo.Arguments = String.Concat("ms-its:", HelpFileName, "::", topic)
+                .StartInfo.Arguments = String.Concat("ms-its:", _FileName, "::", topic)
                 .Start()
                 .WaitForExit()
             End With
@@ -96,6 +96,6 @@ Public Class HelpProvider
     ''' <param name="topic">Topic file name that is contained in the help file.</param>
     ''' <param name="parent">Parent dialog, form, or control object of the Help dialog.</param>
     Public Sub Show(ByVal topic As String, ByVal parent As Control)
-        Help.ShowHelp(parent, HelpFileName, topic)
+        Help.ShowHelp(parent, _FileName, topic)
     End Sub
 End Class
