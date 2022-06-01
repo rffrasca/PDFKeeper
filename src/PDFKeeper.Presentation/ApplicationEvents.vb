@@ -10,7 +10,7 @@ Namespace My
     ' NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
     Partial Friend Class MyApplication
         Private Sub MyApplication_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
-            Dim help = New HelpProvider
+            Dim help = New HelpFile
             Dim previousVersion = UserSettingsConfig.Version
             UserSettingsConfig.Upgrade()
             If UserSettingsConfig.FirstUse Then

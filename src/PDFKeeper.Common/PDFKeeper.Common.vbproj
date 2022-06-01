@@ -79,7 +79,7 @@
     <Compile Include="AppProperties.vb" />
     <Compile Include="AppFolderShortcuts.vb" />
     <Compile Include="ExtensionMethods.vb" />
-    <Compile Include="HelpProvider.vb" />
+    <Compile Include="HelpFile.vb" />
     <Compile Include="ICommand.vb" />
     <Compile Include="MessageBoxHelper.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

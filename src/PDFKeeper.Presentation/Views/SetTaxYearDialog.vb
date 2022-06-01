@@ -23,12 +23,12 @@ Imports PDFKeeper.Services
 Public Class SetTaxYearDialog
     Implements ISetTaxYearView
     Private ReadOnly presenter As SetTaxYearPresenter
-    Private ReadOnly help As New HelpProvider
+    Private ReadOnly help As New HelpFile
 
     Public Sub New()
         InitializeComponent()
         presenter = New SetTaxYearPresenter(Me, New TaxYearListService)
-        HelpProvider.HelpNamespace = help.HelpFileName
+        HelpProvider.HelpNamespace = help.FileName
         AddHandlers()
     End Sub
 

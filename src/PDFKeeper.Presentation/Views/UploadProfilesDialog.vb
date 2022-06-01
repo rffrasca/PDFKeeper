@@ -25,7 +25,7 @@ Imports PDFKeeper.Services
 Public Class UploadProfilesDialog
     Implements IUploadProfilesView
     Private ReadOnly presenter As UploadProfilesPresenter
-    Private ReadOnly help As New HelpProvider
+    Private ReadOnly help As New HelpFile
 
     Public Sub New()
         InitializeComponent()
@@ -36,7 +36,7 @@ Public Class UploadProfilesDialog
                                                 New TaxYearListService, New UploadProfileService(
                                                 New XmlRepository(Of UploadProfileModel)(AppFolders.GetPath(
                                                 AppFolders.AppFolder.UploadProfiles))))
-        HelpProvider.HelpNamespace = help.HelpFileName
+        HelpProvider.HelpNamespace = help.FileName
         AddHandlers()
     End Sub
 

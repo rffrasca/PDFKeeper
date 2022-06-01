@@ -20,7 +20,7 @@
 Imports PDFKeeper.Common
 
 Public NotInheritable Class AboutBox
-    Private ReadOnly help As New HelpProvider
+    Private ReadOnly help As New HelpFile
 
     Private Sub AboutBox_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' Set the title of the form.
@@ -52,11 +52,11 @@ Public NotInheritable Class AboutBox
     End Sub
 
     Private Sub LicenseLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LicenseLinkLabel.LinkClicked
-        help.Show(HelpProvider.LicenseTopicFileName, Me)
+        help.Show(HelpFile.LicenseTopicFileName, Me)
     End Sub
 
     Private Sub ThirdPartyNoticesLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles ThirdPartyNoticesLinkLabel.LinkClicked
-        help.Show(HelpProvider.ThirdPartyNoticesTopicFileName, Me)
+        help.Show(HelpFile.ThirdPartyNoticesTopicFileName, Me)
     End Sub
 
     Private Sub WebsiteLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles WebsiteLinkLabel.LinkClicked
@@ -64,7 +64,7 @@ Public NotInheritable Class AboutBox
     End Sub
 
     Private Sub DonateLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles DonateLinkLabel.LinkClicked
-        help.Show(HelpProvider.DonateTopicFileName, Me)
+        help.Show(HelpFile.DonateTopicFileName, Me)
     End Sub
 
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OKButton.Click

@@ -37,7 +37,7 @@ Public Class MainPresenter
     Private ReadOnly findTextHistorySvc As IFindTextHistoryService
     Private ReadOnly pdfSvc As IPdfService
     Private ReadOnly uploadSvc As IUploadService
-    Private ReadOnly help As New HelpProvider
+    Private ReadOnly help As New HelpFile
     Private ReadOnly message As New MessageBoxHelper
     Private ReadOnly dgvSortProperties As New DataGridViewSortProperties
     Private toolStripStateManager As ToolStripStateManager

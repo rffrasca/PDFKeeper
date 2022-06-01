@@ -24,12 +24,12 @@ Imports PDFKeeper.Services
 Public Class SetCategoryDialog
     Implements ISetCategoryView
     Private ReadOnly presenter As SetCategoryPresenter
-    Private ReadOnly help As New HelpProvider
+    Private ReadOnly help As New HelpFile
 
     Public Sub New()
         InitializeComponent()
         presenter = New SetCategoryPresenter(Me, New CategoryListService(DocumentRepositoryFactory.Repository))
-        HelpProvider.HelpNamespace = help.HelpFileName
+        HelpProvider.HelpNamespace = help.FileName
         AddHandlers()
     End Sub
 

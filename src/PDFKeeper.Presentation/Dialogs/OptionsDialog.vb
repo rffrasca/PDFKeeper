@@ -20,11 +20,11 @@
 Imports PDFKeeper.Common
 
 Public Class OptionsDialog
-    Private ReadOnly help As New HelpProvider
+    Private ReadOnly help As New HelpFile
 
     Public Sub New()
         InitializeComponent()
-        HelpProvider.HelpNamespace = help.HelpFileName
+        HelpProvider.HelpNamespace = help.FileName
     End Sub
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click

@@ -23,12 +23,12 @@ Imports PDFKeeper.Services
 Public Class LoginForm
     Implements ILoginView
     Private ReadOnly presenter As LoginPresenter
-    Private ReadOnly help As New HelpProvider
+    Private ReadOnly help As New HelpFile
 
     Public Sub New()
         InitializeComponent()
         presenter = New LoginPresenter(Me, New LoginService)
-        HelpProvider.HelpNamespace = help.HelpFileName
+        HelpProvider.HelpNamespace = help.FileName
         AddHandlers()
     End Sub
 

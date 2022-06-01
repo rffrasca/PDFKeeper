@@ -26,7 +26,7 @@ Imports PDFKeeper.Services
 Public Class MainForm
     Implements IMainView, INotifyPropertyChanged
     Private ReadOnly presenter As MainPresenter
-    Private ReadOnly help As New HelpProvider
+    Private ReadOnly help As New HelpFile
     Private _NotesChanged As Boolean
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
@@ -45,7 +45,7 @@ Public Class MainForm
                                       New DocumentService(repository),
                                       New UploadProfileService(New XmlRepository(Of UploadProfileModel)(
                                       AppFolders.GetPath(AppFolders.AppFolder.UploadProfiles)))))
-        HelpProvider.HelpNamespace = help.HelpFileName
+        HelpProvider.HelpNamespace = help.FileName
         SetToolStripItemTags()
         AddHandlers()
     End Sub
