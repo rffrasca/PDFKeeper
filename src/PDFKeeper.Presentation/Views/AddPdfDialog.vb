@@ -24,14 +24,14 @@ Imports PDFKeeper.Services
 Public Class AddPdfDialog
     Implements IAddPdfView
     Private ReadOnly presenter As AddPdfPresenter
-    Private ReadOnly help As New HelpProvider
+    Private ReadOnly help As New HelpFile
 
     Public Sub New()
         InitializeComponent()
         Dim repository = DocumentRepositoryFactory.Repository
         presenter = New AddPdfPresenter(Me, New AuthorListService(repository), New SubjectListService(repository),
                                         New CategoryListService(repository), New TaxYearListService, New PdfService)
-        HelpProvider.HelpNamespace = help.HelpFileName
+        HelpProvider.HelpNamespace = help.FileName
         AddHandlers()
     End Sub
 
