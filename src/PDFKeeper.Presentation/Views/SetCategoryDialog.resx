@@ -274,7 +274,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="$this.HelpKeyword" xml:space="preserve">
-    <value>Set Category on Document Records.html</value>
+    <value>Set Category on Documents.html</value>
   </data>
   <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>

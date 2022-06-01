@@ -313,7 +313,7 @@
     <value>202, 17</value>
   </metadata>
   <data name="TaxYearComboBox.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="TaxYearComboBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
@@ -371,7 +371,7 @@
     <value>1</value>
   </data>
   <data name="DiscardButton.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="DiscardButton.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -427,7 +427,7 @@
     <value>2</value>
   </data>
   <data name="SaveButton.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="SaveButton.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -476,7 +476,7 @@
     <value>True</value>
   </data>
   <data name="FlagDocumentCheckBox.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="FlagDocumentCheckBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -512,7 +512,7 @@
     <value>4</value>
   </data>
   <data name="CategoryComboBox.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="CategoryComboBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -545,7 +545,7 @@
     <value>True</value>
   </data>
   <data name="CategoryLabel.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="CategoryLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -581,7 +581,7 @@
     <value>6</value>
   </data>
   <data name="KeywordsTextBox.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="KeywordsTextBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -617,7 +617,7 @@
     <value>True</value>
   </data>
   <data name="KeywordsLabel.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="KeywordsLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -653,7 +653,7 @@
     <value>8</value>
   </data>
   <data name="SubjectComboBox.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="SubjectComboBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -686,7 +686,7 @@
     <value>True</value>
   </data>
   <data name="SubjectLabel.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="SubjectLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -722,7 +722,7 @@
     <value>10</value>
   </data>
   <data name="AuthorComboBox.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="AuthorComboBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -755,7 +755,7 @@
     <value>True</value>
   </data>
   <data name="AuthorLabel.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="AuthorLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -791,7 +791,7 @@
     <value>12</value>
   </data>
   <data name="TitleComboBox.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="TitleComboBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -824,7 +824,7 @@
     <value>True</value>
   </data>
   <data name="TitleLabel.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="TitleLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -860,7 +860,7 @@
     <value>14</value>
   </data>
   <data name="ProfileNameTextBox.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="ProfileNameTextBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -893,7 +893,7 @@
     <value>True</value>
   </data>
   <data name="NameLabel.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="NameLabel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -929,7 +929,7 @@
     <value>16</value>
   </data>
   <data name="ProfileGroupBox.HelpKeyword" xml:space="preserve">
-    <value>Configuring an Upload Folder.html</value>
+    <value>Upload Profile Properties.html</value>
   </data>
   <data name="ProfileGroupBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -965,7 +965,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="$this.HelpKeyword" xml:space="preserve">
-    <value>Adding, Editing, and Deleting Upload Folder Configurations.html</value>
+    <value>Adding, Editing, and Deleting Upload Profiles.html</value>
   </data>
   <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>

@@ -271,7 +271,7 @@
     <value>189, 117</value>
   </data>
   <data name="$this.HelpKeyword" xml:space="preserve">
-    <value>Set Tax Year on Document Records.html</value>
+    <value>Set Tax Year on Documents.html</value>
   </data>
   <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
