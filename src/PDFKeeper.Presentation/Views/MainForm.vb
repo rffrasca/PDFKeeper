@@ -654,8 +654,8 @@ Public Class MainForm
     End Sub
 
     Protected Overrides Sub WndProc(ByRef m As Message)
-        MyBase.WndProc(m)
         presenter.MyBaseWndProc(m)
+        MyBase.WndProc(m)
     End Sub
 
     Private Sub SetToolStripItemTags()
