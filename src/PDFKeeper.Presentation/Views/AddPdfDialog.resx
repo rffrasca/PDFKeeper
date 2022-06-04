@@ -148,12 +148,6 @@
   <data name="PreviewButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 3</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="PreviewButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="PreviewButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
@@ -186,9 +180,6 @@
   </data>
   <data name="Cancel_Button.Location" type="System.Drawing.Point, System.Drawing">
     <value>258, 3</value>
-  </data>
-  <data name="Cancel_Button.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="Cancel_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
@@ -243,9 +234,6 @@
   <data name="AddButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>173, 3</value>
   </data>
-  <data name="AddButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="AddButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
@@ -289,9 +277,6 @@
   <data name="SaveButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="SaveButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="SaveButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
@@ -318,9 +303,6 @@
   </data>
   <data name="TableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="TableLayoutPanel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="TableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>340, 33</value>
@@ -352,9 +334,6 @@
   <data name="SelectedPdfLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 9</value>
   </data>
-  <data name="SelectedPdfLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="SelectedPdfLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 15</value>
   </data>
@@ -378,9 +357,6 @@
   </data>
   <data name="SelectedPdfTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 27</value>
-  </data>
-  <data name="SelectedPdfTextBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="SelectedPdfTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>573, 23</value>
@@ -419,9 +395,6 @@
   <data name="ViewButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>594, 27</value>
   </data>
-  <data name="ViewButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="ViewButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 23</value>
   </data>
@@ -452,9 +425,6 @@
   <data name="TitleLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 62</value>
   </data>
-  <data name="TitleLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="TitleLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 15</value>
   </data>
@@ -479,9 +449,6 @@
   <data name="TitleTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 81</value>
   </data>
-  <data name="TitleTextBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="TitleTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>501, 23</value>
   </data>
@@ -505,9 +472,6 @@
   </data>
   <data name="SetTitleToFileNameButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 81</value>
-  </data>
-  <data name="SetTitleToFileNameButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="SetTitleToFileNameButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 23</value>
@@ -539,9 +503,6 @@
   <data name="AuthorLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 121</value>
   </data>
-  <data name="AuthorLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="AuthorLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 15</value>
   </data>
@@ -566,9 +527,6 @@
   <data name="AuthorComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 140</value>
   </data>
-  <data name="AuthorComboBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="AuthorComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>657, 23</value>
   </data>
@@ -589,9 +547,6 @@
   </data>
   <data name="SubjectComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 193</value>
-  </data>
-  <data name="SubjectComboBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="SubjectComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>657, 23</value>
@@ -619,9 +574,6 @@
   </data>
   <data name="SubjectLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 175</value>
-  </data>
-  <data name="SubjectLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="SubjectLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 15</value>
@@ -653,9 +605,6 @@
   <data name="KeywordsLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 233</value>
   </data>
-  <data name="KeywordsLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="KeywordsLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 15</value>
   </data>
@@ -683,9 +632,6 @@
   <data name="KeywordsTextBox.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="KeywordsTextBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="KeywordsTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>657, 82</value>
   </data>
@@ -706,9 +652,6 @@
   </data>
   <data name="CategoryComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 364</value>
-  </data>
-  <data name="CategoryComboBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="CategoryComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>501, 23</value>
@@ -737,9 +680,6 @@
   <data name="CategoryLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 346</value>
   </data>
-  <data name="CategoryLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="CategoryLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 15</value>
   </data>
@@ -763,9 +703,6 @@
   </data>
   <data name="TaxYearComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 364</value>
-  </data>
-  <data name="TaxYearComboBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="TaxYearComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 23</value>
@@ -793,9 +730,6 @@
   </data>
   <data name="TaxYearLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 346</value>
-  </data>
-  <data name="TaxYearLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="TaxYearLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 15</value>
@@ -827,9 +761,6 @@
   <data name="FlagDocumentCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 405</value>
   </data>
-  <data name="FlagDocumentCheckBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="FlagDocumentCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 19</value>
   </data>
@@ -860,9 +791,6 @@
   <data name="DeleteSelectedPdfWhenAddedCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 429</value>
   </data>
-  <data name="DeleteSelectedPdfWhenAddedCheckBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="DeleteSelectedPdfWhenAddedCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>197, 19</value>
   </data>
@@ -890,6 +818,9 @@
   <data name="OpenFileDialog.Filter" xml:space="preserve">
     <value>PDF files|*.pdf</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -903,7 +834,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="$this.HelpKeyword" xml:space="preserve">
-    <value>Selecting and Adding PDF Documents to PDFKeeper.html</value>
+    <value>Add PDF from within PDFKeeper.html</value>
   </data>
   <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
@@ -917,17 +848,17 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Add PDF</value>
   </data>
-  <data name="&gt;&gt;HelpProvider.Name" xml:space="preserve">
-    <value>HelpProvider</value>
-  </data>
-  <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
-    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;OpenFileDialog.Name" xml:space="preserve">
     <value>OpenFileDialog</value>
   </data>
   <data name="&gt;&gt;OpenFileDialog.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HelpProvider.Name" xml:space="preserve">
+    <value>HelpProvider</value>
+  </data>
+  <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>AddPdfDialog</value>
