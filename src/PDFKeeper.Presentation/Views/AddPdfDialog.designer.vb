@@ -249,6 +249,7 @@ Partial Class AddPdfDialog
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.Cancel_Button
         Me.Controls.Add(Me.TaxYearComboBox)
         Me.Controls.Add(Me.TaxYearLabel)
         Me.Controls.Add(Me.CategoryComboBox)

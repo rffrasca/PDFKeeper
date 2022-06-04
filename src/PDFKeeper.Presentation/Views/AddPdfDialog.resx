@@ -125,9 +125,6 @@
   <data name="TableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="PreviewButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -151,6 +148,9 @@
   <data name="PreviewButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 3</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="PreviewButton.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -319,9 +319,6 @@
   <data name="TableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="TableLayoutPanel.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
