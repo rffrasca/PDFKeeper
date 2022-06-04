@@ -255,4 +255,7 @@ The contents of the Notes text box prior to the attempted save operation have be
   <data name="Export" xml:space="preserve">
     <value>Export</value>
   </data>
+  <data name="OpenCheckedDocumentsMaximumReached" xml:space="preserve">
+    <value>More than {0} documents have been selected. Only the first {0} selected documents will be opened.</value>
+  </data>
 </root>

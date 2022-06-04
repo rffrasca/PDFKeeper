@@ -254,6 +254,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to More than {0} documents have been selected. Only the first {0} selected documents will be opened..
+        '''</summary>
+        Friend ReadOnly Property OpenCheckedDocumentsMaximumReached() As String
+            Get
+                Return ResourceManager.GetString("OpenCheckedDocumentsMaximumReached", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property page_text() As System.Drawing.Bitmap

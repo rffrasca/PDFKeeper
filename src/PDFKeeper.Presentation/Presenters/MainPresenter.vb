@@ -108,7 +108,11 @@ Public Class MainPresenter
     End Sub
 
     Friend Sub FileOpenToolStrip_Click(sender As Object, e As EventArgs)
-        DocumentListDataGridView_CellDoubleClick(Me, Nothing)
+        If view.CheckedDocumentIdItems().Count > 0 Then
+            ProcessCheckedDocuments(CheckedDocumentsAction.Open, Nothing)
+        Else
+            DocumentListDataGridView_CellDoubleClick(Me, Nothing)
+        End If
     End Sub
 
     Friend Sub FileSaveToolStrip_Click(sender As Object, e As EventArgs)
@@ -861,6 +865,7 @@ Public Class MainPresenter
     End Sub
 
     Private Enum CheckedDocumentsAction
+        Open
         SetCategory
         SetTaxYear
         Delete
@@ -1035,23 +1040,39 @@ Public Class MainPresenter
     End Sub
 
     Private Sub ProcessCheckedDocuments(ByVal action As CheckedDocumentsAction, ByVal param As String)
+        Dim openMaximum = 12
         view.ProgressBarVisible = True
         view.ProgressBarMaximum = view.CheckedDocumentIdItems.Count
+        If action = CheckedDocumentsAction.Open Then
+            If view.CheckedDocumentIdItems.Count > openMaximum Then
+                view.ProgressBarMaximum = openMaximum
+                message.ShowMessage(String.Format(CultureInfo.CurrentCulture,
+                                                  My.Resources.ResourceManager.GetString(
+                                                  "OpenCheckedDocumentsMaximumReached", CultureInfo.CurrentCulture),
+                                                  openMaximum), False)
+            End If
+        End If
         If action = CheckedDocumentsAction.Export Then
             param = Path.Combine(param, String.Concat(My.Application.Info.ProductName, "-", My.Resources.Export, "_",
                                                       DateTime.Now.ToString("yyyy-MM-dd_HH.mm",
                                                                             CultureInfo.CurrentCulture)))
             Directory.CreateDirectory(param)
         End If
+        Dim count = 0   ' Used by Open only.
         For Each id In view.CheckedDocumentIdItems()
             Try
                 viewInstance.Cursor = Cursors.WaitCursor
-                If action = CheckedDocumentsAction.SetCategory Then
+                If action = CheckedDocumentsAction.Open Then
+                    count += 1
+                    If count <= openMaximum Then
+                        OpenDocument(id)
+                    End If
+                ElseIf action = CheckedDocumentsAction.SetCategory Then
                     UpdateDocument(id, CheckedDocumentsAction.SetCategory, param)
                 ElseIf action = CheckedDocumentsAction.SetTaxYear Then
                     UpdateDocument(id, CheckedDocumentsAction.SetTaxYear, param)
                 ElseIf action = CheckedDocumentsAction.Delete Then
-                    DeleteDocument(id)
+                    documentSvc.DeleteDocument(id)
                 ElseIf action = CheckedDocumentsAction.Export Then
                     ExportDocument(id, param)
                 ElseIf action = CheckedDocumentsAction.Update Then
@@ -1087,6 +1108,12 @@ Public Class MainPresenter
         End If
     End Sub
 
+    Private Sub OpenDocument(ByVal id As Integer)
+        Dim document = documentSvc.ReadDocument(id)
+        fileCacheSvc.AddPdfToCache(id, document.Pdf)
+        pdfSvc.ShowPdf(fileCacheSvc.GetCachedPdfFullName(id), My.Settings.ShowPdfWithDefaultApplication)
+    End Sub
+
     Private Sub UpdateDocument(ByVal id As Integer, ByVal action As CheckedDocumentsAction, ByVal value As String)
         Dim document = documentSvc.ReadDocument(id)
         If action = CheckedDocumentsAction.SetCategory Then
@@ -1095,10 +1122,6 @@ Public Class MainPresenter
             document.TaxYear = value
         End If
         documentSvc.UpdateDocument(id, document)
-    End Sub
-
-    Private Sub DeleteDocument(ByVal id As Integer)
-        documentSvc.DeleteDocument(id)
     End Sub
 
     Private Sub ExportDocument(ByVal id As Integer, ByVal exportPath As String)
