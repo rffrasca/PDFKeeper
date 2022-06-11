@@ -92,6 +92,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PDF\PdfFileSplitter.vb" />
     <Compile Include="PDF\PdfInfoModel.vb" />
     <Compile Include="PDF\PdfOwnerPasswordValidator.vb" />
     <Compile Include="PDF\PdfPasswordTypes.vb" />

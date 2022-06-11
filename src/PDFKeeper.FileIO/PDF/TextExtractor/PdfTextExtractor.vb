@@ -20,6 +20,7 @@
 Imports System.IO
 Imports System.Text
 Imports iText.Kernel.Pdf
+Imports PDFKeeper.Common
 
 Public Class PdfTextExtractor
     Inherits PdfBase
@@ -57,30 +58,35 @@ Public Class PdfTextExtractor
     End Function
 
     ''' <summary>
-    ''' Gets text from the PDF using the appropriate extraction strategy for the PDF being processed.
+    ''' Gets text from the PDF using the appropriate extraction strategy for the PDF page being processed.
     ''' 
     ''' Primary Extraction Strategy:
-    ''' Uses iText for text based PDF except when PDF contains an invalid encoding due to its strict adherence to the
-    ''' PDF specification (ISO 32000).
+    ''' Uses iText for text based PDF page except when PDF page contains an invalid encoding due to iText's strict
+    ''' adherence to the PDF specification (ISO 32000).
     ''' 
     ''' Alternate Extraction Strategy:
-    ''' Uses UglyToad.PdfPig for text based PDF that was rejected by iText because of an invalid encoding.
+    ''' Uses UglyToad.PdfPig for text based PDF page that was rejected by iText because of an invalid encoding.
     ''' 
     ''' OCR Extraction Strategy:
-    ''' Uses OCR for "Image-only" PDF.
+    ''' Uses OCR for "Image-only" PDF page.
     ''' </summary>
     ''' <returns>Text</returns>
     Public Function GetText() As String
+        Dim pdfText = New StringBuilder
         Dim strategy As IPdfTextExtractionStrategy
-        strategy = New PdfPriTextExtractionStrategy
-        Dim text = strategy.GetText(Me.file)
-        If text Is Nothing Then
-            strategy = New PdfAltTextExtractionStrategy
-            text = strategy.GetText(Me.file)
-        ElseIf text.Trim.Length = 0 Then
-            strategy = New PdfOcrTextExtractionStrategy
-            text = strategy.GetText(Me.file)
-        End If
-        Return text
+        For Each pdf In New PdfFile(file.FullName).Split(AppFolders.GetPath(AppFolders.AppFolder.Temp))
+            strategy = New PdfPriTextExtractionStrategy
+            Dim text = strategy.GetText(pdf)
+            If text Is Nothing Then
+                strategy = New PdfAltTextExtractionStrategy
+                text = strategy.GetText(pdf)
+            ElseIf text.Trim.Length = 0 Then
+                strategy = New PdfOcrTextExtractionStrategy
+                text = strategy.GetText(pdf)
+            End If
+            pdfText.Append(text)
+            pdf.Delete()
+        Next
+        Return pdfText.ToString
     End Function
 End Class

@@ -17,6 +17,7 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
+Imports System.Collections.ObjectModel
 Imports System.IO
 Imports ImageMagick
 Imports iText.Kernel.Crypto
@@ -61,6 +62,29 @@ Public Class PdfFile
             End Try
         End Get
     End Property
+
+    ''' <summary>
+    ''' Splits PDF into separate one page PDF files.
+    ''' </summary>
+    ''' <param name="destPath">Destination folder path</param>
+    ''' <returns>Collection of PDF file path names</returns>
+    Public Function Split(ByVal destPath As String) As Collection(Of FileInfo)
+        Dim splitPdfFiles As New Collection(Of FileInfo)
+        Using reader = New PdfReader(file)
+            Using pdfDoc = New PdfDocument(reader)
+                Dim splitter = New PdfFileSplitter(pdfDoc, destPath, file.Name)
+                For Each splittedDoc In splitter.SplitByPageCount(1)
+                    splittedDoc.Close()
+                Next
+            End Using
+        End Using
+        For Each splitPdfFile In Directory.GetFiles(destPath,
+                                                    String.Concat(Path.GetFileNameWithoutExtension(file.Name),
+                                                                  "_*.pdf"))
+            splitPdfFiles.Add(New FileInfo(splitPdfFile))
+        Next
+        Return splitPdfFiles
+    End Function
 
     ''' <summary>
     ''' Creates a preview image containing the first page of the PDF.
