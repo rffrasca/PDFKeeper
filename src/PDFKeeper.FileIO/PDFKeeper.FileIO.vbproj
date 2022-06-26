@@ -100,11 +100,10 @@
     <Compile Include="PDF\PdfFile.vb" />
     <Compile Include="PDF\PdfInfo.vb" />
     <Compile Include="PDF\TextExtractor\ImageTextExtractor.vb" />
-    <Compile Include="PDF\TextExtractor\PdfAltTextExtractionStrategy.vb" />
     <Compile Include="PDF\TextExtractor\IPdfTextExtractionStrategy.vb" />
     <Compile Include="PDF\TextExtractor\PdfOcrTextExtractionStrategy.vb" />
     <Compile Include="PDF\TextExtractor\PdfTextExtractor.vb" />
-    <Compile Include="PDF\TextExtractor\PdfPriTextExtractionStrategy.vb" />
+    <Compile Include="PDF\TextExtractor\PdfTextExtractionStrategy.vb" />
     <Compile Include="PDF\Viewer\BundledPdfViewerBase.vb" />
     <Compile Include="PDF\Viewer\PdfViewer.vb" />
     <Compile Include="PDF\Viewer\RestrictedPdfViewer.vb" />
@@ -160,9 +159,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
       <Version>10.0.19041.1</Version>
-    </PackageReference>
-    <PackageReference Include="PdfPig">
-      <Version>0.1.5</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

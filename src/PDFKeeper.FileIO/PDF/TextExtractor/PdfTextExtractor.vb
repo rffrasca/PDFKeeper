@@ -60,25 +60,22 @@ Public Class PdfTextExtractor
     ''' <summary>
     ''' Gets text from the PDF using the appropriate extraction strategy for the PDF page being processed.
     ''' 
-    ''' Primary Extraction Strategy:
-    ''' Uses iText for text based PDF page except when PDF page contains an invalid encoding due to iText's strict
-    ''' adherence to the PDF specification (ISO 32000).
+    ''' Text Extraction Strategy:
+    ''' Uses iText for text based PDF page except when page contains an invalid encoding due to iText's strict adherence
+    ''' to the PDF specification (ISO 32000) or when iText is unable to extract text from the page for another reason.
     ''' 
-    ''' Alternate Extraction Strategy:
-    ''' Uses UglyToad.PdfPig for text based PDF page that was rejected by iText because of an invalid encoding.
-    ''' 
-    ''' OCR Extraction Strategy:
-    ''' Uses OCR for "Image-only" PDF page.
+    ''' OCR Text Extraction Strategy:
+    ''' Uses OCR for text based PDF when page is rejected by iText or when the page is "Image-only".
     ''' </summary>
     ''' <returns>Text</returns>
     Public Function GetText() As String
         Dim pdfText = New StringBuilder
         Dim strategy As IPdfTextExtractionStrategy
         For Each pdf In New PdfFile(file.FullName).Split(AppFolders.GetPath(AppFolders.AppFolder.Temp))
-            strategy = New PdfPriTextExtractionStrategy
+            strategy = New PdfTextExtractionStrategy
             Dim text = strategy.GetText(pdf)
             If text Is Nothing Then
-                strategy = New PdfAltTextExtractionStrategy
+                strategy = New PdfOcrTextExtractionStrategy
                 text = strategy.GetText(pdf)
             ElseIf text.Trim.Length = 0 Then
                 strategy = New PdfOcrTextExtractionStrategy

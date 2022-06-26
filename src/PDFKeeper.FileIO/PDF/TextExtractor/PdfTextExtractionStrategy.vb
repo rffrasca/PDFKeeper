@@ -22,7 +22,7 @@ Imports System.Text
 Imports iText.Kernel.Pdf
 Imports iText.Kernel.Pdf.Canvas.Parser.Listener
 
-Public Class PdfPriTextExtractionStrategy
+Public Class PdfTextExtractionStrategy
     Implements IPdfTextExtractionStrategy
 
     Public Function GetText(pdfFile As FileInfo) As String Implements IPdfTextExtractionStrategy.GetText

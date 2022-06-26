@@ -57,10 +57,6 @@ Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/8.4.0)
     Copyright: Copyright 2013-2021 Dirk Lemstra
     License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
 
-PdfPig (https://www.nuget.org/packages/PdfPig/0.1.5)
-    Authors: UglyToad
-    License: Apache License 2.0, full text can be found at https://github.com/UglyToad/PdfPig/blob/master/LICENSE
-
 Portable.BouncyCastle (https://www.nuget.org/packages/Portable.BouncyCastle/1.8.9)
     Authors: clairernovotny
     Copyright: © 2000-2021 Legion of the Bouncy Castle Inc.
