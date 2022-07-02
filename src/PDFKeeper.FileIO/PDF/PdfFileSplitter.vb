@@ -23,7 +23,7 @@ Imports iText.Kernel.Pdf
 Imports iText.Kernel.Utils
 
 <CLSCompliant(False)>
-Public Class PdfFileSplitter
+Friend Class PdfFileSplitter
     Inherits PdfSplitter
     Private ReadOnly destPath As String
     Private ReadOnly pdfName As String
