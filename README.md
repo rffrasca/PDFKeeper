@@ -5,7 +5,7 @@
 PDFKeeper is free, open source software that provides a storage and management solution for PDF documents.
 
 ![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot-7.0.0.png)
-Screenshot of main window in version 7.0.0 and later.
+Screenshot of main window in version 7.x.x.
 
 ### Features
 * Store and manage PDF documents in a local or compatible, client-server relational database where they’re indexed to provide full-text search functionality.
@@ -17,7 +17,7 @@ Screenshot of main window in version 7.0.0 and later.
 * With PDFKeeper, the following functions can be performed on a selected document record: PDF document viewing with the bundled or default viewer; flag document state management; notes viewing and editing; keywords, PDF preview, and PDF text are also displayed for viewing.
 * Export selected PDF documents with their category, tax year, notes, and flag state from the database for easy importing.
 
-These features are available in version 7.0.0 and later. 
+These features are available in version 7.x.x. 
 
 ### Client Requirements and Compatible Database Management Systems
 Listed on the release page for each available version.
