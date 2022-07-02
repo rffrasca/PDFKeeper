@@ -54,6 +54,16 @@ Public MustInherit Class BaseFile
     End Property
 
     ''' <summary>
+    ''' Gets the file name of the file without the file extension.
+    ''' </summary>
+    ''' <returns>String containing the file name minus the extension.</returns>
+    Public ReadOnly Property FileNameWithoutExtension As String
+        Get
+            Return Path.GetFileNameWithoutExtension(file.FullName)
+        End Get
+    End Property
+
+    ''' <summary>
     ''' Copies the file to a new file.
     ''' </summary>
     ''' <param name="destFile">Destination file name</param>

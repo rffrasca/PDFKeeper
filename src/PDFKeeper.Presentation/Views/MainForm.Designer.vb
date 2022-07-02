@@ -51,6 +51,8 @@ Partial Class MainForm
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.FileSaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileSaveAsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator15 = New System.Windows.Forms.ToolStripSeparator()
+        Me.FileBurstToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.FilePrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FilePrintPreviewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -143,6 +145,7 @@ Partial Class MainForm
         Me.FileAddToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.FileOpenToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.FileSaveToolStripButton = New System.Windows.Forms.ToolStripButton()
+        Me.FileBurstToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.FilePrintToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.FileDeleteToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator17 = New System.Windows.Forms.ToolStripSeparator()
@@ -201,7 +204,7 @@ Partial Class MainForm
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripMenuItem, Me.ToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.ToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.ToolStripSeparator4, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.ToolStripSeparator3, Me.FileSelectToolStripMenuItem, Me.FileSetCategoryToolStripMenuItem, Me.FileSetTaxYearToolStripMenuItem, Me.FileDeleteToolStripMenuItem, Me.FileExportToolStripMenuItem, Me.ToolStripSeparator6, Me.FileExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripMenuItem, Me.ToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.ToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.ToolStripSeparator15, Me.FileBurstToolStripMenuItem, Me.ToolStripSeparator4, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.ToolStripSeparator3, Me.FileSelectToolStripMenuItem, Me.FileSetCategoryToolStripMenuItem, Me.FileSetTaxYearToolStripMenuItem, Me.FileDeleteToolStripMenuItem, Me.FileExportToolStripMenuItem, Me.ToolStripSeparator6, Me.FileExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         resources.ApplyResources(Me.FileToolStripMenuItem, "FileToolStripMenuItem")
         '
@@ -234,6 +237,17 @@ Partial Class MainForm
         '
         Me.FileSaveAsToolStripMenuItem.Name = "FileSaveAsToolStripMenuItem"
         resources.ApplyResources(Me.FileSaveAsToolStripMenuItem, "FileSaveAsToolStripMenuItem")
+        '
+        'ToolStripSeparator15
+        '
+        Me.ToolStripSeparator15.Name = "ToolStripSeparator15"
+        resources.ApplyResources(Me.ToolStripSeparator15, "ToolStripSeparator15")
+        '
+        'FileBurstToolStripMenuItem
+        '
+        Me.FileBurstToolStripMenuItem.Image = Global.PDFKeeper.Presentation.My.Resources.Resources.cut_red
+        Me.FileBurstToolStripMenuItem.Name = "FileBurstToolStripMenuItem"
+        resources.ApplyResources(Me.FileBurstToolStripMenuItem, "FileBurstToolStripMenuItem")
         '
         'ToolStripSeparator4
         '
@@ -779,7 +793,7 @@ Partial Class MainForm
         'ToolStrip
         '
         Me.ToolStrip.DataBindings.Add(New System.Windows.Forms.Binding("Visible", Global.PDFKeeper.Presentation.My.MySettings.Default, "MainToolBarVisible", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripButton, Me.FileOpenToolStripButton, Me.FileSaveToolStripButton, Me.FilePrintToolStripButton, Me.FileDeleteToolStripButton, Me.ToolStripSeparator17, Me.EditUndoToolStripButton, Me.EditCutToolStripButton, Me.EditCopyToolStripButton, Me.EditPasteToolStripButton, Me.EditRestoreToolStripButton, Me.EditDateTimeToolStripButton, Me.ToolStripSeparator20, Me.ViewRefreshToolStripButton, Me.ToolStripSeparator14, Me.InsertTextToolStripButton, Me.ToolStripSeparator21, Me.ToolsOptionsToolStripButton, Me.ToolsUploadProfilesToolStripButton, Me.ToolsUpdatePdfTextColumnsToolStripButton, Me.ToolStripSeparator22, Me.HelpContentsToolStripButton})
+        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripButton, Me.FileOpenToolStripButton, Me.FileSaveToolStripButton, Me.FileBurstToolStripButton, Me.FilePrintToolStripButton, Me.FileDeleteToolStripButton, Me.ToolStripSeparator17, Me.EditUndoToolStripButton, Me.EditCutToolStripButton, Me.EditCopyToolStripButton, Me.EditPasteToolStripButton, Me.EditRestoreToolStripButton, Me.EditDateTimeToolStripButton, Me.ToolStripSeparator20, Me.ViewRefreshToolStripButton, Me.ToolStripSeparator14, Me.InsertTextToolStripButton, Me.ToolStripSeparator21, Me.ToolsOptionsToolStripButton, Me.ToolsUploadProfilesToolStripButton, Me.ToolsUpdatePdfTextColumnsToolStripButton, Me.ToolStripSeparator22, Me.HelpContentsToolStripButton})
         resources.ApplyResources(Me.ToolStrip, "ToolStrip")
         Me.ToolStrip.Name = "ToolStrip"
         Me.ToolStrip.Visible = Global.PDFKeeper.Presentation.My.MySettings.Default.MainToolBarVisible
@@ -801,6 +815,13 @@ Partial Class MainForm
         Me.FileSaveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         resources.ApplyResources(Me.FileSaveToolStripButton, "FileSaveToolStripButton")
         Me.FileSaveToolStripButton.Name = "FileSaveToolStripButton"
+        '
+        'FileBurstToolStripButton
+        '
+        Me.FileBurstToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.FileBurstToolStripButton.Image = Global.PDFKeeper.Presentation.My.Resources.Resources.cut_red
+        resources.ApplyResources(Me.FileBurstToolStripButton, "FileBurstToolStripButton")
+        Me.FileBurstToolStripButton.Name = "FileBurstToolStripButton"
         '
         'FilePrintToolStripButton
         '
@@ -1123,4 +1144,7 @@ Partial Class MainForm
     Friend WithEvents OpenFileDialog As OpenFileDialog
     Friend WithEvents UploadFolderMaintenanceTimer As Timer
     Friend WithEvents UploadRejectedFilesCheckTimer As Timer
+    Friend WithEvents ToolStripSeparator15 As ToolStripSeparator
+    Friend WithEvents FileBurstToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileBurstToolStripButton As ToolStripButton
 End Class

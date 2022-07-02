@@ -103,6 +103,9 @@ Public Class ToolStripStateManager
             If row("Action") = "FileSaveAs" Then
                 row("StateValue") = selected
             End If
+            If row("Action") = "FileBurst" Then
+                row("StateValue") = selected
+            End If
             If row("Action") = "EditFlagDocument" Then
                 row("StateValue") = selected
             End If
@@ -312,6 +315,7 @@ Public Class ToolStripStateManager
             .Add("FileOpen")
             .Add("FileSave")
             .Add("FileSaveAs")
+            .Add("FileBurst")
             .Add("FilePrint")
             .Add("FilePrintPreview")
             .Add("FileSelect")

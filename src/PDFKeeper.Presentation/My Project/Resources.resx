@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Version" xml:space="preserve">
+    <value>Version {0}</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="page_text" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mini Icons\page_text.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -124,11 +127,17 @@
   <data name="Author" xml:space="preserve">
     <value>Author</value>
   </data>
-  <data name="DiscardChanges" xml:space="preserve">
-    <value>Do you wish to discard all changes?</value>
+  <data name="file_acrobat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mini Icons\file_acrobat.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UpdateSelectedDocuments" xml:space="preserve">
+    <value>Update PDF Text Annotations and Text in Database for all selected documents?</value>
   </data>
   <data name="Added" xml:space="preserve">
     <value>Added</value>
+  </data>
+  <data name="ImproperUsageOfQueryOperators" xml:space="preserve">
+    <value>Improper usage of query operators and/or characters.</value>
   </data>
   <data name="DeleteFileToRecycleBin" xml:space="preserve">
     <value>Delete {0} to the Recycle Bin?</value>
@@ -136,30 +145,38 @@
   <data name="FileNameToken" xml:space="preserve">
     <value>&lt;FileName&gt;</value>
   </data>
-  <data name="NotesModified" xml:space="preserve">
-    <value>Notes for selected document have been modified.
-Do you want to save changes before closing?</value>
-  </data>
   <data name="Upload" xml:space="preserve">
     <value>Upload</value>
   </data>
-  <data name="ImproperUsageOfQueryOperators" xml:space="preserve">
-    <value>Improper usage of query operators and/or characters.</value>
+  <data name="PdfOwnerPasswordInvalid" xml:space="preserve">
+    <value>PDF Owner password is invalid.</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>Version {0}</value>
+  <data name="SelectNewDatabaseFolderLocation" xml:space="preserve">
+    <value>Select the new folder location where the database will be stored:</value>
   </data>
-  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mini Icons\table.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DeleteUploadProfile" xml:space="preserve">
+    <value>Delete the selected Upload Profile to the Recycle Bin?</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Title</value>
+  <data name="UnhandledExceptionLog" xml:space="preserve">
+    <value>Stack Trace has been logged to {0}</value>
+  </data>
+  <data name="UploadProfileExists" xml:space="preserve">
+    <value>Upload Profile already exists.</value>
   </data>
   <data name="RefreshDocuments" xml:space="preserve">
     <value>Refresh Documents?</value>
   </data>
-  <data name="UpdateSelectedDocuments" xml:space="preserve">
-    <value>Update PDF Text Annotations and Text in Database for all selected documents?</value>
+  <data name="PdfInvalid" xml:space="preserve">
+    <value>PDF is invalid.</value>
+  </data>
+  <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mini Icons\table.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FileSaved" xml:space="preserve">
+    <value>{0} was saved.</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Subject</value>
@@ -170,36 +187,64 @@ Do you want to save changes before closing?</value>
   <data name="Category" xml:space="preserve">
     <value>Category</value>
   </data>
+  <data name="PdfContainsUserPassword" xml:space="preserve">
+    <value>PDF contains User password and is not supported.</value>
+  </data>
+  <data name="DocumentMayHaveBeenDeletedException" xml:space="preserve">
+    <value>{0}.  Document ID {1} may have been deleted.</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
   <data name="About" xml:space="preserve">
     <value>About {0}</value>
   </data>
+  <data name="DiscardChanges" xml:space="preserve">
+    <value>Do you wish to discard all changes?</value>
+  </data>
   <data name="ID" xml:space="preserve">
     <value>ID</value>
+  </data>
+  <data name="NotesModified" xml:space="preserve">
+    <value>Notes for selected document have been modified.
+Do you want to save changes before closing?</value>
+  </data>
+  <data name="ProfileNameInvalid" xml:space="preserve">
+    <value>Profile name contains characters not allowed in file names.</value>
+  </data>
+  <data name="PdfFilter" xml:space="preserve">
+    <value>PDF files|*.pdf</value>
   </data>
   <data name="DescriptionDetail" xml:space="preserve">
     <value>PDFKeeper is free, open source software that provides a storage and management solution for PDF documents.
 
 This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you are welcome to redistribute it under certain conditions; for details, select License.</value>
   </data>
-  <data name="DateTimeToken" xml:space="preserve">
-    <value>&lt;Date_Time&gt;</value>
+  <data name="DocumentMayHaveBeenDeleted" xml:space="preserve">
+    <value>{0}.  Document may have been deleted.  Please Refresh your Search Results.</value>
   </data>
   <data name="UnableToSaveNotes" xml:space="preserve">
     <value>The changes you made to the Notes text box cannot be saved and have been lost because another user has updated the Notes for the same record.
 
 The contents of the Notes text box prior to the attempted save operation have been copied to the Clipboard.</value>
   </data>
-  <data name="DocumentMayHaveBeenDeleted" xml:space="preserve">
-    <value>{0}.  Document may have been deleted.  Please Refresh your Search Results.</value>
+  <data name="TextFilter" xml:space="preserve">
+    <value>Text files|*.txt</value>
+  </data>
+  <data name="database" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Silk Icons\database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SelectedFilesHaveBeenExported" xml:space="preserve">
     <value>Selected files have been exported to: {0}</value>
   </data>
-  <data name="DocumentMayHaveBeenDeletedException" xml:space="preserve">
-    <value>{0}.  Document ID {1} may have been deleted.</value>
+  <data name="CancelQuestion" xml:space="preserve">
+    <value>Are you sure you want to cancel?</value>
+  </data>
+  <data name="PdfOwnerPasswordRequired" xml:space="preserve">
+    <value>PDF Owner password required.</value>
   </data>
   <data name="SelectExportFolder" xml:space="preserve">
-    <value>Select the location where the export folder will be created:</value>
+    <value>Select the folder location where the export folder will be created:</value>
   </data>
   <data name="DateToken" xml:space="preserve">
     <value>&lt;Date&gt;</value>
@@ -207,55 +252,20 @@ The contents of the Notes text box prior to the attempted save operation have be
   <data name="DeleteSelectedDocuments" xml:space="preserve">
     <value>Delete selected documents?</value>
   </data>
-  <data name="FileSaved" xml:space="preserve">
-    <value>{0} was saved.</value>
+  <data name="DateTimeToken" xml:space="preserve">
+    <value>&lt;Date_Time&gt;</value>
   </data>
-  <data name="DeleteUploadProfile" xml:space="preserve">
-    <value>Delete the selected Upload Profile to the Recycle Bin?</value>
-  </data>
-  <data name="database" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Silk Icons\database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SelectNewDatabaseFolderLocation" xml:space="preserve">
-    <value>Select the new location where the database will be stored:</value>
-  </data>
-  <data name="ProfileNameInvalid" xml:space="preserve">
-    <value>Profile name contains characters not allowed in file names.</value>
-  </data>
-  <data name="UploadProfileExists" xml:space="preserve">
-    <value>Upload Profile already exists.</value>
-  </data>
-  <data name="PdfContainsUserPassword" xml:space="preserve">
-    <value>PDF contains User password and is not supported.</value>
-  </data>
-  <data name="PdfInvalid" xml:space="preserve">
-    <value>PDF is invalid.</value>
-  </data>
-  <data name="PdfOwnerPasswordRequired" xml:space="preserve">
-    <value>PDF Owner password required.</value>
-  </data>
-  <data name="PdfOwnerPasswordInvalid" xml:space="preserve">
-    <value>PDF Owner password is invalid.</value>
-  </data>
-  <data name="CancelQuestion" xml:space="preserve">
-    <value>Are you sure you want to cancel?</value>
+  <data name="OpenCheckedDocumentsMaximumReached" xml:space="preserve">
+    <value>More than {0} documents have been selected. Only the first {0} selected documents will be opened.</value>
   </data>
   <data name="UnhandledException" xml:space="preserve">
     <value>An Unhandled Exception has occurred in the application.</value>
   </data>
-  <data name="UnhandledExceptionLog" xml:space="preserve">
-    <value>Stack Trace has been logged to {0}</value>
+  <data name="cut_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Silk Icons\cut_red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PdfFilter" xml:space="preserve">
-    <value>PDF files|*.pdf</value>
-  </data>
-  <data name="TextFilter" xml:space="preserve">
-    <value>Text files|*.txt</value>
-  </data>
-  <data name="Export" xml:space="preserve">
-    <value>Export</value>
-  </data>
-  <data name="OpenCheckedDocumentsMaximumReached" xml:space="preserve">
-    <value>More than {0} documents have been selected. Only the first {0} selected documents will be opened.</value>
+  <data name="SelectBurstFolder" xml:space="preserve">
+    <value>Select the folder location where to burst the PDF for the selected document:
+Note: PDF file names will be prefixed with: {0}</value>
   </data>
 </root>

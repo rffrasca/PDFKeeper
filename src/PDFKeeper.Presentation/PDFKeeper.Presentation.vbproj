@@ -270,6 +270,8 @@
     <Content Include="PDFKeeper.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Silk Icons\cut_red.png" />
+    <None Include="Resources\Mini Icons\file_acrobat.gif" />
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>

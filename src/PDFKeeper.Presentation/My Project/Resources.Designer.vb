@@ -108,6 +108,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property cut_red() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("cut_red", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property database() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("database", resourceCulture)
@@ -204,6 +214,16 @@ Namespace My.Resources
         Friend ReadOnly Property Export() As String
             Get
                 Return ResourceManager.GetString("Export", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property file_acrobat() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("file_acrobat", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         
@@ -336,6 +356,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Select the folder location where to burst the PDF for the selected document:
+        '''Note: PDF file names will be prefixed with: {0}.
+        '''</summary>
+        Friend ReadOnly Property SelectBurstFolder() As String
+            Get
+                Return ResourceManager.GetString("SelectBurstFolder", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Selected files have been exported to: {0}.
         '''</summary>
         Friend ReadOnly Property SelectedFilesHaveBeenExported() As String
@@ -345,7 +375,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Select the location where the export folder will be created:.
+        '''  Looks up a localized string similar to Select the folder location where the export folder will be created:.
         '''</summary>
         Friend ReadOnly Property SelectExportFolder() As String
             Get
@@ -354,7 +384,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Select the new location where the database will be stored:.
+        '''  Looks up a localized string similar to Select the new folder location where the database will be stored:.
         '''</summary>
         Friend ReadOnly Property SelectNewDatabaseFolderLocation() As String
             Get

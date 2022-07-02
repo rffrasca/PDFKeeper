@@ -170,6 +170,11 @@
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="PDF Bursting">
+					<param name="Local" value="PDF Bursting.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Document Notes">
 					<param name="Local" value="Document Notes.html">
 					<param name="ImageNumber" value="9">

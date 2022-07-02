@@ -206,6 +206,18 @@
   <data name="FileSaveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Sav&amp;e As...</value>
   </data>
+  <data name="ToolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 6</value>
+  </data>
+  <data name="FileBurstToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+B</value>
+  </data>
+  <data name="FileBurstToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="FileBurstToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Burst...</value>
+  </data>
   <data name="ToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>221, 6</value>
   </data>
@@ -343,13 +355,13 @@
     <value>Ctrl+Z</value>
   </data>
   <data name="EditUndoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="EditUndoToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Undo</value>
   </data>
   <data name="ToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="EditCutToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -365,7 +377,7 @@
     <value>Ctrl+X</value>
   </data>
   <data name="EditCutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="EditCutToolStripMenuItem.Text" xml:space="preserve">
     <value>Cu&amp;t</value>
@@ -384,7 +396,7 @@
     <value>Ctrl+C</value>
   </data>
   <data name="EditCopyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="EditCopyToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Copy</value>
@@ -403,25 +415,25 @@
     <value>Ctrl+V</value>
   </data>
   <data name="EditPasteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="EditPasteToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Paste</value>
   </data>
   <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="EditSelectAllToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+A</value>
   </data>
   <data name="EditSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="EditSelectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>Select &amp;All</value>
   </data>
   <data name="ToolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="EditRestoreToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -442,13 +454,13 @@
     <value>Ctrl+R</value>
   </data>
   <data name="EditRestoreToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="EditRestoreToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Restore</value>
   </data>
   <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="EditDateTimeToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -466,16 +478,16 @@
     <value>Ctrl+T</value>
   </data>
   <data name="EditDateTimeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="EditDateTimeToolStripMenuItem.Text" xml:space="preserve">
     <value>Date/&amp;Time</value>
   </data>
   <data name="ToolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="EditFlagDocumentToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="EditFlagDocumentToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Flag Document</value>
@@ -548,7 +560,7 @@
     <value>Ctrl+Shift+T</value>
   </data>
   <data name="InsertTextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="InsertTextToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Text</value>
@@ -639,16 +651,16 @@
 </value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Contents</value>
   </data>
   <data name="ToolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 6</value>
+    <value>177, 6</value>
   </data>
   <data name="HelpAboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="HelpAboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About ...</value>
@@ -1831,6 +1843,15 @@
   <data name="FileSaveToolStripButton.ToolTipText" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="FileBurstToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="FileBurstToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="FileBurstToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Burst</value>
+  </data>
   <data name="FilePrintToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -2284,6 +2305,18 @@
   <data name="&gt;&gt;FileSaveAsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ToolStripSeparator15.Name" xml:space="preserve">
+    <value>ToolStripSeparator15</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FileBurstToolStripMenuItem.Name" xml:space="preserve">
+    <value>FileBurstToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;FileBurstToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ToolStripSeparator4.Name" xml:space="preserve">
     <value>ToolStripSeparator4</value>
   </data>
@@ -2642,6 +2675,12 @@
     <value>FileSaveToolStripButton</value>
   </data>
   <data name="&gt;&gt;FileSaveToolStripButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FileBurstToolStripButton.Name" xml:space="preserve">
+    <value>FileBurstToolStripButton</value>
+  </data>
+  <data name="&gt;&gt;FileBurstToolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;FilePrintToolStripButton.Name" xml:space="preserve">

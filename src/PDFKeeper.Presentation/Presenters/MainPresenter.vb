@@ -155,6 +155,20 @@ Public Class MainPresenter
         End If
     End Sub
 
+    Friend Sub FileBurstToolStrip_Click(sender As Object, e As EventArgs)
+        Dim pdfFile = New PdfFile(fileCacheSvc.GetCachedPdfFullName(view.SelectedDocumentId))
+        Dim selectedPath = view.ShowFolderBrowserDialog(String.Format(CultureInfo.CurrentCulture,
+                                                                      My.Resources.ResourceManager.GetString(
+                                                                      "SelectBurstFolder", CultureInfo.CurrentCulture),
+                                                                      String.Concat(pdfFile.FileNameWithoutExtension,
+                                                                                    "_")))
+        If selectedPath IsNot Nothing Then
+            viewInstance.Cursor = Cursors.WaitCursor
+            pdfFile.Split(selectedPath)
+            viewInstance.Cursor = Cursors.Default
+        End If
+    End Sub
+
     Friend Sub FilePrintToolStrip_Click(sender As Object, e As EventArgs)
         view.PrintSelectectedTextBoxText(False)
     End Sub

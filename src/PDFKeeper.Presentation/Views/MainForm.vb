@@ -685,6 +685,8 @@ Public Class MainForm
         AddHandler FileSaveToolStripMenuItem.Click, AddressOf presenter.FileSaveToolStrip_Click
         AddHandler FileSaveToolStripButton.Click, AddressOf presenter.FileSaveToolStrip_Click
         AddHandler FileSaveAsToolStripMenuItem.Click, AddressOf presenter.FileSaveAsToolStrip_Click
+        AddHandler FileBurstToolStripMenuItem.Click, AddressOf presenter.FileBurstToolStrip_Click
+        AddHandler FileBurstToolStripButton.Click, AddressOf presenter.FileBurstToolStrip_Click
         AddHandler FilePrintToolStripMenuItem.Click, AddressOf presenter.FilePrintToolStrip_Click
         AddHandler FilePrintToolStripButton.Click, AddressOf presenter.FilePrintToolStrip_Click
         AddHandler FilePrintPreviewToolStripMenuItem.Click, AddressOf presenter.FilePrintPreviewToolStrip_Click
