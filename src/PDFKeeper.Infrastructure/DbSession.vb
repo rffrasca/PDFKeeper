@@ -153,8 +153,8 @@ Public NotInheritable Class DbSession
                                              "\odp.net\managed\common\Oracle.ManagedDataAccess.dll")
             Return Reflection.Assembly.LoadFile(assemblyPath)
         Catch ex As FileNotFoundException
-            Dim message = New MessageBoxHelper
-            message.ShowMessage(My.Resources.OracleDataProviderMissing, True)
+            Dim commonDialogs = New CommonDialogs
+            commonDialogs.ShowMessageBox(My.Resources.OracleDataProviderMissing, True)
             Return Nothing
         End Try
     End Function

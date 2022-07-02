@@ -30,7 +30,7 @@ Public Class AddPdfPresenter
     Private ReadOnly categoryListSvc As ICategoryListService
     Private ReadOnly taxYearListSvc As ITaxYearListService
     Private ReadOnly pdfSvc As IPdfService
-    Private ReadOnly message As New MessageBoxHelper
+    Private ReadOnly commonDialogs As New CommonDialogs
     Private viewInstance As Form
     Private password As SecureString
     Private modifiedPdfFile As String
@@ -69,24 +69,24 @@ Public Class AddPdfPresenter
                     If password IsNot Nothing Then
                         If password.Length > 0 Then
                             If pdfSvc.IsPdfOwnerPasswordValid(.SelectedPdf, password) = False Then
-                                message.ShowMessage(My.Resources.PdfOwnerPasswordInvalid, True)
+                                commonDialogs.ShowMessageBox(My.Resources.PdfOwnerPasswordInvalid, True)
                                 viewInstance.Close()
                             Else
                                 password.MakeReadOnly()
                                 UpdateView(.SelectedPdf, password)
                             End If
                         Else
-                            message.ShowMessage(My.Resources.PdfOwnerPasswordRequired, True)
+                            commonDialogs.ShowMessageBox(My.Resources.PdfOwnerPasswordRequired, True)
                             viewInstance.Close()
                         End If
                     Else
                         viewInstance.Close()
                     End If
                 ElseIf pdfPasswordType = PdfPasswordTypes.PdfPasswordType.User Then
-                    message.ShowMessage(My.Resources.PdfContainsUserPassword, True)
+                    commonDialogs.ShowMessageBox(My.Resources.PdfContainsUserPassword, True)
                     viewInstance.Close()
                 ElseIf pdfPasswordType = PdfPasswordTypes.PdfPasswordType.Unknown Then
-                    message.ShowMessage(My.Resources.PdfInvalid, True)
+                    commonDialogs.ShowMessageBox(My.Resources.PdfInvalid, True)
                     viewInstance.Close()
                 End If
                 bypassClosingPrompt = False
@@ -120,7 +120,7 @@ Public Class AddPdfPresenter
             End If
             control.Text = currentItem
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
         Finally
             viewInstance.Cursor = Cursors.Default
         End Try
@@ -186,7 +186,7 @@ Public Class AddPdfPresenter
 
     Friend Sub AddPdfDialog_FormClosing(sender As Object, e As FormClosingEventArgs)
         If view.SelectedPdf.Length > 0 And bypassClosingPrompt = False Then
-            If message.ShowQuestion(My.Resources.CancelQuestion, False) = DialogResult.Yes Then
+            If commonDialogs.ShowQuestionMessageBox(My.Resources.CancelQuestion, False) = DialogResult.Yes Then
                 pdfSvc.CloseRestrictedViewer()
                 If modifiedPdfFile IsNot Nothing Then
                     IO.File.Delete(modifiedPdfFile)

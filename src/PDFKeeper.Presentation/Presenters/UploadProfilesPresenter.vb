@@ -29,7 +29,7 @@ Public Class UploadProfilesPresenter
     Private ReadOnly categoryListSvc As ICategoryListService
     Private ReadOnly taxYearListSvc As ITaxYearListService
     Private ReadOnly uploadProfileSvc As IUploadProfileService
-    Private ReadOnly message As New MessageBoxHelper
+    Private ReadOnly commonDialogs As New CommonDialogs
     Private viewInstance As Form
     Private previousProfile As String
 
@@ -100,7 +100,7 @@ Public Class UploadProfilesPresenter
     End Sub
 
     Friend Sub DeleteButton_Click(sender As Object, e As EventArgs)
-        If message.ShowQuestion(My.Resources.DeleteUploadProfile, False) = DialogResult.Yes Then
+        If commonDialogs.ShowQuestionMessageBox(My.Resources.DeleteUploadProfile, False) = DialogResult.Yes Then
             uploadProfileSvc.DeleteProfile(view.Profile)
             ResetView()
         End If
@@ -122,7 +122,7 @@ Public Class UploadProfilesPresenter
             End If
             control.Text = currentItem
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
         Finally
             viewInstance.Cursor = Cursors.Default
         End Try
@@ -167,14 +167,14 @@ Public Class UploadProfilesPresenter
     End Sub
 
     Friend Sub DiscardButton_Click(sender As Object, e As EventArgs)
-        If message.ShowQuestion(My.Resources.DiscardChanges, False) = DialogResult.Yes Then
+        If commonDialogs.ShowQuestionMessageBox(My.Resources.DiscardChanges, False) = DialogResult.Yes Then
             ResetView()
         End If
     End Sub
 
     Friend Sub UploadProfilesDialog_FormClosing(sender As Object, e As FormClosingEventArgs)
         If view.DiscardEnabled Then
-            If message.ShowQuestion(My.Resources.DiscardChanges, False) = DialogResult.No Then
+            If commonDialogs.ShowQuestionMessageBox(My.Resources.DiscardChanges, False) = DialogResult.No Then
                 e.Cancel = True
             End If
         End If

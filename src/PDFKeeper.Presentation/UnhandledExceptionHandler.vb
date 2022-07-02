@@ -21,7 +21,7 @@ Imports PDFKeeper.Common
 
 Public Class UnhandledExceptionHandler
     Private ReadOnly eventArgs As ApplicationServices.UnhandledExceptionEventArgs
-    Private ReadOnly message As New MessageBoxHelper
+    Private ReadOnly commonDialogs As New CommonDialogs
 
     ''' <summary>
     ''' Creates an instance of the class.
@@ -43,11 +43,13 @@ Public Class UnhandledExceptionHandler
     ''' Shows a basic unhandled exception error message.
     ''' </summary>
     Public Sub Show()
-        message.ShowMessage(String.Concat(My.Resources.UnhandledException, vbCr, vbCr, eventArgs.Exception.GetType.Name,
-                                          vbCr, eventArgs.Exception.Message, vbCr, vbCr,
-                                          String.Format(CultureInfo.CurrentCulture,
-                                                        My.Resources.ResourceManager.GetString(
-                                                        "UnhandledExceptionLog", CultureInfo.CurrentCulture),
-                                                        My.Application.Log.DefaultFileLogWriter.FullLogFileName)), True)
+        commonDialogs.ShowMessageBox(String.Concat(My.Resources.UnhandledException, vbCr, vbCr,
+                                                   eventArgs.Exception.GetType.Name, vbCr,
+                                                   eventArgs.Exception.Message, vbCr, vbCr,
+                                                   String.Format(
+                                                   CultureInfo.CurrentCulture,
+                                                   My.Resources.ResourceManager.GetString(
+                                                   "UnhandledExceptionLog", CultureInfo.CurrentCulture),
+                                                   My.Application.Log.DefaultFileLogWriter.FullLogFileName)), True)
     End Sub
 End Class

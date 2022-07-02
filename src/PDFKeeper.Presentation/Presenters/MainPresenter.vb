@@ -38,7 +38,7 @@ Public Class MainPresenter
     Private ReadOnly pdfSvc As IPdfService
     Private ReadOnly uploadSvc As IUploadService
     Private ReadOnly help As New HelpFile
-    Private ReadOnly message As New MessageBoxHelper
+    Private ReadOnly commonDialogs As New CommonDialogs
     Private ReadOnly dgvSortProperties As New DataGridViewSortProperties
     Private toolStripStateManager As ToolStripStateManager
     Private viewInstance As Form
@@ -125,7 +125,7 @@ Public Class MainPresenter
             Else
                 Clipboard.SetText(.Notes.Trim)
                 DocumentListDataGridView_SelectionChanged(Me, Nothing)
-                message.ShowMessage(My.Resources.UnableToSaveNotes, True)
+                commonDialogs.ShowMessageBox(My.Resources.UnableToSaveNotes, True)
             End If
             .ScrollToEndOfNotesText()
             NotesTextBox_TextChanged(Me, Nothing)
@@ -149,8 +149,9 @@ Public Class MainPresenter
             Else
                 text.WriteToFile(targetPath)
             End If
-            message.ShowMessage(String.Format(CultureInfo.CurrentCulture, My.Resources.ResourceManager.GetString(
-                "FileSaved", CultureInfo.CurrentCulture), targetPath), False)
+            commonDialogs.ShowMessageBox(String.Format(CultureInfo.CurrentCulture,
+                                                       My.Resources.ResourceManager.GetString(
+                                                       "FileSaved", CultureInfo.CurrentCulture), targetPath), False)
         End If
     End Sub
 
@@ -193,7 +194,7 @@ Public Class MainPresenter
     End Sub
 
     Friend Sub FileDeleteToolStrip_Click(sender As Object, e As EventArgs)
-        If message.ShowQuestion(My.Resources.DeleteSelectedDocuments, False) = DialogResult.Yes Then
+        If commonDialogs.ShowQuestionMessageBox(My.Resources.DeleteSelectedDocuments, False) = DialogResult.Yes Then
             ProcessCheckedDocuments(CheckedDocumentsAction.Delete, Nothing)
         End If
     End Sub
@@ -202,10 +203,10 @@ Public Class MainPresenter
         Dim exportPath = view.ShowFolderBrowserDialog(My.Resources.SelectExportFolder)
         If exportPath IsNot Nothing Then
             ProcessCheckedDocuments(CheckedDocumentsAction.Export, exportPath)
-            message.ShowMessage(String.Format(CultureInfo.CurrentCulture,
-                                              My.Resources.ResourceManager.GetString("SelectedFilesHaveBeenExported",
-                                                                                     CultureInfo.CurrentCulture),
-                                              exportPath), False)
+            commonDialogs.ShowMessageBox(String.Format(CultureInfo.CurrentCulture,
+                                                       My.Resources.ResourceManager.GetString(
+                                                       "SelectedFilesHaveBeenExported", CultureInfo.CurrentCulture),
+                                                       exportPath), False)
         End If
     End Sub
 
@@ -328,10 +329,11 @@ Public Class MainPresenter
                 .Notes = .Notes.AppendTextFile(textFile)
                 .ScrollToEndOfNotesText()
             End With
-            If message.ShowQuestion(String.Format(CultureInfo.CurrentCulture,
-                                                  My.Resources.ResourceManager.GetString(
-                                                  "DeleteFileToRecycleBin", CultureInfo.CurrentCulture), textFile),
-                                    False) = DialogResult.Yes Then
+            If commonDialogs.ShowQuestionMessageBox(String.Format(CultureInfo.CurrentCulture,
+                                                                  My.Resources.ResourceManager.GetString(
+                                                                  "DeleteFileToRecycleBin",
+                                                                  CultureInfo.CurrentCulture), textFile),
+                                                    False) = DialogResult.Yes Then
                 Dim textFileInfo = New FileInfo(textFile)
                 textFileInfo.DeleteToRecycleBin
             End If
@@ -347,7 +349,7 @@ Public Class MainPresenter
     End Sub
 
     Friend Sub ToolsUpdatePdfTextColumnsToolStrip_Click(sender As Object, e As EventArgs)
-        If message.ShowQuestion(My.Resources.UpdateSelectedDocuments, False) = DialogResult.Yes Then
+        If commonDialogs.ShowQuestionMessageBox(My.Resources.UpdateSelectedDocuments, False) = DialogResult.Yes Then
             ProcessCheckedDocuments(CheckedDocumentsAction.Update, Nothing)
         End If
     End Sub
@@ -361,7 +363,7 @@ Public Class MainPresenter
                 Dim command As ICommand = New MoveSqliteDatabaseCommand(destFolderPath)
                 command.Execute()
             Catch ex As IOException
-                message.ShowMessage(ex.Message, True)
+                commonDialogs.ShowMessageBox(ex.Message, True)
             Finally
                 viewInstance.Cursor = Cursors.Default
             End Try
@@ -374,7 +376,7 @@ Public Class MainPresenter
             WaitForUploadToFinish()
             documentUtilSvc.RebuildFullTextSearchIndex()
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
         Finally
             viewInstance.Cursor = Cursors.Default
         End Try
@@ -459,7 +461,7 @@ Public Class MainPresenter
                 .Author = currentItem
             End With
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
         Finally
             viewInstance.Cursor = Cursors.Default
         End Try
@@ -482,7 +484,7 @@ Public Class MainPresenter
                 .Subject = currentItem
             End With
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
         Finally
             viewInstance.Cursor = Cursors.Default
         End Try
@@ -505,7 +507,7 @@ Public Class MainPresenter
                 .Category = currentItem
             End With
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
         Finally
             viewInstance.Cursor = Cursors.Default
         End Try
@@ -528,7 +530,7 @@ Public Class MainPresenter
                 .TaxYear = currentItem
             End With
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
         Finally
             viewInstance.Cursor = Cursors.Default
         End Try
@@ -591,7 +593,7 @@ Public Class MainPresenter
                     findBySelectionsPerformed = True
                     .FindBySelectionsEnabled = False
                 Catch ex As DbException
-                    message.ShowMessage(ex.Message, True)
+                    commonDialogs.ShowMessageBox(ex.Message, True)
                 Finally
                     viewInstance.Cursor = Cursors.Default
                 End Try
@@ -607,7 +609,7 @@ Public Class MainPresenter
             viewInstance.Cursor = Cursors.WaitCursor
             view.DocumentList = documentListSvc.ListDocumentsByDateAdded(view.DateAdded)
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
         Finally
             viewInstance.Cursor = Cursors.Default
         End Try
@@ -685,7 +687,7 @@ Public Class MainPresenter
                     SetPreviewImage()
                     .DocumentTabControlEnabled = True
                 Catch ex As DbException
-                    message.ShowMessage(ex.Message, True)
+                    commonDialogs.ShowMessageBox(ex.Message, True)
                 Finally
                     viewInstance.Cursor = Cursors.Default
                 End Try
@@ -802,7 +804,7 @@ Public Class MainPresenter
             End If
             Application.DoEvents()
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
         Finally
             timer.Start()
         End Try
@@ -824,7 +826,7 @@ Public Class MainPresenter
                 timer.Stop()
                 Await Task.Run(Sub() uploadSvc.ExecuteUpload()).ConfigureAwait(True)
             Catch ex As DbException
-                message.ShowMessage(ex.Message, True)
+                commonDialogs.ShowMessageBox(ex.Message, True)
             Finally
                 If uploadSvc.DocumentsUploaded Then
                     TriggerDocumentListRefresh(True)
@@ -853,7 +855,7 @@ Public Class MainPresenter
         If view.NotesChanged Then
             view.DocumentTabControlSelectedIndex = 0
             view.ScrollToEndOfNotesText()
-            Dim result = message.ShowQuestion(My.Resources.NotesModified, True)
+            Dim result = commonDialogs.ShowQuestionMessageBox(My.Resources.NotesModified, True)
             If result = DialogResult.Yes Then
                 UpdateSelectedDocument()
             ElseIf result = DialogResult.Cancel Then
@@ -946,7 +948,7 @@ Public Class MainPresenter
                     .SetErrorProviderMessage(My.Resources.ImproperUsageOfQueryOperators)
                     .FindByTextEnabled = False
                 Catch ex As DbException
-                    message.ShowMessage(ex.Message, True)
+                    commonDialogs.ShowMessageBox(ex.Message, True)
                 Finally
                     viewInstance.Cursor = Cursors.Default
                 End Try
@@ -962,7 +964,7 @@ Public Class MainPresenter
             viewInstance.Cursor = Cursors.WaitCursor
             view.DocumentList = documentListSvc.ListFlaggedDocuments
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
         Finally
             viewInstance.Cursor = Cursors.Default
         End Try
@@ -973,7 +975,7 @@ Public Class MainPresenter
             viewInstance.Cursor = Cursors.WaitCursor
             view.DocumentList = documentListSvc.ListAllDocuments
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
         Finally
             viewInstance.Cursor = Cursors.Default
         End Try
@@ -987,7 +989,8 @@ Public Class MainPresenter
                 End If
             Else
                 If view.DocumentRetrievalChoiceSelectedIndex = 3 And view.FlagState = 0 Then
-                    If message.ShowQuestion(My.Resources.RefreshDocuments, False) = DialogResult.Yes Then
+                    If commonDialogs.ShowQuestionMessageBox(My.Resources.RefreshDocuments,
+                                                            False) = DialogResult.Yes Then
                         ViewRefreshToolStrip_Click(Me, Nothing)
                     End If
                 End If
@@ -1010,11 +1013,13 @@ Public Class MainPresenter
                 viewInstance.Cursor = Cursors.WaitCursor
                 documentSvc.UpdateDocument(.SelectedDocumentId, selectedDocument)
             Catch ex As IndexOutOfRangeException
-                message.ShowMessage(String.Format(CultureInfo.CurrentCulture, My.Resources.ResourceManager.GetString(
-                    "DocumentRecordMayHaveBeenDeleted", CultureInfo.CurrentCulture), ex.Message), True)
+                commonDialogs.ShowMessageBox(String.Format(CultureInfo.CurrentCulture,
+                                                           My.Resources.ResourceManager.GetString(
+                                                           "DocumentRecordMayHaveBeenDeleted",
+                                                           CultureInfo.CurrentCulture), ex.Message), True)
                 ClearSelectedDocument()
             Catch ex As DbException
-                message.ShowMessage(ex.Message, True)
+                commonDialogs.ShowMessageBox(ex.Message, True)
             Finally
                 viewInstance.Cursor = Cursors.Default
             End Try
@@ -1046,10 +1051,10 @@ Public Class MainPresenter
         If action = CheckedDocumentsAction.Open Then
             If view.CheckedDocumentIdItems.Count > openMaximum Then
                 view.ProgressBarMaximum = openMaximum
-                message.ShowMessage(String.Format(CultureInfo.CurrentCulture,
-                                                  My.Resources.ResourceManager.GetString(
-                                                  "OpenCheckedDocumentsMaximumReached", CultureInfo.CurrentCulture),
-                                                  openMaximum), False)
+                commonDialogs.ShowMessageBox(String.Format(CultureInfo.CurrentCulture,
+                                                           My.Resources.ResourceManager.GetString(
+                                                           "OpenCheckedDocumentsMaximumReached",
+                                                           CultureInfo.CurrentCulture), openMaximum), False)
             End If
         End If
         If action = CheckedDocumentsAction.Export Then
@@ -1079,20 +1084,20 @@ Public Class MainPresenter
                     UpdatePdfTextColumns(id)
                 End If
             Catch ex As InvalidOperationException
-                message.ShowMessage(String.Format(CultureInfo.CurrentCulture,
-                                                  My.Resources.ResourceManager.GetString(
-                                                  "DocumentMayHaveBeenDeletedException", CultureInfo.CurrentCulture),
-                                                  ex.Message, id), True)
+                commonDialogs.ShowMessageBox(String.Format(CultureInfo.CurrentCulture,
+                                                           My.Resources.ResourceManager.GetString(
+                                                           "DocumentMayHaveBeenDeletedException",
+                                                           CultureInfo.CurrentCulture), ex.Message, id), True)
             Catch ex As IndexOutOfRangeException
-                message.ShowMessage(String.Format(CultureInfo.CurrentCulture,
-                                                  My.Resources.ResourceManager.GetString(
-                                                  "DocumentMayHaveBeenDeletedException", CultureInfo.CurrentCulture),
-                                                  ex.Message, id), True)
+                commonDialogs.ShowMessageBox(String.Format(CultureInfo.CurrentCulture,
+                                                           My.Resources.ResourceManager.GetString(
+                                                           "DocumentMayHaveBeenDeletedException",
+                                                           CultureInfo.CurrentCulture), ex.Message, id), True)
             Catch ex As DbException
-                message.ShowMessage(String.Format(CultureInfo.CurrentCulture,
-                                                  My.Resources.ResourceManager.GetString("DocumentDatabaseException",
-                                                                                         CultureInfo.CurrentCulture),
-                                                  ex.Message, id), True)
+                commonDialogs.ShowMessageBox(String.Format(CultureInfo.CurrentCulture,
+                                                           My.Resources.ResourceManager.GetString(
+                                                           "DocumentDatabaseException", CultureInfo.CurrentCulture),
+                                                           ex.Message, id), True)
             Finally
                 viewInstance.Cursor = Cursors.Default
             End Try

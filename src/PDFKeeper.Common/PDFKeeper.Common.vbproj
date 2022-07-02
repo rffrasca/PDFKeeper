@@ -78,10 +78,10 @@
     <Compile Include="AppPolicies.vb" />
     <Compile Include="AppProperties.vb" />
     <Compile Include="AppFolderShortcuts.vb" />
+    <Compile Include="CommonDialogs.vb" />
     <Compile Include="ExtensionMethods.vb" />
     <Compile Include="HelpFile.vb" />
     <Compile Include="ICommand.vb" />
-    <Compile Include="MessageBoxHelper.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

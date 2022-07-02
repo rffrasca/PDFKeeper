@@ -20,7 +20,7 @@
 Imports System.Globalization
 Imports System.Windows.Forms
 
-Public Class MessageBoxHelper
+Public Class CommonDialogs
     Private ReadOnly options As MessageBoxOptions
     Private buttons As MessageBoxButtons
 
@@ -36,11 +36,11 @@ Public Class MessageBoxHelper
     End Sub
 
     ''' <summary>
-    ''' Shows a message.
+    ''' Shows a message box.
     ''' </summary>
     ''' <param name="message">Message</param>
     ''' <param name="isError">Is message an error? True or False</param>
-    Public Sub ShowMessage(ByVal message As String, ByVal isError As Boolean)
+    Public Sub ShowMessageBox(ByVal message As String, ByVal isError As Boolean)
         Dim icon = MessageBoxIcon.Information
         If isError Then
             icon = MessageBoxIcon.Error
@@ -50,12 +50,12 @@ Public Class MessageBoxHelper
     End Sub
 
     ''' <summary>
-    ''' Shows a question.
+    ''' Shows a message box that asks a question.
     ''' </summary>
     ''' <param name="question">Question</param>
     ''' <param name="cancelVisible">Cancel visible? True or False</param>
     ''' <returns>Yes, No, or Cancel</returns>
-    Public Function ShowQuestion(ByVal question As String, ByVal cancelVisible As Boolean) As DialogResult
+    Public Function ShowQuestionMessageBox(ByVal question As String, ByVal cancelVisible As Boolean) As DialogResult
         If cancelVisible Then
             buttons = MessageBoxButtons.YesNoCancel
         Else

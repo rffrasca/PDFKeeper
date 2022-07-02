@@ -25,7 +25,7 @@ Imports PDFKeeper.Services
 Public Class LoginPresenter
     Private ReadOnly view As ILoginView
     Private ReadOnly loginSvc As ILoginService
-    Private ReadOnly message As New MessageBoxHelper
+    Private ReadOnly commonDialogs As New CommonDialogs
     Private viewInstance As Form
 
     Public Sub New(ByVal view As ILoginView, ByVal loginSvc As ILoginService)
@@ -50,10 +50,10 @@ Public Class LoginPresenter
             loginSvc.InitSession(My.Settings.DbManagementSystem, model)
             viewInstance.DialogResult = DialogResult.OK
         Catch ex As ArgumentException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
             view.ResetView()
         Catch ex As DbException
-            message.ShowMessage(ex.Message, True)
+            commonDialogs.ShowMessageBox(ex.Message, True)
             loginSvc.ResetCredential()
             view.ResetView()
         Finally
