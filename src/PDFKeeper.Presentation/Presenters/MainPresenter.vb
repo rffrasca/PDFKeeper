@@ -143,15 +143,14 @@ Public Class MainPresenter
         End If
         Dim targetPath = view.ShowSaveFileDialog(filter, selectedDocument.Title)
         If targetPath IsNot Nothing Then
+            viewInstance.Cursor = Cursors.WaitCursor
             If text Is Nothing Then
                 Dim pdfFile = New PdfFile(fileCacheSvc.GetCachedPdfFullName(view.SelectedDocumentId))
                 pdfFile.CopyTo(targetPath)
             Else
                 text.WriteToFile(targetPath)
             End If
-            commonDialogs.ShowMessageBox(String.Format(CultureInfo.CurrentCulture,
-                                                       My.Resources.ResourceManager.GetString(
-                                                       "FileSaved", CultureInfo.CurrentCulture), targetPath), False)
+            viewInstance.Cursor = Cursors.Default
         End If
     End Sub
 
@@ -217,10 +216,6 @@ Public Class MainPresenter
         Dim exportPath = view.ShowFolderBrowserDialog(My.Resources.SelectExportFolder)
         If exportPath IsNot Nothing Then
             ProcessCheckedDocuments(CheckedDocumentsAction.Export, exportPath)
-            commonDialogs.ShowMessageBox(String.Format(CultureInfo.CurrentCulture,
-                                                       My.Resources.ResourceManager.GetString(
-                                                       "SelectedFilesHaveBeenExported", CultureInfo.CurrentCulture),
-                                                       exportPath), False)
         End If
     End Sub
 

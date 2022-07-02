@@ -172,9 +172,6 @@
   <data name="table" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mini Icons\table.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FileSaved" xml:space="preserve">
-    <value>{0} was saved.</value>
-  </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
   </data>
@@ -233,9 +230,6 @@ The contents of the Notes text box prior to the attempted save operation have be
   </data>
   <data name="database" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Silk Icons\database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SelectedFilesHaveBeenExported" xml:space="preserve">
-    <value>Selected files have been exported to: {0}</value>
   </data>
   <data name="CancelQuestion" xml:space="preserve">
     <value>Are you sure you want to cancel?</value>
