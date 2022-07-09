@@ -41,7 +41,15 @@
     <Property Id="ALLUSERS" Value="2" />
     <Property Id="MSIINSTALLPERUSER" Value="1" />
     <Property Id="MSIFASTINSTALL" Value="1" />
-        
+
+    <Property Id="WINCURRENTBUILD">
+      <RegistrySearch Id="CheckWinCurrentBuild" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+                      Name="CurrentBuild" Type="raw" />
+    </Property>
+    <Condition Message="[ProductName] requires Windows 10 or higher.">
+      <![CDATA[Installed OR (WINCURRENTBUILD > 9600)]]>
+    </Condition>
+    
     <PropertyRef Id="WIXNETFX4RELEASEINSTALLED" />
     <Condition Message="[ProductName] requires .NET Framework 4.8 to be installed.">
       <![CDATA[Installed OR (WIXNETFX4RELEASEINSTALLED >= "#528040")]]>

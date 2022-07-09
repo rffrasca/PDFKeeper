@@ -27,12 +27,8 @@ Public Class PdfOcrTextExtractionStrategy
         If pdfFile Is Nothing Then
             Throw New ArgumentNullException(NameOf(pdfFile))
         End If
-        Try
-            Dim ocr = New ImageTextExtractor(New PdfFile(pdfFile.FullName).GetAllPagesAsTiffImages, ImageFormat.Tiff)
-            Dim result = ocr.GetText
-            Return result.Result
-        Catch ex As PlatformNotSupportedException
-            Return Nothing
-        End Try
+        Dim ocr = New ImageTextExtractor(New PdfFile(pdfFile.FullName).GetAllPagesAsTiffImages, ImageFormat.Tiff)
+        Dim result = ocr.GetText
+        Return result.Result
     End Function
 End Class

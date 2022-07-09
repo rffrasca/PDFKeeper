@@ -31,15 +31,10 @@ Public Class ImageTextExtractor
 
     ''' <summary>
     ''' Creates an instance of the class.
-    ''' 
-    ''' PlatformNotSupportedException will be thrown when operating system is not Windows 10.
     ''' </summary>
     ''' <param name="images">Collection of images as byte arrays</param>
     ''' <param name="format">Image format</param>
     Public Sub New(ByVal images As Collection(Of Byte()), ByVal format As ImageFormat)
-        If Not My.Computer.Info.OSFullName.Contains("Windows 10") Then
-            Throw New PlatformNotSupportedException
-        End If
         Me.images = images
         Me.format = format
     End Sub
