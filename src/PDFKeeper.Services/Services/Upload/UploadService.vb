@@ -154,6 +154,7 @@ Public Class UploadService
                         Else
                             .Flag = 0
                         End If
+                        .OcrPdfTextAndImageDataPages = profile.OcrPdfTextAndImageDataPages
                     End With
                     WritePdfInfoExt(stagedPdfPath.FullName, pdfInfoExt)
                     pdf.DeleteToRecycleBin

@@ -30,6 +30,7 @@ Public Interface IUploadProfilesView
     Property TitleItems As Object
     Property Keywords As String
     Property FlagDocument As Boolean
+    Property OcrPdfTextAndImageDataPages As Boolean
     Property SaveEnabled As Boolean
     ReadOnly Property DiscardEnabled As Boolean
     Sub SetFocusOnProfileNameTextBox()

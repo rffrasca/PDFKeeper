@@ -17,14 +17,31 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-<Serializable>
-Public Class UploadProfileModel
-    Public Property Title As String
-    Public Property Author As String
-    Public Property Subject As String
-    Public Property Keywords As String
-    Public Property Category As String
-    Public Property TaxYear As String
-    Public Property FlagDocument As Boolean
-    Public Property OcrPdfTextAndImageDataPages As Boolean
+Imports iText.Kernel.Pdf.Canvas.Parser
+Imports iText.Kernel.Pdf.Canvas.Parser.Data
+Imports iText.Kernel.Pdf.Canvas.Parser.Listener
+
+Friend Class PdfImageDetector
+    Implements IEventListener
+    Private _Detected As Boolean = False
+
+    ''' <summary>
+    ''' Were images detected in PDF page source?
+    ''' </summary>
+    ''' <returns>True or False</returns>
+    Friend ReadOnly Property Detected As Boolean
+        Get
+            Return _Detected
+        End Get
+    End Property
+
+    Public Sub EventOccurred(data As IEventData, type As EventType) Implements IEventListener.EventOccurred
+        If type = EventType.RENDER_IMAGE Then
+            _Detected = True
+        End If
+    End Sub
+
+    Public Function GetSupportedEvents() As ICollection(Of EventType) Implements IEventListener.GetSupportedEvents
+        Return Nothing
+    End Function
 End Class

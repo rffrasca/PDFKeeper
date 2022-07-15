@@ -109,7 +109,7 @@ Public Class MainPresenter
 
     Friend Sub FileOpenToolStrip_Click(sender As Object, e As EventArgs)
         If view.CheckedDocumentIdItems().Count > 0 Then
-            ProcessCheckedDocuments(CheckedDocumentsAction.Open, Nothing)
+            ProcessCheckedDocuments(CheckedDocumentsAction.Open, Nothing, Nothing)
         Else
             DocumentListDataGridView_CellDoubleClick(Me, Nothing)
         End If
@@ -189,7 +189,7 @@ Public Class MainPresenter
             If SetCategoryDialog.ShowDialog = DialogResult.OK Then
                 Dim category = SetCategoryDialog.Category
                 If category IsNot Nothing Then
-                    ProcessCheckedDocuments(CheckedDocumentsAction.SetCategory, category)
+                    ProcessCheckedDocuments(CheckedDocumentsAction.SetCategory, category, Nothing)
                 End If
             End If
         End Using
@@ -200,7 +200,7 @@ Public Class MainPresenter
             If SetTaxYearDialog.ShowDialog = DialogResult.OK Then
                 Dim taxYear = SetTaxYearDialog.TaxYear
                 If taxYear IsNot Nothing Then
-                    ProcessCheckedDocuments(CheckedDocumentsAction.SetTaxYear, taxYear)
+                    ProcessCheckedDocuments(CheckedDocumentsAction.SetTaxYear, taxYear, Nothing)
                 End If
             End If
         End Using
@@ -208,14 +208,14 @@ Public Class MainPresenter
 
     Friend Sub FileDeleteToolStrip_Click(sender As Object, e As EventArgs)
         If commonDialogs.ShowQuestionMessageBox(My.Resources.DeleteSelectedDocuments, False) = DialogResult.Yes Then
-            ProcessCheckedDocuments(CheckedDocumentsAction.Delete, Nothing)
+            ProcessCheckedDocuments(CheckedDocumentsAction.Delete, Nothing, Nothing)
         End If
     End Sub
 
     Friend Sub FileExportToolStrip_Click(sender As Object, e As EventArgs)
         Dim exportPath = view.ShowFolderBrowserDialog(My.Resources.SelectExportFolder)
         If exportPath IsNot Nothing Then
-            ProcessCheckedDocuments(CheckedDocumentsAction.Export, exportPath)
+            ProcessCheckedDocuments(CheckedDocumentsAction.Export, exportPath, Nothing)
         End If
     End Sub
 
@@ -358,8 +358,13 @@ Public Class MainPresenter
     End Sub
 
     Friend Sub ToolsUpdatePdfTextColumnsToolStrip_Click(sender As Object, e As EventArgs)
-        If commonDialogs.ShowQuestionMessageBox(My.Resources.UpdateSelectedDocuments, False) = DialogResult.Yes Then
-            ProcessCheckedDocuments(CheckedDocumentsAction.Update, Nothing)
+        Dim result = commonDialogs.ShowQuestionMessageBox(My.Resources.OcrImageDataPages, True)
+        If result = DialogResult.Yes Or result = DialogResult.No Then
+            Dim ocrImageDataPages = False
+            If result = DialogResult.Yes Then
+                ocrImageDataPages = True
+            End If
+            ProcessCheckedDocuments(CheckedDocumentsAction.Update, Nothing, ocrImageDataPages)
         End If
     End Sub
 
@@ -1053,7 +1058,8 @@ Public Class MainPresenter
         view.Preview = fileCacheSvc.GetPreviewFromCache(view.SelectedDocumentId, My.Settings.PreviewPixelDensity)
     End Sub
 
-    Private Sub ProcessCheckedDocuments(ByVal action As CheckedDocumentsAction, ByVal param As String)
+    Private Sub ProcessCheckedDocuments(ByVal action As CheckedDocumentsAction, ByVal strParam As String,
+                                        ByVal boolParam As Boolean)
         Dim openMaximum = 12
         view.ProgressBarVisible = True
         view.ProgressBarMaximum = view.CheckedDocumentIdItems.Count
@@ -1067,10 +1073,11 @@ Public Class MainPresenter
             End If
         End If
         If action = CheckedDocumentsAction.Export Then
-            param = Path.Combine(param, String.Concat(My.Application.Info.ProductName, "-", My.Resources.Export, "_",
-                                                      DateTime.Now.ToString("yyyy-MM-dd_HH.mm",
-                                                                            CultureInfo.CurrentCulture)))
-            Directory.CreateDirectory(param)
+            strParam = Path.Combine(strParam, String.Concat(My.Application.Info.ProductName, "-",
+                                                            My.Resources.Export, "_",
+                                                            DateTime.Now.ToString("yyyy-MM-dd_HH.mm",
+                                                                                  CultureInfo.CurrentCulture)))
+            Directory.CreateDirectory(strParam)
         End If
         Dim count = 0   ' Used by Open only.
         For Each id In view.CheckedDocumentIdItems()
@@ -1082,15 +1089,15 @@ Public Class MainPresenter
                         OpenDocument(id)
                     End If
                 ElseIf action = CheckedDocumentsAction.SetCategory Then
-                    UpdateDocument(id, CheckedDocumentsAction.SetCategory, param)
+                    UpdateDocument(id, CheckedDocumentsAction.SetCategory, strParam)
                 ElseIf action = CheckedDocumentsAction.SetTaxYear Then
-                    UpdateDocument(id, CheckedDocumentsAction.SetTaxYear, param)
+                    UpdateDocument(id, CheckedDocumentsAction.SetTaxYear, strParam)
                 ElseIf action = CheckedDocumentsAction.Delete Then
                     documentSvc.DeleteDocument(id)
                 ElseIf action = CheckedDocumentsAction.Export Then
-                    ExportDocument(id, param)
+                    ExportDocument(id, strParam)
                 ElseIf action = CheckedDocumentsAction.Update Then
-                    UpdatePdfTextColumns(id)
+                    UpdatePdfTextColumns(id, boolParam)
                 End If
             Catch ex As InvalidOperationException
                 commonDialogs.ShowMessageBox(String.Format(CultureInfo.CurrentCulture,
@@ -1172,13 +1179,13 @@ Public Class MainPresenter
         End With
     End Sub
 
-    Private Sub UpdatePdfTextColumns(ByVal id As Integer)
+    Private Sub UpdatePdfTextColumns(ByVal id As Integer, ByVal ocrImageDataPages As Boolean)
         Dim document = documentSvc.ReadDocument(id)
         fileCacheSvc.AddPdfToCache(id, document.Pdf)
         Dim cachedPdfPath = fileCacheSvc.GetCachedPdfFullName(id)
-        Dim extractor = New PdfTextExtractor(cachedPdfPath)
-        document.TextAnnotations = extractor.GetTextAnnot
-        document.Text = extractor.GetText
+        Dim pdf = New PdfFile(cachedPdfPath)
+        document.TextAnnotations = pdf.GetTextAnnot
+        document.Text = pdf.GetText(ocrImageDataPages)
         documentSvc.UpdateDocument(id, document)
         fileCacheSvc.DeletePdfFromCache(id)
     End Sub

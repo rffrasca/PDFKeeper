@@ -37,7 +37,6 @@ Public Class DocumentService
             Throw New ArgumentNullException(NameOf(infoExtModel))
         End If
         Dim pdf = New PdfFile(pdfFile)
-        Dim pdfText = New PdfTextExtractor(pdfFile)
         Dim model = New DocumentModel
         With model
             .Title = infoModel.Title
@@ -49,8 +48,8 @@ Public Class DocumentService
             .Category = infoExtModel.Category
             .Flag = infoExtModel.Flag
             .TaxYear = infoExtModel.TaxYear
-            .TextAnnotations = pdfText.GetTextAnnot
-            .Text = pdfText.GetText
+            .TextAnnotations = pdf.GetTextAnnot
+            .Text = pdf.GetText(infoExtModel.OcrPdfTextAndImageDataPages)
         End With
         repository.CreateDocument(model)
     End Sub

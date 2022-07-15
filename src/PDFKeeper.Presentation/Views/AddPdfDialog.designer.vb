@@ -63,10 +63,11 @@ Partial Class AddPdfDialog
         Me.CategoryLabel = New System.Windows.Forms.Label()
         Me.TaxYearComboBox = New System.Windows.Forms.ComboBox()
         Me.TaxYearLabel = New System.Windows.Forms.Label()
-        Me.FlagDocumentCheckBox = New System.Windows.Forms.CheckBox()
-        Me.DeleteSelectedPdfWhenAddedCheckBox = New System.Windows.Forms.CheckBox()
         Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.OcrPdfTextAndImageDataPagesCheckBox = New System.Windows.Forms.CheckBox()
+        Me.FlagDocumentCheckBox = New System.Windows.Forms.CheckBox()
+        Me.DeleteSelectedPdfWhenAddedCheckBox = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -78,11 +79,13 @@ Partial Class AddPdfDialog
         Me.TableLayoutPanel.Controls.Add(Me.AddButton, 2, 0)
         Me.TableLayoutPanel.Controls.Add(Me.SaveButton, 0, 0)
         Me.TableLayoutPanel.Name = "TableLayoutPanel"
+        Me.HelpProvider.SetShowHelp(Me.TableLayoutPanel, CType(resources.GetObject("TableLayoutPanel.ShowHelp"), Boolean))
         '
         'PreviewButton
         '
         resources.ApplyResources(Me.PreviewButton, "PreviewButton")
         Me.PreviewButton.Name = "PreviewButton"
+        Me.HelpProvider.SetShowHelp(Me.PreviewButton, CType(resources.GetObject("PreviewButton.ShowHelp"), Boolean))
         Me.PreviewButton.UseVisualStyleBackColor = True
         '
         'Cancel_Button
@@ -90,56 +93,66 @@ Partial Class AddPdfDialog
         resources.ApplyResources(Me.Cancel_Button, "Cancel_Button")
         Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Cancel_Button.Name = "Cancel_Button"
+        Me.HelpProvider.SetShowHelp(Me.Cancel_Button, CType(resources.GetObject("Cancel_Button.ShowHelp"), Boolean))
         '
         'AddButton
         '
         resources.ApplyResources(Me.AddButton, "AddButton")
         Me.AddButton.Name = "AddButton"
+        Me.HelpProvider.SetShowHelp(Me.AddButton, CType(resources.GetObject("AddButton.ShowHelp"), Boolean))
         '
         'SaveButton
         '
         resources.ApplyResources(Me.SaveButton, "SaveButton")
         Me.SaveButton.Name = "SaveButton"
+        Me.HelpProvider.SetShowHelp(Me.SaveButton, CType(resources.GetObject("SaveButton.ShowHelp"), Boolean))
         Me.SaveButton.UseVisualStyleBackColor = True
         '
         'SelectedPdfLabel
         '
         resources.ApplyResources(Me.SelectedPdfLabel, "SelectedPdfLabel")
         Me.SelectedPdfLabel.Name = "SelectedPdfLabel"
+        Me.HelpProvider.SetShowHelp(Me.SelectedPdfLabel, CType(resources.GetObject("SelectedPdfLabel.ShowHelp"), Boolean))
         '
         'SelectedPdfTextBox
         '
         resources.ApplyResources(Me.SelectedPdfTextBox, "SelectedPdfTextBox")
         Me.SelectedPdfTextBox.Name = "SelectedPdfTextBox"
         Me.SelectedPdfTextBox.ReadOnly = True
+        Me.HelpProvider.SetShowHelp(Me.SelectedPdfTextBox, CType(resources.GetObject("SelectedPdfTextBox.ShowHelp"), Boolean))
         Me.SelectedPdfTextBox.TabStop = False
         '
         'ViewButton
         '
         resources.ApplyResources(Me.ViewButton, "ViewButton")
         Me.ViewButton.Name = "ViewButton"
+        Me.HelpProvider.SetShowHelp(Me.ViewButton, CType(resources.GetObject("ViewButton.ShowHelp"), Boolean))
         Me.ViewButton.UseVisualStyleBackColor = True
         '
         'TitleLabel
         '
         resources.ApplyResources(Me.TitleLabel, "TitleLabel")
         Me.TitleLabel.Name = "TitleLabel"
+        Me.HelpProvider.SetShowHelp(Me.TitleLabel, CType(resources.GetObject("TitleLabel.ShowHelp"), Boolean))
         '
         'TitleTextBox
         '
         resources.ApplyResources(Me.TitleTextBox, "TitleTextBox")
         Me.TitleTextBox.Name = "TitleTextBox"
+        Me.HelpProvider.SetShowHelp(Me.TitleTextBox, CType(resources.GetObject("TitleTextBox.ShowHelp"), Boolean))
         '
         'SetTitleToFileNameButton
         '
         resources.ApplyResources(Me.SetTitleToFileNameButton, "SetTitleToFileNameButton")
         Me.SetTitleToFileNameButton.Name = "SetTitleToFileNameButton"
+        Me.HelpProvider.SetShowHelp(Me.SetTitleToFileNameButton, CType(resources.GetObject("SetTitleToFileNameButton.ShowHelp"), Boolean))
         Me.SetTitleToFileNameButton.UseVisualStyleBackColor = True
         '
         'AuthorLabel
         '
         resources.ApplyResources(Me.AuthorLabel, "AuthorLabel")
         Me.AuthorLabel.Name = "AuthorLabel"
+        Me.HelpProvider.SetShowHelp(Me.AuthorLabel, CType(resources.GetObject("AuthorLabel.ShowHelp"), Boolean))
         '
         'AuthorComboBox
         '
@@ -148,6 +161,7 @@ Partial Class AddPdfDialog
         Me.AuthorComboBox.FormattingEnabled = True
         resources.ApplyResources(Me.AuthorComboBox, "AuthorComboBox")
         Me.AuthorComboBox.Name = "AuthorComboBox"
+        Me.HelpProvider.SetShowHelp(Me.AuthorComboBox, CType(resources.GetObject("AuthorComboBox.ShowHelp"), Boolean))
         Me.AuthorComboBox.Sorted = True
         '
         'SubjectComboBox
@@ -157,22 +171,26 @@ Partial Class AddPdfDialog
         Me.SubjectComboBox.FormattingEnabled = True
         resources.ApplyResources(Me.SubjectComboBox, "SubjectComboBox")
         Me.SubjectComboBox.Name = "SubjectComboBox"
+        Me.HelpProvider.SetShowHelp(Me.SubjectComboBox, CType(resources.GetObject("SubjectComboBox.ShowHelp"), Boolean))
         Me.SubjectComboBox.Sorted = True
         '
         'SubjectLabel
         '
         resources.ApplyResources(Me.SubjectLabel, "SubjectLabel")
         Me.SubjectLabel.Name = "SubjectLabel"
+        Me.HelpProvider.SetShowHelp(Me.SubjectLabel, CType(resources.GetObject("SubjectLabel.ShowHelp"), Boolean))
         '
         'KeywordsLabel
         '
         resources.ApplyResources(Me.KeywordsLabel, "KeywordsLabel")
         Me.KeywordsLabel.Name = "KeywordsLabel"
+        Me.HelpProvider.SetShowHelp(Me.KeywordsLabel, CType(resources.GetObject("KeywordsLabel.ShowHelp"), Boolean))
         '
         'KeywordsTextBox
         '
         resources.ApplyResources(Me.KeywordsTextBox, "KeywordsTextBox")
         Me.KeywordsTextBox.Name = "KeywordsTextBox"
+        Me.HelpProvider.SetShowHelp(Me.KeywordsTextBox, CType(resources.GetObject("KeywordsTextBox.ShowHelp"), Boolean))
         '
         'CategoryComboBox
         '
@@ -181,12 +199,14 @@ Partial Class AddPdfDialog
         Me.CategoryComboBox.FormattingEnabled = True
         resources.ApplyResources(Me.CategoryComboBox, "CategoryComboBox")
         Me.CategoryComboBox.Name = "CategoryComboBox"
+        Me.HelpProvider.SetShowHelp(Me.CategoryComboBox, CType(resources.GetObject("CategoryComboBox.ShowHelp"), Boolean))
         Me.CategoryComboBox.Sorted = True
         '
         'CategoryLabel
         '
         resources.ApplyResources(Me.CategoryLabel, "CategoryLabel")
         Me.CategoryLabel.Name = "CategoryLabel"
+        Me.HelpProvider.SetShowHelp(Me.CategoryLabel, CType(resources.GetObject("CategoryLabel.ShowHelp"), Boolean))
         '
         'TaxYearComboBox
         '
@@ -196,11 +216,26 @@ Partial Class AddPdfDialog
         Me.TaxYearComboBox.FormattingEnabled = True
         resources.ApplyResources(Me.TaxYearComboBox, "TaxYearComboBox")
         Me.TaxYearComboBox.Name = "TaxYearComboBox"
+        Me.HelpProvider.SetShowHelp(Me.TaxYearComboBox, CType(resources.GetObject("TaxYearComboBox.ShowHelp"), Boolean))
         '
         'TaxYearLabel
         '
         resources.ApplyResources(Me.TaxYearLabel, "TaxYearLabel")
         Me.TaxYearLabel.Name = "TaxYearLabel"
+        Me.HelpProvider.SetShowHelp(Me.TaxYearLabel, CType(resources.GetObject("TaxYearLabel.ShowHelp"), Boolean))
+        '
+        'OpenFileDialog
+        '
+        resources.ApplyResources(Me.OpenFileDialog, "OpenFileDialog")
+        '
+        'OcrPdfTextAndImageDataPagesCheckBox
+        '
+        resources.ApplyResources(Me.OcrPdfTextAndImageDataPagesCheckBox, "OcrPdfTextAndImageDataPagesCheckBox")
+        Me.OcrPdfTextAndImageDataPagesCheckBox.Checked = Global.PDFKeeper.Presentation.My.MySettings.Default.AddPdfOcrPdfTextAndImageDataPages
+        Me.OcrPdfTextAndImageDataPagesCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.Presentation.My.MySettings.Default, "AddPdfOcrPdfTextAndImageDataPages", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.OcrPdfTextAndImageDataPagesCheckBox.Name = "OcrPdfTextAndImageDataPagesCheckBox"
+        Me.HelpProvider.SetShowHelp(Me.OcrPdfTextAndImageDataPagesCheckBox, CType(resources.GetObject("OcrPdfTextAndImageDataPagesCheckBox.ShowHelp"), Boolean))
+        Me.OcrPdfTextAndImageDataPagesCheckBox.UseVisualStyleBackColor = True
         '
         'FlagDocumentCheckBox
         '
@@ -208,6 +243,7 @@ Partial Class AddPdfDialog
         Me.FlagDocumentCheckBox.Checked = Global.PDFKeeper.Presentation.My.MySettings.Default.AddPdfFlagDocument
         Me.FlagDocumentCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.Presentation.My.MySettings.Default, "AddPdfFlagDocument", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.FlagDocumentCheckBox.Name = "FlagDocumentCheckBox"
+        Me.HelpProvider.SetShowHelp(Me.FlagDocumentCheckBox, CType(resources.GetObject("FlagDocumentCheckBox.ShowHelp"), Boolean))
         Me.FlagDocumentCheckBox.UseVisualStyleBackColor = True
         '
         'DeleteSelectedPdfWhenAddedCheckBox
@@ -216,17 +252,15 @@ Partial Class AddPdfDialog
         Me.DeleteSelectedPdfWhenAddedCheckBox.Checked = Global.PDFKeeper.Presentation.My.MySettings.Default.AddPdfDeleteSelectedPdfWhenAdded
         Me.DeleteSelectedPdfWhenAddedCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.Presentation.My.MySettings.Default, "AddPdfDeleteSelectedPdfWhenAdded", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.DeleteSelectedPdfWhenAddedCheckBox.Name = "DeleteSelectedPdfWhenAddedCheckBox"
+        Me.HelpProvider.SetShowHelp(Me.DeleteSelectedPdfWhenAddedCheckBox, CType(resources.GetObject("DeleteSelectedPdfWhenAddedCheckBox.ShowHelp"), Boolean))
         Me.DeleteSelectedPdfWhenAddedCheckBox.UseVisualStyleBackColor = True
-        '
-        'OpenFileDialog
-        '
-        resources.ApplyResources(Me.OpenFileDialog, "OpenFileDialog")
         '
         'AddPdfDialog
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
+        Me.Controls.Add(Me.OcrPdfTextAndImageDataPagesCheckBox)
         Me.Controls.Add(Me.TaxYearComboBox)
         Me.Controls.Add(Me.TaxYearLabel)
         Me.Controls.Add(Me.CategoryComboBox)
@@ -284,4 +318,5 @@ Partial Class AddPdfDialog
     Friend WithEvents TaxYearComboBox As ComboBox
     Friend WithEvents OpenFileDialog As OpenFileDialog
     Friend WithEvents HelpProvider As HelpProvider
+    Friend WithEvents OcrPdfTextAndImageDataPagesCheckBox As CheckBox
 End Class

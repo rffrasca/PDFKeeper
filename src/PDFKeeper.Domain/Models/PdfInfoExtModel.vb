@@ -23,4 +23,5 @@ Public Class PdfInfoExtModel
     Public Property Category As String
     Public Property TaxYear As String
     Public Property Flag As Integer
+    Public Property OcrPdfTextAndImageDataPages As Boolean
 End Class

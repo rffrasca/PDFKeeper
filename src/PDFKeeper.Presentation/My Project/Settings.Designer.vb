@@ -245,6 +245,18 @@ Namespace My
                 Me("ListFlaggedDocumentsOnStartup") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property AddPdfOcrPdfTextAndImageDataPages() As Boolean
+            Get
+                Return CType(Me("AddPdfOcrPdfTextAndImageDataPages"),Boolean)
+            End Get
+            Set
+                Me("AddPdfOcrPdfTextAndImageDataPages") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

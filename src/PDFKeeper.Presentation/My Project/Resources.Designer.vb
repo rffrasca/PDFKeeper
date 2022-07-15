@@ -265,6 +265,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to OCR each PDF page containing text and image data?.
+        '''</summary>
+        Friend ReadOnly Property OcrImageDataPages() As String
+            Get
+                Return ResourceManager.GetString("OcrImageDataPages", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to More than {0} documents have been selected. Only the first {0} selected documents will be opened..
         '''</summary>
         Friend ReadOnly Property OpenCheckedDocumentsMaximumReached() As String
@@ -446,15 +455,6 @@ Namespace My.Resources
         Friend ReadOnly Property UnhandledExceptionLog() As String
             Get
                 Return ResourceManager.GetString("UnhandledExceptionLog", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to Update PDF Text Annotations and Text in Database for all selected documents?.
-        '''</summary>
-        Friend ReadOnly Property UpdateSelectedDocuments() As String
-            Get
-                Return ResourceManager.GetString("UpdateSelectedDocuments", resourceCulture)
             End Get
         End Property
         

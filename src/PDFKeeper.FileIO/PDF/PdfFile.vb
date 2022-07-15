@@ -19,9 +19,11 @@
 '******************************************************************************
 Imports System.Collections.ObjectModel
 Imports System.IO
+Imports System.Text
 Imports ImageMagick
 Imports iText.Kernel.Crypto
 Imports iText.Kernel.Pdf
+Imports iText.Kernel.Pdf.Canvas.Parser
 Imports PDFKeeper.Common
 Imports PDFKeeper.FileIO.PdfPasswordTypes
 
@@ -126,5 +128,85 @@ Public Class PdfFile
             Next
         End Using
         Return imageList
+    End Function
+
+    ''' <summary>
+    ''' Gets text annotations from the PDF.
+    ''' </summary>
+    ''' <returns>Text annotations</returns>
+    Public Function GetTextAnnot() As String
+        Using reader = New PdfReader(file)
+            Dim output = New StringBuilder
+            Using document = New PdfDocument(reader)
+                For pageCounter = 1 To document.GetNumberOfPages
+                    Dim page = document.GetPage(pageCounter)
+                    Dim annotations = page.GetAnnotations()
+                    For Each annotation In annotations
+                        Dim dict = annotation.GetPdfObject
+                        Dim text = dict.GetAsString(PdfName.Contents)
+                        If text IsNot Nothing Then
+                            output.AppendLine(text.ToUnicodeString)
+                        End If
+                    Next
+                Next
+            End Using
+            Return output.ToString
+        End Using
+    End Function
+
+    ''' <summary>
+    ''' Gets text from the PDF using the appropriate extraction strategy for the PDF page being processed.
+    ''' 
+    ''' Text Extraction Strategy:
+    ''' Uses iText for text based PDF page except when page contains an invalid encoding due to iText's strict
+    ''' adherence to the PDF specification (ISO 32000) or when iText is unable to extract text from the page for
+    ''' another reason.
+    ''' 
+    ''' OCR Text Extraction Strategy:
+    ''' Uses OCR for text based PDF when page is rejected by iText or when the page is "Image-only". This strategy
+    ''' will also be used when PDF page contains image data and ocrImageDataPages is True. 
+    ''' </summary>
+    ''' <param name="ocrImageDataPages">True or False to OCR each PDF page containing image data.</param>
+    ''' <returns>Extracted text</returns>
+    Public Function GetText(ByVal ocrImageDataPages As Boolean) As String
+        Dim pdfText = New StringBuilder
+        Dim strategy As IPdfTextExtractionStrategy
+        For Each pdf In New PdfFile(file.FullName).Split(AppFolders.GetPath(AppFolders.AppFolder.Temp))
+            Dim text As String = Nothing
+            If ocrImageDataPages And CheckForImageData() Then
+                strategy = New PdfOcrTextExtractionStrategy
+                text = strategy.GetText(pdf)
+            Else
+                strategy = New PdfTextExtractionStrategy
+                text = strategy.GetText(pdf)
+                If text Is Nothing Then
+                    strategy = New PdfOcrTextExtractionStrategy
+                    text = strategy.GetText(pdf)
+                ElseIf text.Trim.Length = 0 Then
+                    strategy = New PdfOcrTextExtractionStrategy
+                    text = strategy.GetText(pdf)
+                End If
+            End If
+            pdfText.Append(text)
+            pdf.Delete()
+        Next
+        Return pdfText.ToString
+    End Function
+
+    Private Function CheckForImageData() As Boolean
+        Dim result = False
+        Using reader = New PdfReader(file)
+            Using pdfDoc = New PdfDocument(reader)
+                For page = 1 To pdfDoc.GetNumberOfPages
+                    Dim detector = New PdfImageDetector
+                    Dim canvasProcessor = New PdfCanvasProcessor(detector)
+                    canvasProcessor.ProcessPageContent(pdfDoc.GetPage(1))
+                    If detector.Detected Then
+                        result = True
+                    End If
+                Next
+            End Using
+        End Using
+        Return result
     End Function
 End Class

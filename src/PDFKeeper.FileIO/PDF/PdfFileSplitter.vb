@@ -22,7 +22,6 @@ Imports System.Threading
 Imports iText.Kernel.Pdf
 Imports iText.Kernel.Utils
 
-<CLSCompliant(False)>
 Friend Class PdfFileSplitter
     Inherits PdfSplitter
     Private ReadOnly destPath As String

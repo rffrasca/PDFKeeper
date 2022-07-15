@@ -217,6 +217,15 @@ Public Class UploadProfilesDialog
         End Set
     End Property
 
+    Public Property OcrPdfTextAndImageDataPages As Boolean Implements IUploadProfilesView.OcrPdfTextAndImageDataPages
+        Get
+            Return OcrPdfTextAndImageDataPagesCheckBox.Checked
+        End Get
+        Set(value As Boolean)
+            OcrPdfTextAndImageDataPagesCheckBox.Checked = value
+        End Set
+    End Property
+
     Public Property SaveEnabled As Boolean Implements IUploadProfilesView.SaveEnabled
         Get
             Return SaveButton.Enabled

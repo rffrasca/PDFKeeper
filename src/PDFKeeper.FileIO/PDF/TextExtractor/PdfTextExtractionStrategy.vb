@@ -21,6 +21,7 @@ Imports System.IO
 Imports System.Text
 Imports iText.Kernel.Pdf
 Imports iText.Kernel.Pdf.Canvas.Parser.Listener
+Imports iText.Kernel.Pdf.Canvas.Parser.Util
 
 Public Class PdfTextExtractionStrategy
     Implements IPdfTextExtractionStrategy
@@ -39,7 +40,7 @@ Public Class PdfTextExtractionStrategy
                         Next
                     Catch ex As ArgumentException   ' PDF contains an invalid encoding.
                         Return Nothing
-                    Catch ex As iText.Kernel.Pdf.Canvas.Parser.Util.InlineImageParsingUtils.InlineImageParseException
+                    Catch ex As InlineImageParsingUtils.InlineImageParseException
                         Return Nothing
                     End Try
                 Next

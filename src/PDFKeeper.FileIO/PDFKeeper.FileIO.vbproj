@@ -93,6 +93,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="PDF\PdfFileSplitter.vb" />
+    <Compile Include="PDF\PdfImageDetector.vb" />
     <Compile Include="PDF\PdfInfoModel.vb" />
     <Compile Include="PDF\PdfOwnerPasswordValidator.vb" />
     <Compile Include="PDF\PdfPasswordTypes.vb" />
@@ -102,7 +103,6 @@
     <Compile Include="PDF\TextExtractor\ImageTextExtractor.vb" />
     <Compile Include="PDF\TextExtractor\IPdfTextExtractionStrategy.vb" />
     <Compile Include="PDF\TextExtractor\PdfOcrTextExtractionStrategy.vb" />
-    <Compile Include="PDF\TextExtractor\PdfTextExtractor.vb" />
     <Compile Include="PDF\TextExtractor\PdfTextExtractionStrategy.vb" />
     <Compile Include="PDF\Viewer\BundledPdfViewerBase.vb" />
     <Compile Include="PDF\Viewer\PdfViewer.vb" />

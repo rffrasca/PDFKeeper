@@ -173,6 +173,7 @@ Public Class AddPdfPresenter
             Else
                 model.Flag = 0
             End If
+            model.OcrPdfTextAndImageDataPages = My.Settings.AddPdfOcrPdfTextAndImageDataPages
             pdfSvc.CloseRestrictedViewer()
             pdfSvc.WritePdfInfoExt(modifiedPdfFile, model)
             pdfSvc.StagePdfForUpload(modifiedPdfFile)

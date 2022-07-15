@@ -50,5 +50,8 @@
     <Setting Name="ListFlaggedDocumentsOnStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="AddPdfOcrPdfTextAndImageDataPages" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

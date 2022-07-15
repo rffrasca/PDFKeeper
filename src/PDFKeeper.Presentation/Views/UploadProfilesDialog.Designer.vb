@@ -64,6 +64,7 @@ Partial Class UploadProfilesDialog
         Me.AuthorLabel = New System.Windows.Forms.Label()
         Me.FlagDocumentCheckBox = New System.Windows.Forms.CheckBox()
         Me.ProfileGroupBox = New System.Windows.Forms.GroupBox()
+        Me.OcrPdfTextAndImageDataPagesCheckBox = New System.Windows.Forms.CheckBox()
         Me.TaxYearComboBox = New System.Windows.Forms.ComboBox()
         Me.TaxYearLabel = New System.Windows.Forms.Label()
         Me.DiscardButton = New System.Windows.Forms.Button()
@@ -238,6 +239,7 @@ Partial Class UploadProfilesDialog
         '
         'ProfileGroupBox
         '
+        Me.ProfileGroupBox.Controls.Add(Me.OcrPdfTextAndImageDataPagesCheckBox)
         Me.ProfileGroupBox.Controls.Add(Me.TaxYearComboBox)
         Me.ProfileGroupBox.Controls.Add(Me.TaxYearLabel)
         Me.ProfileGroupBox.Controls.Add(Me.DiscardButton)
@@ -261,6 +263,13 @@ Partial Class UploadProfilesDialog
         Me.ProfileGroupBox.Name = "ProfileGroupBox"
         Me.HelpProvider.SetShowHelp(Me.ProfileGroupBox, CType(resources.GetObject("ProfileGroupBox.ShowHelp"), Boolean))
         Me.ProfileGroupBox.TabStop = False
+        '
+        'OcrPdfTextAndImageDataPagesCheckBox
+        '
+        resources.ApplyResources(Me.OcrPdfTextAndImageDataPagesCheckBox, "OcrPdfTextAndImageDataPagesCheckBox")
+        Me.OcrPdfTextAndImageDataPagesCheckBox.Name = "OcrPdfTextAndImageDataPagesCheckBox"
+        Me.HelpProvider.SetShowHelp(Me.OcrPdfTextAndImageDataPagesCheckBox, CType(resources.GetObject("OcrPdfTextAndImageDataPagesCheckBox.ShowHelp"), Boolean))
+        Me.OcrPdfTextAndImageDataPagesCheckBox.UseVisualStyleBackColor = True
         '
         'TaxYearComboBox
         '
@@ -343,4 +352,5 @@ Partial Class UploadProfilesDialog
     Friend WithEvents DiscardButton As System.Windows.Forms.Button
     Friend WithEvents TaxYearComboBox As ComboBox
     Friend WithEvents TaxYearLabel As Label
+    Friend WithEvents OcrPdfTextAndImageDataPagesCheckBox As CheckBox
 End Class

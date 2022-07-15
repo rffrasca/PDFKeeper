@@ -148,6 +148,12 @@
   <data name="PreviewButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 3</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="PreviewButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="PreviewButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
@@ -180,6 +186,9 @@
   </data>
   <data name="Cancel_Button.Location" type="System.Drawing.Point, System.Drawing">
     <value>258, 3</value>
+  </data>
+  <data name="Cancel_Button.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="Cancel_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
@@ -234,6 +243,9 @@
   <data name="AddButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>173, 3</value>
   </data>
+  <data name="AddButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="AddButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
@@ -277,11 +289,14 @@
   <data name="SaveButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
+  <data name="SaveButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="SaveButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
   <data name="SaveButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="SaveButton.Text" xml:space="preserve">
     <value>&amp;Save</value>
@@ -299,16 +314,19 @@
     <value>3</value>
   </data>
   <data name="TableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>332, 417</value>
+    <value>332, 441</value>
   </data>
   <data name="TableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="TableLayoutPanel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="TableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>340, 33</value>
   </data>
   <data name="TableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel.Name" xml:space="preserve">
     <value>TableLayoutPanel</value>
@@ -320,7 +338,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="TableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="PreviewButton" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="Cancel_Button" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="AddButton" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="SaveButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,Percent,25,Percent,25,Percent,25" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -333,6 +351,9 @@
   </data>
   <data name="SelectedPdfLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 9</value>
+  </data>
+  <data name="SelectedPdfLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="SelectedPdfLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 15</value>
@@ -353,10 +374,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SelectedPdfLabel.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="SelectedPdfTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 27</value>
+  </data>
+  <data name="SelectedPdfTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="SelectedPdfTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>573, 23</value>
@@ -374,7 +398,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SelectedPdfTextBox.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="ViewButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -395,11 +419,14 @@
   <data name="ViewButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>594, 27</value>
   </data>
+  <data name="ViewButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="ViewButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 23</value>
   </data>
   <data name="ViewButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="ViewButton.Text" xml:space="preserve">
     <value>&amp;View</value>
@@ -414,7 +441,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ViewButton.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="TitleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -425,11 +452,14 @@
   <data name="TitleLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 62</value>
   </data>
+  <data name="TitleLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="TitleLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 15</value>
   </data>
   <data name="TitleLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="TitleLabel.Text" xml:space="preserve">
     <value>Title:</value>
@@ -444,16 +474,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TitleLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="TitleTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 81</value>
+  </data>
+  <data name="TitleTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="TitleTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>501, 23</value>
   </data>
   <data name="TitleTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;TitleTextBox.Name" xml:space="preserve">
     <value>TitleTextBox</value>
@@ -465,7 +498,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TitleTextBox.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="SetTitleToFileNameButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -473,11 +506,14 @@
   <data name="SetTitleToFileNameButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 81</value>
   </data>
+  <data name="SetTitleToFileNameButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="SetTitleToFileNameButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 23</value>
   </data>
   <data name="SetTitleToFileNameButton.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="SetTitleToFileNameButton.Text" xml:space="preserve">
     <value>Set Title to &amp;File Name</value>
@@ -492,7 +528,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SetTitleToFileNameButton.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="AuthorLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -503,11 +539,14 @@
   <data name="AuthorLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 121</value>
   </data>
+  <data name="AuthorLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="AuthorLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 15</value>
   </data>
   <data name="AuthorLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="AuthorLabel.Text" xml:space="preserve">
     <value>Author:</value>
@@ -522,16 +561,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AuthorLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="AuthorComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 140</value>
+  </data>
+  <data name="AuthorComboBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="AuthorComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>657, 23</value>
   </data>
   <data name="AuthorComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;AuthorComboBox.Name" xml:space="preserve">
     <value>AuthorComboBox</value>
@@ -543,16 +585,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AuthorComboBox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="SubjectComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 193</value>
+  </data>
+  <data name="SubjectComboBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="SubjectComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>657, 23</value>
   </data>
   <data name="SubjectComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;SubjectComboBox.Name" xml:space="preserve">
     <value>SubjectComboBox</value>
@@ -564,7 +609,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SubjectComboBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="SubjectLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -575,11 +620,14 @@
   <data name="SubjectLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 175</value>
   </data>
+  <data name="SubjectLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="SubjectLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 15</value>
   </data>
   <data name="SubjectLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="SubjectLabel.Text" xml:space="preserve">
     <value>Subject:</value>
@@ -594,7 +642,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SubjectLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="KeywordsLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -605,11 +653,14 @@
   <data name="KeywordsLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 233</value>
   </data>
+  <data name="KeywordsLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="KeywordsLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 15</value>
   </data>
   <data name="KeywordsLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="KeywordsLabel.Text" xml:space="preserve">
     <value>Keywords:</value>
@@ -624,7 +675,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;KeywordsLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="KeywordsTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 251</value>
@@ -632,11 +683,14 @@
   <data name="KeywordsTextBox.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="KeywordsTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="KeywordsTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>657, 82</value>
   </data>
   <data name="KeywordsTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;KeywordsTextBox.Name" xml:space="preserve">
     <value>KeywordsTextBox</value>
@@ -648,16 +702,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;KeywordsTextBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="CategoryComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 364</value>
+  </data>
+  <data name="CategoryComboBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="CategoryComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>501, 23</value>
   </data>
   <data name="CategoryComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;CategoryComboBox.Name" xml:space="preserve">
     <value>CategoryComboBox</value>
@@ -669,7 +726,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CategoryComboBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="CategoryLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -680,11 +737,14 @@
   <data name="CategoryLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 346</value>
   </data>
+  <data name="CategoryLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="CategoryLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 15</value>
   </data>
   <data name="CategoryLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="CategoryLabel.Text" xml:space="preserve">
     <value>Category:</value>
@@ -699,10 +759,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CategoryLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="TaxYearComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 364</value>
+  </data>
+  <data name="TaxYearComboBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="TaxYearComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 23</value>
@@ -720,7 +783,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TaxYearComboBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="TaxYearLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -731,11 +794,14 @@
   <data name="TaxYearLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 346</value>
   </data>
+  <data name="TaxYearLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="TaxYearLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 15</value>
   </data>
   <data name="TaxYearLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>14</value>
   </data>
   <data name="TaxYearLabel.Text" xml:space="preserve">
     <value>Tax Year:</value>
@@ -750,7 +816,46 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TaxYearLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <metadata name="OpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>139, 17</value>
+  </metadata>
+  <data name="OpenFileDialog.Filter" xml:space="preserve">
+    <value>PDF files|*.pdf</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 453</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>299, 19</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.Text" xml:space="preserve">
+    <value>OCR each PDF page containing text and image data</value>
+  </data>
+  <data name="&gt;&gt;OcrPdfTextAndImageDataPagesCheckBox.Name" xml:space="preserve">
+    <value>OcrPdfTextAndImageDataPagesCheckBox</value>
+  </data>
+  <data name="&gt;&gt;OcrPdfTextAndImageDataPagesCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OcrPdfTextAndImageDataPagesCheckBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;OcrPdfTextAndImageDataPagesCheckBox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="FlagDocumentCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -760,6 +865,9 @@
   </data>
   <data name="FlagDocumentCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 405</value>
+  </data>
+  <data name="FlagDocumentCheckBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="FlagDocumentCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 19</value>
@@ -780,7 +888,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FlagDocumentCheckBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="DeleteSelectedPdfWhenAddedCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -790,6 +898,9 @@
   </data>
   <data name="DeleteSelectedPdfWhenAddedCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 429</value>
+  </data>
+  <data name="DeleteSelectedPdfWhenAddedCheckBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="DeleteSelectedPdfWhenAddedCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>197, 19</value>
@@ -810,17 +921,8 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DeleteSelectedPdfWhenAddedCheckBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
-  <metadata name="OpenFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>139, 17</value>
-  </metadata>
-  <data name="OpenFileDialog.Filter" xml:space="preserve">
-    <value>PDF files|*.pdf</value>
-  </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -828,7 +930,7 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>684, 462</value>
+    <value>684, 486</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

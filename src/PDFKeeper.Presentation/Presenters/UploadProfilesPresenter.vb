@@ -93,6 +93,7 @@ Public Class UploadProfilesPresenter
             .Category = model.Category
             .TaxYear = model.TaxYear
             .FlagDocument = model.FlagDocument
+            .OcrPdfTextAndImageDataPages = model.OcrPdfTextAndImageDataPages
             .ProfilesGroupEnabled = False
             .ProfileGroupEnabled = True
             .SetFocusOnProfileNameTextBox()
@@ -149,6 +150,7 @@ Public Class UploadProfilesPresenter
             model.Category = .Category
             model.TaxYear = .TaxYear
             model.FlagDocument = .FlagDocument
+            model.OcrPdfTextAndImageDataPages = .OcrPdfTextAndImageDataPages
             Try
                 If previousProfile Is Nothing Then
                     uploadProfileSvc.CreateProfile(.ProfileName, model)
@@ -195,6 +197,7 @@ Public Class UploadProfilesPresenter
             .Category = Nothing
             .TaxYear = Nothing
             .FlagDocument = False
+            .OcrPdfTextAndImageDataPages = False
             .SetErrorProviderMessage(Nothing)
         End With
     End Sub

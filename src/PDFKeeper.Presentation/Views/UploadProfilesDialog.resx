@@ -117,7 +117,80 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;DeleteButton.Name" xml:space="preserve">
+    <value>DeleteButton</value>
+  </data>
+  <data name="&gt;&gt;DeleteButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DeleteButton.Parent" xml:space="preserve">
+    <value>ProfilesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;DeleteButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;EditButton.Name" xml:space="preserve">
+    <value>EditButton</value>
+  </data>
+  <data name="&gt;&gt;EditButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EditButton.Parent" xml:space="preserve">
+    <value>ProfilesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;EditButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;NewButton.Name" xml:space="preserve">
+    <value>NewButton</value>
+  </data>
+  <data name="&gt;&gt;NewButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NewButton.Parent" xml:space="preserve">
+    <value>ProfilesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;NewButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;ProfileComboBox.Name" xml:space="preserve">
+    <value>ProfileComboBox</value>
+  </data>
+  <data name="&gt;&gt;ProfileComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ProfileComboBox.Parent" xml:space="preserve">
+    <value>ProfilesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;ProfileComboBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ProfilesGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 13</value>
+  </data>
+  <data name="ProfilesGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>597, 81</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ProfilesGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ProfilesGroupBox.Text" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="&gt;&gt;ProfilesGroupBox.Name" xml:space="preserve">
+    <value>ProfilesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;ProfilesGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ProfilesGroupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ProfilesGroupBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="DeleteButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -143,7 +216,6 @@
   <data name="DeleteButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="DeleteButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -273,30 +345,6 @@
   <data name="&gt;&gt;ProfileComboBox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="ProfilesGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 13</value>
-  </data>
-  <data name="ProfilesGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>597, 81</value>
-  </data>
-  <data name="ProfilesGroupBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="ProfilesGroupBox.Text" xml:space="preserve">
-    <value>Profiles</value>
-  </data>
-  <data name="&gt;&gt;ProfilesGroupBox.Name" xml:space="preserve">
-    <value>ProfilesGroupBox</value>
-  </data>
-  <data name="&gt;&gt;ProfilesGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ProfilesGroupBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ProfilesGroupBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="ErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 16</value>
   </metadata>
@@ -307,29 +355,62 @@
     <value>7, 15</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>624, 537</value>
+    <value>624, 550</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 411</value>
   </data>
   <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>202, 17</value>
   </metadata>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>299, 19</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="OcrPdfTextAndImageDataPagesCheckBox.Text" xml:space="preserve">
+    <value>OCR each PDF page containing text and image data</value>
+  </data>
+  <data name="&gt;&gt;OcrPdfTextAndImageDataPagesCheckBox.Name" xml:space="preserve">
+    <value>OcrPdfTextAndImageDataPagesCheckBox</value>
+  </data>
+  <data name="&gt;&gt;OcrPdfTextAndImageDataPagesCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OcrPdfTextAndImageDataPagesCheckBox.Parent" xml:space="preserve">
+    <value>ProfileGroupBox</value>
+  </data>
+  <data name="&gt;&gt;OcrPdfTextAndImageDataPagesCheckBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="TaxYearComboBox.HelpKeyword" xml:space="preserve">
     <value>Upload Profile Properties.html</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="TaxYearComboBox.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
   </data>
   <data name="TaxYearComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 394</value>
+    <value>434, 346</value>
   </data>
   <data name="TaxYearComboBox.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="TaxYearComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 23</value>
+    <value>156, 23</value>
   </data>
   <data name="TaxYearComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;TaxYearComboBox.Name" xml:space="preserve">
     <value>TaxYearComboBox</value>
@@ -341,19 +422,19 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;TaxYearComboBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="TaxYearLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="TaxYearLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 376</value>
+    <value>434, 327</value>
   </data>
   <data name="TaxYearLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 15</value>
   </data>
   <data name="TaxYearLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>12</value>
   </data>
   <data name="TaxYearLabel.Text" xml:space="preserve">
     <value>Tax Year:</value>
@@ -368,7 +449,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;TaxYearLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="DiscardButton.HelpKeyword" xml:space="preserve">
     <value>Upload Profile Properties.html</value>
@@ -397,7 +478,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="DiscardButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>515, 394</value>
+    <value>515, 407</value>
   </data>
   <data name="DiscardButton.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -406,7 +487,7 @@
     <value>75, 23</value>
   </data>
   <data name="DiscardButton.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="DiscardButton.Text" xml:space="preserve">
     <value>Dis&amp;card</value>
@@ -424,7 +505,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;DiscardButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="SaveButton.HelpKeyword" xml:space="preserve">
     <value>Upload Profile Properties.html</value>
@@ -446,7 +527,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="SaveButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>434, 394</value>
+    <value>434, 407</value>
   </data>
   <data name="SaveButton.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -455,7 +536,7 @@
     <value>75, 23</value>
   </data>
   <data name="SaveButton.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="SaveButton.Text" xml:space="preserve">
     <value>&amp;Save</value>
@@ -470,7 +551,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;SaveButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="FlagDocumentCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -485,7 +566,7 @@
     <value>NoControl</value>
   </data>
   <data name="FlagDocumentCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>250, 399</value>
+    <value>6, 387</value>
   </data>
   <data name="FlagDocumentCheckBox.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -494,7 +575,7 @@
     <value>107, 19</value>
   </data>
   <data name="FlagDocumentCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="FlagDocumentCheckBox.Text" xml:space="preserve">
     <value>Flag Document</value>
@@ -509,7 +590,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;FlagDocumentCheckBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="CategoryComboBox.HelpKeyword" xml:space="preserve">
     <value>Upload Profile Properties.html</value>
@@ -524,7 +605,7 @@
     <value>True</value>
   </data>
   <data name="CategoryComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>585, 23</value>
+    <value>420, 23</value>
   </data>
   <data name="CategoryComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -539,7 +620,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;CategoryComboBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="CategoryLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -578,7 +659,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;CategoryLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="KeywordsTextBox.HelpKeyword" xml:space="preserve">
     <value>Upload Profile Properties.html</value>
@@ -611,7 +692,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;KeywordsTextBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="KeywordsLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -650,7 +731,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;KeywordsLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="SubjectComboBox.HelpKeyword" xml:space="preserve">
     <value>Upload Profile Properties.html</value>
@@ -680,7 +761,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;SubjectComboBox.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="SubjectLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -719,7 +800,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;SubjectLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="AuthorComboBox.HelpKeyword" xml:space="preserve">
     <value>Upload Profile Properties.html</value>
@@ -749,7 +830,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;AuthorComboBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="AuthorLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -788,7 +869,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;AuthorLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="TitleComboBox.HelpKeyword" xml:space="preserve">
     <value>Upload Profile Properties.html</value>
@@ -818,7 +899,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;TitleComboBox.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="TitleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -857,7 +938,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;TitleLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="ProfileNameTextBox.HelpKeyword" xml:space="preserve">
     <value>Upload Profile Properties.html</value>
@@ -887,7 +968,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;ProfileNameTextBox.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="NameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -926,7 +1007,7 @@
     <value>ProfileGroupBox</value>
   </data>
   <data name="&gt;&gt;NameLabel.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="ProfileGroupBox.HelpKeyword" xml:space="preserve">
     <value>Upload Profile Properties.html</value>
@@ -941,7 +1022,7 @@
     <value>True</value>
   </data>
   <data name="ProfileGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 424</value>
+    <value>598, 437</value>
   </data>
   <data name="ProfileGroupBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
