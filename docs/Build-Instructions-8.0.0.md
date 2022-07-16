@@ -6,8 +6,8 @@
 3. Wix Toolset Visual Studio 2019 Extension - Download and install using "Manage Extensions" in Visual Studio.
 4. Wax - Download and install using "Manage Extensions" in Visual Studio.
 5. Microsoft HTML Help Workshop - https://web.archive.org/web/20201201163924/http://www.microsoft.com/en-us/download/details.aspx?id=21138
-6. Oracle Data Provider for .NET - https://www.oracle.com/database/technologies/dotnet-odacdeploy-downloads.html
-    Download 64-bit ODAC 19.3 from the ODAC Xcopy section to a folder for staging, then unblock and unzip the file.
+6. Oracle Data Provider for .NET - https://www.oracle.com/database/technologies/net-downloads.html
+    Download 64-bit ODAC 21.4 from the XCopy ODAC Packages section to a folder for staging, then unblock and unzip the file.
     For installation instructions, refer to readme.htm that is included in the zip file.
     
     Note, make sure to perform the installation using a Command Prompt session that was opened using "Run as administrator". In addition, it is not necessary to install the full ODAC product, only ODP.NET4 is required.
