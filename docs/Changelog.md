@@ -68,7 +68,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Add PDF Documents dialog is no longer being hidden after Upload cycle has completed.
 - Upload Folder Configurations drop down list on the Manage Upload Folder Configurations dialog will now update when configurations are added, renamed, or deleted outside of PDFKeeper while open.
 
-## v7.1.1 - 2021-07-18
+## v7.1.1 - 2021-07-18 (deprecated)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.1.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.1.1).
@@ -88,7 +88,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Upload Service will now delete empty, non-configured folders from the Upload folder.
 - UploadFolderErrorToolStripStatusLabel is no longer visible on the status bar after a successful upload cycle.
 
-## v7.1.0 - 2021-06-26
+## v7.1.0 - 2021-06-26 (deprecated)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.1.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.1.0).
@@ -104,7 +104,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ### Fixed
 - Fixed License not opening from About box.
 
-## v7.0.0 - 2021-03-28
+## v7.0.0 - 2021-03-28 (deprecated)
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.0.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.0.0).
@@ -127,7 +127,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ### Fixed
 - Unhandled InlineImageParseException: "Could not find image data or EI" during text extraction of an older PDF that does not contain text.
 
-## v6.1.1 - 2020-11-27
+## v6.1.1 - 2020-11-27 (deprecated)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.1).
@@ -136,7 +136,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Preview Picture Box not always displaying correct image for selected document record.
 - Cache folder not always clearing on application shutdown along with System.NullReferenceException or System.IndexOutOfRangeException being logged to Windows Application Event Log.
 
-## v6.1.0 - 2020-11-21
+## v6.1.0 - 2020-11-21 (deprecated)
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.1.0).
@@ -153,7 +153,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Selected document record in Search Results not always visible after refreshing.
 - InvalidOperationException at System.Drawing.Image.get_Width() or System.Drawing.Image.get_FrameDimensionsList() when document record is selected resulting in preview image failing to load into Preview Picture Box.
 
-## v6.0.1 - 2020-10-16
+## v6.0.1 - 2020-10-16 (deprecated)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.1).
@@ -170,7 +170,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Progress bar on Main Form not updating properly during a lengthy Search Results operation (Delete, Export, or setting of a Category).
 - "Failed to create restore point (Process = C:\Windows\system32\msiexec.exe /V; Description = Installed/Removed PDFKeeper; Error = 0x80042306)" is logged to Windows Application Event Log during an install and uninstall.
 
-## v6.0.0 - 2020-09-26
+## v6.0.0 - 2020-09-26 (deprecated)
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
@@ -193,7 +193,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - "Access to the path <PDF_PATH_NAME> is denied" when a document is selected in Search Results following PDFKeeper being closed while Sumatra PDF was displaying one or more selected PDF documents and PDFKeeper was opened again without closing Sumatra PDF first.
 - Unhandled Oracle Exception when the Upload Service is trying to process a PDF that was moved from the Upload folder to the Upload Staging folder that is missing one or more required information property values (Title, Author, Subject).
 
-## v5.0.3 - 2019-12-27
+## v5.0.3 - 2019-12-27 (deprecated)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.3).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.3).
@@ -206,7 +206,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Fixed selected Search tab on main form not always being visible after the right panel collapsed state has changed.
 When Search Results is refreshed, the previously selected document record will be selected.
 
-## v5.0.2 - 2019-11-30
+## v5.0.2 - 2019-11-30 (deprecated)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.2).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.2).
@@ -216,7 +216,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Fixed a memory and handle leak.
 - Resolved issue with how Oracle secure password handling was implemented, allowing database connection pooling to be enabled after being disabled in version 5.0.0.
 
-## v5.0.1 - 2019-11-16
+## v5.0.1 - 2019-11-16 (deprecated)
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.1).
@@ -230,7 +230,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Fixed User Interface hanging while the Upload process is running.
 - Fixed unhandled InvalidOperationException during an upload that needs to be caught without displaying an error.
 
-## v5.0.0 - 2019-10-24
+## v5.0.0 - 2019-10-24 (deprecated)
 - This is a major release and the 10th year anniversary edition, officially released on the 10th year anniversary of PDFKeeper.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.0).
