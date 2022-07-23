@@ -127,4 +127,7 @@ Please refer to the "Additional Client Prerequisites" section in the help file f
 
 To access help, press F1 at the PDFKeeper Login form.</value>
   </data>
+  <data name="OracleDataProviderVersion" xml:space="preserve">
+    <value>4.122.21.1</value>
+  </data>
 </root>

@@ -81,5 +81,14 @@ Namespace My.Resources
                 Return ResourceManager.GetString("OracleDataProviderMissing", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to 4.122.21.1.
+        '''</summary>
+        Friend ReadOnly Property OracleDataProviderVersion() As String
+            Get
+                Return ResourceManager.GetString("OracleDataProviderVersion", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace

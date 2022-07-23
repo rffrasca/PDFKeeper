@@ -145,7 +145,7 @@ Public NotInheritable Class DbSession
     Private Shared Function LoadOracleDataProvider() As Reflection.Assembly
         Try
             Dim dllPath = My.Computer.Registry.GetValue(String.Concat("HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\ODP.NET\",
-                                                                      My.Settings.OracleDataProviderVersion),
+                                                                      My.Resources.OracleDataProviderVersion),
                                                         "DllPath", "")
             Dim oraKeyPath = String.Concat("HKEY_LOCAL_MACHINE\",
                                            File.ReadAllText(String.Concat(dllPath, "\oracle.key"))).TrimEnd

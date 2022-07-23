@@ -53,15 +53,6 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("4.122.21.1")>  _
-        Public ReadOnly Property OracleDataProviderVersion() As String
-            Get
-                Return CType(Me("OracleDataProviderVersion"),String)
-            End Get
-        End Property
     End Class
 End Namespace
 
