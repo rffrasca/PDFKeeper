@@ -26,6 +26,7 @@ Imports iText.Kernel.Pdf
 Imports iText.Kernel.Pdf.Canvas.Parser
 Imports PDFKeeper.Common
 Imports PDFKeeper.FileIO.PdfPasswordTypes
+Imports iText.Kernel.Pdf.Canvas.Parser.Util
 
 Public Class PdfFile
     Inherits PdfBase
@@ -198,12 +199,18 @@ Public Class PdfFile
         Using reader = New PdfReader(file)
             Using pdfDoc = New PdfDocument(reader)
                 For page = 1 To pdfDoc.GetNumberOfPages
-                    Dim detector = New PdfImageDetector
-                    Dim canvasProcessor = New PdfCanvasProcessor(detector)
-                    canvasProcessor.ProcessPageContent(pdfDoc.GetPage(1))
-                    If detector.Detected Then
-                        result = True
-                    End If
+                    Try
+                        Dim detector = New PdfImageDetector
+                        Dim canvasProcessor = New PdfCanvasProcessor(detector)
+                        canvasProcessor.ProcessPageContent(pdfDoc.GetPage(1))
+                        If detector.Detected Then
+                            result = True
+                        End If
+                    Catch ex As ArgumentException   ' PDF contains an invalid encoding.
+                        Return result
+                    Catch ex As InlineImageParsingUtils.InlineImageParseException
+                        Return result
+                    End Try
                 Next
             End Using
         End Using
