@@ -446,6 +446,7 @@ Public Class MainPresenter
 
     Friend Sub FindTextComboBox_TextChanged(sender As Object, e As EventArgs)
         toolStripStateManager.EnableViewRefresh(False)
+        view.SetErrorProviderMessage(Nothing)
         view.FindText = view.FindText.TrimStart
         If view.FindText.Trim.Length > 0 Then
             view.FindByTextEnabled = True
