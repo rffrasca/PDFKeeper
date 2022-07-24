@@ -927,7 +927,7 @@ Public Class MainPresenter
                 toolStripStateManager.SetStateForViewCheckedRowCount(.CheckedDocumentIdItems.Count)
             End If
             ' The "If" check is needed to prevent user from having to check/uncheck checkbox in
-            ' SearchResultsDataGridView when Document Notes length > 0.
+            ' DocumentListDataGridView when Document Notes length > 0.
             If .NotesFocused Then
                 .DocumentRetrievalGroupEnabled = controlEnabled
                 .DocumentListViewEnabled = controlEnabled

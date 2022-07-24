@@ -213,19 +213,19 @@ Public Class ToolStripStateManager
             If row("Action") = "FileSelectNone" Then
                 row("StateValue") = actionEnabled
             End If
-            If row("Action") = "FileSetCategory" Then
+            If row("Action") = "FileSetCategory" And changed = True Then
                 row("StateValue") = False
             End If
-            If row("Action") = "FileSetTaxYear" Then
+            If row("Action") = "FileSetTaxYear" And changed = True Then
                 row("StateValue") = False
             End If
-            If row("Action") = "FileDelete" Then
+            If row("Action") = "FileDelete" And changed = True Then
                 row("StateValue") = False
             End If
-            If row("Action") = "FileExport" Then
+            If row("Action") = "FileExport" And changed = True Then
                 row("StateValue") = False
             End If
-            If row("Action") = "ToolsUpdatePdfTextColumns" Then
+            If row("Action") = "ToolsUpdatePdfTextColumns" And changed = True Then
                 row("StateValue") = False
             End If
             If row("Action") = "EditUndo" Then
