@@ -131,19 +131,19 @@
 				</OBJECT>
 			<UL>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Find Documents by Text">
-					<param name="Local" value="Find Documents by Text.html">
+					<param name="Name" value="Find Documents by Search Term">
+					<param name="Local" value="Find Documents by Search Term.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<UL>
 					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="Find Documents by Text Examples for SQLite">
-						<param name="Local" value="Find Documents by Text Examples for SQLite.html">
+						<param name="Name" value="Find Documents by Search Term Examples for SQLite">
+						<param name="Local" value="Find Documents by Search Term Examples for SQLite.html">
 						<param name="ImageNumber" value="9">
 						</OBJECT>
 					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="Find Documents by Text Examples for Oracle">
-						<param name="Local" value="Find Documents by Text Examples for Oracle.html">
+						<param name="Name" value="Find Documents by Search Term Examples for Oracle">
+						<param name="Local" value="Find Documents by Search Term Examples for Oracle.html">
 						<param name="ImageNumber" value="9">
 						</OBJECT>
 				</UL>
@@ -192,6 +192,11 @@
 				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Document Text">
 					<param name="Local" value="Document Text.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Document Search Term Snippets">
+					<param name="Local" value="Document Search Term Snippets.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">

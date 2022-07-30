@@ -29,4 +29,5 @@ Public Class DocumentModel
     Public Property TaxYear As String
     Public Property TextAnnotations As String
     Public Property Text As String
+    Public Property SearchTermSnippets As String
 End Class

@@ -34,7 +34,7 @@ Public Class MainPresenter
     Private ReadOnly documentListSvc As IDocumentListService
     Private ReadOnly documentUtilSvc As IDocumentUtilService
     Private ReadOnly fileCacheSvc As IFileCacheService
-    Private ReadOnly findTextHistorySvc As IFindTextHistoryService
+    Private ReadOnly searchTermHistorySvc As ISearchTermHistoryService
     Private ReadOnly pdfSvc As IPdfService
     Private ReadOnly uploadSvc As IUploadService
     Private ReadOnly help As New HelpFile
@@ -42,7 +42,7 @@ Public Class MainPresenter
     Private ReadOnly dgvSortProperties As New DataGridViewSortProperties
     Private toolStripStateManager As ToolStripStateManager
     Private viewInstance As Form
-    Private previousFindText As String = String.Empty
+    Private previousSearchTerm As String = String.Empty
     Private findBySelectionsPerformed As Boolean
     Private selectedDocument As DocumentModel
     Private textToPrint As String = String.Empty
@@ -56,7 +56,7 @@ Public Class MainPresenter
                    ByVal subjectListSvc As ISubjectListService, ByVal categoryListSvc As ICategoryListService,
                    ByVal taxYearListSvc As ITaxYearListService, ByVal documentSvc As IDocumentService,
                    ByVal documentListSvc As IDocumentListService, ByVal documentUtilSvc As IDocumentUtilService,
-                   ByVal fileCacheSvc As IFileCacheService, ByVal findTextHistorySvc As IFindTextHistoryService,
+                   ByVal fileCacheSvc As IFileCacheService, ByVal searchTermHistorySvc As ISearchTermHistoryService,
                    ByVal pdfSvc As IPdfService, ByVal uploadSvc As IUploadService)
         Me.view = view
         Me.authorListSvc = authorListSvc
@@ -67,7 +67,7 @@ Public Class MainPresenter
         Me.documentListSvc = documentListSvc
         Me.documentUtilSvc = documentUtilSvc
         Me.fileCacheSvc = fileCacheSvc
-        Me.findTextHistorySvc = findTextHistorySvc
+        Me.searchTermHistorySvc = searchTermHistorySvc
         Me.pdfSvc = pdfSvc
         Me.uploadSvc = uploadSvc
     End Sub
@@ -289,8 +289,8 @@ Public Class MainPresenter
     Friend Sub ViewRefreshToolStrip_Click(sender As Object, e As EventArgs)
         With view
             Dim previousSelectedId = .SelectedDocumentId
-            If .DocumentRetrievalChoiceSelectedIndex = 0 Then      'Find Documents by Text
-                FindDocumentsByText(True)
+            If .DocumentRetrievalChoiceSelectedIndex = 0 Then      'Find Documents Search Term
+                FindDocumentsBySearchTerm(True)
             ElseIf .DocumentRetrievalChoiceSelectedIndex = 1 Then  'Find Documents by Selections
                 FindBySelectionsButton_Click(Me, Nothing)
             ElseIf .DocumentRetrievalChoiceSelectedIndex = 2 Then  'Find Documents by Date Added
@@ -407,7 +407,7 @@ Public Class MainPresenter
     Friend Sub DocumentRetrievalChoicesListBox_SelectedIndexChanged(sender As Object, e As EventArgs)
         toolStripStateManager.EnableViewRefresh(False)
         With view
-            .FindTextEnabled = False
+            .SearchTermEnabled = False
             .AuthorEnabled = False
             .SubjectEnabled = False
             .CategoryEnabled = False
@@ -415,9 +415,9 @@ Public Class MainPresenter
             .ClearSelectionsEnabled = False
             .FindBySelectionsEnabled = False
             .DateAddedEnabled = False
-            If .DocumentRetrievalChoiceSelectedIndex = 0 Then      ' Find Documents by Text
-                FindTextComboBox_TextChanged(Me, Nothing)
-                FindDocumentsByText(True)
+            If .DocumentRetrievalChoiceSelectedIndex = 0 Then      ' Find Documents by Search Term
+                SearchTermComboBox_TextChanged(Me, Nothing)
+                FindDocumentsBySearchTerm(True)
             ElseIf .DocumentRetrievalChoiceSelectedIndex = 1 Then  ' Find Documents by Selections
                 Dim captureFilterBySelectionsPerformed = findBySelectionsPerformed
                 .AuthorEnabled = True
@@ -440,23 +440,23 @@ Public Class MainPresenter
         End With
     End Sub
 
-    Friend Sub FindTextComboBox_Enter(sender As Object, e As EventArgs)
-        view.FindTextItems = findTextHistorySvc.ListHistory
+    Friend Sub SearchTermComboBox_Enter(sender As Object, e As EventArgs)
+        view.SearchTermItems = searchTermHistorySvc.ListHistory
     End Sub
 
-    Friend Sub FindTextComboBox_TextChanged(sender As Object, e As EventArgs)
+    Friend Sub SearchTermComboBox_TextChanged(sender As Object, e As EventArgs)
         toolStripStateManager.EnableViewRefresh(False)
         view.SetErrorProviderMessage(Nothing)
-        view.FindText = view.FindText.TrimStart
-        If view.FindText.Trim.Length > 0 Then
-            view.FindByTextEnabled = True
+        view.SearchTerm = view.SearchTerm.TrimStart
+        If view.SearchTerm.Trim.Length > 0 Then
+            view.FindBySearchTermEnabled = True
         Else
-            view.FindByTextEnabled = False
+            view.FindBySearchTermEnabled = False
         End If
     End Sub
 
-    Friend Sub FindByTextButton_Click(sender As Object, e As EventArgs)
-        FindDocumentsByText(False)
+    Friend Sub FindBySearchTermButton_Click(sender As Object, e As EventArgs)
+        FindDocumentsBySearchTerm(False)
     End Sub
 
     Friend Sub AuthorComboBox_Enter(sender As Object, e As EventArgs)
@@ -689,7 +689,11 @@ Public Class MainPresenter
             If .SelectedDocumentId > 0 Then
                 Try
                     viewInstance.Cursor = Cursors.WaitCursor
-                    selectedDocument = documentSvc.ReadDocument(.SelectedDocumentId)
+                    If .DocumentRetrievalChoiceSelectedIndex = 0 Then
+                        selectedDocument = documentSvc.ReadDocument(.SelectedDocumentId, .SearchTerm)
+                    Else
+                        selectedDocument = documentSvc.ReadDocument(.SelectedDocumentId, Nothing)
+                    End If
                     Dim cachePdfTask = Task.Run(Sub() fileCacheSvc.AddPdfToCache(.SelectedDocumentId,
                                                                                  selectedDocument.Pdf))
                     .FlagState = selectedDocument.Flag
@@ -698,6 +702,7 @@ Public Class MainPresenter
                     .NotesChanged = False
                     .Keywords = selectedDocument.Keywords
                     .Text = selectedDocument.Text
+                    .SearchTermSnippets = selectedDocument.SearchTermSnippets
                     cachePdfTask.Wait()
                     SetPreviewImage()
                     .DocumentTabControlEnabled = True
@@ -744,7 +749,8 @@ Public Class MainPresenter
     Friend Sub TextBox_Enter(sender As Object, e As EventArgs)
         Dim textBox = CType(sender, TextBox)
         Dim printable = False
-        If textBox.Name = "NotesTextBox" Or textBox.Name = "TextTextBox" Then
+        If textBox.Name = "NotesTextBox" Or textBox.Name = "TextTextBox" Or
+            textBox.Name = "SearchTermSnippetsTextBox" Then
             If textBox.Text.Length > 0 Then
                 printable = True
             End If
@@ -938,30 +944,30 @@ Public Class MainPresenter
         End With
     End Sub
 
-    Private Sub FindDocumentsByText(ByVal usePreviousFindText As Boolean)
+    Private Sub FindDocumentsBySearchTerm(ByVal usePreviousSearchTerm As Boolean)
         With view
-            If usePreviousFindText Then
-                .FindText = previousFindText
+            If usePreviousSearchTerm Then
+                .SearchTerm = previousSearchTerm
             End If
-            .FindTextEnabled = True
-            If .FindText.Trim.Length > 0 Then
+            .SearchTermEnabled = True
+            If .SearchTerm.Trim.Length > 0 Then
                 Try
                     viewInstance.Cursor = Cursors.WaitCursor
-                    ' Need to capture  FindTextComboBox.Text into a string and then set FindTextComboBox.Text to that
-                    ' string after the query to prevent FindTextComboBox from selecting the first item in the drop down
+                    ' Need to capture SearchTermComboBox.Text into a string and then set SearchTermComboBox.Text to that
+                    ' string after the query to prevent SearchTermComboBox from selecting the first item in the drop down
                     ' list that contains the text in the text box after the query.
-                    Dim currentFindText = .FindText
-                    .DocumentList = documentListSvc.ListDocumentsByText(.FindText)
-                    .FindText = currentFindText
+                    Dim currentSearchTerm = .SearchTerm
+                    .DocumentList = documentListSvc.ListDocumentsBySearchTerm(.SearchTerm)
+                    .SearchTerm = currentSearchTerm
                     If .DocumentListRowCount > 0 Then
-                        findTextHistorySvc.AddToHistory(.FindText)
+                        searchTermHistorySvc.AddToHistory(.SearchTerm)
                     End If
-                    previousFindText = .FindText
-                    .FindByTextEnabled = False
+                    previousSearchTerm = .SearchTerm
+                    .FindBySearchTermEnabled = False
                     .SetErrorProviderMessage(Nothing)
                 Catch ex As FormatException
                     .SetErrorProviderMessage(My.Resources.ImproperUsageOfQueryOperators)
-                    .FindByTextEnabled = False
+                    .FindBySearchTermEnabled = False
                 Catch ex As DbException
                     commonDialogs.ShowMessageBox(ex.Message, True)
                 Finally
@@ -970,7 +976,7 @@ Public Class MainPresenter
             Else
                 ResetDocumentListDataSource()
             End If
-            .FindTextItems = findTextHistorySvc.ListHistory
+            .SearchTermItems = searchTermHistorySvc.ListHistory
         End With
     End Sub
 
@@ -1131,13 +1137,13 @@ Public Class MainPresenter
     End Sub
 
     Private Sub OpenDocument(ByVal id As Integer)
-        Dim document = documentSvc.ReadDocument(id)
+        Dim document = documentSvc.ReadDocument(id, Nothing)
         fileCacheSvc.AddPdfToCache(id, document.Pdf)
         pdfSvc.ShowPdf(fileCacheSvc.GetCachedPdfFullName(id), My.Settings.ShowPdfWithDefaultApplication)
     End Sub
 
     Private Sub UpdateDocument(ByVal id As Integer, ByVal action As CheckedDocumentsAction, ByVal value As String)
-        Dim document = documentSvc.ReadDocument(id)
+        Dim document = documentSvc.ReadDocument(id, Nothing)
         If action = CheckedDocumentsAction.SetCategory Then
             document.Category = value
         ElseIf action = CheckedDocumentsAction.SetTaxYear Then
@@ -1147,7 +1153,7 @@ Public Class MainPresenter
     End Sub
 
     Private Sub ExportDocument(ByVal id As Integer, ByVal exportPath As String)
-        Dim document = documentSvc.ReadDocument(id)
+        Dim document = documentSvc.ReadDocument(id, Nothing)
         Dim authorPath = Path.Combine(exportPath, document.Author)
         Dim subjectPath = Path.Combine(authorPath, document.Subject)
         Directory.CreateDirectory(authorPath)
@@ -1181,7 +1187,7 @@ Public Class MainPresenter
     End Sub
 
     Private Sub UpdatePdfTextColumns(ByVal id As Integer, ByVal ocrImageDataPages As Boolean)
-        Dim document = documentSvc.ReadDocument(id)
+        Dim document = documentSvc.ReadDocument(id, Nothing)
         fileCacheSvc.AddPdfToCache(id, document.Pdf)
         Dim cachedPdfPath = fileCacheSvc.GetCachedPdfFullName(id)
         Dim pdf = New PdfFile(cachedPdfPath)

@@ -54,8 +54,8 @@ Public Class DocumentService
         repository.CreateDocument(model)
     End Sub
 
-    Public Function ReadDocument(id As Integer) As DocumentModel Implements IDocumentService.ReadDocument
-        Return repository.ReadDocument(id)
+    Public Function ReadDocument(id As Integer, searchTerm As String) As DocumentModel Implements IDocumentService.ReadDocument
+        Return repository.ReadDocument(id, searchTerm)
     End Function
 
     Public Sub UpdateDocument(id As Integer, model As DocumentModel) Implements IDocumentService.UpdateDocument

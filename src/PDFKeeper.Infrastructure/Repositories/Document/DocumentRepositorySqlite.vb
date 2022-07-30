@@ -54,9 +54,9 @@ Public Class DocumentRepositorySqlite
         End Try
     End Function
 
-    Public Function ListDocuments(choice As IDocumentRepository.DocumentListAction, text As String) As DataTable Implements IDocumentRepository.ListDocuments
+    Public Function ListDocuments(choice As IDocumentRepository.DocumentListAction, value As String) As DataTable Implements IDocumentRepository.ListDocuments
         Dim sql As String
-        If choice = IDocumentRepository.DocumentListAction.ByText Then
+        If choice = IDocumentRepository.DocumentListAction.BySearchTerm Then
             sql = "select rowid,doc_title,doc_author,doc_subject,doc_category,doc_tax_year,doc_added " &
                   "from docs_index where docs_index match :doc_dummy"
         ElseIf choice = IDocumentRepository.DocumentListAction.ByDateAdded Then
@@ -68,10 +68,10 @@ Public Class DocumentRepositorySqlite
         Try
             Using connection = New SQLiteConnection(ConnectionString)
                 Using command = New SQLiteCommand(sql, connection)
-                    If choice = IDocumentRepository.DocumentListAction.ByText Then
-                        command.Parameters.AddWithValue("doc_dummy", text)
+                    If choice = IDocumentRepository.DocumentListAction.BySearchTerm Then
+                        command.Parameters.AddWithValue("doc_dummy", value)
                     ElseIf choice = IDocumentRepository.DocumentListAction.ByDateAdded Then
-                        command.Parameters.AddWithValue("doc_added", text)
+                        command.Parameters.AddWithValue("doc_added", value)
                     End If
                     connection.Open()
                     LoadExtensionLibrary(connection)
@@ -471,7 +471,10 @@ Public Class DocumentRepositorySqlite
         End Try
     End Sub
 
-    Public Function ReadDocument(id As Integer) As DocumentModel Implements IDocumentRepository.ReadDocument
+    Public Function ReadDocument(id As Integer, searchTerm As String) As DocumentModel Implements IDocumentRepository.ReadDocument
+        If searchTerm Is Nothing Then
+            searchTerm = String.Empty
+        End If
         Dim sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_notes,doc_pdf,doc_category," &
                   "doc_flag,doc_tax_year,doc_text from docs where doc_id = :doc_id"
         Try
@@ -493,6 +496,7 @@ Public Class DocumentRepositorySqlite
                             .Flag = Convert.ToInt32(reader("doc_flag"))
                             .TaxYear = reader("doc_tax_year").ToString
                             .Text = reader("doc_text").ToString
+                            .SearchTermSnippets = GetSearchTermSnippets(id, searchTerm)
                         End With
                     End Using
                     Return model
@@ -583,6 +587,27 @@ Public Class DocumentRepositorySqlite
                 Return table
             End Using
         End Using
+    End Function
+
+    Private Function GetSearchTermSnippets(ByVal id As Integer, ByVal searchTerm As String) As String
+        Dim result As String = Nothing
+        If searchTerm.Length > 0 Then
+            Dim sql = "select snippet(docs_index, 9, '[', ']', '', 32) from docs_index where rowid = :doc_id and " &
+                      "docs_index match :doc_dummy"
+            Using connection = New SQLiteConnection(ConnectionString)
+                Using command = New SQLiteCommand(sql, connection)
+                    command.Parameters.AddWithValue("doc_id", id)
+                    command.Parameters.AddWithValue("doc_dummy", searchTerm)
+                    connection.Open()
+                    LoadExtensionLibrary(connection)
+                    Using reader = command.ExecuteReader
+                        reader.Read()
+                        result = reader.Item(0)
+                    End Using
+                End Using
+            End Using
+        End If
+        Return result
     End Function
 
     Private Shared Sub LoadExtensionLibrary(ByVal connection As SQLiteConnection)

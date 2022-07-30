@@ -28,10 +28,10 @@ Public Interface IMainView
     Property DocumentRetrievalGroupEnabled As Boolean
     ReadOnly Property DocumentRetrievalChoicesListEnabled As Boolean
     Property DocumentRetrievalChoiceSelectedIndex As Integer
-    Property FindText As String
-    Property FindTextItems As Object
-    Property FindTextEnabled As Boolean
-    Property FindByTextEnabled As Boolean
+    Property SearchTerm As String
+    Property SearchTermItems As Object
+    Property SearchTermEnabled As Boolean
+    Property FindBySearchTermEnabled As Boolean
     Property AuthorEnabled As Boolean
     Property SubjectEnabled As Boolean
     Property CategoryEnabled As Boolean
@@ -60,6 +60,7 @@ Public Interface IMainView
     Property Keywords As String
     Property Preview As System.Drawing.Image
     Property Text As String
+    Property SearchTermSnippets As String
     Property StatusStripVisible As Boolean
     Property DocumentListCountStatusText As String
     Property ProgressBarVisible As Boolean

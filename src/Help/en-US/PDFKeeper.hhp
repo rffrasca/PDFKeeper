@@ -56,9 +56,9 @@ Setup Client-Server Database.html
 User Administration for Oracle Database.html
 Schema Upgrade for Oracle Database.html
 Schema Setup for Oracle Database.html
-Find Documents by Text.html
-Find Documents by Text Examples for SQLite.html
-Find Documents by Text Examples for Oracle.html
+Find Documents by Search Term.html
+Find Documents by Search Term Examples for SQLite.html
+Find Documents by Search Term Examples for Oracle.html
 SQLite Error - database disk image is malformed.html
 Troubleshooting.html
 THIRD-PARTY-NOTICES.html

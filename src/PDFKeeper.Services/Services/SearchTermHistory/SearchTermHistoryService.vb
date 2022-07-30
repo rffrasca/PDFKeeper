@@ -17,16 +17,17 @@
 '* You should have received a copy of the GNU General Public License
 '* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 '******************************************************************************
-Public Interface IFindTextHistoryService
-    ''' <summary>
-    ''' Adds text to the history.
-    ''' </summary>
-    ''' <param name="text">Text</param>
-    Sub AddToHistory(ByVal text As String)
+Public Class SearchTermHistoryService
+    Implements ISearchTermHistoryService
+    Private ReadOnly history As New List(Of String)
 
-    ''' <summary>
-    ''' Lists the Find Text history.
-    ''' </summary>
-    ''' <returns>String collection</returns>
-    Function ListHistory() As Object
-End Interface
+    Public Sub AddToHistory(value As String) Implements ISearchTermHistoryService.AddToHistory
+        If Not history.Contains(value) Then
+            history.Add(value)
+        End If
+    End Sub
+
+    Public Function ListHistory() As Object Implements ISearchTermHistoryService.ListHistory
+        Return history.ToArray
+    End Function
+End Class

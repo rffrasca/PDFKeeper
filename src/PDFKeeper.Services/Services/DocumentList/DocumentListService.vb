@@ -28,15 +28,15 @@ Public Class DocumentListService
         Me.repository = repository
     End Sub
 
-    Public Function ListDocumentsByText(text As String) As DataTable Implements IDocumentListService.ListDocumentsByText
-        If text Is Nothing Then
-            Throw New ArgumentNullException(NameOf(text))
+    Public Function ListDocumentsBySearchTerm(searchTerm As String) As DataTable Implements IDocumentListService.ListDocumentsBySearchTerm
+        If searchTerm Is Nothing Then
+            Throw New ArgumentNullException(NameOf(searchTerm))
         End If
-        text = text.Trim
-        If IsQueryOperatorSyntaxCorrect(text) = False Then
+        searchTerm = searchTerm.Trim
+        If IsQueryOperatorSyntaxCorrect(searchTerm) = False Then
             Throw New FormatException
         End If
-        Return repository.ListDocuments(IDocumentRepository.DocumentListAction.ByText, text)
+        Return repository.ListDocuments(IDocumentRepository.DocumentListAction.BySearchTerm, searchTerm)
     End Function
 
     Public Function ListDocumentsBySelections(filter As FindSelectionsFilterModel) As DataTable Implements IDocumentListService.ListDocumentsBySelections

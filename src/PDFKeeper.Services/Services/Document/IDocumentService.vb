@@ -33,8 +33,9 @@ Public Interface IDocumentService
     ''' Reads a document from the repository.
     ''' </summary>
     ''' <param name="id">Document ID</param>
+    ''' <param name="searchTerm">Specified search term or nothing</param>
     ''' <returns>DocumentModel object</returns>
-    Function ReadDocument(ByVal id As Integer) As DocumentModel
+    Function ReadDocument(ByVal id As Integer, ByVal searchTerm As String) As DocumentModel
 
     ''' <summary>
     ''' Updates a document in the repository.

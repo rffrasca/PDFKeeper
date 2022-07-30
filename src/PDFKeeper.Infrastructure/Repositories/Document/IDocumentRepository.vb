@@ -24,7 +24,7 @@ Public Interface IDocumentRepository
     ''' Document list action.
     ''' </summary>
     Enum DocumentListAction
-        ByText
+        BySearchTerm
         ByDateAdded
         Flagged
         All
@@ -40,10 +40,10 @@ Public Interface IDocumentRepository
     ''' <summary>
     ''' Lists documents in the repository.
     ''' </summary>
-    ''' <param name="choice">ByText or ByDateAdded</param>
-    ''' <param name="text">Text or date added as YYYY-MM-DD</param>
+    ''' <param name="choice">BySearchTerm or ByDateAdded</param>
+    ''' <param name="value">Search term or date added as YYYY-MM-DD</param>
     ''' <returns>DataTable object</returns>
-    Function ListDocuments(ByVal choice As DocumentListAction, ByVal text As String) As DataTable
+    Function ListDocuments(ByVal choice As DocumentListAction, ByVal value As String) As DataTable
 
     ''' <summary>
     ''' Lists documents in the repository.
@@ -119,13 +119,11 @@ Public Interface IDocumentRepository
 
     ''' <summary>
     ''' Reads a document from the repository.
-    ''' 
-    ''' Only the doc_title, doc_author, doc_subject, doc_keywords, doc_notes, doc_pdf, doc_category, doc_flag,
-    ''' doc_tax_year, and doc_text columns will be read.
     ''' </summary>
     ''' <param name="id">Document ID</param>
+    ''' <param name="searchTerm">Specified Search Term or nothing</param>
     ''' <returns>DocumentModel object</returns>
-    Function ReadDocument(ByVal id As Integer) As DocumentModel
+    Function ReadDocument(ByVal id As Integer, ByVal searchTerm As String) As DocumentModel
 
     ''' <summary>
     ''' Updates a document in the repository.

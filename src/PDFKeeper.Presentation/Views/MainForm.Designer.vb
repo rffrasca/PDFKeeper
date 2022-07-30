@@ -112,14 +112,16 @@ Partial Class MainForm
         Me.PreviewPictureBox = New System.Windows.Forms.PictureBox()
         Me.TextTabPage = New System.Windows.Forms.TabPage()
         Me.TextTextBox = New System.Windows.Forms.TextBox()
+        Me.SearchTermSnippetsTabPage = New System.Windows.Forms.TabPage()
+        Me.SearchTermSnippetsTextBox = New System.Windows.Forms.TextBox()
         Me.DocumentRetrievalGroupBox = New System.Windows.Forms.GroupBox()
         Me.TaxYearComboBox = New System.Windows.Forms.ComboBox()
         Me.TaxYearLabel = New System.Windows.Forms.Label()
         Me.DateLabel = New System.Windows.Forms.Label()
-        Me.TextLabel = New System.Windows.Forms.Label()
+        Me.SearchTermLabel = New System.Windows.Forms.Label()
         Me.DocumentRetrievalChoicesListBox = New System.Windows.Forms.ListBox()
         Me.FindBySelectionsButton = New System.Windows.Forms.Button()
-        Me.FindByTextButton = New System.Windows.Forms.Button()
+        Me.FindBySearchTermButton = New System.Windows.Forms.Button()
         Me.DateAddedDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.ClearSelectionsButton = New System.Windows.Forms.Button()
         Me.SubjectComboBox = New System.Windows.Forms.ComboBox()
@@ -128,7 +130,7 @@ Partial Class MainForm
         Me.SubjectLabel = New System.Windows.Forms.Label()
         Me.AuthorComboBox = New System.Windows.Forms.ComboBox()
         Me.AuthorLabel = New System.Windows.Forms.Label()
-        Me.FindTextComboBox = New System.Windows.Forms.ComboBox()
+        Me.SearchTermComboBox = New System.Windows.Forms.ComboBox()
         Me.SearchResultsPanel = New System.Windows.Forms.Panel()
         Me.DocumentListDataGridView = New System.Windows.Forms.DataGridView()
         Me.SelectionColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
@@ -189,6 +191,7 @@ Partial Class MainForm
         Me.PreviewPanel.SuspendLayout()
         CType(Me.PreviewPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TextTabPage.SuspendLayout()
+        Me.SearchTermSnippetsTabPage.SuspendLayout()
         Me.DocumentRetrievalGroupBox.SuspendLayout()
         Me.SearchResultsPanel.SuspendLayout()
         CType(Me.DocumentListDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -525,6 +528,7 @@ Partial Class MainForm
         Me.DocumentTabControl.Controls.Add(Me.KeywordsTabPage)
         Me.DocumentTabControl.Controls.Add(Me.PreviewTabPage)
         Me.DocumentTabControl.Controls.Add(Me.TextTabPage)
+        Me.DocumentTabControl.Controls.Add(Me.SearchTermSnippetsTabPage)
         resources.ApplyResources(Me.DocumentTabControl, "DocumentTabControl")
         Me.DocumentTabControl.Name = "DocumentTabControl"
         Me.DocumentTabControl.SelectedIndex = 0
@@ -587,15 +591,29 @@ Partial Class MainForm
         Me.TextTextBox.Name = "TextTextBox"
         Me.TextTextBox.ReadOnly = True
         '
+        'SearchTermSnippetsTabPage
+        '
+        Me.SearchTermSnippetsTabPage.Controls.Add(Me.SearchTermSnippetsTextBox)
+        resources.ApplyResources(Me.SearchTermSnippetsTabPage, "SearchTermSnippetsTabPage")
+        Me.SearchTermSnippetsTabPage.Name = "SearchTermSnippetsTabPage"
+        Me.SearchTermSnippetsTabPage.UseVisualStyleBackColor = True
+        '
+        'SearchTermSnippetsTextBox
+        '
+        resources.ApplyResources(Me.SearchTermSnippetsTextBox, "SearchTermSnippetsTextBox")
+        Me.SearchTermSnippetsTextBox.Name = "SearchTermSnippetsTextBox"
+        Me.SearchTermSnippetsTextBox.ReadOnly = True
+        Me.HelpProvider.SetShowHelp(Me.SearchTermSnippetsTextBox, CType(resources.GetObject("SearchTermSnippetsTextBox.ShowHelp"), Boolean))
+        '
         'DocumentRetrievalGroupBox
         '
         Me.DocumentRetrievalGroupBox.Controls.Add(Me.TaxYearComboBox)
         Me.DocumentRetrievalGroupBox.Controls.Add(Me.TaxYearLabel)
         Me.DocumentRetrievalGroupBox.Controls.Add(Me.DateLabel)
-        Me.DocumentRetrievalGroupBox.Controls.Add(Me.TextLabel)
+        Me.DocumentRetrievalGroupBox.Controls.Add(Me.SearchTermLabel)
         Me.DocumentRetrievalGroupBox.Controls.Add(Me.DocumentRetrievalChoicesListBox)
         Me.DocumentRetrievalGroupBox.Controls.Add(Me.FindBySelectionsButton)
-        Me.DocumentRetrievalGroupBox.Controls.Add(Me.FindByTextButton)
+        Me.DocumentRetrievalGroupBox.Controls.Add(Me.FindBySearchTermButton)
         Me.DocumentRetrievalGroupBox.Controls.Add(Me.DateAddedDateTimePicker)
         Me.DocumentRetrievalGroupBox.Controls.Add(Me.ClearSelectionsButton)
         Me.DocumentRetrievalGroupBox.Controls.Add(Me.SubjectComboBox)
@@ -604,7 +622,7 @@ Partial Class MainForm
         Me.DocumentRetrievalGroupBox.Controls.Add(Me.SubjectLabel)
         Me.DocumentRetrievalGroupBox.Controls.Add(Me.AuthorComboBox)
         Me.DocumentRetrievalGroupBox.Controls.Add(Me.AuthorLabel)
-        Me.DocumentRetrievalGroupBox.Controls.Add(Me.FindTextComboBox)
+        Me.DocumentRetrievalGroupBox.Controls.Add(Me.SearchTermComboBox)
         resources.ApplyResources(Me.DocumentRetrievalGroupBox, "DocumentRetrievalGroupBox")
         Me.DocumentRetrievalGroupBox.Name = "DocumentRetrievalGroupBox"
         Me.DocumentRetrievalGroupBox.TabStop = False
@@ -627,10 +645,10 @@ Partial Class MainForm
         resources.ApplyResources(Me.DateLabel, "DateLabel")
         Me.DateLabel.Name = "DateLabel"
         '
-        'TextLabel
+        'SearchTermLabel
         '
-        resources.ApplyResources(Me.TextLabel, "TextLabel")
-        Me.TextLabel.Name = "TextLabel"
+        resources.ApplyResources(Me.SearchTermLabel, "SearchTermLabel")
+        Me.SearchTermLabel.Name = "SearchTermLabel"
         '
         'DocumentRetrievalChoicesListBox
         '
@@ -645,11 +663,12 @@ Partial Class MainForm
         Me.FindBySelectionsButton.Name = "FindBySelectionsButton"
         Me.FindBySelectionsButton.UseVisualStyleBackColor = True
         '
-        'FindByTextButton
+        'FindBySearchTermButton
         '
-        resources.ApplyResources(Me.FindByTextButton, "FindByTextButton")
-        Me.FindByTextButton.Name = "FindByTextButton"
-        Me.FindByTextButton.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.FindBySearchTermButton, "FindBySearchTermButton")
+        Me.FindBySearchTermButton.Name = "FindBySearchTermButton"
+        Me.HelpProvider.SetShowHelp(Me.FindBySearchTermButton, CType(resources.GetObject("FindBySearchTermButton.ShowHelp"), Boolean))
+        Me.FindBySearchTermButton.UseVisualStyleBackColor = True
         '
         'DateAddedDateTimePicker
         '
@@ -701,14 +720,14 @@ Partial Class MainForm
         resources.ApplyResources(Me.AuthorLabel, "AuthorLabel")
         Me.AuthorLabel.Name = "AuthorLabel"
         '
-        'FindTextComboBox
+        'SearchTermComboBox
         '
-        resources.ApplyResources(Me.FindTextComboBox, "FindTextComboBox")
-        Me.FindTextComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-        Me.FindTextComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.FindTextComboBox.FormattingEnabled = True
-        Me.FindTextComboBox.Name = "FindTextComboBox"
-        Me.FindTextComboBox.Sorted = True
+        resources.ApplyResources(Me.SearchTermComboBox, "SearchTermComboBox")
+        Me.SearchTermComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.SearchTermComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.SearchTermComboBox.FormattingEnabled = True
+        Me.SearchTermComboBox.Name = "SearchTermComboBox"
+        Me.SearchTermComboBox.Sorted = True
         '
         'SearchResultsPanel
         '
@@ -1002,6 +1021,8 @@ Partial Class MainForm
         CType(Me.PreviewPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TextTabPage.ResumeLayout(False)
         Me.TextTabPage.PerformLayout()
+        Me.SearchTermSnippetsTabPage.ResumeLayout(False)
+        Me.SearchTermSnippetsTabPage.PerformLayout()
         Me.DocumentRetrievalGroupBox.ResumeLayout(False)
         Me.DocumentRetrievalGroupBox.PerformLayout()
         Me.SearchResultsPanel.ResumeLayout(False)
@@ -1113,10 +1134,10 @@ Partial Class MainForm
     Friend WithEvents TextTextBox As TextBox
     Friend WithEvents DocumentRetrievalGroupBox As GroupBox
     Friend WithEvents DateLabel As Label
-    Friend WithEvents TextLabel As Label
+    Friend WithEvents SearchTermLabel As Label
     Friend WithEvents DocumentRetrievalChoicesListBox As ListBox
     Friend WithEvents FindBySelectionsButton As Button
-    Friend WithEvents FindByTextButton As Button
+    Friend WithEvents FindBySearchTermButton As Button
     Friend WithEvents DateAddedDateTimePicker As DateTimePicker
     Friend WithEvents ClearSelectionsButton As Button
     Friend WithEvents SubjectComboBox As ComboBox
@@ -1125,7 +1146,7 @@ Partial Class MainForm
     Friend WithEvents SubjectLabel As Label
     Friend WithEvents AuthorComboBox As ComboBox
     Friend WithEvents AuthorLabel As Label
-    Friend WithEvents FindTextComboBox As ComboBox
+    Friend WithEvents SearchTermComboBox As ComboBox
     Friend WithEvents DocumentListDataGridView As DataGridView
     Friend WithEvents SelectionColumn As DataGridViewCheckBoxColumn
     Friend WithEvents TaxYearComboBox As ComboBox
@@ -1147,4 +1168,6 @@ Partial Class MainForm
     Friend WithEvents ToolStripSeparator15 As ToolStripSeparator
     Friend WithEvents FileBurstToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FileBurstToolStripButton As ToolStripButton
+    Friend WithEvents SearchTermSnippetsTabPage As TabPage
+    Friend WithEvents SearchTermSnippetsTextBox As TextBox
 End Class

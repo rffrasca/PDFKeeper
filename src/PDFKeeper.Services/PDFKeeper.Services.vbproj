@@ -100,8 +100,8 @@
     <Compile Include="Services\Document\IDocumentService.vb" />
     <Compile Include="Services\FileCache\FileCacheService.vb" />
     <Compile Include="Services\FileCache\IFileCacheService.vb" />
-    <Compile Include="Services\FindTextHistory\FindTextHistoryService.vb" />
-    <Compile Include="Services\FindTextHistory\IFindTextHistoryService.vb" />
+    <Compile Include="Services\SearchTermHistory\SearchTermHistoryService.vb" />
+    <Compile Include="Services\SearchTermHistory\ISearchTermHistoryService.vb" />
     <Compile Include="Services\AuthorList\AuthorListService.vb" />
     <Compile Include="Services\AuthorList\IAuthorListService.vb" />
     <Compile Include="Services\CategoryList\CategoryListService.vb" />

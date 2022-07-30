@@ -21,11 +21,11 @@ Imports PDFKeeper.Domain
 
 Public Interface IDocumentListService
     ''' <summary>
-    ''' Lists documents by text in the repository.
+    ''' Lists documents by search term in the repository.
     ''' </summary>
-    ''' <param name="text">Text</param>
+    ''' <param name="searchTerm">Search term</param>
     ''' <returns>DataTable object</returns>
-    Function ListDocumentsByText(ByVal text As String) As DataTable
+    Function ListDocumentsBySearchTerm(ByVal searchTerm As String) As DataTable
 
     ''' <summary>
     ''' Lists documents by selections in the repository.

@@ -560,7 +560,7 @@
     <value>Ctrl+Shift+T</value>
   </data>
   <data name="InsertTextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="InsertTextToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Text</value>
@@ -651,16 +651,16 @@
 </value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Contents</value>
   </data>
   <data name="ToolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>164, 6</value>
   </data>
   <data name="HelpAboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="HelpAboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About PDFKeeper</value>
@@ -969,6 +969,66 @@
   <data name="&gt;&gt;TextTabPage.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="SearchTermSnippetsTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="SearchTermSnippetsTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="SearchTermSnippetsTextBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SearchTermSnippetsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
+  </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>747, 56</value>
+  </metadata>
+  <data name="SearchTermSnippetsTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SearchTermSnippetsTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>363, 324</value>
+  </data>
+  <data name="SearchTermSnippetsTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTextBox.Name" xml:space="preserve">
+    <value>SearchTermSnippetsTextBox</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTextBox.Parent" xml:space="preserve">
+    <value>SearchTermSnippetsTabPage</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="SearchTermSnippetsTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="SearchTermSnippetsTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>363, 324</value>
+  </data>
+  <data name="SearchTermSnippetsTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="SearchTermSnippetsTabPage.Text" xml:space="preserve">
+    <value>Search Term Snippets</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTabPage.Name" xml:space="preserve">
+    <value>SearchTermSnippetsTabPage</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTabPage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTabPage.Parent" xml:space="preserve">
+    <value>DocumentTabControl</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTabPage.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="DocumentTabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -1003,10 +1063,10 @@
     <value>False</value>
   </data>
   <data name="TaxYearComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 235</value>
+    <value>85, 235</value>
   </data>
   <data name="TaxYearComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 23</value>
+    <value>280, 23</value>
   </data>
   <data name="TaxYearComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1083,34 +1143,34 @@
   <data name="&gt;&gt;DateLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="TextLabel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="SearchTermLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="TextLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="SearchTermLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="TextLabel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="SearchTermLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 110</value>
   </data>
-  <data name="TextLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 15</value>
+  <data name="SearchTermLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 15</value>
   </data>
-  <data name="TextLabel.TabIndex" type="System.Int32, mscorlib">
+  <data name="SearchTermLabel.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="TextLabel.Text" xml:space="preserve">
-    <value>Text:</value>
+  <data name="SearchTermLabel.Text" xml:space="preserve">
+    <value>Search Term:</value>
   </data>
-  <data name="&gt;&gt;TextLabel.Name" xml:space="preserve">
-    <value>TextLabel</value>
+  <data name="&gt;&gt;SearchTermLabel.Name" xml:space="preserve">
+    <value>SearchTermLabel</value>
   </data>
-  <data name="&gt;&gt;TextLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;SearchTermLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TextLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SearchTermLabel.Parent" xml:space="preserve">
     <value>DocumentRetrievalGroupBox</value>
   </data>
-  <data name="&gt;&gt;TextLabel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;SearchTermLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="DocumentRetrievalChoicesListBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -1123,7 +1183,7 @@
     <value>15</value>
   </data>
   <data name="DocumentRetrievalChoicesListBox.Items" xml:space="preserve">
-    <value>Find Documents by Text</value>
+    <value>Find Documents by Search Term</value>
   </data>
   <data name="DocumentRetrievalChoicesListBox.Items1" xml:space="preserve">
     <value>Find Documents by Selections</value>
@@ -1181,16 +1241,19 @@
     <value>NoControl</value>
   </data>
   <data name="FindBySelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 264</value>
+    <value>231, 264</value>
   </data>
   <data name="FindBySelectionsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 23</value>
+    <value>135, 24</value>
   </data>
   <data name="FindBySelectionsButton.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="FindBySelectionsButton.Text" xml:space="preserve">
     <value>Find b&amp;y Selections</value>
+  </data>
+  <data name="FindBySelectionsButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
   </data>
   <data name="&gt;&gt;FindBySelectionsButton.Name" xml:space="preserve">
     <value>FindBySelectionsButton</value>
@@ -1204,13 +1267,13 @@
   <data name="&gt;&gt;FindBySelectionsButton.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="FindByTextButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="FindBySearchTermButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="FindByTextButton.Enabled" type="System.Boolean, mscorlib">
+  <data name="FindBySearchTermButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="FindByTextButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="FindBySearchTermButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIQfAHaXtLzd/MXi/dXo+IivyNXb5FZtjbiCVu31/Yt3aE1bc+Xt9fX5/PH1+mdLM4m7
         7J+Pg+vx+Oby/Vs7Iq7T5UNMXfv9/rF3RprA1qjL3oFrW3hfS7HY/LDR4////////yH/C05FVFNDQVBF
@@ -1220,34 +1283,31 @@
         vgINFGjAsaBhxAAMSFZAWUGFyx4MF9y8OSAAOw==
 </value>
   </data>
-  <data name="FindByTextButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="FindByTextButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="FindBySearchTermButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="FindByTextButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>250, 110</value>
+  <data name="FindBySearchTermButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>325, 110</value>
   </data>
-  <data name="FindByTextButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 23</value>
+  <data name="FindBySearchTermButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="FindByTextButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="FindBySearchTermButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 24</value>
+  </data>
+  <data name="FindBySearchTermButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="FindByTextButton.Text" xml:space="preserve">
-    <value>Find &amp;by Text</value>
+  <data name="&gt;&gt;FindBySearchTermButton.Name" xml:space="preserve">
+    <value>FindBySearchTermButton</value>
   </data>
-  <data name="&gt;&gt;FindByTextButton.Name" xml:space="preserve">
-    <value>FindByTextButton</value>
-  </data>
-  <data name="&gt;&gt;FindByTextButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;FindBySearchTermButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;FindByTextButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;FindBySearchTermButton.Parent" xml:space="preserve">
     <value>DocumentRetrievalGroupBox</value>
   </data>
-  <data name="&gt;&gt;FindByTextButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;FindBySearchTermButton.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="DateAddedDateTimePicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -1257,10 +1317,10 @@
     <value>False</value>
   </data>
   <data name="DateAddedDateTimePicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 302</value>
+    <value>85, 302</value>
   </data>
   <data name="DateAddedDateTimePicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 23</value>
+    <value>280, 23</value>
   </data>
   <data name="DateAddedDateTimePicker.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1287,10 +1347,10 @@
     <value>NoControl</value>
   </data>
   <data name="ClearSelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 264</value>
+    <value>84, 264</value>
   </data>
   <data name="ClearSelectionsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 23</value>
+    <value>135, 24</value>
   </data>
   <data name="ClearSelectionsButton.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1317,10 +1377,10 @@
     <value>False</value>
   </data>
   <data name="SubjectComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 177</value>
+    <value>85, 177</value>
   </data>
   <data name="SubjectComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 23</value>
+    <value>280, 23</value>
   </data>
   <data name="SubjectComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1344,10 +1404,10 @@
     <value>False</value>
   </data>
   <data name="CategoryComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 206</value>
+    <value>85, 206</value>
   </data>
   <data name="CategoryComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 23</value>
+    <value>280, 23</value>
   </data>
   <data name="CategoryComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1431,10 +1491,10 @@
     <value>False</value>
   </data>
   <data name="AuthorComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 148</value>
+    <value>85, 148</value>
   </data>
   <data name="AuthorComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 23</value>
+    <value>280, 23</value>
   </data>
   <data name="AuthorComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1481,31 +1541,31 @@
   <data name="&gt;&gt;AuthorLabel.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="FindTextComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="SearchTermComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
-  <data name="FindTextComboBox.Enabled" type="System.Boolean, mscorlib">
+  <data name="SearchTermComboBox.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="FindTextComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 110</value>
+  <data name="SearchTermComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 110</value>
   </data>
-  <data name="FindTextComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 23</value>
+  <data name="SearchTermComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 23</value>
   </data>
-  <data name="FindTextComboBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="SearchTermComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;FindTextComboBox.Name" xml:space="preserve">
-    <value>FindTextComboBox</value>
+  <data name="&gt;&gt;SearchTermComboBox.Name" xml:space="preserve">
+    <value>SearchTermComboBox</value>
   </data>
-  <data name="&gt;&gt;FindTextComboBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;SearchTermComboBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;FindTextComboBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SearchTermComboBox.Parent" xml:space="preserve">
     <value>DocumentRetrievalGroupBox</value>
   </data>
-  <data name="&gt;&gt;FindTextComboBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;SearchTermComboBox.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
   <data name="DocumentRetrievalGroupBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -2172,9 +2232,6 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>747, 56</value>
-  </metadata>
   <data name="$this.HelpKeyword" xml:space="preserve">
     <value>Using PDFKeeper.html</value>
   </data>

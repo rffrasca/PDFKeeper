@@ -38,7 +38,7 @@ Public Class MainForm
                                       New CategoryListService(repository), New TaxYearListService(repository),
                                       New DocumentService(repository), New DocumentListService(repository),
                                       New DocumentUtilService(repository), New FileCacheService,
-                                      New FindTextHistoryService, New PdfService,
+                                      New SearchTermHistoryService, New PdfService,
                                       New UploadService(
                                       New XmlRepository(Of UploadProfileModel)(
                                       AppFolders.GetPath(AppFolders.AppFolder.UploadProfiles)),
@@ -110,41 +110,41 @@ Public Class MainForm
         End Set
     End Property
 
-    Public Property FindText As String Implements IMainView.FindText
+    Public Property SearchTerm As String Implements IMainView.SearchTerm
         Get
-            Return FindTextComboBox.Text
+            Return SearchTermComboBox.Text
         End Get
         Set(value As String)
-            FindTextComboBox.Text = value
+            SearchTermComboBox.Text = value
         End Set
     End Property
 
-    Public Property FindTextItems As Object Implements IMainView.FindTextItems
+    Public Property SearchTermItems As Object Implements IMainView.SearchTermItems
         Get
-            Return FindTextComboBox.Items
+            Return SearchTermComboBox.Items
         End Get
         Set(value As Object)
-            FindTextComboBox.Items.Clear()  ' Clearing twice will prevent duplicate items in the drop down list.
-            FindTextComboBox.Items.Clear()
-            FindTextComboBox.Items.AddRange(value)
+            SearchTermComboBox.Items.Clear()  ' Clearing twice will prevent duplicate items in the drop down list.
+            SearchTermComboBox.Items.Clear()
+            SearchTermComboBox.Items.AddRange(value)
         End Set
     End Property
 
-    Public Property FindTextEnabled As Boolean Implements IMainView.FindTextEnabled
+    Public Property SearchTermEnabled As Boolean Implements IMainView.SearchTermEnabled
         Get
-            Return FindTextComboBox.Enabled
+            Return SearchTermComboBox.Enabled
         End Get
         Set(value As Boolean)
-            FindTextComboBox.Enabled = value
+            SearchTermComboBox.Enabled = value
         End Set
     End Property
 
-    Public Property FindByTextEnabled As Boolean Implements IMainView.FindByTextEnabled
+    Public Property FindBySearchTermEnabled As Boolean Implements IMainView.FindBySearchTermEnabled
         Get
-            Return FindByTextButton.Enabled
+            Return FindBySearchTermButton.Enabled
         End Get
         Set(value As Boolean)
-            FindByTextButton.Enabled = value
+            FindBySearchTermButton.Enabled = value
         End Set
     End Property
 
@@ -411,6 +411,10 @@ Public Class MainForm
                 If TextTextBox.Text.Length > 0 Then
                     text = TextTextBox.Text
                 End If
+            ElseIf DocumentTabControl.SelectedIndex = 4 Then
+                If SearchTermSnippetsTextBox.Text.Length > 0 Then
+                    text = SearchTermSnippetsTextBox.Text
+                End If
             End If
             Return text
         End Get
@@ -426,6 +430,10 @@ Public Class MainForm
             ElseIf TextTextBox.Focused Then
                 If TextTextBox.Text.Length > 0 Then
                     text = TextTextBox.Text
+                End If
+            ElseIf SearchTermSnippetsTextBox.Focused Then
+                If SearchTermSnippetsTextBox.Text.Length > 0 Then
+                    text = SearchTermSnippetsTextBox.Text
                 End If
             End If
             Return text
@@ -506,6 +514,15 @@ Public Class MainForm
         End Get
         Set(value As String)
             TextTextBox.Text = value
+        End Set
+    End Property
+
+    Public Property SearchTermSnippets As String Implements IMainView.SearchTermSnippets
+        Get
+            Return SearchTermSnippetsTextBox.Text
+        End Get
+        Set(value As String)
+            SearchTermSnippetsTextBox.Text = value
         End Set
     End Property
 
@@ -611,7 +628,7 @@ Public Class MainForm
         If message Is Nothing Then
             ErrorProvider.Clear()
         Else
-            ErrorProvider.SetError(FindTextComboBox, message)
+            ErrorProvider.SetError(SearchTermComboBox, message)
         End If
     End Sub
 
@@ -662,7 +679,8 @@ Public Class MainForm
         Dim textBoxes = New Collection(Of TextBox) From {
             NotesTextBox,
             KeywordsTextBox,
-            TextTextBox
+            TextTextBox,
+            SearchTermSnippetsTextBox
         }
         EditUndoToolStripMenuItem.Tag = NotesTextBox
         EditUndoToolStripButton.Tag = NotesTextBox
@@ -737,9 +755,9 @@ Public Class MainForm
         AddHandler HelpAboutToolStripMenuItem.Click, AddressOf presenter.HelpAboutToolStrip_Click
         AddHandler DocumentRetrievalChoicesListBox.SelectedIndexChanged,
             AddressOf presenter.DocumentRetrievalChoicesListBox_SelectedIndexChanged
-        AddHandler FindTextComboBox.Enter, AddressOf presenter.FindTextComboBox_Enter
-        AddHandler FindTextComboBox.TextChanged, AddressOf presenter.FindTextComboBox_TextChanged
-        AddHandler FindByTextButton.Click, AddressOf presenter.FindByTextButton_Click
+        AddHandler SearchTermComboBox.Enter, AddressOf presenter.SearchTermComboBox_Enter
+        AddHandler SearchTermComboBox.TextChanged, AddressOf presenter.SearchTermComboBox_TextChanged
+        AddHandler FindBySearchTermButton.Click, AddressOf presenter.FindBySearchTermButton_Click
         AddHandler AuthorComboBox.Enter, AddressOf presenter.AuthorComboBox_Enter
         AddHandler SubjectComboBox.Enter, AddressOf presenter.SubjectComboBox_Enter
         AddHandler CategoryComboBox.Enter, AddressOf presenter.CategoryComboBox_Enter
@@ -781,15 +799,19 @@ Public Class MainForm
         AddHandler NotesTextBox.GotFocus, AddressOf presenter.TextBox_Enter
         AddHandler KeywordsTextBox.Enter, AddressOf presenter.TextBox_Enter
         AddHandler TextTextBox.Enter, AddressOf presenter.TextBox_Enter
+        AddHandler SearchTermSnippetsTextBox.Enter, AddressOf presenter.TextBox_Enter
         AddHandler NotesTextBox.KeyPress, AddressOf presenter.TextBox_KeyPress
         AddHandler KeywordsTextBox.KeyPress, AddressOf presenter.TextBox_KeyPress
         AddHandler TextTextBox.KeyPress, AddressOf presenter.TextBox_KeyPress
+        AddHandler SearchTermSnippetsTextBox.KeyPress, AddressOf presenter.TextBox_KeyPress
         AddHandler NotesTextBox.MouseUp, AddressOf presenter.TextBox_MouseUp
         AddHandler KeywordsTextBox.MouseUp, AddressOf presenter.TextBox_MouseUp
         AddHandler TextTextBox.MouseUp, AddressOf presenter.TextBox_MouseUp
+        AddHandler SearchTermSnippetsTextBox.MouseUp, AddressOf presenter.TextBox_MouseUp
         AddHandler NotesTextBox.Leave, AddressOf presenter.TextBox_Leave
         AddHandler KeywordsTextBox.Leave, AddressOf presenter.TextBox_Leave
         AddHandler TextTextBox.Leave, AddressOf presenter.TextBox_Leave
+        AddHandler SearchTermSnippetsTextBox.Leave, AddressOf presenter.TextBox_Leave
         AddHandler PreviewPictureBox.DoubleClick, AddressOf presenter.PreviewPictureBox_DoubleClick
         AddHandler StatusStrip.VisibleChanged, AddressOf presenter.StatusStrip_VisibleChanged
         AddHandler UploadRejectedImageToolStripStatusLabel.Click,
