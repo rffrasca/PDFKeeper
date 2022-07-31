@@ -58,7 +58,7 @@ Public Interface IMainView
     ReadOnly Property NotesCanUndo As Boolean
     ReadOnly Property NotesReadOnly As Boolean
     Property Keywords As String
-    Property Preview As System.Drawing.Image
+    Property Preview As Image
     Property Text As String
     Property SearchTermSnippets As String
     Property StatusStripVisible As Boolean
