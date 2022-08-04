@@ -27,7 +27,7 @@ If applicable, add screenshots to help explain your problem.
  - OS: [e.g. Windows 10 21H1]
  - Browser: [e.g. edge, chrome] (only needed for PDF integration issue)
  - Browser Version: [e.g. 22] (only needed for PDF integration issue)
- - PDFKeeper Version: [e.g. 7.0.0]
+ - PDFKeeper Version: [e.g. 7.2.3]
 
 **Database (please complete the following information):**
  - DBMS: [e.g. Oracle, OracleXE, SQLite]
