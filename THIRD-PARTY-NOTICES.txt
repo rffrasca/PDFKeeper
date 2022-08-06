@@ -47,15 +47,15 @@ itext7.font-asian (https://www.nuget.org/packages/itext7.font-asian/7.1.16)
     Copyright: Copyright (c) 1998-2021 iText Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl-3.0.html
 
-Magick.NET-Q16-AnyCPU (https://www.nuget.org/packages/Magick.NET-Q16-AnyCPU/8.4.0)
+Magick.NET-Q16-AnyCPU (https://www.nuget.org/packages/Magick.NET-Q16-AnyCPU/12.0.1)
     Authors: Dirk Lemstra
-    Copyright: Copyright 2013-2021 Dirk Lemstra
-    License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
+    Copyright: Copyright 2013-2022 Dirk Lemstra
+    License: Apache License 2.0, full text can be found at https://spdx.org/licenses/Apache-2.0 or in Licenses/Apache-2.0-license.txt
 
-Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/8.4.0)
+Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/12.0.1)
     Authors: Dirk Lemstra
-    Copyright: Copyright 2013-2021 Dirk Lemstra
-    License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
+    Copyright: Copyright 2013-2022 Dirk Lemstra
+    License: Apache License 2.0, full text can be found at https://spdx.org/licenses/Apache-2.0 or in Licenses/Apache-2.0-license.txt
 
 Portable.BouncyCastle (https://www.nuget.org/packages/Portable.BouncyCastle/1.8.9)
     Authors: clairernovotny

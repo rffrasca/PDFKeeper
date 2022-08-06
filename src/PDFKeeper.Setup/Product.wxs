@@ -43,8 +43,7 @@
     <Property Id="MSIFASTINSTALL" Value="1" />
 
     <Property Id="WINCURRENTBUILD">
-      <RegistrySearch Id="CheckWinCurrentBuild" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion"
-                      Name="CurrentBuild" Type="raw" />
+      <RegistrySearch Id="CheckWinCurrentBuild" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Name="CurrentBuild" Type="raw" />
     </Property>
     <Condition Message="[ProductName] requires Windows 10 or higher.">
       <![CDATA[Installed OR (WINCURRENTBUILD > 9600)]]>
@@ -206,6 +205,15 @@
       </Component>
       <Component Id="PDFKeeper.Services.dll" Guid="2a316d25-4fa8-4c34-983e-5aebeef6efef">
         <File Id="PDFKeeper.Services.dll" Name="PDFKeeper.Services.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.Services.dll" />
+      </Component>
+      <Component Id="Magick.Native_Q16_x86.dll" Guid="8e694e0d-2a8f-4373-a121-34ded217baa0">
+        <File Id="Magick.Native_Q16_x86.dll" Name="Magick.Native-Q16-x86.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Magick.Native-Q16-x86.dll" />
+      </Component>
+      <Component Id="Magick.Native_Q16_x64.dll" Guid="7f0202a9-9a49-4801-88f8-98e9ed1671dc">
+        <File Id="Magick.Native_Q16_x64.dll" Name="Magick.Native-Q16-x64.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Magick.Native-Q16-x64.dll" />
+      </Component>
+      <Component Id="Magick.Native_Q16_arm64.dll" Guid="5bdfc96d-941a-400f-bf8e-4bdedd45c3df">
+        <File Id="Magick.Native_Q16_arm64.dll" Name="Magick.Native-Q16-arm64.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Magick.Native-Q16-arm64.dll" />
       </Component>
   	</ComponentGroup>
 	</Fragment>
