@@ -21,12 +21,12 @@ Imports System.Collections.ObjectModel
 Imports System.IO
 Imports System.Text
 Imports ImageMagick
-Imports iText.Kernel.Crypto
 Imports iText.Kernel.Pdf
 Imports iText.Kernel.Pdf.Canvas.Parser
 Imports PDFKeeper.Common
 Imports PDFKeeper.FileIO.PdfPasswordTypes
 Imports iText.Kernel.Pdf.Canvas.Parser.Util
+Imports iText.Kernel.Exceptions
 
 Public Class PdfFile
     Inherits PdfBase
@@ -60,7 +60,7 @@ Public Class PdfFile
                 End Using
             Catch ex As BadPasswordException
                 Return PdfPasswordType.User
-            Catch ex As iText.IO.IOException
+            Catch ex As iText.IO.exceptions.IOException
                 Return PdfPasswordType.Unknown
             End Try
         End Get

@@ -19,7 +19,7 @@
 '******************************************************************************
 Imports System.IO
 Imports System.Security
-Imports iText.Kernel.Crypto
+Imports iText.Kernel.Exceptions
 Imports iText.Kernel.Pdf
 Imports PDFKeeper.Common
 

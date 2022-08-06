@@ -157,12 +157,8 @@
         <File Id="gswin64c.exe" Name="gswin64c.exe" Source="$(var.PDFKeeper.Presentation_TargetDir)gswin64c.exe" />
       </Component>
       
-      <Component Id="Common.Logging.dll" Guid="1c66b7ce-605c-4a21-a67a-9635f1f2d9fe">
-        <File Id="Common.Logging.dll" Name="Common.Logging.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Common.Logging.dll" />
-      </Component>
-      <Component Id="Common.Logging.Core.dll" Guid="82885caf-4793-41d9-b47e-e7b37cb8a767">
-        <File Id="Common.Logging.Core.dll" Name="Common.Logging.Core.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Common.Logging.Core.dll" />
-      </Component>
+      
+      
       <Component Id="itext.kernel.dll" Guid="08d6a4ec-371d-4530-bf26-f1dd38207559">
         <File Id="itext.kernel.dll" Name="itext.kernel.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)itext.kernel.dll" />
       </Component>
@@ -212,6 +208,54 @@
       </Component>
       <Component Id="Magick.Native_Q16_arm64.dll" Guid="5bdfc96d-941a-400f-bf8e-4bdedd45c3df">
         <File Id="Magick.Native_Q16_arm64.dll" Name="Magick.Native-Q16-arm64.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Magick.Native-Q16-arm64.dll" />
+      </Component>
+      <Component Id="System.Memory.dll" Guid="928b678d-1408-4fbf-bd7f-793fe032fda5">
+        <File Id="System.Memory.dll" Name="System.Memory.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)System.Memory.dll" />
+      </Component>
+      <Component Id="Microsoft.Extensions.DependencyInjection.dll" Guid="998a0190-ed12-4286-aa29-45e515887d22">
+        <File Id="Microsoft.Extensions.DependencyInjection.dll" Name="Microsoft.Extensions.DependencyInjection.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Extensions.DependencyInjection.dll" />
+      </Component>
+      <Component Id="System.Buffers.dll" Guid="0c879bb8-0d1f-4fbd-becf-a95a93246f55">
+        <File Id="System.Buffers.dll" Name="System.Buffers.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)System.Buffers.dll" />
+      </Component>
+      <Component Id="System.Runtime.CompilerServices.Unsafe.dll" Guid="a80407e0-a121-4719-b054-8a71e5e2a798">
+        <File Id="System.Runtime.CompilerServices.Unsafe.dll" Name="System.Runtime.CompilerServices.Unsafe.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)System.Runtime.CompilerServices.Unsafe.dll" />
+      </Component>
+      <Component Id="System.Numerics.Vectors.dll" Guid="86f4c432-e5b1-4e82-b633-5b083a29dbb6">
+        <File Id="System.Numerics.Vectors.dll" Name="System.Numerics.Vectors.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)System.Numerics.Vectors.dll" />
+      </Component>
+      <Component Id="System.ValueTuple.dll" Guid="77c8bb09-e94e-41b2-9245-e2a9e661d675">
+        <File Id="System.ValueTuple.dll" Name="System.ValueTuple.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)System.ValueTuple.dll" />
+      </Component>
+      <Component Id="Microsoft.Extensions.Primitives.dll" Guid="77e2f959-b056-401a-b8a0-60a699a068d3">
+        <File Id="Microsoft.Extensions.Primitives.dll" Name="Microsoft.Extensions.Primitives.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Extensions.Primitives.dll" />
+      </Component>
+      <Component Id="Microsoft.Extensions.Options.dll" Guid="2f2d59db-11bf-4f81-9db8-4c1cd87b362b">
+        <File Id="Microsoft.Extensions.Options.dll" Name="Microsoft.Extensions.Options.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Extensions.Options.dll" />
+      </Component>
+      <Component Id="System.Threading.Tasks.Extensions.dll" Guid="e9b6ff88-f867-475c-97fa-f615b400ceb7">
+        <File Id="System.Threading.Tasks.Extensions.dll" Name="System.Threading.Tasks.Extensions.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)System.Threading.Tasks.Extensions.dll" />
+      </Component>
+      <Component Id="System.Diagnostics.DiagnosticSource.dll" Guid="b82bbe7e-73b1-40f7-ba40-004098a8aeb9">
+        <File Id="System.Diagnostics.DiagnosticSource.dll" Name="System.Diagnostics.DiagnosticSource.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)System.Diagnostics.DiagnosticSource.dll" />
+      </Component>
+      <Component Id="Microsoft.Bcl.AsyncInterfaces.dll" Guid="e41f38fe-6222-4a0d-91d4-d05accf51fe1">
+        <File Id="Microsoft.Bcl.AsyncInterfaces.dll" Name="Microsoft.Bcl.AsyncInterfaces.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Bcl.AsyncInterfaces.dll" />
+      </Component>
+      <Component Id="itext.commons.dll" Guid="57d9dbe7-de8e-461a-8c7d-80b246b92070">
+        <File Id="itext.commons.dll" Name="itext.commons.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)itext.commons.dll" />
+      </Component>
+      <Component Id="Microsoft.Extensions.Logging.Abstractions.dll" Guid="d6502dd0-c34c-4010-8f71-6cc5b8bd6aed">
+        <File Id="Microsoft.Extensions.Logging.Abstractions.dll" Name="Microsoft.Extensions.Logging.Abstractions.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Extensions.Logging.Abstractions.dll" />
+      </Component>
+      <Component Id="Newtonsoft.Json.dll" Guid="85345b02-5265-4839-9f38-4f05eee1c3a0">
+        <File Id="Newtonsoft.Json.dll" Name="Newtonsoft.Json.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Newtonsoft.Json.dll" />
+      </Component>
+      <Component Id="Microsoft.Extensions.Logging.dll" Guid="87a0c49b-945f-41c5-8514-5ff269684621">
+        <File Id="Microsoft.Extensions.Logging.dll" Name="Microsoft.Extensions.Logging.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Extensions.Logging.dll" />
+      </Component>
+      <Component Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Guid="c0d45ceb-d797-4140-a24a-6b69e53703e9">
+        <File Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
       </Component>
   	</ComponentGroup>
 	</Fragment>

@@ -144,10 +144,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="itext7">
-      <Version>7.1.16</Version>
+      <Version>7.2.3</Version>
     </PackageReference>
     <PackageReference Include="itext7.font-asian">
-      <Version>7.1.16</Version>
+      <Version>7.2.3</Version>
     </PackageReference>
     <PackageReference Include="Magick.NET-Q16-AnyCPU">
       <Version>12.0.1</Version>
