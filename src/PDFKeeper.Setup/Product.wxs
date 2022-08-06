@@ -200,9 +200,7 @@
       <Component Id="PDFKeeper.Infrastructure.dll" Guid="a792571b-8c5f-4686-8581-abf709ccf323">
         <File Id="PDFKeeper.Infrastructure.dll" Name="PDFKeeper.Infrastructure.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.Infrastructure.dll" />
       </Component>
-      <Component Id="PDFKeeper.Infrastructure.dll.config" Guid="eb8bb41c-5db5-4b2b-8ea7-389aa023e4f0">
-        <File Id="PDFKeeper.Infrastructure.dll.config" Name="PDFKeeper.Infrastructure.dll.config" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.Infrastructure.dll.config" />
-      </Component>
+      
       <Component Id="PDFKeeper.Services.dll" Guid="2a316d25-4fa8-4c34-983e-5aebeef6efef">
         <File Id="PDFKeeper.Services.dll" Name="PDFKeeper.Services.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.Services.dll" />
       </Component>
