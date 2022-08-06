@@ -24,7 +24,8 @@ rem
 set Title=PDFKeeper Client Server Database Schema Setup
 set MenuHeader=Compatible Database Management Systems
 set MenuChoice1=1. Oracle Database
-set MenuChoice2=2. Oracle Database (for upgrading from PDFKeeper version 6.1.1 or earlier)
+set MenuChoice2=2. Oracle Cloud Autonomous Database
+set MenuChoice3=3. Oracle Database (for upgrading from PDFKeeper version 6.1.1 or earlier)
 set MenuPrompt=Select the database management system or Q to quit:
 set OracleMessage1=Enter the database connect string in the format:
 set OracleMessage2=username/password@host:port/service_name
@@ -41,6 +42,9 @@ set OracleMessage12=For Oracle Database Express Edition, if not specified, the
 set OracleMessage13=default service name XE is assumed.
 set OracleMessage14=For Oracle Database Express Edition, it is recommended
 set OracleMessage15=to use the default pluggable database XEPDB1.
+set OracleMessage16=admin/password@TNS_name
+set OracleMessage17=admin is the administrator account and TNS_name is the service name
+set OracleMessage18=of the Autonomous Database instance.
 set CommonMessage=Enter connect string:
 set CommonErrorMessage=Error: Database connect string not specified.
 rem
@@ -53,20 +57,26 @@ echo ==========================================================================
 echo.
 echo %MenuChoice1%
 echo %MenuChoice2%
+echo %MenuChoice3%
 echo.
-choice /c 12q /n /m "%MenuPrompt%"
-if %ERRORLEVEL%==1 goto OracleSetup
-if %ERRORLEVEL%==2 goto OracleUpgrade
-if %ERRORLEVEL%==3 exit
+choice /c 123q /n /m "%MenuPrompt%"
+if %ERRORLEVEL%==1 (
+	set operation=Setup
+	goto OracleSetupUpgrade
+)
+if %ERRORLEVEL%==2 (
+	set operation=Setup
+	goto OracleCloudSetup
+)
+if %ERRORLEVEL%==3 (
+	set operation=Upgrade
+	goto OracleSetupUpgrade
+)
+if %ERRORLEVEL%==4 (
+	exit
+)
 
-:OracleSetup
-set operation=Setup
-goto Oracle
-
-:OracleUpgrade
-set operation=Upgrade
-
-:Oracle
+:OracleSetupUpgrade
 echo.
 echo %OracleMessage1%
 echo.
@@ -89,6 +99,19 @@ echo   %OracleMessage13%
 echo   %OracleMessage14%
 echo   %OracleMessage15%
 echo.
+goto Main
+
+:OracleCloudSetup
+echo.
+echo %OracleMessage1%
+echo.
+echo %OracleMessage16%
+echo.
+echo * %OracleMessage17%
+echo   %OracleMessage18%
+echo.
+
+:Main
 set /p connectString=%CommonMessage% 
 if "%connectString%"=="" (
 	echo %CommonErrorMessage%

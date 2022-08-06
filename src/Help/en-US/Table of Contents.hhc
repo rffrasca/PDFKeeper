@@ -64,6 +64,35 @@
 						</OBJECT>
 				</UL>
 			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Setup Cloud Database">
+				<param name="Local" value="Setup Cloud Database.html">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Oracle Autonomous Database">
+					<param name="Local" value="Oracle Autonomous Database.html">
+					<param name="ImageNumber" value="1">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Schema Setup">
+						<param name="Local" value="Schema Setup for Oracle Autonomous Database.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Installing Oracle Data Provider for .NET">
+						<param name="Local" value="Installing Oracle Data Provider for .NET.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="User Administration">
+						<param name="Local" value="User Administration for Oracle Autonomous Database.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+				</UL>
+			</UL>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Using PDFKeeper">
