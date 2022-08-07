@@ -30,7 +30,7 @@ Public MustInherit Class BundledPdfViewerBase
     Protected Function OpenViewer(ByVal arguments As String) As Integer
         Using sumatraPdf = New Process
             With sumatraPdf
-                .StartInfo.FileName = Path.Combine(My.Application.Info.DirectoryPath, "SumatraPDF-3.3.3-64.exe")
+                .StartInfo.FileName = Path.Combine(My.Application.Info.DirectoryPath, "SumatraPDF-3.4.6-64.exe")
                 .StartInfo.Arguments = arguments
                 .StartInfo.UseShellExecute = False
                 .Start()

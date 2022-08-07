@@ -168,8 +168,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\vendor\SumatraPDF-3.3.3-64.exe">
-      <Link>SumatraPDF-3.3.3-64.exe</Link>
+    <Content Include="..\..\vendor\SumatraPDF-3.4.6-64.exe">
+      <Link>SumatraPDF-3.4.6-64.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\Config\SumatraPDF-settings.txt">

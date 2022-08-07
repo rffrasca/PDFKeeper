@@ -177,9 +177,7 @@
       
       
       
-      <Component Id="SumatraPDF_3.3.3_64.exe" Guid="d92345d7-6c15-484f-a190-922b2b777ee9">
-        <File Id="SumatraPDF_3.3.3_64.exe" Name="SumatraPDF-3.3.3-64.exe" Source="$(var.PDFKeeper.Presentation_TargetDir)SumatraPDF-3.3.3-64.exe" />
-      </Component>
+      
       <Component Id="PDFKeeper.Common.dll" Guid="a11dc0f1-6e01-454b-9739-ca7537f8dbf3">
         <File Id="PDFKeeper.Common.dll" Name="PDFKeeper.Common.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.Common.dll" />
       </Component>
@@ -252,6 +250,9 @@
       </Component>
       <Component Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Guid="c0d45ceb-d797-4140-a24a-6b69e53703e9">
         <File Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+      </Component>
+      <Component Id="SumatraPDF_3.4.6_64.exe" Guid="cbe2e053-c7b3-4529-b59d-13675980d6b5">
+        <File Id="SumatraPDF_3.4.6_64.exe" Name="SumatraPDF-3.4.6-64.exe" Source="$(var.PDFKeeper.Presentation_TargetDir)SumatraPDF-3.4.6-64.exe" />
       </Component>
   	</ComponentGroup>
 	</Fragment>
