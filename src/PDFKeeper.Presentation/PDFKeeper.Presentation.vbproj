@@ -343,10 +343,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>del "$(TargetDir)Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll"
-del "$(TargetDir)Microsoft.WindowsAPICodePack.Sensors.dll"
-del "$(TargetDir)Microsoft.WindowsAPICodePack.ShellExtensions.dll"
-del "$(TargetDir)itext.barcodes.dll"
+    <PostBuildEvent>del "$(TargetDir)itext.barcodes.dll"
 del "$(TargetDir)itext.forms.dll"
 del "$(TargetDir)itext.layout.dll"
 del "$(TargetDir)itext.pdfa.dll"

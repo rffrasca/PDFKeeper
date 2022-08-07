@@ -175,12 +175,8 @@
       
       
       
-      <Component Id="Microsoft.WindowsAPICodePack.dll" Guid="77dc6a58-45fb-452b-84f8-679bd7454906">
-        <File Id="Microsoft.WindowsAPICodePack.dll" Name="Microsoft.WindowsAPICodePack.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.WindowsAPICodePack.dll" />
-      </Component>
-      <Component Id="Microsoft.WindowsAPICodePack.Shell.dll" Guid="a5364660-7ff9-48c0-8ec1-0abdbe78e11d">
-        <File Id="Microsoft.WindowsAPICodePack.Shell.dll" Name="Microsoft.WindowsAPICodePack.Shell.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.WindowsAPICodePack.Shell.dll" />
-      </Component>
+      
+      
       <Component Id="SumatraPDF_3.3.3_64.exe" Guid="d92345d7-6c15-484f-a190-922b2b777ee9">
         <File Id="SumatraPDF_3.3.3_64.exe" Name="SumatraPDF-3.3.3-64.exe" Source="$(var.PDFKeeper.Presentation_TargetDir)SumatraPDF-3.3.3-64.exe" />
       </Component>

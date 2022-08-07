@@ -148,8 +148,3 @@ System.ValueTuple (https://www.nuget.org/packages/System.ValueTuple/4.5.0)
     Authors: Microsoft
     Copyright: © Microsoft Corporation.  All rights reserved.
     License: MIT License, full text can be found at https://spdx.org/licenses/MIT or in Licenses/MIT-license.txt
-
-WindowsAPICodePack (https://www.nuget.org/packages/WindowsAPICodePack/1.1.2)
-    Authors: pwagner
-    Copyright: Copyright (c) 2009 - 2010 Microsoft Coropration, then modifications by Peter William Wagner 2017 - 2021
-    License: MIT License, full text can be found at https://www.nuget.org/packages/WindowsAPICodePack/1.1.2/License
