@@ -23,8 +23,8 @@ set database=%APPDATA%\Robert F. Frasca\PDFKeeper\PDFKeeper.sqlite
 rem
 rem Start of localized strings
 rem
-set Title=Local Database Setup
-set Prompt=Create local database? (y or n):
+set Title=Single-User Database Setup
+set Prompt=Create database? (y or n):
 set Status1=already exists!
 set Status2=was created.
 set Status3=is now ready for use!

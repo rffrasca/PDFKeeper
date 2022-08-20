@@ -21,7 +21,7 @@ rem ***************************************************************************
 rem
 rem Start of localized strings
 rem
-set Title=PDFKeeper Client Server Database Schema Setup
+set Title=PDFKeeper Multi-User Database Schema Setup
 set MenuHeader=Compatible Database Management Systems
 set MenuChoice1=1. Oracle Database
 set MenuChoice2=2. Oracle Cloud Autonomous Database

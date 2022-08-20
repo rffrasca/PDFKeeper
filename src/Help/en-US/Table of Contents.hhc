@@ -26,13 +26,13 @@
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Setup Local Database">
-				<param name="Local" value="Setup Local Database.html">
+				<param name="Name" value="Setup Single-User Database">
+				<param name="Local" value="Setup Single-User Database.html">
 				<param name="ImageNumber" value="9">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Setup Client-Server Database">
-				<param name="Local" value="Setup Client-Server Database.html">
+				<param name="Name" value="Setup Multi-User (On-Prem) Database">
+				<param name="Local" value="Setup Multi-User (On-Prem) Database.html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
 			<UL>
@@ -65,8 +65,8 @@
 				</UL>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Setup Cloud Database">
-				<param name="Local" value="Setup Cloud Database.html">
+				<param name="Name" value="Setup Multi-User (Cloud) Database">
+				<param name="Local" value="Setup Multi-User (Cloud) Database.html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
 			<UL>
