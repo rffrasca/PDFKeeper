@@ -1,6 +1,62 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v8.0.0 - 2022-08-27
+- This is a major release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.0.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.0.0).
+### Added
+- Added condition requiring Windows 10 or higher for PDFKeeper to install.
+- Added Oracle Database 21c (including Express Edition) compatibility.
+- Added Oracle Cloud Autonomous Database 21c and 19c compatibility (TLS authentication only).
+- Added opening of PDF documents for all selected (checked) documents in the Documents list up to a maximum of 12.
+- Added Burst for selected document PDF.
+- Added option to OCR each PDF page containing text and image data to the Add PDF Dialog, Upload Profiles Dialog, and to the Update PDF Text Columns prompt.
+- Added display of Search Term Snippets for the selected document when using Find Documents by Search Term (#7).
+- Added text extraction for image-only pages in PDF when PDF contains both text and image-only pages.
+### Changed
+- Updated Oracle Data Provider .NET dependency to the version contained in Oracle Data Access Components 21.4.
+- Updated Hash algorithm implementation used to compute file hashes to SHA512.
+- Renamed Upload Folder Configurations to Upload Profiles and the folder where Upload Profiles are stored has been changed to %APPDATA%\Robert F. Frasca\PDFKeeper\UploadProfiles.
+- Renamed Add PDF Documents dialog to Add PDF and redesigned the dialog to close after adding the PDF.
+- Renamed Set Preview Image Resolution dialog and menu item to Set Preview Pixel Density.
+- Renamed Select last row when displaying Search Results option to Select last row when listing documents.
+- Renamed Open PDF documents with default application option to Show PDF documents with default application.
+- Renamed Show Flagged Documents on startup option to List flagged documents on startup.
+- Renamed Update PDF Text Annotations and Text in Database menu item to Update PDF Text Columns.
+- Renamed Search to Document Retrieval.
+- Renamed Documents by Text to Find Documents by Search Terms.
+- Renamed Documents by Selections to Find Documents by Selections.
+- Renamed Documents by Date Added to Find Documents by Date Added.
+- Renamed Flagged Documents to List Flagged Documents.
+- Renamed All Documents to List All Documents.
+- Find Text is now referred to as Search Term.
+- PDF documents that cannot be uploaded will now be moved to %APPDATA%\Robert F. Frasca\PDFKeeper\UploadRejected.
+- Changed temporary directory used by PDFKeeper and Magick.NET to %TMP%\PDFKeeper. This folder will be emptied on application shutdown.
+- PDFKeeper will now wait for an upload to finish before closing.
+- Renamed DisableQueryAllDocuments policy to RemoveListAllDocuments.
+- Renamed About menu item to About PDFKeeper.
+- Downloads folder in the user profile is retrieved without using a third-party library.
+- Ellipsis corrections have been made to some menu items.
+- Replaced text formatted license for PDFKeeper in the help file with an HTML formatted copy.
+- Replaced Third-Party Attribution in the help file with Third-Party Notices. The notices file was rewritten as THIRD-PARTY-NOTICES.txt that is also compiled into the help file in HTML format.
+- Updated SQLite Command Line Shell to 3.39.2
+- Updated Magick.NET to 12.0.1
+- Updated iText and iText.Font-Asian to 7.2.3
+- Updated Ghostscript to 9.56.1
+- Updated Sumatra PDF to 3.4.6
+- Updated System.Data.SQLite to 1.0.116
+### Removed
+- Dropped Oracle Database 11g Express Edition compatibility.
+- Removed Oracle Database 11g and lower support from OracleDatabaseSchemaSetup.sql and OracleDatabaseSchemaUpgrade.sql.
+- Removed Alternate Text Extraction Strategy from PDF Text Extractor. OCR will be performed when iText is unable to extract text from a PDF page.
+- Removed unnecessary task completion messages.
+### Changed (Development)
+- Removed CompileHelp.cmd from Solution.
+- Moved all SQL scripts from Help folder to Config folder.
+- Rearchitected PDFKeeper.WindowsApplication into separate layers applying the Model-View-Presenter pattern with Services and created additional projects for code that resides outside of the pattern.
+- Migrated from Package.Config to PackageReference for NuGet packages.
+
 ## v7.2.3 - 2021-12-18
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.3).
