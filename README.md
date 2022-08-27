@@ -4,20 +4,20 @@
 
 PDFKeeper is free, open source software that provides a storage and management solution for PDF documents.
 
-![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot-7.0.0.png)
-Screenshot of main window in version 7.x.x.
+![Logo](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Screenshot-8.0.0.png)
+Screenshot of main window in version 8.0.0.
 
 ### Features
-* Store and manage PDF documents in a local or compatible, client-server relational database where they’re indexed to provide full-text search functionality.
-* Upload PDF documents individually or in bulk. In addition, configured folders can be setup to allow for integration and automation.
-* Apply a category and/or tax year to selected document records and when PDF documents are uploaded.
-* Set the flag state on a selected document record and when PDF documents are uploaded to mark for follow-up.
-* Add notes to a selected document record that can include the date, time, and user account name. All notes can be edited and are indexed by the database.
-* Search for document records by Text, Selections (Author/Subject/Category/Tax Year), or Date Added. In addition, the user can list document records that are flagged or all document records in the database.
-* With PDFKeeper, the following functions can be performed on a selected document record: PDF document viewing with the bundled or default viewer; flag document state management; notes viewing and editing; keywords, PDF preview, and PDF text are also displayed for viewing.
+* Store and manage PDF documents in a single-user or compatible, multi-user (on-prem or cloud) database where they’re indexed to provide full-text search functionality.
+* Upload PDF documents individually or in bulk. In addition, Upload Profile folders can be setup to allow for integration and automation.
+* Apply a category/tax year to selected documents and when PDF documents are uploaded.
+* Set the flag state on a selected document and when PDF documents are uploaded to mark for follow-up.
+* Add notes to a selected document that can include the date, time, and user account name. All notes can be edited and are indexed by the database.
+* Find documents by Search Term, Selections (Author/Subject/Category/Tax Year), or Date Added. In addition, flagged documents or all documents can be listed.
+* With PDFKeeper, the following functions can be performed on a selected document: PDF viewing with the bundled or default viewer; PDF bursting; flag document state management; notes viewing and editing; keywords, PDF preview, PDF text, and search term snippets (when applicable) are also displayed for viewing.
 * Export selected PDF documents with their category, tax year, notes, and flag state from the database for easy importing.
 
-These features are available in version 7.x.x. 
+These features are available in version 8.0.0. 
 
 ### Client Requirements and Compatible Database Management Systems
 Listed on the release page for each available version.
