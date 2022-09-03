@@ -33,6 +33,11 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#description">Description</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#release-history">Release History</a></li>
+     </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -41,9 +46,6 @@
         <li><a href="#building-from-source">Building from Source</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -54,6 +56,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+### Description
 PDFKeeper is free, open source software that provides a storage and management solution for PDF documents.
 
 ![Product Name Screen Shot][product-screenshot]
@@ -72,7 +75,8 @@ User Interface in version 8.0.0.
 
 These features are available in version 8.0.0. 
 
-For release history, please see the [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md).
+### Release History
+Full release history is available in the [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
