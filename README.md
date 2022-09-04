@@ -11,8 +11,7 @@
 <h3 align="center">Open Source PDF Document Management</h3>
   
   <p align="center">
-    <br />
-
+    
 [![Downloads][downloads-shield]][downloads-url]
 [![Downloads Latest][downloads-latest-shield]][downloads-latest-url]
 [![Twitter][twitter-shield]][twitter-url]
@@ -134,10 +133,10 @@ PDFKeeper is distributed under the terms of the [GNU General Public License (GPL
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[downloads-shield]: https://img.shields.io/github/downloads/rffrasca/PDFKeeper/total?style=for-the-badge
-[downloads-url]: https://img.shields.io/github/downloads/rffrasca/PDFKeeper/total?style=for-the-badge
-[downloads-latest-shield]: https://img.shields.io/github/downloads/rffrasca/pdfkeeper/latest/total?style=for-the-badge
-[downloads-latest-url]: https://img.shields.io/github/downloads/rffrasca/pdfkeeper/latest/total?style=for-the-badge
-[twitter-shield]: https://img.shields.io/twitter/follow/PDFKeeper?style=for-the-badge
+[downloads-shield]: https://img.shields.io/github/downloads/rffrasca/PDFKeeper/total?style=flat-square
+[downloads-url]: https://github.com/rffrasca/PDFKeeper/releases
+[downloads-latest-shield]: https://img.shields.io/github/downloads/rffrasca/pdfkeeper/latest/total?style=flat-square
+[downloads-latest-url]: https://github.com/rffrasca/PDFKeeper/latest
+[twitter-shield]: https://img.shields.io/twitter/follow/PDFKeeper?style=flat-square
 [twitter-url]: https://twitter.com/PDFKeeper
 [product-screenshot]: https://github.com/rffrasca/pdfkeeper/blob/master/docs/Screenshot-8.0.0.png
