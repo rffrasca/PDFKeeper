@@ -19,7 +19,7 @@
     <br />
     <a href="https://github.com/rffrasca/pdfkeeper/issues">Report Bug</a>
     ·
-    <a href="https://github.com/rffrasca/pdfkeeper/issues">Request Feature</a>
+    <a href="https://github.com/rffrasca/pdfkeeper/issues">Request Feature/Enhancement</a>
     ·
     <a href="https://github.com/rffrasca/pdfkeeper/issues">Request adding Compatible Database</a>
     ·
