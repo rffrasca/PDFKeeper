@@ -87,9 +87,9 @@ Full release history is available in the [Changelog](https://github.com/rffrasca
 
 ### Installation
 
-- Client prerequisites and compatible Database Management Systems are listed on the release page.
+- Client prerequisites and compatible Database Management Systems are listed on the [release page](https://github.com/rffrasca/PDFKeeper/releases/latest).
 - Download and install the latest version of PDFKeeper from [here](https://github.com/rffrasca/PDFKeeper/releases/latest) or install using Windows Package Manager (winget install pdfkeeper).
-- Note, PDFKeeper is installed per-user.
+- PDFKeeper is installed per-user.
 - Database setup instructions are available in the Help file that can be viewed post-install.
 
 ### Building from Source
