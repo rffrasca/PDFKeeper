@@ -137,7 +137,7 @@ PDFKeeper is distributed under the terms of the [GNU General Public License (GPL
 [downloads-shield]: https://img.shields.io/github/downloads/rffrasca/PDFKeeper/total?style=flat-square
 [downloads-url]: https://github.com/rffrasca/PDFKeeper/releases
 [downloads-latest-shield]: https://img.shields.io/github/downloads/rffrasca/pdfkeeper/latest/total?style=flat-square
-[downloads-latest-url]: https://github.com/rffrasca/PDFKeeper/latest
+[downloads-latest-url]: https://github.com/rffrasca/PDFKeeper/releases/latest
 [commit-activity-shield]: https://img.shields.io/github/commit-activity/y/rffrasca/PDFKeeper?style=flat-square
 [commit-activity-url]: https://github.com/rffrasca/PDFKeeper
 [twitter-shield]: https://img.shields.io/twitter/follow/PDFKeeper?style=flat-square
