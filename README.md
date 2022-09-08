@@ -134,12 +134,12 @@ PDFKeeper is distributed under the terms of the [GNU General Public License (GPL
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[downloads-shield]: https://img.shields.io/github/downloads/rffrasca/PDFKeeper/total?style=flat-square
+[downloads-shield]: https://img.shields.io/github/downloads/rffrasca/PDFKeeper/total?style=flat
 [downloads-url]: https://github.com/rffrasca/PDFKeeper/releases
-[downloads-latest-shield]: https://img.shields.io/github/downloads/rffrasca/pdfkeeper/latest/total?style=flat-square
+[downloads-latest-shield]: https://img.shields.io/github/downloads/rffrasca/pdfkeeper/latest/total?style=flat
 [downloads-latest-url]: https://github.com/rffrasca/PDFKeeper/releases/latest
-[commit-activity-shield]: https://img.shields.io/github/commit-activity/y/rffrasca/PDFKeeper?style=flat-square
+[commit-activity-shield]: https://img.shields.io/github/commit-activity/y/rffrasca/PDFKeeper?style=flat
 [commit-activity-url]: https://github.com/rffrasca/PDFKeeper
-[twitter-shield]: https://img.shields.io/twitter/follow/PDFKeeper?style=flat-square
+[twitter-shield]: https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FPDFKeeper
 [twitter-url]: https://twitter.com/PDFKeeper
 [product-screenshot]: https://github.com/rffrasca/pdfkeeper/blob/master/docs/UserInterface-8.0.0.png
