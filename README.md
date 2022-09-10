@@ -13,7 +13,6 @@
   <p align="center">
     
 [![Downloads][downloads-shield]][downloads-url]
-[![Downloads Latest][downloads-latest-shield]][downloads-latest-url]
 [![Commit Activity][commit-activity-shield]][commit-activity-url]
 [![Twitter][twitter-shield]][twitter-url]
     <br />
@@ -136,8 +135,6 @@ PDFKeeper is distributed under the terms of the [GNU General Public License (GPL
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [downloads-shield]: https://img.shields.io/github/downloads/rffrasca/PDFKeeper/total?style=flat
 [downloads-url]: https://github.com/rffrasca/PDFKeeper/releases
-[downloads-latest-shield]: https://img.shields.io/github/downloads/rffrasca/pdfkeeper/latest/total?style=flat
-[downloads-latest-url]: https://github.com/rffrasca/PDFKeeper/releases/latest
 [commit-activity-shield]: https://img.shields.io/github/commit-activity/y/rffrasca/PDFKeeper?style=flat
 [commit-activity-url]: https://github.com/rffrasca/PDFKeeper
 [twitter-shield]: https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FPDFKeeper
