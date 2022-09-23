@@ -126,7 +126,7 @@ PDFKeeper is distributed under the terms of the [GNU General Public License (GPL
 
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 * [ThirdPartyLibraries](https://github.com/max-ieremenko/ThirdPartyLibraries)
-* [Third-Party software included with PDFKeeper](https://github.com/rffrasca/PDFKeeper/blob/master/THIRD-PARTY-NOTICES.txt)
+* [Third-Party software](https://github.com/rffrasca/PDFKeeper/blob/master/THIRD-PARTY-NOTICES.txt)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
