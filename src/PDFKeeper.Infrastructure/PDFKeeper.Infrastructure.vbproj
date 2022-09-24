@@ -79,6 +79,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.vb">
+      <Link>My Project\GlobalAssemblyInfo.vb</Link>
+    </Compile>
     <Compile Include="DbException.vb" />
     <Compile Include="DbSession.vb" />
     <Compile Include="MoveSqliteDatabaseCommand.vb" />

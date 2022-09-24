@@ -28,9 +28,6 @@ Imports System.Resources
 
 <Assembly: AssemblyTitle("PDFKeeper")>
 <Assembly: AssemblyDescription("Open Source PDF Document Management")>
-<Assembly: AssemblyCompany("Robert F. Frasca")>
-<Assembly: AssemblyProduct("PDFKeeper")>
-<Assembly: AssemblyCopyright("Copyright © 2009-2022 Robert F. Frasca")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -38,18 +35,5 @@ Imports System.Resources
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("da21be44-82bd-4219-b531-ca4cd5daeab2")>
 
-' Version information for an assembly consists of the following four values:
-'
-'      Major Version
-'      Minor Version 
-'      Build Number
-'      Revision
-'
-' You can specify all the values or you can default the Build and Revision Numbers 
-' by using the '*' as shown below:
-' <Assembly: AssemblyVersion("1.0.*")> 
-
-<Assembly: AssemblyVersion("8.0.0.0")>
-<Assembly: AssemblyFileVersion("8.0.0.0")>
-<Assembly: CLSCompliant(True)>
 <Assembly: NeutralResourcesLanguageAttribute("en-US")>
+<Assembly: CLSCompliant(True)>

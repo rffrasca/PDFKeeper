@@ -29,9 +29,6 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("PDFKeeper.Infrastructure")>
 <Assembly: AssemblyDescription("PDFKeeper Infrastructure Library")>
-<Assembly: AssemblyCompany("Robert F. Frasca")>
-<Assembly: AssemblyProduct("PDFKeeper")>
-<Assembly: AssemblyCopyright("Copyright © 2009-2022 Robert F. Frasca")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -39,18 +36,5 @@ Imports System.Runtime.InteropServices
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("38c6723a-9f0a-40bd-990d-6e2efbc5e3e3")>
 
-' Version information for an assembly consists of the following four values:
-'
-'      Major Version
-'      Minor Version
-'      Build Number
-'      Revision
-'
-' You can specify all the values or you can default the Build and Revision Numbers
-' by using the '*' as shown below:
-' <Assembly: AssemblyVersion("1.0.*")>
-
-<Assembly: AssemblyVersion("8.0.0.0")>
-<Assembly: AssemblyFileVersion("8.0.0.0")>
 <Assembly: NeutralResourcesLanguage("en-US")>
 <Assembly: CLSCompliant(True)>

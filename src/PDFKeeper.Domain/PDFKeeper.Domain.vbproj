@@ -75,6 +75,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.vb">
+      <Link>My Project\GlobalAssemblyInfo.vb</Link>
+    </Compile>
     <Compile Include="Models\DbSessionModel.vb" />
     <Compile Include="Models\PdfInfoExtModel.vb" />
     <Compile Include="Models\QueryFilters\TaxYearFilterModel.vb" />

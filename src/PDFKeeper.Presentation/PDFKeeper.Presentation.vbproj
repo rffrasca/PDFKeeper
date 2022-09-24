@@ -122,6 +122,9 @@
     <Import Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.vb">
+      <Link>My Project\GlobalAssemblyInfo.vb</Link>
+    </Compile>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="NativeMethods.vb" />
     <Compile Include="Presenters\MainPresenter.vb" />
