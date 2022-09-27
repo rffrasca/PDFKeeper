@@ -82,6 +82,7 @@ Public Class DocumentListService
                 .StartsWith("ACCUM ", StringComparison.CurrentCulture) Or
                 .StartsWith("FUZZY ", StringComparison.CurrentCulture) Or
                 .StartsWith("ABOUT ", StringComparison.CurrentCulture) Or
+                .StartsWith("*", StringComparison.CurrentCulture) Or
                 .IndexOf("{}", StringComparison.Ordinal) <> -1 Or .IndexOf("()", StringComparison.Ordinal) <> -1 Or
                 .Substring(0, 1) = "=" Or .Substring(0, 1) = ";" Or .Substring(0, 1) = ">" Or .Substring(0, 1) = "-" Or
                 .Substring(0, 1) = "~" Or .Substring(0, 1) = "&" Or .Substring(0, 1) = "|" Or .Substring(0, 1) = "," Or
