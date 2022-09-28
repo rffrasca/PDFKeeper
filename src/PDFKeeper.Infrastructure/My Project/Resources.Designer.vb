@@ -72,7 +72,7 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to The required Oracle Data Provider for .NET is missing and needs to be installed.
         '''
-        '''Please refer to the &quot;Additional Client Prerequisites&quot; section in the help file for instructions.
+        '''Please refer to the help file topic &quot;Installing Oracle Data Provider for .NET&quot; in the &quot;Getting Started&quot; section for instructions.
         '''
         '''To access help, press F1 at the PDFKeeper Login form..
         '''</summary>

@@ -123,7 +123,7 @@
   <data name="OracleDataProviderMissing" xml:space="preserve">
     <value>The required Oracle Data Provider for .NET is missing and needs to be installed.
 
-Please refer to the "Additional Client Prerequisites" section in the help file for instructions.
+Please refer to the help file topic "Installing Oracle Data Provider for .NET" in the "Getting Started" section for instructions.
 
 To access help, press F1 at the PDFKeeper Login form.</value>
   </data>
