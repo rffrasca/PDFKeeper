@@ -50,8 +50,7 @@ create virtual table docs_index using fts5(
 	tokenize=porter
 );
 
-create trigger docs_after_insert after insert on docs
-begin
+create trigger docs_after_insert after insert on docs begin
 	insert into docs_index (
 		rowid,
 		doc_title,
@@ -64,8 +63,7 @@ begin
 		doc_tax_year,
 		doc_text_annotations,
 		doc_text
-	)
-	values (
+	) values(
 		new.doc_id,
 		new.doc_title,
 		new.doc_author,
@@ -80,36 +78,11 @@ begin
 	);
 end;
 
-create trigger docs_after_update after update on docs
-begin
-	insert into docs_index (
-		docs_index,
-		rowid,
-		doc_title,
-		doc_author,
-		doc_subject,
-		doc_keywords,
-		doc_added,
-		doc_notes,
-		doc_category,
-		doc_tax_year,
-		doc_text_annotations,
-		doc_text
-	)
-	values (
-		'delete',
-		old.doc_id,
-		old.doc_title,
-		old.doc_author,
-		old.doc_subject,
-		old.doc_keywords,
-		old.doc_added,
-		old.doc_notes,
-		old.doc_category,
-		old.doc_tax_year,
-		old.doc_text_annotations,
-		old.doc_text
-	);
+create trigger docs_before_update before update on docs begin
+	delete from docs_index where rowid = old.doc_id;
+end;
+
+create trigger docs_after_update after update on docs begin
 	insert into docs_index (
 		rowid,
 		doc_title,
@@ -122,8 +95,7 @@ begin
 		doc_tax_year,
 		doc_text_annotations,
 		doc_text
-	)
-	values (
+	) values(
 		new.doc_id,
 		new.doc_title,
 		new.doc_author,
@@ -138,8 +110,7 @@ begin
 	);
 end;
 
-create trigger docs_after_delete after delete on docs
-begin
+create trigger docs_before_delete before delete on docs begin
 	delete from docs_index where rowid = old.doc_id;
 end;
 
