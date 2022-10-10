@@ -97,8 +97,6 @@
     </Compile>
     <Compile Include="Services\DocumentList\DocumentListService.vb" />
     <Compile Include="Services\DocumentList\IDocumentListService.vb" />
-    <Compile Include="Services\DocumentUtil\DocumentUtilService.vb" />
-    <Compile Include="Services\DocumentUtil\IDocumentUtilService.vb" />
     <Compile Include="Services\Document\DocumentService.vb" />
     <Compile Include="Services\Document\IDocumentService.vb" />
     <Compile Include="Services\FileCache\FileCacheService.vb" />

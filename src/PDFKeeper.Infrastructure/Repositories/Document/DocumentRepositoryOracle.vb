@@ -582,10 +582,6 @@ Public Class DocumentRepositoryOracle
         credential = Nothing
     End Sub
 
-    Public Sub RebuildFullTextSearchIndex() Implements IDocumentRepository.RebuildFullTextSearchIndex
-        Throw New NotSupportedException()
-    End Sub
-
     Protected Overrides Function ExecuteQuery(command As OracleCommand) As DataTable
         Using adapter = New OracleDataAdapter(command)
             Using table = New DataTable

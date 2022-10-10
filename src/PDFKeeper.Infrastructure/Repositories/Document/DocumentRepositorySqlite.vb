@@ -564,21 +564,6 @@ Public Class DocumentRepositorySqlite
         Throw New NotSupportedException
     End Sub
 
-    Public Sub RebuildFullTextSearchIndex() Implements IDocumentRepository.RebuildFullTextSearchIndex
-        Dim sql = "insert into docs_index(docs_index) values('rebuild')"
-        Try
-            Using connection = New SQLiteConnection(ConnectionString)
-                Using command = New SQLiteCommand(sql, connection)
-                    connection.Open()
-                    LoadExtensionLibrary(connection)
-                    command.ExecuteNonQuery()
-                End Using
-            End Using
-        Catch ex As SQLiteException
-            Throw New DbException(ex.Message)
-        End Try
-    End Sub
-
     Protected Overrides Function ExecuteQuery(command As SQLiteCommand) As DataTable
         Using adapter = New SQLiteDataAdapter(command)
             Using table = New DataTable

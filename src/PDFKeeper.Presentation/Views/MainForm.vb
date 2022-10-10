@@ -37,10 +37,8 @@ Public Class MainForm
         presenter = New MainPresenter(Me, New AuthorListService(repository), New SubjectListService(repository),
                                       New CategoryListService(repository), New TaxYearListService(repository),
                                       New DocumentService(repository), New DocumentListService(repository),
-                                      New DocumentUtilService(repository), New FileCacheService,
-                                      New SearchTermHistoryService, New PdfService,
-                                      New UploadService(
-                                      New XmlRepository(Of UploadProfileModel)(
+                                      New FileCacheService, New SearchTermHistoryService, New PdfService,
+                                      New UploadService(New XmlRepository(Of UploadProfileModel)(
                                       AppFolders.GetPath(AppFolders.AppFolder.UploadProfiles)),
                                       New DocumentService(repository),
                                       New UploadProfileService(New XmlRepository(Of UploadProfileModel)(
@@ -748,8 +746,6 @@ Public Class MainForm
         AddHandler ToolsUpdatePdfTextColumnsToolStripButton.Click,
             AddressOf presenter.ToolsUpdatePdfTextColumnsToolStrip_Click
         AddHandler ToolsMoveDatabaseToolStripMenuItem.Click, AddressOf presenter.ToolsMoveDatabaseToolStrip_Click
-        AddHandler ToolsRebuildFullTextSearchIndexToolStripMenuItem.Click,
-            AddressOf presenter.ToolsRebuildFullTextSearchIndexToolStrip_Click
         AddHandler HelpContentsToolStripMenuItem.Click, AddressOf presenter.HelpContentsToolStrip_Click
         AddHandler HelpContentsToolStripButton.Click, AddressOf presenter.HelpContentsToolStrip_Click
         AddHandler HelpAboutToolStripMenuItem.Click, AddressOf presenter.HelpAboutToolStrip_Click

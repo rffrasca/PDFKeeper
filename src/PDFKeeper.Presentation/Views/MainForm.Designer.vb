@@ -95,7 +95,6 @@ Partial Class MainForm
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolsUpdatePdfTextColumnsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsMoveDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolsRebuildFullTextSearchIndexToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpContentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
@@ -446,7 +445,7 @@ Partial Class MainForm
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsOptionsToolStripMenuItem, Me.ToolsUploadProfilesToolStripMenuItem, Me.ToolStripSeparator11, Me.ToolsUpdatePdfTextColumnsToolStripMenuItem, Me.ToolsMoveDatabaseToolStripMenuItem, Me.ToolsRebuildFullTextSearchIndexToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsOptionsToolStripMenuItem, Me.ToolsUploadProfilesToolStripMenuItem, Me.ToolStripSeparator11, Me.ToolsUpdatePdfTextColumnsToolStripMenuItem, Me.ToolsMoveDatabaseToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         resources.ApplyResources(Me.ToolsToolStripMenuItem, "ToolsToolStripMenuItem")
         '
@@ -475,11 +474,6 @@ Partial Class MainForm
         Me.ToolsMoveDatabaseToolStripMenuItem.Image = Global.PDFKeeper.Presentation.My.Resources.Resources.database
         Me.ToolsMoveDatabaseToolStripMenuItem.Name = "ToolsMoveDatabaseToolStripMenuItem"
         resources.ApplyResources(Me.ToolsMoveDatabaseToolStripMenuItem, "ToolsMoveDatabaseToolStripMenuItem")
-        '
-        'ToolsRebuildFullTextSearchIndexToolStripMenuItem
-        '
-        Me.ToolsRebuildFullTextSearchIndexToolStripMenuItem.Name = "ToolsRebuildFullTextSearchIndexToolStripMenuItem"
-        resources.ApplyResources(Me.ToolsRebuildFullTextSearchIndexToolStripMenuItem, "ToolsRebuildFullTextSearchIndexToolStripMenuItem")
         '
         'HelpToolStripMenuItem
         '
@@ -1156,7 +1150,6 @@ Partial Class MainForm
     Friend WithEvents HelpProvider As HelpProvider
     Friend WithEvents ToolsMoveDatabaseToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolsUpdatePdfTextColumnsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolsRebuildFullTextSearchIndexToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveFileDialog As SaveFileDialog
     Friend WithEvents PrintDialog As PrintDialog
     Friend WithEvents PrintPreviewDialog As PrintPreviewDialog

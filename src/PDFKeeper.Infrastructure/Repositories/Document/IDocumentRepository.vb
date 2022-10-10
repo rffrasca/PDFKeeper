@@ -153,11 +153,4 @@ Public Interface IDocumentRepository
     ''' NotSupportedException will be thrown when database platform does not implement a credential object.
     ''' </summary>
     Sub ResetCredential()
-
-    ''' <summary>
-    ''' Rebuilds the database Full-Text Search Index.
-    ''' 
-    ''' NotSupportedException will be thrown when database platform is not SQLite.
-    ''' </summary>
-    Sub RebuildFullTextSearchIndex()
 End Interface

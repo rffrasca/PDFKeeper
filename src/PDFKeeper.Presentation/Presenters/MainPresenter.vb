@@ -32,7 +32,6 @@ Public Class MainPresenter
     Private ReadOnly taxYearListSvc As ITaxYearListService
     Private ReadOnly documentSvc As IDocumentService
     Private ReadOnly documentListSvc As IDocumentListService
-    Private ReadOnly documentUtilSvc As IDocumentUtilService
     Private ReadOnly fileCacheSvc As IFileCacheService
     Private ReadOnly searchTermHistorySvc As ISearchTermHistoryService
     Private ReadOnly pdfSvc As IPdfService
@@ -55,9 +54,9 @@ Public Class MainPresenter
     Public Sub New(ByVal view As IMainView, ByVal authorListSvc As IAuthorListService,
                    ByVal subjectListSvc As ISubjectListService, ByVal categoryListSvc As ICategoryListService,
                    ByVal taxYearListSvc As ITaxYearListService, ByVal documentSvc As IDocumentService,
-                   ByVal documentListSvc As IDocumentListService, ByVal documentUtilSvc As IDocumentUtilService,
-                   ByVal fileCacheSvc As IFileCacheService, ByVal searchTermHistorySvc As ISearchTermHistoryService,
-                   ByVal pdfSvc As IPdfService, ByVal uploadSvc As IUploadService)
+                   ByVal documentListSvc As IDocumentListService, ByVal fileCacheSvc As IFileCacheService,
+                   ByVal searchTermHistorySvc As ISearchTermHistoryService, ByVal pdfSvc As IPdfService,
+                   ByVal uploadSvc As IUploadService)
         Me.view = view
         Me.authorListSvc = authorListSvc
         Me.subjectListSvc = subjectListSvc
@@ -65,7 +64,6 @@ Public Class MainPresenter
         Me.taxYearListSvc = taxYearListSvc
         Me.documentSvc = documentSvc
         Me.documentListSvc = documentListSvc
-        Me.documentUtilSvc = documentUtilSvc
         Me.fileCacheSvc = fileCacheSvc
         Me.searchTermHistorySvc = searchTermHistorySvc
         Me.pdfSvc = pdfSvc
@@ -382,18 +380,6 @@ Public Class MainPresenter
                 viewInstance.Cursor = Cursors.Default
             End Try
         End If
-    End Sub
-
-    Friend Sub ToolsRebuildFullTextSearchIndexToolStrip_Click(sender As Object, e As EventArgs)
-        Try
-            viewInstance.Cursor = Cursors.WaitCursor
-            WaitForUploadToFinish()
-            documentUtilSvc.RebuildFullTextSearchIndex()
-        Catch ex As DbException
-            commonDialogs.ShowMessageBox(ex.Message, True)
-        Finally
-            viewInstance.Cursor = Cursors.Default
-        End Try
     End Sub
 
     Friend Sub HelpContentsToolStrip_Click(sender As Object, e As EventArgs)

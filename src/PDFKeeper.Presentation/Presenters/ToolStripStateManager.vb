@@ -345,7 +345,6 @@ Public Class ToolStripStateManager
         Dim actions = New List(Of String)
         With actions
             .Add("ToolsMoveDatabase")
-            .Add("ToolsRebuildFullTextSearchIndex")
         End With
         Return actions
     End Function
