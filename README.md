@@ -110,7 +110,7 @@ PDFKeeper is distributed under the terms of the [GNU General Public License (GPL
 
 [![Logo](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-[![Logo](https://opensource.org/trademarks/osi-certified/web/osi-certified-120x100.png)](https://opensource.org/licenses)
+[![Logo](https://opensource.org/files/OSIApproved_100X125.png)](https://opensource.org/licenses)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
