@@ -21,7 +21,7 @@
     ·
     <a href="https://github.com/rffrasca/pdfkeeper/issues">Request Feature/Enhancement</a>
     ·
-    <a href="https://github.com/rffrasca/pdfkeeper/issues">Request adding Compatible Database</a>
+    <a href="https://github.com/rffrasca/pdfkeeper/issues">Request Compatible Database</a>
     ·
     <a href="https://github.com/rffrasca/PDFKeeper/discussions">Forum</a>
     ·
