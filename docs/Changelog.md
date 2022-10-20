@@ -54,7 +54,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ### Changed (Development)
 - Removed CompileHelp.cmd from Solution.
 - Moved all SQL scripts from Help folder to Config folder.
-- Rearchitected PDFKeeper.WindowsApplication into separate layers applying the Model-View-Presenter pattern with Services and created additional projects for code that resides outside of the pattern.
+- Rearchitected PDFKeeper.WindowsApplication into separate layers.
 - Migrated from Package.Config to PackageReference for NuGet packages.
 
 ## v7.2.3 - 2021-12-18
@@ -155,10 +155,11 @@ All notable changes to PDFKeeper will be documented in this file.
 - Migrated from iTextSharp to iText Core/Community 7.1.15
 - PdfPig 0.1.4 was added to handle text extraction when iText throws an ArgumentException while trying to extract text from a PDF that contains an invalid encoding.
 - Magick.NET was updated to 7.24.1.0
-- Improvements were made to the File Type and PDF Text Extractor classes.
-- Help file is now compiled manually outside of build process to verify help file is not corrupt.
 ### Fixed
 - Fixed License not opening from About box.
+### Changed (Development)
+- Improvements were made to the File Type and PDF Text Extractor classes.
+- Help file is now compiled manually outside of build process to verify help file is not corrupt.
 
 ## v7.0.0 - 2021-03-28 (deprecated)
 - This is a major release.
@@ -176,12 +177,13 @@ All notable changes to PDFKeeper will be documented in this file.
 - Updated SumatraPDF to 3.2
 - Migrated from pdftopng from Xpdf Tools to Magick.NET 7.22.2.2 and Ghostscript 9.53.3
 - Moved Search Results to right side of form and moved right Tab Control (Notes, Keywords, Preview, and Text) to left side of form under Search Group Box.
-- Source code was reorganized and name changes were made.
-- Created script that will download and extract SumatraPDF during the build process if missing or not the required version, replacing manual steps in Build Instructions.
 ### Removed
 - Oracle Database 18c (not XE), 12c, and 11g (not XE) has been dropped from the compatibility list.
 ### Fixed
 - Unhandled InlineImageParseException: "Could not find image data or EI" during text extraction of an older PDF that does not contain text.
+### Changed (Development)
+- Source code was reorganized, and name changes were made.
+- Created script that will download and extract SumatraPDF during the build process if missing or not the required version, replacing manual steps in Build Instructions.
 
 ## v6.1.1 - 2020-11-27 (deprecated)
 - This is a maintenance release.
@@ -232,12 +234,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
 ### Changed
 - Converted to 64-bit; Windows (32-bit) is no longer supported!
+- .NET Framework 4.8 is targeted during the build.
 - Upload Service will copy each PDF in the Upload folder, appending a GUID to the file name, and then changing the extension on the original PDF to "delete" to be deleted during a future upload cycle and avoid a file in use prompt when deleting to the Windows Recycle Bin.
 - Main form was redesigned to provide more flexible searching and reduce clicks.
-- Visual Studio 2019 is used to build PDFKeeper.
-- .NET Framework 4.8 is targeted during the build.
-- Build Instructions have been edited to instruct the developer to use Manage Extensions in Visual Studio to install WiX Toolset Build Tools, Wix Toolset Visual Studio 2019 Extension, and Wax.
-- Application source folders have been reorganized; classes and interfaces have been renamed and refactored to better align with the MVP (Model-View-Presenter) pattern.
 - Database schema and Oracle Data Provider for .NET upgrade notification on startup has been reworked.
 - Secondary application description was changed to "PDFKeeper is free, open source software that integrates with a compatible database to provide a centralized storage and management solution for PDF documents."
 - "Third-Party Components" help topic was renamed to "Third-Party Attribution" and the introduction was changed to "This version of PDFKeeper uses third-party libraries or other resources that may be distributed under licenses different than the PDFKeeper software."
@@ -248,6 +247,10 @@ All notable changes to PDFKeeper will be documented in this file.
 ### Fixed
 - "Access to the path <PDF_PATH_NAME> is denied" when a document is selected in Search Results following PDFKeeper being closed while Sumatra PDF was displaying one or more selected PDF documents and PDFKeeper was opened again without closing Sumatra PDF first.
 - Unhandled Oracle Exception when the Upload Service is trying to process a PDF that was moved from the Upload folder to the Upload Staging folder that is missing one or more required information property values (Title, Author, Subject).
+### Changed (Development)
+- Visual Studio 2019 is used to build PDFKeeper.
+- Build Instructions have been edited to instruct the developer to use Manage Extensions in Visual Studio to install WiX Toolset Build Tools, Wix Toolset Visual Studio 2019 Extension, and Wax.
+- Application source folders have been reorganized; classes and interfaces have been renamed and refactored.
 
 ## v5.0.3 - 2019-12-27 (deprecated)
 - This is a maintenance release.
@@ -303,7 +306,6 @@ When Search Results is refreshed, the previously selected document record will b
 - Updated help file to instruct user to not restore documents from the recycle bin while PDFKeeper is open.
 - Improvements have been made to the handling of SecureStrings.
 - Oracle Data Provider for .NET, included in Oracle Data Access Components Runtime 19.3 is now required offering better performance and security.
-- Entire application source code has been refactored and reorganized.
 - AutoUpdater.NET was updated to 1.5.7 in the binary release.
 - iTextSharp was updated to 5.5.13.1 in the binary release.
 - pdftopng from Xpdf Tools was updated to 4.01.01 in the binary release.
@@ -311,6 +313,8 @@ When Search Results is refreshed, the previously selected document record will b
 - All SQL statements that accept parameters have been parameterized to address SQL Injection concerns flagged by Code Analysis.
 - Oracle Database user password is now being passed securely when connecting to the database preventing exposure in a page file swap or crash dump.
 - Fixed issue with PDFKeeper incorrectly detecting that an upgrade was performed from a prior version when no user settings exist from a prior version.
+### Changed (Development)
+- All source code has been refactored and reorganized.
 
 ## v4.1.0 - 2018-12-24 (deprecated)
 - This is a minor release.
@@ -372,7 +376,6 @@ When Search Results is refreshed, the previously selected document record will b
 - Microsoft .NET Framework 4.6.1 or above is now required.
 - PDF documents can now be opened from the Search Results list with the default PDF viewer or Sumatra PDF viewer (included in the binary  release).
 - Document Capture and Direct Upload have been replaced by a single integrated Upload process.
-- All code has been completely rewritten to address maintainability issues.
 - All User Documentation is now contained within the help file.
 - All database setup scripts are now called from the help file.
 - WORLD_LEXER is now the default lexer for new database schemas.
@@ -381,7 +384,9 @@ When Search Results is refreshed, the previously selected document record will b
 - Sumatra PDF was updated to 3.1.2 in the binary release.
 - Application update is now handled by AutoUpdater.NET 1.4.7 in the binary release.
 - Nini is no longer used to read and write XML configuration files and has been removed from the binary release.  This functionality is now performed using .NET Framework serialization.
-
+### Changed (Development)
+- All code has been completely rewritten to address maintainability issues.
+  
 ## v3.1.2 - 2015-07-11 (retired)
 - This is a maintenance release.
 - Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.2).
