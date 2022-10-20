@@ -233,7 +233,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
 ### Changed
-- .NET Framework 4.8 is targeted during the build.
+- .NET Framework 4.8 is now required.
 - Converted to 64-bit; Windows (32-bit) is no longer supported!
 - Upload Service will copy each PDF in the Upload folder, appending a GUID to the file name, and then changing the extension on the original PDF to "delete" to be deleted during a future upload cycle and avoid a file in use prompt when deleting to the Windows Recycle Bin.
 - Main form was redesigned to provide more flexible searching and reduce clicks.
