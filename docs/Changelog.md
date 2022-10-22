@@ -233,7 +233,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.0).
 ### Changed
-- .NET Framework 4.8 is now required.
+- .NET Framework 4.8 is now targeted.
 - Converted to 64-bit; Windows (32-bit) is no longer supported!
 - Upload Service will copy each PDF in the Upload folder, appending a GUID to the file name, and then changing the extension on the original PDF to "delete" to be deleted during a future upload cycle and avoid a file in use prompt when deleting to the Windows Recycle Bin.
 - Main form was redesigned to provide more flexible searching and reduce clicks.
@@ -248,7 +248,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - "Access to the path <PDF_PATH_NAME> is denied" when a document is selected in Search Results following PDFKeeper being closed while Sumatra PDF was displaying one or more selected PDF documents and PDFKeeper was opened again without closing Sumatra PDF first.
 - Unhandled Oracle Exception when the Upload Service is trying to process a PDF that was moved from the Upload folder to the Upload Staging folder that is missing one or more required information property values (Title, Author, Subject).
 ### Changed (Development)
-- Visual Studio 2019 is used to build PDFKeeper.
+- Visual Studio 2019 is now used to build PDFKeeper.
 - Build Instructions have been edited to instruct the developer to use Manage Extensions in Visual Studio to install WiX Toolset Build Tools, Wix Toolset Visual Studio 2019 Extension, and Wax.
 - Application source folders have been reorganized; classes and interfaces have been renamed and refactored.
 
@@ -372,8 +372,8 @@ When Search Results is refreshed, the previously selected document record will b
 - User interface has been completely redesigned, adding additional search capabilities.
 - Conversion script was created to switch the lexer in an existing database schema to the WORLD_LEXER where the lexer was changed.
 ### Changed
+- .NET Framework 4.6.1 is now targeted.
 - Installation is now per-user, no longer requiring elevated rights to install.
-- Microsoft .NET Framework 4.6.1 or above is now required.
 - PDF documents can now be opened from the Search Results list with the default PDF viewer or Sumatra PDF viewer (included in the binary  release).
 - Document Capture and Direct Upload have been replaced by a single integrated Upload process.
 - All User Documentation is now contained within the help file.
@@ -385,6 +385,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Application update is now handled by AutoUpdater.NET 1.4.7 in the binary release.
 - Nini is no longer used to read and write XML configuration files and has been removed from the binary release.  This functionality is now performed using .NET Framework serialization.
 ### Changed (Development)
+- Visual Studio 2013 is now used to build PDFKeeper.
 - All code has been completely rewritten to address maintainability issues.
   
 ## v3.1.2 - 2015-07-11 (retired)
@@ -447,9 +448,9 @@ When Search Results is refreshed, the previously selected document record will b
 - Menu item for reporting new issue.
 - Created "Direct Upload" that will replace the "PDF Document Upload folder watcher.
 ### Changed
+- .NET Framework 4.0 Client Profile is now targeted.
 - Trap all unhandled exceptions and display to user.
 - Modify update check to use new project site for verification.
-- Target .NET Framework 4 Client Profile when building application.
 - Migrate installation from InnoSetup to Windows Installer.
 - Oracle Data Provider for .NET, Managed Driver is now required in place of Oracle Data Access Components.
 - Enable database connection pooling to improve performance.
@@ -600,7 +601,6 @@ When Search Results is refreshed, the previously selected document record will b
 ### Added
 - Add document upload capability to the client.
 ### Changed
-- Redesign and rewrite PDFKeeper in VB.NET for .NET Framework 3.5 SP1; Open Object Rexx 4.0.0 is no longer being used.
 - Third-Party software update in binary release: Sumatra PDF 1.1.
 - The Database Setup will now build the database schema with the BASIC_LEXER, replacing the WORLD_LEXER.
 - pdfinfo.exe from Xpdf and pdftk have been replaced by iTextSharp in the binary release.
@@ -616,6 +616,8 @@ When Search Results is refreshed, the previously selected document record will b
 ### Removed
 - Remove server-side upload components.
 - Rexx/SQL is no longer used and has been removed from the binary release.
+### Changed (Development)
+- Application was redesigned and rewritten in VB.NET using SharpDevelop for .NET Framework 3.5 SP1; Open Object Rexx 4.0.0 is no longer being used.
 
 ## v1.1.0 - 2010-04-29 (retired)
 - This is a minor release.
