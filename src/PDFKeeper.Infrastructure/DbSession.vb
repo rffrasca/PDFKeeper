@@ -112,6 +112,18 @@ Public NotInheritable Class DbSession
     End Property
 
     ''' <summary>
+    ''' Gets the Oracle Wallet path name used for Mutual TLS (mTLS) authentication.
+    ''' </summary>
+    ''' <returns>Path name</returns>
+    Public Shared ReadOnly Property OracleWalletPath As String
+        Get
+            Dim wallet As String = My.Computer.Registry.GetValue(AppProperties.RegistryTopLevelKeyFullName,
+                                                                 "OracleWalletPath", Nothing)
+            Return wallet
+        End Get
+    End Property
+
+    ''' <summary>
     ''' Gets or Sets the local SQLite database path name.
     ''' </summary>
     ''' <returns>Path name or nothing when the file does not exist.</returns>

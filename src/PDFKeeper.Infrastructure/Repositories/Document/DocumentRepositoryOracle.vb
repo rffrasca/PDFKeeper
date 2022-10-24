@@ -30,6 +30,12 @@ Public Class DocumentRepositoryOracle
     Public Sub New()
         If credential Is Nothing Then
             credential = New OracleCredential(DbSession.UserName, DbSession.Password)
+            If DbSession.OracleWalletPath IsNot Nothing Then
+                If OracleConfiguration.WalletLocation.Length = 0 Then
+                    OracleConfiguration.TnsAdmin = DbSession.OracleWalletPath
+                    OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin
+                End If
+            End If
         End If
     End Sub
 

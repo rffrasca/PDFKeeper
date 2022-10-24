@@ -77,6 +77,11 @@
 					</OBJECT>
 				<UL>
 					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Setup Oracle Wallet for Mutual TLS (mTLS)">
+						<param name="Local" value="Setup Oracle Wallet for Mutual TLS (mTLS).html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
 						<param name="Name" value="Schema Setup">
 						<param name="Local" value="Schema Setup for Oracle Autonomous Database.html">
 						<param name="ImageNumber" value="9">

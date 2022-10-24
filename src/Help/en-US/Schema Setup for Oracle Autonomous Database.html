@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>Schema Setup for Oracle Autonomous Database</title>
-	<meta name="generator" content="LibreOffice 7.3.5.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 7.4.2.3 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2022-08-20T12:00:09.995000000"/>
+	<meta name="changed" content="2022-10-23T15:49:56.763000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -40,11 +40,22 @@ for PDFKeeper.</font></p>
 	that folder to the PATH.</font></p>
 	<li><p><font face="Segoe UI, sans-serif">Open
 	<b>&lt;InstantClient_Folder&gt;\network\admin</b><span style="font-weight: normal">.</span></font></p>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Create
-	or edit </span><b>tnsnames.ora</b> adding <span style="font-weight: normal">an
-	entry for one of the </span><b>TLS Connection Strings</b> <span style="font-weight: normal">available
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
+	TLS authentication only, create or edit </span><b>tnsnames.ora</b>
+	adding <span style="font-weight: normal">an entry for one or more of
+	the </span><b>Connection Strings</b> <span style="font-weight: normal">available
 	for the Autonomous Database using the format of </span><b>&lt;TNS
-	Name&gt;= &lt;Connection String&gt;</b></font></p>
+	Name&gt;= &lt;Connection String&gt;</b><span style="font-weight: normal">.</span></font></p>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
+	Mutual TLS (mTLS) authentication only, create or edit </span><b>tnsnames.ora</b>
+	<span style="font-weight: normal">adding all of the entries from
+	</span><b>tnsnames.ora</b> <span style="font-weight: normal">located
+	in the</span> <span style="font-weight: normal">Oracle Wallet
+	folder, and then create or edit </span><b>sqlnet.ora </b><span style="font-weight: normal">adding
+	the entry from </span><b>sqlnet.ora </b><span style="font-weight: normal">located
+	in the Oracle Wallet folder, and then change </span><b>?/network/admin</b>
+	<span style="font-weight: normal">to the absolute path name of the
+	Oracle Wallet folder.</span></font></p>
 	<li><p><font face="Segoe UI, sans-serif">Perform the schema setup</font>
 	<font face="Segoe UI, sans-serif">by selecting option </font><font face="Segoe UI, sans-serif"><b>2</b></font>
 	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">from
