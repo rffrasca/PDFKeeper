@@ -28,6 +28,7 @@ Public Interface IUploadProfilesView
     Property ProfileName As String
     Property Title As String
     Property TitleItems As Object
+    Property SetProfileNameToAuthorSubjectLinkEnabled As Boolean
     Property Keywords As String
     Property FlagDocument As Boolean
     Property OcrPdfTextAndImageDataPages As Boolean

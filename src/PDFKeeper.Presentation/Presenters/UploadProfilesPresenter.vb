@@ -131,12 +131,23 @@ Public Class UploadProfilesPresenter
 
     Friend Sub Common_TextChanged(sender As Object, e As EventArgs)
         With view
+            If .Author.Trim.Length > 0 And .Subject.Trim.Length > 0 Then
+                .SetProfileNameToAuthorSubjectLinkEnabled = True
+            Else
+                .SetProfileNameToAuthorSubjectLinkEnabled = False
+            End If
             If .ProfileName.Trim.Length > 0 And .Title.Trim.Length > 0 And .Author.Trim.Length > 0 And
                 .Subject.Trim.Length > 0 Then
                 .SaveEnabled = True
             Else
                 .SaveEnabled = False
             End If
+        End With
+    End Sub
+
+    Friend Sub SetProfileNameToAuthorSubjectLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
+        With view
+            .ProfileName = String.Concat(.Author.Trim, " ", .Subject.Trim)
         End With
     End Sub
 
@@ -193,6 +204,7 @@ Public Class UploadProfilesPresenter
             .Title = Nothing
             .Author = Nothing
             .Subject = Nothing
+            .SetProfileNameToAuthorSubjectLinkEnabled = False
             .Keywords = Nothing
             .Category = Nothing
             .TaxYear = Nothing

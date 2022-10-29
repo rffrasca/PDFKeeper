@@ -161,6 +161,15 @@ Public Class UploadProfilesDialog
         End Set
     End Property
 
+    Public Property SetProfileNameToAuthorSubjectLinkEnabled As Boolean Implements IUploadProfilesView.SetProfileNameToAuthorSubjectLinkEnabled
+        Get
+            Return SetProfileNameToAuthorSubjectLinkLabel.Enabled
+        End Get
+        Set(value As Boolean)
+            SetProfileNameToAuthorSubjectLinkLabel.Enabled = value
+        End Set
+    End Property
+
     Public Property Keywords As String Implements IUploadProfilesView.Keywords
         Get
             Return KeywordsTextBox.Text
@@ -266,6 +275,8 @@ Public Class UploadProfilesDialog
         AddHandler AuthorComboBox.TextChanged, AddressOf presenter.Common_TextChanged
         AddHandler SubjectComboBox.Enter, AddressOf presenter.CommonComboBox_Enter
         AddHandler SubjectComboBox.TextChanged, AddressOf presenter.Common_TextChanged
+        AddHandler SetProfileNameToAuthorSubjectLinkLabel.LinkClicked,
+            AddressOf presenter.SetProfileNameToAuthorSubjectLinkLabel_LinkClicked
         AddHandler KeywordsTextBox.TextChanged, AddressOf presenter.Common_TextChanged
         AddHandler CategoryComboBox.Enter, AddressOf presenter.CommonComboBox_Enter
         AddHandler CategoryComboBox.TextChanged, AddressOf presenter.Common_TextChanged

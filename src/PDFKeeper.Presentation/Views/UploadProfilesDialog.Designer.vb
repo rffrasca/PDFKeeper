@@ -64,6 +64,7 @@ Partial Class UploadProfilesDialog
         Me.AuthorLabel = New System.Windows.Forms.Label()
         Me.FlagDocumentCheckBox = New System.Windows.Forms.CheckBox()
         Me.ProfileGroupBox = New System.Windows.Forms.GroupBox()
+        Me.SetProfileNameToAuthorSubjectLinkLabel = New System.Windows.Forms.LinkLabel()
         Me.OcrPdfTextAndImageDataPagesCheckBox = New System.Windows.Forms.CheckBox()
         Me.TaxYearComboBox = New System.Windows.Forms.ComboBox()
         Me.TaxYearLabel = New System.Windows.Forms.Label()
@@ -239,6 +240,7 @@ Partial Class UploadProfilesDialog
         '
         'ProfileGroupBox
         '
+        Me.ProfileGroupBox.Controls.Add(Me.SetProfileNameToAuthorSubjectLinkLabel)
         Me.ProfileGroupBox.Controls.Add(Me.OcrPdfTextAndImageDataPagesCheckBox)
         Me.ProfileGroupBox.Controls.Add(Me.TaxYearComboBox)
         Me.ProfileGroupBox.Controls.Add(Me.TaxYearLabel)
@@ -263,6 +265,12 @@ Partial Class UploadProfilesDialog
         Me.ProfileGroupBox.Name = "ProfileGroupBox"
         Me.HelpProvider.SetShowHelp(Me.ProfileGroupBox, CType(resources.GetObject("ProfileGroupBox.ShowHelp"), Boolean))
         Me.ProfileGroupBox.TabStop = False
+        '
+        'SetProfileNameToAuthorSubjectLinkLabel
+        '
+        resources.ApplyResources(Me.SetProfileNameToAuthorSubjectLinkLabel, "SetProfileNameToAuthorSubjectLinkLabel")
+        Me.SetProfileNameToAuthorSubjectLinkLabel.Name = "SetProfileNameToAuthorSubjectLinkLabel"
+        Me.SetProfileNameToAuthorSubjectLinkLabel.TabStop = True
         '
         'OcrPdfTextAndImageDataPagesCheckBox
         '
@@ -353,4 +361,5 @@ Partial Class UploadProfilesDialog
     Friend WithEvents TaxYearComboBox As ComboBox
     Friend WithEvents TaxYearLabel As Label
     Friend WithEvents OcrPdfTextAndImageDataPagesCheckBox As CheckBox
+    Friend WithEvents SetProfileNameToAuthorSubjectLinkLabel As LinkLabel
 End Class
