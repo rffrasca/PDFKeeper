@@ -19,8 +19,8 @@
 #******************************************************************************
 
 $folder = "..\..\..\..\vendor"
-$version = "3.39.0"
-$archiveName = "sqlite-tools-win32-x86-3390200"
+$version = "3.40.0"
+$archiveName = "sqlite-tools-win32-x86-3400000"
 $zipFileUrl = "https://www.sqlite.org/2022/$archiveName.zip"
 $zipFile = "$folder\$archiveName.zip"
 $exeFile = "$folder\sqlite3.exe"
