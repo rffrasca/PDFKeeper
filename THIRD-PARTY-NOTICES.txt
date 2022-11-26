@@ -1,4 +1,4 @@
-PDFKeeper 8.0.0
+PDFKeeper 8.1.0
 
 THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
 
@@ -44,15 +44,15 @@ itext7.font-asian (https://www.nuget.org/packages/itext7.font-asian/7.2.3)
     Copyright: Copyright (c) 1998-2022 iText Group NV
     License: AGPLv3 License, full text can be found at https://itextpdf.com/how-buy/agpl-license
 
-Magick.NET-Q16-AnyCPU (https://www.nuget.org/packages/Magick.NET-Q16-AnyCPU/12.0.1)
+Magick.NET-Q16-AnyCPU (https://www.nuget.org/packages/Magick.NET-Q16-AnyCPU/12.2.1)
     Authors: Dirk Lemstra
     Copyright: Copyright 2013-2022 Dirk Lemstra
-    License: Apache License 2.0, full text can be found at https://spdx.org/licenses/Apache-2.0 or in Licenses/Apache-2.0-license.txt
+    License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
 
-Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/12.0.1)
+Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/12.2.1)
     Authors: Dirk Lemstra
     Copyright: Copyright 2013-2022 Dirk Lemstra
-    License: Apache License 2.0, full text can be found at https://spdx.org/licenses/Apache-2.0 or in Licenses/Apache-2.0-license.txt
+    License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
 
 Microsoft.Bcl.AsyncInterfaces (https://www.nuget.org/packages/Microsoft.Bcl.AsyncInterfaces/5.0.0)
     Authors: Microsoft
