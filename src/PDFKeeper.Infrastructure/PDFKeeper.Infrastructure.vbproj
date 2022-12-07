@@ -157,6 +157,10 @@
       <Link>OracleDatabaseSchemaUpgrade.sql</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\Config\SqliteDatabaseIndexSyncFix.sql">
+      <Link>SqliteDatabaseIndexSyncFix.sql</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\Config\SqliteDatabaseSetup.sql">
       <Link>SqliteDatabaseSetup.sql</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

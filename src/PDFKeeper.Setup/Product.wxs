@@ -254,6 +254,9 @@
       <Component Id="SumatraPDF_3.4.6_64.exe" Guid="cbe2e053-c7b3-4529-b59d-13675980d6b5">
         <File Id="SumatraPDF_3.4.6_64.exe" Name="SumatraPDF-3.4.6-64.exe" Source="$(var.PDFKeeper.Presentation_TargetDir)SumatraPDF-3.4.6-64.exe" />
       </Component>
+      <Component Id="SqliteDatabaseIndexSyncFix.sql" Guid="f696c075-755d-4956-bcb1-5f41e486fb0b">
+        <File Id="SqliteDatabaseIndexSyncFix.sql" Name="SqliteDatabaseIndexSyncFix.sql" Source="$(var.PDFKeeper.Presentation_TargetDir)SqliteDatabaseIndexSyncFix.sql" />
+      </Component>
   	</ComponentGroup>
 	</Fragment>
 </Wix>
