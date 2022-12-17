@@ -1,6 +1,30 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v8.1.0 - 2022-12-17
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.1.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.1.0).
+### Added
+- Added Mutual TLS (mTLS) authentication for connecting to Oracle Autonomous Database.
+- Added link control to the Upload Profiles dialog that sets the Profile Name to the combined values of Author and Subject.
+### Changed
+- Updated "SQLite Error - database disk image is malformed" help topic to call fix that will correct triggers in SQLite database to address and prevent the malformed database disk image condition.
+- Updated Welcome, Getting Support, and Donate help topics to align with home page/readme.
+- Updated Magick.NET to 12.2.1
+- Updated Ghostscript to 10.0.0
+- Updated SQLite Command Line Shell to 3.40.0
+- Updated iText and iText.Font-Asian to 7.2.4
+### Removed
+- Removed "Rebuild Full-Text Search Index" menu function.
+### Fixed
+- ErrorProvider will be displayed instead of an Oracle Text error when Find button is selected and Search Term starts with an asterisk (*).
+- Corrected help topic referenced in error message that is displayed when Oracle Data Provider for .NET is missing.
+- Corrected triggers in SQLite database setup script to prevent the malformed database disk image condition.
+- Created fix to correct triggers in SQLite database to address and prevent the malformed database disk image condition.
+### Changed (Development)
+- Implemented GlobalAssemblyInfo.vb to simplify version change.
+
 ## v8.0.0 - 2022-08-27
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.0.0).
