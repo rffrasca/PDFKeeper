@@ -795,6 +795,7 @@ Public Class MainPresenter
     End Sub
 
     Friend Sub UpdateCheckTimer_Tick(sender As Object, e As EventArgs)
+        AutoUpdater.RunUpdateAsAdmin = False
         AutoUpdater.Start(AppProperties.AutoUpdaterConfigUri.AbsoluteUri)
     End Sub
 
