@@ -1,4 +1,4 @@
-﻿Imports PDFKeeper.Common
+Imports PDFKeeper.Common
 Imports PDFKeeper.Infrastructure
 
 Namespace My
