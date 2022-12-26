@@ -238,6 +238,9 @@ Public Class ToolStripStateManager
             If row("Action") = "EditRestore" Then
                 row("StateValue") = changed
             End If
+            If row("Action") = "EditFlagDocument" Then
+                row("StateValue") = actionEnabled
+            End If
             If row("Action") = "ViewRefresh" Then
                 row("StateValue") = actionEnabled
             End If
