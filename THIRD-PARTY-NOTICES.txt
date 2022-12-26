@@ -114,7 +114,7 @@ System.Buffers (https://www.nuget.org/packages/System.Buffers/4.5.1)
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://spdx.org/licenses/MIT
 
-System.Data.SQLite (https://www.nuget.org/packages/System.Data.SQLite/1.0.116)
+System.Data.SQLite (https://www.nuget.org/packages/System.Data.SQLite/1.0.117)
     Authors: mistachkin and SQLite
     Copyright: Copyright © 2004-2008 Hipp, Wyrick & Company, Inc.
     License: Public Domain, full text can be found at https://www.sqlite.org/copyright.html
