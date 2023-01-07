@@ -1,6 +1,17 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v8.1.1 - 2023-01-07
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.1.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.1.1).
+### Changed
+- Flag Document menu item will be disabled when notes have been modified.
+- Updated System.Data.SQLite to 1.0.117
+- Updated Magick.NET to 12.2.2
+### Fixed
+- Auto Update will no longer require an admin account to install new version.
+
 ## v8.1.0 - 2022-12-17
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.1.0).
