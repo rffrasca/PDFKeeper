@@ -10,7 +10,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Updated System.Data.SQLite to 1.0.117
 - Updated Magick.NET to 12.2.2
 ### Fixed
-- Auto Update will no longer require an admin account to install new version.
+- Auto Update will no longer prompt for an admin account to install new version.
 
 ## v8.1.0 - 2022-12-17
 - This is a minor release.
