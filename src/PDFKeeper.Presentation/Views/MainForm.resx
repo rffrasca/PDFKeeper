@@ -121,128 +121,6 @@
     <value>264, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="FileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="FileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
-  <data name="FileToolStripMenuItem.ToolTipText" xml:space="preserve">
-    <value>New</value>
-  </data>
-  <data name="EditToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
-  </data>
-  <data name="EditToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Edit</value>
-  </data>
-  <data name="ViewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="ViewToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;View</value>
-  </data>
-  <data name="InsertToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
-  </data>
-  <data name="InsertToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Insert</value>
-  </data>
-  <data name="ToolsOptionsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQfAJyzyufy/qG1ysLa8qzF3llyitjr/pOsxcvk/aS807zV7UpierXO54ylvZywxPb5
-        /r3S6L7X8H2WrrrS6ZCowPr8/6fA2WmCm5ixyrzU68fg+Mvg9fH3/sDY7////////yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAImQA/CBxIsKDBDx4SejhI0IMDBxgELDyY0MGDBwECWEhY
-        0IOABBs4KBjggQGBjQM9XoQwIYIHBB4yUpjo8AFLBS9fKjAgYSJCAQEyeJAgIUAEnj4RAgjgQUPPCgwQ
-        9Ey51APJABUIYKAwoADNBBlfRrCwtUOGBT49JEhAwIAFABQaFEDb0cMBAwg0DECbtOGFAoD7GlQomCHD
-        gAA7
-</value>
-  </data>
-  <data name="ToolsOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 22</value>
-  </data>
-  <data name="ToolsOptionsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Options</value>
-  </data>
-  <data name="ToolsUploadProfilesToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQfAOvGUf7ztuvPMf/78/fkl/Pbg+u8Rvjqteu2Pf3zxPz36Pz0z+vTmPzurPvuw/np
-        ofbjquvNefHVduuyN+uuMu3Oafbgjfnqvf/3zv/3xevPi+vRjP/20/bmsP///////yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIlwA/CBxIsKDBgwY9KFSIUKAHBgw0RIiwsKKHDw89YNiY
-        oQIAAAJCCriYcSOGDCgzBAiQYSTGDQM4AjBAEwGCCRRIftypoKcDBwcS5MQIYIBRBQ0aPCBAwIKDoR4A
-        cFiZdKmFAgUOQAWwIKnSpgUkSOgA1UCCqmAlVKgAoWyCBQsSOLhwoAMECBfK2tw7oa9fqBYDL2yIMCAA
-        Ow==
-</value>
-  </data>
-  <data name="ToolsUploadProfilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 22</value>
-  </data>
-  <data name="ToolsUploadProfilesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Upload &amp;Profiles</value>
-  </data>
-  <data name="ToolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 6</value>
-  </data>
-  <data name="ToolsUpdatePdfTextColumnsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQAAHan1azQ4ldvj9vp9HSQruTr80lVa+vx9pu811SRuXifuj13uYyz2VFhe4Gt2UNL
-        XPL1+Orv+ufu9YOqxYyzzNHW3SkxQz5FVWag2T6CuZe3y5G0t+Do7+r0/77a9f///yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQAAAAAACwAAAAAEAAQAAAIrwA/CBxIsKDAAQESIkBAYYICBQQICCAgMMAACQMyaswo
-        oUKDih0SZMiwoKTJBQcEVDyAoEMHDy5hdnAg4eMHBBIQeNjJcyeDAjYRRNAQs+hMoAIpRNjQs6eDAgYE
-        TshpVCYAqAIV5GzKU0GBB1klMKjqEgMHsB8IiOW60+wFgQQgIGDgoC4AABgwADjw9oOAChAkSChAmIPh
-        AxUswBXAuEEDAwYePLhwwYJNg5gFBgQAOw==
-</value>
-  </data>
-  <data name="ToolsUpdatePdfTextColumnsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 22</value>
-  </data>
-  <data name="ToolsUpdatePdfTextColumnsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Update PDF Text Columns</value>
-  </data>
-  <data name="ToolsMoveDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 22</value>
-  </data>
-  <data name="ToolsMoveDatabaseToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Move Database</value>
-  </data>
-  <data name="ToolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 20</value>
-  </data>
-  <data name="ToolsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Tools</value>
-  </data>
-  <data name="HelpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
-  </data>
-  <data name="HelpToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Help</value>
-  </data>
-  <data name="MenuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MenuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>7, 2, 0, 2</value>
-  </data>
-  <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>984, 24</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MenuStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Name" xml:space="preserve">
-    <value>MenuStrip</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="FileAddToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -259,6 +137,7 @@
         VB5VKBQzCwsL52Qy2TQ9LKXRZtf+naUApn4Cytwc5qi3odMAAAAASUVORK5CYII=
 </value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="FileAddToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+A</value>
   </data>
@@ -370,12 +249,6 @@
   <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>221, 6</value>
   </data>
-  <data name="FileSelectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
-  </data>
-  <data name="FileSelectToolStripMenuItem.Text" xml:space="preserve">
-    <value>Se&amp;lect</value>
-  </data>
   <data name="FileSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 22</value>
   </data>
@@ -387,6 +260,12 @@
   </data>
   <data name="FileSelectNoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;None</value>
+  </data>
+  <data name="FileSelectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="FileSelectToolStripMenuItem.Text" xml:space="preserve">
+    <value>Se&amp;lect</value>
   </data>
   <data name="FileSetCategoryToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+C</value>
@@ -446,6 +325,15 @@
   </data>
   <data name="FileExitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
+  </data>
+  <data name="FileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="FileToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="FileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>New</value>
   </data>
   <data name="EditUndoToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -604,6 +492,12 @@
   <data name="EditFlagDocumentToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Flag Document</value>
   </data>
+  <data name="EditToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
+  </data>
+  <data name="EditToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
   <data name="ViewRefreshToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -656,14 +550,89 @@
   <data name="ViewStatusBarToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Status Bar</value>
   </data>
+  <data name="ViewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="ViewToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;View</value>
+  </data>
   <data name="InsertTextToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+T</value>
   </data>
   <data name="InsertTextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="InsertTextToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Text</value>
+    <value>&amp;Text...</value>
+  </data>
+  <data name="InsertToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="InsertToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Insert</value>
+  </data>
+  <data name="ToolsOptionsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQfAJyzyufy/qG1ysLa8qzF3llyitjr/pOsxcvk/aS807zV7UpierXO54ylvZywxPb5
+        /r3S6L7X8H2WrrrS6ZCowPr8/6fA2WmCm5ixyrzU68fg+Mvg9fH3/sDY7////////yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAImQA/CBxIsKDBDx4SejhI0IMDBxgELDyY0MGDBwECWEhY
+        0IOABBs4KBjggQGBjQM9XoQwIYIHBB4yUpjo8AFLBS9fKjAgYSJCAQEyeJAgIUAEnj4RAgjgQUPPCgwQ
+        9Ey51APJABUIYKAwoADNBBlfRrCwtUOGBT49JEhAwIAFABQaFEDb0cMBAwg0DECbtOGFAoD7GlQomCHD
+        gAA7
+</value>
+  </data>
+  <data name="ToolsOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="ToolsOptionsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Options</value>
+  </data>
+  <data name="ToolsUploadProfilesToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQfAOvGUf7ztuvPMf/78/fkl/Pbg+u8Rvjqteu2Pf3zxPz36Pz0z+vTmPzurPvuw/np
+        ofbjquvNefHVduuyN+uuMu3Oafbgjfnqvf/3zv/3xevPi+vRjP/20/bmsP///////yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIlwA/CBxIsKDBgwY9KFSIUKAHBgw0RIiwsKKHDw89YNiY
+        oQIAAAJCCriYcSOGDCgzBAiQYSTGDQM4AjBAEwGCCRRIftypoKcDBwcS5MQIYIBRBQ0aPCBAwIKDoR4A
+        cFiZdKmFAgUOQAWwIKnSpgUkSOgA1UCCqmAlVKgAoWyCBQsSOLhwoAMECBfK2tw7oa9fqBYDL2yIMCAA
+        Ow==
+</value>
+  </data>
+  <data name="ToolsUploadProfilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="ToolsUploadProfilesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Upload &amp;Profiles</value>
+  </data>
+  <data name="ToolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 6</value>
+  </data>
+  <data name="ToolsUpdatePdfTextColumnsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQAAHan1azQ4ldvj9vp9HSQruTr80lVa+vx9pu811SRuXifuj13uYyz2VFhe4Gt2UNL
+        XPL1+Orv+ufu9YOqxYyzzNHW3SkxQz5FVWag2T6CuZe3y5G0t+Do7+r0/77a9f///yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQAAAAAACwAAAAAEAAQAAAIrwA/CBxIsKDAAQESIkBAYYICBQQICCAgMMAACQMyaswo
+        oUKDih0SZMiwoKTJBQcEVDyAoEMHDy5hdnAg4eMHBBIQeNjJcyeDAjYRRNAQs+hMoAIpRNjQs6eDAgYE
+        TshpVCYAqAIV5GzKU0GBB1klMKjqEgMHsB8IiOW60+wFgQQgIGDgoC4AABgwADjw9oOAChAkSChAmIPh
+        AxUswBXAuEEDAwYePLhwwYJNg5gFBgQAOw==
+</value>
+  </data>
+  <data name="ToolsUpdatePdfTextColumnsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="ToolsUpdatePdfTextColumnsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Update PDF Text Columns</value>
+  </data>
+  <data name="ToolsMoveDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="ToolsMoveDatabaseToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Move Database</value>
+  </data>
+  <data name="ToolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 20</value>
+  </data>
+  <data name="ToolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Tools</value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -690,6 +659,37 @@
   <data name="HelpAboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About PDFKeeper</value>
   </data>
+  <data name="HelpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="HelpToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="MenuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MenuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>7, 2, 0, 2</value>
+  </data>
+  <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>984, 24</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MenuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.Name" xml:space="preserve">
+    <value>MenuStrip</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="ErrorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>714, 17</value>
   </metadata>
@@ -711,6 +711,51 @@
   <data name="SplitContainer.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 49</value>
   </data>
+  <data name="NotesTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="NotesTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="NotesTextBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="NotesTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="NotesTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>357, 318</value>
+  </data>
+  <data name="NotesTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;NotesTextBox.Name" xml:space="preserve">
+    <value>NotesTextBox</value>
+  </data>
+  <data name="&gt;&gt;NotesTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NotesTextBox.Parent" xml:space="preserve">
+    <value>NotesTabPage</value>
+  </data>
+  <data name="&gt;&gt;NotesTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="NotesTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="NotesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="NotesTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>363, 324</value>
+  </data>
+  <data name="NotesTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="NotesTabPage.Text" xml:space="preserve">
+    <value>Notes</value>
+  </data>
   <data name="&gt;&gt;NotesTabPage.Name" xml:space="preserve">
     <value>NotesTabPage</value>
   </data>
@@ -722,6 +767,51 @@
   </data>
   <data name="&gt;&gt;NotesTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="KeywordsTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="KeywordsTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="KeywordsTextBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="KeywordsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="KeywordsTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>357, 318</value>
+  </data>
+  <data name="KeywordsTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;KeywordsTextBox.Name" xml:space="preserve">
+    <value>KeywordsTextBox</value>
+  </data>
+  <data name="&gt;&gt;KeywordsTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;KeywordsTextBox.Parent" xml:space="preserve">
+    <value>KeywordsTabPage</value>
+  </data>
+  <data name="&gt;&gt;KeywordsTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="KeywordsTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="KeywordsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="KeywordsTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>363, 324</value>
+  </data>
+  <data name="KeywordsTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="KeywordsTabPage.Text" xml:space="preserve">
+    <value>Keywords</value>
   </data>
   <data name="&gt;&gt;KeywordsTabPage.Name" xml:space="preserve">
     <value>KeywordsTabPage</value>
@@ -735,6 +825,75 @@
   <data name="&gt;&gt;KeywordsTabPage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="PreviewPanel.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="PreviewPictureBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="PreviewPictureBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="PreviewPictureBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>471, 255</value>
+  </data>
+  <data name="PreviewPictureBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
+  </data>
+  <data name="PreviewPictureBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;PreviewPictureBox.Name" xml:space="preserve">
+    <value>PreviewPictureBox</value>
+  </data>
+  <data name="&gt;&gt;PreviewPictureBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PreviewPictureBox.Parent" xml:space="preserve">
+    <value>PreviewPanel</value>
+  </data>
+  <data name="&gt;&gt;PreviewPictureBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PreviewPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="PreviewPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="PreviewPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>357, 318</value>
+  </data>
+  <data name="PreviewPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;PreviewPanel.Name" xml:space="preserve">
+    <value>PreviewPanel</value>
+  </data>
+  <data name="&gt;&gt;PreviewPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PreviewPanel.Parent" xml:space="preserve">
+    <value>PreviewTabPage</value>
+  </data>
+  <data name="&gt;&gt;PreviewPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PreviewTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="PreviewTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="PreviewTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>363, 324</value>
+  </data>
+  <data name="PreviewTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="PreviewTabPage.Text" xml:space="preserve">
+    <value>Preview</value>
+  </data>
   <data name="&gt;&gt;PreviewTabPage.Name" xml:space="preserve">
     <value>PreviewTabPage</value>
   </data>
@@ -747,6 +906,51 @@
   <data name="&gt;&gt;PreviewTabPage.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="TextTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TextTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="TextTextBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TextTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
+  </data>
+  <data name="TextTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>357, 318</value>
+  </data>
+  <data name="TextTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;TextTextBox.Name" xml:space="preserve">
+    <value>TextTextBox</value>
+  </data>
+  <data name="&gt;&gt;TextTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TextTextBox.Parent" xml:space="preserve">
+    <value>TextTabPage</value>
+  </data>
+  <data name="&gt;&gt;TextTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TextTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="TextTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TextTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>363, 324</value>
+  </data>
+  <data name="TextTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="TextTabPage.Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
   <data name="&gt;&gt;TextTabPage.Name" xml:space="preserve">
     <value>TextTabPage</value>
   </data>
@@ -758,6 +962,54 @@
   </data>
   <data name="&gt;&gt;TextTabPage.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="SearchTermSnippetsTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="SearchTermSnippetsTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="SearchTermSnippetsTextBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SearchTermSnippetsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
+  </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>747, 56</value>
+  </metadata>
+  <data name="SearchTermSnippetsTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SearchTermSnippetsTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>363, 324</value>
+  </data>
+  <data name="SearchTermSnippetsTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTextBox.Name" xml:space="preserve">
+    <value>SearchTermSnippetsTextBox</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTextBox.Parent" xml:space="preserve">
+    <value>SearchTermSnippetsTabPage</value>
+  </data>
+  <data name="&gt;&gt;SearchTermSnippetsTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="SearchTermSnippetsTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="SearchTermSnippetsTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>363, 324</value>
+  </data>
+  <data name="SearchTermSnippetsTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="SearchTermSnippetsTabPage.Text" xml:space="preserve">
+    <value>Search Term Snippets</value>
   </data>
   <data name="&gt;&gt;SearchTermSnippetsTabPage.Name" xml:space="preserve">
     <value>SearchTermSnippetsTabPage</value>
@@ -798,6 +1050,21 @@
   <data name="&gt;&gt;DocumentTabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="TaxYearComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="TaxYearComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TaxYearComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 235</value>
+  </data>
+  <data name="TaxYearComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 23</value>
+  </data>
+  <data name="TaxYearComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
   <data name="&gt;&gt;TaxYearComboBox.Name" xml:space="preserve">
     <value>TaxYearComboBox</value>
   </data>
@@ -809,6 +1076,24 @@
   </data>
   <data name="&gt;&gt;TaxYearComboBox.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="TaxYearLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TaxYearLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="TaxYearLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 235</value>
+  </data>
+  <data name="TaxYearLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 15</value>
+  </data>
+  <data name="TaxYearLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="TaxYearLabel.Text" xml:space="preserve">
+    <value>Tax Year:</value>
   </data>
   <data name="&gt;&gt;TaxYearLabel.Name" xml:space="preserve">
     <value>TaxYearLabel</value>
@@ -822,6 +1107,24 @@
   <data name="&gt;&gt;TaxYearLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="DateLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DateLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="DateLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 302</value>
+  </data>
+  <data name="DateLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 15</value>
+  </data>
+  <data name="DateLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="DateLabel.Text" xml:space="preserve">
+    <value>Date:</value>
+  </data>
   <data name="&gt;&gt;DateLabel.Name" xml:space="preserve">
     <value>DateLabel</value>
   </data>
@@ -833,6 +1136,24 @@
   </data>
   <data name="&gt;&gt;DateLabel.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="SearchTermLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SearchTermLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SearchTermLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 110</value>
+  </data>
+  <data name="SearchTermLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 15</value>
+  </data>
+  <data name="SearchTermLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="SearchTermLabel.Text" xml:space="preserve">
+    <value>Search Term:</value>
   </data>
   <data name="&gt;&gt;SearchTermLabel.Name" xml:space="preserve">
     <value>SearchTermLabel</value>
@@ -846,6 +1167,39 @@
   <data name="&gt;&gt;SearchTermLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="DocumentRetrievalChoicesListBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="DocumentRetrievalChoicesListBox.HorizontalScrollbar" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DocumentRetrievalChoicesListBox.ItemHeight" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="DocumentRetrievalChoicesListBox.Items" xml:space="preserve">
+    <value>Find Documents by Search Term</value>
+  </data>
+  <data name="DocumentRetrievalChoicesListBox.Items1" xml:space="preserve">
+    <value>Find Documents by Selections</value>
+  </data>
+  <data name="DocumentRetrievalChoicesListBox.Items2" xml:space="preserve">
+    <value>Find Documents by Date Added</value>
+  </data>
+  <data name="DocumentRetrievalChoicesListBox.Items3" xml:space="preserve">
+    <value>List Flagged Documents</value>
+  </data>
+  <data name="DocumentRetrievalChoicesListBox.Items4" xml:space="preserve">
+    <value>List All Documents</value>
+  </data>
+  <data name="DocumentRetrievalChoicesListBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 19</value>
+  </data>
+  <data name="DocumentRetrievalChoicesListBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>365, 79</value>
+  </data>
+  <data name="DocumentRetrievalChoicesListBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;DocumentRetrievalChoicesListBox.Name" xml:space="preserve">
     <value>DocumentRetrievalChoicesListBox</value>
   </data>
@@ -857,6 +1211,43 @@
   </data>
   <data name="&gt;&gt;DocumentRetrievalChoicesListBox.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="FindBySelectionsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="FindBySelectionsButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="FindBySelectionsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQfAHaXtLzd/MXi/dXo+IivyNXb5FZtjbiCVu31/Yt3aE1bc+Xt9fX5/PH1+mdLM4m7
+        7J+Pg+vx+Oby/Vs7Iq7T5UNMXfv9/rF3RprA1qjL3oFrW3hfS7HY/LDR4////////yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIsgA9CBxIcOCHgx4GUOiQAQMGAgQASARgASGFAQsiZNS4
+        oOMDAx4+eOiwQIBJkwFSInjwUWAGBidPqkTQAKQHDDBjogzAoYECgThjQkiQQEOCnj89EGhwEgIEDxYQ
+        GPUpcOnJBAwsMJAwwIGHpAAQpAyAlcHWrh4qCAQQYeyGCAi4olXrge3YBBvkHpiQdi2DlBw4aHBAeMIF
+        vgINFGjAsaBhxAAMSFZAWUGFyx4MF9y8OSAAOw==
+</value>
+  </data>
+  <data name="FindBySelectionsButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="FindBySelectionsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="FindBySelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 264</value>
+  </data>
+  <data name="FindBySelectionsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 24</value>
+  </data>
+  <data name="FindBySelectionsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="FindBySelectionsButton.Text" xml:space="preserve">
+    <value>Find b&amp;y Selections</value>
+  </data>
+  <data name="FindBySelectionsButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
   </data>
   <data name="&gt;&gt;FindBySelectionsButton.Name" xml:space="preserve">
     <value>FindBySelectionsButton</value>
@@ -870,6 +1261,37 @@
   <data name="&gt;&gt;FindBySelectionsButton.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="FindBySearchTermButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="FindBySearchTermButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="FindBySearchTermButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQfAHaXtLzd/MXi/dXo+IivyNXb5FZtjbiCVu31/Yt3aE1bc+Xt9fX5/PH1+mdLM4m7
+        7J+Pg+vx+Oby/Vs7Iq7T5UNMXfv9/rF3RprA1qjL3oFrW3hfS7HY/LDR4////////yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIsgA9CBxIcOCHgx4GUOiQAQMGAgQASARgASGFAQsiZNS4
+        oOMDAx4+eOiwQIBJkwFSInjwUWAGBidPqkTQAKQHDDBjogzAoYECgThjQkiQQEOCnj89EGhwEgIEDxYQ
+        GPUpcOnJBAwsMJAwwIGHpAAQpAyAlcHWrh4qCAQQYeyGCAi4olXrge3YBBvkHpiQdi2DlBw4aHBAeMIF
+        vgINFGjAsaBhxAAMSFZAWUGFyx4MF9y8OSAAOw==
+</value>
+  </data>
+  <data name="FindBySearchTermButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="FindBySearchTermButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>325, 110</value>
+  </data>
+  <data name="FindBySearchTermButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="FindBySearchTermButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 24</value>
+  </data>
+  <data name="FindBySearchTermButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="&gt;&gt;FindBySearchTermButton.Name" xml:space="preserve">
     <value>FindBySearchTermButton</value>
   </data>
@@ -881,6 +1303,21 @@
   </data>
   <data name="&gt;&gt;FindBySearchTermButton.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="DateAddedDateTimePicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="DateAddedDateTimePicker.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="DateAddedDateTimePicker.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 302</value>
+  </data>
+  <data name="DateAddedDateTimePicker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 23</value>
+  </data>
+  <data name="DateAddedDateTimePicker.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;DateAddedDateTimePicker.Name" xml:space="preserve">
     <value>DateAddedDateTimePicker</value>
@@ -894,6 +1331,27 @@
   <data name="&gt;&gt;DateAddedDateTimePicker.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="ClearSelectionsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="ClearSelectionsButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ClearSelectionsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ClearSelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 264</value>
+  </data>
+  <data name="ClearSelectionsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 24</value>
+  </data>
+  <data name="ClearSelectionsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="ClearSelectionsButton.Text" xml:space="preserve">
+    <value>&amp;Clear Selections</value>
+  </data>
   <data name="&gt;&gt;ClearSelectionsButton.Name" xml:space="preserve">
     <value>ClearSelectionsButton</value>
   </data>
@@ -905,6 +1363,21 @@
   </data>
   <data name="&gt;&gt;ClearSelectionsButton.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="SubjectComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="SubjectComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SubjectComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 177</value>
+  </data>
+  <data name="SubjectComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 23</value>
+  </data>
+  <data name="SubjectComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;SubjectComboBox.Name" xml:space="preserve">
     <value>SubjectComboBox</value>
@@ -918,6 +1391,21 @@
   <data name="&gt;&gt;SubjectComboBox.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="CategoryComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="CategoryComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="CategoryComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 206</value>
+  </data>
+  <data name="CategoryComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 23</value>
+  </data>
+  <data name="CategoryComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
   <data name="&gt;&gt;CategoryComboBox.Name" xml:space="preserve">
     <value>CategoryComboBox</value>
   </data>
@@ -929,6 +1417,24 @@
   </data>
   <data name="&gt;&gt;CategoryComboBox.ZOrder" xml:space="preserve">
     <value>10</value>
+  </data>
+  <data name="CategoryLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CategoryLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CategoryLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 206</value>
+  </data>
+  <data name="CategoryLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 15</value>
+  </data>
+  <data name="CategoryLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="CategoryLabel.Text" xml:space="preserve">
+    <value>Category:</value>
   </data>
   <data name="&gt;&gt;CategoryLabel.Name" xml:space="preserve">
     <value>CategoryLabel</value>
@@ -942,6 +1448,24 @@
   <data name="&gt;&gt;CategoryLabel.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="SubjectLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SubjectLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SubjectLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 179</value>
+  </data>
+  <data name="SubjectLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="SubjectLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="SubjectLabel.Text" xml:space="preserve">
+    <value>Subject:</value>
+  </data>
   <data name="&gt;&gt;SubjectLabel.Name" xml:space="preserve">
     <value>SubjectLabel</value>
   </data>
@@ -953,6 +1477,21 @@
   </data>
   <data name="&gt;&gt;SubjectLabel.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="AuthorComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="AuthorComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="AuthorComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 148</value>
+  </data>
+  <data name="AuthorComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 23</value>
+  </data>
+  <data name="AuthorComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;AuthorComboBox.Name" xml:space="preserve">
     <value>AuthorComboBox</value>
@@ -966,6 +1505,24 @@
   <data name="&gt;&gt;AuthorComboBox.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <data name="AuthorLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AuthorLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AuthorLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 148</value>
+  </data>
+  <data name="AuthorLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 15</value>
+  </data>
+  <data name="AuthorLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="AuthorLabel.Text" xml:space="preserve">
+    <value>Author:</value>
+  </data>
   <data name="&gt;&gt;AuthorLabel.Name" xml:space="preserve">
     <value>AuthorLabel</value>
   </data>
@@ -977,6 +1534,21 @@
   </data>
   <data name="&gt;&gt;AuthorLabel.ZOrder" xml:space="preserve">
     <value>14</value>
+  </data>
+  <data name="SearchTermComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="SearchTermComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="SearchTermComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 110</value>
+  </data>
+  <data name="SearchTermComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 23</value>
+  </data>
+  <data name="SearchTermComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;SearchTermComboBox.Name" xml:space="preserve">
     <value>SearchTermComboBox</value>
@@ -1031,6 +1603,24 @@
   </data>
   <data name="SplitContainer.Panel1MinSize" type="System.Int32, mscorlib">
     <value>373</value>
+  </data>
+  <metadata name="SelectionColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="SelectionColumn.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DocumentListDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="DocumentListDataGridView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="DocumentListDataGridView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>604, 688</value>
+  </data>
+  <data name="DocumentListDataGridView.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;DocumentListDataGridView.Name" xml:space="preserve">
     <value>DocumentListDataGridView</value>
@@ -1107,6 +1697,106 @@
   <metadata name="StatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>604, 17</value>
   </metadata>
+  <data name="DocumentsToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 17</value>
+  </data>
+  <data name="DocumentsToolStripStatusLabel.Text" xml:space="preserve">
+    <value>Documents:</value>
+  </data>
+  <data name="DocumentsCountToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 17</value>
+  </data>
+  <data name="DocumentsCountToolStripStatusLabel.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="FillerToolStripStatusLabel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="FillerToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>883, 17</value>
+  </data>
+  <data name="ToolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 16</value>
+  </data>
+  <data name="ToolStripProgressBar.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="UploadRunningImageToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAANRSURBVDhPXZB7TFNnGMbPZoiLMc5/nBqdySQGndu8
+        OwX5gzhBl+hismVGvAQNFyVKyDCOANLCCBeLoHG1YG2hpTiKIFLwiracYrF2XGoDUotgQJQClV4oQgUe
+        33OCzbKT/JIv7/c8v+98HwOAGatnPicEhJl4Sszl5v+FZotn941E0Kc5M1rNBBB5Y6bI174RLVymQ3Zj
+        7d6mpAafjnDMontSu591t50YGe9MdVDeSHzNC+zXmRSX8fDA5GA9hpujRv9VB3tymkZw2WTHtfa3PNz6
+        AtuDdvVGr9Mi9Hra/xiiXgsRwPSXMGluc6pjUB81aigL/nCpuQ8V5jcoZ19BXN2BS5UdKHnYg/K215A1
+        avG8NmJ6vL9yarBmjZW6QczLIia0q3ie9bH0B2+etgfXjX2o1vaiu9+FEZcHw64xWPtcUN7vhkzfi4pb
+        IpjLt010Fi9opW4Q/xBJ1zTnz1ZZUNzUCzWdxn3vnE68GHiL97Tm8MwAkrpuiHU2nFOzOCk3ZNGY4QWR
+        RS26MzcskNyxopNO9n6Ygcfrxd8yOewkck9MoOreI7AvnMhWPwOX5Tp+wa+FrCOxvBW5KjPs4z68m5jG
+        JG0kC4Qoq76Fs+lCnC4LRbR8AxLFenBZruMX7Mu+44iRGiGQt6HP4yPJNPqdbvwlyufLbNszxCm3Q6g5
+        iN8lqxEt1YPr+AW7z93QHSjQQqhsQaPNiTd06QRVKE4rtyFOsRnHZBuQevM3qE0XkVT5C3YVLEFEukLv
+        F4SdKRX8LKhBwlUDctRWDNODxSt/RE2rGFUtl/niP6ZCFDYkobQ5D3GqcGzJ/mLm+8zPvuQFIafEm4mO
+        8DQNEotY5Kq7cJzuy5Uv3E9A7t14ZN2OgUAThYz6WEjYTBwq2YFV6cwUL+DYGi2KPZGj9P70500cET1A
+        5NU1qHhaCNWTfJQa8iB7nEOSk7jCZiBGtRvfpDFDy5KZ9X6BwWAIs1gseKhlp0Lipdh/ZSX2XFyOnQVf
+        IeT8QhyRB0PcKMAxZTgC0wMcS5OZb7keX66rq1tEeGw2G2o1Gse6g6nC7w6k6AjHLLq1GXN8R0t3YlPW
+        YkgrJVOUD/QLFArFfKKLmCTWcrP/Q7/sXZEyBwVSkZsyA8QSAMxHVXS9+ziFnGcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="UploadRunningImageToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 17</value>
+  </data>
+  <data name="UploadRunningImageToolStripStatusLabel.ToolTipText" xml:space="preserve">
+    <value>Upload in progress.</value>
+  </data>
+  <data name="UploadRunningImageToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="UploadRejectedImageToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAANKSURBVDhPVZBrTFNnGMdPlpgli9m3ZZ/8ookMzaai
+        MUadidkyzZItWeIHNzCGD2o0GoOCuHFZ0Rkuq2DIVgURsCBoW1HagmZpbTmUSsew7SqU2tIK5VZ6oRfO
+        6QXp3+dUbfQkv5w3z3n+v+e8DwOAWe5jPiJEhJX4l/hYqL8P1T5/+91E5LyrM0s9zBqibnkkfyYV0CEy
+        UuAzKX8wFGtSeiL4Fv2w8ic2aj4Z4MfLg9RvItZlBL5upixiOjKbXOiD/2nh0n+y3bEaQwB/jfhwyzKf
+        QTjXs25YZHlc2FbFxSznFyk3SqxhvO1MRdRaHlwYLFwydu5eaXw6jXvWOXSxLyHpGUOjfAztWje6zDNo
+        HdDBrjywynvlrxYe5joom8NMNjFfTzR/4hhq+Yqr07nRbZpGj84DlzeCQCQGf2QZjukIOv5xoXXQg3u9
+        Yli7diXGmz99RtmczCKKb6n+LL1vQ7PBAxlNE55QOIwXs/OI01kglgZuqF2Q6J2olLE41Wa8QmUmI8hv
+        GtWXKGy48ciBcZrMraQR4zj83doGH4kCs0OwaYpgsHtRLfsfQq+QyQoOXWODRV3PUHvHCh+fQiixiiR9
+        +FVUhe4HCoz2HkXQKYfd0o5zEhOEXiGTFfxY/Sh4vMUEUZsZ07EUSVbhDUfxh/gq7jafht/eiZVlF8ZV
+        Bbgs6YHQK2SygoOVCv3hBh2qOkYx4Axjji7tjaageaKEnUIJvxqJuXqEJvvQLz2LXxq0EDJZwf6S26Lv
+        RQ9x9qYRNTIH/LSwUDINz/BVBBwKJLyXwNZsRyqogLn1G5TUiiFksoI9ZyQ7iLHvKlQoamJRK5uAxayH
+        R1uG5KIUvKsQbPU2xKdKEXb3o7/hQOLn4kv7sgKBncfEJ07WdHDfXnyAQvFjaFoKsESLi78sBvfi8Buc
+        R+gq1zA10IihurzKDwRGo3G/zWaDVse+ulhZgim2HsmF65npnDOfrpCXefPuU+Dne8Fe/tI3ULV5Uyas
+        Vqs/I2JOpxNKlSqor98b5QOTSIa0SCzSDhbl73EfK7HnmBnuxJOyjfKMQCqVriUmiCSxmX4vYKjeyg9e
+        2cLTJJ4m8frfc3ldxRdxbfmmtOa33LS2dENcc2H94GugOu5dg/sWbQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="UploadRejectedImageToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 17</value>
+  </data>
+  <data name="UploadRejectedImageToolStripStatusLabel.ToolTipText" xml:space="preserve">
+    <value>UploadRejected folder contains one or more files that were not uploaded.  Click the icon to open the folder.</value>
+  </data>
+  <data name="UploadRejectedImageToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="FlagImageToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQfAPNRUfNMTMhSS/Ofnvzl5ettbbgGBvNZWfN7e/NVVfNjY/KKifnT0/NtbfNdXVQz
+        GPSXl/WysptFNGA7HMkODv3q6vvg4N8jI/nOzosvHek1NdgbG7F2RVk2Gf///////yH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIkgA/CBxIsKBADwgTKlR4cACEBQgQNFBwAECHix4OQqhg
+        gQADDANCCuDQIeMHDwssKHBwoCKAACMnmPSAgAHLAwkAvJTAQebBBhFa5nwZgKfPkwoG4NRJlGfJgw4g
+        MA1AtSiHBzMTLCjAtWuBDFdnariwgYJZA2g7hD24UKFarAYLenhrMu5BtU/t3sWol23CDwEBADs=
+</value>
+  </data>
+  <data name="FlagImageToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 17</value>
+  </data>
+  <data name="FlagImageToolStripStatusLabel.ToolTipText" xml:space="preserve">
+    <value>Repository contains one or more flagged documents.</value>
+  </data>
+  <data name="FlagImageToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="StatusStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 739</value>
   </data>
@@ -1134,6 +1824,384 @@
   <metadata name="ToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>372, 17</value>
   </metadata>
+  <data name="FileAddToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJRSURBVDhPrZNLiFJRHMYvtJhVtE1a1SqCYZjNtGwTFRG0
+        iKFNgcVUMG6iTYuCodVMNTUp6cp8jJiogzgqijdFUTcuHB854qAOMw4+uOIojq98fd1zuoNNObTpg8O5
+        53J+3/+c738v81/ldDqnWJad54fF5XKl1Gp1n3/3w+FwROx2u9Fms90wmUxnhO0n5fF4rrjd7ngsFkO5
+        XMbR0RGGwyEGgwGq1Sr29vYQCASwsbERNBqNFwRsLB727e/vYzQa4TT1+31Eo1HwBloBG4s34Lrd7j8N
+        OI6DTqfjBGws/s5cp9NBqVRCrVZDu92mQK/XQ71ex+7uLoLBIIrF4mQDq9XKEahSqdDNqVQK29vbiMfj
+        FOQzgt/vR6FQON2g1Wrh8PCQVsnn83QmuUQiERogGQcHB9BoNJMNms0mvSOBcrkc3UxOEw6H4fV64fP5
+        qLFKpZpsQFpHMiDwzs4ObV0mk0EoFIL86zu8UDzE04938WDp+ujmy+nXAvpLFouFazQatEI6nab3z2az
+        9PmzYQVvzI/gSMoRK7JY+7aI+2vTmJOIVgWcYfgPhDtOO5lMIpFI0OokTPHbW9j8/gmbKRlt56rnCdY8
+        zzAjOdcRcIYhyRKYXIOAvxvceTULZ1JJ4WPZEnJclYgg4Ayj1+tv86O5tbVFP10SKOkKma89v4T37GMs
+        s2IKL7vFf5+AaH19/SLfoi/8T1TXarUwm80wGAxYWJrHvdXL+MAu0MpkJusTGfwppVJ5VqFQzMpkshmp
+        VDo1t3h+ZVYiapBjk5msGYZhfgJkuke2q5AT0QAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="FileAddToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="FileAddToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="FileAddToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="FileOpenToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFESURBVDhPnZKxSsRAEIbvbQSfQavD/vAhxO64B9A2jVel
+        0AewMJXd5QEUUmh3yh0RTAikSJCgpLkjxZ7f4OSym6Dgws+QnZ1v/szuyPxjjbqLjTzPzcty2SqKIlEY
+        hq2CIGhlQfigaLvZmKZp/hRg3/f3EAWQrOtaQMQhKcCCuABXn6uVSS4vJKoL5HneHgCRzaqqeirmVwJI
+        bq5NWZYiXA4CSFKkB1Hy+GDeTsYCYNioB2DKClDpYSSAb1CapqJBAJtuYZZlEl8PD0RA4jiW2cymUxvA
+        ZrdQu70Hd2IfqZOvohAATQXA41AAxV0AA1wvFtIZgLq5Pz6SnAVwiylan5+JKCbiBFcAuKEWgB23mA5i
+        +8eFPvXeDHhV2AdC8uP5SQoRD6h7teSBWwAccC2AiPqPt6cT+eawK+sa3cW/affflzE7fZFiJ8PG0XMA
+        AAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="FileOpenToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="FileOpenToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="FileOpenToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="FileSaveToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALHSURBVDhPhVNLT1NBGG3iwpW/wBVbFya6cOHCFXHhjghR
+        Y4hiYgQDCCFGEAVR8FVQowmv1D4t2pbUhmKRStJK1YKh0GJbWtvb9EFLvaQPaCm1r+PcEQJRiSf58n13
+        MufM/c43w+Og0+n26/X6KhLqiYkJp0gkypO1n+Pj4xatVqsYGxs7qVQq99HNf2JqaurQ5OSkzWq1IhqN
+        IpVKoVgsolAoIBaLwe/3Y3p6GqOjoyaFQnFwi7YDQjYEAgGUSiXshXw+j4WFBRAByRZtB0SAzWaz/xVg
+        WRYymYzdou2A9Mxubm5iZWUFiUQCmUyGEnK5HJLJJHw+H0wmEyKRyL8FNBoNy5FWV1fpZqfTCYfDAZvN
+        RonEIxiNRoTD4b0FNjY2EI/H6SnBYJDmxgE72oV2NA9acfeVE7VPLKh7ZsH1YStahmy4xJ9B2Tn1MSqQ
+        Tqdpj5yZDMMgFArhct8cNJYU9UBrDtG8GxIDi4uPZkEFuNFxHnBkt9tNR3f+vhlCY4JubnwxRzOHzTyw
+        lgV63y6j5rEZPLVaza6vr9Nfd7lctH+v14vqhzPklARyhSLyhRK5GyUUSOTy3HcRPW8YnO78CB65IOy2
+        23a7HYuLi/B4PKSFrxh6z6JDzuDOCINbMg9uit1oI9EqcqFV6EJ1twE8zlmOzLXBEbcFavizeP4ugq7X
+        QRIB3Jb50C7xok3kwQ2hGy3Ddpzp+ACeXC4/RSI9Pz9Pry5nKDeVyq5PGNCxIAYhshYjkUAkmUCY1LGN
+        FNoEDpQ3aUBHKZVKy8Ri8UvyiJISiQQqlQoVnSYM6xKIplh0GyowOHsNQ7PNpK7Ej/Qy2gUMjtcpfwvs
+        hkAgONDf33+k6t4X6Oe5KTAwxx9gKS3FUkZK6l6y5kePlMGJq6q/BbZx9Ir+89luE2r539D0NID6Pi8a
+        +N/R+HgJ9XwLyhtUOHxhBL8AXLTMwCyr7dMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="FileSaveToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="FileSaveToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="FileSaveToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="FileBurstToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="FileBurstToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="FileBurstToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Burst</value>
+  </data>
+  <data name="FilePrintToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAErSURBVDhPnZKxSsNQFIZ9Hbv1DQSXuhZEBwfnDm4uvoGg
+        jk4+gSABEYQMCgYnMygYRMeKUYjIBUkHJT3yHXtir96U4IGPtD33/+7JvZ2zkhY1WRouFpzdv8jRzaNy
+        cHEn28fXsrl/UjNTQpNg9uzk6W2kvJZV/Xnn3MnKxl6zxAQsvhxWHogQMNEfiX6bFIL30YcXPn34FgA9
+        BNV4rFAqYGzeGUICg15/fUslPGsBwTzPdcRpgQUPbz8VekvLAynL0hcQdM5JFEWtQIDIE/AjEqMoiiBM
+        ytMTcMeEsiyTJEkkjuNG0jSdLTBYOA1igykWeqvtBNTu1ZoGh51Os4AzCAl+785rsJkn4F4JcU2hA2RH
+        gz7S+e7ij4AJkBjcMXBQBjsahL3/wf9L5Av8hB9ZPoZJTAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="FilePrintToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="FilePrintToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="FilePrintToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="FileDeleteToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJhSURBVDhPrZNPaJJhHMffpmOnDtElqB3sEuwSnTtU2+oQ
+        dFssulYQRBBR2+qyW4ciQg+enM6JmJvImM5/aYp6SMJNZRNl06amk1f8w/zb/PPteR7fsMjRpS/8eF9e
+        ns/3eX7f3/Ny/1UWi2XM4XDcJWW0Wq1RlUrVJt9+mM3moMlk0m9sbNxaXV0VCcv/lNPpnLDb7eFQKIR8
+        Po9qtYput4tOp4NisYiDgwN4vV4YDAafXq8/L2ADEdidSqXQ6/VwktrtNra3t0EM1AI2EDHgW63WPw14
+        nodGo+EFbCDSM99sNnF4eIhyuYxGo8GA4+NjVCoVJJNJ+Hw+5HK54Qbr6+s8hQqFAlscjUaxu7uLcDjM
+        QJIRPB4PstnsyQb1eh2lUontkk6n2ZPmEgwGWYC0MpkMlpeXhxvUajXWI4USiQRbTE8TCATgcrngdruZ
+        sVKpHG5AR0czoHA8Hmej29vbg9/vx+d3z+C+fxHOqVFYrp3t2qZHFgS0L6PRyB8dHbEdYrEY639/f5+9
+        ez+8QOjlVTQ336MXtaH+8Tm+PpnofJoSPxVwjiMXhP+V9s7ODiKRCNudhumYuYAGgSG7A8yfAd5IUHh7
+        HZs3REkB5ziaLIVpGxT83cA5OYpe0Cjchr7Ki+ewOCnuCTjHabXa26RqW1tb7OrSQOlU6NN9bxy1pQcA
+        gVpzHEqkUo9FsN0UfRfwvlZWViRkREvkJ6qo1Wqsra1Bp9PBMDeLL48uITcvAf9qFImHp+CaEHes0yOv
+        BfRvKRSK03K5/IpMJrsslUrHfLPjC/Yp0Td6bPu0KNOHOe4nksxF2afGcV8AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="FileDeleteToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="FileDeleteToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="FileDeleteToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ToolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="EditUndoToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAI2SURBVDhPzZLbT9JxGMbd+ju6Ihsj11aUBRWHMSxPUJYo
+        GGmEgKL4M8ETIIIghDjAwxzLExLGRA1mhanhRDRntZrrYHbnJf9De0L3W4y8iMs+d8/ePd/3fZ/3m/f/
+        8DipAJGQQ7Mug3qtDqplKepf1YAdZf+qmRekJKGKWHVASFRNCk+TlmyIDTkiP2fx4mAWCz8CCO/PIPR9
+        CsGv45j4PALXVh+0L5sg9PEjZcM8BmnL0ByXYfEgiPm0cW7fj+ffJo/NM198mNobw+hHF3yfvNAvt4Hv
+        ZkWKXDeyJ2lcqYXy9X3Il8SoWxRBOncX4tnbEPnLQURV8Ow4MPphEEPvByAPSsG2XiVI678RjPHdJV7u
+        oWPTDFvSCN2SBkwjPUaWc4PvYrnVYTn6kyaY410o7L6QIksZKucqT1UFBHpSZsGxM93K0ENYEnoY1tpx
+        sY128gFRQDBV8bR0j5R/4NiYboap8FC/qkPHWwIN4UcoaKFmryDylw23RJVQL8hROsLDTTcHPOd1cGwM
+        SCbuoXtFC9NGF4zrHRB6S3BOfTYTomi63KmJKDC064Rn9wkGd/rh3O6DfasX1s0emNNja1ebYYi3Qzot
+        Bk2dH6E0UDJnvDNebG2cl6WNNgy8s8GxbTkOy5IwoDfdtfNNK+pDtRB4i0FT5UeoCsrJj3TLy/XInknw
+        wF8NVt8VMHsuHSUNuu48aK20VEETNUZVnSGyOv8N184Yv2a6fCLEnDk6I8NI7yRlDuTl/Qa0FCtA1YjQ
+        KwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="EditUndoToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="EditUndoToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="EditUndoToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="EditCutToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFKSURBVDhPrZKxSgNBFEX3Pyz9Azs7S0GwipA0gpViaSHE
+        1kYEIYKVQsRGRNFGUSQQEBvByihIUIhFAiEKabRYoz45NzNLJqwSxAuXLDNzz3vzJtG/ywaQO5ouDpSr
+        TTuq1OXty3tbOa3ZYuEw8a8Q7fap/Rpb4+VN3rh6t7mlLa27SCg2zkvXMrprfdnF06cMiG5wbn5V+y7W
+        FQtx3LGJqQWrN571DQhI6bEL8A4A+nLaOygLcHP7oN/izpnWARxXP2QAmZm81pOqBKg6MjorDw1P2mbx
+        RId8eLfSkQEARwKsre/LtEUQ0wnqD2OGGQD8VKlIODu9rK4Y3E+AsfGsMkEHBLkGg/N37w3zhLjWbIcA
+        PwP+JITpxF8hDcAMEkDvK9AanRAG6sU6VTFhinFVJICXVpwYKOa5GBgVvQknz5gm7QwoF/mrougbQEF9
+        mVZBBAwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="EditCutToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="EditCutToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="EditCutToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="EditCopyToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFDSURBVDhPlZK9SgNREIXzOpY+gEXQIg+QkMLOTuwsLNRU
+        ViKIja0SbMRCBQsLUxgQArERf1ARCaLBCErUIoWJjnyzTna4Ccs6cLLkzpzvnr17M5KiMknFQPXyQfbO
+        m6rNkxtZ3q9LqVyR2bVdVSKEJsbr53dpvnVUrx/RE61W2zI5v6EQqz9rVCwAYLj2+KP6VyL+bJ825LPz
+        pWYzpknUB7CLARgIE6HK/bfO0F86aklhZiWC8ENEA9D0iUKAKRHgE5kZHdz2VPTyUwsxYHHrWN+TIQAe
+        6M07F10VvVx+OgZwsgaYO3wZAHhz+ayr5zMAwGAAn8gDMA8F8Fmu7p4Uwh3wibx5vd5TNVptyeaKMQAD
+        p4o4HJ9oGAD42EQhBoTlE9kFYleEmZQjo+M6q5fJF4thIt4XEZudMfc/Y1i6mrpEfgGL0hchHI3KDgAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="EditCopyToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="EditCopyToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="EditCopyToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="EditPasteToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAErSURBVDhPpZLPSkJBFId9iB6gTc/R1icIIWjhtnWvEOUm
+        Klq7s1VgBJGboghdVNAVhOQShAWZQRSBFFInvqNnGOdOl6ADn15nzu+788eCBHVSmYviV8EvBgZnS9LY
+        LMpGeUafHbVZB3P0RAVpvawTNOXR2S1p3yQ6LgZMYG8+7vZlL7lXquc3srZ/LSs7Bw5qEo8LCPYG7/L8
+        OnTwG7aaH7KwvK79GcFTWlcQEGr2vqZ4G45UwIqchA/29v3Zl9urqoKAZj98lI4FRq6AfccERq4gOd3W
+        JfoCC9baI4W5+eJiVkA4FIRh4DAzgpfHtrQOVxWuyg7xX4IwzA1AVMD13XVb+o2ALfwmQJ4R+HDCnfRB
+        JfYHMghfXCbTgrBYARKD5hB3jWHp6J9L5AfcLx2+3+AT1QAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="EditPasteToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="EditPasteToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="EditPasteToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="EditRestoreToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH2SURBVDhPxZLvTxJxHMf5O/wH0oVrzjUrzMvTdKIiLHU3
+        TZyabnTBQmfkTrBu6MXAXweeIuDOH+HSelCbrciZFsvkWkpY3T/D3n1lV08QWz3x9ei7fd+fX+/PR1cI
+        /b0L0J7/jt5ejEvOi/+XoNRRDNNsAyyhJlRwZTCMXUYlX5GhBQOrSQpT6ihBi2iE570Lj/ZGwH8YxfhH
+        D7h3w+h72gnjDK2YgrVFmjyfsiE9bknNJJCDlwQKyTH4PvHwJt2YPhDgfGWDOWZUNPnpXHWXoyPWCqvM
+        oNZ/Hf3rXZhOPUFQ8UP6MoXBLRs64pazx6kWruFmoCpnYuNcTZxapLJiyp9LIh74YH1uUXPCs2iYpf9s
+        oVVu4rnEIJbSEpYzC+h7yeRvqMp7BbTPgLpJCkaRRvNcnUv70jFrZt6z8wArmTDWjqMYeH07P0HNRKXq
+        3XUjpAQwuT8BKkpl20llJm7mqQ0qe1Jd/iYhlg7hbsKaP0L91A3WttmDha8ziBwGMU8M82wP4/GuC3J6
+        Hus/lvDsp4zxfQ72nZ7TTTSH65WRN87crJEjkbQbQfx7FCvHYWyqywikeNi3uwuvkYmaitpWW5SHifsI
+        k05Oqm6oMjFOgvB5FA4SzCZ7Cx/Sb7pftLHEaXVgqxO2t1awZGb73p2/n/I5oNP9AvNyE9pUyKjXAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
+  <data name="EditRestoreToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="EditRestoreToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="EditRestoreToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="EditDateTimeToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFmSURBVDhPnZI/SwNBFMT9OhYWYqEgaCAG/6SySCoba7FQ
+        EERBAtqIikES/QZWKYRAsLCIoAnJpbFRxMZCG4loIB4XSRxv9u7t7YKKOjAcb+/m997ubR/+Iu8abjUW
+        FoEU4PbJU8VyYUCZ2i02tFdzJ8p4ySlAenEvqH1ZExw5SeRrU2EViHD6uFTXAIZn59fVewVg18P6DA6q
+        k9i/mMB2eVxPkqn0tFcKN8qEcQpKA7KXCeyUY9g6G8VGaVgDNp2e5aXKBx6bbRsgypyOYK04FFaB3C7Q
+        7kR+9Y+LAGsLPCiKXaUzg2aYQfG3AFMSrt172s03KBMwnVpQ32kAFzt+SD6WMDtK8PzuHQ+tLwA8WS7K
+        2CZAwgyagHhyLgLwvwrA7CwAhgTAO/FrgIwtlktFjyVSNoABAZj7lu5m+Lnl2gBeCnblC07C5092Glfo
+        H4xHAE5AiJj/mOZJ09wvza40w9Y9+L+AT66geKUL1AmAAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="EditDateTimeToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="EditDateTimeToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="EditDateTimeToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Date/Time</value>
+  </data>
+  <data name="ToolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="ViewRefreshToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALTSURBVDhPlVNtS5NRGH7ID9KHfoFQWfaioWZRCH0JwqCQ
+        QGuWszXfMtNoSUppkKVRkWlMpmJO5rSxttl82dicihvTD2bNzTHXllOmH1QeUobOlzH16nlOQ8mI6IID
+        55z7XNc5133fh2Kh0+nCe3t7OcxQ6/V6p0QiCTJ7Aa1Wa9FoNIru7u6LSqUyjBzejf7+/hiDwTBms9kw
+        Pz+P5eVlbG5uYmNjAwsLC/B6vTCbzWhvbx9UKBQRIdoOGLJxenoaW1tb+BuCwSCsViseGQRejpLz+0sY
+        AXp9ff2fAjRNgy/hB3M0XFOI+guMZ3ptbQ2sBY/HQ2wEAgF8++HAO8tLCEw5KOzPxB09DxXmUjwdKEG6
+        7IohRKeozs5OenV1FTMzM7BYLBgaGoJuRIPKoVKI7SJ0f1ehw/0Rn1wyKJ2tkI9LUKy9h+S6JM+2wMrK
+        ChYXFzE7O0uEJLZGNFhr0OVWonKwDFkd13FTkYrHegGKNYVIFiX1ETILVsDv9xOPbDInJydRZi5Cfg8P
+        uRouSroEMBqNRJjXlBa8JLpgLi+n9iRWJ+7dFmBLNzc3R8hut5uUbmJigtjR9+jR19dHxDPqMtb/qIJa
+        raaXlpbIDS6XC+Pj4ySZ7NxkMoFpJDyQFhLR+vp6OkTbAdMgtM/nw9TUFBwOB+x2O7nd7hjDgHEAuU18
+        cOuukXhVVRWd+OSk+XRJLOIE0YjJO+Kl2traaDbI2iDEkIDT6URBSy4KFNm4/YGHc8/O4GxZAm40pKB6
+        uAI50gxEZUc2UjKZ7DIz/KOjo6R12YSyVUl/n4J8eSYaLNUQfXkD4cgr1Hx+gbfDz8l+VNbBrwf4EeeJ
+        jdbW1siWlpZm5hP5pFIpVCoV5HI50l6n4lZzGriNVxFfFIMThUdxLO8wDmXvN22Td0MsFu9jkpVQW1sb
+        LxQKw089jDXF3Y+2h8L/Dw6HCjt+94gytNwFivoJ8/BMyvppXccAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="ViewRefreshToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ViewRefreshToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="ViewRefreshToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ToolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="InsertTextToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="InsertTextToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="InsertTextToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="ToolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="ToolsOptionsToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE2SURBVDhPtZE/SwNhDIfv8/kNXLu5OgoujuIgCCK0i6Do
+        UESRLnKVo1iEFhyqYnWQDkKVImpBraIX++RN6iEe3KA/CMeb5Mm/i/5N8kPmLiaAyu6R2tpeS9ZrrWJF
+        NGsswJe3VK0/DLaVXFo0pxABOm3Ep9LuPcvTayrx+b00roYK1U76Um1eTwoZFoQD2LvWO7dy0LmTw4tH
+        TW7ffOrXp1neTvRt+PfOWZjuyGG++LqDVOZXd9RneBAOpqBDfDbQBBIxfEyTCyOclf1QAB33RpPk949w
+        A6bI7Z6F/XC8gTkev5PdiU3PLmrc8FCA6wN4EboxNld3OOk+6HpTpTnNMTwIB0UwOrIvMJMBL23WtfOv
+        sEsjY61Um1qAKbgFYzuILD1fJM0slLWjWyEwKyUyMvdfK4q+ABdP/OvWUme+AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ToolsOptionsToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ToolsOptionsToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="ToolsOptionsToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="ToolsUploadProfilesToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADxSURBVDhPzZE9C4JQFIb9S7U0tbb3M/oDQXNjNdfaGhER
+        5FRTH1tKSFNLUEQpCXFDE62T52h+dVGopRceEK/vc8/1Cv8T4MRfyg5+rCkdD7kB2qpGZCVWpphShAVc
+        pApoy7KHnIuByRREeTKRwOdPwboJYDN3MSzTrpNSiFj0GBVAG+QTgveYERzzFGDrM+KujuHB5nwBTeBD
+        Rb1PWOcumIc2YexaJOILDCU4Z7KMRbatEzgFV+Dc5KDIK183VcI4DjkC9yfh2dLKeKWIse+lCHAKF3zG
+        s1rqlEbGXbGI4DuuILimKHhlPJKCb0OC3yIIL23FiCaG84ANAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ToolsUploadProfilesToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ToolsUploadProfilesToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="ToolsUploadProfilesToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Upload Profiles</value>
+  </data>
+  <data name="ToolsUpdatePdfTextColumnsToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ToolsUpdatePdfTextColumnsToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="ToolsUpdatePdfTextColumnsToolStripButton.Text" xml:space="preserve">
+    <value>Update PDF Text Columns</value>
+  </data>
+  <data name="ToolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="HelpContentsToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEwSURBVDhPY0AH//EAqBLcAKTILanqf8/kGXCc2zQZjEHi
+        eA0BScaUdf+/8fbf/5PP/oPx6mu//k89+weOdWNasBuCrLls+xsUnL/pJRhnrn36v/TAf0xDQBynsHS4
+        ZpDiFec/gBXBAIiftuoxGIMMkbKJBIujGLD15newATnrn4MlQZpAtoI0gUDi8gdwA0DqQQDDAJDtIAOQ
+        NSMbAMKZu/7hNgCkGaQR2WYQWHjy9f+YhXf+xy+9BzYApxdgNoIwSBMIwDQTNAAUZTB/gmiQYphGEA6f
+        dxNM4zQAFM8gRTDNyC4AiYNw8KwrmAaAAIhj458AjgWYQmwYpFk9uBxVMwwgGwJSGL/+IwpG1vz3719M
+        A0AAZggotYEwSAMIg9gwZ+PUDANgVTgAVAk1AQMDAEj3SkjPKjgnAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="HelpContentsToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="HelpContentsToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="HelpContentsToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Help</value>
+  </data>
   <data name="ToolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
   </data>
@@ -1158,9 +2226,6 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>747, 56</value>
-  </metadata>
   <data name="$this.HelpKeyword" xml:space="preserve">
     <value>Using PDFKeeper.html</value>
   </data>
@@ -1843,1416 +2908,9 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NotesTextBox.Name" xml:space="preserve">
-    <value>NotesTextBox</value>
-  </data>
-  <data name="&gt;&gt;NotesTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NotesTextBox.Parent" xml:space="preserve">
-    <value>NotesTabPage</value>
-  </data>
-  <data name="&gt;&gt;NotesTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="NotesTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="NotesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="NotesTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 324</value>
-  </data>
-  <data name="NotesTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="NotesTabPage.Text" xml:space="preserve">
-    <value>Notes</value>
-  </data>
-  <data name="&gt;&gt;NotesTabPage.Name" xml:space="preserve">
-    <value>NotesTabPage</value>
-  </data>
-  <data name="&gt;&gt;NotesTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NotesTabPage.Parent" xml:space="preserve">
-    <value>DocumentTabControl</value>
-  </data>
-  <data name="&gt;&gt;NotesTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="NotesTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="NotesTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="NotesTextBox.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="NotesTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="NotesTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 318</value>
-  </data>
-  <data name="NotesTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;NotesTextBox.Name" xml:space="preserve">
-    <value>NotesTextBox</value>
-  </data>
-  <data name="&gt;&gt;NotesTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NotesTextBox.Parent" xml:space="preserve">
-    <value>NotesTabPage</value>
-  </data>
-  <data name="&gt;&gt;NotesTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.Name" xml:space="preserve">
-    <value>KeywordsTextBox</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.Parent" xml:space="preserve">
-    <value>KeywordsTabPage</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="KeywordsTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="KeywordsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="KeywordsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 324</value>
-  </data>
-  <data name="KeywordsTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="KeywordsTabPage.Text" xml:space="preserve">
-    <value>Keywords</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTabPage.Name" xml:space="preserve">
-    <value>KeywordsTabPage</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTabPage.Parent" xml:space="preserve">
-    <value>DocumentTabControl</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="KeywordsTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="KeywordsTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="KeywordsTextBox.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="KeywordsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="KeywordsTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 318</value>
-  </data>
-  <data name="KeywordsTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.Name" xml:space="preserve">
-    <value>KeywordsTextBox</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.Parent" xml:space="preserve">
-    <value>KeywordsTabPage</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.Name" xml:space="preserve">
-    <value>PreviewPanel</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.Parent" xml:space="preserve">
-    <value>PreviewTabPage</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PreviewTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="PreviewTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="PreviewTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 324</value>
-  </data>
-  <data name="PreviewTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="PreviewTabPage.Text" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="&gt;&gt;PreviewTabPage.Name" xml:space="preserve">
-    <value>PreviewTabPage</value>
-  </data>
-  <data name="&gt;&gt;PreviewTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PreviewTabPage.Parent" xml:space="preserve">
-    <value>DocumentTabControl</value>
-  </data>
-  <data name="&gt;&gt;PreviewTabPage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="PreviewPanel.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;PreviewPictureBox.Name" xml:space="preserve">
-    <value>PreviewPictureBox</value>
-  </data>
-  <data name="&gt;&gt;PreviewPictureBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PreviewPictureBox.Parent" xml:space="preserve">
-    <value>PreviewPanel</value>
-  </data>
-  <data name="&gt;&gt;PreviewPictureBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PreviewPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="PreviewPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="PreviewPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 318</value>
-  </data>
-  <data name="PreviewPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.Name" xml:space="preserve">
-    <value>PreviewPanel</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.Parent" xml:space="preserve">
-    <value>PreviewTabPage</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PreviewPictureBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="PreviewPictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 8</value>
-  </data>
-  <data name="PreviewPictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 255</value>
-  </data>
-  <data name="PreviewPictureBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>AutoSize</value>
-  </data>
-  <data name="PreviewPictureBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;PreviewPictureBox.Name" xml:space="preserve">
-    <value>PreviewPictureBox</value>
-  </data>
-  <data name="&gt;&gt;PreviewPictureBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PreviewPictureBox.Parent" xml:space="preserve">
-    <value>PreviewPanel</value>
-  </data>
-  <data name="&gt;&gt;PreviewPictureBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.Name" xml:space="preserve">
-    <value>TextTextBox</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.Parent" xml:space="preserve">
-    <value>TextTabPage</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TextTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="TextTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TextTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 324</value>
-  </data>
-  <data name="TextTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="TextTabPage.Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="&gt;&gt;TextTabPage.Name" xml:space="preserve">
-    <value>TextTabPage</value>
-  </data>
-  <data name="&gt;&gt;TextTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextTabPage.Parent" xml:space="preserve">
-    <value>DocumentTabControl</value>
-  </data>
-  <data name="&gt;&gt;TextTabPage.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="TextTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="TextTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="TextTextBox.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TextTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Both</value>
-  </data>
-  <data name="TextTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 318</value>
-  </data>
-  <data name="TextTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.Name" xml:space="preserve">
-    <value>TextTextBox</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.Parent" xml:space="preserve">
-    <value>TextTabPage</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.Name" xml:space="preserve">
-    <value>SearchTermSnippetsTextBox</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.Parent" xml:space="preserve">
-    <value>SearchTermSnippetsTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="SearchTermSnippetsTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="SearchTermSnippetsTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 324</value>
-  </data>
-  <data name="SearchTermSnippetsTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="SearchTermSnippetsTabPage.Text" xml:space="preserve">
-    <value>Search Term Snippets</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTabPage.Name" xml:space="preserve">
-    <value>SearchTermSnippetsTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTabPage.Parent" xml:space="preserve">
-    <value>DocumentTabControl</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTabPage.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>747, 56</value>
-  </metadata>
-  <data name="SearchTermSnippetsTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="SearchTermSnippetsTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="SearchTermSnippetsTextBox.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="SearchTermSnippetsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Both</value>
-  </data>
-  <data name="SearchTermSnippetsTextBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="SearchTermSnippetsTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 324</value>
-  </data>
-  <data name="SearchTermSnippetsTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.Name" xml:space="preserve">
-    <value>SearchTermSnippetsTextBox</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.Parent" xml:space="preserve">
-    <value>SearchTermSnippetsTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TaxYearComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="TaxYearComboBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="TaxYearComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 235</value>
-  </data>
-  <data name="TaxYearComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 23</value>
-  </data>
-  <data name="TaxYearComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;TaxYearComboBox.Name" xml:space="preserve">
-    <value>TaxYearComboBox</value>
-  </data>
-  <data name="&gt;&gt;TaxYearComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TaxYearComboBox.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;TaxYearComboBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TaxYearLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TaxYearLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="TaxYearLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 235</value>
-  </data>
-  <data name="TaxYearLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 15</value>
-  </data>
-  <data name="TaxYearLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="TaxYearLabel.Text" xml:space="preserve">
-    <value>Tax Year:</value>
-  </data>
-  <data name="&gt;&gt;TaxYearLabel.Name" xml:space="preserve">
-    <value>TaxYearLabel</value>
-  </data>
-  <data name="&gt;&gt;TaxYearLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TaxYearLabel.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;TaxYearLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="DateLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="DateLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="DateLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 302</value>
-  </data>
-  <data name="DateLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 15</value>
-  </data>
-  <data name="DateLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="DateLabel.Text" xml:space="preserve">
-    <value>Date:</value>
-  </data>
-  <data name="&gt;&gt;DateLabel.Name" xml:space="preserve">
-    <value>DateLabel</value>
-  </data>
-  <data name="&gt;&gt;DateLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DateLabel.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;DateLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="SearchTermLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="SearchTermLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="SearchTermLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 110</value>
-  </data>
-  <data name="SearchTermLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 15</value>
-  </data>
-  <data name="SearchTermLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="SearchTermLabel.Text" xml:space="preserve">
-    <value>Search Term:</value>
-  </data>
-  <data name="&gt;&gt;SearchTermLabel.Name" xml:space="preserve">
-    <value>SearchTermLabel</value>
-  </data>
-  <data name="&gt;&gt;SearchTermLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchTermLabel.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;SearchTermLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="DocumentRetrievalChoicesListBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="DocumentRetrievalChoicesListBox.HorizontalScrollbar" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="DocumentRetrievalChoicesListBox.ItemHeight" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="DocumentRetrievalChoicesListBox.Items" xml:space="preserve">
-    <value>Find Documents by Search Term</value>
-  </data>
-  <data name="DocumentRetrievalChoicesListBox.Items1" xml:space="preserve">
-    <value>Find Documents by Selections</value>
-  </data>
-  <data name="DocumentRetrievalChoicesListBox.Items2" xml:space="preserve">
-    <value>Find Documents by Date Added</value>
-  </data>
-  <data name="DocumentRetrievalChoicesListBox.Items3" xml:space="preserve">
-    <value>List Flagged Documents</value>
-  </data>
-  <data name="DocumentRetrievalChoicesListBox.Items4" xml:space="preserve">
-    <value>List All Documents</value>
-  </data>
-  <data name="DocumentRetrievalChoicesListBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 19</value>
-  </data>
-  <data name="DocumentRetrievalChoicesListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>365, 79</value>
-  </data>
-  <data name="DocumentRetrievalChoicesListBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;DocumentRetrievalChoicesListBox.Name" xml:space="preserve">
-    <value>DocumentRetrievalChoicesListBox</value>
-  </data>
-  <data name="&gt;&gt;DocumentRetrievalChoicesListBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DocumentRetrievalChoicesListBox.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;DocumentRetrievalChoicesListBox.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="FindBySelectionsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="FindBySelectionsButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="FindBySelectionsButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQfAHaXtLzd/MXi/dXo+IivyNXb5FZtjbiCVu31/Yt3aE1bc+Xt9fX5/PH1+mdLM4m7
-        7J+Pg+vx+Oby/Vs7Iq7T5UNMXfv9/rF3RprA1qjL3oFrW3hfS7HY/LDR4////////yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIsgA9CBxIcOCHgx4GUOiQAQMGAgQASARgASGFAQsiZNS4
-        oOMDAx4+eOiwQIBJkwFSInjwUWAGBidPqkTQAKQHDDBjogzAoYECgThjQkiQQEOCnj89EGhwEgIEDxYQ
-        GPUpcOnJBAwsMJAwwIGHpAAQpAyAlcHWrh4qCAQQYeyGCAi4olXrge3YBBvkHpiQdi2DlBw4aHBAeMIF
-        vgINFGjAsaBhxAAMSFZAWUGFyx4MF9y8OSAAOw==
-</value>
-  </data>
-  <data name="FindBySelectionsButton.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="FindBySelectionsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="FindBySelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 264</value>
-  </data>
-  <data name="FindBySelectionsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 24</value>
-  </data>
-  <data name="FindBySelectionsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="FindBySelectionsButton.Text" xml:space="preserve">
-    <value>Find b&amp;y Selections</value>
-  </data>
-  <data name="FindBySelectionsButton.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="&gt;&gt;FindBySelectionsButton.Name" xml:space="preserve">
-    <value>FindBySelectionsButton</value>
-  </data>
-  <data name="&gt;&gt;FindBySelectionsButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FindBySelectionsButton.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;FindBySelectionsButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="FindBySearchTermButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="FindBySearchTermButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="FindBySearchTermButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQfAHaXtLzd/MXi/dXo+IivyNXb5FZtjbiCVu31/Yt3aE1bc+Xt9fX5/PH1+mdLM4m7
-        7J+Pg+vx+Oby/Vs7Iq7T5UNMXfv9/rF3RprA1qjL3oFrW3hfS7HY/LDR4////////yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIsgA9CBxIcOCHgx4GUOiQAQMGAgQASARgASGFAQsiZNS4
-        oOMDAx4+eOiwQIBJkwFSInjwUWAGBidPqkTQAKQHDDBjogzAoYECgThjQkiQQEOCnj89EGhwEgIEDxYQ
-        GPUpcOnJBAwsMJAwwIGHpAAQpAyAlcHWrh4qCAQQYeyGCAi4olXrge3YBBvkHpiQdi2DlBw4aHBAeMIF
-        vgINFGjAsaBhxAAMSFZAWUGFyx4MF9y8OSAAOw==
-</value>
-  </data>
-  <data name="FindBySearchTermButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="FindBySearchTermButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>325, 110</value>
-  </data>
-  <data name="FindBySearchTermButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="FindBySearchTermButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 24</value>
-  </data>
-  <data name="FindBySearchTermButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;FindBySearchTermButton.Name" xml:space="preserve">
-    <value>FindBySearchTermButton</value>
-  </data>
-  <data name="&gt;&gt;FindBySearchTermButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FindBySearchTermButton.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;FindBySearchTermButton.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="DateAddedDateTimePicker.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="DateAddedDateTimePicker.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="DateAddedDateTimePicker.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 302</value>
-  </data>
-  <data name="DateAddedDateTimePicker.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 23</value>
-  </data>
-  <data name="DateAddedDateTimePicker.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;DateAddedDateTimePicker.Name" xml:space="preserve">
-    <value>DateAddedDateTimePicker</value>
-  </data>
-  <data name="&gt;&gt;DateAddedDateTimePicker.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DateAddedDateTimePicker.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;DateAddedDateTimePicker.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="ClearSelectionsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="ClearSelectionsButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ClearSelectionsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ClearSelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 264</value>
-  </data>
-  <data name="ClearSelectionsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 24</value>
-  </data>
-  <data name="ClearSelectionsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="ClearSelectionsButton.Text" xml:space="preserve">
-    <value>&amp;Clear Selections</value>
-  </data>
-  <data name="&gt;&gt;ClearSelectionsButton.Name" xml:space="preserve">
-    <value>ClearSelectionsButton</value>
-  </data>
-  <data name="&gt;&gt;ClearSelectionsButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ClearSelectionsButton.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;ClearSelectionsButton.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="SubjectComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="SubjectComboBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="SubjectComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 177</value>
-  </data>
-  <data name="SubjectComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 23</value>
-  </data>
-  <data name="SubjectComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;SubjectComboBox.Name" xml:space="preserve">
-    <value>SubjectComboBox</value>
-  </data>
-  <data name="&gt;&gt;SubjectComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SubjectComboBox.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;SubjectComboBox.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="CategoryComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="CategoryComboBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="CategoryComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 206</value>
-  </data>
-  <data name="CategoryComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 23</value>
-  </data>
-  <data name="CategoryComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;CategoryComboBox.Name" xml:space="preserve">
-    <value>CategoryComboBox</value>
-  </data>
-  <data name="&gt;&gt;CategoryComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CategoryComboBox.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;CategoryComboBox.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="CategoryLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CategoryLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CategoryLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 206</value>
-  </data>
-  <data name="CategoryLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 15</value>
-  </data>
-  <data name="CategoryLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="CategoryLabel.Text" xml:space="preserve">
-    <value>Category:</value>
-  </data>
-  <data name="&gt;&gt;CategoryLabel.Name" xml:space="preserve">
-    <value>CategoryLabel</value>
-  </data>
-  <data name="&gt;&gt;CategoryLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CategoryLabel.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;CategoryLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="SubjectLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="SubjectLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="SubjectLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 179</value>
-  </data>
-  <data name="SubjectLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 15</value>
-  </data>
-  <data name="SubjectLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="SubjectLabel.Text" xml:space="preserve">
-    <value>Subject:</value>
-  </data>
-  <data name="&gt;&gt;SubjectLabel.Name" xml:space="preserve">
-    <value>SubjectLabel</value>
-  </data>
-  <data name="&gt;&gt;SubjectLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SubjectLabel.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;SubjectLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="AuthorComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="AuthorComboBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="AuthorComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 148</value>
-  </data>
-  <data name="AuthorComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 23</value>
-  </data>
-  <data name="AuthorComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;AuthorComboBox.Name" xml:space="preserve">
-    <value>AuthorComboBox</value>
-  </data>
-  <data name="&gt;&gt;AuthorComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AuthorComboBox.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;AuthorComboBox.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="AuthorLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="AuthorLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="AuthorLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 148</value>
-  </data>
-  <data name="AuthorLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 15</value>
-  </data>
-  <data name="AuthorLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="AuthorLabel.Text" xml:space="preserve">
-    <value>Author:</value>
-  </data>
-  <data name="&gt;&gt;AuthorLabel.Name" xml:space="preserve">
-    <value>AuthorLabel</value>
-  </data>
-  <data name="&gt;&gt;AuthorLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AuthorLabel.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;AuthorLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="SearchTermComboBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="SearchTermComboBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="SearchTermComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 110</value>
-  </data>
-  <data name="SearchTermComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 23</value>
-  </data>
-  <data name="SearchTermComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;SearchTermComboBox.Name" xml:space="preserve">
-    <value>SearchTermComboBox</value>
-  </data>
-  <data name="&gt;&gt;SearchTermComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchTermComboBox.Parent" xml:space="preserve">
-    <value>DocumentRetrievalGroupBox</value>
-  </data>
-  <data name="&gt;&gt;SearchTermComboBox.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <metadata name="SelectionColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="DocumentListDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="DocumentListDataGridView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="DocumentListDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>604, 688</value>
-  </data>
-  <data name="DocumentListDataGridView.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;DocumentListDataGridView.Name" xml:space="preserve">
-    <value>DocumentListDataGridView</value>
-  </data>
-  <data name="&gt;&gt;DocumentListDataGridView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DocumentListDataGridView.Parent" xml:space="preserve">
-    <value>SearchResultsPanel</value>
-  </data>
-  <data name="&gt;&gt;DocumentListDataGridView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="SelectionColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="SelectionColumn.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <metadata name="UploadTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>470, 56</value>
   </metadata>
-  <data name="DocumentsToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 17</value>
-  </data>
-  <data name="DocumentsToolStripStatusLabel.Text" xml:space="preserve">
-    <value>Documents:</value>
-  </data>
-  <data name="DocumentsCountToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 17</value>
-  </data>
-  <data name="DocumentsCountToolStripStatusLabel.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="FillerToolStripStatusLabel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="FillerToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>883, 17</value>
-  </data>
-  <data name="ToolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 16</value>
-  </data>
-  <data name="ToolStripProgressBar.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="UploadRunningImageToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAANRSURBVDhPXZB7TFNnGMbPZoiLMc5/nBqdySQGndu8
-        OwX5gzhBl+hismVGvAQNFyVKyDCOANLCCBeLoHG1YG2hpTiKIFLwiracYrF2XGoDUotgQJQClV4oQgUe
-        33OCzbKT/JIv7/c8v+98HwOAGatnPicEhJl4Sszl5v+FZotn941E0Kc5M1rNBBB5Y6bI174RLVymQ3Zj
-        7d6mpAafjnDMontSu591t50YGe9MdVDeSHzNC+zXmRSX8fDA5GA9hpujRv9VB3tymkZw2WTHtfa3PNz6
-        AtuDdvVGr9Mi9Hra/xiiXgsRwPSXMGluc6pjUB81aigL/nCpuQ8V5jcoZ19BXN2BS5UdKHnYg/K215A1
-        avG8NmJ6vL9yarBmjZW6QczLIia0q3ie9bH0B2+etgfXjX2o1vaiu9+FEZcHw64xWPtcUN7vhkzfi4pb
-        IpjLt010Fi9opW4Q/xBJ1zTnz1ZZUNzUCzWdxn3vnE68GHiL97Tm8MwAkrpuiHU2nFOzOCk3ZNGY4QWR
-        RS26MzcskNyxopNO9n6Ygcfrxd8yOewkck9MoOreI7AvnMhWPwOX5Tp+wa+FrCOxvBW5KjPs4z68m5jG
-        JG0kC4Qoq76Fs+lCnC4LRbR8AxLFenBZruMX7Mu+44iRGiGQt6HP4yPJNPqdbvwlyufLbNszxCm3Q6g5
-        iN8lqxEt1YPr+AW7z93QHSjQQqhsQaPNiTd06QRVKE4rtyFOsRnHZBuQevM3qE0XkVT5C3YVLEFEukLv
-        F4SdKRX8LKhBwlUDctRWDNODxSt/RE2rGFUtl/niP6ZCFDYkobQ5D3GqcGzJ/mLm+8zPvuQFIafEm4mO
-        8DQNEotY5Kq7cJzuy5Uv3E9A7t14ZN2OgUAThYz6WEjYTBwq2YFV6cwUL+DYGi2KPZGj9P70500cET1A
-        5NU1qHhaCNWTfJQa8iB7nEOSk7jCZiBGtRvfpDFDy5KZ9X6BwWAIs1gseKhlp0Lipdh/ZSX2XFyOnQVf
-        IeT8QhyRB0PcKMAxZTgC0wMcS5OZb7keX66rq1tEeGw2G2o1Gse6g6nC7w6k6AjHLLq1GXN8R0t3YlPW
-        YkgrJVOUD/QLFArFfKKLmCTWcrP/Q7/sXZEyBwVSkZsyA8QSAMxHVXS9+ziFnGcAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="UploadRunningImageToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
-  </data>
-  <data name="UploadRunningImageToolStripStatusLabel.ToolTipText" xml:space="preserve">
-    <value>Upload in progress.</value>
-  </data>
-  <data name="UploadRunningImageToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="UploadRejectedImageToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAANKSURBVDhPVZBrTFNnGMdPlpgli9m3ZZ/8ookMzaai
-        MUadidkyzZItWeIHNzCGD2o0GoOCuHFZ0Rkuq2DIVgURsCBoW1HagmZpbTmUSsew7SqU2tIK5VZ6oRfO
-        6QXp3+dUbfQkv5w3z3n+v+e8DwOAWe5jPiJEhJX4l/hYqL8P1T5/+91E5LyrM0s9zBqibnkkfyYV0CEy
-        UuAzKX8wFGtSeiL4Fv2w8ic2aj4Z4MfLg9RvItZlBL5upixiOjKbXOiD/2nh0n+y3bEaQwB/jfhwyzKf
-        QTjXs25YZHlc2FbFxSznFyk3SqxhvO1MRdRaHlwYLFwydu5eaXw6jXvWOXSxLyHpGUOjfAztWje6zDNo
-        HdDBrjywynvlrxYe5joom8NMNjFfTzR/4hhq+Yqr07nRbZpGj84DlzeCQCQGf2QZjukIOv5xoXXQg3u9
-        Yli7diXGmz99RtmczCKKb6n+LL1vQ7PBAxlNE55QOIwXs/OI01kglgZuqF2Q6J2olLE41Wa8QmUmI8hv
-        GtWXKGy48ciBcZrMraQR4zj83doGH4kCs0OwaYpgsHtRLfsfQq+QyQoOXWODRV3PUHvHCh+fQiixiiR9
-        +FVUhe4HCoz2HkXQKYfd0o5zEhOEXiGTFfxY/Sh4vMUEUZsZ07EUSVbhDUfxh/gq7jafht/eiZVlF8ZV
-        Bbgs6YHQK2SygoOVCv3hBh2qOkYx4Axjji7tjaageaKEnUIJvxqJuXqEJvvQLz2LXxq0EDJZwf6S26Lv
-        RQ9x9qYRNTIH/LSwUDINz/BVBBwKJLyXwNZsRyqogLn1G5TUiiFksoI9ZyQ7iLHvKlQoamJRK5uAxayH
-        R1uG5KIUvKsQbPU2xKdKEXb3o7/hQOLn4kv7sgKBncfEJ07WdHDfXnyAQvFjaFoKsESLi78sBvfi8Buc
-        R+gq1zA10IihurzKDwRGo3G/zWaDVse+ulhZgim2HsmF65npnDOfrpCXefPuU+Dne8Fe/tI3ULV5Uyas
-        Vqs/I2JOpxNKlSqor98b5QOTSIa0SCzSDhbl73EfK7HnmBnuxJOyjfKMQCqVriUmiCSxmX4vYKjeyg9e
-        2cLTJJ4m8frfc3ldxRdxbfmmtOa33LS2dENcc2H94GugOu5dg/sWbQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="UploadRejectedImageToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
-  </data>
-  <data name="UploadRejectedImageToolStripStatusLabel.ToolTipText" xml:space="preserve">
-    <value>UploadRejected folder contains one or more files that were not uploaded.  Click the icon to open the folder.</value>
-  </data>
-  <data name="UploadRejectedImageToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="FlagImageToolStripStatusLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQfAPNRUfNMTMhSS/Ofnvzl5ettbbgGBvNZWfN7e/NVVfNjY/KKifnT0/NtbfNdXVQz
-        GPSXl/WysptFNGA7HMkODv3q6vvg4N8jI/nOzosvHek1NdgbG7F2RVk2Gf///////yH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAAfACwAAAAAEAAQAAAIkgA/CBxIsKBADwgTKlR4cACEBQgQNFBwAECHix4OQqhg
-        gQADDANCCuDQIeMHDwssKHBwoCKAACMnmPSAgAHLAwkAvJTAQebBBhFa5nwZgKfPkwoG4NRJlGfJgw4g
-        MA1AtSiHBzMTLCjAtWuBDFdnariwgYJZA2g7hD24UKFarAYLenhrMu5BtU/t3sWol23CDwEBADs=
-</value>
-  </data>
-  <data name="FlagImageToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
-  </data>
-  <data name="FlagImageToolStripStatusLabel.ToolTipText" xml:space="preserve">
-    <value>Repository contains one or more flagged documents.</value>
-  </data>
-  <data name="FlagImageToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="FileAddToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJRSURBVDhPrZNLiFJRHMYvtJhVtE1a1SqCYZjNtGwTFRG0
-        iKFNgcVUMG6iTYuCodVMNTUp6cp8jJiogzgqijdFUTcuHB854qAOMw4+uOIojq98fd1zuoNNObTpg8O5
-        53J+3/+c738v81/ldDqnWJad54fF5XKl1Gp1n3/3w+FwROx2u9Fms90wmUxnhO0n5fF4rrjd7ngsFkO5
-        XMbR0RGGwyEGgwGq1Sr29vYQCASwsbERNBqNFwRsLB727e/vYzQa4TT1+31Eo1HwBloBG4s34Lrd7j8N
-        OI6DTqfjBGws/s5cp9NBqVRCrVZDu92mQK/XQ71ex+7uLoLBIIrF4mQDq9XKEahSqdDNqVQK29vbiMfj
-        FOQzgt/vR6FQON2g1Wrh8PCQVsnn83QmuUQiERogGQcHB9BoNJMNms0mvSOBcrkc3UxOEw6H4fV64fP5
-        qLFKpZpsQFpHMiDwzs4ObV0mk0EoFIL86zu8UDzE04938WDp+ujmy+nXAvpLFouFazQatEI6nab3z2az
-        9PmzYQVvzI/gSMoRK7JY+7aI+2vTmJOIVgWcYfgPhDtOO5lMIpFI0OokTPHbW9j8/gmbKRlt56rnCdY8
-        zzAjOdcRcIYhyRKYXIOAvxvceTULZ1JJ4WPZEnJclYgg4Ayj1+tv86O5tbVFP10SKOkKma89v4T37GMs
-        s2IKL7vFf5+AaH19/SLfoi/8T1TXarUwm80wGAxYWJrHvdXL+MAu0MpkJusTGfwppVJ5VqFQzMpkshmp
-        VDo1t3h+ZVYiapBjk5msGYZhfgJkuke2q5AT0QAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="FileAddToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="FileAddToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="FileAddToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="FileOpenToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFESURBVDhPnZKxSsRAEIbvbQSfQavD/vAhxO64B9A2jVel
-        0AewMJXd5QEUUmh3yh0RTAikSJCgpLkjxZ7f4OSym6Dgws+QnZ1v/szuyPxjjbqLjTzPzcty2SqKIlEY
-        hq2CIGhlQfigaLvZmKZp/hRg3/f3EAWQrOtaQMQhKcCCuABXn6uVSS4vJKoL5HneHgCRzaqqeirmVwJI
-        bq5NWZYiXA4CSFKkB1Hy+GDeTsYCYNioB2DKClDpYSSAb1CapqJBAJtuYZZlEl8PD0RA4jiW2cymUxvA
-        ZrdQu70Hd2IfqZOvohAATQXA41AAxV0AA1wvFtIZgLq5Pz6SnAVwiylan5+JKCbiBFcAuKEWgB23mA5i
-        +8eFPvXeDHhV2AdC8uP5SQoRD6h7teSBWwAccC2AiPqPt6cT+eawK+sa3cW/affflzE7fZFiJ8PG0XMA
-        AAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="FileOpenToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="FileOpenToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="FileOpenToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="FileSaveToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALHSURBVDhPhVNLT1NBGG3iwpW/wBVbFya6cOHCFXHhjghR
-        Y4hiYgQDCCFGEAVR8FVQowmv1D4t2pbUhmKRStJK1YKh0GJbWtvb9EFLvaQPaCm1r+PcEQJRiSf58n13
-        MufM/c43w+Og0+n26/X6KhLqiYkJp0gkypO1n+Pj4xatVqsYGxs7qVQq99HNf2JqaurQ5OSkzWq1IhqN
-        IpVKoVgsolAoIBaLwe/3Y3p6GqOjoyaFQnFwi7YDQjYEAgGUSiXshXw+j4WFBRAByRZtB0SAzWaz/xVg
-        WRYymYzdou2A9Mxubm5iZWUFiUQCmUyGEnK5HJLJJHw+H0wmEyKRyL8FNBoNy5FWV1fpZqfTCYfDAZvN
-        RonEIxiNRoTD4b0FNjY2EI/H6SnBYJDmxgE72oV2NA9acfeVE7VPLKh7ZsH1YStahmy4xJ9B2Tn1MSqQ
-        Tqdpj5yZDMMgFArhct8cNJYU9UBrDtG8GxIDi4uPZkEFuNFxHnBkt9tNR3f+vhlCY4JubnwxRzOHzTyw
-        lgV63y6j5rEZPLVaza6vr9Nfd7lctH+v14vqhzPklARyhSLyhRK5GyUUSOTy3HcRPW8YnO78CB65IOy2
-        23a7HYuLi/B4PKSFrxh6z6JDzuDOCINbMg9uit1oI9EqcqFV6EJ1twE8zlmOzLXBEbcFavizeP4ugq7X
-        QRIB3Jb50C7xok3kwQ2hGy3Ddpzp+ACeXC4/RSI9Pz9Pry5nKDeVyq5PGNCxIAYhshYjkUAkmUCY1LGN
-        FNoEDpQ3aUBHKZVKy8Ri8UvyiJISiQQqlQoVnSYM6xKIplh0GyowOHsNQ7PNpK7Ej/Qy2gUMjtcpfwvs
-        hkAgONDf33+k6t4X6Oe5KTAwxx9gKS3FUkZK6l6y5kePlMGJq6q/BbZx9Ir+89luE2r539D0NID6Pi8a
-        +N/R+HgJ9XwLyhtUOHxhBL8AXLTMwCyr7dMAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="FileSaveToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="FileSaveToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="FileSaveToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="FileBurstToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="FileBurstToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="FileBurstToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Burst</value>
-  </data>
-  <data name="FilePrintToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAErSURBVDhPnZKxSsNQFIZ9Hbv1DQSXuhZEBwfnDm4uvoGg
-        jk4+gSABEYQMCgYnMygYRMeKUYjIBUkHJT3yHXtir96U4IGPtD33/+7JvZ2zkhY1WRouFpzdv8jRzaNy
-        cHEn28fXsrl/UjNTQpNg9uzk6W2kvJZV/Xnn3MnKxl6zxAQsvhxWHogQMNEfiX6bFIL30YcXPn34FgA9
-        BNV4rFAqYGzeGUICg15/fUslPGsBwTzPdcRpgQUPbz8VekvLAynL0hcQdM5JFEWtQIDIE/AjEqMoiiBM
-        ytMTcMeEsiyTJEkkjuNG0jSdLTBYOA1igykWeqvtBNTu1ZoGh51Os4AzCAl+785rsJkn4F4JcU2hA2RH
-        gz7S+e7ij4AJkBjcMXBQBjsahL3/wf9L5Av8hB9ZPoZJTAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="FilePrintToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="FilePrintToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="FilePrintToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Print</value>
-  </data>
-  <data name="FileDeleteToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJhSURBVDhPrZNPaJJhHMffpmOnDtElqB3sEuwSnTtU2+oQ
-        dFssulYQRBBR2+qyW4ciQg+enM6JmJvImM5/aYp6SMJNZRNl06amk1f8w/zb/PPteR7fsMjRpS/8eF9e
-        ns/3eX7f3/Ny/1UWi2XM4XDcJWW0Wq1RlUrVJt9+mM3moMlk0m9sbNxaXV0VCcv/lNPpnLDb7eFQKIR8
-        Po9qtYput4tOp4NisYiDgwN4vV4YDAafXq8/L2ADEdidSqXQ6/VwktrtNra3t0EM1AI2EDHgW63WPw14
-        nodGo+EFbCDSM99sNnF4eIhyuYxGo8GA4+NjVCoVJJNJ+Hw+5HK54Qbr6+s8hQqFAlscjUaxu7uLcDjM
-        QJIRPB4PstnsyQb1eh2lUontkk6n2ZPmEgwGWYC0MpkMlpeXhxvUajXWI4USiQRbTE8TCATgcrngdruZ
-        sVKpHG5AR0czoHA8Hmej29vbg9/vx+d3z+C+fxHOqVFYrp3t2qZHFgS0L6PRyB8dHbEdYrEY639/f5+9
-        ez+8QOjlVTQ336MXtaH+8Tm+PpnofJoSPxVwjiMXhP+V9s7ODiKRCNudhumYuYAGgSG7A8yfAd5IUHh7
-        HZs3REkB5ziaLIVpGxT83cA5OYpe0Cjchr7Ki+ewOCnuCTjHabXa26RqW1tb7OrSQOlU6NN9bxy1pQcA
-        gVpzHEqkUo9FsN0UfRfwvlZWViRkREvkJ6qo1Wqsra1Bp9PBMDeLL48uITcvAf9qFImHp+CaEHes0yOv
-        BfRvKRSK03K5/IpMJrsslUrHfLPjC/Yp0Td6bPu0KNOHOe4nksxF2afGcV8AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="FileDeleteToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="FileDeleteToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="FileDeleteToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="ToolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="EditUndoToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAI2SURBVDhPzZLbT9JxGMbd+ju6Ihsj11aUBRWHMSxPUJYo
-        GGmEgKL4M8ETIIIghDjAwxzLExLGRA1mhanhRDRntZrrYHbnJf9De0L3W4y8iMs+d8/ePd/3fZ/3m/f/
-        8DipAJGQQ7Mug3qtDqplKepf1YAdZf+qmRekJKGKWHVASFRNCk+TlmyIDTkiP2fx4mAWCz8CCO/PIPR9
-        CsGv45j4PALXVh+0L5sg9PEjZcM8BmnL0ByXYfEgiPm0cW7fj+ffJo/NM198mNobw+hHF3yfvNAvt4Hv
-        ZkWKXDeyJ2lcqYXy9X3Il8SoWxRBOncX4tnbEPnLQURV8Ow4MPphEEPvByAPSsG2XiVI678RjPHdJV7u
-        oWPTDFvSCN2SBkwjPUaWc4PvYrnVYTn6kyaY410o7L6QIksZKucqT1UFBHpSZsGxM93K0ENYEnoY1tpx
-        sY128gFRQDBV8bR0j5R/4NiYboap8FC/qkPHWwIN4UcoaKFmryDylw23RJVQL8hROsLDTTcHPOd1cGwM
-        SCbuoXtFC9NGF4zrHRB6S3BOfTYTomi63KmJKDC064Rn9wkGd/rh3O6DfasX1s0emNNja1ebYYi3Qzot
-        Bk2dH6E0UDJnvDNebG2cl6WNNgy8s8GxbTkOy5IwoDfdtfNNK+pDtRB4i0FT5UeoCsrJj3TLy/XInknw
-        wF8NVt8VMHsuHSUNuu48aK20VEETNUZVnSGyOv8N184Yv2a6fCLEnDk6I8NI7yRlDuTl/Qa0FCtA1YjQ
-        KwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="EditUndoToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="EditUndoToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="EditUndoToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Undo</value>
-  </data>
-  <data name="EditCutToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFKSURBVDhPrZKxSgNBFEX3Pyz9Azs7S0GwipA0gpViaSHE
-        1kYEIYKVQsRGRNFGUSQQEBvByihIUIhFAiEKabRYoz45NzNLJqwSxAuXLDNzz3vzJtG/ywaQO5ouDpSr
-        TTuq1OXty3tbOa3ZYuEw8a8Q7fap/Rpb4+VN3rh6t7mlLa27SCg2zkvXMrprfdnF06cMiG5wbn5V+y7W
-        FQtx3LGJqQWrN571DQhI6bEL8A4A+nLaOygLcHP7oN/izpnWARxXP2QAmZm81pOqBKg6MjorDw1P2mbx
-        RId8eLfSkQEARwKsre/LtEUQ0wnqD2OGGQD8VKlIODu9rK4Y3E+AsfGsMkEHBLkGg/N37w3zhLjWbIcA
-        PwP+JITpxF8hDcAMEkDvK9AanRAG6sU6VTFhinFVJICXVpwYKOa5GBgVvQknz5gm7QwoF/mrougbQEF9
-        mVZBBAwAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="EditCutToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="EditCutToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="EditCutToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Cut</value>
-  </data>
-  <data name="EditCopyToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFDSURBVDhPlZK9SgNREIXzOpY+gEXQIg+QkMLOTuwsLNRU
-        ViKIja0SbMRCBQsLUxgQArERf1ARCaLBCErUIoWJjnyzTna4Ccs6cLLkzpzvnr17M5KiMknFQPXyQfbO
-        m6rNkxtZ3q9LqVyR2bVdVSKEJsbr53dpvnVUrx/RE61W2zI5v6EQqz9rVCwAYLj2+KP6VyL+bJ825LPz
-        pWYzpknUB7CLARgIE6HK/bfO0F86aklhZiWC8ENEA9D0iUKAKRHgE5kZHdz2VPTyUwsxYHHrWN+TIQAe
-        6M07F10VvVx+OgZwsgaYO3wZAHhz+ayr5zMAwGAAn8gDMA8F8Fmu7p4Uwh3wibx5vd5TNVptyeaKMQAD
-        p4o4HJ9oGAD42EQhBoTlE9kFYleEmZQjo+M6q5fJF4thIt4XEZudMfc/Y1i6mrpEfgGL0hchHI3KDgAA
-        AABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="EditCopyToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="EditCopyToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="EditCopyToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="EditPasteToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAErSURBVDhPpZLPSkJBFId9iB6gTc/R1icIIWjhtnWvEOUm
-        Klq7s1VgBJGboghdVNAVhOQShAWZQRSBFFInvqNnGOdOl6ADn15nzu+788eCBHVSmYviV8EvBgZnS9LY
-        LMpGeUafHbVZB3P0RAVpvawTNOXR2S1p3yQ6LgZMYG8+7vZlL7lXquc3srZ/LSs7Bw5qEo8LCPYG7/L8
-        OnTwG7aaH7KwvK79GcFTWlcQEGr2vqZ4G45UwIqchA/29v3Zl9urqoKAZj98lI4FRq6AfccERq4gOd3W
-        JfoCC9baI4W5+eJiVkA4FIRh4DAzgpfHtrQOVxWuyg7xX4IwzA1AVMD13XVb+o2ALfwmQJ4R+HDCnfRB
-        JfYHMghfXCbTgrBYARKD5hB3jWHp6J9L5AfcLx2+3+AT1QAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="EditPasteToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="EditPasteToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="EditPasteToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Paste</value>
-  </data>
-  <data name="EditRestoreToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH2SURBVDhPxZLvTxJxHMf5O/wH0oVrzjUrzMvTdKIiLHU3
-        TZyabnTBQmfkTrBu6MXAXweeIuDOH+HSelCbrciZFsvkWkpY3T/D3n1lV08QWz3x9ei7fd+fX+/PR1cI
-        /b0L0J7/jt5ejEvOi/+XoNRRDNNsAyyhJlRwZTCMXUYlX5GhBQOrSQpT6ihBi2iE570Lj/ZGwH8YxfhH
-        D7h3w+h72gnjDK2YgrVFmjyfsiE9bknNJJCDlwQKyTH4PvHwJt2YPhDgfGWDOWZUNPnpXHWXoyPWCqvM
-        oNZ/Hf3rXZhOPUFQ8UP6MoXBLRs64pazx6kWruFmoCpnYuNcTZxapLJiyp9LIh74YH1uUXPCs2iYpf9s
-        oVVu4rnEIJbSEpYzC+h7yeRvqMp7BbTPgLpJCkaRRvNcnUv70jFrZt6z8wArmTDWjqMYeH07P0HNRKXq
-        3XUjpAQwuT8BKkpl20llJm7mqQ0qe1Jd/iYhlg7hbsKaP0L91A3WttmDha8ziBwGMU8M82wP4/GuC3J6
-        Hus/lvDsp4zxfQ72nZ7TTTSH65WRN87crJEjkbQbQfx7FCvHYWyqywikeNi3uwuvkYmaitpWW5SHifsI
-        k05Oqm6oMjFOgvB5FA4SzCZ7Cx/Sb7pftLHEaXVgqxO2t1awZGb73p2/n/I5oNP9AvNyE9pUyKjXAAAA
-        AElFTkSuQmCC
-</value>
-  </data>
-  <data name="EditRestoreToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="EditRestoreToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="EditRestoreToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Restore</value>
-  </data>
-  <data name="EditDateTimeToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFmSURBVDhPnZI/SwNBFMT9OhYWYqEgaCAG/6SySCoba7FQ
-        EERBAtqIikES/QZWKYRAsLCIoAnJpbFRxMZCG4loIB4XSRxv9u7t7YKKOjAcb+/m997ubR/+Iu8abjUW
-        FoEU4PbJU8VyYUCZ2i02tFdzJ8p4ySlAenEvqH1ZExw5SeRrU2EViHD6uFTXAIZn59fVewVg18P6DA6q
-        k9i/mMB2eVxPkqn0tFcKN8qEcQpKA7KXCeyUY9g6G8VGaVgDNp2e5aXKBx6bbRsgypyOYK04FFaB3C7Q
-        7kR+9Y+LAGsLPCiKXaUzg2aYQfG3AFMSrt172s03KBMwnVpQ32kAFzt+SD6WMDtK8PzuHQ+tLwA8WS7K
-        2CZAwgyagHhyLgLwvwrA7CwAhgTAO/FrgIwtlktFjyVSNoABAZj7lu5m+Lnl2gBeCnblC07C5092Glfo
-        H4xHAE5AiJj/mOZJ09wvza40w9Y9+L+AT66geKUL1AmAAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="EditDateTimeToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="EditDateTimeToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="EditDateTimeToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Date/Time</value>
-  </data>
-  <data name="ToolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="ViewRefreshToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALTSURBVDhPlVNtS5NRGH7ID9KHfoFQWfaioWZRCH0JwqCQ
-        QGuWszXfMtNoSUppkKVRkWlMpmJO5rSxttl82dicihvTD2bNzTHXllOmH1QeUobOlzH16nlOQ8mI6IID
-        55z7XNc5133fh2Kh0+nCe3t7OcxQ6/V6p0QiCTJ7Aa1Wa9FoNIru7u6LSqUyjBzejf7+/hiDwTBms9kw
-        Pz+P5eVlbG5uYmNjAwsLC/B6vTCbzWhvbx9UKBQRIdoOGLJxenoaW1tb+BuCwSCsViseGQRejpLz+0sY
-        AXp9ff2fAjRNgy/hB3M0XFOI+guMZ3ptbQ2sBY/HQ2wEAgF8++HAO8tLCEw5KOzPxB09DxXmUjwdKEG6
-        7IohRKeozs5OenV1FTMzM7BYLBgaGoJuRIPKoVKI7SJ0f1ehw/0Rn1wyKJ2tkI9LUKy9h+S6JM+2wMrK
-        ChYXFzE7O0uEJLZGNFhr0OVWonKwDFkd13FTkYrHegGKNYVIFiX1ETILVsDv9xOPbDInJydRZi5Cfg8P
-        uRouSroEMBqNRJjXlBa8JLpgLi+n9iRWJ+7dFmBLNzc3R8hut5uUbmJigtjR9+jR19dHxDPqMtb/qIJa
-        raaXlpbIDS6XC+Pj4ySZ7NxkMoFpJDyQFhLR+vp6OkTbAdMgtM/nw9TUFBwOB+x2O7nd7hjDgHEAuU18
-        cOuukXhVVRWd+OSk+XRJLOIE0YjJO+Kl2traaDbI2iDEkIDT6URBSy4KFNm4/YGHc8/O4GxZAm40pKB6
-        uAI50gxEZUc2UjKZ7DIz/KOjo6R12YSyVUl/n4J8eSYaLNUQfXkD4cgr1Hx+gbfDz8l+VNbBrwf4EeeJ
-        jdbW1siWlpZm5hP5pFIpVCoV5HI50l6n4lZzGriNVxFfFIMThUdxLO8wDmXvN22Td0MsFu9jkpVQW1sb
-        LxQKw089jDXF3Y+2h8L/Dw6HCjt+94gytNwFivoJ8/BMyvppXccAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="ViewRefreshToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="ViewRefreshToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="ViewRefreshToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
-  <data name="ToolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="InsertTextToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="InsertTextToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="InsertTextToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="ToolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="ToolsOptionsToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE2SURBVDhPtZE/SwNhDIfv8/kNXLu5OgoujuIgCCK0i6Do
-        UESRLnKVo1iEFhyqYnWQDkKVImpBraIX++RN6iEe3KA/CMeb5Mm/i/5N8kPmLiaAyu6R2tpeS9ZrrWJF
-        NGsswJe3VK0/DLaVXFo0pxABOm3Ep9LuPcvTayrx+b00roYK1U76Um1eTwoZFoQD2LvWO7dy0LmTw4tH
-        TW7ffOrXp1neTvRt+PfOWZjuyGG++LqDVOZXd9RneBAOpqBDfDbQBBIxfEyTCyOclf1QAB33RpPk949w
-        A6bI7Z6F/XC8gTkev5PdiU3PLmrc8FCA6wN4EboxNld3OOk+6HpTpTnNMTwIB0UwOrIvMJMBL23WtfOv
-        sEsjY61Um1qAKbgFYzuILD1fJM0slLWjWyEwKyUyMvdfK4q+ABdP/OvWUme+AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="ToolsOptionsToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="ToolsOptionsToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="ToolsOptionsToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="ToolsUploadProfilesToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADxSURBVDhPzZE9C4JQFIb9S7U0tbb3M/oDQXNjNdfaGhER
-        5FRTH1tKSFNLUEQpCXFDE62T52h+dVGopRceEK/vc8/1Cv8T4MRfyg5+rCkdD7kB2qpGZCVWpphShAVc
-        pApoy7KHnIuByRREeTKRwOdPwboJYDN3MSzTrpNSiFj0GBVAG+QTgveYERzzFGDrM+KujuHB5nwBTeBD
-        Rb1PWOcumIc2YexaJOILDCU4Z7KMRbatEzgFV+Dc5KDIK183VcI4DjkC9yfh2dLKeKWIse+lCHAKF3zG
-        s1rqlEbGXbGI4DuuILimKHhlPJKCb0OC3yIIL23FiCaG84ANAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="ToolsUploadProfilesToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="ToolsUploadProfilesToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="ToolsUploadProfilesToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Upload Profiles</value>
-  </data>
-  <data name="ToolsUpdatePdfTextColumnsToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="ToolsUpdatePdfTextColumnsToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="ToolsUpdatePdfTextColumnsToolStripButton.Text" xml:space="preserve">
-    <value>Update PDF Text Columns</value>
-  </data>
-  <data name="ToolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="HelpContentsToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEwSURBVDhPY0AH//EAqBLcAKTILanqf8/kGXCc2zQZjEHi
-        eA0BScaUdf+/8fbf/5PP/oPx6mu//k89+weOdWNasBuCrLls+xsUnL/pJRhnrn36v/TAf0xDQBynsHS4
-        ZpDiFec/gBXBAIiftuoxGIMMkbKJBIujGLD15newATnrn4MlQZpAtoI0gUDi8gdwA0DqQQDDAJDtIAOQ
-        NSMbAMKZu/7hNgCkGaQR2WYQWHjy9f+YhXf+xy+9BzYApxdgNoIwSBMIwDQTNAAUZTB/gmiQYphGEA6f
-        dxNM4zQAFM8gRTDNyC4AiYNw8KwrmAaAAIhj458AjgWYQmwYpFk9uBxVMwwgGwJSGL/+IwpG1vz3719M
-        A0AAZggotYEwSAMIg9gwZ+PUDANgVTgAVAk1AQMDAEj3SkjPKjgnAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="HelpContentsToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="HelpContentsToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="HelpContentsToolStripButton.ToolTipText" xml:space="preserve">
-    <value>Help</value>
-  </data>
   <metadata name="UpdateCheckTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>592, 56</value>
   </metadata>
