@@ -66,6 +66,7 @@ Public Class UploadService
     Public Sub ExecuteUploadFolderMaintenance() Implements IUploadService.ExecuteUploadFolderMaintenance
         CreateMissingUploadFolders()
         DeleteDormantUploadFolders()
+        DeleteEmptyRejectedFolders()
     End Sub
 
     Public Sub ExecuteUpload() Implements IUploadService.ExecuteUpload
@@ -91,6 +92,14 @@ Public Class UploadService
                 If Directory.GetFiles(folder).Any = False Then
                     Directory.Delete(folder, True)
                 End If
+            End If
+        Next
+    End Sub
+
+    Private Sub DeleteEmptyRejectedFolders()
+        For Each folder In Directory.GetDirectories(AppFolders.GetPath(AppFolders.AppFolder.UploadRejected))
+            If Directory.GetFiles(folder).Any = False Then
+                Directory.Delete(folder, True)
             End If
         Next
     End Sub
