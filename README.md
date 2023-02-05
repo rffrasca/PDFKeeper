@@ -14,7 +14,7 @@
     
 [![Downloads][downloads-shield]][downloads-url]
 [![Commit Activity][commit-activity-shield]][commit-activity-url]
-[![Twitter][twitter-shield]][twitter-url]
+[![Donate-PayPal][Donate-PayPal-shield]][Donate-PayPal-url]
     <br />
     <br />
     <a href="https://github.com/rffrasca/pdfkeeper/issues">Report Bug</a>
@@ -139,6 +139,6 @@ PDFKeeper is distributed under the terms of the [GNU General Public License (GPL
 [downloads-url]: https://github.com/rffrasca/PDFKeeper/releases
 [commit-activity-shield]: https://img.shields.io/github/commit-activity/y/rffrasca/PDFKeeper?style=flat
 [commit-activity-url]: https://github.com/rffrasca/PDFKeeper
-[twitter-shield]: https://img.shields.io/twitter/follow/PDFKeeper?style=flat-square
-[twitter-url]: https://twitter.com/intent/follow?screen_name=PDFKeeper
+[Donate-PayPal-shield]: https://img.shields.io/badge/Donate-PayPal-green.svg
+[Donate-PayPal-url]: https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=JCM6ZMCF6BHHN
 [product-screenshot]: https://github.com/rffrasca/pdfkeeper/blob/master/docs/UserInterface-8.0.0.png
