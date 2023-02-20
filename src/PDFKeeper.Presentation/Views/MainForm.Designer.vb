@@ -977,7 +977,7 @@ Partial Class MainForm
         'UploadFolderMaintenanceTimer
         '
         Me.UploadFolderMaintenanceTimer.Enabled = True
-        Me.UploadFolderMaintenanceTimer.Interval = 60000
+        Me.UploadFolderMaintenanceTimer.Interval = 30000
         '
         'UploadRejectedFilesCheckTimer
         '
