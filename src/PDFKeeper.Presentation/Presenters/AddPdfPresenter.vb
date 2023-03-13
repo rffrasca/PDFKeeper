@@ -150,12 +150,16 @@ Public Class AddPdfPresenter
             model.Subject = .Subject
             model.Keywords = .Keywords
             pdfSvc.CloseRestrictedViewer()
-            pdfSvc.WritePdfWithInfo(.SelectedPdf, password, modifiedPdfFile, model)
-            .SaveEnabled = False
-            .PreviewEnabled = True
-            .AddEnabled = True
+            Try
+                pdfSvc.WritePdfWithInfo(.SelectedPdf, password, modifiedPdfFile, model)
+                .SaveEnabled = False
+                .PreviewEnabled = True
+                .AddEnabled = True
+                viewInstance.SelectNextControl(control, True, True, True, True)
+            Catch ex As iText.IO.Exceptions.IOException
+                commonDialogs.ShowMessageBox(ex.Message, True)
+            End Try
         End With
-        viewInstance.SelectNextControl(control, True, True, True, True)
     End Sub
 
     Friend Sub PreviewButton_Click(sender As Object, e As EventArgs)
