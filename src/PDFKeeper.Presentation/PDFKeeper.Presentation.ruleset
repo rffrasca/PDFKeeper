@@ -296,7 +296,6 @@
     <Rule Id="CA2119" Action="Warning" />
     <Rule Id="CA2153" Action="Warning" />
     <Rule Id="CA2207" Action="Warning" />
-    <Rule Id="CA2213" Action="Warning" />
     <Rule Id="CA2214" Action="Warning" />
     <Rule Id="CA2216" Action="Warning" />
     <Rule Id="CA2217" Action="Warning" />

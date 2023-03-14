@@ -19,7 +19,9 @@
 '******************************************************************************
 Public Class SecureTextBox
     Inherits TextBox
+#Disable Warning CA2213 ' Disposable fields should be disposed
     Private _SecureText As SecureString
+#Enable Warning CA2213 ' Disposable fields should be disposed
 
     ''' <summary>
     ''' Creates an instance of the class.
