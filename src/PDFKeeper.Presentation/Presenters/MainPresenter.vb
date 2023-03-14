@@ -835,6 +835,8 @@ Public Class MainPresenter
                 Await Task.Run(Sub() uploadSvc.ExecuteUpload()).ConfigureAwait(True)
             Catch ex As DbException
                 commonDialogs.ShowMessageBox(ex.Message, True)
+            Catch ex As iText.IO.Exceptions.IOException
+                commonDialogs.ShowMessageBox(ex.Message, True)
             Finally
                 If uploadSvc.DocumentsUploaded Then
                     TriggerDocumentListRefresh(True)

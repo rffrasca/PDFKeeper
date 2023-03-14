@@ -150,27 +150,34 @@ Public Class UploadService
                     Else
                         File.WriteAllText(link, stagedPdfPath.FullName)
                     End If
-                    WritePdfWithInfo(pdf.FullName, Nothing, stagedPdfPath.FullName, pdfInfo)
-                    Dim pdfInfoExt = New PdfInfoExtModel
-                    If xmlFile.Exists Then
-                        pdfInfoExt = ReadPdfInfoExt(pdf.FullName)
-                    End If
-                    With pdfInfoExt
-                        .Category = profile.Category
-                        .TaxYear = profile.TaxYear
-                        If profile.FlagDocument Then
-                            .Flag = 1
-                        Else
-                            .Flag = 0
+                    Try
+                        WritePdfWithInfo(pdf.FullName, Nothing, stagedPdfPath.FullName, pdfInfo)
+                        Dim pdfInfoExt = New PdfInfoExtModel
+                        If xmlFile.Exists Then
+                            pdfInfoExt = ReadPdfInfoExt(pdf.FullName)
                         End If
-                        .OcrPdfTextAndImageDataPages = profile.OcrPdfTextAndImageDataPages
-                    End With
-                    WritePdfInfoExt(stagedPdfPath.FullName, pdfInfoExt)
-                    pdf.DeleteToRecycleBin
-                    If xmlFile.Exists Then
-                        xmlFile.DeleteToRecycleBin
-                    End If
-                    File.Delete(link)
+                        With pdfInfoExt
+                            .Category = profile.Category
+                            .TaxYear = profile.TaxYear
+                            If profile.FlagDocument Then
+                                .Flag = 1
+                            Else
+                                .Flag = 0
+                            End If
+                            .OcrPdfTextAndImageDataPages = profile.OcrPdfTextAndImageDataPages
+                        End With
+                        WritePdfInfoExt(stagedPdfPath.FullName, pdfInfoExt)
+                        pdf.DeleteToRecycleBin
+                        If xmlFile.Exists Then
+                            xmlFile.DeleteToRecycleBin
+                        End If
+                    Catch ex As iText.IO.Exceptions.IOException
+                        MoveToUploadRejected(pdf)
+                        stagedPdfPath.Delete()
+                        Throw
+                    Finally
+                        File.Delete(link)
+                    End Try
                 Else
                     Dim pdfInfo = ReadPdfInfo(pdf.FullName, Nothing)
                     With pdfInfo
