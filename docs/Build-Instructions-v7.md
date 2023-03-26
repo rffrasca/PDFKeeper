@@ -1,4 +1,4 @@
-# Building PDFKeeper 7.x.x from Source
+# Building PDFKeeper v7 from Source
 
 ##  Install Development Applications and Tools
 1. Microsoft Visual Studio 2019 - https://www.visualstudio.com/downloads/
@@ -13,7 +13,7 @@
     Note, make sure to perform the installation using a Command Prompt session that was opened using "Run as administrator". In addition, it is not necessary to install the full ODAC product, only ODP.NET4 is required.
 
 ## Get the Source
-Download the source code for a 7.x.x release from [here](https://github.com/rffrasca/PDFKeeper/releases). For the latest version in development, clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git.
+Download the source code for a v7 release from [here](https://github.com/rffrasca/PDFKeeper/releases). For the latest version in development, clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git.
 
 ## Download and Extract Third-Party Components
 - Ghostscript for Windows (64 bit) - https://www.ghostscript.com/download/gsdnld.html
