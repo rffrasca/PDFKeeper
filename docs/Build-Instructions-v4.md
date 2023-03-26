@@ -1,4 +1,4 @@
-# Building PDFKeeper 4.x.x from Source
+# Building PDFKeeper v4 from Source
 
 ##  Install Development Applications and Tools
 1. Microsoft Visual Studio 2013 - https://www.visualstudio.com/downloads/
@@ -15,7 +15,7 @@
     using Run as administrator. In addition, when installing, the machine_wide_configuration argument must be true to install into the Global Assembly Cache (GAC).
 
 ## Get the Source
-Download the source code for a 4.x.x release from [here](https://github.com/rffrasca/PDFKeeper/releases).
+Download the source code for a v4 release from [here](https://github.com/rffrasca/PDFKeeper/releases).
 
 ## Download and Extract Third-Party Components
 1. Sumatra PDF 3.1.2 (32-bit Portable Version) - http://www.sumatrapdfreader.org/download-free-pdf-viewer.html
