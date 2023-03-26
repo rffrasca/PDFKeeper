@@ -96,9 +96,9 @@ Full release history is available in the [Changelog](https://github.com/rffrasca
 
 ### Building from Source
 
-Build Instructions for version 8.x.x is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-8.x.x.md).
+Build Instructions for version 8.x.x and 9.0.0 is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-v8-v9.md).
 
-Build Instructions for version 7.x.x is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-7.x.x.md).
+Build Instructions for version 7.x.x is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-v7.md).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
