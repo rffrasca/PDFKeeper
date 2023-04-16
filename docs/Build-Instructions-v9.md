@@ -1,4 +1,4 @@
-# Building PDFKeeper v8 from Source
+# Building PDFKeeper v9 from Source
 
 ##  Install Development Applications and Tools
 1. Microsoft Visual Studio 2019 - https://www.visualstudio.com/downloads/
@@ -13,7 +13,7 @@
     Note, make sure to perform the installation using a Command Prompt session that was opened using "Run as administrator". In addition, it is not necessary to install the full ODAC product, only ODP.NET4 is required.
 
 ## Get the Source
-Download the source code for a v8 release from [here](https://github.com/rffrasca/PDFKeeper/releases). For the latest version in development, clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git.
+Download the source code for a v9 release (when available) from [here](https://github.com/rffrasca/PDFKeeper/releases). For the latest version in development, clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git.
 
 ## Download and Extract Third-Party Components
 - Ghostscript for Windows (64 bit) - https://www.ghostscript.com/download/gsdnld.html
@@ -37,4 +37,4 @@ Download the source code for a v8 release from [here](https://github.com/rffrasc
 4. Open "PDFKeeper.sln" with Visual Studio.
 5. Set configuration to Release, and then Build the Solution.
 
-    After a successful build, "PDFKeeper-8.x.x.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".
+    After a successful build, "PDFKeeper-9.0.0.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".
