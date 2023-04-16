@@ -1,6 +1,26 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v8.1.2 - 2023-04-16
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.1.2).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.1.2).
+### Changed
+- Empty folders in UploadRejected will be deleted.
+- Upload Folder Maintenance timer interval was set to 30 seconds.
+- Updated iText and iText.Font-Asian to 7.2.5
+- Updated SQLite Command Line Shell to 3.41.1
+- Updated Magick.NET to 13.0.0
+### Fixed
+- Added missing ellipsis to Insert > Text menu item text.
+- Added missing ellipsis to Tools > Update PDF Text Columns menu item text.
+- Added missing ellipsis to Tools > Move Database menu item text.
+- iText.IO.Exceptions.IOException will be caught during Save in Add PDF dialog.
+- iText.IO.Exceptions.IOException will be caught during an Upload, and then the offending PDF will be moved to the UploadRejected folder.
+### Changed (Development)
+- Created scripts to set version in all references.
+- Updated Microsoft.CodeAnalysis.NetAnalyzers to 7.0.1
+
 ## v8.1.1 - 2023-01-07
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.1.1).
