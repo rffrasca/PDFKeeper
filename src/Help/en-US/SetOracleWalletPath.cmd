@@ -1,4 +1,5 @@
 @echo off
+
 rem ***************************************************************************
 rem * PDFKeeper -- Open Source PDF Document Management
 rem * Copyright (C) 2009-2023 Robert F. Frasca
@@ -18,6 +19,7 @@ rem *
 rem * You should have received a copy of the GNU General Public License
 rem * along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 rem ***************************************************************************
+
 rem
 rem Start of localized strings
 rem
@@ -27,6 +29,7 @@ set ErrorMessage=Error: Oracle Wallet path name not specified.
 rem
 rem End of localized strings
 rem
+
 title %Title%
 set /p walletPath=%Message% 
 if "%walletPath%"=="" (

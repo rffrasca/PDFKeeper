@@ -118,39 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="PixelsPerInchLabel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="Label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="PixelsPerInchLabel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Label.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 9</value>
   </data>
-  <data name="PixelsPerInchLabel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Label.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 15</value>
   </data>
-  <data name="PixelsPerInchLabel.TabIndex" type="System.Int32, mscorlib">
+  <data name="Label.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="PixelsPerInchLabel.Text" xml:space="preserve">
+  <data name="Label.Text" xml:space="preserve">
     <value>Pixels Per Inch (PPI):</value>
   </data>
-  <data name="&gt;&gt;PixelsPerInchLabel.Name" xml:space="preserve">
-    <value>PixelsPerInchLabel</value>
+  <data name="&gt;&gt;Label.Name" xml:space="preserve">
+    <value>Label</value>
   </data>
-  <data name="&gt;&gt;PixelsPerInchLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;Label.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;PixelsPerInchLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Label.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;PixelsPerInchLabel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Label.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="PixelsPerInchNumericUpDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 27</value>
+    <value>12, 27</value>
   </data>
   <data name="PixelsPerInchNumericUpDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 23</value>
+    <value>120, 23</value>
   </data>
   <data name="PixelsPerInchNumericUpDown.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -172,13 +172,13 @@
     <value>1</value>
   </data>
   <data name="OK_Button.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
+    <value>Bottom, Right</value>
   </data>
   <data name="OK_Button.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="OK_Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 91</value>
+    <value>56, 70</value>
   </data>
   <data name="OK_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
@@ -201,23 +201,44 @@
   <data name="&gt;&gt;OK_Button.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 15</value>
   </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>205, 130</value>
+    <value>146, 109</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="$this.HelpKeyword" xml:space="preserve">
+    <value>Document Previewing.html</value>
+  </data>
+  <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
+  <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Set Preview Pixel Density</value>
+  </data>
+  <data name="&gt;&gt;HelpProvider.Name" xml:space="preserve">
+    <value>HelpProvider</value>
+  </data>
+  <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SetPreviewPixelDensityDialog</value>

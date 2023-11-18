@@ -1,24 +1,26 @@
-'******************************************************************************
-'* PDFKeeper -- Open Source PDF Document Management
-'* Copyright (C) 2009-2023 Robert F. Frasca
-'*
-'* This file is part of PDFKeeper.
-'*
-'* PDFKeeper is free software: you can redistribute it and/or modify
-'* it under the terms of the GNU General Public License as published by
-'* the Free Software Foundation, either version 3 of the License, or
-'* (at your option) any later version.
-'*
-'* PDFKeeper is distributed in the hope that it will be useful,
-'* but WITHOUT ANY WARRANTY; without even the implied warranty of
-'* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-'* GNU General Public License for more details.
-'*
-'* You should have received a copy of the GNU General Public License
-'* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
-'******************************************************************************
-Imports PDFKeeper.Common
-Imports PDFKeeper.Infrastructure
+' *****************************************************************************
+' * PDFKeeper -- Open Source PDF Document Management
+' * Copyright (C) 2009-2023 Robert F. Frasca
+' *
+' * This file is part of PDFKeeper.
+' *
+' * PDFKeeper is free software: you can redistribute it and/or modify it
+' * under the terms of the GNU General Public License as published by the
+' * Free Software Foundation, either version 3 of the License, or (at your
+' * option) any later version.
+' *
+' * PDFKeeper is distributed in the hope that it will be useful, but WITHOUT
+' * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+' * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+' * more details.
+' *
+' * You should have received a copy of the GNU General Public License along
+' * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
+' *****************************************************************************
+
+Imports PDFKeeper.Core.Application
+Imports PDFKeeper.Core.DataAccess
+Imports PDFKeeper.Core.Extensions
 
 Namespace My
     ' The following events are available for MyApplication:
@@ -29,42 +31,45 @@ Namespace My
     ' NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
     Partial Friend Class MyApplication
         Private Sub MyApplication_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
-            Dim help = New HelpFile
-            Dim previousVersion = UserSettingsConfig.Version
-            UserSettingsConfig.Upgrade()
-            If UserSettingsConfig.FirstUse Then
-                help.Show("PDFKeeper.html")
-            ElseIf previousVersion < "7.0.0.0" Then
-                help.Show("Schema Upgrade for Oracle Database.html")
+            Dim helpFile = New HelpFile
+            Dim userSettingsHelper = New UserSettingsHelper
+            Dim previousVersion = userSettingsHelper.LatestConfigVersion
+            userSettingsHelper.Upgrade()
+            If userSettingsHelper.IsFirstUse Then
+                helpFile.Show("PDFKeeper.html")
             End If
             If Settings.DbManagementSystem.Length = 0 Then
-                If File.Exists(DbSession.LocalDatabasePath) Then
-                    Settings.DbManagementSystem = DbSession.DbPlatform.Sqlite.ToString
+                If File.Exists(DatabaseSession.LocalDatabasePath) Then
+                    Settings.DbManagementSystem =
+                        DatabaseSession.CompatiblePlatformName.Sqlite.ToString
                 End If
             End If
-            If Settings.DbManagementSystem <> DbSession.DbPlatform.Sqlite.ToString Then
-                ' NOTE: Oracle is the only supported RDBMS at this time. To add future systems, add a
-                ' ComboBox to LoginView containing the supported Databases and bind it to the
+            DatabaseSession.SetMessageBoxService(New MessageBoxService)
+            If Settings.DbManagementSystem <>
+                DatabaseSession.CompatiblePlatformName.Sqlite.ToString Then
+                ' NOTE: Oracle is the only supported RDBMS at this time. To add future systems, add
+                ' a ComboBox to LoginView containing the supported Databases and bind it to the
                 ' DbManagementSystem setting.
-                Settings.DbManagementSystem = DbSession.DbPlatform.Oracle.ToString
-                If LoginForm.ShowDialog = DialogResult.Cancel Then
+                Settings.DbManagementSystem = DatabaseSession.CompatiblePlatformName.Oracle.ToString
+                If LoginView.ShowDialog = DialogResult.Cancel Then
                     e.Cancel = True
                 End If
             Else
-                DbSession.Platform = DbSession.DbPlatform.Sqlite
+                DatabaseSession.PlatformName = DatabaseSession.CompatiblePlatformName.Sqlite
             End If
         End Sub
 
         Private Sub MyApplication_Shutdown(sender As Object, e As System.EventArgs) Handles Me.Shutdown
-            AppFolderShortcuts.Delete()
-            AppFolders.Empty(AppFolders.AppFolder.Cache)
-            AppFolders.Empty(AppFolders.AppFolder.Temp)
+            Dim applicationDirectory = New ApplicationDirectory
+            applicationDirectory.DeleteUploadDirectoryShortcuts()
+            applicationDirectory.GetDirectory(ApplicationDirectory.SpecialName.Cache).Empty
+            applicationDirectory.GetDirectory(ApplicationDirectory.SpecialName.Temp).Empty
         End Sub
 
         Private Sub MyApplication_UnhandledException(sender As Object, e As ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
-            Dim handler = New UnhandledExceptionHandler(e)
-            handler.Log()
-            handler.Show()
+            Dim unhandledExceptionHandler = New UnhandledExceptionHandler(e)
+            unhandledExceptionHandler.Log()
+            unhandledExceptionHandler.Show()
         End Sub
     End Class
 End Namespace

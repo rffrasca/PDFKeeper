@@ -48,11 +48,6 @@
 						<param name="ImageNumber" value="9">
 						</OBJECT>
 					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="Schema Upgrade">
-						<param name="Local" value="Schema Upgrade for Oracle Database.html">
-						<param name="ImageNumber" value="9">
-						</OBJECT>
-					<LI> <OBJECT type="text/sitemap">
 						<param name="Name" value="Installing Oracle Data Provider for .NET">
 						<param name="Local" value="Installing Oracle Data Provider for .NET.html">
 						<param name="ImageNumber" value="9">
@@ -119,8 +114,15 @@
 				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Uploading PDF Documents from within PDFKeeper">
 					<param name="Local" value="Uploading PDF Documents from within PDFKeeper.html">
-					<param name="ImageNumber" value="9">
+					<param name="ImageNumber" value="1">
 					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Add PDF from within PDFKeeper">
+						<param name="Local" value="Add PDF from within PDFKeeper.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+				</UL>
 				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Uploading PDF Documents from outside of PDFKeeper">
 					<param name="Local" value="Uploading PDF Documents from outside of PDFKeeper.html">
@@ -145,8 +147,8 @@
 							</OBJECT>
 						<UL>
 							<LI> <OBJECT type="text/sitemap">
-								<param name="Name" value="Upload Profile Properties">
-								<param name="Local" value="Upload Profile Properties.html">
+								<param name="Name" value="Upload Profile Editor">
+								<param name="Local" value="Upload Profile Editor.html">
 								<param name="ImageNumber" value="9">
 								</OBJECT>
 						</UL>
@@ -159,8 +161,8 @@
 				</UL>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Retrieving Documents">
-				<param name="Local" value="Retrieving Documents.html">
+				<param name="Name" value="Finding Documents">
+				<param name="Local" value="Finding Documents.html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
 			<UL>
@@ -183,19 +185,14 @@
 				</UL>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Working with Retrieved Documents">
-				<param name="Local" value="Working with Retrieved Documents.html">
+				<param name="Name" value="Working with Documents">
+				<param name="Local" value="Working with Documents.html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
 			<UL>
 				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Sorting the Documents List">
 					<param name="Local" value="Sorting the Documents List.html">
-					<param name="ImageNumber" value="9">
-					</OBJECT>
-				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Refreshing the Documents List">
-					<param name="Local" value="Refreshing the Documents List.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
@@ -259,13 +256,8 @@
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Exporting PDF Documents and Extension Properties">
-					<param name="Local" value="Exporting PDF Documents and Extension Properties.html">
-					<param name="ImageNumber" value="9">
-					</OBJECT>
-				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Updating PDF Text Columns in the Database">
-					<param name="Local" value="Updating PDF Text Columns in the Database.html">
+					<param name="Name" value="Exporting PDF Documents and External Metadata">
+					<param name="Local" value="Exporting PDF Documents and External Metadata.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 			</UL>
@@ -295,8 +287,8 @@
 				</OBJECT>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Remove List All Documents Retrieval Action by Policy">
-			<param name="Local" value="Remove List All Documents Retrieval Action by Policy.html">
+			<param name="Name" value="Hide All Documents Button on Find Documents Dialog by Policy">
+			<param name="Local" value="Hide All Documents Button on Find Documents Dialog by Policy.html">
 			<param name="ImageNumber" value="9">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">

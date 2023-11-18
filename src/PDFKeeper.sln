@@ -4,29 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDFKeeper.Presentation", "PDFKeeper.Presentation\PDFKeeper.Presentation.vbproj", "{BD8B275B-8505-49DD-9DD9-7171760959D5}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3171545C-9AE9-464F-AAB1-14397361275E} = {3171545C-9AE9-464F-AAB1-14397361275E}
-		{EC65CCC4-7A2C-4522-9C4B-21AB38C116C6} = {EC65CCC4-7A2C-4522-9C4B-21AB38C116C6}
-		{DC2D45CB-E19A-45F8-BF0C-3A286FBFD685} = {DC2D45CB-E19A-45F8-BF0C-3A286FBFD685}
-	EndProjectSection
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "PDFKeeper.Setup", "PDFKeeper.Setup\PDFKeeper.Setup.wixproj", "{97756C6A-853A-4CBA-8507-D33B20B6DD07}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDFKeeper.Domain", "PDFKeeper.Domain\PDFKeeper.Domain.vbproj", "{DC2D45CB-E19A-45F8-BF0C-3A286FBFD685}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDFKeeper.Services", "PDFKeeper.Services\PDFKeeper.Services.vbproj", "{EC65CCC4-7A2C-4522-9C4B-21AB38C116C6}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDFKeeper.Infrastructure", "PDFKeeper.Infrastructure\PDFKeeper.Infrastructure.vbproj", "{3171545C-9AE9-464F-AAB1-14397361275E}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDFKeeper.Common", "PDFKeeper.Common\PDFKeeper.Common.vbproj", "{52E02BC2-E5DB-4FF1-85BA-DF1CA2FB2BC3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{346B8D1C-4126-46A6-BCD0-F6CA8FC8B326}"
 	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
 		GlobalAssemblyInfo.vb = GlobalAssemblyInfo.vb
 	EndProjectSection
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PDFKeeper.FileIO", "PDFKeeper.FileIO\PDFKeeper.FileIO.vbproj", "{86427444-B88D-4DC0-A182-AC05497DF433}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFKeeper.Core", "PDFKeeper.Core\PDFKeeper.Core.csproj", "{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFKeeper.PDFViewer", "PDFKeeper.PDFViewer\PDFKeeper.PDFViewer.csproj", "{854466DF-9FFD-41AD-B22B-6E4DBDD37013}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,26 +30,14 @@ Global
 		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Debug|Any CPU.Build.0 = Debug|x64
 		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Release|Any CPU.ActiveCfg = Release|x64
 		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Release|Any CPU.Build.0 = Release|x64
-		{DC2D45CB-E19A-45F8-BF0C-3A286FBFD685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC2D45CB-E19A-45F8-BF0C-3A286FBFD685}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC2D45CB-E19A-45F8-BF0C-3A286FBFD685}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC2D45CB-E19A-45F8-BF0C-3A286FBFD685}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC65CCC4-7A2C-4522-9C4B-21AB38C116C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC65CCC4-7A2C-4522-9C4B-21AB38C116C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC65CCC4-7A2C-4522-9C4B-21AB38C116C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC65CCC4-7A2C-4522-9C4B-21AB38C116C6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3171545C-9AE9-464F-AAB1-14397361275E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3171545C-9AE9-464F-AAB1-14397361275E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3171545C-9AE9-464F-AAB1-14397361275E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3171545C-9AE9-464F-AAB1-14397361275E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{52E02BC2-E5DB-4FF1-85BA-DF1CA2FB2BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{52E02BC2-E5DB-4FF1-85BA-DF1CA2FB2BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{52E02BC2-E5DB-4FF1-85BA-DF1CA2FB2BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{52E02BC2-E5DB-4FF1-85BA-DF1CA2FB2BC3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86427444-B88D-4DC0-A182-AC05497DF433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86427444-B88D-4DC0-A182-AC05497DF433}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86427444-B88D-4DC0-A182-AC05497DF433}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86427444-B88D-4DC0-A182-AC05497DF433}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

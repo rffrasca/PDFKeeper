@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Exporting PDF Documents and External Metadata</title>
+	<meta name="generator" content="LibreOffice 7.6.2.1 (Windows)"/>
+	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
+	<meta name="changed" content="2023-11-12T21:05:16.045000000"/>
+	<meta name="description" content="
+*******************************************************************************
+* PDFKeeper -- Open Source PDF Document Management
+* Copyright (C) 2009-2023 Robert F. Frasca
+*
+* This file is part of PDFKeeper.
+*
+* PDFKeeper is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* PDFKeeper is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*******************************************************************************"/>
+</head>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Exporting
+PDF Documents and External Metadata</b></font></h1>
+<p><font face="Segoe UI, sans-serif">To export the PDF document and
+corresponding external metadata from one or more retrieved documents,
+perform the following steps:</font></p>
+<ol>
+	<li><p><font face="Segoe UI, sans-serif">In the Documents list,
+	click on the check box for each document to export. To select all
+	documents, select the <b>Documents</b> menu, then <b>Select</b>, and
+	then <b>All</b>; or press <b>Alt</b> + <b>D</b>, then <b>S</b>, and
+	then <b>A </b>on the keyboard.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Select the <b>File</b>
+	menu, and then select <b>Export</b>; or press <b>Alt</b> + <b>F</b>,
+	and then <b>T</b> on the keyboard.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Select the folder location
+	where to create the export folder that will contain the exported PDF
+	documents and corresponding external metadata XML files.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Select <b>OK</b> or press
+	<b>Enter</b> on the keyboard to perform the export.</font></p></li>
+</ol>
+<p><font face="Segoe UI, sans-serif"><b>Additional Information:</b></font></p>
+<ul>
+	<li><p><font face="Segoe UI, sans-serif">You can navigate the
+	Documents list using the up and down arrows on the keyboard and
+	check/uncheck a document using the space bar on the keyboard.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">To uncheck all documents,
+	select the <b>Documents</b> menu, then <b>Select</b>, and then <b>None</b>;
+	or press <b>Alt</b> + <b>D</b>, then <b>S</b>, and then <b>N </b>on
+	the keyboard.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">The absolute path name of
+	the folder where the exported files are located will be displayed in
+	a message box after the export has completed.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Exporting is a convenient
+	way to transfer PDF documents and corresponding external metadata to
+	another database system without having to use the source and target
+	database systems export/import processes. The export will create a
+	folder that contains each exported PDF named <b>[</b><i><b>&lt;ID&gt;</b></i><b>]</b><i><b>&lt;Title&gt;</b></i><b>.PDF</b>
+	and corresponding external metadata file <b>[</b><i><b>&lt;ID&gt;</b></i><b>]</b><i><b>&lt;Title&gt;</b></i><b>.XML</b>
+	that contains the Notes, Category, and Flag state stored in the
+	database for that document. All exported files will be organized in
+	sub-folders by Author and Subject.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">When the Title, Author,
+	Subject, and Keywords in the exported PDF do not match the Title,
+	Author, Subject, and Keywords in the database for that document, the
+	PDF will be rewritten with the Title, Author, Subject, and Keywords
+	from the database.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">When exporting documents
+	for transfer to another system, it is highly recommended that nobody
+	else be logged into PDFKeeper.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">To import the folder
+	containing the exported PDF documents and corresponding external
+	metadata, first make sure PDFKeeper is closed, then copy the entire
+	folder using Windows Explorer into the root of
+	<b>C:\&lt;User&gt;\Robert\AppData\Roaming\Robert F.
+	Frasca\PDFKeeper\Upload. </b><i>Do not copy the folder into an</i>
+	<i>upload profile folder inside of
+	</i><i><b>C:\&lt;User&gt;\Robert\AppData\Roaming\Robert F.
+	Frasca\PDFKeeper\Upload. </b></i><span style="font-variant: normal">After
+	the folder has been copied, login to PDFKeeper using the configured
+	database system that the PDF documents and exte</span><span style="font-variant: normal">rnal
+	metadata</span><span style="font-variant: normal"> need to be
+	imported into, and PDFKeeper will then perform the import during the
+	next upload cycle.</span></font></p></li>
+</ul>
+</body>
+</html>

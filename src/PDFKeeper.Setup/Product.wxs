@@ -112,23 +112,17 @@
 			<Component Id="sumatrapdfrestrict.ini" Guid="16a0b917-b9c6-42f3-bfa4-e514b36547a8">
 			  <File Id="sumatrapdfrestrict.ini" Name="sumatrapdfrestrict.ini" Source="$(var.PDFKeeper.Presentation_TargetDir)sumatrapdfrestrict.ini" />
 			</Component>
-      <Component Id="ClearRemoveListAllDocumentsPolicy.reg" Guid="3ee0a57f-49a5-41c2-8e8a-760ab3e55e12">
-        <File Id="ClearRemoveListAllDocumentsPolicy.reg" Name="ClearRemoveListAllDocumentsPolicy.reg" Source="..\..\..\Config\ClearRemoveListAllDocumentsPolicy.reg" />
+      <Component Id="ClearHideAllDocumentsPolicy.reg" Guid="3ee0a57f-49a5-41c2-8e8a-760ab3e55e12">
+        <File Id="ClearHideAllDocumentsPolicy.reg" Name="ClearHideAllDocumentsPolicy.reg" Source="..\..\..\Config\ClearHideAllDocumentsPolicy.reg" />
       </Component>
-      <Component Id="SetRemoveListAllDocumentsPolicy.reg" Guid="6127b400-4ac1-4a1e-83ae-5947215b4c57">
-        <File Id="SetRemoveListAllDocumentsPolicy.reg" Name="SetRemoveListAllDocumentsPolicy.reg" Source="..\..\..\Config\SetRemoveListAllDocumentsPolicy.reg" />
+      <Component Id="SetHideAllDocumentsPolicy.reg" Guid="6127b400-4ac1-4a1e-83ae-5947215b4c57">
+        <File Id="SetHideAllDocumentsPolicy.reg" Name="SetHideAllDocumentsPolicy.reg" Source="..\..\..\Config\SetHideAllDocumentsPolicy.reg" />
       </Component>
       <Component Id="OracleDatabaseSchemaSetup.sql" Guid="0c018a44-7840-4ef4-92a7-ce0432f9e27f">
         <File Id="OracleDatabaseSchemaSetup.sql" Name="OracleDatabaseSchemaSetup.sql" Source="$(var.PDFKeeper.Presentation_TargetDir)OracleDatabaseSchemaSetup.sql" />
       </Component>
-      <Component Id="OracleDatabaseSchemaUpgrade.sql" Guid="75121a74-f2e3-469e-bacc-b5567cdaaf7a">
-        <File Id="OracleDatabaseSchemaUpgrade.sql" Name="OracleDatabaseSchemaUpgrade.sql" Source="$(var.PDFKeeper.Presentation_TargetDir)OracleDatabaseSchemaUpgrade.sql" />
-      </Component>
       <Component Id="BouncyCastle.Crypto.dll" Guid="aec691d9-e839-45a5-b269-205445047427">
         <File Id="BouncyCastle.Crypto.dll" Name="BouncyCastle.Crypto.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)BouncyCastle.Crypto.dll" />
-      </Component>
-      <Component Id="BouncyCastle.Crypto.dll.bak" Guid="67914274-4eb9-4778-bbb9-e79e315d278f">
-        <File Id="BouncyCastle.Crypto.dll.bak" Name="BouncyCastle.Crypto.dll.bak" Source="$(var.PDFKeeper.Presentation_TargetDir)BouncyCastle.Crypto.dll" />
       </Component>
       
       <Component Id="gsdll64.dll" Guid="72df3d61-ee4f-45f5-928f-d8bf4e6bb36b">
@@ -178,22 +172,12 @@
       
       
       
-      <Component Id="PDFKeeper.Common.dll" Guid="a11dc0f1-6e01-454b-9739-ca7537f8dbf3">
-        <File Id="PDFKeeper.Common.dll" Name="PDFKeeper.Common.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.Common.dll" />
-      </Component>
-      <Component Id="PDFKeeper.Domain.dll" Guid="5a54c7c0-5e07-4d60-b47f-b077be25df68">
-        <File Id="PDFKeeper.Domain.dll" Name="PDFKeeper.Domain.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.Domain.dll" />
-      </Component>
-      <Component Id="PDFKeeper.FileIO.dll" Guid="225a9a55-3f7a-48a1-9511-aa6d08d25b78">
-        <File Id="PDFKeeper.FileIO.dll" Name="PDFKeeper.FileIO.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.FileIO.dll" />
-      </Component>
-      <Component Id="PDFKeeper.Infrastructure.dll" Guid="a792571b-8c5f-4686-8581-abf709ccf323">
-        <File Id="PDFKeeper.Infrastructure.dll" Name="PDFKeeper.Infrastructure.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.Infrastructure.dll" />
-      </Component>
       
-      <Component Id="PDFKeeper.Services.dll" Guid="2a316d25-4fa8-4c34-983e-5aebeef6efef">
-        <File Id="PDFKeeper.Services.dll" Name="PDFKeeper.Services.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.Services.dll" />
-      </Component>
+      
+      
+      
+      
+      
       <Component Id="Magick.Native_Q16_x86.dll" Guid="8e694e0d-2a8f-4373-a121-34ded217baa0">
         <File Id="Magick.Native_Q16_x86.dll" Name="Magick.Native-Q16-x86.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Magick.Native-Q16-x86.dll" />
       </Component>
@@ -256,6 +240,12 @@
       </Component>
       <Component Id="SqliteDatabaseIndexSyncFix.sql" Guid="f696c075-755d-4956-bcb1-5f41e486fb0b">
         <File Id="SqliteDatabaseIndexSyncFix.sql" Name="SqliteDatabaseIndexSyncFix.sql" Source="$(var.PDFKeeper.Presentation_TargetDir)SqliteDatabaseIndexSyncFix.sql" />
+      </Component>
+      <Component Id="PDFKeeper.Core.dll" Guid="35a76400-b870-4541-bc9c-8b17219dbb47">
+        <File Id="PDFKeeper.Core.dll" Name="PDFKeeper.Core.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.Core.dll" />
+      </Component>
+      <Component Id="PDFKeeper.PDFViewer.dll" Guid="523123e8-544a-43d1-b2c6-6b258e93d263">
+        <File Id="PDFKeeper.PDFViewer.dll" Name="PDFKeeper.PDFViewer.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.PDFViewer.dll" />
       </Component>
   	</ComponentGroup>
 	</Fragment>

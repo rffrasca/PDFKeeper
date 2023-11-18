@@ -28,14 +28,13 @@ Uploading PDF Documents from outside of PDFKeeper.html
 Uploading PDF Documents using Upload Profile Folders.html
 Upload Profiles.html
 Automating with the PDFKeeper Upload Process.html
-Upload Profile Properties.html
+Upload Profile Editor.html
 Updating PDFKeeper.html
 Uninstalling PDFKeeper.html
-Retrieving Documents.html
-Remove List All Documents Retrieval Action by Policy.html
-Working with Retrieved Documents.html
+Finding Documents.html
+Hide All Documents Button on Find Documents Dialog by Policy.html
+Working with Documents.html
 Sorting the Documents List.html
-Refreshing the Documents List.html
 PDF Viewing.html
 PDFKeeper Options.html
 Setting PDFKeeper Options.html
@@ -45,8 +44,7 @@ Document Text.html
 Document Previewing.html
 Saving PDF outside of PDFKeeper.html
 Deleting Documents.html
-Exporting PDF Documents and Extension Properties.html
-Updating PDF Text Columns in the Database.html
+Exporting PDF Documents and External Metadata.html
 Change Document Flag State.html
 Set Category on Documents.html
 Adding, Editing, and Deleting Upload Profiles.html
@@ -56,7 +54,6 @@ Set Tax Year on Documents.html
 Setup Single-User Database.html
 Setup Multi-User (On-Prem) Database.html
 User Administration for Oracle Database.html
-Schema Upgrade for Oracle Database.html
 Schema Setup for Oracle Database.html
 Find Documents by Search Term.html
 Find Documents by Search Term Examples for SQLite.html

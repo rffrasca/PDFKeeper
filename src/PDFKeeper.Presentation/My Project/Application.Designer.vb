@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.PDFKeeper.Presentation.MainForm
+            Me.MainForm = Global.PDFKeeper.Presentation.MainView
         End Sub
     End Class
 End Namespace

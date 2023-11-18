@@ -2,16 +2,16 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="MainSplitterDistance" Type="System.Int32" Scope="User">
+    <Setting Name="HorizontalSplitterDistance" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">373</Value>
     </Setting>
-    <Setting Name="MainLocation" Type="System.Drawing.Point" Scope="User">
+    <Setting Name="MainViewLocation" Type="System.Drawing.Point" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
-    <Setting Name="MainSize" Type="System.Drawing.Size" Scope="User">
+    <Setting Name="MainViewSize" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">1000, 800</Value>
     </Setting>
-    <Setting Name="MainWindowState" Type="System.Windows.Forms.FormWindowState" Scope="User">
+    <Setting Name="MainViewState" Type="System.Windows.Forms.FormWindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>
     </Setting>
     <Setting Name="DbManagementSystem" Type="System.String" Scope="User">
@@ -20,10 +20,10 @@
     <Setting Name="PreviewPixelDensity" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="MainToolBarVisible" Type="System.Boolean" Scope="User">
+    <Setting Name="ToolBarVisible" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="MainStatusBarVisible" Type="System.Boolean" Scope="User">
+    <Setting Name="StatusBarVisible" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SelectLastDocumentRow" Type="System.Boolean" Scope="User">
@@ -47,11 +47,14 @@
     <Setting Name="Datasource" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ListFlaggedDocumentsOnStartup" Type="System.Boolean" Scope="User">
+    <Setting Name="FindFlaggedDocumentsOnStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="AddPdfOcrPdfTextAndImageDataPages" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="VerticalSplitterDistance" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">488</Value>
     </Setting>
   </Settings>
 </SettingsFile>

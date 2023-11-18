@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PDFKeeper.Core</RootNamespace>
+    <AssemblyName>PDFKeeper.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\PDFKeeper.Presentation\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\PDFKeeper.Presentation\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>PDFKeeper.Core.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>PDFKeeper.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.21.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\oracle\odp.net\managed\common\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\UserProfileFolder.cs" />
+    <Compile Include="Commands\ExportDocumentCommand.cs" />
+    <Compile Include="Extensions\DirectoryInfoExtension.cs" />
+    <Compile Include="Extensions\GenericExtension.cs" />
+    <Compile Include="FileIO\FileCache.cs" />
+    <Compile Include="FileIO\ImageFile.cs" />
+    <Compile Include="FileIO\PDF\PdfFileSplitter.cs" />
+    <Compile Include="FileIO\PDF\PdfImageDetector.cs" />
+    <Compile Include="FileIO\PDF\PdfUploader.cs" />
+    <Compile Include="FileIO\TextExtractor\ImageTextExtractor.cs" />
+    <Compile Include="FileIO\TextExtractor\IPdfTextExtractionStrategy.cs" />
+    <Compile Include="FileIO\TextExtractor\PdfOcrTextExtractionStrategy.cs" />
+    <Compile Include="FileIO\TextExtractor\PdfTextExtractionStrategy.cs" />
+    <Compile Include="Interop\NativeMethods.cs" />
+    <Compile Include="Rules\ExportPdfMetadataRule.cs" />
+    <Compile Include="Rules\FindDocumentsParamRule.cs" />
+    <Compile Include="Services\IFolderBrowserDialogService.cs" />
+    <Compile Include="Services\IFolderExplorerService.cs" />
+    <Compile Include="Services\IFileDialogService.cs" />
+    <Compile Include="Services\IPrintDialogService.cs" />
+    <Compile Include="Services\IPrintPreviewDialogService.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Presenters\PresenterBase.cs" />
+    <Compile Include="DataAccess\Repository\RepositoryBase.cs" />
+    <Compile Include="Rules\RuleBase.cs" />
+    <Compile Include="DataAccess\Repository\DocumentRepositoryFactory.cs" />
+    <Compile Include="DataAccess\Repository\OracleDocumentRepository.cs" />
+    <Compile Include="DataAccess\Repository\SqliteDocumentRepository.cs" />
+    <Compile Include="DataAccess\DatabaseException.cs" />
+    <Compile Include="DataAccess\Repository\IDocumentRepository.cs" />
+    <Compile Include="DataAccess\ColumnData.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\TaxYear.cs" />
+    <Compile Include="FileIO\UploadProfileManager.cs" />
+    <Compile Include="Application\FindDocumentsViewState.cs" />
+    <Compile Include="Application\ApplicationRegistry.cs" />
+    <Compile Include="Application\ApplicationUri.cs" />
+    <Compile Include="Services\IPdfViewerService.cs" />
+    <Compile Include="DataAccess\DatabaseSession.cs" />
+    <Compile Include="Presenters\LoginPresenter.cs" />
+    <Compile Include="Presenters\MainPresenter.cs" />
+    <Compile Include="Presenters\SetCategoryPresenter.cs" />
+    <Compile Include="Presenters\SetTaxYearPresenter.cs" />
+    <Compile Include="Models\TitleToken.cs" />
+    <Compile Include="Presenters\UploadProfilesPresenter.cs" />
+    <Compile Include="Application\ApplicationPolicy.cs" />
+    <Compile Include="Models\IFindDocumentsParam.cs" />
+    <Compile Include="Models\FindDocumentsParam.cs" />
+    <Compile Include="Models\SearchTermHistory.cs" />
+    <Compile Include="Presenters\FindDocumentsPresenter.cs" />
+    <Compile Include="Presenters\AddPdfPresenter.cs" />
+    <Compile Include="Presenters\UploadProfileEditorPresenter.cs" />
+    <Compile Include="Services\IDialogService.cs" />
+    <Compile Include="FileIO\PDF\PdfFile.cs" />
+    <Compile Include="Services\IMessageBoxService.cs" />
+    <Compile Include="Services\IPasswordDialogService.cs" />
+    <Compile Include="FileIO\PDF\PdfMetadata.cs" />
+    <Compile Include="Rules\PdfMetadataRule.cs" />
+    <Compile Include="ViewModels\AddPdfViewModel.cs" />
+    <Compile Include="Application\ApplicationDirectory.cs" />
+    <Compile Include="Application\ExecutingAssembly.cs" />
+    <Compile Include="ViewModels\FindDocumentsViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\CommonCollectionsViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\UploadProfileEditorViewModel.cs" />
+    <Compile Include="FileIO\PDF\IPdfMetadata.cs" />
+    <Compile Include="Models\IPdfExternalMetadata.cs" />
+    <Compile Include="Models\IUploadProfile.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\UploadStagingCommand.cs" />
+    <Compile Include="Extensions\SecureStringExtension.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Helpers\ProcessHelper.cs" />
+    <Compile Include="Helpers\ResourceHelper.cs" />
+    <Compile Include="Services\IRestrictedPdfViewerService.cs" />
+    <Compile Include="Models\PdfExternalMetadata.cs" />
+    <Compile Include="Models\UploadProfile.cs" />
+    <Compile Include="Extensions\FileInfoExtension.cs" />
+    <Compile Include="FileIO\XmlSerializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\StringEnumerableViewModel.cs" />
+    <Compile Include="ViewModels\UploadProfilesViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PDFKeeper.Core.ruleset" />
+    <None Include="PDFKeeper.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="itext7">
+      <Version>7.2.5</Version>
+    </PackageReference>
+    <PackageReference Include="itext7.font-asian">
+      <Version>7.2.5</Version>
+    </PackageReference>
+    <PackageReference Include="Magick.NET-Q16-AnyCPU">
+      <Version>13.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
+      <Version>7.0.4</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
+      <Version>10.0.19041.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Data.SQLite">
+      <Version>1.0.117</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\vendor\gsdll64.dll">
+      <Link>gsdll64.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\vendor\gswin64c.exe">
+      <Link>gswin64c.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\vendor\sqlite3.exe">
+      <Link>sqlite3.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Config\OracleDatabaseSchemaSetup.sql">
+      <Link>OracleDatabaseSchemaSetup.sql</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Config\SqliteDatabaseIndexSyncFix.sql">
+      <Link>SqliteDatabaseIndexSyncFix.sql</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Config\SqliteDatabaseSetup.sql">
+      <Link>SqliteDatabaseSetup.sql</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

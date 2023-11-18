@@ -1,4 +1,5 @@
 @echo off
+
 rem ***************************************************************************
 rem * PDFKeeper -- Open Source PDF Document Management
 rem * Copyright (C) 2009-2023 Robert F. Frasca
@@ -18,6 +19,7 @@ rem *
 rem * You should have received a copy of the GNU General Public License
 rem * along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 rem ***************************************************************************
+
 rem
 rem Start of localized strings
 rem
@@ -25,7 +27,6 @@ set Title=PDFKeeper Multi-User Database Schema Setup
 set MenuHeader=Compatible Database Management Systems
 set MenuChoice1=1. Oracle Database
 set MenuChoice2=2. Oracle Cloud Autonomous Database
-set MenuChoice3=3. Oracle Database (for upgrading from PDFKeeper version 6.1.1 or earlier)
 set MenuPrompt=Select the database management system or Q to quit:
 set OracleMessage1=Enter the database connect string in the format:
 set OracleMessage2=username/password@host:port/service_name
@@ -50,6 +51,7 @@ set CommonErrorMessage=Error: Database connect string not specified.
 rem
 rem End of localized strings
 rem
+
 title %Title%
 echo ==========================================================================
 echo  %MenuHeader%
@@ -57,26 +59,21 @@ echo ==========================================================================
 echo.
 echo %MenuChoice1%
 echo %MenuChoice2%
-echo %MenuChoice3%
 echo.
-choice /c 123q /n /m "%MenuPrompt%"
+choice /c 12q /n /m "%MenuPrompt%"
 if %ERRORLEVEL%==1 (
 	set operation=Setup
-	goto OracleSetupUpgrade
+	goto OracleSetup
 )
 if %ERRORLEVEL%==2 (
 	set operation=Setup
 	goto OracleCloudSetup
 )
 if %ERRORLEVEL%==3 (
-	set operation=Upgrade
-	goto OracleSetupUpgrade
-)
-if %ERRORLEVEL%==4 (
 	exit
 )
 
-:OracleSetupUpgrade
+:OracleSetup
 echo.
 echo %OracleMessage1%
 echo.

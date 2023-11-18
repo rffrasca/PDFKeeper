@@ -1,23 +1,24 @@
-'******************************************************************************
-'* PDFKeeper -- Open Source PDF Document Management
-'* Copyright (C) 2009-2023 Robert F. Frasca
-'*
-'* This file is part of PDFKeeper.
-'*
-'* PDFKeeper is free software: you can redistribute it and/or modify
-'* it under the terms of the GNU General Public License as published by
-'* the Free Software Foundation, either version 3 of the License, or
-'* (at your option) any later version.
-'*
-'* PDFKeeper is distributed in the hope that it will be useful,
-'* but WITHOUT ANY WARRANTY; without even the implied warranty of
-'* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-'* GNU General Public License for more details.
-'*
-'* You should have received a copy of the GNU General Public License
-'* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
-'******************************************************************************
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿' *****************************************************************************
+' * PDFKeeper -- Open Source PDF Document Management
+' * Copyright (C) 2009-2023 Robert F. Frasca
+' *
+' * This file is part of PDFKeeper.
+' *
+' * PDFKeeper is free software: you can redistribute it and/or modify it
+' * under the terms of the GNU General Public License as published by the
+' * Free Software Foundation, either version 3 of the License, or (at your
+' * option) any later version.
+' *
+' * PDFKeeper is distributed in the hope that it will be useful, but WITHOUT
+' * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+' * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+' * more details.
+' *
+' * You should have received a copy of the GNU General Public License along
+' * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
+' *****************************************************************************
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class PdfOwnerPasswordDialog
     Inherits System.Windows.Forms.Form
 
@@ -41,12 +42,13 @@ Partial Class PdfOwnerPasswordDialog
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PdfOwnerPasswordDialog))
         Me.TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.OK_Button = New System.Windows.Forms.Button()
         Me.Cancel_Button = New System.Windows.Forms.Button()
-        Me.PasswordSecureTextBox = New PDFKeeper.Presentation.SecureTextBox()
-        Me.EnterOwnerPasswordLabel = New System.Windows.Forms.Label()
+        Me.Label = New System.Windows.Forms.Label()
+        Me.PasswordTextBox = New PDFKeeper.Presentation.SecureTextBox(Me.components)
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -68,17 +70,16 @@ Partial Class PdfOwnerPasswordDialog
         Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Cancel_Button.Name = "Cancel_Button"
         '
-        'PasswordSecureTextBox
+        'Label
         '
-        Me.PasswordSecureTextBox.AcceptsReturn = True
-        resources.ApplyResources(Me.PasswordSecureTextBox, "PasswordSecureTextBox")
-        Me.PasswordSecureTextBox.Name = "PasswordSecureTextBox"
-        Me.PasswordSecureTextBox.ShortcutsEnabled = False
+        resources.ApplyResources(Me.Label, "Label")
+        Me.Label.Name = "Label"
         '
-        'EnterOwnerPasswordLabel
+        'PasswordTextBox
         '
-        resources.ApplyResources(Me.EnterOwnerPasswordLabel, "EnterOwnerPasswordLabel")
-        Me.EnterOwnerPasswordLabel.Name = "EnterOwnerPasswordLabel"
+        resources.ApplyResources(Me.PasswordTextBox, "PasswordTextBox")
+        Me.PasswordTextBox.Name = "PasswordTextBox"
+        Me.PasswordTextBox.ShortcutsEnabled = False
         '
         'PdfOwnerPasswordDialog
         '
@@ -86,8 +87,8 @@ Partial Class PdfOwnerPasswordDialog
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
-        Me.Controls.Add(Me.PasswordSecureTextBox)
-        Me.Controls.Add(Me.EnterOwnerPasswordLabel)
+        Me.Controls.Add(Me.PasswordTextBox)
+        Me.Controls.Add(Me.Label)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -102,7 +103,6 @@ Partial Class PdfOwnerPasswordDialog
     Friend WithEvents TableLayoutPanel As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents OK_Button As System.Windows.Forms.Button
     Friend WithEvents Cancel_Button As System.Windows.Forms.Button
-    Friend WithEvents PasswordSecureTextBox As PDFKeeper.Presentation.SecureTextBox
-    Friend WithEvents EnterOwnerPasswordLabel As System.Windows.Forms.Label
-
+    Friend WithEvents Label As Label
+    Friend WithEvents PasswordTextBox As SecureTextBox
 End Class

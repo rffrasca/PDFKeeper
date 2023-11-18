@@ -1,22 +1,23 @@
-'******************************************************************************
-'* PDFKeeper -- Open Source PDF Document Management
-'* Copyright (C) 2009-2023 Robert F. Frasca
-'*
-'* This file is part of PDFKeeper.
-'*
-'* PDFKeeper is free software: you can redistribute it and/or modify
-'* it under the terms of the GNU General Public License as published by
-'* the Free Software Foundation, either version 3 of the License, or
-'* (at your option) any later version.
-'*
-'* PDFKeeper is distributed in the hope that it will be useful,
-'* but WITHOUT ANY WARRANTY; without even the implied warranty of
-'* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-'* GNU General Public License for more details.
-'*
-'* You should have received a copy of the GNU General Public License
-'* along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
-'******************************************************************************
+' *****************************************************************************
+' * PDFKeeper -- Open Source PDF Document Management
+' * Copyright (C) 2009-2023 Robert F. Frasca
+' *
+' * This file is part of PDFKeeper.
+' *
+' * PDFKeeper is free software: you can redistribute it and/or modify it
+' * under the terms of the GNU General Public License as published by the
+' * Free Software Foundation, either version 3 of the License, or (at your
+' * option) any later version.
+' *
+' * PDFKeeper is distributed in the hope that it will be useful, but WITHOUT
+' * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+' * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+' * more details.
+' *
+' * You should have received a copy of the GNU General Public License along
+' * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
+' *****************************************************************************
+
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class OptionsDialog
     Inherits System.Windows.Forms.Form
@@ -44,7 +45,7 @@ Partial Class OptionsDialog
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OptionsDialog))
         Me.TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.OK_Button = New System.Windows.Forms.Button()
-        Me.ListFlaggedDocumentsOnStartupCheckBox = New System.Windows.Forms.CheckBox()
+        Me.FindFlaggedDocumentsOnStartupCheckBox = New System.Windows.Forms.CheckBox()
         Me.ShowPdfWithDefaultApplicationCheckBox = New System.Windows.Forms.CheckBox()
         Me.SelectLastRowWhenListingDocumentsCheckBox = New System.Windows.Forms.CheckBox()
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
@@ -62,14 +63,14 @@ Partial Class OptionsDialog
         resources.ApplyResources(Me.OK_Button, "OK_Button")
         Me.OK_Button.Name = "OK_Button"
         '
-        'ListFlaggedDocumentsOnStartupCheckBox
+        'FindFlaggedDocumentsOnStartupCheckBox
         '
-        resources.ApplyResources(Me.ListFlaggedDocumentsOnStartupCheckBox, "ListFlaggedDocumentsOnStartupCheckBox")
-        Me.ListFlaggedDocumentsOnStartupCheckBox.Checked = Global.PDFKeeper.Presentation.My.MySettings.Default.ListFlaggedDocumentsOnStartup
-        Me.ListFlaggedDocumentsOnStartupCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.Presentation.My.MySettings.Default, "ListFlaggedDocumentsOnStartup", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
-        Me.ListFlaggedDocumentsOnStartupCheckBox.Name = "ListFlaggedDocumentsOnStartupCheckBox"
-        Me.HelpProvider.SetShowHelp(Me.ListFlaggedDocumentsOnStartupCheckBox, CType(resources.GetObject("ListFlaggedDocumentsOnStartupCheckBox.ShowHelp"), Boolean))
-        Me.ListFlaggedDocumentsOnStartupCheckBox.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.FindFlaggedDocumentsOnStartupCheckBox, "FindFlaggedDocumentsOnStartupCheckBox")
+        Me.FindFlaggedDocumentsOnStartupCheckBox.Checked = Global.PDFKeeper.Presentation.My.MySettings.Default.FindFlaggedDocumentsOnStartup
+        Me.FindFlaggedDocumentsOnStartupCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.Presentation.My.MySettings.Default, "FindFlaggedDocumentsOnStartup", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.FindFlaggedDocumentsOnStartupCheckBox.Name = "FindFlaggedDocumentsOnStartupCheckBox"
+        Me.HelpProvider.SetShowHelp(Me.FindFlaggedDocumentsOnStartupCheckBox, CType(resources.GetObject("FindFlaggedDocumentsOnStartupCheckBox.ShowHelp"), Boolean))
+        Me.FindFlaggedDocumentsOnStartupCheckBox.UseVisualStyleBackColor = True
         '
         'ShowPdfWithDefaultApplicationCheckBox
         '
@@ -93,7 +94,7 @@ Partial Class OptionsDialog
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ControlBox = False
-        Me.Controls.Add(Me.ListFlaggedDocumentsOnStartupCheckBox)
+        Me.Controls.Add(Me.FindFlaggedDocumentsOnStartupCheckBox)
         Me.Controls.Add(Me.ShowPdfWithDefaultApplicationCheckBox)
         Me.Controls.Add(Me.SelectLastRowWhenListingDocumentsCheckBox)
         Me.Controls.Add(Me.TableLayoutPanel)
@@ -114,6 +115,6 @@ Partial Class OptionsDialog
     Friend WithEvents OK_Button As System.Windows.Forms.Button
     Friend WithEvents SelectLastRowWhenListingDocumentsCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents ShowPdfWithDefaultApplicationCheckBox As System.Windows.Forms.CheckBox
-    Friend WithEvents ListFlaggedDocumentsOnStartupCheckBox As CheckBox
+    Friend WithEvents FindFlaggedDocumentsOnStartupCheckBox As CheckBox
     Friend WithEvents HelpProvider As HelpProvider
 End Class

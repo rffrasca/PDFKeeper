@@ -126,61 +126,185 @@
       <Link>My Project\GlobalAssemblyInfo.vb</Link>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="NativeMethods.vb" />
-    <Compile Include="Presenters\MainPresenter.vb" />
-    <Compile Include="Presenters\SetCategoryPresenter.vb" />
-    <Compile Include="Presenters\SetTaxYearPresenter.vb" />
-    <Compile Include="Presenters\DataGridViewSortProperties.vb" />
-    <Compile Include="Presenters\ToolStripStateManager.vb" />
-    <Compile Include="UserSettingsConfig.vb" />
-    <Compile Include="Views\IViewCommon.vb" />
-    <Compile Include="Views\SetTaxYearDialog.Designer.vb">
-      <DependentUpon>SetTaxYearDialog.vb</DependentUpon>
+    <Compile Include="Commands\AppendDateTimeIntoNotesCommand.vb" />
+    <Compile Include="Commands\AppendTextFromFileIntoNotes.vb" />
+    <Compile Include="Commands\CopyCommand.vb" />
+    <Compile Include="Commands\CutCommand.vb" />
+    <Compile Include="Commands\DialogShowCommand.vb" />
+    <Compile Include="Commands\DeleteCommand.vb" />
+    <Compile Include="Commands\ExportCommand.vb" />
+    <Compile Include="Commands\MoveDatabaseCommand.vb" />
+    <Compile Include="Commands\PasteCommand.vb" />
+    <Compile Include="Commands\PrintTextCommand.vb" />
+    <Compile Include="Commands\RestoreCommand.vb" />
+    <Compile Include="Commands\SaveAsCommand.vb" />
+    <Compile Include="Commands\SaveCommand.vb" />
+    <Compile Include="Commands\SelectAllCommand.vb" />
+    <Compile Include="Commands\SetCategoryCommand.vb" />
+    <Compile Include="Commands\FlagStateToggleCommand.vb" />
+    <Compile Include="Commands\BurstPdfCommand.vb" />
+    <Compile Include="Commands\SelectAllDocumentsCommand.vb" />
+    <Compile Include="Commands\SetTaxYearCommand.vb" />
+    <Compile Include="Commands\UndoCommand.vb" />
+    <Compile Include="Commands\ViewCloseCommand.vb" />
+    <Compile Include="Commands\OpenPdfCommand.vb" />
+    <Compile Include="Commands\HelpFileShowCommand.vb" />
+    <Compile Include="Commands\SetPreviewImageCommand.vb" />
+    <Compile Include="Commands\ViewCommand.vb" />
+    <Compile Include="Commands\StatusBarToggleCommand.vb" />
+    <Compile Include="Commands\ToolBarToggleCommand.vb" />
+    <Compile Include="Components\CustomComboBox.Designer.vb">
+      <DependentUpon>CustomComboBox.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\SetTaxYearDialog.vb">
+    <Compile Include="Components\CustomComboBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CustomTextBox.Designer.vb">
+      <DependentUpon>CustomTextBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CustomTextBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helpers\HelpFile.vb" />
+    <Compile Include="Helpers\TextBoxHelper.vb" />
+    <Compile Include="Services\FolderBrowserDialogService.vb" />
+    <Compile Include="Services\FolderExplorerService.vb" />
+    <Compile Include="Services\PrintDialogService.vb" />
+    <Compile Include="Services\PrintPreviewDialogService.vb" />
+    <Compile Include="Services\SaveFileDialogService.vb" />
+    <Compile Include="Services\SetCategoryDialogService.vb" />
+    <Compile Include="Services\SetTaxYearDialogService.vb" />
+    <Compile Include="UserControls\CategoryDropDownListUserControl.Designer.vb">
+      <DependentUpon>CategoryDropDownListUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CategoryDropDownListUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AuthorDropDownListUserControl.Designer.vb">
+      <DependentUpon>AuthorDropDownListUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AuthorDropDownListUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NameUserControl.Designer.vb">
+      <DependentUpon>NameUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NameUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\SecureTextBox.Designer.vb">
+      <DependentUpon>SecureTextBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SecureTextBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchTermUserControl.Designer.vb">
+      <DependentUpon>SearchTermUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SearchTermUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SubjectDropDownListUserControl.Designer.vb">
+      <DependentUpon>SubjectDropDownListUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SubjectDropDownListUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TitleUserControl.Designer.vb">
+      <DependentUpon>TitleUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TitleUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FindDocumentsView.Designer.vb">
+      <DependentUpon>FindDocumentsView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FindDocumentsView.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ISetTaxYearView.vb" />
-    <Compile Include="Views\ISetCategoryView.vb" />
-    <Compile Include="UnhandledExceptionHandler.vb" />
-    <Compile Include="Views\IMainView.vb" />
-    <Compile Include="Views\IUploadProfilesView.vb" />
-    <Compile Include="Presenters\UploadProfilesPresenter.vb" />
+    <Compile Include="Views\UploadProfileEditorView.Designer.vb">
+      <DependentUpon>UploadProfileEditorView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UploadProfileEditorView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\PdfOwnerPasswordDialog.Designer.vb">
+      <DependentUpon>PdfOwnerPasswordDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PdfOwnerPasswordDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddPdfView.Designer.vb">
+      <DependentUpon>AddPdfView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddPdfView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helpers\DataGridViewSortProperties.vb" />
+    <Compile Include="Services\OpenFileDialogService.vb" />
+    <Compile Include="Services\PdfOwnerPasswordDialogService.vb" />
+    <Compile Include="UserControls\SubjectUserControl.Designer.vb">
+      <DependentUpon>SubjectUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SubjectUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Services\UploadProfileEditorDialogService.vb" />
+    <Compile Include="Services\MessageBoxService.vb" />
+    <Compile Include="UserControls\AuthorUserControl.Designer.vb">
+      <DependentUpon>AuthorUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AuthorUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CategoryUserControl.designer.vb">
+      <DependentUpon>CategoryUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CategoryUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TaxYearDropDownListUserControl.designer.vb">
+      <DependentUpon>TaxYearDropDownListUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TaxYearDropDownListUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Helpers\UserSettingsHelper.vb" />
+    <Compile Include="Views\SetCategoryView.designer.vb">
+      <DependentUpon>SetCategoryView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetCategoryView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SetTaxYearView.designer.vb">
+      <DependentUpon>SetTaxYearView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetTaxYearView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UploadProfilesView.Designer.vb">
+      <DependentUpon>UploadProfilesView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UploadProfilesView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helpers\UnhandledExceptionHandler.vb" />
     <Compile Include="Dialogs\AboutBox.designer.vb">
       <DependentUpon>AboutBox.vb</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\AboutBox.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\AddPdfDialog.designer.vb">
-      <DependentUpon>AddPdfDialog.vb</DependentUpon>
+    <Compile Include="Views\LoginView.designer.vb">
+      <DependentUpon>LoginView.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddPdfDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\LoginForm.designer.vb">
-      <DependentUpon>LoginForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LoginForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\TextBoxFocusedChecker.vb" />
-    <Compile Include="Views\UploadProfilesDialog.Designer.vb">
-      <DependentUpon>UploadProfilesDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UploadProfilesDialog.vb">
+    <Compile Include="Views\LoginView.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\OptionsDialog.designer.vb">
       <DependentUpon>OptionsDialog.vb</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\OptionsDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\PdfOwnerPasswordDialog.designer.vb">
-      <DependentUpon>PdfOwnerPasswordDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\PdfOwnerPasswordDialog.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -199,14 +323,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Presenters\AddPdfPresenter.vb" />
-    <Compile Include="Views\IAddPdfView.vb" />
-    <Compile Include="Views\ILoginView.vb" />
-    <Compile Include="Presenters\LoginPresenter.vb" />
-    <Compile Include="Views\MainForm.Designer.vb">
-      <DependentUpon>MainForm.vb</DependentUpon>
+    <Compile Include="Views\MainView.Designer.vb">
+      <DependentUpon>MainView.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainForm.vb">
+    <Compile Include="Views\MainView.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\SetPreviewPixelDensityDialog.Designer.vb">
@@ -215,19 +335,64 @@
     <Compile Include="Dialogs\SetPreviewPixelDensityDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SecureTextBox.vb">
-      <SubType>Component</SubType>
+    <Compile Include="UserControls\KeywordsUserControl.designer.vb">
+      <DependentUpon>KeywordsUserControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\SetCategoryDialog.Designer.vb">
-      <DependentUpon>SetCategoryDialog.vb</DependentUpon>
+    <Compile Include="UserControls\KeywordsUserControl.vb">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\SetCategoryDialog.vb">
-      <SubType>Form</SubType>
+    <Compile Include="UserControls\UploadOptionsUserControl.designer.vb">
+      <DependentUpon>UploadOptionsUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UploadOptionsUserControl.vb">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\SetTaxYearDialog.resx">
-      <DependentUpon>SetTaxYearDialog.vb</DependentUpon>
+    <EmbeddedResource Include="Components\CustomComboBox.resx">
+      <DependentUpon>CustomComboBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CustomTextBox.resx">
+      <DependentUpon>CustomTextBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CategoryDropDownListUserControl.resx">
+      <DependentUpon>CategoryDropDownListUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AuthorDropDownListUserControl.resx">
+      <DependentUpon>AuthorDropDownListUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\NameUserControl.resx">
+      <DependentUpon>NameUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SecureTextBox.resx">
+      <DependentUpon>SecureTextBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SearchTermUserControl.resx">
+      <DependentUpon>SearchTermUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SubjectDropDownListUserControl.resx">
+      <DependentUpon>SubjectDropDownListUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TitleUserControl.resx">
+      <DependentUpon>TitleUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FindDocumentsView.resx">
+      <DependentUpon>FindDocumentsView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UploadProfileEditorView.resx">
+      <DependentUpon>UploadProfileEditorView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\PdfOwnerPasswordDialog.resx">
+      <DependentUpon>PdfOwnerPasswordDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SetCategoryView.resx">
+      <DependentUpon>SetCategoryView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SetTaxYearView.resx">
+      <DependentUpon>SetTaxYearView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddPdfView.resx">
+      <DependentUpon>AddPdfView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -235,34 +400,42 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainForm.resx">
-      <DependentUpon>MainForm.vb</DependentUpon>
+    <EmbeddedResource Include="Views\UploadProfilesView.resx">
+      <DependentUpon>UploadProfilesView.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UploadProfilesDialog.resx">
-      <DependentUpon>UploadProfilesDialog.vb</DependentUpon>
+    <EmbeddedResource Include="Views\MainView.resx">
+      <DependentUpon>MainView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\SetPreviewPixelDensityDialog.resx">
       <DependentUpon>SetPreviewPixelDensityDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SetCategoryDialog.resx">
-      <DependentUpon>SetCategoryDialog.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\AboutBox.resx">
       <DependentUpon>AboutBox.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\AddPdfDialog.resx">
-      <DependentUpon>AddPdfDialog.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\LoginForm.resx">
-      <DependentUpon>LoginForm.vb</DependentUpon>
+    <EmbeddedResource Include="Views\LoginView.resx">
+      <DependentUpon>LoginView.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\PdfOwnerPasswordDialog.resx">
-      <DependentUpon>PdfOwnerPasswordDialog.vb</DependentUpon>
+    <EmbeddedResource Include="UserControls\SubjectUserControl.resx">
+      <DependentUpon>SubjectUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AuthorUserControl.resx">
+      <DependentUpon>AuthorUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CategoryUserControl.resx">
+      <DependentUpon>CategoryUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\KeywordsUserControl.resx">
+      <DependentUpon>KeywordsUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TaxYearDropDownListUserControl.resx">
+      <DependentUpon>TaxYearDropDownListUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UploadOptionsUserControl.resx">
+      <DependentUpon>UploadOptionsUserControl.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -273,14 +446,21 @@
     <Content Include="PDFKeeper.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="My Project\DataSources\PDFKeeper.Core.ViewModels.AddPdfViewModel.datasource" />
+    <None Include="My Project\DataSources\PDFKeeper.Core.ViewModels.FindDocumentsViewModel.datasource" />
+    <None Include="My Project\DataSources\PDFKeeper.Core.ViewModels.MainViewModel.datasource" />
+    <None Include="My Project\DataSources\PDFKeeper.Core.ViewModels.StringEnumerableViewModel.datasource" />
+    <None Include="My Project\DataSources\PDFKeeper.Core.ViewModels.UploadProfileEditorViewModel.datasource" />
+    <None Include="My Project\DataSources\PDFKeeper.Core.ViewModels.UploadProfilesViewModel.datasource" />
+    <None Include="PDFKeeper.Presentation.ruleset" />
+    <None Include="Resources\Silk Icons\database_delete.png" />
+    <None Include="Resources\Silk Icons\database_edit.png" />
+    <None Include="Resources\Silk Icons\database_add.png" />
+    <None Include="Resources\Silk Icons\delete.png" />
+    <None Include="Resources\Silk Icons\add.png" />
     <None Include="Resources\Silk Icons\cut_red.png" />
     <None Include="Resources\Mini Icons\file_acrobat.gif" />
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
-    <None Include="PDFKeeper.Presentation.ruleset" />
     <None Include="Resources\Silk Icons\database.png" />
-    <None Include="Resources\Mini Icons\table.gif" />
     <None Include="Resources\Mini Icons\page_text.gif" />
     <None Include="app.config" />
     <None Include="My Project\app.manifest" />
@@ -309,25 +489,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PDFKeeper.Common\PDFKeeper.Common.vbproj">
-      <Project>{52E02BC2-E5DB-4FF1-85BA-DF1CA2FB2BC3}</Project>
-      <Name>PDFKeeper.Common</Name>
+    <ProjectReference Include="..\PDFKeeper.Core\PDFKeeper.Core.csproj">
+      <Project>{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}</Project>
+      <Name>PDFKeeper.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PDFKeeper.Domain\PDFKeeper.Domain.vbproj">
-      <Project>{DC2D45CB-E19A-45F8-BF0C-3A286FBFD685}</Project>
-      <Name>PDFKeeper.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PDFKeeper.FileIO\PDFKeeper.FileIO.vbproj">
-      <Project>{86427444-B88D-4DC0-A182-AC05497DF433}</Project>
-      <Name>PDFKeeper.FileIO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PDFKeeper.Infrastructure\PDFKeeper.Infrastructure.vbproj">
-      <Project>{3171545C-9AE9-464F-AAB1-14397361275E}</Project>
-      <Name>PDFKeeper.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PDFKeeper.Services\PDFKeeper.Services.vbproj">
-      <Project>{EC65CCC4-7A2C-4522-9C4B-21AB38C116C6}</Project>
-      <Name>PDFKeeper.Services</Name>
+    <ProjectReference Include="..\PDFKeeper.PDFViewer\PDFKeeper.PDFViewer.csproj">
+      <Project>{854466DF-9FFD-41AD-B22B-6E4DBDD37013}</Project>
+      <Name>PDFKeeper.PDFViewer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -335,7 +503,7 @@
       <Version>1.7.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
-      <Version>7.0.1</Version>
+      <Version>7.0.4</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
