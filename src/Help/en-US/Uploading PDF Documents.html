@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>Uploading PDF Documents</title>
-	<meta name="generator" content="LibreOffice 7.3.3.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 7.6.2.1 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.014243916"/>
-	<meta name="changed" content="2022-05-27T17:35:58.490000000"/>
+	<meta name="changed" content="2023-11-18T14:53:45.062000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -40,50 +40,46 @@ to allow for integration and automation.</font></p>
 to automate the uploading of PDF documents to the database. Each PDF
 that is created in or copied into an Upload Profile folder will have
 defined Information Properties written to a clone of the PDF and an
-XML containing external properties in the <b>%APPDATA%\</b><b>R</b><b>obert
-F. Frasca\PDFKeeper</b><b>\</b><b>UploadStaging</b> folder. After
-staging, all PDF documents in the <b>UploadStaging</b> folder will be
-uploaded to the database.</font></p>
+XML containing external properties in the <b>%APPDATA%\Robert F.
+Frasca\PDFKeeper\UploadStaging</b> folder. After staging, all PDF
+documents in the <b>UploadStaging</b> folder will be uploaded to the
+database.</font></p>
 <p><font face="Segoe UI, sans-serif">Each document is stored in the
 database as follows:</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>ID</b>
-&ndash; Assigned to the document by the database.</font></p>
+– Assigned to the document by the database.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Title</b>
-&ndash; Extracted from the PDF; this column is searchable.</font></p>
+– Extracted from the PDF; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Author</b>
-&ndash; Extracted from the PDF; this column is searchable.</font></p>
+– Extracted from the PDF; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Subject</b>
-&ndash; Extracted from the PDF; this column is searchable.</font></p>
+– Extracted from the PDF; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Keywords</b>
-&ndash; Extracted from the PDF; this column is searchable.</font></p>
+– Extracted from the PDF; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Added</b>
-&ndash; Date and time the document was added to the database; this
-column is searchable.</font></p>
+– Date and time the document was added to the database; this column
+is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Notes</b>
-&ndash; User editable notes; this column is searchable.</font></p>
+– User editable notes; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>PDF</b>
-&ndash; The PDF document; this column is searchable except when using
-the local database option.</font></p>
+– The PDF document; this column is searchable except when using the
+local database option.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Category</b>
-&ndash; Optional category of the document; this column is searchable.</font></p>
+– Optional category of the document; this column is searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Flag</b>
-&ndash; <span style="font-weight: normal">Flag state; </span><b>0</b>
-<span style="font-weight: normal">= not flagged, </span><b>1</b> <span style="font-weight: normal">=
-flagged.</span></font></p>
+– Flag state; <b>0</b> = not flagged, <b>1</b> = flagged.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Tax
-Year</b> &ndash; <span style="font-weight: normal">Optional tax year
-of the document; this column is searchable.</span></font></p>
+Year</b> – Optional tax year of the document; this column is
+searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Text
-Annotations</b> &ndash; <span style="font-weight: normal">Extracted
-from the PDF; this column is searchable.</span></font></p>
+Annotations</b> – Extracted from the PDF; this column is
+searchable.</font></p>
 <p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>Text</b>
-&ndash; <span style="font-weight: normal">Extracted from the PDF;
-this column is searchable.</span></font></p>
+– Extracted from the PDF; this column is searchable.</font></p>
 <h4 class="western"><font face="Segoe UI, sans-serif">Which topic do
 you want to view?</font></h4>
 <table width="412" cellpadding="0" cellspacing="0">
 	<col width="412"/>
-
 	<tr>
 		<td width="412" valign="top" style="border: none; padding: 0in"><p><a href="Uploading%20PDF%20Documents%20from%20within%20PDFKeeper.html"><font face="Segoe UI, sans-serif">Uploading
 			PDF Documents from within PDFKeeper</font></a></p>
@@ -100,42 +96,44 @@ you want to view?</font></h4>
 		</td>
 	</tr>
 </table>
-<p><font face="Segoe UI, sans-serif"><font size="3" style="font-size: 12pt"><b>Additional
-Information:</b></font></font></p>
+<p><font face="Segoe UI, sans-serif"><b>Additional Information:</b></font></p>
 <ul>
-	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif"><b>USER</b>
-	password protected PDF documents are not supported by PDFKeeper and
-	will be rejected by the upload process. If you have the legal right
-	to remove the password, you can find plenty of information on the
-	Internet to assist you.</font></p>
-	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Each
-	PDF created in or copied into an Upload folder that is not
-	associated with an Upload Profile must contain a Title, Author, and
-	Subject; otherwise, the PDF will be rejected by the upload process.</font></p>
-	<li><p style="font-variant: normal; font-style: normal; font-weight: normal">
-	<font color="#24292e"><font face="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"><font size="3" style="font-size: 12pt">Annotations
+	<li><p><font face="Segoe UI, sans-serif"><b>USER</b> password
+	protected PDF documents are not supported by PDFKeeper and will be
+	rejected by the upload process. If you have the legal right to
+	remove the password, you can find plenty of information on the
+	Internet to assist you.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Each PDF created in or
+	copied into an Upload folder that is not associated with an Upload
+	Profile must contain a Title, Author, and Subject; otherwise, the
+	PDF will be rejected by the upload process.</font></p></li>
+	<li><p><font color="#24292e"><font face="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol">Annotations
 	in a PDF document are not filtered by Oracle Database; however, text
-	annotations are extracted by PDFKeeper.</font></font></font></p>
-	<li><p style="font-variant: normal; font-style: normal; font-weight: normal">
-	<font color="#24292e"><font face="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol"><font size="3" style="font-size: 12pt">Embedded
+	annotations are extracted by PDFKeeper.</font></font></p></li>
+	<li><p><font color="#24292e"><font face="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol">Embedded
 	fonts in a PDF document are not filtered correctly by Oracle
 	Database; however, text from these PDF documents will be extracted
-	by PDFKeeper.</font></font></font></p>
-	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">The
-	upload process will check for PDF documents in <b>%APPDATA%\</b><b>R</b><b>obert
-	F. Frasca\PDFKeeper</b><b>\</b><b>Upload</b> that need to be
-	uploaded every 15 seconds.</font></p>
-	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Each
-	PDF in the <b>Upload</b> folder will be deleted to the Windows
-	Recycle Bin after being staged.</font></p>
-	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">It
-	is NOT recommended to configure the Windows Recycle Bin to <b>remove</b>
-	<b>files immediately when deleted</b>.</font></p>
-	<li><p align="left" style="font-weight: normal"><font face="Segoe UI, sans-serif">Before
+	by PDFKeeper.</font></font></p></li>
+	<li><p><font color="#24292e"><font face="apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol">Text
+	extraction will be skipped for each image page or mixed image and
+	text page to be processed by OCR when the pixel width or pixel
+	height exceeds the maximum image pixel dimensions supported by the
+	Windows OCR engine.</font></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">The upload process will
+	check for PDF documents in <b>%APPDATA%\Robert F.
+	Frasca\PDFKeeper\Upload</b> that need to be uploaded every 15
+	seconds.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Each PDF in the <b>Upload</b>
+	folder will be deleted to the Windows Recycle Bin after being
+	staged.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">It is NOT recommended to
+	configure the Windows Recycle Bin to <b>remove</b> <b>files
+	immediately when deleted</b>.</font></p></li>
+	<li><p align="left"><font face="Segoe UI, sans-serif">Before
 	restoring PDF documents from the Recycle Bin back to the <b>Upload</b>
 	folder, make sure to close PDFKeeper. After restoring, move the
 	file(s) out of the <b>Upload</b> folder to prevent PDFKeeper from
-	uploading the PDF documents after PDFKeeper has been restarted.</font></p>
+	uploading the PDF documents after PDFKeeper has been restarted.</font></p></li>
 </ul>
 </body>
 </html>
