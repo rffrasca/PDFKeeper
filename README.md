@@ -64,7 +64,7 @@ PDFKeeper is free, open source software that provides a storage and management s
 
 ![Product Name Screen Shot][product-screenshot]
 
-User Interface in version 8.0.0 and higher.
+User Interface in version 8.x.x.
 
 ### Features
 * Store and manage PDF documents in a single-user or compatible, multi-user (on-prem or cloud) database where they’re indexed to provide full-text search functionality.
