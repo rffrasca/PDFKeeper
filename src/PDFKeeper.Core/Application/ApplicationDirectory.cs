@@ -120,7 +120,8 @@ namespace PDFKeeper.Core.Application
         {
             var uploadConfigDirectory = new DirectoryInfo(Path.Combine(Directory.GetParent(
                 directory.FullName).FullName, "UploadConfig"));
-            if (uploadConfigDirectory.Exists)
+            if (uploadConfigDirectory.Exists && uploadConfigDirectory.GetFiles("*.xml",
+                SearchOption.TopDirectoryOnly).Length > 0)
             {
                 FileSystem.CopyDirectory(uploadConfigDirectory.FullName, directory.FullName);
                 foreach (FileInfo profile in directory.GetFiles("*.xml",
@@ -140,7 +141,8 @@ namespace PDFKeeper.Core.Application
         {
             var backupDirectory = new DirectoryInfo(Path.Combine(Directory.GetParent(
                 directory.FullName).FullName, "UploadProfiles.Bak"));
-            if (!backupDirectory.Exists)
+            if (!backupDirectory.Exists && directory.GetFiles("*.xml",
+                SearchOption.TopDirectoryOnly).Length > 0)
             {
                 FileSystem.CopyDirectory(directory.FullName, backupDirectory.FullName);
                 foreach (FileInfo profile in directory.GetFiles("*.xml",

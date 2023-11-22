@@ -84,7 +84,7 @@ namespace PDFKeeper.Core.FileIO
         {
             if (formerName != null)
             {
-                DeleteUploadProfile(formerName);
+                GetUploadProfileInfo(formerName).Delete();
             }
             XmlSerializer.Serialize(uploadProfile, GetUploadProfileInfo(name));
         }

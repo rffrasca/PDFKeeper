@@ -321,11 +321,16 @@ Public Class MainView
         AutoUpdater.Start(ApplicationUri.AutoUpdaterConfig.AbsoluteUri)
     End Sub
 
-    Private Async Sub DocumentsChecksTimer_Tick(sender As Object, e As EventArgs) Handles DocumentsChecksTimer.Tick
-        DocumentsChecksTimer.Stop()
-        presenter.CheckForDocumentsListChanges()
+    Private Async Sub CheckForFlaggedDocumentsTimer_Tick(sender As Object, e As EventArgs) Handles CheckForFlaggedDocumentsTimer.Tick
+        CheckForFlaggedDocumentsTimer.Stop()
         Await Task.Run(Sub() presenter.CheckForFlaggedDocuments()).ConfigureAwait(True)
-        DocumentsChecksTimer.Start()
+        CheckForFlaggedDocumentsTimer.Start()
+    End Sub
+
+    Private Sub CheckForDocumentsListChangesTimer_Tick(sender As Object, e As EventArgs) Handles CheckForDocumentsListChangesTimer.Tick
+        CheckForDocumentsListChangesTimer.Stop()
+        presenter.CheckForDocumentsListChanges()
+        CheckForDocumentsListChangesTimer.Start()
     End Sub
 
     Private Async Sub UploadTimer_Tick(sender As Object, e As EventArgs) Handles UploadTimer.Tick
@@ -433,6 +438,8 @@ Public Class MainView
                 viewModel.ViewSetPreviewPixelDensityMenuEnabled
         ElseIf e.PropertyName.Equals("ToolsMoveDatabaseMenuVisible", StringComparison.Ordinal) Then
             ToolsMoveDatabaseToolStripMenuItem.Visible = viewModel.ToolsMoveDatabaseMenuVisible
+        ElseIf e.PropertyName.Equals("Documents", StringComparison.Ordinal) Then
+            DocumentsDataGridView.DataSource = viewModel.Documents
         ElseIf e.PropertyName.Equals("CurrentDocumentId", StringComparison.Ordinal) Then
             If viewModel.CurrentDocumentId > 0 Then
                 For Each row In DocumentsDataGridView.Rows

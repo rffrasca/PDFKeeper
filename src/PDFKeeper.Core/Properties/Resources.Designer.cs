@@ -178,6 +178,15 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name cannot be blank!.
+        /// </summary>
+        internal static string NameCannotBeBlank {
+            get {
+                return ResourceManager.GetString("NameCannotBeBlank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name contains one or more characters not allowed in file names!.
         /// </summary>
         internal static string NameContainsCharsNotAllowed {

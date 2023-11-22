@@ -156,6 +156,9 @@
   <data name="MandatoryFieldsAreBlank" xml:space="preserve">
     <value>One or more mandatory fields are blank!</value>
   </data>
+  <data name="NameCannotBeBlank" xml:space="preserve">
+    <value>Name cannot be blank!</value>
+  </data>
   <data name="NameContainsCharsNotAllowed" xml:space="preserve">
     <value>Name contains one or more characters not allowed in file names!</value>
   </data>

@@ -5,7 +5,7 @@
 	<title>Hide All Documents Button on Find Documents Dialog by Policy</title>
 	<meta name="generator" content="LibreOffice 7.6.2.1 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2023-11-12T19:41:36.233000000"/>
+	<meta name="changed" content="2023-11-21T18:49:18.731000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -35,18 +35,20 @@ to limit who can find all documents.</font></p>
 <ul>
 	<li><p><font face="Segoe UI, sans-serif">To hide the <b>All
 	Documents</b> button on the <b>Find Documents</b> dialog, apply
-	<b>SetHideAllDocumentsPolicy.reg</b> (included with PDFKeeper) to
-	the targeted computers. Elevated privileges are required to apply
-	this policy.</font></p></li>
-	<li><p><font face="Segoe UI, sans-serif">To </font><font face="Segoe UI, sans-serif">clear
-	the policy</font><font face="Segoe UI, sans-serif">, apply
+	<b>SetHideAllDocumentsPolicy.reg</b> to the targeted computers.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">To clear the policy, apply
 	</font><font face="Segoe UI, sans-serif"><b>ClearHideAllDocumentsPolicy.reg</b></font>
-	<font face="Segoe UI, sans-serif">(included with PDFKeeper) to the
-	targeted computers. Elevated privileges are required to </font><font face="Segoe UI, sans-serif">clear
-	t</font><font face="Segoe UI, sans-serif">his </font><font face="Segoe UI, sans-serif">policy</font><font face="Segoe UI, sans-serif">.</font></p></li>
+	<font face="Segoe UI, sans-serif">to the targeted computers.</font></p></li>
 </ul>
 <p><font face="Segoe UI, sans-serif"><b>Additional Information:</b></font></p>
 <ul>
+	<li><p><font face="Segoe UI, sans-serif"><b>SetHideAllDocumentsPolicy.reg</b>
+	and <b>ClearHideAllDocumentsPolicy.reg</b> can be found in
+	<b>%LOCALAPPDATA%\Programs\PDFKeeper</b>.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Elevated privileges are
+	required to set or clear this policy.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">PDFKeeper will need to be
+	restarted for the change to take effect.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">This policy is ignored when
 	using the single-user database option.</font></p></li>
 </ul>

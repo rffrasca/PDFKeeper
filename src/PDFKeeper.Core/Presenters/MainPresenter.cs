@@ -63,6 +63,7 @@ namespace PDFKeeper.Core.Presenters
         private readonly ExecutingAssembly executingAssembly;
         private Document currentDocument;
         private string textToPrint;
+        private decimal lastPixelDensity;
 
         /// <summary>
         /// Initializes a new instance of the MainPresenter class.
@@ -175,8 +176,18 @@ namespace PDFKeeper.Core.Presenters
                     count += 1;
                     if (count <= openMaximum)
                     {
-                        pdfViewerService.Show(fileCache.GetPdfFile(id).FullName,
-                            showPdfWithDefaultApplication);
+                        try
+                        {
+                            var currentDocument = documentRepository.GetDocument(id, null);
+                            fileCache.AddPdf(currentDocument.Id, currentDocument.Pdf);
+                            pdfViewerService.Show(fileCache.GetPdfFile(id).FullName,
+                                showPdfWithDefaultApplication);
+                        }
+                        catch (DatabaseException ex)
+                        {
+                            messageBoxService.ShowMessage(ResourceHelper.GetString(
+                                "DefaultDocumentException", ex.Message, id.ToString()), true);
+                        }
                     }
                 }
                 if (count > openMaximum)
@@ -524,6 +535,7 @@ namespace PDFKeeper.Core.Presenters
         /// </param>
         public void SetPreviewImage(decimal pixelDensity)
         {
+            lastPixelDensity = pixelDensity;
             OnLongRunningOperationStarted();
             fileCache.CreatePreview(ViewModel.CurrentDocumentId, pixelDensity);
             ViewModel.Preview = fileCache.GetPreview(ViewModel.CurrentDocumentId, pixelDensity);

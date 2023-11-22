@@ -678,7 +678,7 @@
     <value />
   </data>
   <metadata name="MainViewModelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>756, 13</value>
+    <value>17, 55</value>
   </metadata>
   <data name="DocumentsDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1182,10 +1182,10 @@
     <value>0</value>
   </data>
   <metadata name="UploadTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>139, 52</value>
+    <value>358, 55</value>
   </metadata>
   <metadata name="StatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>427, 13</value>
+    <value>262, 19</value>
   </metadata>
   <data name="DocumentsLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 17</value>
@@ -1336,7 +1336,7 @@
     <value>1</value>
   </data>
   <metadata name="ToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>327, 14</value>
+    <value>142, 17</value>
   </metadata>
   <data name="FileAddToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1719,16 +1719,19 @@
     <value>2</value>
   </data>
   <metadata name="UpdateCheckTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>261, 52</value>
+    <value>480, 55</value>
   </metadata>
-  <metadata name="DocumentsChecksTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>138, 18</value>
+  <metadata name="CheckForFlaggedDocumentsTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>639, 51</value>
   </metadata>
   <metadata name="DocumentsListTimedRefreshTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>531, 16</value>
+    <value>368, 18</value>
   </metadata>
   <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 52</value>
+    <value>236, 55</value>
+  </metadata>
+  <metadata name="CheckForDocumentsListChangesTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>609, 15</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2349,10 +2352,10 @@
   <data name="&gt;&gt;UpdateCheckTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;DocumentsChecksTimer.Name" xml:space="preserve">
-    <value>DocumentsChecksTimer</value>
+  <data name="&gt;&gt;CheckForFlaggedDocumentsTimer.Name" xml:space="preserve">
+    <value>CheckForFlaggedDocumentsTimer</value>
   </data>
-  <data name="&gt;&gt;DocumentsChecksTimer.Type" xml:space="preserve">
+  <data name="&gt;&gt;CheckForFlaggedDocumentsTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;DocumentsListTimedRefreshTimer.Name" xml:space="preserve">
@@ -2366,6 +2369,12 @@
   </data>
   <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
     <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CheckForDocumentsListChangesTimer.Name" xml:space="preserve">
+    <value>CheckForDocumentsListChangesTimer</value>
+  </data>
+  <data name="&gt;&gt;CheckForDocumentsListChangesTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainView</value>

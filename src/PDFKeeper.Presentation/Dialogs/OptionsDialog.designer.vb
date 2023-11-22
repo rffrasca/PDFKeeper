@@ -18,12 +18,12 @@
 ' * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 ' *****************************************************************************
 
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class OptionsDialog
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -40,7 +40,7 @@ Partial Class OptionsDialog
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OptionsDialog))
         Me.TableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
@@ -69,7 +69,6 @@ Partial Class OptionsDialog
         Me.FindFlaggedDocumentsOnStartupCheckBox.Checked = Global.PDFKeeper.Presentation.My.MySettings.Default.FindFlaggedDocumentsOnStartup
         Me.FindFlaggedDocumentsOnStartupCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.Presentation.My.MySettings.Default, "FindFlaggedDocumentsOnStartup", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
         Me.FindFlaggedDocumentsOnStartupCheckBox.Name = "FindFlaggedDocumentsOnStartupCheckBox"
-        Me.HelpProvider.SetShowHelp(Me.FindFlaggedDocumentsOnStartupCheckBox, CType(resources.GetObject("FindFlaggedDocumentsOnStartupCheckBox.ShowHelp"), Boolean))
         Me.FindFlaggedDocumentsOnStartupCheckBox.UseVisualStyleBackColor = True
         '
         'ShowPdfWithDefaultApplicationCheckBox

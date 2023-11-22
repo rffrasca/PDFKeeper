@@ -149,9 +149,10 @@ Partial Class MainView
         Me.ToolBarToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.HelpContentsToolStripButton = New System.Windows.Forms.ToolStripButton()
         Me.UpdateCheckTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.DocumentsChecksTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.CheckForFlaggedDocumentsTimer = New System.Windows.Forms.Timer(Me.components)
         Me.DocumentsListTimedRefreshTimer = New System.Windows.Forms.Timer(Me.components)
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.CheckForDocumentsListChangesTimer = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip.SuspendLayout()
         CType(Me.HorizontalSplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.HorizontalSplitContainer.Panel1.SuspendLayout()
@@ -497,7 +498,6 @@ Partial Class MainView
         Me.DocumentsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DocumentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DocumentsDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SelectionColumn})
-        Me.DocumentsDataGridView.DataBindings.Add(New System.Windows.Forms.Binding("DataSource", Me.MainViewModelBindingSource, "Documents", True))
         Me.DocumentsDataGridView.DataBindings.Add(New System.Windows.Forms.Binding("Enabled", Me.MainViewModelBindingSource, "DocumentsEnabled", True))
         resources.ApplyResources(Me.DocumentsDataGridView, "DocumentsDataGridView")
         Me.DocumentsDataGridView.MultiSelect = False
@@ -821,15 +821,20 @@ Partial Class MainView
         Me.UpdateCheckTimer.Enabled = True
         Me.UpdateCheckTimer.Interval = 3600000
         '
-        'DocumentsChecksTimer
+        'CheckForFlaggedDocumentsTimer
         '
-        Me.DocumentsChecksTimer.Enabled = True
-        Me.DocumentsChecksTimer.Interval = 5000
+        Me.CheckForFlaggedDocumentsTimer.Enabled = True
+        Me.CheckForFlaggedDocumentsTimer.Interval = 5000
         '
         'DocumentsListTimedRefreshTimer
         '
         Me.DocumentsListTimedRefreshTimer.Enabled = True
         Me.DocumentsListTimedRefreshTimer.Interval = 60000
+        '
+        'CheckForDocumentsListChangesTimer
+        '
+        Me.CheckForDocumentsListChangesTimer.Enabled = True
+        Me.CheckForDocumentsListChangesTimer.Interval = 5000
         '
         'MainView
         '
@@ -982,10 +987,11 @@ Partial Class MainView
     Friend WithEvents DocumentsSetCategoryToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DocumentsSetTaxYearToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DocumentsDeleteToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DocumentsChecksTimer As Timer
+    Friend WithEvents CheckForFlaggedDocumentsTimer As Timer
     Friend WithEvents EditAppendTextToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EditToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents RefreshingDocumentsImageLabel As ToolStripStatusLabel
     Friend WithEvents DocumentsListTimedRefreshTimer As Timer
     Friend WithEvents HelpProvider As HelpProvider
+    Friend WithEvents CheckForDocumentsListChangesTimer As Timer
 End Class

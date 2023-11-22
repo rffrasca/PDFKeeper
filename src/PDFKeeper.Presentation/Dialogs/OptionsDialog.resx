@@ -192,12 +192,6 @@
   <data name="FindFlaggedDocumentsOnStartupCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 64</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="FindFlaggedDocumentsOnStartupCheckBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="FindFlaggedDocumentsOnStartupCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>215, 19</value>
   </data>
@@ -279,6 +273,9 @@
   <data name="&gt;&gt;SelectLastRowWhenListingDocumentsCheckBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

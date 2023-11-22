@@ -114,7 +114,12 @@ namespace PDFKeeper.Core.Presenters
             CancelViewClosing = false;
             OnApplyPendingChangesRequested();
             var rule = new PdfMetadataRule(ViewModel.UploadProfile);
-            if (ViewModel.Name.Length.Equals(0) || rule.ViolationFound)
+            if (string.IsNullOrEmpty(ViewModel.Name))
+            {
+                error = true;
+                messageBoxService.ShowMessage(Resources.NameCannotBeBlank, true);
+            }
+            else if (rule.ViolationFound)
             {
                 error = true;
                 messageBoxService.ShowMessage(rule.ViolationMessage, true);
@@ -125,7 +130,7 @@ namespace PDFKeeper.Core.Presenters
                 messageBoxService.ShowMessage(Resources.NameContainsCharsNotAllowed, true);
             }
             else if (uploadProfileManager.GetUploadProfile(ViewModel.Name) != null &&
-                uploadProfileName.Equals(null, System.StringComparison.Ordinal))
+                uploadProfileName == null)
             {
                 error = true;
                 messageBoxService.ShowMessage(Resources.UploadProfileExists, true);
