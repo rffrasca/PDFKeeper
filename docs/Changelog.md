@@ -1,6 +1,40 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v9.0.0 - 2023-11-24
+- This is a major release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.0.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.0.0).
+### Added
+* Added auto refresh every thirty seconds to the Documents list when the database platform is Oracle.
+* Created Documents menu on the Main form that contains items related to the multi-selecting of Documents in the list. 
+* Added status bar image that will be displayed while the Documents list is being refreshed.
+### Changed
+* Redesigned the layout of the Main form which included the removal of all Document Retrieval functionality that was replaced by the Find Documents dialog.
+* Redesigned the Add PDF dialog.
+* Redesigned the Upload Profiles dialog which included the removal of all Upload Profile editing functionality that was replaced by the Upload Profile Editor dialog.
+* Moved Text from the Insert menu on the main form to the Edit menu and renamed to Append Text.
+* Renamed Date/Time in the Edit menu on the main form to Append Date/Time.
+* Renamed "List flagged documents on startup" to "Find flagged documents on startup" on the Options dialog.
+* Changed Upload Directory Maintenance to execute directly before the Upload.
+* Changed Rejected PDF files check to execute directly after the Upload.
+* Renamed RemoveListAllDocuments policy to HideAllDocuments.
+* Changed class name in the Upload Profile XML schema.
+* Updated Magick.NET to 13.4.0. (CVE-2023-4863)
+### Removed
+* Removed Refresh from the View menu on the Main form.
+* Removed Update PDF Text Columns from the Tools menu on the Main form.
+* Removed Oracle Database Schema Upgrade help topic and script support.
+* Removed the copying of BouncyCastle.Crypto.dll to BouncyCastle.Crypto.dll.bak during setup and the restore command class that is no longer needed since BouncyCastle.Crypto.dll is no longer being deleted during the upgrade of PDFKeeper.
+### Fixed
+* ArgumentException: The parameter is incorrect. Image dimensions are too large! This exception will be prevented by skipping each PDF page that is to be processed by OCR with a pixel width or pixel height that exceeds the maximum image pixel dimensions supported by the Windows OCR engine. (#13)
+### Changed (Development)
+* Implemented the Model-View-Presenter-ViewModel pattern to improve maintainability.
+* Created Components and User Controls to eliminate redundancy and improve modularity.
+* Rewrote all non-UI code in C# and consolidated into PDFKeeper.Core.
+* Rewrote all code related to PDF viewing in C# and consolidated into PDFKeeper.PDFViewer.
+* Updated Microsoft.CodeAnalysis.NetAnalyzers to 7.0.4.
+
 ## v8.1.2 - 2023-04-16
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.1.2).
