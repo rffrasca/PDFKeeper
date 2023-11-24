@@ -64,7 +64,7 @@ PDFKeeper is free, open source software that provides a storage and management s
 
 ![Product Name Screen Shot][product-screenshot]
 
-User Interface in version 8.x.x.
+User Interface in version 9.0.0.
 
 ### Features
 * Store and manage PDF documents in a single-user or compatible, multi-user (on-prem or cloud) database where they’re indexed to provide full-text search functionality.
@@ -143,4 +143,4 @@ PDFKeeper is distributed under the terms of the [GNU General Public License (GPL
 [commit-activity-url]: https://github.com/rffrasca/PDFKeeper
 [Donate-PayPal-shield]: https://img.shields.io/badge/Donate-PayPal-green.svg
 [Donate-PayPal-url]: https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=JCM6ZMCF6BHHN
-[product-screenshot]: https://github.com/rffrasca/pdfkeeper/blob/master/docs/UserInterface-8.0.0.png
+[product-screenshot]: https://github.com/rffrasca/pdfkeeper/blob/master/docs/UserInterface-9.0.0.png
