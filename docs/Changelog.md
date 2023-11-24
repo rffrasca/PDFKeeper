@@ -42,9 +42,9 @@ All notable changes to PDFKeeper will be documented in this file.
 ### Changed
 - Empty folders in UploadRejected will be deleted.
 - Upload Folder Maintenance timer interval was set to 30 seconds.
-- Updated iText and iText.Font-Asian to 7.2.5
-- Updated SQLite Command Line Shell to 3.41.1
-- Updated Magick.NET to 13.0.0
+- Updated iText and iText.Font-Asian to 7.2.5.
+- Updated SQLite Command Line Shell to 3.41.1.
+- Updated Magick.NET to 13.0.0.
 ### Fixed
 - Added missing ellipsis to Insert > Text menu item text.
 - Added missing ellipsis to Tools > Update PDF Text Columns menu item text.
@@ -53,7 +53,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - iText.IO.Exceptions.IOException will be caught during an Upload, and then the offending PDF will be moved to the UploadRejected folder.
 ### Changed (Development)
 - Created scripts to set version in all references.
-- Updated Microsoft.CodeAnalysis.NetAnalyzers to 7.0.1
+- Updated Microsoft.CodeAnalysis.NetAnalyzers to 7.0.1.
 
 ## v8.1.1 - 2023-01-07
 - This is a maintenance release.
@@ -61,8 +61,8 @@ All notable changes to PDFKeeper will be documented in this file.
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.1.1).
 ### Changed
 - Flag Document menu item will be disabled when notes have been modified.
-- Updated System.Data.SQLite to 1.0.117
-- Updated Magick.NET to 12.2.2
+- Updated System.Data.SQLite to 1.0.117.
+- Updated Magick.NET to 12.2.2.
 ### Fixed
 - Auto Update will no longer prompt for an admin account to install new version.
 
@@ -76,10 +76,10 @@ All notable changes to PDFKeeper will be documented in this file.
 ### Changed
 - Updated "SQLite Error - database disk image is malformed" help topic to call fix that will correct triggers in SQLite database to address and prevent the malformed database disk image condition.
 - Updated Welcome, Getting Support, and Donate help topics to align with home page/readme.
-- Updated Magick.NET to 12.2.1
-- Updated Ghostscript to 10.0.0
-- Updated SQLite Command Line Shell to 3.40.0
-- Updated iText and iText.Font-Asian to 7.2.4
+- Updated Magick.NET to 12.2.1.
+- Updated Ghostscript to 10.0.0.
+- Updated SQLite Command Line Shell to 3.40.0.
+- Updated iText and iText.Font-Asian to 7.2.4.
 ### Removed
 - Removed "Rebuild Full-Text Search Index" menu function.
 ### Fixed
@@ -129,12 +129,12 @@ All notable changes to PDFKeeper will be documented in this file.
 - Ellipsis corrections have been made to some menu items.
 - Replaced text formatted license for PDFKeeper in the help file with an HTML formatted copy.
 - Replaced Third-Party Attribution in the help file with Third-Party Notices. The notices file was rewritten as THIRD-PARTY-NOTICES.txt that is also compiled into the help file in HTML format.
-- Updated SQLite Command Line Shell to 3.39.2
-- Updated Magick.NET to 12.0.1
-- Updated iText and iText.Font-Asian to 7.2.3
-- Updated Ghostscript to 9.56.1
-- Updated Sumatra PDF to 3.4.6
-- Updated System.Data.SQLite to 1.0.116
+- Updated SQLite Command Line Shell to 3.39.2.
+- Updated Magick.NET to 12.0.1.
+- Updated iText and iText.Font-Asian to 7.2.3.
+- Updated Ghostscript to 9.56.1.
+- Updated Sumatra PDF to 3.4.6.
+- Updated System.Data.SQLite to 1.0.116.
 ### Removed
 - Dropped Oracle Database 11g Express Edition compatibility.
 - Removed Oracle Database 11g and lower support from OracleDatabaseSchemaSetup.sql and OracleDatabaseSchemaUpgrade.sql.
@@ -151,8 +151,8 @@ All notable changes to PDFKeeper will be documented in this file.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.3).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v7.2.3).
 ### Changed
-- Updated Magick.NET to 8.4.0
-- Updated System.Data.SQLite to 1.0.115.5
+- Updated Magick.NET to 8.4.0.
+- Updated System.Data.SQLite to 1.0.115.5.
 ### Fixed
 - Fixed Unhandled IOException “The CMap iText.IO.Font.Cmap.UniJIS-UTF16-H was not found.” during PDF text extraction prior to uploading.
 - Fixed issue with "Add PDF Documents dialog" hiding behind Main form after Search Results is automatically refreshed. (rework)
@@ -167,9 +167,9 @@ All notable changes to PDFKeeper will be documented in this file.
 ### Changed
 - Search Results will no longer be refreshed after an Upload cycle when document records in Search Results are checked.
 - Added 30 second sleep after the Upload of PDF files when TMP files exist in the Upload folder.
-- Updated Magick.NET to 8.3.3
-- Updated PdfPig to 0.1.5
-- Updated Ghostscript to 9.55.0
+- Updated Magick.NET to 8.3.3.
+- Updated PdfPig to 0.1.5.
+- Updated Ghostscript to 9.55.0.
 ### Fixed
 - Fixed issue with "Add PDF Documents dialog" hiding behind Main form after Search Results is automatically refreshed. (rework)
 - Fixed Unhandled IOException "The process cannot access the file because it is being used by another process." when deleting a temporary TIFF file following OCR processing.
@@ -183,8 +183,8 @@ All notable changes to PDFKeeper will be documented in this file.
 - Added Connection Timeout=60 to the Oracle Database Connection String to mitigate connection timeouts.
 ### Changed
 - Improved PDF image extraction performance and OCR accuracy.
-- Updated Magick.NET to 8.3.0
-- Updated System.Data.SQLite to 1.0.115
+- Updated Magick.NET to 8.3.0.
+- Updated System.Data.SQLite to 1.0.115.
 ### Fixed
 - Fixed UploadRunningToolStripStatusLabel not being visible during an upload cycle and Search Results not refreshing after completing.
 - Login form error message will no longer appear behind the Login form making it impossible to acknowledge.
@@ -203,10 +203,10 @@ All notable changes to PDFKeeper will be documented in this file.
 - Renamed the “Populate New Database Table Columns” menu item to “Update PDF Text Annotations and Text in Database” and moved it to the Tools menu where it will be enabled when document records are selected in Search Results.
 - Changed Search Results to be refreshed after each Upload cycle.
 - Modified Manage Upload Folder Configurations dialog to delete selected Upload Folder Configuration file to the Windows Recycle Bin.
-- Updated Magick.NET to 8.1.0
-- Updated iText to 7.1.16
-- Updated SumatraPDF to 3.3.3
-- Updated AutoUpdater.NET to 1.7.0
+- Updated Magick.NET to 8.1.0.
+- Updated iText to 7.1.16.
+- Updated SumatraPDF to 3.3.3.
+- Updated AutoUpdater.NET to 1.7.0.
 - Updated Getting Support help topic.
 - Updated Donate help topic.
 ### Fixed
@@ -223,9 +223,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Changed "Upload folder contains files that were not uploaded" status message on the main form to "Upload folder contains one or more files that were not uploaded".
 - Changed "UploadStaging folder contains files that were not uploaded" status message on the main form to "UploadStaging folder contains one or more files that were not uploaded".
 - Changed "Database contains document records that are flagged" status message on the main form to "Database contains one or more document records that are flagged".
-- Updated System.Data.SQLite to 1.0.114.4
-- Updated Ghostscript to 9.54.0
-- Updated SQLite Command Line Shell to 3.36.0
+- Updated System.Data.SQLite to 1.0.114.4.
+- Updated Ghostscript to 9.54.0.
+- Updated SQLite Command Line Shell to 3.36.0.
 - Updated copyright year for Magick.NET in Third-Party Attribution help topic.
 - Updated support methods in Getting Support help topic.
 - Changed “Programs and Features” to “Programs and Features or Apps and Features” in the Uninstalling PDFKeeper help topic.
@@ -241,9 +241,9 @@ All notable changes to PDFKeeper will be documented in this file.
 - Text from image-only PDF will be extracted using OCR before uploading, and then stored in an indexed database column. (requires Windows 10)
 - Menu function was added to move local SQLite database to an alternate location.
 ### Changed
-- Migrated from iTextSharp to iText Core/Community 7.1.15
+- Migrated from iTextSharp to iText Core/Community 7.1.15.
 - PdfPig 0.1.4 was added to handle text extraction when iText throws an ArgumentException while trying to extract text from a PDF that contains an invalid encoding.
-- Magick.NET was updated to 7.24.1.0
+- Magick.NET was updated to 7.24.1.0.
 ### Fixed
 - Fixed License not opening from About box.
 ### Changed (Development)
@@ -263,8 +263,8 @@ All notable changes to PDFKeeper will be documented in this file.
 - Consolidated Third-Party Attribution help pages into single page.
 - Modified Save As to retrieve the selected PDF Title from the database instead of PDF Metadata.
 - Modified Export to rewrite an exported PDF with Title, Author, Subject, and Keywords from the database document record when the Title, Author, Subject, and Keywords in the PDF Metadata do not match.
-- Updated SumatraPDF to 3.2
-- Migrated from pdftopng from Xpdf Tools to Magick.NET 7.22.2.2 and Ghostscript 9.53.3
+- Updated SumatraPDF to 3.2.
+- Migrated from pdftopng from Xpdf Tools to Magick.NET 7.22.2.2 and Ghostscript 9.53.3.
 - Moved Search Results to right side of form and moved right Tab Control (Notes, Keywords, Preview, and Text) to left side of form under Search Group Box.
 ### Removed
 - Oracle Database 18c (not XE), 12c, and 11g (not XE) has been dropped from the compatibility list.
@@ -295,7 +295,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Search Results will be refreshed after PDF files are uploaded when Documents by Date Added and current date are being listed and Document Notes for the selected document record are not being edited.
 - Search Results will be refreshed after flagged PDF files are uploaded when Flagged Documents are being listed and Document Notes for the selected document record are not being edited.
 - Search Results will be refreshed after PDF files are uploaded when All Documents are being listed and Document Notes for the selected document record are not being edited.
-- Updated AutoUpdater.NET to 1.6.4
+- Updated AutoUpdater.NET to 1.6.4.
 ### Fixed
 - Selected document record in Search Results not always visible after refreshing.
 - InvalidOperationException at System.Drawing.Image.get_Width() or System.Drawing.Image.get_FrameDimensionsList() when document record is selected resulting in preview image failing to load into Preview Picture Box.
@@ -305,8 +305,8 @@ All notable changes to PDFKeeper will be documented in this file.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.1).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v6.0.1).
 ### Changed
-- Updated iTextSharp to 5.5.13.2
-- Updated AutoUpdater.NET to 1.6.3
+- Updated iTextSharp to 5.5.13.2.
+- Updated AutoUpdater.NET to 1.6.3.
 ### Fixed
 - NullReferenceException at PDFKeeper.WindowsApplication.CommonViewPresenter.Dispose(Boolean disposing) that is being logged to PDFKeeper.log during application shutdown.
 - Help topic not opening when F1 is pressed while Set Category dialog is open.
@@ -370,8 +370,8 @@ When Search Results is refreshed, the previously selected document record will b
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v5.0.1).
 ### Changed
 - Modified PDF file and application generated supplemental data will now be permanently deleted from the UploadStaging folder after being uploaded.
-- pdftopng from Xpdf Tools was updated to 4.02 in the binary release.
-- AutoUpdater.NET was updated to 1.5.8 in the binary release.
+- Updated pdftopng from Xpdf Tools to 4.02.
+- Updated AutoUpdater.NET to 1.5.8.
 ### Fixed
 - Fixed "PDFKeeper has detected that you've upgraded from an older version" message box from being displayed when PDFKeeper was upgraded from version 5.0.0 or above.
 - Upload status no longer shows running after one or more PDF documents fail to upload.
@@ -395,9 +395,9 @@ When Search Results is refreshed, the previously selected document record will b
 - Updated help file to instruct user to not restore documents from the recycle bin while PDFKeeper is open.
 - Improvements have been made to the handling of SecureStrings.
 - Oracle Data Provider for .NET, included in Oracle Data Access Components Runtime 19.3 is now required offering better performance and security.
-- AutoUpdater.NET was updated to 1.5.7 in the binary release.
-- iTextSharp was updated to 5.5.13.1 in the binary release.
-- pdftopng from Xpdf Tools was updated to 4.01.01 in the binary release.
+- Updated AutoUpdater.NET to 1.5.7.
+- Updated iTextSharp to 5.5.13.1.
+- Updated pdftopng from Xpdf Tools to 4.01.01.
 ### Fixed
 - All SQL statements that accept parameters have been parameterized to address SQL Injection concerns flagged by Code Analysis.
 - Oracle Database user password is now being passed securely when connecting to the database preventing exposure in a page file swap or crash dump.
@@ -429,8 +429,8 @@ When Search Results is refreshed, the previously selected document record will b
 - Updated links in the Oracle Database Express Edition (XE) Database Setup and Database User Administration help topics.
 - The View Original button is now selected in place of the Title text box	when the Add PDF Document dialog loads.
 - Default file name in Save As dialog is now set to the title of the PDF for the selected document record.
-- iTextSharp was updated to 5.5.13 in the binary release.
-- AutoUpdater.NET was updated to 1.4.11 in the binary release.
+- Updated iTextSharp to 5.5.13.
+- Updated AutoUpdater.NET to 1.4.11.
 ### Fixed
 - Fixed an Unhandled Exception that would occur when saving a PDF for the	selected document record to a file system and the target file name already existed.
 - Combo box on "Search by String" tab is no longer selecting the first string in the drop down list that contains the text in text box, overwriting the text in the text box when the Search button is selected.
@@ -468,11 +468,11 @@ When Search Results is refreshed, the previously selected document record will b
 - All User Documentation is now contained within the help file.
 - All database setup scripts are now called from the help file.
 - WORLD_LEXER is now the default lexer for new database schemas.
-- iTextSharp was updated to 5.5.12 in the binary release.
+- Updated iTextSharp to 5.5.12.
 - PDF Preview images are now generated by pdf2png from Xpdf Tools v4.00, replacing GhostScript in the binary release.
-- Sumatra PDF was updated to 3.1.2 in the binary release.
-- Application update is now handled by AutoUpdater.NET 1.4.7 in the binary release.
-- Nini is no longer used to read and write XML configuration files and has been removed from the binary release.  This functionality is now performed using .NET Framework serialization.
+- Updated Sumatra PDF to 3.1.2.
+- Application update is now handled by AutoUpdater.NET 1.4.7.
+- Nini is no longer used to read and write XML configuration files and has been removed.  This functionality is now performed using .NET Framework serialization.
 ### Changed (Development)
 - Visual Studio 2013 is now used to build PDFKeeper.
 - All code has been completely rewritten to address maintainability issues.
@@ -482,7 +482,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/3.1.2).
 - Binary release is no longer available.
 ### Changed
-- Third-Party software update in binary release: Ghostscript 9.16.
+- Updated Ghostscript to 9.16.
 ### Fixed
 - Document Search: listview not scrolling when selected item is off the screen.
 - Document Search: selected listview item becomes deselected after refresh.
@@ -503,8 +503,8 @@ When Search Results is refreshed, the previously selected document record will b
 - Document Preview to Main Form.
 - Document Text View to Main Form.
 ### Changed
-- Third-Party software update in binary release: iTextSharp 5.5.2.
-- Third-Party software update in binary release: Sumatra PDF 3.0.
+- Updated iTextSharp to 5.5.2.
+- Updated Sumatra PDF to 3.0.
 ### Removed
 - XPS and HTML converters.
 
@@ -543,8 +543,8 @@ When Search Results is refreshed, the previously selected document record will b
 - Migrate installation from InnoSetup to Windows Installer.
 - Oracle Data Provider for .NET, Managed Driver is now required in place of Oracle Data Access Components.
 - Enable database connection pooling to improve performance.
-- Third-Party software update in binary release: Sumatra PDF 2.4.
-- Third-Party software update in binary release: iTextSharp 5.4.5.
+- Updated Sumatra PDF to 2.4.
+- Updated iTextSharp to 5.4.5.
 - Redesign About Form.
 - Set form font to SystemFonts.MessageBoxFont to improve appearance on Windows Vista and later.
 ### Fixed
@@ -562,8 +562,8 @@ When Search Results is refreshed, the previously selected document record will b
 - Main Form: Add a folder watcher that will directly upload PDF documents.
 ### Changed
 - Set InitialDirectory property to last folder selected in Open and Save dialogs.
-- Third-Party software update in binary release: Sumatra PDF 2.1.1.
-- Third-Party software update in binary release: iTextSharp 5.3.0.
+- Updated Sumatra PDF to 2.1.1.
+- Updated iTextSharp to 5.3.0.
 - Prompt to process existing PDF's when folder watchers are enabled.
 - Installer: Move uninstall of existing version to just before start of installing files.
 - Information Properties Editor and folder watcher; upload folder watcher file saving modifications.
@@ -585,8 +585,8 @@ When Search Results is refreshed, the previously selected document record will b
 - Main Form: Information Properties Editor Folder Watcher: Add event to status bar icon to open watched folder.
 - Main Form: Implement a centralized document upload process.
 ### Changed
-- Third-Party software update in binary release: Sumatra PDF 2.0.1.
-- Third-Party software update in binary release: iTextSharp 5.2.1.
+- Updated Sumatra PDF to 2.0.1.
+- Updated iTextSharp to 5.2.1.
 - Installer to prompt user to close applications in use during installation on Windows Vista and newer.
 ### Fixed
 - PDFKeeper not responsive after opening PDF document.
@@ -612,7 +612,7 @@ When Search Results is refreshed, the previously selected document record will b
 ### Changed
 - Store user settings in an XML file instead of the registry.
 - Information Properties Editor: remember the last state of the "After saving, open PDF document in viewer" check box.
-- Third-Party software update in binary release: iTextSharp 5.2.0.
+- Updated iTextSharp to 5.2.0.
 ### Fixed
 - Disable some of Sumatra PDF's functionality.
 - PdfKeeper.exe is not removed if in use during uninstall.
@@ -632,8 +632,8 @@ When Search Results is refreshed, the previously selected document record will b
 - Enable caching of opened PDF documents.
 - Update documentation for ODAC 11.2 Release 3 (11.2.0.2.1).
 - Update documentation for Oracle Database Express Edition 11g Release 2.
-- Third-Party software update in binary release: Sumatra PDF 1.9.
-- Third-Party software update in binary release: iTextSharp 5.1.3.
+- Updated Sumatra PDF to 1.9.
+- Updated iTextSharp to 5.1.3.
 ### Fixed
 - Main Form: Display Document Upload results on status bar, not in message box.
 - About Form: Graphic, text, and OK button not centered.
@@ -644,8 +644,8 @@ When Search Results is refreshed, the previously selected document record will b
 - Binary release is no longer available.
 ### Changed
 - Main Form: Enhance the Upload process to execute on a separate thread.
-- Third-Party software update in binary release: Sumatra PDF 1.7.
-- Third-Party software update in binary release: iTextSharp 5.1.2.
+- Updated Sumatra PDF to 1.7.
+- Updated iTextSharp to 5.1.2.
 ### Fixed
 - Main Form: Document Notes text is highlighted after update.
 - Main Form: Check for update not detecting newer version on project site.
@@ -655,9 +655,9 @@ When Search Results is refreshed, the previously selected document record will b
 - Source code is archived [here](https://github.com/rffrasca/PDFKeeper-Source-Archive/tree/master/2.2.0).
 - Binary release is no longer available.
 ### Changed
-- Third-Party software update in binary release: Sumatra PDF 1.6.
+- Updated Sumatra PDF to 1.6.
 - Consolidate Document Notes and Document Keywords functionality into Main Form.
-- Third-Party software update in binary release: iTextSharp 5.1.1.
+- Updated iTextSharp to 5.1.1.
 ### Fixed
 - Information Properties Editor: Unhandled Exception: Access to the path is denied.
 - Information Properties Editor: On occasion, the Author has to be chosen twice.
@@ -675,8 +675,8 @@ When Search Results is refreshed, the previously selected document record will b
 - Document Notes Form: Add print feature.
 - Information Properties Editor: Force close PDF file on save or cancel, if open with bundled viewer.
 ### Changed
-- Third-Party software update in binary release: iTextSharp 5.0.6.
-- Third-Party software update in binary release: Sumatra PDF 1.4.
+- Updated iTextSharp to 5.0.6.
+- Updated Sumatra PDF to 1.4.
 - Information Properties Editor: Replace prompt to view document after saving with a checkbox on form.
 ### Fixed
 - Main Form: Clicking on a list view column after clearing search text triggers an Oracle Text parser error.
@@ -690,7 +690,7 @@ When Search Results is refreshed, the previously selected document record will b
 ### Added
 - Add document upload capability to the client.
 ### Changed
-- Third-Party software update in binary release: Sumatra PDF 1.1.
+- Updated Sumatra PDF to 1.1.
 - The Database Setup will now build the database schema with the BASIC_LEXER, replacing the WORLD_LEXER.
 - pdfinfo.exe from Xpdf and pdftk have been replaced by iTextSharp in the binary release.
 ### Fixed
@@ -703,8 +703,8 @@ When Search Results is refreshed, the previously selected document record will b
 - User Guide: Corrections in section 5: Document Searching.
 - ORA-03113: end-of-file on communication channel.
 ### Removed
-- Remove server-side upload components.
-- Rexx/SQL is no longer used and has been removed from the binary release.
+- Removed server-side upload components.
+- Rexx/SQL is no longer used and has been removed.
 ### Changed (Development)
 - Application was redesigned and rewritten in VB.NET using SharpDevelop for .NET Framework 3.5 SP1; Open Object Rexx 4.0.0 is no longer being used.
 
@@ -718,8 +718,8 @@ When Search Results is refreshed, the previously selected document record will b
 - Add more examples on the "about" operator to the User Guide.
 - Add upload folder integrity check to document loader.
 ### Changed
-- Third-Party software update in binary release: Sumatra PDF 1.0.1.
-- Third-Party software update in binary release: pdfinfo.exe version 3.02pl4.
+- Updated Sumatra PDF to 1.0.1.
+- Updated pdfinfo.exe to 3.02pl4.
 - Prerequisite software change: Open Object Rexx 4.0.0.
 ### Fixed
 - "Error Cannot Load Resource File sqresus.dll" followed by "REXX/SQL-1: Database Error - specified driver could not be loaded due to system error 1114 (Oracle in XEClient)."
