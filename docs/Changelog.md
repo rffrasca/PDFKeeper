@@ -362,7 +362,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Database connection pooling is now a setting in PDFKeeper.exe.config that can be set to True or False.
 ### Fixed
 - Fixed a memory and handle leak.
-- Resolved issue with how Oracle secure password handling was implemented, allowing database connection pooling to be enabled after being disabled in version 5.0.0.
+- Corrected issue with how Oracle secure password handling was implemented, allowing database connection pooling to be enabled after being disabled in version 5.0.0.
 
 ## v5.0.1 - 2019-11-16
 - This is a maintenance release.
@@ -433,7 +433,7 @@ When Search Results is refreshed, the previously selected document record will b
 - Updated AutoUpdater.NET to 1.4.11.
 ### Fixed
 - Fixed an Unhandled Exception that would occur when saving a PDF for the	selected document record to a file system and the target file name already existed.
-- Combo box on "Search by String" tab is no longer selecting the first string in the drop down list that contains the text in text box, overwriting the text in the text box when the Search button is selected.
+- Combo box on "Search by String" tab is no longer selecting the first string in the drop-down list that contains the text in text box, overwriting the text in the text box when the Search button is selected.
 
 ## v4.0.1 - 2018-08-04
 - This is a maintenance release.
