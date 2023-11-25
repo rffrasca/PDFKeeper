@@ -26,10 +26,10 @@ namespace PDFKeeper.Core.Application
     internal class UserProfileFolder
     {
         /// <summary>
-        /// Gets the MyDocuments folder path.
+        /// Gets the Desktop folder path.
         /// </summary>
-        internal static string MyDocuments => Environment.GetFolderPath(
-            Environment.SpecialFolder.MyDocuments);
+        internal static string Desktop => Environment.GetFolderPath(
+            Environment.SpecialFolder.Desktop);
 
         /// <summary>
         /// Gets the Downloads folder path.

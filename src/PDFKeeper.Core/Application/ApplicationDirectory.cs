@@ -31,7 +31,7 @@ namespace PDFKeeper.Core.Application
     {
         private readonly ExecutingAssembly executingAssembly;
         private readonly string uploadShortcutName;
-        private readonly FileInfo myDocumentsLinkFile;
+        private readonly FileInfo desktopLinkFile;
         private readonly FileInfo downloadsLinkFile;
         
         public enum SpecialName
@@ -50,7 +50,7 @@ namespace PDFKeeper.Core.Application
             executingAssembly = new ExecutingAssembly();
             uploadShortcutName = string.Concat(executingAssembly.ProductName, " ",
                 Resources.Upload, ".lnk");
-            myDocumentsLinkFile = new FileInfo(Path.Combine(UserProfileFolder.MyDocuments,
+            desktopLinkFile = new FileInfo(Path.Combine(UserProfileFolder.Desktop,
                 uploadShortcutName));
             downloadsLinkFile = new FileInfo(Path.Combine(UserProfileFolder.Downloads,
                 uploadShortcutName));
@@ -93,7 +93,7 @@ namespace PDFKeeper.Core.Application
             directory.Create();
             if (specialName.Equals(SpecialName.Upload))
             {
-                directory.CreateShortcut(myDocumentsLinkFile);
+                directory.CreateShortcut(desktopLinkFile);
                 directory.CreateShortcut(downloadsLinkFile);
             }
             return directory;
@@ -103,7 +103,7 @@ namespace PDFKeeper.Core.Application
         {
             try
             {
-                myDocumentsLinkFile.Delete();
+                desktopLinkFile.Delete();
                 downloadsLinkFile.Delete();
             }
             catch (IOException) { }
