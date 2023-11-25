@@ -235,9 +235,7 @@
       <Component Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Guid="c0d45ceb-d797-4140-a24a-6b69e53703e9">
         <File Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
       </Component>
-      <Component Id="SumatraPDF_3.4.6_64.exe" Guid="cbe2e053-c7b3-4529-b59d-13675980d6b5">
-        <File Id="SumatraPDF_3.4.6_64.exe" Name="SumatraPDF-3.4.6-64.exe" Source="$(var.PDFKeeper.Presentation_TargetDir)SumatraPDF-3.4.6-64.exe" />
-      </Component>
+      
       <Component Id="SqliteDatabaseIndexSyncFix.sql" Guid="f696c075-755d-4956-bcb1-5f41e486fb0b">
         <File Id="SqliteDatabaseIndexSyncFix.sql" Name="SqliteDatabaseIndexSyncFix.sql" Source="$(var.PDFKeeper.Presentation_TargetDir)SqliteDatabaseIndexSyncFix.sql" />
       </Component>
@@ -246,6 +244,9 @@
       </Component>
       <Component Id="PDFKeeper.PDFViewer.dll" Guid="523123e8-544a-43d1-b2c6-6b258e93d263">
         <File Id="PDFKeeper.PDFViewer.dll" Name="PDFKeeper.PDFViewer.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.PDFViewer.dll" />
+      </Component>
+      <Component Id="SumatraPDF_3.5.2_64.exe" Guid="f620ba5d-79e6-4d69-bc46-8379f55e2e9e">
+        <File Id="SumatraPDF_3.5.2_64.exe" Name="SumatraPDF-3.5.2-64.exe" Source="$(var.PDFKeeper.Presentation_TargetDir)SumatraPDF-3.5.2-64.exe" />
       </Component>
   	</ComponentGroup>
 	</Fragment>

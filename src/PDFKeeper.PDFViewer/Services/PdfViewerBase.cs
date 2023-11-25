@@ -37,7 +37,7 @@ namespace PDFKeeper.PDFViewer.Services
             {
                 var executingAssembly = new ExecutingAssembly();
                 process.StartInfo.FileName = Path.Combine(executingAssembly.DirectoryPath,
-                    "SumatraPDF-3.4.6-64.exe");
+                    "SumatraPDF-3.5.2-64.exe");
                 process.StartInfo.Arguments = args;
                 process.StartInfo.UseShellExecute = false;
                 process.Start();
