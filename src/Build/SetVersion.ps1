@@ -18,10 +18,10 @@
 # * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 # *****************************************************************************
 
-$previousVersion="8.1.2"
-$currentVersion="9.0.0"
+$previousVersion="9.0.0"
+$currentVersion="9.1.0"
 
-(Get-ChildItem -Include GlobalAssemblyInfo.vb,PDFKeeper.Setup.wixproj,Product.wxs,'THIRD-PARTY-NOTICES.*' -Recurse ) |
+(Get-ChildItem -Include *AssemblyInfo.*,PDFKeeper.Setup.wixproj,Product.wxs,'THIRD-PARTY-NOTICES.*' -Recurse ) |
 Foreach-Object {
     Set-Content $_ ((Get-content $_) -replace $previousVersion, $currentVersion)
 }

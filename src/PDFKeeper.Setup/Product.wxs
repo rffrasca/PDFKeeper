@@ -22,7 +22,7 @@
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
   <?define PDFKeeper.Presentation_TargetDir=$(var.PDFKeeper.Presentation.TargetDir)?>
-  <Product Id="*" Name="PDFKeeper" Language="1033" Version="9.0.0" Manufacturer="Robert F. Frasca" UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2">
+  <Product Id="*" Name="PDFKeeper" Language="1033" Version="9.1.0" Manufacturer="Robert F. Frasca" UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2">
     
     <Package InstallerVersion="500" Compressed="yes" InstallScope="perUser" />
 		
@@ -220,7 +220,7 @@
       <Component Id="Microsoft.Bcl.AsyncInterfaces.dll" Guid="e41f38fe-6222-4a0d-91d4-d05accf51fe1">
         <File Id="Microsoft.Bcl.AsyncInterfaces.dll" Name="Microsoft.Bcl.AsyncInterfaces.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Bcl.AsyncInterfaces.dll" />
       </Component>
-      <Component Id="itext.commons.dll" Guid="57d9dbe7-de8e-461a-8c7d-80b246b92070">
+      <Component Id="itext.commons.dll" Guid="57d9dbe7-de8e-461a-8c7d-80b246b9.1.0">
         <File Id="itext.commons.dll" Name="itext.commons.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)itext.commons.dll" />
       </Component>
       <Component Id="Microsoft.Extensions.Logging.Abstractions.dll" Guid="d6502dd0-c34c-4010-8f71-6cc5b8bd6aed">
