@@ -49,6 +49,7 @@ namespace PDFKeeper.Core.Presenters
         private readonly IFolderBrowserDialogService folderBrowserDialogService;
         private readonly IMessageBoxService messageBoxService;
         private readonly IFolderExplorerService folderExplorerService;
+        private readonly IDialogService setTitleDialogService;
         private readonly IDialogService setCategoryDialogService;
         private readonly IDialogService setTaxYearDialogService;
         private readonly IFileDialogService openFileDialogService;
@@ -72,6 +73,7 @@ namespace PDFKeeper.Core.Presenters
         /// <param name="folderBrowserDialogService">The FolderBrowserDialogService instance.</param>
         /// <param name="messageBoxService">The MessageBoxService instance.</param>
         /// <param name="folderExplorerService">The FolderExplorerService instance.</param>
+        /// <param name="setTitleDialogService">The SetTitleDialogService instance.</param>
         /// <param name="setCategoryDialogService">The SetCategoryDialogService instance.</param>
         /// <param name="setTaxYearDialogService">The SetTaxYearDialogService instance.</param>
         /// <param name="openFileDialogService">The OpenFileDialogService instance.</param>
@@ -81,15 +83,17 @@ namespace PDFKeeper.Core.Presenters
         public MainPresenter(IPdfViewerService pdfViewerService,
             IFolderBrowserDialogService folderBrowserDialogService,
             IMessageBoxService messageBoxService,
-            IFolderExplorerService folderExplorerService, IDialogService setCategoryDialogService,
-            IDialogService setTaxYearDialogService, IFileDialogService openFileDialogService,
-            IFileDialogService saveFileDialogService, IPrintDialogService printDialogService,
+            IFolderExplorerService folderExplorerService, IDialogService setTitleDialogService,
+            IDialogService setCategoryDialogService, IDialogService setTaxYearDialogService,
+            IFileDialogService openFileDialogService, IFileDialogService saveFileDialogService,
+            IPrintDialogService printDialogService,
             IPrintPreviewDialogService printPreviewDialogService)
         {
             this.pdfViewerService = pdfViewerService;
             this.folderBrowserDialogService = folderBrowserDialogService;
             this.messageBoxService = messageBoxService;
             this.folderExplorerService = folderExplorerService;
+            this.setTitleDialogService = setTitleDialogService;
             this.setCategoryDialogService = setCategoryDialogService;
             this.setTaxYearDialogService = setTaxYearDialogService;
             this.openFileDialogService = openFileDialogService;
@@ -135,6 +139,7 @@ namespace PDFKeeper.Core.Presenters
             ViewModel.EditAppendTextMenuEnabled = false;
             ViewModel.EditFlagDocumentMenuEnabled = false;
             ViewModel.DocumentsSelectMenuEnabled = false;
+            ViewModel.DocumentsSetTitleMenuEnabled = false;
             ViewModel.DocumentsSetCategoryMenuEnabled = false;
             ViewModel.DocumentsSetTaxYearMenuEnabled = false;
             ViewModel.DocumentsDeleteMenuEnabled = false;
@@ -399,10 +404,20 @@ namespace PDFKeeper.Core.Presenters
                     ViewModel.CheckedDocumentIds.Add(id);
                 }
             }
+            ViewModel.DocumentsSetTitleMenuEnabled = enabled;
             ViewModel.DocumentsSetCategoryMenuEnabled = enabled;
             ViewModel.DocumentsSetTaxYearMenuEnabled = enabled;
             ViewModel.DocumentsDeleteMenuEnabled = enabled;
             ViewModel.FileExportMenuEnabled = enabled;
+        }
+
+        public void SetTitleOnEachSelectedDocument()
+        {
+            var value = setTitleDialogService.ShowDialog();
+            if (value != null)
+            {
+                ProcessEachCheckedDocument(CheckedDocumentAction.SetTitle, value);
+            }
         }
 
         public void SetCategoryOnEachSelectedDocument()
@@ -601,6 +616,7 @@ namespace PDFKeeper.Core.Presenters
                 documentsEnabled = true;
                 if (ViewModel.CheckedDocumentIds.Count > 0)
                 {
+                    ViewModel.DocumentsSetTitleMenuEnabled = true;
                     ViewModel.DocumentsSetCategoryMenuEnabled = true;
                     ViewModel.DocumentsSetTaxYearMenuEnabled = true;
                     ViewModel.DocumentsDeleteMenuEnabled = true;
@@ -799,6 +815,7 @@ namespace PDFKeeper.Core.Presenters
 
         private enum CheckedDocumentAction
         {
+            SetTitle,
             SetCategory,
             SetTaxYear,
             Delete,
@@ -854,6 +871,7 @@ namespace PDFKeeper.Core.Presenters
             if (notesChanged)
             {
                 ViewModel.FileExportMenuEnabled = false;
+                ViewModel.DocumentsSetTitleMenuEnabled = false;
                 ViewModel.DocumentsSetCategoryMenuEnabled = false;
                 ViewModel.DocumentsSetTaxYearMenuEnabled = false;
                 ViewModel.DocumentsDeleteMenuEnabled = false;
@@ -936,8 +954,9 @@ namespace PDFKeeper.Core.Presenters
         /// </summary>
         /// <param name="checkedDocumentAction">The CheckedDocumentAction.</param>
         /// <param name="value">
-        /// The value to be applied to each document processeed or null. When performing an export,
-        /// this must be the export target directory.
+        /// The value to be applied to each document processeed or
+        /// null (Category and Tax Year only). When performing an export, this value must be the
+        /// export target directory.
         /// </param>
         private void ProcessEachCheckedDocument(CheckedDocumentAction checkedDocumentAction,
             string value)
@@ -950,7 +969,12 @@ namespace PDFKeeper.Core.Presenters
                 {
                     OnLongRunningOperationStarted();
                     var document = documentRepository.GetDocument(id, null);
-                    if (checkedDocumentAction.Equals(CheckedDocumentAction.SetCategory))
+                    if (checkedDocumentAction.Equals(CheckedDocumentAction.SetTitle))
+                    {
+                        document.Title = value;
+                        documentRepository.UpdateDocument(document);
+                    }
+                    else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetCategory))
                     {
                         document.Category = value;
                         documentRepository.UpdateDocument(document);

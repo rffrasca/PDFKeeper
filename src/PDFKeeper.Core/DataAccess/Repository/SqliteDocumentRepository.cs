@@ -481,6 +481,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 throw new ArgumentNullException(nameof(document));
             }
             var sql = "update docs set " +
+                      "doc_title = :doc_title," +
                       "doc_notes = :doc_notes," +
                       "doc_category = :doc_category," +
                       "doc_tax_year = :doc_tax_year," +
@@ -493,6 +494,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 {
                     using (var command = new SQLiteCommand(sql, connection))
                     {
+                        command.Parameters.AddWithValue("doc_title", document.Title);
                         command.Parameters.AddWithValue("doc_notes", document.Notes);
                         command.Parameters.AddWithValue("doc_category", document.Category);
                         command.Parameters.AddWithValue("doc_tax_year", document.TaxYear);

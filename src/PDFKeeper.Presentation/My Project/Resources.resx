@@ -186,4 +186,7 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="UnhandledException" xml:space="preserve">
     <value>An Unhandled Exception has occurred in the application.</value>
   </data>
+  <data name="TitleCannotBeBlank" xml:space="preserve">
+    <value>Title cannot be blank!</value>
+  </data>
 </root>

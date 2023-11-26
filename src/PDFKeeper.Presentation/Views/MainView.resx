@@ -485,6 +485,15 @@
   <data name="DocumentsSelectToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Select</value>
   </data>
+  <data name="DocumentsSetTitleToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+T</value>
+  </data>
+  <data name="DocumentsSetTitleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 22</value>
+  </data>
+  <data name="DocumentsSetTitleToolStripMenuItem.Text" xml:space="preserve">
+    <value>Set &amp;Title...</value>
+  </data>
   <data name="DocumentsSetCategoryToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+C</value>
   </data>
@@ -2375,6 +2384,12 @@
   </data>
   <data name="&gt;&gt;CheckForDocumentsListChangesTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DocumentsSetTitleToolStripMenuItem.Name" xml:space="preserve">
+    <value>DocumentsSetTitleToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;DocumentsSetTitleToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainView</value>

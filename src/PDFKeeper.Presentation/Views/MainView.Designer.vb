@@ -153,6 +153,7 @@ Partial Class MainView
         Me.DocumentsListTimedRefreshTimer = New System.Windows.Forms.Timer(Me.components)
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.CheckForDocumentsListChangesTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.DocumentsSetTitleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.HorizontalSplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.HorizontalSplitContainer.Panel1.SuspendLayout()
@@ -349,7 +350,7 @@ Partial Class MainView
         '
         'DocumentsToolStripMenuItem
         '
-        Me.DocumentsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DocumentsFindToolStripMenuItem, Me.DocumentsToolStripSeparator1, Me.DocumentsSelectToolStripMenuItem, Me.DocumentsSetCategoryToolStripMenuItem, Me.DocumentsSetTaxYearToolStripMenuItem, Me.DocumentsDeleteToolStripMenuItem})
+        Me.DocumentsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DocumentsFindToolStripMenuItem, Me.DocumentsToolStripSeparator1, Me.DocumentsSelectToolStripMenuItem, Me.DocumentsSetTitleToolStripMenuItem, Me.DocumentsSetCategoryToolStripMenuItem, Me.DocumentsSetTaxYearToolStripMenuItem, Me.DocumentsDeleteToolStripMenuItem})
         Me.DocumentsToolStripMenuItem.Name = "DocumentsToolStripMenuItem"
         resources.ApplyResources(Me.DocumentsToolStripMenuItem, "DocumentsToolStripMenuItem")
         '
@@ -836,6 +837,11 @@ Partial Class MainView
         Me.CheckForDocumentsListChangesTimer.Enabled = True
         Me.CheckForDocumentsListChangesTimer.Interval = 5000
         '
+        'DocumentsSetTitleToolStripMenuItem
+        '
+        Me.DocumentsSetTitleToolStripMenuItem.Name = "DocumentsSetTitleToolStripMenuItem"
+        resources.ApplyResources(Me.DocumentsSetTitleToolStripMenuItem, "DocumentsSetTitleToolStripMenuItem")
+        '
         'MainView
         '
         resources.ApplyResources(Me, "$this")
@@ -994,4 +1000,5 @@ Partial Class MainView
     Friend WithEvents DocumentsListTimedRefreshTimer As Timer
     Friend WithEvents HelpProvider As HelpProvider
     Friend WithEvents CheckForDocumentsListChangesTimer As Timer
+    Friend WithEvents DocumentsSetTitleToolStripMenuItem As ToolStripMenuItem
 End Class

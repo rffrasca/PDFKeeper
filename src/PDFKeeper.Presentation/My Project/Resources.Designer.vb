@@ -243,6 +243,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Title cannot be blank!.
+        '''</summary>
+        Friend ReadOnly Property TitleCannotBeBlank() As String
+            Get
+                Return ResourceManager.GetString("TitleCannotBeBlank", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to An Unhandled Exception has occurred in the application..
         '''</summary>
         Friend ReadOnly Property UnhandledException() As String

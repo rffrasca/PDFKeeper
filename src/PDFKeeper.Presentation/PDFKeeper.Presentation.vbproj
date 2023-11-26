@@ -145,6 +145,7 @@
     <Compile Include="Commands\BurstPdfCommand.vb" />
     <Compile Include="Commands\SelectAllDocumentsCommand.vb" />
     <Compile Include="Commands\SetTaxYearCommand.vb" />
+    <Compile Include="Commands\SetTitleCommand.vb" />
     <Compile Include="Commands\UndoCommand.vb" />
     <Compile Include="Commands\ViewCloseCommand.vb" />
     <Compile Include="Commands\OpenPdfCommand.vb" />
@@ -174,6 +175,7 @@
     <Compile Include="Services\SaveFileDialogService.vb" />
     <Compile Include="Services\SetCategoryDialogService.vb" />
     <Compile Include="Services\SetTaxYearDialogService.vb" />
+    <Compile Include="Services\SetTitleDialogService.vb" />
     <Compile Include="UserControls\CategoryDropDownListUserControl.Designer.vb">
       <DependentUpon>CategoryDropDownListUserControl.vb</DependentUpon>
     </Compile>
@@ -220,6 +222,12 @@
       <DependentUpon>FindDocumentsView.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\FindDocumentsView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SetTitleView.Designer.vb">
+      <DependentUpon>SetTitleView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetTitleView.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\UploadProfileEditorView.Designer.vb">
@@ -378,6 +386,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FindDocumentsView.resx">
       <DependentUpon>FindDocumentsView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SetTitleView.resx">
+      <DependentUpon>SetTitleView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UploadProfileEditorView.resx">
       <DependentUpon>UploadProfileEditorView.vb</DependentUpon>

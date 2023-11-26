@@ -400,6 +400,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 throw new ArgumentNullException(nameof(document));
             }
             var sql = "update pdfkeeper.docs set " +
+                      "doc_title = :doc_title," +
                       "doc_notes = :doc_notes," +
                       "doc_dummy = ''," +
                       "doc_category = :doc_category," +
@@ -414,6 +415,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     using (var command = new OracleCommand(sql, connection))
                     {
                         command.BindByName = true;
+                        command.Parameters.Add("doc_title", document.Title);
                         command.Parameters.Add("doc_notes", document.Notes);
                         command.Parameters.Add("doc_category", document.Category);
                         command.Parameters.Add("doc_tax_year", document.TaxYear);

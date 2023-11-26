@@ -44,9 +44,10 @@ Public Class MainView
         ' Add any initialization after the InitializeComponent() call.
         presenter = New MainPresenter(New PdfViewerService, New FolderBrowserDialogService,
                                       New MessageBoxService, New FolderExplorerService,
-                                      New SetCategoryDialogService, New SetTaxYearDialogService,
-                                      New OpenFileDialogService, New SaveFileDialogService,
-                                      New PrintDialogService, New PrintPreviewDialogService)
+                                      New SetTitleDialogService, New SetCategoryDialogService,
+                                      New SetTaxYearDialogService, New OpenFileDialogService,
+                                      New SaveFileDialogService, New PrintDialogService,
+                                      New PrintPreviewDialogService)
         viewModel = presenter.ViewModel
         MainViewModelBindingSource.DataSource = presenter.ViewModel
         dataGridViewSortProperties = New DataGridViewSortProperties
@@ -91,6 +92,7 @@ Public Class MainView
         AddHandler DocumentsFindToolStripButton.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSelectAllToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSelectNoneToolStripMenuItem.Click, AddressOf ToolStripItem_Click
+        AddHandler DocumentsSetTitleToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSetCategoryToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSetTaxYearToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsDeleteToolStripMenuItem.Click, AddressOf ToolStripItem_Click
@@ -120,6 +122,7 @@ Public Class MainView
         AddHandler viewModel.PropertyChanged, AddressOf MainView_PropertyChanged
     End Sub
 
+    <SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")>
     Private Sub AddTags()
         FileAddToolStripMenuItem.Tag = New DialogShowCommand(New AddPdfView, Nothing)
         FileAddToolStripButton.Tag = New DialogShowCommand(New AddPdfView, Nothing)
@@ -155,6 +158,7 @@ Public Class MainView
         DocumentsFindToolStripButton.Tag = New DialogShowCommand(FindDocumentsView, Nothing)
         DocumentsSelectAllToolStripMenuItem.Tag = New SelectAllDocumentsCommand(Me, True)
         DocumentsSelectNoneToolStripMenuItem.Tag = New SelectAllDocumentsCommand(Me, False)
+        DocumentsSetTitleToolStripMenuItem.Tag = New SetTitleCommand(presenter)
         DocumentsSetCategoryToolStripMenuItem.Tag = New SetCategoryCommand(presenter)
         DocumentsSetTaxYearToolStripMenuItem.Tag = New SetTaxYearCommand(presenter)
         DocumentsDeleteToolStripMenuItem.Tag = New DeleteCommand(presenter)
@@ -422,6 +426,8 @@ Public Class MainView
             DocumentsFindToolStripButton.Enabled = viewModel.DocumentsFindMenuEnabled
         ElseIf e.PropertyName.Equals("DocumentsSelectMenuEnabled", StringComparison.Ordinal) Then
             DocumentsSelectToolStripMenuItem.Enabled = viewModel.DocumentsSelectMenuEnabled
+        ElseIf e.PropertyName.Equals("DocumentsSetTitleMenuEnabled", StringComparison.Ordinal) Then
+            DocumentsSetTitleToolStripMenuItem.Enabled = viewModel.DocumentsSetTitleMenuEnabled
         ElseIf e.PropertyName.Equals("DocumentsSetCategoryMenuEnabled",
                                      StringComparison.Ordinal) Then
             DocumentsSetCategoryToolStripMenuItem.Enabled =
