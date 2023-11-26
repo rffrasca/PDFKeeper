@@ -422,7 +422,7 @@
     <value>Append &amp;Date/Time</value>
   </data>
   <data name="EditAppendTextToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+Shift+A</value>
+    <value>Ctrl+Alt+T</value>
   </data>
   <data name="EditAppendTextToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>239, 22</value>
