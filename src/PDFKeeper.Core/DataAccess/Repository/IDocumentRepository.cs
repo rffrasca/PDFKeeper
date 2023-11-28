@@ -117,8 +117,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
         void InsertDocument(Document document);
 
         /// <summary>
-        /// Updates the document in the database. Only the doc_title, doc_notes, doc_category,
-        /// doc_tax_year, doc_flag, doc_text_annotations, and doc_text columns will be updated.
+        /// Updates the document in the database. Only the doc_title, doc_author, doc_notes,
+        /// doc_category, doc_tax_year, doc_flag, doc_text_annotations, and doc_text columns will
+        /// be updated.
         /// </summary>
         /// <param name="document">The Document object.</param>
         void UpdateDocument(Document document);

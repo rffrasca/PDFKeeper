@@ -140,6 +140,7 @@
     <Compile Include="Commands\SaveAsCommand.vb" />
     <Compile Include="Commands\SaveCommand.vb" />
     <Compile Include="Commands\SelectAllCommand.vb" />
+    <Compile Include="Commands\SetAuthorCommand.vb" />
     <Compile Include="Commands\SetCategoryCommand.vb" />
     <Compile Include="Commands\FlagStateToggleCommand.vb" />
     <Compile Include="Commands\BurstPdfCommand.vb" />
@@ -173,6 +174,7 @@
     <Compile Include="Services\PrintDialogService.vb" />
     <Compile Include="Services\PrintPreviewDialogService.vb" />
     <Compile Include="Services\SaveFileDialogService.vb" />
+    <Compile Include="Services\SetAuthorDialogService.vb" />
     <Compile Include="Services\SetCategoryDialogService.vb" />
     <Compile Include="Services\SetTaxYearDialogService.vb" />
     <Compile Include="Services\SetTitleDialogService.vb" />
@@ -222,6 +224,12 @@
       <DependentUpon>FindDocumentsView.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\FindDocumentsView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SetAuthorView.Designer.vb">
+      <DependentUpon>SetAuthorView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetAuthorView.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\SetTitleView.Designer.vb">
@@ -386,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FindDocumentsView.resx">
       <DependentUpon>FindDocumentsView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SetAuthorView.resx">
+      <DependentUpon>SetAuthorView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SetTitleView.resx">
       <DependentUpon>SetTitleView.vb</DependentUpon>

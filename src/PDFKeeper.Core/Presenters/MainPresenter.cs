@@ -50,6 +50,7 @@ namespace PDFKeeper.Core.Presenters
         private readonly IMessageBoxService messageBoxService;
         private readonly IFolderExplorerService folderExplorerService;
         private readonly IDialogService setTitleDialogService;
+        private readonly IDialogService setAuthorDialogService;
         private readonly IDialogService setCategoryDialogService;
         private readonly IDialogService setTaxYearDialogService;
         private readonly IFileDialogService openFileDialogService;
@@ -74,6 +75,7 @@ namespace PDFKeeper.Core.Presenters
         /// <param name="messageBoxService">The MessageBoxService instance.</param>
         /// <param name="folderExplorerService">The FolderExplorerService instance.</param>
         /// <param name="setTitleDialogService">The SetTitleDialogService instance.</param>
+        /// <param name="setAuthorDialogService">The SetAuthorDialogService instance.</param>
         /// <param name="setCategoryDialogService">The SetCategoryDialogService instance.</param>
         /// <param name="setTaxYearDialogService">The SetTaxYearDialogService instance.</param>
         /// <param name="openFileDialogService">The OpenFileDialogService instance.</param>
@@ -84,9 +86,9 @@ namespace PDFKeeper.Core.Presenters
             IFolderBrowserDialogService folderBrowserDialogService,
             IMessageBoxService messageBoxService,
             IFolderExplorerService folderExplorerService, IDialogService setTitleDialogService,
-            IDialogService setCategoryDialogService, IDialogService setTaxYearDialogService,
-            IFileDialogService openFileDialogService, IFileDialogService saveFileDialogService,
-            IPrintDialogService printDialogService,
+            IDialogService setAuthorDialogService, IDialogService setCategoryDialogService,
+            IDialogService setTaxYearDialogService, IFileDialogService openFileDialogService,
+            IFileDialogService saveFileDialogService, IPrintDialogService printDialogService,
             IPrintPreviewDialogService printPreviewDialogService)
         {
             this.pdfViewerService = pdfViewerService;
@@ -94,6 +96,7 @@ namespace PDFKeeper.Core.Presenters
             this.messageBoxService = messageBoxService;
             this.folderExplorerService = folderExplorerService;
             this.setTitleDialogService = setTitleDialogService;
+            this.setAuthorDialogService = setAuthorDialogService;
             this.setCategoryDialogService = setCategoryDialogService;
             this.setTaxYearDialogService = setTaxYearDialogService;
             this.openFileDialogService = openFileDialogService;
@@ -140,6 +143,7 @@ namespace PDFKeeper.Core.Presenters
             ViewModel.EditFlagDocumentMenuEnabled = false;
             ViewModel.DocumentsSelectMenuEnabled = false;
             ViewModel.DocumentsSetTitleMenuEnabled = false;
+            ViewModel.DocumentsSetAuthorMenuEnabled = false;
             ViewModel.DocumentsSetCategoryMenuEnabled = false;
             ViewModel.DocumentsSetTaxYearMenuEnabled = false;
             ViewModel.DocumentsDeleteMenuEnabled = false;
@@ -405,6 +409,7 @@ namespace PDFKeeper.Core.Presenters
                 }
             }
             ViewModel.DocumentsSetTitleMenuEnabled = enabled;
+            ViewModel.DocumentsSetAuthorMenuEnabled = enabled;
             ViewModel.DocumentsSetCategoryMenuEnabled = enabled;
             ViewModel.DocumentsSetTaxYearMenuEnabled = enabled;
             ViewModel.DocumentsDeleteMenuEnabled = enabled;
@@ -417,6 +422,15 @@ namespace PDFKeeper.Core.Presenters
             if (value != null)
             {
                 ProcessEachCheckedDocument(CheckedDocumentAction.SetTitle, value);
+            }
+        }
+
+        public void SetAuthorOnEachSelectedDocument()
+        {
+            var value = setAuthorDialogService.ShowDialog();
+            if (value != null)
+            {
+                ProcessEachCheckedDocument(CheckedDocumentAction.SetAuthor, value);
             }
         }
 
@@ -617,6 +631,7 @@ namespace PDFKeeper.Core.Presenters
                 if (ViewModel.CheckedDocumentIds.Count > 0)
                 {
                     ViewModel.DocumentsSetTitleMenuEnabled = true;
+                    ViewModel.DocumentsSetAuthorMenuEnabled = true;
                     ViewModel.DocumentsSetCategoryMenuEnabled = true;
                     ViewModel.DocumentsSetTaxYearMenuEnabled = true;
                     ViewModel.DocumentsDeleteMenuEnabled = true;
@@ -816,6 +831,7 @@ namespace PDFKeeper.Core.Presenters
         private enum CheckedDocumentAction
         {
             SetTitle,
+            SetAuthor,
             SetCategory,
             SetTaxYear,
             Delete,
@@ -872,6 +888,7 @@ namespace PDFKeeper.Core.Presenters
             {
                 ViewModel.FileExportMenuEnabled = false;
                 ViewModel.DocumentsSetTitleMenuEnabled = false;
+                ViewModel.DocumentsSetAuthorMenuEnabled = false;
                 ViewModel.DocumentsSetCategoryMenuEnabled = false;
                 ViewModel.DocumentsSetTaxYearMenuEnabled = false;
                 ViewModel.DocumentsDeleteMenuEnabled = false;
@@ -972,6 +989,11 @@ namespace PDFKeeper.Core.Presenters
                     if (checkedDocumentAction.Equals(CheckedDocumentAction.SetTitle))
                     {
                         document.Title = value;
+                        documentRepository.UpdateDocument(document);
+                    }
+                    else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetAuthor))
+                    {
+                        document.Author = value;
                         documentRepository.UpdateDocument(document);
                     }
                     else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetCategory))

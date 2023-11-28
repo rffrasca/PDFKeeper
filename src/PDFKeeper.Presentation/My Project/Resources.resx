@@ -189,4 +189,7 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="TitleCannotBeBlank" xml:space="preserve">
     <value>Title cannot be blank!</value>
   </data>
+  <data name="AuthorCannotBeBlank" xml:space="preserve">
+    <value>Author cannot be blank!</value>
+  </data>
 </root>

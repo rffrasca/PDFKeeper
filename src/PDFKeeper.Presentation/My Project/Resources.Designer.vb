@@ -98,6 +98,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Author cannot be blank!.
+        '''</summary>
+        Friend ReadOnly Property AuthorCannotBeBlank() As String
+            Get
+                Return ResourceManager.GetString("AuthorCannotBeBlank", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Category.
         '''</summary>
         Friend ReadOnly Property Category() As String

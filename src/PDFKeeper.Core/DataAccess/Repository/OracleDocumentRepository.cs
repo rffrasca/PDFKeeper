@@ -401,6 +401,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
             var sql = "update pdfkeeper.docs set " +
                       "doc_title = :doc_title," +
+                      "doc_author = :doc_author," +
                       "doc_notes = :doc_notes," +
                       "doc_dummy = ''," +
                       "doc_category = :doc_category," +
@@ -416,6 +417,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     {
                         command.BindByName = true;
                         command.Parameters.Add("doc_title", document.Title);
+                        command.Parameters.Add("doc_author", document.Author);
                         command.Parameters.Add("doc_notes", document.Notes);
                         command.Parameters.Add("doc_category", document.Category);
                         command.Parameters.Add("doc_tax_year", document.TaxYear);

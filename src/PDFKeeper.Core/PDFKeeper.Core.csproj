@@ -72,6 +72,7 @@
     <Compile Include="FileIO\TextExtractor\PdfOcrTextExtractionStrategy.cs" />
     <Compile Include="FileIO\TextExtractor\PdfTextExtractionStrategy.cs" />
     <Compile Include="Interop\NativeMethods.cs" />
+    <Compile Include="Presenters\SetAuthorPresenter.cs" />
     <Compile Include="Rules\ExportPdfMetadataRule.cs" />
     <Compile Include="Rules\FindDocumentsParamRule.cs" />
     <Compile Include="Services\IFolderBrowserDialogService.cs" />

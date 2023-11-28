@@ -46,6 +46,7 @@ namespace PDFKeeper.Core.ViewModels
         private bool documentsFindMenuEnabled;
         private bool documentsSelectMenuEnabled;
         private bool documentsSetTitleMenuEnabled;
+        private bool documentsSetAuthorMenuEnabled;
         private bool documentsSetCategoryMenuEnabled;
         private bool documentsSetTaxYearMenuEnabled;
         private bool documentsDeleteMenuEnabled;
@@ -195,6 +196,12 @@ namespace PDFKeeper.Core.ViewModels
         {
             get => documentsSetTitleMenuEnabled;
             set => SetProperty(ref documentsSetTitleMenuEnabled, value);
+        }
+
+        public bool DocumentsSetAuthorMenuEnabled
+        {
+            get => documentsSetAuthorMenuEnabled;
+            set => SetProperty(ref documentsSetAuthorMenuEnabled, value);
         }
 
         public bool DocumentsSetCategoryMenuEnabled

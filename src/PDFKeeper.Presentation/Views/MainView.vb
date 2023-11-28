@@ -44,10 +44,10 @@ Public Class MainView
         ' Add any initialization after the InitializeComponent() call.
         presenter = New MainPresenter(New PdfViewerService, New FolderBrowserDialogService,
                                       New MessageBoxService, New FolderExplorerService,
-                                      New SetTitleDialogService, New SetCategoryDialogService,
-                                      New SetTaxYearDialogService, New OpenFileDialogService,
-                                      New SaveFileDialogService, New PrintDialogService,
-                                      New PrintPreviewDialogService)
+                                      New SetTitleDialogService, New SetAuthorDialogService,
+                                      New SetCategoryDialogService, New SetTaxYearDialogService,
+                                      New OpenFileDialogService, New SaveFileDialogService,
+                                      New PrintDialogService, New PrintPreviewDialogService)
         viewModel = presenter.ViewModel
         MainViewModelBindingSource.DataSource = presenter.ViewModel
         dataGridViewSortProperties = New DataGridViewSortProperties
@@ -93,6 +93,7 @@ Public Class MainView
         AddHandler DocumentsSelectAllToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSelectNoneToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSetTitleToolStripMenuItem.Click, AddressOf ToolStripItem_Click
+        AddHandler DocumentsSetAuthorToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSetCategoryToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSetTaxYearToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsDeleteToolStripMenuItem.Click, AddressOf ToolStripItem_Click
@@ -159,6 +160,7 @@ Public Class MainView
         DocumentsSelectAllToolStripMenuItem.Tag = New SelectAllDocumentsCommand(Me, True)
         DocumentsSelectNoneToolStripMenuItem.Tag = New SelectAllDocumentsCommand(Me, False)
         DocumentsSetTitleToolStripMenuItem.Tag = New SetTitleCommand(presenter)
+        DocumentsSetAuthorToolStripMenuItem.Tag = New SetAuthorCommand(presenter)
         DocumentsSetCategoryToolStripMenuItem.Tag = New SetCategoryCommand(presenter)
         DocumentsSetTaxYearToolStripMenuItem.Tag = New SetTaxYearCommand(presenter)
         DocumentsDeleteToolStripMenuItem.Tag = New DeleteCommand(presenter)
@@ -411,7 +413,8 @@ Public Class MainView
         ElseIf e.PropertyName.Equals("EditRestoreMenuEnabled", StringComparison.Ordinal) Then
             EditRestoreToolStripMenuItem.Enabled = viewModel.EditRestoreMenuEnabled
             EditRestoreToolStripButton.Enabled = viewModel.EditRestoreMenuEnabled
-        ElseIf e.PropertyName.Equals("EditAppendDateTimeMenuEnabled", StringComparison.Ordinal) Then
+        ElseIf e.PropertyName.Equals("EditAppendDateTimeMenuEnabled",
+                                     StringComparison.Ordinal) Then
             EditAppendDateTimeToolStripMenuItem.Enabled = viewModel.EditAppendDateTimeMenuEnabled
             EditAppendDateTimeToolStripButton.Enabled = viewModel.EditAppendDateTimeMenuEnabled
         ElseIf e.PropertyName.Equals("EditAppendTextMenuEnabled", StringComparison.Ordinal) Then
@@ -428,6 +431,9 @@ Public Class MainView
             DocumentsSelectToolStripMenuItem.Enabled = viewModel.DocumentsSelectMenuEnabled
         ElseIf e.PropertyName.Equals("DocumentsSetTitleMenuEnabled", StringComparison.Ordinal) Then
             DocumentsSetTitleToolStripMenuItem.Enabled = viewModel.DocumentsSetTitleMenuEnabled
+        ElseIf e.PropertyName.Equals("DocumentsSetAuthorMenuEnabled",
+                                     StringComparison.Ordinal) Then
+            DocumentsSetAuthorToolStripMenuItem.Enabled = viewModel.DocumentsSetAuthorMenuEnabled
         ElseIf e.PropertyName.Equals("DocumentsSetCategoryMenuEnabled",
                                      StringComparison.Ordinal) Then
             DocumentsSetCategoryToolStripMenuItem.Enabled =
