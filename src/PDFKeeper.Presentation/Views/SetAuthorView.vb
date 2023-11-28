@@ -29,7 +29,7 @@ Public Class SetAuthorView
         ' Add any initialization after the InitializeComponent() call.
         StringEnumerableViewModelBindingSource.DataSource = New SetAuthorPresenter(
             New MessageBoxService).ViewModel
-        'TODO: HelpProvider.HelpNamespace = New HelpFile().FileName
+        HelpProvider.HelpNamespace = New HelpFile().FileName
     End Sub
 
     Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click

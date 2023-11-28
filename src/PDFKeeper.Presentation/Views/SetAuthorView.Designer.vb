@@ -48,8 +48,9 @@ Partial Class SetAuthorView
         Me.OK_Button = New System.Windows.Forms.Button()
         Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.AuthorUserControl = New PDFKeeper.Presentation.AuthorUserControl()
-        Me.MandatoryLabel = New System.Windows.Forms.Label()
         Me.StringEnumerableViewModelBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MandatoryLabel = New System.Windows.Forms.Label()
+        Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.StringEnumerableViewModelBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -80,14 +81,14 @@ Partial Class SetAuthorView
         Me.AuthorUserControl.DataBindings.Add(New System.Windows.Forms.Binding("Authors", Me.StringEnumerableViewModelBindingSource, "Items", True))
         Me.AuthorUserControl.Name = "AuthorUserControl"
         '
+        'StringEnumerableViewModelBindingSource
+        '
+        Me.StringEnumerableViewModelBindingSource.DataSource = GetType(PDFKeeper.Core.ViewModels.StringEnumerableViewModel)
+        '
         'MandatoryLabel
         '
         resources.ApplyResources(Me.MandatoryLabel, "MandatoryLabel")
         Me.MandatoryLabel.Name = "MandatoryLabel"
-        '
-        'StringEnumerableViewModelBindingSource
-        '
-        Me.StringEnumerableViewModelBindingSource.DataSource = GetType(PDFKeeper.Core.ViewModels.StringEnumerableViewModel)
         '
         'SetAuthorView
         '
@@ -99,9 +100,12 @@ Partial Class SetAuthorView
         Me.Controls.Add(Me.AuthorUserControl)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.HelpProvider.SetHelpKeyword(Me, resources.GetString("$this.HelpKeyword"))
+        Me.HelpProvider.SetHelpNavigator(Me, CType(resources.GetObject("$this.HelpNavigator"), System.Windows.Forms.HelpNavigator))
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "SetAuthorView"
+        Me.HelpProvider.SetShowHelp(Me, CType(resources.GetObject("$this.ShowHelp"), Boolean))
         Me.ShowInTaskbar = False
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.StringEnumerableViewModelBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -115,4 +119,5 @@ Partial Class SetAuthorView
     Friend WithEvents AuthorUserControl As AuthorUserControl
     Friend WithEvents MandatoryLabel As Label
     Friend WithEvents StringEnumerableViewModelBindingSource As BindingSource
+    Friend WithEvents HelpProvider As HelpProvider
 End Class

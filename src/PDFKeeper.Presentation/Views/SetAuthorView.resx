@@ -133,7 +133,7 @@
     <value>3, 3</value>
   </data>
   <data name="OK_Button.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 23</value>
+    <value>78, 27</value>
   </data>
   <data name="OK_Button.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -157,10 +157,10 @@
     <value>None</value>
   </data>
   <data name="Cancel_Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 3</value>
+    <value>88, 3</value>
   </data>
   <data name="Cancel_Button.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 23</value>
+    <value>78, 27</value>
   </data>
   <data name="Cancel_Button.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -181,13 +181,13 @@
     <value>1</value>
   </data>
   <data name="TableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>345, 84</value>
+    <value>324, 97</value>
   </data>
   <data name="TableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="TableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 29</value>
+    <value>170, 33</value>
   </data>
   <data name="TableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -220,7 +220,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="AuthorUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 13</value>
+    <value>15, 15</value>
   </data>
   <data name="AuthorUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>479, 49</value>
@@ -247,10 +247,10 @@
     <value>NoControl</value>
   </data>
   <data name="MandatoryLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 97</value>
+    <value>12, 112</value>
   </data>
   <data name="MandatoryLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
+    <value>73, 15</value>
   </data>
   <data name="MandatoryLabel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -270,17 +270,32 @@
   <data name="&gt;&gt;MandatoryLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>306, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>7, 15</value>
   </data>
   <data name="$this.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>503, 125</value>
+    <value>509, 144</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="$this.HelpKeyword" xml:space="preserve">
+    <value>Set Author on Documents.html</value>
+  </data>
+  <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>Topic</value>
+  </data>
+  <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
@@ -293,6 +308,12 @@
   </data>
   <data name="&gt;&gt;StringEnumerableViewModelBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HelpProvider.Name" xml:space="preserve">
+    <value>HelpProvider</value>
+  </data>
+  <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SetAuthorView</value>
