@@ -82,6 +82,7 @@ Partial Class MainView
         Me.DocumentsSelectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSelectNoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSetTitleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DocumentsSetAuthorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSetCategoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSetTaxYearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsDeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -154,7 +155,8 @@ Partial Class MainView
         Me.DocumentsListTimedRefreshTimer = New System.Windows.Forms.Timer(Me.components)
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.CheckForDocumentsListChangesTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.DocumentsSetAuthorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DocumentsToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.DocumentsToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuStrip.SuspendLayout()
         CType(Me.HorizontalSplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.HorizontalSplitContainer.Panel1.SuspendLayout()
@@ -351,7 +353,7 @@ Partial Class MainView
         '
         'DocumentsToolStripMenuItem
         '
-        Me.DocumentsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DocumentsFindToolStripMenuItem, Me.DocumentsToolStripSeparator1, Me.DocumentsSelectToolStripMenuItem, Me.DocumentsSetTitleToolStripMenuItem, Me.DocumentsSetAuthorToolStripMenuItem, Me.DocumentsSetCategoryToolStripMenuItem, Me.DocumentsSetTaxYearToolStripMenuItem, Me.DocumentsDeleteToolStripMenuItem})
+        Me.DocumentsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DocumentsFindToolStripMenuItem, Me.DocumentsToolStripSeparator1, Me.DocumentsSelectToolStripMenuItem, Me.DocumentsToolStripSeparator2, Me.DocumentsSetTitleToolStripMenuItem, Me.DocumentsSetAuthorToolStripMenuItem, Me.DocumentsSetCategoryToolStripMenuItem, Me.DocumentsSetTaxYearToolStripMenuItem, Me.DocumentsToolStripSeparator3, Me.DocumentsDeleteToolStripMenuItem})
         Me.DocumentsToolStripMenuItem.Name = "DocumentsToolStripMenuItem"
         resources.ApplyResources(Me.DocumentsToolStripMenuItem, "DocumentsToolStripMenuItem")
         '
@@ -385,6 +387,11 @@ Partial Class MainView
         '
         Me.DocumentsSetTitleToolStripMenuItem.Name = "DocumentsSetTitleToolStripMenuItem"
         resources.ApplyResources(Me.DocumentsSetTitleToolStripMenuItem, "DocumentsSetTitleToolStripMenuItem")
+        '
+        'DocumentsSetAuthorToolStripMenuItem
+        '
+        Me.DocumentsSetAuthorToolStripMenuItem.Name = "DocumentsSetAuthorToolStripMenuItem"
+        resources.ApplyResources(Me.DocumentsSetAuthorToolStripMenuItem, "DocumentsSetAuthorToolStripMenuItem")
         '
         'DocumentsSetCategoryToolStripMenuItem
         '
@@ -843,10 +850,15 @@ Partial Class MainView
         Me.CheckForDocumentsListChangesTimer.Enabled = True
         Me.CheckForDocumentsListChangesTimer.Interval = 5000
         '
-        'DocumentsSetAuthorToolStripMenuItem
+        'DocumentsToolStripSeparator3
         '
-        Me.DocumentsSetAuthorToolStripMenuItem.Name = "DocumentsSetAuthorToolStripMenuItem"
-        resources.ApplyResources(Me.DocumentsSetAuthorToolStripMenuItem, "DocumentsSetAuthorToolStripMenuItem")
+        Me.DocumentsToolStripSeparator3.Name = "DocumentsToolStripSeparator3"
+        resources.ApplyResources(Me.DocumentsToolStripSeparator3, "DocumentsToolStripSeparator3")
+        '
+        'DocumentsToolStripSeparator2
+        '
+        Me.DocumentsToolStripSeparator2.Name = "DocumentsToolStripSeparator2"
+        resources.ApplyResources(Me.DocumentsToolStripSeparator2, "DocumentsToolStripSeparator2")
         '
         'MainView
         '
@@ -1008,4 +1020,6 @@ Partial Class MainView
     Friend WithEvents CheckForDocumentsListChangesTimer As Timer
     Friend WithEvents DocumentsSetTitleToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DocumentsSetAuthorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DocumentsToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents DocumentsToolStripSeparator3 As ToolStripSeparator
 End Class

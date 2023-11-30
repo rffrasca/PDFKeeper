@@ -468,13 +468,13 @@
     <value>221, 6</value>
   </data>
   <data name="DocumentsSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="DocumentsSelectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;All</value>
   </data>
   <data name="DocumentsSelectNoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="DocumentsSelectNoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;None</value>
@@ -484,6 +484,9 @@
   </data>
   <data name="DocumentsSelectToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Select</value>
+  </data>
+  <data name="DocumentsToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 6</value>
   </data>
   <data name="DocumentsSetTitleToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+T</value>
@@ -520,6 +523,9 @@
   </data>
   <data name="DocumentsSetTaxYearToolStripMenuItem.Text" xml:space="preserve">
     <value>Set Tax &amp;Year...</value>
+  </data>
+  <data name="DocumentsToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 6</value>
   </data>
   <data name="DocumentsDeleteToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2082,6 +2088,12 @@
   <data name="&gt;&gt;DocumentsSetTitleToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;DocumentsSetAuthorToolStripMenuItem.Name" xml:space="preserve">
+    <value>DocumentsSetAuthorToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;DocumentsSetAuthorToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;DocumentsSetCategoryToolStripMenuItem.Name" xml:space="preserve">
     <value>DocumentsSetCategoryToolStripMenuItem</value>
   </data>
@@ -2400,11 +2412,17 @@
   <data name="&gt;&gt;CheckForDocumentsListChangesTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;DocumentsSetAuthorToolStripMenuItem.Name" xml:space="preserve">
-    <value>DocumentsSetAuthorToolStripMenuItem</value>
+  <data name="&gt;&gt;DocumentsToolStripSeparator3.Name" xml:space="preserve">
+    <value>DocumentsToolStripSeparator3</value>
   </data>
-  <data name="&gt;&gt;DocumentsSetAuthorToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;DocumentsToolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DocumentsToolStripSeparator2.Name" xml:space="preserve">
+    <value>DocumentsToolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;DocumentsToolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainView</value>
