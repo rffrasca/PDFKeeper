@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>SQLite Error - database disk image is malformed</title>
-	<meta name="generator" content="LibreOffice 7.4.1.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 7.6.2.1 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2022-10-01T15:20:42.480000000"/>
+	<meta name="changed" content="2023-11-30T21:06:08.712000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -29,25 +29,22 @@
 </head>
 <body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>SQLite
 Error – database disk image is malformed</b></font></h1>
-<p style="font-weight: normal"><font face="Segoe UI, sans-serif">When
-finding <b>Documents by Text</b>, you encounter the <b>database disk
-image is malformed</b> error. This error can occur when performing a
-find sometime after one or more documents were deleted from the
-SQLite database. If one or more documents were deleted sometime
-before performing the find, then the fix in this topic should be
-applied to rebuild the full-text search index and recreate the
-synchronization triggers.</font></p>
-<p style="font-weight: normal"><font face="Segoe UI, sans-serif">Before
-applying the fix, please make sure that no transactions are running
-against the database. Next, it is highly recommended to backup the
-database file <b>PDFKeeper.sqlite</b>. By default, the database file
-exists in <b>%APPDATA%\Robert F. Frasca\PDFKeeper</b> unless it was
-moved to an alternate location.</font></p>
-<p><a href="SingleUserDatabaseIndexSyncFix.cmd"><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Rebuild
-Full-Text Search Index and Recreate Synchronization Triggers Now!</span></font></a></p>
-<p><br/>
-<br/>
-
-</p>
+<p><font face="Segoe UI, sans-serif">When finding <b>Documents by
+Text</b>, you encounter the <b>database disk image is malformed</b>
+error. This error can occur when performing a find sometime after one
+or more documents were deleted from the SQLite database. If one or
+more documents were deleted sometime before performing the find, then
+the fix in this topic should be applied to rebuild the full-text
+search index and recreate the synchronization triggers.</font></p>
+<p><font face="Segoe UI, sans-serif">Before applying the fix, please
+make sure that no transactions are running against the database.
+Next, it is highly recommended to backup the database file
+<b>PDFKeeper.sqlite</b>. By default, the database file exists in
+<b>%APPDATA%\Robert F. Frasca\PDFKeeper</b> unless it was moved to an
+alternate location.</font></p>
+<p><a href="SingleUserDatabaseIndexSyncFix.cmd"><font face="Segoe UI, sans-serif">Rebuild
+Full-Text Search Index and Recreate Synchronization Triggers Now!</font></a></p>
+<p style="font-style: normal; font-weight: normal"><font face="Segoe UI, sans-serif">When
+prompted to Run or Save, select </font><font face="Segoe UI, sans-serif"><b>Run</b></font><font face="Segoe UI, sans-serif">.</font></p>
 </body>
 </html>

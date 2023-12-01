@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>Schema Setup for Oracle Autonomous Database</title>
-	<meta name="generator" content="LibreOffice 7.4.2.3 (Windows)"/>
+	<meta name="generator" content="LibreOffice 7.6.2.1 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2022-10-23T15:49:56.763000000"/>
+	<meta name="changed" content="2023-11-30T21:06:30.134000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -37,29 +37,26 @@ for PDFKeeper.</font></p>
 	<li><p><font face="Segoe UI, sans-serif">Download <a href="http://www.oracle.com/technetwork/database/database-technologies/instant-client/downloads/index.html" target="_blank">Oracle
 	Instant Client Basic or Basic Lite and SQL*Plus packages</a> to this
 	computer, extract the ZIP files into an empty folder, and then add
-	that folder to the PATH.</font></p>
+	that folder to the PATH.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">Open
-	<b>&lt;InstantClient_Folder&gt;\network\admin</b><span style="font-weight: normal">.</span></font></p>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
-	TLS authentication only, create or edit </span><b>tnsnames.ora</b>
-	adding <span style="font-weight: normal">an entry for one or more of
-	the </span><b>Connection Strings</b> <span style="font-weight: normal">available
-	for the Autonomous Database using the format of </span><b>&lt;TNS
-	Name&gt;= &lt;Connection String&gt;</b><span style="font-weight: normal">.</span></font></p>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
-	Mutual TLS (mTLS) authentication only, create or edit </span><b>tnsnames.ora</b>
-	<span style="font-weight: normal">adding all of the entries from
-	</span><b>tnsnames.ora</b> <span style="font-weight: normal">located
-	in the</span> <span style="font-weight: normal">Oracle Wallet
-	folder, and then create or edit </span><b>sqlnet.ora </b><span style="font-weight: normal">adding
-	the entry from </span><b>sqlnet.ora </b><span style="font-weight: normal">located
-	in the Oracle Wallet folder, and then change </span><b>?/network/admin</b>
-	<span style="font-weight: normal">to the absolute path name of the
-	Oracle Wallet folder.</span></font></p>
+	<b>&lt;InstantClient_Folder&gt;\network\admin</b>.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">For TLS authentication
+	only, create or edit <b>tnsnames.ora</b> adding an entry for one or
+	more of the <b>Connection Strings</b> available for the Autonomous
+	Database using the format of <b>&lt;TNS Name&gt;= &lt;Connection
+	String&gt;</b>.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">For Mutual TLS (mTLS)
+	authentication only, create or edit <b>tnsnames.ora</b> adding all
+	of the entries from <b>tnsnames.ora</b> located in the Oracle Wallet
+	folder, and then create or edit <b>sqlnet.ora </b>adding the entry
+	from <b>sqlnet.ora </b>located in the Oracle Wallet folder, and then
+	change <b>?/network/admin</b> to the absolute path name of the
+	Oracle Wallet folder.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">Perform the schema setup</font>
 	<font face="Segoe UI, sans-serif">by selecting option </font><font face="Segoe UI, sans-serif"><b>2</b></font>
-	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">from
-	the </span></font><font face="Segoe UI, sans-serif"><a href="MultiUserDatabaseSchemaSetup.cmd">menu</a>.</font></p>
+	<font face="Segoe UI, sans-serif">from the <a href="MultiUserDatabaseSchemaSetup.cmd">menu</a>.</font></p></li>
+	<li><p style="font-style: normal; font-weight: normal"><font face="Segoe UI, sans-serif">When
+	prompted to Run or Save, select </font><font face="Segoe UI, sans-serif"><b>Run</b></font><font face="Segoe UI, sans-serif">.</font></p></li>
 </ol>
 </body>
 </html>
