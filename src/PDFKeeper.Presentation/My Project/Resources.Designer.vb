@@ -234,6 +234,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Subject cannot be blank!.
+        '''</summary>
+        Friend ReadOnly Property SubjectCannotBeBlank() As String
+            Get
+                Return ResourceManager.GetString("SubjectCannotBeBlank", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Tax Year.
         '''</summary>
         Friend ReadOnly Property TaxYear() As String

@@ -256,6 +256,11 @@
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Set Subject on Documents">
+					<param name="Local" value="Set Subject on Documents.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Set Category on Documents">
 					<param name="Local" value="Set Category on Documents.html">
 					<param name="ImageNumber" value="9">

@@ -145,6 +145,7 @@
     <Compile Include="Commands\FlagStateToggleCommand.vb" />
     <Compile Include="Commands\BurstPdfCommand.vb" />
     <Compile Include="Commands\SelectAllDocumentsCommand.vb" />
+    <Compile Include="Commands\SetSubjectCommand.vb" />
     <Compile Include="Commands\SetTaxYearCommand.vb" />
     <Compile Include="Commands\SetTitleCommand.vb" />
     <Compile Include="Commands\UndoCommand.vb" />
@@ -176,6 +177,7 @@
     <Compile Include="Services\SaveFileDialogService.vb" />
     <Compile Include="Services\SetAuthorDialogService.vb" />
     <Compile Include="Services\SetCategoryDialogService.vb" />
+    <Compile Include="Services\SetSubjectDialogService.vb" />
     <Compile Include="Services\SetTaxYearDialogService.vb" />
     <Compile Include="Services\SetTitleDialogService.vb" />
     <Compile Include="UserControls\CategoryDropDownListUserControl.Designer.vb">
@@ -230,6 +232,12 @@
       <DependentUpon>SetAuthorView.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\SetAuthorView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SetSubjectView.Designer.vb">
+      <DependentUpon>SetSubjectView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetSubjectView.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\SetTitleView.Designer.vb">
@@ -397,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SetAuthorView.resx">
       <DependentUpon>SetAuthorView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SetSubjectView.resx">
+      <DependentUpon>SetSubjectView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SetTitleView.resx">
       <DependentUpon>SetTitleView.vb</DependentUpon>

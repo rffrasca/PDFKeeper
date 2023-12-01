@@ -45,9 +45,10 @@ Public Class MainView
         presenter = New MainPresenter(New PdfViewerService, New FolderBrowserDialogService,
                                       New MessageBoxService, New FolderExplorerService,
                                       New SetTitleDialogService, New SetAuthorDialogService,
-                                      New SetCategoryDialogService, New SetTaxYearDialogService,
-                                      New OpenFileDialogService, New SaveFileDialogService,
-                                      New PrintDialogService, New PrintPreviewDialogService)
+                                      New SetSubjectDialogService, New SetCategoryDialogService,
+                                      New SetTaxYearDialogService, New OpenFileDialogService,
+                                      New SaveFileDialogService, New PrintDialogService,
+                                      New PrintPreviewDialogService)
         viewModel = presenter.ViewModel
         MainViewModelBindingSource.DataSource = presenter.ViewModel
         dataGridViewSortProperties = New DataGridViewSortProperties
@@ -94,6 +95,7 @@ Public Class MainView
         AddHandler DocumentsSelectNoneToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSetTitleToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSetAuthorToolStripMenuItem.Click, AddressOf ToolStripItem_Click
+        AddHandler DocumentsSetSubjectToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSetCategoryToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsSetTaxYearToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler DocumentsDeleteToolStripMenuItem.Click, AddressOf ToolStripItem_Click
@@ -161,6 +163,7 @@ Public Class MainView
         DocumentsSelectNoneToolStripMenuItem.Tag = New SelectAllDocumentsCommand(Me, False)
         DocumentsSetTitleToolStripMenuItem.Tag = New SetTitleCommand(presenter)
         DocumentsSetAuthorToolStripMenuItem.Tag = New SetAuthorCommand(presenter)
+        DocumentsSetSubjectToolStripMenuItem.Tag = New SetSubjectCommand(presenter)
         DocumentsSetCategoryToolStripMenuItem.Tag = New SetCategoryCommand(presenter)
         DocumentsSetTaxYearToolStripMenuItem.Tag = New SetTaxYearCommand(presenter)
         DocumentsDeleteToolStripMenuItem.Tag = New DeleteCommand(presenter)
@@ -434,6 +437,9 @@ Public Class MainView
         ElseIf e.PropertyName.Equals("DocumentsSetAuthorMenuEnabled",
                                      StringComparison.Ordinal) Then
             DocumentsSetAuthorToolStripMenuItem.Enabled = viewModel.DocumentsSetAuthorMenuEnabled
+        ElseIf e.PropertyName.Equals("DocumentsSetSubjectMenuEnabled",
+                                     StringComparison.Ordinal) Then
+            DocumentsSetSubjectToolStripMenuItem.Enabled = viewModel.DocumentsSetSubjectMenuEnabled
         ElseIf e.PropertyName.Equals("DocumentsSetCategoryMenuEnabled",
                                      StringComparison.Ordinal) Then
             DocumentsSetCategoryToolStripMenuItem.Enabled =

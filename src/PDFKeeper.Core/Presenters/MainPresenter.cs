@@ -51,6 +51,7 @@ namespace PDFKeeper.Core.Presenters
         private readonly IFolderExplorerService folderExplorerService;
         private readonly IDialogService setTitleDialogService;
         private readonly IDialogService setAuthorDialogService;
+        private readonly IDialogService setSubjectDialogService;
         private readonly IDialogService setCategoryDialogService;
         private readonly IDialogService setTaxYearDialogService;
         private readonly IFileDialogService openFileDialogService;
@@ -76,6 +77,7 @@ namespace PDFKeeper.Core.Presenters
         /// <param name="folderExplorerService">The FolderExplorerService instance.</param>
         /// <param name="setTitleDialogService">The SetTitleDialogService instance.</param>
         /// <param name="setAuthorDialogService">The SetAuthorDialogService instance.</param>
+        /// <param name="setSubjectDialogService">The SetSubjectDialogService instance.</param>
         /// <param name="setCategoryDialogService">The SetCategoryDialogService instance.</param>
         /// <param name="setTaxYearDialogService">The SetTaxYearDialogService instance.</param>
         /// <param name="openFileDialogService">The OpenFileDialogService instance.</param>
@@ -84,9 +86,9 @@ namespace PDFKeeper.Core.Presenters
         /// <param name="printPreviewDialogService">The PrintPreviewDialogService instance.</param>
         public MainPresenter(IPdfViewerService pdfViewerService,
             IFolderBrowserDialogService folderBrowserDialogService,
-            IMessageBoxService messageBoxService,
-            IFolderExplorerService folderExplorerService, IDialogService setTitleDialogService,
-            IDialogService setAuthorDialogService, IDialogService setCategoryDialogService,
+            IMessageBoxService messageBoxService, IFolderExplorerService folderExplorerService,
+            IDialogService setTitleDialogService, IDialogService setAuthorDialogService,
+            IDialogService setSubjectDialogService, IDialogService setCategoryDialogService,
             IDialogService setTaxYearDialogService, IFileDialogService openFileDialogService,
             IFileDialogService saveFileDialogService, IPrintDialogService printDialogService,
             IPrintPreviewDialogService printPreviewDialogService)
@@ -97,6 +99,7 @@ namespace PDFKeeper.Core.Presenters
             this.folderExplorerService = folderExplorerService;
             this.setTitleDialogService = setTitleDialogService;
             this.setAuthorDialogService = setAuthorDialogService;
+            this.setSubjectDialogService = setSubjectDialogService;
             this.setCategoryDialogService = setCategoryDialogService;
             this.setTaxYearDialogService = setTaxYearDialogService;
             this.openFileDialogService = openFileDialogService;
@@ -144,6 +147,7 @@ namespace PDFKeeper.Core.Presenters
             ViewModel.DocumentsSelectMenuEnabled = false;
             ViewModel.DocumentsSetTitleMenuEnabled = false;
             ViewModel.DocumentsSetAuthorMenuEnabled = false;
+            ViewModel.DocumentsSetSubjectMenuEnabled = false;
             ViewModel.DocumentsSetCategoryMenuEnabled = false;
             ViewModel.DocumentsSetTaxYearMenuEnabled = false;
             ViewModel.DocumentsDeleteMenuEnabled = false;
@@ -410,6 +414,7 @@ namespace PDFKeeper.Core.Presenters
             }
             ViewModel.DocumentsSetTitleMenuEnabled = enabled;
             ViewModel.DocumentsSetAuthorMenuEnabled = enabled;
+            ViewModel.DocumentsSetSubjectMenuEnabled = enabled;
             ViewModel.DocumentsSetCategoryMenuEnabled = enabled;
             ViewModel.DocumentsSetTaxYearMenuEnabled = enabled;
             ViewModel.DocumentsDeleteMenuEnabled = enabled;
@@ -431,6 +436,15 @@ namespace PDFKeeper.Core.Presenters
             if (value != null)
             {
                 ProcessEachCheckedDocument(CheckedDocumentAction.SetAuthor, value);
+            }
+        }
+
+        public void SetSubjectOnEachSelectedDocument()
+        {
+            var value = setSubjectDialogService.ShowDialog();
+            if (value != null)
+            {
+                ProcessEachCheckedDocument(CheckedDocumentAction.SetSubject, value);
             }
         }
 
@@ -632,6 +646,7 @@ namespace PDFKeeper.Core.Presenters
                 {
                     ViewModel.DocumentsSetTitleMenuEnabled = true;
                     ViewModel.DocumentsSetAuthorMenuEnabled = true;
+                    ViewModel.DocumentsSetSubjectMenuEnabled = true;
                     ViewModel.DocumentsSetCategoryMenuEnabled = true;
                     ViewModel.DocumentsSetTaxYearMenuEnabled = true;
                     ViewModel.DocumentsDeleteMenuEnabled = true;
@@ -832,6 +847,7 @@ namespace PDFKeeper.Core.Presenters
         {
             SetTitle,
             SetAuthor,
+            SetSubject,
             SetCategory,
             SetTaxYear,
             Delete,
@@ -889,6 +905,7 @@ namespace PDFKeeper.Core.Presenters
                 ViewModel.FileExportMenuEnabled = false;
                 ViewModel.DocumentsSetTitleMenuEnabled = false;
                 ViewModel.DocumentsSetAuthorMenuEnabled = false;
+                ViewModel.DocumentsSetSubjectMenuEnabled = false;
                 ViewModel.DocumentsSetCategoryMenuEnabled = false;
                 ViewModel.DocumentsSetTaxYearMenuEnabled = false;
                 ViewModel.DocumentsDeleteMenuEnabled = false;
@@ -994,6 +1011,11 @@ namespace PDFKeeper.Core.Presenters
                     else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetAuthor))
                     {
                         document.Author = value;
+                        documentRepository.UpdateDocument(document);
+                    }
+                    else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetSubject))
+                    {
+                        document.Subject = value;
                         documentRepository.UpdateDocument(document);
                     }
                     else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetCategory))

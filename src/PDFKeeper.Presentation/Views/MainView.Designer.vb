@@ -81,10 +81,12 @@ Partial Class MainView
         Me.DocumentsSelectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSelectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSelectNoneToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DocumentsToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.DocumentsSetTitleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSetAuthorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSetCategoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSetTaxYearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DocumentsToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.DocumentsDeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewSetPreviewPixelDensityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -155,8 +157,7 @@ Partial Class MainView
         Me.DocumentsListTimedRefreshTimer = New System.Windows.Forms.Timer(Me.components)
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.CheckForDocumentsListChangesTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.DocumentsToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.DocumentsToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.DocumentsSetSubjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.HorizontalSplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.HorizontalSplitContainer.Panel1.SuspendLayout()
@@ -353,7 +354,7 @@ Partial Class MainView
         '
         'DocumentsToolStripMenuItem
         '
-        Me.DocumentsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DocumentsFindToolStripMenuItem, Me.DocumentsToolStripSeparator1, Me.DocumentsSelectToolStripMenuItem, Me.DocumentsToolStripSeparator2, Me.DocumentsSetTitleToolStripMenuItem, Me.DocumentsSetAuthorToolStripMenuItem, Me.DocumentsSetCategoryToolStripMenuItem, Me.DocumentsSetTaxYearToolStripMenuItem, Me.DocumentsToolStripSeparator3, Me.DocumentsDeleteToolStripMenuItem})
+        Me.DocumentsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DocumentsFindToolStripMenuItem, Me.DocumentsToolStripSeparator1, Me.DocumentsSelectToolStripMenuItem, Me.DocumentsToolStripSeparator2, Me.DocumentsSetTitleToolStripMenuItem, Me.DocumentsSetAuthorToolStripMenuItem, Me.DocumentsSetSubjectToolStripMenuItem, Me.DocumentsSetCategoryToolStripMenuItem, Me.DocumentsSetTaxYearToolStripMenuItem, Me.DocumentsToolStripSeparator3, Me.DocumentsDeleteToolStripMenuItem})
         Me.DocumentsToolStripMenuItem.Name = "DocumentsToolStripMenuItem"
         resources.ApplyResources(Me.DocumentsToolStripMenuItem, "DocumentsToolStripMenuItem")
         '
@@ -383,6 +384,11 @@ Partial Class MainView
         Me.DocumentsSelectNoneToolStripMenuItem.Name = "DocumentsSelectNoneToolStripMenuItem"
         resources.ApplyResources(Me.DocumentsSelectNoneToolStripMenuItem, "DocumentsSelectNoneToolStripMenuItem")
         '
+        'DocumentsToolStripSeparator2
+        '
+        Me.DocumentsToolStripSeparator2.Name = "DocumentsToolStripSeparator2"
+        resources.ApplyResources(Me.DocumentsToolStripSeparator2, "DocumentsToolStripSeparator2")
+        '
         'DocumentsSetTitleToolStripMenuItem
         '
         Me.DocumentsSetTitleToolStripMenuItem.Name = "DocumentsSetTitleToolStripMenuItem"
@@ -402,6 +408,11 @@ Partial Class MainView
         '
         Me.DocumentsSetTaxYearToolStripMenuItem.Name = "DocumentsSetTaxYearToolStripMenuItem"
         resources.ApplyResources(Me.DocumentsSetTaxYearToolStripMenuItem, "DocumentsSetTaxYearToolStripMenuItem")
+        '
+        'DocumentsToolStripSeparator3
+        '
+        Me.DocumentsToolStripSeparator3.Name = "DocumentsToolStripSeparator3"
+        resources.ApplyResources(Me.DocumentsToolStripSeparator3, "DocumentsToolStripSeparator3")
         '
         'DocumentsDeleteToolStripMenuItem
         '
@@ -850,15 +861,10 @@ Partial Class MainView
         Me.CheckForDocumentsListChangesTimer.Enabled = True
         Me.CheckForDocumentsListChangesTimer.Interval = 5000
         '
-        'DocumentsToolStripSeparator3
+        'DocumentsSetSubjectToolStripMenuItem
         '
-        Me.DocumentsToolStripSeparator3.Name = "DocumentsToolStripSeparator3"
-        resources.ApplyResources(Me.DocumentsToolStripSeparator3, "DocumentsToolStripSeparator3")
-        '
-        'DocumentsToolStripSeparator2
-        '
-        Me.DocumentsToolStripSeparator2.Name = "DocumentsToolStripSeparator2"
-        resources.ApplyResources(Me.DocumentsToolStripSeparator2, "DocumentsToolStripSeparator2")
+        Me.DocumentsSetSubjectToolStripMenuItem.Name = "DocumentsSetSubjectToolStripMenuItem"
+        resources.ApplyResources(Me.DocumentsSetSubjectToolStripMenuItem, "DocumentsSetSubjectToolStripMenuItem")
         '
         'MainView
         '
@@ -1022,4 +1028,5 @@ Partial Class MainView
     Friend WithEvents DocumentsSetAuthorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DocumentsToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents DocumentsToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents DocumentsSetSubjectToolStripMenuItem As ToolStripMenuItem
 End Class
