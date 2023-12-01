@@ -300,11 +300,11 @@ namespace PDFKeeper.Core.FileIO.PDF
                 {
                     strategy = new PdfTextExtractionStrategy();
                     text = strategy.GetText(pdf);
-                    if (string.IsNullOrEmpty(text))
+                    if (string.IsNullOrEmpty(text) || text.Trim().Length.Equals(0))
                     {
                         strategy = new PdfOcrTextExtractionStrategy();
                         text = strategy.GetText(pdf);
-                    }                    
+                    }
                 }
                 pdfText.Append(text);
                 pdf.Delete();
