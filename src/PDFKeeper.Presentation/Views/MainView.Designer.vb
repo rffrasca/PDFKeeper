@@ -84,6 +84,7 @@ Partial Class MainView
         Me.DocumentsToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.DocumentsSetTitleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSetAuthorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DocumentsSetSubjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSetCategoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsSetTaxYearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DocumentsToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
@@ -157,7 +158,6 @@ Partial Class MainView
         Me.DocumentsListTimedRefreshTimer = New System.Windows.Forms.Timer(Me.components)
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
         Me.CheckForDocumentsListChangesTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.DocumentsSetSubjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.HorizontalSplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.HorizontalSplitContainer.Panel1.SuspendLayout()
@@ -398,6 +398,11 @@ Partial Class MainView
         '
         Me.DocumentsSetAuthorToolStripMenuItem.Name = "DocumentsSetAuthorToolStripMenuItem"
         resources.ApplyResources(Me.DocumentsSetAuthorToolStripMenuItem, "DocumentsSetAuthorToolStripMenuItem")
+        '
+        'DocumentsSetSubjectToolStripMenuItem
+        '
+        Me.DocumentsSetSubjectToolStripMenuItem.Name = "DocumentsSetSubjectToolStripMenuItem"
+        resources.ApplyResources(Me.DocumentsSetSubjectToolStripMenuItem, "DocumentsSetSubjectToolStripMenuItem")
         '
         'DocumentsSetCategoryToolStripMenuItem
         '
@@ -860,11 +865,6 @@ Partial Class MainView
         '
         Me.CheckForDocumentsListChangesTimer.Enabled = True
         Me.CheckForDocumentsListChangesTimer.Interval = 5000
-        '
-        'DocumentsSetSubjectToolStripMenuItem
-        '
-        Me.DocumentsSetSubjectToolStripMenuItem.Name = "DocumentsSetSubjectToolStripMenuItem"
-        resources.ApplyResources(Me.DocumentsSetSubjectToolStripMenuItem, "DocumentsSetSubjectToolStripMenuItem")
         '
         'MainView
         '
