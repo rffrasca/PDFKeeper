@@ -66,7 +66,6 @@ namespace PDFKeeper.Core.Presenters
         private readonly ExecutingAssembly executingAssembly;
         private Document currentDocument;
         private string textToPrint;
-        private decimal lastPixelDensity;
 
         /// <summary>
         /// Initializes a new instance of the MainPresenter class.
@@ -578,7 +577,6 @@ namespace PDFKeeper.Core.Presenters
         /// </param>
         public void SetPreviewImage(decimal pixelDensity)
         {
-            lastPixelDensity = pixelDensity;
             OnLongRunningOperationStarted();
             fileCache.CreatePreview(ViewModel.CurrentDocumentId, pixelDensity);
             ViewModel.Preview = fileCache.GetPreview(ViewModel.CurrentDocumentId, pixelDensity);
