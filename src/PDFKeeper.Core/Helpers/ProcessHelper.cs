@@ -36,7 +36,7 @@ namespace PDFKeeper.Core.Helpers
                 using (var process = Process.GetProcessById(pid))
                 {
                     process.CloseMainWindow();
-                    process.Close();
+                    process.Kill();
                 }
             }
             catch (ArgumentException) { }
