@@ -64,7 +64,7 @@ PDFKeeper is free, open source software that provides a storage and management s
 
 ![Product Name Screen Shot][product-screenshot]
 
-User Interface in version 9.0.0.
+User Interface in version 9.0.0 and higher.
 
 ### Features
 * Store and manage PDF documents in a single-user or compatible, multi-user (on-prem or cloud) database where they’re indexed to provide full-text search functionality.
@@ -96,7 +96,7 @@ Full release history is available in the [Changelog](https://github.com/rffrasca
 
 ### Building from Source
 
-Build Instructions for version 9.0.0 is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-v9.md).
+Build Instructions for version 9.x.x is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-v9.md).
 
 Build Instructions for version 8.x.x is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-v8.md).
 
