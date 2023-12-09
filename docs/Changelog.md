@@ -1,6 +1,30 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v9.1.0 - 2023-12-09
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.0).
+### Added
+* Added feature to set the title on selected document records. [#16](https://github.com/rffrasca/PDFKeeper/issues/16)
+* Added feature to set the author on selected document records. [#16](https://github.com/rffrasca/PDFKeeper/issues/16)
+* Added feature to set the subject on selected document records. [#16](https://github.com/rffrasca/PDFKeeper/issues/16)
+* Added new separators to the Documents menu.
+* Added "When prompted to Run or Save, select Run." to all help topics that call a batch file. [#18](https://github.com/rffrasca/PDFKeeper/issues/18)
+### Changed
+* Changed "Set Tax Year" menu item shortcut keys to Ctrl+Shift+Y.
+* Changed "Append Date/Time" menu item shortcut keys to Ctrl+Alt+D.
+* Changed "Append Text" menu item shortcut keys to Ctrl+Alt+T.
+* Changed Documents Select menu Text property to Se&lect.
+* Updated Ghostscript to 10.02.1.
+* Updated Sumatra PDF to 3.5.2.
+### Fixed
+* Fixed FileNotFoundException: The system cannot find the file specified. (Exception from HRESULT: 0x80070002) on startup when Windows Defender blocks the creation of the "PDFKeeper Upload" shortcut in the Documents folder. The shortcut will be created on the Desktop instead. [#15](https://github.com/rffrasca/PDFKeeper/issues/15)
+* Fixed text extraction issue when uploading PDF documents that contains one or more image pages. [#20](https://github.com/rffrasca/PDFKeeper/issues/20)
+### Changed (Development)
+* Removed unused private member from MainPresenter.
+* Updated Microsoft.CodeAnalysis.NetAnalyzers to 8.0.0.
+
 ## v9.0.0 - 2023-11-24
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.0.0).
@@ -20,14 +44,14 @@ All notable changes to PDFKeeper will be documented in this file.
 * Changed Rejected PDF files check to execute directly after the Upload.
 * Renamed RemoveListAllDocuments policy to HideAllDocuments.
 * Changed class name in the Upload Profile XML schema.
-* Updated Magick.NET to 13.4.0. (CVE-2023-4863)
+* Updated Magick.NET to 13.4.0. [CVE-2023-4863](https://github.com/advisories/GHSA-j7hp-h8jx-5ppr)
 ### Removed
 * Removed Refresh from the View menu on the Main form.
 * Removed Update PDF Text Columns from the Tools menu on the Main form.
 * Removed Oracle Database Schema Upgrade help topic and script support.
 * Removed the copying of BouncyCastle.Crypto.dll to BouncyCastle.Crypto.dll.bak during setup and the restore command class that is no longer needed since BouncyCastle.Crypto.dll is no longer being deleted during the upgrade of PDFKeeper.
 ### Fixed
-* ArgumentException: The parameter is incorrect. Image dimensions are too large! This exception will be prevented by skipping each PDF page that is to be processed by OCR with a pixel width or pixel height that exceeds the maximum image pixel dimensions supported by the Windows OCR engine. (#13)
+* ArgumentException: The parameter is incorrect. Image dimensions are too large! This exception will be prevented by skipping each PDF page that is to be processed by OCR with a pixel width or pixel height that exceeds the maximum image pixel dimensions supported by the Windows OCR engine. [#13](https://github.com/rffrasca/PDFKeeper/issues/13)
 ### Changed (Development)
 * Implemented the Model-View-Presenter-ViewModel pattern to improve maintainability.
 * Created Components and User Controls to eliminate redundancy and improve modularity.
@@ -101,7 +125,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Added opening of PDF documents for all selected (checked) documents in the Documents list up to a maximum of 12.
 - Added Burst for selected document PDF.
 - Added option to OCR each PDF page containing text and image data to the Add PDF Dialog, Upload Profiles Dialog, and to the Update PDF Text Columns prompt.
-- Added display of Search Term Snippets for the selected document when using Find Documents by Search Term (#7).
+- Added display of Search Term Snippets for the selected document when using Find Documents by Search Term. [#7](https://github.com/rffrasca/PDFKeeper/issues/7)
 - Added text extraction for image-only pages in PDF when PDF contains both text and image-only pages.
 ### Changed
 - Updated Oracle Data Provider .NET dependency to the version contained in Oracle Data Access Components 21.4.
