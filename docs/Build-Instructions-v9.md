@@ -37,4 +37,4 @@ Download the source code for a v9 release from [here](https://github.com/rffrasc
 4. Open "PDFKeeper.sln" with Visual Studio.
 5. Set configuration to Release, and then Build the Solution.
 
-    After a successful build, "PDFKeeper-9.0.0.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".
+    After a successful build, "PDFKeeper-9.x.x.msi" will exist in "PDFKeeper\src\PDFKeeper.Setup\bin\Release".
