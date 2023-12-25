@@ -58,7 +58,8 @@ namespace PDFKeeper.Core.Rules
 
         protected override void CheckForViolation()
         {
-            if (title.Length.Equals(0) || author.Length.Equals(0) || subject.Length.Equals(0))
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(author) ||
+                string.IsNullOrEmpty(subject))
             {
                 ViolationFound = true;
                 ViolationMessage = Resources.MandatoryFieldsAreBlank;
