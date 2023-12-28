@@ -462,8 +462,7 @@ Public Class MainView
             If viewModel.CurrentDocumentId > 0 Then
                 For Each row In DocumentsDataGridView.Rows
                     If row.Cells(1).Value = viewModel.CurrentDocumentId Then
-                        row.Selected = True
-                        DocumentsDataGridView.FirstDisplayedScrollingRowIndex = row.Index
+                        DocumentsDataGridView.CurrentCell = DocumentsDataGridView.Rows(row.Index).Cells(1)
                     End If
                 Next
             End If
