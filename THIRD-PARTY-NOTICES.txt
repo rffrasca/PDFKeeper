@@ -29,20 +29,20 @@ Ghostscript 10.02.1 (https://www.ghostscript.com/)
     Copyright: Copyright (C) 2023 Artifex Software, Inc.  All rights reserved.
     License: AGPLv3 License, full text can be found at https://www.ghostscript.com/licensing/index.html
 
-itext7 (https://www.nuget.org/packages/itext7/7.2.5)
+itext (https://www.nuget.org/packages/itext/8.0.2)
     Authors: iText
-    Copyright: Copyright (c) 1998-2023 iText Group NV
-    License: AGPLv3 License, full text can be found at https://itextpdf.com/how-buy/agpl-license
+    Copyright: Copyright (c) 1998-2023 Apryse Group NV
+    License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-itext7.commons (https://www.nuget.org/packages/itext7.commons/7.2.5)
+itext.commons (https://www.nuget.org/packages/itext.commons/8.0.2)
     Authors: iText
-    Copyright: Copyright (c) 1998-2023 iText Group NV
-    License: AGPLv3 License, full text can be found at https://itextpdf.com/how-buy/agpl-license
+    Copyright: Copyright (c) 1998-2023 Apryse Group NV
+    License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-itext7.font-asian (https://www.nuget.org/packages/itext7.font-asian/7.2.5)
+itext.font-asian (https://www.nuget.org/packages/itext.font-asian/8.0.2)
     Authors: iText
-    Copyright: Copyright (c) 1998-2023 iText Group NV
-    License: AGPLv3 License, full text can be found at https://itextpdf.com/how-buy/agpl-license
+    Copyright: Copyright (c) 1998-2023 Apryse Group NV
+    License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
 Magick.NET-Q16-AnyCPU (https://www.nuget.org/packages/Magick.NET-Q16-AnyCPU/13.4.0)
     Authors: Dirk Lemstra
@@ -93,11 +93,6 @@ Newtonsoft.Json (https://www.nuget.org/packages/Newtonsoft.Json/13.0.1)
     Authors: James Newton-King
     Copyright: Copyright © James Newton-King 2008
     License: MIT License, full text can be found at https://spdx.org/licenses/MIT
-
-Portable.BouncyCastle (https://www.nuget.org/packages/Portable.BouncyCastle/1.8.9)
-    Authors: clairernovotny
-    Copyright: © 2000-2021 Legion of the Bouncy Castle Inc.
-    License: MIT License, full text can be found at https://www.bouncycastle.org/csharp/licence.html
 
 SQLite Command Line Shell 3.41.1 (https://www.sqlite.org/index.html)
     License: Public Domain, full text can be found at https://www.sqlite.org/copyright.html

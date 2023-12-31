@@ -121,9 +121,7 @@
       <Component Id="OracleDatabaseSchemaSetup.sql" Guid="0c018a44-7840-4ef4-92a7-ce0432f9e27f">
         <File Id="OracleDatabaseSchemaSetup.sql" Name="OracleDatabaseSchemaSetup.sql" Source="$(var.PDFKeeper.Presentation_TargetDir)OracleDatabaseSchemaSetup.sql" />
       </Component>
-      <Component Id="BouncyCastle.Crypto.dll" Guid="aec691d9-e839-45a5-b269-205445047427">
-        <File Id="BouncyCastle.Crypto.dll" Name="BouncyCastle.Crypto.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)BouncyCastle.Crypto.dll" />
-      </Component>
+      
       
       <Component Id="gsdll64.dll" Guid="72df3d61-ee4f-45f5-928f-d8bf4e6bb36b">
         <File Id="gsdll64.dll" Name="gsdll64.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)gsdll64.dll" />
@@ -247,6 +245,9 @@
       </Component>
       <Component Id="SumatraPDF_3.5.2_64.exe" Guid="f620ba5d-79e6-4d69-bc46-8379f55e2e9e">
         <File Id="SumatraPDF_3.5.2_64.exe" Name="SumatraPDF-3.5.2-64.exe" Source="$(var.PDFKeeper.Presentation_TargetDir)SumatraPDF-3.5.2-64.exe" />
+      </Component>
+      <Component Id="itext.bouncy_castle_connector.dll" Guid="3aadbc87-5d62-45dc-a478-1a9e2ee3082d">
+        <File Id="itext.bouncy_castle_connector.dll" Name="itext.bouncy-castle-connector.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)itext.bouncy-castle-connector.dll" />
       </Component>
   	</ComponentGroup>
 	</Fragment>

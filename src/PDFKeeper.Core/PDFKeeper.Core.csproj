@@ -154,11 +154,11 @@
     <None Include="PDFKeeper.snk" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="itext7">
-      <Version>7.2.5</Version>
+    <PackageReference Include="itext">
+      <Version>8.0.2</Version>
     </PackageReference>
-    <PackageReference Include="itext7.font-asian">
-      <Version>7.2.5</Version>
+    <PackageReference Include="itext.font-asian">
+      <Version>8.0.2</Version>
     </PackageReference>
     <PackageReference Include="Magick.NET-Q16-AnyCPU">
       <Version>13.4.0</Version>
