@@ -171,8 +171,8 @@
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
       <Version>10.0.19041.1</Version>
     </PackageReference>
-    <PackageReference Include="System.Data.SQLite">
-      <Version>1.0.117</Version>
+    <PackageReference Include="System.Data.SQLite.Core">
+      <Version>1.0.118</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

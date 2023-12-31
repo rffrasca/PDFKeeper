@@ -554,11 +554,7 @@ del "$(TargetDir)itext.pdfa.dll"
 del "$(TargetDir)itext.sign.dll"
 del "$(TargetDir)itext.styledxmlparser.dll"
 del "$(TargetDir)itext.svg.dll"
-del "$(TargetDir)EntityFramework.dll"
-del "$(TargetDir)EntityFramework.SqlServer.dll"
-del "$(TargetDir)Oracle.ManagedDataAccess.dll"
-del "$(TargetDir)System.Data.SQLite.EF6.dll"
-del "$(TargetDir)System.Data.SQLite.Linq.dll"</PostBuildEvent>
+del "$(TargetDir)Oracle.ManagedDataAccess.dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
