@@ -94,7 +94,7 @@ Newtonsoft.Json (https://www.nuget.org/packages/Newtonsoft.Json/13.0.1)
     Copyright: Copyright © James Newton-King 2008
     License: MIT License, full text can be found at https://spdx.org/licenses/MIT
 
-SQLite Command Line Shell 3.41.1 (https://www.sqlite.org/index.html)
+SQLite Command Line Shell 3.42.0 (https://www.sqlite.org/index.html)
     License: Public Domain, full text can be found at https://www.sqlite.org/copyright.html
 
 Sumatra PDF 3.5.2 (https://www.sumatrapdfreader.org/free-pdf-reader)

@@ -219,4 +219,7 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>powershell.exe -ExecutionPolicy Bypass -file "..\..\..\Build\GetSqliteShell.ps1"</PreBuildEvent>
+  </PropertyGroup>
 </Project>
