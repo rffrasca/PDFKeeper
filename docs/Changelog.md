@@ -1,6 +1,16 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v9.1.1 - 2023-12-28
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.1).
+### Changed
+* Updated Donate help topic to align with website.
+### Fixed
+* Fixed System.NullReferenceException: Object reference not set to an instance of an object when trying to upload a PDF that is missing a Title, Author, or Subject. [#23](https://github.com/rffrasca/PDFKeeper/issues/23)
+* Fixed issue when double clicking on document in documents list results in a PDF being opened for a different document.
+
 ## v9.1.0 - 2023-12-09
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.0).
