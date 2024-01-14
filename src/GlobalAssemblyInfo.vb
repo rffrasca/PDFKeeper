@@ -1,6 +1,6 @@
 '******************************************************************************
 '* PDFKeeper -- Open Source PDF Document Management
-'* Copyright (C) 2009-2023 Robert F. Frasca
+'* Copyright (C) 2009-2024 Robert F. Frasca
 '*
 '* This file is part of PDFKeeper.
 '*
@@ -27,7 +27,7 @@ Imports System.Reflection
 
 <Assembly: AssemblyCompany("Robert F. Frasca")>
 <Assembly: AssemblyProduct("PDFKeeper")>
-<Assembly: AssemblyCopyright("Copyright © 2009-2023 Robert F. Frasca")>
+<Assembly: AssemblyCopyright("Copyright © 2009-2024 Robert F. Frasca")>
 
 ' Version information for an assembly consists of the following four values:
 '

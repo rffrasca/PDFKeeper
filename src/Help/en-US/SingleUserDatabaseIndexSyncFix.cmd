@@ -2,7 +2,7 @@
 
 rem ***************************************************************************
 rem * PDFKeeper -- Open Source PDF Document Management
-rem * Copyright (C) 2009-2023 Robert F. Frasca
+rem * Copyright (C) 2009-2024 Robert F. Frasca
 rem *
 rem * This file is part of PDFKeeper.
 rem *
