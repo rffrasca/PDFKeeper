@@ -1,6 +1,6 @@
 # *****************************************************************************
 # * PDFKeeper -- Open Source PDF Document Management
-# * Copyright (C) 2009-2023 Robert F. Frasca
+# * Copyright (C) 2009-2024 Robert F. Frasca
 # *
 # * This file is part of PDFKeeper.
 # *
@@ -18,8 +18,8 @@
 # * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 # *****************************************************************************
 
-$previousVersion="9.1.0"
-$currentVersion="9.1.1"
+$previousVersion="9.1.1"
+$currentVersion="9.2.0"
 
 (Get-ChildItem -Include *AssemblyInfo.*,PDFKeeper.Setup.wixproj,Product.wxs,'THIRD-PARTY-NOTICES.*' -Recurse ) |
 Foreach-Object {
