@@ -901,12 +901,17 @@ namespace PDFKeeper.Core.Presenters
             if (notesChanged)
             {
                 ViewModel.FileExportMenuEnabled = false;
+                ViewModel.DocumentsFindMenuEnabled = false;
                 ViewModel.DocumentsSetTitleMenuEnabled = false;
                 ViewModel.DocumentsSetAuthorMenuEnabled = false;
                 ViewModel.DocumentsSetSubjectMenuEnabled = false;
                 ViewModel.DocumentsSetCategoryMenuEnabled = false;
                 ViewModel.DocumentsSetTaxYearMenuEnabled = false;
                 ViewModel.DocumentsDeleteMenuEnabled = false;
+            }
+            else
+            {
+                ViewModel.DocumentsFindMenuEnabled = true;
             }
             ViewModel.EditUndoMenuEnabled = canUndo;
             ViewModel.EditRestoreMenuEnabled = notesChanged;
