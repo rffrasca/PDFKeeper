@@ -249,6 +249,12 @@
       <Component Id="itext.bouncy_castle_connector.dll" Guid="3aadbc87-5d62-45dc-a478-1a9e2ee3082d">
         <File Id="itext.bouncy_castle_connector.dll" Name="itext.bouncy-castle-connector.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)itext.bouncy-castle-connector.dll" />
       </Component>
+      <Component Id="itext.bouncy_castle_adapter.dll" Guid="d36c53c8-d8b1-4ba8-9855-14de3d4b52b2">
+        <File Id="itext.bouncy_castle_adapter.dll" Name="itext.bouncy-castle-adapter.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)itext.bouncy-castle-adapter.dll" />
+      </Component>
+      <Component Id="BouncyCastle.Cryptography.dll" Guid="5ba5c46f-096e-40ca-b0fc-71e3cea143fb">
+        <File Id="BouncyCastle.Cryptography.dll" Name="BouncyCastle.Cryptography.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)BouncyCastle.Cryptography.dll" />
+      </Component>
   	</ComponentGroup>
 	</Fragment>
 </Wix>

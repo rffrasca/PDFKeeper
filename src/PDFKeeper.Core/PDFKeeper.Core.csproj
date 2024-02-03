@@ -157,6 +157,9 @@
     <PackageReference Include="itext">
       <Version>8.0.2</Version>
     </PackageReference>
+    <PackageReference Include="itext.bouncy-castle-adapter">
+      <Version>8.0.2</Version>
+    </PackageReference>
     <PackageReference Include="itext.font-asian">
       <Version>8.0.2</Version>
     </PackageReference>
