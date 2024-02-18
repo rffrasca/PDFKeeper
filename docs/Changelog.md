@@ -1,6 +1,23 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v9.1.2 - 2024-02-18
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.2).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.2).
+### Changed
+* Updated Features list.
+* Updated Donate help topic to align with website.
+* Updated iText to 8.0.2.
+* Updated iText.Font-Asian to 8.0.2.
+* Updated Magick.NET to 13.5.0.
+* Updated System.Data.SQLite to 1.0.118.
+* Updated SQLite Command Line Shell to 3.42.0.
+### Fixed
+* Documents Find menu and toolbar items are disabled when Notes have changed.
+### Changed (Development)
+* Created scripts to update copyright year range.
+
 ## v9.1.1 - 2023-12-28
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.1).
