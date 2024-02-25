@@ -29,15 +29,18 @@ namespace PDFKeeper.Core.Presenters
 {
     public class LoginPresenter : PresenterBase<LoginViewModel>
     {
+        private readonly IntPtr handle;
         private readonly IMessageBoxService messageBoxService;
         private IDocumentRepository documentRepository;
 
         /// <summary>
         /// Initializes a new instance of the LoginPresenter class.
         /// </summary>
+        /// <param name="handle">The handle of the view.</param>
         /// <param name="messageBoxService">The MessageBoxService instance.</param>
-        public LoginPresenter(IMessageBoxService messageBoxService)
+        public LoginPresenter(IntPtr handle, IMessageBoxService messageBoxService)
         {
+            this.handle = handle;
             this.messageBoxService = messageBoxService;
             ViewModel = new LoginViewModel();
         }
@@ -68,12 +71,12 @@ namespace PDFKeeper.Core.Presenters
             }
             catch (ArgumentException ex)
             {
-                messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(handle, ex.Message, true);
                 OnViewResetRequested();
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(handle, ex.Message, true);
                 documentRepository.ResetCredential();
                 OnViewResetRequested();
             }

@@ -31,7 +31,7 @@ Public Class LoginView
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        presenter = New LoginPresenter(New MessageBoxService)
+        presenter = New LoginPresenter(Handle, New MessageBoxService)
         viewModel = presenter.ViewModel
         HelpProvider.HelpNamespace = New HelpFile().FileName
         AddEventHandlers()

@@ -18,6 +18,8 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using System;
+
 namespace PDFKeeper.Core.Services
 {
     public interface IMessageBoxService
@@ -28,6 +30,14 @@ namespace PDFKeeper.Core.Services
         /// <param name="message">The message.</param>
         /// <param name="isError">Is message an error? (true or false)</param>
         void ShowMessage(string message, bool isError);
+
+        /// <summary>
+        /// Shows a message box for displaying the message.
+        /// </summary>
+        /// <param name="owner">The window handle of the owner.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="isError">Is message an error? (true or false)</param>
+        void ShowMessage(IntPtr owner, string message, bool isError);
 
         /// <summary>
         /// Shows a message box for asking the question.

@@ -42,6 +42,15 @@ Public Class MessageBoxService
                         MessageBoxDefaultButton.Button1, options)
     End Sub
 
+    Public Sub ShowMessage(owner As IntPtr, message As String, isError As Boolean) Implements IMessageBoxService.ShowMessage
+        Dim icon = MessageBoxIcon.Information
+        If isError Then
+            icon = MessageBoxIcon.Error
+        End If
+        MessageBox.Show(NativeWindow.FromHandle(owner), message, Application.ProductName,
+                        MessageBoxButtons.OK, icon, MessageBoxDefaultButton.Button1, options)
+    End Sub
+
     Public Function ShowQuestion(message As String, showCancel As Boolean) As Integer Implements IMessageBoxService.ShowQuestion
         If showCancel Then
             buttons = MessageBoxButtons.YesNoCancel
