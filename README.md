@@ -69,14 +69,14 @@ User Interface in version 9.0.0 and higher.
 ### Features
 * Store and manage PDF documents in a single-user or compatible, multi-user (on-prem or cloud) database where they’re indexed to provide full-text search functionality.
 * Upload PDF documents individually or in bulk. In addition, Upload Profile folders can be setup to allow for integration and automation.
-* Apply a category/tax year to selected documents and when PDF documents are uploaded.
-* Set the flag state on a selected document and when PDF documents are uploaded to mark for follow-up.
+* Apply a Title, Author, Subject, Category, and Tax Year to selected documents and when PDF documents are uploaded. In addition, Keywords can be applied when PDF documents are uploaded.
+* Set flag state on a selected document and when PDF documents are uploaded to mark for follow-up.
 * Add notes to a selected document that can include the date, time, and user account name. All notes can be edited and are indexed by the database.
-* Find documents by Search Term, Selections (Author/Subject/Category/Tax Year), or Date Added. In addition, flagged documents or all documents can be listed.
-* With PDFKeeper, the following functions can be performed on a selected document: PDF viewing with the bundled or default viewer; PDF bursting; flag document state management; notes viewing and editing; keywords, PDF preview, PDF text, and search term snippets (when applicable) are also displayed for viewing.
+* Find documents by Search Term, Selections (Author, Subject, Category, and/or Tax Year), or Date Added. In addition, Flagged Documents or All Documents can be listed.
+* With PDFKeeper, the following functions can be performed on a selected document: PDF viewing with the bundled or default viewer; PDF bursting; Flag Document state management; Notes viewing and editing; Keywords, PDF preview, PDF Text, and Search Term Snippets (when applicable) are also displayed for viewing.
 * Export selected PDF documents with their category, tax year, notes, and flag state from the database for easy importing.
 
-These features are available in version 8.0.0 and higher. 
+These features are available in version 9.1.0 and higher. 
 
 ### Release History
 Full release history is available in the [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md).
