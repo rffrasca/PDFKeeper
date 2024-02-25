@@ -105,7 +105,6 @@
 			<Component Id="AutoUpdater.NET.dll" Guid="934e759b-4d49-43d0-b49c-bfa2896192c5">
 			  <File Id="AutoUpdater.NET.dll" Name="AutoUpdater.NET.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)AutoUpdater.NET.dll" />
 			</Component>
-			
       <Component Id="SumatraPDF_settings.txt" Guid="6a6d167b-3b87-495a-b17f-68b5cedf5cc9">
         <File Id="SumatraPDF_settings.txt" Name="SumatraPDF-settings.txt" Source="$(var.PDFKeeper.Presentation_TargetDir)SumatraPDF-settings.txt" />
       </Component>
@@ -121,12 +120,9 @@
       <Component Id="OracleDatabaseSchemaSetup.sql" Guid="0c018a44-7840-4ef4-92a7-ce0432f9e27f">
         <File Id="OracleDatabaseSchemaSetup.sql" Name="OracleDatabaseSchemaSetup.sql" Source="$(var.PDFKeeper.Presentation_TargetDir)OracleDatabaseSchemaSetup.sql" />
       </Component>
-      
-      
       <Component Id="gsdll64.dll" Guid="72df3d61-ee4f-45f5-928f-d8bf4e6bb36b">
         <File Id="gsdll64.dll" Name="gsdll64.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)gsdll64.dll" />
       </Component>
-      
       <Component Id="Magick.NET.Core.dll" Guid="7f85d8a9-f147-4e18-bb2e-fc418c024429">
         <File Id="Magick.NET.Core.dll" Name="Magick.NET.Core.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Magick.NET.Core.dll" />
       </Component>
@@ -148,9 +144,6 @@
       <Component Id="gswin64c.exe" Guid="6428a10e-504d-4521-8d93-28f25fc824bd">
         <File Id="gswin64c.exe" Name="gswin64c.exe" Source="$(var.PDFKeeper.Presentation_TargetDir)gswin64c.exe" />
       </Component>
-      
-      
-      
       <Component Id="itext.kernel.dll" Guid="08d6a4ec-371d-4530-bf26-f1dd38207559">
         <File Id="itext.kernel.dll" Name="itext.kernel.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)itext.kernel.dll" />
       </Component>
@@ -160,22 +153,6 @@
       <Component Id="itext.font_asian.dll" Guid="56331123-8c8d-4428-b8cf-299e8ddb25dc">
         <File Id="itext.font_asian.dll" Name="itext.font_asian.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)itext.font_asian.dll" />
       </Component>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
       <Component Id="Magick.Native_Q16_x86.dll" Guid="8e694e0d-2a8f-4373-a121-34ded217baa0">
         <File Id="Magick.Native_Q16_x86.dll" Name="Magick.Native-Q16-x86.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Magick.Native-Q16-x86.dll" />
       </Component>
@@ -233,7 +210,6 @@
       <Component Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Guid="c0d45ceb-d797-4140-a24a-6b69e53703e9">
         <File Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
       </Component>
-      
       <Component Id="SqliteDatabaseIndexSyncFix.sql" Guid="f696c075-755d-4956-bcb1-5f41e486fb0b">
         <File Id="SqliteDatabaseIndexSyncFix.sql" Name="SqliteDatabaseIndexSyncFix.sql" Source="$(var.PDFKeeper.Presentation_TargetDir)SqliteDatabaseIndexSyncFix.sql" />
       </Component>
