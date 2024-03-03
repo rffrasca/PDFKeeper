@@ -551,6 +551,7 @@
 del "$(TargetDir)itext.forms.dll"
 del "$(TargetDir)itext.layout.dll"
 del "$(TargetDir)itext.pdfa.dll"
+del "$(TargetDir)itext.pdfua.dll"
 del "$(TargetDir)itext.sign.dll"
 del "$(TargetDir)itext.styledxmlparser.dll"
 del "$(TargetDir)itext.svg.dll"

@@ -155,13 +155,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="itext">
-      <Version>8.0.2</Version>
+      <Version>8.0.3</Version>
     </PackageReference>
     <PackageReference Include="itext.bouncy-castle-adapter">
-      <Version>8.0.2</Version>
+      <Version>8.0.3</Version>
     </PackageReference>
     <PackageReference Include="itext.font-asian">
-      <Version>8.0.2</Version>
+      <Version>8.0.3</Version>
     </PackageReference>
     <PackageReference Include="Magick.NET-Q16-AnyCPU">
       <Version>13.5.0</Version>
