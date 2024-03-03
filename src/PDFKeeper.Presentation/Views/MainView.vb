@@ -230,7 +230,7 @@ Public Class MainView
     End Sub
 
     Private Sub DocumentsDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DocumentsDataGridView.CellDoubleClick
-        ToolStripItem_Click(FileOpenToolStripMenuItem, Nothing)
+        presenter.OpenPdfForCurrentDocument(My.Settings.ShowPdfWithDefaultApplication)
     End Sub
 
     Private Sub DocumentsDataGridView_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles DocumentsDataGridView.CellValueChanged

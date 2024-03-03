@@ -172,7 +172,7 @@ namespace PDFKeeper.Core.Presenters
         }
 
         /// <summary>
-        /// Opens the PDF for the current document or each checked document.
+        /// Opens the PDF for the current document or each selected (checked) document.
         /// </summary>
         /// <param name="showPdfWithDefaultApplication">
         /// Show PDF with default application. (true or false).
@@ -212,8 +212,7 @@ namespace PDFKeeper.Core.Presenters
             }
             else
             {
-                pdfViewerService.Show(fileCache.GetPdfFile(ViewModel.CurrentDocumentId).FullName,
-                    showPdfWithDefaultApplication);
+                OpenPdfForCurrentDocument(showPdfWithDefaultApplication);
             }
         }
 
@@ -567,6 +566,19 @@ namespace PDFKeeper.Core.Presenters
                 ViewModel.SearchTermSnippets = null;
                 ViewModel.Preview = null;
             }
+        }
+
+        /// <summary>
+        /// Opens the PDF for the current document.
+        /// </summary>
+        /// <param name="showPdfWithDefaultApplication">
+        /// Show PDF with default application. (true or false).
+        /// </param>
+        public void OpenPdfForCurrentDocument(bool showPdfWithDefaultApplication)
+        {
+            pdfViewerService.Show(
+                fileCache.GetPdfFile(ViewModel.CurrentDocumentId).FullName,
+                showPdfWithDefaultApplication);
         }
 
         /// <summary>

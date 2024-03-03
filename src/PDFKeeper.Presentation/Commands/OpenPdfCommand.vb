@@ -26,8 +26,8 @@ Public Class OpenPdfCommand
     Private ReadOnly presenter As MainPresenter
 
     ''' <summary>
-    ''' Initializes a new instance of the OpenPdfCommand class that opens the PDF for the selected
-    ''' document or each checked document up to a limit of 12 when executed.
+    ''' Initializes a new instance of the OpenPdfCommand class that opens the PDF for the current
+    ''' document or each selected (checked) document up to a limit of 12 when executed.
     ''' </summary>
     ''' <param name="presenter">The MainPresenter instance.</param>
     Public Sub New(presenter As MainPresenter)
