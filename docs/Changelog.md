@@ -1,6 +1,19 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v9.1.3 - 2024-03-09
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.3).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.3).
+### Changed
+* Updated itext to 8.0.3.
+* Updated itext.bouncy-castle-adapter to 8.0.3.
+* Updated itext.font-asian to 8.0.3.
+* Updated Magick.NET to 13.6.0.
+### Fixed
+* Error message box will no longer show behind Login form when form does not have focus.
+* Double clicking on document in documents DataGridView will only open current document not all selected (checked) documents.
+
 ## v9.1.2 - 2024-02-18
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.2).
