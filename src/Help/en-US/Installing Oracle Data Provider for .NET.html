@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>Installing Oracle Data Provider for .NET</title>
-	<meta name="generator" content="LibreOffice 7.3.4.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 24.2.1.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2022-07-16T12:18:44.508000000"/>
+	<meta name="changed" content="2024-03-10T13:30:40.462000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -30,70 +30,49 @@
 <body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Installing
 Oracle Data Provider for .NET</b></font></h1>
 <p><font face="Segoe UI, sans-serif">This topic provides the
-installation steps for <span style="font-style: normal"><b>Oracle
-Data Provider for .NET</b></span> that is required for PDFKeeper to
-connect to Oracle Database.</font></p>
+installation steps for <b>Oracle Data Provider for .NET</b> that is
+required for PDFKeeper to connect to Oracle Database.</font></p>
 <p><font face="Segoe UI, sans-serif">This version of PDFKeeper
-requires <span style="font-style: normal"><b>ODP.NET, Managed Driver</b></span><span style="font-style: normal">
-</span><span style="font-style: normal"><b>4.122.</b></span><span style="font-style: normal"><b>2</b></span><span style="font-style: normal"><b>1.1</b></span>
-that is included with <span style="font-style: normal"><b>Oracle Data
-Access Components </b></span><span style="font-style: normal"><b>21.4</b></span>
-to be installed. <span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">Older</span></span></span>
-versions of <span style="font-style: normal"><b>ODP.NET, Managed
-Driver</b></span><span style="font-variant: normal"> </span><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">and
-</span></span></span><span style="font-style: normal"><b>Oracle Data
-Access Components</b></span> used by previous versions of PDFKeeper
-should be uninstalled if no longer needed by other applications<span style="font-weight: normal">.</span></font></p>
+requires <b>ODP.NET, Managed Driver</b> <b>4.122.21.1</b> that is
+included with <b>Oracle Data Access Components 21.4</b> to be
+installed. <span style="font-variant: normal">Older</span> versions
+of <b>ODP.NET, Managed Driver</b><span style="font-variant: normal">
+and </span><b>Oracle Data Access Components</b> used by previous
+versions of PDFKeeper should be uninstalled if no longer needed by
+other applications.</font></p>
 <ol>
-	<li><p><font face="Segoe UI, sans-serif">Go to </font><font face="Segoe UI, sans-serif">the</font><font face="Segoe UI, sans-serif">
-	<a href="https://www.oracle.com/database/technologies/dotnet-odacdeploy-downloads.html" target="_blank">ODAC
-	Download</a></font><a href="https://www.oracle.com/database/technologies/dotnet-odacdeploy-downloads.html" target="_blank"><font face="Segoe UI, sans-serif">s
-	page</font></a>.</p>
-	<li><p><font face="Segoe UI, sans-serif">Select</font><span style="display: inline-block; border: none; padding: 0in"><font face="Segoe UI, sans-serif">
-	</font><b><font face="Segoe UI, sans-serif">ODAC 21c (32-bit and
-	64-bit)</b></font><font face="Segoe UI, sans-serif"> from </span></font><font face="Segoe UI, sans-serif">the
-	</font><font face="Segoe UI, sans-serif"><b>XCopy ODAC Packages</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">
-	</span></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">section.</span></font></p>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">To
-	continue, you will need to sign in with an Oracle Account.</span></font></p>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Under
-	</span></font><font face="Segoe UI, sans-serif"><b>Software</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">
-	select </span></font><font face="Segoe UI, sans-serif"><b>Oracle
-	Data Access Components 21.X</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Under
-	</span></font><font face="Segoe UI, sans-serif"><b>Platforms</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">
-	select </span></font><font face="Segoe UI, sans-serif"><b>Microsoft
-	Windows x64 (64-bit)</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Click
-	the zip file link next to </span></font><font face="Segoe UI, sans-serif"><b>Oracle
-	Data Access Components 21.4 Xcopy for (Microsoft Windows x64
-	(64-bit))</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">
-	to download.</span></font></p>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Open
-	the folder where the zip file was downloaded to, and then open the
-	file </span></font><font face="Segoe UI, sans-serif">properties of
-	the zip </font><font face="Segoe UI, sans-serif">file and </font><font face="Segoe UI, sans-serif">select
-	</font><font face="Segoe UI, sans-serif"><b>Unblock</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p>
-	<li><p><font face="Segoe UI, sans-serif"><font face="Segoe UI, sans-serif">U</font><font face="Segoe UI, sans-serif">nzip
-	the file </font><font face="Segoe UI, sans-serif">into a staging
-	folder</font><font face="Segoe UI, sans-serif">.</font></font></p>
+	<li><p><font face="Segoe UI, sans-serif">Go to the</font> <font face="Segoe UI, sans-serif"><a href="https://www.oracle.com/database/technologies/dotnet-odacdeploy-downloads.html" target="_blank">ODAC
+	Download</a><a href="https://www.oracle.com/database/technologies/dotnet-odacdeploy-downloads.html" target="_blank">s
+	page</a></font>.</p></li>
+	<li><p><font face="Segoe UI, sans-serif">Under <b>ODAC Xcopy
+	Packages</b>, select <b>Earlier versions</b> of <b>ODAC 21c</b>.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Under <b>Software</b>
+	select <b>Oracle Data Access Components 21.X</b>.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Under <b>Platforms</b>
+	select <b>Microsoft Windows x64 (64-bit)</b>.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Click the zip file link
+	next to <b>Oracle Data Access Components 21.4 Xcopy for (Microsoft
+	Windows x64 (64-bit))</b> to download.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Open the folder where the
+	zip file was downloaded to, and then open the file properties of the
+	zip file and select <b>Unblock</b>.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Unzip the file into a
+	staging folder.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">For installation
-	instructions, refer to </font><font face="Segoe UI, sans-serif"><b>readme.htm</b></font>
-	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">that
-	is included in the zip file.</span></font></p>
+	instructions, refer to <b>readme.htm</b> that is included in the zip
+	file.</font></p></li>
 </ol>
 <p><font face="Segoe UI, sans-serif"><b>Additional Information:</b></font></p>
 <ul>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Make
-	sure to perform the installation using a </span></font><font face="Segoe UI, sans-serif"><b>Command
-	Prompt</b></font> <font face="Segoe UI, sans-serif"><span style="font-weight: normal">session
-	that was opened using </span></font><font face="Segoe UI, sans-serif"><b>Run
-	as administrator</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">It
-	is not necessary to install the full ODAC</span></font> <font face="Segoe UI, sans-serif"><span style="font-weight: normal">product,
-	only </span></font><font face="Segoe UI, sans-serif"><b>ODP.NET4</b></font>
-	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">is
-	required.</span></font></p>
+	<li><p><font face="Segoe UI, sans-serif">Make sure to perform the
+	installation using a </font><font face="Segoe UI, sans-serif"><b>Command
+	Prompt</b></font> <font face="Segoe UI, sans-serif">session that was
+	opened using </font><font face="Segoe UI, sans-serif"><b>Run as
+	administrator</b></font><font face="Segoe UI, sans-serif">.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">It is not necessary to
+	install the full ODAC</font> <font face="Segoe UI, sans-serif">product,
+	only </font><font face="Segoe UI, sans-serif"><b>ODP.NET4</b></font>
+	<font face="Segoe UI, sans-serif">is required.</font></p></li>
 </ul>
 </body>
 </html>
