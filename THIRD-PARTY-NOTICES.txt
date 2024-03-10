@@ -30,8 +30,8 @@ BouncyCastle.Cryptography (https://www.nuget.org/packages/BouncyCastle.Cryptogra
     Copyright: Copyright © Legion of the Bouncy Castle Inc. 2000-2023
     License: MIT License, full text can be found at https://www.nuget.org/packages/BouncyCastle.Cryptography/2.2.1/License
 
-Ghostscript 10.02.1 (https://www.ghostscript.com/)
-    Copyright: Copyright (C) 2023 Artifex Software, Inc.  All rights reserved.
+Ghostscript 10.03.0 (https://www.ghostscript.com/)
+    Copyright: Copyright (C) 2024 Artifex Software, Inc.  All rights reserved.
     License: AGPLv3 License, full text can be found at https://www.ghostscript.com/licensing/index.html
 
 itext (https://www.nuget.org/packages/itext/8.0.3)
