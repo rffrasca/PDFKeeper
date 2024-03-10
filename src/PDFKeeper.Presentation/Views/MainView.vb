@@ -31,6 +31,7 @@ Public Class MainView
     Private ReadOnly presenter As MainPresenter
     Private ReadOnly viewModel As MainViewModel
     Private ReadOnly dataGridViewSortProperties As DataGridViewSortProperties
+    Private dataGridViewScrollPosition As Integer = 0
     Private ReadOnly helpFile As HelpFile
 
     ' Message that is sent when the contents of the clipboard have changed.
@@ -287,6 +288,10 @@ Public Class MainView
         DocumentsDataGridView_CellValueChanged(Me, Nothing)
     End Sub
 
+    Private Sub DocumentsDataGridView_Scroll(sender As Object, e As ScrollEventArgs) Handles DocumentsDataGridView.Scroll
+        dataGridViewScrollPosition = e.NewValue
+    End Sub
+
     Private Sub DocumentsDataGridView_SelectionChanged(sender As Object, e As EventArgs) Handles DocumentsDataGridView.SelectionChanged
         viewModel.CurrentDocumentId = 0 ' No row is selected.
         If DocumentsDataGridView.SelectedRows.Count > 0 Then ' To prevent empty DataGridView.
@@ -462,7 +467,11 @@ Public Class MainView
             If viewModel.CurrentDocumentId > 0 Then
                 For Each row In DocumentsDataGridView.Rows
                     If row.Cells(1).Value = viewModel.CurrentDocumentId Then
-                        DocumentsDataGridView.CurrentCell = DocumentsDataGridView.Rows(row.Index).Cells(1)
+                        row.Selected = True
+                        Try
+                            DocumentsDataGridView.FirstDisplayedScrollingRowIndex = dataGridViewScrollPosition
+                        Catch ex As ArgumentOutOfRangeException
+                        End Try
                     End If
                 Next
             End If
