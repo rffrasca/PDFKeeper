@@ -283,13 +283,21 @@ namespace PDFKeeper.Core.Presenters
             }
         }
 
-        public void BurstCurrentDocumentPdf()
+        public async void BurstCurrentDocumentPdf()
         {
             var selectedPath = folderBrowserDialogService.ShowDialog(Resources.SelectBurstFolder);
             if (selectedPath.Length > 0)
             {
                 var pdfFile = fileCache.GetPdfFile(ViewModel.CurrentDocumentId);
-                Task.Run(() => pdfFile.Split(new DirectoryInfo(selectedPath)));
+                try
+                {
+                    await Task.Run(() => pdfFile.Split(
+                        new DirectoryInfo(selectedPath))).ConfigureAwait(true);
+                }
+                catch (UnauthorizedAccessException ex)
+                {
+                    messageBoxService.ShowMessage(ex.Message, true);
+                }
             }
         }
 
