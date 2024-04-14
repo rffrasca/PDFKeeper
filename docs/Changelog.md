@@ -1,6 +1,19 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v9.1.4 - 2024-04-14
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.4).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.4).
+### Changed
+* Updated "Installing Oracle Data Provider for .NET" help topic.
+* Updated Donate help topic to align with website.
+* Updated Ghostscript to 10.03.0.
+### Fixed
+* Selecting (checking) a document in DataGridView no longer requires two clicks.
+* When an unhandled exception occurs in MainPresenter.BurstCurrentDocumentPdf, the exception will now be shown; however, an UnauthorizedAccessException will be caught.
+* Fixed System.InvalidOperationException: Collection was modified; enumeration operation may not execute.
+
 ## v9.1.3 - 2024-03-09
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.3).
