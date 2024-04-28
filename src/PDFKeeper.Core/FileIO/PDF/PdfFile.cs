@@ -25,6 +25,8 @@ using iText.Kernel.Pdf.Canvas.Parser;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO.TextExtractor;
+using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Properties;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -59,8 +61,22 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// Initializes a new instance of the PdfFile class.
         /// </summary>
         /// <param name="pdfFile">The PDF FileInfo object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
         public PdfFile(FileInfo pdfFile)
         {
+            if (pdfFile == null)
+            {
+                throw new ArgumentNullException(nameof(pdfFile));
+            }
+            if (pdfFile.IsFileNameInvalid())
+            {
+                throw new ArgumentException(
+                    ResourceHelper.GetString(
+                        "FileNameInvalid",
+                        pdfFile.FullName,
+                        null));
+            }
             this.pdfFile = pdfFile;
             tempDirectory = new ApplicationDirectory().GetDirectory(
                 ApplicationDirectory.SpecialName.Temp);

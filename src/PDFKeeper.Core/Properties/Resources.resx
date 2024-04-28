@@ -150,6 +150,9 @@
   <data name="Export" xml:space="preserve">
     <value>Export</value>
   </data>
+  <data name="FileNameInvalid" xml:space="preserve">
+    <value>{0} contains % and/or + in the filename which are invalid characters! Rename the file and try again.</value>
+  </data>
   <data name="FileNameToken" xml:space="preserve">
     <value>&lt;FileName&gt;</value>
   </data>

@@ -779,6 +779,10 @@ namespace PDFKeeper.Core.Presenters
                     ViewModel.UploadRunningImageVisible = true;
                     uploader.ExecuteUpload();
                 }
+                catch (ArgumentException ex)
+                {
+                    messageBoxService.ShowMessage(ex.Message, true);
+                }
                 catch (DatabaseException ex)
                 {
                     messageBoxService.ShowMessage(ex.Message, true);

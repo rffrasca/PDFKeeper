@@ -100,6 +100,16 @@ namespace PDFKeeper.Core.Extensions
         }
 
         /// <summary>
+        /// Is the filename invalid, contains % and/or + in the name? 
+        /// </summary>
+        /// <param name="file">The FileInfo object.</param>
+        /// <returns>true or false</returns>
+        internal static bool IsFileNameInvalid(this FileInfo file)
+        {
+            return file.Name.Contains("%") || file.Name.Contains("+");
+        }
+
+        /// <summary>
         /// Is the file locked?
         /// </summary>
         /// <param name="file">The FileInfo object.</param>

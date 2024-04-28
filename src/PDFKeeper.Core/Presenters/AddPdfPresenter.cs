@@ -87,55 +87,63 @@ namespace PDFKeeper.Core.Presenters
             var selectedPdfPath = openFileDialogService.ShowDialog(Resources.PdfFilter, null);
             if (selectedPdfPath.Length > 0)
             {
-                pdfFile = new PdfFile(new FileInfo(selectedPdfPath));
-                var passwordType = pdfFile.GetPasswordType();
-                if (passwordType.Equals(PdfFile.PasswordType.None))
+                try
                 {
-                    pdfMetadata = new PdfMetadata(pdfFile, null);
-                    ViewModel.SelectedPdf = pdfFile.FullName;
-                    ViewModel.UploadProfile = pdfMetadata.ExportUploadProfile();
-                }
-                else if (passwordType.Equals(PdfFile.PasswordType.Owner))
-                {
-                    var pdfOwnerPassword = passwordDialogService.ShowDialog();
-                    if (pdfOwnerPassword != null)
+                    pdfFile = new PdfFile(new FileInfo(selectedPdfPath));
+                    var passwordType = pdfFile.GetPasswordType();
+                    if (passwordType.Equals(PdfFile.PasswordType.None))
                     {
-                        if (pdfOwnerPassword.Length > 0)
+                        pdfMetadata = new PdfMetadata(pdfFile, null);
+                        ViewModel.SelectedPdf = pdfFile.FullName;
+                        ViewModel.UploadProfile = pdfMetadata.ExportUploadProfile();
+                    }
+                    else if (passwordType.Equals(PdfFile.PasswordType.Owner))
+                    {
+                        var pdfOwnerPassword = passwordDialogService.ShowDialog();
+                        if (pdfOwnerPassword != null)
                         {
-                            try
+                            if (pdfOwnerPassword.Length > 0)
                             {
-                                pdfMetadata = new PdfMetadata(pdfFile, pdfOwnerPassword);
-                                ViewModel.SelectedPdf = pdfFile.FullName;
-                                ViewModel.UploadProfile = pdfMetadata.ExportUploadProfile();
+                                try
+                                {
+                                    pdfMetadata = new PdfMetadata(pdfFile, pdfOwnerPassword);
+                                    ViewModel.SelectedPdf = pdfFile.FullName;
+                                    ViewModel.UploadProfile = pdfMetadata.ExportUploadProfile();
+                                }
+                                catch (ArgumentException)
+                                {
+                                    messageBoxService.ShowMessage(Resources.PdfOwnerPasswordInvalid,
+                                        true);
+                                    OnViewCloseRequested();
+                                }
+                                pdfOwnerPassword.MakeReadOnly();
                             }
-                            catch (ArgumentException)
+                            else
                             {
-                                messageBoxService.ShowMessage(Resources.PdfOwnerPasswordInvalid,
+                                messageBoxService.ShowMessage(Resources.PdfOwnerPasswordRequired,
                                     true);
                                 OnViewCloseRequested();
                             }
-                            pdfOwnerPassword.MakeReadOnly();
                         }
                         else
                         {
-                            messageBoxService.ShowMessage(Resources.PdfOwnerPasswordRequired,
-                                true);
                             OnViewCloseRequested();
                         }
                     }
-                    else
+                    else if (passwordType.Equals(PdfFile.PasswordType.User))
                     {
+                        messageBoxService.ShowMessage(Resources.PdfContainsUserPassword, true);
+                        OnViewCloseRequested();
+                    }
+                    else if (passwordType.Equals(PdfFile.PasswordType.Unknown))
+                    {
+                        messageBoxService.ShowMessage(Resources.PdfInvalid, true);
                         OnViewCloseRequested();
                     }
                 }
-                else if (passwordType.Equals(PdfFile.PasswordType.User))
+                catch (ArgumentException ex)
                 {
-                    messageBoxService.ShowMessage(Resources.PdfContainsUserPassword, true);
-                    OnViewCloseRequested();
-                }
-                else if (passwordType.Equals(PdfFile.PasswordType.Unknown))
-                {
-                    messageBoxService.ShowMessage(Resources.PdfInvalid, true);
+                    messageBoxService.ShowMessage(ex.Message, true);
                     OnViewCloseRequested();
                 }
             }
