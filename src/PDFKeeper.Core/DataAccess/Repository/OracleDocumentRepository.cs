@@ -332,6 +332,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     }
                 }
             }
+            catch (InvalidOperationException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
             catch (OracleException ex)
             {
                 throw new DatabaseException(ex.Message);
