@@ -54,12 +54,12 @@ itext.font-asian (https://www.nuget.org/packages/itext.font-asian/8.0.4)
     Copyright: Copyright (c) 1998-2024 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-Magick.NET-Q16-AnyCPU (https://www.nuget.org/packages/Magick.NET-Q16-AnyCPU/13.6.0)
+Magick.NET-Q16-AnyCPU (https://www.nuget.org/packages/Magick.NET-Q16-AnyCPU/13.8.0)
     Authors: dlemstra
     Copyright: Copyright 2013-2024 Dirk Lemstra
     License: Apache License 2.0, full text can be found at https://spdx.org/licenses/Apache-2.0 or in Licenses/Apache-2.0-license.txt
 
-Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/13.6.0)
+Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/13.8.0)
     Authors: dlemstra
     Copyright: Copyright 2013-2024 Dirk Lemstra
     License: Apache License 2.0, full text can be found at https://spdx.org/licenses/Apache-2.0 or in Licenses/Apache-2.0-license.txt
