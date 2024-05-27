@@ -275,6 +275,8 @@ Public Class MainView
                     .Rows(.Rows.Count - 1).Selected = True
                     .FirstDisplayedScrollingRowIndex = .RowCount - 1
                 End If
+            Else
+                DocumentsDataGridView.Select()
             End If
         End With
     End Sub
