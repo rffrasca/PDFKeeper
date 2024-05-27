@@ -28,6 +28,7 @@ using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
+using PDFKeeper.Core.Rules;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
 using System;
@@ -226,10 +227,18 @@ namespace PDFKeeper.Core.Presenters
                 try
                 {
                     OnLongRunningOperationStarted();
-                    ViewModel.PreviousNotes = ViewModel.Notes;
-                    document.Notes = ViewModel.Notes;
-                    documentRepository.UpdateDocument(document);
-                    ViewModel.Notes = ViewModel.Notes;
+                    var rule = new NotesLengthRule(ViewModel.Notes);
+                    if (rule.ViolationFound)
+                    {
+                        messageBoxService.ShowMessage(rule.ViolationMessage, true);
+                    }
+                    else
+                    {
+                        ViewModel.PreviousNotes = ViewModel.Notes;
+                        document.Notes = ViewModel.Notes;
+                        documentRepository.UpdateDocument(document);
+                        ViewModel.Notes = ViewModel.Notes;
+                    }
                 }
                 catch (IndexOutOfRangeException ex)
                 {

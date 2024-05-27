@@ -42,6 +42,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
             set => documentsListHasChanges = value;
         }
 
+        public int GetNotesColumnDataLength()
+        {
+            return 0;
+        }
+
         public void DeleteDocument(int id)
         {
             var sql = "delete from docs where doc_id = :doc_id";

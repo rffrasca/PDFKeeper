@@ -165,6 +165,9 @@
   <data name="NameContainsCharsNotAllowed" xml:space="preserve">
     <value>Name contains one or more characters not allowed in file names!</value>
   </data>
+  <data name="NotesLengthTooLarge" xml:space="preserve">
+    <value>Notes length is {0} which is too large. Reduce the length to {1} or less and try saving again.</value>
+  </data>
   <data name="NotesModified" xml:space="preserve">
     <value>Notes for selected document have been modified.
 Do you want to save changes before closing?</value>

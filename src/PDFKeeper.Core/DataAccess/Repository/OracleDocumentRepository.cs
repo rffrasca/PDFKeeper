@@ -57,6 +57,24 @@ namespace PDFKeeper.Core.DataAccess.Repository
             set => documentsListHasChanges = value;
         }
 
+        public int GetNotesColumnDataLength()
+        {
+            var sql = "select data_length from all_tab_columns " +
+                "where table_name='DOCS' and column_name='DOC_NOTES'";
+            using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+            {
+                using (var command = new OracleCommand(sql, connection))
+                {
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        reader.Read();
+                        return reader.GetInt32(0);
+                    }
+                }
+            }
+        }
+
         public DataTable GetListOfDocumentsBySearchTerm(string searchTerm)
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +

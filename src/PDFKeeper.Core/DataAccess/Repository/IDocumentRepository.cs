@@ -31,6 +31,14 @@ namespace PDFKeeper.Core.DataAccess.Repository
         bool DocumentsListHasChanges { get; set; }
 
         /// <summary>
+        /// gets the length of the DOC_NOTES column in the DOCS table.
+        /// </summary>
+        /// <returns>
+        /// The length of the column or 0 when the database platform is not Oracle.
+        /// </returns>
+        int GetNotesColumnDataLength();
+
+        /// <summary>
         /// Gets a list of documents in the database by search term.
         /// </summary>
         /// <param name="searchTerm">The search term.</param>
