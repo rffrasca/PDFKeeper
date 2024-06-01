@@ -219,51 +219,55 @@ namespace PDFKeeper.Core.Presenters
 
         public void SaveNotes()
         {
-            var document = documentRepository.GetDocument(ViewModel.CurrentDocumentId, null);
-            var notesInDatabase = document.Notes;
-            ViewModel.Notes = ViewModel.Notes.Trim();
-            if (document.Notes.Equals(ViewModel.PreviousNotes, StringComparison.Ordinal))
+            var rule = new NotesLengthRule(ViewModel.Notes);
+            if (!rule.ViolationFound)
             {
-                try
+                var document = documentRepository.GetDocument(ViewModel.CurrentDocumentId, null);
+                var notesInDatabase = document.Notes;
+                ViewModel.Notes = ViewModel.Notes.Trim();
+                if (document.Notes.Equals(ViewModel.PreviousNotes, StringComparison.Ordinal))
                 {
-                    OnLongRunningOperationStarted();
-                    var rule = new NotesLengthRule(ViewModel.Notes);
-                    if (rule.ViolationFound)
+                    try
                     {
-                        messageBoxService.ShowMessage(rule.ViolationMessage, true);
-                    }
-                    else
-                    {
+                        OnLongRunningOperationStarted();
                         ViewModel.PreviousNotes = ViewModel.Notes;
                         document.Notes = ViewModel.Notes;
                         documentRepository.UpdateDocument(document);
                         ViewModel.Notes = ViewModel.Notes;
                     }
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        messageBoxService.ShowMessage(
+                            ResourceHelper.GetString(
+                                "DocumentMayHaveBeenDeletedException",
+                                ex.Message,
+                                null),
+                            true);
+                    }
+                    catch (DatabaseException ex)
+                    {
+                        messageBoxService.ShowMessage(ex.Message, true);
+                    }
+                    finally
+                    {
+                        OnLongRunningOperationFinished();
+                    }
                 }
-                catch (IndexOutOfRangeException ex)
+                else
                 {
-                    messageBoxService.ShowMessage(ResourceHelper.GetString(
-                        "DocumentMayHaveBeenDeletedException", ex.Message, null), true);
+                    var dataPackage = new DataPackage();
+                    dataPackage.SetText(ViewModel.Notes);
+                    Clipboard.SetContent(dataPackage);
+                    ViewModel.PreviousNotes = ViewModel.Notes;
+                    ViewModel.Notes = notesInDatabase;
+                    messageBoxService.ShowMessage(Resources.UnableToSaveNotes, true);
                 }
-                catch (DatabaseException ex)
-                {
-                    messageBoxService.ShowMessage(ex.Message, true);
-                }
-                finally
-                {
-                    OnLongRunningOperationFinished();
-                }
+                SetStateForTextBoxSelectedText();
             }
             else
             {
-                var dataPackage = new DataPackage();
-                dataPackage.SetText(ViewModel.Notes);
-                Clipboard.SetContent(dataPackage);
-                ViewModel.PreviousNotes = ViewModel.Notes;
-                ViewModel.Notes = notesInDatabase;
-                messageBoxService.ShowMessage(Resources.UnableToSaveNotes, true);
+                messageBoxService.ShowMessage(rule.ViolationMessage, true);
             }
-            SetStateForTextBoxSelectedText();
         }
 
         public void PdfOrTextSaveAs()
