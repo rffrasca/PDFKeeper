@@ -20,21 +20,22 @@
 
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.DataAccess.Repository;
+using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
 
 namespace PDFKeeper.Core.Rules
 {
-    internal class NotesLengthRule : RuleBase
+    internal class NotesSizeRule : RuleBase
     {
         private readonly string notes;
 
         /// <summary>
-        /// Initializes a new instance of the NotesLengthRule class that verifies the length of the
-        /// Notes string does not exceed the maximum length of the DOC_NOTES column in the
-        /// database when the database platform is Oracle.
+        /// Initializes a new instance of the NotesSizeRule class that verifies the size of the
+        /// Notes string does not exceed the data length of the DOC_NOTES column in the database
+        /// when the database platform is Oracle.
         /// </summary>
         /// <param name="notes">The Notes string.</param>
-        internal NotesLengthRule(string notes)
+        internal NotesSizeRule(string notes)
         {
             this.notes = notes;
             CheckForViolation();
@@ -47,12 +48,13 @@ namespace PDFKeeper.Core.Rules
             if (DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Oracle))
             {
                 var columnLength = DocumentRepositoryFactory.Instance.GetNotesColumnDataLength();
-                if (notes.Length > columnLength)
+                var size = notes.GetByteCount();
+                if (size > columnLength)
                 {
                     ViolationFound = true;
                     ViolationMessage = ResourceHelper.GetString(
-                        "NotesLengthTooLarge",
-                        notes.Length.ToString(),
+                        "NotesSizeTooLarge",
+                        size.ToString(),
                         columnLength.ToString());
                 }
             }

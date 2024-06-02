@@ -21,6 +21,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace PDFKeeper.Core.Extensions
 {
@@ -69,6 +70,17 @@ namespace PDFKeeper.Core.Extensions
             }
             return string.Concat(value, File.ReadAllText(file.FullName).Trim(),
                 Environment.NewLine);
+        }
+
+        /// <summary>
+        /// Gets the size of the string in bytes.
+        /// </summary>
+        /// <param name="value">The string.</param>
+        /// <returns>The size of the string in bytes.</returns>
+        public static int GetByteCount(this string value)
+        {
+            var encoding = Encoding.Unicode;
+            return encoding.GetByteCount(value);
         }
 
         /// <summary>

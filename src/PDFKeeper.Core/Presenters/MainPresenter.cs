@@ -219,7 +219,7 @@ namespace PDFKeeper.Core.Presenters
 
         public void SaveNotes()
         {
-            var rule = new NotesLengthRule(ViewModel.Notes);
+            var rule = new NotesSizeRule(ViewModel.Notes);
             if (!rule.ViolationFound)
             {
                 var document = documentRepository.GetDocument(ViewModel.CurrentDocumentId, null);

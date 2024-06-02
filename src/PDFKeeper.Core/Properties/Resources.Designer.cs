@@ -205,21 +205,21 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Notes length is {0} which is too large. Reduce the length to {1} or less and try saving again..
-        /// </summary>
-        internal static string NotesLengthTooLarge {
-            get {
-                return ResourceManager.GetString("NotesLengthTooLarge", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Notes for selected document have been modified.
         ///Do you want to save changes before closing?.
         /// </summary>
         internal static string NotesModified {
             get {
                 return ResourceManager.GetString("NotesModified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes size in bytes is {0} which is too large. Reduce the size to {1} or less and try saving again..
+        /// </summary>
+        internal static string NotesSizeTooLarge {
+            get {
+                return ResourceManager.GetString("NotesSizeTooLarge", resourceCulture);
             }
         }
         

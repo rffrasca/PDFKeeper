@@ -165,12 +165,12 @@
   <data name="NameContainsCharsNotAllowed" xml:space="preserve">
     <value>Name contains one or more characters not allowed in file names!</value>
   </data>
-  <data name="NotesLengthTooLarge" xml:space="preserve">
-    <value>Notes length is {0} which is too large. Reduce the length to {1} or less and try saving again.</value>
-  </data>
   <data name="NotesModified" xml:space="preserve">
     <value>Notes for selected document have been modified.
 Do you want to save changes before closing?</value>
+  </data>
+  <data name="NotesSizeTooLarge" xml:space="preserve">
+    <value>Notes size in bytes is {0} which is too large. Reduce the size to {1} or less and try saving again.</value>
   </data>
   <data name="OneFindFunctionMustBeTrue" xml:space="preserve">
     <value>One find function must be true!</value>

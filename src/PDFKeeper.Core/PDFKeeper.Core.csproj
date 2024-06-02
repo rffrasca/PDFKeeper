@@ -76,7 +76,7 @@
     <Compile Include="Presenters\SetSubjectPresenter.cs" />
     <Compile Include="Rules\ExportPdfMetadataRule.cs" />
     <Compile Include="Rules\FindDocumentsParamRule.cs" />
-    <Compile Include="Rules\NotesLengthRule.cs" />
+    <Compile Include="Rules\NotesSizeRule.cs" />
     <Compile Include="Services\IFolderBrowserDialogService.cs" />
     <Compile Include="Services\IFolderExplorerService.cs" />
     <Compile Include="Services\IFileDialogService.cs" />
