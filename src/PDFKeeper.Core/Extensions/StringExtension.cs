@@ -79,8 +79,7 @@ namespace PDFKeeper.Core.Extensions
         /// <returns>The size of the string in bytes.</returns>
         public static int GetByteCount(this string value)
         {
-            var encoding = Encoding.Unicode;
-            return encoding.GetByteCount(value);
+            return Encoding.UTF8.GetByteCount(value);
         }
 
         /// <summary>
