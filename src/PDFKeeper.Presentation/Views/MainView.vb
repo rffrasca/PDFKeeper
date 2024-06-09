@@ -482,6 +482,8 @@ Public Class MainView
             presenter.OnNotesTextChanged(NotesTextBox.CanUndo)
         ElseIf e.PropertyName.Equals("ProgressBarVisible", StringComparison.Ordinal) Then
             ProgressBar.Visible = viewModel.ProgressBarVisible
+        ElseIf e.PropertyName.Equals("ProgressBarMinimum", StringComparison.Ordinal) Then
+            ProgressBar.Minimum = viewModel.ProgressBarMinimum
         ElseIf e.PropertyName.Equals("ProgressBarMaximum", StringComparison.Ordinal) Then
             ProgressBar.Maximum = viewModel.ProgressBarMaximum
         ElseIf e.PropertyName.Equals("RefreshingDocumentsImageVisible",

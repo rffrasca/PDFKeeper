@@ -68,6 +68,7 @@ namespace PDFKeeper.Core.ViewModels
         private bool searchTermSnippetsFocused;
         private Image preview;
         private bool progressBarVisible;
+        private int progressBarMinimum;
         private int progressBarMaximum;
         private bool refreshingDocumentsImageVisible;
         private bool flagImageVisible;
@@ -355,6 +356,12 @@ namespace PDFKeeper.Core.ViewModels
         {
             get => progressBarVisible;
             set => SetProperty(ref progressBarVisible, value);
+        }
+
+        public int ProgressBarMinimum
+        {
+            get => progressBarMinimum;
+            set => SetProperty(ref progressBarMinimum, value);
         }
 
         public int ProgressBarMaximum

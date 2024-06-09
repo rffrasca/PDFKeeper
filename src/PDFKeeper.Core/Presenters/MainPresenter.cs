@@ -1036,6 +1036,7 @@ namespace PDFKeeper.Core.Presenters
             string value)
         {
             ViewModel.ProgressBarVisible = true;
+            ViewModel.ProgressBarMinimum = 0;
             ViewModel.ProgressBarMaximum = ViewModel.CheckedDocumentIds.Count;
             foreach (int id in ViewModel.CheckedDocumentIds)
             {
