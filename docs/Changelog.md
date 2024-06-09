@@ -1,6 +1,26 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v9.1.5 - 2024-06-02
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.5).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.5).
+### Added
+* Added rule when saving Notes that verifies the size of the Notes string does not exceed the maximum length of the DOC_NOTES column in the database when the database platform is Oracle.
+### Changed
+* Added predefined tokens to step 2 in the "Upload Profile Editor" help topic.
+* Updated "Uploading PDF Documents from outside of PDFKeeper" and "Uploading PDF Documents using Upload Profile Folders" help topics to state that one or more folders that contain only PDF documents can be copied into PDFKeeper Upload.
+* Updated Ghostscript to 10.03.1.
+* Updated itext to 8.0.4.
+* Updated itext.bouncy-castle-adapter to 8.0.4.
+* Updated itext.font-asian to 8.0.4.
+* Updated Magick.NET to 13.8.0.
+### Fixed
+* Specific error message will be displayed in place of unhandled System.IO.DirectoryNotFoundException when selecting or attempting to upload PDF that contains % and/or + in the filename.
+* System.InvalidOperationException will be handled when document that triggers this exception is selected.
+* Corrected location of PDFKeeper Upload shortcut in "Uploading PDF Documents from outside of PDFKeeper" help topic.
+* Menu and toolbar items that should be disabled will now be disabled following a find operation that returns no results.
+
 ## v9.1.4 - 2024-04-14
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.4).
