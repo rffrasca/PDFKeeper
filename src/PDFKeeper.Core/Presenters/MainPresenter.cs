@@ -529,6 +529,16 @@ namespace PDFKeeper.Core.Presenters
             GetListOfDocuments(false);
         }
 
+        public void GetListOfAllDocuments()
+        {
+            var findDocumentsParam = new FindDocumentsParam
+            {
+                AllDocumentsChecked = true
+            };
+            FindDocumentsViewState.FindDocumentsParam = findDocumentsParam;
+            GetListOfDocuments(false);
+        }
+
         /// <summary>
         /// Reads the selected document from the database and populates the form controls. 
         /// </summary>

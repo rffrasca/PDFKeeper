@@ -22,6 +22,7 @@ Imports System.Collections.ObjectModel
 Imports System.Diagnostics.CodeAnalysis
 Imports PDFKeeper.Core.Application
 Imports PDFKeeper.Core.Commands
+Imports PDFKeeper.Core.DataAccess
 Imports PDFKeeper.Core.Interop
 Imports PDFKeeper.Core.Presenters
 Imports PDFKeeper.Core.ViewModels
@@ -202,6 +203,10 @@ Public Class MainView
         presenter.SetInitialState()
         If My.Settings.FindFlaggedDocumentsOnStartup Then
             presenter.GetListOfFlaggedDocuments()
+        ElseIf My.Settings.ShowAllDocumentsOnStartup And
+                DatabaseSession.PlatformName.Equals(
+                DatabaseSession.CompatiblePlatformName.Sqlite) Then
+            presenter.GetListOfAllDocuments()
         End If
     End Sub
 

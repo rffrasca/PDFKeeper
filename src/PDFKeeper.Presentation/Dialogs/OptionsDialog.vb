@@ -18,6 +18,8 @@
 ' * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 ' *****************************************************************************
 
+Imports PDFKeeper.Core.DataAccess
+
 Public Class OptionsDialog
     Public Sub New()
 
@@ -26,9 +28,25 @@ Public Class OptionsDialog
 
         ' Add any initialization after the InitializeComponent() call.
         HelpProvider.HelpNamespace = New HelpFile().FileName
+        If DatabaseSession.PlatformName.Equals(
+            DatabaseSession.CompatiblePlatformName.Sqlite) = False Then
+            ShowAllDocumentsOnStartupCheckBox.Visible = False
+        End If
     End Sub
 
     Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click
         Close()
+    End Sub
+
+    Private Sub FindFlaggedDocumentsOnStartupCheckBox_CheckStateChanged(sender As Object, e As EventArgs) Handles FindFlaggedDocumentsOnStartupCheckBox.CheckStateChanged
+        If FindFlaggedDocumentsOnStartupCheckBox.Checked Then
+            ShowAllDocumentsOnStartupCheckBox.Checked = False
+        End If
+    End Sub
+
+    Private Sub ShowAllDocumentsOnStartupCheckBox_CheckStateChanged(sender As Object, e As EventArgs) Handles ShowAllDocumentsOnStartupCheckBox.CheckStateChanged
+        If ShowAllDocumentsOnStartupCheckBox.Checked Then
+            FindFlaggedDocumentsOnStartupCheckBox.Checked = False
+        End If
     End Sub
 End Class

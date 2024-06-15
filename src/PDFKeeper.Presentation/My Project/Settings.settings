@@ -56,5 +56,8 @@
     <Setting Name="VerticalSplitterDistance" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">488</Value>
     </Setting>
+    <Setting Name="ShowAllDocumentsOnStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -49,6 +49,7 @@ Partial Class OptionsDialog
         Me.ShowPdfWithDefaultApplicationCheckBox = New System.Windows.Forms.CheckBox()
         Me.SelectLastRowWhenListingDocumentsCheckBox = New System.Windows.Forms.CheckBox()
         Me.HelpProvider = New System.Windows.Forms.HelpProvider()
+        Me.ShowAllDocumentsOnStartupCheckBox = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -87,12 +88,22 @@ Partial Class OptionsDialog
         Me.SelectLastRowWhenListingDocumentsCheckBox.Name = "SelectLastRowWhenListingDocumentsCheckBox"
         Me.SelectLastRowWhenListingDocumentsCheckBox.UseVisualStyleBackColor = True
         '
+        'ShowAllDocumentsOnStartupCheckBox
+        '
+        resources.ApplyResources(Me.ShowAllDocumentsOnStartupCheckBox, "ShowAllDocumentsOnStartupCheckBox")
+        Me.ShowAllDocumentsOnStartupCheckBox.Checked = Global.PDFKeeper.Presentation.My.MySettings.Default.ShowAllDocumentsOnStartup
+        Me.ShowAllDocumentsOnStartupCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("Checked", Global.PDFKeeper.Presentation.My.MySettings.Default, "ShowAllDocumentsOnStartup", True, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged))
+        Me.ShowAllDocumentsOnStartupCheckBox.Name = "ShowAllDocumentsOnStartupCheckBox"
+        Me.HelpProvider.SetShowHelp(Me.ShowAllDocumentsOnStartupCheckBox, CType(resources.GetObject("ShowAllDocumentsOnStartupCheckBox.ShowHelp"), Boolean))
+        Me.ShowAllDocumentsOnStartupCheckBox.UseVisualStyleBackColor = True
+        '
         'OptionsDialog
         '
         Me.AcceptButton = Me.OK_Button
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ControlBox = False
+        Me.Controls.Add(Me.ShowAllDocumentsOnStartupCheckBox)
         Me.Controls.Add(Me.FindFlaggedDocumentsOnStartupCheckBox)
         Me.Controls.Add(Me.ShowPdfWithDefaultApplicationCheckBox)
         Me.Controls.Add(Me.SelectLastRowWhenListingDocumentsCheckBox)
@@ -116,4 +127,5 @@ Partial Class OptionsDialog
     Friend WithEvents ShowPdfWithDefaultApplicationCheckBox As System.Windows.Forms.CheckBox
     Friend WithEvents FindFlaggedDocumentsOnStartupCheckBox As CheckBox
     Friend WithEvents HelpProvider As HelpProvider
+    Friend WithEvents ShowAllDocumentsOnStartupCheckBox As CheckBox
 End Class
