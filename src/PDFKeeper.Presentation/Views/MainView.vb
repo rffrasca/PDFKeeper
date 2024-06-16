@@ -70,6 +70,7 @@ Public Class MainView
         AddHandler FileSaveAsToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler FileBurstToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler FileBurstToolStripButton.Click, AddressOf ToolStripItem_Click
+        AddHandler FileCopyPdfToClipboardToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler FilePrintToolStripMenuItem.Click, AddressOf ToolStripItem_Click
         AddHandler FilePrintToolStripButton.Click, AddressOf ToolStripItem_Click
         AddHandler FilePrintPreviewToolStripMenuItem.Click, AddressOf ToolStripItem_Click
@@ -138,6 +139,7 @@ Public Class MainView
         FileSaveAsToolStripMenuItem.Tag = New SaveAsCommand(presenter)
         FileBurstToolStripMenuItem.Tag = New BurstPdfCommand(presenter)
         FileBurstToolStripButton.Tag = New BurstPdfCommand(presenter)
+        FileCopyPdfToClipboardToolStripMenuItem.Tag = New CopyPdfToClipboardCommand(presenter)
         FilePrintToolStripMenuItem.Tag = New PrintTextCommand(presenter, False)
         FilePrintToolStripButton.Tag = New PrintTextCommand(presenter, False)
         FilePrintPreviewToolStripMenuItem.Tag = New PrintTextCommand(presenter, True)
@@ -404,6 +406,10 @@ Public Class MainView
         ElseIf e.PropertyName.Equals("FileBurstMenuEnabled", StringComparison.Ordinal) Then
             FileBurstToolStripMenuItem.Enabled = viewModel.FileBurstMenuEnabled
             FileBurstToolStripButton.Enabled = viewModel.FileBurstMenuEnabled
+        ElseIf e.PropertyName.Equals("FileCopyPdfToClipboardEnabled",
+                                     StringComparison.Ordinal) Then
+            FileCopyPdfToClipboardToolStripMenuItem.Enabled =
+                viewModel.FileCopyPdfToClipboardEnabled
         ElseIf e.PropertyName.Equals("FilePrintMenuEnabled", StringComparison.Ordinal) Then
             FilePrintToolStripMenuItem.Enabled = viewModel.FilePrintMenuEnabled
             FilePrintToolStripButton.Enabled = viewModel.FilePrintMenuEnabled

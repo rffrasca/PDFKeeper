@@ -132,6 +132,7 @@ namespace PDFKeeper.Core.Presenters
             ViewModel.FileSaveMenuEnabled = false;
             ViewModel.FileSaveAsMenuEnabled = false;
             ViewModel.FileBurstMenuEnabled = false;
+            ViewModel.FileCopyPdfToClipboardEnabled = false;
             ViewModel.FilePrintMenuEnabled = false;
             ViewModel.FilePrintPreviewMenuEnabled = false;
             ViewModel.FileExportMenuEnabled = false;
@@ -312,6 +313,12 @@ namespace PDFKeeper.Core.Presenters
                     messageBoxService.ShowMessage(ex.Message, true);
                 }
             }
+        }
+
+        public async void CopyCurrentDocumentPdfToClipboard()
+        {
+            var pdfFile = fileCache.GetPdfFile(ViewModel.CurrentDocumentId);
+            await Task.Run(() => pdfFile.CopyToClipboard()).ConfigureAwait(true);
         }
 
         /// <summary>

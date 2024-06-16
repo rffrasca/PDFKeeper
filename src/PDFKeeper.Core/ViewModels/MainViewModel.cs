@@ -30,6 +30,7 @@ namespace PDFKeeper.Core.ViewModels
         private bool fileSaveMenuEnabled;
         private bool fileSaveAsMenuEnabled;
         private bool fileBurstMenuEnabled;
+        private bool fileCopyPdfToClipboardEnabled;
         private bool filePrintMenuEnabled;
         private bool filePrintPreviewMenuEnabled;
         private bool fileExportMenuEnabled;
@@ -97,11 +98,17 @@ namespace PDFKeeper.Core.ViewModels
             get => fileSaveAsMenuEnabled;
             set => SetProperty(ref fileSaveAsMenuEnabled, value);
         }
-        
+
         public bool FileBurstMenuEnabled
         {
             get => fileBurstMenuEnabled;
             set => SetProperty(ref fileBurstMenuEnabled, value);
+        }
+
+        public bool FileCopyPdfToClipboardEnabled
+        {
+            get => fileCopyPdfToClipboardEnabled;
+            set => SetProperty(ref fileCopyPdfToClipboardEnabled, value);
         }
 
         public bool FilePrintMenuEnabled
@@ -279,10 +286,10 @@ namespace PDFKeeper.Core.ViewModels
             set
             {
                 SetProperty(ref documentDataEnabled, value);
-
                 FileOpenMenuEnabled = documentDataEnabled;
                 FileSaveAsMenuEnabled = documentDataEnabled;
                 FileBurstMenuEnabled = documentDataEnabled;
+                FileCopyPdfToClipboardEnabled = documentDataEnabled;
                 EditFlagDocumentMenuEnabled = documentDataEnabled;
                 ViewSetPreviewPixelDensityMenuEnabled = documentDataEnabled;
             }

@@ -129,6 +129,7 @@
     <Compile Include="Commands\AppendDateTimeIntoNotesCommand.vb" />
     <Compile Include="Commands\AppendTextFromFileIntoNotes.vb" />
     <Compile Include="Commands\CopyCommand.vb" />
+    <Compile Include="Commands\CopyPdfToClipboardCommand.vb" />
     <Compile Include="Commands\CutCommand.vb" />
     <Compile Include="Commands\DialogShowCommand.vb" />
     <Compile Include="Commands\DeleteCommand.vb" />

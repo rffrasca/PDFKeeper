@@ -52,13 +52,15 @@ Partial Class MainView
         Me.FileSaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileSaveAsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.FileBurstToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileCopyPdfToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.FileBurstToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.FilePrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FilePrintPreviewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FileToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.FileExportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.FileExportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FileToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.FileExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditUndoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -191,7 +193,7 @@ Partial Class MainView
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripMenuItem, Me.FileToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.FileToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.FileToolStripSeparator3, Me.FileBurstToolStripMenuItem, Me.FileToolStripSeparator4, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.FileToolStripSeparator5, Me.FileExportToolStripMenuItem, Me.FileToolStripSeparator6, Me.FileExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileAddToolStripMenuItem, Me.FileToolStripSeparator1, Me.FileOpenToolStripMenuItem, Me.FileToolStripSeparator2, Me.FileSaveToolStripMenuItem, Me.FileSaveAsToolStripMenuItem, Me.FileToolStripSeparator3, Me.FileBurstToolStripMenuItem, Me.FileToolStripSeparator4, Me.FileCopyPdfToClipboardToolStripMenuItem, Me.FileToolStripSeparator5, Me.FilePrintToolStripMenuItem, Me.FilePrintPreviewToolStripMenuItem, Me.FileToolStripSeparator6, Me.FileExportToolStripMenuItem, Me.FileToolStripSeparator7, Me.FileExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         resources.ApplyResources(Me.FileToolStripMenuItem, "FileToolStripMenuItem")
         '
@@ -231,16 +233,26 @@ Partial Class MainView
         Me.FileToolStripSeparator3.Name = "FileToolStripSeparator3"
         resources.ApplyResources(Me.FileToolStripSeparator3, "FileToolStripSeparator3")
         '
+        'FileCopyPdfToClipboardToolStripMenuItem
+        '
+        Me.FileCopyPdfToClipboardToolStripMenuItem.Name = "FileCopyPdfToClipboardToolStripMenuItem"
+        resources.ApplyResources(Me.FileCopyPdfToClipboardToolStripMenuItem, "FileCopyPdfToClipboardToolStripMenuItem")
+        '
+        'FileToolStripSeparator4
+        '
+        Me.FileToolStripSeparator4.Name = "FileToolStripSeparator4"
+        resources.ApplyResources(Me.FileToolStripSeparator4, "FileToolStripSeparator4")
+        '
         'FileBurstToolStripMenuItem
         '
         Me.FileBurstToolStripMenuItem.Image = Global.PDFKeeper.Presentation.My.Resources.Resources.cut_red
         Me.FileBurstToolStripMenuItem.Name = "FileBurstToolStripMenuItem"
         resources.ApplyResources(Me.FileBurstToolStripMenuItem, "FileBurstToolStripMenuItem")
         '
-        'FileToolStripSeparator4
+        'FileToolStripSeparator5
         '
-        Me.FileToolStripSeparator4.Name = "FileToolStripSeparator4"
-        resources.ApplyResources(Me.FileToolStripSeparator4, "FileToolStripSeparator4")
+        Me.FileToolStripSeparator5.Name = "FileToolStripSeparator5"
+        resources.ApplyResources(Me.FileToolStripSeparator5, "FileToolStripSeparator5")
         '
         'FilePrintToolStripMenuItem
         '
@@ -252,20 +264,20 @@ Partial Class MainView
         Me.FilePrintPreviewToolStripMenuItem.Name = "FilePrintPreviewToolStripMenuItem"
         resources.ApplyResources(Me.FilePrintPreviewToolStripMenuItem, "FilePrintPreviewToolStripMenuItem")
         '
-        'FileToolStripSeparator5
+        'FileToolStripSeparator6
         '
-        Me.FileToolStripSeparator5.Name = "FileToolStripSeparator5"
-        resources.ApplyResources(Me.FileToolStripSeparator5, "FileToolStripSeparator5")
+        Me.FileToolStripSeparator6.Name = "FileToolStripSeparator6"
+        resources.ApplyResources(Me.FileToolStripSeparator6, "FileToolStripSeparator6")
         '
         'FileExportToolStripMenuItem
         '
         Me.FileExportToolStripMenuItem.Name = "FileExportToolStripMenuItem"
         resources.ApplyResources(Me.FileExportToolStripMenuItem, "FileExportToolStripMenuItem")
         '
-        'FileToolStripSeparator6
+        'FileToolStripSeparator7
         '
-        Me.FileToolStripSeparator6.Name = "FileToolStripSeparator6"
-        resources.ApplyResources(Me.FileToolStripSeparator6, "FileToolStripSeparator6")
+        Me.FileToolStripSeparator7.Name = "FileToolStripSeparator7"
+        resources.ApplyResources(Me.FileToolStripSeparator7, "FileToolStripSeparator7")
         '
         'FileExitToolStripMenuItem
         '
@@ -926,16 +938,16 @@ Partial Class MainView
     Friend WithEvents FileToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents FileSaveToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FileSaveAsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FileToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents FileToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents FilePrintToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FilePrintPreviewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FileToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents FileToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents FileExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FileToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents FileToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents EditUndoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents EditCutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -994,7 +1006,7 @@ Partial Class MainView
     Friend WithEvents DocumentsDataGridView As DataGridView
     Friend WithEvents SelectionColumn As DataGridViewCheckBoxColumn
     Friend WithEvents ToolsMoveDatabaseToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FileToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents FileToolStripSeparator4 As ToolStripSeparator
     Friend WithEvents FileBurstToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FileBurstToolStripButton As ToolStripButton
     Friend WithEvents SearchTermSnippetsTabPage As TabPage
@@ -1029,4 +1041,6 @@ Partial Class MainView
     Friend WithEvents DocumentsToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents DocumentsToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents DocumentsSetSubjectToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FileToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents FileCopyPdfToClipboardToolStripMenuItem As ToolStripMenuItem
 End Class

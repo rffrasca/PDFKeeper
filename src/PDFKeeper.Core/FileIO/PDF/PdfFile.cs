@@ -26,11 +26,13 @@ using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO.TextExtractor;
 using PDFKeeper.Core.Helpers;
-using PDFKeeper.Core.Properties;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage;
 using static iText.Kernel.Pdf.Canvas.Parser.Util.InlineImageParsingUtils;
 
 namespace PDFKeeper.Core.FileIO.PDF
@@ -146,6 +148,21 @@ namespace PDFKeeper.Core.FileIO.PDF
         public void CopyTo(string destFileName, bool overwrite)
         {
             pdfFile.CopyTo(destFileName, overwrite);
+        }
+
+        /// <summary>
+        /// Copies the PDF to the Windows Clipboard.
+        /// </summary>
+        public async void CopyToClipboard()
+        {
+            var storageFile = await StorageFile.GetFileFromPathAsync(FullName);
+            var list = new List<StorageFile>
+            {
+                storageFile
+            };
+            var dataPackage = new DataPackage();
+            dataPackage.SetStorageItems(list);
+            Clipboard.SetContent(dataPackage);
         }
 
         /// <summary>
