@@ -1,6 +1,19 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v9.2.0 - 2024-06-22
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.2.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.2.0).
+### Added
+* Added copying of PDF for selected document to the Clipboard.
+* Added option to show All Documents on startup that is only available when using the SQLite local database platform.
+### Changed
+* Changed encoding used by Notes size rule check for Oracle platform to UTF-8 for better accuracy.
+* Updated Magick.NET to 13.9.1.
+### Fixed
+* Fixed progress bar not resetting after each operation.
+
 ## v9.1.5 - 2024-06-02
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.1.5).
