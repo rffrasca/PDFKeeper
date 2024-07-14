@@ -295,18 +295,6 @@
 			</UL>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Troubleshooting">
-			<param name="Local" value="Troubleshooting.html">
-			<param name="ImageNumber" value="1">
-			</OBJECT>
-		<UL>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="SQLite Error - database disk image is malformed">
-				<param name="Local" value="SQLite Error - database disk image is malformed.html">
-				<param name="ImageNumber" value="9">
-				</OBJECT>
-		</UL>
-		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Hide All Documents Button on Find Documents Dialog by Policy">
 			<param name="Local" value="Hide All Documents Button on Find Documents Dialog by Policy.html">
 			<param name="ImageNumber" value="9">
