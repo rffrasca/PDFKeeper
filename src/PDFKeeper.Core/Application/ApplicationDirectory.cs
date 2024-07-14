@@ -18,12 +18,10 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using Microsoft.VisualBasic.FileIO;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Properties;
 using System;
 using System.IO;
-using SearchOption = System.IO.SearchOption;
 
 namespace PDFKeeper.Core.Application
 {
@@ -79,17 +77,6 @@ namespace PDFKeeper.Core.Application
                 directory = new DirectoryInfo(Path.Combine(GetApplicationDataPath(),
                     specialName.ToString()));
             }
-            if (specialName.Equals(SpecialName.UploadProfiles))
-            {
-                if (!directory.Exists)
-                {
-                    MigrateUploadConfigs(directory);
-                }
-                else
-                {
-                    UpgradeUploadProfiles(directory);                    
-                }
-            }
             directory.Create();
             if (specialName.Equals(SpecialName.Upload))
             {
@@ -114,45 +101,6 @@ namespace PDFKeeper.Core.Application
             return Path.Combine(Environment.GetFolderPath(
                 Environment.SpecialFolder.ApplicationData), executingAssembly.CompanyName,
                 executingAssembly.ProductName);
-        }
-
-        private static void MigrateUploadConfigs(DirectoryInfo directory)
-        {
-            var uploadConfigDirectory = new DirectoryInfo(Path.Combine(Directory.GetParent(
-                directory.FullName).FullName, "UploadConfig"));
-            if (uploadConfigDirectory.Exists && uploadConfigDirectory.GetFiles("*.xml",
-                SearchOption.TopDirectoryOnly).Length > 0)
-            {
-                FileSystem.CopyDirectory(uploadConfigDirectory.FullName, directory.FullName);
-                foreach (FileInfo profile in directory.GetFiles("*.xml",
-                    SearchOption.TopDirectoryOnly))
-                {
-                    var xmlText = File.ReadAllText(profile.FullName).Replace(
-                        "UploadFolderConfiguration", "UploadProfile").Replace("TitlePrefill",
-                        "Title").Replace("AuthorPrefill", "Author").Replace("SubjectPrefill",
-                        "Subject").Replace("KeywordsPrefill", "Keywords").Replace(
-                        "CategoryPrefill", "Category").Replace("TaxYearPrefill", "TaxYear");
-                    File.WriteAllText(profile.FullName, xmlText);
-                }
-            }
-        }
-
-        private static void UpgradeUploadProfiles(DirectoryInfo directory)
-        {
-            var backupDirectory = new DirectoryInfo(Path.Combine(Directory.GetParent(
-                directory.FullName).FullName, "UploadProfiles.Bak"));
-            if (!backupDirectory.Exists && directory.GetFiles("*.xml",
-                SearchOption.TopDirectoryOnly).Length > 0)
-            {
-                FileSystem.CopyDirectory(directory.FullName, backupDirectory.FullName);
-                foreach (FileInfo profile in directory.GetFiles("*.xml",
-                    SearchOption.TopDirectoryOnly))
-                {
-                    var xmlText = File.ReadAllText(profile.FullName).Replace("UploadProfileModel",
-                        "UploadProfile");
-                    File.WriteAllText(profile.FullName, xmlText);
-                }
-            }
         }
     }
 }
