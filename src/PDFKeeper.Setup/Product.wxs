@@ -210,9 +210,7 @@
       <Component Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Guid="c0d45ceb-d797-4140-a24a-6b69e53703e9">
         <File Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
       </Component>
-      <Component Id="SqliteDatabaseIndexSyncFix.sql" Guid="f696c075-755d-4956-bcb1-5f41e486fb0b">
-        <File Id="SqliteDatabaseIndexSyncFix.sql" Name="SqliteDatabaseIndexSyncFix.sql" Source="$(var.PDFKeeper.Presentation_TargetDir)SqliteDatabaseIndexSyncFix.sql" />
-      </Component>
+      
       <Component Id="PDFKeeper.Core.dll" Guid="35a76400-b870-4541-bc9c-8b17219dbb47">
         <File Id="PDFKeeper.Core.dll" Name="PDFKeeper.Core.dll" Source="$(var.PDFKeeper.Presentation_TargetDir)PDFKeeper.Core.dll" />
       </Component>
