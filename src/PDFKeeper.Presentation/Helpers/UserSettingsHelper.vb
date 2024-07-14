@@ -66,40 +66,9 @@ Public Class UserSettingsHelper
     Public Sub Upgrade()
         If configUserlevel.HasFile = False Then
             If My.Settings.UpgradeSettings Then ' UpgradeSettings is an application user setting.
-                Dim previousVersion = LatestConfigVersion
-                Dim previousNameSpace = "PDFKeeper.WindowsApplication.My.MySettings"
-                Dim newNameSpace = "PDFKeeper.Presentation.My.MySettings"
-                Dim previousConfig As String = Nothing
-                Dim text As String = Nothing
-                If previousVersion IsNot Nothing Then
-                    previousConfig = Path.Combine(GetConfigParentPath.FullName, previousVersion,
-                                                  "user.config")
-                    If previousVersion < "8.0.0.0" Then
-                        text = File.ReadAllText(
-                            previousConfig).Replace(previousNameSpace, newNameSpace).Replace(
-                            "PreviewImageResolution", "PreviewPixelDensity").Replace(
-                            "SearchResultsSelectLastRow", "SelectLastDocumentRow").Replace(
-                            "OpenPdfWithDefaultApplication",
-                            "ShowPdfWithDefaultApplication").Replace(
-                            "AddPdfDeleteInputPdfOnOK",
-                            "AddPdfDeleteSelectedPdfWhenAdded").Replace(
-                            "ShowFlaggedDocumentsOnStartup", "ListFlaggedDocumentsOnStartup")
-                        File.WriteAllText(previousConfig, text)
-                    End If
-                End If
                 My.Settings.Upgrade()
                 My.Settings.UpgradeSettings = False
                 My.Settings.Save()
-                If text IsNot Nothing Then
-                    text = File.ReadAllText(
-                        previousConfig).Replace(newNameSpace, previousNameSpace).Replace(
-                        "PreviewPixelDensity", "PreviewImageResolution").Replace(
-                        "SelectLastDocumentRow", "SearchResultsSelectLastRow").Replace(
-                        "ShowPdfWithDefaultApplication", "OpenPdfWithDefaultApplication").Replace(
-                        "AddPdfDeleteSelectedPdfWhenAdded", "AddPdfDeleteInputPdfOnOK").Replace(
-                        "ListFlaggedDocumentsOnStartup", "ShowFlaggedDocumentsOnStartup")
-                    File.WriteAllText(previousConfig, text)
-                End If
             End If
         End If
     End Sub
