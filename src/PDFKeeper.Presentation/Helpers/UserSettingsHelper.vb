@@ -27,25 +27,6 @@ Public Class UserSettingsHelper
     End Sub
 
     ''' <summary>
-    ''' Gets the version of the latest user.config file.
-    ''' </summary>
-    ''' <returns>
-    ''' The version formatted as x.x.x.x or Nothing if user.config does not exist.
-    ''' </returns>
-    Public ReadOnly Property LatestConfigVersion As String
-        Get
-            Dim result As String = Nothing
-            Try
-                For Each directory In GetConfigParentPath.GetDirectories
-                    result = directory.FullName.Split(Path.DirectorySeparatorChar).Last
-                Next
-            Catch ex As DirectoryNotFoundException
-            End Try
-            Return result
-        End Get
-    End Property
-
-    ''' <summary>
     ''' Is this the first use of PDFKeeper?
     ''' </summary>
     ''' <returns>True or False</returns>

@@ -33,7 +33,6 @@ Namespace My
         Private Sub MyApplication_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
             Dim helpFile = New HelpFile
             Dim userSettingsHelper = New UserSettingsHelper
-            Dim previousVersion = userSettingsHelper.LatestConfigVersion
             userSettingsHelper.Upgrade()
             If userSettingsHelper.IsFirstUse Then
                 helpFile.Show("PDFKeeper.html")
