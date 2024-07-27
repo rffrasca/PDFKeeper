@@ -36,22 +36,30 @@ namespace PDFKeeper.Core.Application
         {
             ApplicationData,
             Cache,
+            Log,
+            Temp,
             Upload,
             UploadProfiles,
             UploadRejected,
-            UploadStaging,
-            Temp
+            UploadStaging            
         }
 
         public ApplicationDirectory()
         {
             executingAssembly = new ExecutingAssembly();
-            uploadShortcutName = string.Concat(executingAssembly.ProductName, " ",
-                Resources.Upload, ".lnk");
-            desktopLinkFile = new FileInfo(Path.Combine(UserProfileFolder.Desktop,
-                uploadShortcutName));
-            downloadsLinkFile = new FileInfo(Path.Combine(UserProfileFolder.Downloads,
-                uploadShortcutName));
+            uploadShortcutName = string.Concat(
+                executingAssembly.ProductName,
+                " ",
+                Resources.Upload,
+                ".lnk");
+            desktopLinkFile = new FileInfo(
+                Path.Combine(
+                    UserProfileFolder.Desktop,
+                    uploadShortcutName));
+            downloadsLinkFile = new FileInfo(
+                Path.Combine(
+                    UserProfileFolder.Downloads,
+                    uploadShortcutName));
         }
 
         /// <summary>
@@ -67,15 +75,26 @@ namespace PDFKeeper.Core.Application
             {
                 directory = new DirectoryInfo(GetApplicationDataPath());
             }
+            else if (specialName.Equals(SpecialName.Log))
+            {
+                directory = new DirectoryInfo(
+                    Path.Combine(
+                        GetApplicationDataPath(),
+                        executingAssembly.Version));
+            }
             else if (specialName.Equals(SpecialName.Temp))
             {
-                directory = new DirectoryInfo(Path.Combine(Path.GetTempPath(),
-                    executingAssembly.ProductName));
+                directory = new DirectoryInfo(
+                    Path.Combine(
+                        Path.GetTempPath(),
+                        executingAssembly.ProductName));
             }
             else
             {
-                directory = new DirectoryInfo(Path.Combine(GetApplicationDataPath(),
-                    specialName.ToString()));
+                directory = new DirectoryInfo(
+                    Path.Combine(
+                        GetApplicationDataPath(),
+                        specialName.ToString()));
             }
             directory.Create();
             if (specialName.Equals(SpecialName.Upload))
@@ -98,8 +117,10 @@ namespace PDFKeeper.Core.Application
 
         private string GetApplicationDataPath()
         {
-            return Path.Combine(Environment.GetFolderPath(
-                Environment.SpecialFolder.ApplicationData), executingAssembly.CompanyName,
+            return Path.Combine(
+                Environment.GetFolderPath(
+                    Environment.SpecialFolder.ApplicationData),
+                executingAssembly.CompanyName,
                 executingAssembly.ProductName);
         }
     }

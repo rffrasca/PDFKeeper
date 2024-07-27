@@ -29,20 +29,20 @@
     <Content Include="PDFKeeper.Setup.wax" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PDFKeeper.Presentation\PDFKeeper.Presentation.vbproj">
-      <Name>PDFKeeper.Presentation</Name>
-      <Project>{bd8b275b-8505-49dd-9dd9-7171760959d5}</Project>
+    <WixExtension Include="WixNetFxExtension">
+      <HintPath>$(WixExtDir)\WixNetFxExtension.dll</HintPath>
+      <Name>WixNetFxExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PDFKeeper.WinForms\PDFKeeper.WinForms.csproj">
+      <Name>PDFKeeper.WinForms</Name>
+      <Project>{089191ed-733f-48ca-9f6e-086854a3eb10}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
       <RefTargetDir>INSTALLFOLDER</RefTargetDir>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WixExtension Include="WixNetFxExtension">
-      <HintPath>$(WixExtDir)\WixNetFxExtension.dll</HintPath>
-      <Name>WixNetFxExtension</Name>
-    </WixExtension>
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />

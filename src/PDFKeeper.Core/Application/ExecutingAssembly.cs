@@ -35,5 +35,6 @@ namespace PDFKeeper.Core.Application
         public string DirectoryPath => assembly.DirectoryPath;
         public string CompanyName => assembly.CompanyName;
         public string ProductName => assembly.ProductName;
+        public string Version => assembly.Version.ToString();
     }
 }

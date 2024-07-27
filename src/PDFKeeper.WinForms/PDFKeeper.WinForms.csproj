@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{089191ED-733F-48CA-9F6E-086854A3EB10}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PDFKeeper.WinForms</RootNamespace>
+    <AssemblyName>PDFKeeper</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>PDFKeeper.WinForms.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>PDFKeeper.WinForms.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>PDFKeeper.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>PDFKeeper.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\AppendDateTimeIntoNotesCommand.cs" />
+    <Compile Include="Commands\AppendTextFromFileIntoNotes.cs" />
+    <Compile Include="Commands\BurstPdfCommand.cs" />
+    <Compile Include="Commands\CopyCommand.cs" />
+    <Compile Include="Commands\CopyPdfToClipboardCommand.cs" />
+    <Compile Include="Commands\CutCommand.cs" />
+    <Compile Include="Commands\DeleteCommand.cs" />
+    <Compile Include="Commands\DialogShowCommand.cs" />
+    <Compile Include="Commands\ExportCommand.cs" />
+    <Compile Include="Commands\FlagStateToggleCommand.cs" />
+    <Compile Include="Commands\HelpFileShowCommand.cs" />
+    <Compile Include="Commands\MoveDatabaseCommand.cs" />
+    <Compile Include="Commands\OpenPdfCommand.cs" />
+    <Compile Include="Commands\PasteCommand.cs" />
+    <Compile Include="Commands\PrintTextCommand.cs" />
+    <Compile Include="Commands\RestoreCommand.cs" />
+    <Compile Include="Commands\SaveAsCommand.cs" />
+    <Compile Include="Commands\SaveCommand.cs" />
+    <Compile Include="Commands\SelectAllCommand.cs" />
+    <Compile Include="Commands\SelectAllDocumentsCommand.cs" />
+    <Compile Include="Commands\SetAuthorCommand.cs" />
+    <Compile Include="Commands\SetCategoryCommand.cs" />
+    <Compile Include="Commands\SetPreviewImageCommand.cs" />
+    <Compile Include="Commands\SetSubjectCommand.cs" />
+    <Compile Include="Commands\SetTaxYearCommand.cs" />
+    <Compile Include="Commands\SetTitleCommand.cs" />
+    <Compile Include="Commands\StatusBarToggleCommand.cs" />
+    <Compile Include="Commands\ToolBarToggleCommand.cs" />
+    <Compile Include="Commands\UndoCommand.cs" />
+    <Compile Include="Commands\CloseCommand.cs" />
+    <Compile Include="Commands\ViewMenuCheckedStateCommand.cs" />
+    <Compile Include="Components\CustomComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CustomComboBox.Designer.cs">
+      <DependentUpon>CustomComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\CustomTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\CustomTextBox.Designer.cs">
+      <DependentUpon>CustomTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SecureTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\SecureTextBox.Designer.cs">
+      <DependentUpon>SecureTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\OptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\OptionsForm.Designer.cs">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PdfOwnerPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\PdfOwnerPasswordForm.Designer.cs">
+      <DependentUpon>PdfOwnerPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SetPreviewPixelDensityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SetPreviewPixelDensityForm.Designer.cs">
+      <DependentUpon>SetPreviewPixelDensityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ResourceHelper.cs" />
+    <Compile Include="Views\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DataGridViewSortProperties.cs" />
+    <Compile Include="Helpers\HelpFile.cs" />
+    <Compile Include="Helpers\TextBoxHelper.cs" />
+    <Compile Include="Helpers\ExceptionEventHandler.cs" />
+    <Compile Include="Helpers\UserSettingsHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FolderBrowserDialogService.cs" />
+    <Compile Include="Services\FolderExplorerService.cs" />
+    <Compile Include="Services\MessageBoxService.cs" />
+    <Compile Include="Services\OpenFileDialogService.cs" />
+    <Compile Include="Services\PdfOwnerPasswordDialogService.cs" />
+    <Compile Include="Services\PrintDialogService.cs" />
+    <Compile Include="Services\PrintPreviewDialogService.cs" />
+    <Compile Include="Services\SaveFileDialogService.cs" />
+    <Compile Include="Services\SetAuthorDialogService.cs" />
+    <Compile Include="Services\SetCategoryDialogService.cs" />
+    <Compile Include="Services\SetSubjectDialogService.cs" />
+    <Compile Include="Services\SetTaxYearDialogService.cs" />
+    <Compile Include="Services\SetTitleDialogService.cs" />
+    <Compile Include="Services\UploadProfileEditorDialogService.cs" />
+    <Compile Include="UserControls\AuthorDropDownListUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AuthorDropDownListUserControl.Designer.cs">
+      <DependentUpon>AuthorDropDownListUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AuthorUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AuthorUserControl.Designer.cs">
+      <DependentUpon>AuthorUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CategoryDropDownListUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CategoryDropDownListUserControl.Designer.cs">
+      <DependentUpon>CategoryDropDownListUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CategoryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CategoryUserControl.Designer.cs">
+      <DependentUpon>CategoryUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\KeywordsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\KeywordsUserControl.Designer.cs">
+      <DependentUpon>KeywordsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NameUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NameUserControl.Designer.cs">
+      <DependentUpon>NameUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SearchTermUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchTermUserControl.Designer.cs">
+      <DependentUpon>SearchTermUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SubjectDropDownListUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SubjectDropDownListUserControl.Designer.cs">
+      <DependentUpon>SubjectDropDownListUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SubjectUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SubjectUserControl.Designer.cs">
+      <DependentUpon>SubjectUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TaxYearDropDownListUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TaxYearDropDownListUserControl.Designer.cs">
+      <DependentUpon>TaxYearDropDownListUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TitleUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TitleUserControl.Designer.cs">
+      <DependentUpon>TitleUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UploadOptionsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UploadOptionsUserControl.Designer.cs">
+      <DependentUpon>UploadOptionsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddPdfForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddPdfForm.Designer.cs">
+      <DependentUpon>AddPdfForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FindDocumentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FindDocumentsForm.Designer.cs">
+      <DependentUpon>FindDocumentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetAuthorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SetAuthorForm.Designer.cs">
+      <DependentUpon>SetAuthorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SetCategoryForm.Designer.cs">
+      <DependentUpon>SetCategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetSubjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SetSubjectForm.Designer.cs">
+      <DependentUpon>SetSubjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetTaxYearForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SetTaxYearForm.Designer.cs">
+      <DependentUpon>SetTaxYearForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetTitleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SetTitleForm.Designer.cs">
+      <DependentUpon>SetTitleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UploadProfileEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UploadProfileEditorForm.Designer.cs">
+      <DependentUpon>UploadProfileEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UploadProfilesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UploadProfilesForm.Designer.cs">
+      <DependentUpon>UploadProfilesForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Components\CustomComboBox.resx">
+      <DependentUpon>CustomComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\CustomTextBox.resx">
+      <DependentUpon>CustomTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\SecureTextBox.resx">
+      <DependentUpon>SecureTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\OptionsForm.resx">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\PdfOwnerPasswordForm.resx">
+      <DependentUpon>PdfOwnerPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SetPreviewPixelDensityForm.resx">
+      <DependentUpon>SetPreviewPixelDensityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserControls\AuthorDropDownListUserControl.resx">
+      <DependentUpon>AuthorDropDownListUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AuthorUserControl.resx">
+      <DependentUpon>AuthorUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CategoryDropDownListUserControl.resx">
+      <DependentUpon>CategoryDropDownListUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CategoryUserControl.resx">
+      <DependentUpon>CategoryUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\KeywordsUserControl.resx">
+      <DependentUpon>KeywordsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\NameUserControl.resx">
+      <DependentUpon>NameUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SearchTermUserControl.resx">
+      <DependentUpon>SearchTermUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SubjectDropDownListUserControl.resx">
+      <DependentUpon>SubjectDropDownListUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SubjectUserControl.resx">
+      <DependentUpon>SubjectUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TaxYearDropDownListUserControl.resx">
+      <DependentUpon>TaxYearDropDownListUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TitleUserControl.resx">
+      <DependentUpon>TitleUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UploadOptionsUserControl.resx">
+      <DependentUpon>UploadOptionsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddPdfForm.resx">
+      <DependentUpon>AddPdfForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FindDocumentsForm.resx">
+      <DependentUpon>FindDocumentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SetAuthorForm.resx">
+      <DependentUpon>SetAuthorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SetCategoryForm.resx">
+      <DependentUpon>SetCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SetSubjectForm.resx">
+      <DependentUpon>SetSubjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SetTaxYearForm.resx">
+      <DependentUpon>SetTaxYearForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SetTitleForm.resx">
+      <DependentUpon>SetTitleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UploadProfileEditorForm.resx">
+      <DependentUpon>UploadProfileEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UploadProfilesForm.resx">
+      <DependentUpon>UploadProfilesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="..\Help\PDFKeeper.en-US.chm">
+      <Link>PDFKeeper.en-US.chm</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="PDFKeeper.snk" />
+    <None Include="PDFKeeper.WinForms.ruleset" />
+    <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.AddPdfViewModel.datasource" />
+    <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.FindDocumentsViewModel.datasource" />
+    <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.MainViewModel.datasource" />
+    <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.StringEnumerableViewModel.datasource" />
+    <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.UploadProfileEditorViewModel.datasource" />
+    <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.UploadProfilesViewModel.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PDFKeeper.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\clock_error.png" />
+    <None Include="Resources\clock_go.png" />
+    <None Include="Resources\flag_red.gif" />
+    <None Include="Resources\database_connect.png" />
+    <None Include="Resources\icon_info.gif" />
+    <None Include="Resources\folder.gif" />
+    <None Include="Resources\icon_settings.gif" />
+    <None Include="Resources\page_find.gif" />
+    <None Include="Resources\page_text.gif" />
+    <None Include="Resources\date_new.gif" />
+    <None Include="Resources\arrow_rotate_anticlockwise.png" />
+    <None Include="Resources\action_paste.gif" />
+    <None Include="Resources\copy.gif" />
+    <None Include="Resources\cut.gif" />
+    <None Include="Resources\arrow_undo.png" />
+    <None Include="Resources\action_print.gif" />
+    <None Include="Resources\cut_red.png" />
+    <None Include="Resources\database_save.png" />
+    <None Include="Resources\file_acrobat.gif" />
+    <None Include="Resources\database_delete.png" />
+    <None Include="Resources\database_edit.png" />
+    <None Include="Resources\database_add.png" />
+    <None Include="Resources\PDFKeeper_200x200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autoupdater.NET.Official">
+      <Version>1.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
+      <Version>8.0.0</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PDFKeeper.Core\PDFKeeper.Core.csproj">
+      <Project>{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}</Project>
+      <Name>PDFKeeper.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PDFKeeper.PDFViewer\PDFKeeper.PDFViewer.csproj">
+      <Project>{854466DF-9FFD-41AD-B22B-6E4DBDD37013}</Project>
+      <Name>PDFKeeper.PDFViewer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>del "$(TargetDir)itext.barcodes.dll"
+del "$(TargetDir)itext.forms.dll"
+del "$(TargetDir)itext.layout.dll"
+del "$(TargetDir)itext.pdfa.dll"
+del "$(TargetDir)itext.pdfua.dll"
+del "$(TargetDir)itext.sign.dll"
+del "$(TargetDir)itext.styledxmlparser.dll"
+del "$(TargetDir)itext.svg.dll"
+del "$(TargetDir)Oracle.ManagedDataAccess.dll"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

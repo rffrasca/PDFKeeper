@@ -21,7 +21,7 @@
 $previousRange="2009-2023"
 $currentRange="2009-2024"
 
-(Get-ChildItem -Include *.cs,*.vb,*.ps1,*.sql,*.html,*.cmd,*.reg,Product.wxs -Recurse ) | 
+(Get-ChildItem -Include *.cs,*.ps1,*.sql,*.html,*.cmd,*.reg,Product.wxs -Recurse ) | 
 Foreach-Object {
     Set-Content $_ ((Get-content $_) -replace $previousRange, $currentRange)
 }
