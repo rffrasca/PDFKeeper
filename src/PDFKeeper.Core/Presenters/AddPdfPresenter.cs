@@ -112,7 +112,7 @@ namespace PDFKeeper.Core.Presenters
                                 }
                                 catch (ArgumentException)
                                 {
-                                    messageBoxService.ShowMessage(Resources.PdfOwnerPasswordInvalid,
+                                    messageBoxService.ShowMessage(Resources.PdfOwnerPasswordIncorrect,
                                         true);
                                     OnViewCloseRequested();
                                 }

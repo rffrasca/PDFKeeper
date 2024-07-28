@@ -291,11 +291,11 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PDF Owner password is invalid..
+        ///   Looks up a localized string similar to PDF Owner password is incorrect..
         /// </summary>
-        internal static string PdfOwnerPasswordInvalid {
+        internal static string PdfOwnerPasswordIncorrect {
             get {
-                return ResourceManager.GetString("PdfOwnerPasswordInvalid", resourceCulture);
+                return ResourceManager.GetString("PdfOwnerPasswordIncorrect", resourceCulture);
             }
         }
         

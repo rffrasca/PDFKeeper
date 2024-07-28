@@ -56,7 +56,7 @@ namespace PDFKeeper.Core.FileIO.PDF
             {
                 if (ValidatePdfOwnerPassword().Equals(false))
                 {
-                    throw new ArgumentException(Resources.PdfOwnerPasswordInvalid,
+                    throw new ArgumentException(Resources.PdfOwnerPasswordIncorrect,
                         nameof(pdfOwnerPassword));
                 }
             }

@@ -197,8 +197,8 @@ To access help, press F1 at the PDFKeeper Login form.</value>
   <data name="PdfInvalid" xml:space="preserve">
     <value>PDF is invalid.</value>
   </data>
-  <data name="PdfOwnerPasswordInvalid" xml:space="preserve">
-    <value>PDF Owner password is invalid.</value>
+  <data name="PdfOwnerPasswordIncorrect" xml:space="preserve">
+    <value>PDF Owner password is incorrect.</value>
   </data>
   <data name="PdfOwnerPasswordRequired" xml:space="preserve">
     <value>PDF Owner password required.</value>
