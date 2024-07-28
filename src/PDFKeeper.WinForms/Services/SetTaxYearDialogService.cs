@@ -29,7 +29,7 @@ namespace PDFKeeper.WinForms.Services
     {
         public void ShowDialog(string arg)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public string ShowDialog()

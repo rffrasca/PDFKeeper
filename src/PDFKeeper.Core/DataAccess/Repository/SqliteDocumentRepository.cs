@@ -471,12 +471,12 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public void ResetCredential()
         {
-            throw new NotImplementedException();
+            throw new PlatformNotSupportedException();
         }
 
         public void TestConnection()
         {
-            throw new NotImplementedException();
+            throw new PlatformNotSupportedException();
         }
 
         public void UpdateDocument(Document document)
