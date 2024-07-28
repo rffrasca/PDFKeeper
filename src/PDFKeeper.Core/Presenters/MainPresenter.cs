@@ -491,12 +491,31 @@ namespace PDFKeeper.Core.Presenters
                 ProcessEachCheckedDocument(CheckedDocumentAction.SetTaxYear, value);
             }
         }
-
-        public void DeleteEachSelectedDocument()
+        
+        /// <summary>
+        /// Deletes each selected document from the database.
+        /// </summary>
+        /// <param name="compact">
+        /// Compact the database following the deletion of all documents when the database platform
+        /// is SQLite? (true or false)
+        /// </param>
+        public void DeleteEachSelectedDocument(bool compact)
         {
             if (messageBoxService.ShowQuestion(Resources.DeleteSelectedDocuments, false).Equals(6))
             {
                 ProcessEachCheckedDocument(CheckedDocumentAction.Delete, null);
+                if (compact)
+                {
+                    try
+                    {
+                        documentRepository.CompactDatabase();
+                    }
+                    catch (NotImplementedException) { }
+                    catch (DatabaseException ex)
+                    {
+                        messageBoxService.ShowMessage(ex.Message, true);
+                    }
+                }
             }
         }
 

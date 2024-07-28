@@ -56,6 +56,7 @@ namespace PDFKeeper.WinForms.Dialogs
             this.SelectLastRowWhenListingDocumentsCheckBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
+            this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,12 +106,22 @@ namespace PDFKeeper.WinForms.Dialogs
             this.tableLayoutPanel.Controls.Add(this.OK_Button, 0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             // 
+            // CompactDatabaseAfterDeletingSelectedDocumentsCheckBox
+            // 
+            resources.ApplyResources(this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox, "CompactDatabaseAfterDeletingSelectedDocumentsCheckBox");
+            this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.Checked = global::PDFKeeper.WinForms.Properties.Settings.Default.CompactLocalDatabaseAfterDelete;
+            this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::PDFKeeper.WinForms.Properties.Settings.Default, "CompactLocalDatabaseAfterDelete", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.Name = "CompactDatabaseAfterDeletingSelectedDocumentsCheckBox";
+            this.HelpProvider.SetShowHelp(this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox, ((bool)(resources.GetObject("CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.ShowHelp"))));
+            this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.UseVisualStyleBackColor = true;
+            // 
             // OptionsForm
             // 
             this.AcceptButton = this.OK_Button;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ControlBox = false;
+            this.Controls.Add(this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox);
             this.Controls.Add(this.ShowAllDocumentsOnStartupCheckBox);
             this.Controls.Add(this.FindFlaggedDocumentsOnStartupCheckBox);
             this.Controls.Add(this.ShowPdfWithDefaultApplicationCheckBox);
@@ -139,5 +150,6 @@ namespace PDFKeeper.WinForms.Dialogs
         internal System.Windows.Forms.CheckBox SelectLastRowWhenListingDocumentsCheckBox;
         internal System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         internal System.Windows.Forms.HelpProvider HelpProvider;
+        private System.Windows.Forms.CheckBox CompactDatabaseAfterDeletingSelectedDocumentsCheckBox;
     }
 }

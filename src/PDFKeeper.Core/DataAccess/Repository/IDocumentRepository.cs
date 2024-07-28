@@ -150,5 +150,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// a credential object.
         /// </summary>
         void ResetCredential();
+
+        /// <summary>
+        /// Compacts the database. NotSupportedException will be thrown by the implementing class
+        /// when the database platform is not SQLite.
+        /// </summary>
+        void CompactDatabase();
     }
 }

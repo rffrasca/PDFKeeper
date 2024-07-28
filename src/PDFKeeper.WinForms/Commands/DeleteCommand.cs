@@ -20,6 +20,7 @@
 
 using PDFKeeper.Core.Commands;
 using PDFKeeper.Core.Presenters;
+using PDFKeeper.WinForms.Properties;
 
 namespace PDFKeeper.WinForms.Commands
 {
@@ -29,7 +30,9 @@ namespace PDFKeeper.WinForms.Commands
 
         /// <summary>
         /// Initializes a new instance of the DeleteCommand class that deletes all checked
-        /// documents when executed.
+        /// documents when executed. If the database platform is SQLite and the
+        /// "Compact database after deleting selected documents" option is selected, the database
+        /// will be compacted.
         /// </summary>
         /// <param name="presenter">The MainPresenter instance.</param>
         public DeleteCommand(MainPresenter presenter)
@@ -39,7 +42,7 @@ namespace PDFKeeper.WinForms.Commands
 
         public void Execute()
         {
-            presenter.DeleteEachSelectedDocument();
+            presenter.DeleteEachSelectedDocument(Settings.Default.CompactLocalDatabaseAfterDelete);
         }
     }
 }

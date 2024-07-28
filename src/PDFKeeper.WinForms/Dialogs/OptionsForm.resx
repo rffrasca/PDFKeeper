@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ShowAllDocumentsOnStartupCheckBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="FindFlaggedDocumentsOnStartupCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -208,7 +208,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FindFlaggedDocumentsOnStartupCheckBox.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="ShowPdfWithDefaultApplicationCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -238,7 +238,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ShowPdfWithDefaultApplicationCheckBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="SelectLastRowWhenListingDocumentsCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -268,7 +268,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SelectLastRowWhenListingDocumentsCheckBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="tableLayoutPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -277,7 +277,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 141</value>
+    <value>262, 151</value>
   </data>
   <data name="tableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -286,7 +286,7 @@
     <value>85, 33</value>
   </data>
   <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel.Name" xml:space="preserve">
     <value>tableLayoutPanel</value>
@@ -298,7 +298,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="tableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -306,6 +306,39 @@
   <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 114</value>
+  </data>
+  <data name="CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 19</value>
+  </data>
+  <data name="CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.Text" xml:space="preserve">
+    <value>&amp;Compact database after deleting selected documents.</value>
+  </data>
+  <data name="&gt;&gt;CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.Name" xml:space="preserve">
+    <value>CompactDatabaseAfterDeletingSelectedDocumentsCheckBox</value>
+  </data>
+  <data name="&gt;&gt;CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -316,7 +349,7 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>334, 186</value>
+    <value>359, 196</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

@@ -226,5 +226,17 @@ namespace PDFKeeper.WinForms.Properties {
                 this["VerticalSplitterDistance"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CompactLocalDatabaseAfterDelete {
+            get {
+                return ((bool)(this["CompactLocalDatabaseAfterDelete"]));
+            }
+            set {
+                this["CompactLocalDatabaseAfterDelete"] = value;
+            }
+        }
     }
 }

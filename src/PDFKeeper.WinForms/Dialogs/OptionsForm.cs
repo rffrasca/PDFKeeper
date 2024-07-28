@@ -35,6 +35,7 @@ namespace PDFKeeper.WinForms.Dialogs
             if (!DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Sqlite))
             {
                 ShowAllDocumentsOnStartupCheckBox.Visible = false;
+                CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.Visible = false;
             }
         }
 

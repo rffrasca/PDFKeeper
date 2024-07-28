@@ -511,6 +511,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
             oracleCredential = null;
         }
 
+        public void CompactDatabase()
+        {
+            throw new NotImplementedException();
+        }
+
         protected override DataTable ExecuteQuery(OracleCommand command)
         {
             using (var adapter = new OracleDataAdapter(command))

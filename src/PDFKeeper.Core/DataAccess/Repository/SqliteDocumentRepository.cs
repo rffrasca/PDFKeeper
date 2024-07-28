@@ -528,6 +528,26 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
+        public void CompactDatabase()
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (var command = new SQLiteCommand(connection))
+                    {
+                        connection.Open();
+                        command.CommandText = "vacuum";
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+        }
+
         protected override DataTable ExecuteQuery(SQLiteCommand command)
         {
             using (var adapter = new SQLiteDataAdapter(command))
