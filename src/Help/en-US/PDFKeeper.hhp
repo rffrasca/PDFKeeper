@@ -15,7 +15,6 @@ gplv3-127x51.png
 Features.html
 Getting Started.html
 SingleUserDatabaseSetup.cmd
-SingleUserDatabaseIndexSyncFix.cmd
 MultiUserDatabaseSchemaSetup.cmd
 SetOracleWalletPath.cmd
 Installing Oracle Data Provider for .NET.html
