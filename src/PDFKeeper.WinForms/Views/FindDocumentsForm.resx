@@ -139,13 +139,13 @@
     <value>103, 49</value>
   </data>
   <data name="TaxYearDropDownListUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.Name" xml:space="preserve">
     <value>TaxYearDropDownListUserControl</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.TaxYearDropDownListUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>PDFKeeper.WinForms.UserControls.TaxYearDropDownListUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.Parent" xml:space="preserve">
     <value>groupBox</value>
@@ -169,13 +169,13 @@
     <value>365, 49</value>
   </data>
   <data name="CategoryDropDownListUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;CategoryDropDownListUserControl.Name" xml:space="preserve">
     <value>CategoryDropDownListUserControl</value>
   </data>
   <data name="&gt;&gt;CategoryDropDownListUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.CategoryDropDownListUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>PDFKeeper.WinForms.UserControls.CategoryDropDownListUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
   </data>
   <data name="&gt;&gt;CategoryDropDownListUserControl.Parent" xml:space="preserve">
     <value>groupBox</value>
@@ -199,13 +199,13 @@
     <value>479, 49</value>
   </data>
   <data name="SubjectDropDownListUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;SubjectDropDownListUserControl.Name" xml:space="preserve">
     <value>SubjectDropDownListUserControl</value>
   </data>
   <data name="&gt;&gt;SubjectDropDownListUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.SubjectDropDownListUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>PDFKeeper.WinForms.UserControls.SubjectDropDownListUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
   </data>
   <data name="&gt;&gt;SubjectDropDownListUserControl.Parent" xml:space="preserve">
     <value>groupBox</value>
@@ -229,13 +229,13 @@
     <value>479, 53</value>
   </data>
   <data name="AuthorDropDownListUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;AuthorDropDownListUserControl.Name" xml:space="preserve">
     <value>AuthorDropDownListUserControl</value>
   </data>
   <data name="&gt;&gt;AuthorDropDownListUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.AuthorDropDownListUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>PDFKeeper.WinForms.UserControls.AuthorDropDownListUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
   </data>
   <data name="&gt;&gt;AuthorDropDownListUserControl.Parent" xml:space="preserve">
     <value>groupBox</value>
@@ -259,13 +259,13 @@
     <value>479, 30</value>
   </data>
   <data name="SearchTermUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;SearchTermUserControl.Name" xml:space="preserve">
     <value>SearchTermUserControl</value>
   </data>
   <data name="&gt;&gt;SearchTermUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.SearchTermUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>PDFKeeper.WinForms.UserControls.SearchTermUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
   </data>
   <data name="&gt;&gt;SearchTermUserControl.Parent" xml:space="preserve">
     <value>groupBox</value>
@@ -286,7 +286,7 @@
     <value>103, 19</value>
   </data>
   <data name="AllDocumentsRadioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>4</value>
   </data>
   <data name="AllDocumentsRadioButton.Text" xml:space="preserve">
     <value>&amp;All Documents</value>
@@ -316,7 +316,7 @@
     <value>157, 19</value>
   </data>
   <data name="FindFlaggedDocumentsRadioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>3</value>
   </data>
   <data name="FindFlaggedDocumentsRadioButton.Text" xml:space="preserve">
     <value>Find &amp;Flagged Documents</value>
@@ -343,7 +343,7 @@
     <value>363, 23</value>
   </data>
   <data name="DateAddedDateTimePicker.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;DateAddedDateTimePicker.Name" xml:space="preserve">
     <value>DateAddedDateTimePicker</value>
@@ -370,7 +370,7 @@
     <value>129, 19</value>
   </data>
   <data name="FindByDateAddedRadioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="FindByDateAddedRadioButton.Text" xml:space="preserve">
     <value>Find by &amp;Date Added</value>
@@ -400,7 +400,7 @@
     <value>120, 19</value>
   </data>
   <data name="FindBySelectionsRadioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="FindBySelectionsRadioButton.Text" xml:space="preserve">
     <value>Find by &amp;Selections</value>
@@ -474,57 +474,6 @@
   <data name="TableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;OK_Button.Name" xml:space="preserve">
-    <value>OK_Button</value>
-  </data>
-  <data name="&gt;&gt;OK_Button.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;OK_Button.Parent" xml:space="preserve">
-    <value>TableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;OK_Button.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Cancel_Button.Name" xml:space="preserve">
-    <value>Cancel_Button</value>
-  </data>
-  <data name="&gt;&gt;Cancel_Button.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cancel_Button.Parent" xml:space="preserve">
-    <value>TableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;Cancel_Button.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="TableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 474</value>
-  </data>
-  <data name="TableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 33</value>
-  </data>
-  <data name="TableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;TableLayoutPanel1.Name" xml:space="preserve">
-    <value>TableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;TableLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TableLayoutPanel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;TableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Cancel_Button" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
   <data name="OK_Button.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -585,6 +534,33 @@
   <data name="&gt;&gt;Cancel_Button.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="TableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 474</value>
+  </data>
+  <data name="TableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 33</value>
+  </data>
+  <data name="TableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.Name" xml:space="preserve">
+    <value>TableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;TableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Cancel_Button" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
   <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -621,17 +597,17 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Find Documents</value>
   </data>
-  <data name="&gt;&gt;HelpProvider.Name" xml:space="preserve">
-    <value>HelpProvider</value>
-  </data>
-  <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
-    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;FindDocumentsViewModelBindingSource.Name" xml:space="preserve">
     <value>FindDocumentsViewModelBindingSource</value>
   </data>
   <data name="&gt;&gt;FindDocumentsViewModelBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HelpProvider.Name" xml:space="preserve">
+    <value>HelpProvider</value>
+  </data>
+  <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FindDocumentsForm</value>

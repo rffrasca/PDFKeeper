@@ -52,6 +52,7 @@ namespace PDFKeeper.WinForms.Views
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindDocumentsForm));
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.TaxYearDropDownListUserControl = new PDFKeeper.WinForms.UserControls.TaxYearDropDownListUserControl();
+            this.FindDocumentsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CategoryDropDownListUserControl = new PDFKeeper.WinForms.UserControls.CategoryDropDownListUserControl();
             this.SubjectDropDownListUserControl = new PDFKeeper.WinForms.UserControls.SubjectDropDownListUserControl();
             this.AuthorDropDownListUserControl = new PDFKeeper.WinForms.UserControls.AuthorDropDownListUserControl();
@@ -66,10 +67,9 @@ namespace PDFKeeper.WinForms.Views
             this.OK_Button = new System.Windows.Forms.Button();
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
-            this.FindDocumentsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox.SuspendLayout();
-            this.TableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FindDocumentsViewModelBindingSource)).BeginInit();
+            this.TableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox
@@ -98,6 +98,10 @@ namespace PDFKeeper.WinForms.Views
             this.TaxYearDropDownListUserControl.TaxYear = "";
             this.TaxYearDropDownListUserControl.TaxYears = null;
             this.TaxYearDropDownListUserControl.Enter += new System.EventHandler(this.TaxYearDropDownListUserControl_Enter);
+            // 
+            // FindDocumentsViewModelBindingSource
+            // 
+            this.FindDocumentsViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.FindDocumentsViewModel);
             // 
             // CategoryDropDownListUserControl
             // 
@@ -214,10 +218,6 @@ namespace PDFKeeper.WinForms.Views
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
-            // FindDocumentsViewModelBindingSource
-            // 
-            this.FindDocumentsViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.FindDocumentsViewModel);
-            // 
             // FindDocumentsForm
             // 
             this.AcceptButton = this.OK_Button;
@@ -238,8 +238,8 @@ namespace PDFKeeper.WinForms.Views
             this.Load += new System.EventHandler(this.FindDocumentsForm_Load);
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
-            this.TableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FindDocumentsViewModelBindingSource)).EndInit();
+            this.TableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
