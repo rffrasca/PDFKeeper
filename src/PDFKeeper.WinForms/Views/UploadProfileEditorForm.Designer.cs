@@ -57,6 +57,7 @@ namespace PDFKeeper.WinForms.Views
             this.OK_Button = new System.Windows.Forms.Button();
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.NameUserControl = new PDFKeeper.WinForms.UserControls.NameUserControl();
+            this.UploadProfileEditorViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TitleUserControl = new PDFKeeper.WinForms.UserControls.TitleUserControl();
             this.AuthorUserControl = new PDFKeeper.WinForms.UserControls.AuthorUserControl();
             this.SubjectUserControl = new PDFKeeper.WinForms.UserControls.SubjectUserControl();
@@ -64,7 +65,6 @@ namespace PDFKeeper.WinForms.Views
             this.CategoryUserControl = new PDFKeeper.WinForms.UserControls.CategoryUserControl();
             this.TaxYearDropDownListUserControl = new PDFKeeper.WinForms.UserControls.TaxYearDropDownListUserControl();
             this.UploadOptionsUserControl = new PDFKeeper.WinForms.UserControls.UploadOptionsUserControl();
-            this.UploadProfileEditorViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UploadProfileEditorViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -112,6 +112,10 @@ namespace PDFKeeper.WinForms.Views
             this.NameUserControl.DataBindings.Add(new System.Windows.Forms.Binding("TName", this.UploadProfileEditorViewModelBindingSource, "Name", true));
             this.NameUserControl.Name = "NameUserControl";
             this.NameUserControl.TName = "";
+            // 
+            // UploadProfileEditorViewModelBindingSource
+            // 
+            this.UploadProfileEditorViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.UploadProfileEditorViewModel);
             // 
             // TitleUserControl
             // 
@@ -170,10 +174,6 @@ namespace PDFKeeper.WinForms.Views
             this.UploadOptionsUserControl.Name = "UploadOptionsUserControl";
             this.UploadOptionsUserControl.OcrPdfTextAndImageDataPagesChecked = false;
             this.UploadOptionsUserControl.Leave += new System.EventHandler(this.UploadOptionsUserControl_Leave);
-            // 
-            // UploadProfileEditorViewModelBindingSource
-            // 
-            this.UploadProfileEditorViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.UploadProfileEditorViewModel);
             // 
             // UploadProfileEditorForm
             // 

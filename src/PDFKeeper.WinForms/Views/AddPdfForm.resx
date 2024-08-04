@@ -133,7 +133,7 @@
     <value>37, 15</value>
   </data>
   <data name="TitleLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>4</value>
   </data>
   <data name="TitleLabel.Text" xml:space="preserve">
     <value>* Title</value>
@@ -160,7 +160,7 @@
     <value>75, 25</value>
   </data>
   <data name="ViewButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="ViewButton.Text" xml:space="preserve">
     <value>&amp;View</value>
@@ -193,7 +193,7 @@
     <value>142, 15</value>
   </data>
   <data name="SetTitleToPdfFileNameLinkLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>3</value>
   </data>
   <data name="SetTitleToPdfFileNameLinkLabel.Text" xml:space="preserve">
     <value>Set Title to PDF File Name</value>
@@ -220,7 +220,7 @@
     <value>392, 23</value>
   </data>
   <data name="SelectedPdfTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;SelectedPdfTextBox.Name" xml:space="preserve">
     <value>SelectedPdfTextBox</value>
@@ -247,7 +247,7 @@
     <value>75, 15</value>
   </data>
   <data name="SelectedPdfLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>0</value>
   </data>
   <data name="SelectedPdfLabel.Text" xml:space="preserve">
     <value>Selected PDF</value>
@@ -274,7 +274,7 @@
     <value>476, 23</value>
   </data>
   <data name="TitleTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;TitleTextBox.Name" xml:space="preserve">
     <value>TitleTextBox</value>
@@ -340,7 +340,7 @@
     <value>99, 15</value>
   </data>
   <data name="MandatoryFieldLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>13</value>
   </data>
   <data name="MandatoryFieldLabel.Text" xml:space="preserve">
     <value>* Mandatory field</value>
@@ -409,7 +409,7 @@
     <value>170, 33</value>
   </data>
   <data name="TableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+    <value>14</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel.Name" xml:space="preserve">
     <value>TableLayoutPanel</value>
@@ -433,7 +433,7 @@
     <value>NoControl</value>
   </data>
   <data name="DeleteSelectedPdfWhenAddedCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 433</value>
+    <value>12, 431</value>
   </data>
   <data name="DeleteSelectedPdfWhenAddedCheckBox.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -442,7 +442,7 @@
     <value>197, 19</value>
   </data>
   <data name="DeleteSelectedPdfWhenAddedCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>12</value>
   </data>
   <data name="DeleteSelectedPdfWhenAddedCheckBox.Text" xml:space="preserve">
     <value>&amp;Delete selected PDF when added</value>
@@ -469,13 +469,13 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="AuthorUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 152</value>
+    <value>12, 156</value>
   </data>
   <data name="AuthorUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>479, 49</value>
   </data>
   <data name="AuthorUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;AuthorUserControl.Name" xml:space="preserve">
     <value>AuthorUserControl</value>
@@ -505,7 +505,7 @@
     <value>479, 49</value>
   </data>
   <data name="SubjectUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;SubjectUserControl.Name" xml:space="preserve">
     <value>SubjectUserControl</value>
@@ -529,13 +529,13 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="KeywordsUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 263</value>
+    <value>12, 265</value>
   </data>
   <data name="KeywordsUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>479, 49</value>
   </data>
   <data name="KeywordsUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;KeywordsUserControl.Name" xml:space="preserve">
     <value>KeywordsUserControl</value>
@@ -565,7 +565,7 @@
     <value>369, 49</value>
   </data>
   <data name="CategoryUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;CategoryUserControl.Name" xml:space="preserve">
     <value>CategoryUserControl</value>
@@ -595,7 +595,7 @@
     <value>103, 49</value>
   </data>
   <data name="TaxYearDropDownListUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.Name" xml:space="preserve">
     <value>TaxYearDropDownListUserControl</value>
@@ -625,7 +625,7 @@
     <value>307, 52</value>
   </data>
   <data name="UploadOptionsUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;UploadOptionsUserControl.Name" xml:space="preserve">
     <value>UploadOptionsUserControl</value>
