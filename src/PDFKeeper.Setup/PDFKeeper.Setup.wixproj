@@ -35,6 +35,22 @@
     </WixExtension>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PDFKeeper.Core\PDFKeeper.Core.csproj">
+      <Name>PDFKeeper.Core</Name>
+      <Project>{2f3d6a07-a88a-4b91-a28d-3ccecc3486f9}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\PDFKeeper.PDFViewer\PDFKeeper.PDFViewer.csproj">
+      <Name>PDFKeeper.PDFViewer</Name>
+      <Project>{854466df-9ffd-41ad-b22b-6e4dbdd37013}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
     <ProjectReference Include="..\PDFKeeper.WinForms\PDFKeeper.WinForms.csproj">
       <Name>PDFKeeper.WinForms</Name>
       <Project>{089191ed-733f-48ca-9f6e-086854a3eb10}</Project>

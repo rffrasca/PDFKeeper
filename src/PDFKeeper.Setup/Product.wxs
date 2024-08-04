@@ -117,6 +117,9 @@
       <Component Id="SetHideAllDocumentsPolicy.reg" Guid="6127b400-4ac1-4a1e-83ae-5947215b4c57">
         <File Id="SetHideAllDocumentsPolicy.reg" Name="SetHideAllDocumentsPolicy.reg" Source="..\..\..\Config\SetHideAllDocumentsPolicy.reg" />
       </Component>
+      <Component Id="MultiUserDatabaseSchemaSetup.cmd" Guid="02F6A7C1-A59A-46D0-AF3F-8CF6C75784A9">
+        <File Id="MultiUserDatabaseSchemaSetup.cmd" Name="MultiUserDatabaseSchemaSetup.cmd" Source="$(var.PDFKeeper.WinForms_TargetDir)MultiUserDatabaseSchemaSetup.cmd" />
+      </Component>
       <Component Id="OracleDatabaseSchemaSetup.sql" Guid="0c018a44-7840-4ef4-92a7-ce0432f9e27f">
         <File Id="OracleDatabaseSchemaSetup.sql" Name="OracleDatabaseSchemaSetup.sql" Source="$(var.PDFKeeper.WinForms_TargetDir)OracleDatabaseSchemaSetup.sql" />
       </Component>
@@ -128,9 +131,7 @@
       </Component>
       <Component Id="Magick.NET_Q16_AnyCPU.dll" Guid="7cc046ba-2263-48df-a63b-d54b1193c6da">
         <File Id="Magick.NET_Q16_AnyCPU.dll" Name="Magick.NET-Q16-AnyCPU.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.NET-Q16-AnyCPU.dll" />
-      </Component>
-      
-      
+      </Component>      
       <Component Id="System.Data.SQLite.dll" Guid="8cd4cef8-1ee3-45b8-b99e-aabb64574f66">
         <File Id="System.Data.SQLite.dll" Name="System.Data.SQLite.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Data.SQLite.dll" />
       </Component>

@@ -25,8 +25,8 @@ rem Start of localized strings
 rem
 set Title=PDFKeeper Multi-User Database Schema Setup
 set MenuHeader=Compatible Database Management Systems
-set MenuChoice1=1. Oracle Database
-set MenuChoice2=2. Oracle Cloud Autonomous Database
+set MenuChoice1=1. Oracle Database (On-Prem)
+set MenuChoice2=2. Oracle Autonomous Database (Cloud)
 set MenuPrompt=Select the database management system or Q to quit:
 set OracleMessage1=Enter the database connect string in the format:
 set OracleMessage2=username/password@host:port/service_name
