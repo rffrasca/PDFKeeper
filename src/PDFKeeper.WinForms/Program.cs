@@ -20,6 +20,7 @@
 
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
+using PDFKeeper.Core.DataAccess.Repository;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.WinForms.Helpers;
 using PDFKeeper.WinForms.Properties;
@@ -67,16 +68,14 @@ namespace PDFKeeper.WinForms
         /// <summary>
         /// Application startup actions.
         /// </summary>
-        /// <returns>User cancelled? (true or false)</returns>
+        /// <returns>User cancelled or startup encountered an exception? (true or false)</returns>
         static bool Startup()
         {
             var helpFile = new HelpFile();
             var userSettingsHelper = new UserSettingsHelper();
+            var messageBoxService = new MessageBoxService();
+            DatabaseSession.SetMessageBoxService(messageBoxService);
             userSettingsHelper.Upgrade();
-            if (UserSettingsHelper.IsFirstUse)
-            {
-                helpFile.Show("PDFKeeper.html");
-            }
             if (Settings.Default.DbManagementSystem.Length.Equals(0))
             {
                 if (File.Exists(DatabaseSession.LocalDatabasePath))
@@ -84,15 +83,50 @@ namespace PDFKeeper.WinForms
                     Settings.Default.DbManagementSystem = 
                         DatabaseSession.CompatiblePlatformName.Sqlite.ToString();
                 }
+                else
+                {
+                    var choice = messageBoxService.ShowQuestion(Resources.DatabaseSetup, true);
+                    if (choice.Equals(6))
+                    {
+                        DatabaseSession.PlatformName =
+                            DatabaseSession.CompatiblePlatformName.Sqlite;
+                        try
+                        {
+                            DocumentRepositoryFactory.Instance.CreateDatabase();
+                        }
+                        catch (DatabaseException ex)
+                        {
+                            messageBoxService.ShowMessage(ex.Message, true);
+                            return true;
+                        }
+                        Settings.Default.DbManagementSystem =
+                            DatabaseSession.CompatiblePlatformName.Sqlite.ToString();
+                        messageBoxService.ShowMessage(
+                            ResourceHelper.GetString(
+                                "DatabaseCreated",
+                                DatabaseSession.LocalDatabasePath,
+                                null),
+                            false);
+                        helpFile.Show("Setup Single-User Database.html");
+                    }
+                    else if (choice.Equals(7))
+                    {
+                        messageBoxService.ShowMessage(Resources.MultiUserDatabaseSetup, false);
+                        helpFile.Show("Setup Multi-User Database.html");
+                    }
+                    else if (choice.Equals(2))
+                    {
+                        return true;
+                    }
+                }
             }
-            DatabaseSession.SetMessageBoxService(new MessageBoxService());
             if (!Settings.Default.DbManagementSystem.Equals(
                 DatabaseSession.CompatiblePlatformName.Sqlite.ToString(),
                 StringComparison.Ordinal))
             {
                 // NOTE: Oracle is the only supported RDBMS at this time. To add future systems,
                 // add a ComboBox to LoginForm containing the supported Databases and bind it to
-                // the DbManagementSystem setting.
+                // the DbManagementSystem setting.                
                 Settings.Default.DbManagementSystem = 
                     DatabaseSession.CompatiblePlatformName.Oracle.ToString();
                 using (var form = new LoginForm())

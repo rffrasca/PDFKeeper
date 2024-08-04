@@ -511,6 +511,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
             oracleCredential = null;
         }
 
+        public void CreateDatabase()
+        {
+            throw new PlatformNotSupportedException();
+        }
+
         public void CompactDatabase()
         {
             throw new PlatformNotSupportedException();

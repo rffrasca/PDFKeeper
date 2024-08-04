@@ -34,11 +34,6 @@ namespace PDFKeeper.WinForms.Helpers
         }
 
         /// <summary>
-        /// Is this the first use of PDFKeeper? (true or false)
-        /// </summary>
-        public static bool IsFirstUse => Settings.Default.DbManagementSystem.Length.Equals(0);
-        
-        /// <summary>
         /// Upgrades user settings when user.config does not exist for the current version and
         /// UpgradeSettings is set to true in user.config.
         /// </summary>

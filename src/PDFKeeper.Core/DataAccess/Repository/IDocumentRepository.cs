@@ -152,6 +152,12 @@ namespace PDFKeeper.Core.DataAccess.Repository
         void ResetCredential();
 
         /// <summary>
+        /// Creates the database. PlatformNotSupportedException will be thrown by the implementing
+        /// class when the database platform is not SQLite.
+        /// </summary>
+        void CreateDatabase();
+
+        /// <summary>
         /// Compacts the database. PlatformNotSupportedException will be thrown by the implementing
         /// class when the database platform is not SQLite.
         /// </summary>

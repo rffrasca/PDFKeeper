@@ -20,78 +20,64 @@
 			<param name="ImageNumber" value="17">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Getting Started">
-			<param name="Local" value="Getting Started.html">
+			<param name="Name" value="Setup Single-User Database">
+			<param name="Local" value="Setup Single-User Database.html">
+			<param name="ImageNumber" value="9">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Setup Multi-User Database">
+			<param name="Local" value="Setup Multi-User Database.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Setup Single-User Database">
-				<param name="Local" value="Setup Single-User Database.html">
-				<param name="ImageNumber" value="9">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Setup Multi-User (On-Prem) Database">
-				<param name="Local" value="Setup Multi-User (On-Prem) Database.html">
+				<param name="Name" value="Oracle Database (On-Prem)">
+				<param name="Local" value="Oracle Database (On-Prem).html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
 			<UL>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Oracle Database">
-					<param name="Local" value="Oracle Database.html">
-					<param name="ImageNumber" value="1">
+					<param name="Name" value="Schema Setup">
+					<param name="Local" value="Schema Setup for Oracle Database.html">
+					<param name="ImageNumber" value="9">
 					</OBJECT>
-				<UL>
-					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="Schema Setup">
-						<param name="Local" value="Schema Setup for Oracle Database.html">
-						<param name="ImageNumber" value="9">
-						</OBJECT>
-					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="Installing Oracle Data Provider for .NET">
-						<param name="Local" value="Installing Oracle Data Provider for .NET.html">
-						<param name="ImageNumber" value="9">
-						</OBJECT>
-					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="User Administration">
-						<param name="Local" value="User Administration for Oracle Database.html">
-						<param name="ImageNumber" value="9">
-						</OBJECT>
-				</UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Installing Oracle Data Provider for .NET">
+					<param name="Local" value="Installing Oracle Data Provider for .NET.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="User Administration">
+					<param name="Local" value="User Administration for Oracle Database.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Setup Multi-User (Cloud) Database">
-				<param name="Local" value="Setup Multi-User (Cloud) Database.html">
+				<param name="Name" value="Oracle Autonomous Database (Cloud)">
+				<param name="Local" value="Oracle Autonomous Database (Cloud).html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
 			<UL>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="Oracle Autonomous Database">
-					<param name="Local" value="Oracle Autonomous Database.html">
-					<param name="ImageNumber" value="1">
+					<param name="Name" value="Setup Oracle Wallet for Mutual TLS (mTLS)">
+					<param name="Local" value="Setup Oracle Wallet for Mutual TLS (mTLS).html">
+					<param name="ImageNumber" value="9">
 					</OBJECT>
-				<UL>
-					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="Setup Oracle Wallet for Mutual TLS (mTLS)">
-						<param name="Local" value="Setup Oracle Wallet for Mutual TLS (mTLS).html">
-						<param name="ImageNumber" value="9">
-						</OBJECT>
-					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="Schema Setup">
-						<param name="Local" value="Schema Setup for Oracle Autonomous Database.html">
-						<param name="ImageNumber" value="9">
-						</OBJECT>
-					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="Installing Oracle Data Provider for .NET">
-						<param name="Local" value="Installing Oracle Data Provider for .NET.html">
-						<param name="ImageNumber" value="9">
-						</OBJECT>
-					<LI> <OBJECT type="text/sitemap">
-						<param name="Name" value="User Administration">
-						<param name="Local" value="User Administration for Oracle Autonomous Database.html">
-						<param name="ImageNumber" value="9">
-						</OBJECT>
-				</UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Schema Setup">
+					<param name="Local" value="Schema Setup for Oracle Autonomous Database.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Installing Oracle Data Provider for .NET">
+					<param name="Local" value="Installing Oracle Data Provider for .NET.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="User Administration">
+					<param name="Local" value="User Administration for Oracle Autonomous Database.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
 			</UL>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">

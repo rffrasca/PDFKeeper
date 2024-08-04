@@ -248,6 +248,32 @@ namespace PDFKeeper.WinForms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} was created.
+        ///
+        ///The Setup Single-User Database help topic will now open.
+        ///
+        ///After reading the topic, close the help dialog, and then PDFKeeper will open..
+        /// </summary>
+        internal static string DatabaseCreated {
+            get {
+                return ResourceManager.GetString("DatabaseCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A database is required for document storage.
+        ///
+        ///Do you want to setup a single-user database?
+        ///
+        ///For setting up a multi-user database, select No..
+        /// </summary>
+        internal static string DatabaseSetup {
+            get {
+                return ResourceManager.GetString("DatabaseSetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap date_new {
@@ -313,6 +339,17 @@ namespace PDFKeeper.WinForms.Properties {
         internal static string ID {
             get {
                 return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Setup Multi-User Database help topic will now open.
+        ///
+        ///After reading the topic and setting up the database and any dependencies, close the help dialog, and then PDFKeeper will open to the login form..
+        /// </summary>
+        internal static string MultiUserDatabaseSetup {
+            get {
+                return ResourceManager.GetString("MultiUserDatabaseSetup", resourceCulture);
             }
         }
         

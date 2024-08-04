@@ -13,8 +13,7 @@ PDFKeeper.html
 OSIApproved_100X125.png
 gplv3-127x51.png
 Features.html
-Getting Started.html
-SingleUserDatabaseSetup.cmd
+Setup Multi-User Database.html
 MultiUserDatabaseSchemaSetup.cmd
 SetOracleWalletPath.cmd
 Installing Oracle Data Provider for .NET.html
@@ -51,7 +50,6 @@ Donate.html
 COPYING.html
 Set Tax Year on Documents.html
 Setup Single-User Database.html
-Setup Multi-User (On-Prem) Database.html
 User Administration for Oracle Database.html
 Schema Setup for Oracle Database.html
 Find Documents by Search Term.html
@@ -61,8 +59,7 @@ Troubleshooting.html
 THIRD-PARTY-NOTICES.html
 Add PDF from within PDFKeeper.html
 PDF Bursting.html
-Setup Multi-User (Cloud) Database.html
-Oracle Autonomous Database.html
+Oracle Autonomous Database (Cloud).html
 Schema Setup for Oracle Autonomous Database.html
 User Administration for Oracle Autonomous Database.html
 Setup Oracle Wallet for Mutual TLS (mTLS).html
@@ -70,6 +67,7 @@ Set Title on Documents.html
 Set Author on Documents.html
 Set Subject on Documents.html
 PDF Copying to the Clipboard.html
+Oracle Database (On-Prem).html
 
 [INFOTYPES]
 

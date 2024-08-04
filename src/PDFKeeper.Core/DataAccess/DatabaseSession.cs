@@ -38,16 +38,7 @@ namespace PDFKeeper.Core.DataAccess
         private static string oracleWalletPath;
         private static string localDatabasePath;
         private static bool odpHandlerEnabled;
-
-        /// <summary>
-        /// Sets the MessageBoxService instance.
-        /// </summary>
-        /// <param name="messageBoxService">The MessageBoxService instance.</param>
-        public static void SetMessageBoxService(IMessageBoxService messageBoxService)
-        {
-            DatabaseSession.messageBoxService = messageBoxService;
-        }
-
+        
         /// <summary>
         /// Compatible database platform name.
         /// </summary>
@@ -146,38 +137,48 @@ namespace PDFKeeper.Core.DataAccess
         {
             get
             {
-                oracleWalletPath = (string)Registry.GetValue(ApplicationRegistry.UserKeyPath,
-                    "OracleWalletPath", null);
+                oracleWalletPath = (string)Registry.GetValue(
+                    ApplicationRegistry.UserKeyPath,
+                    "OracleWalletPath",
+                    null);
                 return oracleWalletPath;
             }
         }
 
         /// <summary>
-        /// Gets or sets the local SQLite database path. On a get, null will be returned when the
-        /// database is not found.
+        /// Gets or sets the local SQLite database path.
         /// </summary>
         public static string LocalDatabasePath
         {
             get
             {
-                localDatabasePath = Registry.GetValue(ApplicationRegistry.UserKeyPath,
-                    "LocalDatabasePath", new ApplicationDirectory().GetDirectory(
+                localDatabasePath = Registry.GetValue(
+                    ApplicationRegistry.UserKeyPath,
+                    "LocalDatabasePath",
+                    new ApplicationDirectory().GetDirectory(
                         ApplicationDirectory.SpecialName.ApplicationData)).ToString();
-                var filePath = new FileInfo(Path.Combine(localDatabasePath,
-                    String.Concat(new ExecutingAssembly().ProductName, ".sqlite")));
-                if (filePath.Exists)
-                {
-                    return filePath.FullName;
-                }
-                else
-                {
-                    return null;
-                }
+                var filePath = new FileInfo(
+                    Path.Combine(localDatabasePath,
+                    String.Concat(
+                        new ExecutingAssembly().ProductName,
+                        ".sqlite")));
+                return filePath.FullName;
             }
-            set => Registry.SetValue(ApplicationRegistry.UserKeyPath, "LocalDatabasePath",
+            set => Registry.SetValue(
+                ApplicationRegistry.UserKeyPath,
+                "LocalDatabasePath",
                 Path.GetDirectoryName(value));
         }
-        
+
+        /// <summary>
+        /// Sets the MessageBoxService instance.
+        /// </summary>
+        /// <param name="messageBoxService">The MessageBoxService instance.</param>
+        public static void SetMessageBoxService(IMessageBoxService messageBoxService)
+        {
+            DatabaseSession.messageBoxService = messageBoxService;
+        }
+
         private static void OnCompatiblePlatformNameChanged()
         {
             if (PlatformName.Equals(CompatiblePlatformName.Oracle) &&
@@ -188,18 +189,30 @@ namespace PDFKeeper.Core.DataAccess
             }
         }
 
-        private static System.Reflection.Assembly LoadOracleDataProvider(object sender,
+        private static System.Reflection.Assembly LoadOracleDataProvider(
+            object sender,
             ResolveEventArgs args)
         {
             try
             {
-                var dllPath = Registry.GetValue(String.Concat(
-                    @"HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\ODP.NET\",
-                    Resources.OracleDataProviderVersion), "DllPath", string.Empty).ToString();
-                var oraKeyPath = string.Concat(@"HKEY_LOCAL_MACHINE\",
-                    File.ReadAllText(Path.Combine(dllPath, "oracle.key"))).TrimEnd();
-                var assemblyPath = String.Concat(Registry.GetValue(oraKeyPath, "ORACLE_HOME",
-                    string.Empty), @"\odp.net\managed\common\Oracle.ManagedDataAccess.dll");
+                var dllPath = Registry.GetValue(
+                    string.Concat(
+                        @"HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\ODP.NET\",
+                        Resources.OracleDataProviderVersion),
+                    "DllPath",
+                    string.Empty).ToString();
+                var oraKeyPath = string.Concat(
+                    @"HKEY_LOCAL_MACHINE\",
+                    File.ReadAllText(
+                        Path.Combine(
+                            dllPath,
+                            "oracle.key"))).TrimEnd();
+                var assemblyPath = string.Concat(
+                    Registry.GetValue(
+                        oraKeyPath,
+                        "ORACLE_HOME",
+                        string.Empty),
+                    @"\odp.net\managed\common\Oracle.ManagedDataAccess.dll");
                 return System.Reflection.Assembly.LoadFile(assemblyPath);
             }
             catch (FileNotFoundException)

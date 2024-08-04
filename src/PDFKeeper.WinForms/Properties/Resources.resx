@@ -231,4 +231,23 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="ThreadException" xml:space="preserve">
     <value>Application UI ThreadException has occurred!</value>
   </data>
+  <data name="DatabaseSetup" xml:space="preserve">
+    <value>A database is required for document storage.
+
+Do you want to setup a single-user database?
+
+For setting up a multi-user database, select No.</value>
+  </data>
+  <data name="DatabaseCreated" xml:space="preserve">
+    <value>{0} was created.
+
+The Setup Single-User Database help topic will now open.
+
+After reading the topic, close the help dialog, and then PDFKeeper will open.</value>
+  </data>
+  <data name="MultiUserDatabaseSetup" xml:space="preserve">
+    <value>The Setup Multi-User Database help topic will now open.
+
+After reading the topic and setting up the database and any dependencies, close the help dialog, and then PDFKeeper will open to the login form.</value>
+  </data>
 </root>
