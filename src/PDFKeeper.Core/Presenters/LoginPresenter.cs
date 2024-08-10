@@ -20,6 +20,7 @@
 
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.DataAccess.Repository;
+using PDFKeeper.Core.Rules;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
 using System;
@@ -31,6 +32,7 @@ namespace PDFKeeper.Core.Presenters
     {
         private readonly IntPtr handle;
         private readonly IMessageBoxService messageBoxService;
+        private readonly IFolderBrowserDialogService folderBrowserDialogService;
         private IDocumentRepository documentRepository;
 
         /// <summary>
@@ -38,11 +40,46 @@ namespace PDFKeeper.Core.Presenters
         /// </summary>
         /// <param name="handle">The handle of the view.</param>
         /// <param name="messageBoxService">The MessageBoxService instance.</param>
-        public LoginPresenter(IntPtr handle, IMessageBoxService messageBoxService)
+        /// <param name="folderBrowserDialogService">
+        /// The FolderBrowserDialogService instance.
+        /// </param>
+        public LoginPresenter(
+            IntPtr handle,
+            IMessageBoxService messageBoxService,
+            IFolderBrowserDialogService folderBrowserDialogService)
         {
             this.handle = handle;
             this.messageBoxService = messageBoxService;
+            this.folderBrowserDialogService = folderBrowserDialogService;
             ViewModel = new LoginViewModel();
+        }
+
+        public void CheckForOracleCloudDataSource()
+        {
+            OnApplyPendingChangesRequested();
+            if (ViewModel.DbManagementSystem.Equals("Oracle", StringComparison.Ordinal))
+            {
+                var dataSourceLowerCase = ViewModel.DataSource.ToLower();
+                ViewModel.SelectOracleWalletVisible = dataSourceLowerCase.Contains(
+                    "oraclecloud.com");
+            }
+        }
+
+        public void SelectOracleWallet()
+        {
+            var selectedPath = folderBrowserDialogService.ShowDialog("TODO");
+            if (selectedPath.Length > 0)
+            {
+                var rule = new OracleWalletRule(selectedPath);
+                if (rule.ViolationFound)
+                {
+                    messageBoxService.ShowMessage(rule.ViolationMessage, true);
+                }
+                else
+                {
+                    DatabaseSession.OracleWalletPath = selectedPath;
+                }
+            }
         }
 
         public void Login()

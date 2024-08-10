@@ -224,6 +224,15 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} does not contain an Oracle Wallet!.
+        /// </summary>
+        internal static string NotOracleWallet {
+            get {
+                return ResourceManager.GetString("NotOracleWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to One find function must be true!.
         /// </summary>
         internal static string OneFindFunctionMustBeTrue {

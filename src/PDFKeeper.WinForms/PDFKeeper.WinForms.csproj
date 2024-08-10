@@ -401,6 +401,7 @@
     <None Include="PDFKeeper.WinForms.ruleset" />
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.AddPdfViewModel.datasource" />
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.FindDocumentsViewModel.datasource" />
+    <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.LoginViewModel.datasource" />
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.MainViewModel.datasource" />
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.StringEnumerableViewModel.datasource" />
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.UploadProfileEditorViewModel.datasource" />

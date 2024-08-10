@@ -37,10 +37,15 @@ namespace PDFKeeper.WinForms.Views
         {
             InitializeComponent();
 
-            presenter = new LoginPresenter(Handle, new MessageBoxService());
+            presenter = new LoginPresenter(
+                Handle,
+                new MessageBoxService(),
+                new FolderBrowserDialogService());
             viewModel = presenter.ViewModel;
+            LoginViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             AddEventHandlers();
+            presenter.CheckForOracleCloudDataSource();
         }
 
         private void AddEventHandlers()
@@ -50,6 +55,16 @@ namespace PDFKeeper.WinForms.Views
             presenter.ApplyPendingChangesRequested += Presenter_ApplyPendingChangesRequested;
             presenter.ViewCloseRequested += Presenter_ViewCloseRequested;
             presenter.ViewResetRequested += Presenter_ViewResetRequested;
+        }
+
+        private void DatasourceTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            presenter.CheckForOracleCloudDataSource();
+        }
+
+        private void SelectOracleWalletLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            presenter.SelectOracleWallet();
         }
 
         private void OK_Button_Click(object sender, EventArgs e)
@@ -78,7 +93,7 @@ namespace PDFKeeper.WinForms.Views
             viewModel.UserName = Settings.Default.Username;
             viewModel.Password = PasswordSecureTextBox.SecureText;
             viewModel.DataSource = Settings.Default.Datasource;
-            viewModel.DbManagementSystem = Settings.Default.DbManagementSystem;
+            viewModel.DbManagementSystem = Settings.Default.DbManagementSystem;            
         }
 
         private void Presenter_ViewCloseRequested(object sender, EventArgs e)

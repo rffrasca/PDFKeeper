@@ -130,8 +130,8 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Gets the Oracle Wallet path used for Mutual TLS (mTLS) authentication or null when an
-        /// Oracle Wallet is not setup.
+        /// Gets or sets the Oracle Wallet path used for Mutual TLS (mTLS) authentication. On a
+        /// get, null will be returned when an Oracle Wallet is not setup.
         /// </summary>
         public static string OracleWalletPath
         {
@@ -143,6 +143,10 @@ namespace PDFKeeper.Core.DataAccess
                     null);
                 return oracleWalletPath;
             }
+            set => Registry.SetValue(
+                ApplicationRegistry.UserKeyPath,
+                "OracleWalletPath",
+                value);
         }
 
         /// <summary>

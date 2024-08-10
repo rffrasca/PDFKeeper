@@ -22,11 +22,19 @@ using System.Security;
 
 namespace PDFKeeper.Core.ViewModels
 {
-    public class LoginViewModel
+    public class LoginViewModel : ViewModelBase
     {
+        private bool selectOracleWalletVisible;
+
         public string UserName { get; set; }
         public SecureString Password { get; set; }
         public string DataSource { get; set; }
         public string DbManagementSystem { get; set; }
+
+        public bool SelectOracleWalletVisible
+        {
+            get => selectOracleWalletVisible;
+            set => SetProperty(ref selectOracleWalletVisible, value);
+        }
     }
 }

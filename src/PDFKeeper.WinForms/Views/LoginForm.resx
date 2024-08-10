@@ -125,13 +125,19 @@
   <data name="pictureBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="pictureBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 234</value>
   </data>
   <data name="pictureBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>CenterImage</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pictureBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -145,10 +151,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pictureBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="UsernameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 39</value>
+  </data>
+  <data name="UsernameTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="UsernameTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>306, 23</value>
@@ -166,13 +175,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;UsernameTextBox.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="UsernameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="UsernameLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 9</value>
+  </data>
+  <data name="UsernameLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="UsernameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>307, 27</value>
@@ -196,13 +208,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;UsernameLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="PasswordLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="PasswordLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 65</value>
+  </data>
+  <data name="PasswordLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="PasswordLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>307, 27</value>
@@ -226,37 +241,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PasswordLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="PasswordSecureTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="PasswordSecureTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 95</value>
-  </data>
-  <data name="PasswordSecureTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 23</value>
-  </data>
-  <data name="PasswordSecureTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;PasswordSecureTextBox.Name" xml:space="preserve">
-    <value>PasswordSecureTextBox</value>
-  </data>
-  <data name="&gt;&gt;PasswordSecureTextBox.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.Components.SecureTextBox, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;PasswordSecureTextBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PasswordSecureTextBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="DatasourceLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="DatasourceLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 121</value>
+  </data>
+  <data name="DatasourceLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="DatasourceLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>307, 27</value>
@@ -280,31 +274,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DatasourceLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="DatasourceTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="DatasourceTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 151</value>
-  </data>
-  <data name="DatasourceTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 23</value>
-  </data>
-  <data name="DatasourceTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;DatasourceTextBox.Name" xml:space="preserve">
-    <value>DatasourceTextBox</value>
-  </data>
-  <data name="&gt;&gt;DatasourceTextBox.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.Components.CustomTextBox, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;DatasourceTextBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;DatasourceTextBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="Cancel_Button.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -315,11 +285,14 @@
   <data name="Cancel_Button.Location" type="System.Drawing.Point, System.Drawing">
     <value>433, 194</value>
   </data>
+  <data name="Cancel_Button.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="Cancel_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
   <data name="Cancel_Button.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="Cancel_Button.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -334,7 +307,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Cancel_Button.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="OK_Button.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -345,11 +318,14 @@
   <data name="OK_Button.Location" type="System.Drawing.Point, System.Drawing">
     <value>349, 194</value>
   </data>
+  <data name="OK_Button.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="OK_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
   <data name="OK_Button.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="OK_Button.Text" xml:space="preserve">
     <value>OK</value>
@@ -364,11 +340,98 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;OK_Button.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <data name="SelectOracleWalletLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <metadata name="LoginViewModelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>139, 17</value>
   </metadata>
+  <data name="SelectOracleWalletLinkLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SelectOracleWalletLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 200</value>
+  </data>
+  <data name="SelectOracleWalletLinkLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SelectOracleWalletLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 15</value>
+  </data>
+  <data name="SelectOracleWalletLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="SelectOracleWalletLinkLabel.Text" xml:space="preserve">
+    <value>Select Oracle Wallet</value>
+  </data>
+  <data name="&gt;&gt;SelectOracleWalletLinkLabel.Name" xml:space="preserve">
+    <value>SelectOracleWalletLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;SelectOracleWalletLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectOracleWalletLinkLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SelectOracleWalletLinkLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="DatasourceTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="DatasourceTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 151</value>
+  </data>
+  <data name="DatasourceTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DatasourceTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 23</value>
+  </data>
+  <data name="DatasourceTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;DatasourceTextBox.Name" xml:space="preserve">
+    <value>DatasourceTextBox</value>
+  </data>
+  <data name="&gt;&gt;DatasourceTextBox.Type" xml:space="preserve">
+    <value>PDFKeeper.WinForms.Components.CustomTextBox, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+  </data>
+  <data name="&gt;&gt;DatasourceTextBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DatasourceTextBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="PasswordSecureTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="PasswordSecureTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 95</value>
+  </data>
+  <data name="PasswordSecureTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="PasswordSecureTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 23</value>
+  </data>
+  <data name="PasswordSecureTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;PasswordSecureTextBox.Name" xml:space="preserve">
+    <value>PasswordSecureTextBox</value>
+  </data>
+  <data name="&gt;&gt;PasswordSecureTextBox.Type" xml:space="preserve">
+    <value>PDFKeeper.WinForms.Components.SecureTextBox, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+  </data>
+  <data name="&gt;&gt;PasswordSecureTextBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PasswordSecureTextBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -404,6 +467,12 @@
   </data>
   <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
     <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LoginViewModelBindingSource.Name" xml:space="preserve">
+    <value>LoginViewModelBindingSource</value>
+  </data>
+  <data name="&gt;&gt;LoginViewModelBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>LoginForm</value>

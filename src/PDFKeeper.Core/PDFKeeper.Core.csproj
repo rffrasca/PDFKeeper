@@ -77,6 +77,7 @@
     <Compile Include="Rules\ExportPdfMetadataRule.cs" />
     <Compile Include="Rules\FindDocumentsParamRule.cs" />
     <Compile Include="Rules\NotesSizeRule.cs" />
+    <Compile Include="Rules\OracleWalletRule.cs" />
     <Compile Include="Services\IFolderBrowserDialogService.cs" />
     <Compile Include="Services\IFolderExplorerService.cs" />
     <Compile Include="Services\IFileDialogService.cs" />
