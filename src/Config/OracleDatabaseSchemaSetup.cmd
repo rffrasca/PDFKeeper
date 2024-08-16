@@ -21,16 +21,15 @@ rem * along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 rem ***************************************************************************
 
 rem
-rem Start of localized strings
+rem Start of Localized strings
 rem
-set Title=PDFKeeper Multi-User Database Schema Setup
-set MenuHeader=Compatible Database Management Systems
-set MenuChoice1=1. Oracle Database (On-Prem)
-set MenuChoice2=2. Oracle Autonomous Database (Cloud)
-set MenuPrompt=Select the database management system or Q to quit:
+set Title=PDFKeeper Schema Setup for Oracle Database
+set MenuChoice1=1. Oracle Database
+set MenuChoice2=2. Oracle Cloud Autonomous Database
+set MenuPrompt=Select the database platform or Q to quit:
 set OracleMessage1=Enter the database connect string in the format:
-set OracleMessage2=username/password@host:port/service_name
-set OracleMessage3=username: database account that must be a member of SYSDBA.
+set OracleMessage2=user_name/password@host:port/service_name
+set OracleMessage3=user_name: database account that must be a member of SYSDBA.
 set OracleMessage4=Note, SYSTEM is a member of SYSDBA.
 set OracleMessage5=host: host name or IP address of the database server computer.
 set OracleMessage6=If connecting to a database located on the same computer,
@@ -47,31 +46,20 @@ set OracleMessage16=admin/password@TNS_name
 set OracleMessage17=admin is the administrator account and TNS_name is the service name
 set OracleMessage18=of the Autonomous Database instance.
 set CommonMessage=Enter connect string:
-set CommonErrorMessage=Error: Database connect string not specified.
+set CommonErrorMessage=Error: Database connect string not specified!
 rem
-rem End of localized strings
+rem End of Localized strings
 rem
 
 title %Title%
-echo ==========================================================================
-echo  %MenuHeader%
-echo ==========================================================================
 echo.
 echo %MenuChoice1%
 echo %MenuChoice2%
 echo.
 choice /c 12q /n /m "%MenuPrompt%"
-if %ERRORLEVEL%==1 (
-	set operation=Setup
-	goto OracleSetup
-)
-if %ERRORLEVEL%==2 (
-	set operation=Setup
-	goto OracleCloudSetup
-)
-if %ERRORLEVEL%==3 (
-	exit
-)
+if %ERRORLEVEL%==1 goto OracleSetup
+if %ERRORLEVEL%==2 goto OracleCloudSetup
+if %ERRORLEVEL%==3 exit
 
 :OracleSetup
 echo.
@@ -96,7 +84,7 @@ echo   %OracleMessage13%
 echo   %OracleMessage14%
 echo   %OracleMessage15%
 echo.
-goto Main
+goto OracleMain
 
 :OracleCloudSetup
 echo.
@@ -108,13 +96,13 @@ echo * %OracleMessage17%
 echo   %OracleMessage18%
 echo.
 
-:Main
+:OracleMain
 set /p connectString=%CommonMessage% 
 if "%connectString%"=="" (
 	echo %CommonErrorMessage%
 	goto end
 )
-sqlplus %connectString% @OracleDatabaseSchema%operation%.sql
+sqlplus %connectString% @OracleDatabaseSchemaSetup.sql
 
 :end
 pause
