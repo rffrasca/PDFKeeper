@@ -529,13 +529,13 @@
     <value>221, 6</value>
   </data>
   <data name="DocumentsSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>103, 22</value>
   </data>
   <data name="DocumentsSelectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;All</value>
   </data>
   <data name="DocumentsSelectNoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>103, 22</value>
   </data>
   <data name="DocumentsSelectNoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;None</value>
@@ -640,19 +640,19 @@
     <value>&amp;View</value>
   </data>
   <data name="ToolsOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="ToolsOptionsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Options</value>
   </data>
   <data name="ToolsUploadProfilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="ToolsUploadProfilesToolStripMenuItem.Text" xml:space="preserve">
     <value>Upload &amp;Profiles</value>
   </data>
   <data name="ToolsMoveDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="ToolsMoveDatabaseToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Move Database...</value>
@@ -664,16 +664,16 @@
     <value>&amp;Tools</value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Contents</value>
   </data>
   <data name="HelpToolStripSeparator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>164, 6</value>
   </data>
   <data name="HelpAboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>167, 22</value>
   </data>
   <data name="HelpAboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About PDFKeeper</value>

@@ -194,6 +194,7 @@ namespace PDFKeeper.WinForms.Views
             // 
             // ToolStrip
             // 
+            this.ToolStrip.DataBindings.Add(new System.Windows.Forms.Binding("Visible", global::PDFKeeper.WinForms.Properties.Settings.Default, "ToolBarVisible", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileAddToolStripButton,
             this.FileOpenToolStripButton,
@@ -218,6 +219,7 @@ namespace PDFKeeper.WinForms.Views
             this.HelpContentsToolStripButton});
             resources.ApplyResources(this.ToolStrip, "ToolStrip");
             this.ToolStrip.Name = "ToolStrip";
+            this.ToolStrip.Visible = global::PDFKeeper.WinForms.Properties.Settings.Default.ToolBarVisible;
             // 
             // FileAddToolStripButton
             // 
@@ -813,6 +815,7 @@ namespace PDFKeeper.WinForms.Views
             // 
             // StatusStrip
             // 
+            this.StatusStrip.DataBindings.Add(new System.Windows.Forms.Binding("Visible", global::PDFKeeper.WinForms.Properties.Settings.Default, "StatusBarVisible", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DocumentsLabel,
             this.DocumentsCountLabel,
@@ -825,6 +828,7 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.StatusStrip, "StatusStrip");
             this.StatusStrip.Name = "StatusStrip";
             this.StatusStrip.ShowItemToolTips = true;
+            this.StatusStrip.Visible = global::PDFKeeper.WinForms.Properties.Settings.Default.StatusBarVisible;
             // 
             // DocumentsLabel
             // 
@@ -924,6 +928,7 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentDataTabControl.Controls.Add(this.KeywordsTabPage);
             this.DocumentDataTabControl.Controls.Add(this.TextTabPage);
             this.DocumentDataTabControl.Controls.Add(this.SearchTermSnippetsTabPage);
+            this.DocumentDataTabControl.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.MainViewModelBindingSource, "DocumentDataEnabled", true));
             resources.ApplyResources(this.DocumentDataTabControl, "DocumentDataTabControl");
             this.DocumentDataTabControl.Multiline = true;
             this.DocumentDataTabControl.Name = "DocumentDataTabControl";
