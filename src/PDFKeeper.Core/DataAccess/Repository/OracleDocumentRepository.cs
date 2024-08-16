@@ -393,7 +393,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.Add("doc_subject", document.Subject);
                         command.Parameters.Add("doc_keywords", document.Keywords);
                         command.Parameters.Add("doc_notes", document.Notes);
-                        command.Parameters.Add("doc_pdf", OracleDbType.Blob, document.Pdf,
+                        command.Parameters.Add(
+                            "doc_pdf",
+                            OracleDbType.Blob,
+                            document.Pdf,
                             ParameterDirection.Input);
                         command.Parameters.Add("doc_category", document.Category);
                         command.Parameters.Add("doc_flag", document.Flag);
@@ -551,7 +554,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     {
                         command.Parameters.Add("doc_id", id);
                         command.Parameters.Add("doc_dummy", searchTerm);
-                        command.Parameters.Add("translate", OracleDbType.Boolean, false,
+                        command.Parameters.Add(
+                            "translate",
+                            OracleDbType.Boolean,
+                            false,
                             ParameterDirection.Input);
                         connection.Open();
                         using (var reader = command.ExecuteReader())

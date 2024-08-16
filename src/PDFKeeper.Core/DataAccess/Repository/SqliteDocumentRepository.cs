@@ -158,7 +158,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             if (searchTerm == null)
             {
-                searchTerm = String.Empty;
+                searchTerm = string.Empty;
             }
             var sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_notes,doc_pdf," +
                 "doc_category,doc_flag,doc_tax_year,doc_text from docs where doc_id = :doc_id";
@@ -420,7 +420,8 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 throw new ArgumentNullException(nameof(document));
             }
-            var dateTimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss",
+            var dateTimeStamp = DateTime.Now.ToString(
+                "yyyy-MM-dd HH:mm:ss",
                 CultureInfo.CurrentCulture);
             var sql = "insert into docs values(null," +
                       ":doc_title," +
@@ -451,7 +452,8 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.AddWithValue(":doc_category", document.Category);
                         command.Parameters.AddWithValue(":doc_flag", document.Flag);
                         command.Parameters.AddWithValue(":doc_tax_year", document.TaxYear);
-                        command.Parameters.AddWithValue(":doc_text_annotations",
+                        command.Parameters.AddWithValue(
+                            ":doc_text_annotations",
                             document.TextAnnotations);
                         command.Parameters.AddWithValue(":doc_text", document.Text);
                         connection.Open();
@@ -509,7 +511,8 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.AddWithValue("doc_category", document.Category);
                         command.Parameters.AddWithValue("doc_tax_year", document.TaxYear);
                         command.Parameters.AddWithValue("doc_flag", document.Flag);
-                        command.Parameters.AddWithValue("doc_text_annotations",
+                        command.Parameters.AddWithValue(
+                            "doc_text_annotations",
                             document.TextAnnotations);
                         command.Parameters.AddWithValue("doc_text", document.Text);
                         command.Parameters.AddWithValue("doc_id", document.Id);
