@@ -510,7 +510,7 @@ namespace PDFKeeper.Core.Presenters
                     {
                         documentRepository.CompactDatabase();
                     }
-                    catch (PlatformNotSupportedException) { }
+                    catch (NotSupportedException) { }
                     catch (DatabaseException ex)
                     {
                         messageBoxService.ShowMessage(ex.Message, true);

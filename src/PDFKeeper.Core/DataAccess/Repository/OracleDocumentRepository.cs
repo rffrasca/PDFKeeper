@@ -516,12 +516,12 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public void CreateDatabase()
         {
-            throw new PlatformNotSupportedException();
+            throw new NotSupportedException();
         }
 
         public void CompactDatabase()
         {
-            throw new PlatformNotSupportedException();
+            throw new NotSupportedException();
         }
 
         protected override DataTable ExecuteQuery(OracleCommand command)

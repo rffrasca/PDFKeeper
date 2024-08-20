@@ -139,27 +139,27 @@ namespace PDFKeeper.Core.DataAccess.Repository
         void DeleteDocument(int id);
 
         /// <summary>
-        /// Performs a test connection to the database. PlatformNotSupportedException will be
-        /// thrown by the implementing class when the database platform is SQLite.
+        /// Performs a test connection to the database. NotSupportedException will be thrown by the
+        /// implementing class when the database platform is SQLite.
         /// </summary>
         void TestConnection();
 
         /// <summary>
-        /// Resets the credential object used for connecting to the database.
-        /// PlatformNotSupportedException will be thrown by the implementing class when the
-        /// database platform does not implement a credential object.
+        /// Resets the credential object used for connecting to the database. NotSupportedException
+        /// will be thrown by the implementing class when the database platform does not implement
+        /// a credential object.
         /// </summary>
         void ResetCredential();
 
         /// <summary>
-        /// Creates the database. PlatformNotSupportedException will be thrown by the implementing
-        /// class when the database platform is not SQLite.
+        /// Creates the database. NotSupportedException will be thrown by the implementing class
+        /// when the database platform is not SQLite.
         /// </summary>
         void CreateDatabase();
 
         /// <summary>
-        /// Compacts the database. PlatformNotSupportedException will be thrown by the implementing
-        /// class when the database platform is not SQLite.
+        /// Compacts the database. NotSupportedException will be thrown by the implementing class
+        /// when the database platform is not SQLite.
         /// </summary>
         void CompactDatabase();
     }
