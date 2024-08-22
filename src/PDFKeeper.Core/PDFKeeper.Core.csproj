@@ -77,7 +77,6 @@
     <Compile Include="Rules\ExportPdfMetadataRule.cs" />
     <Compile Include="Rules\FindDocumentsParamRule.cs" />
     <Compile Include="Rules\NotesSizeRule.cs" />
-    <Compile Include="Rules\OracleWalletRule.cs" />
     <Compile Include="Services\IFolderBrowserDialogService.cs" />
     <Compile Include="Services\IFolderExplorerService.cs" />
     <Compile Include="Services\IFileDialogService.cs" />
@@ -154,6 +153,10 @@
   <ItemGroup>
     <Content Include="..\Config\OracleDatabaseSchemaSetup.cmd">
       <Link>OracleDatabaseSchemaSetup.cmd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Config\SetOracleWalletPath.cmd">
+      <Link>SetOracleWalletPath.cmd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="PDFKeeper.Core.ruleset" />

@@ -45,7 +45,7 @@ namespace PDFKeeper.Core.DataAccess
         public enum CompatiblePlatformName
         {
             Sqlite, // 0
-            Oracle  // 1
+            Oracle  // 1            
         }
 
         /// <summary>
@@ -130,8 +130,8 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Gets or sets the Oracle Wallet path used for Mutual TLS (mTLS) authentication. On a
-        /// get, null will be returned when an Oracle Wallet is not setup.
+        /// Gets the Oracle Wallet path used for Mutual TLS (mTLS) authentication or null will be
+        /// returned when an Oracle Wallet is not setup.
         /// </summary>
         public static string OracleWalletPath
         {
@@ -143,10 +143,6 @@ namespace PDFKeeper.Core.DataAccess
                     null);
                 return oracleWalletPath;
             }
-            set => Registry.SetValue(
-                ApplicationRegistry.UserKeyPath,
-                "OracleWalletPath",
-                value);
         }
 
         /// <summary>

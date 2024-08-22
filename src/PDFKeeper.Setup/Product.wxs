@@ -225,6 +225,9 @@
       <Component Id="OracleDatabaseSchemaSetup.cmd" Guid="8c230098-4f55-491f-bcb1-951859878ffb">
         <File Id="OracleDatabaseSchemaSetup.cmd" Name="OracleDatabaseSchemaSetup.cmd" Source="$(var.PDFKeeper.WinForms_TargetDir)OracleDatabaseSchemaSetup.cmd" />
       </Component>
+      <Component Id="SetOracleWalletPath.cmd" Guid="b2c65832-fe92-4933-a929-e154d68fc1cb">
+        <File Id="SetOracleWalletPath.cmd" Name="SetOracleWalletPath.cmd" Source="$(var.PDFKeeper.WinForms_TargetDir)SetOracleWalletPath.cmd" />
+      </Component>
   	</ComponentGroup>
 	</Fragment>
 </Wix>

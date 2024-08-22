@@ -172,9 +172,6 @@ Do you want to save changes before closing?</value>
   <data name="NotesSizeTooLarge" xml:space="preserve">
     <value>Notes size in bytes is {0} which is too large. Reduce the size to {1} or less and try saving again.</value>
   </data>
-  <data name="NotOracleWallet" xml:space="preserve">
-    <value>{0} does not contain an Oracle Wallet!</value>
-  </data>
   <data name="OneFindFunctionMustBeTrue" xml:space="preserve">
     <value>One find function must be true!</value>
   </data>

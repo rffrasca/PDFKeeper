@@ -58,12 +58,9 @@ namespace PDFKeeper.WinForms.Views
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.OK_Button = new System.Windows.Forms.Button();
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
-            this.SelectOracleWalletLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.LoginViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DatasourceTextBox = new PDFKeeper.WinForms.Components.CustomTextBox(this.components);
             this.PasswordSecureTextBox = new PDFKeeper.WinForms.Components.SecureTextBox(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LoginViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -116,19 +113,6 @@ namespace PDFKeeper.WinForms.Views
             this.HelpProvider.SetShowHelp(this.OK_Button, ((bool)(resources.GetObject("OK_Button.ShowHelp"))));
             this.OK_Button.Click += new System.EventHandler(this.OK_Button_Click);
             // 
-            // SelectOracleWalletLinkLabel
-            // 
-            resources.ApplyResources(this.SelectOracleWalletLinkLabel, "SelectOracleWalletLinkLabel");
-            this.SelectOracleWalletLinkLabel.DataBindings.Add(new System.Windows.Forms.Binding("Visible", this.LoginViewModelBindingSource, "SelectOracleWalletVisible", true));
-            this.SelectOracleWalletLinkLabel.Name = "SelectOracleWalletLinkLabel";
-            this.HelpProvider.SetShowHelp(this.SelectOracleWalletLinkLabel, ((bool)(resources.GetObject("SelectOracleWalletLinkLabel.ShowHelp"))));
-            this.SelectOracleWalletLinkLabel.TabStop = true;
-            this.SelectOracleWalletLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SelectOracleWalletLinkLabel_LinkClicked);
-            // 
-            // LoginViewModelBindingSource
-            // 
-            this.LoginViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.LoginViewModel);
-            // 
             // DatasourceTextBox
             // 
             this.DatasourceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::PDFKeeper.WinForms.Properties.Settings.Default, "Datasource", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -136,7 +120,6 @@ namespace PDFKeeper.WinForms.Views
             this.DatasourceTextBox.Name = "DatasourceTextBox";
             this.HelpProvider.SetShowHelp(this.DatasourceTextBox, ((bool)(resources.GetObject("DatasourceTextBox.ShowHelp"))));
             this.DatasourceTextBox.Text = global::PDFKeeper.WinForms.Properties.Settings.Default.Datasource;
-            this.DatasourceTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DatasourceTextBox_KeyUp);
             // 
             // PasswordSecureTextBox
             // 
@@ -151,7 +134,6 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.Cancel_Button;
-            this.Controls.Add(this.SelectOracleWalletLinkLabel);
             this.Controls.Add(this.Cancel_Button);
             this.Controls.Add(this.OK_Button);
             this.Controls.Add(this.DatasourceTextBox);
@@ -171,7 +153,6 @@ namespace PDFKeeper.WinForms.Views
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LoginViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,7 +170,5 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.Button Cancel_Button;
         internal System.Windows.Forms.Button OK_Button;
         internal System.Windows.Forms.HelpProvider HelpProvider;
-        private System.Windows.Forms.LinkLabel SelectOracleWalletLinkLabel;
-        private System.Windows.Forms.BindingSource LoginViewModelBindingSource;
     }
 }
