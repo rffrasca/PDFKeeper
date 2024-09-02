@@ -33,8 +33,12 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public SqliteDocumentRepository()
         {
-            ConnectionString = string.Concat("Data Source=", DatabaseSession.LocalDatabasePath,
-                ";Version=3");
+            var connectionStringBuilder = new SQLiteConnectionStringBuilder
+            {
+                DataSource = DatabaseSession.LocalDatabasePath,
+                Version = 3
+            };
+            ConnectionString = connectionStringBuilder.ConnectionString;
         }
 
         public bool DocumentsListHasChanges

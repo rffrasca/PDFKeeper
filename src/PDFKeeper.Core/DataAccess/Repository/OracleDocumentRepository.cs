@@ -34,8 +34,13 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public OracleDocumentRepository()
         {
-            ConnectionString = string.Concat("Data Source=", DatabaseSession.DataSource,
-                ";Pooling=True;Connection Timeout=60");
+            var connectionStringBuilder = new OracleConnectionStringBuilder
+            {
+                DataSource = DatabaseSession.DataSource,
+                Pooling = true,
+                ConnectionTimeout = 60
+            };
+            ConnectionString = connectionStringBuilder.ConnectionString;
             if (oracleCredential == null)
             {
                 oracleCredential = new OracleCredential(DatabaseSession.UserName,
