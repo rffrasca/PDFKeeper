@@ -113,6 +113,29 @@ namespace PDFKeeper.WinForms
                     {
                         messageBoxService.ShowMessage(Resources.MultiUserDatabaseSetup, false);
                         helpFile.Show("Setup Multi-User Database.html");
+                        var choice2 = messageBoxService.ShowQuestion(
+                            Resources.ConnectingToMySql,
+                            false);
+                        if (choice2.Equals(6))
+                        {
+                            Settings.Default.DbManagementSystem =
+                                DatabaseSession.CompatiblePlatformName.MySql.ToString();
+                        }
+                        else
+                        {
+                            var choice3 = messageBoxService.ShowQuestion(
+                                Resources.ConnectingToOracle,
+                                false);
+                            if (choice3.Equals(6))
+                            {
+                                Settings.Default.DbManagementSystem =
+                                    DatabaseSession.CompatiblePlatformName.Oracle.ToString();
+                            }
+                            else
+                            {
+                                return true;
+                            }
+                        }
                     }
                     else if (choice.Equals(2))
                     {
@@ -124,11 +147,6 @@ namespace PDFKeeper.WinForms
                 DatabaseSession.CompatiblePlatformName.Sqlite.ToString(),
                 StringComparison.Ordinal))
             {
-                // NOTE: Oracle is the only supported RDBMS at this time. To add future systems,
-                // add a ComboBox to LoginForm containing the supported Databases and bind it to
-                // the DbManagementSystem setting.                
-                Settings.Default.DbManagementSystem = 
-                    DatabaseSession.CompatiblePlatformName.Oracle.ToString();
                 using (var form = new LoginForm())
                 {
                     if (form.ShowDialog().Equals(DialogResult.Cancel))

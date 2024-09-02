@@ -67,6 +67,7 @@ namespace PDFKeeper.Core.ViewModels
         private bool textFocused;
         private string searchTermSnippets;
         private bool searchTermSnippetsFocused;
+        private bool searchTermSnippetsVisible;
         private Image preview;
         private bool progressBarVisible;
         private int progressBarMinimum;
@@ -294,7 +295,7 @@ namespace PDFKeeper.Core.ViewModels
                 ViewSetPreviewPixelDensityMenuEnabled = documentDataEnabled;
             }
         }
-
+        
         public string Notes
         {
             get => notes;
@@ -344,13 +345,19 @@ namespace PDFKeeper.Core.ViewModels
             get => searchTermSnippets;
             set => SetProperty(ref searchTermSnippets, value);
         }
-
+        
         public string SelectedSearchTermSnippets { get; set; }
 
         public bool SearchTermSnippetsFocused
         {
             get => searchTermSnippetsFocused;
             set => searchTermSnippetsFocused = value;
+        }
+
+        public bool SearchTermSnippetsVisible
+        {
+            get => searchTermSnippetsVisible;
+            set => SetProperty(ref searchTermSnippetsVisible, value);
         }
 
         public Image Preview

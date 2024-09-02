@@ -616,6 +616,20 @@ namespace PDFKeeper.WinForms.Views
                 NotesTextBox.Text = NotesTextBox.Text.TrimStart();
                 presenter.OnNotesTextChanged(NotesTextBox.CanUndo);
             }
+            else if (e.PropertyName.Equals("SearchTermSnippetsVisible", StringComparison.Ordinal))
+            {
+                if (viewModel.SearchTermSnippetsVisible)
+                {
+                    if (!DocumentDataTabControl.TabPages.Contains(SearchTermSnippetsTabPage))
+                    {
+                        DocumentDataTabControl.TabPages.Insert(3, SearchTermSnippetsTabPage);
+                    }
+                }
+                else
+                {
+                    DocumentDataTabControl.TabPages.Remove(SearchTermSnippetsTabPage);
+                }
+            }
             else if (e.PropertyName.Equals("ProgressBarVisible", StringComparison.Ordinal))
             {
                 ProgressBar.Visible = viewModel.ProgressBarVisible;

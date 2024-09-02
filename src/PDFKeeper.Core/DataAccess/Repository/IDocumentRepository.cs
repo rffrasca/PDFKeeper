@@ -31,6 +31,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
         bool DocumentsListHasChanges { get; set; }
 
         /// <summary>
+        /// Gets if Search Term Snippets is supported? (true or false) 
+        /// </summary>
+        bool SearchTermSnippetsSupported { get; }
+
+        /// <summary>
         /// gets the length of the DOC_NOTES column in the DOCS table.
         /// </summary>
         /// <returns>

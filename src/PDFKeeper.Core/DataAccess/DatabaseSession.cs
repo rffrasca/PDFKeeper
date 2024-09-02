@@ -37,6 +37,7 @@ namespace PDFKeeper.Core.DataAccess
         private static string dataSource;
         private static string oracleWalletPath;
         private static string localDatabasePath;
+        private static uint mySqlPort;
         private static bool odpHandlerEnabled;
         
         /// <summary>
@@ -45,7 +46,8 @@ namespace PDFKeeper.Core.DataAccess
         public enum CompatiblePlatformName
         {
             Sqlite, // 0
-            Oracle  // 1            
+            Oracle, // 1
+            MySql   // 2
         }
 
         /// <summary>
@@ -168,6 +170,23 @@ namespace PDFKeeper.Core.DataAccess
                 ApplicationRegistry.UserKeyPath,
                 "LocalDatabasePath",
                 Path.GetDirectoryName(value));
+        }
+
+        /// <summary>
+        /// Gets the MySQL port number to use for connecting to the database server.
+        /// </summary>
+        [CLSCompliant(false)]
+        public static uint MySqlPort
+        {
+            get
+            {
+                mySqlPort = Convert.ToUInt32(
+                    Registry.GetValue(
+                        ApplicationRegistry.UserKeyPath,
+                        "MySqlPort",
+                        3306));
+                return mySqlPort;
+            }
         }
 
         /// <summary>

@@ -77,7 +77,11 @@ namespace PDFKeeper.Core.Presenters
             catch (DatabaseException ex)
             {
                 messageBoxService.ShowMessage(handle, ex.Message, true);
-                documentRepository.ResetCredential();
+                try
+                {
+                    documentRepository.ResetCredential();
+                }
+                catch (NotSupportedException) { }
                 OnViewResetRequested();
             }
             finally

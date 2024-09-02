@@ -162,6 +162,7 @@ namespace PDFKeeper.Core.Presenters
                 ViewModel.ToolsMoveDatabaseMenuVisible = false;
             }
             ViewModel.DocumentsEnabled = true;
+            ViewModel.SearchTermSnippetsVisible = documentRepository.SearchTermSnippetsSupported;
         }
 
         /// <summary>

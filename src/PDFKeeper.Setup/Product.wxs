@@ -225,8 +225,35 @@
       <Component Id="OracleDatabaseSchemaSetup.cmd" Guid="8c230098-4f55-491f-bcb1-951859878ffb">
         <File Id="OracleDatabaseSchemaSetup.cmd" Name="OracleDatabaseSchemaSetup.cmd" Source="$(var.PDFKeeper.WinForms_TargetDir)OracleDatabaseSchemaSetup.cmd" />
       </Component>
-      <Component Id="SetOracleWalletPath.cmd" Guid="b2c65832-fe92-4933-a929-e154d68fc1cb">
-        <File Id="SetOracleWalletPath.cmd" Name="SetOracleWalletPath.cmd" Source="$(var.PDFKeeper.WinForms_TargetDir)SetOracleWalletPath.cmd" />
+      <Component Id="ConnectionSettingManager.cmd" Guid="b2c65832-fe92-4933-a929-e154d68fc1cb">
+        <File Id="ConnectionSettingManager.cmd" Name="ConnectionSettingManager.cmd" Source="$(var.PDFKeeper.WinForms_TargetDir)ConnectionSettingManager.cmd" />
+      </Component>
+      <Component Id="MySqlDatabaseSetup.sql" Guid="cab07043-1d3d-47d1-9abf-261debca0994">
+        <File Id="MySqlDatabaseSetup.sql" Name="MySqlDatabaseSetup.sql" Source="$(var.PDFKeeper.WinForms_TargetDir)MySqlDatabaseSetup.sql" />
+      </Component>
+      <Component Id="ZstdSharp.dll" Guid="82f7b8a5-87d7-4b01-9518-19b8cbc60013">
+        <File Id="ZstdSharp.dll" Name="ZstdSharp.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)ZstdSharp.dll" />
+      </Component>
+      <Component Id="K4os.Compression.LZ4.Streams.dll" Guid="4468f4ba-6fb9-442e-89d3-9b93882c2315">
+        <File Id="K4os.Compression.LZ4.Streams.dll" Name="K4os.Compression.LZ4.Streams.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)K4os.Compression.LZ4.Streams.dll" />
+      </Component>
+      <Component Id="System.IO.Pipelines.dll" Guid="fada6926-9834-4110-bdd4-a2125abb2acc">
+        <File Id="System.IO.Pipelines.dll" Name="System.IO.Pipelines.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.IO.Pipelines.dll" />
+      </Component>
+      <Component Id="K4os.Hash.xxHash.dll" Guid="8428cd7f-8b79-40e9-a906-91f62c6db8b0">
+        <File Id="K4os.Hash.xxHash.dll" Name="K4os.Hash.xxHash.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)K4os.Hash.xxHash.dll" />
+      </Component>
+      <Component Id="Google.Protobuf.dll" Guid="2c1b56f3-9549-49ac-8c2b-f2af7a82a89d">
+        <File Id="Google.Protobuf.dll" Name="Google.Protobuf.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Google.Protobuf.dll" />
+      </Component>
+      <Component Id="MySql.Data.dll" Guid="c878a0c2-9a98-4cda-ab12-4f2831bf7510">
+        <File Id="MySql.Data.dll" Name="MySql.Data.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)MySql.Data.dll" />
+      </Component>
+      <Component Id="K4os.Compression.LZ4.dll" Guid="d7ca71c1-2261-4510-8bdd-6c377123e4d7">
+        <File Id="K4os.Compression.LZ4.dll" Name="K4os.Compression.LZ4.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)K4os.Compression.LZ4.dll" />
+      </Component>
+      <Component Id="System.Configuration.ConfigurationManager.dll" Guid="8C44C939-3F5E-4EAC-B05E-2C2506514C75">
+        <File Id="System.Configuration.ConfigurationManager.dll" Name="System.Configuration.ConfigurationManager.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Configuration.ConfigurationManager.dll" />
       </Component>
   	</ComponentGroup>
 	</Fragment>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Database Setup for MySQL</title>
+	<meta name="generator" content="LibreOffice 24.2.5.2 (Windows)"/>
+	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
+	<meta name="changed" content="2024-08-14T21:31:06.692000000"/>
+	<meta name="description" content="
+*******************************************************************************
+* PDFKeeper -- Open Source PDF Document Management
+* Copyright (C) 2009-2024 Robert F. Frasca
+*
+* This file is part of PDFKeeper.
+*
+* PDFKeeper is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* PDFKeeper is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*******************************************************************************"/>
+</head>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Database
+Setup for MySQL</b></font></h1>
+<p><font face="Segoe UI, sans-serif">This topic provides the steps
+that need to be performed by the individual responsible for the
+administration of MySQL to setup the database for PDFKeeper.</font></p>
+<p><font face="Segoe UI, sans-serif">Note, this topic only provides
+instructions for performing the setup on the same computer as MySQL
+since remote administrative access is disabled by default. This
+requires that PDFKeeper be installed on the same computer as MySQL to
+perform the database setup. As an alternative, you can copy
+<b>MySqlDatabaseSetup.sql </b><span style="font-weight: normal">from
+</span><b>%LOCALAPPDATA%\Programs\PDFKeeper</b> <span style="font-weight: normal">to
+the computer hosting MySQL Server.</span></font></p>
+<p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Perform
+the following steps to setup the database. Note, these instructions
+assume that the MySQL Server version is </span><b>9.0</b> <span style="font-weight: normal">and
+the</span> <b>root</b> <span style="font-weight: normal">account is
+being used for MySQL administration.</span></font></p>
+<ol>
+	<li><p><font face="Segoe UI, sans-serif">Open a </font><font face="Segoe UI, sans-serif"><b>Command
+	Prompt</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Change
+	to the directory where </span></font><font face="Segoe UI, sans-serif"><b>MySqlDatabaseSetup.sql
+	</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">is
+	located. If PDFKeeper is installed on the same computer as MySQL
+	Server, change directory to </span></font><font face="Segoe UI, sans-serif"><b>%LOCALAPPDATA%\Programs\PDFKeeper</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Execute
+	</span></font><font face="Segoe UI, sans-serif"><b>&quot;C:\Program
+	Files\MySQL\MySQL Server 9.0\bin\mysql.exe&quot; -u root -p &lt;
+	MySqlDatabaseSetup.sql</b></font></p></li>
+	<li><p style="font-variant: normal; font-style: normal; font-weight: normal">
+	<font face="Segoe UI, sans-serif">Enter the password when prompted.</font></p></li>
+</ol>
+</body>
+</html>

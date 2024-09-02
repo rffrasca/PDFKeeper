@@ -250,4 +250,10 @@ After reading the topic, close the help dialog, and then PDFKeeper will open.</v
 
 After reading the topic and setting up the database and any dependencies, close the help dialog, and then PDFKeeper will open to the login form.</value>
   </data>
+  <data name="ConnectingToMySql" xml:space="preserve">
+    <value>Are you going to be connecting to MySQL server?</value>
+  </data>
+  <data name="ConnectingToOracle" xml:space="preserve">
+    <value>Are you going to be connecting to an Oracle Database or Oracle Autonomous Database server?</value>
+  </data>
 </root>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Find Documents by Search Term Examples for MySQL</title>
+	<meta name="generator" content="LibreOffice 24.8.0.3 (Windows)"/>
+	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
+	<meta name="changed" content="2024-08-30T15:20:22.637000000"/>
+	<meta name="description" content="
+*******************************************************************************
+* PDFKeeper -- Open Source PDF Document Management
+* Copyright (C) 2009-2024 Robert F. Frasca
+*
+* This file is part of PDFKeeper.
+*
+* PDFKeeper is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* PDFKeeper is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*******************************************************************************"/>
+</head>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Find
+Documents by Search Term Examples for MySQL</b></font></h1>
+<p><font face="Segoe UI, sans-serif"><b>Below are examples on how to
+find documents by Search Term using the MySQL database:</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>insurance</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><font size="3" style="font-size: 12pt"><span style="font-weight: normal">Will
+return documents that contain </span><span style="font-variant: normal"><font color="#000000"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">the
+search term</span></span></span></font></span> <i><span style="font-weight: normal">insurance</span></i><span style="font-weight: normal">.</span></font></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><font size="3" style="font-size: 12pt"><span style="font-variant: normal"><font color="#000000"><span style="letter-spacing: normal"><span style="font-style: normal"><b>auto
+home</b></span></span></font></span><span style="font-variant: normal"><font color="#000000"><span style="letter-spacing: normal">&nbsp;</span></font></span></font></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Will
+return documents that contain </span><i><span style="font-weight: normal">auto</span></i>
+<span style="font-weight: normal">or </span><i><span style="font-weight: normal">home</span></i><span style="font-weight: normal">.</span></font></p>
+<p style="font-variant: normal; letter-spacing: normal; font-style: normal; margin-left: 0.49in">
+<font color="#000000"><font face="Segoe UI, sans-serif"><font size="3" style="font-size: 12pt"><b>+auto
++home</b></font></font></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents that contain <i>auto</i> and <i>home</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>+insurance
+-auto</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return document records that contain <i>insurance</i> and not <i>auto</i></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif"><b>grocer*</b></font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">Will
+return documents that contain the term, beginning with <i>grocer</i>.</font></p>
+<p style="margin-left: 0.49in"><font face="Segoe UI, sans-serif">For
+more examples and additional usage information, please see the <a href="https://dev.mysql.com/doc/refman/9.0/en/fulltext-boolean.html" target="_blank">MySQL
+Reference Manual</a>.</font></p>
+<p><font face="Segoe UI, sans-serif"><b>Notes on special characters:</b></font></p>
+<ul>
+	<li><p><font face="Segoe UI, sans-serif"><b>* </b><span style="font-weight: normal">is
+	a multiple wild card character;</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Parenthesis
+	characters </span><b>()</b> <span style="font-weight: normal">can be
+	used to group words into sub-expressions.</span></font></p></li>
+</ul>
+<p><font face="Segoe UI, sans-serif"><b>Additional Information:</b></font></p>
+<ul>
+	<li><p><font color="#000000"><font face="Segoe UI, sans-serif">Boolean
+	Mode is used for Full-Text searches.</font></font></p></li>
+	<li><p><font color="#000000"><font face="Segoe UI, sans-serif">MySQL
+	contains a stop list of words that will be ignored in full-text
+	searches. The full list can be found <a href="https://dev.mysql.com/doc/refman/9.0/en/fulltext-stopwords.html#fulltext-stopwords-stopwords-for-innodb-search-indexes" target="_blank">here</a>.</font></font></p></li>
+	<li><p><font color="#000000"><font face="Segoe UI, sans-serif"><font size="3" style="font-size: 12pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">The
+	default minimum length of words that are found by full-text searches
+	is&nbsp;three characters.</span></span></span></span></font></font></font></p></li>
+</ul>
+</body>
+</html>

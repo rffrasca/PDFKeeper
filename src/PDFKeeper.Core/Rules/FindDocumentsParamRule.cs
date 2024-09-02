@@ -116,6 +116,11 @@ namespace PDFKeeper.Core.Rules
             {
                 result = IsSearchTermSyntaxCorrectForSqlite(searchTerm);
             }
+            else if (DatabaseSession.PlatformName.Equals(
+                DatabaseSession.CompatiblePlatformName.MySql))
+            {
+                result = IsSearchTermSyntaxCorrectForMySql(searchTerm);
+            }
             return result;
         }
 
@@ -172,6 +177,18 @@ namespace PDFKeeper.Core.Rules
             if (searchTerm.Contains("&") || searchTerm.Contains("!") || searchTerm.Contains("?") ||
                 searchTerm.Contains("/") || searchTerm.Contains("\"") || searchTerm.Contains(",") ||
                 searchTerm.StartsWith("*", StringComparison.CurrentCulture))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private static bool IsSearchTermSyntaxCorrectForMySql(string searchTerm)
+        {
+            if (searchTerm.Contains("%") || searchTerm.Contains("?"))
             {
                 return false;
             }

@@ -57,6 +57,8 @@ namespace PDFKeeper.Core.DataAccess.Repository
             set => documentsListHasChanges = value;
         }
 
+        public bool SearchTermSnippetsSupported => true;
+
         public int GetNotesColumnDataLength()
         {
             var sql = "select data_length from all_tab_columns " +

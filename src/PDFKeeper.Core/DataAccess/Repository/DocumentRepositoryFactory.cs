@@ -40,9 +40,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 {
                     instance = GetSqliteInstance();
                 }
+                else if (DatabaseSession.PlatformName.Equals(
+                    DatabaseSession.CompatiblePlatformName.MySql))
+                {
+                    instance = GetMySqlInstance();
+                }
                 return instance;
             }
         }
+
 
         // Repository object creation has to occur outside of the Instance property to avoid an
         // System.InvalidOperationException from being thrown when the database platform is SQLite.
@@ -55,6 +61,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
         private static IDocumentRepository GetSqliteInstance()
         {
             return new SqliteDocumentRepository();
+        }
+
+        private static IDocumentRepository GetMySqlInstance()
+        {
+            return new MySqlDocumentRepository();
         }
     }
 }
