@@ -72,6 +72,9 @@ Find Documents by Search Term Examples for MySQL.html
 Client Setup for Multi-User Database.html
 MySQL-Client.html
 Change Port Number for MySQL Server.html
+Oracle Autonomous Database (Cloud)-Client.html
+Oracle Database (On-Prem)-Client.html
+Set Oracle Wallet Path for Mutual TLS (mTLS).html
 
 [INFOTYPES]
 
