@@ -92,7 +92,7 @@ namespace PDFKeeper.WinForms
                             DatabaseSession.CompatiblePlatformName.Sqlite;
                         try
                         {
-                            DocumentRepositoryFactory.Instance.CreateDatabase();
+                            DatabaseSession.GetDocumentRepository().CreateDatabase();
                         }
                         catch (DatabaseException ex)
                         {

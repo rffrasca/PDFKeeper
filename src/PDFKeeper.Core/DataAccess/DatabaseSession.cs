@@ -20,6 +20,7 @@
 
 using Microsoft.Win32;
 using PDFKeeper.Core.Application;
+using PDFKeeper.Core.DataAccess.Repository;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Services;
 using System;
@@ -198,6 +199,32 @@ namespace PDFKeeper.Core.DataAccess
             DatabaseSession.messageBoxService = messageBoxService;
         }
 
+        /// <summary>
+        /// Factory method that gets a document repository instance for the database platform in
+        /// use.
+        /// </summary>
+        /// <returns>The document repository instance.</returns>
+        public static IDocumentRepository GetDocumentRepository()
+        {
+            IDocumentRepository instance = null;
+            if (DatabaseSession.PlatformName.Equals(
+                DatabaseSession.CompatiblePlatformName.Oracle))
+            {
+                instance = GetOracleInstance();
+            }
+            else if (DatabaseSession.PlatformName.Equals(
+                DatabaseSession.CompatiblePlatformName.Sqlite))
+            {
+                instance = GetSqliteInstance();
+            }
+            else if (DatabaseSession.PlatformName.Equals(
+                DatabaseSession.CompatiblePlatformName.MySql))
+            {
+                instance = GetMySqlInstance();
+            }
+            return instance;
+        }
+
         private static void OnCompatiblePlatformNameChanged()
         {
             if (PlatformName.Equals(CompatiblePlatformName.Oracle) &&
@@ -239,6 +266,25 @@ namespace PDFKeeper.Core.DataAccess
                 messageBoxService.ShowMessage(Resources.OracleDataProviderMissing, true);
                 return null;
             }
+        }
+
+        // Repository object creation has to occur outside of the GetDocumentRepository method to
+        // avoid an InvalidOperationException from being thrown when the database platform is
+        // SQLite.
+
+        private static IDocumentRepository GetOracleInstance()
+        {
+            return new OracleDocumentRepository();
+        }
+
+        private static IDocumentRepository GetSqliteInstance()
+        {
+            return new SqliteDocumentRepository();
+        }
+
+        private static IDocumentRepository GetMySqlInstance()
+        {
+            return new MySqlDocumentRepository();
         }
     }
 }

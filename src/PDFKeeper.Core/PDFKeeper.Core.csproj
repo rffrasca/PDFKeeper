@@ -87,7 +87,6 @@
     <Compile Include="Presenters\PresenterBase.cs" />
     <Compile Include="DataAccess\Repository\RepositoryBase.cs" />
     <Compile Include="Rules\RuleBase.cs" />
-    <Compile Include="DataAccess\Repository\DocumentRepositoryFactory.cs" />
     <Compile Include="DataAccess\Repository\OracleDocumentRepository.cs" />
     <Compile Include="DataAccess\Repository\SqliteDocumentRepository.cs" />
     <Compile Include="DataAccess\DatabaseException.cs" />

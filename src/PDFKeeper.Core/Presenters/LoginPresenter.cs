@@ -65,7 +65,7 @@ namespace PDFKeeper.Core.Presenters
                 DatabaseSession.UserName = ViewModel.UserName;
                 DatabaseSession.Password = ViewModel.Password;
                 DatabaseSession.DataSource = ViewModel.DataSource;
-                documentRepository = DocumentRepositoryFactory.Instance;
+                documentRepository = DatabaseSession.GetDocumentRepository();
                 documentRepository.TestConnection();
                 OnViewCloseRequested();
             }

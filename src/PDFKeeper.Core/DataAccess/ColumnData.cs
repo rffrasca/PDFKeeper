@@ -18,7 +18,6 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.DataAccess.Repository;
 using System.Collections.Generic;
 using System.Data;
 
@@ -33,11 +32,16 @@ namespace PDFKeeper.Core.DataAccess
         /// <param name="category">The category or null.</param>
         /// <param name="taxYear">The tax year or null.</param>
         /// <returns>The collection.</returns>
-        internal static IEnumerable<string> GetAuthors(string subject, string category,
+        internal static IEnumerable<string> GetAuthors(
+            string subject,
+            string category,
             string taxYear)
         {
-            return GetColumnData(DocumentRepositoryFactory.Instance.GetAuthors(subject, category,
-                taxYear));
+            return GetColumnData(
+                DatabaseSession.GetDocumentRepository().GetAuthors(
+                    subject,
+                    category,
+                    taxYear));
         }
 
         /// <summary>
@@ -47,11 +51,16 @@ namespace PDFKeeper.Core.DataAccess
         /// <param name="category">The category or null.</param>
         /// <param name="taxYear">The tax year or null.</param>
         /// <returns>The collection.</returns>
-        internal static IEnumerable<string> GetSubjects(string author, string category,
+        internal static IEnumerable<string> GetSubjects(
+            string author,
+            string category,
             string taxYear)
         {
-            return GetColumnData(DocumentRepositoryFactory.Instance.GetSubjects(author, category,
-                taxYear));
+            return GetColumnData(
+                DatabaseSession.GetDocumentRepository().GetSubjects(
+                    author,
+                    category,
+                    taxYear));
         }
 
         /// <summary>
@@ -61,11 +70,16 @@ namespace PDFKeeper.Core.DataAccess
         /// <param name="subject">The subject or null.</param>
         /// <param name="taxYear">The tax year or null.</param>
         /// <returns>The collection.</returns>
-        internal static IEnumerable<string> GetCategories(string author, string subject,
+        internal static IEnumerable<string> GetCategories(
+            string author,
+            string subject,
             string taxYear)
         {
-            return GetColumnData(DocumentRepositoryFactory.Instance.GetCategories(author, subject,
-                taxYear));
+            return GetColumnData(
+                DatabaseSession.GetDocumentRepository().GetCategories(
+                    author,
+                    subject,
+                    taxYear));
         }
 
         /// <summary>
@@ -75,11 +89,16 @@ namespace PDFKeeper.Core.DataAccess
         /// <param name="subject">The subject or null.</param>
         /// <param name="category">The category or null.</param>
         /// <returns>The collection.</returns>
-        internal static IEnumerable<string> GetTaxYears(string author, string subject,
+        internal static IEnumerable<string> GetTaxYears(
+            string author,
+            string subject,
             string category)
         {
-            return GetColumnData(DocumentRepositoryFactory.Instance.GetTaxYears(author, subject,
-                category));
+            return GetColumnData(
+                DatabaseSession.GetDocumentRepository().GetTaxYears(
+                    author,
+                    subject,
+                    category));
         }
 
         private static IEnumerable<string> GetColumnData(DataTable dataTable)

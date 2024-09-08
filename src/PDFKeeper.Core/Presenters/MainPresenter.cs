@@ -108,7 +108,7 @@ namespace PDFKeeper.Core.Presenters
             this.printPreviewDialogService = printPreviewDialogService;
             ViewModel = new MainViewModel();
             printDocument = new PrintDocument();
-            documentRepository = DocumentRepositoryFactory.Instance;
+            documentRepository = DatabaseSession.GetDocumentRepository();
             pdfUploader = new PdfUploader();
             fileCache = new FileCache();
             uploadRejectedDirectory = new ApplicationDirectory().GetDirectory(
@@ -533,7 +533,7 @@ namespace PDFKeeper.Core.Presenters
                         string.Concat(executingAssembly.ProductName, ".sqlite"));
                     File.Move(DatabaseSession.LocalDatabasePath, databasePath);
                     DatabaseSession.LocalDatabasePath = databasePath;
-                    documentRepository = DocumentRepositoryFactory.Instance;
+                    documentRepository = DatabaseSession.GetDocumentRepository();
                 }
                 catch (IOException ex)
                 {

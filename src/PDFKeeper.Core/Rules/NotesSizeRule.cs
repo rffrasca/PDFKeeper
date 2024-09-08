@@ -28,6 +28,7 @@ namespace PDFKeeper.Core.Rules
     internal class NotesSizeRule : RuleBase
     {
         private readonly string notes;
+        private readonly IDocumentRepository documentRepository;
 
         /// <summary>
         /// Initializes a new instance of the NotesSizeRule class that verifies the size of the
@@ -38,6 +39,7 @@ namespace PDFKeeper.Core.Rules
         internal NotesSizeRule(string notes)
         {
             this.notes = notes;
+            documentRepository = DatabaseSession.GetDocumentRepository();
             CheckForViolation();
         }
 
@@ -47,7 +49,7 @@ namespace PDFKeeper.Core.Rules
             ViolationMessage = null;
             if (DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Oracle))
             {
-                var columnLength = DocumentRepositoryFactory.Instance.GetNotesColumnDataLength();
+                var columnLength = documentRepository.GetNotesColumnDataLength();
                 var size = notes.GetByteCount();
                 if (size > columnLength)
                 {
