@@ -26,6 +26,7 @@ using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Interop;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Rules;
@@ -46,6 +47,7 @@ namespace PDFKeeper.Core.Presenters
 {
     public class MainPresenter : PresenterBase<MainViewModel>
     {
+        private readonly IntPtr handle;
         private readonly IPdfViewerService pdfViewerService;
         private readonly IFolderBrowserDialogService folderBrowserDialogService;
         private readonly IMessageBoxService messageBoxService;
@@ -71,6 +73,7 @@ namespace PDFKeeper.Core.Presenters
         /// <summary>
         /// Initializes a new instance of the MainPresenter class.
         /// </summary>
+        /// <param name="handle">The handle of the view.</param>
         /// <param name="pdfViewerService">The PdfViewerService instance.</param>
         /// <param name="folderBrowserDialogService">The FolderBrowserDialogService instance.</param>
         /// <param name="messageBoxService">The MessageBoxService instance.</param>
@@ -84,15 +87,23 @@ namespace PDFKeeper.Core.Presenters
         /// <param name="saveFileDialogService">The SaveFileDialogService instance.</param>
         /// <param name="printDialogService">The PrintDialogService instance.</param>
         /// <param name="printPreviewDialogService">The PrintPreviewDialogService instance.</param>
-        public MainPresenter(IPdfViewerService pdfViewerService,
+        public MainPresenter(
+            IntPtr handle,
+            IPdfViewerService pdfViewerService,
             IFolderBrowserDialogService folderBrowserDialogService,
-            IMessageBoxService messageBoxService, IFolderExplorerService folderExplorerService,
-            IDialogService setTitleDialogService, IDialogService setAuthorDialogService,
-            IDialogService setSubjectDialogService, IDialogService setCategoryDialogService,
-            IDialogService setTaxYearDialogService, IFileDialogService openFileDialogService,
-            IFileDialogService saveFileDialogService, IPrintDialogService printDialogService,
+            IMessageBoxService messageBoxService,
+            IFolderExplorerService folderExplorerService,
+            IDialogService setTitleDialogService,
+            IDialogService setAuthorDialogService,
+            IDialogService setSubjectDialogService,
+            IDialogService setCategoryDialogService,
+            IDialogService setTaxYearDialogService,
+            IFileDialogService openFileDialogService,
+            IFileDialogService saveFileDialogService,
+            IPrintDialogService printDialogService,
             IPrintPreviewDialogService printPreviewDialogService)
         {
+            this.handle = handle;
             this.pdfViewerService = pdfViewerService;
             this.folderBrowserDialogService = folderBrowserDialogService;
             this.messageBoxService = messageBoxService;
@@ -172,6 +183,22 @@ namespace PDFKeeper.Core.Presenters
         public void SetPasteEnabledState(bool enabled)
         {
             ViewModel.EditPasteMenuEnabled = enabled;
+        }
+
+        /// <summary>
+        /// Adds the window into the clipboard format listener list.
+        /// </summary>
+        public void AddClipboardFormatListener()
+        {
+            NativeMethods.AddClipboardFormatListener(handle);
+        }
+
+        /// <summary>
+        /// Removes the window from the clipboard format listener list.
+        /// </summary>
+        public void RemoveClipboardFormatListener()
+        {
+            NativeMethods.RemoveClipboardFormatListener(handle);
         }
 
         /// <summary>

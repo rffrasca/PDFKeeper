@@ -124,7 +124,6 @@ namespace PDFKeeper.Core.Rules
             return result;
         }
 
-        [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         private static bool IsSearchTermSyntaxCorrectForOracle(string searchTerm)
         {
             if (searchTerm.Equals("MINUS", StringComparison.Ordinal) ||

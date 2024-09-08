@@ -22,7 +22,6 @@ using AutoUpdaterDotNET;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Commands;
 using PDFKeeper.Core.DataAccess;
-using PDFKeeper.Core.Interop;
 using PDFKeeper.Core.Presenters;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.PDFViewer.Services;
@@ -41,7 +40,6 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Views
 {
-    [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
     public partial class MainForm : Form
     {
         private readonly MainPresenter presenter;
@@ -58,6 +56,7 @@ namespace PDFKeeper.WinForms.Views
             InitializeComponent();
 
             presenter = new MainPresenter(
+                Handle,
                 new PdfViewerService(),
                 new FolderBrowserDialogService(),
                 new MessageBoxService(),
@@ -90,7 +89,6 @@ namespace PDFKeeper.WinForms.Views
             viewModel.PropertyChanged += MainForm_PropertyChanged;
         }
 
-        [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
         private void AddTags()
         {
             FileAddToolStripMenuItem.Tag = new DialogShowCommand(new AddPdfForm(), null);
@@ -177,7 +175,7 @@ namespace PDFKeeper.WinForms.Views
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            NativeMethods.AddClipboardFormatListener(Handle);
+            presenter.AddClipboardFormatListener();
             UpdateCheckTimer_Tick(this, null);
             GetFormState();
             presenter.SetInitialState();
@@ -422,7 +420,6 @@ namespace PDFKeeper.WinForms.Views
             Application.DoEvents();
         }
 
-        [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         private void MainForm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName.Equals("FileOpenMenuEnabled", StringComparison.Ordinal))
@@ -674,7 +671,7 @@ namespace PDFKeeper.WinForms.Views
             }
             e.Cancel = presenter.CancelViewClosing;
             presenter.WaitForUploadToFinish();
-            NativeMethods.RemoveClipboardFormatListener(Handle);
+            presenter.RemoveClipboardFormatListener();
             SetFormState();
         }
 

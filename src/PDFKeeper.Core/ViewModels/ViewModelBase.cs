@@ -49,9 +49,9 @@ namespace PDFKeeper.Core.ViewModels
         /// The name of the property used to notify listeners or null to automatically provide the
         /// calling property name.
         /// </param>
-#pragma warning disable CA1045 // Do not pass types by reference
-        protected void SetProperty<T>(ref T storage, T value,
-#pragma warning restore CA1045 // Do not pass types by reference
+        protected void SetProperty<T>(
+            ref T storage,
+            T value,
             [CallerMemberName] string propertyName = null)
         {
             storage = value;

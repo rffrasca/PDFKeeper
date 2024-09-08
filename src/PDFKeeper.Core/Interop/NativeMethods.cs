@@ -23,21 +23,53 @@ using System.Runtime.InteropServices;
 
 namespace PDFKeeper.Core.Interop
 {
-    public static class NativeMethods
+    internal static class NativeMethods
     {
+        /// <summary>
+        /// Adds the window into the clipboard format listener list.
+        /// </summary>
+        /// <param name="hwnd">The handle of the window.</param>
+        /// <returns>Windows added? (true or false)</returns>
         [DllImport("user32.dll", SetLastError = true)]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool AddClipboardFormatListener(IntPtr hwnd);
+        internal static extern bool AddClipboardFormatListener(IntPtr hwnd);
 
+        /// <summary>
+        /// Removes the window from the clipboard format listener list.
+        /// </summary>
+        /// <param name="hwnd">The handle of the window.</param>
+        /// <returns>Windows removed? (true or false)</returns>
         [DllImport("user32.dll", SetLastError = true)]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool RemoveClipboardFormatListener(IntPtr hwnd);
+        internal static extern bool RemoveClipboardFormatListener(IntPtr hwnd);
 
-        [DllImport("shell32.dll", CharSet = CharSet.Unicode, ExactSpelling = true, PreserveSig = false)]
+        /// <summary>
+        /// Retrieves the full path of a known folder identified by the folder's KNOWNFOLDERID.
+        /// </summary>
+        /// <param name="rfid">
+        /// The reference to the KNOWNFOLDERID that identifies the folder.
+        /// </param>
+        /// <param name="dwFlags">
+        /// The flags that specify special retrieval options. This value can be 0; otherwise, one
+        /// or more of the KNOWN_FOLDER_FLAG values.
+        /// </param>
+        /// <param name="hToken">
+        /// The access token that represents a particular user. If this parameter is null, which is
+        /// the most common usage, the function requests the known folder for the current user.
+        /// </param>
+        /// <returns>The folder path.</returns>
+        [DllImport(
+            "shell32.dll",
+            CharSet = CharSet.Unicode,
+            ExactSpelling = true,
+            PreserveSig = false)]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         internal static extern string SHGetKnownFolderPath(
-            [MarshalAs(UnmanagedType.LPStruct)] Guid rfid, uint dwFlags, IntPtr hToken = default);
+            [MarshalAs(
+            UnmanagedType.LPStruct)] Guid rfid,
+            uint dwFlags,
+            IntPtr hToken = default);
     }
 }
