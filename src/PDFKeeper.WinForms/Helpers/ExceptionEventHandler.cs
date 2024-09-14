@@ -19,13 +19,12 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Application;
-using PDFKeeper.Core.Helpers;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Services;
 using System;
-using System.Globalization;
 using System.IO;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Helpers
 {
@@ -46,6 +45,7 @@ namespace PDFKeeper.WinForms.Helpers
             var stackTrace = e.Exception.ToString();
             Log(eventType, stackTrace);
             Show(eventType, fullName, message);
+            Application.Exit();
         }
 
         public static void HandleUnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -60,6 +60,7 @@ namespace PDFKeeper.WinForms.Helpers
             var stackTrace = e.ExceptionObject.ToString();
             Log(eventType, stackTrace);
             Show(eventType, fullName, null);
+            Application.Exit();
         }
 
         private static void InitLogPath()
