@@ -21,6 +21,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
+using System.Text;
 
 namespace PDFKeeper.Core.Extensions
 {
@@ -42,6 +43,25 @@ namespace PDFKeeper.Core.Extensions
             finally
             {
                 Marshal.ZeroFreeGlobalAllocUnicode(intPtr);
+            }
+        }
+
+        /// <summary>
+        /// Gets the contents of the SecureString as a Byte Array.
+        /// </summary>
+        /// <param name="secureString">The SecureString object.</param>
+        /// <returns>The Byte Array.</returns>
+        internal static byte[] GetAsByteArray(this SecureString secureString)
+        {
+            IntPtr intPtr = default;
+            try
+            {
+                intPtr = Marshal.SecureStringToBSTR(secureString);
+                return Encoding.UTF8.GetBytes(Marshal.PtrToStringAuto(intPtr));
+            }
+            finally
+            {
+                Marshal.ZeroFreeBSTR(intPtr);
             }
         }
     }

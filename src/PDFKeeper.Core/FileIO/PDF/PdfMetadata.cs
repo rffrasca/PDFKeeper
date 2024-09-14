@@ -136,9 +136,10 @@ namespace PDFKeeper.Core.FileIO.PDF
             }
             else
             {
-                using (var reader = new PdfReader(pdfFile.FullName,
-                    new ReaderProperties().SetPassword(System.Text.Encoding.ASCII.GetBytes(
-                        pdfOwnerPassword.Decrypt()))))
+                using (var reader = new PdfReader(
+                    pdfFile.FullName,
+                    new ReaderProperties().SetPassword(
+                        pdfOwnerPassword.GetAsByteArray())))
                 {
                     WritePdf(reader, targetPdfFile);
                 }
@@ -155,9 +156,10 @@ namespace PDFKeeper.Core.FileIO.PDF
         {
             try
             {
-                using (var reader = new PdfReader(pdfFile.FullName,
-                    new ReaderProperties().SetPassword(System.Text.Encoding.ASCII.GetBytes(
-                        pdfOwnerPassword.Decrypt()))))
+                using (var reader = new PdfReader(
+                    pdfFile.FullName,
+                    new ReaderProperties().SetPassword(
+                        pdfOwnerPassword.GetAsByteArray())))
                 {
                     using (var document = new PdfDocument(reader)) { }
                 }
@@ -183,9 +185,10 @@ namespace PDFKeeper.Core.FileIO.PDF
             }
             else
             {
-                using (var reader = new PdfReader(pdfFile.FullName,
-                    new ReaderProperties().SetPassword(System.Text.Encoding.ASCII.GetBytes(
-                        pdfOwnerPassword.Decrypt()))))
+                using (var reader = new PdfReader(
+                    pdfFile.FullName,
+                    new ReaderProperties().SetPassword(
+                        pdfOwnerPassword.GetAsByteArray())))
                 {
                     GetInfoMetadata(reader);
                 }
