@@ -29,16 +29,27 @@ namespace PDFKeeper.Core.DataAccess.Repository
 {
     public class SqliteDocumentRepository : RepositoryBase<SQLiteCommand>, IDocumentRepository
     {
+        private static SQLiteConnectionStringBuilder connectionStringBuilder;
         private static bool documentsListHasChanges;
 
         public SqliteDocumentRepository()
         {
-            var connectionStringBuilder = new SQLiteConnectionStringBuilder
+            if (connectionStringBuilder == null)
             {
-                DataSource = DatabaseSession.LocalDatabasePath,
-                Version = 3
-            };
-            ConnectionString = connectionStringBuilder.ConnectionString;
+                connectionStringBuilder = new SQLiteConnectionStringBuilder
+                {
+                    DataSource = DatabaseSession.LocalDatabasePath,
+                    Version = 3
+                };
+                ConnectionString = connectionStringBuilder.ConnectionString;
+            }
+            else if (!connectionStringBuilder.DataSource.Equals(
+                DatabaseSession.LocalDatabasePath,
+                StringComparison.Ordinal))
+            {
+                connectionStringBuilder.DataSource = DatabaseSession.LocalDatabasePath;
+                ConnectionString = connectionStringBuilder.ConnectionString;
+            }
         }
 
         public bool DocumentsListHasChanges
@@ -54,19 +65,20 @@ namespace PDFKeeper.Core.DataAccess.Repository
             return 0;
         }
 
-        public void DeleteDocument(int id)
+        public DataTable GetListOfDocumentsBySearchTerm(string searchTerm)
         {
-            var sql = "delete from docs where doc_id = :doc_id";
+            var sql = "select rowid,doc_title,doc_author,doc_subject,doc_category,doc_tax_year, " +
+                "doc_added from docs_index where docs_index match :doc_dummy";
             try
             {
                 using (var connection = new SQLiteConnection(ConnectionString))
                 {
                     using (var command = new SQLiteCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("doc_id", id);
+                        command.Parameters.AddWithValue("doc_dummy", searchTerm);
                         connection.Open();
                         LoadExtensionLibrary(connection);
-                        command.ExecuteNonQuery();
+                        return ExecuteQuery(command);
                     }
                 }
             }
@@ -74,9 +86,119 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 throw new DatabaseException(ex.Message);
             }
-            finally
+        }
+
+        public DataTable GetListOfDocuments(string author, string subject, string category, string taxYear)
+        {
+            if (string.IsNullOrEmpty(author))
             {
-                DocumentsListHasChanges = true;
+                author = null;
+            }
+            if (string.IsNullOrEmpty(subject))
+            {
+                subject = null;
+            }
+            if (string.IsNullOrEmpty(category))
+            {
+                category = null;
+            }
+            if (string.IsNullOrEmpty(taxYear))
+            {
+                taxYear = null;
+            }
+            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
+                "doc_tax_year,doc_added from docs " +
+                "where (:doc_author is NULL or doc_author = :doc_author) " +
+                "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
+                "and (:doc_category is NULL or doc_category = :doc_category) " +
+                "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) ";
+            try
+            {
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("doc_author", author);
+                        command.Parameters.AddWithValue("doc_subject", subject);
+                        command.Parameters.AddWithValue("doc_category", category);
+                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
+                        connection.Open();
+                        LoadExtensionLibrary(connection);
+                        return ExecuteQuery(command);
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+        }
+
+        public DataTable GetListOfDocumentsByDateAdded(string dateAdded)
+        {
+            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
+                "doc_tax_year,doc_added from docs " +
+                "where doc_added like :doc_added || '%'";
+            try
+            {
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("doc_added", dateAdded);
+                        connection.Open();
+                        LoadExtensionLibrary(connection);
+                        return ExecuteQuery(command);
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+        }
+
+        public DataTable GetListOfFlaggedDocuments()
+        {
+            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
+                "doc_tax_year,doc_added from docs where doc_flag = 1";
+            try
+            {
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        connection.Open();
+                        LoadExtensionLibrary(connection);
+                        return ExecuteQuery(command);
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+        }
+
+        public DataTable GetListOfDocuments()
+        {
+            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
+                "doc_tax_year,doc_added from docs";
+            try
+            {
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        connection.Open();
+                        LoadExtensionLibrary(connection);
+                        return ExecuteQuery(command);
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new DatabaseException(ex.Message);
             }
         }
 
@@ -106,6 +228,46 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     using (var command = new SQLiteCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("doc_subject", subject);
+                        command.Parameters.AddWithValue("doc_category", category);
+                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
+                        connection.Open();
+                        LoadExtensionLibrary(connection);
+                        return ExecuteQuery(command);
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+        }
+
+        public DataTable GetSubjects(string author, string category, string taxYear)
+        {
+            if (string.IsNullOrEmpty(author))
+            {
+                author = null;
+            }
+            if (string.IsNullOrEmpty(category))
+            {
+                category = null;
+            }
+            if (string.IsNullOrEmpty(taxYear))
+            {
+                taxYear = null;
+            }
+            var sql = "select doc_subject from docs " +
+                "where (:doc_author is NULL or doc_author = :doc_author) " +
+                "and (:doc_category is NULL or doc_category = :doc_category) " +
+                "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) " +
+                "group by doc_subject";
+            try
+            {
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("doc_author", author);
                         command.Parameters.AddWithValue("doc_category", category);
                         command.Parameters.AddWithValue("doc_tax_year", taxYear);
                         connection.Open();
@@ -160,6 +322,46 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
+        public DataTable GetTaxYears(string author, string subject, string category)
+        {
+            if (string.IsNullOrEmpty(author))
+            {
+                author = null;
+            }
+            if (string.IsNullOrEmpty(subject))
+            {
+                subject = null;
+            }
+            if (string.IsNullOrEmpty(category))
+            {
+                category = null;
+            }
+            var sql = "select doc_tax_year from docs " +
+                "where (:doc_author is NULL or doc_author = :doc_author) " +
+                "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
+                "and (:doc_category is NULL or doc_category = :doc_category) " +
+                "group by doc_tax_year";
+            try
+            {
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("doc_author", author);
+                        command.Parameters.AddWithValue("doc_subject", subject);
+                        command.Parameters.AddWithValue("doc_category", category);
+                        connection.Open();
+                        LoadExtensionLibrary(connection);
+                        return ExecuteQuery(command);
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+        }
+
         public Document GetDocument(int id, string searchTerm)
         {
             if (searchTerm == null)
@@ -194,223 +396,6 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             document.SearchTermSnippets = GetSearchTermSnippets(id, searchTerm);
                         }
                         return document;
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
-        public DataTable GetListOfDocuments(string author, string subject, string category, string taxYear)
-        {   
-            if (string.IsNullOrEmpty(author))
-            {
-                author = null;
-            }
-            if (string.IsNullOrEmpty(subject))
-            {
-                subject = null;
-            }
-            if (string.IsNullOrEmpty(category))
-            {
-                category = null;
-            }
-            if (string.IsNullOrEmpty(taxYear))
-            {
-                taxYear = null;
-            }
-            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from docs " +
-                "where (:doc_author is NULL or doc_author = :doc_author) " +
-                "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
-                "and (:doc_category is NULL or doc_category = :doc_category) " +
-                "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) ";
-            try
-            {
-                using (var connection = new SQLiteConnection(ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_author", author);
-                        command.Parameters.AddWithValue("doc_subject", subject);
-                        command.Parameters.AddWithValue("doc_category", category);
-                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
-        public DataTable GetListOfDocuments()
-        {
-            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from docs";
-            try
-            {
-                using (var connection = new SQLiteConnection(ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
-        public DataTable GetListOfDocumentsByDateAdded(string dateAdded)
-        {
-            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from docs " +
-                "where doc_added like :doc_added || '%'";
-            try
-            {
-                using (var connection = new SQLiteConnection(ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_added", dateAdded);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
-        public DataTable GetListOfDocumentsBySearchTerm(string searchTerm)
-        {
-            var sql = "select rowid,doc_title,doc_author,doc_subject,doc_category,doc_tax_year, " +
-                "doc_added from docs_index where docs_index match :doc_dummy";
-            try
-            {
-                using (var connection = new SQLiteConnection(ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_dummy", searchTerm);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
-        public DataTable GetListOfFlaggedDocuments()
-        {
-            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from docs where doc_flag = 1";
-            try
-            {
-                using (var connection = new SQLiteConnection(ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
-        public DataTable GetSubjects(string author, string category, string taxYear)
-        {
-            if (string.IsNullOrEmpty(author))
-            {
-                author = null;
-            }
-            if (string.IsNullOrEmpty(category))
-            {
-                category = null;
-            }
-            if (string.IsNullOrEmpty(taxYear))
-            {
-                taxYear = null;
-            }
-            var sql = "select doc_subject from docs " +
-                "where (:doc_author is NULL or doc_author = :doc_author) " +
-                "and (:doc_category is NULL or doc_category = :doc_category) " +
-                "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) " +
-                "group by doc_subject";
-            try
-            {
-                using (var connection = new SQLiteConnection(ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_author", author);
-                        command.Parameters.AddWithValue("doc_category", category);
-                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
-        public DataTable GetTaxYears(string author, string subject, string category)
-        {
-            if (string.IsNullOrEmpty(author))
-            {
-                author = null;
-            }
-            if (string.IsNullOrEmpty(subject))
-            {
-                subject = null;
-            }
-            if (string.IsNullOrEmpty(category))
-            {
-                category = null;
-            }
-            var sql = "select doc_tax_year from docs " +
-                "where (:doc_author is NULL or doc_author = :doc_author) " +
-                "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
-                "and (:doc_category is NULL or doc_category = :doc_category) " +
-                "group by doc_tax_year";
-            try
-            {
-                using (var connection = new SQLiteConnection(ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_author", author);
-                        command.Parameters.AddWithValue("doc_subject", subject);
-                        command.Parameters.AddWithValue("doc_category", category);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
                     }
                 }
             }
@@ -478,16 +463,6 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public void ResetCredential()
-        {
-            throw new NotSupportedException();
-        }
-
-        public void TestConnection()
-        {
-            throw new NotSupportedException();
-        }
-
         public void UpdateDocument(Document document)
         {
             if (document == null)
@@ -536,6 +511,42 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 DocumentsListHasChanges = true;
             }
+        }
+
+        public void DeleteDocument(int id)
+        {
+            var sql = "delete from docs where doc_id = :doc_id";
+            try
+            {
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("doc_id", id);
+                        connection.Open();
+                        LoadExtensionLibrary(connection);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+            finally
+            {
+                DocumentsListHasChanges = true;
+            }
+        }
+
+        public void TestConnection()
+        {
+            throw new NotSupportedException();
+        }
+
+        public void ResetCredential()
+        {
+            throw new NotSupportedException();
         }
 
         public void CreateDatabase()

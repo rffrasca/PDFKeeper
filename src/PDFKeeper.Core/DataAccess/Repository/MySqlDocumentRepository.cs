@@ -24,27 +24,33 @@ using PDFKeeper.Core.Models;
 using System;
 using System.Data;
 using System.Globalization;
+using System.Text;
 
 namespace PDFKeeper.Core.DataAccess.Repository
 {
     [CLSCompliant(false)]
     public class MySqlDocumentRepository : RepositoryBase<MySqlCommand>, IDocumentRepository
     {
+        private static MySqlConnectionStringBuilder connectionStringBuilder;
         private static bool documentsListHasChanges;
 
         public MySqlDocumentRepository()
         {
-            var connectionStringBuilder = new MySqlConnectionStringBuilder
+            if (connectionStringBuilder == null)
             {
-                UserID = DatabaseSession.UserName,
-                Password = DatabaseSession.Password.Decrypt(),
-                Server = DatabaseSession.DataSource,
-                Port = DatabaseSession.MySqlPort,
-                Database = "pdfkeeper",
-                SslMode = MySqlSslMode.Required,
-                ConnectionTimeout = 60
-            };
-            ConnectionString = connectionStringBuilder.ConnectionString;
+                connectionStringBuilder = new MySqlConnectionStringBuilder
+                {
+                    UserID = DatabaseSession.UserName,
+                    Password = Encoding.UTF8.GetString(DatabaseSession.Password.GetAsByteArray()),
+                    Server = DatabaseSession.DataSource,
+                    Port = DatabaseSession.MySqlPort,
+                    Database = "pdfkeeper",
+                    SslMode = MySqlSslMode.Required,
+                    ConnectionTimeout = 30
+                };
+                ConnectionString = connectionStringBuilder.ConnectionString;
+                connectionStringBuilder.Clear();
+            }
         }
 
         public bool DocumentsListHasChanges
@@ -55,149 +61,27 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public bool SearchTermSnippetsSupported => false;
 
-        public void CompactDatabase()
+        public int GetNotesColumnDataLength()
         {
-            throw new NotSupportedException();
+            return 0;
         }
 
-        public void CreateDatabase()
+        public DataTable GetListOfDocumentsBySearchTerm(string searchTerm)
         {
-            throw new NotSupportedException();
-        }
-
-        public void DeleteDocument(int id)
-        {
-            var sql = "delete from docs where doc_id = @doc_id";
+            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year," +
+                "doc_added from docs " +
+                "where match (doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
+                "doc_category,doc_tax_year,doc_text_annotations,doc_text) " +
+                "against (@doc_dummy in boolean mode)";
             try
             {
                 using (var connection = new MySqlConnection(ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("doc_id", id);
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-            finally
-            {
-                DocumentsListHasChanges = true;
-            }
-        }
-
-        public DataTable GetAuthors(string subject, string category, string taxYear)
-        {
-            if (string.IsNullOrEmpty(subject))
-            {
-                subject = null;
-            }
-            if (string.IsNullOrEmpty(category))
-            {
-                category = null;
-            }
-            if (string.IsNullOrEmpty(taxYear))
-            {
-                taxYear = null;
-            }
-            var sql = "select doc_author from docs " +
-                "where (@doc_subject is NULL or doc_subject = @doc_subject) " +
-                "and (@doc_category is NULL or doc_category = @doc_category) " +
-                "and (@doc_tax_year is NULL or doc_tax_year = @doc_tax_year) " +
-                "group by doc_author";
-            try
-            {
-                using (var connection = new MySqlConnection(ConnectionString))
-                {
-                    using (var command = new MySqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_subject", subject);
-                        command.Parameters.AddWithValue("doc_category", category);
-                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
+                        command.Parameters.AddWithValue("doc_dummy", searchTerm);
                         connection.Open();
                         return ExecuteQuery(command);
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
-        public DataTable GetCategories(string author, string subject, string taxYear)
-        {
-            if (string.IsNullOrEmpty(author))
-            {
-                author = null;
-            }
-            if (string.IsNullOrEmpty(subject))
-            {
-                subject = null;
-            }
-            if (string.IsNullOrEmpty(taxYear))
-            {
-                taxYear = null;
-            }
-            var sql = "select doc_category from docs " +
-                "where (@doc_author is NULL or doc_author = @doc_author) " +
-                "and (@doc_subject is NULL or doc_subject = @doc_subject) " +
-                "and (@doc_tax_year is NULL or doc_tax_year = @doc_tax_year) " +
-                "group by doc_category";
-            try
-            {
-                using (var connection = new MySqlConnection(ConnectionString))
-                {
-                    using (var command = new MySqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_author", author);
-                        command.Parameters.AddWithValue("doc_subject", subject);
-                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
-        public Document GetDocument(int id, string searchTerm)
-        {
-            var sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_notes,doc_pdf," +
-                "doc_category,doc_flag,doc_tax_year,doc_text from docs where doc_id = @doc_id";
-            try
-            {
-                using (var connection = new MySqlConnection(ConnectionString))
-                {
-                    using (var command = new MySqlCommand(sql, connection))
-                    {
-                        var document = new Document();
-                        command.Parameters.AddWithValue("doc_id", id);
-                        connection.Open();
-                        using (var reader = command.ExecuteReader())
-                        {
-                            reader.Read();
-                            document.Id = id;
-                            document.Title = reader["doc_title"].ToString();
-                            document.Author = reader["doc_author"].ToString();
-                            document.Subject = reader["doc_subject"].ToString();
-                            document.Keywords = reader["doc_keywords"].ToString();
-                            document.Notes = reader["doc_notes"].ToString();
-                            document.Pdf = (byte[])reader["doc_pdf"];
-                            document.Category = reader["doc_category"].ToString();
-                            document.Flag = Convert.ToInt32(reader["doc_flag"]);
-                            document.TaxYear = reader["doc_tax_year"].ToString();
-                            document.Text = reader["doc_text"].ToString();
-                            document.SearchTermSnippets = string.Empty; // Not available in MySQL.
-                        }
-                        return document;
                     }
                 }
             }
@@ -252,27 +136,6 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public DataTable GetListOfDocuments()
-        {
-            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from docs";
-            try
-            {
-                using (var connection = new MySqlConnection(ConnectionString))
-                {
-                    using (var command = new MySqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
         public DataTable GetListOfDocumentsByDateAdded(string dateAdded)
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
@@ -297,32 +160,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 throw new DatabaseException(ex.Message);
             }
         }
-
-        public DataTable GetListOfDocumentsBySearchTerm(string searchTerm)
-        {
-            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category,doc_tax_year," +
-                "doc_added from docs " +
-                "where match (doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
-                "doc_category,doc_tax_year,doc_text_annotations,doc_text) " +
-                "against (@doc_dummy in boolean mode)";
-            try
-            {
-                using (var connection = new MySqlConnection(ConnectionString))
-                {
-                    using (var command = new MySqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_dummy", searchTerm);
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
+        
         public DataTable GetListOfFlaggedDocuments()
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
@@ -344,9 +182,64 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public int GetNotesColumnDataLength()
+        public DataTable GetListOfDocuments()
         {
-            return 0;
+            var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
+                "doc_tax_year,doc_added from docs";
+            try
+            {
+                using (var connection = new MySqlConnection(ConnectionString))
+                {
+                    using (var command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        return ExecuteQuery(command);
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+        }
+
+        public DataTable GetAuthors(string subject, string category, string taxYear)
+        {
+            if (string.IsNullOrEmpty(subject))
+            {
+                subject = null;
+            }
+            if (string.IsNullOrEmpty(category))
+            {
+                category = null;
+            }
+            if (string.IsNullOrEmpty(taxYear))
+            {
+                taxYear = null;
+            }
+            var sql = "select doc_author from docs " +
+                "where (@doc_subject is NULL or doc_subject = @doc_subject) " +
+                "and (@doc_category is NULL or doc_category = @doc_category) " +
+                "and (@doc_tax_year is NULL or doc_tax_year = @doc_tax_year) " +
+                "group by doc_author";
+            try
+            {
+                using (var connection = new MySqlConnection(ConnectionString))
+                {
+                    using (var command = new MySqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("doc_subject", subject);
+                        command.Parameters.AddWithValue("doc_category", category);
+                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
+                        connection.Open();
+                        return ExecuteQuery(command);
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
         }
 
         public DataTable GetSubjects(string author, string category, string taxYear)
@@ -376,6 +269,45 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     {
                         command.Parameters.AddWithValue("doc_author", author);
                         command.Parameters.AddWithValue("doc_category", category);
+                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
+                        connection.Open();
+                        return ExecuteQuery(command);
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+        }
+
+        public DataTable GetCategories(string author, string subject, string taxYear)
+        {
+            if (string.IsNullOrEmpty(author))
+            {
+                author = null;
+            }
+            if (string.IsNullOrEmpty(subject))
+            {
+                subject = null;
+            }
+            if (string.IsNullOrEmpty(taxYear))
+            {
+                taxYear = null;
+            }
+            var sql = "select doc_category from docs " +
+                "where (@doc_author is NULL or doc_author = @doc_author) " +
+                "and (@doc_subject is NULL or doc_subject = @doc_subject) " +
+                "and (@doc_tax_year is NULL or doc_tax_year = @doc_tax_year) " +
+                "group by doc_category";
+            try
+            {
+                using (var connection = new MySqlConnection(ConnectionString))
+                {
+                    using (var command = new MySqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("doc_author", author);
+                        command.Parameters.AddWithValue("doc_subject", subject);
                         command.Parameters.AddWithValue("doc_tax_year", taxYear);
                         connection.Open();
                         return ExecuteQuery(command);
@@ -418,6 +350,45 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.AddWithValue("doc_category", category);
                         connection.Open();
                         return ExecuteQuery(command);
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+        }
+
+        public Document GetDocument(int id, string searchTerm)
+        {
+            var sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_notes,doc_pdf," +
+                "doc_category,doc_flag,doc_tax_year,doc_text from docs where doc_id = @doc_id";
+            try
+            {
+                using (var connection = new MySqlConnection(ConnectionString))
+                {
+                    using (var command = new MySqlCommand(sql, connection))
+                    {
+                        var document = new Document();
+                        command.Parameters.AddWithValue("doc_id", id);
+                        connection.Open();
+                        using (var reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+                            document.Id = id;
+                            document.Title = reader["doc_title"].ToString();
+                            document.Author = reader["doc_author"].ToString();
+                            document.Subject = reader["doc_subject"].ToString();
+                            document.Keywords = reader["doc_keywords"].ToString();
+                            document.Notes = reader["doc_notes"].ToString();
+                            document.Pdf = (byte[])reader["doc_pdf"];
+                            document.Category = reader["doc_category"].ToString();
+                            document.Flag = Convert.ToInt32(reader["doc_flag"]);
+                            document.TaxYear = reader["doc_tax_year"].ToString();
+                            document.Text = reader["doc_text"].ToString();
+                            document.SearchTermSnippets = string.Empty; // Not available in MySQL.
+                        }
+                        return document;
                     }
                 }
             }
@@ -485,27 +456,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 DocumentsListHasChanges = true;
             }
         }
-
-        public void ResetCredential()
-        {
-            throw new NotSupportedException();
-        }
-
-        public void TestConnection()
-        {
-            try
-            {
-                using (var connection = new MySqlConnection(ConnectionString))
-                {
-                    connection.Open();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                throw new DatabaseException(ex.Message);
-            }
-        }
-
+        
         public void UpdateDocument(Document document)
         {
             if (document == null)
@@ -553,6 +504,62 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 DocumentsListHasChanges = true;
             }
+        }
+
+        public void DeleteDocument(int id)
+        {
+            var sql = "delete from docs where doc_id = @doc_id";
+            try
+            {
+                using (var connection = new MySqlConnection(ConnectionString))
+                {
+                    using (var command = new MySqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("doc_id", id);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+            finally
+            {
+                DocumentsListHasChanges = true;
+            }
+        }
+
+        public void TestConnection()
+        {
+            try
+            {
+                using (var connection = new MySqlConnection(ConnectionString))
+                {
+                    connection.Open();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                connectionStringBuilder = null;
+                throw new DatabaseException(ex.Message);
+            }
+        }
+
+        public void ResetCredential()
+        {
+            throw new NotSupportedException();
+        }
+        
+        public void CreateDatabase()
+        {
+            throw new NotSupportedException();
+        }
+
+        public void CompactDatabase()
+        {
+            throw new NotSupportedException();
         }
 
         protected override DataTable ExecuteQuery(MySqlCommand command)

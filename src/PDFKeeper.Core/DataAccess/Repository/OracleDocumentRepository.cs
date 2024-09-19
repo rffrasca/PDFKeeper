@@ -29,21 +29,26 @@ namespace PDFKeeper.Core.DataAccess.Repository
 {
     public class OracleDocumentRepository : RepositoryBase<OracleCommand>, IDocumentRepository
     {
+        private static OracleConnectionStringBuilder connectionStringBuilder;
         private static OracleCredential oracleCredential;
         private static bool documentsListHasChanges;
 
         public OracleDocumentRepository()
         {
-            var connectionStringBuilder = new OracleConnectionStringBuilder
+            if (connectionStringBuilder == null)
             {
-                DataSource = DatabaseSession.DataSource,
-                Pooling = true,
-                ConnectionTimeout = 60
-            };
-            ConnectionString = connectionStringBuilder.ConnectionString;
+                connectionStringBuilder = new OracleConnectionStringBuilder
+                {
+                    DataSource = DatabaseSession.DataSource,
+                    ConnectionTimeout = 60
+                };
+                ConnectionString = connectionStringBuilder.ConnectionString;
+                connectionStringBuilder.Clear();
+            }
             if (oracleCredential == null)
             {
-                oracleCredential = new OracleCredential(DatabaseSession.UserName,
+                oracleCredential = new OracleCredential(
+                    DatabaseSession.UserName,
                     DatabaseSession.Password);
                 if (DatabaseSession.OracleWalletPath != null)
                 {
@@ -511,6 +516,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
             catch (OracleException ex)
             {
+                connectionStringBuilder = null;
                 ResetCredential();
                 throw new DatabaseException(ex.Message);
             }

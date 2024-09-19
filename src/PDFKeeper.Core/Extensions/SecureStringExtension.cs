@@ -28,25 +28,6 @@ namespace PDFKeeper.Core.Extensions
     internal static class SecureStringExtension
     {
         /// <summary>
-        /// Decrypts the SecureString object.
-        /// </summary>
-        /// <param name="secureString">The SecureString object.</param>
-        /// <returns>The decrypted string.</returns>
-        internal static string Decrypt(this SecureString secureString)
-        {
-            IntPtr intPtr = default;
-            try
-            {
-                intPtr = Marshal.SecureStringToGlobalAllocUnicode(secureString);
-                return Marshal.PtrToStringAuto(intPtr);
-            }
-            finally
-            {
-                Marshal.ZeroFreeGlobalAllocUnicode(intPtr);
-            }
-        }
-
-        /// <summary>
         /// Gets the contents of the SecureString as a Byte Array.
         /// </summary>
         /// <param name="secureString">The SecureString object.</param>

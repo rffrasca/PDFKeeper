@@ -24,7 +24,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
 {
     public abstract class RepositoryBase<T>
     {
-        protected string ConnectionString { get; set; }
+        protected static string ConnectionString { get; set; }
         protected abstract DataTable ExecuteQuery(T command);
         protected abstract string GetSearchTermSnippets(int id, string searchTerm);
     }
