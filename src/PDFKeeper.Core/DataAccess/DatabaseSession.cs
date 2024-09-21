@@ -230,35 +230,23 @@ namespace PDFKeeper.Core.DataAccess
             if (PlatformName.Equals(CompatiblePlatformName.Oracle) &&
                 odpHandlerEnabled.Equals(false))
             {
-                AppDomain.CurrentDomain.AssemblyResolve += LoadOracleDataProvider;
+                AppDomain.CurrentDomain.AssemblyResolve += LoadOracleOdpNet;
                 odpHandlerEnabled = true;
             }
         }
 
-        private static System.Reflection.Assembly LoadOracleDataProvider(
+        private static System.Reflection.Assembly LoadOracleOdpNet(
             object sender,
             ResolveEventArgs args)
         {
             try
             {
-                var dllPath = Registry.GetValue(
-                    string.Concat(
-                        @"HKEY_LOCAL_MACHINE\SOFTWARE\Oracle\ODP.NET\",
-                        Resources.OracleDataProviderVersion),
-                    "DllPath",
-                    string.Empty).ToString();
-                var oraKeyPath = string.Concat(
-                    @"HKEY_LOCAL_MACHINE\",
-                    File.ReadAllText(
-                        Path.Combine(
-                            dllPath,
-                            "oracle.key"))).TrimEnd();
-                var assemblyPath = string.Concat(
-                    Registry.GetValue(
-                        oraKeyPath,
-                        "ORACLE_HOME",
+                var assemblyPath = Path.Combine(
+                    (string)Registry.GetValue(
+                        ApplicationRegistry.UserKeyPath,
+                        "OracleOdpNetPath",
                         string.Empty),
-                    @"\odp.net\managed\common\Oracle.ManagedDataAccess.dll");
+                    "Oracle.ManagedDataAccess.dll");
                 return System.Reflection.Assembly.LoadFile(assemblyPath);
             }
             catch (FileNotFoundException)
