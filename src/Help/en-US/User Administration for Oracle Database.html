@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>User Administration for Oracle Database</title>
-	<meta name="generator" content="LibreOffice 24.8.0.3 (Windows)"/>
+	<meta name="generator" content="LibreOffice 24.8.1.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2024-09-07T09:26:46.397000000"/>
+	<meta name="changed" content="2024-09-22T12:16:46.699000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -38,57 +38,75 @@ used for </font><font face="Segoe UI, sans-serif"><b>pdfkeeper</b></font>
 general use. For more information on Managing Users, please refer to
 the <a href="https://docs.oracle.com/en/database/oracle/oracle-database/index.html" target="_blank">Oracle
 Database Documentation</a>.</font></p>
+<p><font face="Segoe UI, sans-serif">Note, due to changes with
+permissions starting with <a href="https://www.oracle.com/database/free/" target="_blank">Oracle
+Database Free</a>, this topic only provides instructions for
+performing the schema setup on the same computer as Oracle Database. </font>
+</p>
 <p><font face="Segoe UI, sans-serif">Perform the following steps for
 any user that will need access to the <b>pdfkeeper</b> schema.
-Substitute the username and password for <i><b>user</b></i><i><b>_</b></i><i><b>name</b></i><span style="font-style: normal"><span style="font-weight: normal">
-</span></span><span style="font-style: normal"><span style="font-weight: normal">and
-</span></span><i><b>password</b></i><span style="font-variant: normal"><span style="font-style: normal">.</span></span></font></p>
+Substitute the username and password for <i><b>user_name</b></i><span style="font-variant: normal">
+</span><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">and
+</span></span></span><i><b>password</b></i><span style="font-variant: normal"><span style="font-style: normal">.
+</span></span><span style="font-variant: normal"><span style="font-style: normal">These
+</span></span><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">steps
+</span></span></span><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">are
+to be performed </span></span></span><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">on
+the same computer as Oracle Database while logged in as the same user
+that installed Oracle Database:</span></span></span></font></p>
 <ol>
-	<li><p><font face="Segoe UI, sans-serif">From a Command Prompt,
-	execute <b>sqlplus</b></font></p></li>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">When
-	logged into the database server computer using the account that
-	installed Oracle Database, enter</span> <b>connect / as sysdba</b><span style="font-weight: normal">.
-	Otherwise, enter the database connect string in the format
-	</span><b>username/password@host:port/service_name </b><span style="font-weight: normal">where
-	</span><b>username </b><span style="font-weight: normal">is a
-	database account that must be a member of SYSDBA (SYSTEM is a member
-	of SYSDBA); </span><b>host </b><span style="font-weight: normal">is
-	the host name or IP address of the database server computer (use
-	</span><b>localhost </b><span style="font-weight: normal">or
-	</span><b>127.0.0.1 </b><span style="font-weight: normal">if logged
-	onto the database server computer); </span><b>port </b><span style="font-weight: normal">is
-	the listening port number on the database server (the default is
-	1521); and </span><b>service_name</b> <span style="font-weight: normal">is
-	the service name of the database instance or pluggable database to
-	access (for Oracle Database Express Edition, the default is XE). For
-	Oracle Database Express Edition, it is recommended to use the
-	default pluggable database </span><b>XEPDB1</b><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Open
+	a</span><b> Command Prompt</b><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
+	</span><b>sqlplus / as sysdba</b></font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For
+	<i><b>Oracle Database Free</b></i>, enter <b>alter session set
+	container=freepdb1;</b></font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For<b>
+	</b><i><b>Oracle Database Express Edition</b></i>, enter<b> alter
+	session set container=xepdb1;</b></font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For<b>
+	</b><i><b>Oracle Database Enterprise</b></i><b> </b>or<b> </b><i><b>Standard
+	Edition</b></i>, enter<b> alter session set container=orclpdb;</b></font></p></li>
+</ol>
+<ul>
+	<ul>
+		<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">If
+		you wish to use a different pluggable database name, replace
+		<b>orclpdb </b>with that name.</font></p></li>
+	</ul>
+</ul>
+<ol start="6">
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
-	a new user, enter the following statement: </span><b>create user
-	</b><i><b>user_name</b></i> <b>default tablespace users identified
-	by </b><i><b>&quot;password&quot;</b></i><b>;</b></font></p></li>
+	a new user, enter </span></font><font face="Segoe UI, sans-serif"><b>create
+	user </b></font><font face="Segoe UI, sans-serif"><i><b>user_name</b></i></font><font face="Segoe UI, sans-serif">
+	</font><font face="Segoe UI, sans-serif"><b>default tablespace users
+	identified by </b></font><font face="Segoe UI, sans-serif"><i><b>&quot;password&quot;</b></i></font><font face="Segoe UI, sans-serif"><b>;</b></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
 	</span><b>grant create session to </b><i><b>user_name</b></i><b>;</b></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
 	</span><b>quit</b></font></p></li>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">From
-	a Command Prompt, execute </span><b>sqlplus</b></font></p></li>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">When
-	logged into the database server computer using the account that
-	installed Oracle Database, enter</span> <b>connect pdfkeeper</b><span style="font-weight: normal">.
-	Otherwise, enter the database connect string in the format
-	</span><b>pdfkeeper/password@host:port/service_name </b><span style="font-weight: normal">where
-	</span><b>host </b><span style="font-weight: normal">is the host
-	name or IP address of the database server computer (use </span><b>localhost
-	</b><span style="font-weight: normal">or </span><b>127.0.0.1 </b><span style="font-weight: normal">if
-	logged onto the database server computer); </span><b>port </b><span style="font-weight: normal">is
-	the listening port number on the database server (the default is
-	1521); and </span><b>service_name</b> <span style="font-weight: normal">is
-	the service name of the database instance or pluggable database to
-	access (for Oracle Database Express Edition, the default is XE). For
-	Oracle Database Express Edition, it is recommended to use the
-	default pluggable database </span><b>XEPDB1</b><span style="font-weight: normal">.</span></font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For<b>
+	</b><i><b>Oracle Database Free</b></i>, enter<b> </b><b>sqlplus
+	pdfkeeper@localhost/</b><b>f</b><b>reepdb1</b></font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For
+	<i><b>Oracle Database Express Edition</b></i>, enter<b> sqlplus
+	pdfkeeper@localhost/xepdb1</b></font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For
+	<i><b>Oracle Database Enterprise</b></i><b> </b>or<b> </b><i><b>Standard
+	Edition</b></i>, enter<b> sqlplus pdfkeeper@localhost/orclpdb</b></font></p></li>
+</ol>
+<ul>
+	<ul>
+		<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">If
+		you wish to use a different pluggable database name, replace
+		</span></font><font face="Segoe UI, sans-serif"><b>orclpdb </b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">with
+		that name.</span></font></p></li>
+	</ul>
+</ul>
+<ol start="12">
+	<li><p><font face="Segoe UI, sans-serif"><b>sqlplus
+	pdfkeeper@localhost/xepdb1</b></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
 	a new account, enter the following statement to grant the user
 	select/query access: </span><b>grant select on docs to </b><i><b>user_name</b></i><b>;</b></font></p></li>
