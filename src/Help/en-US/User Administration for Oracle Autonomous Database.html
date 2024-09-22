@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>User Administration for Oracle Autonomous Database</title>
-	<meta name="generator" content="LibreOffice 24.8.0.3 (Windows)"/>
+	<meta name="generator" content="LibreOffice 24.8.1.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2024-09-07T09:32:20.463000000"/>
+	<meta name="changed" content="2024-09-22T13:53:56.499000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -40,36 +40,51 @@ the <a href="https://docs.oracle.com/en/database/oracle/oracle-database/index.ht
 Database Documentation</a>.</font></p>
 <p><font face="Segoe UI, sans-serif">Perform the following steps for
 any user that will need access to the <b>pdfkeeper</b> schema.
-Substitute the username and password for <i><b>user</b></i><i><b>_</b></i><i><b>name</b></i><span style="font-style: normal"><span style="font-weight: normal">
-</span></span><span style="font-style: normal"><span style="font-weight: normal">and
-</span></span><i><b>password</b></i><span style="font-variant: normal"><span style="font-style: normal">.</span></span></font></p>
+Substitute the username and password for <i><b>user_name</b></i><span style="font-variant: normal">
+</span><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">and
+</span></span></span><i><b>password</b></i><span style="font-variant: normal"><span style="font-style: normal">.</span></span></font></p>
 <ol>
-	<li><p><font face="Segoe UI, sans-serif">From a Command Prompt,
-	execute </font><font face="Segoe UI, sans-serif"><b>sqlplus
-	admin/</b></font><font face="Segoe UI, sans-serif"><i><b>password</b></i></font><font face="Segoe UI, sans-serif"><b>@</b></font><font face="Segoe UI, sans-serif"><i><b>TNS_name</b></i></font>
-	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">where
-	</span></font><font face="Segoe UI, sans-serif"><b>admin</b></font>
-	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">is
-	the administrator account and </span></font><font face="Segoe UI, sans-serif"><b>TNS_name</b></font>
-	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">is
-	the service name</span></font> <font face="Segoe UI, sans-serif"><span style="font-weight: normal">of
-	the Autonomous Database instance.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Open a <b>Command Prompt</b>.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Enter</font><font face="Segoe UI, sans-serif">
+	</font><font face="Segoe UI, sans-serif"><b>sqlplus
+	admin/</b></font><font face="Segoe UI, sans-serif"><i><b>password</b></i></font><font face="Segoe UI, sans-serif"><b>@</b></font><font face="Segoe UI, sans-serif"><i><b>TNS_name</b></i></font></p></li>
+</ol>
+<ul>
+	<ul>
+		<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">W</span></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">here
+		</span></font><font face="Segoe UI, sans-serif"><b>admin</b></font><font face="Segoe UI, sans-serif">
+		</font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">is
+		the administrator account and </span></font><font face="Segoe UI, sans-serif"><b>TNS_name</b></font><font face="Segoe UI, sans-serif">
+		</font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">is
+		the service name</span></font><font face="Segoe UI, sans-serif"> </font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">of
+		the Autonomous Database instance.</span></font></p></li>
+	</ul>
+</ul>
+<ol start="3">
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
-	a new use</span><span style="font-weight: normal">r</span><span style="font-weight: normal">,
-	enter the following statement: </span><b>create user </b><i><b>user_name</b></i>
-	<b>default tablespace users identified by </b><i><b>&quot;password&quot;</b></i><b>;</b></font></p></li>
+	a new user, enter the following statement: </span><b>create user
+	</b><i><b>user_name</b></i> <b>default tablespace users identified
+	by </b><i><b>&quot;password&quot;</b></i><b>;</b></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
 	</span><b>grant create session to </b><i><b>user_name</b></i><b>;</b></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
 	</span><b>quit</b></font></p></li>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">From
-	a Command Prompt, execute </span></font><font face="Segoe UI, sans-serif"><b>sqlplus
-	pdfkeeper/</b></font><font face="Segoe UI, sans-serif"><i><b>password</b></i></font><font face="Segoe UI, sans-serif"><b>@</b></font><font face="Segoe UI, sans-serif"><i><b>TNS_name</b></i></font>
-	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">where
-	</span></font><font face="Segoe UI, sans-serif"><b>TNS_name</b></font>
-	<font face="Segoe UI, sans-serif"><span style="font-weight: normal">is
-	the service name</span></font> <font face="Segoe UI, sans-serif"><span style="font-weight: normal">of
-	the Autonomous Database instance.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter</span><span style="font-weight: normal">
+	</span><b>sqlplus pdfkeeper/</b><i><b>password</b></i><b>@</b><i><b>TNS_name</b></i>
+	</font>
+	</p></li>
+</ol>
+<ul>
+	<ul>
+		<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">W</span></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">here
+		</span></font><font face="Segoe UI, sans-serif"><b>password</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">
+		is the pdfkeeper account password and </span></font><font face="Segoe UI, sans-serif"><b>TNS_name</b></font><font face="Segoe UI, sans-serif">
+		</font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">is
+		the service name</span></font><font face="Segoe UI, sans-serif"> </font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">of
+		the Autonomous Database instance.</span></font></p></li>
+	</ul>
+</ul>
+<ol start="7">
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
 	a new account, enter the following statement to grant the user
 	select/query access: </span><b>grant select on docs to </b><i><b>user_name</b></i><b>;</b></font></p></li>
