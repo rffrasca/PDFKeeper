@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>Schema Setup for Oracle Autonomous Database</title>
-	<meta name="generator" content="LibreOffice 24.2.5.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 24.8.1.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2024-08-14T20:28:03.068000000"/>
+	<meta name="changed" content="2024-09-22T13:49:28.731000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -43,8 +43,8 @@ for PDFKeeper.</font></p>
 	<li><p><font face="Segoe UI, sans-serif">For TLS authentication
 	only, create or edit <b>tnsnames.ora</b> adding an entry for one or
 	more of the <b>Connection Strings</b> available for the Autonomous
-	Database using the format of <b>&lt;TNS Name&gt;= &lt;Connection
-	String&gt;</b>.</font></p></li>
+	Database using the format of <b>&lt;</b><i><b>TNS Name</b></i><b>&gt;=
+	&lt;Connection String&gt;</b>.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">For Mutual TLS (mTLS)
 	authentication only, create or edit <b>tnsnames.ora</b> adding all
 	of the entries from <b>tnsnames.ora</b> located in the Oracle Wallet
@@ -52,17 +52,17 @@ for PDFKeeper.</font></p>
 	from <b>sqlnet.ora </b>located in the Oracle Wallet folder, and then
 	change <b>?/network/admin</b> to the absolute path name of the
 	Oracle Wallet folder.</font></p></li>
-	<li><p><font face="Segoe UI, sans-serif">From Windows, right click
-	on the </font><font face="Segoe UI, sans-serif"><b>Start</b></font>
-	<font face="Segoe UI, sans-serif">button</font> <font face="Segoe UI, sans-serif">and
-	then select </font><font face="Segoe UI, sans-serif"><b>Run</b></font><font face="Segoe UI, sans-serif">.</font></p></li>
-	<li><p><font face="Segoe UI, sans-serif">Paste
-	</font><font face="Segoe UI, sans-serif"><b>%LOCALAPPDATA%\Programs\PDFKeeper\OracleDatabaseSchemaSetup.cmd</b></font>
-	<font face="Segoe UI, sans-serif">into the combo box and then select
-	</font><font face="Segoe UI, sans-serif"><b>OK</b></font><font face="Segoe UI, sans-serif">.</font></p></li>
-	<li><p><font face="Segoe UI, sans-serif">Select option </font><font face="Segoe UI, sans-serif"><b>2</b></font>
-	<span style="font-variant: normal"><font face="Segoe UI, sans-serif"><span style="font-style: normal"><span style="font-weight: normal">and
-	then follow the instructions.</span></span></font></span></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Open a <b>Command Prompt.</b></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">E</span><span style="font-weight: normal">xecute
+	</span><b>sqlplus admin@</b><i><b>TNS_name</b></i><b>
+	@&quot;%LOCALAPPDATA%\Programs\PDFKeeper\OracleDatabaseSchemaSetup.sql&quot;</b></font></p></li>
 </ol>
+<ul>
+	<ul>
+		<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Where
+		</span><b>admin</b> is the administrator account and <b>TNS_name</b>
+		is the service name of the Autonomous Database instance.</font></p></li>
+	</ul>
+</ul>
 </body>
 </html>
