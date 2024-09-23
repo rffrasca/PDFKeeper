@@ -3,7 +3,7 @@
 ##  Install Development Applications and Tools
 1. Microsoft Visual Studio 2019 - https://www.visualstudio.com/downloads/
 2. WiX Toolset Build Tools - Download and install v3.11.2 using "Manage Extensions" in Visual Studio.
-3. Wix Toolset Visual Studio 2019 Extension - Download and install using "Manage Extensions" in Visual Studio.
+3. WiX v3 - Visual Studio 2019 Extension - Download and install using "Manage Extensions" in Visual Studio.
 4. Wax - Download and install using "Manage Extensions" in Visual Studio.
 5. Microsoft HTML Help Workshop - https://web.archive.org/web/20201201163924/http://www.microsoft.com/en-us/download/details.aspx?id=21138
 6. Oracle Data Provider for .NET - https://www.oracle.com/database/technologies/net-downloads.html
