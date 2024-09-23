@@ -222,9 +222,6 @@
       <Component Id="BouncyCastle.Cryptography.dll" Guid="5ba5c46f-096e-40ca-b0fc-71e3cea143fb">
         <File Id="BouncyCastle.Cryptography.dll" Name="BouncyCastle.Cryptography.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)BouncyCastle.Cryptography.dll" />
       </Component>
-      <Component Id="OracleDatabaseSchemaSetup.cmd" Guid="8c230098-4f55-491f-bcb1-951859878ffb">
-        <File Id="OracleDatabaseSchemaSetup.cmd" Name="OracleDatabaseSchemaSetup.cmd" Source="$(var.PDFKeeper.WinForms_TargetDir)OracleDatabaseSchemaSetup.cmd" />
-      </Component>
       <Component Id="ConnectionSettingManager.cmd" Guid="b2c65832-fe92-4933-a929-e154d68fc1cb">
         <File Id="ConnectionSettingManager.cmd" Name="ConnectionSettingManager.cmd" Source="$(var.PDFKeeper.WinForms_TargetDir)ConnectionSettingManager.cmd" />
       </Component>

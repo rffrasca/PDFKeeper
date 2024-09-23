@@ -150,10 +150,6 @@
     <Compile Include="ViewModels\UploadProfilesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Config\OracleDatabaseSchemaSetup.cmd">
-      <Link>OracleDatabaseSchemaSetup.cmd</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\Config\ConnectionSettingManager.cmd">
       <Link>ConnectionSettingManager.cmd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
