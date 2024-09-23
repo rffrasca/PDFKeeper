@@ -1,4 +1,4 @@
-﻿// ****************************************************************************
+// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2024 Robert F. Frasca
 // *
@@ -31,7 +31,7 @@ using System;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Robert F. Frasca")]
 [assembly: AssemblyProduct("PDFKeeper")]
-[assembly: AssemblyCopyright("Copyright © 2009-2024 Robert F. Frasca")]
+[assembly: AssemblyCopyright("Copyright � 2009-2024 Robert F. Frasca")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -53,7 +53,7 @@ using System;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("9.2.0.0")]
-[assembly: AssemblyFileVersion("9.2.0.0")]
+[assembly: AssemblyVersion("10.0.0.0")]
+[assembly: AssemblyFileVersion("10.0.0.0")]
 [assembly: NeutralResourcesLanguage("en-US")]
 [assembly: CLSCompliant(true)]
