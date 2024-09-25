@@ -266,7 +266,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                 document.Author = pdfMetadata.Author;
                 document.Subject = pdfMetadata.Subject;
                 document.Keywords = pdfMetadata.Keywords;
-                document.Notes = String.Empty;
+                document.Notes = string.Empty;
                 document.Pdf = pdfFile.ReadAllBytes();
                 document.Category = pdfMetadata.Category;
                 document.Flag = pdfMetadata.Flag;
