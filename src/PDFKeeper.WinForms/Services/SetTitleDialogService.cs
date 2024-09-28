@@ -21,8 +21,8 @@
 using System;
 using System.Windows.Forms;
 using PDFKeeper.Core.Services;
+using PDFKeeper.WinForms.Dialogs;
 using PDFKeeper.WinForms.Properties;
-using PDFKeeper.WinForms.Views;
 
 namespace PDFKeeper.WinForms.Services
 {

@@ -22,7 +22,7 @@ using PDFKeeper.WinForms.Helpers;
 using System;
 using System.Windows.Forms;
 
-namespace PDFKeeper.WinForms.Views
+namespace PDFKeeper.WinForms.Dialogs
 {
     public partial class SetTitleForm : Form
     {

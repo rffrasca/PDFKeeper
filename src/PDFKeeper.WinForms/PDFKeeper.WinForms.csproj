@@ -283,10 +283,10 @@
     <Compile Include="Views\SetTaxYearForm.Designer.cs">
       <DependentUpon>SetTaxYearForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SetTitleForm.cs">
+    <Compile Include="Dialogs\SetTitleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\SetTitleForm.Designer.cs">
+    <Compile Include="Dialogs\SetTitleForm.Designer.cs">
       <DependentUpon>SetTitleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UploadProfileEditorForm.cs">
@@ -395,7 +395,7 @@
     <EmbeddedResource Include="Views\SetTaxYearForm.resx">
       <DependentUpon>SetTaxYearForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SetTitleForm.resx">
+    <EmbeddedResource Include="Dialogs\SetTitleForm.resx">
       <DependentUpon>SetTitleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UploadProfileEditorForm.resx">

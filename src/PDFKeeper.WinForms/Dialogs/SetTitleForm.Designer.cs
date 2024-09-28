@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-namespace PDFKeeper.WinForms.Views
+namespace PDFKeeper.WinForms.Dialogs
 {
     partial class SetTitleForm
     {
