@@ -27,6 +27,7 @@ using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
 using System;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 
 namespace PDFKeeper.Core.FileIO.PDF
@@ -266,6 +267,9 @@ namespace PDFKeeper.Core.FileIO.PDF
                 document.Author = pdfMetadata.Author;
                 document.Subject = pdfMetadata.Subject;
                 document.Keywords = pdfMetadata.Keywords;
+                document.Added = DateTime.Now.ToString(
+                    "yyyy-MM-dd HH:mm:ss",
+                    CultureInfo.CurrentCulture);
                 document.Notes = string.Empty;
                 document.Pdf = pdfFile.ReadAllBytes();
                 document.Category = pdfMetadata.Category;

@@ -66,6 +66,7 @@ namespace PDFKeeper.WinForms.Views
                 new SetSubjectDialogService(),
                 new SetCategoryDialogService(),
                 new SetTaxYearDialogService(),
+                new SetDateTimeAddedDialogService(),
                 new OpenFileDialogService(),
                 new SaveFileDialogService(),
                 new PrintDialogService(),
@@ -136,6 +137,8 @@ namespace PDFKeeper.WinForms.Views
             DocumentsSetSubjectToolStripMenuItem.Tag = new SetSubjectCommand(presenter);
             DocumentsSetCategoryToolStripMenuItem.Tag = new SetCategoryCommand(presenter);
             DocumentsSetTaxYearToolStripMenuItem.Tag = new SetTaxYearCommand(presenter);
+            DocumentsSetDateTimeAddedToolStripMenuItem.Tag = new SetDateTimeAddedCommand(
+                presenter);
             DocumentsDeleteToolStripMenuItem.Tag = new DeleteCommand(presenter);
             DocumentsDeleteToolStripButton.Tag = new DeleteCommand(presenter);
             ViewToolStripMenuItem.Tag = new ViewMenuCheckedStateCommand(this);
@@ -561,6 +564,13 @@ namespace PDFKeeper.WinForms.Views
             {
                 DocumentsSetTaxYearToolStripMenuItem.Enabled =
                     viewModel.DocumentsSetTaxYearMenuEnabled;
+            }
+            else if (e.PropertyName.Equals(
+                "DocumentsSetDateTimeAddedMenuEnabled",
+                StringComparison.Ordinal))
+            {
+                DocumentsSetDateTimeAddedToolStripMenuItem.Enabled =
+                    viewModel.DocumentsSetDateTimeAddedMenuEnabled;
             }
             else if (e.PropertyName.Equals("DocumentsDeleteMenuEnabled", StringComparison.Ordinal))
             {

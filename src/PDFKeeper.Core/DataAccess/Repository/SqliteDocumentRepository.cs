@@ -368,8 +368,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 searchTerm = string.Empty;
             }
-            var sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_notes,doc_pdf," +
-                "doc_category,doc_flag,doc_tax_year,doc_text from docs where doc_id = :doc_id";
+            var sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
+                "doc_pdf,doc_category,doc_flag,doc_tax_year,doc_text " +
+                "from docs where doc_id = :doc_id";
             try
             {
                 using (var connection = new SQLiteConnection(ConnectionString))
@@ -387,6 +388,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             document.Author = reader["doc_author"].ToString();
                             document.Subject = reader["doc_subject"].ToString();
                             document.Keywords = reader["doc_keywords"].ToString();
+                            document.Added = reader["doc_added"].ToString();
                             document.Notes = reader["doc_notes"].ToString();
                             document.Pdf = (byte[])reader["doc_pdf"];
                             document.Category = reader["doc_category"].ToString();
@@ -411,9 +413,6 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 throw new ArgumentNullException(nameof(document));
             }
-            var dateTimeStamp = DateTime.Now.ToString(
-                "yyyy-MM-dd HH:mm:ss",
-                CultureInfo.CurrentCulture);
             var sql = "insert into docs values(null," +
                       ":doc_title," +
                       ":doc_author," +
@@ -437,7 +436,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.AddWithValue(":doc_author", document.Author);
                         command.Parameters.AddWithValue(":doc_subject", document.Subject);
                         command.Parameters.AddWithValue(":doc_keywords", document.Keywords);
-                        command.Parameters.AddWithValue(":doc_added", dateTimeStamp);
+                        command.Parameters.AddWithValue(":doc_added", document.Added);
                         command.Parameters.AddWithValue(":doc_notes", document.Notes);
                         command.Parameters.Add(":doc_pdf", DbType.Binary).Value = document.Pdf;
                         command.Parameters.AddWithValue(":doc_category", document.Category);
@@ -473,6 +472,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       "doc_title = :doc_title," +
                       "doc_author = :doc_author," +
                       "doc_subject = :doc_subject," +
+                      "doc_added = :doc_added," +
                       "doc_notes = :doc_notes," +
                       "doc_category = :doc_category," +
                       "doc_tax_year = :doc_tax_year," +
@@ -488,6 +488,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.AddWithValue("doc_title", document.Title);
                         command.Parameters.AddWithValue("doc_author", document.Author);
                         command.Parameters.AddWithValue("doc_subject", document.Subject);
+                        command.Parameters.AddWithValue("doc_added", document.Added);
                         command.Parameters.AddWithValue("doc_notes", document.Notes);
                         command.Parameters.AddWithValue("doc_category", document.Category);
                         command.Parameters.AddWithValue("doc_tax_year", document.TaxYear);

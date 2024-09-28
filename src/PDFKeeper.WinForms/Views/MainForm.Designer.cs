@@ -118,6 +118,7 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsSetSubjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DocumentsSetCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DocumentsSetTaxYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DocumentsSetDateTimeAddedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DocumentsToolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.DocumentsDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -635,6 +636,7 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsSetSubjectToolStripMenuItem,
             this.DocumentsSetCategoryToolStripMenuItem,
             this.DocumentsSetTaxYearToolStripMenuItem,
+            this.DocumentsSetDateTimeAddedToolStripMenuItem,
             this.DocumentsToolStripSeparator3,
             this.DocumentsDeleteToolStripMenuItem});
             this.DocumentsToolStripMenuItem.Name = "DocumentsToolStripMenuItem";
@@ -706,6 +708,12 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsSetTaxYearToolStripMenuItem.Name = "DocumentsSetTaxYearToolStripMenuItem";
             resources.ApplyResources(this.DocumentsSetTaxYearToolStripMenuItem, "DocumentsSetTaxYearToolStripMenuItem");
             this.DocumentsSetTaxYearToolStripMenuItem.Click += new System.EventHandler(this.ToolStripItem_Click);
+            // 
+            // DocumentsSetDateTimeAddedToolStripMenuItem
+            // 
+            this.DocumentsSetDateTimeAddedToolStripMenuItem.Name = "DocumentsSetDateTimeAddedToolStripMenuItem";
+            resources.ApplyResources(this.DocumentsSetDateTimeAddedToolStripMenuItem, "DocumentsSetDateTimeAddedToolStripMenuItem");
+            this.DocumentsSetDateTimeAddedToolStripMenuItem.Click += new System.EventHandler(this.ToolStripItem_Click);
             // 
             // DocumentsToolStripSeparator3
             // 
@@ -1263,6 +1271,7 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.Timer UploadTimer;
         internal System.Windows.Forms.Timer UpdateCheckTimer;
         internal System.Windows.Forms.Timer CheckForFlaggedDocumentsTimer;
+        private System.Windows.Forms.ToolStripMenuItem DocumentsSetDateTimeAddedToolStripMenuItem;
     }
 }
 

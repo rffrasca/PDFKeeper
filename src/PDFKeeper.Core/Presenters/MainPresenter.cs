@@ -57,6 +57,7 @@ namespace PDFKeeper.Core.Presenters
         private readonly IDialogService setSubjectDialogService;
         private readonly IDialogService setCategoryDialogService;
         private readonly IDialogService setTaxYearDialogService;
+        private readonly IDialogService setDateTimeAddedDialogService;
         private readonly IFileDialogService openFileDialogService;
         private readonly IFileDialogService saveFileDialogService;
         private readonly IPrintDialogService printDialogService;
@@ -73,20 +74,51 @@ namespace PDFKeeper.Core.Presenters
         /// <summary>
         /// Initializes a new instance of the MainPresenter class.
         /// </summary>
-        /// <param name="handle">The handle of the view.</param>
-        /// <param name="pdfViewerService">The PdfViewerService instance.</param>
-        /// <param name="folderBrowserDialogService">The FolderBrowserDialogService instance.</param>
-        /// <param name="messageBoxService">The MessageBoxService instance.</param>
-        /// <param name="folderExplorerService">The FolderExplorerService instance.</param>
-        /// <param name="setTitleDialogService">The SetTitleDialogService instance.</param>
-        /// <param name="setAuthorDialogService">The SetAuthorDialogService instance.</param>
-        /// <param name="setSubjectDialogService">The SetSubjectDialogService instance.</param>
-        /// <param name="setCategoryDialogService">The SetCategoryDialogService instance.</param>
-        /// <param name="setTaxYearDialogService">The SetTaxYearDialogService instance.</param>
-        /// <param name="openFileDialogService">The OpenFileDialogService instance.</param>
-        /// <param name="saveFileDialogService">The SaveFileDialogService instance.</param>
-        /// <param name="printDialogService">The PrintDialogService instance.</param>
-        /// <param name="printPreviewDialogService">The PrintPreviewDialogService instance.</param>
+        /// <param name="handle">
+        /// The handle of the view.
+        /// </param>
+        /// <param name="pdfViewerService">
+        /// The PdfViewerService instance.
+        /// </param>
+        /// <param name="folderBrowserDialogService">
+        /// The FolderBrowserDialogService instance.
+        /// </param>
+        /// <param name="messageBoxService">
+        /// The MessageBoxService instance.
+        /// </param>
+        /// <param name="folderExplorerService">
+        /// The FolderExplorerService instance.
+        /// </param>
+        /// <param name="setTitleDialogService">
+        /// The SetTitleDialogService instance.
+        /// </param>
+        /// <param name="setAuthorDialogService">
+        /// The SetAuthorDialogService instance.
+        /// </param>
+        /// <param name="setSubjectDialogService">
+        /// The SetSubjectDialogService instance.
+        /// </param>
+        /// <param name="setCategoryDialogService">
+        /// The SetCategoryDialogService instance.
+        /// </param>
+        /// <param name="setTaxYearDialogService">
+        /// The SetTaxYearDialogService instance.
+        /// </param>
+        /// <param name="setDateTimeAddedDialogService">
+        /// The SetDateTimeAddedDialogService instance.
+        /// </param>
+        /// <param name="openFileDialogService">
+        /// The OpenFileDialogService instance.
+        /// </param>
+        /// <param name="saveFileDialogService">
+        /// The SaveFileDialogService instance.
+        /// </param>
+        /// <param name="printDialogService">
+        /// The PrintDialogService instance.
+        /// </param>
+        /// <param name="printPreviewDialogService">
+        /// The PrintPreviewDialogService instance.
+        /// </param>
         public MainPresenter(
             IntPtr handle,
             IPdfViewerService pdfViewerService,
@@ -98,6 +130,7 @@ namespace PDFKeeper.Core.Presenters
             IDialogService setSubjectDialogService,
             IDialogService setCategoryDialogService,
             IDialogService setTaxYearDialogService,
+            IDialogService setDateTimeAddedDialogService,
             IFileDialogService openFileDialogService,
             IFileDialogService saveFileDialogService,
             IPrintDialogService printDialogService,
@@ -113,6 +146,7 @@ namespace PDFKeeper.Core.Presenters
             this.setSubjectDialogService = setSubjectDialogService;
             this.setCategoryDialogService = setCategoryDialogService;
             this.setTaxYearDialogService = setTaxYearDialogService;
+            this.setDateTimeAddedDialogService = setDateTimeAddedDialogService;
             this.openFileDialogService = openFileDialogService;
             this.saveFileDialogService = saveFileDialogService;
             this.printDialogService = printDialogService;
@@ -162,6 +196,7 @@ namespace PDFKeeper.Core.Presenters
             ViewModel.DocumentsSetSubjectMenuEnabled = false;
             ViewModel.DocumentsSetCategoryMenuEnabled = false;
             ViewModel.DocumentsSetTaxYearMenuEnabled = false;
+            ViewModel.DocumentsSetDateTimeAddedMenuEnabled = false;
             ViewModel.DocumentsDeleteMenuEnabled = false;
             ViewModel.ViewSetPreviewPixelDensityMenuEnabled = false;
             if (DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Sqlite))
@@ -471,6 +506,7 @@ namespace PDFKeeper.Core.Presenters
             ViewModel.DocumentsSetSubjectMenuEnabled = enabled;
             ViewModel.DocumentsSetCategoryMenuEnabled = enabled;
             ViewModel.DocumentsSetTaxYearMenuEnabled = enabled;
+            ViewModel.DocumentsSetDateTimeAddedMenuEnabled = enabled;
             ViewModel.DocumentsDeleteMenuEnabled = enabled;
             ViewModel.FileExportMenuEnabled = enabled;
         }
@@ -519,7 +555,16 @@ namespace PDFKeeper.Core.Presenters
                 ProcessEachCheckedDocument(CheckedDocumentAction.SetTaxYear, value);
             }
         }
-        
+
+        public void SetDateTimeAddedOnEachSelectedDocument()
+        {
+            var value = setDateTimeAddedDialogService.ShowDialog();
+            if (value != null)
+            {
+                ProcessEachCheckedDocument(CheckedDocumentAction.SetDateTimeAdded, value);
+            }
+        }
+
         /// <summary>
         /// Deletes each selected document from the database.
         /// </summary>
@@ -744,6 +789,7 @@ namespace PDFKeeper.Core.Presenters
                     ViewModel.DocumentsSetSubjectMenuEnabled = true;
                     ViewModel.DocumentsSetCategoryMenuEnabled = true;
                     ViewModel.DocumentsSetTaxYearMenuEnabled = true;
+                    ViewModel.DocumentsSetDateTimeAddedMenuEnabled = true;
                     ViewModel.DocumentsDeleteMenuEnabled = true;
                     ViewModel.FileExportMenuEnabled = true;
                 }
@@ -949,6 +995,7 @@ namespace PDFKeeper.Core.Presenters
             SetSubject,
             SetCategory,
             SetTaxYear,
+            SetDateTimeAdded,
             Delete,
             Export
         }
@@ -1008,6 +1055,7 @@ namespace PDFKeeper.Core.Presenters
                 ViewModel.DocumentsSetSubjectMenuEnabled = false;
                 ViewModel.DocumentsSetCategoryMenuEnabled = false;
                 ViewModel.DocumentsSetTaxYearMenuEnabled = false;
+                ViewModel.DocumentsSetDateTimeAddedMenuEnabled = false;
                 ViewModel.DocumentsDeleteMenuEnabled = false;
             }
             else
@@ -1131,6 +1179,11 @@ namespace PDFKeeper.Core.Presenters
                     else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetTaxYear))
                     {
                         document.TaxYear = value;
+                        documentRepository.UpdateDocument(document);
+                    }
+                    else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetDateTimeAdded))
+                    {
+                        document.Added = value;
                         documentRepository.UpdateDocument(document);
                     }
                     else if (checkedDocumentAction.Equals(CheckedDocumentAction.Delete))

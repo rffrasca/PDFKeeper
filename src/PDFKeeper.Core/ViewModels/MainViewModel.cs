@@ -51,6 +51,7 @@ namespace PDFKeeper.Core.ViewModels
         private bool documentsSetSubjectMenuEnabled;
         private bool documentsSetCategoryMenuEnabled;
         private bool documentsSetTaxYearMenuEnabled;
+        private bool documentsSetDateTimeAddedMenuEnabled;
         private bool documentsDeleteMenuEnabled;
         private bool viewSetPreviewPixelDensityMenuEnabled;
         private bool toolsMoveDatabaseMenuVisible;
@@ -230,6 +231,12 @@ namespace PDFKeeper.Core.ViewModels
         {
             get => documentsSetTaxYearMenuEnabled;
             set => SetProperty(ref documentsSetTaxYearMenuEnabled, value);
+        }
+
+        public bool DocumentsSetDateTimeAddedMenuEnabled
+        {
+            get => documentsSetDateTimeAddedMenuEnabled;
+            set => SetProperty(ref documentsSetDateTimeAddedMenuEnabled, value);
         }
 
         public bool DocumentsDeleteMenuEnabled

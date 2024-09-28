@@ -325,9 +325,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 searchTerm = string.Empty;
             }
-            var sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_notes,doc_pdf," +
-                "doc_category,doc_flag,doc_tax_year,doc_text from pdfkeeper.docs " +
-                "where doc_id = :doc_id";
+            var sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
+                "doc_pdf,doc_category,doc_flag,doc_tax_year,doc_text " +
+                "from pdfkeeper.docs where doc_id = :doc_id";
             try
             {
                 using (var connection = new OracleConnection(ConnectionString, oracleCredential))
@@ -346,13 +346,14 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             document.Author = reader["doc_author"].ToString();
                             document.Subject = reader["doc_subject"].ToString();
                             document.Keywords = reader["doc_keywords"].ToString();
+                            document.Added = reader["doc_added"].ToString();
                             document.Notes = reader["doc_notes"].ToString();
                             document.Category = reader["doc_category"].ToString();
                             document.Flag = Convert.ToInt32(reader["doc_flag"]);
                             document.TaxYear = reader["doc_tax_year"].ToString();
                             document.Text = reader["doc_text"].ToString();
                             document.SearchTermSnippets = GetSearchTermSnippets(id, searchTerm);
-                            var blob = reader.GetOracleBlob(5);
+                            var blob = reader.GetOracleBlob(6);
                             using (var memoryStream = new MemoryStream(blob.Value))
                             {
                                 document.Pdf = memoryStream.ToArray();
@@ -384,7 +385,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       ":doc_author," +
                       ":doc_subject," +
                       ":doc_keywords," +
-                      "to_char(sysdate,'YYYY-MM-DD HH24:MI:SS')," +
+                      ":doc_added," +
                       ":doc_notes," +
                       ":doc_pdf," +
                       "''," +
@@ -404,6 +405,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.Add("doc_author", document.Author);
                         command.Parameters.Add("doc_subject", document.Subject);
                         command.Parameters.Add("doc_keywords", document.Keywords);
+                        command.Parameters.Add("doc_added", document.Added);
                         command.Parameters.Add("doc_notes", document.Notes);
                         command.Parameters.Add(
                             "doc_pdf",
@@ -440,6 +442,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       "doc_title = :doc_title," +
                       "doc_author = :doc_author," +
                       "doc_subject = :doc_subject," +
+                      "doc_added = :doc_added," +
                       "doc_notes = :doc_notes," +
                       "doc_dummy = ''," +
                       "doc_category = :doc_category," +
@@ -457,6 +460,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.Add("doc_title", document.Title);
                         command.Parameters.Add("doc_author", document.Author);
                         command.Parameters.Add("doc_subject", document.Subject);
+                        command.Parameters.Add("doc_added", document.Added);
                         command.Parameters.Add("doc_notes", document.Notes);
                         command.Parameters.Add("doc_category", document.Category);
                         command.Parameters.Add("doc_tax_year", document.TaxYear);

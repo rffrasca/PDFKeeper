@@ -322,6 +322,11 @@
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Set Date and Time Added on Documents">
+					<param name="Local" value="Set Date and Time Added on Documents.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Exporting PDF Documents and External Metadata">
 					<param name="Local" value="Exporting PDF Documents and External Metadata.html">
 					<param name="ImageNumber" value="9">

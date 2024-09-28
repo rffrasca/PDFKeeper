@@ -520,13 +520,13 @@
     <value>Ctrl+F</value>
   </data>
   <data name="DocumentsFindToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>269, 22</value>
   </data>
   <data name="DocumentsFindToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Find</value>
   </data>
   <data name="DocumentsToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>266, 6</value>
   </data>
   <data name="DocumentsSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 22</value>
@@ -541,19 +541,19 @@
     <value>&amp;None</value>
   </data>
   <data name="DocumentsSelectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>269, 22</value>
   </data>
   <data name="DocumentsSelectToolStripMenuItem.Text" xml:space="preserve">
     <value>Se&amp;lect</value>
   </data>
   <data name="DocumentsToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>266, 6</value>
   </data>
   <data name="DocumentsSetTitleToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+T</value>
   </data>
   <data name="DocumentsSetTitleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>269, 22</value>
   </data>
   <data name="DocumentsSetTitleToolStripMenuItem.Text" xml:space="preserve">
     <value>Set &amp;Title...</value>
@@ -562,7 +562,7 @@
     <value>Ctrl+Shift+A</value>
   </data>
   <data name="DocumentsSetAuthorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>269, 22</value>
   </data>
   <data name="DocumentsSetAuthorToolStripMenuItem.Text" xml:space="preserve">
     <value>Set &amp;Author...</value>
@@ -571,7 +571,7 @@
     <value>Ctrl+Shift+S</value>
   </data>
   <data name="DocumentsSetSubjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>269, 22</value>
   </data>
   <data name="DocumentsSetSubjectToolStripMenuItem.Text" xml:space="preserve">
     <value>Set &amp;Subject...</value>
@@ -580,7 +580,7 @@
     <value>Ctrl+Shift+C</value>
   </data>
   <data name="DocumentsSetCategoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>269, 22</value>
   </data>
   <data name="DocumentsSetCategoryToolStripMenuItem.Text" xml:space="preserve">
     <value>Set &amp;Category...</value>
@@ -589,19 +589,28 @@
     <value>Ctrl+Shift+Y</value>
   </data>
   <data name="DocumentsSetTaxYearToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>269, 22</value>
   </data>
   <data name="DocumentsSetTaxYearToolStripMenuItem.Text" xml:space="preserve">
     <value>Set Tax &amp;Year...</value>
   </data>
+  <data name="DocumentsSetDateTimeAddedToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+D</value>
+  </data>
+  <data name="DocumentsSetDateTimeAddedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 22</value>
+  </data>
+  <data name="DocumentsSetDateTimeAddedToolStripMenuItem.Text" xml:space="preserve">
+    <value>Set Date/T&amp;ime Added...</value>
+  </data>
   <data name="DocumentsToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 6</value>
+    <value>266, 6</value>
   </data>
   <data name="DocumentsDeleteToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+D</value>
   </data>
   <data name="DocumentsDeleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 22</value>
+    <value>269, 22</value>
   </data>
   <data name="DocumentsDeleteToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Delete...</value>
@@ -2255,6 +2264,12 @@
     <value>DocumentsSetTaxYearToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;DocumentsSetTaxYearToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DocumentsSetDateTimeAddedToolStripMenuItem.Name" xml:space="preserve">
+    <value>DocumentsSetDateTimeAddedToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;DocumentsSetDateTimeAddedToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;DocumentsToolStripSeparator3.Name" xml:space="preserve">

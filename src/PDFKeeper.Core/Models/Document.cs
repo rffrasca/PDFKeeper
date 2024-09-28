@@ -27,6 +27,7 @@ namespace PDFKeeper.Core.Models
         public string Author { get; set; }
         public string Subject { get; set; }
         public string Keywords { get; set; }
+        public string Added { get; set; }
         public string Notes { get; set; }
         public byte[] Pdf { get; set; }
         public string Category { get; set; }

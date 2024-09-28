@@ -84,6 +84,7 @@
     <Compile Include="Commands\SetCategoryCommand.cs" />
     <Compile Include="Commands\SetPreviewImageCommand.cs" />
     <Compile Include="Commands\SetSubjectCommand.cs" />
+    <Compile Include="Commands\SetDateTimeAddedCommand.cs" />
     <Compile Include="Commands\SetTaxYearCommand.cs" />
     <Compile Include="Commands\SetTitleCommand.cs" />
     <Compile Include="Commands\StatusBarToggleCommand.cs" />
@@ -127,6 +128,12 @@
     <Compile Include="Dialogs\PdfOwnerPasswordForm.Designer.cs">
       <DependentUpon>PdfOwnerPasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\SetDateTimeAddedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SetDateTimeAddedForm.Designer.cs">
+      <DependentUpon>SetDateTimeAddedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\SetPreviewPixelDensityForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +141,7 @@
       <DependentUpon>SetPreviewPixelDensityForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ResourceHelper.cs" />
+    <Compile Include="Services\SetDateTimeAddedDialogService.cs" />
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\PdfOwnerPasswordForm.resx">
       <DependentUpon>PdfOwnerPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SetDateTimeAddedForm.resx">
+      <DependentUpon>SetDateTimeAddedForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\SetPreviewPixelDensityForm.resx">
       <DependentUpon>SetPreviewPixelDensityForm.cs</DependentUpon>
