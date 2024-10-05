@@ -117,11 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="UploadProfilesViewModelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>492, 19</value>
+    <value>373, 17</value>
   </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="UploadProfileNamesListBox.HorizontalScrollbar" type="System.Boolean, mscorlib">
@@ -133,9 +130,6 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="UploadProfileNamesListBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
-  </data>
-  <data name="UploadProfileNamesListBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="UploadProfileNamesListBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>459, 394</value>
@@ -164,9 +158,6 @@
   </data>
   <data name="DeleteButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>397, 426</value>
-  </data>
-  <data name="DeleteButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="DeleteButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -201,9 +192,6 @@
   <data name="EditButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>316, 426</value>
   </data>
-  <data name="EditButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="EditButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
@@ -237,9 +225,6 @@
   <data name="AddButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>235, 426</value>
   </data>
-  <data name="AddButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="AddButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
@@ -265,7 +250,7 @@
     <value>2</value>
   </data>
   <metadata name="UploadProfilesFileSystemWatcher.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>258, 19</value>
+    <value>139, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -282,6 +267,9 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="$this.HelpKeyword" xml:space="preserve">
     <value>Adding, Editing, and Deleting Upload Profiles.html</value>
   </data>
@@ -297,11 +285,11 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Upload Profiles</value>
   </data>
-  <data name="&gt;&gt;HelpProvider.Name" xml:space="preserve">
-    <value>HelpProvider</value>
+  <data name="&gt;&gt;UploadProfilesViewModelBindingSource.Name" xml:space="preserve">
+    <value>UploadProfilesViewModelBindingSource</value>
   </data>
-  <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
-    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;UploadProfilesViewModelBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;UploadProfilesFileSystemWatcher.Name" xml:space="preserve">
     <value>UploadProfilesFileSystemWatcher</value>
@@ -309,11 +297,11 @@
   <data name="&gt;&gt;UploadProfilesFileSystemWatcher.Type" xml:space="preserve">
     <value>System.IO.FileSystemWatcher, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;UploadProfilesViewModelBindingSource.Name" xml:space="preserve">
-    <value>UploadProfilesViewModelBindingSource</value>
+  <data name="&gt;&gt;HelpProvider.Name" xml:space="preserve">
+    <value>HelpProvider</value>
   </data>
-  <data name="&gt;&gt;UploadProfilesViewModelBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>UploadProfilesForm</value>

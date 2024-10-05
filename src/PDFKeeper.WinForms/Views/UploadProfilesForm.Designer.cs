@@ -50,15 +50,15 @@ namespace PDFKeeper.WinForms.Views
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UploadProfilesForm));
-            this.HelpProvider = new System.Windows.Forms.HelpProvider();
             this.UploadProfileNamesListBox = new System.Windows.Forms.ListBox();
+            this.UploadProfilesViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DeleteButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.UploadProfilesFileSystemWatcher = new System.IO.FileSystemWatcher();
-            this.UploadProfilesViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.UploadProfilesFileSystemWatcher)).BeginInit();
+            this.HelpProvider = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.UploadProfilesViewModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UploadProfilesFileSystemWatcher)).BeginInit();
             this.SuspendLayout();
             // 
             // UploadProfileNamesListBox
@@ -68,16 +68,18 @@ namespace PDFKeeper.WinForms.Views
             this.UploadProfileNamesListBox.FormattingEnabled = true;
             resources.ApplyResources(this.UploadProfileNamesListBox, "UploadProfileNamesListBox");
             this.UploadProfileNamesListBox.Name = "UploadProfileNamesListBox";
-            this.HelpProvider.SetShowHelp(this.UploadProfileNamesListBox, ((bool)(resources.GetObject("UploadProfileNamesListBox.ShowHelp"))));
             this.UploadProfileNamesListBox.Sorted = true;
             this.UploadProfileNamesListBox.SelectedIndexChanged += new System.EventHandler(this.UploadProfileNamesListBox_SelectedIndexChanged);
+            // 
+            // UploadProfilesViewModelBindingSource
+            // 
+            this.UploadProfilesViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.UploadProfilesViewModel);
             // 
             // DeleteButton
             // 
             resources.ApplyResources(this.DeleteButton, "DeleteButton");
             this.DeleteButton.Image = global::PDFKeeper.WinForms.Properties.Resources.database_delete;
             this.DeleteButton.Name = "DeleteButton";
-            this.HelpProvider.SetShowHelp(this.DeleteButton, ((bool)(resources.GetObject("DeleteButton.ShowHelp"))));
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -86,7 +88,6 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.EditButton, "EditButton");
             this.EditButton.Image = global::PDFKeeper.WinForms.Properties.Resources.database_edit;
             this.EditButton.Name = "EditButton";
-            this.HelpProvider.SetShowHelp(this.EditButton, ((bool)(resources.GetObject("EditButton.ShowHelp"))));
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
@@ -95,7 +96,6 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.AddButton, "AddButton");
             this.AddButton.Image = global::PDFKeeper.WinForms.Properties.Resources.database_add;
             this.AddButton.Name = "AddButton";
-            this.HelpProvider.SetShowHelp(this.AddButton, ((bool)(resources.GetObject("AddButton.ShowHelp"))));
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -107,10 +107,6 @@ namespace PDFKeeper.WinForms.Views
             this.UploadProfilesFileSystemWatcher.Created += new System.IO.FileSystemEventHandler(this.UploadProfilesFileSystemWatcher_Created);
             this.UploadProfilesFileSystemWatcher.Deleted += new System.IO.FileSystemEventHandler(this.UploadProfilesFileSystemWatcher_Deleted);
             this.UploadProfilesFileSystemWatcher.Renamed += new System.IO.RenamedEventHandler(this.UploadProfilesFileSystemWatcher_Renamed);
-            // 
-            // UploadProfilesViewModelBindingSource
-            // 
-            this.UploadProfilesViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.UploadProfilesViewModel);
             // 
             // UploadProfilesForm
             // 
@@ -128,20 +124,19 @@ namespace PDFKeeper.WinForms.Views
             this.Name = "UploadProfilesForm";
             this.HelpProvider.SetShowHelp(this, ((bool)(resources.GetObject("$this.ShowHelp"))));
             this.ShowInTaskbar = false;
-            ((System.ComponentModel.ISupportInitialize)(this.UploadProfilesFileSystemWatcher)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UploadProfilesViewModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UploadProfilesFileSystemWatcher)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        internal System.Windows.Forms.HelpProvider HelpProvider;
         internal System.IO.FileSystemWatcher UploadProfilesFileSystemWatcher;
         internal System.Windows.Forms.ListBox UploadProfileNamesListBox;
         internal System.Windows.Forms.Button DeleteButton;
         internal System.Windows.Forms.Button EditButton;
         internal System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.BindingSource UploadProfilesViewModelBindingSource;
+        private System.Windows.Forms.HelpProvider HelpProvider;
     }
 }
