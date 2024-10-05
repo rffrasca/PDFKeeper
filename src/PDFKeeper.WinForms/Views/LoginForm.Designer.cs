@@ -57,9 +57,10 @@ namespace PDFKeeper.WinForms.Views
             this.DatasourceLabel = new System.Windows.Forms.Label();
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.OK_Button = new System.Windows.Forms.Button();
-            this.HelpProvider = new System.Windows.Forms.HelpProvider();
             this.DatasourceTextBox = new PDFKeeper.WinForms.Components.CustomTextBox(this.components);
             this.PasswordSecureTextBox = new PDFKeeper.WinForms.Components.SecureTextBox(this.components);
+            this.HelpProvider = new System.Windows.Forms.HelpProvider();
+            this.HelpLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +70,6 @@ namespace PDFKeeper.WinForms.Views
             this.pictureBox.Image = global::PDFKeeper.WinForms.Properties.Resources.PDFKeeper_200x200;
             resources.ApplyResources(this.pictureBox, "pictureBox");
             this.pictureBox.Name = "pictureBox";
-            this.HelpProvider.SetShowHelp(this.pictureBox, ((bool)(resources.GetObject("pictureBox.ShowHelp"))));
             this.pictureBox.TabStop = false;
             // 
             // UsernameTextBox
@@ -77,40 +77,34 @@ namespace PDFKeeper.WinForms.Views
             this.UsernameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::PDFKeeper.WinForms.Properties.Settings.Default, "Username", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.UsernameTextBox, "UsernameTextBox");
             this.UsernameTextBox.Name = "UsernameTextBox";
-            this.HelpProvider.SetShowHelp(this.UsernameTextBox, ((bool)(resources.GetObject("UsernameTextBox.ShowHelp"))));
             this.UsernameTextBox.Text = global::PDFKeeper.WinForms.Properties.Settings.Default.Username;
             // 
             // UsernameLabel
             // 
             resources.ApplyResources(this.UsernameLabel, "UsernameLabel");
             this.UsernameLabel.Name = "UsernameLabel";
-            this.HelpProvider.SetShowHelp(this.UsernameLabel, ((bool)(resources.GetObject("UsernameLabel.ShowHelp"))));
             // 
             // PasswordLabel
             // 
             resources.ApplyResources(this.PasswordLabel, "PasswordLabel");
             this.PasswordLabel.Name = "PasswordLabel";
-            this.HelpProvider.SetShowHelp(this.PasswordLabel, ((bool)(resources.GetObject("PasswordLabel.ShowHelp"))));
             // 
             // DatasourceLabel
             // 
             resources.ApplyResources(this.DatasourceLabel, "DatasourceLabel");
             this.DatasourceLabel.Name = "DatasourceLabel";
-            this.HelpProvider.SetShowHelp(this.DatasourceLabel, ((bool)(resources.GetObject("DatasourceLabel.ShowHelp"))));
             // 
             // Cancel_Button
             // 
             resources.ApplyResources(this.Cancel_Button, "Cancel_Button");
             this.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Cancel_Button.Name = "Cancel_Button";
-            this.HelpProvider.SetShowHelp(this.Cancel_Button, ((bool)(resources.GetObject("Cancel_Button.ShowHelp"))));
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
             // OK_Button
             // 
             resources.ApplyResources(this.OK_Button, "OK_Button");
             this.OK_Button.Name = "OK_Button";
-            this.HelpProvider.SetShowHelp(this.OK_Button, ((bool)(resources.GetObject("OK_Button.ShowHelp"))));
             this.OK_Button.Click += new System.EventHandler(this.OK_Button_Click);
             // 
             // DatasourceTextBox
@@ -118,7 +112,6 @@ namespace PDFKeeper.WinForms.Views
             this.DatasourceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::PDFKeeper.WinForms.Properties.Settings.Default, "Datasource", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.DatasourceTextBox, "DatasourceTextBox");
             this.DatasourceTextBox.Name = "DatasourceTextBox";
-            this.HelpProvider.SetShowHelp(this.DatasourceTextBox, ((bool)(resources.GetObject("DatasourceTextBox.ShowHelp"))));
             this.DatasourceTextBox.Text = global::PDFKeeper.WinForms.Properties.Settings.Default.Datasource;
             // 
             // PasswordSecureTextBox
@@ -126,7 +119,11 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.PasswordSecureTextBox, "PasswordSecureTextBox");
             this.PasswordSecureTextBox.Name = "PasswordSecureTextBox";
             this.PasswordSecureTextBox.ShortcutsEnabled = false;
-            this.HelpProvider.SetShowHelp(this.PasswordSecureTextBox, ((bool)(resources.GetObject("PasswordSecureTextBox.ShowHelp"))));
+            // 
+            // HelpLabel
+            // 
+            resources.ApplyResources(this.HelpLabel, "HelpLabel");
+            this.HelpLabel.Name = "HelpLabel";
             // 
             // LoginForm
             // 
@@ -134,6 +131,7 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.Cancel_Button;
+            this.Controls.Add(this.HelpLabel);
             this.Controls.Add(this.Cancel_Button);
             this.Controls.Add(this.OK_Button);
             this.Controls.Add(this.DatasourceTextBox);
@@ -169,6 +167,7 @@ namespace PDFKeeper.WinForms.Views
         internal Components.CustomTextBox DatasourceTextBox;
         internal System.Windows.Forms.Button Cancel_Button;
         internal System.Windows.Forms.Button OK_Button;
-        internal System.Windows.Forms.HelpProvider HelpProvider;
+        private System.Windows.Forms.HelpProvider HelpProvider;
+        private System.Windows.Forms.Label HelpLabel;
     }
 }
