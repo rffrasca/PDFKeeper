@@ -363,7 +363,7 @@ namespace PDFKeeper.WinForms.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The Setup Multi-User Database help topic will now open.
         ///
-        ///After reading the topic and setting up the database and any dependencies, close the help dialog, and then PDFKeeper will open to the login form..
+        ///After reading the topic and setting up the database and any client dependencies and settings listed under the Client Setup for Multi-User Database help topic, close the help dialog, and then PDFKeeper will open to the login form..
         /// </summary>
         internal static string MultiUserDatabaseSetup {
             get {
