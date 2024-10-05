@@ -310,6 +310,8 @@ namespace PDFKeeper.Core.Presenters
                     }
                     catch (DatabaseException ex)
                     {
+                        ViewModel.PreviousNotes = ViewModel.Notes;
+                        ViewModel.Notes = notesInDatabase;
                         messageBoxService.ShowMessage(ex.Message, true);
                     }
                     finally
