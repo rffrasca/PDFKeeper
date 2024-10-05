@@ -33,7 +33,6 @@ using PDFKeeper.WinForms.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -47,6 +46,7 @@ namespace PDFKeeper.WinForms.Views
         private readonly DataGridViewSortProperties dataGridViewSortProperties;
         private int dataGridViewScrollPosition;
         private readonly HelpFile helpFile;
+        private readonly FindDocumentsForm findDocumentsForm;
 
         // Message that is sent when the contents of the clipboard have changed.
         private const int WM_CLIPBOARDUPDATE = 0x31D;
@@ -76,6 +76,7 @@ namespace PDFKeeper.WinForms.Views
             dataGridViewSortProperties = new DataGridViewSortProperties();
             helpFile = new HelpFile();
             HelpProvider.HelpNamespace = helpFile.FullName;
+            findDocumentsForm = new FindDocumentsForm();
             AddEventHandlers();
             AddTags();
         }
@@ -124,12 +125,8 @@ namespace PDFKeeper.WinForms.Views
             EditAppendTextToolStripMenuItem.Tag = new AppendTextFromFileIntoNotes(presenter);
             EditAppendTextToolStripButton.Tag = new AppendTextFromFileIntoNotes(presenter);
             EditFlagDocumentToolStripMenuItem.Tag = new FlagStateToggleCommand(presenter);
-            DocumentsFindToolStripMenuItem.Tag = new DialogShowCommand(
-                new FindDocumentsForm(),
-                null);
-            DocumentsFindToolStripButton.Tag = new DialogShowCommand(
-                new FindDocumentsForm(),
-                null);
+            DocumentsFindToolStripMenuItem.Tag = new DialogShowCommand(findDocumentsForm, null);
+            DocumentsFindToolStripButton.Tag = new DialogShowCommand(findDocumentsForm, null);
             DocumentsSelectAllToolStripMenuItem.Tag = new SelectAllDocumentsCommand(this, true);
             DocumentsSelectNoneToolStripMenuItem.Tag = new SelectAllDocumentsCommand(this, false);
             DocumentsSetTitleToolStripMenuItem.Tag = new SetTitleCommand(presenter);

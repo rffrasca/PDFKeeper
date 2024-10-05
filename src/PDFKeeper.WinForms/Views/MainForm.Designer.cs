@@ -35,6 +35,7 @@ namespace PDFKeeper.WinForms.Views
         {
             if (disposing && (components != null))
             {
+                findDocumentsForm.Dispose();
                 components.Dispose();
             }
             base.Dispose(disposing);

@@ -20,7 +20,6 @@
 
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
-using PDFKeeper.Core.DataAccess.Repository;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.WinForms.Helpers;
 using PDFKeeper.WinForms.Properties;
