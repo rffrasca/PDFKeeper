@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>Logging into PDFKeeper</title>
-	<meta name="generator" content="LibreOffice 24.2.5.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 24.8.2.1 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2024-08-21T21:11:22.904000000"/>
+	<meta name="changed" content="2024-10-05T14:59:43.833000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -75,8 +75,10 @@ form: </font>
 		the default port number 1521 is assumed.</span></font></p></li>
 		<li><p><font face="Segoe UI, sans-serif"><b>service_name </b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">is
 		the service name of the database instance or pluggable database to
-		access. For Oracle Database Express Edition, if not specified, the
-		default service name XE is assumed.</span></font></p></li>
+		access. For Oracle Database Express Edition, </span></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">specify
+		</span></font><font face="Segoe UI, sans-serif"><b>XEPDB1</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.
+		For Oracle Database Free, </span></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">specif</span></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">y
+		</span></font><font face="Segoe UI, sans-serif"><b>FREEPDB1</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
 	</ul>
 </ul>
 <ol start="4">
@@ -93,8 +95,9 @@ Database (cloud)</b>:</font></p>
 	<b>Password</b>.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">Enter the <b>Data source
 	</b><span style="font-weight: normal">specified as</span> <span style="font-weight: normal">the
-	</span><b>TNS name </b><span style="font-weight: normal">or
-	</span><b>connection string </b><span style="font-weight: normal">from
+	</span><b>TNS name </b><span style="font-weight: normal">(mTLS only)
+	</span><span style="font-weight: normal">or </span><b>connection
+	string </b><span style="font-weight: normal">(mTLS or TLS) </span><span style="font-weight: normal">from
 	one of the available </span><b>Connection Strings </b><span style="font-weight: normal">for
 	the Autonomous Database.</span></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Select

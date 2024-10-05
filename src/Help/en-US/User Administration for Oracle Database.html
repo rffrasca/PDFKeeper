@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>User Administration for Oracle Database</title>
-	<meta name="generator" content="LibreOffice 24.8.1.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 24.8.2.1 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2024-09-22T12:16:46.699000000"/>
+	<meta name="changed" content="2024-10-05T13:26:03.596000000"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -48,26 +48,23 @@ any user that will need access to the <b>pdfkeeper</b> schema.
 Substitute the username and password for <i><b>user_name</b></i><span style="font-variant: normal">
 </span><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">and
 </span></span></span><i><b>password</b></i><span style="font-variant: normal"><span style="font-style: normal">.
-</span></span><span style="font-variant: normal"><span style="font-style: normal">These
-</span></span><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">steps
-</span></span></span><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">are
-to be performed </span></span></span><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">on
-the same computer as Oracle Database while logged in as the same user
-that installed Oracle Database:</span></span></span></font></p>
+These </span></span><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">steps
+are to be performed on the same computer as Oracle Database while
+logged in as the same user that installed Oracle Database:</span></span></span></font></p>
 <ol>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Open
-	a</span><b> Command Prompt</b><span style="font-weight: normal">.</span></font></p></li>
+	a</span> <b>Command Prompt</b><span style="font-weight: normal">.</span></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
 	</span><b>sqlplus / as sysdba</b></font></p></li>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For
 	<i><b>Oracle Database Free</b></i>, enter <b>alter session set
 	container=freepdb1;</b></font></p></li>
-	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For<b>
-	</b><i><b>Oracle Database Express Edition</b></i>, enter<b> alter
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For
+	<i><b>Oracle Database Express Edition</b></i>, enter <b>alter
 	session set container=xepdb1;</b></font></p></li>
-	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For<b>
-	</b><i><b>Oracle Database Enterprise</b></i><b> </b>or<b> </b><i><b>Standard
-	Edition</b></i>, enter<b> alter session set container=orclpdb;</b></font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For
+	<i><b>Oracle Database Enterprise</b></i> or <i><b>Standard Edition</b></i>,
+	enter <b>alter session set container=orclpdb;</b></font></p></li>
 </ol>
 <ul>
 	<ul>
@@ -79,22 +76,22 @@ that installed Oracle Database:</span></span></span></font></p>
 <ol start="6">
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
 	a new user, enter </span></font><font face="Segoe UI, sans-serif"><b>create
-	user </b></font><font face="Segoe UI, sans-serif"><i><b>user_name</b></i></font><font face="Segoe UI, sans-serif">
-	</font><font face="Segoe UI, sans-serif"><b>default tablespace users
+	user </b></font><font face="Segoe UI, sans-serif"><i><b>user_name</b></i></font>
+	<font face="Segoe UI, sans-serif"><b>default tablespace users
 	identified by </b></font><font face="Segoe UI, sans-serif"><i><b>&quot;password&quot;</b></i></font><font face="Segoe UI, sans-serif"><b>;</b></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
 	</span><b>grant create session to </b><i><b>user_name</b></i><b>;</b></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Enter
 	</span><b>quit</b></font></p></li>
-	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For<b>
-	</b><i><b>Oracle Database Free</b></i>, enter<b> </b><b>sqlplus
-	pdfkeeper@localhost/</b><b>f</b><b>reepdb1</b></font></p></li>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For
-	<i><b>Oracle Database Express Edition</b></i>, enter<b> sqlplus
+	<i><b>Oracle Database Free</b></i>, enter <b>sqlplus
+	pdfkeeper@localhost/freepdb1</b></font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For
+	<i><b>Oracle Database Express Edition</b></i>, enter <b>sqlplus
 	pdfkeeper@localhost/xepdb1</b></font></p></li>
 	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">For
-	<i><b>Oracle Database Enterprise</b></i><b> </b>or<b> </b><i><b>Standard
-	Edition</b></i>, enter<b> sqlplus pdfkeeper@localhost/orclpdb</b></font></p></li>
+	<i><b>Oracle Database Enterprise</b></i> or <i><b>Standard Edition</b></i>,
+	enter <b>sqlplus pdfkeeper@localhost/orclpdb</b></font></p></li>
 </ol>
 <ul>
 	<ul>
@@ -105,8 +102,6 @@ that installed Oracle Database:</span></span></span></font></p>
 	</ul>
 </ul>
 <ol start="12">
-	<li><p><font face="Segoe UI, sans-serif"><b>sqlplus
-	pdfkeeper@localhost/xepdb1</b></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">For
 	a new account, enter the following statement to grant the user
 	select/query access: </span><b>grant select on docs to </b><i><b>user_name</b></i><b>;</b></font></p></li>
@@ -131,5 +126,11 @@ that installed Oracle Database:</span></span></span></font></p>
 	prevent the user from deleting documents, enter the following
 	statement: </span><b>revoke delete on docs from </b><i><b>user_name</b></i><b>;</b></font></p></li>
 </ol>
+<p><font face="Segoe UI, sans-serif"><b>Additional Information:</b></font></p>
+<ul>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">If
+	<b>localhost</b> doesn’t resolve try <b>127.0.0.1</b> or the
+	<span style="font-style: normal">computer name.</span></font></p></li>
+</ul>
 </body>
 </html>
