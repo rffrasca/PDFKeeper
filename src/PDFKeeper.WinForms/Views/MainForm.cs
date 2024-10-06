@@ -47,6 +47,7 @@ namespace PDFKeeper.WinForms.Views
         private int dataGridViewScrollPosition;
         private readonly HelpFile helpFile;
         private readonly FindDocumentsForm findDocumentsForm;
+        private readonly UploadProfilesForm uploadProfilesForm;
 
         // Message that is sent when the contents of the clipboard have changed.
         private const int WM_CLIPBOARDUPDATE = 0x31D;
@@ -77,6 +78,7 @@ namespace PDFKeeper.WinForms.Views
             helpFile = new HelpFile();
             HelpProvider.HelpNamespace = helpFile.FullName;
             findDocumentsForm = new FindDocumentsForm();
+            uploadProfilesForm = new UploadProfilesForm();
             AddEventHandlers();
             AddTags();
         }
@@ -147,10 +149,10 @@ namespace PDFKeeper.WinForms.Views
             ToolsOptionsToolStripMenuItem.Tag = new DialogShowCommand(new OptionsForm(), null);
             ToolsOptionsToolStripButton.Tag = new DialogShowCommand(new OptionsForm(), null);
             ToolsUploadProfilesToolStripMenuItem.Tag = new DialogShowCommand(
-                new UploadProfilesForm(),
+                uploadProfilesForm,
                 null);
             ToolsUploadProfilesToolStripButton.Tag = new DialogShowCommand(
-                new UploadProfilesForm(),
+                uploadProfilesForm,
                 null);
             ToolsMoveDatabaseToolStripMenuItem.Tag = new MoveDatabaseCommand(presenter);
             HelpContentsToolStripMenuItem.Tag = new HelpFileShowCommand(helpFile, this);
