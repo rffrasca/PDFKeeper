@@ -552,124 +552,126 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public void CreateDatabase()
         {
-            try
+            if (!File.Exists(DatabaseSession.LocalDatabasePath))
             {
                 SQLiteConnection.CreateFile(DatabaseSession.LocalDatabasePath);
-                using (var connection = new SQLiteConnection(ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(connection))
+                try
+                {                    
+                    using (var connection = new SQLiteConnection(ConnectionString))
                     {
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        command.CommandText =
-                            "create table docs(" +
-                            "doc_id integer primary key autoincrement not null," +
-                            "doc_title text not null," +
-                            "doc_author text not null," +
-                            "doc_subject text not null," +
-                            "doc_keywords text," +
-                            "doc_added text not null," +
-                            "doc_notes text," +
-                            "doc_pdf blob not null," +
-                            "doc_category text," +
-                            "doc_flag integer default 0 check(doc_flag = 0 or doc_flag = 1)," +
-                            "doc_tax_year text," +
-                            "doc_text_annotations text," +
-                            "doc_text text);";
-                        command.ExecuteNonQuery();
-                        command.CommandText =
-                            "create virtual table docs_index using fts5(" +
-                            "doc_title," +
-                            "doc_author," +
-                            "doc_subject," +
-                            "doc_keywords," +
-                            "doc_added," +
-                            "doc_notes," +
-                            "doc_category," +
-                            "doc_tax_year," +
-                            "doc_text_annotations," +
-                            "doc_text," +
-                            "content='docs'," +
-                            "content_rowid='doc_id'," +
-                            "tokenize=porter);";
-                        command.ExecuteNonQuery();
-                        command.CommandText =
-                            "create trigger docs_after_insert after insert on docs " +
-                            "begin " +
-                            "insert into docs_index(" +
-                            "rowid," +
-                            "doc_title," +
-                            "doc_author," +
-                            "doc_subject," +
-                            "doc_keywords," +
-                            "doc_added," +
-                            "doc_notes," +
-                            "doc_category," +
-                            "doc_tax_year," +
-                            "doc_text_annotations," +
-                            "doc_text) " +
-                            "values(" +
-                            "new.doc_id," +
-                            "new.doc_title," +
-                            "new.doc_author," +
-                            "new.doc_subject," +
-                            "new.doc_keywords," +
-                            "new.doc_added," +
-                            "new.doc_notes," +
-                            "new.doc_category," +
-                            "new.doc_tax_year," +
-                            "new.doc_text_annotations," +
-                            "new.doc_text);" +
-                            "end;";
-                        command.ExecuteNonQuery();
-                        command.CommandText =
-                            "create trigger docs_before_update before update on docs " +
-                            "begin " +
-                            "delete from docs_index where rowid = old.doc_id;" +
-                            "end;";
-                        command.ExecuteNonQuery();
-                        command.CommandText =
-                            "create trigger docs_after_update after update on docs " +
-                            "begin " +
-                            "insert into docs_index(" +
-                            "rowid," +
-                            "doc_title," +
-                            "doc_author," +
-                            "doc_subject," +
-                            "doc_keywords," +
-                            "doc_added," +
-                            "doc_notes," +
-                            "doc_category," +
-                            "doc_tax_year," +
-                            "doc_text_annotations," +
-                            "doc_text) " +
-                            "values(" +
-                            "new.doc_id," +
-                            "new.doc_title," +
-                            "new.doc_author," +
-                            "new.doc_subject," +
-                            "new.doc_keywords," +
-                            "new.doc_added," +
-                            "new.doc_notes," +
-                            "new.doc_category," +
-                            "new.doc_tax_year," +
-                            "new.doc_text_annotations," +
-                            "new.doc_text);" +
-                            "end;";
-                        command.ExecuteNonQuery();
-                        command.CommandText = 
-                            "create trigger docs_before_delete before delete on docs " +
-                            "begin " +
-                            "delete from docs_index where rowid = old.doc_id;" +
-                            "end;";
-                        command.ExecuteNonQuery();
+                        using (var command = new SQLiteCommand(connection))
+                        {
+                            connection.Open();
+                            LoadExtensionLibrary(connection);
+                            command.CommandText =
+                                "create table docs(" +
+                                "doc_id integer primary key autoincrement not null," +
+                                "doc_title text not null," +
+                                "doc_author text not null," +
+                                "doc_subject text not null," +
+                                "doc_keywords text," +
+                                "doc_added text not null," +
+                                "doc_notes text," +
+                                "doc_pdf blob not null," +
+                                "doc_category text," +
+                                "doc_flag integer default 0 check(doc_flag = 0 or doc_flag = 1)," +
+                                "doc_tax_year text," +
+                                "doc_text_annotations text," +
+                                "doc_text text);";
+                            command.ExecuteNonQuery();
+                            command.CommandText =
+                                "create virtual table docs_index using fts5(" +
+                                "doc_title," +
+                                "doc_author," +
+                                "doc_subject," +
+                                "doc_keywords," +
+                                "doc_added," +
+                                "doc_notes," +
+                                "doc_category," +
+                                "doc_tax_year," +
+                                "doc_text_annotations," +
+                                "doc_text," +
+                                "content='docs'," +
+                                "content_rowid='doc_id'," +
+                                "tokenize=porter);";
+                            command.ExecuteNonQuery();
+                            command.CommandText =
+                                "create trigger docs_after_insert after insert on docs " +
+                                "begin " +
+                                "insert into docs_index(" +
+                                "rowid," +
+                                "doc_title," +
+                                "doc_author," +
+                                "doc_subject," +
+                                "doc_keywords," +
+                                "doc_added," +
+                                "doc_notes," +
+                                "doc_category," +
+                                "doc_tax_year," +
+                                "doc_text_annotations," +
+                                "doc_text) " +
+                                "values(" +
+                                "new.doc_id," +
+                                "new.doc_title," +
+                                "new.doc_author," +
+                                "new.doc_subject," +
+                                "new.doc_keywords," +
+                                "new.doc_added," +
+                                "new.doc_notes," +
+                                "new.doc_category," +
+                                "new.doc_tax_year," +
+                                "new.doc_text_annotations," +
+                                "new.doc_text);" +
+                                "end;";
+                            command.ExecuteNonQuery();
+                            command.CommandText =
+                                "create trigger docs_before_update before update on docs " +
+                                "begin " +
+                                "delete from docs_index where rowid = old.doc_id;" +
+                                "end;";
+                            command.ExecuteNonQuery();
+                            command.CommandText =
+                                "create trigger docs_after_update after update on docs " +
+                                "begin " +
+                                "insert into docs_index(" +
+                                "rowid," +
+                                "doc_title," +
+                                "doc_author," +
+                                "doc_subject," +
+                                "doc_keywords," +
+                                "doc_added," +
+                                "doc_notes," +
+                                "doc_category," +
+                                "doc_tax_year," +
+                                "doc_text_annotations," +
+                                "doc_text) " +
+                                "values(" +
+                                "new.doc_id," +
+                                "new.doc_title," +
+                                "new.doc_author," +
+                                "new.doc_subject," +
+                                "new.doc_keywords," +
+                                "new.doc_added," +
+                                "new.doc_notes," +
+                                "new.doc_category," +
+                                "new.doc_tax_year," +
+                                "new.doc_text_annotations," +
+                                "new.doc_text);" +
+                                "end;";
+                            command.ExecuteNonQuery();
+                            command.CommandText =
+                                "create trigger docs_before_delete before delete on docs " +
+                                "begin " +
+                                "delete from docs_index where rowid = old.doc_id;" +
+                                "end;";
+                            command.ExecuteNonQuery();
+                        }
                     }
                 }
-            }
-            catch (SQLiteException ex)
-            {
-                File.Delete(DatabaseSession.LocalDatabasePath);
-                throw new DatabaseException(ex.Message);
+                catch (SQLiteException ex)
+                {
+                    throw new DatabaseException(ex.Message);
+                }
             }
         }
 
