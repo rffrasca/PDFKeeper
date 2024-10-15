@@ -193,6 +193,11 @@ namespace PDFKeeper.WinForms.Views
             }
         }
 
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            viewModel.ViewMinimized = WindowState.Equals(FormWindowState.Minimized);
+        }
+
         private void GetFormState()
         {
             if (Settings.Default.MainFormLocation != null)
@@ -390,7 +395,7 @@ namespace PDFKeeper.WinForms.Views
         private void DocumentsListTimedRefreshTimer_Tick(object sender, EventArgs e)
         {
             DocumentsListTimedRefreshTimer.Stop();
-            presenter.SetDocumentsListHasChanges();
+            MainPresenter.SetDocumentsListHasChanges();
             DocumentsListTimedRefreshTimer.Start();
         }
 

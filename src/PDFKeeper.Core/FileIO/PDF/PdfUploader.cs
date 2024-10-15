@@ -21,7 +21,6 @@
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Commands;
 using PDFKeeper.Core.DataAccess;
-using PDFKeeper.Core.DataAccess.Repository;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
@@ -39,7 +38,6 @@ namespace PDFKeeper.Core.FileIO.PDF
         private readonly DirectoryInfo uploadDirectory;
         private readonly DirectoryInfo uploadRejectedDirectory;
         private readonly DirectoryInfo uploadStagingDirectory;
-        private readonly IDocumentRepository documentRepository;
 
         internal PdfUploader()
         {
@@ -51,7 +49,6 @@ namespace PDFKeeper.Core.FileIO.PDF
                 ApplicationDirectory.SpecialName.UploadRejected);
             uploadStagingDirectory = applicationDirectory.GetDirectory(
                 ApplicationDirectory.SpecialName.UploadStaging);
-            documentRepository = DatabaseSession.GetDocumentRepository();
         }
 
         /// <summary>
@@ -277,7 +274,10 @@ namespace PDFKeeper.Core.FileIO.PDF
                 document.TaxYear = pdfMetadata.TaxYear;
                 document.TextAnnotations = pdf.GetTextAnnot();
                 document.Text = pdf.GetText(pdfMetadata.OcrPdfTextAndImageDataPages);
-                documentRepository.InsertDocument(document);
+                using (var documentRepository = DatabaseSession.GetDocumentRepository())
+                {
+                    documentRepository.InsertDocument(document);
+                }
                 pdfFile.Delete();
                 var xmlFile = pdfFile.ChangeExtension("xml");
                 if (xmlFile.Exists)

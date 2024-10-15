@@ -191,6 +191,11 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
+        /// Gets or sets if the documents list has changes? (true or false)
+        /// </summary>
+        public static bool DocumentsListHasChanges { get; set; }
+
+        /// <summary>
         /// Sets the MessageBoxService instance.
         /// </summary>
         /// <param name="messageBoxService">The MessageBoxService instance.</param>

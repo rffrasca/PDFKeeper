@@ -21,7 +21,6 @@
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Commands;
 using PDFKeeper.Core.DataAccess;
-using PDFKeeper.Core.DataAccess.Repository;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.FileIO.PDF;
@@ -63,7 +62,6 @@ namespace PDFKeeper.Core.Presenters
         private readonly IPrintDialogService printDialogService;
         private readonly IPrintPreviewDialogService printPreviewDialogService;
         private readonly PrintDocument printDocument;
-        private IDocumentRepository documentRepository;
         private readonly PdfUploader pdfUploader;
         private readonly FileCache fileCache;
         private readonly DirectoryInfo uploadRejectedDirectory;
@@ -153,7 +151,6 @@ namespace PDFKeeper.Core.Presenters
             this.printPreviewDialogService = printPreviewDialogService;
             ViewModel = new MainViewModel();
             printDocument = new PrintDocument();
-            documentRepository = DatabaseSession.GetDocumentRepository();
             pdfUploader = new PdfUploader();
             fileCache = new FileCache();
             uploadRejectedDirectory = new ApplicationDirectory().GetDirectory(
@@ -208,7 +205,11 @@ namespace PDFKeeper.Core.Presenters
                 ViewModel.ToolsMoveDatabaseMenuVisible = false;
             }
             ViewModel.DocumentsEnabled = true;
-            ViewModel.SearchTermSnippetsVisible = documentRepository.SearchTermSnippetsSupported;
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                ViewModel.SearchTermSnippetsVisible =
+                    documentRepository.SearchTermSnippetsSupported;
+            }
         }
 
         /// <summary>
@@ -255,7 +256,12 @@ namespace PDFKeeper.Core.Presenters
                     {
                         try
                         {
-                            var currentDocument = documentRepository.GetDocument(id, null);
+                            Document currentDocument;
+                            using (var documentRepository = 
+                                DatabaseSession.GetDocumentRepository())
+                            {
+                                currentDocument = documentRepository.GetDocument(id, null);
+                            }
                             fileCache.AddPdf(currentDocument.Id, currentDocument.Pdf);
                             pdfViewerService.Show(fileCache.GetPdfFile(id).FullName,
                                 showPdfWithDefaultApplication);
@@ -286,47 +292,50 @@ namespace PDFKeeper.Core.Presenters
             var rule = new NotesSizeRule(ViewModel.Notes);
             if (!rule.ViolationFound)
             {
-                var document = documentRepository.GetDocument(ViewModel.CurrentDocumentId, null);
-                var notesInDatabase = document.Notes;
-                ViewModel.Notes = ViewModel.Notes.Trim();
-                if (document.Notes.Equals(ViewModel.PreviousNotes, StringComparison.Ordinal))
+                using (var documentRepository = DatabaseSession.GetDocumentRepository())
                 {
-                    try
+                    var document = documentRepository.GetDocument(ViewModel.CurrentDocumentId, null);
+                    var notesInDatabase = document.Notes;
+                    ViewModel.Notes = ViewModel.Notes.Trim();
+                    if (document.Notes.Equals(ViewModel.PreviousNotes, StringComparison.Ordinal))
                     {
-                        OnLongRunningOperationStarted();
-                        ViewModel.PreviousNotes = ViewModel.Notes;
-                        document.Notes = ViewModel.Notes;
-                        documentRepository.UpdateDocument(document);
-                        ViewModel.Notes = ViewModel.Notes;
+                        try
+                        {
+                            OnLongRunningOperationStarted();
+                            ViewModel.PreviousNotes = ViewModel.Notes;
+                            document.Notes = ViewModel.Notes;
+                            documentRepository.UpdateDocument(document);
+                            ViewModel.Notes = ViewModel.Notes;
+                        }
+                        catch (IndexOutOfRangeException ex)
+                        {
+                            messageBoxService.ShowMessage(
+                                ResourceHelper.GetString(
+                                    "DocumentMayHaveBeenDeletedException",
+                                    ex.Message,
+                                    null),
+                                true);
+                        }
+                        catch (DatabaseException ex)
+                        {
+                            ViewModel.PreviousNotes = ViewModel.Notes;
+                            ViewModel.Notes = notesInDatabase;
+                            messageBoxService.ShowMessage(ex.Message, true);
+                        }
+                        finally
+                        {
+                            OnLongRunningOperationFinished();
+                        }
                     }
-                    catch (IndexOutOfRangeException ex)
+                    else
                     {
-                        messageBoxService.ShowMessage(
-                            ResourceHelper.GetString(
-                                "DocumentMayHaveBeenDeletedException",
-                                ex.Message,
-                                null),
-                            true);
-                    }
-                    catch (DatabaseException ex)
-                    {
+                        var dataPackage = new DataPackage();
+                        dataPackage.SetText(ViewModel.Notes);
+                        Clipboard.SetContent(dataPackage);
                         ViewModel.PreviousNotes = ViewModel.Notes;
                         ViewModel.Notes = notesInDatabase;
-                        messageBoxService.ShowMessage(ex.Message, true);
+                        messageBoxService.ShowMessage(Resources.UnableToSaveNotes, true);
                     }
-                    finally
-                    {
-                        OnLongRunningOperationFinished();
-                    }
-                }
-                else
-                {
-                    var dataPackage = new DataPackage();
-                    dataPackage.SetText(ViewModel.Notes);
-                    Clipboard.SetContent(dataPackage);
-                    ViewModel.PreviousNotes = ViewModel.Notes;
-                    ViewModel.Notes = notesInDatabase;
-                    messageBoxService.ShowMessage(Resources.UnableToSaveNotes, true);
                 }
                 SetStateForTextBoxSelectedText();
             }
@@ -460,25 +469,28 @@ namespace PDFKeeper.Core.Presenters
 
         public void UpdateCurrentDocumentFlagState()
         {
-            var document = documentRepository.GetDocument(ViewModel.CurrentDocumentId, null);
-            document.Flag = Convert.ToInt32(!ViewModel.EditFlagDocumentMenuChecked);
-            try
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
             {
-                OnLongRunningOperationStarted();
-                documentRepository.UpdateDocument(document);
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                messageBoxService.ShowMessage(ResourceHelper.GetString(
-                    "DocumentMayHaveBeenDeletedException", ex.Message, null), true);
-            }
-            catch (DatabaseException ex)
-            {
-                messageBoxService.ShowMessage(ex.Message, true);
-            }
-            finally
-            {
-                OnLongRunningOperationFinished();
+                var document = documentRepository.GetDocument(ViewModel.CurrentDocumentId, null);
+                document.Flag = Convert.ToInt32(!ViewModel.EditFlagDocumentMenuChecked);
+                try
+                {
+                    OnLongRunningOperationStarted();
+                    documentRepository.UpdateDocument(document);
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    messageBoxService.ShowMessage(ResourceHelper.GetString(
+                        "DocumentMayHaveBeenDeletedException", ex.Message, null), true);
+                }
+                catch (DatabaseException ex)
+                {
+                    messageBoxService.ShowMessage(ex.Message, true);
+                }
+                finally
+                {
+                    OnLongRunningOperationFinished();
+                }
             }
         }
 
@@ -583,7 +595,10 @@ namespace PDFKeeper.Core.Presenters
                 {
                     try
                     {
-                        documentRepository.CompactDatabase();
+                        using (var documentRepository = DatabaseSession.GetDocumentRepository())
+                        {
+                            documentRepository.CompactDatabase();
+                        }
                     }
                     catch (NotSupportedException) { }
                     catch (DatabaseException ex)
@@ -607,7 +622,6 @@ namespace PDFKeeper.Core.Presenters
                         string.Concat(executingAssembly.ProductName, ".sqlite"));
                     File.Move(DatabaseSession.LocalDatabasePath, databasePath);
                     DatabaseSession.LocalDatabasePath = databasePath;
-                    documentRepository = DatabaseSession.GetDocumentRepository();
                 }
                 catch (IOException ex)
                 {
@@ -654,18 +668,22 @@ namespace PDFKeeper.Core.Presenters
                 try
                 {
                     OnLongRunningOperationStarted();
-                    if (FindDocumentsViewState.FindDocumentsParam.FindBySearchTermChecked)
+                    using (var documentRepository = DatabaseSession.GetDocumentRepository())
                     {
-                        currentDocument = documentRepository.GetDocument(
-                            ViewModel.CurrentDocumentId,
-                            FindDocumentsViewState.FindDocumentsParam.SearchTerm);
+                        if (FindDocumentsViewState.FindDocumentsParam.FindBySearchTermChecked)
+                        {
+                            currentDocument = documentRepository.GetDocument(
+                                ViewModel.CurrentDocumentId,
+                                FindDocumentsViewState.FindDocumentsParam.SearchTerm);
+                        }
+                        else
+                        {
+                            currentDocument = documentRepository.GetDocument(
+                                ViewModel.CurrentDocumentId, null);
+                        }
                     }
-                    else
-                    {
-                        currentDocument = documentRepository.GetDocument(
-                            ViewModel.CurrentDocumentId, null);
-                    }
-                    var cachePdfTask = Task.Run(() => fileCache.AddPdf(currentDocument.Id,
+                    var cachePdfTask = Task.Run(() => fileCache.AddPdf(
+                        currentDocument.Id,
                         currentDocument.Pdf));
                     ViewModel.EditFlagDocumentMenuChecked = Convert.ToBoolean(currentDocument.Flag);
                     ViewModel.PreviousNotes = currentDocument.Notes;    // must be set before
@@ -859,32 +877,41 @@ namespace PDFKeeper.Core.Presenters
         
         public void CheckForFlaggedDocuments()
         {
-            try
+            if (!ViewModel.ViewMinimized)
             {
-                var result = documentRepository.GetListOfFlaggedDocuments().Rows.Count;
-                if (result > 0)
+                try
                 {
-                    ViewModel.FlagImageVisible = true;
+                    int count; 
+                    using (var documentRepository = DatabaseSession.GetDocumentRepository())
+                    {
+                        count = documentRepository.GetListOfFlaggedDocuments().Rows.Count;
+                    }
+                    if (count > 0)
+                    {
+                        ViewModel.FlagImageVisible = true;
+                    }
+                    else
+                    {
+                        ViewModel.FlagImageVisible = false;
+                    }
                 }
-                else
+                catch (DatabaseException ex)
                 {
-                    ViewModel.FlagImageVisible = false;
+                    messageBoxService.ShowMessage(ex.Message, true);
                 }
-            }
-            catch (DatabaseException ex)
-            {
-                messageBoxService.ShowMessage(ex.Message, true);
-            }
+            }            
         }
 
         public void CheckForDocumentsListChanges()
         {
-            if (ViewModel.DocumentsEnabled && ViewModel.CheckedDocumentIds.Count.Equals(0))
+            if (ViewModel.DocumentsEnabled &&
+                ViewModel.CheckedDocumentIds.Count.Equals(0) &&
+                !ViewModel.ViewMinimized)
             {
-                if (documentRepository.DocumentsListHasChanges)
+                if (DatabaseSession.DocumentsListHasChanges)
                 {
                     GetListOfDocuments(true);
-                    documentRepository.DocumentsListHasChanges = false;
+                    DatabaseSession.DocumentsListHasChanges = false;
                 }
             }
         }
@@ -928,11 +955,12 @@ namespace PDFKeeper.Core.Presenters
             ViewModel.UploadRejectedImageVisible = pdfUploader.UploadRejectedContainsPdfFiles;
         }
 
-        public void SetDocumentsListHasChanges()
+        public static void SetDocumentsListHasChanges()
         {
-            if (DatabaseSession.PlatformName != DatabaseSession.CompatiblePlatformName.Sqlite)
+            if (!DatabaseSession.PlatformName.Equals(
+                DatabaseSession.CompatiblePlatformName.Sqlite))
             {
-                documentRepository.DocumentsListHasChanges = true;
+                DatabaseSession.DocumentsListHasChanges = true;
             }
         }
 
@@ -1087,29 +1115,32 @@ namespace PDFKeeper.Core.Presenters
                     OnLongRunningOperationStarted();
                     ViewModel.DocumentsFindMenuEnabled = false;
                     ViewModel.RefreshingDocumentsImageVisible = true;
-                    if (findDocumentsParam.FindBySearchTermChecked)
+                    using (var documentRepository = DatabaseSession.GetDocumentRepository())
                     {
-                        ViewModel.Documents = documentRepository.GetListOfDocumentsBySearchTerm(
-                            findDocumentsParam.SearchTerm);
-                    }
-                    else if (findDocumentsParam.FindBySelectionsChecked)
-                    {
-                        ViewModel.Documents = documentRepository.GetListOfDocuments(
-                            findDocumentsParam.Author, findDocumentsParam.Subject,
-                            findDocumentsParam.Category, findDocumentsParam.TaxYear);
-                    }
-                    else if (findDocumentsParam.FindByDateAddedChecked)
-                    {
-                        ViewModel.Documents = documentRepository.GetListOfDocumentsByDateAdded(
-                            findDocumentsParam.DateAdded);
-                    }
-                    else if (findDocumentsParam.FindFlaggedDocumentsChecked)
-                    {
-                        ViewModel.Documents = documentRepository.GetListOfFlaggedDocuments();
-                    }
-                    else if (findDocumentsParam.AllDocumentsChecked)
-                    {
-                        ViewModel.Documents = documentRepository.GetListOfDocuments();
+                        if (findDocumentsParam.FindBySearchTermChecked)
+                        {
+                            ViewModel.Documents = documentRepository.GetListOfDocumentsBySearchTerm(
+                                findDocumentsParam.SearchTerm);
+                        }
+                        else if (findDocumentsParam.FindBySelectionsChecked)
+                        {
+                            ViewModel.Documents = documentRepository.GetListOfDocuments(
+                                findDocumentsParam.Author, findDocumentsParam.Subject,
+                                findDocumentsParam.Category, findDocumentsParam.TaxYear);
+                        }
+                        else if (findDocumentsParam.FindByDateAddedChecked)
+                        {
+                            ViewModel.Documents = documentRepository.GetListOfDocumentsByDateAdded(
+                                findDocumentsParam.DateAdded);
+                        }
+                        else if (findDocumentsParam.FindFlaggedDocumentsChecked)
+                        {
+                            ViewModel.Documents = documentRepository.GetListOfFlaggedDocuments();
+                        }
+                        else if (findDocumentsParam.AllDocumentsChecked)
+                        {
+                            ViewModel.Documents = documentRepository.GetListOfDocuments();
+                        }
                     }
                 }
                 catch (DatabaseException ex)
@@ -1157,44 +1188,47 @@ namespace PDFKeeper.Core.Presenters
                 try
                 {
                     OnLongRunningOperationStarted();
-                    var document = documentRepository.GetDocument(id, null);
-                    if (checkedDocumentAction.Equals(CheckedDocumentAction.SetTitle))
+                    using (var documentRepository = DatabaseSession.GetDocumentRepository())
                     {
-                        document.Title = value;
-                        documentRepository.UpdateDocument(document);
-                    }
-                    else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetAuthor))
-                    {
-                        document.Author = value;
-                        documentRepository.UpdateDocument(document);
-                    }
-                    else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetSubject))
-                    {
-                        document.Subject = value;
-                        documentRepository.UpdateDocument(document);
-                    }
-                    else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetCategory))
-                    {
-                        document.Category = value;
-                        documentRepository.UpdateDocument(document);
-                    }
-                    else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetTaxYear))
-                    {
-                        document.TaxYear = value;
-                        documentRepository.UpdateDocument(document);
-                    }
-                    else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetDateTimeAdded))
-                    {
-                        document.Added = value;
-                        documentRepository.UpdateDocument(document);
-                    }
-                    else if (checkedDocumentAction.Equals(CheckedDocumentAction.Delete))
-                    {
-                        documentRepository.DeleteDocument(id);
-                    }
-                    else if (checkedDocumentAction.Equals(CheckedDocumentAction.Export))
-                    {
-                        new ExportDocumentCommand(id, new DirectoryInfo(value)).Execute();
+                        var document = documentRepository.GetDocument(id, null);
+                        if (checkedDocumentAction.Equals(CheckedDocumentAction.SetTitle))
+                        {
+                            document.Title = value;
+                            documentRepository.UpdateDocument(document);
+                        }
+                        else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetAuthor))
+                        {
+                            document.Author = value;
+                            documentRepository.UpdateDocument(document);
+                        }
+                        else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetSubject))
+                        {
+                            document.Subject = value;
+                            documentRepository.UpdateDocument(document);
+                        }
+                        else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetCategory))
+                        {
+                            document.Category = value;
+                            documentRepository.UpdateDocument(document);
+                        }
+                        else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetTaxYear))
+                        {
+                            document.TaxYear = value;
+                            documentRepository.UpdateDocument(document);
+                        }
+                        else if (checkedDocumentAction.Equals(CheckedDocumentAction.SetDateTimeAdded))
+                        {
+                            document.Added = value;
+                            documentRepository.UpdateDocument(document);
+                        }
+                        else if (checkedDocumentAction.Equals(CheckedDocumentAction.Delete))
+                        {
+                            documentRepository.DeleteDocument(id);
+                        }
+                        else if (checkedDocumentAction.Equals(CheckedDocumentAction.Export))
+                        {
+                            new ExportDocumentCommand(id, new DirectoryInfo(value)).Execute();
+                        }
                     }
                 }
                 catch (InvalidOperationException ex)

@@ -31,7 +31,6 @@ namespace PDFKeeper.Core.Presenters
     {
         private readonly IntPtr handle;
         private readonly IMessageBoxService messageBoxService;
-        private IDocumentRepository documentRepository;
 
         /// <summary>
         /// Initializes a new instance of the LoginPresenter class.
@@ -49,25 +48,18 @@ namespace PDFKeeper.Core.Presenters
         {
             OnApplyPendingChangesRequested();
             OnLongRunningOperationStarted();
+            SetDatabasePlatformName();
+            DatabaseSession.UserName = ViewModel.UserName;
+            DatabaseSession.Password = ViewModel.Password;
+            DatabaseSession.DataSource = ViewModel.DataSource;
+            IDocumentRepository documentRepository = null;
             try
             {
-                IList list = Enum.GetValues(typeof(DatabaseSession.CompatiblePlatformName));
-                for (int i = 0, loopTo = list.Count - 1; i <= loopTo; i++)
+                using (documentRepository = DatabaseSession.GetDocumentRepository())
                 {
-                    var platform = list[i];
-                    if (platform.ToString().Equals(ViewModel.DbManagementSystem,
-                        StringComparison.Ordinal))
-                    {
-                        DatabaseSession.PlatformName = (
-                            DatabaseSession.CompatiblePlatformName)platform;
-                    }
+                    documentRepository.TestConnection();
+                    OnViewCloseRequested();
                 }
-                DatabaseSession.UserName = ViewModel.UserName;
-                DatabaseSession.Password = ViewModel.Password;
-                DatabaseSession.DataSource = ViewModel.DataSource;
-                documentRepository = DatabaseSession.GetDocumentRepository();
-                documentRepository.TestConnection();
-                OnViewCloseRequested();
             }
             catch (ArgumentException ex)
             {
@@ -87,6 +79,21 @@ namespace PDFKeeper.Core.Presenters
             finally
             {
                 OnLongRunningOperationFinished();
+            }
+        }
+
+        private void SetDatabasePlatformName()
+        {
+            IList list = Enum.GetValues(typeof(DatabaseSession.CompatiblePlatformName));
+            for (int i = 0, loopTo = list.Count - 1; i <= loopTo; i++)
+            {
+                var platform = list[i];
+                if (platform.ToString().Equals(ViewModel.DbManagementSystem,
+                    StringComparison.Ordinal))
+                {
+                    DatabaseSession.PlatformName = (
+                        DatabaseSession.CompatiblePlatformName)platform;
+                }
             }
         }
     }

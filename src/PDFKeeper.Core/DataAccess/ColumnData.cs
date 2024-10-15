@@ -37,11 +37,10 @@ namespace PDFKeeper.Core.DataAccess
             string category,
             string taxYear)
         {
-            return GetColumnData(
-                DatabaseSession.GetDocumentRepository().GetAuthors(
-                    subject,
-                    category,
-                    taxYear));
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                return GetColumnData(documentRepository.GetAuthors(subject, category, taxYear));
+            }
         }
 
         /// <summary>
@@ -56,11 +55,10 @@ namespace PDFKeeper.Core.DataAccess
             string category,
             string taxYear)
         {
-            return GetColumnData(
-                DatabaseSession.GetDocumentRepository().GetSubjects(
-                    author,
-                    category,
-                    taxYear));
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                return GetColumnData(documentRepository.GetSubjects(author, category, taxYear));
+            }
         }
 
         /// <summary>
@@ -75,11 +73,10 @@ namespace PDFKeeper.Core.DataAccess
             string subject,
             string taxYear)
         {
-            return GetColumnData(
-                DatabaseSession.GetDocumentRepository().GetCategories(
-                    author,
-                    subject,
-                    taxYear));
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                return GetColumnData(documentRepository.GetCategories(author, subject, taxYear));
+            }
         }
 
         /// <summary>
@@ -94,11 +91,10 @@ namespace PDFKeeper.Core.DataAccess
             string subject,
             string category)
         {
-            return GetColumnData(
-                DatabaseSession.GetDocumentRepository().GetTaxYears(
-                    author,
-                    subject,
-                    category));
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                return GetColumnData(documentRepository.GetTaxYears(author, subject, category));
+            }
         }
 
         private static IEnumerable<string> GetColumnData(DataTable dataTable)

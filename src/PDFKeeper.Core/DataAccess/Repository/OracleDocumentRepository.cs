@@ -27,24 +27,21 @@ using System.IO;
 
 namespace PDFKeeper.Core.DataAccess.Repository
 {
-    public class OracleDocumentRepository : RepositoryBase<OracleCommand>, IDocumentRepository
+    public class OracleDocumentRepository : RepositoryBase<
+        OracleConnectionStringBuilder,
+        OracleCommand>,
+        IDocumentRepository
     {
-        private static OracleConnectionStringBuilder connectionStringBuilder;
         private static OracleCredential oracleCredential;
-        private static bool documentsListHasChanges;
+        private bool disposedValue;
 
         public OracleDocumentRepository()
         {
-            if (connectionStringBuilder == null)
+            connStrBuilder = new OracleConnectionStringBuilder
             {
-                connectionStringBuilder = new OracleConnectionStringBuilder
-                {
-                    DataSource = DatabaseSession.DataSource,
-                    ConnectionTimeout = 60
-                };
-                ConnectionString = connectionStringBuilder.ConnectionString;
-                connectionStringBuilder.Clear();
-            }
+                DataSource = DatabaseSession.DataSource,
+                ConnectionTimeout = 60
+            };
             if (oracleCredential == null)
             {
                 oracleCredential = new OracleCredential(
@@ -61,19 +58,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public bool DocumentsListHasChanges
-        {
-            get => documentsListHasChanges;
-            set => documentsListHasChanges = value;
-        }
-
         public bool SearchTermSnippetsSupported => true;
 
         public int GetNotesColumnDataLength()
         {
             var sql = "select data_length from all_tab_columns " +
                 "where table_name='DOCS' and column_name='DOC_NOTES'";
-            using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+            using (var connection = new OracleConnection(
+                connStrBuilder.ConnectionString,
+                oracleCredential))
             {
                 using (var command = new OracleCommand(sql, connection))
                 {
@@ -94,7 +87,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "where (contains(doc_dummy,:doc_dummy)) > 0";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -121,7 +116,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) ";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -148,7 +145,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "where doc_added like :doc_added || '%'";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -171,7 +170,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "doc_tax_year,doc_added from pdfkeeper.docs where doc_flag = 1";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -192,7 +193,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "doc_tax_year,doc_added from pdfkeeper.docs";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -216,7 +219,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "group by doc_author";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -244,7 +249,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "group by doc_subject";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -272,7 +279,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "group by doc_category";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -300,7 +309,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "group by doc_tax_year";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -330,7 +341,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "from pdfkeeper.docs where doc_id = :doc_id";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -396,7 +409,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       ":doc_text)";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -428,7 +443,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
             finally
             {
-                DocumentsListHasChanges = true;
+                DatabaseSession.DocumentsListHasChanges = true;
             }
         }
 
@@ -452,7 +467,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       "doc_text = :doc_text where doc_id = :doc_id";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -479,7 +496,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
             finally
             {
-                DocumentsListHasChanges = true;
+                DatabaseSession.DocumentsListHasChanges = true;
             }
         }
 
@@ -488,7 +505,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
             var sql = "delete from pdfkeeper.docs where doc_id = :doc_id";
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -505,7 +524,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
             finally
             {
-                DocumentsListHasChanges = true;
+                DatabaseSession.DocumentsListHasChanges = true;
             }
         }
 
@@ -513,14 +532,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             try
             {
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     connection.Open();
                 }
             }
             catch (OracleException ex)
             {
-                connectionStringBuilder = null;
                 ResetCredential();
                 throw new DatabaseException(ex.Message);
             }
@@ -565,7 +585,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 var sql = "select ctx_doc.snippet('pdfkeeper.docs_idx', :doc_id, :doc_dummy, " +
                     "'[', ']', :translate, '||') from dual";
-                using (var connection = new OracleConnection(ConnectionString, oracleCredential))
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
                 {
                     using (var command = new OracleCommand(sql, connection))
                     {
@@ -586,6 +608,25 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 }
             }
             return result;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    connStrBuilder.Clear();
+                }
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

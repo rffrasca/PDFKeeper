@@ -19,9 +19,9 @@
 // ****************************************************************************
 
 using PDFKeeper.Core.DataAccess;
-using PDFKeeper.Core.DataAccess.Repository;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO.PDF;
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
 using System.IO;
 
@@ -31,7 +31,6 @@ namespace PDFKeeper.Core.Commands
     {
         private readonly int id;
         private readonly DirectoryInfo exportTargetDirectory;
-        private readonly IDocumentRepository documentRepository;
 
         /// <summary>
         /// Exports the PDF and external metadata (XML).
@@ -42,12 +41,15 @@ namespace PDFKeeper.Core.Commands
         {
             this.id = id;
             this.exportTargetDirectory = exportTargetDirectory;
-            documentRepository = DatabaseSession.GetDocumentRepository();
         }
 
         public void Execute()
         {
-            var document = documentRepository.GetDocument(id, null);
+            Document document;
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                document = documentRepository.GetDocument(id, null);
+            }
             var authorDirectory = new DirectoryInfo(Path.Combine(exportTargetDirectory.FullName,
                 document.Author));
             var subjectDirectory = new DirectoryInfo(Path.Combine(authorDirectory.FullName,

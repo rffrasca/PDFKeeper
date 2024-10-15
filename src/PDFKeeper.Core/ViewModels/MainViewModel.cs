@@ -83,6 +83,8 @@ namespace PDFKeeper.Core.ViewModels
             checkedDocumentIds = new Collection<int>();
         }
 
+        public bool ViewMinimized { get; set; }
+
         public bool FileOpenMenuEnabled
         {
             get => fileOpenMenuEnabled;

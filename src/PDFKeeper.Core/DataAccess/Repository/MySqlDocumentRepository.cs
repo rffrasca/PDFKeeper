@@ -29,34 +29,26 @@ using System.Text;
 namespace PDFKeeper.Core.DataAccess.Repository
 {
     [CLSCompliant(false)]
-    public class MySqlDocumentRepository : RepositoryBase<MySqlCommand>, IDocumentRepository
+    public class MySqlDocumentRepository : RepositoryBase<
+        MySqlConnectionStringBuilder,
+        MySqlCommand>,
+        IDocumentRepository
     {
-        private static MySqlConnectionStringBuilder connectionStringBuilder;
-        private static bool documentsListHasChanges;
+        private bool disposedValue;
 
         public MySqlDocumentRepository()
         {
-            if (connectionStringBuilder == null)
+            connStrBuilder = new MySqlConnectionStringBuilder
             {
-                connectionStringBuilder = new MySqlConnectionStringBuilder
-                {
-                    UserID = DatabaseSession.UserName,
-                    Password = Encoding.UTF8.GetString(DatabaseSession.Password.GetAsByteArray()),
-                    Server = DatabaseSession.DataSource,
-                    Port = DatabaseSession.MySqlPort,
-                    Database = "pdfkeeper",
-                    SslMode = MySqlSslMode.Required,
-                    ConnectionTimeout = 30
-                };
-                ConnectionString = connectionStringBuilder.ConnectionString;
-                connectionStringBuilder.Clear();
-            }
-        }
-
-        public bool DocumentsListHasChanges
-        {
-            get => documentsListHasChanges;
-            set => documentsListHasChanges = value;
+                UserID = DatabaseSession.UserName,
+                Password = Encoding.UTF8.GetString(
+                    DatabaseSession.Password.GetAsByteArray()),
+                Server = DatabaseSession.DataSource,
+                Port = DatabaseSession.MySqlPort,
+                Database = "pdfkeeper",
+                SslMode = MySqlSslMode.Required,
+                ConnectionTimeout = 30
+            };
         }
 
         public bool SearchTermSnippetsSupported => false;
@@ -75,7 +67,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "against (@doc_dummy in boolean mode)";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -117,7 +109,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "and (@doc_tax_year is NULL or doc_tax_year = @doc_tax_year) ";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -143,7 +135,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "where doc_added like @doc_added";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -167,7 +159,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "doc_tax_year,doc_added from docs where doc_flag = 1";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -188,7 +180,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "doc_tax_year,doc_added from docs";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -224,7 +216,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "group by doc_author";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -263,7 +255,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "group by doc_subject";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -302,7 +294,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "group by doc_category";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -341,7 +333,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "group by doc_tax_year";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -366,7 +358,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "from docs where doc_id = @doc_id";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -421,7 +413,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       "@doc_text)";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -452,7 +444,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
             finally
             {
-                DocumentsListHasChanges = true;
+                DatabaseSession.DocumentsListHasChanges = true;
             }
         }
         
@@ -475,7 +467,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       "doc_text = @doc_text where doc_id = @doc_id";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -503,7 +495,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
             finally
             {
-                DocumentsListHasChanges = true;
+                DatabaseSession.DocumentsListHasChanges = true;
             }
         }
 
@@ -512,7 +504,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             var sql = "delete from docs where doc_id = @doc_id";
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
@@ -528,7 +520,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
             finally
             {
-                DocumentsListHasChanges = true;
+                DatabaseSession.DocumentsListHasChanges = true;
             }
         }
 
@@ -536,14 +528,13 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             try
             {
-                using (var connection = new MySqlConnection(ConnectionString))
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
                 {
                     connection.Open();
                 }
             }
             catch (MySqlException ex)
             {
-                connectionStringBuilder = null;
                 throw new DatabaseException(ex.Message);
             }
         }
@@ -579,6 +570,25 @@ namespace PDFKeeper.Core.DataAccess.Repository
         protected override string GetSearchTermSnippets(int id, string searchTerm)
         {
             throw new NotSupportedException();
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    connStrBuilder.Clear();
+                }
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

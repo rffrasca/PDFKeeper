@@ -19,17 +19,13 @@
 // ****************************************************************************
 
 using PDFKeeper.Core.Models;
+using System;
 using System.Data;
 
 namespace PDFKeeper.Core.DataAccess.Repository
 {
-    public interface IDocumentRepository
+    public interface IDocumentRepository : IDisposable
     {
-        /// <summary>
-        /// Gets or sets if the documents list has changes? (true or false)
-        /// </summary>
-        bool DocumentsListHasChanges { get; set; }
-
         /// <summary>
         /// Gets if Search Term Snippets is supported? (true or false) 
         /// </summary>
