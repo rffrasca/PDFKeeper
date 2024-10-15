@@ -74,7 +74,7 @@ K4os.Hash.xxHash (https://www.nuget.org/packages/K4os.Hash.xxHash/1.0.8)
     Copyright: Copyright (c) 2017 Milosz Krajewski
     License: MIT License, full text can be found at https://raw.githubusercontent.com/MiloszKrajewski/K4os.Hash.xxHash/master/LICENSE
 
-MySql.Data (https://www.nuget.org/packages/MySql.Data/9.0.0)
+MySql.Data (https://www.nuget.org/packages/MySql.Data/9.1.0)
     Authors: MySQL
     Copyright: Copyright © 2016, 2024, Oracle and/or its affiliates.
     License: GPLv2 License, full text can be found at https://github.com/mysql/mysql-connector-net/blob/8.x/LICENSE
