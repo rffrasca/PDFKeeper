@@ -113,27 +113,16 @@ namespace PDFKeeper.WinForms
                         messageBoxService.ShowMessage(Resources.MultiUserDatabaseSetup, false);
                         helpFile.Show("Setup Multi-User Database.html");
                         var choice2 = messageBoxService.ShowQuestion(
-                            Resources.ConnectingToMySql,
+                            Resources.ConnectingToOracle,
                             false);
                         if (choice2.Equals(6))
                         {
                             Settings.Default.DbManagementSystem =
-                                DatabaseSession.CompatiblePlatformName.MySql.ToString();
+                                DatabaseSession.CompatiblePlatformName.Oracle.ToString();
                         }
                         else
                         {
-                            var choice3 = messageBoxService.ShowQuestion(
-                                Resources.ConnectingToOracle,
-                                false);
-                            if (choice3.Equals(6))
-                            {
-                                Settings.Default.DbManagementSystem =
-                                    DatabaseSession.CompatiblePlatformName.Oracle.ToString();
-                            }
-                            else
-                            {
-                                return true;
-                            }
+                            return true;
                         }
                     }
                     else if (choice.Equals(2))

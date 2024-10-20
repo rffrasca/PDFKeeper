@@ -38,7 +38,6 @@ namespace PDFKeeper.Core.DataAccess
         private static string dataSource;
         private static string oracleWalletPath;
         private static string localDatabasePath;
-        private static uint mySqlPort;
         private static bool odpHandlerEnabled;
         
         /// <summary>
@@ -47,8 +46,7 @@ namespace PDFKeeper.Core.DataAccess
         public enum CompatiblePlatformName
         {
             Sqlite, // 0
-            Oracle, // 1
-            MySql   // 2
+            Oracle  // 1
         }
 
         /// <summary>
@@ -174,23 +172,6 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Gets the MySQL port number to use for connecting to the database server.
-        /// </summary>
-        [CLSCompliant(false)]
-        public static uint MySqlPort
-        {
-            get
-            {
-                mySqlPort = Convert.ToUInt32(
-                    Registry.GetValue(
-                        ApplicationRegistry.UserKeyPath,
-                        "MySqlPort",
-                        3306));
-                return mySqlPort;
-            }
-        }
-
-        /// <summary>
         /// Gets or sets if the documents list has changes? (true or false)
         /// </summary>
         public static bool DocumentsListHasChanges { get; set; }
@@ -205,29 +186,12 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Factory method that gets a document repository instance for the database platform in
-        /// use.
+        /// Gets a document repository instance for the database platform in use.
         /// </summary>
         /// <returns>The document repository instance.</returns>
         public static IDocumentRepository GetDocumentRepository()
         {
-            IDocumentRepository instance = null;
-            if (DatabaseSession.PlatformName.Equals(
-                DatabaseSession.CompatiblePlatformName.Oracle))
-            {
-                instance = GetOracleInstance();
-            }
-            else if (DatabaseSession.PlatformName.Equals(
-                DatabaseSession.CompatiblePlatformName.Sqlite))
-            {
-                instance = GetSqliteInstance();
-            }
-            else if (DatabaseSession.PlatformName.Equals(
-                DatabaseSession.CompatiblePlatformName.MySql))
-            {
-                instance = GetMySqlInstance();
-            }
-            return instance;
+            return DocumentRepositoryFactory.Create();
         }
 
         private static void OnCompatiblePlatformNameChanged()
@@ -259,25 +223,6 @@ namespace PDFKeeper.Core.DataAccess
                 messageBoxService.ShowMessage(Resources.OracleDataProviderMissing, true);
                 return null;
             }
-        }
-
-        // Repository object creation has to occur outside of the GetDocumentRepository method to
-        // avoid an InvalidOperationException from being thrown when the database platform is
-        // SQLite.
-
-        private static IDocumentRepository GetOracleInstance()
-        {
-            return new OracleDocumentRepository();
-        }
-
-        private static IDocumentRepository GetSqliteInstance()
-        {
-            return new SqliteDocumentRepository();
-        }
-
-        private static IDocumentRepository GetMySqlInstance()
-        {
-            return new MySqlDocumentRepository();
         }
     }
 }
