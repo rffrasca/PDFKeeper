@@ -73,7 +73,6 @@ namespace PDFKeeper.WinForms
             var helpFile = new HelpFile();
             var userSettingsHelper = new UserSettingsHelper();
             var messageBoxService = new MessageBoxService();
-            DatabaseSession.SetMessageBoxService(messageBoxService);
             userSettingsHelper.Upgrade();
             if (Settings.Default.DbManagementSystem.Length.Equals(0))
             {

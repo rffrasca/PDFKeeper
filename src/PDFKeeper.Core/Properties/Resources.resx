@@ -178,15 +178,12 @@ Do you want to save changes before closing?</value>
   <data name="OpenCheckedDocumentsMaximumReached" xml:space="preserve">
     <value>More than {0} documents have been selected. Only the PDF for each of the {0} selected documents will be opened.</value>
   </data>
-  <data name="OracleDataProviderMissing" xml:space="preserve">
-    <value>The required Oracle Data Provider for .NET is missing and needs to be installed.
+  <data name="OracleOdpNetMissing" xml:space="preserve">
+    <value>The required Oracle ODP.NET is missing and needs to be installed.
 
-Please refer to the help file topic "Installing Oracle Data Provider for .NET" in the "Getting Started" section for instructions.
+Please refer to the help file topic "Installing Oracle ODP.NET" in the "Client Setup for Multi-User Database" section for instructions.
 
-To access help, press F1 at the PDFKeeper Login form.</value>
-  </data>
-  <data name="OracleDataProviderVersion" xml:space="preserve">
-    <value>4.122.21.1</value>
+PDFKeeper will need to be restarted after completing the install of Oracle ODP.NET.</value>
   </data>
   <data name="PdfContainsUserPassword" xml:space="preserve">
     <value>PDF contains User password and is not supported.</value>

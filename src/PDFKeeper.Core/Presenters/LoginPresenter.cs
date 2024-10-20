@@ -20,10 +20,12 @@
 
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.DataAccess.Repository;
+using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
 using System;
 using System.Collections;
+using System.IO;
 
 namespace PDFKeeper.Core.Presenters
 {
@@ -74,6 +76,11 @@ namespace PDFKeeper.Core.Presenters
                     documentRepository.ResetCredential();
                 }
                 catch (NotSupportedException) { }
+                OnViewResetRequested();
+            }
+            catch (FileNotFoundException)
+            {
+                messageBoxService.ShowMessage(handle, Resources.OracleOdpNetMissing, true);
                 OnViewResetRequested();
             }
             finally

@@ -242,24 +242,15 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The required Oracle Data Provider for .NET is missing and needs to be installed.
+        ///   Looks up a localized string similar to The required Oracle ODP.NET is missing and needs to be installed.
         ///
-        ///Please refer to the help file topic &quot;Installing Oracle Data Provider for .NET&quot; in the &quot;Getting Started&quot; section for instructions.
+        ///Please refer to the help file topic &quot;Installing Oracle ODP.NET&quot; in the &quot;Client Setup for Multi-User Database&quot; section for instructions.
         ///
-        ///To access help, press F1 at the PDFKeeper Login form..
+        ///PDFKeeper will need to be restarted after completing the install of Oracle ODP.NET..
         /// </summary>
-        internal static string OracleDataProviderMissing {
+        internal static string OracleOdpNetMissing {
             get {
-                return ResourceManager.GetString("OracleDataProviderMissing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 4.122.21.1.
-        /// </summary>
-        internal static string OracleDataProviderVersion {
-            get {
-                return ResourceManager.GetString("OracleDataProviderVersion", resourceCulture);
+                return ResourceManager.GetString("OracleOdpNetMissing", resourceCulture);
             }
         }
         

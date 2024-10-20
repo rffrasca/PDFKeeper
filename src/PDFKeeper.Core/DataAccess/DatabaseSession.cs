@@ -21,25 +21,23 @@
 using Microsoft.Win32;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess.Repository;
-using PDFKeeper.Core.Properties;
-using PDFKeeper.Core.Services;
 using System;
 using System.IO;
+using System.Reflection;
 using System.Security;
 
 namespace PDFKeeper.Core.DataAccess
 {
     public static class DatabaseSession
     {
-        private static IMessageBoxService messageBoxService;
         private static CompatiblePlatformName platformName;
         private static string userName;
         private static SecureString password;
         private static string dataSource;
         private static string oracleWalletPath;
         private static string localDatabasePath;
-        private static bool odpHandlerEnabled;
-        
+        private static bool oracleOdpNetHandlerEnabled;
+
         /// <summary>
         /// Compatible database platform name.
         /// </summary>
@@ -160,7 +158,7 @@ namespace PDFKeeper.Core.DataAccess
                         ApplicationDirectory.SpecialName.ApplicationData)).ToString();
                 var filePath = new FileInfo(
                     Path.Combine(localDatabasePath,
-                    String.Concat(
+                    string.Concat(
                         new ExecutingAssembly().ProductName,
                         ".sqlite")));
                 return filePath.FullName;
@@ -177,15 +175,6 @@ namespace PDFKeeper.Core.DataAccess
         public static bool DocumentsListHasChanges { get; set; }
 
         /// <summary>
-        /// Sets the MessageBoxService instance.
-        /// </summary>
-        /// <param name="messageBoxService">The MessageBoxService instance.</param>
-        public static void SetMessageBoxService(IMessageBoxService messageBoxService)
-        {
-            DatabaseSession.messageBoxService = messageBoxService;
-        }
-
-        /// <summary>
         /// Gets a document repository instance for the database platform in use.
         /// </summary>
         /// <returns>The document repository instance.</returns>
@@ -196,33 +185,22 @@ namespace PDFKeeper.Core.DataAccess
 
         private static void OnCompatiblePlatformNameChanged()
         {
-            if (PlatformName.Equals(CompatiblePlatformName.Oracle) &&
-                odpHandlerEnabled.Equals(false))
+            if (PlatformName.Equals(CompatiblePlatformName.Oracle) && !oracleOdpNetHandlerEnabled)
             {
                 AppDomain.CurrentDomain.AssemblyResolve += LoadOracleOdpNet;
-                odpHandlerEnabled = true;
+                oracleOdpNetHandlerEnabled = true;
             }
         }
 
-        private static System.Reflection.Assembly LoadOracleOdpNet(
-            object sender,
-            ResolveEventArgs args)
+        private static Assembly LoadOracleOdpNet(object sender, ResolveEventArgs args)
         {
-            try
-            {
-                var assemblyPath = Path.Combine(
-                    (string)Registry.GetValue(
-                        ApplicationRegistry.UserKeyPath,
-                        "OracleOdpNetPath",
-                        string.Empty),
-                    "Oracle.ManagedDataAccess.dll");
-                return System.Reflection.Assembly.LoadFile(assemblyPath);
-            }
-            catch (FileNotFoundException)
-            {
-                messageBoxService.ShowMessage(Resources.OracleDataProviderMissing, true);
-                return null;
-            }
+            var assemblyPath = Path.Combine(
+                (string)Registry.GetValue(
+                    ApplicationRegistry.UserKeyPath,
+                    "OracleOdpNetPath",
+                    string.Empty),
+                "Oracle.ManagedDataAccess.dll");
+            return Assembly.LoadFile(assemblyPath);
         }
     }
 }
