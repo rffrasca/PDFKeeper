@@ -8,7 +8,7 @@
 5. Microsoft HTML Help Workshop - https://web.archive.org/web/20201201163924/http://www.microsoft.com/en-us/download/details.aspx?id=21138
 
 ## Get the Source
-When available, download the source code for a v10 release from [here](https://github.com/rffrasca/PDFKeeper/releases). For the latest version in development, clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git.
+Download the source code for a v10 release from [here](https://github.com/rffrasca/PDFKeeper/releases). For the latest version in development, clone the https://github.com/rffrasca/PDFKeeper repository to your development system using Git.
 
 ## Download and Extract Third-Party Components
 - Ghostscript for Windows (64 bit) - https://www.ghostscript.com/download/gsdnld.html
