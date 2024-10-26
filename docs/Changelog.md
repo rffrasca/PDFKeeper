@@ -1,6 +1,47 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v10.0.0 - 2024-10-26
+- This is a major release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v10.0.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v10.0.0).
+### Added
+* Added Oracle Database Free compatibility.
+* Added feature to change "date and time added" on selected document records. [#32](https://github.com/rffrasca/PDFKeeper/issues/32)
+* Added option when using SQLite that will compact the database after deleting all selected documents.
+* Created sections for each database platform in "Logging into PDFKeeper" help topic.
+### Changed
+* Improved Connection String handling.
+* Improved PDF password handling.
+* Flagged document check and auto refresh will not occur when the main form is minimized to reduce database traffic.
+* Improved error handling when Oracle ODP.NET is required and not found.
+* Changed PDFKeeper logo background color to white on Login Form and About Box.
+* Setting of Oracle Wallet Path will no longer be called from the help file which could be blocked by some anti-virus programs.
+* SQLite database will be created by PDFKeeper at startup instead of the help file calling a script which could be blocked by some anti-virus programs.
+* Migrated Oracle Database client setup help topics to the new Client Setup for Multi-User Database section.
+* Updated User Administration help topics for Oracle Database.
+* Updated Oracle ODP.NET (Oracle.ManagedDataAccess) to 23.5.1 for connecting to Oracle Database and improved the installation that no longer requires administrative privileges.
+* Updated Ghostscript to 10.04.0.
+* Updated itext to 8.0.5.
+* Updated itext.bouncy-castle-adapter to 8.0.5.
+* Updated itext.font-asian to 8.0.5.
+* Updated Magick.NET to 14.0.0.
+### Removed
+* Removed UploadConfigs folder migration logic.
+* Removed UploadProfiles folder upgrade logic.
+* Removed upgrade logic specific to user settings namespace and name changes.
+* Removed "SQLite Error – database disk image is malformed" help topic and fix script.
+* Removed Troubleshooting topic from help file.
+* Removed SQLite Command Line Shell since PDFKeeper is now creating the SQLite database.
+* Removed MultiUserDatabaseSchemaSetup.cmd that is no longer needed.
+### Changed (Development)
+* Converted PDFKeeper.Presentation to C# as PDFKeeper.WinForms.
+* Changed all NotImplementedException references to NotSupportedException.
+* Repository instance is now created using DatabaseSession.GetRepository.
+* Repository interface and classes are now disposable to handle clearing the connection string builder object.
+* Addressed Code Analysis warnings.
+* Installer is now built with WiX Toolset 3.14.1.
+
 ## v9.2.0 - 2024-06-22
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v9.2.0).
