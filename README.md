@@ -24,8 +24,6 @@
     <a href="https://github.com/rffrasca/pdfkeeper/issues">Request Compatible Database</a>
     ·
     <a href="https://github.com/rffrasca/PDFKeeper/discussions">Forum</a>
-    ·
-    <a href="https://github.com/users/rffrasca/projects/3">Backlog</a>
   </p>
 </div>
 
