@@ -195,7 +195,10 @@ namespace PDFKeeper.WinForms.Views
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            viewModel.ViewMinimized = WindowState.Equals(FormWindowState.Minimized);
+            if (viewModel != null)
+            {
+                viewModel.ViewMinimized = WindowState.Equals(FormWindowState.Minimized);
+            }
         }
 
         private void GetFormState()
