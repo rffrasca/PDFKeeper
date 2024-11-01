@@ -1,6 +1,13 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v10.0.1 - 2024-10-31
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v10.0.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v10.0.1).
+### Fixed
+* Fixed System.NullReferenceException: Object reference not set to an instance of an object. [#36](https://github.com/rffrasca/PDFKeeper/issues/36)
+
 ## v10.0.0 - 2024-10-26
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v10.0.0).
