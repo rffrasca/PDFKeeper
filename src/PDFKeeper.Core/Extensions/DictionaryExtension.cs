@@ -28,8 +28,8 @@ namespace PDFKeeper.Core.Extensions
     internal static class DictionaryExtension
     {
         /// <summary>
-        /// Creates or updates a ZIP file using the key as the file name and the value as the
-        /// contents for each pair in a Dictionary object.
+        /// Creates/Replaces a ZIP file with file entries using the key as the file name and the
+        /// value as the contents for each pair in a Dictionary object.
         /// </summary>
         /// <param name="keyValuePairs">
         /// The Dictionary object.

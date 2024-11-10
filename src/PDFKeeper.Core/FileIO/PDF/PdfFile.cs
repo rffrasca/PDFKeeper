@@ -466,7 +466,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Gets the names of all attachments in a PdfDocument.
+        /// Gets the names of all attachments in a PdfDocument object.
         /// </summary>
         /// <param name="pdfDocument">The PdfDocument object.</param>
         /// <returns>The PdfArray object or null when no attachments are found.</returns>
