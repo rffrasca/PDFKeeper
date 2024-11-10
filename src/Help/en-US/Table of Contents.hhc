@@ -218,6 +218,11 @@
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="PDF Attachments Extraction">
+					<param name="Local" value="PDF Attachments Extraction.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="PDF Copying to the Clipboard">
 					<param name="Local" value="PDF Copying to the Clipboard.html">
 					<param name="ImageNumber" value="9">

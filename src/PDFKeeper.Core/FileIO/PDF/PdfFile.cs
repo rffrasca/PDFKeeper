@@ -30,6 +30,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
@@ -129,6 +130,21 @@ namespace PDFKeeper.Core.FileIO.PDF
         public FileInfo ChangeExtension(string extension)
         {
             return pdfFile.ChangeExtension(extension);
+        }
+
+        /// <summary>
+        /// Checks the PDF for attachments.
+        /// </summary>
+        /// <returns>Do attachments exist in the PDF? (true or false)</returns>
+        public bool CheckForAttachments()
+        {
+            using (var reader = new PdfReader(pdfFile))
+            {
+                using (var document = new PdfDocument(reader))
+                {
+                    return GetNamesOfAllAttachments(document) != null;
+                }
+            }
         }
 
         /// <summary>
@@ -235,6 +251,40 @@ namespace PDFKeeper.Core.FileIO.PDF
                     return stream.ToArray();
                 }
             }
+        }
+
+        /// <summary>
+        /// Extracts all attachments from the PDF to a directory.
+        /// </summary>
+        /// <param name="directory">The DirectoryInfo object of the directory.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public void ExtractAllAttachments(DirectoryInfo directory)
+        {
+            if (directory == null)
+            {
+                throw new ArgumentNullException(nameof(directory));
+            }
+            foreach (var key in ExtractAllAttachments().ToArray())
+            {
+                File.WriteAllBytes(Path.Combine(directory.FullName, key.Key), key.Value);
+            }
+        }
+
+        /// <summary>
+        /// Extracts all attachments from the PDF to a ZIP file.
+        /// </summary>
+        /// <param name="zipFile">
+        /// The FileInfo object of the ZIP file. If the file referenced in the FileInfo object
+        /// exists, it will be overwritten.
+        /// </param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public void ExtractAllAttachments(FileInfo zipFile)
+        {
+            if (zipFile == null)
+            {
+                throw new ArgumentNullException(nameof(zipFile));
+            }
+            ExtractAllAttachments().ToZipFile(zipFile);
         }
 
         /// <summary>
@@ -413,6 +463,61 @@ namespace PDFKeeper.Core.FileIO.PDF
                 }
             }
             return result;
+        }
+
+        /// <summary>
+        /// Gets the names of all attachments in a PdfDocument.
+        /// </summary>
+        /// <param name="pdfDocument">The PdfDocument object.</param>
+        /// <returns>The PdfArray object or null when no attachments are found.</returns>
+        private static PdfArray GetNamesOfAllAttachments(PdfDocument pdfDocument)
+        {
+            try
+            {
+                var catalog = pdfDocument.GetCatalog().GetPdfObject();
+                var names = catalog.GetAsDictionary(PdfName.Names);
+                var filespecs = names.GetAsDictionary(PdfName.EmbeddedFiles);
+                return filespecs.GetAsArray(PdfName.Names);
+            }
+            catch (NullReferenceException)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Extracts all attachments from the PDF to a Dictionary array containing an entry that
+        /// equals the filename as a string and the contents as a byte array for each attachement.
+        /// </summary>
+        /// <returns>The Dictionary object.</returns>
+        private Dictionary<string, byte[]> ExtractAllAttachments()
+        {
+            var attachments = new Dictionary<string, byte[]>();
+            using (var reader = new PdfReader(pdfFile))
+            {
+                using (var document = new PdfDocument(reader))
+                {
+                    var filespecs = GetNamesOfAllAttachments(document);
+                    for (int i = 1; i < filespecs.Size(); i++)
+                    {
+                        var filespec = filespecs.GetAsDictionary(i);
+                        try
+                        {
+                            var file = filespec.GetAsDictionary(PdfName.EF);
+                            foreach (PdfName key in file.KeySet())
+                            {
+                                var filename = filespec.GetAsString(key).ToString();
+                                if (!attachments.ContainsKey(filename))
+                                {
+                                    attachments.Add(filename, file.GetAsStream(key).GetBytes());
+                                }
+                            }
+                        }
+                        catch (NullReferenceException) { }
+                    }
+                }
+            }
+            return attachments;
         }
     }
 }

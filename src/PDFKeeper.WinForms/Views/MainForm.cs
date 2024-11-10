@@ -104,6 +104,8 @@ namespace PDFKeeper.WinForms.Views
             FileSaveAsToolStripMenuItem.Tag = new SaveAsCommand(presenter);
             FileBurstToolStripMenuItem.Tag = new BurstPdfCommand(presenter);
             FileBurstToolStripButton.Tag = new BurstPdfCommand(presenter);
+            FileExtractAllAttachmentsToolStripMenuItem.Tag = new ExtractAllPdfAttachmentsCommand(presenter);
+            FileExtractAllAttachmentsToolStripButton.Tag = new ExtractAllPdfAttachmentsCommand(presenter);
             FileCopyPdfToClipboardToolStripMenuItem.Tag = new CopyPdfToClipboardCommand(presenter);
             FilePrintToolStripMenuItem.Tag = new PrintTextCommand(presenter, false);
             FilePrintToolStripButton.Tag = new PrintTextCommand(presenter, false);
@@ -450,6 +452,15 @@ namespace PDFKeeper.WinForms.Views
             {
                 FileBurstToolStripMenuItem.Enabled = viewModel.FileBurstMenuEnabled;
                 FileBurstToolStripButton.Enabled = viewModel.FileBurstMenuEnabled;
+            }
+            else if (e.PropertyName.Equals(
+                "FileExtractAllAttachmentsMenuEnabled",
+                StringComparison.Ordinal))
+            {
+                FileExtractAllAttachmentsToolStripMenuItem.Enabled = 
+                    viewModel.FileExtractAllAttachmentsMenuEnabled;
+                FileExtractAllAttachmentsToolStripButton.Enabled = 
+                    viewModel.FileExtractAllAttachmentsMenuEnabled;
             }
             else if (e.PropertyName.Equals(
                 "FileCopyPdfToClipboardEnabled",

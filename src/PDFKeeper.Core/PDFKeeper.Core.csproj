@@ -51,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +63,7 @@
     <Compile Include="Application\UserProfileFolder.cs" />
     <Compile Include="Commands\ExportDocumentCommand.cs" />
     <Compile Include="DataAccess\Repository\DocumentRepositoryFactory.cs" />
+    <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Extensions\DirectoryInfoExtension.cs" />
     <Compile Include="Extensions\GenericExtension.cs" />
     <Compile Include="FileIO\FileCache.cs" />

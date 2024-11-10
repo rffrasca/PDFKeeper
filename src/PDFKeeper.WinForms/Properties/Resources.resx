@@ -121,8 +121,8 @@
   <data name="page_text" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\page_text.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="StackTraceLogged" xml:space="preserve">
-    <value>Stack Trace has been logged to {0}</value>
+  <data name="Author" xml:space="preserve">
+    <value>Author</value>
   </data>
   <data name="AboutDescription" xml:space="preserve">
     <value>PDFKeeper is free, open source software that provides a storage and management solution for PDF documents.
@@ -135,6 +135,9 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="clock_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clock_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Added" xml:space="preserve">
+    <value>Added</value>
+  </data>
   <data name="icon_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_info.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -143,6 +146,9 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   </data>
   <data name="PDFKeeper_200x200" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PDFKeeper_200x200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StackTraceLogged" xml:space="preserve">
+    <value>Stack Trace has been logged to {0}</value>
   </data>
   <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -153,6 +159,28 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ThreadException" xml:space="preserve">
+    <value>Application UI ThreadException has occurred!</value>
+  </data>
+  <data name="clock_error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clock_error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DatabaseCreated" xml:space="preserve">
+    <value>{0} was created.
+
+The Setup Single-User Database help topic will now open.
+
+After reading the topic, close the help dialog, and then PDFKeeper will open.</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="TaxYear" xml:space="preserve">
+    <value>Tax Year</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
   <data name="page_find" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\page_find.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -161,6 +189,13 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   </data>
   <data name="database_connect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\database_connect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DatabaseSetup" xml:space="preserve">
+    <value>A database is required for document storage.
+
+Do you want to setup a single-user database?
+
+For setting up a multi-user database, select No.</value>
   </data>
   <data name="database_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\database_save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -183,6 +218,9 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="TitleCannotBeBlank" xml:space="preserve">
     <value>Title cannot be blank!</value>
   </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
   <data name="database_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\database_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -195,8 +233,19 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="arrow_undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_undo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="MultiUserDatabaseSetup" xml:space="preserve">
+    <value>The Setup Multi-User Database help topic will now open.
+
+After reading the topic and setting up the database and any client dependencies and settings listed under the Client Setup for Multi-User Database help topic, close the help dialog, and then PDFKeeper will open to the login form.</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
   <data name="database_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\database_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConnectingToOracle" xml:space="preserve">
+    <value>Are you going to be connecting to an Oracle Database or Oracle Autonomous Database server?</value>
   </data>
   <data name="SubjectCannotBeBlank" xml:space="preserve">
     <value>Subject cannot be blank!</value>
@@ -204,53 +253,7 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="action_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\action_print.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="clock_error" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\clock_error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Added" xml:space="preserve">
-    <value>Added</value>
-  </data>
-  <data name="Author" xml:space="preserve">
-    <value>Author</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>Category</value>
-  </data>
-  <data name="ID" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="Subject" xml:space="preserve">
-    <value>Subject</value>
-  </data>
-  <data name="TaxYear" xml:space="preserve">
-    <value>Tax Year</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Title</value>
-  </data>
-  <data name="ThreadException" xml:space="preserve">
-    <value>Application UI ThreadException has occurred!</value>
-  </data>
-  <data name="DatabaseSetup" xml:space="preserve">
-    <value>A database is required for document storage.
-
-Do you want to setup a single-user database?
-
-For setting up a multi-user database, select No.</value>
-  </data>
-  <data name="DatabaseCreated" xml:space="preserve">
-    <value>{0} was created.
-
-The Setup Single-User Database help topic will now open.
-
-After reading the topic, close the help dialog, and then PDFKeeper will open.</value>
-  </data>
-  <data name="MultiUserDatabaseSetup" xml:space="preserve">
-    <value>The Setup Multi-User Database help topic will now open.
-
-After reading the topic and setting up the database and any client dependencies and settings listed under the Client Setup for Multi-User Database help topic, close the help dialog, and then PDFKeeper will open to the login form.</value>
-  </data>
-  <data name="ConnectingToOracle" xml:space="preserve">
-    <value>Are you going to be connecting to an Oracle Database or Oracle Autonomous Database server?</value>
+  <data name="icon_attachment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_attachment.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

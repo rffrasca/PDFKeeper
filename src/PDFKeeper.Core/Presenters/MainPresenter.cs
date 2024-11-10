@@ -174,6 +174,7 @@ namespace PDFKeeper.Core.Presenters
             ViewModel.FileSaveMenuEnabled = false;
             ViewModel.FileSaveAsMenuEnabled = false;
             ViewModel.FileBurstMenuEnabled = false;
+            ViewModel.FileExtractAllAttachmentsMenuEnabled = false;
             ViewModel.FileCopyPdfToClipboardEnabled = false;
             ViewModel.FilePrintMenuEnabled = false;
             ViewModel.FilePrintPreviewMenuEnabled = false;
@@ -386,6 +387,40 @@ namespace PDFKeeper.Core.Presenters
                 {
                     messageBoxService.ShowMessage(ex.Message, true);
                 }
+            }
+        }
+
+        public async void ExtractAllCurrentDocumentPdfAttachments()
+        {
+            try
+            {
+                var pdfFile = fileCache.GetPdfFile(ViewModel.CurrentDocumentId);
+                switch (messageBoxService.ShowQuestion(Resources.ExtractAttachments, true))
+                {
+                    case 6:
+                        var zipFilePath = saveFileDialogService.ShowDialog(
+                            Resources.ZipFilter,
+                            currentDocument.Title);
+                        if (!string.IsNullOrEmpty(zipFilePath))
+                        {
+                            await Task.Run(() => pdfFile.ExtractAllAttachments(
+                                new FileInfo(zipFilePath))).ConfigureAwait(true);
+                        }
+                        break;
+                    case 7:
+                        var selectedPath = folderBrowserDialogService.ShowDialog(
+                            Resources.SelectExtractFolder);
+                        if (selectedPath.Length > 0)
+                        {
+                            await Task.Run(() => pdfFile.ExtractAllAttachments(
+                                new DirectoryInfo(selectedPath))).ConfigureAwait(true);
+                        }
+                        break;
+                }
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                messageBoxService.ShowMessage(ex.Message, true);
             }
         }
 
@@ -694,6 +729,8 @@ namespace PDFKeeper.Core.Presenters
                     ViewModel.SearchTermSnippets = currentDocument.SearchTermSnippets;
                     ViewModel.DocumentDataEnabled = true;
                     cachePdfTask.Wait();
+                    ViewModel.FileExtractAllAttachmentsMenuEnabled = fileCache.GetPdfFile(
+                        currentDocument.Id).CheckForAttachments();
                     SetPreviewImage(previewPixelDensity);
                 }
                 catch (DatabaseException ex)
@@ -710,6 +747,7 @@ namespace PDFKeeper.Core.Presenters
                 ViewModel.PreviousNotes = null;
                 ViewModel.EditFlagDocumentMenuChecked = false;
                 ViewModel.DocumentDataEnabled = false;
+                ViewModel.FileExtractAllAttachmentsMenuEnabled = false;
                 ViewModel.Notes = null;                
                 ViewModel.Keywords = null;
                 ViewModel.Text = null;

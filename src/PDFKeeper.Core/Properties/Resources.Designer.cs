@@ -160,6 +160,16 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extract all attachments from the PDF to a ZIP file?
+        ///To extract to a folder, select No..
+        /// </summary>
+        internal static string ExtractAttachments {
+            get {
+                return ResourceManager.GetString("ExtractAttachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} contains % and/or + in the filename which are invalid characters! Rename the file and try again..
         /// </summary>
         internal static string FileNameInvalid {
@@ -337,6 +347,15 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select the folder location where to extract all PDF attachments for the selected document:.
+        /// </summary>
+        internal static string SelectExtractFolder {
+            get {
+                return ResourceManager.GetString("SelectExtractFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Text files|*.txt.
         /// </summary>
         internal static string TextFilter {
@@ -371,6 +390,15 @@ namespace PDFKeeper.Core.Properties {
         internal static string UploadProfileExists {
             get {
                 return ResourceManager.GetString("UploadProfileExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ZIP files|*.zip.
+        /// </summary>
+        internal static string ZipFilter {
+            get {
+                return ResourceManager.GetString("ZipFilter", resourceCulture);
             }
         }
     }

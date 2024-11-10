@@ -150,6 +150,10 @@
   <data name="Export" xml:space="preserve">
     <value>Export</value>
   </data>
+  <data name="ExtractAttachments" xml:space="preserve">
+    <value>Extract all attachments from the PDF to a ZIP file?
+To extract to a folder, select No.</value>
+  </data>
   <data name="FileNameInvalid" xml:space="preserve">
     <value>{0} contains % and/or + in the filename which are invalid characters! Rename the file and try again.</value>
   </data>
@@ -213,6 +217,9 @@ PDF file names will be prefixed with: PDFKeeper&lt;ID&gt;_</value>
   <data name="SelectExportFolder" xml:space="preserve">
     <value>Select the folder location where the export folder structure will be created:</value>
   </data>
+  <data name="SelectExtractFolder" xml:space="preserve">
+    <value>Select the folder location where to extract all PDF attachments for the selected document:</value>
+  </data>
   <data name="TextFilter" xml:space="preserve">
     <value>Text files|*.txt</value>
   </data>
@@ -226,5 +233,8 @@ The contents of the Notes text box prior to the attempted save operation have be
   </data>
   <data name="UploadProfileExists" xml:space="preserve">
     <value>Upload Profile already exists!</value>
+  </data>
+  <data name="ZipFilter" xml:space="preserve">
+    <value>ZIP files|*.zip</value>
   </data>
 </root>
