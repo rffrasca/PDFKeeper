@@ -129,6 +129,9 @@
 
 This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you are welcome to redistribute it under certain conditions; for details, select License.</value>
   </data>
+  <data name="icon_attachment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_attachment.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="file_acrobat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\file_acrobat.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -253,7 +256,7 @@ After reading the topic and setting up the database and any client dependencies 
   <data name="action_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\action_print.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_attachment" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_attachment.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="page_attach" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\page_attach.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

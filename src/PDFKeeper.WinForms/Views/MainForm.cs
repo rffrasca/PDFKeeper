@@ -22,6 +22,7 @@ using AutoUpdaterDotNET;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Commands;
 using PDFKeeper.Core.DataAccess;
+using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Presenters;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.PDFViewer.Services;
@@ -104,8 +105,22 @@ namespace PDFKeeper.WinForms.Views
             FileSaveAsToolStripMenuItem.Tag = new SaveAsCommand(presenter);
             FileBurstToolStripMenuItem.Tag = new BurstPdfCommand(presenter);
             FileBurstToolStripButton.Tag = new BurstPdfCommand(presenter);
-            FileExtractAllAttachmentsToolStripMenuItem.Tag = new ExtractAllPdfAttachmentsCommand(presenter);
-            FileExtractAllAttachmentsToolStripButton.Tag = new ExtractAllPdfAttachmentsCommand(presenter);
+            FileExtractAllAttachmentsToolStripMenuItem.Tag =
+                new ExtractAllAttachedFilesFromPdfCommand(
+                    presenter,
+                    PdfFile.AttachedFilesType.Attachment);
+            FileExtractAllAttachmentsToolStripButton.Tag =
+                new ExtractAllAttachedFilesFromPdfCommand(
+                    presenter,
+                    PdfFile.AttachedFilesType.Attachment);
+            FileExtractAllEmbeddedFilesToolStripMenuItem.Tag =
+                new ExtractAllAttachedFilesFromPdfCommand(
+                    presenter,
+                    PdfFile.AttachedFilesType.EmbeddedFile);
+            FileExtractAllEmbeddedFilesToolStripButton.Tag =
+                new ExtractAllAttachedFilesFromPdfCommand(
+                    presenter,
+                    PdfFile.AttachedFilesType.EmbeddedFile);
             FileCopyPdfToClipboardToolStripMenuItem.Tag = new CopyPdfToClipboardCommand(presenter);
             FilePrintToolStripMenuItem.Tag = new PrintTextCommand(presenter, false);
             FilePrintToolStripButton.Tag = new PrintTextCommand(presenter, false);
@@ -453,14 +468,27 @@ namespace PDFKeeper.WinForms.Views
                 FileBurstToolStripMenuItem.Enabled = viewModel.FileBurstMenuEnabled;
                 FileBurstToolStripButton.Enabled = viewModel.FileBurstMenuEnabled;
             }
+            else if (e.PropertyName.Equals("FileExtractMenuEnabled", StringComparison.Ordinal))
+            {
+                FileExtractToolStripMenuItem.Enabled = viewModel.FileExtractMenuEnabled;
+            }
             else if (e.PropertyName.Equals(
                 "FileExtractAllAttachmentsMenuEnabled",
                 StringComparison.Ordinal))
             {
-                FileExtractAllAttachmentsToolStripMenuItem.Enabled = 
+                FileExtractAllAttachmentsToolStripMenuItem.Enabled =
                     viewModel.FileExtractAllAttachmentsMenuEnabled;
-                FileExtractAllAttachmentsToolStripButton.Enabled = 
+                FileExtractAllAttachmentsToolStripButton.Enabled =
                     viewModel.FileExtractAllAttachmentsMenuEnabled;
+            }
+            else if (e.PropertyName.Equals(
+                "FileExtractAllEmbeddedFilesMenuEnabled",
+                StringComparison.Ordinal))
+            {
+                FileExtractAllEmbeddedFilesToolStripMenuItem.Enabled =
+                    viewModel.FileExtractAllEmbeddedFilesMenuEnabled;
+                FileExtractAllEmbeddedFilesToolStripButton.Enabled =
+                    viewModel.FileExtractAllEmbeddedFilesMenuEnabled;
             }
             else if (e.PropertyName.Equals(
                 "FileCopyPdfToClipboardEnabled",

@@ -170,6 +170,16 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extract all embedded files from the PDF to a ZIP file?
+        ///To extract to a folder, select No..
+        /// </summary>
+        internal static string ExtractEmbeddedFiles {
+            get {
+                return ResourceManager.GetString("ExtractEmbeddedFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} contains % and/or + in the filename which are invalid characters! Rename the file and try again..
         /// </summary>
         internal static string FileNameInvalid {

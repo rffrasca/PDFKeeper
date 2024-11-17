@@ -61,9 +61,20 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
+        /// Type of attached files in the PDF.
+        /// </summary>
+        public enum AttachedFilesType
+        {
+            Attachment,
+            EmbeddedFile
+        }
+
+        /// <summary>
         /// Initializes a new instance of the PdfFile class.
         /// </summary>
-        /// <param name="pdfFile">The PDF FileInfo object.</param>
+        /// <param name="pdfFile">
+        /// The PDF FileInfo object.
+        /// </param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
         public PdfFile(FileInfo pdfFile)
@@ -86,6 +97,16 @@ namespace PDFKeeper.Core.FileIO.PDF
             MagickNET.SetGhostscriptDirectory(new ExecutingAssembly().DirectoryPath);
             MagickNET.SetTempDirectory(tempDirectory.FullName);
         }
+
+        /// <summary>
+        /// Does the PDF contain attachments? (true or false)
+        /// </summary>
+        public bool ContainsAttachments => GetAllAttachments().Count > 0;
+
+        /// <summary>
+        /// Does the PDF contain embedded files? (true or false)
+        /// </summary>
+        public bool ContainsEmbeddedFiles => GetAllEmbeddedFiles().Count > 0;
 
         /// <summary>
         /// Does the PDF file exist? (true or false)
@@ -131,22 +152,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         {
             return pdfFile.ChangeExtension(extension);
         }
-
-        /// <summary>
-        /// Checks the PDF for attachments.
-        /// </summary>
-        /// <returns>Do attachments exist in the PDF? (true or false)</returns>
-        public bool CheckForAttachments()
-        {
-            using (var reader = new PdfReader(pdfFile))
-            {
-                using (var document = new PdfDocument(reader))
-                {
-                    return GetNamesOfAllAttachments(document) != null;
-                }
-            }
-        }
-
+        
         /// <summary>
         /// Computes the hash value of the PDF.
         /// </summary>
@@ -254,37 +260,86 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Extracts all attachments from the PDF to a directory.
+        /// Extracts all attached files from the PDF to a directory.
         /// </summary>
-        /// <param name="directory">The DirectoryInfo object of the directory.</param>
+        /// <param name="attachedFilesType">
+        /// The type of attached files in the PDF to extract.
+        /// </param>
+        /// <param name="directory">
+        /// The DirectoryInfo object of the directory.
+        /// </param>
         /// <exception cref="ArgumentNullException"></exception>
-        public void ExtractAllAttachments(DirectoryInfo directory)
+        public void ExtractAllAttachedFiles(AttachedFilesType attachedFilesType, DirectoryInfo directory)
         {
             if (directory == null)
             {
                 throw new ArgumentNullException(nameof(directory));
             }
-            foreach (var key in ExtractAllAttachments().ToArray())
+            switch (attachedFilesType)
             {
-                File.WriteAllBytes(Path.Combine(directory.FullName, key.Key), key.Value);
+                case AttachedFilesType.Attachment:
+                    foreach (var key in GetAllAttachments().ToArray())
+                    {
+                        File.WriteAllBytes(Path.Combine(directory.FullName, key.Key), key.Value);
+                    }
+                    break;
+                case AttachedFilesType.EmbeddedFile:
+                    foreach (var key in GetAllEmbeddedFiles().ToArray())
+                    {
+                        string dirPath = null;
+                        string keyName = null;
+                        if (key.Key.Contains(@"\"))
+                        {
+                            keyName = key.Key;
+                            dirPath = Path.Combine(
+                                directory.FullName,
+                                Path.GetDirectoryName(keyName));
+                            Directory.CreateDirectory(dirPath);
+                        }
+                        if (dirPath == null)
+                        {
+                            dirPath = directory.FullName;
+                        }
+                        if (keyName == null)
+                        {
+                            keyName = key.Key;
+                        }
+                        else
+                        {
+                            keyName = Path.GetFileName(key.Key);
+                        }
+                        File.WriteAllBytes(Path.Combine(dirPath, keyName), key.Value);
+                    }
+                    break;
             }
         }
 
         /// <summary>
-        /// Extracts all attachments from the PDF to a ZIP file.
+        /// Extracts all attached files from the PDF to a ZIP file.
         /// </summary>
+        /// <param name="attachedFilesType">
+        /// The type of attached files in the PDF to extract.
+        /// </param>
         /// <param name="zipFile">
         /// The FileInfo object of the ZIP file. If the file referenced in the FileInfo object
         /// exists, it will be overwritten.
         /// </param>
         /// <exception cref="ArgumentNullException"></exception>
-        public void ExtractAllAttachments(FileInfo zipFile)
+        public void ExtractAllAttachedFiles(AttachedFilesType attachedFilesType, FileInfo zipFile)
         {
             if (zipFile == null)
             {
                 throw new ArgumentNullException(nameof(zipFile));
             }
-            ExtractAllAttachments().ToZipFile(zipFile);
+            switch (attachedFilesType)
+            {
+                case AttachedFilesType.Attachment:
+                    GetAllAttachments().ToZipFile(zipFile);
+                    break;
+                case AttachedFilesType.EmbeddedFile:
+                    GetAllEmbeddedFiles().ToZipFile(zipFile);
+                    break;
+            }
         }
 
         /// <summary>
@@ -466,58 +521,91 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Gets the names of all attachments in a PdfDocument object.
+        /// Gets a Dictionary array containing the name and contents of each attachment in the PDF.
         /// </summary>
-        /// <param name="pdfDocument">The PdfDocument object.</param>
-        /// <returns>The PdfArray object or null when no attachments are found.</returns>
-        private static PdfArray GetNamesOfAllAttachments(PdfDocument pdfDocument)
-        {
-            try
-            {
-                var catalog = pdfDocument.GetCatalog().GetPdfObject();
-                var names = catalog.GetAsDictionary(PdfName.Names);
-                var filespecs = names.GetAsDictionary(PdfName.EmbeddedFiles);
-                return filespecs.GetAsArray(PdfName.Names);
-            }
-            catch (NullReferenceException)
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Extracts all attachments from the PDF to a Dictionary array containing an entry that
-        /// equals the filename as a string and the contents as a byte array for each attachement.
-        /// </summary>
-        /// <returns>The Dictionary object.</returns>
-        private Dictionary<string, byte[]> ExtractAllAttachments()
+        /// <returns>
+        /// The Dictionary object.
+        /// </returns>
+        private Dictionary<string, byte[]> GetAllAttachments()
         {
             var attachments = new Dictionary<string, byte[]>();
             using (var reader = new PdfReader(pdfFile))
             {
                 using (var document = new PdfDocument(reader))
                 {
-                    var filespecs = GetNamesOfAllAttachments(document);
-                    for (int i = 1; i < filespecs.Size(); i++)
+                    try
                     {
-                        var filespec = filespecs.GetAsDictionary(i);
-                        try
+                        var catalog = document.GetCatalog().GetPdfObject();
+                        var names = catalog.GetAsDictionary(PdfName.Names);
+                        var filespecs = names.GetAsDictionary(
+                            PdfName.EmbeddedFiles).GetAsArray(
+                            PdfName.Names);
+                        for (int i = 1; i < filespecs.Size(); i++)
                         {
-                            var file = filespec.GetAsDictionary(PdfName.EF);
-                            foreach (PdfName key in file.KeySet())
+                            var filespec = filespecs.GetAsDictionary(i);
+                            try
                             {
-                                var filename = filespec.GetAsString(key).ToString();
-                                if (!attachments.ContainsKey(filename))
+                                var file = filespec.GetAsDictionary(PdfName.EF);
+                                foreach (PdfName key in file.KeySet())
                                 {
-                                    attachments.Add(filename, file.GetAsStream(key).GetBytes());
+                                    var filename = filespec.GetAsString(key).ToString();
+                                    if (!attachments.ContainsKey(filename))
+                                    {
+                                        attachments.Add(filename, file.GetAsStream(key).GetBytes());
+                                    }
                                 }
                             }
+                            catch (NullReferenceException) { }
                         }
-                        catch (NullReferenceException) { }
                     }
+                    catch (NullReferenceException) { }
                 }
             }
             return attachments;
+        }
+
+        /// <summary>
+        /// Gets a Dictionary array containing the name and contents of each embedded file in the PDF.
+        /// </summary>
+        /// <returns>
+        /// The Dictionary object.
+        /// </returns>
+        private Dictionary<string, byte[]> GetAllEmbeddedFiles()
+        {
+            var embeddedFiles = new Dictionary<string, byte[]>();
+            using (var reader = new PdfReader(pdfFile))
+            {
+                using (var document = new PdfDocument(reader))
+                {
+                    for (int i = 1; i <= document.GetNumberOfPages(); i++)
+                    {
+                        var pdfArray = document.GetPage(i).GetPdfObject().GetAsArray(PdfName.Annots);
+                        if (pdfArray != null)
+                        {
+                            for (int j = 0; j < pdfArray.Size(); j++)
+                            {
+                                var annot = pdfArray.GetAsDictionary(j);
+                                if (PdfName.FileAttachment.Equals(annot.GetAsName(PdfName.Subtype)))
+                                {
+                                    var filespec = annot.GetAsDictionary(PdfName.FS);
+                                    var refs = filespec.GetAsDictionary(PdfName.EF);
+                                    foreach (PdfName key in refs.KeySet())
+                                    {
+                                        var filename = filespec.GetAsString(key).ToString().Replace(
+                                            Path.AltDirectorySeparatorChar,
+                                            Path.DirectorySeparatorChar).Substring(3);
+                                        if (!embeddedFiles.ContainsKey(filename))
+                                        {
+                                            embeddedFiles.Add(filename, refs.GetAsStream(key).GetBytes());
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return embeddedFiles;
         }
     }
 }

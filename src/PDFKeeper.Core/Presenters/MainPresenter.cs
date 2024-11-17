@@ -174,7 +174,9 @@ namespace PDFKeeper.Core.Presenters
             ViewModel.FileSaveMenuEnabled = false;
             ViewModel.FileSaveAsMenuEnabled = false;
             ViewModel.FileBurstMenuEnabled = false;
+            ViewModel.FileExtractMenuEnabled = false;
             ViewModel.FileExtractAllAttachmentsMenuEnabled = false;
+            ViewModel.FileExtractAllEmbeddedFilesMenuEnabled = false;
             ViewModel.FileCopyPdfToClipboardEnabled = false;
             ViewModel.FilePrintMenuEnabled = false;
             ViewModel.FilePrintPreviewMenuEnabled = false;
@@ -390,12 +392,29 @@ namespace PDFKeeper.Core.Presenters
             }
         }
 
-        public async void ExtractAllCurrentDocumentPdfAttachments()
+        /// <summary>
+        /// Extracts all attached files from the PDF of the selected document.
+        /// </summary>
+        /// <param name="attachedFilesType">
+        /// The type of attached files in the PDF to extract.
+        /// </param>
+        public async void ExtractAllAttachedFilesFromCurrentDocumentPdf(
+            PdfFile.AttachedFilesType attachedFilesType)
         {
+            string resource = null;
+            switch (attachedFilesType)
+            {
+                case PdfFile.AttachedFilesType.Attachment:
+                    resource = Resources.ExtractAttachments;
+                    break;
+                case PdfFile.AttachedFilesType.EmbeddedFile:
+                    resource = Resources.ExtractEmbeddedFiles;
+                    break;
+            }
             try
             {
                 var pdfFile = fileCache.GetPdfFile(ViewModel.CurrentDocumentId);
-                switch (messageBoxService.ShowQuestion(Resources.ExtractAttachments, true))
+                switch (messageBoxService.ShowQuestion(resource, true))
                 {
                     case 6:
                         var zipFilePath = saveFileDialogService.ShowDialog(
@@ -403,7 +422,8 @@ namespace PDFKeeper.Core.Presenters
                             currentDocument.Title);
                         if (!string.IsNullOrEmpty(zipFilePath))
                         {
-                            await Task.Run(() => pdfFile.ExtractAllAttachments(
+                            await Task.Run(() => pdfFile.ExtractAllAttachedFiles(
+                                attachedFilesType,
                                 new FileInfo(zipFilePath))).ConfigureAwait(true);
                         }
                         break;
@@ -412,7 +432,8 @@ namespace PDFKeeper.Core.Presenters
                             Resources.SelectExtractFolder);
                         if (selectedPath.Length > 0)
                         {
-                            await Task.Run(() => pdfFile.ExtractAllAttachments(
+                            await Task.Run(() => pdfFile.ExtractAllAttachedFiles(
+                                attachedFilesType,
                                 new DirectoryInfo(selectedPath))).ConfigureAwait(true);
                         }
                         break;
@@ -729,8 +750,12 @@ namespace PDFKeeper.Core.Presenters
                     ViewModel.SearchTermSnippets = currentDocument.SearchTermSnippets;
                     ViewModel.DocumentDataEnabled = true;
                     cachePdfTask.Wait();
-                    ViewModel.FileExtractAllAttachmentsMenuEnabled = fileCache.GetPdfFile(
-                        currentDocument.Id).CheckForAttachments();
+                    var pdfFile = fileCache.GetPdfFile(currentDocument.Id);
+                    ViewModel.FileExtractMenuEnabled =
+                        pdfFile.ContainsAttachments ||
+                        pdfFile.ContainsEmbeddedFiles;
+                    ViewModel.FileExtractAllAttachmentsMenuEnabled = pdfFile.ContainsAttachments;
+                    ViewModel.FileExtractAllEmbeddedFilesMenuEnabled = pdfFile.ContainsEmbeddedFiles;
                     SetPreviewImage(previewPixelDensity);
                 }
                 catch (DatabaseException ex)
@@ -747,7 +772,9 @@ namespace PDFKeeper.Core.Presenters
                 ViewModel.PreviousNotes = null;
                 ViewModel.EditFlagDocumentMenuChecked = false;
                 ViewModel.DocumentDataEnabled = false;
+                ViewModel.FileExtractMenuEnabled = false;
                 ViewModel.FileExtractAllAttachmentsMenuEnabled = false;
+                ViewModel.FileExtractAllEmbeddedFilesMenuEnabled = false;
                 ViewModel.Notes = null;                
                 ViewModel.Keywords = null;
                 ViewModel.Text = null;

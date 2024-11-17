@@ -154,6 +154,10 @@
     <value>Extract all attachments from the PDF to a ZIP file?
 To extract to a folder, select No.</value>
   </data>
+  <data name="ExtractEmbeddedFiles" xml:space="preserve">
+    <value>Extract all embedded files from the PDF to a ZIP file?
+To extract to a folder, select No.</value>
+  </data>
   <data name="FileNameInvalid" xml:space="preserve">
     <value>{0} contains % and/or + in the filename which are invalid characters! Rename the file and try again.</value>
   </data>

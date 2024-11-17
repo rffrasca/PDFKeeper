@@ -62,7 +62,7 @@
   <ItemGroup>
     <Compile Include="Commands\AppendDateTimeIntoNotesCommand.cs" />
     <Compile Include="Commands\AppendTextFromFileIntoNotes.cs" />
-    <Compile Include="Commands\ExtractAllPdfAttachmentsCommand.cs" />
+    <Compile Include="Commands\ExtractAllAttachedFilesFromPdfCommand.cs" />
     <Compile Include="Commands\BurstPdfCommand.cs" />
     <Compile Include="Commands\CopyCommand.cs" />
     <Compile Include="Commands\CopyPdfToClipboardCommand.cs" />
@@ -302,6 +302,7 @@
     <Compile Include="Views\UploadProfilesForm.Designer.cs">
       <DependentUpon>UploadProfilesForm.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\page_attach.png" />
     <None Include="Resources\icon_attachment.gif" />
     <EmbeddedResource Include="Components\CustomComboBox.resx">
       <DependentUpon>CustomComboBox.cs</DependentUpon>

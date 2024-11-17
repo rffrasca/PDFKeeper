@@ -30,7 +30,9 @@ namespace PDFKeeper.Core.ViewModels
         private bool fileSaveMenuEnabled;
         private bool fileSaveAsMenuEnabled;
         private bool fileBurstMenuEnabled;
+        private bool fileExtractMenuEnabled;
         private bool fileExtractAllAttachmentsMenuEnabled;
+        private bool fileExtractAllEmbeddedFilesMenuEnabled;
         private bool fileCopyPdfToClipboardEnabled;
         private bool filePrintMenuEnabled;
         private bool filePrintPreviewMenuEnabled;
@@ -110,10 +112,22 @@ namespace PDFKeeper.Core.ViewModels
             set => SetProperty(ref fileBurstMenuEnabled, value);
         }
 
+        public bool FileExtractMenuEnabled
+        {
+            get => fileExtractMenuEnabled;
+            set => SetProperty(ref fileExtractMenuEnabled, value);
+        }
+
         public bool FileExtractAllAttachmentsMenuEnabled
         {
             get => fileExtractAllAttachmentsMenuEnabled;
             set => SetProperty(ref fileExtractAllAttachmentsMenuEnabled, value);
+        }
+
+        public bool FileExtractAllEmbeddedFilesMenuEnabled
+        {
+            get => fileExtractAllEmbeddedFilesMenuEnabled;
+            set => SetProperty(ref fileExtractAllEmbeddedFilesMenuEnabled, value);
         }
 
         public bool FileCopyPdfToClipboardEnabled

@@ -19,28 +19,38 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Commands;
+using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Presenters;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    public class ExtractAllPdfAttachmentsCommand : ICommand
+    public class ExtractAllAttachedFilesFromPdfCommand : ICommand
     {
         private readonly MainPresenter presenter;
+        private readonly PdfFile.AttachedFilesType attachedFilesType;
 
         /// <summary>
-        /// Initializes a new instance of the ExtractAllPdfAttachmentsCommand class that extracts
-        /// all attachments from the PDF for the selected document to the selected directory when
-        /// executed.
+        /// Initializes a new instance of the ExtractAllAttachedFilesFromPdfCommand class that
+        /// extracts all attached files from the PDF for the selected document to a directory or
+        /// ZIP file when executed.
         /// </summary>
-        /// <param name="presenter">The MainPresenter instance.</param>
-        public ExtractAllPdfAttachmentsCommand(MainPresenter presenter)
+        /// <param name="presenter">
+        /// The MainPresenter instance.
+        /// </param>
+        /// <param name="attachedFilesType">
+        /// The type of attached files in the PDF to extract.
+        /// </param>
+        public ExtractAllAttachedFilesFromPdfCommand(
+            MainPresenter presenter,
+            PdfFile.AttachedFilesType attachedFilesType)
         {
             this.presenter = presenter;
+            this.attachedFilesType = attachedFilesType;
         }
 
         public void Execute()
         {
-            presenter.ExtractAllCurrentDocumentPdfAttachments();
+            presenter.ExtractAllAttachedFilesFromCurrentDocumentPdf(attachedFilesType);
         }
     }
 }

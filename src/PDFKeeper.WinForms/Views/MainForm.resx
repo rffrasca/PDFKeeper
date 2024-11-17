@@ -166,6 +166,15 @@
   <data name="FileExtractAllAttachmentsToolStripButton.ToolTipText" xml:space="preserve">
     <value>Extract All Attachments</value>
   </data>
+  <data name="FileExtractAllEmbeddedFilesToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="FileExtractAllEmbeddedFilesToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="FileExtractAllEmbeddedFilesToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Extract All Embedded Files</value>
+  </data>
   <data name="FilePrintToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -325,103 +334,118 @@
     <value>Ctrl+A</value>
   </data>
   <data name="FileAddToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="FileAddToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Add...</value>
   </data>
   <data name="FileToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 6</value>
+    <value>192, 6</value>
   </data>
   <data name="FileOpenToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+O</value>
   </data>
   <data name="FileOpenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="FileOpenToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Open</value>
   </data>
   <data name="FileToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 6</value>
+    <value>192, 6</value>
   </data>
   <data name="FileSaveToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+S</value>
   </data>
   <data name="FileSaveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="FileSaveToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
   <data name="FileSaveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="FileSaveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Sav&amp;e As...</value>
   </data>
   <data name="FileToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 6</value>
+    <value>192, 6</value>
   </data>
   <data name="FileBurstToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+B</value>
   </data>
   <data name="FileBurstToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="FileBurstToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Burst...</value>
   </data>
   <data name="FileExtractAllAttachmentsToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+E</value>
+    <value>Ctrl+Alt+A</value>
   </data>
   <data name="FileExtractAllAttachmentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
+    <value>246, 22</value>
   </data>
   <data name="FileExtractAllAttachmentsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ext&amp;ract All Attachments...</value>
+    <value>All &amp;Attachments...</value>
+  </data>
+  <data name="FileExtractAllEmbeddedFilesToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Alt+E</value>
+  </data>
+  <data name="FileExtractAllEmbeddedFilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 22</value>
+  </data>
+  <data name="FileExtractAllEmbeddedFilesToolStripMenuItem.Text" xml:space="preserve">
+    <value>All &amp;Embedded Files...</value>
+  </data>
+  <data name="FileExtractToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 22</value>
+  </data>
+  <data name="FileExtractToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ext&amp;ract</value>
   </data>
   <data name="FileToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 6</value>
+    <value>192, 6</value>
   </data>
   <data name="FileCopyPdfToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="FileCopyPdfToClipboardToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Copy PDF to Clipboard</value>
   </data>
   <data name="FileToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 6</value>
+    <value>192, 6</value>
   </data>
   <data name="FilePrintToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+P</value>
   </data>
   <data name="FilePrintToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="FilePrintToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Print...</value>
   </data>
   <data name="FilePrintPreviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="FilePrintPreviewToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Print Pre&amp;view</value>
   </data>
   <data name="FileToolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 6</value>
+    <value>192, 6</value>
   </data>
   <data name="FileExportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="FileExportToolStripMenuItem.Text" xml:space="preserve">
     <value>Expor&amp;t...</value>
   </data>
   <data name="FileToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 6</value>
+    <value>192, 6</value>
   </data>
   <data name="FileExitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 22</value>
+    <value>195, 22</value>
   </data>
   <data name="FileExitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
@@ -1918,6 +1942,12 @@
   <data name="&gt;&gt;FileExtractAllAttachmentsToolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;FileExtractAllEmbeddedFilesToolStripButton.Name" xml:space="preserve">
+    <value>FileExtractAllEmbeddedFilesToolStripButton</value>
+  </data>
+  <data name="&gt;&gt;FileExtractAllEmbeddedFilesToolStripButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;FilePrintToolStripButton.Name" xml:space="preserve">
     <value>FilePrintToolStripButton</value>
   </data>
@@ -2074,10 +2104,22 @@
   <data name="&gt;&gt;FileBurstToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;FileExtractToolStripMenuItem.Name" xml:space="preserve">
+    <value>FileExtractToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;FileExtractToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;FileExtractAllAttachmentsToolStripMenuItem.Name" xml:space="preserve">
     <value>FileExtractAllAttachmentsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;FileExtractAllAttachmentsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FileExtractAllEmbeddedFilesToolStripMenuItem.Name" xml:space="preserve">
+    <value>FileExtractAllEmbeddedFilesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;FileExtractAllEmbeddedFilesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;FileToolStripSeparator4.Name" xml:space="preserve">
