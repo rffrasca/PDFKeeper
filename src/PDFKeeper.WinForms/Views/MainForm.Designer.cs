@@ -145,10 +145,10 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.DocumentsCountLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusStripFillerLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.DocumentsProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.UploadProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.RefreshingDocumentsImageLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.FlagImageLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.UploadRunningImageLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.UploadRejectedImageLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.PreviewPictureBox = new System.Windows.Forms.PictureBox();
             this.MainViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -876,10 +876,10 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsLabel,
             this.DocumentsCountLabel,
             this.StatusStripFillerLabel,
-            this.ProgressBar,
+            this.DocumentsProgressBar,
+            this.UploadProgressBar,
             this.RefreshingDocumentsImageLabel,
             this.FlagImageLabel,
-            this.UploadRunningImageLabel,
             this.UploadRejectedImageLabel});
             resources.ApplyResources(this.StatusStrip, "StatusStrip");
             this.StatusStrip.Name = "StatusStrip";
@@ -902,11 +902,17 @@ namespace PDFKeeper.WinForms.Views
             this.StatusStripFillerLabel.Name = "StatusStripFillerLabel";
             this.StatusStripFillerLabel.Spring = true;
             // 
-            // ProgressBar
+            // DocumentsProgressBar
             // 
-            this.ProgressBar.Name = "ProgressBar";
-            resources.ApplyResources(this.ProgressBar, "ProgressBar");
-            this.ProgressBar.Step = 1;
+            this.DocumentsProgressBar.Name = "DocumentsProgressBar";
+            resources.ApplyResources(this.DocumentsProgressBar, "DocumentsProgressBar");
+            this.DocumentsProgressBar.Step = 1;
+            // 
+            // UploadProgressBar
+            // 
+            this.UploadProgressBar.Name = "UploadProgressBar";
+            resources.ApplyResources(this.UploadProgressBar, "UploadProgressBar");
+            this.UploadProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             // 
             // RefreshingDocumentsImageLabel
             // 
@@ -920,15 +926,9 @@ namespace PDFKeeper.WinForms.Views
             this.FlagImageLabel.Name = "FlagImageLabel";
             resources.ApplyResources(this.FlagImageLabel, "FlagImageLabel");
             // 
-            // UploadRunningImageLabel
-            // 
-            this.UploadRunningImageLabel.Image = global::PDFKeeper.WinForms.Properties.Resources.clock_go;
-            this.UploadRunningImageLabel.Name = "UploadRunningImageLabel";
-            resources.ApplyResources(this.UploadRunningImageLabel, "UploadRunningImageLabel");
-            // 
             // UploadRejectedImageLabel
             // 
-            this.UploadRejectedImageLabel.Image = global::PDFKeeper.WinForms.Properties.Resources.clock_error;
+            this.UploadRejectedImageLabel.Image = global::PDFKeeper.WinForms.Properties.Resources.icon_alert;
             this.UploadRejectedImageLabel.Name = "UploadRejectedImageLabel";
             resources.ApplyResources(this.UploadRejectedImageLabel, "UploadRejectedImageLabel");
             this.UploadRejectedImageLabel.Click += new System.EventHandler(this.UploadRejectedImageLabel_Click);
@@ -1290,10 +1290,9 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.ToolStripStatusLabel DocumentsLabel;
         internal System.Windows.Forms.ToolStripStatusLabel DocumentsCountLabel;
         internal System.Windows.Forms.ToolStripStatusLabel StatusStripFillerLabel;
-        internal System.Windows.Forms.ToolStripProgressBar ProgressBar;
+        internal System.Windows.Forms.ToolStripProgressBar DocumentsProgressBar;
         internal System.Windows.Forms.ToolStripStatusLabel RefreshingDocumentsImageLabel;
         internal System.Windows.Forms.ToolStripStatusLabel FlagImageLabel;
-        internal System.Windows.Forms.ToolStripStatusLabel UploadRunningImageLabel;
         internal System.Windows.Forms.ToolStripStatusLabel UploadRejectedImageLabel;
         internal System.Windows.Forms.PictureBox PreviewPictureBox;
         internal System.Windows.Forms.DataGridView DocumentsDataGridView;
@@ -1326,6 +1325,7 @@ namespace PDFKeeper.WinForms.Views
         private System.Windows.Forms.ToolStripMenuItem FileExtractAllAttachmentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FileExtractAllEmbeddedFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton FileExtractAllEmbeddedFilesToolStripButton;
+        private System.Windows.Forms.ToolStripProgressBar UploadProgressBar;
     }
 }
 

@@ -302,6 +302,7 @@
     <Compile Include="Views\UploadProfilesForm.Designer.cs">
       <DependentUpon>UploadProfilesForm.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\icon_alert.gif" />
     <None Include="Resources\page_attach.png" />
     <None Include="Resources\icon_attachment.gif" />
     <EmbeddedResource Include="Components\CustomComboBox.resx">
@@ -437,8 +438,6 @@
     <Content Include="PDFKeeper.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\clock_error.png" />
-    <None Include="Resources\clock_go.png" />
     <None Include="Resources\flag_red.gif" />
     <None Include="Resources\database_connect.png" />
     <None Include="Resources\icon_info.gif" />

@@ -148,26 +148,6 @@ namespace PDFKeeper.WinForms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap clock_error {
-            get {
-                object obj = ResourceManager.GetObject("clock_error", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap clock_go {
-            get {
-                object obj = ResourceManager.GetObject("clock_go", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Are you going to be connecting to an Oracle Database or Oracle Autonomous Database server?.
         /// </summary>
         internal static string ConnectingToOracle {
@@ -318,6 +298,16 @@ namespace PDFKeeper.WinForms.Properties {
         internal static System.Drawing.Bitmap folder {
             get {
                 object obj = ResourceManager.GetObject("folder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_alert {
+            get {
+                object obj = ResourceManager.GetObject("icon_alert", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

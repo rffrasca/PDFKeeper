@@ -73,12 +73,12 @@ namespace PDFKeeper.Core.ViewModels
         private bool searchTermSnippetsFocused;
         private bool searchTermSnippetsVisible;
         private Image preview;
-        private bool progressBarVisible;
-        private int progressBarMinimum;
-        private int progressBarMaximum;
+        private bool documentsProgressBarVisible;
+        private int documentsProgressBarMinimum;
+        private int documentsProgressBarMaximum;
+        private bool uploadProgressBarVisible;
         private bool refreshingDocumentsImageVisible;
         private bool flagImageVisible;
-        private bool uploadRunningImageVisible;
         private bool uploadRejectedImageVisible;
 
         public MainViewModel()
@@ -396,22 +396,28 @@ namespace PDFKeeper.Core.ViewModels
             set => SetProperty(ref preview, value);
         }
 
-        public bool ProgressBarVisible
+        public bool DocumentsProgressBarVisible
         {
-            get => progressBarVisible;
-            set => SetProperty(ref progressBarVisible, value);
+            get => documentsProgressBarVisible;
+            set => SetProperty(ref documentsProgressBarVisible, value);
         }
 
-        public int ProgressBarMinimum
+        public int DocumentsProgressBarMinimum
         {
-            get => progressBarMinimum;
-            set => SetProperty(ref progressBarMinimum, value);
+            get => documentsProgressBarMinimum;
+            set => SetProperty(ref documentsProgressBarMinimum, value);
         }
 
-        public int ProgressBarMaximum
+        public int DocumentsProgressBarMaximum
         {
-            get => progressBarMaximum;
-            set => SetProperty(ref progressBarMaximum, value);
+            get => documentsProgressBarMaximum;
+            set => SetProperty(ref documentsProgressBarMaximum, value);
+        }
+
+        public bool UploadProgressBarVisible
+        {
+            get => uploadProgressBarVisible;
+            set => SetProperty(ref uploadProgressBarVisible, value);
         }
 
         public bool RefreshingDocumentsImageVisible
@@ -424,12 +430,6 @@ namespace PDFKeeper.Core.ViewModels
         {
             get => flagImageVisible;
             set => SetProperty(ref flagImageVisible, value);
-        }
-
-        public bool UploadRunningImageVisible
-        {
-            get => uploadRunningImageVisible;
-            set => SetProperty(ref uploadRunningImageVisible, value);
         }
 
         public bool UploadRejectedImageVisible

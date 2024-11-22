@@ -443,7 +443,7 @@ namespace PDFKeeper.WinForms.Views
 
         private void MainForm_ProgressBarPerformStepRequested(object sender, EventArgs e)
         {
-            ProgressBar.PerformStep();
+            DocumentsProgressBar.PerformStep();
             Application.DoEvents();
         }
 
@@ -683,17 +683,24 @@ namespace PDFKeeper.WinForms.Views
                     DocumentDataTabControl.TabPages.Remove(SearchTermSnippetsTabPage);
                 }
             }
-            else if (e.PropertyName.Equals("ProgressBarVisible", StringComparison.Ordinal))
+            else if (e.PropertyName.Equals("DocumentsProgressBarVisible", StringComparison.Ordinal))
             {
-                ProgressBar.Visible = viewModel.ProgressBarVisible;
+                DocumentsProgressBar.Visible = viewModel.DocumentsProgressBarVisible;
             }
-            else if (e.PropertyName.Equals("ProgressBarMinimum", StringComparison.Ordinal))
+            else if (e.PropertyName.Equals("DocumentsProgressBarMinimum", StringComparison.Ordinal))
             {
-                ProgressBar.Minimum = viewModel.ProgressBarMinimum;
+                DocumentsProgressBar.Minimum = viewModel.DocumentsProgressBarMinimum;
             }
-            else if (e.PropertyName.Equals("ProgressBarMaximum", StringComparison.Ordinal))
+            else if (e.PropertyName.Equals("DocumentsProgressBarMaximum", StringComparison.Ordinal))
             {
-                ProgressBar.Maximum = viewModel.ProgressBarMaximum;
+                DocumentsProgressBar.Maximum = viewModel.DocumentsProgressBarMaximum;
+            }
+            else if (e.PropertyName.Equals("UploadProgressBarVisible", StringComparison.Ordinal))
+            {
+                BeginInvoke((MethodInvoker)delegate ()
+                {
+                    UploadProgressBar.Visible = viewModel.UploadProgressBarVisible;
+                });
             }
             else if (e.PropertyName.Equals(
                 "RefreshingDocumentsImageVisible",
@@ -705,11 +712,6 @@ namespace PDFKeeper.WinForms.Views
             else if (e.PropertyName.Equals("FlagImageVisible", StringComparison.Ordinal))
             {
                 FlagImageLabel.Visible = viewModel.FlagImageVisible;
-                Application.DoEvents();
-            }
-            else if (e.PropertyName.Equals("UploadRunningImageVisible", StringComparison.Ordinal))
-            {
-                UploadRunningImageLabel.Visible = viewModel.UploadRunningImageVisible;
                 Application.DoEvents();
             }
             else if (e.PropertyName.Equals("UploadRejectedImageVisible", StringComparison.Ordinal))

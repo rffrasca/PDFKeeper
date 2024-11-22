@@ -778,12 +778,21 @@
     <value>False</value>
   </data>
   <data name="StatusStripFillerLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>883, 17</value>
+    <value>600, 17</value>
   </data>
-  <data name="ProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="DocumentsProgressBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 16</value>
   </data>
-  <data name="ProgressBar.Visible" type="System.Boolean, mscorlib">
+  <data name="DocumentsProgressBar.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="UploadProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 16</value>
+  </data>
+  <data name="UploadProgressBar.ToolTipText" xml:space="preserve">
+    <value>Upload in progress.</value>
+  </data>
+  <data name="UploadProgressBar.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="RefreshingDocumentsImageLabel.Size" type="System.Drawing.Size, System.Drawing">
@@ -799,15 +808,6 @@
     <value>Database contains one or more flagged documents.</value>
   </data>
   <data name="FlagImageLabel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="UploadRunningImageLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 17</value>
-  </data>
-  <data name="UploadRunningImageLabel.ToolTipText" xml:space="preserve">
-    <value>Upload in progress.</value>
-  </data>
-  <data name="UploadRunningImageLabel.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="UploadRejectedImageLabel.Size" type="System.Drawing.Size, System.Drawing">
@@ -2452,10 +2452,16 @@
   <data name="&gt;&gt;StatusStripFillerLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ProgressBar.Name" xml:space="preserve">
-    <value>ProgressBar</value>
+  <data name="&gt;&gt;DocumentsProgressBar.Name" xml:space="preserve">
+    <value>DocumentsProgressBar</value>
   </data>
-  <data name="&gt;&gt;ProgressBar.Type" xml:space="preserve">
+  <data name="&gt;&gt;DocumentsProgressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UploadProgressBar.Name" xml:space="preserve">
+    <value>UploadProgressBar</value>
+  </data>
+  <data name="&gt;&gt;UploadProgressBar.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;RefreshingDocumentsImageLabel.Name" xml:space="preserve">
@@ -2468,12 +2474,6 @@
     <value>FlagImageLabel</value>
   </data>
   <data name="&gt;&gt;FlagImageLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UploadRunningImageLabel.Name" xml:space="preserve">
-    <value>UploadRunningImageLabel</value>
-  </data>
-  <data name="&gt;&gt;UploadRunningImageLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;UploadRejectedImageLabel.Name" xml:space="preserve">

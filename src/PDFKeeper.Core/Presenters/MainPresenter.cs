@@ -993,7 +993,7 @@ namespace PDFKeeper.Core.Presenters
             {
                 try
                 {
-                    ViewModel.UploadRunningImageVisible = true;
+                    ViewModel.UploadProgressBarVisible = true;
                     uploader.ExecuteUpload();
                 }
                 catch (ArgumentException ex)
@@ -1010,7 +1010,7 @@ namespace PDFKeeper.Core.Presenters
                 }
                 finally
                 {
-                    ViewModel.UploadRunningImageVisible = false;
+                    ViewModel.UploadProgressBarVisible = false;
                 }
             }
         }
@@ -1031,7 +1031,7 @@ namespace PDFKeeper.Core.Presenters
 
         public void WaitForUploadToFinish()
         {
-            while (ViewModel.UploadRunningImageVisible)
+            while (ViewModel.UploadProgressBarVisible)
             {
                 Thread.Sleep(5000);
             }
@@ -1245,9 +1245,9 @@ namespace PDFKeeper.Core.Presenters
         private void ProcessEachCheckedDocument(CheckedDocumentAction checkedDocumentAction,
             string value)
         {
-            ViewModel.ProgressBarVisible = true;
-            ViewModel.ProgressBarMinimum = 0;
-            ViewModel.ProgressBarMaximum = ViewModel.CheckedDocumentIds.Count;
+            ViewModel.DocumentsProgressBarVisible = true;
+            ViewModel.DocumentsProgressBarMinimum = 0;
+            ViewModel.DocumentsProgressBarMaximum = ViewModel.CheckedDocumentIds.Count;
             foreach (int id in ViewModel.CheckedDocumentIds)
             {
                 try
@@ -1318,7 +1318,7 @@ namespace PDFKeeper.Core.Presenters
                 }
             }
             OnCheckedDocumentsProcessed();
-            ViewModel.ProgressBarVisible = false;
+            ViewModel.DocumentsProgressBarVisible = false;
         }
 
         /// <summary>
