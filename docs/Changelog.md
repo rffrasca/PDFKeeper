@@ -1,6 +1,15 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v10.1.0 - 2024-11-23
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v10.1.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v10.1.0).
+### Added
+* Added feature to extract all attachments or embedded files from the PDF associated with the selected document to a ZIP file or folder. [#33](https://github.com/rffrasca/PDFKeeper/issues/33)
+### Changed
+* Replaced the "green clock" shown during the upload of PDF documents with a marquee style progress bar. [#40](https://github.com/rffrasca/PDFKeeper/issues/40)
+
 ## v10.0.1 - 2024-10-31
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v10.0.1).
