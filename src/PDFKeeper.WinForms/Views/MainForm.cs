@@ -122,6 +122,7 @@ namespace PDFKeeper.WinForms.Views
                     presenter,
                     PdfFile.AttachedFilesType.EmbeddedFile);
             FileCopyPdfToClipboardToolStripMenuItem.Tag = new CopyPdfToClipboardCommand(presenter);
+            FileCopyPdfToClipboardToolStripButton.Tag = new CopyPdfToClipboardCommand(presenter);
             FilePrintToolStripMenuItem.Tag = new PrintTextCommand(presenter, false);
             FilePrintToolStripButton.Tag = new PrintTextCommand(presenter, false);
             FilePrintPreviewToolStripMenuItem.Tag = new PrintTextCommand(presenter, true);
@@ -495,6 +496,8 @@ namespace PDFKeeper.WinForms.Views
                 StringComparison.Ordinal))
             {
                 FileCopyPdfToClipboardToolStripMenuItem.Enabled =
+                    viewModel.FileCopyPdfToClipboardEnabled;
+                FileCopyPdfToClipboardToolStripButton.Enabled =
                     viewModel.FileCopyPdfToClipboardEnabled;
             }
             else if (e.PropertyName.Equals("FilePrintMenuEnabled", StringComparison.Ordinal))

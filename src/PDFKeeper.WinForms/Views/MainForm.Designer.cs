@@ -175,6 +175,7 @@ namespace PDFKeeper.WinForms.Views
             this.UploadTimer = new System.Windows.Forms.Timer(this.components);
             this.UpdateCheckTimer = new System.Windows.Forms.Timer(this.components);
             this.CheckForFlaggedDocumentsTimer = new System.Windows.Forms.Timer(this.components);
+            this.FileCopyPdfToClipboardToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -210,6 +211,7 @@ namespace PDFKeeper.WinForms.Views
             this.FileBurstToolStripButton,
             this.FileExtractAllAttachmentsToolStripButton,
             this.FileExtractAllEmbeddedFilesToolStripButton,
+            this.FileCopyPdfToClipboardToolStripButton,
             this.FilePrintToolStripButton,
             this.ToolBarToolStripSeparator1,
             this.EditUndoToolStripButton,
@@ -1151,6 +1153,14 @@ namespace PDFKeeper.WinForms.Views
             this.CheckForFlaggedDocumentsTimer.Interval = 5000;
             this.CheckForFlaggedDocumentsTimer.Tick += new System.EventHandler(this.CheckForFlaggedDocumentsTimer_Tick);
             // 
+            // FileCopyPdfToClipboardToolStripButton
+            // 
+            this.FileCopyPdfToClipboardToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.FileCopyPdfToClipboardToolStripButton.Image = global::PDFKeeper.WinForms.Properties.Resources.page_white_copy;
+            resources.ApplyResources(this.FileCopyPdfToClipboardToolStripButton, "FileCopyPdfToClipboardToolStripButton");
+            this.FileCopyPdfToClipboardToolStripButton.Name = "FileCopyPdfToClipboardToolStripButton";
+            this.FileCopyPdfToClipboardToolStripButton.Click += new System.EventHandler(this.ToolStripItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -1327,6 +1337,7 @@ namespace PDFKeeper.WinForms.Views
         private System.Windows.Forms.ToolStripMenuItem FileExtractAllEmbeddedFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton FileExtractAllEmbeddedFilesToolStripButton;
         private System.Windows.Forms.ToolStripProgressBar UploadProgressBar;
+        private System.Windows.Forms.ToolStripButton FileCopyPdfToClipboardToolStripButton;
     }
 }
 

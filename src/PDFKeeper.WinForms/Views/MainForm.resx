@@ -175,6 +175,15 @@
   <data name="FileExtractAllEmbeddedFilesToolStripButton.ToolTipText" xml:space="preserve">
     <value>Extract All Embedded Files</value>
   </data>
+  <data name="FileCopyPdfToClipboardToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="FileCopyPdfToClipboardToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="FileCopyPdfToClipboardToolStripButton.ToolTipText" xml:space="preserve">
+    <value>Copy PDF to Clipboard</value>
+  </data>
   <data name="FilePrintToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -574,13 +583,13 @@
     <value>266, 6</value>
   </data>
   <data name="DocumentsSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>103, 22</value>
   </data>
   <data name="DocumentsSelectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;All</value>
   </data>
   <data name="DocumentsSelectNoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>103, 22</value>
   </data>
   <data name="DocumentsSelectNoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;None</value>
@@ -694,19 +703,19 @@
     <value>&amp;View</value>
   </data>
   <data name="ToolsOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="ToolsOptionsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Options</value>
   </data>
   <data name="ToolsUploadProfilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="ToolsUploadProfilesToolStripMenuItem.Text" xml:space="preserve">
     <value>Upload &amp;Profiles</value>
   </data>
   <data name="ToolsMoveDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="ToolsMoveDatabaseToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Move Database...</value>
@@ -2532,6 +2541,12 @@
   </data>
   <data name="&gt;&gt;CheckForFlaggedDocumentsTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FileCopyPdfToClipboardToolStripButton.Name" xml:space="preserve">
+    <value>FileCopyPdfToClipboardToolStripButton</value>
+  </data>
+  <data name="&gt;&gt;FileCopyPdfToClipboardToolStripButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
