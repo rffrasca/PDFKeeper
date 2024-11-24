@@ -162,12 +162,18 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="ThreadException" xml:space="preserve">
     <value>Application UI ThreadException has occurred!</value>
   </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
   <data name="DatabaseCreated" xml:space="preserve">
     <value>{0} was created.
 
 The Setup Single-User Database help topic will now open.
 
 After reading the topic, close the help dialog, and then PDFKeeper will open.</value>
+  </data>
+  <data name="icon_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_alert.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Subject</value>
@@ -238,9 +244,6 @@ For setting up a multi-user database, select No.</value>
 
 After reading the topic and setting up the database and any client dependencies and settings listed under the Client Setup for Multi-User Database help topic, close the help dialog, and then PDFKeeper will open to the login form.</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Title</value>
-  </data>
   <data name="database_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\database_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -253,7 +256,7 @@ After reading the topic and setting up the database and any client dependencies 
   <data name="action_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\action_print.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_alert.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="page_white_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\page_white_copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

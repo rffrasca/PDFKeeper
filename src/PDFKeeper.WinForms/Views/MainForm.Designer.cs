@@ -519,6 +519,7 @@ namespace PDFKeeper.WinForms.Views
             // 
             // FileCopyPdfToClipboardToolStripMenuItem
             // 
+            this.FileCopyPdfToClipboardToolStripMenuItem.Image = global::PDFKeeper.WinForms.Properties.Resources.page_white_copy;
             this.FileCopyPdfToClipboardToolStripMenuItem.Name = "FileCopyPdfToClipboardToolStripMenuItem";
             resources.ApplyResources(this.FileCopyPdfToClipboardToolStripMenuItem, "FileCopyPdfToClipboardToolStripMenuItem");
             this.FileCopyPdfToClipboardToolStripMenuItem.Click += new System.EventHandler(this.ToolStripItem_Click);

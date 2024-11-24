@@ -334,49 +334,49 @@
     <value>Ctrl+A</value>
   </data>
   <data name="FileAddToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="FileAddToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Add...</value>
   </data>
   <data name="FileToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
+    <value>257, 6</value>
   </data>
   <data name="FileOpenToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+O</value>
   </data>
   <data name="FileOpenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="FileOpenToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Open</value>
   </data>
   <data name="FileToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
+    <value>257, 6</value>
   </data>
   <data name="FileSaveToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+S</value>
   </data>
   <data name="FileSaveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="FileSaveToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
   <data name="FileSaveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="FileSaveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Sav&amp;e As...</value>
   </data>
   <data name="FileToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
+    <value>257, 6</value>
   </data>
   <data name="FileBurstToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+B</value>
   </data>
   <data name="FileBurstToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="FileBurstToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Burst...</value>
@@ -400,52 +400,55 @@
     <value>All &amp;Embedded Files...</value>
   </data>
   <data name="FileExtractToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="FileExtractToolStripMenuItem.Text" xml:space="preserve">
     <value>Ext&amp;ract</value>
   </data>
   <data name="FileToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
+    <value>257, 6</value>
+  </data>
+  <data name="FileCopyPdfToClipboardToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Alt+C</value>
   </data>
   <data name="FileCopyPdfToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="FileCopyPdfToClipboardToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Copy PDF to Clipboard</value>
   </data>
   <data name="FileToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
+    <value>257, 6</value>
   </data>
   <data name="FilePrintToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+P</value>
   </data>
   <data name="FilePrintToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="FilePrintToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Print...</value>
   </data>
   <data name="FilePrintPreviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="FilePrintPreviewToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Print Pre&amp;view</value>
   </data>
   <data name="FileToolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
+    <value>257, 6</value>
   </data>
   <data name="FileExportToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="FileExportToolStripMenuItem.Text" xml:space="preserve">
     <value>Expor&amp;t...</value>
   </data>
   <data name="FileToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 6</value>
+    <value>257, 6</value>
   </data>
   <data name="FileExitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>260, 22</value>
   </data>
   <data name="FileExitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
@@ -571,13 +574,13 @@
     <value>266, 6</value>
   </data>
   <data name="DocumentsSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="DocumentsSelectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;All</value>
   </data>
   <data name="DocumentsSelectNoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="DocumentsSelectNoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;None</value>
@@ -691,19 +694,19 @@
     <value>&amp;View</value>
   </data>
   <data name="ToolsOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="ToolsOptionsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Options</value>
   </data>
   <data name="ToolsUploadProfilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="ToolsUploadProfilesToolStripMenuItem.Text" xml:space="preserve">
     <value>Upload &amp;Profiles</value>
   </data>
   <data name="ToolsMoveDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="ToolsMoveDatabaseToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Move Database...</value>
@@ -778,7 +781,7 @@
     <value>False</value>
   </data>
   <data name="StatusStripFillerLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>600, 17</value>
+    <value>883, 17</value>
   </data>
   <data name="DocumentsProgressBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 16</value>
