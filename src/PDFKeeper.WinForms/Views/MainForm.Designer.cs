@@ -59,6 +59,7 @@ namespace PDFKeeper.WinForms.Views
             this.FileBurstToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.FileExtractAllAttachmentsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.FileExtractAllEmbeddedFilesToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.FileCopyPdfToClipboardToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.FilePrintToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ToolBarToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.EditUndoToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -175,7 +176,6 @@ namespace PDFKeeper.WinForms.Views
             this.UploadTimer = new System.Windows.Forms.Timer(this.components);
             this.UpdateCheckTimer = new System.Windows.Forms.Timer(this.components);
             this.CheckForFlaggedDocumentsTimer = new System.Windows.Forms.Timer(this.components);
-            this.FileCopyPdfToClipboardToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ToolStrip.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -281,6 +281,14 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.FileExtractAllEmbeddedFilesToolStripButton, "FileExtractAllEmbeddedFilesToolStripButton");
             this.FileExtractAllEmbeddedFilesToolStripButton.Name = "FileExtractAllEmbeddedFilesToolStripButton";
             this.FileExtractAllEmbeddedFilesToolStripButton.Click += new System.EventHandler(this.ToolStripItem_Click);
+            // 
+            // FileCopyPdfToClipboardToolStripButton
+            // 
+            this.FileCopyPdfToClipboardToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.FileCopyPdfToClipboardToolStripButton.Image = global::PDFKeeper.WinForms.Properties.Resources.page_white_copy;
+            resources.ApplyResources(this.FileCopyPdfToClipboardToolStripButton, "FileCopyPdfToClipboardToolStripButton");
+            this.FileCopyPdfToClipboardToolStripButton.Name = "FileCopyPdfToClipboardToolStripButton";
+            this.FileCopyPdfToClipboardToolStripButton.Click += new System.EventHandler(this.ToolStripItem_Click);
             // 
             // FilePrintToolStripButton
             // 
@@ -1152,14 +1160,6 @@ namespace PDFKeeper.WinForms.Views
             this.CheckForFlaggedDocumentsTimer.Enabled = true;
             this.CheckForFlaggedDocumentsTimer.Interval = 5000;
             this.CheckForFlaggedDocumentsTimer.Tick += new System.EventHandler(this.CheckForFlaggedDocumentsTimer_Tick);
-            // 
-            // FileCopyPdfToClipboardToolStripButton
-            // 
-            this.FileCopyPdfToClipboardToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.FileCopyPdfToClipboardToolStripButton.Image = global::PDFKeeper.WinForms.Properties.Resources.page_white_copy;
-            resources.ApplyResources(this.FileCopyPdfToClipboardToolStripButton, "FileCopyPdfToClipboardToolStripButton");
-            this.FileCopyPdfToClipboardToolStripButton.Name = "FileCopyPdfToClipboardToolStripButton";
-            this.FileCopyPdfToClipboardToolStripButton.Click += new System.EventHandler(this.ToolStripItem_Click);
             // 
             // MainForm
             // 

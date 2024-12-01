@@ -302,6 +302,7 @@
     <Compile Include="Views\UploadProfilesForm.Designer.cs">
       <DependentUpon>UploadProfilesForm.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\page_white_copy.png" />
     <None Include="Resources\icon_alert.gif" />
     <None Include="Resources\page_attach.png" />
     <None Include="Resources\icon_attachment.gif" />
