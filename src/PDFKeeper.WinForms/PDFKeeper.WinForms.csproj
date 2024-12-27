@@ -40,10 +40,11 @@
     <ApplicationIcon>PDFKeeper.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>PDFKeeper.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -413,7 +414,6 @@
       <Link>PDFKeeper.en-US.chm</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="PDFKeeper.snk" />
     <None Include="PDFKeeper.WinForms.ruleset" />
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.AddPdfViewModel.datasource" />
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.FindDocumentsViewModel.datasource" />

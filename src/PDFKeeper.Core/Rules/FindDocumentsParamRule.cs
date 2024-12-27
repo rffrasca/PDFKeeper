@@ -106,14 +106,17 @@ namespace PDFKeeper.Core.Rules
                 return false;
             }
             var result = false;
-            if (DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Oracle))
+            switch (DatabaseSession.PlatformName)
             {
-                result = IsSearchTermSyntaxCorrectForOracle(searchTerm);
-            }
-            else if (DatabaseSession.PlatformName.Equals(
-                DatabaseSession.CompatiblePlatformName.Sqlite))
-            {
-                result = IsSearchTermSyntaxCorrectForSqlite(searchTerm);
+                case DatabaseSession.CompatiblePlatformName.Oracle:
+                    result = IsSearchTermSyntaxCorrectForOracle(searchTerm);
+                    break;
+                case DatabaseSession.CompatiblePlatformName.Sqlite:
+                    result = IsSearchTermSyntaxCorrectForSqlite(searchTerm);
+                    break;
+                case DatabaseSession.CompatiblePlatformName.SqlServer:
+                    result = IsSearchTermSyntaxCorrectForSqlServer(searchTerm);
+                    break;
             }
             return result;
         }
@@ -170,6 +173,20 @@ namespace PDFKeeper.Core.Rules
             if (searchTerm.Contains("&") || searchTerm.Contains("!") || searchTerm.Contains("?") ||
                 searchTerm.Contains("/") || searchTerm.Contains("\"") || searchTerm.Contains(",") ||
                 searchTerm.StartsWith("*", StringComparison.CurrentCulture))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private static bool IsSearchTermSyntaxCorrectForSqlServer(string searchTerm)
+        {
+            if (searchTerm.Equals("%", StringComparison.Ordinal) ||
+                searchTerm.Equals("?", StringComparison.Ordinal) ||
+                searchTerm.StartsWith("not", StringComparison.CurrentCultureIgnoreCase))
             {
                 return false;
             }

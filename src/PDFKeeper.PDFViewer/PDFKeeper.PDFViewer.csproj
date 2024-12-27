@@ -33,10 +33,11 @@
     <CodeAnalysisRuleSet>PDFKeeper.PDFViewer.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>PDFKeeper.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -70,7 +71,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="PDFKeeper.PDFViewer.ruleset" />
-    <None Include="PDFKeeper.snk" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PDFKeeper.Core\PDFKeeper.Core.csproj">

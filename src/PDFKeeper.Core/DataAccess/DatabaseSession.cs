@@ -43,8 +43,9 @@ namespace PDFKeeper.Core.DataAccess
         /// </summary>
         public enum CompatiblePlatformName
         {
-            Sqlite, // 0
-            Oracle  // 1
+            Sqlite,     // 0
+            Oracle,     // 1
+            SqlServer   // 2
         }
 
         /// <summary>
@@ -177,7 +178,9 @@ namespace PDFKeeper.Core.DataAccess
         /// <summary>
         /// Gets a document repository instance for the database platform in use.
         /// </summary>
-        /// <returns>The document repository instance.</returns>
+        /// <returns>
+        /// The document repository instance.
+        /// </returns>
         public static IDocumentRepository GetDocumentRepository()
         {
             return DocumentRepositoryFactory.Create();

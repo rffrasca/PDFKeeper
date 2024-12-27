@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>SQL Server Installation</title>
+	<meta name="generator" content="LibreOffice 24.8.3.2 (Windows)"/>
+	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
+	<meta name="changed" content="2024-12-23T11:21:03.314000000"/>
+	<meta name="description" content="
+*******************************************************************************
+* PDFKeeper -- Open Source PDF Document Management
+* Copyright (C) 2009-2024 Robert F. Frasca
+*
+* This file is part of PDFKeeper.
+*
+* PDFKeeper is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* PDFKeeper is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*******************************************************************************"/>
+</head>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>SQL
+Server Installation</b></font></h1>
+<p><font face="Segoe UI, sans-serif">This topic provides the
+instructions that need to be followed by the individual responsible
+for the administration of SQL Server when installing SQL Server or
+SQL Server Express.</font></p>
+<p><font face="Segoe UI, sans-serif">When installing SQL Server or
+SQL Server Express:</font></p>
+<ul>
+	<li><p><font face="Segoe UI, sans-serif">Perform a <b>Custom</b>
+	installation.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">If warned, Configure the
+	Windows Firewall to allow SQL Server remote access.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><b>Full-Text and Semantic
+	Extractions for Search</b> must be selected.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><b>SQL Server Browser</b>
+	service <b>Startup Type</b> must be changed to <b>Automatic</b>.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Select <b>Mixed Mode (SQL
+	Server authentication and Windows authentication)</b>.</font></p></li>
+</ul>
+<p><font face="Segoe UI, sans-serif">After installing SQL Server or
+SQL Server Express, perform the following steps to enable remote
+access:</font></p>
+<ol>
+	<li><p><font face="Segoe UI, sans-serif">Open </font><font face="Segoe UI, sans-serif"><b>SQL
+	Server &lt;Year&gt; Configuration Manager</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Select
+	</span></font><font face="Segoe UI, sans-serif"><b>SQL Server
+	Network Configuration</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Open
+	</span></font><font face="Segoe UI, sans-serif"><b>Protocols for
+	&lt;Instance Name&gt;</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Set
+	</span></font><font face="Segoe UI, sans-serif"><b>TCP/IP</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">
+	to </span></font><font face="Segoe UI, sans-serif"><b>Enabled</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Open
+	</span></font><font face="Segoe UI, sans-serif"><b>TCP/IP</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Select
+	</span></font><font face="Segoe UI, sans-serif"><b>IP Addresses</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Under
+	</span></font><font face="Segoe UI, sans-serif"><b>IPALL</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">,
+	set </span></font><font face="Segoe UI, sans-serif"><b>TCP Port</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">
+	to </span></font><font face="Segoe UI, sans-serif"><b>1433</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Select
+	</span></font><font face="Segoe UI, sans-serif"><b>SQL Server
+	Services</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Restart
+	</span></font><font face="Segoe UI, sans-serif"><b>SQL Server
+	(&lt;Instance Name&gt;)</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
+</ol>
+</body>
+</html>

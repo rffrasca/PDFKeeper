@@ -26,19 +26,23 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// Factory method that gets a document repository instance for the database platform in
         /// use.
         /// </summary>
-        /// <returns>The document repository instance.</returns>
+        /// <returns>
+        /// The document repository instance.
+        /// </returns>
         internal static IDocumentRepository Create()
         {
             IDocumentRepository instance = null;
-            if (DatabaseSession.PlatformName.Equals(
-                DatabaseSession.CompatiblePlatformName.Oracle))
+            switch (DatabaseSession.PlatformName)
             {
-                instance = GetOracleInstance();
-            }
-            else if (DatabaseSession.PlatformName.Equals(
-                DatabaseSession.CompatiblePlatformName.Sqlite))
-            {
-                instance = GetSqliteInstance();
+                case DatabaseSession.CompatiblePlatformName.Oracle:
+                    instance = GetOracleInstance();
+                    break;
+                case DatabaseSession.CompatiblePlatformName.Sqlite:
+                    instance = GetSqliteInstance();
+                    break;
+                case DatabaseSession.CompatiblePlatformName.SqlServer:
+                    instance = GetSqlServerInstance();
+                    break;
             }
             return instance;
         }
@@ -55,6 +59,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
         private static IDocumentRepository GetSqliteInstance()
         {
             return new SqliteDocumentRepository();
+        }
+
+        private static IDocumentRepository GetSqlServerInstance()
+        {
+            return new SqlServerDocumentRepository();
         }
     }
 }

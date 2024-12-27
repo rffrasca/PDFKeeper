@@ -37,10 +37,11 @@
     </NoWarn>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>PDFKeeper.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -63,6 +64,7 @@
     <Compile Include="Application\UserProfileFolder.cs" />
     <Compile Include="Commands\ExportDocumentCommand.cs" />
     <Compile Include="DataAccess\Repository\DocumentRepositoryFactory.cs" />
+    <Compile Include="DataAccess\Repository\SqlServerDocumentRepository.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Extensions\DirectoryInfoExtension.cs" />
     <Compile Include="Extensions\GenericExtension.cs" />
@@ -158,8 +160,11 @@
       <Link>ConnectionSettingManager.cmd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\Config\SqlServerDatabaseSetup.sql">
+      <Link>SqlServerDatabaseSetup.sql</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="PDFKeeper.Core.ruleset" />
-    <None Include="PDFKeeper.snk" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="itext">
@@ -179,8 +184,14 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Data.SqlClient">
+      <Version>5.2.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
       <Version>10.0.19041.1</Version>
+    </PackageReference>
+    <PackageReference Include="SoftCircuits.FullTextSearchQuery">
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="System.Data.SQLite.Core">
       <Version>1.0.118</Version>
@@ -190,6 +201,9 @@
     </PackageReference>
     <PackageReference Include="System.Memory">
       <Version>4.5.5</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json">
+      <Version>8.0.5</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

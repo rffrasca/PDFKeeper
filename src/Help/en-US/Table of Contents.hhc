@@ -31,6 +31,11 @@
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="SQL Server Installation">
+				<param name="Local" value="SQL Server Installation.html">
+				<param name="ImageNumber" value="9">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="Oracle Database (On-Prem)">
 				<param name="Local" value="Oracle Database (On-Prem).html">
 				<param name="ImageNumber" value="1">
@@ -66,6 +71,23 @@
 				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="User Administration">
 					<param name="Local" value="User Administration for Oracle Autonomous Database.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="SQL Server">
+				<param name="Local" value="SQL Server.html">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Database Setup">
+					<param name="Local" value="Database Setup for SQL Server.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="User Administration">
+					<param name="Local" value="User Administration for SQL Server.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 			</UL>
@@ -192,6 +214,11 @@
 					<LI> <OBJECT type="text/sitemap">
 						<param name="Name" value="Find Documents by Search Term Examples for Oracle">
 						<param name="Local" value="Find Documents by Search Term Examples for Oracle.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Find Documents by Search Term Examples for SQL Server">
+						<param name="Local" value="Find Documents by Search Term Examples for SQL Server.html">
 						<param name="ImageNumber" value="9">
 						</OBJECT>
 				</UL>

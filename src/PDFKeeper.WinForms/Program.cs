@@ -67,7 +67,9 @@ namespace PDFKeeper.WinForms
         /// <summary>
         /// Application startup actions.
         /// </summary>
-        /// <returns>User cancelled or startup encountered an exception? (true or false)</returns>
+        /// <returns>
+        /// User cancelled or startup encountered an exception? (true or false)
+        /// </returns>
         static bool Startup()
         {
             var helpFile = new HelpFile();
@@ -84,49 +86,59 @@ namespace PDFKeeper.WinForms
                 else
                 {
                     var choice = messageBoxService.ShowQuestion(Resources.DatabaseSetup, true);
-                    if (choice.Equals(6))
+                    switch (choice)
                     {
-                        DatabaseSession.PlatformName =
+                        case 6:
+                            DatabaseSession.PlatformName =
                             DatabaseSession.CompatiblePlatformName.Sqlite;
-                        try
-                        {
-                            DatabaseSession.GetDocumentRepository().CreateDatabase();
-                        }
-                        catch (DatabaseException ex)
-                        {
-                            messageBoxService.ShowMessage(ex.Message, true);
-                            return true;
-                        }
-                        Settings.Default.DbManagementSystem =
-                            DatabaseSession.CompatiblePlatformName.Sqlite.ToString();
-                        messageBoxService.ShowMessage(
-                            ResourceHelper.GetString(
-                                "DatabaseCreated",
-                                DatabaseSession.LocalDatabasePath,
-                                null),
-                            false);
-                        helpFile.Show("Setup Single-User Database.html");
-                    }
-                    else if (choice.Equals(7))
-                    {
-                        messageBoxService.ShowMessage(Resources.MultiUserDatabaseSetup, false);
-                        helpFile.Show("Setup Multi-User Database.html");
-                        var choice2 = messageBoxService.ShowQuestion(
-                            Resources.ConnectingToOracle,
-                            false);
-                        if (choice2.Equals(6))
-                        {
+                            try
+                            {
+                                DatabaseSession.GetDocumentRepository().CreateDatabase();
+                            }
+                            catch (DatabaseException ex)
+                            {
+                                messageBoxService.ShowMessage(ex.Message, true);
+                                return true;
+                            }
                             Settings.Default.DbManagementSystem =
-                                DatabaseSession.CompatiblePlatformName.Oracle.ToString();
-                        }
-                        else
-                        {
+                                DatabaseSession.CompatiblePlatformName.Sqlite.ToString();
+                            messageBoxService.ShowMessage(
+                                ResourceHelper.GetString(
+                                    "DatabaseCreated",
+                                    DatabaseSession.LocalDatabasePath,
+                                    null),
+                                false);
+                            helpFile.Show("Setup Single-User Database.html");
+                            break;
+                        case 7:
+                            messageBoxService.ShowMessage(Resources.MultiUserDatabaseSetup, false);
+                            helpFile.Show("Setup Multi-User Database.html");
+                            var choice2 = messageBoxService.ShowQuestion(
+                                Resources.ConnectingToOracle,
+                                false);
+                            if (choice2.Equals(6))
+                            {
+                                Settings.Default.DbManagementSystem =
+                                    DatabaseSession.CompatiblePlatformName.Oracle.ToString();
+                            }
+                            else
+                            {
+                                var choice3 = messageBoxService.ShowQuestion(
+                                Resources.ConnectingToSqlServer,
+                                false);
+                                if (choice3.Equals(6))
+                                {
+                                    Settings.Default.DbManagementSystem =
+                                        DatabaseSession.CompatiblePlatformName.SqlServer.ToString();
+                                }
+                                else
+                                {
+                                    return true;
+                                }
+                            }
+                            break;
+                        case 2:
                             return true;
-                        }
-                    }
-                    else if (choice.Equals(2))
-                    {
-                        return true;
                     }
                 }
             }
@@ -149,6 +161,9 @@ namespace PDFKeeper.WinForms
             return false;
         }
 
+        /// <summary>
+        /// Application shutdown actions.
+        /// </summary>
         static void Shutdown()
         {
             var applicationDirectory = new ApplicationDirectory();

@@ -259,4 +259,7 @@ After reading the topic and setting up the database and any client dependencies 
   <data name="page_white_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\page_white_copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ConnectingToSqlServer" xml:space="preserve">
+    <value>Are you going to be connecting to SQL Server?</value>
+  </data>
 </root>
