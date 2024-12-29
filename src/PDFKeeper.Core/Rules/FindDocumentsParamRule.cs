@@ -117,6 +117,9 @@ namespace PDFKeeper.Core.Rules
                 case DatabaseSession.CompatiblePlatformName.SqlServer:
                     result = IsSearchTermSyntaxCorrectForSqlServer(searchTerm);
                     break;
+                case DatabaseSession.CompatiblePlatformName.MySql:
+                    result = IsSearchTermSyntaxCorrectForMySql(searchTerm);
+                    break;
             }
             return result;
         }
@@ -187,6 +190,18 @@ namespace PDFKeeper.Core.Rules
             if (searchTerm.Equals("%", StringComparison.Ordinal) ||
                 searchTerm.Equals("?", StringComparison.Ordinal) ||
                 searchTerm.StartsWith("not", StringComparison.CurrentCultureIgnoreCase))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private static bool IsSearchTermSyntaxCorrectForMySql(string searchTerm)
+        {
+            if (searchTerm.Contains("%") || searchTerm.Contains("?"))
             {
                 return false;
             }

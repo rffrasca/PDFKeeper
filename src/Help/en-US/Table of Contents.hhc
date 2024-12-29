@@ -91,6 +91,23 @@
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="MySQL">
+				<param name="Local" value="MySQL.html">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Database Setup">
+					<param name="Local" value="Database Setup for MySQL.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="User Administration">
+					<param name="Local" value="User Administration for MySQL.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+			</UL>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Client Setup for Multi-User Database">
@@ -124,6 +141,18 @@
 				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Set Oracle Wallet Path for Mutual TLS (mTLS)">
 					<param name="Local" value="Set Oracle Wallet Path for Mutual TLS (mTLS).html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="MySQL">
+				<param name="Local" value="MySQL-Client.html">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Change Port Number for MySQL Server">
+					<param name="Local" value="Change Port Number for MySQL Server.html">
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 			</UL>
@@ -219,6 +248,11 @@
 					<LI> <OBJECT type="text/sitemap">
 						<param name="Name" value="Find Documents by Search Term Examples for SQL Server">
 						<param name="Local" value="Find Documents by Search Term Examples for SQL Server.html">
+						<param name="ImageNumber" value="9">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Find Documents by Search Term Examples for MySQL">
+						<param name="Local" value="Find Documents by Search Term Examples for MySQL.html">
 						<param name="ImageNumber" value="9">
 						</OBJECT>
 				</UL>

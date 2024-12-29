@@ -133,7 +133,18 @@ namespace PDFKeeper.WinForms
                                 }
                                 else
                                 {
-                                    return true;
+                                    var choice4 = messageBoxService.ShowQuestion(
+                                        Resources.ConnectingToMySql,
+                                        false);
+                                    if (choice4.Equals(6))
+                                    {
+                                        Settings.Default.DbManagementSystem =
+                                            DatabaseSession.CompatiblePlatformName.MySql.ToString();
+                                    }
+                                    else
+                                    {
+                                        return true;
+                                    }
                                 }
                             }
                             break;

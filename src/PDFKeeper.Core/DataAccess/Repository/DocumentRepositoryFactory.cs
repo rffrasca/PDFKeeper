@@ -43,6 +43,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 case DatabaseSession.CompatiblePlatformName.SqlServer:
                     instance = GetSqlServerInstance();
                     break;
+                case DatabaseSession.CompatiblePlatformName.MySql:
+                    instance = GetMySqlInstance();
+                    break;
             }
             return instance;
         }
@@ -64,6 +67,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
         private static IDocumentRepository GetSqlServerInstance()
         {
             return new SqlServerDocumentRepository();
+        }
+
+        private static IDocumentRepository GetMySqlInstance()
+        {
+            return new MySqlDocumentRepository();
         }
     }
 }

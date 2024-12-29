@@ -148,6 +148,15 @@ namespace PDFKeeper.WinForms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you going to be connecting to MySQL server?.
+        /// </summary>
+        internal static string ConnectingToMySql {
+            get {
+                return ResourceManager.GetString("ConnectingToMySql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you going to be connecting to an Oracle Database or Oracle Autonomous Database server?.
         /// </summary>
         internal static string ConnectingToOracle {

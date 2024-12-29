@@ -262,4 +262,7 @@ After reading the topic and setting up the database and any client dependencies 
   <data name="ConnectingToSqlServer" xml:space="preserve">
     <value>Are you going to be connecting to SQL Server?</value>
   </data>
+  <data name="ConnectingToMySql" xml:space="preserve">
+    <value>Are you going to be connecting to MySQL server?</value>
+  </data>
 </root>
