@@ -142,7 +142,9 @@ namespace PDFKeeper.Core.FileIO.PDF
                 {
                     foreach (var directoryL2 in directory.GetDirectories())
                     {
-                        if (directoryL2.GetFiles().Length.Equals(0))
+                        if (directoryL2.GetFiles(
+                            "*",
+                            SearchOption.AllDirectories).Length.Equals(0))
                         {
                             directoryL2.Delete(true);
                         }
@@ -150,7 +152,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                 }
                 else
                 {
-                    if (directory.GetFiles().Length.Equals(0))
+                    if (directory.GetFiles("*", SearchOption.AllDirectories).Length.Equals(0))
                     {
                         directory.Delete(true);
                     }
@@ -162,7 +164,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         {
             foreach (var directory in uploadRejectedDirectory.GetDirectories())
             {
-                if (directory.GetFiles().Length.Equals(0))
+                if (directory.GetFiles("*", SearchOption.AllDirectories).Length.Equals(0))
                 {
                     directory.Delete(true);
                 }
