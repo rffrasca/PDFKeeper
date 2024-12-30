@@ -1,6 +1,6 @@
 -- ****************************************************************************
 -- * PDFKeeper -- Open Source PDF Document Management
--- * Copyright (C) 2009-2024 Robert F. Frasca
+-- * Copyright (C) 2009-2025 Robert F. Frasca
 -- *
 -- * This file is part of PDFKeeper.
 -- *
@@ -34,7 +34,7 @@ go
 
 create table docs
 (
-	doc_id int not null identity,
+	doc_id int primary key clustered not null identity,
 	doc_title nvarchar(255) not null,
 	doc_author nvarchar(255) not null,
 	doc_subject nvarchar(255) not null,
@@ -46,12 +46,14 @@ create table docs
 	doc_flag bit not null default 0,	
 	doc_tax_year char(4),
 	doc_text_annotations nvarchar(max),
-	doc_text nvarchar(max),
-	constraint pk_docs_doc_id primary key clustered (doc_id asc)
+	doc_text nvarchar(max)
 )
 go
 
-create fulltext catalog docs_ft_cat with accent_sensitivity = off
+create unique index docs_idx on docs(doc_id)
+go
+
+create fulltext catalog docs_cat with accent_sensitivity = off
 go
 
 create fulltext index on docs
@@ -67,7 +69,7 @@ create fulltext index on docs
 	doc_text_annotations,
 	doc_text
 )
-key index pk_docs_doc_id on docs_ft_cat with change_tracking auto
+key index docs_idx on docs_cat with change_tracking auto
 go
 
 print 'Done.'
