@@ -39,11 +39,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             connStrBuilder = new SqlConnectionStringBuilder
             {
+                // Encrypt does not need to be set since the default value is Mandatory.
                 DataSource = DatabaseSession.DataSource,
                 InitialCatalog = "pdfkeeper",
                 ConnectTimeout = 60,
-                TrustServerCertificate = true,
-                Encrypt = true
+                TrustServerCertificate = true
             };
             if (sqlCredential == null)
             {
