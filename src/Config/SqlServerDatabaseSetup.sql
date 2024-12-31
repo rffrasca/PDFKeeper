@@ -53,7 +53,7 @@ go
 create unique index docs_idx on docs(doc_id)
 go
 
-create fulltext catalog docs_cat with accent_sensitivity = off
+create fulltext catalog docs_cat
 go
 
 create fulltext index on docs
