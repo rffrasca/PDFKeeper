@@ -264,7 +264,7 @@ All notable changes to PDFKeeper will be documented in this file.
 ### Added
 - Added condition requiring Windows 10 or higher for PDFKeeper to install.
 - Added Oracle Database 21c (including Express Edition) compatibility.
-- Added Oracle Cloud Autonomous Database 21c and 19c compatibility (TLS authentication only).
+- Added Oracle Cloud Autonomous Database compatibility (TLS authentication only).
 - Added opening of PDF documents for all selected (checked) documents in the Documents list up to a maximum of 12.
 - Added Burst for selected document PDF.
 - Added option to OCR each PDF page containing text and image data to the Add PDF Dialog, Upload Profiles Dialog, and to the Update PDF Text Columns prompt.
