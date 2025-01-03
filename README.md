@@ -62,7 +62,7 @@ PDFKeeper is free, open source software that provides a storage and management s
 
 ![Product Name Screen Shot][product-screenshot]
 
-User Interface in version 10.1.0.
+User Interface in version 11.0.0.
 
 ### Features
 * Store and manage PDF documents in a single-user or compatible, multi-user (on-prem or cloud) database where they’re indexed to provide full-text search functionality.
@@ -74,7 +74,7 @@ User Interface in version 10.1.0.
 * With PDFKeeper, the following functions can be performed on a selected document: PDF viewing with the bundled or default viewer; PDF bursting; PDF attachments and embedded files extraction; PDF copying to the Clipboard; Flag Document state management; Notes viewing and editing; Keywords, PDF preview, PDF Text, and Search Term Snippets (when applicable) are also displayed for viewing.
 * Export selected PDF documents with their category, tax year, notes, and flag state from the database for easy importing.
 
-These features are available in version 10.1.0. 
+These features are available in version 10.1.0 and higher.
 
 ### Release History
 Full release history is available in the [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md).
@@ -141,4 +141,4 @@ PDFKeeper is distributed under the terms of the [GNU General Public License (GPL
 [commit-activity-url]: https://github.com/rffrasca/PDFKeeper
 [Donate-PayPal-shield]: https://img.shields.io/badge/Donate-PayPal-green.svg
 [Donate-PayPal-url]: https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=JCM6ZMCF6BHHN
-[product-screenshot]: https://github.com/rffrasca/pdfkeeper/blob/master/docs/UserInterface-10.1.0.png
+[product-screenshot]: https://github.com/rffrasca/pdfkeeper/blob/master/docs/UserInterface-11.0.0.png
