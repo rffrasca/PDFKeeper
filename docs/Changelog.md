@@ -1,6 +1,19 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v11.0.0 - 2025-01-02
+- This is a major release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.0.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.0.0).
+### Added
+* Added SQL Server and SQL Server Express 2019 and higher compatibility. [#37](https://github.com/rffrasca/PDFKeeper/issues/37)
+* Added MySQL Community Server 8.4.3 LTS and higher compatibility. [#41](https://github.com/rffrasca/PDFKeeper/issues/41)
+* Added image and shortcut keys to "Copy PDF to Clipboard" menu item.
+* Added "Copy PDF to Clipboard" tool strip button.
+### Fixed
+* Corrected text in "User Administration for Oracle Database" help topic.
+* Fixed bug in Upload Directory Maintenance that was causing folders to be deleted that did not contain files but contained files in sub-folders. [#46](https://github.com/rffrasca/PDFKeeper/issues/46)
+
 ## v10.1.0 - 2024-11-23
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v10.1.0).
