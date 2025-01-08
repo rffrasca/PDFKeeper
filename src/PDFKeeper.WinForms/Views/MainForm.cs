@@ -237,7 +237,14 @@ namespace PDFKeeper.WinForms.Views
             {
                 Size = Settings.Default.MainFormSize;
             }
-            WindowState = Settings.Default.MainFormState;
+            if (Settings.Default.MainFormState.Equals(FormWindowState.Minimized))
+            {
+                WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                WindowState = Settings.Default.MainFormState;
+            }
             HorizontalSplitContainer.SplitterDistance = Settings.Default.HorizontalSplitterDistance;
             VerticalSplitContainer.SplitterDistance = Settings.Default.VerticalSplitterDistance;
         }
