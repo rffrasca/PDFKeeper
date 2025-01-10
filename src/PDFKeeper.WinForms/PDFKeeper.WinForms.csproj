@@ -46,6 +46,9 @@
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -303,6 +306,7 @@
     <Compile Include="Views\UploadProfilesForm.Designer.cs">
       <DependentUpon>UploadProfilesForm.cs</DependentUpon>
     </Compile>
+    <None Include="Properties\app.manifest" />
     <None Include="Resources\page_white_copy.png" />
     <None Include="Resources\icon_alert.gif" />
     <None Include="Resources\page_attach.png" />
