@@ -32,7 +32,6 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Threading;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using static iText.Kernel.Pdf.Canvas.Parser.Util.InlineImageParsingUtils;
@@ -183,12 +182,9 @@ namespace PDFKeeper.Core.FileIO.PDF
             {
                 storageFile
             };
-            await Dispatcher.CurrentDispatcher.InvokeAsync(delegate
-            {
-                var dataPackage = new DataPackage();
-                dataPackage.SetStorageItems(list);
-                Clipboard.SetContent(dataPackage);
-            });
+            var dataPackage = new DataPackage();
+            dataPackage.SetStorageItems(list);
+            Clipboard.SetContent(dataPackage);
         }
 
         /// <summary>

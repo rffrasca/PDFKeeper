@@ -445,10 +445,10 @@ namespace PDFKeeper.Core.Presenters
             }
         }
 
-        public async void CopyCurrentDocumentPdfToClipboard()
+        public void CopyCurrentDocumentPdfToClipboard()
         {
             var pdfFile = fileCache.GetPdfFile(ViewModel.CurrentDocumentId);
-            await Task.Run(() => pdfFile.CopyToClipboard()).ConfigureAwait(true);
+            pdfFile.CopyToClipboard();
         }
 
         /// <summary>
