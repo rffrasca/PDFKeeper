@@ -1,6 +1,16 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v11.0.1 - 2025-01-12
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.0.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.0.1).
+### Added
+* Added support for long path names up to 32,767 characters. [#54](https://github.com/rffrasca/PDFKeeper/issues/54) [#48](https://github.com/rffrasca/PDFKeeper/issues/48) [#50](https://github.com/rffrasca/PDFKeeper/issues/50)
+### Fixed
+* Fixed System.Runtime.InteropServices.COMException (0x8000001D): Activating a single-threaded class from MTA is not supported (Exception from HRESULT: 0x8000001D) [#49](https://github.com/rffrasca/PDFKeeper/issues/49)
+* Fixed System.InvalidOperationException: SplitterDistance must be between Panel1MinSize and Width - Panel2MinSize. [#53](https://github.com/rffrasca/PDFKeeper/issues/53)
+
 ## v11.0.0 - 2025-01-02
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.0.0).
