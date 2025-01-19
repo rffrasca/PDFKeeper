@@ -550,7 +550,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             LoadExtensionLibrary(connection);
                             command.CommandText =
                                 "create table docs(" +
-                                "doc_id integer primary key autoincrement not null," +
+                                "doc_id integer primary key not null," +
                                 "doc_title text not null," +
                                 "doc_author text not null," +
                                 "doc_subject text not null," +
