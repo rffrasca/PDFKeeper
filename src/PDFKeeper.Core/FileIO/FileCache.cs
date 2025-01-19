@@ -41,11 +41,11 @@ namespace PDFKeeper.Core.FileIO
         }
 
         /// <summary>
-        /// Adds a PDF to the file cache.
+        /// Is the PDF for the specified document ID cached?
         /// </summary>
         /// <param name="id">The document ID of the PDF.</param>
-        /// <param name="pdf">The contents of the PDF.</param>
-        public void AddPdf(int id, byte[] pdf)
+        /// <returns>true or false</returns>
+        public bool IsPdfCached(int id)
         {
             var cached = false;
             var pdfFile = GetPdfFile(id);
@@ -53,7 +53,8 @@ namespace PDFKeeper.Core.FileIO
             {
                 try
                 {
-                    if (pdfFile.ComputeHash().Equals(fileHashes[pdfFile.FullName],
+                    if (pdfFile.ComputeHash().Equals(
+                        fileHashes[pdfFile.FullName],
                         System.StringComparison.Ordinal))
                     {
                         cached = true;
@@ -61,7 +62,18 @@ namespace PDFKeeper.Core.FileIO
                 }
                 catch (KeyNotFoundException) { }
             }
-            if (cached == false)
+            return cached;
+        }
+
+        /// <summary>
+        /// Adds a PDF to the file cache.
+        /// </summary>
+        /// <param name="id">The document ID of the PDF.</param>
+        /// <param name="pdf">The contents of the PDF.</param>
+        public void AddPdf(int id, byte[] pdf)
+        {
+            var pdfFile = GetPdfFile(id);
+            if (!IsPdfCached(id))
             {
                 File.WriteAllBytes(pdfFile.FullName, pdf);
                 if (fileHashes.ContainsKey(pdfFile.FullName)) 

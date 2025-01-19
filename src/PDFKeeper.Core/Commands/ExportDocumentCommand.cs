@@ -20,6 +20,7 @@
 
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
@@ -31,16 +32,29 @@ namespace PDFKeeper.Core.Commands
     {
         private readonly int id;
         private readonly DirectoryInfo exportTargetDirectory;
+        private readonly FileCache fileCache;
 
         /// <summary>
-        /// Exports the PDF and external metadata (XML).
+        /// Initializes a new instance of the <c>ExportDocumentCommand</c> class that exports the
+        /// PDF and external metadata (XML) when executed.
         /// </summary>
-        /// <param name="id">The document ID.</param>
-        /// <param name="exportTargetDirectory">The export target DirectoryInfo object.</param>
-        public ExportDocumentCommand(int id, DirectoryInfo exportTargetDirectory)
+        /// <param name="id">
+        /// The document ID.
+        /// </param>
+        /// <param name="exportTargetDirectory">
+        /// The export target <c>DirectoryInfo</c> object.
+        /// </param>
+        /// <param name="fileCache">
+        /// The <c>FileCache</c> instance.
+        /// </param>
+        public ExportDocumentCommand(
+            int id,
+            DirectoryInfo exportTargetDirectory,
+            FileCache fileCache)
         {
             this.id = id;
             this.exportTargetDirectory = exportTargetDirectory;
+            this.fileCache = fileCache;
         }
 
         public void Execute()
@@ -48,7 +62,7 @@ namespace PDFKeeper.Core.Commands
             Document document;
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
             {
-                document = documentRepository.GetDocument(id, null);
+                document = documentRepository.GetDocument(id, null, fileCache.IsPdfCached(id));
             }
             var authorDirectory = new DirectoryInfo(Path.Combine(exportTargetDirectory.FullName,
                 document.Author));

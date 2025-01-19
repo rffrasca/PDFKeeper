@@ -401,11 +401,21 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public Document GetDocument(int id, string searchTerm)
+        public Document GetDocument(int id, string searchTerm, bool includePdf)
         {
-            var sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
-                "doc_pdf,doc_category,doc_flag,doc_tax_year,doc_text_annotations,doc_text " +
-                "from docs where doc_id = @doc_id";
+            string sql;
+            if (includePdf)
+            {
+                sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
+                    "doc_pdf,doc_category,doc_flag,doc_tax_year,doc_text_annotations,doc_text " +
+                    "from docs where doc_id = @doc_id";
+            }
+            else
+            {
+                sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
+                    "doc_category,doc_flag,doc_tax_year,doc_text_annotations,doc_text " +
+                    "from docs where doc_id = @doc_id";
+            }
             try
             {
                 using (var connection = new SqlConnection(
@@ -427,7 +437,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             document.Keywords = reader["doc_keywords"].ToString();
                             document.Added = reader["doc_added"].ToString();
                             document.Notes = reader["doc_notes"].ToString();
-                            document.Pdf = (byte[])reader["doc_pdf"];
+                            if (includePdf)
+                            {
+                                document.Pdf = (byte[])reader["doc_pdf"];
+                            }
                             document.Category = reader["doc_category"].ToString();
                             document.Flag = Convert.ToInt32(reader["doc_flag"]);
                             document.TaxYear = reader["doc_tax_year"].ToString();

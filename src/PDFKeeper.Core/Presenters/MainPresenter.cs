@@ -263,7 +263,10 @@ namespace PDFKeeper.Core.Presenters
                             using (var documentRepository = 
                                 DatabaseSession.GetDocumentRepository())
                             {
-                                currentDocument = documentRepository.GetDocument(id, null);
+                                currentDocument = documentRepository.GetDocument(
+                                    id,
+                                    null,
+                                    fileCache.IsPdfCached(id));
                             }
                             fileCache.AddPdf(currentDocument.Id, currentDocument.Pdf);
                             pdfViewerService.Show(fileCache.GetPdfFile(id).FullName,
@@ -730,12 +733,15 @@ namespace PDFKeeper.Core.Presenters
                         {
                             currentDocument = documentRepository.GetDocument(
                                 ViewModel.CurrentDocumentId,
-                                FindDocumentsViewState.FindDocumentsParam.SearchTerm);
+                                FindDocumentsViewState.FindDocumentsParam.SearchTerm,
+                                fileCache.IsPdfCached(ViewModel.CurrentDocumentId));
                         }
                         else
                         {
                             currentDocument = documentRepository.GetDocument(
-                                ViewModel.CurrentDocumentId, null);
+                                ViewModel.CurrentDocumentId,
+                                null,
+                                fileCache.IsPdfCached(ViewModel.CurrentDocumentId));
                         }
                     }
                     var cachePdfTask = Task.Run(() => fileCache.AddPdf(
@@ -1292,7 +1298,10 @@ namespace PDFKeeper.Core.Presenters
                         }
                         else if (checkedDocumentAction.Equals(CheckedDocumentAction.Export))
                         {
-                            new ExportDocumentCommand(id, new DirectoryInfo(value)).Execute();
+                            new ExportDocumentCommand(
+                                id,
+                                new DirectoryInfo(value),
+                                fileCache).Execute();
                         }
                     }
                 }

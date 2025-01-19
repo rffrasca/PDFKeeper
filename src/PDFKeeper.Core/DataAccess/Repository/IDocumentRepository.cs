@@ -116,8 +116,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// </summary>
         /// <param name="id">The document ID.</param>
         /// <param name="searchTerm">The specified search term or null.</param>
-        /// <returns>The Document object.</returns>
-        Document GetDocument(int id, string searchTerm);
+        /// <param name="includePdf">Include the PDF file contents? (true or false)</param>
+        /// <returns>The <c>Document</c> object with or without the PDF file contents.</returns>
+        Document GetDocument(int id, string searchTerm, bool includePdf = false);
 
         /// <summary>
         /// Inserts the document into the database.

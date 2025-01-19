@@ -330,15 +330,25 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public Document GetDocument(int id, string searchTerm)
+        public Document GetDocument(int id, string searchTerm, bool includePdf)
         {
             if (searchTerm == null)
             {
                 searchTerm = string.Empty;
             }
-            var sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
-                "doc_pdf,doc_category,doc_flag,doc_tax_year,doc_text " +
-                "from pdfkeeper.docs where doc_id = :doc_id";
+            string sql;
+            if (includePdf)
+            {
+                sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
+                    "doc_pdf,doc_category,doc_flag,doc_tax_year,doc_text " +
+                    "from pdfkeeper.docs where doc_id = :doc_id";
+            }
+            else
+            {
+                sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
+                    "doc_category,doc_flag,doc_tax_year,doc_text " +
+                    "from pdfkeeper.docs where doc_id = :doc_id";
+            }
             try
             {
                 using (var connection = new OracleConnection(
@@ -366,10 +376,13 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             document.TaxYear = reader["doc_tax_year"].ToString();
                             document.Text = reader["doc_text"].ToString();
                             document.SearchTermSnippets = GetSearchTermSnippets(id, searchTerm);
-                            var blob = reader.GetOracleBlob(6);
-                            using (var memoryStream = new MemoryStream(blob.Value))
+                            if (includePdf)
                             {
-                                document.Pdf = memoryStream.ToArray();
+                                var blob = reader.GetOracleBlob(6);
+                                using (var memoryStream = new MemoryStream(blob.Value))
+                                {
+                                    document.Pdf = memoryStream.ToArray();
+                                }
                             }
                         }
                         return document;
