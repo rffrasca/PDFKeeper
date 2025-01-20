@@ -693,6 +693,68 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
+        public void UpgradeDatabase()
+        {
+            string sql;
+            string result;
+            try
+            {
+                sql = "select sql from sqlite_master where name = 'docs' " +
+                "and sql like '%autoincrement%'";
+                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
+                {
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (var reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+                            result = reader.GetString(0);
+                        }
+                    }
+                }
+                if (!string.IsNullOrEmpty(result))
+                {
+                    sql = "select name from sqlite_master where name = 'docs_after_delete'";
+                    result = null;
+                    using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
+                    {
+                        using (var command = new SQLiteCommand(sql, connection))
+                        {
+                            connection.Open();
+                            using (var reader = command.ExecuteReader())
+                            {
+                                reader.Read();
+                                result = reader.GetString(0);
+                            }
+                        }
+                    }
+                    if (string.IsNullOrEmpty(result))
+                    {
+                        using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
+                        {
+                            using (var command = new SQLiteCommand(connection))
+                            {
+                                connection.Open();
+                                LoadExtensionLibrary(connection);
+                                command.CommandText =
+                                    "create trigger docs_after_delete after delete on docs " +
+                                    "begin " +
+                                    "update sqlite_sequence set seq = (select max(doc_id) from docs) " +
+                                    "where name = 'docs';" +
+                                    "end;";
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
+        }
+
         protected override DataTable ExecuteQuery(SQLiteCommand command)
         {
             using (var adapter = new SQLiteDataAdapter(command))

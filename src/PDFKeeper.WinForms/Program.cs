@@ -93,7 +93,10 @@ namespace PDFKeeper.WinForms
                             DatabaseSession.CompatiblePlatformName.Sqlite;
                             try
                             {
-                                DatabaseSession.GetDocumentRepository().CreateDatabase();
+                                using (var repository = DatabaseSession.GetDocumentRepository())
+                                {
+                                    repository.CreateDatabase();
+                                }
                             }
                             catch (DatabaseException ex)
                             {
@@ -168,6 +171,18 @@ namespace PDFKeeper.WinForms
             else
             {
                 DatabaseSession.PlatformName = DatabaseSession.CompatiblePlatformName.Sqlite;
+                try
+                {
+                    using (var repository = DatabaseSession.GetDocumentRepository())
+                    {
+                        repository.UpgradeDatabase();
+                    }
+                }
+                catch (DatabaseException ex)
+                {
+                    messageBoxService.ShowMessage(ex.Message, true);
+                    return true;
+                }
             }
             return false;
         }

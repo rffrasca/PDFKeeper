@@ -574,6 +574,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
             throw new NotSupportedException();
         }
 
+        public void UpgradeDatabase()
+        {
+            throw new NotSupportedException();
+        }
+
         protected override DataTable ExecuteQuery(OracleCommand command)
         {
             using (var adapter = new OracleDataAdapter(command))
