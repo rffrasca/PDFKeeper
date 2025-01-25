@@ -696,11 +696,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public void UpgradeDatabase()
         {
             string sql;
-            string result;
+            string result = null;
             try
             {
                 sql = "select sql from sqlite_master where name = 'docs' " +
-                "and sql like '%autoincrement%'";
+                    "and sql like '%autoincrement%'";
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new SQLiteCommand(sql, connection))
@@ -708,8 +708,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         connection.Open();
                         using (var reader = command.ExecuteReader())
                         {
-                            reader.Read();
-                            result = reader.GetString(0);
+                            while (reader.Read())
+                            {
+                                result = reader.GetString(0);
+                            }
                         }
                     }
                 }
@@ -724,8 +726,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             connection.Open();
                             using (var reader = command.ExecuteReader())
                             {
-                                reader.Read();
-                                result = reader.GetString(0);
+                                while (reader.Read())
+                                {
+                                    result = reader.GetString(0);
+                                }
                             }
                         }
                     }
