@@ -62,16 +62,28 @@ namespace PDFKeeper.Core.Commands
             Document document;
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
             {
-                document = documentRepository.GetDocument(id, null, fileCache.IsPdfCached(id));
+                document = documentRepository.GetDocument(id, null, true);
             }
-            var authorDirectory = new DirectoryInfo(Path.Combine(exportTargetDirectory.FullName,
-                document.Author));
-            var subjectDirectory = new DirectoryInfo(Path.Combine(authorDirectory.FullName,
-                document.Subject));
+            fileCache.AddPdf(id, document.Pdf);
+            var authorDirectory = new DirectoryInfo(
+                Path.Combine(
+                    exportTargetDirectory.FullName,
+                    document.Author));
+            var subjectDirectory = new DirectoryInfo(
+                Path.Combine(
+                    authorDirectory.FullName,
+                    document.Subject));
             authorDirectory.Create();
             subjectDirectory.Create();
-            var pdfFile = new PdfFile(new FileInfo(Path.Combine(subjectDirectory.FullName,
-                string.Concat("[", id, "]", document.Title, ".pdf"))));
+            var pdfFile = new PdfFile(
+                new FileInfo(
+                    Path.Combine(
+                        subjectDirectory.FullName,
+                        string.Concat("[",
+                        id,
+                        "]",
+                        document.Title,
+                        ".pdf"))));
             var xmlFile = pdfFile.ChangeExtension("xml");
             File.WriteAllBytes(pdfFile.FullName, document.Pdf);
             var pdfMetadata = new PdfMetadata(pdfFile, null);

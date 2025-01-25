@@ -266,7 +266,7 @@ namespace PDFKeeper.Core.Presenters
                                 currentDocument = documentRepository.GetDocument(
                                     id,
                                     null,
-                                    fileCache.IsPdfCached(id));
+                                    !fileCache.IsPdfCached(id));
                             }
                             fileCache.AddPdf(currentDocument.Id, currentDocument.Pdf);
                             pdfViewerService.Show(fileCache.GetPdfFile(id).FullName,
@@ -734,14 +734,14 @@ namespace PDFKeeper.Core.Presenters
                             currentDocument = documentRepository.GetDocument(
                                 ViewModel.CurrentDocumentId,
                                 FindDocumentsViewState.FindDocumentsParam.SearchTerm,
-                                fileCache.IsPdfCached(ViewModel.CurrentDocumentId));
+                                !fileCache.IsPdfCached(ViewModel.CurrentDocumentId));
                         }
                         else
                         {
                             currentDocument = documentRepository.GetDocument(
                                 ViewModel.CurrentDocumentId,
                                 null,
-                                fileCache.IsPdfCached(ViewModel.CurrentDocumentId));
+                                !fileCache.IsPdfCached(ViewModel.CurrentDocumentId));
                         }
                     }
                     var cachePdfTask = Task.Run(() => fileCache.AddPdf(
