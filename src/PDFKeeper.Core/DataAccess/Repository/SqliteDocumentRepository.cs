@@ -715,7 +715,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         }
                     }
                 }
-                if (!string.IsNullOrEmpty(result))
+                if (result != null)
                 {
                     sql = "select name from sqlite_master where name = 'docs_after_delete'";
                     result = null;
@@ -733,7 +733,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             }
                         }
                     }
-                    if (string.IsNullOrEmpty(result))
+                    if (result != null)
                     {
                         using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
                         {
