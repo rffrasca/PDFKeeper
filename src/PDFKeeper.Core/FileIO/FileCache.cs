@@ -23,6 +23,7 @@ using PDFKeeper.Core.FileIO.PDF;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 
 namespace PDFKeeper.Core.FileIO
 {
@@ -151,6 +152,23 @@ namespace PDFKeeper.Core.FileIO
         {
             return new PdfFile(new FileInfo(Path.Combine(cacheDirectory.FullName,
                 string.Concat(executingAssembly.ProductName, id, ".pdf"))));
+        }
+
+        /// <summary>
+        /// Deletes all files associated with the specified document ID from the file cache.
+        /// </summary>
+        /// <param name="id">The document ID.</param>
+        public void Delete(int id)
+        {
+            foreach (var key in fileHashes.Keys.ToList())
+            {
+                if (key.EndsWith(string.Concat("PDFKeeper", id, ".pdf")) ||
+                    key.Contains(string.Concat("PDFKeeper", id, "-")))
+                {
+                    File.Delete(key);
+                    fileHashes.Remove(key);
+                }
+            }
         }
 
         /// <summary>

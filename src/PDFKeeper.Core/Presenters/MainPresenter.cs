@@ -1295,6 +1295,7 @@ namespace PDFKeeper.Core.Presenters
                         else if (checkedDocumentAction.Equals(CheckedDocumentAction.Delete))
                         {
                             documentRepository.DeleteDocument(id);
+                            fileCache.Delete(id);
                         }
                         else if (checkedDocumentAction.Equals(CheckedDocumentAction.Export))
                         {
