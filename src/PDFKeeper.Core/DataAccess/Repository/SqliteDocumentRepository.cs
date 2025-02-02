@@ -733,7 +733,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             }
                         }
                     }
-                    if (result != null)
+                    if (result == null)
                     {
                         using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
                         {
