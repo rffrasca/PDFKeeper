@@ -1,6 +1,18 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v11.1.0 - 2025-02-03
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.1.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.1.0).
+### Added
+* Added after delete trigger to existing SQLite database that is using AUTOINCREMENT that sets the docs table sequence to the largest doc_id in use. [#63](https://github.com/rffrasca/PDFKeeper/issues/63)
+* Added delete of all files associated with a document ID from the file cache when document record is deleted from the database. [#65](https://github.com/rffrasca/PDFKeeper/issues/65)
+### Changed
+* When querying a document record, PDF contents will only be queried when the caller specifies that the PDF be included in the results. [#61](https://github.com/rffrasca/PDFKeeper/issues/61)
+### Removed
+* Removed AUTOINCREMENT keyword from create docs table statement when creating new SQLite database. [#43](https://github.com/rffrasca/PDFKeeper/issues/43)
+
 ## v11.0.1 - 2025-01-12
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.0.1).
