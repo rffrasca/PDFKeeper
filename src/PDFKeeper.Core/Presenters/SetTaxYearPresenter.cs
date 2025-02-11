@@ -30,7 +30,7 @@ namespace PDFKeeper.Core.Presenters
         {
             ViewModel = new StringEnumerableViewModel
             {
-                Items = TaxYear.GetElevenYearRange().ToArray()
+                Items = TaxYear.GetYearRange().ToArray()
             };
         }
     }

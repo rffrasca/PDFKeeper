@@ -70,7 +70,7 @@ namespace PDFKeeper.Core.Presenters
                     author => author).ToArray();
                 ViewModel.Categories = ColumnData.GetCategories(null, null, null).OrderBy(
                     category => category).ToArray();
-                ViewModel.TaxYears = TaxYear.GetElevenYearRange().ToArray();
+                ViewModel.TaxYears = TaxYear.GetYearRange().ToArray();
             }
             catch (DatabaseException ex)
             {

@@ -26,14 +26,14 @@ namespace PDFKeeper.Core.Models
     internal class TaxYear
     {
         /// <summary>
-        /// Gets tax years starting with the last 10 years and 1 year into the future.
+        /// Gets tax years starting with the last 25 years and 1 year into the future.
         /// </summary>
         /// <returns>The collection.</returns>
-        internal static IEnumerable<string> GetElevenYearRange()
+        internal static IEnumerable<string> GetYearRange()
         {
             var tempYears = new List<string>();
             var thisYear = DateTime.Now.Year;
-            var x = thisYear - 10;
+            var x = thisYear - 25;
             while (x <= thisYear)
             {
                 x++;
