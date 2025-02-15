@@ -28,7 +28,8 @@ namespace PDFKeeper.Core.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// Notifies listeners that a property value has changed.
+        /// Raises the OnPropertyChanged event to notify listeners that a property value has
+        /// changed.
         /// </summary>
         /// <param name="propertyName">
         /// The name of the property used to notify listeners or null to automatically provide the

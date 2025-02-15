@@ -74,7 +74,7 @@ namespace PDFKeeper.Core.Presenters
         /// Raises the LongRunningOperationStarted event to notify the view that a long running
         /// operation has started.
         /// </summary>
-        public void OnLongRunningOperationStarted()
+        protected void OnLongRunningOperationStarted()
         {
             LongRunningOperationStarted?.Invoke(this, null);
         }
@@ -83,7 +83,7 @@ namespace PDFKeeper.Core.Presenters
         /// Raises the LongRunningOperationFinished event to notify the view that a long running
         /// operation has finished.
         /// </summary>
-        public void OnLongRunningOperationFinished()
+        protected void OnLongRunningOperationFinished()
         {
             LongRunningOperationFinished?.Invoke(this, null);
         }
