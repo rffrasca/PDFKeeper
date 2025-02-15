@@ -31,29 +31,20 @@ namespace PDFKeeper.Core.Commands
     public class ExportDocumentCommand : ICommand
     {
         private readonly int id;
-        private readonly DirectoryInfo exportTargetDirectory;
+        private readonly DirectoryInfo exportDirectory;
         private readonly FileCache fileCache;
 
         /// <summary>
         /// Initializes a new instance of the <c>ExportDocumentCommand</c> class that exports the
         /// PDF and external metadata (XML) when executed.
         /// </summary>
-        /// <param name="id">
-        /// The document ID.
-        /// </param>
-        /// <param name="exportTargetDirectory">
-        /// The export target <c>DirectoryInfo</c> object.
-        /// </param>
-        /// <param name="fileCache">
-        /// The <c>FileCache</c> instance.
-        /// </param>
-        public ExportDocumentCommand(
-            int id,
-            DirectoryInfo exportTargetDirectory,
-            FileCache fileCache)
+        /// <param name="id">The document ID.</param>
+        /// <param name="exportDirectory">The export <c>DirectoryInfo</c> object.</param>
+        /// <param name="fileCache">The <c>FileCache</c> instance.</param>
+        public ExportDocumentCommand(int id, DirectoryInfo exportDirectory, FileCache fileCache)
         {
             this.id = id;
-            this.exportTargetDirectory = exportTargetDirectory;
+            this.exportDirectory = exportDirectory;
             this.fileCache = fileCache;
         }
 
@@ -65,25 +56,22 @@ namespace PDFKeeper.Core.Commands
                 document = documentRepository.GetDocument(id, null, true);
             }
             fileCache.AddPdf(id, document.Pdf);
-            var authorDirectory = new DirectoryInfo(
-                Path.Combine(
-                    exportTargetDirectory.FullName,
-                    document.Author));
-            var subjectDirectory = new DirectoryInfo(
-                Path.Combine(
-                    authorDirectory.FullName,
-                    document.Subject));
-            authorDirectory.Create();
-            subjectDirectory.Create();
+            var filesExportDirectoryPath = Path.Combine(
+                    exportDirectory.FullName,
+                    document.Author,
+                    document.Subject).ReplaceInvalidPathChars();
+            Directory.CreateDirectory(filesExportDirectoryPath);
+            var pdfFileName = string.Concat(
+                "[",
+                id,
+                "]",
+                document.Title,
+                ".pdf").ReplaceInvalidFileNameChars();
             var pdfFile = new PdfFile(
                 new FileInfo(
                     Path.Combine(
-                        subjectDirectory.FullName,
-                        string.Concat("[",
-                        id,
-                        "]",
-                        document.Title,
-                        ".pdf"))));
+                        filesExportDirectoryPath,
+                        pdfFileName)));
             var xmlFile = pdfFile.ChangeExtension("xml");
             File.WriteAllBytes(pdfFile.FullName, document.Pdf);
             var pdfMetadata = new PdfMetadata(pdfFile, null);

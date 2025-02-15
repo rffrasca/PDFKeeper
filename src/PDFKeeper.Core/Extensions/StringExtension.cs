@@ -68,7 +68,9 @@ namespace PDFKeeper.Core.Extensions
                     value += Environment.NewLine;
                 }
             }
-            return string.Concat(value, File.ReadAllText(file.FullName).Trim(),
+            return string.Concat(
+                value,
+                File.ReadAllText(file.FullName).Trim(),
                 Environment.NewLine);
         }
 
@@ -80,6 +82,34 @@ namespace PDFKeeper.Core.Extensions
         public static int GetByteCount(this string value)
         {
             return Encoding.UTF8.GetByteCount(value);
+        }
+
+        /// <summary>
+        /// Replaces each invalid file name character in a string with an '_'.
+        /// </summary>
+        /// <param name="value">The string.</param>
+        /// <returns>The modified string.</returns>
+        internal static string ReplaceInvalidFileNameChars(this string value)
+        {
+            foreach (char invalidChar in Path.GetInvalidFileNameChars())
+            {
+                value = value.Replace(invalidChar, '_');
+            }
+            return value;
+        }
+
+        /// <summary>
+        /// Replaces each invalid path name character in a string with an '_'.
+        /// </summary>
+        /// <param name="value">The string.</param>
+        /// <returns>The modified string.</returns>
+        internal static string ReplaceInvalidPathChars(this string value)
+        {
+            foreach (char invalidChar in Path.GetInvalidPathChars())
+            {
+                value = value.Replace(invalidChar, '_');
+            }
+            return value;
         }
 
         /// <summary>
