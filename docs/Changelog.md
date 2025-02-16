@@ -1,6 +1,15 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v11.1.1 - 2025-02-16
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.1.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.1.1).
+### Changed
+* Tax Year drop down list in the Set Tax Year, Add PDF, and Upload Profile Editor dialogs will include the last 25 years instead of 10. [#66](https://github.com/rffrasca/PDFKeeper/issues/66)
+### Fixed
+* Fixed in Export, System.NotSupportedException: The given path's format is not supported. [#67](https://github.com/rffrasca/PDFKeeper/issues/67)
+
 ## v11.1.0 - 2025-02-03
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.1.0).
