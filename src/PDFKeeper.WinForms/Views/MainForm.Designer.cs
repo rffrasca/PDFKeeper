@@ -231,6 +231,7 @@ namespace PDFKeeper.WinForms.Views
             this.HelpContentsToolStripButton});
             resources.ApplyResources(this.ToolStrip, "ToolStrip");
             this.ToolStrip.Name = "ToolStrip";
+            this.HelpProvider.SetShowHelp(this.ToolStrip, ((bool)(resources.GetObject("ToolStrip.ShowHelp"))));
             this.ToolStrip.Visible = global::PDFKeeper.WinForms.Properties.Settings.Default.ToolBarVisible;
             // 
             // FileAddToolStripButton
@@ -425,6 +426,7 @@ namespace PDFKeeper.WinForms.Views
             this.HelpToolStripMenuItem});
             resources.ApplyResources(this.MenuStrip, "MenuStrip");
             this.MenuStrip.Name = "MenuStrip";
+            this.HelpProvider.SetShowHelp(this.MenuStrip, ((bool)(resources.GetObject("MenuStrip.ShowHelp"))));
             // 
             // FileToolStripMenuItem
             // 
@@ -894,6 +896,7 @@ namespace PDFKeeper.WinForms.Views
             this.UploadRejectedImageLabel});
             resources.ApplyResources(this.StatusStrip, "StatusStrip");
             this.StatusStrip.Name = "StatusStrip";
+            this.HelpProvider.SetShowHelp(this.StatusStrip, ((bool)(resources.GetObject("StatusStrip.ShowHelp"))));
             this.StatusStrip.ShowItemToolTips = true;
             this.StatusStrip.Visible = global::PDFKeeper.WinForms.Properties.Settings.Default.StatusBarVisible;
             // 
@@ -949,6 +952,7 @@ namespace PDFKeeper.WinForms.Views
             this.PreviewPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.MainViewModelBindingSource, "Preview", true));
             resources.ApplyResources(this.PreviewPictureBox, "PreviewPictureBox");
             this.PreviewPictureBox.Name = "PreviewPictureBox";
+            this.HelpProvider.SetShowHelp(this.PreviewPictureBox, ((bool)(resources.GetObject("PreviewPictureBox.ShowHelp"))));
             this.PreviewPictureBox.TabStop = false;
             // 
             // MainViewModelBindingSource
@@ -972,6 +976,7 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsDataGridView.Name = "DocumentsDataGridView";
             this.DocumentsDataGridView.RowHeadersVisible = false;
             this.DocumentsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.HelpProvider.SetShowHelp(this.DocumentsDataGridView, ((bool)(resources.GetObject("DocumentsDataGridView.ShowHelp"))));
             this.DocumentsDataGridView.StandardTab = true;
             this.DocumentsDataGridView.DataSourceChanged += new System.EventHandler(this.DocumentsDataGridView_DataSourceChanged);
             this.DocumentsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DocumentsDataGridView_CellDoubleClick);
@@ -1000,20 +1005,24 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentDataTabControl.Multiline = true;
             this.DocumentDataTabControl.Name = "DocumentDataTabControl";
             this.DocumentDataTabControl.SelectedIndex = 0;
+            this.HelpProvider.SetShowHelp(this.DocumentDataTabControl, ((bool)(resources.GetObject("DocumentDataTabControl.ShowHelp"))));
             // 
             // NotesTabPage
             // 
             this.NotesTabPage.Controls.Add(this.NotesTextBox);
             resources.ApplyResources(this.NotesTabPage, "NotesTabPage");
             this.NotesTabPage.Name = "NotesTabPage";
+            this.HelpProvider.SetShowHelp(this.NotesTabPage, ((bool)(resources.GetObject("NotesTabPage.ShowHelp"))));
             this.NotesTabPage.UseVisualStyleBackColor = true;
             // 
             // NotesTextBox
             // 
             this.NotesTextBox.AcceptsReturn = true;
             this.NotesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MainViewModelBindingSource, "Notes", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.NotesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.MainViewModelBindingSource, "NotesReadOnly", true));
             resources.ApplyResources(this.NotesTextBox, "NotesTextBox");
             this.NotesTextBox.Name = "NotesTextBox";
+            this.HelpProvider.SetShowHelp(this.NotesTextBox, ((bool)(resources.GetObject("NotesTextBox.ShowHelp"))));
             this.NotesTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
             this.NotesTextBox.GotFocus += new System.EventHandler(this.TextBox_Enter);
             this.NotesTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
@@ -1025,6 +1034,7 @@ namespace PDFKeeper.WinForms.Views
             this.KeywordsTabPage.Controls.Add(this.KeywordsTextBox);
             resources.ApplyResources(this.KeywordsTabPage, "KeywordsTabPage");
             this.KeywordsTabPage.Name = "KeywordsTabPage";
+            this.HelpProvider.SetShowHelp(this.KeywordsTabPage, ((bool)(resources.GetObject("KeywordsTabPage.ShowHelp"))));
             this.KeywordsTabPage.UseVisualStyleBackColor = true;
             // 
             // KeywordsTextBox
@@ -1033,6 +1043,7 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.KeywordsTextBox, "KeywordsTextBox");
             this.KeywordsTextBox.Name = "KeywordsTextBox";
             this.KeywordsTextBox.ReadOnly = true;
+            this.HelpProvider.SetShowHelp(this.KeywordsTextBox, ((bool)(resources.GetObject("KeywordsTextBox.ShowHelp"))));
             this.KeywordsTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
             this.KeywordsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             this.KeywordsTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
@@ -1043,6 +1054,7 @@ namespace PDFKeeper.WinForms.Views
             this.TextTabPage.Controls.Add(this.TextTextBox);
             resources.ApplyResources(this.TextTabPage, "TextTabPage");
             this.TextTabPage.Name = "TextTabPage";
+            this.HelpProvider.SetShowHelp(this.TextTabPage, ((bool)(resources.GetObject("TextTabPage.ShowHelp"))));
             this.TextTabPage.UseVisualStyleBackColor = true;
             // 
             // TextTextBox
@@ -1051,6 +1063,7 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.TextTextBox, "TextTextBox");
             this.TextTextBox.Name = "TextTextBox";
             this.TextTextBox.ReadOnly = true;
+            this.HelpProvider.SetShowHelp(this.TextTextBox, ((bool)(resources.GetObject("TextTextBox.ShowHelp"))));
             this.TextTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
             this.TextTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             this.TextTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
@@ -1061,6 +1074,7 @@ namespace PDFKeeper.WinForms.Views
             this.SearchTermSnippetsTabPage.Controls.Add(this.SearchTermSnippetsTextBox);
             resources.ApplyResources(this.SearchTermSnippetsTabPage, "SearchTermSnippetsTabPage");
             this.SearchTermSnippetsTabPage.Name = "SearchTermSnippetsTabPage";
+            this.HelpProvider.SetShowHelp(this.SearchTermSnippetsTabPage, ((bool)(resources.GetObject("SearchTermSnippetsTabPage.ShowHelp"))));
             this.SearchTermSnippetsTabPage.UseVisualStyleBackColor = true;
             // 
             // SearchTermSnippetsTextBox
@@ -1069,6 +1083,7 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.SearchTermSnippetsTextBox, "SearchTermSnippetsTextBox");
             this.SearchTermSnippetsTextBox.Name = "SearchTermSnippetsTextBox";
             this.SearchTermSnippetsTextBox.ReadOnly = true;
+            this.HelpProvider.SetShowHelp(this.SearchTermSnippetsTextBox, ((bool)(resources.GetObject("SearchTermSnippetsTextBox.ShowHelp"))));
             this.SearchTermSnippetsTextBox.Enter += new System.EventHandler(this.TextBox_Enter);
             this.SearchTermSnippetsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             this.SearchTermSnippetsTextBox.Leave += new System.EventHandler(this.TextBox_Leave);
@@ -1083,10 +1098,13 @@ namespace PDFKeeper.WinForms.Views
             // HorizontalSplitContainer.Panel1
             // 
             this.HorizontalSplitContainer.Panel1.Controls.Add(this.SearchResultsPanel);
+            this.HelpProvider.SetShowHelp(this.HorizontalSplitContainer.Panel1, ((bool)(resources.GetObject("HorizontalSplitContainer.Panel1.ShowHelp"))));
             // 
             // HorizontalSplitContainer.Panel2
             // 
             this.HorizontalSplitContainer.Panel2.Controls.Add(this.VerticalSplitContainer);
+            this.HelpProvider.SetShowHelp(this.HorizontalSplitContainer.Panel2, ((bool)(resources.GetObject("HorizontalSplitContainer.Panel2.ShowHelp"))));
+            this.HelpProvider.SetShowHelp(this.HorizontalSplitContainer, ((bool)(resources.GetObject("HorizontalSplitContainer.ShowHelp"))));
             this.HorizontalSplitContainer.TabStop = false;
             // 
             // SearchResultsPanel
@@ -1094,6 +1112,7 @@ namespace PDFKeeper.WinForms.Views
             this.SearchResultsPanel.Controls.Add(this.DocumentsDataGridView);
             resources.ApplyResources(this.SearchResultsPanel, "SearchResultsPanel");
             this.SearchResultsPanel.Name = "SearchResultsPanel";
+            this.HelpProvider.SetShowHelp(this.SearchResultsPanel, ((bool)(resources.GetObject("SearchResultsPanel.ShowHelp"))));
             // 
             // VerticalSplitContainer
             // 
@@ -1103,10 +1122,13 @@ namespace PDFKeeper.WinForms.Views
             // VerticalSplitContainer.Panel1
             // 
             this.VerticalSplitContainer.Panel1.Controls.Add(this.DocumentDataTabControl);
+            this.HelpProvider.SetShowHelp(this.VerticalSplitContainer.Panel1, ((bool)(resources.GetObject("VerticalSplitContainer.Panel1.ShowHelp"))));
             // 
             // VerticalSplitContainer.Panel2
             // 
             this.VerticalSplitContainer.Panel2.Controls.Add(this.PreviewTabControl);
+            this.HelpProvider.SetShowHelp(this.VerticalSplitContainer.Panel2, ((bool)(resources.GetObject("VerticalSplitContainer.Panel2.ShowHelp"))));
+            this.HelpProvider.SetShowHelp(this.VerticalSplitContainer, ((bool)(resources.GetObject("VerticalSplitContainer.ShowHelp"))));
             this.VerticalSplitContainer.TabStop = false;
             // 
             // PreviewTabControl
@@ -1115,6 +1137,7 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.PreviewTabControl, "PreviewTabControl");
             this.PreviewTabControl.Name = "PreviewTabControl";
             this.PreviewTabControl.SelectedIndex = 0;
+            this.HelpProvider.SetShowHelp(this.PreviewTabControl, ((bool)(resources.GetObject("PreviewTabControl.ShowHelp"))));
             this.PreviewTabControl.TabStop = false;
             // 
             // PreviewTabPage
@@ -1122,6 +1145,7 @@ namespace PDFKeeper.WinForms.Views
             this.PreviewTabPage.Controls.Add(this.PreviewPanel);
             resources.ApplyResources(this.PreviewTabPage, "PreviewTabPage");
             this.PreviewTabPage.Name = "PreviewTabPage";
+            this.HelpProvider.SetShowHelp(this.PreviewTabPage, ((bool)(resources.GetObject("PreviewTabPage.ShowHelp"))));
             this.PreviewTabPage.UseVisualStyleBackColor = true;
             // 
             // PreviewPanel
@@ -1130,6 +1154,7 @@ namespace PDFKeeper.WinForms.Views
             this.PreviewPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PreviewPanel.Controls.Add(this.PreviewPictureBox);
             this.PreviewPanel.Name = "PreviewPanel";
+            this.HelpProvider.SetShowHelp(this.PreviewPanel, ((bool)(resources.GetObject("PreviewPanel.ShowHelp"))));
             // 
             // DocumentsListTimedRefreshTimer
             // 

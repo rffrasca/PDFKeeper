@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>Deleting Documents</title>
-	<meta name="generator" content="LibreOffice 24.2.5.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 25.2.1.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2024-07-28T16:50:57.517000000"/>
+	<meta name="changed" content="2025-03-15T11:22:02.208830300"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -52,11 +52,16 @@ documents, perform the following steps:</font></p>
 	select the <b>Documents</b> menu, then <b>Select</b>, and then <b>None</b>;
 	or press <b>Alt</b> + <b>D</b>, then <b>L</b>, and then <b>N </b>on
 	the keyboard.</font></p></li>
-	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">When
-	using the SQLite local database platform and the <b>Compact database
-	after deleting selected documents </b>option is checked in <a href="PDFKeeper%20Options.html">PDFKeeper
-	Options</a>, the database will be compacted after deleting all
-	selected documents.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">In a multi-user database
+	environment, the controls referenced in step 2 will be disabled if
+	your database user account has not been granted <b>delete</b> access
+	to the <b>docs</b> table.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">When
+	using the SQLite local database platform and the </span></font><font face="Segoe UI, sans-serif"><b>Compact
+	database after deleting selected documents </b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">option
+	is checked in <a href="PDFKeeper%20Options.html">PDFKeeper Options</a>,
+	the database will be compacted after deleting all selected
+	documents.</span></font></p></li>
 </ul>
 </body>
 </html>

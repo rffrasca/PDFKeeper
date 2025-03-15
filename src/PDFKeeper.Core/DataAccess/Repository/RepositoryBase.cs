@@ -25,7 +25,16 @@ namespace PDFKeeper.Core.DataAccess.Repository
     public abstract class RepositoryBase<T1, T2>
     {
         protected T1 connStrBuilder;
+
         protected abstract DataTable ExecuteQuery(T2 command);
         protected abstract string GetSearchTermSnippets(int id, string searchTerm);
+
+        protected virtual void GetDocsTableAccess()
+        {
+            DatabaseSession.SelectGranted = true;
+            DatabaseSession.InsertGranted = true;
+            DatabaseSession.UpdateGranted = true;
+            DatabaseSession.DeleteGranted = true;
+        }
     }
 }

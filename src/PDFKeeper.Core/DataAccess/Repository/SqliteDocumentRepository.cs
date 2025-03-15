@@ -752,6 +752,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         }
                     }
                 }
+                GetDocsTableAccess();
             }
             catch (SQLiteException ex)
             {

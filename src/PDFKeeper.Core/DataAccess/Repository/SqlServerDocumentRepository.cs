@@ -20,6 +20,7 @@
 
 using Microsoft.Data.SqlClient;
 using PDFKeeper.Core.Models;
+using PDFKeeper.Core.Properties;
 using SoftCircuits.FullTextSearchQuery;
 using System;
 using System.Data;
@@ -612,6 +613,12 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 ResetCredential();
                 throw new DatabaseException(ex.Message);
             }
+            GetDocsTableAccess();
+            if (!DatabaseSession.SelectGranted)
+            {
+                ResetCredential();
+                throw new DatabaseException(Resources.NoAccessToLogin);
+            }
         }
 
         public void ResetCredential()
@@ -650,6 +657,53 @@ namespace PDFKeeper.Core.DataAccess.Repository
         protected override string GetSearchTermSnippets(int id, string searchTerm)
         {
             throw new NotSupportedException();
+        }
+
+        protected override void GetDocsTableAccess()
+        {
+            var sql = "select permission_name from fn_my_permissions('docs', 'OBJECT') " +
+                "where subentity_name = ''";
+            try
+            {
+                using (var connection = new SqlConnection(
+                     connStrBuilder.ConnectionString,
+                     sqlCredential))
+                {
+                    using (var command = new SqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (var reader = command.ExecuteReader())
+                        {
+                            DatabaseSession.SelectGranted = false;
+                            DatabaseSession.InsertGranted = false;
+                            DatabaseSession.UpdateGranted = false;
+                            DatabaseSession.DeleteGranted = false;
+                            while (reader.Read())
+                            {
+                                switch (reader.GetString(0))
+                                {
+                                    case "SELECT":
+                                        DatabaseSession.SelectGranted = true;
+                                        break;
+                                    case "INSERT":
+                                        DatabaseSession.InsertGranted = true;
+                                        break;
+                                    case "UPDATE":
+                                        DatabaseSession.UpdateGranted = true;
+                                        break;
+                                    case "DELETE":
+                                        DatabaseSession.DeleteGranted = true;
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
         }
 
         protected virtual void Dispose(bool disposing)

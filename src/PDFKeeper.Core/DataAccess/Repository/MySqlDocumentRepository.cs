@@ -550,6 +550,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 throw new DatabaseException(ex.Message);
             }
+            GetDocsTableAccess();
         }
 
         public void ResetCredential()
@@ -588,6 +589,56 @@ namespace PDFKeeper.Core.DataAccess.Repository
         protected override string GetSearchTermSnippets(int id, string searchTerm)
         {
             throw new NotSupportedException();
+        }
+
+        protected override void GetDocsTableAccess()
+        {
+            var sql = "show grants for current_user";
+            string result;
+            try
+            {
+                using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
+                {
+                    using (var command = new MySqlCommand(sql, connection))
+                    {
+                        connection.Open();
+                        using (var reader = command.ExecuteReader())
+                        {
+                            DatabaseSession.SelectGranted = false;
+                            DatabaseSession.InsertGranted = false;
+                            DatabaseSession.UpdateGranted = false;
+                            DatabaseSession.DeleteGranted = false;
+                            while (reader.Read())
+                            {
+                                result = reader.GetString(0);
+                                if (result.Contains("pdfkeeper") && result.Contains("docs"))
+                                {
+                                    if (result.Contains("SELECT"))
+                                    {
+                                        DatabaseSession.SelectGranted = true;
+                                    }
+                                    if (result.Contains("INSERT"))
+                                    {
+                                        DatabaseSession.InsertGranted = true;
+                                    }
+                                    if (result.Contains("UPDATE"))
+                                    {
+                                        DatabaseSession.UpdateGranted = true;
+                                    }
+                                    if (result.Contains("DELETE"))
+                                    {
+                                        DatabaseSession.DeleteGranted = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
         }
 
         protected virtual void Dispose(bool disposing)

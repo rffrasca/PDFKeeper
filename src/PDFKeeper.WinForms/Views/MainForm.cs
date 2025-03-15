@@ -457,7 +457,12 @@ namespace PDFKeeper.WinForms.Views
 
         private void MainForm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals("FileOpenMenuEnabled", StringComparison.Ordinal))
+            if (e.PropertyName.Equals("FileAddMenuEnabled", StringComparison.Ordinal))
+            {
+                FileAddToolStripMenuItem.Enabled = viewModel.FileAddMenuEnabled;
+                FileAddToolStripButton.Enabled = viewModel.FileAddMenuEnabled;
+            }
+            else if (e.PropertyName.Equals("FileOpenMenuEnabled", StringComparison.Ordinal))
             {
                 FileOpenToolStripMenuItem.Enabled = viewModel.FileOpenMenuEnabled;
                 FileOpenToolStripButton.Enabled = viewModel.FileOpenMenuEnabled;
@@ -639,6 +644,15 @@ namespace PDFKeeper.WinForms.Views
             {
                 ViewSetPreviewPixelDensityToolStripMenuItem.Enabled = 
                     viewModel.ViewSetPreviewPixelDensityMenuEnabled;
+            }
+            else if (e.PropertyName.Equals(
+                "ToolsUploadProfilesMenuEnabled",
+                StringComparison.Ordinal))
+            {
+                ToolsUploadProfilesToolStripMenuItem.Enabled =
+                    viewModel.ToolsUploadProfilesMenuEnabled;
+                ToolsUploadProfilesToolStripButton.Enabled =
+                    viewModel.ToolsUploadProfilesMenuEnabled;
             }
             else if (e.PropertyName.Equals(
                 "ToolsMoveDatabaseMenuVisible",

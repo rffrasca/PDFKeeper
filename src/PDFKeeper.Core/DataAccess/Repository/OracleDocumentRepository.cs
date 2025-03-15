@@ -20,6 +20,7 @@
 
 using Oracle.ManagedDataAccess.Client;
 using PDFKeeper.Core.Models;
+using PDFKeeper.Core.Properties;
 using System;
 using System.Data;
 using System.Globalization;
@@ -557,6 +558,12 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 ResetCredential();
                 throw new DatabaseException(ex.Message);
             }
+            GetDocsTableAccess();
+            if (!DatabaseSession.SelectGranted)
+            {
+                ResetCredential();
+                throw new DatabaseException(Resources.NoAccessToLogin);
+            }
         }
 
         public void ResetCredential()
@@ -626,6 +633,57 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 }
             }
             return result;
+        }
+
+        protected override void GetDocsTableAccess()
+        {
+            var sql = "select privilege from all_tab_privs " +
+                "where grantor = 'PDFKEEPER' " +
+                "and grantee = :grantee " +
+                "and table_name = upper('docs')";
+            try
+            {
+                using (var connection = new OracleConnection(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("grantee", DatabaseSession.UserName.ToUpper());
+                        connection.Open();
+                        using (var reader = command.ExecuteReader())
+                        {
+                            DatabaseSession.SelectGranted = false;
+                            DatabaseSession.InsertGranted = false;
+                            DatabaseSession.UpdateGranted = false;
+                            DatabaseSession.DeleteGranted = false;
+                            while (reader.Read())
+                            {
+                                switch (reader.GetString(0))
+                                {
+                                    case "SELECT":
+                                        DatabaseSession.SelectGranted = true;
+                                        break;
+                                    case "INSERT":
+                                        DatabaseSession.InsertGranted = true;
+                                        break;
+                                    case "UPDATE":
+                                        DatabaseSession.UpdateGranted = true;
+                                        break;
+                                    case "DELETE":
+                                        DatabaseSession.DeleteGranted = true;
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
         }
 
         protected virtual void Dispose(bool disposing)

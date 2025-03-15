@@ -177,75 +177,82 @@ namespace PDFKeeper.Core.FileIO.PDF
             {
                 pdfFile.WaitWhileLocked();
                 var pdf = new PdfFile(pdfFile);
-                if (pdf.GetPasswordType() == PdfFile.PasswordType.None)
+                if (DatabaseSession.InsertGranted)
                 {
-                    var xmlFile = new FileInfo(pdfFile.ChangeExtension("xml").FullName);
-                    var dirName = pdfFile.FullName.Substring(uploadDirectory.FullName.Length + 1);
-                    if (dirName.Equals(pdfFile.Name, StringComparison.Ordinal))
+                    if (pdf.GetPasswordType() == PdfFile.PasswordType.None)
                     {
-                        dirName = uploadDirectory.FullName;
-                    }
-                    else
-                    {
-                        dirName = dirName.Substring(0,
-                            dirName.IndexOf(Path.DirectorySeparatorChar));
-                    }
-                    var pdfMetadata = new PdfMetadata(pdf, null);
-                    if (uploadProfileManager.GetUploadProfile(dirName) != null)
-                    {
-                        var uploadProfile = uploadProfileManager.GetUploadProfile(dirName);
-                        if (uploadProfile.Title.Equals(TitleToken.DateToken,
-                            StringComparison.Ordinal))
+                        var xmlFile = new FileInfo(pdfFile.ChangeExtension("xml").FullName);
+                        var dirName = pdfFile.FullName.Substring(uploadDirectory.FullName.Length + 1);
+                        if (dirName.Equals(pdfFile.Name, StringComparison.Ordinal))
                         {
-                            pdfMetadata.Title = TitleToken.GetDate();
-                        }
-                        else if (uploadProfile.Title.Equals(TitleToken.DateTimeToken,
-                            StringComparison.Ordinal))
-                        {
-                            pdfMetadata.Title = TitleToken.GetDateTime();
-                        }
-                        else if (uploadProfile.Title.Equals(TitleToken.FileNameToken,
-                            StringComparison.Ordinal))
-                        {
-                            pdfMetadata.Title = TitleToken.GetFileName(pdfFile);
+                            dirName = uploadDirectory.FullName;
                         }
                         else
                         {
-                            pdfMetadata.Title = uploadProfile.Title;
+                            dirName = dirName.Substring(0,
+                                dirName.IndexOf(Path.DirectorySeparatorChar));
                         }
-                        pdfMetadata.Author = uploadProfile.Author;
-                        pdfMetadata.Subject = uploadProfile.Subject;
-                        pdfMetadata.Keywords = uploadProfile.Keywords;
-                        pdfMetadata.Category = uploadProfile.Category;
-                        pdfMetadata.Flag = Convert.ToInt32(uploadProfile.FlagDocument);
-                        pdfMetadata.TaxYear = uploadProfile.TaxYear;
-                        pdfMetadata.OcrPdfTextAndImageDataPages =
-                            uploadProfile.OcrPdfTextAndImageDataPages;
-                        try
+                        var pdfMetadata = new PdfMetadata(pdf, null);
+                        if (uploadProfileManager.GetUploadProfile(dirName) != null)
                         {
-                            new UploadStagingCommand(pdfMetadata.Write()).Execute();
-                            pdfFile.DeleteToRecycleBin();
-                            if (xmlFile.Exists)
+                            var uploadProfile = uploadProfileManager.GetUploadProfile(dirName);
+                            if (uploadProfile.Title.Equals(TitleToken.DateToken,
+                                StringComparison.Ordinal))
                             {
-                                xmlFile.DeleteToRecycleBin();
-                            }    
+                                pdfMetadata.Title = TitleToken.GetDate();
+                            }
+                            else if (uploadProfile.Title.Equals(TitleToken.DateTimeToken,
+                                StringComparison.Ordinal))
+                            {
+                                pdfMetadata.Title = TitleToken.GetDateTime();
+                            }
+                            else if (uploadProfile.Title.Equals(TitleToken.FileNameToken,
+                                StringComparison.Ordinal))
+                            {
+                                pdfMetadata.Title = TitleToken.GetFileName(pdfFile);
+                            }
+                            else
+                            {
+                                pdfMetadata.Title = uploadProfile.Title;
+                            }
+                            pdfMetadata.Author = uploadProfile.Author;
+                            pdfMetadata.Subject = uploadProfile.Subject;
+                            pdfMetadata.Keywords = uploadProfile.Keywords;
+                            pdfMetadata.Category = uploadProfile.Category;
+                            pdfMetadata.Flag = Convert.ToInt32(uploadProfile.FlagDocument);
+                            pdfMetadata.TaxYear = uploadProfile.TaxYear;
+                            pdfMetadata.OcrPdfTextAndImageDataPages =
+                                uploadProfile.OcrPdfTextAndImageDataPages;
+                            try
+                            {
+                                new UploadStagingCommand(pdfMetadata.Write()).Execute();
+                                pdfFile.DeleteToRecycleBin();
+                                if (xmlFile.Exists)
+                                {
+                                    xmlFile.DeleteToRecycleBin();
+                                }
+                            }
+                            catch (iText.IO.Exceptions.IOException)
+                            {
+                                MoveFileToUploadRejected(pdfFile);
+                                throw;
+                            }
                         }
-                        catch (iText.IO.Exceptions.IOException)
+                        else
                         {
-                            MoveFileToUploadRejected(pdfFile);
-                            throw;
+                            if (new PdfMetadataRule(pdfMetadata.ExportUploadProfile()).ViolationFound)
+                            {
+                                MoveFileToUploadRejected(pdfFile);
+                            }
+                            else
+                            {
+                                new UploadStagingCommand(pdfFile).Execute();
+                            }
                         }
                     }
                     else
                     {
-                        if (new PdfMetadataRule(pdfMetadata.ExportUploadProfile()).ViolationFound)
-                        {
-                            MoveFileToUploadRejected(pdfFile);
-                        }
-                        else
-                        {
-                            new UploadStagingCommand(pdfFile).Execute();
-                        }
+                        MoveFileToUploadRejected(pdfFile);
                     }
                 }
                 else

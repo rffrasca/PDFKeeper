@@ -316,10 +316,16 @@
   <data name="ToolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>306, 54</value>
+  </metadata>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ToolStrip.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="ToolStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>984, 25</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ToolStrip.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -753,6 +759,9 @@
   <data name="MenuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>7, 2, 0, 2</value>
   </data>
+  <data name="MenuStrip.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>984, 24</value>
   </data>
@@ -837,6 +846,9 @@
   <data name="StatusStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 0, 16, 0</value>
   </data>
+  <data name="StatusStrip.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="StatusStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>984, 22</value>
   </data>
@@ -863,6 +875,9 @@
   </data>
   <data name="PreviewPictureBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
+  </data>
+  <data name="PreviewPictureBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="PreviewPictureBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>474, 274</value>
@@ -897,6 +912,9 @@
   <data name="DocumentsDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="DocumentsDataGridView.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="DocumentsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
     <value>982, 371</value>
   </data>
@@ -927,6 +945,9 @@
   <data name="NotesTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
+  <data name="NotesTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="NotesTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>474, 276</value>
   </data>
@@ -950,6 +971,9 @@
   </data>
   <data name="NotesTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
+  </data>
+  <data name="NotesTabPage.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="NotesTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>480, 282</value>
@@ -984,6 +1008,9 @@
   <data name="KeywordsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
+  <data name="KeywordsTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="KeywordsTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>474, 276</value>
   </data>
@@ -1007,6 +1034,9 @@
   </data>
   <data name="KeywordsTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
+  </data>
+  <data name="KeywordsTabPage.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="KeywordsTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>480, 282</value>
@@ -1041,6 +1071,9 @@
   <data name="TextTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
+  <data name="TextTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="TextTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>474, 276</value>
   </data>
@@ -1064,6 +1097,9 @@
   </data>
   <data name="TextTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TextTabPage.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="TextTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>480, 282</value>
@@ -1098,6 +1134,9 @@
   <data name="SearchTermSnippetsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
+  <data name="SearchTermSnippetsTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="SearchTermSnippetsTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>480, 282</value>
   </data>
@@ -1118,6 +1157,9 @@
   </data>
   <data name="SearchTermSnippetsTabPage.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
+  </data>
+  <data name="SearchTermSnippetsTabPage.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="SearchTermSnippetsTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>480, 282</value>
@@ -1145,6 +1187,9 @@
   </data>
   <data name="DocumentDataTabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
+  </data>
+  <data name="DocumentDataTabControl.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="DocumentDataTabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>488, 310</value>
@@ -1179,6 +1224,9 @@
   <data name="SearchResultsPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="SearchResultsPanel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="SearchResultsPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>982, 371</value>
   </data>
@@ -1197,6 +1245,9 @@
   <data name="&gt;&gt;SearchResultsPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="HorizontalSplitContainer.Panel1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;HorizontalSplitContainer.Panel1.Name" xml:space="preserve">
     <value>HorizontalSplitContainer.Panel1</value>
   </data>
@@ -1214,6 +1265,9 @@
   </data>
   <data name="VerticalSplitContainer.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
+  </data>
+  <data name="VerticalSplitContainer.Panel1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;VerticalSplitContainer.Panel1.Name" xml:space="preserve">
     <value>VerticalSplitContainer.Panel1</value>
@@ -1235,6 +1289,9 @@
   </data>
   <data name="PreviewPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
+  </data>
+  <data name="PreviewPanel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="PreviewPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>476, 276</value>
@@ -1259,6 +1316,9 @@
   </data>
   <data name="PreviewTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
+  </data>
+  <data name="PreviewTabPage.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="PreviewTabPage.Size" type="System.Drawing.Size, System.Drawing">
     <value>482, 282</value>
@@ -1287,6 +1347,9 @@
   <data name="PreviewTabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="PreviewTabControl.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="PreviewTabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>490, 310</value>
   </data>
@@ -1305,6 +1368,9 @@
   <data name="&gt;&gt;PreviewTabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="VerticalSplitContainer.Panel2.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;VerticalSplitContainer.Panel2.Name" xml:space="preserve">
     <value>VerticalSplitContainer.Panel2</value>
   </data>
@@ -1316,6 +1382,9 @@
   </data>
   <data name="&gt;&gt;VerticalSplitContainer.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="VerticalSplitContainer.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="VerticalSplitContainer.Size" type="System.Drawing.Size, System.Drawing">
     <value>982, 310</value>
@@ -1338,6 +1407,9 @@
   <data name="&gt;&gt;VerticalSplitContainer.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="HorizontalSplitContainer.Panel2.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;HorizontalSplitContainer.Panel2.Name" xml:space="preserve">
     <value>HorizontalSplitContainer.Panel2</value>
   </data>
@@ -1349,6 +1421,9 @@
   </data>
   <data name="&gt;&gt;HorizontalSplitContainer.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="HorizontalSplitContainer.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="HorizontalSplitContainer.Size" type="System.Drawing.Size, System.Drawing">
     <value>984, 690</value>
@@ -1379,9 +1454,6 @@
   </metadata>
   <metadata name="CheckForDocumentsListChangesTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>28, 53</value>
-  </metadata>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>306, 54</value>
   </metadata>
   <metadata name="UploadTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>420, 56</value>

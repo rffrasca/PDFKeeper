@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using PDFKeeper.Core.DataAccess;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Drawing;
@@ -26,6 +27,7 @@ namespace PDFKeeper.Core.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private bool fileAddMenuEnabled;
         private bool fileOpenMenuEnabled;
         private bool fileSaveMenuEnabled;
         private bool fileSaveAsMenuEnabled;
@@ -57,6 +59,7 @@ namespace PDFKeeper.Core.ViewModels
         private bool documentsSetDateTimeAddedMenuEnabled;
         private bool documentsDeleteMenuEnabled;
         private bool viewSetPreviewPixelDensityMenuEnabled;
+        private bool toolsUploadProfilesMenuEnabled;
         private bool toolsMoveDatabaseMenuVisible;
         private DataTable documents;
         private readonly Collection<int> checkedDocumentIds;
@@ -65,6 +68,7 @@ namespace PDFKeeper.Core.ViewModels
         private bool documentDataEnabled;
         private string notes;
         private bool notesFocused;
+        private bool notesReadOnly;
         private string keywords;
         private bool keywordsFocused;
         private string text;
@@ -94,10 +98,16 @@ namespace PDFKeeper.Core.ViewModels
             set => SetProperty(ref fileOpenMenuEnabled, value);
         }
 
+        public bool FileAddMenuEnabled
+        {
+            get => fileAddMenuEnabled;
+            set => SetProperty(ref fileAddMenuEnabled, VerifyInsertGranted(value));
+        }
+
         public bool FileSaveMenuEnabled
         {
             get => fileSaveMenuEnabled;
-            set => SetProperty(ref fileSaveMenuEnabled, value);
+            set => SetProperty(ref fileSaveMenuEnabled, VerifyUpdateGranted(value));
         }
 
         public bool FileSaveAsMenuEnabled
@@ -205,7 +215,7 @@ namespace PDFKeeper.Core.ViewModels
         public bool EditFlagDocumentMenuEnabled
         {
             get => editFlagDocumentMenuEnabled;
-            set => SetProperty(ref editFlagDocumentMenuEnabled, value);
+            set => SetProperty(ref editFlagDocumentMenuEnabled, VerifyUpdateGranted(value));
         }
 
         public bool EditFlagDocumentMenuChecked
@@ -229,49 +239,55 @@ namespace PDFKeeper.Core.ViewModels
         public bool DocumentsSetTitleMenuEnabled
         {
             get => documentsSetTitleMenuEnabled;
-            set => SetProperty(ref documentsSetTitleMenuEnabled, value);
+            set => SetProperty(ref documentsSetTitleMenuEnabled, VerifyUpdateGranted(value));
         }
 
         public bool DocumentsSetAuthorMenuEnabled
         {
             get => documentsSetAuthorMenuEnabled;
-            set => SetProperty(ref documentsSetAuthorMenuEnabled, value);
+            set => SetProperty(ref documentsSetAuthorMenuEnabled, VerifyUpdateGranted(value));
         }
 
         public bool DocumentsSetSubjectMenuEnabled
         {
             get => documentsSetSubjectMenuEnabled;
-            set => SetProperty(ref documentsSetSubjectMenuEnabled, value);
+            set => SetProperty(ref documentsSetSubjectMenuEnabled, VerifyUpdateGranted(value));
         }
 
         public bool DocumentsSetCategoryMenuEnabled
         {
             get => documentsSetCategoryMenuEnabled;
-            set => SetProperty(ref documentsSetCategoryMenuEnabled, value);
+            set => SetProperty(ref documentsSetCategoryMenuEnabled, VerifyUpdateGranted(value));
         }
 
         public bool DocumentsSetTaxYearMenuEnabled
         {
             get => documentsSetTaxYearMenuEnabled;
-            set => SetProperty(ref documentsSetTaxYearMenuEnabled, value);
+            set => SetProperty(ref documentsSetTaxYearMenuEnabled, VerifyUpdateGranted(value));
         }
 
         public bool DocumentsSetDateTimeAddedMenuEnabled
         {
             get => documentsSetDateTimeAddedMenuEnabled;
-            set => SetProperty(ref documentsSetDateTimeAddedMenuEnabled, value);
+            set => SetProperty(ref documentsSetDateTimeAddedMenuEnabled, VerifyUpdateGranted(value));
         }
 
         public bool DocumentsDeleteMenuEnabled
         {
             get => documentsDeleteMenuEnabled;
-            set => SetProperty(ref documentsDeleteMenuEnabled, value);
+            set => SetProperty(ref documentsDeleteMenuEnabled, VerifyDeleteGranted(value));
         }
 
         public bool ViewSetPreviewPixelDensityMenuEnabled
         {
             get => viewSetPreviewPixelDensityMenuEnabled;
             set => SetProperty(ref viewSetPreviewPixelDensityMenuEnabled, value);
+        }
+
+        public bool ToolsUploadProfilesMenuEnabled
+        {
+            get => toolsUploadProfilesMenuEnabled;
+            set => SetProperty(ref toolsUploadProfilesMenuEnabled, VerifyInsertGranted(value));
         }
 
         public bool ToolsMoveDatabaseMenuVisible
@@ -335,6 +351,12 @@ namespace PDFKeeper.Core.ViewModels
         public string SelectedNotes { get; set; }
         public string PreviousNotes { get; set; }
         public bool NotesChanged { get; set; }
+
+        public bool NotesReadOnly
+        {
+            get => notesReadOnly;
+            set => notesReadOnly = !VerifyUpdateGranted(value);
+        }
 
         public bool NotesFocused
         {
@@ -437,5 +459,42 @@ namespace PDFKeeper.Core.ViewModels
             get => uploadRejectedImageVisible;
             set => SetProperty(ref uploadRejectedImageVisible, value);
         }
+
+        private static bool VerifyInsertGranted(bool value)
+        {
+            if (DatabaseSession.InsertGranted)
+            {
+                return value;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private static bool VerifyUpdateGranted(bool value)
+        {
+            if (DatabaseSession.UpdateGranted)
+            {
+                return value;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private static bool VerifyDeleteGranted(bool value)
+        {
+            if (DatabaseSession.DeleteGranted)
+            {
+                return value;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

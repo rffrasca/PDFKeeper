@@ -170,6 +170,7 @@ namespace PDFKeeper.Core.Presenters
 
         public void SetInitialState()
         {
+            ViewModel.FileAddMenuEnabled = true;
             ViewModel.FileOpenMenuEnabled = false;
             ViewModel.FileSaveMenuEnabled = false;
             ViewModel.FileSaveAsMenuEnabled = false;
@@ -199,6 +200,7 @@ namespace PDFKeeper.Core.Presenters
             ViewModel.DocumentsSetDateTimeAddedMenuEnabled = false;
             ViewModel.DocumentsDeleteMenuEnabled = false;
             ViewModel.ViewSetPreviewPixelDensityMenuEnabled = false;
+            ViewModel.ToolsUploadProfilesMenuEnabled = true;
             if (DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Sqlite))
             {
                 ViewModel.ToolsMoveDatabaseMenuVisible = true;
@@ -845,7 +847,8 @@ namespace PDFKeeper.Core.Presenters
             {
                 ViewModel.EditSelectAllMenuEnabled = false;
             }
-            if (focusedDocumentDataType.Equals(DocumentDataType.Notes))
+            ViewModel.NotesReadOnly = true;
+            if (focusedDocumentDataType.Equals(DocumentDataType.Notes) && !ViewModel.NotesReadOnly)
             {
                 ViewModel.EditAppendDateTimeMenuEnabled = true;
                 ViewModel.EditAppendTextMenuEnabled = true;
@@ -902,7 +905,7 @@ namespace PDFKeeper.Core.Presenters
             var focusedDocumentDataType = GetFocusedDocumentDataType();
             var documentData = GetDocumentDataText(focusedDocumentDataType);
             var selectedDocumentData = GetDocumentDataSelectedText(focusedDocumentDataType);
-            var readOnly = !focusedDocumentDataType.Equals(DocumentDataType.Notes);
+            var readOnly = !focusedDocumentDataType.Equals(DocumentDataType.Notes) || ViewModel.NotesReadOnly;
             if (!string.IsNullOrEmpty(selectedDocumentData))
             {
                 ViewModel.EditCutMenuEnabled = !readOnly;

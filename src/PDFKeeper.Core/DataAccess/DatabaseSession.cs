@@ -132,6 +132,26 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
+        /// Gets or sets if user has Select access granted to the DOCS table.
+        /// </summary>
+        public static bool SelectGranted { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets if user has Insert access granted to the DOCS table.
+        /// </summary>
+        public static bool InsertGranted { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets if user has Update access granted to the DOCS table.
+        /// </summary>
+        public static bool UpdateGranted { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets if user has Delete access granted to the DOCS table.
+        /// </summary>
+        public static bool DeleteGranted { get; internal set; }
+
+        /// <summary>
         /// Gets the Oracle Wallet path used for Mutual TLS (mTLS) authentication or null will be
         /// returned when an Oracle Wallet is not setup.
         /// </summary>

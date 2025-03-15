@@ -173,6 +173,9 @@ To extract to a folder, select No.</value>
   <data name="NameContainsCharsNotAllowed" xml:space="preserve">
     <value>Name contains one or more characters not allowed in file names!</value>
   </data>
+  <data name="NoAccessToLogin" xml:space="preserve">
+    <value>You do not have the required access to login.</value>
+  </data>
   <data name="NotesModified" xml:space="preserve">
     <value>Notes for selected document have been modified.
 Do you want to save changes before closing?</value>
