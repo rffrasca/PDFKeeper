@@ -906,6 +906,12 @@
   <data name="SelectionColumn.HeaderText" xml:space="preserve">
     <value />
   </data>
+  <metadata name="FlagColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="FlagColumn.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="DocumentsDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2578,12 +2584,6 @@
   <data name="&gt;&gt;MainViewModelBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;SelectionColumn.Name" xml:space="preserve">
-    <value>SelectionColumn</value>
-  </data>
-  <data name="&gt;&gt;SelectionColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;DocumentsListTimedRefreshTimer.Name" xml:space="preserve">
     <value>DocumentsListTimedRefreshTimer</value>
   </data>
@@ -2619,6 +2619,18 @@
   </data>
   <data name="&gt;&gt;CheckForFlaggedDocumentsTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SelectionColumn.Name" xml:space="preserve">
+    <value>SelectionColumn</value>
+  </data>
+  <data name="&gt;&gt;SelectionColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FlagColumn.Name" xml:space="preserve">
+    <value>FlagColumn</value>
+  </data>
+  <data name="&gt;&gt;FlagColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

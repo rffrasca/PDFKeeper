@@ -53,7 +53,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public DataTable GetListOfDocumentsBySearchTerm(string searchTerm)
         {
             var sql = "select rowid,doc_title,doc_author,doc_subject,doc_category,doc_tax_year, " +
-                "doc_added from docs_index where docs_index match :doc_dummy";
+                "doc_added,doc_flag from docs_index where docs_index match :doc_dummy";
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -92,7 +92,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 taxYear = null;
             }
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from docs " +
+                "doc_tax_year,doc_added,doc_flag from docs " +
                 "where (:doc_author is NULL or doc_author = :doc_author) " +
                 "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
                 "and (:doc_category is NULL or doc_category = :doc_category) " +
@@ -122,7 +122,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public DataTable GetListOfDocumentsByDateAdded(string dateAdded)
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from docs " +
+                "doc_tax_year,doc_added,doc_flag from docs " +
                 "where doc_added like :doc_added || '%'";
             try
             {
@@ -146,7 +146,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public DataTable GetListOfFlaggedDocuments()
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from docs where doc_flag = 1";
+                "doc_tax_year,doc_added,doc_flag from docs where doc_flag = 1";
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -168,7 +168,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public DataTable GetListOfDocuments()
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from docs";
+                "doc_tax_year,doc_added,doc_flag from docs";
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))

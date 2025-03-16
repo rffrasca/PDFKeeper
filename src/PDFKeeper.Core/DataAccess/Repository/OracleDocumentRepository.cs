@@ -84,7 +84,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public DataTable GetListOfDocumentsBySearchTerm(string searchTerm)
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from pdfkeeper.docs " +
+                "doc_tax_year,doc_added,doc_flag from pdfkeeper.docs " +
                 "where (contains(doc_dummy,:doc_dummy)) > 0";
             try
             {
@@ -110,7 +110,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public DataTable GetListOfDocuments(string author, string subject, string category, string taxYear)
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from pdfkeeper.docs " +
+                "doc_tax_year,doc_added,doc_flag from pdfkeeper.docs " +
                 "where (:doc_author is NULL or doc_author = :doc_author) " +
                 "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
                 "and (:doc_category is NULL or doc_category = :doc_category) " +
@@ -142,7 +142,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public DataTable GetListOfDocumentsByDateAdded(string dateAdded)
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from pdfkeeper.docs " +
+                "doc_tax_year,doc_added,doc_flag from pdfkeeper.docs " +
                 "where doc_added like :doc_added || '%'";
             try
             {
@@ -168,7 +168,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public DataTable GetListOfFlaggedDocuments()
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from pdfkeeper.docs where doc_flag = 1";
+                "doc_tax_year,doc_added,doc_flag from pdfkeeper.docs where doc_flag = 1";
             try
             {
                 using (var connection = new OracleConnection(
@@ -191,7 +191,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public DataTable GetListOfDocuments()
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
-                "doc_tax_year,doc_added from pdfkeeper.docs";
+                "doc_tax_year,doc_added,doc_flag from pdfkeeper.docs";
             try
             {
                 using (var connection = new OracleConnection(

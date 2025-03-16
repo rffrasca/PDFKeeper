@@ -154,7 +154,6 @@ namespace PDFKeeper.WinForms.Views
             this.PreviewPictureBox = new System.Windows.Forms.PictureBox();
             this.MainViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DocumentsDataGridView = new System.Windows.Forms.DataGridView();
-            this.SelectionColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DocumentDataTabControl = new System.Windows.Forms.TabControl();
             this.NotesTabPage = new System.Windows.Forms.TabPage();
             this.NotesTextBox = new System.Windows.Forms.TextBox();
@@ -176,6 +175,8 @@ namespace PDFKeeper.WinForms.Views
             this.UploadTimer = new System.Windows.Forms.Timer(this.components);
             this.UpdateCheckTimer = new System.Windows.Forms.Timer(this.components);
             this.CheckForFlaggedDocumentsTimer = new System.Windows.Forms.Timer(this.components);
+            this.SelectionColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.FlagColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.ToolStrip.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -969,7 +970,8 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DocumentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DocumentsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SelectionColumn});
+            this.SelectionColumn,
+            this.FlagColumn});
             this.DocumentsDataGridView.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.MainViewModelBindingSource, "DocumentsEnabled", true));
             resources.ApplyResources(this.DocumentsDataGridView, "DocumentsDataGridView");
             this.DocumentsDataGridView.MultiSelect = false;
@@ -987,12 +989,6 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsDataGridView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.DocumentsDataGridView_Scroll);
             this.DocumentsDataGridView.SelectionChanged += new System.EventHandler(this.DocumentsDataGridView_SelectionChanged);
             this.DocumentsDataGridView.Sorted += new System.EventHandler(this.DocumentsDataGridView_Sorted);
-            // 
-            // SelectionColumn
-            // 
-            this.SelectionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            resources.ApplyResources(this.SelectionColumn, "SelectionColumn");
-            this.SelectionColumn.Name = "SelectionColumn";
             // 
             // DocumentDataTabControl
             // 
@@ -1186,6 +1182,19 @@ namespace PDFKeeper.WinForms.Views
             this.CheckForFlaggedDocumentsTimer.Interval = 5000;
             this.CheckForFlaggedDocumentsTimer.Tick += new System.EventHandler(this.CheckForFlaggedDocumentsTimer_Tick);
             // 
+            // SelectionColumn
+            // 
+            this.SelectionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            resources.ApplyResources(this.SelectionColumn, "SelectionColumn");
+            this.SelectionColumn.Name = "SelectionColumn";
+            // 
+            // FlagColumn
+            // 
+            this.FlagColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            resources.ApplyResources(this.FlagColumn, "FlagColumn");
+            this.FlagColumn.Name = "FlagColumn";
+            this.FlagColumn.ReadOnly = true;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -1332,7 +1341,6 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.ToolStripStatusLabel UploadRejectedImageLabel;
         internal System.Windows.Forms.PictureBox PreviewPictureBox;
         internal System.Windows.Forms.DataGridView DocumentsDataGridView;
-        internal System.Windows.Forms.DataGridViewCheckBoxColumn SelectionColumn;
         internal System.Windows.Forms.TabControl DocumentDataTabControl;
         internal System.Windows.Forms.TabPage NotesTabPage;
         internal System.Windows.Forms.TextBox NotesTextBox;
@@ -1363,6 +1371,8 @@ namespace PDFKeeper.WinForms.Views
         private System.Windows.Forms.ToolStripButton FileExtractAllEmbeddedFilesToolStripButton;
         private System.Windows.Forms.ToolStripProgressBar UploadProgressBar;
         private System.Windows.Forms.ToolStripButton FileCopyPdfToClipboardToolStripButton;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn SelectionColumn;
+        private System.Windows.Forms.DataGridViewImageColumn FlagColumn;
     }
 }
 

@@ -33,7 +33,7 @@ namespace PDFKeeper.WinForms.Helpers
 
         public DataGridViewSortProperties()
         {
-            sortColumnIndex = 1;
+            sortColumnIndex = 2;
             sortDirection = ListSortDirection.Ascending;
         }
 

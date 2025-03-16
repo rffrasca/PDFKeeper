@@ -283,34 +283,38 @@ namespace PDFKeeper.WinForms.Views
         {
             DocumentsDataGridView.Columns[0].AutoSizeMode =
                 DataGridViewAutoSizeColumnMode.AllCells;
-            DocumentsDataGridView.Columns[1].HeaderCell.Value = Resources.ID;
-            DocumentsDataGridView.Columns[1].DefaultCellStyle.Alignment =
+            DocumentsDataGridView.Columns[1].DefaultCellStyle.NullValue = null;
+            DocumentsDataGridView.Columns[1].AutoSizeMode =
+                DataGridViewAutoSizeColumnMode.AllCells;
+            DocumentsDataGridView.Columns[2].HeaderCell.Value = Resources.ID;
+            DocumentsDataGridView.Columns[2].DefaultCellStyle.Alignment =
                 DataGridViewContentAlignment.MiddleRight;
-            DocumentsDataGridView.Columns[1].ReadOnly = true;
-            DocumentsDataGridView.Columns[2].HeaderCell.Value = Resources.Title;
             DocumentsDataGridView.Columns[2].ReadOnly = true;
-            DocumentsDataGridView.Columns[3].HeaderCell.Value = Resources.Author;
+            DocumentsDataGridView.Columns[3].HeaderCell.Value = Resources.Title;
             DocumentsDataGridView.Columns[3].ReadOnly = true;
-            DocumentsDataGridView.Columns[4].HeaderCell.Value = Resources.Subject;
+            DocumentsDataGridView.Columns[4].HeaderCell.Value = Resources.Author;
             DocumentsDataGridView.Columns[4].ReadOnly = true;
-            DocumentsDataGridView.Columns[5].HeaderCell.Value = Resources.Category;
+            DocumentsDataGridView.Columns[5].HeaderCell.Value = Resources.Subject;
             DocumentsDataGridView.Columns[5].ReadOnly = true;
-            DocumentsDataGridView.Columns[6].HeaderCell.Value = Resources.TaxYear;
+            DocumentsDataGridView.Columns[6].HeaderCell.Value = Resources.Category;
             DocumentsDataGridView.Columns[6].ReadOnly = true;
-            DocumentsDataGridView.Columns[7].HeaderCell.Value = Resources.Added;
-            DocumentsDataGridView.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DocumentsDataGridView.Columns[7].HeaderCell.Value = Resources.TaxYear;
             DocumentsDataGridView.Columns[7].ReadOnly = true;
+            DocumentsDataGridView.Columns[8].HeaderCell.Value = Resources.Added;
+            DocumentsDataGridView.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DocumentsDataGridView.Columns[8].ReadOnly = true;
+            DocumentsDataGridView.Columns[9].Visible = false;
             if (DocumentsDataGridView.RowCount > 0)
             {
-                DocumentsDataGridView.Columns[7].AutoSizeMode =
+                DocumentsDataGridView.Columns[8].AutoSizeMode =
                     DataGridViewAutoSizeColumnMode.DisplayedCells;
-                if (DocumentsDataGridView.Columns[7].Displayed)
+                if (DocumentsDataGridView.Columns[8].Displayed)
                 {
-                    DocumentsDataGridView.Columns[7].AutoSizeMode =
+                    DocumentsDataGridView.Columns[8].AutoSizeMode =
                         DataGridViewAutoSizeColumnMode.Fill;
                 }
-                DocumentsDataGridView.Columns[7].MinimumWidth =
-                    (int)Math.Round(DocumentsDataGridView.Columns[7].FillWeight + 20f);
+                DocumentsDataGridView.Columns[8].MinimumWidth =
+                    (int)Math.Round(DocumentsDataGridView.Columns[8].FillWeight + 20f);
                 DocumentsDataGridView.Sort(
                     DocumentsDataGridView.Columns[dataGridViewSortProperties.SortColumnIndex],
                     dataGridViewSortProperties.SortDirection);
@@ -330,12 +334,20 @@ namespace PDFKeeper.WinForms.Views
 
         private void DocumentsDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
+            var image = Resources.flag_red;
+            foreach (DataGridViewRow row in DocumentsDataGridView.Rows)
+            {
+                if (Convert.ToInt32(row.Cells[9].Value).Equals(1))
+                {
+                    row.Cells[1].Value = image;
+                }
+            }
             DocumentsCountLabel.Text = DocumentsDataGridView.Rows.Count.ToString();
         }
 
         private void DocumentsDataGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            DocumentsDataGridView_RowsAdded(this, null);
+            DocumentsCountLabel.Text = DocumentsDataGridView.Rows.Count.ToString();
             DocumentsDataGridView_CellValueChanged(this, null);
         }
 
@@ -350,7 +362,7 @@ namespace PDFKeeper.WinForms.Views
             if (DocumentsDataGridView.SelectedRows.Count > 0)   // To prevent empty DataGridView.
             {
                 viewModel.CurrentDocumentId = Convert.ToInt32(
-                    DocumentsDataGridView.SelectedRows[0].Cells[1].Value);
+                    DocumentsDataGridView.SelectedRows[0].Cells[2].Value);
             }
             presenter.DocumentSelectionChanged(Settings.Default.PreviewPixelDensity);
         }
@@ -672,7 +684,7 @@ namespace PDFKeeper.WinForms.Views
                     foreach (DataGridViewRow row in DocumentsDataGridView.Rows)
                     {
                         if (Convert.ToInt32(
-                            row.Cells[1].Value).Equals(
+                            row.Cells[2].Value).Equals(
                             viewModel.CurrentDocumentId))
                         {
                             row.Selected = true;
@@ -779,14 +791,14 @@ namespace PDFKeeper.WinForms.Views
                 {
                     if (Convert.ToBoolean(row.Cells[0].Value))
                     {
-                        ids.Add(Convert.ToInt32(row.Cells[1].Value));
+                        ids.Add(Convert.ToInt32(row.Cells[2].Value));
                     }
                 }
             }
             catch (NullReferenceException) { }
             return ids;
         }
-
+        
         /// <summary>
         /// Sets the text box focused state in the ViewModel.
         /// </summary>
