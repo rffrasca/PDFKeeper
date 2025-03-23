@@ -28,7 +28,8 @@ namespace PDFKeeper.Core.Application
     {
         internal enum PolicyName
         {
-            HideAllDocuments
+            HideAllDocuments,
+            SynchronousUpload
         }
 
         /// <summary>

@@ -423,13 +423,22 @@ namespace PDFKeeper.WinForms.Views
             CheckForDocumentsListChangesTimer.Start();
         }
 
-        private async void UploadTimer_Tick(object sender, EventArgs e)
+        private async void AsyncUploadTimer_Tick(object sender, EventArgs e)
         {
-            UploadTimer.Stop();
+            AsyncUploadTimer.Stop();
             await Task.Run(() => presenter.ExecuteUploadDirectoryMaintenance()).ConfigureAwait(true);
-            await Task.Run(() => presenter.ExecuteUpload()).ConfigureAwait(true);
+            await Task.Run(() => presenter.ExecuteUpload(false)).ConfigureAwait(true);
             presenter.CheckForRejectedPdfFiles();
-            UploadTimer.Start();
+            AsyncUploadTimer.Start();
+        }
+
+        private void SyncUploadTimer_Tick(object sender, EventArgs e)
+        {
+            AsyncUploadTimer.Stop();
+            presenter.ExecuteUploadDirectoryMaintenance();
+            presenter.ExecuteUpload(true);
+            presenter.CheckForRejectedPdfFiles();
+            AsyncUploadTimer.Start();
         }
 
         private void DocumentsListTimedRefreshTimer_Tick(object sender, EventArgs e)
@@ -754,6 +763,14 @@ namespace PDFKeeper.WinForms.Views
             {
                 UploadRejectedImageLabel.Visible = viewModel.UploadRejectedImageVisible;
                 Application.DoEvents();
+            }
+            else if (e.PropertyName.Equals("AsyncUploadTimerEnabled", StringComparison.Ordinal))
+            {
+                AsyncUploadTimer.Enabled = viewModel.AsyncUploadTimerEnabled;
+            }
+            else if (e.PropertyName.Equals("SyncUploadTimerEnabled", StringComparison.Ordinal))
+            {
+                SyncUploadTimer.Enabled = viewModel.SyncUploadTimerEnabled;
             }
         }
 

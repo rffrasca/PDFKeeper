@@ -84,6 +84,8 @@ namespace PDFKeeper.Core.ViewModels
         private bool refreshingDocumentsImageVisible;
         private bool flagImageVisible;
         private bool uploadRejectedImageVisible;
+        private bool asyncUploadTimerEnabled;
+        private bool syncUploadTimerEnabled;
 
         public MainViewModel()
         {
@@ -460,6 +462,18 @@ namespace PDFKeeper.Core.ViewModels
             set => SetProperty(ref uploadRejectedImageVisible, value);
         }
 
+        public bool AsyncUploadTimerEnabled
+        {
+            get => asyncUploadTimerEnabled;
+            set => SetProperty(ref asyncUploadTimerEnabled, value);
+        }
+
+        public bool SyncUploadTimerEnabled
+        {
+            get => syncUploadTimerEnabled;
+            set => SetProperty(ref syncUploadTimerEnabled, value);
+        }
+
         private static bool VerifyInsertGranted(bool value)
         {
             if (DatabaseSession.InsertGranted)
@@ -495,6 +509,5 @@ namespace PDFKeeper.Core.ViewModels
                 return false;
             }
         }
-
     }
 }

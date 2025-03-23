@@ -215,6 +215,14 @@ namespace PDFKeeper.Core.Presenters
                 ViewModel.SearchTermSnippetsVisible =
                     documentRepository.SearchTermSnippetsSupported;
             }
+            if (ApplicationPolicy.GetPolicyValue(ApplicationPolicy.PolicyName.SynchronousUpload))
+            {
+                ViewModel.SyncUploadTimerEnabled = true;
+            }
+            else
+            {
+                ViewModel.AsyncUploadTimerEnabled = true;
+            }
         }
 
         /// <summary>
@@ -995,13 +1003,21 @@ namespace PDFKeeper.Core.Presenters
             pdfUploader.ExecuteUploadDirectoryMaintenance();
         }
         
-        public void ExecuteUpload()
+        /// <summary>
+        /// Executes the PDF Upload process.
+        /// </summary>
+        /// <param name="showWaitCursor">Show WaitCursor? (true or false)</param>
+        public void ExecuteUpload(bool showWaitCursor)
         {
             var uploader = new PdfUploader();
             if (uploader.PdfFilesReadyToUpload)
             {
                 try
                 {
+                    if (showWaitCursor)
+                    {
+                        OnLongRunningOperationStarted();
+                    }
                     ViewModel.UploadProgressBarVisible = true;
                     uploader.ExecuteUpload();
                 }
@@ -1020,6 +1036,10 @@ namespace PDFKeeper.Core.Presenters
                 finally
                 {
                     ViewModel.UploadProgressBarVisible = false;
+                    if (showWaitCursor)
+                    {
+                        OnLongRunningOperationFinished();
+                    }
                 }
             }
         }

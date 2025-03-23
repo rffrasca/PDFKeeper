@@ -383,10 +383,22 @@
 			</UL>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Hide All Documents Button on Find Documents Dialog by Policy">
-			<param name="Local" value="Hide All Documents Button on Find Documents Dialog by Policy.html">
-			<param name="ImageNumber" value="9">
+			<param name="Name" value="Manage PDFKeeper Policies">
+			<param name="Local" value="Manage PDFKeeper Policies.html">
+			<param name="ImageNumber" value="1">
 			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Hide All Documents Button on Find Documents Dialog">
+				<param name="URL" value="Hide All Documents Button on Find Documents Dialog.html">
+				<param name="ImageNumber" value="9">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Execute PDF Uploads Synchronously">
+				<param name="Local" value="Execute PDF Uploads Synchronously.html">
+				<param name="ImageNumber" value="9">
+				</OBJECT>
+		</UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Updating PDFKeeper">
 			<param name="Local" value="Updating PDFKeeper.html">

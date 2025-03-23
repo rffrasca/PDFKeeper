@@ -28,7 +28,6 @@ Upload Profile Editor.html
 Updating PDFKeeper.html
 Uninstalling PDFKeeper.html
 Finding Documents.html
-Hide All Documents Button on Find Documents Dialog by Policy.html
 Working with Documents.html
 Sorting the Documents List.html
 PDF Viewing.html
@@ -83,6 +82,9 @@ MySQL.html
 User Administration for MySQL.html
 Change Port Number for MySQL Server.html
 MySQL-Client.html
+Hide All Documents Button on Find Documents Dialog.html
+Execute PDF Uploads Synchronously.html
+Manage PDFKeeper Policies.html
 
 [INFOTYPES]
 

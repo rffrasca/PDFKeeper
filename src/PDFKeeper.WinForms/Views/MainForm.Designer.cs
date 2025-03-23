@@ -154,6 +154,8 @@ namespace PDFKeeper.WinForms.Views
             this.PreviewPictureBox = new System.Windows.Forms.PictureBox();
             this.MainViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DocumentsDataGridView = new System.Windows.Forms.DataGridView();
+            this.SelectionColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.FlagColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.DocumentDataTabControl = new System.Windows.Forms.TabControl();
             this.NotesTabPage = new System.Windows.Forms.TabPage();
             this.NotesTextBox = new System.Windows.Forms.TextBox();
@@ -172,11 +174,10 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsListTimedRefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.CheckForDocumentsListChangesTimer = new System.Windows.Forms.Timer(this.components);
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
-            this.UploadTimer = new System.Windows.Forms.Timer(this.components);
+            this.AsyncUploadTimer = new System.Windows.Forms.Timer(this.components);
             this.UpdateCheckTimer = new System.Windows.Forms.Timer(this.components);
             this.CheckForFlaggedDocumentsTimer = new System.Windows.Forms.Timer(this.components);
-            this.SelectionColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.FlagColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.SyncUploadTimer = new System.Windows.Forms.Timer(this.components);
             this.ToolStrip.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -990,6 +991,19 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsDataGridView.SelectionChanged += new System.EventHandler(this.DocumentsDataGridView_SelectionChanged);
             this.DocumentsDataGridView.Sorted += new System.EventHandler(this.DocumentsDataGridView_Sorted);
             // 
+            // SelectionColumn
+            // 
+            this.SelectionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            resources.ApplyResources(this.SelectionColumn, "SelectionColumn");
+            this.SelectionColumn.Name = "SelectionColumn";
+            // 
+            // FlagColumn
+            // 
+            this.FlagColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            resources.ApplyResources(this.FlagColumn, "FlagColumn");
+            this.FlagColumn.Name = "FlagColumn";
+            this.FlagColumn.ReadOnly = true;
+            // 
             // DocumentDataTabControl
             // 
             this.DocumentDataTabControl.Controls.Add(this.NotesTabPage);
@@ -1164,11 +1178,10 @@ namespace PDFKeeper.WinForms.Views
             this.CheckForDocumentsListChangesTimer.Interval = 5000;
             this.CheckForDocumentsListChangesTimer.Tick += new System.EventHandler(this.CheckForDocumentsListChangesTimer_Tick);
             // 
-            // UploadTimer
+            // AsyncUploadTimer
             // 
-            this.UploadTimer.Enabled = true;
-            this.UploadTimer.Interval = 15000;
-            this.UploadTimer.Tick += new System.EventHandler(this.UploadTimer_Tick);
+            this.AsyncUploadTimer.Interval = 15000;
+            this.AsyncUploadTimer.Tick += new System.EventHandler(this.AsyncUploadTimer_Tick);
             // 
             // UpdateCheckTimer
             // 
@@ -1182,18 +1195,10 @@ namespace PDFKeeper.WinForms.Views
             this.CheckForFlaggedDocumentsTimer.Interval = 5000;
             this.CheckForFlaggedDocumentsTimer.Tick += new System.EventHandler(this.CheckForFlaggedDocumentsTimer_Tick);
             // 
-            // SelectionColumn
+            // SyncUploadTimer
             // 
-            this.SelectionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            resources.ApplyResources(this.SelectionColumn, "SelectionColumn");
-            this.SelectionColumn.Name = "SelectionColumn";
-            // 
-            // FlagColumn
-            // 
-            this.FlagColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            resources.ApplyResources(this.FlagColumn, "FlagColumn");
-            this.FlagColumn.Name = "FlagColumn";
-            this.FlagColumn.ReadOnly = true;
+            this.SyncUploadTimer.Interval = 15000;
+            this.SyncUploadTimer.Tick += new System.EventHandler(this.SyncUploadTimer_Tick);
             // 
             // MainForm
             // 
@@ -1360,7 +1365,7 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.Timer DocumentsListTimedRefreshTimer;
         internal System.Windows.Forms.Timer CheckForDocumentsListChangesTimer;
         internal System.Windows.Forms.HelpProvider HelpProvider;
-        internal System.Windows.Forms.Timer UploadTimer;
+        internal System.Windows.Forms.Timer AsyncUploadTimer;
         internal System.Windows.Forms.Timer UpdateCheckTimer;
         internal System.Windows.Forms.Timer CheckForFlaggedDocumentsTimer;
         private System.Windows.Forms.ToolStripMenuItem DocumentsSetDateTimeAddedToolStripMenuItem;
@@ -1373,6 +1378,7 @@ namespace PDFKeeper.WinForms.Views
         private System.Windows.Forms.ToolStripButton FileCopyPdfToClipboardToolStripButton;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SelectionColumn;
         private System.Windows.Forms.DataGridViewImageColumn FlagColumn;
+        internal System.Windows.Forms.Timer SyncUploadTimer;
     }
 }
 
