@@ -18,8 +18,8 @@
 # * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 # *****************************************************************************
 
-$previousVersion="11.1.0"
-$currentVersion="11.1.1"
+$previousVersion="11.1.1"
+$currentVersion="11.2.0"
 
 (Get-ChildItem -Include *AssemblyInfo.cs,PDFKeeper.Setup.wixproj,Product.wxs,'THIRD-PARTY-NOTICES.*' -Recurse ) |
 Foreach-Object {
