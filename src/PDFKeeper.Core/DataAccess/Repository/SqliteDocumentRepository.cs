@@ -52,8 +52,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public DataTable GetListOfDocumentsBySearchTerm(string searchTerm)
         {
-            var sql = "select rowid,doc_title,doc_author,doc_subject,doc_category,doc_tax_year, " +
-                "doc_added,doc_flag from docs_index where docs_index match :doc_dummy";
+            var sql = "select i.rowid as doc_id,i.doc_title,i.doc_author,i.doc_subject, " +
+                "i.doc_category,i.doc_tax_year,i.doc_added,t.doc_flag " +
+                "from docs t join docs_index i on i.rowid = t.doc_id " +
+                "where docs_index match :doc_dummy";
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
