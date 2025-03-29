@@ -431,6 +431,15 @@ namespace PDFKeeper.WinForms.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PDF Upload in progress ....
+        /// </summary>
+        internal static string PdfUploadInProgress {
+            get {
+                return ResourceManager.GetString("PdfUploadInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stack Trace has been logged to {0}.
         /// </summary>
         internal static string StackTraceLogged {

@@ -133,6 +133,12 @@
     <Compile Include="Dialogs\PdfOwnerPasswordForm.Designer.cs">
       <DependentUpon>PdfOwnerPasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\SetDateTimeAddedForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\PdfOwnerPasswordForm.resx">
       <DependentUpon>PdfOwnerPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\SetDateTimeAddedForm.resx">
       <DependentUpon>SetDateTimeAddedForm.cs</DependentUpon>

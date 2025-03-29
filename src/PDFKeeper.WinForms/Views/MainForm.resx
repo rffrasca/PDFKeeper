@@ -1461,7 +1461,7 @@
   <metadata name="CheckForDocumentsListChangesTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>28, 53</value>
   </metadata>
-  <metadata name="AsyncUploadTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="UploadTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>420, 56</value>
   </metadata>
   <metadata name="UpdateCheckTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -1469,9 +1469,6 @@
   </metadata>
   <metadata name="CheckForFlaggedDocumentsTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>551, 58</value>
-  </metadata>
-  <metadata name="SyncUploadTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>790, 58</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2617,10 +2614,10 @@
   <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
     <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;AsyncUploadTimer.Name" xml:space="preserve">
-    <value>AsyncUploadTimer</value>
+  <data name="&gt;&gt;UploadTimer.Name" xml:space="preserve">
+    <value>UploadTimer</value>
   </data>
-  <data name="&gt;&gt;AsyncUploadTimer.Type" xml:space="preserve">
+  <data name="&gt;&gt;UploadTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;UpdateCheckTimer.Name" xml:space="preserve">
@@ -2633,12 +2630,6 @@
     <value>CheckForFlaggedDocumentsTimer</value>
   </data>
   <data name="&gt;&gt;CheckForFlaggedDocumentsTimer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SyncUploadTimer.Name" xml:space="preserve">
-    <value>SyncUploadTimer</value>
-  </data>
-  <data name="&gt;&gt;SyncUploadTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

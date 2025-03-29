@@ -137,11 +137,11 @@
       <Component Id="SetHideAllDocumentsPolicy.reg" Guid="6127b400-4ac1-4a1e-83ae-5947215b4c57">
         <File Id="SetHideAllDocumentsPolicy.reg" Name="SetHideAllDocumentsPolicy.reg" Source="..\..\..\Config\SetHideAllDocumentsPolicy.reg" />
       </Component>
-      <Component Id="ClearSynchronousUploadPolicy.reg" Guid="54152E9B-6815-4EA0-8457-520EA8F52745">
-        <File Id="ClearSynchronousUploadPolicy.reg" Name="ClearSynchronousUploadPolicy.reg" Source="..\..\..\Config\ClearSynchronousUploadPolicy.reg" />
+      <Component Id="ClearBlockingUploadPolicy.reg" Guid="54152E9B-6815-4EA0-8457-520EA8F52745">
+        <File Id="ClearBlockingUploadPolicy.reg" Name="ClearBlockingUploadPolicy.reg" Source="..\..\..\Config\ClearBlockingUploadPolicy.reg" />
       </Component>
-      <Component Id="SetSynchronousUploadPolicy.reg" Guid="7B32C222-D0A9-4D7B-865F-FA492E678682">
-        <File Id="SetSynchronousUploadPolicy.reg" Name="SetSynchronousUploadPolicy.reg" Source="..\..\..\Config\SetSynchronousUploadPolicy.reg" />
+      <Component Id="SetBlockingUploadPolicy.reg" Guid="7B32C222-D0A9-4D7B-865F-FA492E678682">
+        <File Id="SetBlockingUploadPolicy.reg" Name="SetBlockingUploadPolicy.reg" Source="..\..\..\Config\SetBlockingUploadPolicy.reg" />
       </Component>
       <Component Id="OracleDatabaseSchemaSetup.sql" Guid="0c018a44-7840-4ef4-92a7-ce0432f9e27f">
         <File Id="OracleDatabaseSchemaSetup.sql" Name="OracleDatabaseSchemaSetup.sql" Source="$(var.PDFKeeper.WinForms_TargetDir)OracleDatabaseSchemaSetup.sql" />

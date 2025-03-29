@@ -37,6 +37,7 @@ namespace PDFKeeper.WinForms.Views
             {
                 findDocumentsForm.Dispose();
                 uploadProfilesForm.Dispose();
+                progressForm.Dispose();
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -174,10 +175,9 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsListTimedRefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.CheckForDocumentsListChangesTimer = new System.Windows.Forms.Timer(this.components);
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
-            this.AsyncUploadTimer = new System.Windows.Forms.Timer(this.components);
+            this.UploadTimer = new System.Windows.Forms.Timer(this.components);
             this.UpdateCheckTimer = new System.Windows.Forms.Timer(this.components);
             this.CheckForFlaggedDocumentsTimer = new System.Windows.Forms.Timer(this.components);
-            this.SyncUploadTimer = new System.Windows.Forms.Timer(this.components);
             this.ToolStrip.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -1178,10 +1178,11 @@ namespace PDFKeeper.WinForms.Views
             this.CheckForDocumentsListChangesTimer.Interval = 5000;
             this.CheckForDocumentsListChangesTimer.Tick += new System.EventHandler(this.CheckForDocumentsListChangesTimer_Tick);
             // 
-            // AsyncUploadTimer
+            // UploadTimer
             // 
-            this.AsyncUploadTimer.Interval = 15000;
-            this.AsyncUploadTimer.Tick += new System.EventHandler(this.AsyncUploadTimer_Tick);
+            this.UploadTimer.Enabled = true;
+            this.UploadTimer.Interval = 15000;
+            this.UploadTimer.Tick += new System.EventHandler(this.UploadTimer_Tick);
             // 
             // UpdateCheckTimer
             // 
@@ -1194,11 +1195,6 @@ namespace PDFKeeper.WinForms.Views
             this.CheckForFlaggedDocumentsTimer.Enabled = true;
             this.CheckForFlaggedDocumentsTimer.Interval = 5000;
             this.CheckForFlaggedDocumentsTimer.Tick += new System.EventHandler(this.CheckForFlaggedDocumentsTimer_Tick);
-            // 
-            // SyncUploadTimer
-            // 
-            this.SyncUploadTimer.Interval = 15000;
-            this.SyncUploadTimer.Tick += new System.EventHandler(this.SyncUploadTimer_Tick);
             // 
             // MainForm
             // 
@@ -1365,7 +1361,7 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.Timer DocumentsListTimedRefreshTimer;
         internal System.Windows.Forms.Timer CheckForDocumentsListChangesTimer;
         internal System.Windows.Forms.HelpProvider HelpProvider;
-        internal System.Windows.Forms.Timer AsyncUploadTimer;
+        internal System.Windows.Forms.Timer UploadTimer;
         internal System.Windows.Forms.Timer UpdateCheckTimer;
         internal System.Windows.Forms.Timer CheckForFlaggedDocumentsTimer;
         private System.Windows.Forms.ToolStripMenuItem DocumentsSetDateTimeAddedToolStripMenuItem;
@@ -1378,7 +1374,6 @@ namespace PDFKeeper.WinForms.Views
         private System.Windows.Forms.ToolStripButton FileCopyPdfToClipboardToolStripButton;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SelectionColumn;
         private System.Windows.Forms.DataGridViewImageColumn FlagColumn;
-        internal System.Windows.Forms.Timer SyncUploadTimer;
     }
 }
 

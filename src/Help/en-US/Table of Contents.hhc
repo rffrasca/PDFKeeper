@@ -394,8 +394,8 @@
 				<param name="ImageNumber" value="9">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Execute PDF Uploads Synchronously">
-				<param name="Local" value="Execute PDF Uploads Synchronously.html">
+				<param name="Name" value="Executing the PDF Upload as a Blocking Operation">
+				<param name="Local" value="Executing the PDF Upload as a Blocking Operation.html">
 				<param name="ImageNumber" value="9">
 				</OBJECT>
 		</UL>

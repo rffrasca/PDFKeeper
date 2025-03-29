@@ -2,10 +2,10 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>Execute PDF Uploads Synchronously</title>
+	<title>Executing the PDF Upload as a Blocking Operation</title>
 	<meta name="generator" content="LibreOffice 25.2.1.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2025-03-23T10:40:51.659174600"/>
+	<meta name="changed" content="2025-03-29T14:16:32.111901500"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -27,29 +27,27 @@
 * along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
 *******************************************************************************"/>
 </head>
-<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Execute
-PDF Uploads Synchronously</b></font></h1>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Executing
+the PDF Upload as a Blocking Operation</b></font></h1>
 <p><font face="Segoe UI, sans-serif">In a multi-user environment, it
-may be necessary to execute PDF uploads synchronously, blocking the
-user from performing other database transactions while the upload is
-executing.</font></p>
+may be necessary to execute the PDF upload as a blocking operation,
+preventing the user from performing other database transactions while
+the upload is executing.</font></p>
 <ul>
-	<li><p><font face="Segoe UI, sans-serif">To set PDF Uploads to
-	execute synchronously, apply <b>SetSynchronousUploadPolicy.reg</b>
+	<li><p><font face="Segoe UI, sans-serif">To set the PDF Upload to
+	execute as a blocking operation, apply <b>SetBlockingUploadPolicy.reg</b>
 	to the targeted computers.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">To clear the policy, apply
-	</font><font face="Segoe UI, sans-serif"><b>ClearSynchronousUploadPolicy.reg</b></font>
+	</font><font face="Segoe UI, sans-serif"><b>ClearBlockingUploadPolicy.reg</b></font>
 	<font face="Segoe UI, sans-serif">to the targeted computers.</font></p></li>
 </ul>
 <p><font face="Segoe UI, sans-serif"><b>Additional Information:</b></font></p>
 <ul>
-	<li><p><font face="Segoe UI, sans-serif"><b>SetSynchronousUploadPolicy.reg</b>
-	and <b>ClearSynchronousUploadPolicy.reg</b> can be found in
+	<li><p><font face="Segoe UI, sans-serif"><b>SetBlockingUploadPolicy.reg</b>
+	and <b>ClearBlockingUploadPolicy.reg</b> can be found in
 	<b>%LOCALAPPDATA%\Programs\PDFKeeper</b>.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">Elevated privileges are
 	required to set or clear this policy.</font></p></li>
-	<li><p><font face="Segoe UI, sans-serif">PDFKeeper will need to be
-	restarted for the change to take effect.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">This policy is ignored when
 	using the single-user database option.</font></p></li>
 </ul>

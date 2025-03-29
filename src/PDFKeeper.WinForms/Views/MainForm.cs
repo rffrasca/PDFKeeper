@@ -49,6 +49,7 @@ namespace PDFKeeper.WinForms.Views
         private readonly HelpFile helpFile;
         private readonly FindDocumentsForm findDocumentsForm;
         private readonly UploadProfilesForm uploadProfilesForm;
+        private readonly ProgressForm progressForm;
 
         // Message that is sent when the contents of the clipboard have changed.
         private const int WM_CLIPBOARDUPDATE = 0x31D;
@@ -80,6 +81,7 @@ namespace PDFKeeper.WinForms.Views
             HelpProvider.HelpNamespace = helpFile.FullName;
             findDocumentsForm = new FindDocumentsForm();
             uploadProfilesForm = new UploadProfilesForm();
+            progressForm = new ProgressForm();
             AddEventHandlers();
             AddTags();
         }
@@ -91,6 +93,8 @@ namespace PDFKeeper.WinForms.Views
             presenter.CheckedDocumentsProcessed += MainForm_CheckedDocumentsProcessed;
             presenter.ScrollToEndOfNotesTextRequested += MainForm_ScrollToEndOfNotesTextRequested;
             presenter.ProgressBarPerformStepRequested += MainForm_ProgressBarPerformStepRequested;
+            presenter.BlockingUploadStarted += MainForm_BlockingUploadStarted;
+            presenter.BlockingUploadFinished += MainForm_BlockingUploadFinished;
             viewModel.PropertyChanged += MainForm_PropertyChanged;
         }
 
@@ -423,22 +427,13 @@ namespace PDFKeeper.WinForms.Views
             CheckForDocumentsListChangesTimer.Start();
         }
 
-        private async void AsyncUploadTimer_Tick(object sender, EventArgs e)
-        {
-            AsyncUploadTimer.Stop();
+        private async void UploadTimer_Tick(object sender, EventArgs e)
+        {            
+            UploadTimer.Stop();
             await Task.Run(() => presenter.ExecuteUploadDirectoryMaintenance()).ConfigureAwait(true);
-            await Task.Run(() => presenter.ExecuteUpload(false)).ConfigureAwait(true);
+            await Task.Run(() => presenter.ExecuteUpload()).ConfigureAwait(true);
             presenter.CheckForRejectedPdfFiles();
-            AsyncUploadTimer.Start();
-        }
-
-        private void SyncUploadTimer_Tick(object sender, EventArgs e)
-        {
-            AsyncUploadTimer.Stop();
-            presenter.ExecuteUploadDirectoryMaintenance();
-            presenter.ExecuteUpload(true);
-            presenter.CheckForRejectedPdfFiles();
-            AsyncUploadTimer.Start();
+            UploadTimer.Start();
         }
 
         private void DocumentsListTimedRefreshTimer_Tick(object sender, EventArgs e)
@@ -474,6 +469,20 @@ namespace PDFKeeper.WinForms.Views
         {
             DocumentsProgressBar.PerformStep();
             Application.DoEvents();
+        }
+
+        private void MainForm_BlockingUploadStarted(object sender, EventArgs e)
+        {
+            BeginInvoke((MethodInvoker)delegate ()
+            {
+                progressForm.Message = Resources.PdfUploadInProgress;
+                progressForm.ShowDialog(this);
+            });
+        }
+
+        private void MainForm_BlockingUploadFinished(object sender, EventArgs e)
+        {
+            progressForm.Close();
         }
 
         private void MainForm_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -763,14 +772,6 @@ namespace PDFKeeper.WinForms.Views
             {
                 UploadRejectedImageLabel.Visible = viewModel.UploadRejectedImageVisible;
                 Application.DoEvents();
-            }
-            else if (e.PropertyName.Equals("AsyncUploadTimerEnabled", StringComparison.Ordinal))
-            {
-                AsyncUploadTimer.Enabled = viewModel.AsyncUploadTimerEnabled;
-            }
-            else if (e.PropertyName.Equals("SyncUploadTimerEnabled", StringComparison.Ordinal))
-            {
-                SyncUploadTimer.Enabled = viewModel.SyncUploadTimerEnabled;
             }
         }
 

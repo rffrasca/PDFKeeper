@@ -162,6 +162,8 @@ namespace PDFKeeper.Core.Presenters
         public event EventHandler CheckedDocumentsProcessed;
         public event EventHandler ScrollToEndOfNotesTextRequested;
         public event EventHandler ProgressBarPerformStepRequested;
+        public event EventHandler BlockingUploadStarted;
+        public event EventHandler BlockingUploadFinished;
 
         /// <summary>
         /// Gets the file cache instance.
@@ -214,14 +216,6 @@ namespace PDFKeeper.Core.Presenters
             {
                 ViewModel.SearchTermSnippetsVisible =
                     documentRepository.SearchTermSnippetsSupported;
-            }
-            if (ApplicationPolicy.GetPolicyValue(ApplicationPolicy.PolicyName.SynchronousUpload))
-            {
-                ViewModel.SyncUploadTimerEnabled = true;
-            }
-            else
-            {
-                ViewModel.AsyncUploadTimerEnabled = true;
             }
         }
 
@@ -1006,19 +1000,21 @@ namespace PDFKeeper.Core.Presenters
         /// <summary>
         /// Executes the PDF Upload process.
         /// </summary>
-        /// <param name="showWaitCursor">Show WaitCursor? (true or false)</param>
-        public void ExecuteUpload(bool showWaitCursor)
+        public void ExecuteUpload()
         {
             var uploader = new PdfUploader();
             if (uploader.PdfFilesReadyToUpload)
             {
                 try
                 {
-                    if (showWaitCursor)
+                    if (ApplicationPolicy.GetPolicyValue(ApplicationPolicy.PolicyName.BlockingUpload))
                     {
-                        OnLongRunningOperationStarted();
+                        OnBlockingUploadStarted();
                     }
-                    ViewModel.UploadProgressBarVisible = true;
+                    else
+                    {
+                        ViewModel.UploadProgressBarVisible = true;
+                    }
                     uploader.ExecuteUpload();
                 }
                 catch (ArgumentException ex)
@@ -1035,10 +1031,13 @@ namespace PDFKeeper.Core.Presenters
                 }
                 finally
                 {
-                    ViewModel.UploadProgressBarVisible = false;
-                    if (showWaitCursor)
+                    if (ApplicationPolicy.GetPolicyValue(ApplicationPolicy.PolicyName.BlockingUpload))
                     {
-                        OnLongRunningOperationFinished();
+                        OnBlockingUploadFinished();
+                    }
+                    else
+                    {
+                        ViewModel.UploadProgressBarVisible = false;
                     }
                 }
             }
@@ -1092,7 +1091,7 @@ namespace PDFKeeper.Core.Presenters
         {
             ProgressBarPerformStepRequested?.Invoke(this, null);
         }
-
+        
         public void SaveNotesPromptBeforeClosing()
         {
             var choice = messageBoxService.ShowQuestion(Resources.NotesModified, true);
@@ -1142,6 +1141,22 @@ namespace PDFKeeper.Core.Presenters
         private void ApplicationGlobal_FindDocumentsParamChanged(object sender, EventArgs e)
         {
             GetListOfDocuments(false);
+        }
+
+        /// <summary>
+        /// Raises the BlockingUploadStarted event to notify the view that a blocking upload has started.
+        /// </summary>
+        private void OnBlockingUploadStarted()
+        {
+            BlockingUploadStarted?.Invoke(this, null);
+        }
+
+        /// <summary>
+        /// Raises the BlockingUploadFinished event to notify the view that a blocking upload has finished.
+        /// </summary>
+        private void OnBlockingUploadFinished()
+        {
+            BlockingUploadFinished?.Invoke(this, null);
         }
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)

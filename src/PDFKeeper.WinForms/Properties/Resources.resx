@@ -265,4 +265,7 @@ After reading the topic and setting up the database and any client dependencies 
   <data name="ConnectingToMySql" xml:space="preserve">
     <value>Are you going to be connecting to MySQL server?</value>
   </data>
+  <data name="PdfUploadInProgress" xml:space="preserve">
+    <value>PDF Upload in progress ...</value>
+  </data>
 </root>
