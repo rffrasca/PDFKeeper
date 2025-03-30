@@ -1,6 +1,17 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v11.2.0 - 2025-03-30
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.2.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.2.0).
+### Added
+* Added Flag column to Documents DataGridView. [#58](https://github.com/rffrasca/PDFKeeper/issues/58)
+* Added policy to execute the PDF Upload as a blocking operation in a multi-user database environment. [#60](https://github.com/rffrasca/PDFKeeper/issues/60)
+### Changed
+* In a multi-user database environment, all functionality that the user does not have access to perform will be disabled or blocked. [#55](https://github.com/rffrasca/PDFKeeper/issues/55)
+* Updated Ghostscript to 10.05.0.
+
 ## v11.1.1 - 2025-02-16
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.1.1).
