@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <item>
-    <version>11.1.1.0</version>
-    <url>https://github.com/rffrasca/PDFKeeper/releases/download/v11.1.1/PDFKeeper-11.1.1.msi</url>
-    <changelog>https://github.com/rffrasca/PDFKeeper/releases/tag/v11.1.1</changelog>
+    <version>11.2.0.0</version>
+    <url>https://github.com/rffrasca/PDFKeeper/releases/download/v11.2.0/PDFKeeper-11.2.0.msi</url>
+    <changelog>https://github.com/rffrasca/PDFKeeper/releases/tag/v11.2.0</changelog>
     <mandatory>false</mandatory>
-    <checksum algorithm="SHA1">11BCBC0CE4B645612D3B21FA146CFA6F5BEA9BAD</checksum>
+    <checksum algorithm="SHA1">2C7777D0FFBBB22E7E1EE7006B057BB429D9957A</checksum>
 </item>
