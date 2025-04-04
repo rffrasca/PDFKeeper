@@ -21,6 +21,7 @@
 using MySql.Data.MySqlClient;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Models;
+using PDFKeeper.Core.Properties;
 using System;
 using System.Data;
 using System.Globalization;
@@ -551,6 +552,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 throw new DatabaseException(ex.Message);
             }
             GetDocsTableAccess();
+            if (!DatabaseSession.SelectGranted)
+            {
+                throw new DatabaseException(Resources.NoAccessToLogin);
+            }
         }
 
         public void ResetCredential()
@@ -611,23 +616,23 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             while (reader.Read())
                             {
                                 result = reader.GetString(0);
-                                if (result.Contains("pdfkeeper") && result.Contains("docs"))
+                                if (result.Contains("pdfkeeper") &&
+                                    result.Contains("docs") ||
+                                    result.Contains("*"))
                                 {
-                                    if (result.Contains("SELECT"))
+                                    if (result.Contains("ALL PRIVILEGES"))
                                     {
                                         DatabaseSession.SelectGranted = true;
-                                    }
-                                    if (result.Contains("INSERT"))
-                                    {
                                         DatabaseSession.InsertGranted = true;
-                                    }
-                                    if (result.Contains("UPDATE"))
-                                    {
                                         DatabaseSession.UpdateGranted = true;
-                                    }
-                                    if (result.Contains("DELETE"))
-                                    {
                                         DatabaseSession.DeleteGranted = true;
+                                    }
+                                    else
+                                    {
+                                        DatabaseSession.SelectGranted = result.Contains("SELECT");
+                                        DatabaseSession.InsertGranted = result.Contains("INSERT");
+                                        DatabaseSession.UpdateGranted = result.Contains("UPDATE");
+                                        DatabaseSession.DeleteGranted = result.Contains("DELETE");
                                     }
                                 }
                             }
