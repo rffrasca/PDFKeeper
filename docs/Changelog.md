@@ -1,6 +1,15 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v11.2.1 - 2025-04-05
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.2.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.2.1).
+### Changed
+* Updated SQL Server section in Logging into PDFKeeper help topic.
+### Fixed
+* Fixed issue with ALL PRIVILEGES and * not being recognized when connecting to MySQL. [#72](https://github.com/rffrasca/PDFKeeper/issues/72)
+
 ## v11.2.0 - 2025-03-30
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.2.0).
