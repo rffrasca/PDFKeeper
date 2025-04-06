@@ -421,7 +421,11 @@ namespace PDFKeeper.Core.ViewModels
         public bool DocumentsProgressBarVisible
         {
             get => documentsProgressBarVisible;
-            set => SetProperty(ref documentsProgressBarVisible, value);
+            set
+            {
+                SetProperty(ref documentsProgressBarVisible, value);
+                DocumentsFindMenuEnabled = !value;
+            }
         }
 
         public int DocumentsProgressBarMinimum

@@ -1289,14 +1289,15 @@ namespace PDFKeeper.Core.Presenters
         private void ProcessEachCheckedDocument(CheckedDocumentAction checkedDocumentAction,
             string value)
         {
+            OnLongRunningOperationStarted();
             ViewModel.DocumentsProgressBarVisible = true;
             ViewModel.DocumentsProgressBarMinimum = 0;
             ViewModel.DocumentsProgressBarMaximum = ViewModel.CheckedDocumentIds.Count;
             foreach (int id in ViewModel.CheckedDocumentIds)
             {
+                var error = false;
                 try
-                {
-                    OnLongRunningOperationStarted();
+                {                    
                     using (var documentRepository = DatabaseSession.GetDocumentRepository())
                     {
                         var document = documentRepository.GetDocument(id, null);
@@ -1346,27 +1347,37 @@ namespace PDFKeeper.Core.Presenters
                 }
                 catch (InvalidOperationException ex)
                 {
+                    error = true;
+                    OnLongRunningOperationFinished();
                     messageBoxService.ShowMessage(ResourceHelper.GetString(
                         "DocumentMayHaveBeenDeletedException", ex.Message, id.ToString()), true);
                 }
                 catch (IndexOutOfRangeException ex)
                 {
+                    error = true;
+                    OnLongRunningOperationFinished();
                     messageBoxService.ShowMessage(ResourceHelper.GetString(
                         "DocumentMayHaveBeenDeletedException", ex.Message, id.ToString()), true);
                 }
                 catch (DatabaseException ex)
                 {
+                    error = true;
+                    OnLongRunningOperationFinished();
                     messageBoxService.ShowMessage(ResourceHelper.GetString(
                         "DefaultDocumentException", ex.Message, id.ToString()), true);
                 }
                 finally
                 {
-                    OnLongRunningOperationFinished();
+                    if (error)
+                    {
+                        OnLongRunningOperationStarted();
+                    }                    
                     OnProgressBarPerformStepRequested();
                 }
             }
             OnCheckedDocumentsProcessed();
             ViewModel.DocumentsProgressBarVisible = false;
+            OnLongRunningOperationFinished();
         }
 
         /// <summary>
