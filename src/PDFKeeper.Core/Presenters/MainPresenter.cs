@@ -1296,6 +1296,7 @@ namespace PDFKeeper.Core.Presenters
             string value)
         {
             OnLongRunningOperationStarted();
+            ViewModel.DocumentsEnabled = false;
             ViewModel.DocumentsProgressBarVisible = true;
             ViewModel.DocumentsProgressBarMinimum = 0;
             ViewModel.DocumentsProgressBarMaximum = ViewModel.CheckedDocumentIds.Count;
@@ -1383,6 +1384,7 @@ namespace PDFKeeper.Core.Presenters
             }
             OnCheckedDocumentsProcessed();
             ViewModel.DocumentsProgressBarVisible = false;
+            ViewModel.DocumentsEnabled = true;
             OnLongRunningOperationFinished();
         }
 
