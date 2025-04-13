@@ -67,6 +67,7 @@
     <Compile Include="DataAccess\Repository\DocumentRepositoryFactory.cs" />
     <Compile Include="DataAccess\Repository\MySqlDocumentRepository.cs" />
     <Compile Include="DataAccess\Repository\SqlServerDocumentRepository.cs" />
+    <Compile Include="Extensions\DataTableExtension.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Extensions\DirectoryInfoExtension.cs" />
     <Compile Include="Extensions\GenericExtension.cs" />

@@ -1219,37 +1219,49 @@ namespace PDFKeeper.Core.Presenters
             if (findDocumentsParam != null)
             {
                 var currentDocumentId = ViewModel.CurrentDocumentId;
+                var refreshed = false;
                 try
                 {
                     OnLongRunningOperationStarted();
                     ViewModel.DocumentsFindMenuEnabled = false;
                     ViewModel.RefreshingDocumentsImageVisible = true;
+                    DataTable documents = null;
                     using (var documentRepository = DatabaseSession.GetDocumentRepository())
                     {
                         if (findDocumentsParam.FindBySearchTermChecked)
                         {
-                            ViewModel.Documents = documentRepository.GetListOfDocumentsBySearchTerm(
+                            documents = documentRepository.GetListOfDocumentsBySearchTerm(
                                 findDocumentsParam.SearchTerm);
                         }
                         else if (findDocumentsParam.FindBySelectionsChecked)
                         {
-                            ViewModel.Documents = documentRepository.GetListOfDocuments(
+                            documents = documentRepository.GetListOfDocuments(
                                 findDocumentsParam.Author, findDocumentsParam.Subject,
                                 findDocumentsParam.Category, findDocumentsParam.TaxYear);
                         }
                         else if (findDocumentsParam.FindByDateAddedChecked)
                         {
-                            ViewModel.Documents = documentRepository.GetListOfDocumentsByDateAdded(
+                            documents = documentRepository.GetListOfDocumentsByDateAdded(
                                 findDocumentsParam.DateAdded);
                         }
                         else if (findDocumentsParam.FindFlaggedDocumentsChecked)
                         {
-                            ViewModel.Documents = documentRepository.GetListOfFlaggedDocuments();
+                            documents = documentRepository.GetListOfFlaggedDocuments();
                         }
                         else if (findDocumentsParam.AllDocumentsChecked)
                         {
-                            ViewModel.Documents = documentRepository.GetListOfDocuments();
+                            documents = documentRepository.GetListOfDocuments();
                         }
+                    }
+                    if (ViewModel.Documents == null)
+                    {
+                        ViewModel.Documents = documents;
+                        refreshed = true;
+                    }
+                    else if (documents.Compare(ViewModel.Documents))
+                    {
+                        ViewModel.Documents = documents;
+                        refreshed = true;
                     }
                 }
                 catch (DatabaseException ex)
@@ -1258,8 +1270,9 @@ namespace PDFKeeper.Core.Presenters
                 }
                 finally
                 {
-                    if (selectCurrentDocument)
-                    {
+                    //TODO
+                    //if (refreshed & selectCurrentDocument)
+                    //{
                         var columnName = ViewModel.Documents.Columns[0].ColumnName;
                         foreach (DataRow row in ViewModel.Documents.Rows)
                         {
@@ -1269,7 +1282,7 @@ namespace PDFKeeper.Core.Presenters
                                 ViewModel.CurrentDocumentId = currentDocumentId;
                             }
                         }
-                    }
+                    //}
                     ViewModel.RefreshingDocumentsImageVisible = false;
                     ViewModel.DocumentsFindMenuEnabled = true;
                     OnLongRunningOperationFinished();
