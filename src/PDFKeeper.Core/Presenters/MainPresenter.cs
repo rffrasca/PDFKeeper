@@ -1219,7 +1219,6 @@ namespace PDFKeeper.Core.Presenters
             if (findDocumentsParam != null)
             {
                 var currentDocumentId = ViewModel.CurrentDocumentId;
-                var refreshed = false;
                 try
                 {
                     OnLongRunningOperationStarted();
@@ -1256,12 +1255,10 @@ namespace PDFKeeper.Core.Presenters
                     if (ViewModel.Documents == null)
                     {
                         ViewModel.Documents = documents;
-                        refreshed = true;
                     }
                     else if (documents.Compare(ViewModel.Documents))
                     {
                         ViewModel.Documents = documents;
-                        refreshed = true;
                     }
                 }
                 catch (DatabaseException ex)
@@ -1270,19 +1267,15 @@ namespace PDFKeeper.Core.Presenters
                 }
                 finally
                 {
-                    //TODO
-                    //if (refreshed & selectCurrentDocument)
-                    //{
-                        var columnName = ViewModel.Documents.Columns[0].ColumnName;
-                        foreach (DataRow row in ViewModel.Documents.Rows)
+                    var columnName = ViewModel.Documents.Columns[0].ColumnName;
+                    foreach (DataRow row in ViewModel.Documents.Rows)
+                    {
+                        var id = Convert.ToInt32(row[columnName].ToString());
+                        if (id.Equals(currentDocumentId))
                         {
-                            var id = Convert.ToInt32(row[columnName].ToString());
-                            if (id.Equals(currentDocumentId))
-                            {
-                                ViewModel.CurrentDocumentId = currentDocumentId;
-                            }
+                            ViewModel.CurrentDocumentId = currentDocumentId;
                         }
-                    //}
+                    }
                     ViewModel.RefreshingDocumentsImageVisible = false;
                     ViewModel.DocumentsFindMenuEnabled = true;
                     OnLongRunningOperationFinished();
