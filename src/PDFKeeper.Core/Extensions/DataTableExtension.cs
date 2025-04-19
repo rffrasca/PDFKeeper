@@ -38,14 +38,21 @@ namespace PDFKeeper.Core.Extensions
         internal static bool Compare(this DataTable dataTable1, DataTable dataTable2)
         {
             var diffsExist = false;
-            var set1 = new HashSet<string>(dataTable1.AsEnumerable().Select(row => string.Join(
+            if (dataTable1.Rows.Count.Equals(dataTable2.Rows.Count))
+            {
+                var set1 = new HashSet<string>(dataTable1.AsEnumerable().Select(row => string.Join(
                 ",",
                 row.ItemArray)));
-            var set2 = new HashSet<string>(dataTable2.AsEnumerable().Select(row => string.Join(
-                ",",
-                row.ItemArray)));
-            set1.Except(set2).ToList().ForEach(diff => diffsExist = true);
-            set2.Except(set2).ToList().ForEach(diff => diffsExist = true);
+                var set2 = new HashSet<string>(dataTable2.AsEnumerable().Select(row => string.Join(
+                    ",",
+                    row.ItemArray)));
+                set1.Except(set2).ToList().ForEach(diff => diffsExist = true);
+                set2.Except(set2).ToList().ForEach(diff => diffsExist = true);
+            }
+            else
+            {
+                diffsExist = true;
+            }         
             return diffsExist;
         }
     }

@@ -1208,7 +1208,7 @@ namespace PDFKeeper.Core.Presenters
 
         /// <summary>
         /// Gets a list of documents based on the properties in
-        /// ApplicationGlobal.FindDocumentsParam
+        /// ApplicationGlobal.FindDocumentsParam.
         /// </summary>
         /// <param name="selectCurrentDocument">
         /// Select the current document after getting documents.
@@ -1252,11 +1252,9 @@ namespace PDFKeeper.Core.Presenters
                             documents = documentRepository.GetListOfDocuments();
                         }
                     }
-                    if (ViewModel.Documents == null)
-                    {
-                        ViewModel.Documents = documents;
-                    }
-                    else if (documents.Compare(ViewModel.Documents))
+                    if (selectCurrentDocument &&
+                        documents.Compare(ViewModel.Documents) ||
+                        !selectCurrentDocument)
                     {
                         ViewModel.Documents = documents;
                     }
@@ -1267,13 +1265,16 @@ namespace PDFKeeper.Core.Presenters
                 }
                 finally
                 {
-                    var columnName = ViewModel.Documents.Columns[0].ColumnName;
-                    foreach (DataRow row in ViewModel.Documents.Rows)
+                    if (selectCurrentDocument)
                     {
-                        var id = Convert.ToInt32(row[columnName].ToString());
-                        if (id.Equals(currentDocumentId))
+                        var columnName = ViewModel.Documents.Columns[0].ColumnName;
+                        foreach (DataRow row in ViewModel.Documents.Rows)
                         {
-                            ViewModel.CurrentDocumentId = currentDocumentId;
+                            var id = Convert.ToInt32(row[columnName].ToString());
+                            if (id.Equals(currentDocumentId))
+                            {
+                                ViewModel.CurrentDocumentId = currentDocumentId;
+                            }
                         }
                     }
                     ViewModel.RefreshingDocumentsImageVisible = false;
