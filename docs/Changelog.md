@@ -1,6 +1,17 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v11.2.2 - 2025-04-26
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.2.2).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.2.2).
+### Changed
+* Documents DataGridView will only be refreshed when contents have changed. [#76](https://github.com/rffrasca/PDFKeeper/issues/76)
+* Updated Magick.NET to 14.6.0.
+### Fixed
+* Fixed issue when pressing F1 key while Main Form has focus was not opening correct help topic. [#74](https://github.com/rffrasca/PDFKeeper/issues/74)
+* Fixed System.InvalidOperationException: Collection was modified; enumeration operation may not execute. [#75](https://github.com/rffrasca/PDFKeeper/issues/75)
+
 ## v11.2.1 - 2025-04-05
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.2.1).
