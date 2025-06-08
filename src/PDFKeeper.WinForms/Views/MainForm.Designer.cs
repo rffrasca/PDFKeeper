@@ -985,6 +985,7 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsDataGridView.Scroll += new System.Windows.Forms.ScrollEventHandler(this.DocumentsDataGridView_Scroll);
             this.DocumentsDataGridView.SelectionChanged += new System.EventHandler(this.DocumentsDataGridView_SelectionChanged);
             this.DocumentsDataGridView.Sorted += new System.EventHandler(this.DocumentsDataGridView_Sorted);
+            this.DocumentsDataGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DocumentsDataGridView_MouseDown);
             // 
             // SelectionColumn
             // 

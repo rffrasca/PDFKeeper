@@ -294,6 +294,11 @@
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="PDF Drag and Drop to other Applications">
+					<param name="Local" value="PDF Drag and Drop to other Applications.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Document Notes">
 					<param name="Local" value="Document Notes.html">
 					<param name="ImageNumber" value="9">

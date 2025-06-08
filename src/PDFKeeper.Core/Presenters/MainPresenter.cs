@@ -170,6 +170,8 @@ namespace PDFKeeper.Core.Presenters
         /// </summary>
         public FileCache FileCache => fileCache;
 
+        public Action<PdfFile> OnPdfDoDragDrop { get; set; }
+
         public void SetInitialState()
         {
             ViewModel.FileAddMenuEnabled = true;
@@ -804,6 +806,12 @@ namespace PDFKeeper.Core.Presenters
             pdfViewerService.Show(
                 fileCache.GetPdfFile(ViewModel.CurrentDocumentId).FullName,
                 showPdfWithDefaultApplication);
+        }
+
+        public void DragDropPdfForCurrentDocument()
+        {
+            var pdfFile = fileCache.GetPdfFile(ViewModel.CurrentDocumentId);
+            OnPdfDoDragDrop?.Invoke(pdfFile);
         }
 
         /// <summary>

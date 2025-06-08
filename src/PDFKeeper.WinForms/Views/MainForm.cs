@@ -84,6 +84,7 @@ namespace PDFKeeper.WinForms.Views
             progressForm = new ProgressForm();
             AddEventHandlers();
             AddTags();
+            SetActionDelegates();
         }
 
         private void AddEventHandlers()
@@ -180,6 +181,18 @@ namespace PDFKeeper.WinForms.Views
             HelpContentsToolStripMenuItem.Tag = new HelpFileShowCommand(helpFile, this);
             HelpContentsToolStripButton.Tag = new HelpFileShowCommand(helpFile, this);
             HelpAboutToolStripMenuItem.Tag = new DialogShowCommand(new AboutBox(), null);
+        }
+
+        private void SetActionDelegates()
+        {
+            presenter.OnPdfDoDragDrop = ((obj) =>
+            {
+                DocumentsDataGridView.DoDragDrop(
+                    new DataObject(
+                        DataFormats.FileDrop,
+                        new string[] { obj.FullName }),
+                    DragDropEffects.Copy);
+            });
         }
 
         protected override void WndProc(ref Message m)
@@ -333,6 +346,20 @@ namespace PDFKeeper.WinForms.Views
             else
             {
                 DocumentsDataGridView.Select();
+            }
+        }
+        
+        private void DocumentsDataGridView_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button.Equals(MouseButtons.Right))
+            {
+                var hitTest = DocumentsDataGridView.HitTest(e.X, e.Y);
+                if (hitTest.RowIndex >= 0)
+                {
+                    var rowIndex = DocumentsDataGridView.Rows[hitTest.RowIndex];
+                    rowIndex.Selected = true;
+                    presenter.DragDropPdfForCurrentDocument();
+                }
             }
         }
 
