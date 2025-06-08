@@ -107,6 +107,11 @@ namespace PDFKeeper.WinForms.Views
             presenter.GetSearchTermHistory();
         }
 
+        private void ClearSelectionsButton_Click(object sender, EventArgs e)
+        {
+            presenter.ClearSelections();
+        }
+
         private void AuthorDropDownListUserControl_Enter(object sender, EventArgs e)
         {
             presenter.GetAuthors();

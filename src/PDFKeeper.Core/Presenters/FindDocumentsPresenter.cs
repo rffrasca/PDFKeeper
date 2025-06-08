@@ -68,6 +68,14 @@ namespace PDFKeeper.Core.Presenters
             }
         }
 
+        public void ClearSelections()
+        {
+            ViewModel.Author = null;
+            ViewModel.Subject = null;
+            ViewModel.Category = null;
+            ViewModel.TaxYear = null;
+        }
+
         public void GetAuthors()
         {
             try

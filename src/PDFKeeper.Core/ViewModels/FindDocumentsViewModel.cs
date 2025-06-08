@@ -28,6 +28,7 @@ namespace PDFKeeper.Core.ViewModels
         private FindDocumentsParam findDocumentsParam;
         private bool searchTermEnabled;
         private IEnumerable<string> searchTerms;
+        private bool clearSelectionsEnabled;
         private bool authorEnabled;
         private bool subjectEnabled;
         private bool categoryEnabled;
@@ -100,11 +101,18 @@ namespace PDFKeeper.Core.ViewModels
             {
                 findDocumentsParam.FindBySelectionsChecked = value;
                 OnPropertyChanged();
+                ClearSelectionsEnabled = value;
                 AuthorEnabled = value;
                 SubjectEnabled = value;
                 CategoryEnabled = value;
                 TaxYearEnabled = value;
             }
+        }
+
+        public bool ClearSelectionsEnabled
+        {
+            get => clearSelectionsEnabled;
+            set => SetProperty(ref clearSelectionsEnabled, value);
         }
 
         public bool AuthorEnabled
