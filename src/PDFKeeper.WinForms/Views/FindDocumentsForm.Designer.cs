@@ -89,7 +89,6 @@ namespace PDFKeeper.WinForms.Views
             this.groupBox.Controls.Add(this.FindBySearchTermRadioButton);
             resources.ApplyResources(this.groupBox, "groupBox");
             this.groupBox.Name = "groupBox";
-            this.HelpProvider.SetShowHelp(this.groupBox, ((bool)(resources.GetObject("groupBox.ShowHelp"))));
             this.groupBox.TabStop = false;
             // 
             // ClearSelectionsButton
@@ -97,7 +96,6 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.ClearSelectionsButton, "ClearSelectionsButton");
             this.ClearSelectionsButton.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.FindDocumentsViewModelBindingSource, "ClearSelectionsEnabled", true));
             this.ClearSelectionsButton.Name = "ClearSelectionsButton";
-            this.HelpProvider.SetShowHelp(this.ClearSelectionsButton, ((bool)(resources.GetObject("ClearSelectionsButton.ShowHelp"))));
             this.ClearSelectionsButton.UseVisualStyleBackColor = true;
             this.ClearSelectionsButton.Click += new System.EventHandler(this.ClearSelectionsButton_Click);
             // 
@@ -111,7 +109,6 @@ namespace PDFKeeper.WinForms.Views
             this.TaxYearDropDownListUserControl.DataBindings.Add(new System.Windows.Forms.Binding("TaxYear", this.FindDocumentsViewModelBindingSource, "TaxYear", true));
             this.TaxYearDropDownListUserControl.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.FindDocumentsViewModelBindingSource, "TaxYearEnabled", true));
             this.TaxYearDropDownListUserControl.Name = "TaxYearDropDownListUserControl";
-            this.HelpProvider.SetShowHelp(this.TaxYearDropDownListUserControl, ((bool)(resources.GetObject("TaxYearDropDownListUserControl.ShowHelp"))));
             this.TaxYearDropDownListUserControl.TaxYear = "";
             this.TaxYearDropDownListUserControl.TaxYears = null;
             this.TaxYearDropDownListUserControl.Enter += new System.EventHandler(this.TaxYearDropDownListUserControl_Enter);
@@ -124,7 +121,6 @@ namespace PDFKeeper.WinForms.Views
             this.CategoryDropDownListUserControl.DataBindings.Add(new System.Windows.Forms.Binding("Category", this.FindDocumentsViewModelBindingSource, "Category", true));
             this.CategoryDropDownListUserControl.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.FindDocumentsViewModelBindingSource, "CategoryEnabled", true));
             this.CategoryDropDownListUserControl.Name = "CategoryDropDownListUserControl";
-            this.HelpProvider.SetShowHelp(this.CategoryDropDownListUserControl, ((bool)(resources.GetObject("CategoryDropDownListUserControl.ShowHelp"))));
             this.CategoryDropDownListUserControl.Enter += new System.EventHandler(this.CategoryDropDownListUserControl_Enter);
             // 
             // SubjectDropDownListUserControl
@@ -133,7 +129,6 @@ namespace PDFKeeper.WinForms.Views
             this.SubjectDropDownListUserControl.DataBindings.Add(new System.Windows.Forms.Binding("Subject", this.FindDocumentsViewModelBindingSource, "Subject", true));
             this.SubjectDropDownListUserControl.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.FindDocumentsViewModelBindingSource, "SubjectEnabled", true));
             this.SubjectDropDownListUserControl.Name = "SubjectDropDownListUserControl";
-            this.HelpProvider.SetShowHelp(this.SubjectDropDownListUserControl, ((bool)(resources.GetObject("SubjectDropDownListUserControl.ShowHelp"))));
             this.SubjectDropDownListUserControl.Subject = "";
             this.SubjectDropDownListUserControl.Subjects = null;
             this.SubjectDropDownListUserControl.Enter += new System.EventHandler(this.SubjectDropDownListUserControl_Enter);
@@ -146,7 +141,6 @@ namespace PDFKeeper.WinForms.Views
             this.AuthorDropDownListUserControl.DataBindings.Add(new System.Windows.Forms.Binding("Author", this.FindDocumentsViewModelBindingSource, "Author", true));
             this.AuthorDropDownListUserControl.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.FindDocumentsViewModelBindingSource, "AuthorEnabled", true));
             this.AuthorDropDownListUserControl.Name = "AuthorDropDownListUserControl";
-            this.HelpProvider.SetShowHelp(this.AuthorDropDownListUserControl, ((bool)(resources.GetObject("AuthorDropDownListUserControl.ShowHelp"))));
             this.AuthorDropDownListUserControl.Enter += new System.EventHandler(this.AuthorDropDownListUserControl_Enter);
             // 
             // SearchTermUserControl
@@ -158,7 +152,6 @@ namespace PDFKeeper.WinForms.Views
             this.SearchTermUserControl.Name = "SearchTermUserControl";
             this.SearchTermUserControl.SearchTerm = "";
             this.SearchTermUserControl.SearchTerms = null;
-            this.HelpProvider.SetShowHelp(this.SearchTermUserControl, ((bool)(resources.GetObject("SearchTermUserControl.ShowHelp"))));
             this.SearchTermUserControl.Enter += new System.EventHandler(this.SearchTermUserControl_Enter);
             // 
             // AllDocumentsRadioButton
@@ -167,7 +160,6 @@ namespace PDFKeeper.WinForms.Views
             this.AllDocumentsRadioButton.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.FindDocumentsViewModelBindingSource, "AllDocumentsChecked", true));
             this.AllDocumentsRadioButton.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.FindDocumentsViewModelBindingSource, "AllDocumentsEnabled", true));
             this.AllDocumentsRadioButton.Name = "AllDocumentsRadioButton";
-            this.HelpProvider.SetShowHelp(this.AllDocumentsRadioButton, ((bool)(resources.GetObject("AllDocumentsRadioButton.ShowHelp"))));
             this.AllDocumentsRadioButton.TabStop = true;
             this.AllDocumentsRadioButton.UseVisualStyleBackColor = true;
             this.AllDocumentsRadioButton.Click += new System.EventHandler(this.RadioButton_Click);
@@ -177,7 +169,6 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.FindFlaggedDocumentsRadioButton, "FindFlaggedDocumentsRadioButton");
             this.FindFlaggedDocumentsRadioButton.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.FindDocumentsViewModelBindingSource, "FindFlaggedDocumentsChecked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FindFlaggedDocumentsRadioButton.Name = "FindFlaggedDocumentsRadioButton";
-            this.HelpProvider.SetShowHelp(this.FindFlaggedDocumentsRadioButton, ((bool)(resources.GetObject("FindFlaggedDocumentsRadioButton.ShowHelp"))));
             this.FindFlaggedDocumentsRadioButton.TabStop = true;
             this.FindFlaggedDocumentsRadioButton.UseVisualStyleBackColor = true;
             this.FindFlaggedDocumentsRadioButton.Click += new System.EventHandler(this.RadioButton_Click);
@@ -189,14 +180,12 @@ namespace PDFKeeper.WinForms.Views
             this.DateAddedDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.FindDocumentsViewModelBindingSource, "DateAddedEnabled", true));
             this.DateAddedDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DateAddedDateTimePicker.Name = "DateAddedDateTimePicker";
-            this.HelpProvider.SetShowHelp(this.DateAddedDateTimePicker, ((bool)(resources.GetObject("DateAddedDateTimePicker.ShowHelp"))));
             // 
             // FindByDateAddedRadioButton
             // 
             resources.ApplyResources(this.FindByDateAddedRadioButton, "FindByDateAddedRadioButton");
             this.FindByDateAddedRadioButton.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.FindDocumentsViewModelBindingSource, "FindByDateAddedChecked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FindByDateAddedRadioButton.Name = "FindByDateAddedRadioButton";
-            this.HelpProvider.SetShowHelp(this.FindByDateAddedRadioButton, ((bool)(resources.GetObject("FindByDateAddedRadioButton.ShowHelp"))));
             this.FindByDateAddedRadioButton.TabStop = true;
             this.FindByDateAddedRadioButton.UseVisualStyleBackColor = true;
             this.FindByDateAddedRadioButton.Click += new System.EventHandler(this.RadioButton_Click);
@@ -206,7 +195,6 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.FindBySelectionsRadioButton, "FindBySelectionsRadioButton");
             this.FindBySelectionsRadioButton.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.FindDocumentsViewModelBindingSource, "FindBySelectionsChecked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FindBySelectionsRadioButton.Name = "FindBySelectionsRadioButton";
-            this.HelpProvider.SetShowHelp(this.FindBySelectionsRadioButton, ((bool)(resources.GetObject("FindBySelectionsRadioButton.ShowHelp"))));
             this.FindBySelectionsRadioButton.TabStop = true;
             this.FindBySelectionsRadioButton.UseVisualStyleBackColor = true;
             this.FindBySelectionsRadioButton.Click += new System.EventHandler(this.RadioButton_Click);
@@ -216,7 +204,6 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.FindBySearchTermRadioButton, "FindBySearchTermRadioButton");
             this.FindBySearchTermRadioButton.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.FindDocumentsViewModelBindingSource, "FindBySearchTermChecked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FindBySearchTermRadioButton.Name = "FindBySearchTermRadioButton";
-            this.HelpProvider.SetShowHelp(this.FindBySearchTermRadioButton, ((bool)(resources.GetObject("FindBySearchTermRadioButton.ShowHelp"))));
             this.FindBySearchTermRadioButton.TabStop = true;
             this.FindBySearchTermRadioButton.UseVisualStyleBackColor = true;
             this.FindBySearchTermRadioButton.Click += new System.EventHandler(this.RadioButton_Click);
@@ -227,13 +214,11 @@ namespace PDFKeeper.WinForms.Views
             this.TableLayoutPanel1.Controls.Add(this.OK_Button, 0, 0);
             this.TableLayoutPanel1.Controls.Add(this.Cancel_Button, 1, 0);
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
-            this.HelpProvider.SetShowHelp(this.TableLayoutPanel1, ((bool)(resources.GetObject("TableLayoutPanel1.ShowHelp"))));
             // 
             // OK_Button
             // 
             resources.ApplyResources(this.OK_Button, "OK_Button");
             this.OK_Button.Name = "OK_Button";
-            this.HelpProvider.SetShowHelp(this.OK_Button, ((bool)(resources.GetObject("OK_Button.ShowHelp"))));
             this.OK_Button.Click += new System.EventHandler(this.OK_Button_Click);
             // 
             // Cancel_Button
@@ -241,7 +226,6 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.Cancel_Button, "Cancel_Button");
             this.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Cancel_Button.Name = "Cancel_Button";
-            this.HelpProvider.SetShowHelp(this.Cancel_Button, ((bool)(resources.GetObject("Cancel_Button.ShowHelp"))));
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
             // FindDocumentsForm
@@ -287,8 +271,8 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel1;
         internal System.Windows.Forms.Button OK_Button;
         internal System.Windows.Forms.Button Cancel_Button;
-        internal System.Windows.Forms.HelpProvider HelpProvider;
         private System.Windows.Forms.BindingSource FindDocumentsViewModelBindingSource;
         private System.Windows.Forms.Button ClearSelectionsButton;
+        private System.Windows.Forms.HelpProvider HelpProvider;
     }
 }
