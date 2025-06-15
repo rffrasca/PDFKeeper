@@ -124,10 +124,13 @@
   <data name="SearchTermComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 4</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="SearchTermComboBox.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
   <data name="SearchTermComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>476, 23</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="SearchTermComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -135,7 +138,7 @@
     <value>SearchTermComboBox</value>
   </data>
   <data name="&gt;&gt;SearchTermComboBox.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.Components.CustomComboBox, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>PDFKeeper.WinForms.Components.CustomComboBox, PDFKeeper, Version=11.2.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;SearchTermComboBox.Parent" xml:space="preserve">
     <value>$this</value>

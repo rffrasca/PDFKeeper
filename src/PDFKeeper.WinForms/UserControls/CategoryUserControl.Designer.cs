@@ -61,8 +61,6 @@ namespace PDFKeeper.WinForms.UserControls
             // 
             // CategoryComboBox
             // 
-            this.CategoryComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.CategoryComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             resources.ApplyResources(this.CategoryComboBox, "CategoryComboBox");
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Name = "CategoryComboBox";

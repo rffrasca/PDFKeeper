@@ -152,6 +152,9 @@
   <data name="TitleComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 23</value>
   </data>
+  <data name="TitleComboBox.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
   <data name="TitleComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>476, 23</value>
   </data>
@@ -162,7 +165,7 @@
     <value>TitleComboBox</value>
   </data>
   <data name="&gt;&gt;TitleComboBox.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.Components.CustomComboBox, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>PDFKeeper.WinForms.Components.CustomComboBox, PDFKeeper, Version=11.2.2.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TitleComboBox.Parent" xml:space="preserve">
     <value>$this</value>

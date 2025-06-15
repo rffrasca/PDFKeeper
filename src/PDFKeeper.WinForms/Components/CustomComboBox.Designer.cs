@@ -18,11 +18,11 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using System.Windows.Forms;
+using Vip.ComboBox;
 
 namespace PDFKeeper.WinForms.Components
 {
-    partial class CustomComboBox : ComboBox
+    partial class CustomComboBox : ComboBoxVip
     {
         /// <summary>
         /// Required designer variable.
@@ -55,8 +55,6 @@ namespace PDFKeeper.WinForms.Components
             // 
             // CustomComboBox
             // 
-            this.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             resources.ApplyResources(this, "$this");
             this.TextChanged += new System.EventHandler(this.CustomComboBox_TextChanged);
             this.Leave += new System.EventHandler(this.CustomComboBox_Leave);

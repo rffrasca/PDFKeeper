@@ -127,6 +127,10 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
   </data>
@@ -134,6 +138,6 @@
     <value>CustomComboBox</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Vip.ComboBox.ComboBoxVip, Vip.ComboBox, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

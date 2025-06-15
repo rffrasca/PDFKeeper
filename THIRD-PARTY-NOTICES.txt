@@ -301,6 +301,11 @@ System.ValueTuple (https://www.nuget.org/packages/System.ValueTuple/4.5.0)
     Copyright: © Microsoft Corporation.  All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/corefx/blob/master/LICENSE.TXT
 
+Vip.ComboBox (https://www.nuget.org/packages/Vip.ComboBox/1.0.0)
+    Authors: leandrovip
+    Copyright: Copyright (c) 2019 Leandro Ferreira
+    License: MIT License, full text can be found at https://github.com/leandrovip/Vip.ComboBox/blob/master/LICENSE
+
 ZstdSharp.Port (https://www.nuget.org/packages/ZstdSharp.Port/0.8.0)
     Authors: oleg-st
     Copyright: Copyright Oleg Stepanischev 2024

@@ -61,8 +61,6 @@ namespace PDFKeeper.WinForms.UserControls
             // 
             // TitleComboBox
             // 
-            this.TitleComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.TitleComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             resources.ApplyResources(this.TitleComboBox, "TitleComboBox");
             this.TitleComboBox.FormattingEnabled = true;
             this.TitleComboBox.Name = "TitleComboBox";

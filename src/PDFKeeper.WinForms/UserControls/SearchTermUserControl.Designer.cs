@@ -55,8 +55,6 @@ namespace PDFKeeper.WinForms.UserControls
             // 
             // SearchTermComboBox
             // 
-            this.SearchTermComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.SearchTermComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             resources.ApplyResources(this.SearchTermComboBox, "SearchTermComboBox");
             this.SearchTermComboBox.FormattingEnabled = true;
             this.SearchTermComboBox.Name = "SearchTermComboBox";

@@ -61,8 +61,6 @@ namespace PDFKeeper.WinForms.UserControls
             // 
             // AuthorComboBox
             // 
-            this.AuthorComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.AuthorComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             resources.ApplyResources(this.AuthorComboBox, "AuthorComboBox");
             this.AuthorComboBox.FormattingEnabled = true;
             this.AuthorComboBox.Name = "AuthorComboBox";

@@ -20,11 +20,12 @@
 
 using System;
 using System.ComponentModel;
-using System.Windows.Forms;
+using Vip.ComboBox;
 
 namespace PDFKeeper.WinForms.Components
 {
-    public partial class CustomComboBox : ComboBox
+    [CLSCompliant(false)]
+    public partial class CustomComboBox : ComboBoxVip
     {
         public CustomComboBox()
         {
