@@ -352,6 +352,9 @@
       </Component>
       <Component Id="ZstdSharp.dll" Guid="b8d53de2-5dd7-4b1d-99d8-62b44c1d9175">
         <File Id="ZstdSharp.dll" Name="ZstdSharp.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)ZstdSharp.dll" />
+      </Component>
+      <Component Id="Vip.ComboBox.dll" Guid="6c1a7b11-a5a0-49c7-b3eb-6dfb89587128">
+        <File Id="Vip.ComboBox.dll" Name="Vip.ComboBox.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Vip.ComboBox.dll" />
       </Component>      
   	</ComponentGroup>
 	</Fragment>
