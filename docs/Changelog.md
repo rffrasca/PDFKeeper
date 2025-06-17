@@ -1,6 +1,17 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper will be documented in this file.
 
+## v11.3.0 - 2025-06-16
+- This is a minor release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.3.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.3.0).
+### Added
+* Added Custom Combo Box with enhanced AutoComplete that provides Sub-string Search for improved Author, Subject, and Category Searching. [#59](https://github.com/rffrasca/PDFKeeper/issues/59)
+* Added drag and drop of PDF associated with a document from Documents DataGridView to other applications. [#64](https://github.com/rffrasca/PDFKeeper/issues/64)
+* Added Clear Selections button to Find Documents form that will clear the selected Author, Subject, Category, and Tax Year. [#77](https://github.com/rffrasca/PDFKeeper/issues/77)
+### Changed
+* Updated Ghostscript to 10.05.1.
+
 ## v11.2.2 - 2025-04-26
 - This is a maintenance release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.2.2).
