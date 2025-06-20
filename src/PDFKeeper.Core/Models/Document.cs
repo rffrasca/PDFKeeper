@@ -29,7 +29,9 @@ namespace PDFKeeper.Core.Models
         public string Keywords { get; set; }
         public string Added { get; set; }
         public string Notes { get; set; }
+#pragma warning disable CA1819 // Properties should not return arrays
         public byte[] Pdf { get; set; }
+#pragma warning restore CA1819 // Properties should not return arrays
         public string Category { get; set; }
         public int Flag { get; set; }
         public string TaxYear { get; set; }
