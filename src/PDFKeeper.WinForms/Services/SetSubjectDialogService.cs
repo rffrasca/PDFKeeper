@@ -18,23 +18,21 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using System;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Forms;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Views;
+using PDFKeeper.Core.Application;
 
 namespace PDFKeeper.WinForms.Services
 {
     public class SetSubjectDialogService : IDialogService
     {
-        public void ShowDialog(string arg)
+        public string ShowDialog(string arg = null)
         {
-            throw new NotSupportedException();
-        }
+            var messageBoxService = ServicesLocator.Services.GetService<IMessageBoxService>();
 
-        public string ShowDialog()
-        {
             using (var dialog = new SetSubjectForm())
             {
                 dialog.ShowDialog();
@@ -46,7 +44,6 @@ namespace PDFKeeper.WinForms.Services
                     }
                     else
                     {
-                        var messageBoxService = new MessageBoxService();
                         messageBoxService.ShowMessage(Resources.SubjectCannotBeBlank, true);
                         return null;
                     }

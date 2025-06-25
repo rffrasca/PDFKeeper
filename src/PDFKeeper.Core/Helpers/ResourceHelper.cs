@@ -18,27 +18,41 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Properties;
+using System;
 using System.Globalization;
+using System.Resources;
 
 namespace PDFKeeper.Core.Helpers
 {
-    internal static class ResourceHelper
+    public static class ResourceHelper
     {
         /// <summary>
         /// Gets a string containing the resource with {0} and {1} being replaced by the specified
         /// arguments.
         /// </summary>
+        /// <param name="resourceManager">The <see cref="ResourceManager"/> instance.</param>
         /// <param name="resource">The string that represents the resource.</param>
         /// <param name="arg1">The argument that replaces {0} in the resource string.</param>
-        /// <param name="arg2">
-        /// The argument that replaces {1} in the resource string or null.
-        /// </param>
+        /// <param name="arg2">The optional argument that replaces {1} in the resource string.</param>
         /// <returns>The formatted string.</returns>
-        internal static string GetString(string resource, string arg1, string arg2)
+        public static string GetString(
+            ResourceManager resourceManager,
+            string resource,
+            string arg1,
+            string arg2 = null)
         {
-            return string.Format(CultureInfo.CurrentCulture, Resources.ResourceManager.GetString(
-                resource, CultureInfo.CurrentCulture), arg1, arg2);
+            if (resourceManager is null)
+            {
+                throw new ArgumentNullException(nameof(resourceManager));
+            }
+
+            return string.Format(
+                CultureInfo.CurrentCulture,
+                resourceManager.GetString(
+                    resource,
+                    CultureInfo.CurrentCulture),
+                arg1,
+                arg2);
         }
     }
 }

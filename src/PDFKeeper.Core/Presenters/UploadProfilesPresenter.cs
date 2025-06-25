@@ -23,25 +23,22 @@ using PDFKeeper.Core.ViewModels;
 using PDFKeeper.Core.Services;
 using System.Linq;
 using PDFKeeper.Core.Helpers;
+using System;
+using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Properties;
+using PDFKeeper.Core.Application;
 
 namespace PDFKeeper.Core.Presenters
 {
     public class UploadProfilesPresenter : PresenterBase<UploadProfilesViewModel>
     {
-        private readonly IMessageBoxService messageBoxService;
-        private readonly IDialogService dialogService;
+        private IDialogService dialogService;
+        private IMessageBoxService messageBoxService;
         private readonly UploadProfileManager uploadProfileManager;
 
-        /// <summary>
-        /// Initializes a new instance of the UploadProfilesPresenter class.
-        /// </summary>
-        /// <param name="messageBoxService">The MessageBoxService instance.</param>
-        /// <param name="dialogService">The DialogService instance.</param>
-        public UploadProfilesPresenter(IMessageBoxService messageBoxService,
-            IDialogService dialogService)
+        public UploadProfilesPresenter()
         {
-            this.messageBoxService = messageBoxService;
-            this.dialogService = dialogService;
+            GetServices(ServicesLocator.Services);
             uploadProfileManager = new UploadProfileManager();
             ViewModel = new UploadProfilesViewModel
             {
@@ -67,7 +64,7 @@ namespace PDFKeeper.Core.Presenters
 
         public void AddUploadProfile()
         {
-            dialogService.ShowDialog(null);
+            dialogService.ShowDialog();
         }
 
         public void EditUploadProfile()
@@ -77,11 +74,29 @@ namespace PDFKeeper.Core.Presenters
 
         public void DeleteUploadProfile()
         {
-            if (messageBoxService.ShowQuestion(ResourceHelper.GetString("DeleteToRecycleBin",
-                ViewModel.CurrentUploadProfileName, null), false).Equals(6))
+            var message = ResourceHelper.GetString(
+                Resources.ResourceManager,
+                "DeleteToRecycleBin",
+                ViewModel.CurrentUploadProfileName);
+            if (messageBoxService.ShowQuestion(message, false).Equals(6))
             {
                 uploadProfileManager.DeleteUploadProfile(ViewModel.CurrentUploadProfileName);
             }
+        }
+
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            foreach (var service in serviceProvider.GetServices<IDialogService>())
+            {
+                if (service.GetType().Name.Equals(
+                    "UploadProfileEditorDialogService",
+                    StringComparison.Ordinal))
+                {
+                    dialogService = service;
+                }
+            }
+
+            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
         }
     }
 }

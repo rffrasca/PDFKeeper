@@ -18,11 +18,9 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Presenters;
 using PDFKeeper.Core.ViewModels;
-using PDFKeeper.PDFViewer.Services;
-using PDFKeeper.WinForms.Helpers;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -37,12 +35,7 @@ namespace PDFKeeper.WinForms.Views
         public AddPdfForm()
         {
             InitializeComponent();
-
-            presenter = new AddPdfPresenter(
-                new OpenFileDialogService(),
-                new PdfOwnerPasswordDialogService(),
-                new RestrictedPdfViewerService(),
-                new MessageBoxService());
+            presenter = new AddPdfPresenter();
             viewModel = presenter.ViewModel;
             AddPdfViewModelBindingSource.DataSource = presenter.ViewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;

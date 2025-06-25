@@ -18,9 +18,11 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
-using PDFKeeper.WinForms.Helpers;
+using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
+using PDFKeeper.WinForms.Services;
 using System;
 using System.Diagnostics;
 using System.Reflection;
@@ -30,7 +32,7 @@ namespace PDFKeeper.WinForms.Dialogs
 {
     partial class AboutBox : Form
     {
-        private readonly HelpFile helpFile;
+        private readonly IHelpService helpService;
 
         public AboutBox()
         {
@@ -42,7 +44,7 @@ namespace PDFKeeper.WinForms.Dialogs
             labelCompanyName.Text = AssemblyCompany;
             //textBoxDescription.Text = AssemblyDescription;
             textBoxDescription.Text = Resources.AboutDescription;
-            helpFile = new HelpFile();
+            helpService = ServicesLocator.Services.GetService<IHelpService>();
         }
 
         #region Assembly Attribute Accessors
@@ -132,17 +134,17 @@ namespace PDFKeeper.WinForms.Dialogs
 
         private void DonateLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            helpFile.Show(HelpFile.DonateTopicFileName, this);
+            helpService.ShowHelp<Control>(this, HelpFile.Topic.Donate);
         }
         
         private void LicenseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            helpFile.Show(HelpFile.LicenseTopicFileName, this);
+            helpService.ShowHelp<Control>(this, HelpFile.Topic.License);
         }
 
         private void ThirdPartyNoticesLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            helpFile.Show(HelpFile.ThirdPartyNoticesTopicFileName, this);
+            helpService.ShowHelp<Control>(this, HelpFile.Topic.ThirdPartyNotices);
         }
     }
 }

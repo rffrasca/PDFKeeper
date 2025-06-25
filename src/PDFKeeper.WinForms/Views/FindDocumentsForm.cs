@@ -18,10 +18,9 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Presenters;
 using PDFKeeper.Core.ViewModels;
-using PDFKeeper.WinForms.Helpers;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -37,8 +36,7 @@ namespace PDFKeeper.WinForms.Views
         public FindDocumentsForm()
         {
             InitializeComponent();
-
-            presenter = new FindDocumentsPresenter(new MessageBoxService());
+            presenter = new FindDocumentsPresenter();
             viewModel = presenter.ViewModel;
             FindDocumentsViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;

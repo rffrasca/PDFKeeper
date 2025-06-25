@@ -20,6 +20,7 @@
 
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.ViewModels;
+using System;
 using System.Linq;
 
 namespace PDFKeeper.Core.Presenters
@@ -32,6 +33,11 @@ namespace PDFKeeper.Core.Presenters
             {
                 Items = TaxYear.GetYearRange().ToArray()
             };
+        }
+
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            throw new NotSupportedException();
         }
     }
 }

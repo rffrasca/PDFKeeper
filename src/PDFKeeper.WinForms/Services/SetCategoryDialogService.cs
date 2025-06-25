@@ -18,7 +18,6 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using System;
 using System.Windows.Forms;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
@@ -27,12 +26,7 @@ namespace PDFKeeper.WinForms.Services
 {
     public class SetCategoryDialogService : IDialogService
     {
-        public void ShowDialog(string arg)
-        {
-            throw new NotSupportedException();
-        }
-
-        public string ShowDialog()
+        public string ShowDialog(string arg = null)
         {
             using (var dialog = new SetCategoryForm())
             {

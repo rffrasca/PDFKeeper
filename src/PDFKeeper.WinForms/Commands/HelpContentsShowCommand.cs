@@ -18,32 +18,34 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Commands;
-using PDFKeeper.WinForms.Helpers;
+using PDFKeeper.Core.Services;
+using PDFKeeper.WinForms.Services;
 using PDFKeeper.WinForms.Views;
+using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    public class HelpFileShowCommand : ICommand
+    public class HelpContentsShowCommand : ICommand
     {
-        private readonly HelpFile helpFile;
         private readonly MainForm form;
 
         /// <summary>
-        /// Initializes a new instance of the HelpFileShowCommand class that shows the
-        /// "Using PDFKeeper.html" help topic when executed.
+        /// Initializes a new instance of the <see cref="HelpContentsShowCommand"/> class that
+        /// shows the "Using PDFKeeper.html" help topic when executed.
         /// </summary>
-        /// <param name="helpFile">The HelpFile instance.</param>
-        /// <param name="form">The MainForm instance.</param>
-        public HelpFileShowCommand(HelpFile helpFile, MainForm form)
+        /// <param name="form">The <see cref="MainForm"/> instance.</param>
+        public HelpContentsShowCommand(MainForm form)
         {
-            this.helpFile = helpFile;
             this.form = form;
         }
 
         public void Execute()
         {
-            helpFile.Show("Using PDFKeeper.html", form);
+            var helpService = ServicesLocator.Services.GetService<IHelpService>();
+            helpService.ShowHelp<Control>(form, HelpFile.Topic.UsingPDFKeeper);
         }
     }
 }

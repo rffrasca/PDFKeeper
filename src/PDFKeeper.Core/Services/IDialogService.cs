@@ -23,15 +23,10 @@ namespace PDFKeeper.Core.Services
     public interface IDialogService
     {
         /// <summary>
-        /// Shows the dialog.
+        /// Shows a dialog.
         /// </summary>
-        /// <param name="arg">The argument or null.</param>
-        void ShowDialog(string arg);
-
-        /// <summary>
-        /// Shows the dialog.
-        /// </summary>
-        /// <returns>The string or null when dialog was cancelled.</returns>
-        string ShowDialog();
+        /// <param name="arg">The optional <c>string</c> argument.</param>
+        /// <returns>The string or null when dialog is cancelled.</returns>
+        string ShowDialog(string arg = null);
     }
 }

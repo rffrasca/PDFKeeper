@@ -18,10 +18,9 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Presenters;
 using PDFKeeper.Core.ViewModels;
-using PDFKeeper.WinForms.Helpers;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -34,20 +33,17 @@ namespace PDFKeeper.WinForms.Views
         private readonly UploadProfileEditorViewModel viewModel;
 
         /// <summary>
-        /// Initializes a new instance of the UploadProfileEditorForm class.
+        /// Initializes a new instance of the <see cref="UploadProfileEditorForm"/> class.
         /// </summary>
         /// <param name="uploadProfileName">
-        /// The upload profile name or null when editing a new upload profile.
+        /// The upload profile name only when editing an existing upload profile.
         /// </param>
-        public UploadProfileEditorForm(string uploadProfileName)
+        public UploadProfileEditorForm(string uploadProfileName = null)
         {
             InitializeComponent();
-
-            presenter = new UploadProfileEditorPresenter(
-                uploadProfileName,
-                new MessageBoxService());
+            presenter = new UploadProfileEditorPresenter(uploadProfileName);
             viewModel = presenter.ViewModel;
-            UploadProfileEditorViewModelBindingSource.DataSource = presenter.ViewModel;
+            UploadProfileEditorViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             AddEventHandlers();
         }

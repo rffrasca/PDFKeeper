@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.WinForms.Helpers;
+using PDFKeeper.Core.Application;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -29,7 +29,6 @@ namespace PDFKeeper.WinForms.Dialogs
         public SetDateTimeAddedForm()
         {
             InitializeComponent();
-
             HelpProvider.HelpNamespace = new HelpFile().FullName;
         }
 

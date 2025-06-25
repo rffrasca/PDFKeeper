@@ -18,9 +18,11 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.IO;
 using System.Threading;
@@ -65,8 +67,9 @@ namespace PDFKeeper.WinForms.Helpers
 
         private static void InitLogPath()
         {
+            var applicationDirectory = new ApplicationDirectory();
             logPath = Path.Combine(
-                new ApplicationDirectory().GetDirectory(
+                applicationDirectory.GetDirectory(
                     ApplicationDirectory.SpecialName.Log).FullName,
                 "PDFKeeper.log");
         }
@@ -87,6 +90,7 @@ namespace PDFKeeper.WinForms.Helpers
 
         private static void Show(string eventType, string name, string message)
         {
+            var messageBoxService = ServicesLocator.Services.GetService<IMessageBoxService>();
             var msg = string.Concat(
                 eventType,
                 Environment.NewLine,
@@ -98,10 +102,10 @@ namespace PDFKeeper.WinForms.Helpers
                 Environment.NewLine,
                 Environment.NewLine,
                 ResourceHelper.GetString(
+                    Resources.ResourceManager,
                     "StackTraceLogged",
-                    logPath,
-                    null));
-            new MessageBoxService().ShowMessage(msg, true);
+                    logPath));
+            messageBoxService.ShowMessage(msg, true);
         }
     }
 }

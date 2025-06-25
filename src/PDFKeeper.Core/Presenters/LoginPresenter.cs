@@ -18,6 +18,8 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.DataAccess.Repository;
 using PDFKeeper.Core.Properties;
@@ -31,18 +33,17 @@ namespace PDFKeeper.Core.Presenters
 {
     public class LoginPresenter : PresenterBase<LoginViewModel>
     {
+        private IMessageBoxService messageBoxService;
         private readonly IntPtr handle;
-        private readonly IMessageBoxService messageBoxService;
 
         /// <summary>
-        /// Initializes a new instance of the LoginPresenter class.
+        /// Initializes a new instance of the <see cref="LoginPresenter"/> class.
         /// </summary>
         /// <param name="handle">The handle of the view.</param>
-        /// <param name="messageBoxService">The MessageBoxService instance.</param>
-        public LoginPresenter(IntPtr handle, IMessageBoxService messageBoxService)
+        public LoginPresenter(IntPtr handle)
         {
+            GetServices(ServicesLocator.Services);
             this.handle = handle;
-            this.messageBoxService = messageBoxService;
             ViewModel = new LoginViewModel();
         }
 
@@ -54,6 +55,7 @@ namespace PDFKeeper.Core.Presenters
             DatabaseSession.UserName = ViewModel.UserName;
             DatabaseSession.Password = ViewModel.Password;
             DatabaseSession.DataSource = ViewModel.DataSource;
+            
             IDocumentRepository documentRepository = null;
             try
             {
@@ -71,11 +73,13 @@ namespace PDFKeeper.Core.Presenters
             catch (DatabaseException ex)
             {
                 messageBoxService.ShowMessage(handle, ex.Message, true);
+                
                 try
                 {
                     documentRepository.ResetCredential();
                 }
                 catch (NotSupportedException) { }
+                
                 OnViewResetRequested();
             }
             catch (FileNotFoundException)
@@ -87,6 +91,11 @@ namespace PDFKeeper.Core.Presenters
             {
                 OnLongRunningOperationFinished();
             }
+        }
+
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
         }
 
         private void SetDatabasePlatformName()

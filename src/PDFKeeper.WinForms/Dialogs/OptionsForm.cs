@@ -18,8 +18,8 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
-using PDFKeeper.WinForms.Helpers;
 using System;
 using System.Windows.Forms;
 
@@ -30,7 +30,6 @@ namespace PDFKeeper.WinForms.Dialogs
         public OptionsForm()
         {
             InitializeComponent();
-
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             if (!DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Sqlite))
             {

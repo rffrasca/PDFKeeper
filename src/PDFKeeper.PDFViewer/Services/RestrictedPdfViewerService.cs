@@ -27,7 +27,7 @@ namespace PDFKeeper.PDFViewer.Services
 {
     public class RestrictedPdfViewerService : PdfViewerBase, IRestrictedPdfViewerService
     {
-        private readonly IList<int> pidList;
+        private readonly List<int> pidList;
 
         public RestrictedPdfViewerService()
         {

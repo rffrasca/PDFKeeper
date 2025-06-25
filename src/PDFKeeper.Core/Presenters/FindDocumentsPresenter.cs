@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
@@ -25,22 +26,19 @@ using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
+using System;
 using System.Linq;
 
 namespace PDFKeeper.Core.Presenters
 {
     public class FindDocumentsPresenter : PresenterBase<FindDocumentsViewModel>
     {
-        private readonly IMessageBoxService messageBoxService;
+        private IMessageBoxService messageBoxService;
         private readonly SearchTermHistory searchTermHistory;
 
-        /// <summary>
-        /// Initializes a new instance of the FindDocumentsPresenter class.
-        /// </summary>
-        /// <param name="messageBoxService">The MessageBoxService instance.</param>
-        public FindDocumentsPresenter(IMessageBoxService messageBoxService)
+        public FindDocumentsPresenter()
         {
-            this.messageBoxService = messageBoxService;
+            GetServices(ServicesLocator.Services);
             ViewModel = new FindDocumentsViewModel();
             searchTermHistory = new SearchTermHistory();
             ApplyPolicy();
@@ -64,7 +62,7 @@ namespace PDFKeeper.Core.Presenters
             }
             catch (DatabaseException ex)
             {
-                this.messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(ex.Message, true);
             }
         }
 
@@ -88,7 +86,7 @@ namespace PDFKeeper.Core.Presenters
             }
             catch (DatabaseException ex)
             {
-                this.messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(ex.Message, true);
             }
             finally
             {
@@ -108,7 +106,7 @@ namespace PDFKeeper.Core.Presenters
             }
             catch (DatabaseException ex)
             {
-                this.messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(ex.Message, true);
             }
             finally
             {
@@ -128,7 +126,7 @@ namespace PDFKeeper.Core.Presenters
             }
             catch (DatabaseException ex)
             {
-                this.messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(ex.Message, true);
             }
             finally
             {
@@ -148,7 +146,7 @@ namespace PDFKeeper.Core.Presenters
             }
             catch (DatabaseException ex)
             {
-                this.messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(ex.Message, true);
             }
             finally
             {
@@ -179,6 +177,11 @@ namespace PDFKeeper.Core.Presenters
         public void Cancel()
         {
             CancelViewClosing = false;
+        }
+
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
         }
 
         private void ApplyPolicy()

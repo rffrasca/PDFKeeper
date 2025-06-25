@@ -18,9 +18,8 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Presenters;
-using PDFKeeper.WinForms.Helpers;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.Windows.Forms;
 
@@ -31,9 +30,8 @@ namespace PDFKeeper.WinForms.Views
         public SetSubjectForm()
         {
             InitializeComponent();
-
-            StringEnumerableViewModelBindingSource.DataSource = new SetSubjectPresenter(
-                new MessageBoxService()).ViewModel;
+            var presenter = new SetSubjectPresenter();
+            StringEnumerableViewModelBindingSource.DataSource = presenter.ViewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
         }
 

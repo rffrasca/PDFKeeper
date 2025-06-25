@@ -18,9 +18,9 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Presenters;
-using PDFKeeper.WinForms.Helpers;
-using PDFKeeper.WinForms.Services;
+using System;
 using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Views
@@ -32,32 +32,29 @@ namespace PDFKeeper.WinForms.Views
         public UploadProfilesForm()
         {
             InitializeComponent();
-
-            presenter = new UploadProfilesPresenter(
-                new MessageBoxService(),
-                new UploadProfileEditorDialogService<string>());
+            presenter = new UploadProfilesPresenter();
             var viewModel = presenter.ViewModel;
             UploadProfilesViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             UploadProfilesFileSystemWatcher.Path = viewModel.UploadProfilesDirectoryPath;
         }
 
-        private void UploadProfileNamesListBox_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void UploadProfileNamesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             UploadProfileNamesListBox.Select();
         }
 
-        private void AddButton_Click(object sender, System.EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
             presenter.AddUploadProfile();
         }
 
-        private void EditButton_Click(object sender, System.EventArgs e)
+        private void EditButton_Click(object sender, EventArgs e)
         {
             presenter.EditUploadProfile();
         }
 
-        private void DeleteButton_Click(object sender, System.EventArgs e)
+        private void DeleteButton_Click(object sender, EventArgs e)
         {
             presenter.DeleteUploadProfile();
         }

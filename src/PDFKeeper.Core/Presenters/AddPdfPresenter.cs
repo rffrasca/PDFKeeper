@@ -29,36 +29,23 @@ using System.Linq;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.FileIO.PDF;
+using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Application;
 
 namespace PDFKeeper.Core.Presenters
 {
     public class AddPdfPresenter : PresenterBase<AddPdfViewModel>
     {
-        private readonly IFileDialogService openFileDialogService;
-        private readonly IPasswordDialogService passwordDialogService;
-        private readonly IRestrictedPdfViewerService restrictedPdfViewerService;
-        private readonly IMessageBoxService messageBoxService;
+        private IFileDialogService openFileDialogService;
+        private IMessageBoxService messageBoxService;
+        private IPasswordDialogService passwordDialogService;
+        private IRestrictedPdfViewerService restrictedPdfViewerService;
         private PdfFile pdfFile;
         private PdfMetadata pdfMetadata;
 
-        /// <summary>
-        /// Initializes a new instance of the AddPdfPresenter class.
-        /// </summary>
-        /// <param name="openFileDialogService">The OpenFileDialogService instance.</param>
-        /// <param name="passwordDialogService">The PasswordDialogService instance.</param>
-        /// <param name="restrictedPdfViewerService">
-        /// The RestrictedPdfViewerService instance.
-        /// </param>
-        /// <param name="messageBoxService">The MessageBoxService instance.</param>
-        public AddPdfPresenter(IFileDialogService openFileDialogService,
-            IPasswordDialogService passwordDialogService,
-            IRestrictedPdfViewerService restrictedPdfViewerService,
-            IMessageBoxService messageBoxService)
+        public AddPdfPresenter()
         {
-            this.openFileDialogService = openFileDialogService;
-            this.passwordDialogService = passwordDialogService;
-            this.restrictedPdfViewerService = restrictedPdfViewerService;
-            this.messageBoxService = messageBoxService;
+            GetServices(ServicesLocator.Services);
             ViewModel = new AddPdfViewModel();
         }
 
@@ -74,7 +61,7 @@ namespace PDFKeeper.Core.Presenters
             }
             catch (DatabaseException ex)
             {
-                this.messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(ex.Message, true);
             }
         }
 
@@ -175,7 +162,7 @@ namespace PDFKeeper.Core.Presenters
             }
             catch (DatabaseException ex)
             {
-                this.messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(ex.Message, true);
             }
         }
 
@@ -225,6 +212,23 @@ namespace PDFKeeper.Core.Presenters
             {
                 restrictedPdfViewerService.Close();
             }
+        }
+
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            foreach (var service in serviceProvider.GetServices<IFileDialogService>())
+            {
+                if (service.GetType().Name.Equals(
+                    "OpenFileDialogService",
+                    StringComparison.Ordinal))
+                {
+                    openFileDialogService = service;
+                }
+            }
+
+            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
+            passwordDialogService = serviceProvider.GetService<IPasswordDialogService>();
+            restrictedPdfViewerService = serviceProvider.GetService<IRestrictedPdfViewerService>();
         }
     }
 }

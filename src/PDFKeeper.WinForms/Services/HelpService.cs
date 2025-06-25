@@ -1,4 +1,4 @@
-// *****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2025 Robert F. Frasca
 // *
@@ -16,34 +16,22 @@
 // *
 // * You should have received a copy of the GNU General Public License along
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
-// *****************************************************************************
+// ****************************************************************************
 
 using PDFKeeper.Core.Application;
-using System;
+using PDFKeeper.Core.Services;
 using System.Windows.Forms;
 
-namespace PDFKeeper.WinForms.Dialogs
+namespace PDFKeeper.WinForms.Services
 {
-    public partial class SetTitleForm : Form
+    public class HelpService : IHelpService
     {
-        public SetTitleForm()
+        public void ShowHelp<T>(T control, HelpFile.Topic topic)
         {
-            InitializeComponent();
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
-        }
-
-        public string Title => TitleTextBox.Text;
-
-        private void OK_Button_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-
-        private void Cancel_Button_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            Help.ShowHelp(
+                control as Control,
+                new HelpFile().FullName,
+                HelpFile.GetTopicFileName(topic));
         }
     }
 }

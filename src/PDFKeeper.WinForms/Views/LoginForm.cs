@@ -18,11 +18,10 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Presenters;
 using PDFKeeper.Core.ViewModels;
-using PDFKeeper.WinForms.Helpers;
 using PDFKeeper.WinForms.Properties;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.Windows.Forms;
 
@@ -36,8 +35,7 @@ namespace PDFKeeper.WinForms.Views
         public LoginForm()
         {
             InitializeComponent();
-
-            presenter = new LoginPresenter(Handle, new MessageBoxService());
+            presenter = new LoginPresenter(Handle);
             viewModel = presenter.ViewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             AddEventHandlers();

@@ -26,6 +26,7 @@ using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO.TextExtractor;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -85,11 +86,11 @@ namespace PDFKeeper.Core.FileIO.PDF
             }
             if (pdfFile.IsFileNameInvalid())
             {
-                throw new ArgumentException(
-                    ResourceHelper.GetString(
-                        "FileNameInvalid",
-                        pdfFile.FullName,
-                        null));
+                var message = ResourceHelper.GetString(
+                    Resources.ResourceManager,
+                    "FileNameInvalid",
+                    pdfFile.FullName);
+                throw new ArgumentException(message);
             }
             this.pdfFile = pdfFile;
             tempDirectory = new ApplicationDirectory().GetDirectory(

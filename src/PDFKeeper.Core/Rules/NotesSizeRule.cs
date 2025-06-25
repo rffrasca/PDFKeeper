@@ -21,6 +21,7 @@
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Properties;
 
 namespace PDFKeeper.Core.Rules
 {
@@ -56,6 +57,7 @@ namespace PDFKeeper.Core.Rules
                 {
                     ViolationFound = true;
                     ViolationMessage = ResourceHelper.GetString(
+                        Resources.ResourceManager,
                         "NotesSizeTooLarge",
                         size.ToString(),
                         columnLength.ToString());

@@ -18,8 +18,9 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using System;
 using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
 using PDFKeeper.WinForms.Properties;
@@ -28,13 +29,10 @@ namespace PDFKeeper.WinForms.Services
 {
     public class SetTitleDialogService : IDialogService
     {
-        public void ShowDialog(string arg)
+        public string ShowDialog(string arg = null)
         {
-            throw new NotSupportedException();
-        }
+            var messageBoxService = ServicesLocator.Services.GetService<IMessageBoxService>();
 
-        public string ShowDialog()
-        {
             using (var dialog = new SetTitleForm())
             {
                 dialog.ShowDialog();
@@ -46,7 +44,6 @@ namespace PDFKeeper.WinForms.Services
                     }
                     else
                     {
-                        var messageBoxService = new MessageBoxService();
                         messageBoxService.ShowMessage(Resources.TitleCannotBeBlank, true);
                         return null;
                     }

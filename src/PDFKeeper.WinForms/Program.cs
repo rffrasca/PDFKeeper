@@ -18,14 +18,19 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Services;
+using PDFKeeper.PDFViewer.Services;
 using PDFKeeper.WinForms.Helpers;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Services;
 using PDFKeeper.WinForms.Views;
 using System;
+using System.Configuration;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -44,12 +49,16 @@ namespace PDFKeeper.WinForms
                 ExceptionEventHandler.HandleThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(
                 ExceptionEventHandler.HandleUnhandledException);
+            
             using (var mutex = new Mutex(true, Application.ProductName))
             {
                 if (mutex.WaitOne(TimeSpan.Zero, true))
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
+
+                    ServicesLocator.Services = ConfigureServices();
+
                     if (!Startup())
                     {
                         using (var form = new MainForm())
@@ -57,25 +66,67 @@ namespace PDFKeeper.WinForms
                             Application.Run(form);
                         }
                     }
+
                     Shutdown();
-                    mutex.ReleaseMutex();
-                    mutex.Dispose();
                 }
             }
         }
 
         /// <summary>
-        /// Application startup actions.
+        /// Configures services for the application.
         /// </summary>
-        /// <returns>
-        /// User cancelled or startup encountered an exception? (true or false)
-        /// </returns>
+        /// <returns>The <see cref="ServiceProvider"/> instance.</returns>
+        static ServiceProvider ConfigureServices()
+        {
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddSingleton<IDialogService,
+                SetTitleDialogService>();
+            serviceCollection.AddSingleton<IDialogService,
+                SetAuthorDialogService>();
+            serviceCollection.AddSingleton<IDialogService,
+                SetSubjectDialogService>();
+            serviceCollection.AddSingleton<IDialogService,
+                SetCategoryDialogService>();
+            serviceCollection.AddSingleton<IDialogService,
+                SetTaxYearDialogService>();
+            serviceCollection.AddSingleton<IDialogService,
+                SetDateTimeAddedDialogService>();
+            serviceCollection.AddSingleton<IDialogService,
+                UploadProfileEditorDialogService>();
+            serviceCollection.AddSingleton<IFileDialogService,
+                OpenFileDialogService>();
+            serviceCollection.AddSingleton<IFileDialogService,
+                SaveFileDialogService>();
+            serviceCollection.AddSingleton<IFolderBrowserDialogService,
+                FolderBrowserDialogService>();
+            serviceCollection.AddSingleton<IFolderExplorerService,
+                FolderExplorerService>();
+            serviceCollection.AddSingleton<IHelpService, HelpService>();
+            serviceCollection.AddSingleton<IMessageBoxService,
+                MessageBoxService>();
+            serviceCollection.AddSingleton<IPasswordDialogService,
+                PdfOwnerPasswordDialogService>();
+            serviceCollection.AddSingleton<IPdfViewerService,
+                PdfViewerService>();
+            serviceCollection.AddSingleton<IPrintDialogService,
+                PrintDialogService>();
+            serviceCollection.AddSingleton<IPrintPreviewDialogService,
+                PrintPreviewDialogService>();
+            serviceCollection.AddSingleton<IRestrictedPdfViewerService,
+                RestrictedPdfViewerService>();
+            return serviceCollection.BuildServiceProvider();
+        }
+
+        /// <summary>
+        /// Performs application startup actions.
+        /// </summary>
+        /// <returns>User cancelled or startup encountered an exception. (true or false)</returns>
         static bool Startup()
         {
             var helpFile = new HelpFile();
-            var userSettingsHelper = new UserSettingsHelper();
-            var messageBoxService = new MessageBoxService();
-            userSettingsHelper.Upgrade();
+            var messageBoxService = ServicesLocator.Services.GetService<IMessageBoxService>();
+            UpgradeUserSettings();
+
             if (Settings.Default.DbManagementSystem.Length.Equals(0))
             {
                 if (File.Exists(DatabaseSession.LocalDatabasePath))
@@ -90,7 +141,8 @@ namespace PDFKeeper.WinForms
                     {
                         case 6:
                             DatabaseSession.PlatformName =
-                            DatabaseSession.CompatiblePlatformName.Sqlite;
+                                DatabaseSession.CompatiblePlatformName.Sqlite;
+                            
                             try
                             {
                                 using (var repository = DatabaseSession.GetDocumentRepository())
@@ -103,19 +155,20 @@ namespace PDFKeeper.WinForms
                                 messageBoxService.ShowMessage(ex.Message, true);
                                 return true;
                             }
+                            
                             Settings.Default.DbManagementSystem =
                                 DatabaseSession.CompatiblePlatformName.Sqlite.ToString();
-                            messageBoxService.ShowMessage(
-                                ResourceHelper.GetString(
-                                    "DatabaseCreated",
-                                    DatabaseSession.LocalDatabasePath,
-                                    null),
-                                false);
-                            helpFile.Show("Setup Single-User Database.html");
+                            var message = ResourceHelper.GetString(
+                                Resources.ResourceManager,
+                                "DatabaseCreated",
+                                DatabaseSession.LocalDatabasePath);
+                            messageBoxService.ShowMessage(message, false);
+                            helpFile.ShowHelp(HelpFile.Topic.SetupSingleUserDatabase);
                             break;
                         case 7:
                             messageBoxService.ShowMessage(Resources.MultiUserDatabaseSetup, false);
-                            helpFile.Show("Setup Multi-User Database.html");
+                            helpFile.ShowHelp(HelpFile.Topic.SetupMultiUserDatabase);
+
                             var choice2 = messageBoxService.ShowQuestion(
                                 Resources.ConnectingToOracle,
                                 false);
@@ -127,8 +180,8 @@ namespace PDFKeeper.WinForms
                             else
                             {
                                 var choice3 = messageBoxService.ShowQuestion(
-                                Resources.ConnectingToSqlServer,
-                                false);
+                                    Resources.ConnectingToSqlServer,
+                                    false);
                                 if (choice3.Equals(6))
                                 {
                                     Settings.Default.DbManagementSystem =
@@ -150,12 +203,14 @@ namespace PDFKeeper.WinForms
                                     }
                                 }
                             }
+
                             break;
                         case 2:
                             return true;
                     }
                 }
             }
+
             if (!Settings.Default.DbManagementSystem.Equals(
                 DatabaseSession.CompatiblePlatformName.Sqlite.ToString(),
                 StringComparison.Ordinal))
@@ -171,6 +226,7 @@ namespace PDFKeeper.WinForms
             else
             {
                 DatabaseSession.PlatformName = DatabaseSession.CompatiblePlatformName.Sqlite;
+                
                 try
                 {
                     using (var repository = DatabaseSession.GetDocumentRepository())
@@ -184,11 +240,12 @@ namespace PDFKeeper.WinForms
                     return true;
                 }
             }
+
             return false;
         }
 
         /// <summary>
-        /// Application shutdown actions.
+        /// Performs application shutdown actions.
         /// </summary>
         static void Shutdown()
         {
@@ -197,6 +254,24 @@ namespace PDFKeeper.WinForms
             applicationDirectory.GetDirectory(ApplicationDirectory.SpecialName.Cache).Empty();
             applicationDirectory.GetDirectory(ApplicationDirectory.SpecialName.Temp).Empty();
             Settings.Default.Save();
+        }
+
+        /// <summary>
+        /// Upgrades user settings.
+        /// </summary>
+        static void UpgradeUserSettings()
+        {
+            var configuration = ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.PerUserRoamingAndLocal);
+            if (!configuration.HasFile)
+            {
+                if (Settings.Default.UpgradeSettings)
+                {
+                    Settings.Default.Upgrade();
+                    Settings.Default.UpgradeSettings = false;
+                    Settings.Default.Save();
+                }
+            }
         }
     }
 }

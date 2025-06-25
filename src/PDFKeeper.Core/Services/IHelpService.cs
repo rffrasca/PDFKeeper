@@ -1,4 +1,4 @@
-// *****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2025 Robert F. Frasca
 // *
@@ -16,34 +16,24 @@
 // *
 // * You should have received a copy of the GNU General Public License along
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
-// *****************************************************************************
+// ****************************************************************************
 
 using PDFKeeper.Core.Application;
-using System;
-using System.Windows.Forms;
 
-namespace PDFKeeper.WinForms.Dialogs
+namespace PDFKeeper.Core.Services
 {
-    public partial class SetTitleForm : Form
+    public interface IHelpService
     {
-        public SetTitleForm()
-        {
-            InitializeComponent();
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
-        }
-
-        public string Title => TitleTextBox.Text;
-
-        private void OK_Button_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-
-        private void Cancel_Button_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-        }
+        /// <summary>
+        /// Shows a help file topic modelessly.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The parent control type. Can be <c>Form</c> or <c>Control</c>.
+        /// </typeparam>
+        /// <param name="control">
+        /// The parent <c>Form</c> or <c>Control</c> of the Help dialog.
+        /// </param>
+        /// <param name="topic">The <see cref="Topic"/> member.</param>
+        void ShowHelp<T>(T control, HelpFile.Topic topic);
     }
 }

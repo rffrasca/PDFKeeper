@@ -62,6 +62,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\HelpFile.cs" />
+    <Compile Include="Application\ServicesLocator.cs" />
     <Compile Include="Application\UserProfileFolder.cs" />
     <Compile Include="Commands\ExportDocumentCommand.cs" />
     <Compile Include="DataAccess\Repository\DocumentRepositoryFactory.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Services\IFolderBrowserDialogService.cs" />
     <Compile Include="Services\IFolderExplorerService.cs" />
     <Compile Include="Services\IFileDialogService.cs" />
+    <Compile Include="Services\IHelpService.cs" />
     <Compile Include="Services\IPrintDialogService.cs" />
     <Compile Include="Services\IPrintPreviewDialogService.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -193,6 +196,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Data.SqlClient">
       <Version>5.2.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>9.0.6</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
       <Version>10.0.19041.1</Version>

@@ -25,12 +25,10 @@ using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Presenters;
 using PDFKeeper.Core.ViewModels;
-using PDFKeeper.PDFViewer.Services;
 using PDFKeeper.WinForms.Commands;
 using PDFKeeper.WinForms.Dialogs;
 using PDFKeeper.WinForms.Helpers;
 using PDFKeeper.WinForms.Properties;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -46,7 +44,6 @@ namespace PDFKeeper.WinForms.Views
         private readonly MainViewModel viewModel;
         private readonly DataGridViewSortProperties dataGridViewSortProperties;
         private int dataGridViewScrollPosition;
-        private readonly HelpFile helpFile;
         private readonly FindDocumentsForm findDocumentsForm;
         private readonly UploadProfilesForm uploadProfilesForm;
         private readonly ProgressForm progressForm;
@@ -57,28 +54,11 @@ namespace PDFKeeper.WinForms.Views
         public MainForm()
         {
             InitializeComponent();
-
-            presenter = new MainPresenter(
-                Handle,
-                new PdfViewerService(),
-                new FolderBrowserDialogService(),
-                new MessageBoxService(),
-                new FolderExplorerService(),
-                new SetTitleDialogService(),
-                new SetAuthorDialogService(),
-                new SetSubjectDialogService(),
-                new SetCategoryDialogService(),
-                new SetTaxYearDialogService(),
-                new SetDateTimeAddedDialogService(),
-                new OpenFileDialogService(),
-                new SaveFileDialogService(),
-                new PrintDialogService(),
-                new PrintPreviewDialogService());
+            presenter = new MainPresenter(Handle);
             viewModel = presenter.ViewModel;
             MainViewModelBindingSource.DataSource = presenter.ViewModel;
             dataGridViewSortProperties = new DataGridViewSortProperties();
-            helpFile = new HelpFile();
-            HelpProvider.HelpNamespace = helpFile.FullName;
+            HelpProvider.HelpNamespace = new HelpFile().FullName;
             findDocumentsForm = new FindDocumentsForm();
             uploadProfilesForm = new UploadProfilesForm();
             progressForm = new ProgressForm();
@@ -178,8 +158,8 @@ namespace PDFKeeper.WinForms.Views
                 uploadProfilesForm,
                 null);
             ToolsMoveDatabaseToolStripMenuItem.Tag = new MoveDatabaseCommand(presenter);
-            HelpContentsToolStripMenuItem.Tag = new HelpFileShowCommand(helpFile, this);
-            HelpContentsToolStripButton.Tag = new HelpFileShowCommand(helpFile, this);
+            HelpContentsToolStripMenuItem.Tag = new HelpContentsShowCommand(this);
+            HelpContentsToolStripButton.Tag = new HelpContentsShowCommand(this);
             HelpAboutToolStripMenuItem.Tag = new DialogShowCommand(new AboutBox(), null);
         }
 

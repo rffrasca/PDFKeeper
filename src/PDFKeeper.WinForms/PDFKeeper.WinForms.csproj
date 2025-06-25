@@ -75,7 +75,7 @@
     <Compile Include="Commands\DialogShowCommand.cs" />
     <Compile Include="Commands\ExportCommand.cs" />
     <Compile Include="Commands\FlagStateToggleCommand.cs" />
-    <Compile Include="Commands\HelpFileShowCommand.cs" />
+    <Compile Include="Commands\HelpContentsShowCommand.cs" />
     <Compile Include="Commands\MoveDatabaseCommand.cs" />
     <Compile Include="Commands\OpenPdfCommand.cs" />
     <Compile Include="Commands\PasteCommand.cs" />
@@ -151,7 +151,7 @@
     <Compile Include="Dialogs\SetPreviewPixelDensityForm.Designer.cs">
       <DependentUpon>SetPreviewPixelDensityForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ResourceHelper.cs" />
+    <Compile Include="Services\HelpService.cs" />
     <Compile Include="Services\SetDateTimeAddedDialogService.cs" />
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
@@ -160,10 +160,8 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DataGridViewSortProperties.cs" />
-    <Compile Include="Helpers\HelpFile.cs" />
     <Compile Include="Helpers\TextBoxHelper.cs" />
     <Compile Include="Helpers\ExceptionEventHandler.cs" />
-    <Compile Include="Helpers\UserSettingsHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FolderBrowserDialogService.cs" />
@@ -482,6 +480,9 @@
       <Version>8.0.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>9.0.6</Version>
     </PackageReference>
     <PackageReference Include="Vip.ComboBox">
       <Version>1.0.0</Version>

@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Commands;
 using PDFKeeper.Core.DataAccess;
@@ -46,21 +47,21 @@ namespace PDFKeeper.Core.Presenters
 {
     public class MainPresenter : PresenterBase<MainViewModel>
     {
+        private IDialogService setTitleDialogService;
+        private IDialogService setAuthorDialogService;
+        private IDialogService setSubjectDialogService;
+        private IDialogService setCategoryDialogService;
+        private IDialogService setTaxYearDialogService;
+        private IDialogService setDateTimeAddedDialogService;
+        private IFileDialogService openFileDialogService;
+        private IFileDialogService saveFileDialogService;
+        private IFolderBrowserDialogService folderBrowserDialogService;
+        private IFolderExplorerService folderExplorerService;
+        private IMessageBoxService messageBoxService;
+        private IPdfViewerService pdfViewerService;
+        private IPrintDialogService printDialogService;
+        private IPrintPreviewDialogService printPreviewDialogService;
         private readonly IntPtr handle;
-        private readonly IPdfViewerService pdfViewerService;
-        private readonly IFolderBrowserDialogService folderBrowserDialogService;
-        private readonly IMessageBoxService messageBoxService;
-        private readonly IFolderExplorerService folderExplorerService;
-        private readonly IDialogService setTitleDialogService;
-        private readonly IDialogService setAuthorDialogService;
-        private readonly IDialogService setSubjectDialogService;
-        private readonly IDialogService setCategoryDialogService;
-        private readonly IDialogService setTaxYearDialogService;
-        private readonly IDialogService setDateTimeAddedDialogService;
-        private readonly IFileDialogService openFileDialogService;
-        private readonly IFileDialogService saveFileDialogService;
-        private readonly IPrintDialogService printDialogService;
-        private readonly IPrintPreviewDialogService printPreviewDialogService;
         private readonly PrintDocument printDocument;
         private readonly PdfUploader pdfUploader;
         private readonly FileCache fileCache;
@@ -70,85 +71,13 @@ namespace PDFKeeper.Core.Presenters
         private string textToPrint;
 
         /// <summary>
-        /// Initializes a new instance of the MainPresenter class.
+        /// Initializes a new instance of the <see cref="MainPresenter"/> class.
         /// </summary>
-        /// <param name="handle">
-        /// The handle of the view.
-        /// </param>
-        /// <param name="pdfViewerService">
-        /// The PdfViewerService instance.
-        /// </param>
-        /// <param name="folderBrowserDialogService">
-        /// The FolderBrowserDialogService instance.
-        /// </param>
-        /// <param name="messageBoxService">
-        /// The MessageBoxService instance.
-        /// </param>
-        /// <param name="folderExplorerService">
-        /// The FolderExplorerService instance.
-        /// </param>
-        /// <param name="setTitleDialogService">
-        /// The SetTitleDialogService instance.
-        /// </param>
-        /// <param name="setAuthorDialogService">
-        /// The SetAuthorDialogService instance.
-        /// </param>
-        /// <param name="setSubjectDialogService">
-        /// The SetSubjectDialogService instance.
-        /// </param>
-        /// <param name="setCategoryDialogService">
-        /// The SetCategoryDialogService instance.
-        /// </param>
-        /// <param name="setTaxYearDialogService">
-        /// The SetTaxYearDialogService instance.
-        /// </param>
-        /// <param name="setDateTimeAddedDialogService">
-        /// The SetDateTimeAddedDialogService instance.
-        /// </param>
-        /// <param name="openFileDialogService">
-        /// The OpenFileDialogService instance.
-        /// </param>
-        /// <param name="saveFileDialogService">
-        /// The SaveFileDialogService instance.
-        /// </param>
-        /// <param name="printDialogService">
-        /// The PrintDialogService instance.
-        /// </param>
-        /// <param name="printPreviewDialogService">
-        /// The PrintPreviewDialogService instance.
-        /// </param>
-        public MainPresenter(
-            IntPtr handle,
-            IPdfViewerService pdfViewerService,
-            IFolderBrowserDialogService folderBrowserDialogService,
-            IMessageBoxService messageBoxService,
-            IFolderExplorerService folderExplorerService,
-            IDialogService setTitleDialogService,
-            IDialogService setAuthorDialogService,
-            IDialogService setSubjectDialogService,
-            IDialogService setCategoryDialogService,
-            IDialogService setTaxYearDialogService,
-            IDialogService setDateTimeAddedDialogService,
-            IFileDialogService openFileDialogService,
-            IFileDialogService saveFileDialogService,
-            IPrintDialogService printDialogService,
-            IPrintPreviewDialogService printPreviewDialogService)
+        /// <param name="handle">The handle of the view.</param>
+        public MainPresenter(IntPtr handle)
         {
+            GetServices(ServicesLocator.Services);
             this.handle = handle;
-            this.pdfViewerService = pdfViewerService;
-            this.folderBrowserDialogService = folderBrowserDialogService;
-            this.messageBoxService = messageBoxService;
-            this.folderExplorerService = folderExplorerService;
-            this.setTitleDialogService = setTitleDialogService;
-            this.setAuthorDialogService = setAuthorDialogService;
-            this.setSubjectDialogService = setSubjectDialogService;
-            this.setCategoryDialogService = setCategoryDialogService;
-            this.setTaxYearDialogService = setTaxYearDialogService;
-            this.setDateTimeAddedDialogService = setDateTimeAddedDialogService;
-            this.openFileDialogService = openFileDialogService;
-            this.saveFileDialogService = saveFileDialogService;
-            this.printDialogService = printDialogService;
-            this.printPreviewDialogService = printPreviewDialogService;
             ViewModel = new MainViewModel();
             printDocument = new PrintDocument();
             pdfUploader = new PdfUploader();
@@ -280,16 +209,22 @@ namespace PDFKeeper.Core.Presenters
                         }
                         catch (DatabaseException ex)
                         {
-                            messageBoxService.ShowMessage(ResourceHelper.GetString(
-                                "DefaultDocumentException", ex.Message, id.ToString()), true);
+                            var message = ResourceHelper.GetString(
+                                Resources.ResourceManager,
+                                "DefaultDocumentException",
+                                ex.Message,
+                                id.ToString());
+                            messageBoxService.ShowMessage(message, true);
                         }
                     }
                 }
                 if (count > openMaximum)
                 {
-                    messageBoxService.ShowMessage(
-                        ResourceHelper.GetString("OpenCheckedDocumentsMaximumReached",
-                        openMaximum.ToString(), null), false);
+                    var message = ResourceHelper.GetString(
+                        Resources.ResourceManager,
+                        "OpenCheckedDocumentsMaximumReached",
+                        openMaximum.ToString());
+                    messageBoxService.ShowMessage(message, false);
                 }
                 OnCheckedDocumentsProcessed();
             }
@@ -321,12 +256,11 @@ namespace PDFKeeper.Core.Presenters
                         }
                         catch (IndexOutOfRangeException ex)
                         {
-                            messageBoxService.ShowMessage(
-                                ResourceHelper.GetString(
-                                    "DocumentMayHaveBeenDeletedException",
-                                    ex.Message,
-                                    null),
-                                true);
+                            var message = ResourceHelper.GetString(
+                                Resources.ResourceManager,
+                                "DocumentMayHaveBeenDeletedException",
+                                ex.Message);
+                            messageBoxService.ShowMessage(message, true);
                         }
                         catch (DatabaseException ex)
                         {
@@ -523,8 +457,12 @@ namespace PDFKeeper.Core.Presenters
                 var textFile = new FileInfo(textFilePath);
                 OnScrollToEndOfNotesTextRequested();
                 ViewModel.Notes = ViewModel.Notes.AppendTextFile(textFile);
-                if (messageBoxService.ShowQuestion(ResourceHelper.GetString("DeleteToRecycleBin",
-                    textFile.FullName, null), false).Equals(6))
+                if (messageBoxService.ShowQuestion(
+                    ResourceHelper.GetString(
+                        Resources.ResourceManager,
+                        "DeleteToRecycleBin",
+                        textFile.FullName),
+                    false).Equals(6))
                 {
                     textFile.DeleteToRecycleBin();
                 }
@@ -545,8 +483,11 @@ namespace PDFKeeper.Core.Presenters
                 }
                 catch (IndexOutOfRangeException ex)
                 {
-                    messageBoxService.ShowMessage(ResourceHelper.GetString(
-                        "DocumentMayHaveBeenDeletedException", ex.Message, null), true);
+                    var message = ResourceHelper.GetString(
+                        Resources.ResourceManager,
+                        "DocumentMayHaveBeenDeletedException",
+                        ex.Message);
+                    messageBoxService.ShowMessage(message, true);
                 }
                 catch (DatabaseException ex)
                 {
@@ -1119,6 +1060,72 @@ namespace PDFKeeper.Core.Presenters
             }
         }
 
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            foreach (var service in serviceProvider.GetServices<IDialogService>())
+            {
+                if (service.GetType().Name.Equals(
+                    "SetTitleDialogService",
+                    StringComparison.Ordinal))
+                {
+                    setTitleDialogService = service;
+                }
+                else if (service.GetType().Name.Equals(
+                    "SetAuthorDialogService",
+                    StringComparison.Ordinal))
+                {
+                    setAuthorDialogService = service;
+                }
+                else if (service.GetType().Name.Equals(
+                    "SetSubjectDialogService",
+                    StringComparison.Ordinal))
+                {
+                    setSubjectDialogService = service;
+                }
+                else if (service.GetType().Name.Equals(
+                    "SetCategoryDialogService",
+                    StringComparison.Ordinal))
+                {
+                    setCategoryDialogService = service;
+                }
+                else if (service.GetType().Name.Equals(
+                    "SetTaxYearDialogService",
+                    StringComparison.Ordinal))
+                {
+                    setTaxYearDialogService = service;
+                }
+                else if (service.GetType().Name.Equals(
+                    "SetDateTimeAddedDialogService",
+                    StringComparison.Ordinal))
+                {
+                    setDateTimeAddedDialogService = service;
+                }
+            }
+
+            foreach (var service in serviceProvider.GetServices<IFileDialogService>())
+            {
+                if (service.GetType().Name.Equals(
+                    "OpenFileDialogService",
+                    StringComparison.Ordinal))
+                {
+                    openFileDialogService = service;
+                }
+                else if (service.GetType().Name.Equals(
+                    "SaveFileDialogService",
+                    StringComparison.Ordinal))
+                {
+                    saveFileDialogService = service;
+                }
+            }
+
+            folderBrowserDialogService = serviceProvider.GetService<IFolderBrowserDialogService>();
+            folderExplorerService = serviceProvider.GetService<IFolderExplorerService>();
+            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
+            pdfViewerService = serviceProvider.GetService<IPdfViewerService>();
+            printDialogService = serviceProvider.GetService<IPrintDialogService>();
+            printPreviewDialogService = serviceProvider.GetService<IPrintPreviewDialogService>();
+        }
+
         private enum CheckedDocumentAction
         {
             SetTitle,
@@ -1365,22 +1372,34 @@ namespace PDFKeeper.Core.Presenters
                 {
                     error = true;
                     OnLongRunningOperationFinished();
-                    messageBoxService.ShowMessage(ResourceHelper.GetString(
-                        "DocumentMayHaveBeenDeletedException", ex.Message, id.ToString()), true);
+                    var message = ResourceHelper.GetString(
+                        Resources.ResourceManager,
+                        "DocumentMayHaveBeenDeletedException",
+                        ex.Message,
+                        id.ToString());
+                    messageBoxService.ShowMessage(message, true);
                 }
                 catch (IndexOutOfRangeException ex)
                 {
                     error = true;
                     OnLongRunningOperationFinished();
-                    messageBoxService.ShowMessage(ResourceHelper.GetString(
-                        "DocumentMayHaveBeenDeletedException", ex.Message, id.ToString()), true);
+                    var message = ResourceHelper.GetString(
+                        Resources.ResourceManager,
+                        "DocumentMayHaveBeenDeletedException",
+                        ex.Message,
+                        id.ToString());
+                    messageBoxService.ShowMessage(message, true);
                 }
                 catch (DatabaseException ex)
                 {
                     error = true;
                     OnLongRunningOperationFinished();
-                    messageBoxService.ShowMessage(ResourceHelper.GetString(
-                        "DefaultDocumentException", ex.Message, id.ToString()), true);
+                    var message = ResourceHelper.GetString(
+                        Resources.ResourceManager,
+                        "DefaultDocumentException",
+                        ex.Message,
+                        id.ToString());
+                    messageBoxService.ShowMessage(message, true);
                 }
                 finally
                 {

@@ -70,6 +70,8 @@ namespace PDFKeeper.Core.Presenters
             }
         }
 
+        protected abstract void GetServices(IServiceProvider serviceProvider);
+
         /// <summary>
         /// Raises the LongRunningOperationStarted event to notify the view that a long running
         /// operation has started.

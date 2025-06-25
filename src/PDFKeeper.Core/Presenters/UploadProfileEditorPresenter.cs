@@ -18,6 +18,8 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO;
@@ -26,29 +28,29 @@ using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Rules;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
+using System;
 using System.Linq;
 
 namespace PDFKeeper.Core.Presenters
 {
     public class UploadProfileEditorPresenter : PresenterBase<UploadProfileEditorViewModel>
     {
+        private IMessageBoxService messageBoxService;
         private readonly string uploadProfileName;
-        private readonly IMessageBoxService messageBoxService;
         private readonly UploadProfileManager uploadProfileManager;
-               
+
         /// <summary>
-        /// Initializes a new instance of the UploadProfileEditorPresenter class.
+        /// Initializes a new instance of the <see cref="UploadProfileEditorPresenter"/> class.
         /// </summary>
         /// <param name="uploadProfileName">
-        /// The upload profile name or null when editing a new upload profile.
+        /// The upload profile name only when editing an existing upload profile.
         /// </param>
-        /// <param name="messageBoxService">The MessageBoxService instance.</param>
-        public UploadProfileEditorPresenter(string uploadProfileName,
-            IMessageBoxService messageBoxService)
+        public UploadProfileEditorPresenter(string uploadProfileName = null)
         {
+            GetServices(ServicesLocator.Services);
             this.uploadProfileName = uploadProfileName;
-            this.messageBoxService = messageBoxService;
             uploadProfileManager = new UploadProfileManager();
+
             if (uploadProfileName != null)
             {
                 ViewModel = new UploadProfileEditorViewModel(uploadProfileName,
@@ -153,6 +155,11 @@ namespace PDFKeeper.Core.Presenters
             {
                 OnViewCloseCancelled();
             }
+        }
+
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
         }
     }
 }

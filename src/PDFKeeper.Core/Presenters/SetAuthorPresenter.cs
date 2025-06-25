@@ -18,36 +18,43 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
+using System;
 using System.Linq;
 
 namespace PDFKeeper.Core.Presenters
 {
     public class SetAuthorPresenter : PresenterBase<StringEnumerableViewModel>
     {
-        private readonly IMessageBoxService messageBoxService;
+        private IMessageBoxService messageBoxService;
 
-        /// <summary>
-        /// Initializes a new instance of the SetAuthorPresenter class.
-        /// </summary>
-        /// <param name="messageBoxService">The MessageBoxService instance.</param>
-        public SetAuthorPresenter(IMessageBoxService messageBoxService)
+        public SetAuthorPresenter()
         {
-            this.messageBoxService = messageBoxService;
+            GetServices(ServicesLocator.Services);
+
             try
             {
                 ViewModel = new StringEnumerableViewModel
                 {
-                    Items = ColumnData.GetAuthors(null, null, null).OrderBy(
-                        author => author).ToArray()
+                    Items = ColumnData.GetAuthors(
+                        null,
+                        null,
+                        null).OrderBy(author => author).ToArray()
                 };
             }
             catch (DatabaseException ex)
             {
-                this.messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(ex.Message, true);
             }
+        }
+
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
         }
     }
 }
