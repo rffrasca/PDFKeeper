@@ -101,7 +101,7 @@ namespace PDFKeeper.Core.Presenters
                                 {
                                     messageBoxService.ShowMessage(Resources.PdfOwnerPasswordIncorrect,
                                         true);
-                                    OnViewCloseRequested();
+                                    OnViewCloseRequested?.Invoke();
                                 }
                                 pdfOwnerPassword.MakeReadOnly();
                             }
@@ -109,34 +109,34 @@ namespace PDFKeeper.Core.Presenters
                             {
                                 messageBoxService.ShowMessage(Resources.PdfOwnerPasswordRequired,
                                     true);
-                                OnViewCloseRequested();
+                                OnViewCloseRequested?.Invoke();
                             }
                         }
                         else
                         {
-                            OnViewCloseRequested();
+                            OnViewCloseRequested?.Invoke();
                         }
                     }
                     else if (passwordType.Equals(PdfFile.PasswordType.User))
                     {
                         messageBoxService.ShowMessage(Resources.PdfContainsUserPassword, true);
-                        OnViewCloseRequested();
+                        OnViewCloseRequested?.Invoke();
                     }
                     else if (passwordType.Equals(PdfFile.PasswordType.Unknown))
                     {
                         messageBoxService.ShowMessage(Resources.PdfInvalid, true);
-                        OnViewCloseRequested();
+                        OnViewCloseRequested?.Invoke();
                     }
                 }
                 catch (ArgumentException ex)
                 {
                     messageBoxService.ShowMessage(ex.Message, true);
-                    OnViewCloseRequested();
+                    OnViewCloseRequested?.Invoke();
                 }
             }
             else
             {
-                OnViewCloseRequested();
+                OnViewCloseRequested?.Invoke();
             }
         }
 
@@ -147,7 +147,7 @@ namespace PDFKeeper.Core.Presenters
 
         public void SetTitleToPdfFileName()
         {
-            OnApplyPendingChangesRequested();
+            OnApplyPendingChangesRequested?.Invoke();
             ViewModel.Title = Path.GetFileNameWithoutExtension(ViewModel.SelectedPdf);
         }
 
@@ -177,7 +177,7 @@ namespace PDFKeeper.Core.Presenters
         public void AddPdf(bool deleteSourcePdf)
         {
             CancelViewClosing = false;
-            OnApplyPendingChangesRequested();
+            OnApplyPendingChangesRequested?.Invoke();
             pdfMetadata.ImportUploadProfile(ViewModel.UploadProfile);
             restrictedPdfViewerService.Close();
             try
@@ -192,12 +192,12 @@ namespace PDFKeeper.Core.Presenters
             catch (NullReferenceException ex)
             {
                 messageBoxService.ShowMessage(ex.Message, true);
-                OnViewCloseCancelled();
+                OnViewCloseCancelled?.Invoke();
             }
             catch (iText.IO.Exceptions.IOException ex)
             {
                 messageBoxService.ShowMessage(ex.Message, true);
-                OnViewCloseCancelled();
+                OnViewCloseCancelled?.Invoke();
             }
         }
 
@@ -206,7 +206,7 @@ namespace PDFKeeper.Core.Presenters
             CancelViewClosing = false;
             if (messageBoxService.ShowQuestion(Resources.CancelQuestion, false).Equals(7))
             {
-                OnViewCloseCancelled();
+                OnViewCloseCancelled?.Invoke();
             }
             else
             {

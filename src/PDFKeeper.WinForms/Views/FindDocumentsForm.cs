@@ -40,16 +40,24 @@ namespace PDFKeeper.WinForms.Views
             viewModel = presenter.ViewModel;
             FindDocumentsViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
-            AddEventHandlers();
+            viewModel.PropertyChanged += ViewModel_PropertyChanged;
+            SetActionDelegates();
         }
 
-        private void AddEventHandlers()
+        private void SetActionDelegates()
         {
-            presenter.LongRunningOperationStarted += Presenter_LongRunningOperationStarted;
-            presenter.LongRunningOperationFinished += Presenter_LongRunningOperationFinished;
-            presenter.ApplyPendingChangesRequested += Presenter_ApplyPendingChangesRequested;
-            presenter.ViewCloseCancelled += Presenter_ViewCloseCancelled;
-            viewModel.PropertyChanged += ViewModel_PropertyChanged;
+            presenter.OnApplyPendingChangesRequested = () 
+                => FindDocumentsViewModelBindingSource.EndEdit();
+            presenter.OnLongRunningOperationStarted = () 
+                => Cursor = Cursors.WaitCursor;
+            presenter.OnLongRunningOperationFinished = () 
+                => Cursor = Cursors.Default;
+
+            presenter.OnViewCloseCancelled = (() =>
+            {
+                presenter.CancelViewClosing = true;
+                SelectNextControl(this, true, true, true, true);
+            });
         }
 
         private void FindDocumentsForm_Load(object sender, EventArgs e)
@@ -143,26 +151,6 @@ namespace PDFKeeper.WinForms.Views
             presenter.Cancel();
             DialogResult = DialogResult.Cancel;
             Close();
-        }
-
-        private void Presenter_LongRunningOperationStarted(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-        }
-
-        private void Presenter_LongRunningOperationFinished(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void Presenter_ApplyPendingChangesRequested(object sender, EventArgs e)
-        {
-            FindDocumentsViewModelBindingSource.EndEdit();
-        }
-
-        private void Presenter_ViewCloseCancelled(object sender, EventArgs e)
-        {
-            SelectNextControl(this, true, true, true, true);
         }
 
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)

@@ -97,7 +97,7 @@ namespace PDFKeeper.Core.Presenters
 
         public void SetNameToAuthorAndSubject()
         {
-            OnApplyPendingChangesRequested();
+            OnApplyPendingChangesRequested?.Invoke();
             ViewModel.Name = string.Concat(ViewModel.Author, " ", ViewModel.Subject);
         }
 
@@ -114,7 +114,7 @@ namespace PDFKeeper.Core.Presenters
         {
             var error = false;
             CancelViewClosing = false;
-            OnApplyPendingChangesRequested();
+            OnApplyPendingChangesRequested?.Invoke();
             var rule = new PdfMetadataRule(ViewModel.UploadProfile);
             if (string.IsNullOrEmpty(ViewModel.Name))
             {
@@ -144,7 +144,7 @@ namespace PDFKeeper.Core.Presenters
             }
             else
             {
-                OnViewCloseCancelled();
+                OnViewCloseCancelled?.Invoke();
             }
         }
 
@@ -153,7 +153,7 @@ namespace PDFKeeper.Core.Presenters
             CancelViewClosing = false;
             if (messageBoxService.ShowQuestion(Resources.CancelQuestion, false).Equals(7))
             {
-                OnViewCloseCancelled();
+                OnViewCloseCancelled?.Invoke();
             }
         }
 

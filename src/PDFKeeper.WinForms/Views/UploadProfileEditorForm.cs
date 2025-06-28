@@ -45,14 +45,20 @@ namespace PDFKeeper.WinForms.Views
             viewModel = presenter.ViewModel;
             UploadProfileEditorViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
-            AddEventHandlers();
+            viewModel.PropertyChanged += ViewModel_PropertyChanged;
+            SetActionDelegates();
         }
 
-        private void AddEventHandlers()
+        private void SetActionDelegates()
         {
-            presenter.ApplyPendingChangesRequested += Presenter_ApplyPendingChangesRequested;
-            presenter.ViewCloseCancelled += Presenter_ViewCloseCancelled;
-            viewModel.PropertyChanged += ViewModel_PropertyChanged;
+            presenter.OnApplyPendingChangesRequested = ()
+                => UploadProfileEditorViewModelBindingSource.EndEdit();
+
+            presenter.OnViewCloseCancelled = (() =>
+            {
+                presenter.CancelViewClosing = true;
+                NameUserControl.NameTextBox.Select();
+            });
         }
 
         private void UploadProfileEditorForm_Load(object sender, EventArgs e)
@@ -73,7 +79,7 @@ namespace PDFKeeper.WinForms.Views
 
         private void UploadOptionsUserControl_Leave(object sender, EventArgs e)
         {
-            Presenter_ApplyPendingChangesRequested(this, null);
+            UploadProfileEditorViewModelBindingSource.EndEdit();
         }
 
         private void OK_Button_Click(object sender, EventArgs e)
@@ -88,16 +94,6 @@ namespace PDFKeeper.WinForms.Views
             presenter.Cancel();
             DialogResult = DialogResult.Cancel;
             Close();
-        }
-
-        private void Presenter_ApplyPendingChangesRequested(object sender,EventArgs e)
-        {
-            UploadProfileEditorViewModelBindingSource.EndEdit();
-        }
-
-        private void Presenter_ViewCloseCancelled(object sender, EventArgs e)
-        {
-            NameUserControl.NameTextBox.Select();
         }
 
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)

@@ -85,22 +85,22 @@ namespace PDFKeeper.Core.Presenters
             uploadRejectedDirectory = new ApplicationDirectory().GetDirectory(
                 ApplicationDirectory.SpecialName.UploadRejected);
             executingAssembly = new ExecutingAssembly();
-            AddEventHandlers();
+            printDocument.PrintPage += PrintDocument_PrintPage;
+            FindDocumentsViewState.OnFindDocumentsParamChanged = () => GetListOfDocuments(false);
         }
-
-        public event EventHandler CheckedDocumentsProcessed;
-        public event EventHandler ScrollToEndOfNotesTextRequested;
-        public event EventHandler ProgressBarPerformStepRequested;
-        public event EventHandler BlockingUploadStarted;
-        public event EventHandler BlockingUploadFinished;
 
         /// <summary>
         /// Gets the file cache instance.
         /// </summary>
         public FileCache FileCache => fileCache;
 
+        public Action OnBlockingUploadStarted { get; set; }
+        public Action OnBlockingUploadFinished { get; set; }
+        public Action OnCheckedDocumentsProcessed { get; set; }
         public Action<PdfFile> OnPdfDoDragDrop { get; set; }
-
+        public Action OnProgressBarPerformStepRequested { get; set; }
+        public Action OnScrollToEndOfNotesTextRequested { get; set; }
+        
         public void SetInitialState()
         {
             ViewModel.FileAddMenuEnabled = true;
@@ -248,7 +248,7 @@ namespace PDFKeeper.Core.Presenters
                     {
                         try
                         {
-                            OnLongRunningOperationStarted();
+                            OnLongRunningOperationStarted?.Invoke();
                             ViewModel.PreviousNotes = ViewModel.Notes;
                             document.Notes = ViewModel.Notes;
                             documentRepository.UpdateDocument(document);
@@ -270,7 +270,7 @@ namespace PDFKeeper.Core.Presenters
                         }
                         finally
                         {
-                            OnLongRunningOperationFinished();
+                            OnLongRunningOperationFinished?.Invoke();
                         }
                     }
                     else
@@ -439,14 +439,14 @@ namespace PDFKeeper.Core.Presenters
         {
             string notes = null;
             var newLine = Environment.NewLine;
-            OnScrollToEndOfNotesTextRequested();
+            OnScrollToEndOfNotesTextRequested?.Invoke();
             if (ViewModel.Notes.Length > 0)
             {
                 notes = string.Concat(ViewModel.Notes, newLine, newLine);
             }
             ViewModel.Notes = string.Concat(notes, "--- ", DateTime.Now, " (",
                 DatabaseSession.UserName, ") ---", newLine);
-            OnScrollToEndOfNotesTextRequested();
+            OnScrollToEndOfNotesTextRequested?.Invoke();
         }
 
         public void AppendTextFromFileIntoNotes()
@@ -455,7 +455,7 @@ namespace PDFKeeper.Core.Presenters
             if (textFilePath.Length > 0)
             {
                 var textFile = new FileInfo(textFilePath);
-                OnScrollToEndOfNotesTextRequested();
+                OnScrollToEndOfNotesTextRequested?.Invoke();
                 ViewModel.Notes = ViewModel.Notes.AppendTextFile(textFile);
                 if (messageBoxService.ShowQuestion(
                     ResourceHelper.GetString(
@@ -466,7 +466,7 @@ namespace PDFKeeper.Core.Presenters
                 {
                     textFile.DeleteToRecycleBin();
                 }
-                OnScrollToEndOfNotesTextRequested();
+                OnScrollToEndOfNotesTextRequested?.Invoke();
             }
         }
 
@@ -478,7 +478,7 @@ namespace PDFKeeper.Core.Presenters
                 document.Flag = Convert.ToInt32(!ViewModel.EditFlagDocumentMenuChecked);
                 try
                 {
-                    OnLongRunningOperationStarted();
+                    OnLongRunningOperationStarted?.Invoke();
                     documentRepository.UpdateDocument(document);
                 }
                 catch (IndexOutOfRangeException ex)
@@ -495,7 +495,7 @@ namespace PDFKeeper.Core.Presenters
                 }
                 finally
                 {
-                    OnLongRunningOperationFinished();
+                    OnLongRunningOperationFinished?.Invoke();
                 }
             }
         }
@@ -622,7 +622,7 @@ namespace PDFKeeper.Core.Presenters
             {
                 try
                 {
-                    OnLongRunningOperationStarted();
+                    OnLongRunningOperationStarted?.Invoke();
                     WaitForUploadToFinish();
                     var databasePath = Path.Combine(selectedPath,
                         string.Concat(executingAssembly.ProductName, ".sqlite"));
@@ -635,7 +635,7 @@ namespace PDFKeeper.Core.Presenters
                 }
                 finally
                 {
-                    OnLongRunningOperationFinished();
+                    OnLongRunningOperationFinished?.Invoke();
                 }               
             }
         }
@@ -673,7 +673,7 @@ namespace PDFKeeper.Core.Presenters
             {
                 try
                 {
-                    OnLongRunningOperationStarted();
+                    OnLongRunningOperationStarted?.Invoke();
                     using (var documentRepository = DatabaseSession.GetDocumentRepository())
                     {
                         if (FindDocumentsViewState.FindDocumentsParam.FindBySearchTermChecked)
@@ -717,7 +717,7 @@ namespace PDFKeeper.Core.Presenters
                 }
                 finally
                 {
-                    OnLongRunningOperationFinished();
+                    OnLongRunningOperationFinished?.Invoke();
                 }
             }
             else
@@ -763,10 +763,10 @@ namespace PDFKeeper.Core.Presenters
         /// </param>
         public void SetPreviewImage(decimal pixelDensity)
         {
-            OnLongRunningOperationStarted();
+            OnLongRunningOperationStarted?.Invoke();
             fileCache.CreatePreview(ViewModel.CurrentDocumentId, pixelDensity);
             ViewModel.Preview = fileCache.GetPreview(ViewModel.CurrentDocumentId, pixelDensity);
-            OnLongRunningOperationFinished();
+            OnLongRunningOperationFinished?.Invoke();
         }
 
         /// <summary>
@@ -958,7 +958,7 @@ namespace PDFKeeper.Core.Presenters
                 {
                     if (ApplicationPolicy.GetPolicyValue(ApplicationPolicy.PolicyName.BlockingUpload))
                     {
-                        OnBlockingUploadStarted();
+                        OnBlockingUploadStarted?.Invoke();
                     }
                     else
                     {
@@ -982,7 +982,7 @@ namespace PDFKeeper.Core.Presenters
                 {
                     if (ApplicationPolicy.GetPolicyValue(ApplicationPolicy.PolicyName.BlockingUpload))
                     {
-                        OnBlockingUploadFinished();
+                        OnBlockingUploadFinished?.Invoke();
                     }
                     else
                     {
@@ -1014,33 +1014,6 @@ namespace PDFKeeper.Core.Presenters
             }
         }
 
-        /// <summary>
-        /// Raises the CheckedDocumentsProcessed event to notify the view that all checked
-        /// documents have been processed.
-        /// </summary>
-        public void OnCheckedDocumentsProcessed()
-        {
-            CheckedDocumentsProcessed?.Invoke(this, null);
-        }
-
-        /// <summary>
-        /// Raises the ScrollToEndOfNotesTextRequested event to notify the view that a request was
-        /// made to scroll to the end of the Notes text.
-        /// </summary>
-        public void OnScrollToEndOfNotesTextRequested()
-        {
-            ScrollToEndOfNotesTextRequested?.Invoke(this, null);
-        }
-
-        /// <summary>
-        /// Raises the ProgressBarPerformStepRequested event to notify the view that a progress bar
-        /// perform step was requested.
-        /// </summary>
-        public void OnProgressBarPerformStepRequested()
-        {
-            ProgressBarPerformStepRequested?.Invoke(this, null);
-        }
-        
         public void SaveNotesPromptBeforeClosing()
         {
             var choice = messageBoxService.ShowQuestion(Resources.NotesModified, true);
@@ -1147,33 +1120,6 @@ namespace PDFKeeper.Core.Presenters
             SearchTermSnippets,
         }
 
-        private void AddEventHandlers()
-        {
-            FindDocumentsViewState.FindDocumentsParamChanged += ApplicationGlobal_FindDocumentsParamChanged;
-            printDocument.PrintPage += PrintDocument_PrintPage;
-        }
-
-        private void ApplicationGlobal_FindDocumentsParamChanged(object sender, EventArgs e)
-        {
-            GetListOfDocuments(false);
-        }
-
-        /// <summary>
-        /// Raises the BlockingUploadStarted event to notify the view that a blocking upload has started.
-        /// </summary>
-        private void OnBlockingUploadStarted()
-        {
-            BlockingUploadStarted?.Invoke(this, null);
-        }
-
-        /// <summary>
-        /// Raises the BlockingUploadFinished event to notify the view that a blocking upload has finished.
-        /// </summary>
-        private void OnBlockingUploadFinished()
-        {
-            BlockingUploadFinished?.Invoke(this, null);
-        }
-
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
             using (var font = new Font("Lucida Console", 10))
@@ -1236,7 +1182,7 @@ namespace PDFKeeper.Core.Presenters
                 var currentDocumentId = ViewModel.CurrentDocumentId;
                 try
                 {
-                    OnLongRunningOperationStarted();
+                    OnLongRunningOperationStarted?.Invoke();
                     ViewModel.DocumentsFindMenuEnabled = false;
                     ViewModel.RefreshingDocumentsImageVisible = true;
                     DataTable documents = null;
@@ -1294,7 +1240,7 @@ namespace PDFKeeper.Core.Presenters
                     }
                     ViewModel.RefreshingDocumentsImageVisible = false;
                     ViewModel.DocumentsFindMenuEnabled = true;
-                    OnLongRunningOperationFinished();
+                    OnLongRunningOperationFinished?.Invoke();
                 }
             }
         }
@@ -1311,7 +1257,7 @@ namespace PDFKeeper.Core.Presenters
         private void ProcessEachCheckedDocument(CheckedDocumentAction checkedDocumentAction,
             string value)
         {
-            OnLongRunningOperationStarted();
+            OnLongRunningOperationStarted?.Invoke();
             ViewModel.DocumentsEnabled = false;
             ViewModel.DocumentsProgressBarVisible = true;
             ViewModel.DocumentsProgressBarMinimum = 0;
@@ -1371,7 +1317,7 @@ namespace PDFKeeper.Core.Presenters
                 catch (InvalidOperationException ex)
                 {
                     error = true;
-                    OnLongRunningOperationFinished();
+                    OnLongRunningOperationFinished?.Invoke();
                     var message = ResourceHelper.GetString(
                         Resources.ResourceManager,
                         "DocumentMayHaveBeenDeletedException",
@@ -1382,7 +1328,7 @@ namespace PDFKeeper.Core.Presenters
                 catch (IndexOutOfRangeException ex)
                 {
                     error = true;
-                    OnLongRunningOperationFinished();
+                    OnLongRunningOperationFinished?.Invoke();
                     var message = ResourceHelper.GetString(
                         Resources.ResourceManager,
                         "DocumentMayHaveBeenDeletedException",
@@ -1393,7 +1339,7 @@ namespace PDFKeeper.Core.Presenters
                 catch (DatabaseException ex)
                 {
                     error = true;
-                    OnLongRunningOperationFinished();
+                    OnLongRunningOperationFinished?.Invoke();
                     var message = ResourceHelper.GetString(
                         Resources.ResourceManager,
                         "DefaultDocumentException",
@@ -1405,15 +1351,15 @@ namespace PDFKeeper.Core.Presenters
                 {
                     if (error)
                     {
-                        OnLongRunningOperationStarted();
+                        OnLongRunningOperationStarted?.Invoke();
                     }                    
-                    OnProgressBarPerformStepRequested();
+                    OnProgressBarPerformStepRequested?.Invoke();
                 }
             }
-            OnCheckedDocumentsProcessed();
+            OnCheckedDocumentsProcessed?.Invoke();
             ViewModel.DocumentsProgressBarVisible = false;
             ViewModel.DocumentsEnabled = true;
-            OnLongRunningOperationFinished();
+            OnLongRunningOperationFinished?.Invoke();
         }
 
         /// <summary>

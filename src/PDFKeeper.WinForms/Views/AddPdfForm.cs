@@ -39,15 +39,26 @@ namespace PDFKeeper.WinForms.Views
             viewModel = presenter.ViewModel;
             AddPdfViewModelBindingSource.DataSource = presenter.ViewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
-            AddEventHandlers();
+            viewModel.PropertyChanged += ViewModel_PropertyChanged;
+            SetActionDelegates();
         }
 
-        private void AddEventHandlers()
+        private void SetActionDelegates()
         {
-            presenter.ApplyPendingChangesRequested += Presenter_ApplyPendingChangesRequested;
-            presenter.ViewCloseCancelled += Presenter_ViewCloseCancelled;
-            presenter.ViewCloseRequested += Presenter_ViewCloseRequested;
-            viewModel.PropertyChanged += ViewModel_PropertyChanged;
+            presenter.OnApplyPendingChangesRequested = ()
+                => AddPdfViewModelBindingSource.EndEdit();
+
+            presenter.OnViewCloseCancelled = (() =>
+            {
+                presenter.CancelViewClosing = true;
+                TitleTextBox.Select();
+            });
+
+            presenter.OnViewCloseRequested = (() =>
+            {
+                presenter.CancelViewClosing = false;
+                Close();
+            });
         }
 
         private void AddPdfForm_Load(object sender, EventArgs e)
@@ -86,22 +97,7 @@ namespace PDFKeeper.WinForms.Views
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
-        private void Presenter_ApplyPendingChangesRequested(object sender, EventArgs e)
-        {
-            AddPdfViewModelBindingSource.EndEdit();
-        }
-
-        private void Presenter_ViewCloseCancelled(object sender, EventArgs e)
-        {
-            TitleTextBox.Select();
-        }
-
-        private void Presenter_ViewCloseRequested(object sender, EventArgs e)
-        {
-            Close();
-        }
-
+        
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName.Equals("Authors", StringComparison.Ordinal))

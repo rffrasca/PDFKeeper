@@ -78,7 +78,7 @@ namespace PDFKeeper.Core.Presenters
         {
             try
             {
-                OnLongRunningOperationStarted();
+                OnLongRunningOperationStarted?.Invoke();
                 var selection = ViewModel.Author;
                 ViewModel.Authors = ColumnData.GetAuthors(ViewModel.Subject, ViewModel.Category,
                     ViewModel.TaxYear).OrderBy(author => author).ToArray();
@@ -90,7 +90,7 @@ namespace PDFKeeper.Core.Presenters
             }
             finally
             {
-                OnLongRunningOperationFinished();
+                OnLongRunningOperationFinished?.Invoke();
             }
         }
 
@@ -98,7 +98,7 @@ namespace PDFKeeper.Core.Presenters
         {
             try
             {
-                OnLongRunningOperationStarted();
+                OnLongRunningOperationStarted?.Invoke();
                 var selection = ViewModel.Subject;
                 ViewModel.Subjects = ColumnData.GetSubjects(ViewModel.Author, ViewModel.Category,
                     ViewModel.TaxYear).OrderBy(subject => subject).ToArray();
@@ -110,7 +110,7 @@ namespace PDFKeeper.Core.Presenters
             }
             finally
             {
-                OnLongRunningOperationFinished();
+                OnLongRunningOperationFinished?.Invoke();
             }
         }
 
@@ -118,7 +118,7 @@ namespace PDFKeeper.Core.Presenters
         {
             try
             {
-                OnLongRunningOperationStarted();
+                OnLongRunningOperationStarted?.Invoke();
                 var selection = ViewModel.Category;
                 ViewModel.Categories = ColumnData.GetCategories(ViewModel.Author, ViewModel.Subject,
                     ViewModel.TaxYear).OrderBy(category => category).ToArray();
@@ -130,7 +130,7 @@ namespace PDFKeeper.Core.Presenters
             }
             finally
             {
-                OnLongRunningOperationFinished();
+                OnLongRunningOperationFinished?.Invoke();
             }
         }
 
@@ -138,7 +138,7 @@ namespace PDFKeeper.Core.Presenters
         {
             try
             {
-                OnLongRunningOperationStarted();
+                OnLongRunningOperationStarted?.Invoke();
                 var selection = ViewModel.TaxYear;
                 ViewModel.TaxYears = ColumnData.GetTaxYears(ViewModel.Author, ViewModel.Subject,
                     ViewModel.Category).OrderBy(taxYear => taxYear).ToArray();
@@ -150,14 +150,14 @@ namespace PDFKeeper.Core.Presenters
             }
             finally
             {
-                OnLongRunningOperationFinished();
+                OnLongRunningOperationFinished?.Invoke();
             }
         }
 
         public void FindDocuments()
         {            
             CancelViewClosing = false;
-            OnApplyPendingChangesRequested();
+            OnApplyPendingChangesRequested?.Invoke();
             var rule = new FindDocumentsParamRule(ViewModel.FindDocumentsParam);
             if (!rule.ViolationFound)
             {
@@ -170,7 +170,7 @@ namespace PDFKeeper.Core.Presenters
             else
             {
                 messageBoxService.ShowMessage(rule.ViolationMessage, true);
-                OnViewCloseCancelled();
+                OnViewCloseCancelled?.Invoke();
             }
         }
 

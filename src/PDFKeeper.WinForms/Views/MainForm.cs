@@ -62,24 +62,12 @@ namespace PDFKeeper.WinForms.Views
             findDocumentsForm = new FindDocumentsForm();
             uploadProfilesForm = new UploadProfilesForm();
             progressForm = new ProgressForm();
-            AddEventHandlers();
-            AddTags();
+            viewModel.PropertyChanged += MainForm_PropertyChanged;
+            SetTags();
             SetActionDelegates();
         }
 
-        private void AddEventHandlers()
-        {
-            presenter.LongRunningOperationStarted += MainForm_LongRunningOperationStarted;
-            presenter.LongRunningOperationFinished += MainForm_LongRunningOperationFinished;
-            presenter.CheckedDocumentsProcessed += MainForm_CheckedDocumentsProcessed;
-            presenter.ScrollToEndOfNotesTextRequested += MainForm_ScrollToEndOfNotesTextRequested;
-            presenter.ProgressBarPerformStepRequested += MainForm_ProgressBarPerformStepRequested;
-            presenter.BlockingUploadStarted += MainForm_BlockingUploadStarted;
-            presenter.BlockingUploadFinished += MainForm_BlockingUploadFinished;
-            viewModel.PropertyChanged += MainForm_PropertyChanged;
-        }
-
-        private void AddTags()
+        private void SetTags()
         {
             FileAddToolStripMenuItem.Tag = new DialogShowCommand(new AddPdfForm(), null);
             FileAddToolStripButton.Tag = new DialogShowCommand(new AddPdfForm(), null);
@@ -165,6 +153,24 @@ namespace PDFKeeper.WinForms.Views
 
         private void SetActionDelegates()
         {
+            presenter.OnBlockingUploadStarted = () =>
+            {
+                BeginInvoke((MethodInvoker)delegate ()
+                {
+                    progressForm.Message = Resources.PdfUploadInProgress;
+                    progressForm.ShowDialog(this);
+                });
+            };
+
+            presenter.OnBlockingUploadFinished = () 
+                => progressForm.Close();
+            presenter.OnCheckedDocumentsProcessed = ()
+                => ToolStripItem_Click(DocumentsSelectNoneToolStripMenuItem, null);
+            presenter.OnLongRunningOperationStarted = () 
+                => Cursor = Cursors.WaitCursor;
+            presenter.OnLongRunningOperationFinished = ()
+                => Cursor = Cursors.Default;
+
             presenter.OnPdfDoDragDrop = ((obj) =>
             {
                 DocumentsDataGridView.DoDragDrop(
@@ -173,6 +179,19 @@ namespace PDFKeeper.WinForms.Views
                         new string[] { obj.FullName }),
                     DragDropEffects.Copy);
             });
+
+            presenter.OnProgressBarPerformStepRequested = () =>
+            {
+                DocumentsProgressBar.PerformStep();
+                Application.DoEvents();
+            };
+
+            presenter.OnScrollToEndOfNotesTextRequested = () =>
+            {
+                NotesTextBox.Select();
+                NotesTextBox.Select(NotesTextBox.Text.Length, 0);
+                NotesTextBox.ScrollToCaret();
+            };
         }
 
         protected override void WndProc(ref Message m)
@@ -448,48 +467,6 @@ namespace PDFKeeper.WinForms.Views
             DocumentsListTimedRefreshTimer.Stop();
             MainPresenter.SetDocumentsListHasChanges();
             DocumentsListTimedRefreshTimer.Start();
-        }
-
-        private void MainForm_LongRunningOperationStarted(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-        }
-
-        private void MainForm_LongRunningOperationFinished(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void MainForm_CheckedDocumentsProcessed(object sender, EventArgs e)
-        {
-            ToolStripItem_Click(DocumentsSelectNoneToolStripMenuItem, null);
-        }
-
-        private void MainForm_ScrollToEndOfNotesTextRequested(object sender, EventArgs e)
-        {
-            NotesTextBox.Select();
-            NotesTextBox.Select(NotesTextBox.Text.Length, 0);
-            NotesTextBox.ScrollToCaret();
-        }
-
-        private void MainForm_ProgressBarPerformStepRequested(object sender, EventArgs e)
-        {
-            DocumentsProgressBar.PerformStep();
-            Application.DoEvents();
-        }
-
-        private void MainForm_BlockingUploadStarted(object sender, EventArgs e)
-        {
-            BeginInvoke((MethodInvoker)delegate ()
-            {
-                progressForm.Message = Resources.PdfUploadInProgress;
-                progressForm.ShowDialog(this);
-            });
-        }
-
-        private void MainForm_BlockingUploadFinished(object sender, EventArgs e)
-        {
-            progressForm.Close();
         }
 
         private void MainForm_PropertyChanged(object sender, PropertyChangedEventArgs e)

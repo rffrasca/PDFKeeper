@@ -38,16 +38,36 @@ namespace PDFKeeper.WinForms.Views
             presenter = new LoginPresenter(Handle);
             viewModel = presenter.ViewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
-            AddEventHandlers();
+            SetActionDelegates();
         }
 
-        private void AddEventHandlers()
+        private void SetActionDelegates()
         {
-            presenter.LongRunningOperationStarted += Presenter_LongRunningOperationStarted;
-            presenter.LongRunningOperationFinished += Presenter_LongRunningOperationFinished;
-            presenter.ApplyPendingChangesRequested += Presenter_ApplyPendingChangesRequested;
-            presenter.ViewCloseRequested += Presenter_ViewCloseRequested;
-            presenter.ViewResetRequested += Presenter_ViewResetRequested;
+            presenter.OnApplyPendingChangesRequested = (() =>
+            {
+                viewModel.UserName = Settings.Default.Username;
+                viewModel.Password = PasswordSecureTextBox.SecureText;
+                viewModel.DataSource = Settings.Default.Datasource;
+                viewModel.DbManagementSystem = Settings.Default.DbManagementSystem;
+            });
+
+            presenter.OnLongRunningOperationStarted = () => Cursor = Cursors.WaitCursor;
+            presenter.OnLongRunningOperationFinished = () => Cursor = Cursors.Default;
+
+            presenter.OnViewCloseRequested = (() =>
+            {
+                presenter.CancelViewClosing = false;
+                DialogResult = DialogResult.OK;
+                Close();
+            });
+
+            presenter.OnViewResetRequested = (() =>
+            {
+                PasswordSecureTextBox.SecureText.Dispose();
+                PasswordSecureTextBox.Text = null;
+                PasswordSecureTextBox.InitSecureString();
+                UsernameTextBox.Select();
+            });
         }
 
         private void OK_Button_Click(object sender, EventArgs e)
@@ -59,38 +79,6 @@ namespace PDFKeeper.WinForms.Views
         {
             DialogResult = DialogResult.Cancel;
             Close();
-        }
-
-        private void Presenter_LongRunningOperationStarted(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-        }
-
-        private void Presenter_LongRunningOperationFinished(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void Presenter_ApplyPendingChangesRequested(object sender, EventArgs e)
-        {
-            viewModel.UserName = Settings.Default.Username;
-            viewModel.Password = PasswordSecureTextBox.SecureText;
-            viewModel.DataSource = Settings.Default.Datasource;
-            viewModel.DbManagementSystem = Settings.Default.DbManagementSystem;            
-        }
-
-        private void Presenter_ViewCloseRequested(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-
-        private void Presenter_ViewResetRequested(object sender, EventArgs e)
-        {
-            PasswordSecureTextBox.SecureText.Dispose();
-            PasswordSecureTextBox.Text = null;
-            PasswordSecureTextBox.InitSecureString();
-            UsernameTextBox.Select();
         }
     }
 }

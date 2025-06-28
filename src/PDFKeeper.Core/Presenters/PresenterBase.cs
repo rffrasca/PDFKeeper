@@ -27,37 +27,13 @@ namespace PDFKeeper.Core.Presenters
     {
         public T ViewModel { get; protected set; }
         public bool CancelViewClosing { get; set; }
-
-        /// <summary>
-        /// Notifies the view that a request was made to apply pending changes.
-        /// </summary>
-        public event EventHandler ApplyPendingChangesRequested;
-
-        /// <summary>
-        /// Notifies the view that a long running operation has started.
-        /// </summary>
-        public event EventHandler LongRunningOperationStarted;
-
-        /// <summary>
-        /// Notifies the view that a long running operation has finished.
-        /// </summary>
-        public event EventHandler LongRunningOperationFinished;
-
-        /// <summary>
-        /// Notifies the view that a close operation was cancelled.
-        /// </summary>
-        public event EventHandler ViewCloseCancelled;
-
-        /// <summary>
-        ///  Notifies the view that a request was made to close.
-        /// </summary>
-        public event EventHandler ViewCloseRequested;
-
-        /// <summary>
-        /// Notifies the view that a reset was requested.
-        /// </summary>
-        public event EventHandler ViewResetRequested;
-
+        public Action OnApplyPendingChangesRequested { get; set; }
+        public Action OnLongRunningOperationStarted { get; set; }
+        public Action OnLongRunningOperationFinished { get; set; }
+        public Action OnViewCloseCancelled { get; set; }
+        public Action OnViewCloseRequested { get; set; }
+        public Action OnViewResetRequested { get; set; }
+        
         /// <summary>
         /// Executes the command object.
         /// </summary>
@@ -71,60 +47,5 @@ namespace PDFKeeper.Core.Presenters
         }
 
         protected abstract void GetServices(IServiceProvider serviceProvider);
-
-        /// <summary>
-        /// Raises the LongRunningOperationStarted event to notify the view that a long running
-        /// operation has started.
-        /// </summary>
-        protected void OnLongRunningOperationStarted()
-        {
-            LongRunningOperationStarted?.Invoke(this, null);
-        }
-
-        /// <summary>
-        /// Raises the LongRunningOperationFinished event to notify the view that a long running
-        /// operation has finished.
-        /// </summary>
-        protected void OnLongRunningOperationFinished()
-        {
-            LongRunningOperationFinished?.Invoke(this, null);
-        }
-
-        /// <summary>
-        /// Raises the ApplyPendingChangesRequested event to notify the view that a request was
-        /// made to apply pending changes.
-        /// </summary>
-        protected void OnApplyPendingChangesRequested()
-        {
-            ApplyPendingChangesRequested?.Invoke(this, null);
-        }
-
-        /// <summary>
-        /// Raises the ViewCloseCancelled event to notify the view that a close operation was
-        /// cancelled.
-        /// </summary>
-        protected void OnViewCloseCancelled()
-        {
-            CancelViewClosing = true;
-            ViewCloseCancelled?.Invoke(this, null);
-        }
-
-        /// <summary>
-        /// Raises the ViewCloseRequested event to notify the view that a request was made to
-        /// close.
-        /// </summary>
-        protected void OnViewCloseRequested()
-        {
-            CancelViewClosing = false;
-            ViewCloseRequested?.Invoke(this, null);
-        }
-
-        /// <summary>
-        /// Raises the ViewResetRequested event to notify the view that a reset was requested.
-        /// </summary>
-        protected void OnViewResetRequested()
-        {
-            ViewResetRequested?.Invoke(this, null);
-        }
     }
 }

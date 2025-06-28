@@ -49,8 +49,8 @@ namespace PDFKeeper.Core.Presenters
 
         public void Login()
         {
-            OnApplyPendingChangesRequested();
-            OnLongRunningOperationStarted();
+            OnApplyPendingChangesRequested?.Invoke();
+            OnLongRunningOperationStarted?.Invoke();
             SetDatabasePlatformName();
             DatabaseSession.UserName = ViewModel.UserName;
             DatabaseSession.Password = ViewModel.Password;
@@ -62,13 +62,13 @@ namespace PDFKeeper.Core.Presenters
                 using (documentRepository = DatabaseSession.GetDocumentRepository())
                 {
                     documentRepository.TestConnection();
-                    OnViewCloseRequested();
+                    OnViewCloseRequested?.Invoke();
                 }
             }
             catch (ArgumentException ex)
             {
                 messageBoxService.ShowMessage(handle, ex.Message, true);
-                OnViewResetRequested();
+                OnViewResetRequested?.Invoke();
             }
             catch (DatabaseException ex)
             {
@@ -79,17 +79,17 @@ namespace PDFKeeper.Core.Presenters
                     documentRepository.ResetCredential();
                 }
                 catch (NotSupportedException) { }
-                
-                OnViewResetRequested();
+
+                OnViewResetRequested?.Invoke();
             }
             catch (FileNotFoundException)
             {
                 messageBoxService.ShowMessage(handle, Resources.OracleOdpNetMissing, true);
-                OnViewResetRequested();
+                OnViewResetRequested?.Invoke();
             }
             finally
             {
-                OnLongRunningOperationFinished();
+                OnLongRunningOperationFinished?.Invoke();
             }
         }
 

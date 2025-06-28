@@ -27,10 +27,7 @@ namespace PDFKeeper.Core.Application
     {
         private static FindDocumentsParam findDocumentsParam;
 
-        /// <summary>
-        /// Notifies the subscribing view that the FindDocumentsParam property has changed.
-        /// </summary>
-        public static event EventHandler FindDocumentsParamChanged;
+        public static Action OnFindDocumentsParamChanged { get; set; }
 
         /// <summary>
         /// Gets or sets the FindDocumentsParam object.
@@ -41,17 +38,8 @@ namespace PDFKeeper.Core.Application
             set
             {
                 findDocumentsParam = value;
-                OnFindDocumentsParamChanged();
+                OnFindDocumentsParamChanged?.Invoke();
             }
-        }
-
-        /// <summary>
-        /// Raises the FindDocumentsParamChanged event to notify the subscribing view that
-        /// FindDocumentsParam property has changed.
-        /// </summary>
-        private static void OnFindDocumentsParamChanged()
-        {
-            FindDocumentsParamChanged?.Invoke(null, null);
         }
     }
 }
