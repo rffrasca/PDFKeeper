@@ -51,26 +51,22 @@ namespace PDFKeeper.WinForms.Views
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetTaxYearForm));
             this.TaxYearDropDownListUserControl = new PDFKeeper.WinForms.UserControls.TaxYearDropDownListUserControl();
-            this.StringEnumerableViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.OK_Button = new System.Windows.Forms.Button();
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
-            ((System.ComponentModel.ISupportInitialize)(this.StringEnumerableViewModelBindingSource)).BeginInit();
+            this.ColumnDataListViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ColumnDataListViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TaxYearDropDownListUserControl
             // 
             resources.ApplyResources(this.TaxYearDropDownListUserControl, "TaxYearDropDownListUserControl");
-            this.TaxYearDropDownListUserControl.DataBindings.Add(new System.Windows.Forms.Binding("TaxYears", this.StringEnumerableViewModelBindingSource, "Items", true));
+            this.TaxYearDropDownListUserControl.DataBindings.Add(new System.Windows.Forms.Binding("TaxYears", this.ColumnDataListViewModelBindingSource, "Items", true));
             this.TaxYearDropDownListUserControl.Name = "TaxYearDropDownListUserControl";
             this.TaxYearDropDownListUserControl.TaxYear = "";
             this.TaxYearDropDownListUserControl.TaxYears = null;
-            // 
-            // StringEnumerableViewModelBindingSource
-            // 
-            this.StringEnumerableViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.StringEnumerableViewModel);
             // 
             // TableLayoutPanel
             // 
@@ -92,6 +88,10 @@ namespace PDFKeeper.WinForms.Views
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
+            // ColumnDataListViewModelBindingSource
+            // 
+            this.ColumnDataListViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.ColumnDataListViewModel);
+            // 
             // SetTaxYearForm
             // 
             this.AcceptButton = this.OK_Button;
@@ -108,8 +108,8 @@ namespace PDFKeeper.WinForms.Views
             this.Name = "SetTaxYearForm";
             this.HelpProvider.SetShowHelp(this, ((bool)(resources.GetObject("$this.ShowHelp"))));
             this.ShowInTaskbar = false;
-            ((System.ComponentModel.ISupportInitialize)(this.StringEnumerableViewModelBindingSource)).EndInit();
             this.TableLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ColumnDataListViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,6 +121,6 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.Button Cancel_Button;
         internal System.Windows.Forms.HelpProvider HelpProvider;
         internal UserControls.TaxYearDropDownListUserControl TaxYearDropDownListUserControl;
-        private System.Windows.Forms.BindingSource StringEnumerableViewModelBindingSource;
+        private System.Windows.Forms.BindingSource ColumnDataListViewModelBindingSource;
     }
 }

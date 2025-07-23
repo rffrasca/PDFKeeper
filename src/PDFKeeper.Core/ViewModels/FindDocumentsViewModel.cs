@@ -18,14 +18,26 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Application;
+using PDFKeeper.Core.DataAccess;
+using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Models;
+using PDFKeeper.Core.Rules;
+using PDFKeeper.Core.Services;
+using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace PDFKeeper.Core.ViewModels
 {
-    public class FindDocumentsViewModel : CommonCollectionsViewModel, IFindDocumentsParam
+    [CLSCompliant(false)]
+    public class FindDocumentsViewModel : ColumnDataListsViewModel, IFindDocumentsParam
     {
+        private IMessageBoxService messageBoxService;
         private FindDocumentsParam findDocumentsParam;
+        private readonly SearchTermHistory searchTermHistory;
         private bool searchTermEnabled;
         private IEnumerable<string> searchTerms;
         private bool clearSelectionsEnabled;
@@ -36,30 +48,57 @@ namespace PDFKeeper.Core.ViewModels
         private bool dateAddedEnabled;
         private bool allDocumentsEnabled;
 
-        public FindDocumentsViewModel()
+        public enum FindAction
         {
-            findDocumentsParam = new FindDocumentsParam();
+            FindBySearchTerm,
+            FindBySelections,
+            FindByDateAdded,
+            FindFlaggedDocuments,
+            AllDocuments
         }
 
+        public FindDocumentsViewModel()
+        {
+            GetServices(ServiceLocator.Services);
+            findDocumentsParam = new FindDocumentsParam();
+            searchTermHistory = new SearchTermHistory();
+            ApplyPolicy();
+            InitializeCommands();
+        }
+
+        public Action OnRelaySelectedFindAction { get; set; }
+        public ICommand ApplyFindDocumentsParamObjectCommand { get; private set; }
+        public ICommand GetSearchTermHistoryCommand { get; private set; }
+        public ICommand ClearSelectionsCommand { get; private set; }
+        public ICommand GetAuthorsCommand { get; private set; }
+        public ICommand GetSubjectsCommand { get; private set; }
+        public ICommand GetCategoriesCommand { get; private set; }
+        public ICommand GetTaxYearsCommand { get; private set; }
+        public ICommand FindDocumentsCommand { get; private set; }
+        public ICommand CancelCommand { get; private set; }
+        
         public FindDocumentsParam FindDocumentsParam
         {
             get => findDocumentsParam;
             set
             {
                 findDocumentsParam = value;
-                OnPropertyChanged("FindBySearchTermChecked");
-                OnPropertyChanged("SearchTerm");
-                OnPropertyChanged("FindBySelectionsChecked");
-                OnPropertyChanged("Author");
-                OnPropertyChanged("Subject");
-                OnPropertyChanged("Category");
-                OnPropertyChanged("TaxYear");
-                OnPropertyChanged("FindByDateAddedChecked");
-                OnPropertyChanged("DateAdded");
-                OnPropertyChanged("FindFlaggedDocumentsChecked");
-                OnPropertyChanged("AllDocumentsChecked");
+                OnPropertyChanged(nameof(FindBySearchTermChecked));
+                OnPropertyChanged(nameof(SearchTerm));
+                OnPropertyChanged(nameof(FindBySelectionsChecked));
+                OnPropertyChanged(nameof(Author));
+                OnPropertyChanged(nameof(Subject));
+                OnPropertyChanged(nameof(Category));
+                OnPropertyChanged(nameof(TaxYear));
+                OnPropertyChanged(nameof(FindByDateAddedChecked));
+                OnPropertyChanged(nameof(DateAdded));
+                OnPropertyChanged(nameof(FindFlaggedDocumentsChecked));
+                OnPropertyChanged(nameof(AllDocumentsChecked));
+                SetFindActionSelection();
             }
         }
+
+        public FindAction FindActionSelected { get; private set; }
 
         public bool FindBySearchTermChecked
         {
@@ -67,7 +106,7 @@ namespace PDFKeeper.Core.ViewModels
             set
             {
                 findDocumentsParam.FindBySearchTermChecked = value;
-                OnPropertyChanged();
+                OnPropertyChanged();                
                 SearchTermEnabled = value;
             }
         }
@@ -100,7 +139,7 @@ namespace PDFKeeper.Core.ViewModels
             set
             {
                 findDocumentsParam.FindBySelectionsChecked = value;
-                OnPropertyChanged();
+                OnPropertyChanged();                
                 ClearSelectionsEnabled = value;
                 AuthorEnabled = value;
                 SubjectEnabled = value;
@@ -185,7 +224,7 @@ namespace PDFKeeper.Core.ViewModels
             set
             {
                 findDocumentsParam.FindByDateAddedChecked = value;
-                OnPropertyChanged();
+                OnPropertyChanged();                
                 DateAddedEnabled = value;
             }
         }
@@ -212,7 +251,7 @@ namespace PDFKeeper.Core.ViewModels
             set
             {
                 findDocumentsParam.FindFlaggedDocumentsChecked = value;
-                OnPropertyChanged();
+                OnPropertyChanged();                
             }
         }
 
@@ -230,6 +269,187 @@ namespace PDFKeeper.Core.ViewModels
                 findDocumentsParam.AllDocumentsChecked = value;
                 OnPropertyChanged();
             }
+        }
+
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
+        }
+
+        private void ApplyPolicy() =>
+            AllDocumentsEnabled = !ApplicationPolicy.GetPolicyValue(
+                ApplicationPolicy.PolicyName.HideAllDocuments);
+
+        private void InitializeCommands()
+        {
+            ApplyFindDocumentsParamObjectCommand = new RelayCommand(ApplyFindDocumentsParamObject);
+            GetSearchTermHistoryCommand = new RelayCommand(GetSearchTermHistory);
+            ClearSelectionsCommand = new RelayCommand(ClearSelections);
+            GetAuthorsCommand = new RelayCommand(GetAuthors);
+            GetSubjectsCommand = new RelayCommand(GetSubjects);
+            GetCategoriesCommand = new RelayCommand(GetCategories);
+            GetTaxYearsCommand = new RelayCommand(GetTaxYears);
+            FindDocumentsCommand = new RelayCommand(FindDocuments);
+            CancelCommand = new RelayCommand(Cancel);
+        }
+
+        private void ApplyFindDocumentsParamObject()
+        {
+            if (FindDocumentsViewState.FindDocumentsParam != null)
+            {
+                FindDocumentsParam = FindDocumentsViewState.FindDocumentsParam.Clone();
+            }            
+        }
+
+        private void GetSearchTermHistory()
+        {
+            var entry = SearchTerm;
+            SearchTerms = searchTermHistory.GetSearchTerms();
+            SearchTerm = entry;
+        }
+
+        private void ClearSelections()
+        {
+            Author = null;
+            Subject = null;
+            Category = null;
+            TaxYear = null;
+        }
+
+        private void GetAuthors()
+        {
+            try
+            {
+                OnLongOperationStarted?.Invoke();
+                var selection = Author;
+                Authors = ColumnData.GetAuthors(Subject, Category, TaxYear);
+                Author = selection;
+            }
+            catch (DatabaseException ex)
+            {
+                messageBoxService.ShowMessage(ex.Message, true);
+            }
+            finally
+            {
+                OnLongOperationFinished?.Invoke();
+            }
+        }
+
+        private void GetSubjects()
+        {
+            try
+            {
+                OnLongOperationStarted?.Invoke();
+                var selection = Subject;
+                Subjects = ColumnData.GetSubjects(Author, Category, TaxYear);
+                Subject = selection;
+            }
+            catch (DatabaseException ex)
+            {
+                messageBoxService.ShowMessage(ex.Message, true);
+            }
+            finally
+            {
+                OnLongOperationFinished?.Invoke();
+            }
+        }
+
+        private void GetCategories()
+        {
+            try
+            {
+                OnLongOperationStarted?.Invoke();
+                var selection = Category;
+                Categories = ColumnData.GetCategories(Author, Subject, TaxYear);
+                Category = selection;
+            }
+            catch (DatabaseException ex)
+            {
+                messageBoxService.ShowMessage(ex.Message, true);
+            }
+            finally
+            {
+                OnLongOperationFinished?.Invoke();
+            }
+        }
+
+        private void GetTaxYears()
+        {
+            try
+            {
+                OnLongOperationStarted?.Invoke();
+                var selection = TaxYear;
+                TaxYears = ColumnData.GetTaxYears(Author, Subject, Category);
+                TaxYear = selection;
+            }
+            catch (DatabaseException ex)
+            {
+                messageBoxService.ShowMessage(ex.Message, true);
+            }
+            finally
+            {
+                OnLongOperationFinished?.Invoke();
+            }
+        }
+
+        private void FindDocuments()
+        {
+            CancelViewClosing = false;
+            OnApplyPendingChanges?.Invoke();
+
+            var rule = new FindDocumentsParamRule(FindDocumentsParam);
+            if (!rule.ViolationFound)
+            {
+                FindDocumentsViewState.FindDocumentsParam = FindDocumentsParam.Clone();
+
+                if (FindBySearchTermChecked)
+                {
+                    searchTermHistory.Add(SearchTerm);
+                }
+
+                OnCloseViewOKResult?.Invoke();
+            }
+            else
+            {
+                messageBoxService.ShowMessage(rule.ViolationMessage, true);
+                OnCancelCloseView?.Invoke();
+            }
+        }
+
+        private void Cancel()
+        {
+            CancelViewClosing = false;
+            OnCloseViewCancelResult?.Invoke();
+        }
+
+        private void SetFindActionSelection()
+        {
+            if (FindBySearchTermChecked)
+            {
+                FindActionSelected = FindAction.FindBySearchTerm;
+            }
+            else if (FindBySelectionsChecked)
+            {
+                FindActionSelected = FindAction.FindBySelections;
+            }
+            else if (FindByDateAddedChecked)
+            {
+                FindActionSelected = FindAction.FindByDateAdded;
+            }
+            else if (FindFlaggedDocumentsChecked)
+            {
+                FindActionSelected = FindAction.FindFlaggedDocuments;
+            }
+            else if (AllDocumentsChecked)
+            {
+                FindActionSelected = FindAction.AllDocuments;
+            }
+            else
+            {
+                FindActionSelected = FindAction.FindBySearchTerm;
+            }
+
+            OnRelaySelectedFindAction?.Invoke();
         }
     }
 }

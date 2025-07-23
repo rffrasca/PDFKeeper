@@ -18,25 +18,12 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 
-namespace PDFKeeper.Core.ViewModels
+namespace PDFKeeper.Core.Services
 {
-    [CLSCompliant(false)]
-    public abstract class ViewModelBase : ObservableObject
+    public static class ServiceLocator
     {
-        public Action OnLongOperationStarted { get; set; }
-        public Action OnLongOperationFinished { get; set; }
-        public Action OnApplyPendingChanges { get; set; }
-        public Action OnResetBindings { get; set; }
-        public Action OnCloseViewOKResult { get; set; }
-        public Action OnCloseViewCancelResult { get; set; }
-        public Action OnCloseView { get; set; }
-        public Action OnCancelCloseView { get; set; }
-        public Action OnResetView { get; set; }
-        public bool CancelViewClosing { get; set; }
-
-        protected abstract void GetServices(IServiceProvider serviceProvider);
+        public static IServiceProvider Services { get; set; }
     }
 }

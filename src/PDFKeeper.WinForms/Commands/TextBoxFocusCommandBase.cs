@@ -18,39 +18,39 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.ViewModels;
+using System;
 using System.Windows.Forms;
-using PDFKeeper.Core.Services;
-using PDFKeeper.WinForms.Properties;
-using PDFKeeper.WinForms.Views;
 
-namespace PDFKeeper.WinForms.Services
+namespace PDFKeeper.WinForms.Commands
 {
-    public class SetAuthorDialogService : IDialogService
+    public abstract class TextBoxFocusCommandBase
     {
-        public string ShowDialog(string arg = null)
-        {
-            var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
+        protected TextBox textBox;
 
-            using (var dialog = new SetAuthorForm())
+        [CLSCompliant(false)]
+        protected MainViewModel viewModel;
+
+        /// <summary>
+        /// Sets the  focused state in <see cref="MainViewModel"/>.
+        /// </summary>
+        /// <param name="enabled">Set focus to enabled. (true or false)</param>
+        protected void SetTextBoxFocusedState(bool enabled)
+        {
+            switch (textBox.Name)
             {
-                dialog.ShowDialog();
-                if (dialog.DialogResult.Equals(DialogResult.OK))
-                {
-                    if (dialog.AuthorUserControl.Author.Length > 0)
-                    {
-                        return dialog.AuthorUserControl.Author;
-                    }
-                    else
-                    {
-                        messageBoxService.ShowMessage(Resources.AuthorCannotBeBlank, true);
-                        return null;
-                    }
-                }
-                else
-                {
-                    return null;
-                }
+                case "NotesTextBox":
+                    viewModel.NotesFocused = enabled;
+                    break;
+                case "KeywordsTextBox":
+                    viewModel.KeywordsFocused = enabled;
+                    break;
+                case "TextTextBox":
+                    viewModel.TextFocused = enabled;
+                    break;
+                case "SearchTermSnippetsTextBox":
+                    viewModel.SearchTermSnippetsFocused = enabled;
+                    break;
             }
         }
     }

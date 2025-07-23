@@ -25,7 +25,7 @@ using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Services;
 using PDFKeeper.PDFViewer.Services;
-using PDFKeeper.WinForms.Helpers;
+using PDFKeeper.WinForms.Commands;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Services;
 using PDFKeeper.WinForms.Views;
@@ -57,7 +57,7 @@ namespace PDFKeeper.WinForms
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
 
-                    ServicesLocator.Services = ConfigureServices();
+                    ServiceLocator.Services = ConfigureServices();
 
                     if (!Startup())
                     {
@@ -79,6 +79,9 @@ namespace PDFKeeper.WinForms
         static ServiceProvider ConfigureServices()
         {
             var serviceCollection = new ServiceCollection();
+
+            serviceCollection.AddSingleton<IDialogService,
+                AddPdfDialogService>();
             serviceCollection.AddSingleton<IDialogService,
                 SetTitleDialogService>();
             serviceCollection.AddSingleton<IDialogService,
@@ -92,7 +95,13 @@ namespace PDFKeeper.WinForms
             serviceCollection.AddSingleton<IDialogService,
                 SetDateTimeAddedDialogService>();
             serviceCollection.AddSingleton<IDialogService,
+                SetPreviewPixelDensityDialogService>();
+            serviceCollection.AddSingleton<IDialogService,
+                OptionsDialogService>();
+            serviceCollection.AddSingleton<IDialogService,
                 UploadProfileEditorDialogService>();
+            serviceCollection.AddSingleton<IDialogService,
+                AboutBoxDialogService>();
             serviceCollection.AddSingleton<IFileDialogService,
                 OpenFileDialogService>();
             serviceCollection.AddSingleton<IFileDialogService,
@@ -124,7 +133,7 @@ namespace PDFKeeper.WinForms
         static bool Startup()
         {
             var helpFile = new HelpFile();
-            var messageBoxService = ServicesLocator.Services.GetService<IMessageBoxService>();
+            var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
             UpgradeUserSettings();
 
             if (Settings.Default.DbManagementSystem.Length.Equals(0))

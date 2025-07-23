@@ -22,7 +22,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace PDFKeeper.WinForms.Helpers
+namespace PDFKeeper.WinForms.Commands
 {
     public class DataGridViewSortProperties
     {

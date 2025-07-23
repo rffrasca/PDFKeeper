@@ -23,7 +23,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <CodeAnalysisRuleSet>PDFKeeper.WinForms.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+    <NoWarn>MVVMTKCFG0001</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,7 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <CodeAnalysisRuleSet>PDFKeeper.WinForms.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+    <NoWarn>MVVMTKCFG0001</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>PDFKeeper.ico</ApplicationIcon>
@@ -64,39 +68,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\AppendDateTimeIntoNotesCommand.cs" />
-    <Compile Include="Commands\AppendTextFromFileIntoNotes.cs" />
-    <Compile Include="Commands\ExtractAllAttachedFilesFromPdfCommand.cs" />
-    <Compile Include="Commands\BurstPdfCommand.cs" />
-    <Compile Include="Commands\CopyCommand.cs" />
-    <Compile Include="Commands\CopyPdfToClipboardCommand.cs" />
-    <Compile Include="Commands\CutCommand.cs" />
-    <Compile Include="Commands\DeleteCommand.cs" />
-    <Compile Include="Commands\DialogShowCommand.cs" />
-    <Compile Include="Commands\ExportCommand.cs" />
-    <Compile Include="Commands\FlagStateToggleCommand.cs" />
-    <Compile Include="Commands\HelpContentsShowCommand.cs" />
-    <Compile Include="Commands\MoveDatabaseCommand.cs" />
-    <Compile Include="Commands\OpenPdfCommand.cs" />
-    <Compile Include="Commands\PasteCommand.cs" />
-    <Compile Include="Commands\PrintTextCommand.cs" />
-    <Compile Include="Commands\RestoreCommand.cs" />
-    <Compile Include="Commands\SaveAsCommand.cs" />
-    <Compile Include="Commands\SaveCommand.cs" />
-    <Compile Include="Commands\SelectAllCommand.cs" />
-    <Compile Include="Commands\SelectAllDocumentsCommand.cs" />
-    <Compile Include="Commands\SetAuthorCommand.cs" />
-    <Compile Include="Commands\SetCategoryCommand.cs" />
-    <Compile Include="Commands\SetPreviewImageCommand.cs" />
-    <Compile Include="Commands\SetSubjectCommand.cs" />
-    <Compile Include="Commands\SetDateTimeAddedCommand.cs" />
-    <Compile Include="Commands\SetTaxYearCommand.cs" />
-    <Compile Include="Commands\SetTitleCommand.cs" />
-    <Compile Include="Commands\StatusBarToggleCommand.cs" />
-    <Compile Include="Commands\ToolBarToggleCommand.cs" />
-    <Compile Include="Commands\UndoCommand.cs" />
-    <Compile Include="Commands\CloseCommand.cs" />
-    <Compile Include="Commands\ViewMenuCheckedStateCommand.cs" />
+    <Compile Include="Commands\FormClosingCommand.cs" />
+    <Compile Include="Commands\UpdateCheckCommand.cs" />
+    <Compile Include="Commands\FileExtractAllCommand.cs" />
+    <Compile Include="Commands\DocumentSelectionChangedCommand.cs" />
+    <Compile Include="Commands\MainFormMouseDownCommand.cs" />
+    <Compile Include="Commands\TextBoxSelectedTextCommand.cs" />
+    <Compile Include="Commands\TextBoxLeaveCommand.cs" />
+    <Compile Include="Commands\TextBoxEnterCommand.cs" />
+    <Compile Include="Commands\TextBoxFocusCommandBase.cs" />
     <Compile Include="Components\CustomComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -151,6 +131,11 @@
     <Compile Include="Dialogs\SetPreviewPixelDensityForm.Designer.cs">
       <DependentUpon>SetPreviewPixelDensityForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Commands\TagCommand.cs" />
+    <Compile Include="Services\AboutBoxDialogService.cs" />
+    <Compile Include="Services\OptionsDialogService.cs" />
+    <Compile Include="Services\SetPreviewPixelDensityDialogService.cs" />
+    <Compile Include="Services\AddPdfDialogService.cs" />
     <Compile Include="Services\HelpService.cs" />
     <Compile Include="Services\SetDateTimeAddedDialogService.cs" />
     <Compile Include="Views\MainForm.cs">
@@ -160,7 +145,6 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DataGridViewSortProperties.cs" />
-    <Compile Include="Helpers\TextBoxHelper.cs" />
     <Compile Include="Helpers\ExceptionEventHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -311,6 +295,7 @@
       <DependentUpon>UploadProfilesForm.cs</DependentUpon>
     </Compile>
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.ColumnDataListViewModel.datasource" />
     <None Include="Resources\page_white_copy.png" />
     <None Include="Resources\icon_alert.gif" />
     <None Include="Resources\page_attach.png" />
@@ -430,7 +415,6 @@
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.FindDocumentsViewModel.datasource" />
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.LoginViewModel.datasource" />
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.MainViewModel.datasource" />
-    <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.StringEnumerableViewModel.datasource" />
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.UploadProfileEditorViewModel.datasource" />
     <None Include="Properties\DataSources\PDFKeeper.Core.ViewModels.UploadProfilesViewModel.datasource" />
     <None Include="Properties\Settings.settings">

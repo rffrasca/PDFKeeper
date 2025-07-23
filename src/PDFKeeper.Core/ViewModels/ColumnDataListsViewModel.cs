@@ -18,25 +18,46 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using CommunityToolkit.Mvvm.ComponentModel;
 using System;
+using System.Collections.Generic;
 
 namespace PDFKeeper.Core.ViewModels
 {
     [CLSCompliant(false)]
-    public abstract class ViewModelBase : ObservableObject
+    public abstract class ColumnDataListsViewModel : ViewModelBase
     {
-        public Action OnLongOperationStarted { get; set; }
-        public Action OnLongOperationFinished { get; set; }
-        public Action OnApplyPendingChanges { get; set; }
-        public Action OnResetBindings { get; set; }
-        public Action OnCloseViewOKResult { get; set; }
-        public Action OnCloseViewCancelResult { get; set; }
-        public Action OnCloseView { get; set; }
-        public Action OnCancelCloseView { get; set; }
-        public Action OnResetView { get; set; }
-        public bool CancelViewClosing { get; set; }
+        private IEnumerable<string> authors;
+        private IEnumerable<string> subjects;
+        private IEnumerable<string> categories;
+        private IEnumerable<string> taxYears;
 
-        protected abstract void GetServices(IServiceProvider serviceProvider);
+        public IEnumerable<string> Authors
+        {
+            get => authors;
+            set => SetProperty(ref authors, value);
+        }
+
+        public IEnumerable<string> Subjects
+        {
+            get => subjects;
+            set => SetProperty(ref subjects, value);
+        }
+
+        public IEnumerable<string> Categories
+        {
+            get => categories;
+            set => SetProperty(ref categories, value);
+        }
+
+        public IEnumerable<string> TaxYears
+        {
+            get => taxYears;
+            set => SetProperty(ref taxYears, value);
+        }
+
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            throw new NotSupportedException();
+        }
     }
 }

@@ -19,24 +19,33 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Application;
-using PDFKeeper.Core.Presenters;
+using PDFKeeper.Core.ViewModels;
+using PDFKeeper.WinForms.Commands;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Views
 {
     public partial class UploadProfilesForm : Form
     {
-        private readonly UploadProfilesPresenter presenter;
+        private readonly UploadProfilesViewModel viewModel;
 
         public UploadProfilesForm()
         {
             InitializeComponent();
-            presenter = new UploadProfilesPresenter();
-            var viewModel = presenter.ViewModel;
+            viewModel = new UploadProfilesViewModel();
             UploadProfilesViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             UploadProfilesFileSystemWatcher.Path = viewModel.UploadProfilesDirectoryPath;
+            SetTags();            
+        }
+
+        private void SetTags()
+        {
+            AddButton.Tag = viewModel.AddUploadProfileCommand;
+            EditButton.Tag = viewModel.EditUploadProfileCommand;
+            DeleteButton.Tag = viewModel.DeleteUploadProfileCommand;
         }
 
         private void UploadProfileNamesListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,34 +53,19 @@ namespace PDFKeeper.WinForms.Views
             UploadProfileNamesListBox.Select();
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
-            presenter.AddUploadProfile();
+            TagCommand.Invoke(sender);
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
+        private void UploadProfilesFileSystemWatcher_CreatedDeleted(object sender, FileSystemEventArgs e)
         {
-            presenter.EditUploadProfile();
+            viewModel.GetUploadProfileNamesCommand.Execute(null);
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
+        private void UploadProfilesFileSystemWatcher_Renamed(object sender, RenamedEventArgs e)
         {
-            presenter.DeleteUploadProfile();
-        }
-
-        private void UploadProfilesFileSystemWatcher_Created(object sender, System.IO.FileSystemEventArgs e)
-        {
-            presenter.GetUploadProfileNames();
-        }
-
-        private void UploadProfilesFileSystemWatcher_Deleted(object sender, System.IO.FileSystemEventArgs e)
-        {
-            presenter.GetUploadProfileNames();
-        }
-
-        private void UploadProfilesFileSystemWatcher_Renamed(object sender, System.IO.RenamedEventArgs e)
-        {
-            presenter.GetUploadProfileNames();
+            viewModel.GetUploadProfileNamesCommand.Execute(null);
         }
     }
 }

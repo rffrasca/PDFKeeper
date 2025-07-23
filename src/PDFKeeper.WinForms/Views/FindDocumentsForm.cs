@@ -19,8 +19,8 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Application;
-using PDFKeeper.Core.Presenters;
 using PDFKeeper.Core.ViewModels;
+using PDFKeeper.WinForms.Commands;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -29,153 +29,128 @@ namespace PDFKeeper.WinForms.Views
 {
     public partial class FindDocumentsForm : Form
     {
-        private readonly FindDocumentsPresenter presenter;
         private readonly FindDocumentsViewModel viewModel;
-        private RadioButton selectedRadioButton;
+        private RadioButton selectedRadioButtonOnOpen;
 
         public FindDocumentsForm()
         {
             InitializeComponent();
-            presenter = new FindDocumentsPresenter();
-            viewModel = presenter.ViewModel;
+            viewModel = new FindDocumentsViewModel();
             FindDocumentsViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
-            SetActionDelegates();
+            SetActions();
+            SetTags();
         }
 
-        private void SetActionDelegates()
+        private void SetActions()
         {
-            presenter.OnApplyPendingChangesRequested = () 
-                => FindDocumentsViewModelBindingSource.EndEdit();
-            presenter.OnLongRunningOperationStarted = () 
-                => Cursor = Cursors.WaitCursor;
-            presenter.OnLongRunningOperationFinished = () 
-                => Cursor = Cursors.Default;
+            viewModel.OnLongOperationStarted = () => Cursor = Cursors.WaitCursor;
+            viewModel.OnLongOperationFinished = () => Cursor = Cursors.Default;
+            viewModel.OnApplyPendingChanges = () => FindDocumentsViewModelBindingSource.EndEdit();
 
-            presenter.OnViewCloseCancelled = (() =>
+            viewModel.OnCloseViewOKResult = () =>
             {
-                presenter.CancelViewClosing = true;
+                DialogResult = DialogResult.OK;
+                Close();
+            };
+
+            viewModel.OnCloseViewCancelResult = () =>
+            {
+                selectedRadioButtonOnOpen.Select();
+                DialogResult = DialogResult.Cancel;
+                Close();
+            };
+
+            viewModel.OnCancelCloseView = () =>
+            {
+                viewModel.CancelViewClosing = true;
                 SelectNextControl(this, true, true, true, true);
-            });
+            };
+
+            viewModel.OnRelaySelectedFindAction = () =>
+            {
+                switch (viewModel.FindActionSelected)
+                {
+                    case FindDocumentsViewModel.FindAction.FindBySearchTerm:
+                        selectedRadioButtonOnOpen = FindBySearchTermRadioButton;
+                        break;
+                    case FindDocumentsViewModel.FindAction.FindBySelections:
+                        selectedRadioButtonOnOpen = FindBySelectionsRadioButton;
+                        break;
+                    case FindDocumentsViewModel.FindAction.FindByDateAdded:
+                        selectedRadioButtonOnOpen = FindByDateAddedRadioButton;
+                        break;
+                    case FindDocumentsViewModel.FindAction.FindFlaggedDocuments:
+                        selectedRadioButtonOnOpen = FindFlaggedDocumentsRadioButton;
+                        break;
+                    case FindDocumentsViewModel.FindAction.AllDocuments:
+                        selectedRadioButtonOnOpen = AllDocumentsRadioButton;
+                        break;
+                }
+
+                viewModel.DateAdded = DateAddedDateTimePicker.Text;
+            };
+        }
+
+        private void SetTags()
+        {
+            SearchTermUserControl.Tag = viewModel.GetSearchTermHistoryCommand;
+            AuthorDropDownListUserControl.Tag = viewModel.GetAuthorsCommand;
+            SubjectDropDownListUserControl.Tag = viewModel.GetSubjectsCommand;
+            CategoryDropDownListUserControl.Tag = viewModel.GetCategoriesCommand;
+            TaxYearDropDownListUserControl.Tag = viewModel.GetTaxYearsCommand;
+            OK_Button.Tag = viewModel.FindDocumentsCommand;
+            Cancel_Button.Tag = viewModel.CancelCommand;
         }
 
         private void FindDocumentsForm_Load(object sender, EventArgs e)
         {
-            presenter.ApplyParamObjectFromApplicationGlobal();
-            if (FindBySearchTermRadioButton.Checked)
-            {
-                selectedRadioButton = FindBySearchTermRadioButton;
-            }
-            else if (FindBySelectionsRadioButton.Checked)
-            {
-                selectedRadioButton = FindBySelectionsRadioButton;
-            }
-            else if (FindByDateAddedRadioButton.Checked)
-            {
-                selectedRadioButton = FindByDateAddedRadioButton;
-            }
-            else if (FindFlaggedDocumentsRadioButton.Checked)
-            {
-                selectedRadioButton = FindFlaggedDocumentsRadioButton;
-            }
-            else if (AllDocumentsRadioButton.Checked)
-            {
-                selectedRadioButton = AllDocumentsRadioButton;
-            }
-            if (selectedRadioButton is null)
-            {
-                selectedRadioButton = FindBySearchTermRadioButton;
-            }
+            viewModel.ApplyFindDocumentsParamObjectCommand.Execute(null);
         }
 
         private void RadioButton_Click(object sender, EventArgs e)
         {
-            RadioButton radioButton = sender as RadioButton;
-            if (radioButton != null && !radioButton.Checked)
-            {
-                radioButton.Checked = !radioButton.Checked;
-            }
-            if (ReferenceEquals(
-                radioButton,
-                FindByDateAddedRadioButton) &
-                FindByDateAddedRadioButton.Checked)
-            {
-                if (viewModel.DateAdded is null)
-                {
-                    viewModel.DateAdded = DateAddedDateTimePicker.Text;
-                }
-            }
-        }
-
-        private void SearchTermUserControl_Enter(object sender, EventArgs e)
-        {
-            presenter.GetSearchTermHistory();
+            ((RadioButton)sender).Checked = true;
         }
 
         private void ClearSelectionsButton_Click(object sender, EventArgs e)
         {
-            presenter.ClearSelections();
+            viewModel.ClearSelectionsCommand.Execute(null);
         }
 
-        private void AuthorDropDownListUserControl_Enter(object sender, EventArgs e)
+        private void UserControl_Enter(object sender, EventArgs e)
         {
-            presenter.GetAuthors();
+            TagCommand.Invoke(sender);
         }
 
-        private void SubjectDropDownListUserControl_Enter(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
-            presenter.GetSubjects();
-        }
-
-        private void CategoryDropDownListUserControl_Enter(object sender, EventArgs e)
-        {
-            presenter.GetCategories();
-        }
-
-        private void TaxYearDropDownListUserControl_Enter(object sender, EventArgs e)
-        {
-            presenter.GetTaxYears();
-        }
-
-        private void OK_Button_Click(object sender, EventArgs e)
-        {
-            presenter.FindDocuments();
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-
-        private void Cancel_Button_Click(object sender, EventArgs e)
-        {
-            selectedRadioButton.Select();
-            presenter.Cancel();
-            DialogResult = DialogResult.Cancel;
-            Close();
+            TagCommand.Invoke(sender);
         }
 
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals("Authors", StringComparison.Ordinal))
+            switch (e.PropertyName)
             {
-                AuthorDropDownListUserControl.Authors = viewModel.Authors;
-            }
-            else if (e.PropertyName.Equals("Subjects", StringComparison.Ordinal))
-            {
-                SubjectDropDownListUserControl.Subjects = viewModel.Subjects;
-            }
-            else if (e.PropertyName.Equals("Categories", StringComparison.Ordinal))
-            {
-                CategoryDropDownListUserControl.Categories = viewModel.Categories;
-            }
-            else if (e.PropertyName.Equals("TaxYears", StringComparison.Ordinal))
-            {
-                TaxYearDropDownListUserControl.TaxYears = viewModel.TaxYears;
+                case nameof(viewModel.Authors):
+                    AuthorDropDownListUserControl.Authors = viewModel.Authors;
+                    break;
+                case nameof(viewModel.Subjects):
+                    SubjectDropDownListUserControl.Subjects = viewModel.Subjects;
+                    break;
+                case nameof(viewModel.Categories):
+                    CategoryDropDownListUserControl.Categories = viewModel.Categories;
+                    break;
+                case nameof(viewModel.TaxYears):
+                    TaxYearDropDownListUserControl.TaxYears = viewModel.TaxYears;
+                    break;
             }
         }
 
         private void FindDocumentsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = presenter.CancelViewClosing;
+            e.Cancel = viewModel.CancelViewClosing;
         }
     }
 }

@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 
 namespace PDFKeeper.Core.Models
 {
@@ -46,18 +47,14 @@ namespace PDFKeeper.Core.Models
         /// <summary>
         /// Gets the current date in the format of yyyy-MM-dd.
         /// </summary>
-        internal static string GetDate()
-        {
-            return DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.CurrentCulture);
-        }
+        internal static string GetDate() =>
+            DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.CurrentCulture);
 
         /// <summary>
         /// Gets the current date and time in the format of yyyy-MM-dd HH:mm:ss.
         /// </summary>
-        internal static string GetDateTime()
-        {
-            return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CurrentCulture);
-        }
+        internal static string GetDateTime() => 
+            DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CurrentCulture);
 
         /// <summary>
         /// Gets the name of a file without the extension.
@@ -65,16 +62,16 @@ namespace PDFKeeper.Core.Models
         /// <param name="file">The FileInfo object.</param>
         /// <returns>The file name without the extension.</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        internal static string GetFileName(FileInfo file)
-        {
-            return Path.GetFileNameWithoutExtension(file.FullName);
-        }
+        internal static string GetFileName(FileInfo file) =>
+            Path.GetFileNameWithoutExtension(file.FullName);
 
         /// <summary>
         /// Gets all title tokens.
         /// </summary>
-        /// <returns>The collection.</returns>
-        internal static IEnumerable<string> GetTokens()
+        /// <returns>The array of title tokens.</returns>
+        internal static string[] GetTokens() => GetTokensInternal().ToArray();
+        
+        private static IEnumerable<string> GetTokensInternal()
         {
             yield return string.Empty;
             yield return DateToken;

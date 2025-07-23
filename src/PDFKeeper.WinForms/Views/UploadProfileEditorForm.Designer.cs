@@ -96,7 +96,7 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.OK_Button, "OK_Button");
             this.OK_Button.Name = "OK_Button";
             this.HelpProvider.SetShowHelp(this.OK_Button, ((bool)(resources.GetObject("OK_Button.ShowHelp"))));
-            this.OK_Button.Click += new System.EventHandler(this.OK_Button_Click);
+            this.OK_Button.Click += new System.EventHandler(this.Button_Click);
             // 
             // Cancel_Button
             // 
@@ -104,7 +104,7 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.Cancel_Button, "Cancel_Button");
             this.Cancel_Button.Name = "Cancel_Button";
             this.HelpProvider.SetShowHelp(this.Cancel_Button, ((bool)(resources.GetObject("Cancel_Button.ShowHelp"))));
-            this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
+            this.Cancel_Button.Click += new System.EventHandler(this.Button_Click);
             // 
             // NameUserControl
             // 

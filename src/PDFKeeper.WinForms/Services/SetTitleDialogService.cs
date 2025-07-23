@@ -31,7 +31,7 @@ namespace PDFKeeper.WinForms.Services
     {
         public string ShowDialog(string arg = null)
         {
-            var messageBoxService = ServicesLocator.Services.GetService<IMessageBoxService>();
+            var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
 
             using (var dialog = new SetTitleForm())
             {

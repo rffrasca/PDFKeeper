@@ -18,30 +18,28 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using AutoUpdaterDotNET;
+using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
-using PDFKeeper.Core.Commands;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.FileIO.PDF;
-using PDFKeeper.Core.Presenters;
+using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
 using PDFKeeper.WinForms.Dialogs;
-using PDFKeeper.WinForms.Helpers;
 using PDFKeeper.WinForms.Properties;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static PDFKeeper.Core.ViewModels.MainViewModel;
 
 namespace PDFKeeper.WinForms.Views
 {
     public partial class MainForm : Form
     {
-        private readonly MainPresenter presenter;
         private readonly MainViewModel viewModel;
+        private readonly IHelpService helpService;
         private readonly DataGridViewSortProperties dataGridViewSortProperties;
         private int dataGridViewScrollPosition;
         private readonly FindDocumentsForm findDocumentsForm;
@@ -54,106 +52,142 @@ namespace PDFKeeper.WinForms.Views
         public MainForm()
         {
             InitializeComponent();
-            presenter = new MainPresenter(Handle);
-            viewModel = presenter.ViewModel;
-            MainViewModelBindingSource.DataSource = presenter.ViewModel;
+            viewModel = new MainViewModel(Handle);
+            MainViewModelBindingSource.DataSource = viewModel;
+            helpService = ServiceLocator.Services.GetService<IHelpService>();
             dataGridViewSortProperties = new DataGridViewSortProperties();
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             findDocumentsForm = new FindDocumentsForm();
             uploadProfilesForm = new UploadProfilesForm();
             progressForm = new ProgressForm();
             viewModel.PropertyChanged += MainForm_PropertyChanged;
+            SetActions();
             SetTags();
-            SetActionDelegates();
         }
 
-        private void SetTags()
+        private void SetActions()
         {
-            FileAddToolStripMenuItem.Tag = new DialogShowCommand(new AddPdfForm(), null);
-            FileAddToolStripButton.Tag = new DialogShowCommand(new AddPdfForm(), null);
-            FileOpenToolStripMenuItem.Tag = new OpenPdfCommand(presenter);
-            FileOpenToolStripButton.Tag = new OpenPdfCommand(presenter);
-            FileSaveToolStripMenuItem.Tag = new SaveCommand(presenter);
-            FileSaveToolStripButton.Tag = new SaveCommand(presenter);
-            FileSaveAsToolStripMenuItem.Tag = new SaveAsCommand(presenter);
-            FileBurstToolStripMenuItem.Tag = new BurstPdfCommand(presenter);
-            FileBurstToolStripButton.Tag = new BurstPdfCommand(presenter);
-            FileExtractAllAttachmentsToolStripMenuItem.Tag =
-                new ExtractAllAttachedFilesFromPdfCommand(
-                    presenter,
-                    PdfFile.AttachedFilesType.Attachment);
-            FileExtractAllAttachmentsToolStripButton.Tag =
-                new ExtractAllAttachedFilesFromPdfCommand(
-                    presenter,
-                    PdfFile.AttachedFilesType.Attachment);
-            FileExtractAllEmbeddedFilesToolStripMenuItem.Tag =
-                new ExtractAllAttachedFilesFromPdfCommand(
-                    presenter,
-                    PdfFile.AttachedFilesType.EmbeddedFile);
-            FileExtractAllEmbeddedFilesToolStripButton.Tag =
-                new ExtractAllAttachedFilesFromPdfCommand(
-                    presenter,
-                    PdfFile.AttachedFilesType.EmbeddedFile);
-            FileCopyPdfToClipboardToolStripMenuItem.Tag = new CopyPdfToClipboardCommand(presenter);
-            FileCopyPdfToClipboardToolStripButton.Tag = new CopyPdfToClipboardCommand(presenter);
-            FilePrintToolStripMenuItem.Tag = new PrintTextCommand(presenter, false);
-            FilePrintToolStripButton.Tag = new PrintTextCommand(presenter, false);
-            FilePrintPreviewToolStripMenuItem.Tag = new PrintTextCommand(presenter, true);
-            FileExportToolStripMenuItem.Tag = new ExportCommand(presenter);
-            FileExitToolStripMenuItem.Tag = new CloseCommand(this);
-            EditUndoToolStripMenuItem.Tag = new UndoCommand(this);
-            EditUndoToolStripButton.Tag = new UndoCommand(this);
-            EditCutToolStripMenuItem.Tag = new CutCommand(this, presenter);
-            EditCutToolStripButton.Tag = new CutCommand(this, presenter);
-            EditCopyToolStripMenuItem.Tag = new CopyCommand(this);
-            EditCopyToolStripButton.Tag = new CopyCommand(this);
-            EditPasteToolStripMenuItem.Tag = new PasteCommand(this);
-            EditPasteToolStripButton.Tag = new PasteCommand(this);
-            EditSelectAllToolStripMenuItem.Tag = new SelectAllCommand(this, presenter);
-            EditRestoreToolStripMenuItem.Tag = new RestoreCommand(presenter);
-            EditRestoreToolStripButton.Tag = new RestoreCommand(presenter);
-            EditAppendDateTimeToolStripMenuItem.Tag = new AppendDateTimeIntoNotesCommand(
-                presenter);
-            EditAppendDateTimeToolStripButton.Tag = new AppendDateTimeIntoNotesCommand(presenter);
-            EditAppendTextToolStripMenuItem.Tag = new AppendTextFromFileIntoNotes(presenter);
-            EditAppendTextToolStripButton.Tag = new AppendTextFromFileIntoNotes(presenter);
-            EditFlagDocumentToolStripMenuItem.Tag = new FlagStateToggleCommand(presenter);
-            DocumentsFindToolStripMenuItem.Tag = new DialogShowCommand(findDocumentsForm, null);
-            DocumentsFindToolStripButton.Tag = new DialogShowCommand(findDocumentsForm, null);
-            DocumentsSelectAllToolStripMenuItem.Tag = new SelectAllDocumentsCommand(this, true);
-            DocumentsSelectNoneToolStripMenuItem.Tag = new SelectAllDocumentsCommand(this, false);
-            DocumentsSetTitleToolStripMenuItem.Tag = new SetTitleCommand(presenter);
-            DocumentsSetAuthorToolStripMenuItem.Tag = new SetAuthorCommand(presenter);
-            DocumentsSetSubjectToolStripMenuItem.Tag = new SetSubjectCommand(presenter);
-            DocumentsSetCategoryToolStripMenuItem.Tag = new SetCategoryCommand(presenter);
-            DocumentsSetTaxYearToolStripMenuItem.Tag = new SetTaxYearCommand(presenter);
-            DocumentsSetDateTimeAddedToolStripMenuItem.Tag = new SetDateTimeAddedCommand(
-                presenter);
-            DocumentsDeleteToolStripMenuItem.Tag = new DeleteCommand(presenter);
-            DocumentsDeleteToolStripButton.Tag = new DeleteCommand(presenter);
-            ViewToolStripMenuItem.Tag = new ViewMenuCheckedStateCommand(this);
-            ViewSetPreviewPixelDensityToolStripMenuItem.Tag = new DialogShowCommand(
-                new SetPreviewPixelDensityForm(),
-                new SetPreviewImageCommand(presenter));
-            ViewToolBarToolStripMenuItem.Tag = new ToolBarToggleCommand(this);
-            ViewStatusBarToolStripMenuItem.Tag = new StatusBarToggleCommand(this);
-            ToolsOptionsToolStripMenuItem.Tag = new DialogShowCommand(new OptionsForm(), null);
-            ToolsOptionsToolStripButton.Tag = new DialogShowCommand(new OptionsForm(), null);
-            ToolsUploadProfilesToolStripMenuItem.Tag = new DialogShowCommand(
-                uploadProfilesForm,
-                null);
-            ToolsUploadProfilesToolStripButton.Tag = new DialogShowCommand(
-                uploadProfilesForm,
-                null);
-            ToolsMoveDatabaseToolStripMenuItem.Tag = new MoveDatabaseCommand(presenter);
-            HelpContentsToolStripMenuItem.Tag = new HelpContentsShowCommand(this);
-            HelpContentsToolStripButton.Tag = new HelpContentsShowCommand(this);
-            HelpAboutToolStripMenuItem.Tag = new DialogShowCommand(new AboutBox(), null);
-        }
+            viewModel.OnLongOperationStarted = () => Cursor = Cursors.WaitCursor;
+            viewModel.OnLongOperationFinished = () => Cursor = Cursors.Default;
+            viewModel.OnCloseView = () => Close();
+            viewModel.OnCheckForUpdate = () => TagCommand.Invoke(UpdateCheckTimer);
 
-        private void SetActionDelegates()
-        {
-            presenter.OnBlockingUploadStarted = () =>
+            viewModel.OnGetViewState = () =>
+            {
+                if (Settings.Default.MainFormLocation != null)
+                {
+                    // Workaround for rare bug that can cause this form to be positioned off the screen.
+                    if (Settings.Default.MainFormLocation.Equals(new Point(-32000, -32000)))
+                    {
+                        Location = new Point(0, 0);
+                    }
+                    else
+                    {
+                        Location = Settings.Default.MainFormLocation;
+                    }
+                }
+
+                if (Settings.Default.MainFormSize != null)
+                {
+                    Size = Settings.Default.MainFormSize;
+                }
+
+                if (Settings.Default.MainFormState.Equals(FormWindowState.Minimized))
+                {
+                    WindowState = FormWindowState.Normal;
+                }
+                else
+                {
+                    WindowState = Settings.Default.MainFormState;
+                }
+
+                HorizontalSplitContainer.SplitterDistance = Settings.Default.HorizontalSplitterDistance;
+                VerticalSplitContainer.SplitterDistance = Settings.Default.VerticalSplitterDistance;                
+            };
+
+            viewModel.OnUndoNotes = () => NotesTextBox.Undo();
+
+            viewModel.OnCutNotes = () =>
+            {
+                NotesTextBox.Cut();
+                viewModel.SelectedNotes = NotesTextBox.SelectedText;
+            };
+
+            viewModel.OnCopyText = () => GetTextBoxWithFocus().Copy();
+            viewModel.OnPasteNotes = () => NotesTextBox.Paste();
+
+            viewModel.OnSelectAllText = () =>
+            {
+                var textBox = GetTextBoxWithFocus();
+                textBox.SelectAll();
+
+                switch (textBox.Name)
+                {
+                    case "NotesTextBox":
+                        viewModel.SelectedNotes = NotesTextBox.SelectedText;
+                        break;
+                    case "KeywordsTextBox":
+                        viewModel.SelectedKeywords = KeywordsTextBox.SelectedText;
+                        break;
+                    case "TextTextBox":
+                        viewModel.SelectedText = TextTextBox.SelectedText;
+                        break;
+                    case "SearchTermSnippetsTextBox":
+                        viewModel.SelectedSearchTermSnippets = SearchTermSnippetsTextBox.SelectedText;
+                        break;
+                }
+            };
+
+            viewModel.OnFindDocuments = () => findDocumentsForm.ShowDialog();
+
+            viewModel.OnSelectAllDocuments = (selection) =>
+            {
+                foreach (DataGridViewRow row in DocumentsDataGridView.Rows)
+                {
+                    row.Cells[0].Value = selection;
+                }
+                
+                DocumentsDataGridView.RefreshEdit();
+            };
+
+            viewModel.OnSettingsChanged = () =>
+            {
+                viewModel.CompactLocalDatabaseAfterDelete =
+                    Settings.Default.CompactLocalDatabaseAfterDelete;
+                viewModel.PreviewPixelDensity =
+                    Settings.Default.PreviewPixelDensity;
+                viewModel.ShowPdfWithDefaultApplication =
+                    Settings.Default.ShowPdfWithDefaultApplication;
+                viewModel.ViewSize =
+                    Settings.Default.MainFormSize;
+                viewModel.ToolStripVisible =
+                    Settings.Default.ToolBarVisible;
+                viewModel.StatusStripVisible =
+                    Settings.Default.StatusBarVisible;
+            };
+
+            viewModel.OnManageUploadProfiles = ()
+                => uploadProfilesForm.ShowDialog();
+            viewModel.OnShowHelp = ()
+                => helpService.ShowHelp<Control>(this, HelpFile.Topic.UsingPDFKeeper);
+
+            viewModel.OnPdfDoDragDrop = (pdfFile) =>
+            {
+                DocumentsDataGridView.DoDragDrop(
+                    new DataObject(
+                        DataFormats.FileDrop,
+                        new string[] { pdfFile.FullName }),
+                    DragDropEffects.Copy);
+            };
+
+            viewModel.OnScrollToEndOfNotesText = () =>
+            {
+                NotesTextBox.Select();
+                NotesTextBox.Select(NotesTextBox.Text.Length, 0);
+                NotesTextBox.ScrollToCaret();
+            };
+
+            viewModel.OnBlockingUploadStarted = () =>
             {
                 BeginInvoke((MethodInvoker)delegate ()
                 {
@@ -162,69 +196,202 @@ namespace PDFKeeper.WinForms.Views
                 });
             };
 
-            presenter.OnBlockingUploadFinished = () 
-                => progressForm.Close();
-            presenter.OnCheckedDocumentsProcessed = ()
-                => ToolStripItem_Click(DocumentsSelectNoneToolStripMenuItem, null);
-            presenter.OnLongRunningOperationStarted = () 
-                => Cursor = Cursors.WaitCursor;
-            presenter.OnLongRunningOperationFinished = ()
-                => Cursor = Cursors.Default;
+            viewModel.OnBlockingUploadFinished = () => progressForm.Close();
 
-            presenter.OnPdfDoDragDrop = ((obj) =>
-            {
-                DocumentsDataGridView.DoDragDrop(
-                    new DataObject(
-                        DataFormats.FileDrop,
-                        new string[] { obj.FullName }),
-                    DragDropEffects.Copy);
-            });
-
-            presenter.OnProgressBarPerformStepRequested = () =>
+            viewModel.OnProgressBarPerformStep = () =>
             {
                 DocumentsProgressBar.PerformStep();
                 Application.DoEvents();
             };
 
-            presenter.OnScrollToEndOfNotesTextRequested = () =>
+            viewModel.OnCheckedDocumentsProcessed = ()
+                => ToolStripItem_Click(DocumentsSelectNoneToolStripMenuItem, null);
+            viewModel.OnCheckForFlaggedDocumentsStarted = ()
+                => CheckForFlaggedDocumentsTimer.Stop();
+            viewModel.OnCheckForFlaggedDocumentsFinished = ()
+                => CheckForFlaggedDocumentsTimer.Start();
+            viewModel.OnCheckForDocumentsListChangesStarted = ()
+                => CheckForDocumentsListChangesTimer.Stop();
+            viewModel.OnCheckForDocumentsListChangesFinished = ()
+                => CheckForDocumentsListChangesTimer.Start();
+            viewModel.OnUploadPdfFilesStarted = ()
+                => UploadTimer.Stop();
+            viewModel.OnUploadPdfFilesFinished = ()
+                => UploadTimer.Start();
+            viewModel.OnSetDocumentsListHasChangesStarted = ()
+                => DocumentsListTimedRefreshTimer.Stop();
+            viewModel.OnSetDocumentsListHasChangesFinished = ()
+                => DocumentsListTimedRefreshTimer.Start();
+
+            viewModel.OnSetViewState = () =>
             {
-                NotesTextBox.Select();
-                NotesTextBox.Select(NotesTextBox.Text.Length, 0);
-                NotesTextBox.ScrollToCaret();
+                Settings.Default.HorizontalSplitterDistance =
+                    HorizontalSplitContainer.SplitterDistance;
+                Settings.Default.VerticalSplitterDistance =
+                    VerticalSplitContainer.SplitterDistance;
+                Settings.Default.MainFormLocation = Location;
+
+                if (WindowState.Equals(FormWindowState.Normal))
+                {
+                    Settings.Default.MainFormSize = Size;
+                }
+
+                Settings.Default.MainFormState = WindowState;
             };
+        }
+
+        private void SetTags()
+        {
+            FileAddToolStripMenuItem.Tag =
+                viewModel.AddPdfCommand;
+            FileAddToolStripButton.Tag = 
+                viewModel.AddPdfCommand;
+            FileOpenToolStripMenuItem.Tag =
+                viewModel.OpenPdfForEachSelectedDocumentCommand;
+            FileOpenToolStripButton.Tag =
+                viewModel.OpenPdfForEachSelectedDocumentCommand;
+            FileSaveToolStripMenuItem.Tag =
+                viewModel.SaveNotesCommand;
+            FileSaveToolStripButton.Tag = 
+                viewModel.SaveNotesCommand;
+            FileSaveAsToolStripMenuItem.Tag =
+                viewModel.PdfOrTextSaveAsCommand;
+            FileBurstToolStripMenuItem.Tag =
+                viewModel.BurstCurrentDocumentPdfCommand;
+            FileBurstToolStripButton.Tag =
+                viewModel.BurstCurrentDocumentPdfCommand;
+            FileExtractAllAttachmentsToolStripMenuItem.Tag =
+                new FileExtractAllCommand(
+                    viewModel,
+                    PdfFile.AttachedFilesType.Attachment);
+            FileExtractAllAttachmentsToolStripButton.Tag =
+                new FileExtractAllCommand(
+                    viewModel,
+                    PdfFile.AttachedFilesType.Attachment);
+            FileExtractAllEmbeddedFilesToolStripMenuItem.Tag =
+                new FileExtractAllCommand(
+                    viewModel,
+                    PdfFile.AttachedFilesType.EmbeddedFile);
+            FileExtractAllEmbeddedFilesToolStripButton.Tag =
+                new FileExtractAllCommand(
+                    viewModel,
+                    PdfFile.AttachedFilesType.EmbeddedFile);
+            FileCopyPdfToClipboardToolStripMenuItem.Tag =
+                viewModel.CopyCurrentDocumentPdfToClipboardCommand;
+            FileCopyPdfToClipboardToolStripButton.Tag =
+                viewModel.CopyCurrentDocumentPdfToClipboardCommand;
+            FilePrintToolStripMenuItem.Tag =
+                viewModel.PrintDocumentDataTextCommand;
+            FilePrintToolStripButton.Tag =
+                viewModel.PrintDocumentDataTextCommand;
+            FilePrintPreviewToolStripMenuItem.Tag =
+                viewModel.PrintDocumentDataTextWithPreviewCommand;
+            FileExportToolStripMenuItem.Tag =
+                viewModel.ExportEachSelectedDocumentCommand;
+            FileExitToolStripMenuItem.Tag =
+                viewModel.CloseCommand;
+            EditUndoToolStripMenuItem.Tag =
+                viewModel.UndoNotesCommand;
+            EditUndoToolStripButton.Tag =
+                viewModel.UndoNotesCommand;
+            EditCutToolStripMenuItem.Tag =
+                viewModel.CutNotesCommand;
+            EditCutToolStripButton.Tag =
+                viewModel.CutNotesCommand;
+            EditCopyToolStripMenuItem.Tag =
+                viewModel.CopyTextCommand;
+            EditCopyToolStripButton.Tag =
+                viewModel.CopyTextCommand;
+            EditPasteToolStripMenuItem.Tag =
+                viewModel.PasteNotesCommand;
+            EditPasteToolStripButton.Tag =
+                viewModel.PasteNotesCommand;
+            EditSelectAllToolStripMenuItem.Tag =
+                viewModel.SelectAllTextCommand;
+            EditRestoreToolStripMenuItem.Tag =
+                viewModel.RestoreNotesCommand;
+            EditRestoreToolStripButton.Tag =
+                viewModel.RestoreNotesCommand;
+            EditAppendDateTimeToolStripMenuItem.Tag =
+                viewModel.AppendDateTimeIntoNotesCommand;
+            EditAppendDateTimeToolStripButton.Tag =
+                viewModel.AppendDateTimeIntoNotesCommand;
+            EditAppendTextToolStripMenuItem.Tag =
+                viewModel.AppendTextFromFileIntoNotesCommand;
+            EditAppendTextToolStripButton.Tag = 
+                viewModel.AppendTextFromFileIntoNotesCommand;
+            EditFlagDocumentToolStripMenuItem.Tag =
+                viewModel.UpdateCurrentDocumentFlagStateCommand;
+            DocumentsFindToolStripMenuItem.Tag =
+                viewModel.FindDocumentsCommand;
+            DocumentsFindToolStripButton.Tag =
+                viewModel.FindDocumentsCommand;
+            DocumentsSelectAllToolStripMenuItem.Tag =
+                viewModel.SelectAllDocumentsCommand;
+            DocumentsSelectNoneToolStripMenuItem.Tag =
+                viewModel.SelectNoDocumentsCommand;
+            DocumentsSetTitleToolStripMenuItem.Tag =
+                viewModel.SetTitleOnEachSelectedDocumentCommand;
+            DocumentsSetAuthorToolStripMenuItem.Tag =
+                viewModel.SetAuthorOnEachSelectedDocumentCommand;
+            DocumentsSetSubjectToolStripMenuItem.Tag =
+                viewModel.SetSubjectOnEachSelectedDocumentCommand;
+            DocumentsSetCategoryToolStripMenuItem.Tag =
+                viewModel.SetCategoryOnEachSelectedDocumentCommand;
+            DocumentsSetTaxYearToolStripMenuItem.Tag =
+                viewModel.SetTaxYearOnEachSelectedDocumentCommand;
+            DocumentsSetDateTimeAddedToolStripMenuItem.Tag =
+                viewModel.SetDateTimeAddedOnEachSelectedDocumentCommand;
+            DocumentsDeleteToolStripMenuItem.Tag =
+                viewModel.DeleteEachSelectedDocumentCommand;
+            DocumentsDeleteToolStripButton.Tag =
+                viewModel.DeleteEachSelectedDocumentCommand;
+            ViewSetPreviewPixelDensityToolStripMenuItem.Tag =
+                viewModel.SetPreviewPixelDensityCommand;
+            ViewToolBarToolStripMenuItem.Tag =
+                viewModel.ToggleToolStripVisibleStateCommand;
+            ViewStatusBarToolStripMenuItem.Tag =
+                viewModel.ToggleStatusStripVisibleStateCommand;
+            ToolsOptionsToolStripMenuItem.Tag =
+                viewModel.ShowOptionsCommand;
+            ToolsOptionsToolStripButton.Tag =
+                viewModel.ShowOptionsCommand;
+            ToolsUploadProfilesToolStripMenuItem.Tag =
+                viewModel.ManageUploadProfilesCommand;
+            ToolsUploadProfilesToolStripButton.Tag =
+                viewModel.ManageUploadProfilesCommand;
+            ToolsMoveDatabaseToolStripMenuItem.Tag =
+                viewModel.MoveLocalDatabaseCommand;
+            HelpContentsToolStripMenuItem.Tag =
+                viewModel.ShowHelpCommand;
+            HelpContentsToolStripButton.Tag =
+                viewModel.ShowHelpCommand;
+            HelpAboutToolStripMenuItem.Tag =
+                viewModel.ShowAboutBoxCommand;
+            UpdateCheckTimer.Tag =
+                new UpdateCheckCommand();
+            CheckForFlaggedDocumentsTimer.Tag =
+                viewModel.CheckForFlaggedDocumentsCommand;
+            CheckForDocumentsListChangesTimer.Tag =
+                viewModel.CheckForDocumentsListChangesCommand;
+            UploadTimer.Tag =
+                viewModel.UploadPdfFilesCommand;
+            DocumentsListTimedRefreshTimer.Tag =
+                viewModel.SetDocumentsListHasChangesCommand;
         }
 
         protected override void WndProc(ref Message m)
         {
             if (m.Msg.Equals(WM_CLIPBOARDUPDATE))
             {
-                if (Clipboard.ContainsText())
-                {
-                    if (NotesTextBox.Focused)
-                    {
-                        presenter.SetPasteEnabledState(true);
-                    }
-                }
+                viewModel.ClipboardUpdateCommand.Execute(null);
             }
             base.WndProc(ref m);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            presenter.AddClipboardFormatListener();
-            UpdateCheckTimer_Tick(this, null);
-            GetFormState();
-            presenter.SetInitialState();
-            if (Settings.Default.FindFlaggedDocumentsOnStartup)
-            {
-                presenter.GetListOfFlaggedDocuments();
-            }
-            else if (Settings.Default.ShowAllDocumentsOnStartup &&
-                DatabaseSession.PlatformName.Equals(
-                    DatabaseSession.CompatiblePlatformName.Sqlite))
-            {
-                presenter.GetListOfAllDocuments();
-            }
+            viewModel.ViewLoadCommand.Execute(GetStartupAction());
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -235,56 +402,20 @@ namespace PDFKeeper.WinForms.Views
             }
         }
 
-        private void GetFormState()
-        {
-            if (Settings.Default.MainFormLocation != null)
-            {
-                // Workaround for rare bug that can cause this form to be positioned off the screen.
-                if (Settings.Default.MainFormLocation.Equals(new Point(-32000, -32000)))
-                {
-                    Location = new Point(0, 0);
-                }
-                else
-                {
-                    Location = Settings.Default.MainFormLocation;
-                }
-            }
-            if (Settings.Default.MainFormSize != null)
-            {
-                Size = Settings.Default.MainFormSize;
-            }
-            if (Settings.Default.MainFormState.Equals(FormWindowState.Minimized))
-            {
-                WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                WindowState = Settings.Default.MainFormState;
-            }
-            HorizontalSplitContainer.SplitterDistance = Settings.Default.HorizontalSplitterDistance;
-            VerticalSplitContainer.SplitterDistance = Settings.Default.VerticalSplitterDistance;
-        }
-
         private void ToolStripItem_Click(object sender, EventArgs e)
         {
-            if (sender.GetType().Name.Equals("ToolStripMenuItem", StringComparison.Ordinal))
-            {
-                presenter.ExecuteCommand(((ToolStripMenuItem)sender).Tag as ICommand);
-            }
-            else if (sender.GetType().Name.Equals("ToolStripButton", StringComparison.Ordinal))
-            {
-                presenter.ExecuteCommand(((ToolStripButton)sender).Tag as ICommand);
-            }
+            TagCommand.Invoke(sender);
         }
 
         private void DocumentsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            presenter.OpenPdfForCurrentDocument(Settings.Default.ShowPdfWithDefaultApplication);
+            viewModel.OpenPdfForCurrentDocumentCommand.Execute(
+                Settings.Default.ShowPdfWithDefaultApplication);
         }
 
         private void DocumentsDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            presenter.SetCheckedDocumentIds(GetCheckedDocumentIds());
+            viewModel.SetCheckedDocumentIdsCommand.Execute(GetCheckedDocumentIds());
         }
 
         private void DocumentsDataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
@@ -320,20 +451,24 @@ namespace PDFKeeper.WinForms.Views
             DocumentsDataGridView.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DocumentsDataGridView.Columns[8].ReadOnly = true;
             DocumentsDataGridView.Columns[9].Visible = false;
+            
             if (DocumentsDataGridView.RowCount > 0)
             {
                 DocumentsDataGridView.Columns[8].AutoSizeMode =
                     DataGridViewAutoSizeColumnMode.DisplayedCells;
+                
                 if (DocumentsDataGridView.Columns[8].Displayed)
                 {
                     DocumentsDataGridView.Columns[8].AutoSizeMode =
                         DataGridViewAutoSizeColumnMode.Fill;
                 }
-                DocumentsDataGridView.Columns[8].MinimumWidth =
-                    (int)Math.Round(DocumentsDataGridView.Columns[8].FillWeight + 20f);
+
+                DocumentsDataGridView.Columns[8].MinimumWidth = (int)Math.Round(
+                    DocumentsDataGridView.Columns[8].FillWeight + 20f);
                 DocumentsDataGridView.Sort(
                     DocumentsDataGridView.Columns[dataGridViewSortProperties.SortColumnIndex],
                     dataGridViewSortProperties.SortDirection);
+                
                 if (Settings.Default.SelectLastDocumentRow)
                 {
                     DocumentsDataGridView.Rows[DocumentsDataGridView.Rows.Count - 1].Selected =
@@ -347,19 +482,10 @@ namespace PDFKeeper.WinForms.Views
                 DocumentsDataGridView.Select();
             }
         }
-        
+
         private void DocumentsDataGridView_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button.Equals(MouseButtons.Right))
-            {
-                var hitTest = DocumentsDataGridView.HitTest(e.X, e.Y);
-                if (hitTest.RowIndex >= 0)
-                {
-                    var rowIndex = DocumentsDataGridView.Rows[hitTest.RowIndex];
-                    rowIndex.Selected = true;
-                    presenter.DragDropPdfForCurrentDocument();
-                }
-            }
+            new MainFormMouseDownCommand(e, this, viewModel).Execute(null);
         }
 
         private void DocumentsDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -372,6 +498,7 @@ namespace PDFKeeper.WinForms.Views
                     row.Cells[1].Value = image;
                 }
             }
+
             DocumentsCountLabel.Text = DocumentsDataGridView.Rows.Count.ToString();
         }
 
@@ -388,13 +515,7 @@ namespace PDFKeeper.WinForms.Views
 
         private void DocumentsDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            viewModel.CurrentDocumentId = 0;    // No row is selected.
-            if (DocumentsDataGridView.SelectedRows.Count > 0)   // To prevent empty DataGridView.
-            {
-                viewModel.CurrentDocumentId = Convert.ToInt32(
-                    DocumentsDataGridView.SelectedRows[0].Cells[2].Value);
-            }
-            presenter.DocumentSelectionChanged(Settings.Default.PreviewPixelDensity);
+            new DocumentSelectionChangedCommand(this, viewModel).Execute(null);
         }
 
         private void DocumentsDataGridView_Sorted(object sender, EventArgs e)
@@ -405,385 +526,298 @@ namespace PDFKeeper.WinForms.Views
 
         private void TextBox_Enter(object sender, EventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            SetTextBoxFocusedState(textBox, true);
-            presenter.SetTextBoxEnterState(textBox.CanUndo);
+            new TextBoxEnterCommand((TextBox)sender, viewModel).Execute(null);
         }
 
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBoxHelper.SyncSelectedTextWithViewModel((TextBox)sender, this, viewModel);
-            presenter.SetStateForTextBoxSelectedText();
+            new TextBoxSelectedTextCommand((TextBox)sender, this, viewModel).Execute(null);
         }
 
         private void TextBox_MouseUp(object sender, MouseEventArgs e)
         {
-            TextBoxHelper.SyncSelectedTextWithViewModel((TextBox)sender, this, viewModel);
-            presenter.SetStateForTextBoxSelectedText();
+            new TextBoxSelectedTextCommand((TextBox)sender, this, viewModel).Execute(null);
         }
 
         private void TextBox_Leave(object sender, EventArgs e)
         {
-            SetTextBoxFocusedState((TextBox)sender, false);
-            presenter.SetTextBoxLeaveState();
+            new TextBoxLeaveCommand((TextBox)sender, viewModel).Execute(null);
         }
 
         private void UploadRejectedImageLabel_Click(object sender, EventArgs e)
         {
-            presenter.ExploreUploadRejected();
+            viewModel.ExploreUploadRejectedFolderCommand.Execute(null);
         }
 
-        private void UpdateCheckTimer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
-            AutoUpdater.RunUpdateAsAdmin = false;
-            AutoUpdater.Start(ApplicationUri.AutoUpdaterConfig.AbsoluteUri);
-        }
-
-        private async void CheckForFlaggedDocumentsTimer_Tick(object sender, EventArgs e)
-        {
-            CheckForFlaggedDocumentsTimer.Stop();
-            await Task.Run(() => presenter.CheckForFlaggedDocuments()).ConfigureAwait(true);
-            CheckForFlaggedDocumentsTimer.Start();
-        }
-
-        private void CheckForDocumentsListChangesTimer_Tick(object sender, EventArgs e)
-        {
-            CheckForDocumentsListChangesTimer.Stop();
-            presenter.CheckForDocumentsListChanges();
-            CheckForDocumentsListChangesTimer.Start();
-        }
-
-        private async void UploadTimer_Tick(object sender, EventArgs e)
-        {            
-            UploadTimer.Stop();
-            await Task.Run(() => presenter.ExecuteUploadDirectoryMaintenance()).ConfigureAwait(true);
-            await Task.Run(() => presenter.ExecuteUpload()).ConfigureAwait(true);
-            presenter.CheckForRejectedPdfFiles();
-            UploadTimer.Start();
-        }
-
-        private void DocumentsListTimedRefreshTimer_Tick(object sender, EventArgs e)
-        {
-            DocumentsListTimedRefreshTimer.Stop();
-            MainPresenter.SetDocumentsListHasChanges();
-            DocumentsListTimedRefreshTimer.Start();
+            TagCommand.Invoke(sender);
         }
 
         private void MainForm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals("FileAddMenuEnabled", StringComparison.Ordinal))
+            switch (e.PropertyName)
             {
-                FileAddToolStripMenuItem.Enabled = viewModel.FileAddMenuEnabled;
-                FileAddToolStripButton.Enabled = viewModel.FileAddMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("FileOpenMenuEnabled", StringComparison.Ordinal))
-            {
-                FileOpenToolStripMenuItem.Enabled = viewModel.FileOpenMenuEnabled;
-                FileOpenToolStripButton.Enabled = viewModel.FileOpenMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("FileSaveMenuEnabled", StringComparison.Ordinal))
-            {
-                FileSaveToolStripMenuItem.Enabled = viewModel.FileSaveMenuEnabled;
-                FileSaveToolStripButton.Enabled = viewModel.FileSaveMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("FileSaveAsMenuEnabled", StringComparison.Ordinal))
-            {
-                FileSaveAsToolStripMenuItem.Enabled = viewModel.FileSaveAsMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("FileBurstMenuEnabled", StringComparison.Ordinal))
-            {
-                FileBurstToolStripMenuItem.Enabled = viewModel.FileBurstMenuEnabled;
-                FileBurstToolStripButton.Enabled = viewModel.FileBurstMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("FileExtractMenuEnabled", StringComparison.Ordinal))
-            {
-                FileExtractToolStripMenuItem.Enabled = viewModel.FileExtractMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "FileExtractAllAttachmentsMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                FileExtractAllAttachmentsToolStripMenuItem.Enabled =
-                    viewModel.FileExtractAllAttachmentsMenuEnabled;
-                FileExtractAllAttachmentsToolStripButton.Enabled =
-                    viewModel.FileExtractAllAttachmentsMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "FileExtractAllEmbeddedFilesMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                FileExtractAllEmbeddedFilesToolStripMenuItem.Enabled =
-                    viewModel.FileExtractAllEmbeddedFilesMenuEnabled;
-                FileExtractAllEmbeddedFilesToolStripButton.Enabled =
-                    viewModel.FileExtractAllEmbeddedFilesMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "FileCopyPdfToClipboardEnabled",
-                StringComparison.Ordinal))
-            {
-                FileCopyPdfToClipboardToolStripMenuItem.Enabled =
-                    viewModel.FileCopyPdfToClipboardEnabled;
-                FileCopyPdfToClipboardToolStripButton.Enabled =
-                    viewModel.FileCopyPdfToClipboardEnabled;
-            }
-            else if (e.PropertyName.Equals("FilePrintMenuEnabled", StringComparison.Ordinal))
-            {
-                FilePrintToolStripMenuItem.Enabled = viewModel.FilePrintMenuEnabled;
-                FilePrintToolStripButton.Enabled = viewModel.FilePrintMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "FilePrintPreviewMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                FilePrintPreviewToolStripMenuItem.Enabled = viewModel.FilePrintPreviewMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("FileExportMenuEnabled", StringComparison.Ordinal))
-            {
-                FileExportToolStripMenuItem.Enabled = viewModel.FileExportMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("EditUndoMenuEnabled", StringComparison.Ordinal))
-            {
-                EditUndoToolStripMenuItem.Enabled = viewModel.EditUndoMenuEnabled;
-                EditUndoToolStripButton.Enabled = viewModel.EditUndoMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("EditCutMenuEnabled", StringComparison.Ordinal))
-            {
-                EditCutToolStripMenuItem.Enabled = viewModel.EditCutMenuEnabled;
-                EditCutToolStripButton.Enabled = viewModel.EditCutMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("EditCopyMenuEnabled", StringComparison.Ordinal))
-            {
-                EditCopyToolStripMenuItem.Enabled = viewModel.EditCopyMenuEnabled;
-                EditCopyToolStripButton.Enabled = viewModel.EditCopyMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("EditPasteMenuEnabled", StringComparison.Ordinal))
-            {
-                EditPasteToolStripMenuItem.Enabled = viewModel.EditPasteMenuEnabled;
-                EditPasteToolStripButton.Enabled = viewModel.EditPasteMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("EditSelectAllMenuEnabled", StringComparison.Ordinal))
-            {
-                EditSelectAllToolStripMenuItem.Enabled = viewModel.EditSelectAllMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("EditRestoreMenuEnabled", StringComparison.Ordinal))
-            {
-                EditRestoreToolStripMenuItem.Enabled = viewModel.EditRestoreMenuEnabled;
-                EditRestoreToolStripButton.Enabled = viewModel.EditRestoreMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "EditAppendDateTimeMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                EditAppendDateTimeToolStripMenuItem.Enabled = 
-                    viewModel.EditAppendDateTimeMenuEnabled;
-                EditAppendDateTimeToolStripButton.Enabled =
-                    viewModel.EditAppendDateTimeMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("EditAppendTextMenuEnabled", StringComparison.Ordinal))
-            {
-                EditAppendTextToolStripMenuItem.Enabled = viewModel.EditAppendTextMenuEnabled;
-                EditAppendTextToolStripButton.Enabled = viewModel.EditAppendTextMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "EditFlagDocumentMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                EditFlagDocumentToolStripMenuItem.Enabled = viewModel.EditFlagDocumentMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "EditFlagDocumentMenuChecked",
-                StringComparison.Ordinal))
-            {
-                EditFlagDocumentToolStripMenuItem.Checked = viewModel.EditFlagDocumentMenuChecked;
-            }
-            else if (e.PropertyName.Equals("DocumentsFindMenuEnabled", StringComparison.Ordinal))
-            {
-                DocumentsFindToolStripMenuItem.Enabled = viewModel.DocumentsFindMenuEnabled;
-                DocumentsFindToolStripButton.Enabled = viewModel.DocumentsFindMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("DocumentsSelectMenuEnabled", StringComparison.Ordinal))
-            {
-                DocumentsSelectToolStripMenuItem.Enabled = viewModel.DocumentsSelectMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "DocumentsSetTitleMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                DocumentsSetTitleToolStripMenuItem.Enabled = 
-                    viewModel.DocumentsSetTitleMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "DocumentsSetAuthorMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                DocumentsSetAuthorToolStripMenuItem.Enabled = 
-                    viewModel.DocumentsSetAuthorMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "DocumentsSetSubjectMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                DocumentsSetSubjectToolStripMenuItem.Enabled = 
-                    viewModel.DocumentsSetSubjectMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "DocumentsSetCategoryMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                DocumentsSetCategoryToolStripMenuItem.Enabled = 
-                    viewModel.DocumentsSetCategoryMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "DocumentsSetTaxYearMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                DocumentsSetTaxYearToolStripMenuItem.Enabled =
-                    viewModel.DocumentsSetTaxYearMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "DocumentsSetDateTimeAddedMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                DocumentsSetDateTimeAddedToolStripMenuItem.Enabled =
-                    viewModel.DocumentsSetDateTimeAddedMenuEnabled;
-            }
-            else if (e.PropertyName.Equals("DocumentsDeleteMenuEnabled", StringComparison.Ordinal))
-            {
-                DocumentsDeleteToolStripMenuItem.Enabled = viewModel.DocumentsDeleteMenuEnabled;
-                DocumentsDeleteToolStripButton.Enabled = viewModel.DocumentsDeleteMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "ViewSetPreviewPixelDensityMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                ViewSetPreviewPixelDensityToolStripMenuItem.Enabled = 
-                    viewModel.ViewSetPreviewPixelDensityMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "ToolsUploadProfilesMenuEnabled",
-                StringComparison.Ordinal))
-            {
-                ToolsUploadProfilesToolStripMenuItem.Enabled =
-                    viewModel.ToolsUploadProfilesMenuEnabled;
-                ToolsUploadProfilesToolStripButton.Enabled =
-                    viewModel.ToolsUploadProfilesMenuEnabled;
-            }
-            else if (e.PropertyName.Equals(
-                "ToolsMoveDatabaseMenuVisible",
-                StringComparison.Ordinal))
-            {
-                ToolsMoveDatabaseToolStripMenuItem.Visible = 
-                    viewModel.ToolsMoveDatabaseMenuVisible;
-            }
-            else if (e.PropertyName.Equals("Documents", StringComparison.Ordinal))
-            {
-                DocumentsDataGridView.DataSource = viewModel.Documents;
-            }
-            else if (e.PropertyName.Equals("CurrentDocumentId", StringComparison.Ordinal))
-            {
-                if (viewModel.CurrentDocumentId > 0)
-                {
-                    foreach (DataGridViewRow row in DocumentsDataGridView.Rows)
+                case nameof(viewModel.ToolStripVisible):
+                    ToolStrip.Visible = viewModel.ToolStripVisible;
+                    break;
+                case nameof(viewModel.StatusStripVisible):
+                    StatusStrip.Visible = viewModel.StatusStripVisible;
+                    break;
+                case nameof(viewModel.FileAddMenuEnabled):
+                    FileAddToolStripMenuItem.Enabled = viewModel.FileAddMenuEnabled;
+                    FileAddToolStripButton.Enabled = viewModel.FileAddMenuEnabled;
+                    break;
+                case nameof(viewModel.FileOpenMenuEnabled):
+                    FileOpenToolStripMenuItem.Enabled = viewModel.FileOpenMenuEnabled;
+                    FileOpenToolStripButton.Enabled = viewModel.FileOpenMenuEnabled;
+                    break;
+                case nameof(viewModel.FileSaveMenuEnabled):
+                    FileSaveToolStripMenuItem.Enabled = viewModel.FileSaveMenuEnabled;
+                    FileSaveToolStripButton.Enabled = viewModel.FileSaveMenuEnabled;
+                    break;
+                case nameof(viewModel.FileSaveAsMenuEnabled):
+                    FileSaveAsToolStripMenuItem.Enabled = viewModel.FileSaveAsMenuEnabled;
+                    break;
+                case nameof(viewModel.FileBurstMenuEnabled):
+                    FileBurstToolStripMenuItem.Enabled = viewModel.FileBurstMenuEnabled;
+                    FileBurstToolStripButton.Enabled = viewModel.FileBurstMenuEnabled;
+                    break;
+                case nameof(viewModel.FileExtractMenuEnabled):
+                    FileExtractToolStripMenuItem.Enabled = viewModel.FileExtractMenuEnabled;
+                    break;
+                case nameof(viewModel.FileExtractAllAttachmentsMenuEnabled):
+                    FileExtractAllAttachmentsToolStripMenuItem.Enabled =
+                        viewModel.FileExtractAllAttachmentsMenuEnabled;
+                    FileExtractAllAttachmentsToolStripButton.Enabled =
+                        viewModel.FileExtractAllAttachmentsMenuEnabled;
+                    break;
+                case nameof(viewModel.FileExtractAllEmbeddedFilesMenuEnabled):
+                    FileExtractAllEmbeddedFilesToolStripMenuItem.Enabled =
+                        viewModel.FileExtractAllEmbeddedFilesMenuEnabled;
+                    FileExtractAllEmbeddedFilesToolStripButton.Enabled =
+                        viewModel.FileExtractAllEmbeddedFilesMenuEnabled;
+                    break;
+                case nameof(viewModel.FileCopyPdfToClipboardEnabled):
+                    FileCopyPdfToClipboardToolStripMenuItem.Enabled =
+                        viewModel.FileCopyPdfToClipboardEnabled;
+                    FileCopyPdfToClipboardToolStripButton.Enabled =
+                        viewModel.FileCopyPdfToClipboardEnabled;
+                    break;
+                case nameof(viewModel.FilePrintMenuEnabled):
+                    FilePrintToolStripMenuItem.Enabled = viewModel.FilePrintMenuEnabled;
+                    FilePrintToolStripButton.Enabled = viewModel.FilePrintMenuEnabled;
+                    break;
+                case nameof(viewModel.FilePrintPreviewMenuEnabled):
+                    FilePrintPreviewToolStripMenuItem.Enabled =
+                        viewModel.FilePrintPreviewMenuEnabled;
+                    break;
+                case nameof(viewModel.FileExportMenuEnabled):
+                    FileExportToolStripMenuItem.Enabled = viewModel.FileExportMenuEnabled;
+                    break;
+                case nameof(viewModel.EditUndoMenuEnabled):
+                    EditUndoToolStripMenuItem.Enabled = viewModel.EditUndoMenuEnabled;
+                    EditUndoToolStripButton.Enabled = viewModel.EditUndoMenuEnabled;
+                    break;
+                case nameof(viewModel.EditCutMenuEnabled):
+                    EditCutToolStripMenuItem.Enabled = viewModel.EditCutMenuEnabled;
+                    EditCutToolStripButton.Enabled = viewModel.EditCutMenuEnabled;
+                    break;
+                case nameof(viewModel.EditCopyMenuEnabled):
+                    EditCopyToolStripMenuItem.Enabled = viewModel.EditCopyMenuEnabled;
+                    EditCopyToolStripButton.Enabled = viewModel.EditCopyMenuEnabled;
+                    break;
+                case nameof(viewModel.EditPasteMenuEnabled):
+                    EditPasteToolStripMenuItem.Enabled = viewModel.EditPasteMenuEnabled;
+                    EditPasteToolStripButton.Enabled = viewModel.EditPasteMenuEnabled;
+                    break;
+                case nameof(viewModel.EditSelectAllMenuEnabled):
+                    EditSelectAllToolStripMenuItem.Enabled = viewModel.EditSelectAllMenuEnabled;
+                    break;
+                case nameof(viewModel.EditRestoreMenuEnabled):
+                    EditRestoreToolStripMenuItem.Enabled = viewModel.EditRestoreMenuEnabled;
+                    EditRestoreToolStripButton.Enabled = viewModel.EditRestoreMenuEnabled;
+                    break;
+                case nameof(viewModel.EditAppendDateTimeMenuEnabled):
+                    EditAppendDateTimeToolStripMenuItem.Enabled =
+                        viewModel.EditAppendDateTimeMenuEnabled;
+                    EditAppendDateTimeToolStripButton.Enabled =
+                        viewModel.EditAppendDateTimeMenuEnabled;
+                    break;
+                case nameof(viewModel.EditAppendTextMenuEnabled):
+                    EditAppendTextToolStripMenuItem.Enabled = viewModel.EditAppendTextMenuEnabled;
+                    EditAppendTextToolStripButton.Enabled = viewModel.EditAppendTextMenuEnabled;
+                    break;
+                case nameof(viewModel.EditFlagDocumentMenuEnabled):
+                    EditFlagDocumentToolStripMenuItem.Enabled =
+                        viewModel.EditFlagDocumentMenuEnabled;
+                    break;
+                case nameof(viewModel.EditFlagDocumentMenuChecked):
+                    EditFlagDocumentToolStripMenuItem.Checked =
+                        viewModel.EditFlagDocumentMenuChecked;
+                    break;
+                case nameof(viewModel.DocumentsFindMenuEnabled):
+                    DocumentsFindToolStripMenuItem.Enabled = viewModel.DocumentsFindMenuEnabled;
+                    DocumentsFindToolStripButton.Enabled = viewModel.DocumentsFindMenuEnabled;
+                    break;
+                case nameof(viewModel.DocumentsSelectMenuEnabled):
+                    DocumentsSelectToolStripMenuItem.Enabled =
+                        viewModel.DocumentsSelectMenuEnabled;
+                    break;
+                case nameof(viewModel.DocumentsSetTitleMenuEnabled):
+                    DocumentsSetTitleToolStripMenuItem.Enabled =
+                        viewModel.DocumentsSetTitleMenuEnabled;
+                    break;
+                case nameof(viewModel.DocumentsSetAuthorMenuEnabled):
+                    DocumentsSetAuthorToolStripMenuItem.Enabled =
+                        viewModel.DocumentsSetAuthorMenuEnabled;
+                    break;
+                case nameof(viewModel.DocumentsSetSubjectMenuEnabled):
+                    DocumentsSetSubjectToolStripMenuItem.Enabled =
+                        viewModel.DocumentsSetSubjectMenuEnabled;
+                    break;
+                case nameof(viewModel.DocumentsSetCategoryMenuEnabled):
+                    DocumentsSetCategoryToolStripMenuItem.Enabled =
+                        viewModel.DocumentsSetCategoryMenuEnabled;
+                    break;
+                case nameof(viewModel.DocumentsSetTaxYearMenuEnabled):
+                    DocumentsSetTaxYearToolStripMenuItem.Enabled =
+                        viewModel.DocumentsSetTaxYearMenuEnabled;
+                    break;
+                case nameof(viewModel.DocumentsSetDateTimeAddedMenuEnabled):
+                    DocumentsSetDateTimeAddedToolStripMenuItem.Enabled =
+                        viewModel.DocumentsSetDateTimeAddedMenuEnabled;
+                    break;
+                case nameof(viewModel.DocumentsDeleteMenuEnabled):
+                    DocumentsDeleteToolStripMenuItem.Enabled =
+                        viewModel.DocumentsDeleteMenuEnabled;
+                    DocumentsDeleteToolStripButton.Enabled =
+                        viewModel.DocumentsDeleteMenuEnabled;
+                    break;
+                case nameof(viewModel.ViewSetPreviewPixelDensityMenuEnabled):
+                    ViewSetPreviewPixelDensityToolStripMenuItem.Enabled =
+                        viewModel.ViewSetPreviewPixelDensityMenuEnabled;
+                    break;
+                case nameof(viewModel.ViewToolBarChecked):
+                    ViewToolBarToolStripMenuItem.Checked = viewModel.ViewToolBarChecked;
+                    break;
+                case nameof(viewModel.ViewStatusBarChecked):
+                    ViewStatusBarToolStripMenuItem.Checked = viewModel.ViewStatusBarChecked;
+                    break;
+                case nameof(viewModel.ToolsUploadProfilesMenuEnabled):
+                    ToolsUploadProfilesToolStripMenuItem.Enabled =
+                        viewModel.ToolsUploadProfilesMenuEnabled;
+                    ToolsUploadProfilesToolStripButton.Enabled =
+                        viewModel.ToolsUploadProfilesMenuEnabled;
+                    break;
+                case nameof(viewModel.ToolsMoveDatabaseMenuVisible):
+                    ToolsMoveDatabaseToolStripMenuItem.Visible =
+                        viewModel.ToolsMoveDatabaseMenuVisible;
+                    break;
+                case nameof(viewModel.Documents):
+                    DocumentsDataGridView.DataSource = viewModel.Documents;
+                    break;
+                case nameof(viewModel.CurrentDocumentId):
+                    if (viewModel.CurrentDocumentId > 0)
                     {
-                        if (Convert.ToInt32(
-                            row.Cells[2].Value).Equals(
-                            viewModel.CurrentDocumentId))
+                        foreach (DataGridViewRow row in DocumentsDataGridView.Rows)
                         {
-                            row.Selected = true;
-                            try
+                            if (Convert.ToInt32(
+                                row.Cells[2].Value).Equals(
+                                viewModel.CurrentDocumentId))
                             {
-                                DocumentsDataGridView.FirstDisplayedScrollingRowIndex = 
-                                    dataGridViewScrollPosition;
-                            }
-                            catch (ArgumentOutOfRangeException)
-                            {
+                                row.Selected = true;
+                                try
+                                {
+                                    DocumentsDataGridView.FirstDisplayedScrollingRowIndex =
+                                        dataGridViewScrollPosition;
+                                }
+                                catch (ArgumentOutOfRangeException) { }
                             }
                         }
                     }
-                }
-            }
-            else if (e.PropertyName.Equals("Notes", StringComparison.Ordinal))
-            {
-                NotesTextBox.Text = NotesTextBox.Text.TrimStart();
-                presenter.OnNotesTextChanged(NotesTextBox.CanUndo);
-            }
-            else if (e.PropertyName.Equals("SearchTermSnippetsVisible", StringComparison.Ordinal))
-            {
-                if (viewModel.SearchTermSnippetsVisible)
-                {
-                    if (!DocumentDataTabControl.TabPages.Contains(SearchTermSnippetsTabPage))
+
+                    break;
+                case nameof(viewModel.Notes):
+                    NotesTextBox.Text = NotesTextBox.Text.TrimStart();
+                    viewModel.NotesTextChangedCommand.Execute(NotesTextBox.CanUndo);
+                    break;
+                case nameof(viewModel.SearchTermSnippetsVisible):
+                    if (viewModel.SearchTermSnippetsVisible)
                     {
-                        DocumentDataTabControl.TabPages.Insert(3, SearchTermSnippetsTabPage);
+                        if (!DocumentDataTabControl.TabPages.Contains(SearchTermSnippetsTabPage))
+                        {
+                            DocumentDataTabControl.TabPages.Insert(3, SearchTermSnippetsTabPage);
+                        }
                     }
-                }
-                else
-                {
-                    DocumentDataTabControl.TabPages.Remove(SearchTermSnippetsTabPage);
-                }
-            }
-            else if (e.PropertyName.Equals("DocumentsProgressBarVisible", StringComparison.Ordinal))
-            {
-                DocumentsProgressBar.Visible = viewModel.DocumentsProgressBarVisible;
-            }
-            else if (e.PropertyName.Equals("DocumentsProgressBarMinimum", StringComparison.Ordinal))
-            {
-                DocumentsProgressBar.Minimum = viewModel.DocumentsProgressBarMinimum;
-            }
-            else if (e.PropertyName.Equals("DocumentsProgressBarMaximum", StringComparison.Ordinal))
-            {
-                DocumentsProgressBar.Maximum = viewModel.DocumentsProgressBarMaximum;
-            }
-            else if (e.PropertyName.Equals("UploadProgressBarVisible", StringComparison.Ordinal))
-            {
-                BeginInvoke((MethodInvoker)delegate ()
-                {
-                    UploadProgressBar.Visible = viewModel.UploadProgressBarVisible;
-                });
-            }
-            else if (e.PropertyName.Equals(
-                "RefreshingDocumentsImageVisible",
-                StringComparison.Ordinal))
-            {
-                RefreshingDocumentsImageLabel.Visible = viewModel.RefreshingDocumentsImageVisible;
-                Application.DoEvents();
-            }
-            else if (e.PropertyName.Equals("FlagImageVisible", StringComparison.Ordinal))
-            {
-                FlagImageLabel.Visible = viewModel.FlagImageVisible;
-                Application.DoEvents();
-            }
-            else if (e.PropertyName.Equals("UploadRejectedImageVisible", StringComparison.Ordinal))
-            {
-                UploadRejectedImageLabel.Visible = viewModel.UploadRejectedImageVisible;
-                Application.DoEvents();
+                    else
+                    {
+                        DocumentDataTabControl.TabPages.Remove(SearchTermSnippetsTabPage);
+                    }
+
+                    break;
+                case nameof(viewModel.DocumentsProgressBarVisible):
+                    DocumentsProgressBar.Visible = viewModel.DocumentsProgressBarVisible;
+                    break;
+                case nameof(viewModel.DocumentsProgressBarMinimum):
+                    DocumentsProgressBar.Minimum = viewModel.DocumentsProgressBarMinimum;
+                    break;
+                case nameof(viewModel.DocumentsProgressBarMaximum):
+                    DocumentsProgressBar.Maximum = viewModel.DocumentsProgressBarMaximum;
+                    break;
+                case nameof(viewModel.UploadProgressBarVisible):
+                    BeginInvoke((MethodInvoker)delegate ()
+                    {
+                        UploadProgressBar.Visible = viewModel.UploadProgressBarVisible;
+                    });
+
+                    break;
+                case nameof(viewModel.RefreshingDocumentsImageVisible):
+                    RefreshingDocumentsImageLabel.Visible =
+                        viewModel.RefreshingDocumentsImageVisible;
+                    Application.DoEvents();
+                    break;
+                case nameof(viewModel.FlagImageVisible):
+                    FlagImageLabel.Visible = viewModel.FlagImageVisible;
+                    Application.DoEvents();
+                    break;
+                case nameof(viewModel.UploadRejectedImageVisible):
+                    UploadRejectedImageLabel.Visible = viewModel.UploadRejectedImageVisible;
+                    Application.DoEvents();
+                    break;
             }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (viewModel.NotesChanged)
-            {
-                presenter.SaveNotesPromptBeforeClosing();
-            }
-            e.Cancel = presenter.CancelViewClosing;
-            presenter.WaitForUploadToFinish();
-            presenter.RemoveClipboardFormatListener();
-            SetFormState();
+            new FormClosingCommand(e, viewModel).Execute(null);
         }
 
-        private void SetFormState()
+        /// <summary>
+        /// Gets the <see cref="StartupAction"/> that needs to be performed.
+        /// </summary>
+        /// <returns>The <see cref="StartupAction"/>.</returns>
+        private static StartupAction GetStartupAction()
         {
-            Settings.Default.HorizontalSplitterDistance =
-                HorizontalSplitContainer.SplitterDistance;
-            Settings.Default.VerticalSplitterDistance = VerticalSplitContainer.SplitterDistance;
-            Settings.Default.MainFormLocation = Location;
-            if (WindowState.Equals(FormWindowState.Normal))
+            var startupAction = StartupAction.None;
+            if (Settings.Default.FindFlaggedDocumentsOnStartup)
             {
-                Settings.Default.MainFormSize = Size;
+                startupAction = StartupAction.FindFlaggedDocuments;
             }
-            Settings.Default.MainFormState = WindowState;
+            else if (Settings.Default.ShowAllDocumentsOnStartup &&
+                DatabaseSession.PlatformName.Equals(
+                    DatabaseSession.CompatiblePlatformName.Sqlite))
+            {
+                startupAction = StartupAction.ShowAllDocuments;
+            }
+            return startupAction;
         }
 
+        /// <summary>
+        /// Gets a <see cref="Collection{T}"/> of checked document ID's in
+        /// <see cref="MainForm.DocumentsDataGridView"/>. 
+        /// </summary>
+        /// <returns>The <see cref="Collection{T}"/> of checked document ID's.</returns>
         private Collection<int> GetCheckedDocumentIds()
         {
             var ids = new Collection<int>();
@@ -800,30 +834,31 @@ namespace PDFKeeper.WinForms.Views
             catch (NullReferenceException) { }
             return ids;
         }
-        
+
         /// <summary>
-        /// Sets the text box focused state in the ViewModel.
+        /// Gets the <see cref="TextBox"/> on <see cref="MainForm"/> with focus.
         /// </summary>
-        /// <param name="textBox">The TextBox object.</param>
-        /// <param name="enabled">Set focus to enabled? (true or false)</param>
-        private void SetTextBoxFocusedState(TextBox textBox, bool enabled)
+        /// <returns>The <see cref="TextBox"/> with focus.</returns>
+        private TextBox GetTextBoxWithFocus()
         {
-            if (textBox.Equals(NotesTextBox))
+            TextBox result = null;
+            if (NotesTextBox.Focused)
             {
-                viewModel.NotesFocused = enabled;
+                result = NotesTextBox;
             }
-            else if (textBox.Equals(KeywordsTextBox))
+            else if (KeywordsTextBox.Focused)
             {
-                viewModel.KeywordsFocused = enabled;
+                result = KeywordsTextBox;
             }
-            else if (textBox.Equals(TextTextBox))
+            else if (TextTextBox.Focused)
             {
-                viewModel.TextFocused = enabled;
+                result = TextTextBox;
             }
-            else if (textBox.Equals(SearchTermSnippetsTextBox))
+            else if (SearchTermSnippetsTextBox.Focused)
             {
-                viewModel.SearchTermSnippetsFocused = enabled;
+                result = SearchTermSnippetsTextBox;
             }
+            return result;
         }
     }
 }

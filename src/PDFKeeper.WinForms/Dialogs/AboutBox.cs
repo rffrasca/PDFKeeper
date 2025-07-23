@@ -44,7 +44,7 @@ namespace PDFKeeper.WinForms.Dialogs
             labelCompanyName.Text = AssemblyCompany;
             //textBoxDescription.Text = AssemblyDescription;
             textBoxDescription.Text = Resources.AboutDescription;
-            helpService = ServicesLocator.Services.GetService<IHelpService>();
+            helpService = ServiceLocator.Services.GetService<IHelpService>();
         }
 
         #region Assembly Attribute Accessors

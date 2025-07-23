@@ -125,7 +125,7 @@
   <data name="SubjectUserControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <metadata name="StringEnumerableViewModelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="ColumnDataListViewModelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>139, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -145,7 +145,7 @@
     <value>SubjectUserControl</value>
   </data>
   <data name="&gt;&gt;SubjectUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.SubjectUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>PDFKeeper.WinForms.UserControls.SubjectUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;SubjectUserControl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -315,10 +315,10 @@
   <data name="&gt;&gt;HelpProvider.Type" xml:space="preserve">
     <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;StringEnumerableViewModelBindingSource.Name" xml:space="preserve">
-    <value>StringEnumerableViewModelBindingSource</value>
+  <data name="&gt;&gt;ColumnDataListViewModelBindingSource.Name" xml:space="preserve">
+    <value>ColumnDataListViewModelBindingSource</value>
   </data>
-  <data name="&gt;&gt;StringEnumerableViewModelBindingSource.Type" xml:space="preserve">
+  <data name="&gt;&gt;ColumnDataListViewModelBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

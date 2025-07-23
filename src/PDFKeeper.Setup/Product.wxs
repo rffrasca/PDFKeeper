@@ -355,6 +355,12 @@
       </Component>
       <Component Id="Vip.ComboBox.dll" Guid="6c1a7b11-a5a0-49c7-b3eb-6dfb89587128">
         <File Id="Vip.ComboBox.dll" Name="Vip.ComboBox.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Vip.ComboBox.dll" />
+      </Component>
+      <Component Id="CommunityToolkit.Mvvm.dll" Guid="80366637-b819-4baf-8a61-afef5acce067">
+        <File Id="CommunityToolkit.Mvvm.dll" Name="CommunityToolkit.Mvvm.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)CommunityToolkit.Mvvm.dll" />
+      </Component>
+      <Component Id="System.ComponentModel.Annotations.dll" Guid="6bcd9748-25c8-40b0-ba3c-fd3bdb57deab">
+        <File Id="System.ComponentModel.Annotations.dll" Name="System.ComponentModel.Annotations.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.ComponentModel.Annotations.dll" />
       </Component>      
   	</ComponentGroup>
 	</Fragment>

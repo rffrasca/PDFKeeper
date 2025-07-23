@@ -22,6 +22,7 @@ using Microsoft.Win32;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess.Repository;
 using System;
+using System.Collections;
 using System.IO;
 using System.Reflection;
 using System.Security;
@@ -42,13 +43,7 @@ namespace PDFKeeper.Core.DataAccess
         /// <summary>
         /// Compatible database platform name.
         /// </summary>
-        public enum CompatiblePlatformName
-        {
-            Sqlite,     // 0
-            Oracle,     // 1
-            SqlServer,  // 2
-            MySql       // 3
-        }
+        public enum CompatiblePlatformName { Sqlite, Oracle, SqlServer, MySql }
 
         /// <summary>
         /// Gets or sets the database platform name.
@@ -223,6 +218,23 @@ namespace PDFKeeper.Core.DataAccess
         public static IDocumentRepository GetDocumentRepository()
         {
             return DocumentRepositoryFactory.Create();
+        }
+
+        /// <summary>
+        /// Sets <see cref="PlatformName"/> to a compatible database management system.
+        /// </summary>
+        /// <param name="dbManagementSystem">The compatible database management system.</param>
+        internal static void SetPlatformName(string dbManagementSystem)
+        {
+            IList list = Enum.GetValues(typeof(CompatiblePlatformName));
+            for (int i = 0, loopTo = list.Count - 1; i <= loopTo; i++)
+            {
+                var platform = list[i];
+                if (platform.ToString().Equals(dbManagementSystem, StringComparison.Ordinal))
+                {
+                    PlatformName = (CompatiblePlatformName)platform;
+                }
+            }
         }
 
         private static void OnCompatiblePlatformNameChanged()

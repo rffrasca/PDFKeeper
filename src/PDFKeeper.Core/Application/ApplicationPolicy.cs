@@ -26,11 +26,7 @@ namespace PDFKeeper.Core.Application
 {
     internal class ApplicationPolicy
     {
-        internal enum PolicyName
-        {
-            HideAllDocuments,
-            BlockingUpload
-        }
+        internal enum PolicyName { HideAllDocuments, BlockingUpload }
 
         /// <summary>
         /// Gets the application policy applied state.

@@ -51,14 +51,14 @@ namespace PDFKeeper.WinForms.Views
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetAuthorForm));
             this.AuthorUserControl = new PDFKeeper.WinForms.UserControls.AuthorUserControl();
-            this.StringEnumerableViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label = new System.Windows.Forms.Label();
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.OK_Button = new System.Windows.Forms.Button();
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
-            ((System.ComponentModel.ISupportInitialize)(this.StringEnumerableViewModelBindingSource)).BeginInit();
+            this.ColumnDataListViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ColumnDataListViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // AuthorUserControl
@@ -66,12 +66,8 @@ namespace PDFKeeper.WinForms.Views
             this.AuthorUserControl.Author = "";
             this.AuthorUserControl.Authors = null;
             resources.ApplyResources(this.AuthorUserControl, "AuthorUserControl");
-            this.AuthorUserControl.DataBindings.Add(new System.Windows.Forms.Binding("Authors", this.StringEnumerableViewModelBindingSource, "Items", true));
+            this.AuthorUserControl.DataBindings.Add(new System.Windows.Forms.Binding("Authors", this.ColumnDataListViewModelBindingSource, "Items", true));
             this.AuthorUserControl.Name = "AuthorUserControl";
-            // 
-            // StringEnumerableViewModelBindingSource
-            // 
-            this.StringEnumerableViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.StringEnumerableViewModel);
             // 
             // label
             // 
@@ -98,6 +94,10 @@ namespace PDFKeeper.WinForms.Views
             this.Cancel_Button.Name = "Cancel_Button";
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
+            // ColumnDataListViewModelBindingSource
+            // 
+            this.ColumnDataListViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.ColumnDataListViewModel);
+            // 
             // SetAuthorForm
             // 
             this.AcceptButton = this.OK_Button;
@@ -115,8 +115,8 @@ namespace PDFKeeper.WinForms.Views
             this.Name = "SetAuthorForm";
             this.HelpProvider.SetShowHelp(this, ((bool)(resources.GetObject("$this.ShowHelp"))));
             this.ShowInTaskbar = false;
-            ((System.ComponentModel.ISupportInitialize)(this.StringEnumerableViewModelBindingSource)).EndInit();
             this.TableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ColumnDataListViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,6 +130,6 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.Button OK_Button;
         internal System.Windows.Forms.Button Cancel_Button;
         internal System.Windows.Forms.HelpProvider HelpProvider;
-        private System.Windows.Forms.BindingSource StringEnumerableViewModelBindingSource;
+        private System.Windows.Forms.BindingSource ColumnDataListViewModelBindingSource;
     }
 }

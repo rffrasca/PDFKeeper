@@ -56,15 +56,15 @@ namespace PDFKeeper.WinForms.Views
             this.OK_Button = new System.Windows.Forms.Button();
             this.MandatoryLabel = new System.Windows.Forms.Label();
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
-            this.StringEnumerableViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ColumnDataListViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StringEnumerableViewModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColumnDataListViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // SubjectUserControl
             // 
             resources.ApplyResources(this.SubjectUserControl, "SubjectUserControl");
-            this.SubjectUserControl.DataBindings.Add(new System.Windows.Forms.Binding("Subjects", this.StringEnumerableViewModelBindingSource, "Items", true));
+            this.SubjectUserControl.DataBindings.Add(new System.Windows.Forms.Binding("Subjects", this.ColumnDataListViewModelBindingSource, "Items", true));
             this.SubjectUserControl.Name = "SubjectUserControl";
             this.SubjectUserControl.Subject = "";
             this.SubjectUserControl.Subjects = null;
@@ -94,9 +94,9 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.MandatoryLabel, "MandatoryLabel");
             this.MandatoryLabel.Name = "MandatoryLabel";
             // 
-            // StringEnumerableViewModelBindingSource
+            // ColumnDataListViewModelBindingSource
             // 
-            this.StringEnumerableViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.StringEnumerableViewModel);
+            this.ColumnDataListViewModelBindingSource.DataSource = typeof(PDFKeeper.Core.ViewModels.ColumnDataListViewModel);
             // 
             // SetSubjectForm
             // 
@@ -116,7 +116,7 @@ namespace PDFKeeper.WinForms.Views
             this.HelpProvider.SetShowHelp(this, ((bool)(resources.GetObject("$this.ShowHelp"))));
             this.ShowInTaskbar = false;
             this.TableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.StringEnumerableViewModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColumnDataListViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,6 +130,6 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.Button OK_Button;
         internal System.Windows.Forms.Label MandatoryLabel;
         internal System.Windows.Forms.HelpProvider HelpProvider;
-        private System.Windows.Forms.BindingSource StringEnumerableViewModelBindingSource;
+        private System.Windows.Forms.BindingSource ColumnDataListViewModelBindingSource;
     }
 }

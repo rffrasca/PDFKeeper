@@ -53,22 +53,12 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// Unknown: Unable to determine password type because PDF is invalid.
         /// </list>
         /// </summary>
-        public enum PasswordType
-        {
-            None,
-            Owner,
-            User,
-            Unknown
-        }
+        public enum PasswordType { None, Owner, User, Unknown }
 
         /// <summary>
         /// Type of attached files in the PDF.
         /// </summary>
-        public enum AttachedFilesType
-        {
-            Attachment,
-            EmbeddedFile
-        }
+        public enum AttachedFilesType { Attachment, EmbeddedFile }
 
         /// <summary>
         /// Initializes a new instance of the PdfFile class.

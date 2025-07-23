@@ -18,30 +18,67 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using PDFKeeper.Core.Models;
+using PDFKeeper.Core.Services;
+using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
+using PDFKeeper.Core.Properties;
+using PDFKeeper.Core.Rules;
+using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.FileIO;
+using PDFKeeper.Core.DataAccess;
 
 namespace PDFKeeper.Core.ViewModels
 {
-    public class UploadProfileEditorViewModel : CommonCollectionsViewModel, IUploadProfile
+    [CLSCompliant(false)]
+    public class UploadProfileEditorViewModel : ColumnDataListsViewModel, IUploadProfile
     {
+        private readonly string uploadProfileName;
         private string name;
-        private readonly UploadProfile uploadProfile;
+        private IMessageBoxService messageBoxService;
+        private readonly UploadProfileManager uploadProfileManager;
+        private UploadProfile uploadProfile;
         private IEnumerable<string> titleTokens;
 
         /// <summary>
-        /// Initializes a new instance of the UploadProfileEditorViewModel class.
+        /// Initializes a new instance of the <see cref="UploadProfileEditorViewModel"/> class.
         /// </summary>
         /// <param name="uploadProfileName">
-        /// The upload profile name or null when editing a new upload profile.
+        /// The upload profile name only when editing an existing upload profile.
         /// </param>
-        /// <param name="uploadProfile">The UploadProfile object.</param>
-        public UploadProfileEditorViewModel(string uploadProfileName, UploadProfile uploadProfile)
+        public UploadProfileEditorViewModel(string uploadProfileName = null)
         {
+            this.uploadProfileName = uploadProfileName;
             name = uploadProfileName;
-            this.uploadProfile = uploadProfile;
+            GetServices(ServiceLocator.Services);
+            uploadProfileManager = new UploadProfileManager();
+            SetUploadProfile();
+            InitializeCommands();            
         }
 
+        public ICommand GetCollectionsCommand { get; private set; }
+        public ICommand GetSubjectsCommand { get; private set; }
+        public ICommand SetNameToAuthorAndSubjectCommand { get; private set; }
+
+        /// <summary>
+        /// Saves the upload profile.
+        /// <para>The following requirements must be met for the save to be performed:</para>
+        /// <list type="bullet">
+        /// <c>Name</c>, <c>Title</c>, <c>Author</c>, and <c>Subject</c> cannot be blank.
+        /// </list>
+        /// <list type="bullet">
+        /// <c>Name</c> cannot contain invalid file name characters as defined by the operating system.
+        /// </list>
+        /// <list type="bullet">
+        /// <c>Name</c> cannot already exist when saving a new profile.
+        /// </list>
+        /// </summary>
+        public ICommand SaveUploadProfileCommand { get; private set; }
+
+        public ICommand CancelCommand { get; private set; }
         public UploadProfile UploadProfile => uploadProfile;
 
         public IEnumerable<string> TitleTokens
@@ -106,6 +143,122 @@ namespace PDFKeeper.Core.ViewModels
         {
             get => uploadProfile.Keywords;
             set => uploadProfile.Keywords = value;
+        }
+
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
+        }
+
+        private void InitializeCommands()
+        {
+            GetCollectionsCommand = new RelayCommand(GetCollections);
+            GetSubjectsCommand = new RelayCommand(GetSubjects);
+            SetNameToAuthorAndSubjectCommand = new RelayCommand(SetNameToAuthorAndSubject);
+            SaveUploadProfileCommand = new RelayCommand(SaveUploadProfile);
+            CancelCommand = new RelayCommand(Cancel);
+        }
+
+        private void SetUploadProfile()
+        {
+            if (uploadProfileName == null)
+            {
+                uploadProfile = new UploadProfile();
+            }
+            else
+            {
+                uploadProfile = uploadProfileManager.GetUploadProfile(uploadProfileName);
+            }
+        }
+
+        private void GetCollections()
+        {
+            try
+            {
+                TitleTokens = TitleToken.GetTokens();
+                Authors = ColumnData.GetAuthors(null, null, null);
+                Categories = ColumnData.GetCategories(null, null, null);
+                TaxYears = ColumnData.GetRangeOfTaxYears();
+                OnResetBindings?.Invoke();
+            }
+            catch (DatabaseException ex)
+            {
+                messageBoxService.ShowMessage(ex.Message, true);
+            }
+        }
+
+        private void GetSubjects()
+        {
+            try
+            {
+                var entry = Subject;
+                Subjects = ColumnData.GetSubjects(Author, null, null);
+                Subject = entry;
+            }
+            catch (DatabaseException ex)
+            {
+                messageBoxService.ShowMessage(ex.Message, true);
+            }
+        }
+
+        private void SetNameToAuthorAndSubject()
+        {
+            OnApplyPendingChanges?.Invoke();
+            Name = string.Concat(Author, " ", Subject);
+        }
+
+        private void SaveUploadProfile()
+        {
+            var error = false;
+            CancelViewClosing = false;
+            OnApplyPendingChanges?.Invoke();
+            var rule = new PdfMetadataRule(UploadProfile);
+
+            if (string.IsNullOrEmpty(Name))
+            {
+                error = true;
+                messageBoxService.ShowMessage(Resources.NameCannotBeBlank, true);
+            }
+            else if (rule.ViolationFound)
+            {
+                error = true;
+                messageBoxService.ShowMessage(rule.ViolationMessage, true);
+            }
+            else if (Name.ContainInvalidFileNameChars())
+            {
+                error = true;
+                messageBoxService.ShowMessage(Resources.NameContainsCharsNotAllowed, true);
+            }
+            else if (uploadProfileManager.GetUploadProfile(Name) != null &&
+                uploadProfileName is null)
+            {
+                error = true;
+                messageBoxService.ShowMessage(Resources.UploadProfileExists, true);
+            }
+
+            if (error.Equals(false))
+            {
+                uploadProfileManager.SaveUploadProfile(Name, UploadProfile, uploadProfileName);
+                OnCloseViewOKResult?.Invoke();
+            }
+            else
+            {
+                OnCancelCloseView?.Invoke();
+            }
+        }
+
+        private void Cancel()
+        {
+            CancelViewClosing = false;
+
+            if (messageBoxService.ShowQuestion(Resources.CancelQuestion, false).Equals(6))
+            {
+                OnCloseViewCancelResult?.Invoke();
+            }
+            else
+            {
+                OnCancelCloseView?.Invoke();
+            }
         }
     }
 }

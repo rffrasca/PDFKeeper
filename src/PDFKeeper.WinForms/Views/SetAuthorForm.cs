@@ -19,7 +19,7 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Application;
-using PDFKeeper.Core.Presenters;
+using PDFKeeper.Core.ViewModels;
 using System;
 using System.Windows.Forms;
 
@@ -30,8 +30,8 @@ namespace PDFKeeper.WinForms.Views
         public SetAuthorForm()
         {
             InitializeComponent();
-            var presenter = new SetAuthorPresenter();
-            StringEnumerableViewModelBindingSource.DataSource = presenter.ViewModel;
+            var viewModel = new ColumnDataListViewModel(ColumnDataListViewModel.ColumnName.Author);
+            ColumnDataListViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
         }
 

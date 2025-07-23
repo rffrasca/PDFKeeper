@@ -797,7 +797,6 @@ namespace PDFKeeper.WinForms.Views
             this.ViewStatusBarToolStripMenuItem});
             this.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem";
             resources.ApplyResources(this.ViewToolStripMenuItem, "ViewToolStripMenuItem");
-            this.ViewToolStripMenuItem.DropDownOpened += new System.EventHandler(this.ToolStripItem_Click);
             // 
             // ViewSetPreviewPixelDensityToolStripMenuItem
             // 
@@ -1147,31 +1146,31 @@ namespace PDFKeeper.WinForms.Views
             // 
             this.DocumentsListTimedRefreshTimer.Enabled = true;
             this.DocumentsListTimedRefreshTimer.Interval = 60000;
-            this.DocumentsListTimedRefreshTimer.Tick += new System.EventHandler(this.DocumentsListTimedRefreshTimer_Tick);
+            this.DocumentsListTimedRefreshTimer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // CheckForDocumentsListChangesTimer
             // 
             this.CheckForDocumentsListChangesTimer.Enabled = true;
             this.CheckForDocumentsListChangesTimer.Interval = 5000;
-            this.CheckForDocumentsListChangesTimer.Tick += new System.EventHandler(this.CheckForDocumentsListChangesTimer_Tick);
+            this.CheckForDocumentsListChangesTimer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // UploadTimer
             // 
             this.UploadTimer.Enabled = true;
             this.UploadTimer.Interval = 15000;
-            this.UploadTimer.Tick += new System.EventHandler(this.UploadTimer_Tick);
+            this.UploadTimer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // UpdateCheckTimer
             // 
             this.UpdateCheckTimer.Enabled = true;
             this.UpdateCheckTimer.Interval = 3600000;
-            this.UpdateCheckTimer.Tick += new System.EventHandler(this.UpdateCheckTimer_Tick);
+            this.UpdateCheckTimer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // CheckForFlaggedDocumentsTimer
             // 
             this.CheckForFlaggedDocumentsTimer.Enabled = true;
             this.CheckForFlaggedDocumentsTimer.Interval = 5000;
-            this.CheckForFlaggedDocumentsTimer.Tick += new System.EventHandler(this.CheckForFlaggedDocumentsTimer_Tick);
+            this.CheckForFlaggedDocumentsTimer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // MainForm
             // 

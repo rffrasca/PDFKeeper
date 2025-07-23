@@ -18,16 +18,42 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.FileIO;
+using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Properties;
+using PDFKeeper.Core.Services;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Input;
 
 namespace PDFKeeper.Core.ViewModels
 {
+    [CLSCompliant(false)]
     public class UploadProfilesViewModel : ViewModelBase
     {
+        private IDialogService dialogService;
+        private IMessageBoxService messageBoxService;
+        private readonly UploadProfileManager uploadProfileManager;
         private IEnumerable<string> uploadProfileNames;
         private bool editEnabled;
         private bool deleteEnabled;
 
+        public UploadProfilesViewModel()
+        {
+            GetServices(ServiceLocator.Services);
+            uploadProfileManager = new UploadProfileManager();
+            UploadProfilesDirectoryPath = uploadProfileManager.UploadProfilesDirectoryPath;
+            InitializeCommands();
+            GetUploadProfileNames();
+        }
+
+        public ICommand GetUploadProfileNamesCommand { get; private set; }
+        public ICommand AddUploadProfileCommand { get; private set; }
+        public ICommand EditUploadProfileCommand { get; private set; }
+        public ICommand DeleteUploadProfileCommand { get; private set; }
         public string UploadProfilesDirectoryPath { get; set; }
 
         public IEnumerable<string> UploadProfileNames
@@ -48,6 +74,59 @@ namespace PDFKeeper.Core.ViewModels
         {
             get => deleteEnabled;
             set => SetProperty(ref deleteEnabled, value);
+        }
+        
+        protected override void GetServices(IServiceProvider serviceProvider)
+        {
+            foreach (var service in serviceProvider.GetServices<IDialogService>())
+            {
+                switch (service.GetType().Name)
+                {
+                    case "UploadProfileEditorDialogService":
+                        dialogService = service;
+                        break;
+                }
+            }
+
+            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
+        }
+
+        private void InitializeCommands()
+        {
+            GetUploadProfileNamesCommand = new RelayCommand(GetUploadProfileNames);
+            AddUploadProfileCommand = new RelayCommand(AddUploadProfile);
+            EditUploadProfileCommand = new RelayCommand(EditUploadProfile);
+            DeleteUploadProfileCommand = new RelayCommand(DeleteUploadProfile);
+        }
+
+        private void GetUploadProfileNames()
+        {
+            UploadProfileNames = uploadProfileManager.GetUploadProfileNames().ToArray();
+            if (UploadProfileNames.Any())
+            {
+                EditEnabled = true;
+                DeleteEnabled = true;
+            }
+            else
+            {
+                EditEnabled = false;
+                DeleteEnabled = false;
+            }
+        }
+
+        private void AddUploadProfile() => dialogService.ShowDialog();
+        private void EditUploadProfile() => dialogService.ShowDialog(CurrentUploadProfileName);
+
+        private void DeleteUploadProfile()
+        {
+            var message = ResourceHelper.GetString(
+                Resources.ResourceManager,
+                "DeleteToRecycleBin",
+                CurrentUploadProfileName);
+            if (messageBoxService.ShowQuestion(message, false).Equals(6))
+            {
+                uploadProfileManager.DeleteUploadProfile(CurrentUploadProfileName);
+            }
         }
     }
 }

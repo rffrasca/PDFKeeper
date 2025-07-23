@@ -28,7 +28,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace PDFKeeper.WinForms.Helpers
+namespace PDFKeeper.WinForms.Commands
 {
     public static class ExceptionEventHandler
     {
@@ -90,7 +90,7 @@ namespace PDFKeeper.WinForms.Helpers
 
         private static void Show(string eventType, string name, string message)
         {
-            var messageBoxService = ServicesLocator.Services.GetService<IMessageBoxService>();
+            var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
             var msg = string.Concat(
                 eventType,
                 Environment.NewLine,

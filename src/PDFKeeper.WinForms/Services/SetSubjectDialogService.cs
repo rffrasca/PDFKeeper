@@ -23,7 +23,6 @@ using System.Windows.Forms;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Views;
-using PDFKeeper.Core.Application;
 
 namespace PDFKeeper.WinForms.Services
 {
@@ -31,7 +30,7 @@ namespace PDFKeeper.WinForms.Services
     {
         public string ShowDialog(string arg = null)
         {
-            var messageBoxService = ServicesLocator.Services.GetService<IMessageBoxService>();
+            var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
 
             using (var dialog = new SetSubjectForm())
             {

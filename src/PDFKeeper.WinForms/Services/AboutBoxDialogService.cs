@@ -1,4 +1,4 @@
-// *****************************************************************************
+﻿// *****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2025 Robert F. Frasca
 // *
@@ -18,34 +18,21 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Application;
-using PDFKeeper.Core.ViewModels;
-using System;
-using System.Windows.Forms;
+using PDFKeeper.Core.Services;
+using PDFKeeper.WinForms.Dialogs;
 
-namespace PDFKeeper.WinForms.Views
+namespace PDFKeeper.WinForms.Services
 {
-    public partial class SetCategoryForm : Form
+    public class AboutBoxDialogService : IDialogService
     {
-        public SetCategoryForm()
+        public string ShowDialog(string arg = null)
         {
-            InitializeComponent();
-            var viewModel = new ColumnDataListViewModel(
-                ColumnDataListViewModel.ColumnName.Category);
-            ColumnDataListViewModelBindingSource.DataSource = viewModel;
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
-        }
+            using (var dialog = new AboutBox())
+            {
+                dialog.ShowDialog();
+            }
 
-        private void OK_Button_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-
-        private void Cancel_Button_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            return null;
         }
     }
 }

@@ -18,44 +18,35 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace PDFKeeper.Core.Models
 {
-    internal class SearchTermHistory
-    {       
-        private readonly List<string> searchTerms;
-
-        internal SearchTermHistory()
-        {
-            searchTerms = new List<string>();
-        }
-
+    internal static class TaxYearLegacy
+    {
         /// <summary>
-        /// Adds the search term to the search term history.
+        /// Gets tax years starting with the last 25 years and 1 year into the future.
         /// </summary>
-        /// <param name="searchTerm">The search term.</param>
-        internal void Add(string searchTerm)
+        /// <returns>The array of tax years.</returns>
+        internal static string[] GetYearRange() => GetYearRangeInternal().ToArray();
+
+        private static IEnumerable<string> GetYearRangeInternal()
         {
-            if (searchTerms.Contains(searchTerm).Equals(false))
+            var tempYears = new List<string>();
+            var thisYear = DateTime.Now.Year;
+            var x = thisYear - 25;
+            while (x <= thisYear)
             {
-                searchTerms.Add(searchTerm);
+                x++;
+                tempYears.Add(x.ToString());
             }
-        }
-
-        /// <summary>
-        /// Gets previously entered search terms.
-        /// </summary>
-        /// <returns>The array of search terms.</returns>
-        internal string[] GetSearchTerms() => GetSearchTermsInternal().ToArray();
-
-        private IEnumerable<string> GetSearchTermsInternal()
-        {
+            tempYears.Reverse();
             yield return string.Empty;
-            foreach (string searchTerm in searchTerms)
+            foreach (string year in tempYears)
             {
-                yield return searchTerm;
+                yield return year;
             }
         }
     }

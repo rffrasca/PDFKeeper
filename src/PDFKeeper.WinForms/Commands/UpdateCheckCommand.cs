@@ -1,4 +1,4 @@
-// *****************************************************************************
+﻿// *****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2025 Robert F. Frasca
 // *
@@ -18,34 +18,26 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using AutoUpdaterDotNET;
 using PDFKeeper.Core.Application;
-using PDFKeeper.Core.ViewModels;
 using System;
-using System.Windows.Forms;
+using System.Windows.Input;
 
-namespace PDFKeeper.WinForms.Views
+namespace PDFKeeper.WinForms.Commands
 {
-    public partial class SetCategoryForm : Form
+    public class UpdateCheckCommand : ICommand
     {
-        public SetCategoryForm()
+        public event EventHandler CanExecuteChanged { add { } remove { } }
+
+        public bool CanExecute(object parameter)
         {
-            InitializeComponent();
-            var viewModel = new ColumnDataListViewModel(
-                ColumnDataListViewModel.ColumnName.Category);
-            ColumnDataListViewModelBindingSource.DataSource = viewModel;
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
+            throw new NotSupportedException();
         }
 
-        private void OK_Button_Click(object sender, EventArgs e)
+        public void Execute(object parameter)
         {
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-
-        private void Cancel_Button_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            AutoUpdater.RunUpdateAsAdmin = false;
+            AutoUpdater.Start(ApplicationUri.AutoUpdaterConfig.AbsoluteUri);
         }
     }
 }

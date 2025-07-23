@@ -19,8 +19,8 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Application;
-using PDFKeeper.Core.Presenters;
 using PDFKeeper.Core.ViewModels;
+using PDFKeeper.WinForms.Commands;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -29,7 +29,6 @@ namespace PDFKeeper.WinForms.Views
 {
     public partial class UploadProfileEditorForm : Form
     {
-        private readonly UploadProfileEditorPresenter presenter;
         private readonly UploadProfileEditorViewModel viewModel;
 
         /// <summary>
@@ -41,40 +40,59 @@ namespace PDFKeeper.WinForms.Views
         public UploadProfileEditorForm(string uploadProfileName = null)
         {
             InitializeComponent();
-            presenter = new UploadProfileEditorPresenter(uploadProfileName);
-            viewModel = presenter.ViewModel;
+            viewModel = new UploadProfileEditorViewModel(uploadProfileName);
             UploadProfileEditorViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
-            SetActionDelegates();
+            SetActions();
+            SetTags();
         }
 
-        private void SetActionDelegates()
+        private void SetActions()
         {
-            presenter.OnApplyPendingChangesRequested = ()
+            viewModel.OnApplyPendingChanges = ()
                 => UploadProfileEditorViewModelBindingSource.EndEdit();
+            viewModel.OnResetBindings = ()
+                => UploadProfileEditorViewModelBindingSource.ResetBindings(false);
 
-            presenter.OnViewCloseCancelled = (() =>
+            viewModel.OnCloseViewOKResult = () =>
             {
-                presenter.CancelViewClosing = true;
+                DialogResult = DialogResult.OK;
+                Close();
+            };
+
+            viewModel.OnCloseViewCancelResult = () =>
+            {
+                DialogResult = DialogResult.Cancel;
+                Close();
+            };
+
+            viewModel.OnCancelCloseView = () =>
+            {
+                viewModel.CancelViewClosing = true;
                 NameUserControl.NameTextBox.Select();
-            });
+            };
+        }
+
+        private void SetTags()
+        {
+            OK_Button.Tag = viewModel.SaveUploadProfileCommand;
+            Cancel_Button.Tag = viewModel.CancelCommand;
         }
 
         private void UploadProfileEditorForm_Load(object sender, EventArgs e)
         {
-            presenter.GetCollections();
-            UploadProfileEditorViewModelBindingSource.ResetBindings(false);
+            viewModel.GetCollectionsCommand.Execute(null);
         }
 
         private void SubjectUserControl_Enter(object sender, EventArgs e)
         {
-            presenter.GetSubjects();
+            viewModel.GetSubjectsCommand.Execute(null);
         }
 
         private void SetNameToAuthorSubjectLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            presenter.SetNameToAuthorAndSubject();
+            viewModel.SetNameToAuthorAndSubjectCommand.Execute(null);
         }
 
         private void UploadOptionsUserControl_Leave(object sender, EventArgs e)
@@ -82,47 +100,36 @@ namespace PDFKeeper.WinForms.Views
             UploadProfileEditorViewModelBindingSource.EndEdit();
         }
 
-        private void OK_Button_Click(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
-            presenter.SaveUploadProfile();
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-
-        private void Cancel_Button_Click(object sender, EventArgs e)
-        {
-            presenter.Cancel();
-            DialogResult = DialogResult.Cancel;
-            Close();
+            TagCommand.Invoke(sender);
         }
 
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals("TitleTokens", StringComparison.Ordinal))
+            switch (e.PropertyName)
             {
-                TitleUserControl.TitleTokens = viewModel.TitleTokens;
-            }
-            else if (e.PropertyName.Equals("Authors", StringComparison.Ordinal))
-            {
-                AuthorUserControl.Authors = viewModel.Authors;
-            }
-            else if (e.PropertyName.Equals("Subjects", StringComparison.Ordinal))
-            {
-                SubjectUserControl.Subjects = viewModel.Subjects;
-            }
-            else if (e.PropertyName.Equals("Categories", StringComparison.Ordinal))
-            {
-                CategoryUserControl.Categories = viewModel.Categories;
-            }
-            else if (e.PropertyName.Equals("TaxYears", StringComparison.Ordinal))
-            {
-                TaxYearDropDownListUserControl.TaxYears = viewModel.TaxYears;
+                case nameof(viewModel.TitleTokens):
+                    TitleUserControl.TitleTokens = viewModel.TitleTokens;
+                    break;
+                case nameof(viewModel.Authors):
+                    AuthorUserControl.Authors = viewModel.Authors;
+                    break;
+                case nameof(viewModel.Subjects):
+                    SubjectUserControl.Subjects = viewModel.Subjects;
+                    break;
+                case nameof(viewModel.Categories):
+                    CategoryUserControl.Categories = viewModel.Categories;
+                    break;
+                case nameof(viewModel.TaxYears):
+                    TaxYearDropDownListUserControl.TaxYears = viewModel.TaxYears;
+                    break;
             }
         }
 
         private void UploadProfileEditorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = presenter.CancelViewClosing;
+            e.Cancel = viewModel.CancelViewClosing;
         }
     }
 }

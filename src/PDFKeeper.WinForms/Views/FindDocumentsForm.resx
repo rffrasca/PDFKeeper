@@ -135,6 +135,12 @@
   <data name="ClearSelectionsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>394, 99</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="ClearSelectionsButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="ClearSelectionsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
   </data>
@@ -168,6 +174,9 @@
   <data name="TaxYearDropDownListUserControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>394, 236</value>
   </data>
+  <data name="TaxYearDropDownListUserControl.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="TaxYearDropDownListUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 49</value>
   </data>
@@ -197,6 +206,9 @@
   </data>
   <data name="CategoryDropDownListUserControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 236</value>
+  </data>
+  <data name="CategoryDropDownListUserControl.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="CategoryDropDownListUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>365, 49</value>
@@ -228,6 +240,9 @@
   <data name="SubjectDropDownListUserControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 180</value>
   </data>
+  <data name="SubjectDropDownListUserControl.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="SubjectDropDownListUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>479, 49</value>
   </data>
@@ -257,6 +272,9 @@
   </data>
   <data name="AuthorDropDownListUserControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 120</value>
+  </data>
+  <data name="AuthorDropDownListUserControl.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="AuthorDropDownListUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>479, 53</value>
@@ -288,6 +306,9 @@
   <data name="SearchTermUserControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 49</value>
   </data>
+  <data name="SearchTermUserControl.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="SearchTermUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>479, 30</value>
   </data>
@@ -314,6 +335,9 @@
   </data>
   <data name="AllDocumentsRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 405</value>
+  </data>
+  <data name="AllDocumentsRadioButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="AllDocumentsRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 19</value>
@@ -345,6 +369,9 @@
   <data name="FindFlaggedDocumentsRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 369</value>
   </data>
+  <data name="FindFlaggedDocumentsRadioButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="FindFlaggedDocumentsRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>157, 19</value>
   </data>
@@ -372,6 +399,9 @@
   <data name="DateAddedDateTimePicker.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 331</value>
   </data>
+  <data name="DateAddedDateTimePicker.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="DateAddedDateTimePicker.Size" type="System.Drawing.Size, System.Drawing">
     <value>363, 23</value>
   </data>
@@ -398,6 +428,9 @@
   </data>
   <data name="FindByDateAddedRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 296</value>
+  </data>
+  <data name="FindByDateAddedRadioButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="FindByDateAddedRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 19</value>
@@ -429,6 +462,9 @@
   <data name="FindBySelectionsRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 94</value>
   </data>
+  <data name="FindBySelectionsRadioButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="FindBySelectionsRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 19</value>
   </data>
@@ -459,6 +495,9 @@
   <data name="FindBySearchTermRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 23</value>
   </data>
+  <data name="FindBySearchTermRadioButton.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="FindBySearchTermRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 19</value>
   </data>
@@ -482,6 +521,9 @@
   </data>
   <data name="groupBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
+  </data>
+  <data name="groupBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="groupBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>511, 438</value>
@@ -516,6 +558,9 @@
   <data name="OK_Button.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
+  <data name="OK_Button.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="OK_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
@@ -546,6 +591,9 @@
   <data name="Cancel_Button.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 3</value>
   </data>
+  <data name="Cancel_Button.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="Cancel_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
@@ -573,6 +621,9 @@
   <data name="TableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="TableLayoutPanel1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="TableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 33</value>
   </data>
@@ -594,9 +645,6 @@
   <data name="TableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Cancel_Button" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -620,6 +668,9 @@
   </data>
   <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>Topic</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>

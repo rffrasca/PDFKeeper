@@ -19,7 +19,6 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Application;
-using PDFKeeper.Core.Presenters;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Properties;
 using System;
@@ -29,50 +28,48 @@ namespace PDFKeeper.WinForms.Views
 {
     public partial class LoginForm : Form
     {
-        private readonly LoginPresenter presenter;
         private readonly LoginViewModel viewModel;
 
         public LoginForm()
         {
             InitializeComponent();
-            presenter = new LoginPresenter(Handle);
-            viewModel = presenter.ViewModel;
+            viewModel = new LoginViewModel(Handle);
             HelpProvider.HelpNamespace = new HelpFile().FullName;
-            SetActionDelegates();
+            SetActions();
         }
 
-        private void SetActionDelegates()
+        private void SetActions()
         {
-            presenter.OnApplyPendingChangesRequested = (() =>
+            viewModel.OnLongOperationStarted = () => Cursor = Cursors.WaitCursor;
+            viewModel.OnLongOperationFinished = () => Cursor = Cursors.Default;
+
+            viewModel.OnApplyPendingChanges = () =>
             {
                 viewModel.UserName = Settings.Default.Username;
                 viewModel.Password = PasswordSecureTextBox.SecureText;
                 viewModel.DataSource = Settings.Default.Datasource;
                 viewModel.DbManagementSystem = Settings.Default.DbManagementSystem;
-            });
-
-            presenter.OnLongRunningOperationStarted = () => Cursor = Cursors.WaitCursor;
-            presenter.OnLongRunningOperationFinished = () => Cursor = Cursors.Default;
-
-            presenter.OnViewCloseRequested = (() =>
+            };
+            
+            viewModel.OnCloseView = () =>
             {
-                presenter.CancelViewClosing = false;
+                viewModel.CancelViewClosing = false;
                 DialogResult = DialogResult.OK;
                 Close();
-            });
+            };
 
-            presenter.OnViewResetRequested = (() =>
+            viewModel.OnResetView = () =>
             {
                 PasswordSecureTextBox.SecureText.Dispose();
                 PasswordSecureTextBox.Text = null;
                 PasswordSecureTextBox.InitSecureString();
                 UsernameTextBox.Select();
-            });
+            };
         }
 
         private void OK_Button_Click(object sender, EventArgs e)
         {
-            presenter.Login();
+            viewModel.LoginCommand.Execute(null);
         }
 
         private void Cancel_Button_Click(object sender, EventArgs e)

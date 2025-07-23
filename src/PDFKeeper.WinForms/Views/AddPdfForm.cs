@@ -19,7 +19,6 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Application;
-using PDFKeeper.Core.Presenters;
 using PDFKeeper.Core.ViewModels;
 using System;
 using System.ComponentModel;
@@ -29,98 +28,102 @@ namespace PDFKeeper.WinForms.Views
 {
     public partial class AddPdfForm : Form
     {
-        private readonly AddPdfPresenter presenter;
         private readonly AddPdfViewModel viewModel;
 
         public AddPdfForm()
         {
             InitializeComponent();
-            presenter = new AddPdfPresenter();
-            viewModel = presenter.ViewModel;
-            AddPdfViewModelBindingSource.DataSource = presenter.ViewModel;
+            viewModel = new AddPdfViewModel();
+            AddPdfViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
-            SetActionDelegates();
+            SetActions();
         }
 
-        private void SetActionDelegates()
+        private void SetActions()
         {
-            presenter.OnApplyPendingChangesRequested = ()
-                => AddPdfViewModelBindingSource.EndEdit();
+            viewModel.OnApplyPendingChanges = () => AddPdfViewModelBindingSource.EndEdit();
+            viewModel.OnResetBindings = () => AddPdfViewModelBindingSource.ResetBindings(false);
 
-            presenter.OnViewCloseCancelled = (() =>
+            viewModel.OnCloseViewOKResult = () =>
             {
-                presenter.CancelViewClosing = true;
-                TitleTextBox.Select();
-            });
-
-            presenter.OnViewCloseRequested = (() =>
-            {
-                presenter.CancelViewClosing = false;
+                DialogResult = DialogResult.OK;
                 Close();
-            });
+            };
+
+            viewModel.OnCloseViewCancelResult = () =>
+            {
+                DialogResult = DialogResult.Cancel;
+                Close();
+            };
+            
+            viewModel.OnCancelCloseView = () =>
+            {
+                viewModel.CancelViewClosing = true;
+                TitleTextBox.Select();
+            };
+
+            viewModel.OnCloseView = () =>
+            {
+                viewModel.CancelViewClosing = false;
+                Close();
+            };
+
+            viewModel.OnSelectTitleControl = () => TitleTextBox.Select();
         }
 
         private void AddPdfForm_Load(object sender, EventArgs e)
         {
-            presenter.SelectPdf();
-            presenter.GetCollections();
-            AddPdfViewModelBindingSource.ResetBindings(false);
+            viewModel.SelectPdfCommand.Execute(null);
         }
 
         private void ViewButton_Click(object sender, EventArgs e)
         {
-            presenter.ViewPdf();
+            viewModel.ViewPdfCommand.Execute(null);
         }
 
         private void SetTitleToPdfFileNameLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            presenter.SetTitleToPdfFileName();
-            TitleTextBox.Select();
+            viewModel.SetTitleToPdfFileNameCommand.Execute(null);
         }
 
         private void SubjectUserControl_Enter(object sender, EventArgs e)
         {
-            presenter.GetSubjects();
+            viewModel.GetSubjectsCommand.Execute(null);
         }
 
         private void OK_Button_Click(object sender, EventArgs e)
         {
-            presenter.AddPdf(DeleteSelectedPdfWhenAddedCheckBox.Checked);
-            DialogResult = DialogResult.OK;
-            Close();
+            viewModel.AddPdfCommand.Execute(DeleteSelectedPdfWhenAddedCheckBox.Checked);
         }
 
         private void Cancel_Button_Click(object sender, EventArgs e)
         {
-            presenter.Cancel();
-            DialogResult = DialogResult.Cancel;
-            Close();
+            viewModel.CancelCommand.Execute(null);
         }
         
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals("Authors", StringComparison.Ordinal))
+            switch (e.PropertyName)
             {
-                AuthorUserControl.Authors = viewModel.Authors;
-            }
-            else if (e.PropertyName.Equals("Subjects", StringComparison.Ordinal))
-            {
-                SubjectUserControl.Subjects = viewModel.Subjects;
-            }
-            else if (e.PropertyName.Equals("Categories", StringComparison.Ordinal))
-            {
-                CategoryUserControl.Categories = viewModel.Categories;
-            }
-            else if (e.PropertyName.Equals("TaxYears", StringComparison.Ordinal))
-            {
-                TaxYearDropDownListUserControl.TaxYears = viewModel.TaxYears;
+                case nameof(viewModel.Authors):
+                    AuthorUserControl.Authors = viewModel.Authors;
+                    break;
+                case nameof(viewModel.Subjects):
+                    SubjectUserControl.Subjects = viewModel.Subjects;
+                    break;
+                case nameof(viewModel.Categories):
+                    CategoryUserControl.Categories = viewModel.Categories;
+                    break;
+                case nameof(viewModel.TaxYears):
+                    TaxYearDropDownListUserControl.TaxYears = viewModel.TaxYears;
+                    break;
             }
         }
 
         private void AddPdfForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = presenter.CancelViewClosing;
+            e.Cancel = viewModel.CancelViewClosing;
         }
     }
 }
