@@ -25,7 +25,6 @@ using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Services;
 using PDFKeeper.PDFViewer.Services;
-using PDFKeeper.WinForms.Commands;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Services;
 using PDFKeeper.WinForms.Views;
@@ -34,6 +33,7 @@ using System.Configuration;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using static PDFKeeper.Core.Extensions.ExceptionExtension;
 
 namespace PDFKeeper.WinForms
 {
@@ -45,11 +45,11 @@ namespace PDFKeeper.WinForms
         [STAThread]
         static void Main()
         {
-            Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(
-                ExceptionEventHandler.HandleThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(
-                ExceptionEventHandler.HandleUnhandledException);
-            
+                HandleUnhandledException);
+            Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(
+                HandleThreadException);
+
             using (var mutex = new Mutex(true, Application.ProductName))
             {
                 if (mutex.WaitOne(TimeSpan.Zero, true))
@@ -278,6 +278,18 @@ namespace PDFKeeper.WinForms
                     Settings.Default.Save();
                 }
             }
+        }
+
+        static void HandleUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            ((Exception)e.ExceptionObject).HandleException(ExceptionType.UnhandledException);
+            Application.Exit();
+        }
+
+        static void HandleThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            e.Exception.HandleException(ExceptionType.ThreadException);
+            Application.Exit();
         }
     }
 }

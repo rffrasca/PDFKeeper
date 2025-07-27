@@ -145,7 +145,6 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DataGridViewSortProperties.cs" />
-    <Compile Include="Helpers\ExceptionEventHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FolderBrowserDialogService.cs" />

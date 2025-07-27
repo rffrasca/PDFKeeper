@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\HelpFile.cs" />
+    <Compile Include="Extensions\ExceptionExtension.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Application\UserProfileFolder.cs" />
     <Compile Include="Commands\ExportDocumentCommand.cs" />

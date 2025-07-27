@@ -375,11 +375,29 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stack Trace has been logged to {0}.
+        /// </summary>
+        internal static string StackTraceLogged {
+            get {
+                return ResourceManager.GetString("StackTraceLogged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Text files|*.txt.
         /// </summary>
         internal static string TextFilter {
             get {
                 return ResourceManager.GetString("TextFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application UI ThreadException has occurred!.
+        /// </summary>
+        internal static string ThreadException {
+            get {
+                return ResourceManager.GetString("ThreadException", resourceCulture);
             }
         }
         
@@ -391,6 +409,15 @@ namespace PDFKeeper.Core.Properties {
         internal static string UnableToSaveNotes {
             get {
                 return ResourceManager.GetString("UnableToSaveNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Domain UnhandledException has occurred!.
+        /// </summary>
+        internal static string UnhandledException {
+            get {
+                return ResourceManager.GetString("UnhandledException", resourceCulture);
             }
         }
         

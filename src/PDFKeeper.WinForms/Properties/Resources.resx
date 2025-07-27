@@ -147,9 +147,6 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   <data name="PDFKeeper_200x200" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PDFKeeper_200x200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="StackTraceLogged" xml:space="preserve">
-    <value>Stack Trace has been logged to {0}</value>
-  </data>
   <data name="folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -158,9 +155,6 @@ This program comes with ABSOLUTELY NO WARRANTY; this is free software, and you a
   </data>
   <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ThreadException" xml:space="preserve">
-    <value>Application UI ThreadException has occurred!</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
@@ -211,9 +205,6 @@ For setting up a multi-user database, select No.</value>
   </data>
   <data name="action_paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\action_paste.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UnhandledException" xml:space="preserve">
-    <value>Application Domain UnhandledException has occurred!</value>
   </data>
   <data name="date_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\date_new.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -440,15 +440,6 @@ namespace PDFKeeper.WinForms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stack Trace has been logged to {0}.
-        /// </summary>
-        internal static string StackTraceLogged {
-            get {
-                return ResourceManager.GetString("StackTraceLogged", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Subject.
         /// </summary>
         internal static string Subject {
@@ -476,15 +467,6 @@ namespace PDFKeeper.WinForms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Application UI ThreadException has occurred!.
-        /// </summary>
-        internal static string ThreadException {
-            get {
-                return ResourceManager.GetString("ThreadException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Title.
         /// </summary>
         internal static string Title {
@@ -499,15 +481,6 @@ namespace PDFKeeper.WinForms.Properties {
         internal static string TitleCannotBeBlank {
             get {
                 return ResourceManager.GetString("TitleCannotBeBlank", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Application Domain UnhandledException has occurred!.
-        /// </summary>
-        internal static string UnhandledException {
-            get {
-                return ResourceManager.GetString("UnhandledException", resourceCulture);
             }
         }
     }
