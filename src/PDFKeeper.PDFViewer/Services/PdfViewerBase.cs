@@ -29,14 +29,15 @@ namespace PDFKeeper.PDFViewer.Services
         /// <summary>
         /// Starts the bundled PDF viewer.
         /// </summary>
-        /// <param name="args">The optional command line arguments.</param>
-        /// <returns>The process ID.</returns>
+        /// <param name="args">The PDF viewer command line arguments.</param>
+        /// <returns>The <see cref="Process.Id"/>.</returns>
         protected static int Start(string args)
         {
             using (var process = new Process())
             {
                 var executingAssembly = new ExecutingAssembly();
-                process.StartInfo.FileName = Path.Combine(executingAssembly.DirectoryPath,
+                process.StartInfo.FileName = Path.Combine(
+                    executingAssembly.DirectoryPath,
                     "SumatraPDF-3.5.2-64.exe");
                 process.StartInfo.Arguments = args;
                 process.StartInfo.UseShellExecute = false;
