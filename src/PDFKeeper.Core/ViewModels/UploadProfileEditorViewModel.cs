@@ -251,7 +251,7 @@ namespace PDFKeeper.Core.ViewModels
         {
             CancelViewClosing = false;
 
-            if (messageBoxService.ShowQuestion(Resources.CancelQuestion, false).Equals(6))
+            if (messageBoxService.ShowQuestion(Resources.CancelQuestion).Equals(6))
             {
                 OnCloseViewCancelResult?.Invoke();
             }

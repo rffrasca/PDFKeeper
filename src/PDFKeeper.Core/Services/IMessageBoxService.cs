@@ -25,26 +25,32 @@ namespace PDFKeeper.Core.Services
     public interface IMessageBoxService
     {
         /// <summary>
-        /// Shows a message box for displaying the message.
+        /// Shows the specified message in a <c>MessageBox</c>.
         /// </summary>
-        /// <param name="message">The message.</param>
-        /// <param name="isError">Is message an error? (true or false)</param>
-        void ShowMessage(string message, bool isError);
+        /// <param name="message">The message to display.</param>
+        /// <param name="isError"><c>true</c> or <c>false</c> if the message an error.</param>
+        void ShowMessage(string message, bool isError = false);
 
         /// <summary>
-        /// Shows a message box for displaying the message.
+        /// Shows the specified message in a <c>MessageBox</c>.
         /// </summary>
-        /// <param name="owner">The window handle of the owner.</param>
-        /// <param name="message">The message.</param>
-        /// <param name="isError">Is message an error? (true or false)</param>
-        void ShowMessage(IntPtr owner, string message, bool isError);
+        /// <param name="owner">The window <c>Handle</c> of the owner.</param>
+        /// <param name="message">The message to display.</param>
+        /// <param name="isError"><c>true</c> or <c>false</c> if the message an error.</param>
+        void ShowMessage(IntPtr owner, string message, bool isError = false);
 
         /// <summary>
-        /// Shows a message box for asking the question.
+        /// Shows the specified question in a <c>MessageBox</c>.
         /// </summary>
-        /// <param name="message">The question.</param>
-        /// <param name="showCancel">Show Cancel button. (true or false)</param>
-        /// <returns>6 (Yes), 7 (No), or 2 (Cancel).</returns>
-        int ShowQuestion(string message, bool showCancel);
+        /// <param name="message">
+        /// The question to display.
+        /// </param>
+        /// <param name="showCancel">
+        /// <c>true</c> or <c>false</c> to show <c>Cancel</c> button.
+        /// </param>
+        /// <returns>
+        /// 6 = <c>Yes</c>, 7 = <c>No</c>, or 2 = <c>Cancel</c>.
+        /// </returns>
+        int ShowQuestion(string message, bool showCancel = false);
     }
 }

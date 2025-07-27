@@ -123,7 +123,7 @@ namespace PDFKeeper.Core.ViewModels
                 Resources.ResourceManager,
                 "DeleteToRecycleBin",
                 CurrentUploadProfileName);
-            if (messageBoxService.ShowQuestion(message, false).Equals(6))
+            if (messageBoxService.ShowQuestion(message).Equals(6))
             {
                 uploadProfileManager.DeleteUploadProfile(CurrentUploadProfileName);
             }

@@ -1179,7 +1179,7 @@ namespace PDFKeeper.Core.ViewModels
                         Resources.ResourceManager,
                         "OpenCheckedDocumentsMaximumReached",
                         openMaximum.ToString());
-                    messageBoxService.ShowMessage(message, false);
+                    messageBoxService.ShowMessage(message);
                 }
                 OnCheckedDocumentsProcessed();
             }
@@ -1444,8 +1444,7 @@ namespace PDFKeeper.Core.ViewModels
                     ResourceHelper.GetString(
                         Resources.ResourceManager,
                         "DeleteToRecycleBin",
-                        textFile.FullName),
-                    false).Equals(6))
+                        textFile.FullName)).Equals(6))
                 {
                     textFile.DeleteToRecycleBin();
                 }
@@ -1557,7 +1556,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void DeleteEachSelectedDocument()
         {
-            if (messageBoxService.ShowQuestion(Resources.DeleteSelectedDocuments, false).Equals(6))
+            if (messageBoxService.ShowQuestion(Resources.DeleteSelectedDocuments).Equals(6))
             {
                 ProcessEachCheckedDocument(CheckedDocumentAction.Delete, null);
 

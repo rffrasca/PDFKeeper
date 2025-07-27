@@ -29,6 +29,7 @@ namespace PDFKeeper.WinForms.Services
     {
         private readonly MessageBoxOptions messageBoxOptions;
         private MessageBoxButtons messageBoxButtons;
+        private MessageBoxIcon messageBoxIcon;
 
         public MessageBoxService()
         {
@@ -42,40 +43,48 @@ namespace PDFKeeper.WinForms.Services
             }
         }
 
-        public void ShowMessage(string message, bool isError)
-        {
-            var icon = MessageBoxIcon.Information;
+        public void ShowMessage(string message, bool isError = false)
+        {            
             if (isError)
             {
-                icon = MessageBoxIcon.Error;
+                messageBoxIcon = MessageBoxIcon.Error;
             }
+            else
+            {
+                messageBoxIcon = MessageBoxIcon.Information;
+            }
+
             MessageBox.Show(
                 message,
                 Application.ProductName,
                 MessageBoxButtons.OK,
-                icon,
+                messageBoxIcon,
                 MessageBoxDefaultButton.Button1,
                 messageBoxOptions);
         }
 
-        public void ShowMessage(IntPtr owner, string message, bool isError)
+        public void ShowMessage(IntPtr owner, string message, bool isError = false)
         {
-            var icon = MessageBoxIcon.Information;
             if (isError)
             {
-                icon = MessageBoxIcon.Error;
+                messageBoxIcon = MessageBoxIcon.Error;
             }
+            else
+            {
+                messageBoxIcon = MessageBoxIcon.Information;
+            }
+
             MessageBox.Show(
                 NativeWindow.FromHandle(owner),
                 message,
                 Application.ProductName,
                 MessageBoxButtons.OK,
-                icon,
+                messageBoxIcon,
                 MessageBoxDefaultButton.Button1,
                 messageBoxOptions);
         }
 
-        public int ShowQuestion(string message, bool showCancel)
+        public int ShowQuestion(string message, bool showCancel = false)
         {
             if (showCancel)
             {
@@ -85,6 +94,7 @@ namespace PDFKeeper.WinForms.Services
             {
                 messageBoxButtons = MessageBoxButtons.YesNo;
             }
+
             return Convert.ToInt32(
                 MessageBox.Show(
                     message,

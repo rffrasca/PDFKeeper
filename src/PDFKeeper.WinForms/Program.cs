@@ -171,16 +171,15 @@ namespace PDFKeeper.WinForms
                                 Resources.ResourceManager,
                                 "DatabaseCreated",
                                 DatabaseSession.LocalDatabasePath);
-                            messageBoxService.ShowMessage(message, false);
+                            messageBoxService.ShowMessage(message);
                             helpFile.ShowHelp(HelpFile.Topic.SetupSingleUserDatabase);
                             break;
                         case 7:
-                            messageBoxService.ShowMessage(Resources.MultiUserDatabaseSetup, false);
+                            messageBoxService.ShowMessage(Resources.MultiUserDatabaseSetup);
                             helpFile.ShowHelp(HelpFile.Topic.SetupMultiUserDatabase);
 
                             var choice2 = messageBoxService.ShowQuestion(
-                                Resources.ConnectingToOracle,
-                                false);
+                                Resources.ConnectingToOracle);
                             if (choice2.Equals(6))
                             {
                                 Settings.Default.DbManagementSystem =
@@ -189,8 +188,7 @@ namespace PDFKeeper.WinForms
                             else
                             {
                                 var choice3 = messageBoxService.ShowQuestion(
-                                    Resources.ConnectingToSqlServer,
-                                    false);
+                                    Resources.ConnectingToSqlServer);
                                 if (choice3.Equals(6))
                                 {
                                     Settings.Default.DbManagementSystem =
@@ -199,8 +197,7 @@ namespace PDFKeeper.WinForms
                                 else
                                 {
                                     var choice4 = messageBoxService.ShowQuestion(
-                                        Resources.ConnectingToMySql,
-                                        false);
+                                        Resources.ConnectingToMySql);
                                     if (choice4.Equals(6))
                                     {
                                         Settings.Default.DbManagementSystem =
