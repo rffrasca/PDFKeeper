@@ -31,6 +31,7 @@ namespace PDFKeeper.WinForms.Services
             {
                 dialog.Filter = filter;
                 dialog.FileName = fileName;
+
                 if (dialog.ShowDialog().Equals(DialogResult.OK))
                 {
                     return dialog.FileName;

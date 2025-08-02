@@ -53,9 +53,7 @@ namespace PDFKeeper.WinForms.Commands
         public void Execute(object parameter)
         {
             viewModel.BeforeViewClosingCommand.Execute(null);
-            //CommandInvoker.Invoke(viewModel.BeforeViewClosingCommand);
             e.Cancel = viewModel.CancelViewClosing;
-            //CommandInvoker.Invoke(viewModel.ViewClosingCommand);
             viewModel.ViewClosingCommand.Execute(null);
         }
     }

@@ -35,6 +35,7 @@ namespace PDFKeeper.WinForms.Services
             using (var dialog = new SetAuthorForm())
             {
                 dialog.ShowDialog();
+
                 if (dialog.DialogResult.Equals(DialogResult.OK))
                 {
                     if (dialog.AuthorUserControl.Author.Length > 0)

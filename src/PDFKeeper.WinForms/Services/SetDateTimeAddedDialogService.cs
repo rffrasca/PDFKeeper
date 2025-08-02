@@ -31,6 +31,7 @@ namespace PDFKeeper.WinForms.Services
             using (var dialog = new SetDateTimeAddedForm())
             {
                 dialog.ShowDialog();
+
                 if (dialog.DialogResult.Equals(DialogResult.OK))
                 {
                     return dialog.DateTimeAdded;

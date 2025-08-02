@@ -31,6 +31,7 @@ namespace PDFKeeper.WinForms.Dialogs
         {
             InitializeComponent();
             HelpProvider.HelpNamespace = new HelpFile().FullName;
+
             if (!DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Sqlite))
             {
                 ShowAllDocumentsOnStartupCheckBox.Visible = false;

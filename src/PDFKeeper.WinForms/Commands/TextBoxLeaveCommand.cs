@@ -29,7 +29,7 @@ namespace PDFKeeper.WinForms.Commands
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TextBoxLeaveCommand"/> class that sets the
-        /// state in the <see cref="MainViewModel"/> for a <see cref="TextBox"/> <c>Leave</c> event
+        /// state in <see cref="MainViewModel"/> for a <see cref="TextBox"/> <c>Leave</c> event
         /// when executed.
         /// </summary>
         /// <param name="textBox">The <see cref="TextBox"/> object.</param>

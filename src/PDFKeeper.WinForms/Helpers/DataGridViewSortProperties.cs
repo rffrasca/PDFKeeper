@@ -46,6 +46,7 @@ namespace PDFKeeper.WinForms.Commands
                 {
                     throw new ArgumentNullException(nameof(value));
                 }
+
                 sortedColumn = value;
                 sortColumnIndex = value.Index;
             }
@@ -64,6 +65,7 @@ namespace PDFKeeper.WinForms.Commands
                 {
                     sortDirection = ListSortDirection.Descending;
                 }
+
                 sortOrder = value;
             }
         }

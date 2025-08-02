@@ -37,6 +37,7 @@ namespace PDFKeeper.WinForms.Commands
         internal static void Invoke(object sender)
         {
             ICommand command;
+
             switch (sender.GetType().Name)
             {
                 case "Timer":
@@ -52,6 +53,7 @@ namespace PDFKeeper.WinForms.Commands
                     command = ((Control)sender).Tag as ICommand;
                     break;
             }
+            
             command.Execute(null);
         }
     }

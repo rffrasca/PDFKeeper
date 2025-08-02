@@ -46,10 +46,11 @@ namespace PDFKeeper.WinForms.Components
         }
 
         /// <summary>
-        /// Initializes a new SecureString for the current instance of the SecureTextBox class.
-        /// This method is called by the constructors of this class and is to be called when the
-        /// SecureString needs to be initialized after it has been disposed, allowing for re-entry
-        /// in the same instance of the implementing view.
+        /// Initializes a new <see cref="SecureString"/> object for the current instance of the
+        /// <see cref="SecureTextBox"/> class. This method is called by the constructors of this
+        /// class and is to be called when the <see cref="SecureString"/> needs to be initialized
+        /// after it has been disposed, allowing for re-entry in the same instance of the
+        /// implementing view.
         /// </summary>
         public void InitSecureString()
         {
@@ -57,7 +58,8 @@ namespace PDFKeeper.WinForms.Components
         }
 
         /// <summary>
-        /// Gets the text entered in the text box securely as a SecureString object.
+        /// Gets the text entered in the <see cref="SecureTextBox"/> securely as a
+        /// <see cref="SecureString"/> object.
         /// </summary>
         public SecureString SecureText { get; private set; }
 
@@ -66,7 +68,7 @@ namespace PDFKeeper.WinForms.Components
             if (e.KeyCode.Equals(Keys.Delete))
             {
                 // Remove the character after the cursor or all selected characters from the
-                // SecureString.
+                // SecureString object.
                 if (SelectionLength > 0)
                 {
                     RemoveSelectedCharsFromSecureString();
@@ -75,6 +77,7 @@ namespace PDFKeeper.WinForms.Components
                 {
                     SecureText.RemoveAt(SelectionStart);
                 }
+                
                 SetTextBoxTextAndCursorPosition(SelectionStart);
                 e.Handled = true;
             }
@@ -89,7 +92,7 @@ namespace PDFKeeper.WinForms.Components
             if (e.KeyChar.Equals((char)Keys.Back)) 
             {
                 // Remove the character before the cursor or all selected characters from the
-                // SecureString.
+                // SecureString object.
                 if (SelectionLength > 0)
                 {
                     RemoveSelectedCharsFromSecureString();
@@ -108,11 +111,12 @@ namespace PDFKeeper.WinForms.Components
                     RemoveSelectedCharsFromSecureString();
                 }
 
-                // Insert printable character into SecureString.
+                // Insert printable character into the SecureString object.
                 SecureText.InsertAt(SelectionStart, e.KeyChar);
 
                 SetTextBoxTextAndCursorPosition(SelectionStart + 1);
             }
+
             e.Handled = true;
         }
 
@@ -127,7 +131,7 @@ namespace PDFKeeper.WinForms.Components
         private void SetTextBoxTextAndCursorPosition(int cursorPosition)
         {
             // Set the Text property of the TextBox to a string of asterisks matching the length of
-            // the SecureString.
+            // the SecureString object.
             Text = new string('*', SecureText.Length);
             // This next step sets the cursor position to the specified value. It must be performed
             // after setting the Text property and cannot be moved out of this method.

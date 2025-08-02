@@ -386,6 +386,7 @@ namespace PDFKeeper.WinForms.Views
             {
                 viewModel.ClipboardUpdateCommand.Execute(null);
             }
+
             base.WndProc(ref m);
         }
 
@@ -491,6 +492,7 @@ namespace PDFKeeper.WinForms.Views
         private void DocumentsDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             var image = Resources.flag_red;
+
             foreach (DataGridViewRow row in DocumentsDataGridView.Rows)
             {
                 if (Convert.ToInt32(row.Cells[9].Value).Equals(1))
@@ -727,6 +729,7 @@ namespace PDFKeeper.WinForms.Views
                                 viewModel.CurrentDocumentId))
                             {
                                 row.Selected = true;
+
                                 try
                                 {
                                     DocumentsDataGridView.FirstDisplayedScrollingRowIndex =
@@ -800,6 +803,7 @@ namespace PDFKeeper.WinForms.Views
         private static StartupAction GetStartupAction()
         {
             var startupAction = StartupAction.None;
+
             if (Settings.Default.FindFlaggedDocumentsOnStartup)
             {
                 startupAction = StartupAction.FindFlaggedDocuments;
@@ -810,6 +814,7 @@ namespace PDFKeeper.WinForms.Views
             {
                 startupAction = StartupAction.ShowAllDocuments;
             }
+
             return startupAction;
         }
 
@@ -821,6 +826,7 @@ namespace PDFKeeper.WinForms.Views
         private Collection<int> GetCheckedDocumentIds()
         {
             var ids = new Collection<int>();
+
             try
             {
                 foreach (DataGridViewRow row in DocumentsDataGridView.Rows)
@@ -832,6 +838,7 @@ namespace PDFKeeper.WinForms.Views
                 }
             }
             catch (NullReferenceException) { }
+            
             return ids;
         }
 
@@ -842,6 +849,7 @@ namespace PDFKeeper.WinForms.Views
         private TextBox GetTextBoxWithFocus()
         {
             TextBox result = null;
+            
             if (NotesTextBox.Focused)
             {
                 result = NotesTextBox;
@@ -858,6 +866,7 @@ namespace PDFKeeper.WinForms.Views
             {
                 result = SearchTermSnippetsTextBox;
             }
+            
             return result;
         }
     }

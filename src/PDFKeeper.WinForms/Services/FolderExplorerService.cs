@@ -33,6 +33,7 @@ namespace PDFKeeper.WinForms.Services
             {
                 throw new ArgumentNullException(nameof(directory));
             }
+
             Process.Start(directory.FullName);
         }
     }

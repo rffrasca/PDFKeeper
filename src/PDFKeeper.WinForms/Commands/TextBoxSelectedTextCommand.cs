@@ -34,14 +34,17 @@ namespace PDFKeeper.WinForms.Commands
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TextBoxSelectedTextCommand"/> class that
-        /// synchronizes the selected text property of a <see cref="TextBox"/> and sets the state
-        /// in the <see cref="MainViewModel"/> when executed.
+        /// synchronizes the <see cref="TextBox.SelectedText"/> and sets the state in
+        /// <see cref="MainViewModel"/> when executed.
         /// </summary>
         /// <param name="textBox">The <see cref="TextBox"/> object.</param>
         /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
         /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
         [CLSCompliant(false)]
-        public TextBoxSelectedTextCommand(TextBox textBox, MainForm mainForm, MainViewModel viewModel)
+        public TextBoxSelectedTextCommand(
+            TextBox textBox,
+            MainForm mainForm,
+            MainViewModel viewModel)
         {
             this.textBox = textBox;
             this.mainForm = mainForm;

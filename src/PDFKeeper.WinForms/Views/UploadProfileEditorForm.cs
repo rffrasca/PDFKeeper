@@ -35,7 +35,7 @@ namespace PDFKeeper.WinForms.Views
         /// Initializes a new instance of the <see cref="UploadProfileEditorForm"/> class.
         /// </summary>
         /// <param name="uploadProfileName">
-        /// The upload profile name only when editing an existing upload profile.
+        /// The Upload Profile name only when editing an existing upload profile.
         /// </param>
         public UploadProfileEditorForm(string uploadProfileName = null)
         {

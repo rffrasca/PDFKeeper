@@ -31,6 +31,7 @@ namespace PDFKeeper.WinForms.Services
             using (var dialog = new SetCategoryForm())
             {
                 dialog.ShowDialog();
+
                 if (dialog.DialogResult.Equals(DialogResult.OK))
                 {
                     return dialog.CategoryUserControl.Category;

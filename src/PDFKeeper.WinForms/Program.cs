@@ -129,7 +129,9 @@ namespace PDFKeeper.WinForms
         /// <summary>
         /// Performs application startup actions.
         /// </summary>
-        /// <returns>User cancelled or startup encountered an exception. (true or false)</returns>
+        /// <returns>
+        /// <c>true</c> or <c>false</c> if user cancelled or startup encountered an exception.
+        /// </returns>
         static bool Startup()
         {
             var helpFile = new HelpFile();
@@ -146,6 +148,7 @@ namespace PDFKeeper.WinForms
                 else
                 {
                     var choice = messageBoxService.ShowQuestion(Resources.DatabaseSetup, true);
+
                     switch (choice)
                     {
                         case 6:
@@ -177,9 +180,9 @@ namespace PDFKeeper.WinForms
                         case 7:
                             messageBoxService.ShowMessage(Resources.MultiUserDatabaseSetup);
                             helpFile.ShowHelp(HelpFile.Topic.SetupMultiUserDatabase);
-
                             var choice2 = messageBoxService.ShowQuestion(
                                 Resources.ConnectingToOracle);
+                            
                             if (choice2.Equals(6))
                             {
                                 Settings.Default.DbManagementSystem =
@@ -189,6 +192,7 @@ namespace PDFKeeper.WinForms
                             {
                                 var choice3 = messageBoxService.ShowQuestion(
                                     Resources.ConnectingToSqlServer);
+                            
                                 if (choice3.Equals(6))
                                 {
                                     Settings.Default.DbManagementSystem =
@@ -198,6 +202,7 @@ namespace PDFKeeper.WinForms
                                 {
                                     var choice4 = messageBoxService.ShowQuestion(
                                         Resources.ConnectingToMySql);
+                                
                                     if (choice4.Equals(6))
                                     {
                                         Settings.Default.DbManagementSystem =
@@ -269,6 +274,7 @@ namespace PDFKeeper.WinForms
         {
             var configuration = ConfigurationManager.OpenExeConfiguration(
                 ConfigurationUserLevel.PerUserRoamingAndLocal);
+            
             if (!configuration.HasFile)
             {
                 if (Settings.Default.UpgradeSettings)

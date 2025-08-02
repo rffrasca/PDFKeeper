@@ -20,7 +20,6 @@
 
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
-using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
 using PDFKeeper.WinForms.Properties;
@@ -36,6 +35,7 @@ namespace PDFKeeper.WinForms.Services
             using (var dialog = new SetTitleForm())
             {
                 dialog.ShowDialog();
+
                 if (dialog.DialogResult.Equals(DialogResult.OK))
                 {
                     if (dialog.Title.Length > 0)

@@ -65,6 +65,7 @@ namespace PDFKeeper.WinForms.Commands
                 var hitTest = mainForm.DocumentsDataGridView.HitTest(
                     mouseEventArgs.X,
                     mouseEventArgs.Y);
+
                 if (hitTest.RowIndex >= 0)
                 {
                     var rowIndex = mainForm.DocumentsDataGridView.Rows[hitTest.RowIndex];

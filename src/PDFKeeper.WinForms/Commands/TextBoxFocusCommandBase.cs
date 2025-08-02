@@ -32,9 +32,11 @@ namespace PDFKeeper.WinForms.Commands
         protected MainViewModel viewModel;
 
         /// <summary>
-        /// Sets the  focused state in <see cref="MainViewModel"/>.
+        /// Sets the <see cref="TextBox"/> focused state in <see cref="MainViewModel"/>.
         /// </summary>
-        /// <param name="enabled">Set focus to enabled. (true or false)</param>
+        /// <param name="enabled">
+        /// <c>true</c> or <c>false</c> to set focused state to enabled.
+        /// </param>
         protected void SetTextBoxFocusedState(bool enabled)
         {
             switch (textBox.Name)
