@@ -53,8 +53,8 @@ namespace PDFKeeper.Core.ViewModels
         public Action OnSelectTitleControl { get; set; }
 
         /// <summary>
-        /// Prompts the user to select the PDF from the file system.If the PDF contains an Owner
-        /// password, the user will be prompted to enter it.
+        /// Prompts the user to select the PDF from the file system. If the PDF contains an
+        /// <c>Owner</c> password, the user will be prompted to enter it.
         /// </summary>
         public ICommand SelectPdfCommand { get; private set; }
 
@@ -64,11 +64,11 @@ namespace PDFKeeper.Core.ViewModels
 
         /// <summary>
         /// Adds a copy of the PDF with the specified information metadata applied and the
-        /// corresponding XML containing the specified external metadata to the UploadStaging
-        /// folder.
+        /// corresponding XML containing the specified external metadata to the
+        /// <c>UploadStaging</c> folder.
         /// <para>
-        /// <see cref="ICommand.Execute(bool)"/>: Delete the source PDF to the Operating System
-        /// Recycle Bin. (true or false)
+        /// <see cref="ICommand.Execute(bool)"/>: true or false to delete the source PDF to the
+        /// Operating System Recycle Bin.
         /// </para>
         /// </summary>
         public ICommand AddPdfCommand { get; private set; }
@@ -173,7 +173,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SelectPdf()
         {
-            var selectedPdfPath = openFileDialogService.ShowDialog(Resources.PdfFilter, null);
+            var selectedPdfPath = openFileDialogService.ShowDialog(Resources.PdfFilter);
             if (selectedPdfPath.Length > 0)
             {
                 try
@@ -182,7 +182,7 @@ namespace PDFKeeper.Core.ViewModels
                     var passwordType = pdfFile.GetPasswordType();
                     if (passwordType.Equals(PdfFile.PasswordType.None))
                     {
-                        pdfMetadata = new PdfMetadata(pdfFile, null);
+                        pdfMetadata = new PdfMetadata(pdfFile);
                         SelectedPdf = pdfFile.FullName;
                         UploadProfile = pdfMetadata.ExportUploadProfile();
                         GetCollections();
@@ -279,7 +279,7 @@ namespace PDFKeeper.Core.ViewModels
             try
             {
                 var targetPdfFile = pdfMetadata.Write();
-                new Commands.UploadStagingCommand(targetPdfFile).Execute();
+                new Commands.UploadStagingCommand(targetPdfFile).Execute(null);
 
                 if (deleteSourcePdf)
                 {

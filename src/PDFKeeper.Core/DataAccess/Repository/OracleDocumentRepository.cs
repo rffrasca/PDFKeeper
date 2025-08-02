@@ -43,11 +43,13 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 DataSource = DatabaseSession.DataSource,
                 ConnectionTimeout = 60
             };
-            if (oracleCredential == null)
+
+            if (oracleCredential is null)
             {
                 oracleCredential = new OracleCredential(
                     DatabaseSession.UserName,
                     DatabaseSession.Password);
+
                 if (DatabaseSession.OracleWalletPath != null)
                 {
                     if (OracleConfiguration.WalletLocation.Length.Equals(0))
@@ -65,6 +67,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             var sql = "select data_length from all_tab_columns " +
                 "where table_name='DOCS' and column_name='DOC_NOTES'";
+            
             using (var connection = new OracleConnection(
                 connStrBuilder.ConnectionString,
                 oracleCredential))
@@ -72,6 +75,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 using (var command = new OracleCommand(sql, connection))
                 {
                     connection.Open();
+                    
                     using (var reader = command.ExecuteReader())
                     {
                         reader.Read();
@@ -86,6 +90,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from pdfkeeper.docs " +
                 "where (contains(doc_dummy,:doc_dummy)) > 0";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -115,6 +120,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
                 "and (:doc_category is NULL or doc_category = :doc_category) " +
                 "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) ";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -144,6 +150,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from pdfkeeper.docs " +
                 "where doc_added like :doc_added || '%'";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -169,6 +176,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from pdfkeeper.docs where doc_flag = 1";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -192,6 +200,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from pdfkeeper.docs";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -218,6 +227,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "and (:doc_category is NULL or doc_category = :doc_category) " +
                 "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) " +
                 "group by doc_author";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -248,6 +258,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "and (:doc_category is NULL or doc_category = :doc_category) " +
                 "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) " +
                 "group by doc_subject";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -278,6 +289,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
                 "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) " +
                 "group by doc_category";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -308,6 +320,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
                 "and (:doc_category is NULL or doc_category = :doc_category) " +
                 "group by doc_tax_year";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -333,10 +346,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public Document GetDocument(int id, string searchTerm, bool includePdf)
         {
-            if (searchTerm == null)
+            if (searchTerm is null)
             {
                 searchTerm = string.Empty;
             }
+            
             string sql;
             if (includePdf)
             {
@@ -350,6 +364,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     "doc_category,doc_flag,doc_tax_year,doc_text " +
                     "from pdfkeeper.docs where doc_id = :doc_id";
             }
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -362,6 +377,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.BindByName = true;
                         command.Parameters.Add("doc_id", id);
                         connection.Open();
+                        
                         using (var reader = command.ExecuteReader())
                         {
                             reader.Read();
@@ -377,15 +393,18 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             document.TaxYear = reader["doc_tax_year"].ToString();
                             document.Text = reader["doc_text"].ToString();
                             document.SearchTermSnippets = GetSearchTermSnippets(id, searchTerm);
+                        
                             if (includePdf)
                             {
                                 var blob = reader.GetOracleBlob(6);
+                            
                                 using (var memoryStream = new MemoryStream(blob.Value))
                                 {
                                     document.Pdf = memoryStream.ToArray();
                                 }
                             }
                         }
+
                         return document;
                     }
                 }
@@ -402,10 +421,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public void InsertDocument(Document document)
         {
-            if (document == null)
+            if (document is null)
             {
                 throw new ArgumentNullException(nameof(document));
             }
+
             var sql = "insert into pdfkeeper.docs values(" +
                       "pdfkeeper.docs_seq.NEXTVAL," +
                       ":doc_title," +
@@ -421,6 +441,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       ":doc_tax_year," +
                       ":doc_text_annotations," +
                       ":doc_text)";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -463,10 +484,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public void UpdateDocument(Document document)
         {
-            if (document == null)
+            if (document is null)
             {
                 throw new ArgumentNullException(nameof(document));
             }
+
             var sql = "update pdfkeeper.docs set " +
                       "doc_title = :doc_title," +
                       "doc_author = :doc_author," +
@@ -479,6 +501,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       "doc_flag = :doc_flag," +
                       "doc_text_annotations = :doc_text_annotations," +
                       "doc_text = :doc_text where doc_id = :doc_id";
+
             try
             {
                 using (var connection = new OracleConnection(
@@ -517,6 +540,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public void DeleteDocument(int id)
         {
             var sql = "delete from pdfkeeper.docs where doc_id = :doc_id";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -558,7 +582,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 ResetCredential();
                 throw new DatabaseException(ex.Message);
             }
+            
             GetDocsTableAccess();
+            
             if (!DatabaseSession.SelectGranted)
             {
                 ResetCredential();
@@ -601,15 +627,18 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         protected override string GetSearchTermSnippets(int id, string searchTerm)
         {
-            if (searchTerm == null)
+            if (searchTerm is null)
             {
                 throw new ArgumentNullException(nameof(searchTerm));
             }
+
             string result = string.Empty;
+
             if (searchTerm.Length > 0)
             {
                 var sql = "select ctx_doc.snippet('pdfkeeper.docs_idx', :doc_id, :doc_dummy, " +
                     "'[', ']', :translate, '||') from dual";
+                
                 using (var connection = new OracleConnection(
                     connStrBuilder.ConnectionString,
                     oracleCredential))
@@ -624,6 +653,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             false,
                             ParameterDirection.Input);
                         connection.Open();
+                
                         using (var reader = command.ExecuteReader())
                         {
                             reader.Read();
@@ -641,6 +671,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "where grantor = 'PDFKEEPER' " +
                 "and grantee = :grantee " +
                 "and table_name = upper('docs')";
+            
             try
             {
                 using (var connection = new OracleConnection(
@@ -652,12 +683,14 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.BindByName = true;
                         command.Parameters.Add("grantee", DatabaseSession.UserName.ToUpper());
                         connection.Open();
+                        
                         using (var reader = command.ExecuteReader())
                         {
                             DatabaseSession.SelectGranted = false;
                             DatabaseSession.InsertGranted = false;
                             DatabaseSession.UpdateGranted = false;
                             DatabaseSession.DeleteGranted = false;
+                        
                             while (reader.Read())
                             {
                                 switch (reader.GetString(0))
@@ -694,6 +727,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 {
                     connStrBuilder.Clear();
                 }
+
                 disposedValue = true;
             }
         }

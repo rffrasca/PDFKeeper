@@ -28,10 +28,14 @@ namespace PDFKeeper.Core.Extensions
     internal static class StringExtension
     {
         /// <summary>
-        /// Checks the string for invalid file name characters as defined by the operating system.
+        /// Checks the <see cref="string"/> for invalid file name characters as defined by the
+        /// operating system.
         /// </summary>
-        /// <param name="value">The string.</param>
-        /// <returns>true or false</returns>
+        /// <param name="value">The <see cref="string"/>.</param>
+        /// <returns>
+        /// <c>true</c> or <c>false</c> if the <see cref="string"/> contains invalid file name
+        /// characters.
+        /// </returns>
         internal static bool ContainInvalidFileNameChars(this string value)
         {
             foreach (char invalidChar in Path.GetInvalidFileNameChars())
@@ -41,26 +45,33 @@ namespace PDFKeeper.Core.Extensions
                     return true;
                 }
             }
+
             return false;
         }
 
         /// <summary>
-        /// Appends the contents of a text file to the string.
+        /// Appends the contents of a text file to the <see cref="string"/>.
         /// </summary>
-        /// <param name="value">The string to append to.</param>
-        /// <param name="file">The FileInfo object of the text file to append.</param>
-        /// <returns>The new string.</returns>
+        /// <param name="value">
+        /// The <see cref="string"/> to append to.
+        /// </param>
+        /// <param name="file">
+        /// The <see cref="FileInfo"/> object of the text file to append.
+        /// </param>
+        /// <returns>The new <see cref="string"/>.</returns>
         /// <exception cref="ArgumentNullException"></exception>
         internal static string AppendTextFile(this string value, FileInfo file)
         {
-            if (value == null)
+            if (value is null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
-            if (file == null)
+
+            if (file is null)
             {
                 throw new ArgumentNullException(nameof(file));
             }
+            
             if (value.Length > 0)
             {
                 if (value.Substring(value.Length - 1) != "\n")
@@ -68,54 +79,58 @@ namespace PDFKeeper.Core.Extensions
                     value += Environment.NewLine;
                 }
             }
+            
             return string.Concat(
                 value,
-                File.ReadAllText(file.FullName).Trim(),
+                File.ReadAllText(
+                    file.FullName).Trim(),
                 Environment.NewLine);
         }
 
         /// <summary>
-        /// Gets the size of the string in bytes.
+        /// Gets the size of the <see cref="string"/> in bytes.
         /// </summary>
-        /// <param name="value">The string.</param>
-        /// <returns>The size of the string in bytes.</returns>
+        /// <param name="value">The <see cref="string"/>.</param>
+        /// <returns>The size of the <see cref="string"/> in bytes.</returns>
         public static int GetByteCount(this string value)
         {
             return Encoding.UTF8.GetByteCount(value);
         }
 
         /// <summary>
-        /// Replaces each invalid file name character in a string with an '_'.
+        /// Replaces each invalid file name character in the string with an '_'.
         /// </summary>
-        /// <param name="value">The string.</param>
-        /// <returns>The modified string.</returns>
+        /// <param name="value">The <see cref="string"/>.</param>
+        /// <returns>The modified <see cref="string"/>.</returns>
         internal static string ReplaceInvalidFileNameChars(this string value)
         {
             foreach (char invalidChar in Path.GetInvalidFileNameChars())
             {
                 value = value.Replace(invalidChar, '_');
             }
+
             return value;
         }
 
         /// <summary>
-        /// Replaces each invalid path name character in a string with an '_'.
+        /// Replaces each invalid path name character in the string with an '_'.
         /// </summary>
-        /// <param name="value">The string.</param>
-        /// <returns>The modified string.</returns>
+        /// <param name="value">The <see cref="string"/>.</param>
+        /// <returns>The modified <see cref="string"/>.</returns>
         internal static string ReplaceInvalidPathChars(this string value)
         {
             foreach (char invalidChar in Path.GetInvalidPathChars())
             {
                 value = value.Replace(invalidChar, '_');
             }
+
             return value;
         }
 
         /// <summary>
-        /// Writes the string to a file.
+        /// Writes the <see cref="string"/> to a file.
         /// </summary>
-        /// <param name="value">The string to write.</param>
+        /// <param name="value">The <see cref="string"/> to write.</param>
         /// <param name="outputFileName">The output file name.</param>
         public static void WriteToFile(this string value, string outputFileName)
         {

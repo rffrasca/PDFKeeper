@@ -25,7 +25,7 @@ namespace PDFKeeper.Core.Services
     public interface IHelpService
     {
         /// <summary>
-        /// Shows a help file topic modelessly.
+        /// Shows a Help file topic modelessly.
         /// </summary>
         /// <typeparam name="T">
         /// The parent control type. Can be <c>Form</c> or <c>Control</c>.
@@ -33,7 +33,7 @@ namespace PDFKeeper.Core.Services
         /// <param name="control">
         /// The parent <c>Form</c> or <c>Control</c> of the Help dialog.
         /// </param>
-        /// <param name="topic">The <see cref="Topic"/> member.</param>
+        /// <param name="topic">The <see cref="HelpFile.Topic"/>.</param>
         void ShowHelp<T>(T control, HelpFile.Topic topic);
     }
 }

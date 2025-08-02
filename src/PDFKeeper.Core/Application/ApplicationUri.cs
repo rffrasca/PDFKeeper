@@ -25,8 +25,9 @@ namespace PDFKeeper.Core.Application
     public static class ApplicationUri
     {
         public static Uri HomePage => new Uri("https://www.pdfkeeper.org/");
-        public static Uri AutoUpdaterConfig => new Uri(string.Concat(
-            "https://raw.githubusercontent.com/rffrasca/PDFKeeper/master/config",
-            "/PDFKeeper.AutoUpdater.config.xml"));
+        public static Uri AutoUpdaterConfig => new Uri(
+            string.Concat(
+                "https://raw.githubusercontent.com/rffrasca/PDFKeeper/master/config",
+                "/PDFKeeper.AutoUpdater.config.xml"));
     }
 }

@@ -27,14 +27,24 @@ namespace PDFKeeper.Core.Helpers
     public static class ResourceHelper
     {
         /// <summary>
-        /// Gets a string containing the resource with {0} and {1} being replaced by the specified
-        /// arguments.
+        /// Gets a string containing the resource with <c>{0}</c> and <c>{1}</c> being replaced by
+        /// the specified arguments.
         /// </summary>
-        /// <param name="resourceManager">The <see cref="ResourceManager"/> instance.</param>
-        /// <param name="resource">The string that represents the resource.</param>
-        /// <param name="arg1">The argument that replaces {0} in the resource string.</param>
-        /// <param name="arg2">The optional argument that replaces {1} in the resource string.</param>
-        /// <returns>The formatted string.</returns>
+        /// <param name="resourceManager">
+        /// The <see cref="ResourceManager"/> instance.
+        /// </param>
+        /// <param name="resource">
+        /// The string that represents the resource.
+        /// </param>
+        /// <param name="arg1">
+        /// The argument that replaces <c>{0}</c> in the resource string.
+        /// </param>
+        /// <param name="arg2">
+        /// The optional argument that replaces <c>{1}</c> in the resource string.
+        /// </param>
+        /// <returns>
+        /// The formatted string.
+        /// </returns>
         public static string GetString(
             ResourceManager resourceManager,
             string resource,

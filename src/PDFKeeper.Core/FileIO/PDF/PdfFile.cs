@@ -45,35 +45,51 @@ namespace PDFKeeper.Core.FileIO.PDF
         private readonly DirectoryInfo tempDirectory;
 
         /// <summary>
-        /// <para>PDF Password type.</para>
-        /// <list type="bullet">None: PDF is not password protected.</list>
-        /// <list type="bullet">Owner: Owner password will be required to read PDF.</list>
-        /// <list type="bullet">User: Prevents opening the PDF and is not supported.</list>
-        /// <list type="bullet">
-        /// Unknown: Unable to determine password type because PDF is invalid.
+        /// PDF <see cref="PasswordType"/>.
+        /// <list type="table">
+        /// <see cref="PasswordType.None"/>: PDF is not password protected.
+        /// </list>
+        /// <list type="table">
+        /// <see cref="PasswordType.Owner"/>: Owner password will be required to read PDF.
+        /// </list>
+        /// <list type="table">
+        /// <see cref="PasswordType.User"/>: Prevents opening the PDF and is not supported.
+        /// </list>
+        /// <list type="table">
+        /// <see cref="PasswordType.Unknown"/>: Unable to determine password type because PDF is
+        /// invalid.
         /// </list>
         /// </summary>
-        public enum PasswordType { None, Owner, User, Unknown }
+        public enum PasswordType
+        {
+            None,
+            Owner,
+            User,
+            Unknown
+        }
 
         /// <summary>
-        /// Type of attached files in the PDF.
+        /// <see cref="AttachedFilesType"/> of attached files in the PDF.
         /// </summary>
-        public enum AttachedFilesType { Attachment, EmbeddedFile }
+        public enum AttachedFilesType
+        {
+            Attachment,
+            EmbeddedFile
+        }
 
         /// <summary>
-        /// Initializes a new instance of the PdfFile class.
+        /// Initializes a new instance of the <see cref="PdfFile"/> class.
         /// </summary>
-        /// <param name="pdfFile">
-        /// The PDF FileInfo object.
-        /// </param>
+        /// <param name="pdfFile">The PDF <see cref="FileInfo"/> object.</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
         public PdfFile(FileInfo pdfFile)
         {
-            if (pdfFile == null)
+            if (pdfFile is null)
             {
                 throw new ArgumentNullException(nameof(pdfFile));
             }
+
             if (pdfFile.IsFileNameInvalid())
             {
                 var message = ResourceHelper.GetString(
@@ -82,6 +98,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                     pdfFile.FullName);
                 throw new ArgumentException(message);
             }
+
             this.pdfFile = pdfFile;
             tempDirectory = new ApplicationDirectory().GetDirectory(
                 ApplicationDirectory.SpecialName.Temp);
@@ -90,17 +107,17 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Does the PDF contain attachments? (true or false)
+        /// Gets <c>true</c> or <c>false</c> if the PDF contains attachments.
         /// </summary>
         public bool ContainsAttachments => GetAllAttachments().Count > 0;
 
         /// <summary>
-        /// Does the PDF contain embedded files? (true or false)
+        /// Gets <c>true</c> or <c>false</c> if the PDF contains embedded files.
         /// </summary>
         public bool ContainsEmbeddedFiles => GetAllEmbeddedFiles().Count > 0;
 
         /// <summary>
-        /// Does the PDF file exist? (true or false)
+        /// Gets <c>true</c> or <c>false</c> if the PDF file exists.
         /// </summary>
         public bool Exists => pdfFile.Exists;
 
@@ -110,7 +127,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         public string FileNameWithoutExtension => pdfFile.GetFileNameWithoutExtension();
         
         /// <summary>
-        /// Gets the full path of the PDF.
+        /// Gets the full path name of the PDF.
         /// </summary>
         public string FullName => pdfFile.FullName;
 
@@ -122,15 +139,16 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// <summary>
         /// Changes the directory path name of the PDF.
         /// </summary>
-        /// <param name="directory">The input DirectoryInfo object.</param>
-        /// <returns>The modified FileInfo object.</returns>
+        /// <param name="directory">The input <see cref="DirectoryInfo"/> object.</param>
+        /// <returns>The modified <see cref="FileInfo"/> object.</returns>
         /// <exception cref="ArgumentNullException"></exception>
         public FileInfo ChangeDirectory(DirectoryInfo directory)
         {
-            if (directory == null)
+            if (directory is null)
             {
                 throw new ArgumentNullException(nameof(directory));
             }
+
             return pdfFile.ChangeDirectory(directory);
         }
 
@@ -138,7 +156,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// Changes the extension of the PDF.
         /// </summary>
         /// <param name="extension">The new extension.</param>
-        /// <returns>The modified FileInfo object.</returns>
+        /// <returns>The modified <see cref="FileInfo"/> object.</returns>
         public FileInfo ChangeExtension(string extension)
         {
             return pdfFile.ChangeExtension(extension);
@@ -156,8 +174,12 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// <summary>
         /// Copies the PDF to a new file.
         /// </summary>
-        /// <param name="destFileName">The destination file name.</param>
-        /// <param name="overwrite">Overwrite (true) or false.</param>
+        /// <param name="destFileName">
+        /// The destination file name.
+        /// </param>
+        /// <param name="overwrite">
+        /// <c>true</c> or <c>false</c> to overwrite existing destination file.
+        /// </param>
         public void CopyTo(string destFileName, bool overwrite)
         {
             pdfFile.CopyTo(destFileName, overwrite);
@@ -169,10 +191,12 @@ namespace PDFKeeper.Core.FileIO.PDF
         public async void CopyToClipboard()
         {
             var storageFile = await StorageFile.GetFileFromPathAsync(FullName);
+
             var list = new List<StorageFile>
             {
                 storageFile
             };
+            
             var dataPackage = new DataPackage();
             dataPackage.SetStorageItems(list);
             Clipboard.SetContent(dataPackage);
@@ -187,13 +211,23 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Gets the password type set in the PDF.
+        /// Gets the <see cref="PasswordType"/> set in the PDF.
         /// </summary>
         /// <returns>
-        /// PdfPasswordType.None: PDF is not password protected.
-        /// PdfPasswordType.Owner: Owner password will be required to read PDF.
-        /// PdfPasswordType.User: Prevents opening the PDF and is not supported.
-        /// PdfPasswordType.Unknown: Unable to determine password type because PDF is invalid.
+        /// One of the following <see cref="PasswordType"/>:
+        /// <list type="table">
+        /// <see cref="PasswordType.None"/>: PDF is not password protected.
+        /// </list>
+        /// <list type="table">
+        /// <see cref="PasswordType.Owner"/>: Owner password will be required to read the PDF.
+        /// </list>
+        /// <list type="table">
+        /// <see cref="PasswordType.User"/>: Prevents opening the PDF and is not supported.
+        /// </list>
+        /// <list type="table">
+        /// <see cref="PasswordType.Unknown"/>: Unable to determine password type because the PDF
+        /// is invalid.
+        /// </list>
         /// </returns>
         public PasswordType GetPasswordType()
         {
@@ -230,7 +264,10 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// <param name="pixelDensity">
         /// The pixel density (pixels per inch) of the PDF preview image.
         /// </param>
-        /// <returns>The preview image in PNG format as a byte array.</returns>
+        /// <returns>
+        /// The preview image in <see cref="MagickFormat.Png"/> format as a <see cref="byte"/>
+        /// array.
+        /// </returns>
         public byte[] CreatePreviewImage(decimal pixelDensity)
         {
             using (var image = new MagickImageCollection())
@@ -241,7 +278,9 @@ namespace PDFKeeper.Core.FileIO.PDF
                     FrameIndex = 0,
                     FrameCount = 1
                 };
+
                 image.Read(pdfFile, settings);
+                
                 using (var stream = new MemoryStream())
                 {
                     image.Write(stream, MagickFormat.Png);
@@ -254,18 +293,19 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// Extracts all attached files from the PDF to a directory.
         /// </summary>
         /// <param name="attachedFilesType">
-        /// The type of attached files in the PDF to extract.
+        /// The <see cref="AttachedFilesType"/> of files in the PDF to extract.
         /// </param>
         /// <param name="directory">
-        /// The DirectoryInfo object of the directory.
+        /// The <see cref="DirectoryInfo"/> object of the directory to extract into.
         /// </param>
         /// <exception cref="ArgumentNullException"></exception>
         public void ExtractAllAttachedFiles(AttachedFilesType attachedFilesType, DirectoryInfo directory)
         {
-            if (directory == null)
+            if (directory is null)
             {
                 throw new ArgumentNullException(nameof(directory));
             }
+
             switch (attachedFilesType)
             {
                 case AttachedFilesType.Attachment:
@@ -273,12 +313,14 @@ namespace PDFKeeper.Core.FileIO.PDF
                     {
                         File.WriteAllBytes(Path.Combine(directory.FullName, key.Key), key.Value);
                     }
+
                     break;
                 case AttachedFilesType.EmbeddedFile:
                     foreach (var key in GetAllEmbeddedFiles().ToArray())
                     {
                         string dirPath = null;
                         string keyName = null;
+                    
                         if (key.Key.Contains(@"\"))
                         {
                             keyName = key.Key;
@@ -287,11 +329,13 @@ namespace PDFKeeper.Core.FileIO.PDF
                                 Path.GetDirectoryName(keyName));
                             Directory.CreateDirectory(dirPath);
                         }
-                        if (dirPath == null)
+                        
+                        if (dirPath is null)
                         {
                             dirPath = directory.FullName;
                         }
-                        if (keyName == null)
+                        
+                        if (keyName is null)
                         {
                             keyName = key.Key;
                         }
@@ -299,8 +343,10 @@ namespace PDFKeeper.Core.FileIO.PDF
                         {
                             keyName = Path.GetFileName(key.Key);
                         }
+                        
                         File.WriteAllBytes(Path.Combine(dirPath, keyName), key.Value);
                     }
+
                     break;
             }
         }
@@ -309,19 +355,20 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// Extracts all attached files from the PDF to a ZIP file.
         /// </summary>
         /// <param name="attachedFilesType">
-        /// The type of attached files in the PDF to extract.
+        /// The <see cref="AttachedFilesType"/> of files in the PDF to extract.
         /// </param>
         /// <param name="zipFile">
-        /// The FileInfo object of the ZIP file. If the file referenced in the FileInfo object
-        /// exists, it will be overwritten.
+        /// The <see cref="FileInfo"/> object of the ZIP file. If the file referenced in the
+        /// <see cref="FileInfo"/> object exists, it will be overwritten.
         /// </param>
         /// <exception cref="ArgumentNullException"></exception>
         public void ExtractAllAttachedFiles(AttachedFilesType attachedFilesType, FileInfo zipFile)
         {
-            if (zipFile == null)
+            if (zipFile is null)
             {
                 throw new ArgumentNullException(nameof(zipFile));
             }
+
             switch (attachedFilesType)
             {
                 case AttachedFilesType.Attachment:
@@ -334,12 +381,16 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Gets a collection containing each page of the PDF as a TIFF image.
+        /// Gets a <see cref="Collection{T}"/> containing each page of the PDF as a
+        /// <see cref="MagickFormat.Tiff"/> image.
         /// </summary>
-        /// <returns>The collection.</returns>
+        /// <returns>
+        /// The <see cref="Collection{T}"/> of <see cref="MagickFormat.Tiff"/> images.
+        /// </returns>
         public Collection<byte[]> GetAllPagesAsTiffImages()
         {
             var imageList = new Collection<byte[]>();
+
             using (var images = new MagickImageCollection())
             {
                 var settings = new MagickReadSettings
@@ -347,7 +398,9 @@ namespace PDFKeeper.Core.FileIO.PDF
                     Density = new Density(600, 600),
                     Compression = CompressionMethod.LZW
                 };
+            
                 images.Read(pdfFile, settings);
+                
                 foreach (var image in images)
                 {
                     using (var output = new MemoryStream())
@@ -357,11 +410,12 @@ namespace PDFKeeper.Core.FileIO.PDF
                     }
                 }
             }
+
             return imageList;
         }
 
         /// <summary>
-        /// Gets text annotations from the PDF.
+        /// Gets text Annotations from the PDF.
         /// </summary>
         /// <returns>The text annotations.</returns>
         public string GetTextAnnot()
@@ -369,17 +423,22 @@ namespace PDFKeeper.Core.FileIO.PDF
             using (var reader = new PdfReader(pdfFile))
             {
                 var output = new StringBuilder();
+                
                 using (var document = new PdfDocument(reader))
                 {
-                    for (int pageCounter = 1, loopTo = document.GetNumberOfPages();
-                        pageCounter <= loopTo; pageCounter++)
+                    for (int pageCounter = 1,
+                        loopTo = document.GetNumberOfPages();
+                        pageCounter <= loopTo;
+                        pageCounter++)
                     {
                         var page = document.GetPage(pageCounter);
                         var annotations = page.GetAnnotations();
+                        
                         foreach (var annotation in annotations)
                         {
                             var dict = annotation.GetPdfObject();
                             var text = dict.GetAsString(PdfName.Contents);
+                        
                             if (text != null)
                             {
                                 output.AppendLine(text.ToUnicodeString());
@@ -387,39 +446,39 @@ namespace PDFKeeper.Core.FileIO.PDF
                         }
                     }
                 }
+
                 return output.ToString();
             }
         }
 
         /// <summary>
+        /// Gets text from the PDF using the appropriate <see cref="IPdfTextExtractionStrategy"/>
+        /// for the PDF page being processed.
         /// <para>
-        /// Gets text from the PDF using the appropriate extraction strategy for the PDF page being
-        /// processed.
+        /// <see cref="PdfTextExtractionStrategy"/>: Uses iText for text based PDF page except when
+        /// page contains an invalid encoding due to iText's strict adherence to the PDF
+        /// specification (ISO 32000) or when iText is unable to extract text from the page for
+        /// another reason.
         /// </para>
         /// <para>
-        /// Text Extraction Strategy:
-        /// Uses iText for text based PDF page except when page contains an invalid encoding due to
-        /// iText's strict adherence to the PDF specification (ISO 32000) or when iText is unable
-        /// to extract text from the page for another reason.
-        /// </para>
-        /// <para>
-        /// OCR Text Extraction Strategy:
-        /// Uses OCR for text based PDF when page is rejected by iText or when the page is
-        /// "Image-only". This strategy will also be used when PDF page contains image data and
-        /// ocrImageDataPages is true.
+        /// <see cref="PdfOcrTextExtractionStrategy"/>: Uses OCR for text based PDF when page is
+        /// rejected by iText or when the page is "Image-only". This strategy will also be used
+        /// when PDF page contains image data and <c>ocrImageDataPages</c> is <c>true</c>.
         /// </para>
         /// </summary>
         /// <param name="ocrImageDataPages">
-        /// OCR each PDF page containing image data. (true or false)
+        /// <c>true</c> or <c>false</c> to OCR each PDF page containing image data.
         /// </param>
         /// <returns>The extracted text.</returns>
         public string GetText(bool ocrImageDataPages)
         {
             var pdfText = new StringBuilder();
             IPdfTextExtractionStrategy strategy;
+
             foreach (var pdf in new PdfFile(pdfFile).Split(tempDirectory))
             {
                 string text = null;
+                
                 if (ocrImageDataPages && CheckForImageData())
                 {
                     strategy = new PdfOcrTextExtractionStrategy();
@@ -429,62 +488,76 @@ namespace PDFKeeper.Core.FileIO.PDF
                 {
                     strategy = new PdfTextExtractionStrategy();
                     text = strategy.GetText(pdf);
+                
                     if (string.IsNullOrEmpty(text) || text.Trim().Length.Equals(0))
                     {
                         strategy = new PdfOcrTextExtractionStrategy();
                         text = strategy.GetText(pdf);
                     }
                 }
+
                 pdfText.Append(text);
                 pdf.Delete();
             }
+
             return pdfText.ToString();
         }
 
         /// <summary>
-        /// Splits PDF into separate one page PDF files.
+        /// Splits the PDF into separate one page PDF files.
         /// </summary>
-        /// <param name="destination">The destination DirectoryInfo object.</param>
-        /// <returns>The collection.</returns>
+        /// <param name="destination">The destination <see cref="DirectoryInfo"/> object.</param>
+        /// <returns>The <see cref="Collection{T}"/> of <see cref="FileInfo"/> objects.</returns>
         /// <exception>ArgumentNullException</exception>
         public Collection<FileInfo> Split(DirectoryInfo destination)
         {
-            if (destination == null)
+            if (destination is null)
             {
                 throw new ArgumentNullException(nameof(destination));
             }
+
             var pdfFiles = new Collection<FileInfo>();
+            
             using (var reader = new PdfReader(pdfFile))
             {
                 using (var document = new PdfDocument(reader))
                 {
                     var splitter = new PdfFileSplitter(document, destination, pdfFile.Name);
+            
                     foreach (var splittedDocument in splitter.SplitByPageCount(1))
                     {
                         splittedDocument.Close();
                     }
                 }
             }
-            foreach (var splitPdfFile in destination.GetFiles(string.Concat(
-                Path.GetFileNameWithoutExtension(pdfFile.Name), "_*.pdf")))
+
+            foreach (var splitPdfFile in destination.GetFiles(
+                string.Concat(
+                    Path.GetFileNameWithoutExtension(
+                        pdfFile.Name),
+                    "_*.pdf")))
             {
                 pdfFiles.Add(splitPdfFile);
             }
+
             return pdfFiles;
         }
 
         /// <summary>
-        /// Checks if PDF contains image data.
+        /// Checks if the PDF contains image data.
         /// </summary>
-        /// <returns>true or false</returns>
+        /// <returns><c>true</c> or <c>false</c> if PDF contains image data.</returns>
         private bool CheckForImageData()
         {
             var result = false;
+
             using (var reader = new PdfReader(pdfFile))
             {
                 using (var document = new PdfDocument(reader))
                 {
-                    for (int page = 1, loopTo = document.GetNumberOfPages(); page <= loopTo;
+                    for (int page = 1,
+                        loopTo = document.GetNumberOfPages();
+                        page <= loopTo;
                         page++)
                     {
                         try
@@ -492,6 +565,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                             var imageDetector = new PdfImageDetector();
                             var canvasProcessor = new PdfCanvasProcessor(imageDetector);
                             canvasProcessor.ProcessPageContent(document.GetPage(1));
+                            
                             if (imageDetector.ImagesDetected)
                             {
                                 result = true;
@@ -508,18 +582,21 @@ namespace PDFKeeper.Core.FileIO.PDF
                     }
                 }
             }
+
             return result;
         }
 
         /// <summary>
-        /// Gets a Dictionary array containing the name and contents of each attachment in the PDF.
+        /// Gets a <see cref="Dictionary{TKey, TValue}"/> array containing the name and contents of
+        /// each attachment in the PDF.
         /// </summary>
         /// <returns>
-        /// The Dictionary object.
+        /// The <see cref="Dictionary{TKey, TValue}"/> array.
         /// </returns>
         private Dictionary<string, byte[]> GetAllAttachments()
         {
             var attachments = new Dictionary<string, byte[]>();
+
             using (var reader = new PdfReader(pdfFile))
             {
                 using (var document = new PdfDocument(reader))
@@ -531,15 +608,19 @@ namespace PDFKeeper.Core.FileIO.PDF
                         var filespecs = names.GetAsDictionary(
                             PdfName.EmbeddedFiles).GetAsArray(
                             PdfName.Names);
+                        
                         for (int i = 1; i < filespecs.Size(); i++)
                         {
                             var filespec = filespecs.GetAsDictionary(i);
+                            
                             try
                             {
                                 var file = filespec.GetAsDictionary(PdfName.EF);
+                                
                                 foreach (PdfName key in file.KeySet())
                                 {
                                     var filename = filespec.GetAsString(key).ToString();
+                                    
                                     if (!attachments.ContainsKey(filename))
                                     {
                                         attachments.Add(filename, file.GetAsStream(key).GetBytes());
@@ -552,14 +633,16 @@ namespace PDFKeeper.Core.FileIO.PDF
                     catch (NullReferenceException) { }
                 }
             }
+
             return attachments;
         }
 
         /// <summary>
-        /// Gets a Dictionary array containing the name and contents of each embedded file in the PDF.
+        /// Gets a <see cref="Dictionary{TKey, TValue}"/> array containing the name and contents of
+        /// each embedded file in the PDF.
         /// </summary>
         /// <returns>
-        /// The Dictionary object.
+        /// The <see cref="Dictionary{TKey, TValue}"/> array.
         /// </returns>
         private Dictionary<string, byte[]> GetAllEmbeddedFiles()
         {
@@ -571,20 +654,24 @@ namespace PDFKeeper.Core.FileIO.PDF
                     for (int i = 1; i <= document.GetNumberOfPages(); i++)
                     {
                         var pdfArray = document.GetPage(i).GetPdfObject().GetAsArray(PdfName.Annots);
+                        
                         if (pdfArray != null)
                         {
                             for (int j = 0; j < pdfArray.Size(); j++)
                             {
                                 var annot = pdfArray.GetAsDictionary(j);
+                                
                                 if (PdfName.FileAttachment.Equals(annot.GetAsName(PdfName.Subtype)))
                                 {
                                     var filespec = annot.GetAsDictionary(PdfName.FS);
                                     var refs = filespec.GetAsDictionary(PdfName.EF);
+                                    
                                     foreach (PdfName key in refs.KeySet())
                                     {
                                         var filename = filespec.GetAsString(key).ToString().Replace(
                                             Path.AltDirectorySeparatorChar,
                                             Path.DirectorySeparatorChar).Substring(3);
+
                                         if (!embeddedFiles.ContainsKey(filename))
                                         {
                                             embeddedFiles.Add(filename, refs.GetAsStream(key).GetBytes());
@@ -596,6 +683,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                     }
                 }
             }
+
             return embeddedFiles;
         }
     }

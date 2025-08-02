@@ -23,16 +23,16 @@ using System;
 
 namespace PDFKeeper.Core.Application
 {
-    public static class FindDocumentsViewState
+    internal static class FindDocumentsViewState
     {
         private static FindDocumentsParam findDocumentsParam;
 
-        public static Action OnFindDocumentsParamChanged { get; set; }
+        internal static Action OnFindDocumentsParamChanged { get; set; }
 
         /// <summary>
-        /// Gets or sets the FindDocumentsParam object.
+        /// Gets or sets the <see cref="FindDocumentsParam"/> object.
         /// </summary>
-        public static FindDocumentsParam FindDocumentsParam
+        internal static FindDocumentsParam FindDocumentsParam
         {
             get => findDocumentsParam;
             set

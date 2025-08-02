@@ -22,6 +22,7 @@ using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Extensions;
 using System;
 using System.IO;
+using System.Windows.Input;
 
 namespace PDFKeeper.Core.Commands
 {
@@ -31,10 +32,14 @@ namespace PDFKeeper.Core.Commands
         private readonly FileInfo xmlFile;
 
         /// <summary>
-        /// Initializes a new instance of the UploadStagingCommand class that stages the PDF and
-        /// corresponding XML for uploading when the Execute method is called.
+        /// Initializes a new instance of the <see cref="UploadStagingCommand"/> class that stages
+        /// the PDF and corresponding XML for uploading when <see cref="Execute(object)"/> is
+        /// invoked.
+        /// <para>
+        /// When invoking <see cref="Execute(object)"/>, set parameter to <c>null</c>.
+        /// </para>
         /// </summary>
-        /// <param name="pdfFile">The PDF FileInfo object.</param>
+        /// <param name="pdfFile">The PDF <see cref="FileInfo"/> object.</param>
         /// <exception cref="ArgumentNullException"></exception>
         public UploadStagingCommand(FileInfo pdfFile)
         {
@@ -42,12 +47,21 @@ namespace PDFKeeper.Core.Commands
             xmlFile = pdfFile.ChangeExtension("xml");
         }
 
-        public void Execute()
+        public event EventHandler CanExecuteChanged { add { } remove { } }
+
+        public bool CanExecute(object parameter)
+        {
+            throw new NotSupportedException();
+        }
+
+        public void Execute(object parameter)
         {
             var targetPdfFile = pdfFile.AppendGuidToFileName();
-            targetPdfFile = targetPdfFile.ChangeDirectory(new ApplicationDirectory().GetDirectory(
-                ApplicationDirectory.SpecialName.UploadStaging));
+            targetPdfFile = targetPdfFile.ChangeDirectory(
+                new ApplicationDirectory().GetDirectory(
+                    ApplicationDirectory.SpecialName.UploadStaging));
             pdfFile.MoveTo(targetPdfFile.FullName);
+
             if (xmlFile.Exists)
             {
                 xmlFile.MoveTo(targetPdfFile.ChangeExtension("xml").FullName);

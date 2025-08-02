@@ -23,15 +23,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
     internal class DocumentRepositoryFactory
     {
         /// <summary>
-        /// Factory method that gets a document repository instance for the database platform in
-        /// use.
+        /// Factory method that gets an <see cref="IDocumentRepository"/> instance.
         /// </summary>
         /// <returns>
-        /// The document repository instance.
+        /// The <see cref="IDocumentRepository"/> instance.
         /// </returns>
         internal static IDocumentRepository Create()
         {
             IDocumentRepository instance = null;
+
             switch (DatabaseSession.PlatformName)
             {
                 case DatabaseSession.CompatiblePlatformName.Oracle:
@@ -47,6 +47,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     instance = GetMySqlInstance();
                     break;
             }
+
             return instance;
         }
 

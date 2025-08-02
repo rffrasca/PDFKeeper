@@ -63,45 +63,50 @@ namespace PDFKeeper.Core.Application
         }
 
         /// <summary>
-        /// Gets the DirectoryInfo object for the SpecialName type constant. If the directory does
-        /// not exist, it will be created.
+        /// Gets the <see cref="DirectoryInfo"/> object for the specified
+        /// <see cref="SpecialName"/>.
+        /// <para>
+        /// If the directory does not exist, it will be created.
+        /// </para>
         /// </summary>
-        /// <param name="specialName">The SpecialName type constant.</param>
-        /// <returns>The DirectoryInfo object.</returns>
+        /// <param name="specialName">The <see cref="SpecialName"/>.</param>
+        /// <returns>The <see cref="DirectoryInfo"/> object.</returns>
         public DirectoryInfo GetDirectory(SpecialName specialName)
         {
             DirectoryInfo directory;
-            if (specialName.Equals(SpecialName.ApplicationData))
+            switch (specialName)
             {
-                directory = new DirectoryInfo(GetApplicationDataPath());
+                case SpecialName.ApplicationData:
+                    directory = new DirectoryInfo(GetApplicationDataPath());
+                    break;
+                case SpecialName.Log:
+                    directory = new DirectoryInfo(
+                        Path.Combine(
+                            GetApplicationDataPath(),
+                            executingAssembly.Version));
+                    break;
+                case SpecialName.Temp:
+                    directory = new DirectoryInfo(
+                        Path.Combine(
+                            Path.GetTempPath(),
+                            executingAssembly.ProductName));
+                    break;
+                default:
+                    directory = new DirectoryInfo(
+                        Path.Combine(
+                            GetApplicationDataPath(),
+                            specialName.ToString()));
+                    break;
             }
-            else if (specialName.Equals(SpecialName.Log))
-            {
-                directory = new DirectoryInfo(
-                    Path.Combine(
-                        GetApplicationDataPath(),
-                        executingAssembly.Version));
-            }
-            else if (specialName.Equals(SpecialName.Temp))
-            {
-                directory = new DirectoryInfo(
-                    Path.Combine(
-                        Path.GetTempPath(),
-                        executingAssembly.ProductName));
-            }
-            else
-            {
-                directory = new DirectoryInfo(
-                    Path.Combine(
-                        GetApplicationDataPath(),
-                        specialName.ToString()));
-            }
+           
             directory.Create();
+
             if (specialName.Equals(SpecialName.Upload))
             {
                 directory.CreateShortcut(desktopLinkFile);
                 directory.CreateShortcut(downloadsLinkFile);
             }
+            
             return directory;
         }
 

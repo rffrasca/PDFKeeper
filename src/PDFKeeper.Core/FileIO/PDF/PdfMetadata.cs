@@ -39,27 +39,33 @@ namespace PDFKeeper.Core.FileIO.PDF
         private readonly FileInfo xmlFile;
 
         /// <summary>
-        /// Initializes a new instance of the PdfMetadata class.
+        /// Initializes a new instance of the <see cref="PdfMetadata"/> class.
         /// </summary>
-        /// <param name="pdfFile">The PDF file object.</param>
+        /// <param name="pdfFile">
+        /// The <see cref="PdfFile"/> object.
+        /// </param>
         /// <param name="pdfOwnerPassword">
-        /// The PDF owner password SecureString object or null.
+        /// The PDF Owner password <see cref="SecureString"/> object if PDF is protected by an
+        /// Owner password.
         /// </param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
-        public PdfMetadata(PdfFile pdfFile, SecureString pdfOwnerPassword)
+        public PdfMetadata(PdfFile pdfFile, SecureString pdfOwnerPassword = null)
         {
             this.pdfFile = pdfFile ?? throw new ArgumentNullException(nameof(pdfFile));
             this.pdfOwnerPassword = pdfOwnerPassword;
             xmlFile = new FileInfo(pdfFile.FullName).ChangeExtension("xml");
+            
             if (pdfOwnerPassword != null)
             {
                 if (ValidatePdfOwnerPassword().Equals(false))
                 {
-                    throw new ArgumentException(Resources.PdfOwnerPasswordIncorrect,
+                    throw new ArgumentException(
+                        Resources.PdfOwnerPasswordIncorrect,
                         nameof(pdfOwnerPassword));
                 }
             }
+
             GetMetadata();
         }
 
@@ -74,9 +80,10 @@ namespace PDFKeeper.Core.FileIO.PDF
         public bool OcrPdfTextAndImageDataPages { get; set; }
 
         /// <summary>
-        /// Exports PdfMetadata object properties to an UploadProfile object.
+        /// Exports <see cref="PdfMetadata"/> object properties to an <see cref="UploadProfile"/>
+        /// object.
         /// </summary>
-        /// <returns>The UploadProfile object.</returns>
+        /// <returns>The <see cref="UploadProfile"/> object.</returns>
         public UploadProfile ExportUploadProfile()
         {
             var uploadProfile = new UploadProfile
@@ -90,20 +97,23 @@ namespace PDFKeeper.Core.FileIO.PDF
                 TaxYear = TaxYear,
                 OcrPdfTextAndImageDataPages = OcrPdfTextAndImageDataPages
             };
+
             return uploadProfile;
         }
 
         /// <summary>
-        /// Imports an UploadProfile object into the PdfMetadata object properties.
+        /// Imports an <see cref="UploadProfile"/> object into the <see cref="PdfMetadata"/> object
+        /// properties.
         /// </summary>
-        /// <param name="uploadProfile">The UploadProfile object.</param>
+        /// <param name="uploadProfile">The <see cref="UploadProfile"/> object.</param>
         /// <exception cref="ArgumentNullException"></exception>
         public void ImportUploadProfile(UploadProfile uploadProfile)
         {
-            if (uploadProfile == null)
+            if (uploadProfile is null)
             {
                 throw new ArgumentNullException(nameof(uploadProfile));
             }
+
             Title = uploadProfile.Title;
             Author = uploadProfile.Author;
             Subject = uploadProfile.Subject;
@@ -115,19 +125,24 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Writes the target PDF in the application Temp directory with the contents from the
-        /// source PDF with the values of the Title, Author, Subject, and Keywords properties
-        /// applied; and then calls WriteXml to Write the external metadata for the PDF (Notes,
-        /// Category, TaxYear, FlagDocument, and OcrPdfTextAndImageDataPages) to the XML file with
-        /// the same name and in the same directory as the target PDF.
+        /// Writes the target PDF in <see cref="ApplicationDirectory.SpecialName.Temp"/> with the
+        /// contents from the source PDF with the values of the Title, Author, Subject, and
+        /// Keywords properties applied; and then calls <see cref="WriteXml(FileInfo)"/> to Write
+        /// the external metadata for the PDF (Notes, Category, TaxYear, FlagDocument, and
+        /// OcrPdfTextAndImageDataPages) to the XML file with the same name and in the same
+        /// directory as the target PDF.
         /// </summary>
-        /// <returns>The target PDF FileInfo object.</returns>
+        /// <returns>The target PDF <see cref="FileInfo"/> object.</returns>
         public FileInfo Write()
         {
-            var targetPdfFile = new FileInfo(Path.Combine(new ApplicationDirectory().GetDirectory(
-                ApplicationDirectory.SpecialName.Temp).FullName,
-                Path.GetFileName(pdfFile.FullName)));
-            if (pdfOwnerPassword == null)
+            var targetPdfFile = new FileInfo(
+                Path.Combine(
+                    new ApplicationDirectory().GetDirectory(
+                        ApplicationDirectory.SpecialName.Temp).FullName,
+                    Path.GetFileName(
+                        pdfFile.FullName)));
+
+            if (pdfOwnerPassword is null)
             {
                 using (var reader = new PdfReader(pdfFile.FullName))
                 {
@@ -144,6 +159,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                     WritePdf(reader, targetPdfFile);
                 }
             }
+
             WriteXml(targetPdfFile);
             return targetPdfFile;
         }
@@ -151,7 +167,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// <summary>
         /// Validates the Owner password for the PDF.
         /// </summary>
-        /// <returns>Is the Owner Password valid? (true or false)</returns>
+        /// <returns><c>true</c> or <c>false</c> if the Owner Password is valid.</returns>
         private bool ValidatePdfOwnerPassword()
         {
             try
@@ -163,6 +179,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                 {
                     using (var document = new PdfDocument(reader)) { }
                 }
+
                 return true;
             }
             catch (BadPasswordException)
@@ -176,7 +193,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// </summary>
         private void GetMetadata()
         {
-            if (pdfOwnerPassword == null)
+            if (pdfOwnerPassword is null)
             {
                 using (var reader = new PdfReader(pdfFile.FullName))
                 {
@@ -193,13 +210,14 @@ namespace PDFKeeper.Core.FileIO.PDF
                     GetInfoMetadata(reader);
                 }
             }
+
             GetExternalMetadata();
         }
 
         /// <summary>
         /// Gets the information metadata from the PDF.
         /// </summary>
-        /// <param name="pdfReader">The PdfReader object.</param>
+        /// <param name="pdfReader">The <see cref="PdfReader"/> object.</param>
         private void GetInfoMetadata(PdfReader pdfReader)
         {
             using (var document = new PdfDocument(pdfReader))
@@ -233,8 +251,8 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// Writes the target PDF with the contents of the PDF with the values from the Title,
         /// Author, Subject, and Keywords properties applied.
         /// </summary>
-        /// <param name="pdfReader">The PdfReader object.</param>
-        /// <param name="targetPdfFile">The target PDF FileInfo object.</param>
+        /// <param name="pdfReader">The <see cref="PdfReader"/> object.</param>
+        /// <param name="targetPdfFile">The target PDF <see cref="FileInfo"/> object.</param>
         /// <exception cref="NullReferenceException"></exception>
         private void WritePdf(PdfReader pdfReader, FileInfo targetPdfFile)
         {
@@ -248,6 +266,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                     info.SetSubject(Subject);
                     info.SetKeywords(Keywords);
                     var rule = new PdfMetadataRule(info);
+
                     if (rule.ViolationFound)
                     {
                         throw new NullReferenceException(rule.ViolationMessage);
@@ -265,7 +284,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// and OcrPdfTextAndImageDataPages) to the XML file with the same name and in the same
         /// directory as the target PDF.
         /// </summary>
-        /// <param name="targetPdfFile">The target PDF FileInfo object.</param>
+        /// <param name="targetPdfFile">The target PDF <see cref="FileInfo"/> object.</param>
         private void WriteXml(FileInfo targetPdfFile)
         {
             var metaData = new PdfExternalMetadata
@@ -276,6 +295,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                 Flag = Flag,
                 OcrPdfTextAndImageDataPages = OcrPdfTextAndImageDataPages
             };
+
             XmlSerializer.Serialize(metaData, targetPdfFile.ChangeExtension("xml"));
         }
     }

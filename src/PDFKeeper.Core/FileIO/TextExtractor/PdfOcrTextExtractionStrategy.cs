@@ -28,7 +28,9 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
     {
         public string GetText(FileInfo pdfFile)
         {
-            var ocr = new ImageTextExtractor(new PdfFile(pdfFile).GetAllPagesAsTiffImages(),
+            var ocr = new ImageTextExtractor(
+                new PdfFile(
+                    pdfFile).GetAllPagesAsTiffImages(),
                 ImageFormat.Tiff);
             var result = ocr.GetText();
             return result.Result;

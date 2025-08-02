@@ -34,6 +34,7 @@ namespace PDFKeeper.Core.Models
             set
             {
                 findBySearchTermChecked = value;
+                
                 if (findBySearchTermChecked)
                 {
                     FindBySelectionsChecked = false;
@@ -52,6 +53,7 @@ namespace PDFKeeper.Core.Models
             set
             {
                 findBySelectionsChecked = value;
+                
                 if (findBySelectionsChecked)
                 {
                     FindBySearchTermChecked = false;
@@ -73,6 +75,7 @@ namespace PDFKeeper.Core.Models
             set
             {
                 findByDateAddedChecked = value;
+                
                 if (findByDateAddedChecked)
                 {
                     FindBySearchTermChecked = false;
@@ -91,6 +94,7 @@ namespace PDFKeeper.Core.Models
             set
             {
                 findFlaggedDocumentsChecked = value;
+                
                 if (findFlaggedDocumentsChecked)
                 {
                     FindBySearchTermChecked = false;
@@ -107,6 +111,7 @@ namespace PDFKeeper.Core.Models
             set
             {
                 allDocumentsChecked = value;
+
                 if (allDocumentsChecked)
                 {
                     FindBySearchTermChecked = false;

@@ -25,7 +25,7 @@ namespace PDFKeeper.Core.Services
         /// <summary>
         /// Shows the PDF with the bundled viewer in restricted mode.
         /// </summary>
-        /// <param name="pdfPath">The PDF path.</param>
+        /// <param name="pdfPath">The PDF path name.</param>
         void Show(string pdfPath);
 
         /// <summary>

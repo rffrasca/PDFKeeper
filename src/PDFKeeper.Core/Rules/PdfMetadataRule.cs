@@ -31,10 +31,11 @@ namespace PDFKeeper.Core.Rules
         private readonly string subject;
 
         /// <summary>
-        /// Initializes a new instance of the PdfMetadataRule class that verifies the length of the
-        /// Title, Author, and Subject properties in the UploadProfile object is > 0.
+        /// Initializes a new instance of the <see cref="PdfMetadataRule"/> class that verifies the
+        /// length of the Title, Author, and Subject properties in an <see cref="UploadProfile"/>
+        /// object is > 0.
         /// </summary>
-        /// <param name="uploadProfile">The UploadProfile object.</param>
+        /// <param name="uploadProfile">The <see cref="UploadProfile"/> object.</param>
         internal PdfMetadataRule(UploadProfile uploadProfile)
         {
             title = uploadProfile.Title;
@@ -44,10 +45,11 @@ namespace PDFKeeper.Core.Rules
         }
 
         /// <summary>
-        /// Initializes a new instance of the PdfMetadataRule class that verifies the length of the
-        /// Title, Author, and Subject properties in the PdfDocumentInfo object is > 0.
+        /// Initializes a new instance of the <see cref="PdfMetadataRule"/> class that verifies the
+        /// length of the Title, Author, and Subject properties in the
+        /// <see cref="PdfDocumentInfo"/> object is > 0.
         /// </summary>
-        /// <param name="pdfDocumentInfo">The PdfDocumentInfo object.</param>
+        /// <param name="pdfDocumentInfo">The <see cref="PdfDocumentInfo"/> object.</param>
         internal PdfMetadataRule(PdfDocumentInfo pdfDocumentInfo)
         {
             title = pdfDocumentInfo.GetTitle();
@@ -58,7 +60,8 @@ namespace PDFKeeper.Core.Rules
 
         protected override void CheckForViolation()
         {
-            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(author) ||
+            if (string.IsNullOrEmpty(title) ||
+                string.IsNullOrEmpty(author) ||
                 string.IsNullOrEmpty(subject))
             {
                 ViolationFound = true;

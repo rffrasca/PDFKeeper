@@ -27,17 +27,19 @@ namespace PDFKeeper.Core.Extensions
     internal static class DataTableExtension
     {
         /// <summary>
-        /// Compares a <see cref="DataTable"/> object to a second <see cref="DataTable"/> object to
-        /// determine if any differences exist between the two <see cref="DataTable"/> objects.
+        /// Compares the <see cref="DataTable"/> object to a second <see cref="DataTable"/> object
+        /// to determine if any differences exist between the two <see cref="DataTable"/> objects.
         /// </summary>
         /// <param name="dataTable1">The <see cref="DataTable"/> object.</param>
         /// <param name="dataTable2">The <see cref="DataTable"/> object to compare against.</param>
         /// <returns>
-        /// Differences exist between the two <see cref="DataTable"/> objects. (true or false)
+        /// <c>true</c> or <c>false</c> if differences exist between the two
+        /// <see cref="DataTable"/> objects.
         /// </returns>
         internal static bool Compare(this DataTable dataTable1, DataTable dataTable2)
         {
             var diffsExist = false;
+
             if (dataTable1.Rows.Count.Equals(dataTable2.Rows.Count))
             {
                 var set1 = new HashSet<string>(dataTable1.AsEnumerable().Select(row => string.Join(
@@ -52,7 +54,8 @@ namespace PDFKeeper.Core.Extensions
             else
             {
                 diffsExist = true;
-            }         
+            }
+            
             return diffsExist;
         }
     }

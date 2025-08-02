@@ -29,20 +29,22 @@ namespace PDFKeeper.Core.Extensions
     {
         /// <summary>
         /// Creates/Replaces a ZIP file with file entries using the key as the file name and the
-        /// value as the contents for each pair in a Dictionary object.
+        /// value as the contents for each pair in the <see cref="Dictionary{TKey, TValue}"/>
+        /// object.
         /// </summary>
         /// <param name="keyValuePairs">
-        /// The Dictionary object.
+        /// The <see cref="Dictionary{TKey, TValue}"/> object.
         /// </param>
         /// <param name="zipFile">
-        /// The FileInfo object of the ZIP file. If the file referenced in the FileInfo object
-        /// exists, it will be overwritten.
+        /// The <see cref="FileInfo"/> object of the ZIP file. If the file referenced in the
+        /// <see cref="FileInfo"/> object exists, it will be overwritten.
         /// </param>
         internal static void ToZipFile(
             this Dictionary<string, byte[]> keyValuePairs,
             FileInfo zipFile)
         {
             byte[] zipContents;
+
             using (var memoryStream = new MemoryStream())
             {
                 using (var zipArchive = new ZipArchive(
@@ -53,14 +55,17 @@ namespace PDFKeeper.Core.Extensions
                     foreach (var key in keyValuePairs.ToArray())
                     {
                         var zipEntry = zipArchive.CreateEntry(key.Key);
+                        
                         using (Stream stream = zipEntry.Open())
                         {
                             stream.Write(key.Value, 0, key.Value.Length);
                         }
                     }
                 }
+
                 zipContents = memoryStream.ToArray();
             }
+
             File.WriteAllBytes(zipFile.FullName, zipContents);
         }
     }

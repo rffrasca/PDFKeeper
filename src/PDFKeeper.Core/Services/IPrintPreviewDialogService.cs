@@ -26,10 +26,14 @@ namespace PDFKeeper.Core.Services
     public interface IPrintPreviewDialogService
     {
         /// <summary>
-        /// Shows the Print Preview dialog.
+        /// Shows the <c>PrintPreviewDialog</c>.
         /// </summary>
-        /// <param name="printDocument">The PrintDocument object.</param>
-        /// <param name="printPreviewDialogSize">The size of the Print Preview dialog.</param>
+        /// <param name="printDocument">
+        /// The <see cref="PrintDocument"/> object.
+        /// </param>
+        /// <param name="printPreviewDialogSize">
+        /// The <see cref="Size"/> of the <c>PrintPreviewDialog</c>.
+        /// </param>
         void ShowDialog(PrintDocument printDocument, Size printPreviewDialogSize);
     }
 }

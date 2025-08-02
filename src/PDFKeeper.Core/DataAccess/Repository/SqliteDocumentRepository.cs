@@ -56,6 +56,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "i.doc_category,i.doc_tax_year,i.doc_added,t.doc_flag " +
                 "from docs t join docs_index i on i.rowid = t.doc_id " +
                 "where docs_index match :doc_dummy";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -81,24 +82,29 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 author = null;
             }
+
             if (string.IsNullOrEmpty(subject))
             {
                 subject = null;
             }
+
             if (string.IsNullOrEmpty(category))
             {
                 category = null;
             }
+
             if (string.IsNullOrEmpty(taxYear))
             {
                 taxYear = null;
             }
+            
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from docs " +
                 "where (:doc_author is NULL or doc_author = :doc_author) " +
                 "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
                 "and (:doc_category is NULL or doc_category = :doc_category) " +
                 "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) ";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -126,6 +132,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from docs " +
                 "where doc_added like :doc_added || '%'";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -149,6 +156,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from docs where doc_flag = 1";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -171,6 +179,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from docs";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -195,19 +204,23 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 subject = null;
             }
+
             if (string.IsNullOrEmpty(category))
             {
                 category = null;
             }
+
             if (string.IsNullOrEmpty(taxYear))
             {
                 taxYear = null;
             }
+            
             var sql = "select doc_author from docs " +
                 "where (:doc_subject is NULL or doc_subject = :doc_subject) " +
                 "and (:doc_category is NULL or doc_category = :doc_category) " +
                 "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) " +
                 "group by doc_author";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -235,19 +248,23 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 author = null;
             }
+
             if (string.IsNullOrEmpty(category))
             {
                 category = null;
             }
+
             if (string.IsNullOrEmpty(taxYear))
             {
                 taxYear = null;
             }
+            
             var sql = "select doc_subject from docs " +
                 "where (:doc_author is NULL or doc_author = :doc_author) " +
                 "and (:doc_category is NULL or doc_category = :doc_category) " +
                 "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) " +
                 "group by doc_subject";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -275,19 +292,23 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 author = null;
             }
+
             if (string.IsNullOrEmpty(subject))
             {
                 subject = null;
             }
+
             if (string.IsNullOrEmpty(taxYear))
             {
                 taxYear = null;
             }
+            
             var sql = "select doc_category from docs " +
                 "where (:doc_author is NULL or doc_author = :doc_author) " +
                 "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
                 "and (:doc_tax_year is NULL or doc_tax_year = :doc_tax_year) " +
                 "group by doc_category";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -315,19 +336,23 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 author = null;
             }
+
             if (string.IsNullOrEmpty(subject))
             {
                 subject = null;
             }
+
             if (string.IsNullOrEmpty(category))
             {
                 category = null;
             }
+            
             var sql = "select doc_tax_year from docs " +
                 "where (:doc_author is NULL or doc_author = :doc_author) " +
                 "and (:doc_subject is NULL or doc_subject = :doc_subject) " +
                 "and (:doc_category is NULL or doc_category = :doc_category) " +
                 "group by doc_tax_year";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -351,10 +376,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public Document GetDocument(int id, string searchTerm, bool includePdf)
         {
-            if (searchTerm == null)
+            if (searchTerm is null)
             {
                 searchTerm = string.Empty;
             }
+
             string sql;
             if (includePdf)
             {
@@ -368,6 +394,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     "doc_category,doc_flag,doc_tax_year,doc_text " +
                     "from docs where doc_id = :doc_id";
             }
+
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -377,6 +404,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         var document = new Document();
                         command.Parameters.AddWithValue("doc_id", id);
                         connection.Open();
+                        
                         using (var reader = command.ExecuteReader())
                         {
                             reader.Read();
@@ -387,16 +415,19 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             document.Keywords = reader["doc_keywords"].ToString();
                             document.Added = reader["doc_added"].ToString();
                             document.Notes = reader["doc_notes"].ToString();
+                            
                             if (includePdf)
                             {
                                 document.Pdf = (byte[])reader["doc_pdf"];
                             }
+                            
                             document.Category = reader["doc_category"].ToString();
                             document.Flag = Convert.ToInt32(reader["doc_flag"]);
                             document.TaxYear = reader["doc_tax_year"].ToString();
                             document.Text = reader["doc_text"].ToString();
                             document.SearchTermSnippets = GetSearchTermSnippets(id, searchTerm);
                         }
+
                         return document;
                     }
                 }
@@ -409,10 +440,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public void InsertDocument(Document document)
         {
-            if (document == null)
+            if (document is null)
             {
                 throw new ArgumentNullException(nameof(document));
             }
+
             var sql = "insert into docs values(null," +
                       ":doc_title," +
                       ":doc_author," +
@@ -426,6 +458,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       ":doc_tax_year," +
                       ":doc_text_annotations," +
                       ":doc_text)";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -464,10 +497,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public void UpdateDocument(Document document)
         {
-            if (document == null)
+            if (document is null)
             {
                 throw new ArgumentNullException(nameof(document));
             }
+
             var sql = "update docs set " +
                       "doc_title = :doc_title," +
                       "doc_author = :doc_author," +
@@ -479,6 +513,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       "doc_flag = :doc_flag," +
                       "doc_text_annotations = :doc_text_annotations," +
                       "doc_text = :doc_text where doc_id = :doc_id";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -517,6 +552,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public void DeleteDocument(int id)
         {
             var sql = "delete from docs where doc_id = :doc_id";
+            
             try
             {
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -555,6 +591,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             if (!File.Exists(DatabaseSession.LocalDatabasePath))
             {
                 SQLiteConnection.CreateFile(DatabaseSession.LocalDatabasePath);
+                
                 try
                 {                    
                     using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
@@ -699,15 +736,18 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             string sql;
             string result = null;
+            
             try
             {
                 sql = "select sql from sqlite_master where name = 'docs' " +
                     "and sql like '%autoincrement%'";
+                
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new SQLiteCommand(sql, connection))
                     {
                         connection.Open();
+                        
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -717,15 +757,18 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         }
                     }
                 }
+
                 if (result != null)
                 {
                     sql = "select name from sqlite_master where name = 'docs_after_delete'";
                     result = null;
+                    
                     using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
                     {
                         using (var command = new SQLiteCommand(sql, connection))
                         {
                             connection.Open();
+
                             using (var reader = command.ExecuteReader())
                             {
                                 while (reader.Read())
@@ -735,7 +778,8 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             }
                         }
                     }
-                    if (result == null)
+
+                    if (result is null)
                     {
                         using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
                         {
@@ -754,6 +798,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         }
                     }
                 }
+
                 GetDocsTableAccess();
             }
             catch (SQLiteException ex)
@@ -777,15 +822,18 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         protected override string GetSearchTermSnippets(int id, string searchTerm)
         {
-            if (searchTerm == null)
+            if (searchTerm is null)
             {
                 throw new ArgumentNullException(nameof(searchTerm));
             }
+
             string result = string.Empty;
+            
             if (searchTerm.Length > 0)
             {
                 var sql = "select snippet(docs_index, 9, '[', ']', '', 32) from docs_index " +
                     "where rowid = :doc_id and docs_index match :doc_dummy";
+            
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
                 {
                     using (var command = new SQLiteCommand(sql, connection))
@@ -794,6 +842,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.AddWithValue("doc_dummy", searchTerm);
                         connection.Open();
                         LoadExtensionLibrary(connection);
+                
                         using (var reader = command.ExecuteReader())
                         {
                             reader.Read();
@@ -802,6 +851,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     }
                 }
             }
+
             return result;
         }
 
@@ -819,6 +869,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 {
                     connStrBuilder.Clear();
                 }
+
                 disposedValue = true;
             }
         }

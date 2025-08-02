@@ -37,17 +37,19 @@ namespace PDFKeeper.Core.FileIO
         }
 
         /// <summary>
-        /// Gets the UploadProfiles directory path.
+        /// Gets the full path name of the
+        /// <see cref="ApplicationDirectory.SpecialName.UploadProfiles"/> directory.
         /// </summary>
         internal string UploadProfilesDirectoryPath => uploadProfilesDirectory.FullName;
 
         /// <summary>
-        /// Gets all upload profile names.
+        /// Gets all Upload Profile names.
         /// </summary>
-        /// <returns>The collection.</returns>
+        /// <returns>The <see cref="IEnumerable{T}"/> collection of strings.</returns>
         internal IEnumerable<string> GetUploadProfileNames()
         {
-            foreach (var file in uploadProfilesDirectory.GetFiles("*.xml",
+            foreach (var file in uploadProfilesDirectory.GetFiles(
+                "*.xml",
                 SearchOption.TopDirectoryOnly))
             {
                 yield return Path.GetFileNameWithoutExtension(file.FullName);
@@ -55,10 +57,10 @@ namespace PDFKeeper.Core.FileIO
         }
 
         /// <summary>
-        /// Gets an upload profile.
+        /// Gets an <see cref="UploadProfile"/>.
         /// </summary>
-        /// <param name="name">The upload profile name.</param>
-        /// <returns>The upload profile object.</returns>
+        /// <param name="name">The Upload Profile name.</param>
+        /// <returns>The <see cref="UploadProfile"/> object.</returns>
         internal UploadProfile GetUploadProfile(string name)
         {
             try
@@ -72,37 +74,44 @@ namespace PDFKeeper.Core.FileIO
         }
 
         /// <summary>
-        /// Saves the upload profile.
+        /// Saves the <see cref="UploadProfile"/>.
         /// </summary>
-        /// <param name="name">The upload profile name.</param>
-        /// <param name="uploadProfile">The UploadProfile object.</param>
-        /// <param name="formerName">
-        /// The former upload profile name or null when the name has not changed.
+        /// <param name="name">
+        /// The Upload Profile name.
         /// </param>
-        internal void SaveUploadProfile(string name, UploadProfile uploadProfile,
-            string formerName)
+        /// <param name="uploadProfile">
+        /// The <see cref="UploadProfile"/> object.
+        /// </param>
+        /// <param name="formerName">
+        /// The former Upload Profile name only when the name has changed.
+        /// </param>
+        internal void SaveUploadProfile(
+            string name,
+            UploadProfile uploadProfile,
+            string formerName = null)
         {
             if (formerName != null)
             {
                 GetUploadProfileInfo(formerName).Delete();
             }
+
             XmlSerializer.Serialize(uploadProfile, GetUploadProfileInfo(name));
         }
 
         /// <summary>
-        /// Deletes the upload proflle.
+        /// Deletes an Upload Proflle.
         /// </summary>
-        /// <param name="name">The upload profile name.</param>
+        /// <param name="name">The Upload Profile name.</param>
         internal void DeleteUploadProfile(string name)
         {
             GetUploadProfileInfo(name).DeleteToRecycleBin();
         }
 
         /// <summary>
-        /// Gets the upload profile FileInfo object.
+        /// Gets the Upload Profile <see cref="FileInfo"/> object.
         /// </summary>
-        /// <param name="name">The upload profile name.</param>
-        /// <returns>The FileInfo object.</returns>
+        /// <param name="name">The Upload Profile name.</param>
+        /// <returns>The <see cref="FileInfo"/> object.</returns>
         private FileInfo GetUploadProfileInfo(string name)
         {
             return new FileInfo(Path.Combine(uploadProfilesDirectory.FullName,

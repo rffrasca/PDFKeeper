@@ -29,12 +29,12 @@ namespace PDFKeeper.Core.Rules
         private readonly Document document;
 
         /// <summary>
-        /// Initializes a new instance of the ExportPdfMetadataRule class that verifies the
-        /// properties in the PdfMetadata object match the cooresponding properties in the Document
-        /// object.
+        /// Initializes a new instance of the <see cref="ExportPdfMetadataRule"/> class that
+        /// verifies the properties in the <see cref="PdfMetadata"/> object match the cooresponding
+        /// properties in the <see cref="Document"/> object.
         /// </summary>
-        /// <param name="pdfMetadata">The PdfMetadata object.</param>
-        /// <param name="document">The Document object.</param>
+        /// <param name="pdfMetadata">The <see cref="PdfMetadata"/> object.</param>
+        /// <param name="document">The <see cref="Document"/> object.</param>
         internal ExportPdfMetadataRule(PdfMetadata pdfMetadata, Document document)
         {
             this.pdfMetadata = pdfMetadata;

@@ -24,6 +24,10 @@ namespace PDFKeeper.Core.Services
 {
     public interface IFolderExplorerService
     {
+        /// <summary>
+        /// Shows the contents of a directory using the Operating System Explorer.
+        /// </summary>
+        /// <param name="directory">The <see cref="DirectoryInfo"/> object.</param>
         void Explore(DirectoryInfo directory);
     }
 }

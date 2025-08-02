@@ -43,10 +43,16 @@ namespace PDFKeeper.Core.DataAccess
         /// <summary>
         /// Compatible database platform name.
         /// </summary>
-        public enum CompatiblePlatformName { Sqlite, Oracle, SqlServer, MySql }
+        public enum CompatiblePlatformName
+        {
+            Sqlite,
+            Oracle,
+            SqlServer,
+            MySql
+        }
 
         /// <summary>
-        /// Gets or sets the database platform name.
+        /// Gets or sets a <see cref="CompatiblePlatformName"/> as the database platform name.
         /// </summary>
         public static CompatiblePlatformName PlatformName
         {
@@ -59,10 +65,49 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Gets or sets the database user name. On a get, the operating system user name will be
-        /// returned when the database platform is SQLite.
+        /// Gets or sets the local SQLite database path.
         /// </summary>
-        public static string UserName
+        public static string LocalDatabasePath
+        {
+            get
+            {
+                localDatabasePath = Registry.GetValue(
+                    ApplicationRegistry.UserKeyPath,
+                    "LocalDatabasePath",
+                    new ApplicationDirectory().GetDirectory(
+                        ApplicationDirectory.SpecialName.ApplicationData)).ToString();
+                var filePath = new FileInfo(
+                    Path.Combine(localDatabasePath,
+                    string.Concat(
+                        new ExecutingAssembly().ProductName,
+                        ".sqlite")));
+                return filePath.FullName;
+            }
+            internal set => Registry.SetValue(
+                ApplicationRegistry.UserKeyPath,
+                "LocalDatabasePath",
+                Path.GetDirectoryName(value));
+        }
+
+        /// <summary>
+        /// Gets a <see cref="IDocumentRepository"/> instance.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IDocumentRepository"/> instance.
+        /// </returns>
+        public static IDocumentRepository GetDocumentRepository()
+        {
+            return DocumentRepositoryFactory.Create();
+        }
+
+        /// <summary>
+        /// Gets or sets the database user name.
+        /// <para>
+        /// On a get, <see cref="Environment.UserName"/> will be returned when
+        /// <see cref="PlatformName"/> is <see cref="CompatiblePlatformName.Sqlite"/>.
+        /// </para>
+        /// </summary>
+        internal static string UserName
         {
             get
             {
@@ -79,10 +124,13 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Gets or sets the database password SecureString. On a get, null will be returned when
-        /// the database platform is SQLite.
+        /// Gets or sets the database password <see cref="SecureString"/>.
+        /// <para>
+        /// On a get, <c>null</c> will be returned when <see cref="PlatformName"/> is
+        /// <see cref="CompatiblePlatformName.Sqlite"/>.
+        /// </para>
         /// </summary>
-        public static SecureString Password
+        internal static SecureString Password
         {
             get
             {
@@ -107,10 +155,13 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Gets or sets the data source. On a get, null will be returned when the database
-        /// platform is SQLite.
+        /// Gets or sets the data source.
+        /// <para>
+        /// On a get, <c>null</c> will be returned when <see cref="PlatformName"/> is
+        /// <see cref="CompatiblePlatformName.Sqlite"/>.
+        /// </para>
         /// </summary>
-        public static string DataSource
+        internal static string DataSource
         {
             get
             {
@@ -129,28 +180,28 @@ namespace PDFKeeper.Core.DataAccess
         /// <summary>
         /// Gets or sets if user has Select access granted to the DOCS table.
         /// </summary>
-        public static bool SelectGranted { get; internal set; }
+        internal static bool SelectGranted { get; set; }
 
         /// <summary>
         /// Gets or sets if user has Insert access granted to the DOCS table.
         /// </summary>
-        public static bool InsertGranted { get; internal set; }
+        internal static bool InsertGranted { get; set; }
 
         /// <summary>
         /// Gets or sets if user has Update access granted to the DOCS table.
         /// </summary>
-        public static bool UpdateGranted { get; internal set; }
+        internal static bool UpdateGranted { get; set; }
 
         /// <summary>
         /// Gets or sets if user has Delete access granted to the DOCS table.
         /// </summary>
-        public static bool DeleteGranted { get; internal set; }
+        internal static bool DeleteGranted { get; set; }
 
         /// <summary>
-        /// Gets the Oracle Wallet path used for Mutual TLS (mTLS) authentication or null will be
-        /// returned when an Oracle Wallet is not setup.
+        /// Gets the Oracle Wallet path used for Mutual TLS (mTLS) authentication or <c>null</c>
+        /// will be returned when an Oracle Wallet is not setup.
         /// </summary>
-        public static string OracleWalletPath
+        internal static string OracleWalletPath
         {
             get
             {
@@ -163,35 +214,9 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Gets or sets the local SQLite database path.
-        /// </summary>
-        public static string LocalDatabasePath
-        {
-            get
-            {
-                localDatabasePath = Registry.GetValue(
-                    ApplicationRegistry.UserKeyPath,
-                    "LocalDatabasePath",
-                    new ApplicationDirectory().GetDirectory(
-                        ApplicationDirectory.SpecialName.ApplicationData)).ToString();
-                var filePath = new FileInfo(
-                    Path.Combine(localDatabasePath,
-                    string.Concat(
-                        new ExecutingAssembly().ProductName,
-                        ".sqlite")));
-                return filePath.FullName;
-            }
-            set => Registry.SetValue(
-                ApplicationRegistry.UserKeyPath,
-                "LocalDatabasePath",
-                Path.GetDirectoryName(value));
-        }
-
-        /// <summary>
         /// Gets the MySQL port number to use for connecting to the database server.
         /// </summary>
-        [CLSCompliant(false)]
-        public static uint MySqlPort
+        internal static uint MySqlPort
         {
             get
             {
@@ -205,31 +230,23 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Gets or sets if the documents list has changes? (true or false)
+        /// <c>true</c> or <c>false</c> if the documents list has changes.
         /// </summary>
-        public static bool DocumentsListHasChanges { get; set; }
+        internal static bool DocumentsListHasChanges { get; set; }
 
         /// <summary>
-        /// Gets a document repository instance for the database platform in use.
-        /// </summary>
-        /// <returns>
-        /// The document repository instance.
-        /// </returns>
-        public static IDocumentRepository GetDocumentRepository()
-        {
-            return DocumentRepositoryFactory.Create();
-        }
-
-        /// <summary>
-        /// Sets <see cref="PlatformName"/> to a compatible database management system.
+        /// Sets <see cref="PlatformName"/> to the <see cref="CompatiblePlatformName"/> that
+        /// matches the specified compatible database management system.
         /// </summary>
         /// <param name="dbManagementSystem">The compatible database management system.</param>
         internal static void SetPlatformName(string dbManagementSystem)
         {
             IList list = Enum.GetValues(typeof(CompatiblePlatformName));
+
             for (int i = 0, loopTo = list.Count - 1; i <= loopTo; i++)
             {
                 var platform = list[i];
+
                 if (platform.ToString().Equals(dbManagementSystem, StringComparison.Ordinal))
                 {
                     PlatformName = (CompatiblePlatformName)platform;

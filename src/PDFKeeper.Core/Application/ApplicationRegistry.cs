@@ -25,13 +25,14 @@ namespace PDFKeeper.Core.Application
         /// <summary>
         /// Gets the current user registry key path for the application.
         /// </summary>
-        internal static string UserKeyPath => GetAbsoluteKeyPath(@"HKEY_CURRENT_USER\SOFTWARE");
+        internal static string UserKeyPath => GetAbsoluteKeyPath(
+            @"HKEY_CURRENT_USER\SOFTWARE");
 
         /// <summary>
         /// Gets the registry key path for application policies.
         /// </summary>
-        internal static string PoliciesKeyPath =>
-            GetAbsoluteKeyPath(@"HKEY_LOCAL_MACHINE\SOFTWARE\Policies");
+        internal static string PoliciesKeyPath => GetAbsoluteKeyPath(
+            @"HKEY_LOCAL_MACHINE\SOFTWARE\Policies");
 
         /// <summary>
         /// Gets the absolute registry key path for the application. 
@@ -41,7 +42,11 @@ namespace PDFKeeper.Core.Application
         private static string GetAbsoluteKeyPath(string startingKeyPath)
         {
             var executingAssembly = new ExecutingAssembly();
-            return string.Concat(startingKeyPath, @"\", executingAssembly.CompanyName, @"\",
+            return string.Concat(
+                startingKeyPath,
+                @"\",
+                executingAssembly.CompanyName,
+                @"\",
                 executingAssembly.ProductName);
         }
     }

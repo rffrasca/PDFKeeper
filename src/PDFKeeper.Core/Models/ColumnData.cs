@@ -29,12 +29,12 @@ namespace PDFKeeper.Core.Models
     internal static class ColumnData
     {
         /// <summary>
-        /// Gets authors by subject, category, and tax year from the repository.
+        /// Gets an array of Authors by Subject, Category, and Tax Year from the repository.
         /// </summary>
-        /// <param name="subject">The subject or null.</param>
-        /// <param name="category">The category or null.</param>
-        /// <param name="taxYear">The tax year or null.</param>
-        /// <returns>The array of authors in ascending order.</returns>
+        /// <param name="subject">The Subject or <c>null</c>.</param>
+        /// <param name="category">The Category or <c>null</c>.</param>
+        /// <param name="taxYear">The Tax Year or <c>null</c>.</param>
+        /// <returns>The <c>string[]</c> of Authors in ascending order.</returns>
         internal static string[] GetAuthors(string subject, string category, string taxYear)
         {
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
@@ -48,12 +48,12 @@ namespace PDFKeeper.Core.Models
         }
 
         /// <summary>
-        /// Gets subjects by author, category, and tax year from the repository.
+        /// Gets an array of Subjects by Author, Category, and Tax Year from the repository.
         /// </summary>
-        /// <param name="author">The author or null.</param>
-        /// <param name="category">The category or null.</param>
-        /// <param name="taxYear">The tax year or null.</param>
-        /// <returns>The array of subjects in ascending order.</returns>
+        /// <param name="author">The Author or <c>null</c>.</param>
+        /// <param name="category">The Category or <c>null</c>.</param>
+        /// <param name="taxYear">The Tax Year or <c>null</c>.</param>
+        /// <returns>The <c>string[]</c> of Subjects in ascending order.</returns>
         internal static string[] GetSubjects(string author, string category, string taxYear)
         {
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
@@ -67,12 +67,12 @@ namespace PDFKeeper.Core.Models
         }
 
         /// <summary>
-        /// Gets categories by author, subject, and tax year from the repository.
+        /// Gets an array of Categories by Author, Subject, and Tax Year from the repository.
         /// </summary>
-        /// <param name="author">The author or null.</param>
-        /// <param name="subject">The subject or null.</param>
-        /// <param name="taxYear">The tax year or null.</param>
-        /// <returns>The array of categories in ascending order.</returns>
+        /// <param name="author">The Author or <c>null</c>.</param>
+        /// <param name="subject">The Subject or <c>null</c>.</param>
+        /// <param name="taxYear">The Tax Year or <c>null</c>.</param>
+        /// <returns>The <c>string[]</c> of Categories in ascending order.</returns>
         internal static string[] GetCategories(string author, string subject, string taxYear)
         {
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
@@ -86,12 +86,12 @@ namespace PDFKeeper.Core.Models
         }
 
         /// <summary>
-        /// Gets tax years by author, subject, and category from the repository.
+        /// Gets an array of Tax Years by Author, Subject, and Category from the repository.
         /// </summary>
-        /// <param name="author">The author or null.</param>
-        /// <param name="subject">The subject or null.</param>
-        /// <param name="category">The category or null.</param>
-        /// <returns>The array of tax years in ascending order.</returns>
+        /// <param name="author">The Author or <c>null</c>.</param>
+        /// <param name="subject">The Subject or <c>null</c>.</param>
+        /// <param name="category">The Category or <c>null</c>.</param>
+        /// <returns>The <c>string[]</c> of Tax Years in ascending order.</returns>
         internal static string[] GetTaxYears(string author, string subject, string category)
         {
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
@@ -105,18 +105,20 @@ namespace PDFKeeper.Core.Models
         }
 
         /// <summary>
-        /// Gets a range of tax years starting with the last 25 years and 1 year into the future.
+        /// Gets a range of Tax Years starting with the last 25 years and 1 year into the future.
         /// </summary>
-        /// <returns>The array of tax years in descending order.</returns>
+        /// <returns>The <c>string[]</c> of Tax Years in descending order.</returns>
         internal static string[] GetRangeOfTaxYears() => GetRangeOfTaxYearsInternal().ToArray();
 
         private static IEnumerable<string> GetColumnData(DataTable dataTable)
         {
             var columnName = dataTable.Columns[0].ColumnName;
             yield return string.Empty;
+            
             foreach (DataRow row in dataTable.Rows)
             {
                 var item = row[columnName].ToString();
+            
                 if (item.Length > 0)
                 {
                     yield return item;
@@ -129,13 +131,17 @@ namespace PDFKeeper.Core.Models
             var tempYears = new List<string>();
             var thisYear = DateTime.Now.Year;
             var x = thisYear - 25;
+
             while (x <= thisYear)
             {
                 x++;
                 tempYears.Add(x.ToString());
             }
+            
             tempYears.Reverse();
+            
             yield return string.Empty;
+            
             foreach (string year in tempYears)
             {
                 yield return year;

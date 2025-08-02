@@ -25,7 +25,7 @@ namespace PDFKeeper.WinForms.Services
 {
     public class OpenFileDialogService : IFileDialogService
     {
-        public string ShowDialog(string filter, string fileName)
+        public string ShowDialog(string filter, string fileName = null)
         {
             using (var dialog = new OpenFileDialog())
             {

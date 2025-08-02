@@ -29,7 +29,7 @@ namespace PDFKeeper.Core.FileIO.PDF
     public class PdfImageDetector : IEventListener
     {
         /// <summary>
-        /// Were images detected in PDF page source? (true or false)
+        /// Gets <c>true</c> or <c>false</c> if images were detected in PDF page source.
         /// </summary>
         public bool ImagesDetected { get; private set; }
 

@@ -52,7 +52,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Are PDF files ready to be uploaded? (true or false)
+        /// Gets <c>true</c> or <c>false</c> if PDF files are ready to be uploaded.
         /// </summary>
         internal bool PdfFilesReadyToUpload
         {
@@ -71,14 +71,16 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Does the UploadRejected directory contain PDF files that were rejected by the Uploader?
-        /// (true or false)
+        /// Gets <c>true</c> or <c>false</c> if the
+        /// <see cref="ApplicationDirectory.SpecialName.UploadRejected"/> directory contain PDF
+        /// files that were rejected by the Uploader.
         /// </summary>
         internal bool UploadRejectedContainsPdfFiles
         {
             get
             {
-                if (uploadRejectedDirectory.GetFiles("*.pdf",
+                if (uploadRejectedDirectory.GetFiles(
+                    "*.pdf",
                     SearchOption.AllDirectories).Length > 0)
                 {
                     return true;
@@ -91,11 +93,14 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// <para>Executes upload directory maintenance tasks:</para>
-        /// <list type="number">Creates missing upload profile directories.</list>
-        /// <list type="number">
-        /// Deletes dormant upload directories that are either empty and not a profile directory,
-        /// or any empty sub-directory under each upload profile directory.
+        /// Executes <see cref="ApplicationDirectory.SpecialName.Upload"/> directory maintenance
+        /// tasks:
+        /// <list type="table">
+        /// 1. Creates missing Upload Profile directories.
+        /// </list>
+        /// <list type="table">
+        /// 2. Deletes dormant Upload directories that are either empty and not an Upload Profile
+        /// directory, or any empty sub-directory under each Upload Profile directory.
         /// </list>
         /// </summary>
         internal void ExecuteUploadDirectoryMaintenance()
@@ -106,9 +111,15 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// <para>Executes PDF upload tasks:</para>
-        /// <list type="number">Stages all PDF files in Upload directories for uploading.</list>
-        /// <list type="number">Uploads all PDF files in UploadStaging to the database.</list>
+        /// Executes PDF Upload tasks:
+        /// <list type="table">
+        /// 1. Stages all PDF files in <see cref="ApplicationDirectory.SpecialName.Upload"/>
+        /// directories for uploading.
+        /// </list>
+        /// <list type="table">
+        /// 2. Uploads all PDF files in
+        /// <see cref="ApplicationDirectory.SpecialName.UploadStaging"/> to the database.
+        /// </list>
         /// </summary>
         internal void ExecuteUpload()
         {
@@ -119,10 +130,12 @@ namespace PDFKeeper.Core.FileIO.PDF
         private static Collection<FileInfo> GetPdfFiles(DirectoryInfo directory)
         {
             var pdfFiles = new Collection<FileInfo>();
+
             foreach (var pdfFile in directory.GetPdfFilesOrderByLastWriteTime())
             {
                 pdfFiles.Add(pdfFile);
             }
+
             return pdfFiles;
         }
 
@@ -177,12 +190,14 @@ namespace PDFKeeper.Core.FileIO.PDF
             {
                 pdfFile.WaitWhileLocked();
                 var pdf = new PdfFile(pdfFile);
+                
                 if (DatabaseSession.InsertGranted)
                 {
                     if (pdf.GetPasswordType() == PdfFile.PasswordType.None)
                     {
                         var xmlFile = new FileInfo(pdfFile.ChangeExtension("xml").FullName);
                         var dirName = pdfFile.FullName.Substring(uploadDirectory.FullName.Length + 1);
+                        
                         if (dirName.Equals(pdfFile.Name, StringComparison.Ordinal))
                         {
                             dirName = uploadDirectory.FullName;
@@ -192,21 +207,27 @@ namespace PDFKeeper.Core.FileIO.PDF
                             dirName = dirName.Substring(0,
                                 dirName.IndexOf(Path.DirectorySeparatorChar));
                         }
-                        var pdfMetadata = new PdfMetadata(pdf, null);
+                        
+                        var pdfMetadata = new PdfMetadata(pdf);
+                        
                         if (uploadProfileManager.GetUploadProfile(dirName) != null)
                         {
                             var uploadProfile = uploadProfileManager.GetUploadProfile(dirName);
-                            if (uploadProfile.Title.Equals(TitleToken.DateToken,
+                            
+                            if (uploadProfile.Title.Equals(
+                                TitleToken.DateToken,
                                 StringComparison.Ordinal))
                             {
                                 pdfMetadata.Title = TitleToken.GetDate();
                             }
-                            else if (uploadProfile.Title.Equals(TitleToken.DateTimeToken,
+                            else if (uploadProfile.Title.Equals(
+                                TitleToken.DateTimeToken,
                                 StringComparison.Ordinal))
                             {
                                 pdfMetadata.Title = TitleToken.GetDateTime();
                             }
-                            else if (uploadProfile.Title.Equals(TitleToken.FileNameToken,
+                            else if (uploadProfile.Title.Equals(
+                                TitleToken.FileNameToken,
                                 StringComparison.Ordinal))
                             {
                                 pdfMetadata.Title = TitleToken.GetFileName(pdfFile);
@@ -215,6 +236,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                             {
                                 pdfMetadata.Title = uploadProfile.Title;
                             }
+                            
                             pdfMetadata.Author = uploadProfile.Author;
                             pdfMetadata.Subject = uploadProfile.Subject;
                             pdfMetadata.Keywords = uploadProfile.Keywords;
@@ -223,10 +245,12 @@ namespace PDFKeeper.Core.FileIO.PDF
                             pdfMetadata.TaxYear = uploadProfile.TaxYear;
                             pdfMetadata.OcrPdfTextAndImageDataPages =
                                 uploadProfile.OcrPdfTextAndImageDataPages;
+                            
                             try
                             {
-                                new UploadStagingCommand(pdfMetadata.Write()).Execute();
+                                new UploadStagingCommand(pdfMetadata.Write()).Execute(null);
                                 pdfFile.DeleteToRecycleBin();
+                                
                                 if (xmlFile.Exists)
                                 {
                                     xmlFile.DeleteToRecycleBin();
@@ -246,7 +270,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                             }
                             else
                             {
-                                new UploadStagingCommand(pdfFile).Execute();
+                                new UploadStagingCommand(pdfFile).Execute(null);
                             }
                         }
                     }
@@ -268,7 +292,7 @@ namespace PDFKeeper.Core.FileIO.PDF
             {
                 var pdf = new PdfFile(pdfFile);
                 var document = new Document();
-                var pdfMetadata = new PdfMetadata(pdf, null);
+                var pdfMetadata = new PdfMetadata(pdf);
                 document.Title = pdfMetadata.Title;
                 document.Author = pdfMetadata.Author;
                 document.Subject = pdfMetadata.Subject;
@@ -283,12 +307,15 @@ namespace PDFKeeper.Core.FileIO.PDF
                 document.TaxYear = pdfMetadata.TaxYear;
                 document.TextAnnotations = pdf.GetTextAnnot();
                 document.Text = pdf.GetText(pdfMetadata.OcrPdfTextAndImageDataPages);
+
                 using (var documentRepository = DatabaseSession.GetDocumentRepository())
                 {
                     documentRepository.InsertDocument(document);
                 }
+                
                 pdfFile.Delete();
                 var xmlFile = pdfFile.ChangeExtension("xml");
+                
                 if (xmlFile.Exists)
                 {
                     xmlFile.Delete();
@@ -298,8 +325,10 @@ namespace PDFKeeper.Core.FileIO.PDF
 
         private void MoveFileToUploadRejected(FileInfo file)
         {
-            var destFile = new FileInfo(file.FullName.Replace(uploadDirectory.FullName,
-                uploadRejectedDirectory.FullName));
+            var destFile = new FileInfo(
+                file.FullName.Replace(
+                    uploadDirectory.FullName,
+                    uploadRejectedDirectory.FullName));
             destFile.Directory.Create();
             file.MoveTo(destFile.FullName);
         }

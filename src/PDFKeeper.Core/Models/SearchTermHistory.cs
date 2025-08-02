@@ -33,9 +33,9 @@ namespace PDFKeeper.Core.Models
         }
 
         /// <summary>
-        /// Adds the search term to the search term history.
+        /// Adds <see cref="searchTerm"/> to the search term history.
         /// </summary>
-        /// <param name="searchTerm">The search term.</param>
+        /// <param name="searchTerm">The Search Term.</param>
         internal void Add(string searchTerm)
         {
             if (searchTerms.Contains(searchTerm).Equals(false))
@@ -45,14 +45,15 @@ namespace PDFKeeper.Core.Models
         }
 
         /// <summary>
-        /// Gets previously entered search terms.
+        /// Gets an array of previously entered Search Terms.
         /// </summary>
-        /// <returns>The array of search terms.</returns>
+        /// <returns>The <c>string[]</c> of Search Terms.</returns>
         internal string[] GetSearchTerms() => GetSearchTermsInternal().ToArray();
 
         private IEnumerable<string> GetSearchTermsInternal()
         {
             yield return string.Empty;
+
             foreach (string searchTerm in searchTerms)
             {
                 yield return searchTerm;

@@ -23,12 +23,13 @@ namespace PDFKeeper.Core.Services
     public interface IFolderBrowserDialogService
     {
         /// <summary>
-        /// Shows a folder browser dialog.
+        /// Shows a <c>FolderBrowserDialog</c>.
         /// </summary>
         /// <param name="description">
-        /// The descriptive text displayed above the treeview control in the dialog.
+        /// The descriptive text displayed above the treeview control in the
+        /// <c>FolderBrowserDialog</c>.
         /// </param>
-        /// <returns>The selected folder path.</returns>
+        /// <returns>The full path of the selected folder.</returns>
         string ShowDialog(string description);
     }
 }

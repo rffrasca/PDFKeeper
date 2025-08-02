@@ -24,6 +24,10 @@ namespace PDFKeeper.Core.Services
 {
     public static class ServiceLocator
     {
+        /// <summary>
+        /// Gets or sets the <see cref="IServiceProvider"/> container that contains all configured
+        /// services.
+        /// </summary>
         public static IServiceProvider Services { get; set; }
     }
 }

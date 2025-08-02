@@ -40,7 +40,7 @@ namespace PDFKeeper.Core.Extensions
         }
 
         /// <summary>
-        /// Handles an <see cref="Exception"/> of <see cref="ExceptionType"/> by logging and
+        /// Handles the <see cref="Exception"/> of <see cref="ExceptionType"/> by logging and
         /// showing the <see cref="Exception"/> in a <c>MessageBox</c>.
         /// </summary>
         /// <param name="exception">The <see cref="Exception"/> object.</param>

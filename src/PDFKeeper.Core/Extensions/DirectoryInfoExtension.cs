@@ -28,18 +28,21 @@ namespace PDFKeeper.Core.Extensions
     public static class DirectoryInfoExtension
     {
         /// <summary>
-        /// Empties a directory (excluding sub-directories) of all files. For any file that cannot
-        /// be deleted, its extension will be changed to "delete" so that it can be deleted during
-        /// the next run.
+        /// Empties the directory (excluding sub-directories) of all files.
+        /// <para>
+        /// For any file that cannot be deleted, its extension will be changed to "delete" so that
+        /// it can be deleted during the next run.
+        /// </para>
         /// </summary>
-        /// <param name="directory">The DirectoryInfo object.</param>
+        /// <param name="directory">The <see cref="DirectoryInfo"/> object.</param>
         /// <exception cref="ArgumentNullException"></exception>
         public static void Empty(this DirectoryInfo directory)
         {
-            if (directory == null)
+            if (directory is null)
             {
                 throw new ArgumentNullException(nameof(directory));
             }
+
             foreach (FileInfo file in directory.GetFiles("*.*"))
             {
                 try
@@ -57,15 +60,16 @@ namespace PDFKeeper.Core.Extensions
         }
 
         /// <summary>
-        /// Creates a shortcut to a directory.
+        /// Creates a shortcut to the directory.
         /// </summary>
-        /// <param name="directory">The DirectoryInfo object.</param>
-        /// <param name="shortcutLinkFile">The shortcut link FileInfo object.</param>
+        /// <param name="directory">The <see cref="DirectoryInfo"/> object.</param>
+        /// <param name="shortcutLinkFile">The shortcut link <see cref="FileInfo"/> object.</param>
         internal static void CreateShortcut(this DirectoryInfo directory, FileInfo shortcutLinkFile)
         {
             var wshShell = new WshShell();
             var shortcut = (IWshShortcut)wshShell.CreateShortcut(shortcutLinkFile.FullName);
             shortcut.TargetPath = directory.FullName;
+
             // Only create the shortcut if it does not exist. This is to prevent the occassional
             // IOException: "The process cannot access the file because it is being used by another
             // process" from being thrown.
@@ -76,14 +80,17 @@ namespace PDFKeeper.Core.Extensions
         }
 
         /// <summary>
-        /// Gets all PDF files in the directory, including all sub-directories, ordered by last write time.
+        /// Gets all PDF files in the directory, including all sub-directories, ordered by last
+        /// write time.
         /// </summary>
-        /// <param name="directory">The DirectoryInfo object.</param>
-        /// <returns>The sorted seqeuence of FileInfo objects.</returns>
-        internal static IOrderedEnumerable<FileInfo> GetPdfFilesOrderByLastWriteTime(this DirectoryInfo directory)
+        /// <param name="directory">The <see cref="DirectoryInfo"/> object.</param>
+        /// <returns>The sorted seqeuence of <see cref="FileInfo"/> objects.</returns>
+        internal static IOrderedEnumerable<FileInfo> GetPdfFilesOrderByLastWriteTime(
+            this DirectoryInfo directory)
         {
-            return directory.GetFiles("*.pdf", SearchOption.AllDirectories).OrderBy(
-                f => new FileInfo(f.FullName).LastWriteTime);
+            return directory.GetFiles(
+                "*.pdf",
+                SearchOption.AllDirectories).OrderBy(f => new FileInfo(f.FullName).LastWriteTime);
         }
     }
 }

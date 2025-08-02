@@ -131,7 +131,6 @@
     <Compile Include="FileIO\PDF\IPdfMetadata.cs" />
     <Compile Include="Models\IPdfExternalMetadata.cs" />
     <Compile Include="Models\IUploadProfile.cs" />
-    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\UploadStagingCommand.cs" />
     <Compile Include="Extensions\SecureStringExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />

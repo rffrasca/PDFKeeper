@@ -260,8 +260,8 @@ namespace PDFKeeper.Core.ViewModels
         /// <summary>
         /// Opens the PDF for the current document.
         /// <para>
-        /// <see cref="ICommand.Execute(bool)"/>: Show PDF with default application.
-        /// (true or false)
+        /// <see cref="ICommand.Execute(bool)"/>: <c>true</c> or <c>false</c> to show PDF with
+        /// default application.
         /// </para>
         /// </summary>
         public ICommand OpenPdfForCurrentDocumentCommand { get; private set; }
@@ -271,8 +271,8 @@ namespace PDFKeeper.Core.ViewModels
         /// <summary>
         /// Sets the state for a text box enter event.
         /// <para>
-        /// <see cref="ICommand.Execute(bool)"/>: If the user can undo the previous operation.
-        /// (true or false)
+        /// <see cref="ICommand.Execute(bool)"/>: <c>true</c> or <c>false</c> if the user can undo
+        /// the previous operation.
         /// </para>
         /// </summary>
         public ICommand SetStateOnTextBoxEnterEventCommand { get; private set; }
@@ -280,8 +280,8 @@ namespace PDFKeeper.Core.ViewModels
         /// <summary>
         /// Method that is to be called when the Notes text changes.
         /// <para>
-        /// <see cref="ICommand.Execute(bool)"/>: If the user can undo the previous operation.
-        /// (true or false)
+        /// <see cref="ICommand.Execute(bool)"/>: <c>true</c> or <c>false</c> if the user can undo
+        /// the previous operation.
         /// </para>
         /// </summary>
         public ICommand NotesTextChangedCommand { get; private set; }
@@ -1433,7 +1433,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void AppendTextFromFileIntoNotes()
         {
-            var textFilePath = openFileDialogService.ShowDialog(Resources.TextFilter, null);
+            var textFilePath = openFileDialogService.ShowDialog(Resources.TextFilter);
             if (textFilePath.Length > 0)
             {
                 var textFile = new FileInfo(textFilePath);
@@ -1631,7 +1631,7 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="ids">The collection of document ID's.</param>
         private void SetCheckedDocumentIds(Collection<int> ids)
         {
-            if (ids == null)
+            if (ids is null)
             {
                 throw new ArgumentNullException(nameof(ids));
             }
@@ -1663,7 +1663,7 @@ namespace PDFKeeper.Core.ViewModels
         /// Opens the PDF for the current document.
         /// </summary>
         /// <param name="showPdfWithDefaultApplication">
-        /// Show PDF with default application. (true or false)
+        /// <c>true</c> or <c>false</c> to show PDF with default application.
         /// </param>
         private void OpenPdfForCurrentDocument(bool showPdfWithDefaultApplication) =>
             pdfViewerService.Show(
@@ -1681,7 +1681,7 @@ namespace PDFKeeper.Core.ViewModels
         /// Sets the state of the view on a <c>TextBox</c> <c>Enter</c> event.
         /// </summary>
         /// <param name="canUndo">
-        /// If the user can undo the previous operation. (true or false)
+        /// <c>true</c> or <c>false</c> if the user can undo the previous operation.
         /// </param>
         private void SetStateOnTextBoxEnterEvent(bool canUndo)
         {
@@ -1732,7 +1732,7 @@ namespace PDFKeeper.Core.ViewModels
         /// Sets the state of the view when <c>Notes</c> text changed.
         /// </summary>
         /// <param name="canUndo">
-        /// If the user can undo the previous operation. (true or false)
+        /// <c>true</c> or <c>false</c> if the user can undo the previous operation.
         /// </param>
         private void OnNotesTextChanged(bool canUndo)
         {
@@ -2149,14 +2149,14 @@ namespace PDFKeeper.Core.ViewModels
         }
 
         /// <summary>
-        /// Sets the menu and tool bar items state based on if Notes text changed and if the Notes
-        /// text can be undone. 
+        /// Sets the menu and tool bar items state based on if <c>Notes</c> text changed and if the
+        /// <c>Notes</c> text can be undone.
         /// </summary>
         /// <param name="notesChanged">
-        /// Notes text changed. (true or false)
+        /// <c>true</c> or <c>false</c> if <c>Notes</c> text changed.
         /// </param>
         /// <param name="canUndo">
-        /// If the user can undo the previous operation. (true or false)
+        /// <c>true</c> or <c>false</c> if the user can <c>Undo</c> the previous operation.
         /// </param>
         private void SetStateForNotesChanged(bool notesChanged, bool canUndo)
         {
@@ -2189,7 +2189,7 @@ namespace PDFKeeper.Core.ViewModels
         /// Gets a list of documents based on the properties in <see cref="FindDocumentsParam"/>.
         /// </summary>
         /// <param name="selectCurrentDocument">
-        /// Select the current document after getting documents. (true or false)
+        /// <c>true</c> or <c>false</c> to select the current document after getting documents.
         /// </param>
         private void GetListOfDocuments(bool selectCurrentDocument)
         {
@@ -2289,12 +2289,12 @@ namespace PDFKeeper.Core.ViewModels
             DocumentsProgressBarMinimum = 0;
             DocumentsProgressBarMaximum = CheckedDocumentIds.Count;
 
-            foreach (int id in CheckedDocumentIds)
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
             {
-                var error = false;
-                try
+                foreach (int id in CheckedDocumentIds)
                 {
-                    using (var documentRepository = DatabaseSession.GetDocumentRepository())
+                    var error = false;
+                    try
                     {
                         var document = documentRepository.GetDocument(id, null);
                         switch (checkedDocumentAction)
@@ -2331,55 +2331,55 @@ namespace PDFKeeper.Core.ViewModels
                                 new Commands.ExportDocumentCommand(
                                     id,
                                     new DirectoryInfo(value),
-                                    fileCache).Execute();
+                                    fileCache).Execute(null);
                                 break;
                         }
                     }
-                }
-                catch (InvalidOperationException ex)
-                {
-                    error = true;
-                    OnLongOperationFinished?.Invoke();
-                    var message = ResourceHelper.GetString(
-                        Resources.ResourceManager,
-                        "DocumentMayHaveBeenDeletedException",
-                        ex.Message,
-                        id.ToString());
-                    messageBoxService.ShowMessage(message, true);
-                }
-                catch (IndexOutOfRangeException ex)
-                {
-                    error = true;
-                    OnLongOperationFinished?.Invoke();
-                    var message = ResourceHelper.GetString(
-                        Resources.ResourceManager,
-                        "DocumentMayHaveBeenDeletedException",
-                        ex.Message,
-                        id.ToString());
-                    messageBoxService.ShowMessage(message, true);
-                }
-                catch (DatabaseException ex)
-                {
-                    error = true;
-                    OnLongOperationFinished?.Invoke();
-                    var message = ResourceHelper.GetString(
-                        Resources.ResourceManager,
-                        "DefaultDocumentException",
-                        ex.Message,
-                        id.ToString());
-                    messageBoxService.ShowMessage(message, true);
-                }
-                finally
-                {
-                    if (error)
+                    catch (InvalidOperationException ex)
                     {
-                        OnLongOperationStarted?.Invoke();
+                        error = true;
+                        OnLongOperationFinished?.Invoke();
+                        var message = ResourceHelper.GetString(
+                            Resources.ResourceManager,
+                            "DocumentMayHaveBeenDeletedException",
+                            ex.Message,
+                            id.ToString());
+                        messageBoxService.ShowMessage(message, true);
                     }
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        error = true;
+                        OnLongOperationFinished?.Invoke();
+                        var message = ResourceHelper.GetString(
+                            Resources.ResourceManager,
+                            "DocumentMayHaveBeenDeletedException",
+                            ex.Message,
+                            id.ToString());
+                        messageBoxService.ShowMessage(message, true);
+                    }
+                    catch (DatabaseException ex)
+                    {
+                        error = true;
+                        OnLongOperationFinished?.Invoke();
+                        var message = ResourceHelper.GetString(
+                            Resources.ResourceManager,
+                            "DefaultDocumentException",
+                            ex.Message,
+                            id.ToString());
+                        messageBoxService.ShowMessage(message, true);
+                    }
+                    finally
+                    {
+                        if (error)
+                        {
+                            OnLongOperationStarted?.Invoke();
+                        }
 
-                    OnProgressBarPerformStep?.Invoke();
+                        OnProgressBarPerformStep?.Invoke();
+                    }
                 }
             }
-
+  
             OnCheckedDocumentsProcessed?.Invoke();
             DocumentsProgressBarVisible = false;
             DocumentsEnabled = true;

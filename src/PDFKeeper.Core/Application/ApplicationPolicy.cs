@@ -26,14 +26,20 @@ namespace PDFKeeper.Core.Application
 {
     internal class ApplicationPolicy
     {
-        internal enum PolicyName { HideAllDocuments, BlockingUpload }
+        internal enum PolicyName
+        {
+            HideAllDocuments,
+            BlockingUpload
+        }
 
         /// <summary>
         /// Gets the application policy applied state.
         /// </summary>
-        /// <param name="policy">The ApplicationPolicy type constant.</param>
+        /// <param name="policy">The <see cref="PolicyName"/>.</param>
         /// <returns>
-        /// Policy is applied (true or false). When the database platform is SQLite, false will be
+        /// <c>true</c> or <c>false</c> if policy is applied. When
+        /// <see cref="DatabaseSession.PlatformName"/> is
+        /// <see cref="DatabaseSession.CompatiblePlatformName.Sqlite"/>, <c>false</c> will be
         /// returned.
         /// </returns>
         internal static bool GetPolicyValue(PolicyName policy)

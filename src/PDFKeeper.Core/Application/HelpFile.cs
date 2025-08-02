@@ -45,6 +45,7 @@ namespace PDFKeeper.Core.Application
                 productName,
                 CultureInfo.CurrentCulture.ToString(),
                 ".chm");
+
             if (!File.Exists(FullName))
             {
                 FullName = string.Concat(productName, ".en-US.chm");
@@ -54,9 +55,9 @@ namespace PDFKeeper.Core.Application
         public string FullName { get; private set; }
 
         /// <summary>
-        /// Gets the file name of a <see cref="Topic"/> member.
+        /// Gets the file name of a <see cref="Topic"/>.
         /// </summary>
-        /// <param name="topic">The <see cref="Topic"/> member.</param>
+        /// <param name="topic">The <see cref="Topic"/>.</param>
         /// <returns>The file name.</returns>
         public static string GetTopicFileName(Topic topic)
         {
@@ -82,13 +83,15 @@ namespace PDFKeeper.Core.Application
                     topicFileName = "Using PDFKeeper.html";
                     break;
             }
+            
             return topicFileName;
         }
 
         /// <summary>
-        /// Shows a help file topic and waits for the help dialog to be closed by the user.
+        /// Shows a help file <see cref="Topic"/> and waits for the help dialog to be closed by the
+        /// user.
         /// </summary>
-        /// <param name="topic">The <see cref="Topic"/> member.</param>
+        /// <param name="topic">The <see cref="Topic"/>.</param>
         public void ShowHelp(Topic topic)
         {
             using (var process = new Process())

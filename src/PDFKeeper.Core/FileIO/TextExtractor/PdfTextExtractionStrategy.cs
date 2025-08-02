@@ -34,18 +34,25 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
             using (var reader = new PdfReader(pdfFile))
             {
                 var text = new StringBuilder();
+                
                 using (var document = new PdfDocument(reader))
                 {
-                    for (int page = 1, loopTo = document.GetNumberOfPages(); page <= loopTo;
+                    for (int page = 1,
+                        loopTo = document.GetNumberOfPages();
+                        page <= loopTo;
                         page++)
                     {
                         try
                         {
                             ITextExtractionStrategy strategy = new LocationTextExtractionStrategy();
+                        
                             var pageText =
                                 iText.Kernel.Pdf.Canvas.Parser.PdfTextExtractor.GetTextFromPage(
-                                    document.GetPage(page), strategy);
+                                    document.GetPage(
+                                        page),
+                                    strategy);
                             var lines = pageText.Split('\n');
+
                             foreach (var line in lines)
                             {
                                 text.AppendLine(line);
@@ -61,6 +68,7 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
                         }
                     }
                 }
+
                 return text.ToString();
             }
         }

@@ -27,9 +27,9 @@ namespace PDFKeeper.Core.Models
     internal static class TaxYearLegacy
     {
         /// <summary>
-        /// Gets tax years starting with the last 25 years and 1 year into the future.
+        /// Gets an array of Tax Years starting with the last 25 years and 1 year into the future.
         /// </summary>
-        /// <returns>The array of tax years.</returns>
+        /// <returns>The <c>string[]</c> of Tax Years.</returns>
         internal static string[] GetYearRange() => GetYearRangeInternal().ToArray();
 
         private static IEnumerable<string> GetYearRangeInternal()
@@ -37,13 +37,16 @@ namespace PDFKeeper.Core.Models
             var tempYears = new List<string>();
             var thisYear = DateTime.Now.Year;
             var x = thisYear - 25;
+
             while (x <= thisYear)
             {
                 x++;
                 tempYears.Add(x.ToString());
             }
+            
             tempYears.Reverse();
             yield return string.Empty;
+            
             foreach (string year in tempYears)
             {
                 yield return year;

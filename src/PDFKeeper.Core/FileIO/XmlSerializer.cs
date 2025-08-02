@@ -26,10 +26,10 @@ namespace PDFKeeper.Core.FileIO
     internal static class XmlSerializer
     {
         /// <summary>
-        /// Deserializes the XML file into an object of the specified type.
+        /// Deserializes an XML file into an object of the specified type.
         /// </summary>
         /// <typeparam name="T">The type.</typeparam>
-        /// <param name="xmlFile">The XML FileInfo object.</param>
+        /// <param name="xmlFile">The XML <see cref="FileInfo"/> object.</param>
         /// <returns>The object.</returns>
         internal static T Deserialize<T>(FileInfo xmlFile)
         {
@@ -37,6 +37,7 @@ namespace PDFKeeper.Core.FileIO
             {
                 DtdProcessing = DtdProcessing.Prohibit
             };
+
             using (var reader = XmlReader.Create(xmlFile.FullName, settings))
             {
                 var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
@@ -45,11 +46,11 @@ namespace PDFKeeper.Core.FileIO
         }
 
         /// <summary>
-        /// Serializes the object of the specified type to the XML file.
+        /// Serializes the object of the specified type to an XML file.
         /// </summary>
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="obj">The object.</param>
-        /// <param name="xmlFile">The XML FileInfo object.</param>
+        /// <param name="xmlFile">The XML <see cref="FileInfo"/> object.</param>
         internal static void Serialize<T>(T obj, FileInfo xmlFile)
         {
             var settings = new XmlWriterSettings()
@@ -57,6 +58,7 @@ namespace PDFKeeper.Core.FileIO
                 NewLineHandling = NewLineHandling.Entitize,
                 Indent = true
             };
+
             using (var writer = XmlWriter.Create(xmlFile.FullName, settings))
             {
                 var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));

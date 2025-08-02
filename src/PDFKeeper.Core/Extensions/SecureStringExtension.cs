@@ -28,10 +28,11 @@ namespace PDFKeeper.Core.Extensions
     internal static class SecureStringExtension
     {
         /// <summary>
-        /// Gets the contents of the SecureString as a Byte Array.
+        /// Gets the contents of the <see cref="SecureString"/> object as a <see cref="byte"/>
+        /// array.
         /// </summary>
-        /// <param name="secureString">The SecureString object.</param>
-        /// <returns>The Byte Array.</returns>
+        /// <param name="secureString">The <see cref="SecureString"/> object.</param>
+        /// <returns>The <see cref="byte"/> array.</returns>
         internal static byte[] GetAsByteArray(this SecureString secureString)
         {
             IntPtr intPtr = default;

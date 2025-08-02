@@ -29,43 +29,50 @@ namespace PDFKeeper.Core.Extensions
     internal static class FileInfoExtension
     {
         /// <summary>
-        /// Appends an underline character followed by a new GUID to the name of a file.
+        /// Appends an underline character followed by a new <see cref="Guid"/> to the name of the
+        /// file.
         /// </summary>
-        /// <param name="file">The FileInfo object.</param>
-        /// <returns>The modified FileInfo object.</returns>
+        /// <param name="file">The <see cref="FileInfo"/> object.</param>
+        /// <returns>The modified <see cref="FileInfo"/> object.</returns>
         internal static FileInfo AppendGuidToFileName(this FileInfo file)
         {
-            return new FileInfo(Path.Combine(file.DirectoryName, string.Concat(
-                Path.GetFileNameWithoutExtension(file.FullName), "_", Guid.NewGuid(),
-                file.Extension)));
+            return new FileInfo(
+                Path.Combine(
+                    file.DirectoryName,
+                    string.Concat(
+                        Path.GetFileNameWithoutExtension(
+                            file.FullName),
+                        "_",
+                        Guid.NewGuid(),
+                        file.Extension)));
         }
 
         /// <summary>
-        /// Changes the directory path name of a file.
+        /// Changes the directory path name of the file.
         /// </summary>
-        /// <param name="file">The FileInfo object.</param>
-        /// <param name="directory">The input DirectoryInfo object.</param>
-        /// <returns>The modified FileInfo object.</returns>
+        /// <param name="file">The <see cref="FileInfo"/> object.</param>
+        /// <param name="directory">The input <see cref="DirectoryInfo"/> object.</param>
+        /// <returns>The modified <see cref="FileInfo"/> object.</returns>
         internal static FileInfo ChangeDirectory(this FileInfo file, DirectoryInfo directory)
         {
             return new FileInfo(Path.Combine(directory.FullName, file.Name));
         }
 
         /// <summary>
-        /// Changes the extension of a file.
+        /// Changes the extension of the file.
         /// </summary>
-        /// <param name="file">The FileInfo object.</param>
+        /// <param name="file">The <see cref="FileInfo"/> object.</param>
         /// <param name="extension">The new extension.</param>
-        /// <returns>The modified FileInfo object.</returns>
+        /// <returns>The modified <see cref="FileInfo"/> object.</returns>
         internal static FileInfo ChangeExtension(this FileInfo file, string extension)
         {
             return new FileInfo(Path.ChangeExtension(file.FullName, extension));
         }
 
         /// <summary>
-        /// Computes the hash value of a file.
+        /// Computes the hash value of the file.
         /// </summary>
-        /// <param name="file">The FileInfo object.</param>
+        /// <param name="file">The <see cref="FileInfo"/> object.</param>
         /// <returns>The SHA512 hash value of the file.</returns>
         internal static string ComputeHash(this FileInfo file)
         {
@@ -80,19 +87,21 @@ namespace PDFKeeper.Core.Extensions
         }
 
         /// <summary>
-        /// Deletes a file to the Recycle Bin of the operating system.
+        /// Deletes the file to the Recycle Bin of the operating system.
         /// </summary>
-        /// <param name="file">The FileInfo object.</param>
+        /// <param name="file">The <see cref="FileInfo"/> object.</param>
         internal static void DeleteToRecycleBin(this FileInfo file)
         {
-            FileSystem.DeleteFile(file.FullName, UIOption.OnlyErrorDialogs,
+            FileSystem.DeleteFile(
+                file.FullName,
+                UIOption.OnlyErrorDialogs,
                 RecycleOption.SendToRecycleBin);
         }
 
         /// <summary>
-        /// Gets the file name of a file without the extension.
+        /// Gets the file name of the file without the extension.
         /// </summary>
-        /// <param name="file">The FileInfo object.</param>
+        /// <param name="file">The <see cref="FileInfo"/> object.</param>
         /// <returns>The file name without the extension.</returns>
         internal static string GetFileNameWithoutExtension(this FileInfo file)
         {
@@ -100,28 +109,31 @@ namespace PDFKeeper.Core.Extensions
         }
 
         /// <summary>
-        /// Is the filename invalid, contains % and/or + in the name? 
+        /// Checks if the name of the file is invalid, contains % and/or + in the name.
         /// </summary>
-        /// <param name="file">The FileInfo object.</param>
-        /// <returns>true or false</returns>
+        /// <param name="file">The <see cref="FileInfo"/> object.</param>
+        /// <returns><c>true</c> or <c>false</c> if the name of the file is invalid.</returns>
         internal static bool IsFileNameInvalid(this FileInfo file)
         {
             return file.Name.Contains("%") || file.Name.Contains("+");
         }
 
         /// <summary>
-        /// Is the file locked?
+        /// Checks if the file is locked.
         /// </summary>
-        /// <param name="file">The FileInfo object.</param>
-        /// <returns>true or false</returns>
+        /// <param name="file">The <see cref="FileInfo"/> object.</param>
+        /// <returns><c>true</c> or <c>false</c> if the file is locked.</returns>
         internal static bool IsLocked(this FileInfo file)
         {
             if (file.Exists)
             {
                 try
                 {
-                    using (var stream = new FileStream(file.FullName, FileMode.Open,
-                        FileAccess.ReadWrite, FileShare.None)) { }
+                    using (var stream = new FileStream(
+                        file.FullName,
+                        FileMode.Open,
+                        FileAccess.ReadWrite,
+                        FileShare.None)) { }
                 }
                 catch (IOException)
                 {
@@ -132,14 +144,18 @@ namespace PDFKeeper.Core.Extensions
                     return true;
                 }
             }
+
             return false;
         }
 
         /// <summary>
-        /// Gets the contents of a file.
+        /// Gets the contents of the file.
         /// </summary>
-        /// <param name="file">The FileInfo object.</param>
-        /// <returns>The byte array containing the contents of the file object.</returns>
+        /// <param name="file">The <see cref="FileInfo"/> object.</param>
+        /// <returns>
+        /// The <see cref="byte"/> array containing the contents of the <see cref="FileInfo"/>
+        /// object.
+        /// </returns>
         internal static byte[] ReadAllBytes(this FileInfo file)
         {
             return File.ReadAllBytes(file.FullName);
@@ -148,7 +164,7 @@ namespace PDFKeeper.Core.Extensions
         /// <summary>
         /// Waits while the file is locked.
         /// </summary>
-        /// <param name="file">The FileInfo object.</param>
+        /// <param name="file">The <see cref="FileInfo"/> object.</param>
         internal static void WaitWhileLocked(this FileInfo file)
         {
             while (file.IsLocked())

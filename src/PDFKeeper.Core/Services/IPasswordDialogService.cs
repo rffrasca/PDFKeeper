@@ -25,10 +25,11 @@ namespace PDFKeeper.Core.Services
     public interface IPasswordDialogService
     {
         /// <summary>
-        /// Shows a password dialog.
+        /// Shows a <c>PasswordDialog</c>.
         /// </summary>
         /// <returns>
-        /// The SecureString object containing the password or null when no password was entered.
+        /// The <see cref="SecureString"/> object containing the password or <c>null</c> when no
+        /// password was entered.
         /// </returns>
         SecureString ShowDialog();
     }

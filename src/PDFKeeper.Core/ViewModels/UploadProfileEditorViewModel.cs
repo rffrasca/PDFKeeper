@@ -161,7 +161,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SetUploadProfile()
         {
-            if (uploadProfileName == null)
+            if (uploadProfileName is null)
             {
                 uploadProfile = new UploadProfile();
             }

@@ -26,7 +26,7 @@ namespace PDFKeeper.Core.Services
         /// Shows a dialog.
         /// </summary>
         /// <param name="arg">The optional <c>string</c> argument.</param>
-        /// <returns>The string or null when dialog is cancelled.</returns>
+        /// <returns>The <c>string</c> or <c>null</c> when dialog is cancelled.</returns>
         string ShowDialog(string arg = null);
     }
 }

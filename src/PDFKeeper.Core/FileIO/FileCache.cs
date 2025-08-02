@@ -42,14 +42,15 @@ namespace PDFKeeper.Core.FileIO
         }
 
         /// <summary>
-        /// Is the PDF for the specified document ID cached?
+        /// Checks if the PDF for the specified document ID is cached.
         /// </summary>
         /// <param name="id">The document ID of the PDF.</param>
-        /// <returns>true or false</returns>
+        /// <returns><c>true</c> or <c>false</c> if the PDF is cached.</returns>
         public bool IsPdfCached(int id)
         {
             var cached = false;
             var pdfFile = GetPdfFile(id);
+
             if (pdfFile.Exists)
             {
                 try
@@ -63,20 +64,23 @@ namespace PDFKeeper.Core.FileIO
                 }
                 catch (KeyNotFoundException) { }
             }
+
             return cached;
         }
 
         /// <summary>
-        /// Adds a PDF to the file cache.
+        /// Adds a PDF to the <see cref="FileCache"/>.
         /// </summary>
         /// <param name="id">The document ID of the PDF.</param>
         /// <param name="pdf">The contents of the PDF.</param>
         public void AddPdf(int id, byte[] pdf)
         {
             var pdfFile = GetPdfFile(id);
+
             if (!IsPdfCached(id))
             {
                 File.WriteAllBytes(pdfFile.FullName, pdf);
+                
                 if (fileHashes.ContainsKey(pdfFile.FullName)) 
                 {
                     fileHashes[pdfFile.FullName] = pdfFile.ComputeHash();
@@ -89,27 +93,34 @@ namespace PDFKeeper.Core.FileIO
         }
 
         /// <summary>
-        /// Creates a preview image from the cached PDF.
+        /// Creates a preview <see cref="Image"/> from the cached PDF.
         /// </summary>
-        /// <param name="id">The document ID of the cached PDF.</param>
+        /// <param name="id">
+        /// The document ID of the cached PDF.
+        /// </param>
         /// <param name="pixelDensity">
-        /// The pixel density (pixels per inch) of the PDF preview image.
+        /// The pixel density (pixels per inch) of the PDF preview <see cref="Image"/> that is
+        /// created.
         /// </param>
         /// <exception cref="FileNotFoundException"></exception>
         public void CreatePreview(int id, decimal pixelDensity)
         {
             var cached = false;
             var pdfFile = GetPdfFile(id);
-            if (pdfFile.Exists == false)
+
+            if (!pdfFile.Exists)
             {
                 throw new FileNotFoundException();
             }
+            
             var imageFile = new ImageFile(GetPdfPreviewFile(id, pixelDensity));
+            
             if (imageFile.Exists)
             {
                 try
                 {
-                    if (imageFile.ComputeHash().Equals(fileHashes[imageFile.FullName],
+                    if (imageFile.ComputeHash().Equals(
+                        fileHashes[imageFile.FullName],
                         System.StringComparison.Ordinal))
                     {
                         cached = true;
@@ -117,7 +128,8 @@ namespace PDFKeeper.Core.FileIO
                 }
                 catch (KeyNotFoundException) { }
             }
-            if (cached == false)
+            
+            if (!cached)
             {
                 File.WriteAllBytes(imageFile.FullName, pdfFile.CreatePreviewImage(pixelDensity));
                 fileHashes.Add(imageFile.FullName, imageFile.ComputeHash());
@@ -125,37 +137,49 @@ namespace PDFKeeper.Core.FileIO
         }
 
         /// <summary>
-        /// Gets the preview image from the file cache.
+        /// Gets the preview <see cref="Image"/> from the <see cref="FileCache"/>.
         /// </summary>
-        /// <param name="id">The document ID of the cached image.</param>
-        /// <param name="pixelDensity">
-        /// The pixel density (pixels per inch) of the preview image.
+        /// <param name="id">
+        /// The document ID of the cached image.
         /// </param>
-        /// <returns>The preview image.</returns>
+        /// <param name="pixelDensity">
+        /// The pixel density (pixels per inch) of the preview <see cref="Image"/> that is
+        /// returned.
+        /// </param>
+        /// <returns>The preview <see cref="Image"/>.</returns>
         /// <exception cref="FileNotFoundException"></exception>
         public Image GetPreview(int id, decimal pixelDensity)
         {
             var imageFile = new ImageFile(GetPdfPreviewFile(id, pixelDensity));
-            if (imageFile.Exists == false)
+
+            if (!imageFile.Exists)
             {
                 throw new FileNotFoundException();
             }
+
             return imageFile.GetImage();
         }
 
         /// <summary>
-        /// Gets the cached PDF file object.
+        /// Gets the cached <see cref="PdfFile"/> object.
         /// </summary>
         /// <param name="id">The document ID of the PDF.</param>
-        /// <returns>The PDF file object.</returns>
+        /// <returns>The <see cref="PdfFile"/> object.</returns>
         public PdfFile GetPdfFile(int id)
         {
-            return new PdfFile(new FileInfo(Path.Combine(cacheDirectory.FullName,
-                string.Concat(executingAssembly.ProductName, id, ".pdf"))));
+            return new PdfFile(
+                new FileInfo(
+                    Path.Combine(
+                        cacheDirectory.FullName,
+                        string.Concat(
+                            executingAssembly.ProductName,
+                            id,
+                            ".pdf"))));
         }
 
         /// <summary>
-        /// Deletes all files associated with the specified document ID from the file cache.
+        /// Deletes all files associated with the specified document ID from the
+        /// <see cref="FileCache"/>.
         /// </summary>
         /// <param name="id">The document ID.</param>
         public void Delete(int id)
@@ -172,17 +196,26 @@ namespace PDFKeeper.Core.FileIO
         }
 
         /// <summary>
-        /// Gets the cached PDF preview FileInfo object.
+        /// Gets the cached PDF preview <see cref="FileInfo"/> object.
         /// </summary>
-        /// <param name="id">The document ID of the PDF preview.</param>
+        /// <param name="id">
+        /// The document ID of the PDF preview.
+        /// </param>
         /// <param name="pixelDensity">
         /// The pixel density (pixels per inch) of the PDF preview image.
         /// </param>
-        /// <returns>The PDF preview FileInfo object.</returns>
+        /// <returns>The PDF preview <see cref="FileInfo"/> object.</returns>
         private FileInfo GetPdfPreviewFile(int id, decimal pixelDensity)
         {
-            return new FileInfo(Path.Combine(cacheDirectory.FullName,
-                string.Concat(executingAssembly.ProductName, id, "-", pixelDensity, ".png")));
+            return new FileInfo(
+                Path.Combine(
+                    cacheDirectory.FullName,
+                    string.Concat(
+                        executingAssembly.ProductName,
+                        id,
+                        "-",
+                        pixelDensity,
+                        ".png")));
         }
     }
 }

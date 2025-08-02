@@ -30,9 +30,10 @@ namespace PDFKeeper.Core.Rules
         private readonly string notes;
 
         /// <summary>
-        /// Initializes a new instance of the NotesSizeRule class that verifies the size of the
-        /// Notes string does not exceed the data length of the DOC_NOTES column in the database
-        /// when the database platform is Oracle.
+        /// Initializes a new instance of the <see cref="NotesSizeRule"/> class that verifies the
+        /// size of <see cref="notes"/> does not exceed the data length of the DOC_NOTES column in
+        /// the database when the <see cref="DatabaseSession.PlatformName"/> is
+        /// <see cref="DatabaseSession.CompatiblePlatformName.Oracle"/>.
         /// </summary>
         /// <param name="notes">The Notes string.</param>
         internal NotesSizeRule(string notes)
@@ -45,14 +46,18 @@ namespace PDFKeeper.Core.Rules
         {
             ViolationFound = false;
             ViolationMessage = null;
+
             if (DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Oracle))
             {
                 int columnLength;
+            
                 using (var documentRepository = DatabaseSession.GetDocumentRepository())
                 {
                     columnLength = documentRepository.GetNotesColumnDataLength();
                 }
+                
                 var size = notes.GetByteCount();
+                
                 if (size > columnLength)
                 {
                     ViolationFound = true;

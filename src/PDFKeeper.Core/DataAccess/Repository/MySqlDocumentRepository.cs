@@ -66,6 +66,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 "where match (doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
                 "doc_category,doc_tax_year,doc_text_annotations,doc_text) " +
                 "against (@doc_dummy in boolean mode)";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -90,24 +91,29 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 author = null;
             }
+
             if (string.IsNullOrEmpty(subject))
             {
                 subject = null;
             }
+            
             if (string.IsNullOrEmpty(category))
             {
                 category = null;
             }
+            
             if (string.IsNullOrEmpty(taxYear))
             {
                 taxYear = null;
             }
+            
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from docs " +
                 "where (@doc_author is NULL or doc_author = @doc_author) " +
                 "and (@doc_subject is NULL or doc_subject = @doc_subject) " +
                 "and (@doc_category is NULL or doc_category = @doc_category) " +
                 "and (@doc_tax_year is NULL or doc_tax_year = @doc_tax_year) ";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -134,6 +140,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from docs " +
                 "where doc_added like @doc_added";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -158,6 +165,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from docs where doc_flag = 1";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -179,6 +187,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from docs";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -202,19 +211,23 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 subject = null;
             }
+
             if (string.IsNullOrEmpty(category))
             {
                 category = null;
             }
+            
             if (string.IsNullOrEmpty(taxYear))
             {
                 taxYear = null;
             }
+            
             var sql = "select doc_author from docs " +
                 "where (@doc_subject is NULL or doc_subject = @doc_subject) " +
                 "and (@doc_category is NULL or doc_category = @doc_category) " +
                 "and (@doc_tax_year is NULL or doc_tax_year = @doc_tax_year) " +
                 "group by doc_author";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -241,19 +254,23 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 author = null;
             }
+
             if (string.IsNullOrEmpty(category))
             {
                 category = null;
             }
+            
             if (string.IsNullOrEmpty(taxYear))
             {
                 taxYear = null;
             }
+            
             var sql = "select doc_subject from docs " +
                 "where (@doc_author is NULL or doc_author = @doc_author) " +
                 "and (@doc_category is NULL or doc_category = @doc_category) " +
                 "and (@doc_tax_year is NULL or doc_tax_year = @doc_tax_year) " +
                 "group by doc_subject";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -280,19 +297,23 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 author = null;
             }
+
             if (string.IsNullOrEmpty(subject))
             {
                 subject = null;
             }
+            
             if (string.IsNullOrEmpty(taxYear))
             {
                 taxYear = null;
             }
+            
             var sql = "select doc_category from docs " +
                 "where (@doc_author is NULL or doc_author = @doc_author) " +
                 "and (@doc_subject is NULL or doc_subject = @doc_subject) " +
                 "and (@doc_tax_year is NULL or doc_tax_year = @doc_tax_year) " +
                 "group by doc_category";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -319,19 +340,23 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 author = null;
             }
+
             if (string.IsNullOrEmpty(subject))
             {
                 subject = null;
             }
+
             if (string.IsNullOrEmpty(category))
             {
                 category = null;
             }
+            
             var sql = "select doc_tax_year from docs " +
                 "where (@doc_author is NULL or doc_author = @doc_author) " +
                 "and (@doc_subject is NULL or doc_subject = @doc_subject) " +
                 "and (@doc_category is NULL or doc_category = @doc_category) " +
                 "group by doc_tax_year";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -358,15 +383,16 @@ namespace PDFKeeper.Core.DataAccess.Repository
             if (includePdf)
             {
                 sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
-                "doc_pdf,doc_category,doc_flag,doc_tax_year,doc_text " +
-                "from docs where doc_id = @doc_id";
+                    "doc_pdf,doc_category,doc_flag,doc_tax_year,doc_text " +
+                    "from docs where doc_id = @doc_id";
             }
             else
             {
                 sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
-                "doc_category,doc_flag,doc_tax_year,doc_text " +
-                "from docs where doc_id = @doc_id";
+                    "doc_category,doc_flag,doc_tax_year,doc_text " +
+                    "from docs where doc_id = @doc_id";
             }
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -376,6 +402,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         var document = new Document();
                         command.Parameters.AddWithValue("doc_id", id);
                         connection.Open();
+                        
                         using (var reader = command.ExecuteReader())
                         {
                             reader.Read();
@@ -386,16 +413,19 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             document.Keywords = reader["doc_keywords"].ToString();
                             document.Added = reader["doc_added"].ToString();
                             document.Notes = reader["doc_notes"].ToString();
+                            
                             if (includePdf)
                             {
                                 document.Pdf = (byte[])reader["doc_pdf"];
                             }
+                            
                             document.Category = reader["doc_category"].ToString();
                             document.Flag = Convert.ToInt32(reader["doc_flag"]);
                             document.TaxYear = reader["doc_tax_year"].ToString();
                             document.Text = reader["doc_text"].ToString();
                             document.SearchTermSnippets = string.Empty; // Not available in MySQL.
                         }
+
                         return document;
                     }
                 }
@@ -408,10 +438,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public void InsertDocument(Document document)
         {
-            if (document == null)
+            if (document is null)
             {
                 throw new ArgumentNullException(nameof(document));
             }
+
             var sql = "insert into docs values(null," +
                       "@doc_title," +
                       "@doc_author," +
@@ -425,6 +456,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       "@doc_tax_year," +
                       "@doc_text_annotations," +
                       "@doc_text)";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -464,10 +496,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public void UpdateDocument(Document document)
         {
-            if (document == null)
+            if (document is null)
             {
                 throw new ArgumentNullException(nameof(document));
             }
+            
             var sql = "update docs set " +
                       "doc_title = @doc_title," +
                       "doc_author = @doc_author," +
@@ -479,6 +512,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                       "doc_flag = @doc_flag," +
                       "doc_text_annotations = @doc_text_annotations," +
                       "doc_text = @doc_text where doc_id = @doc_id";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -516,6 +550,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         public void DeleteDocument(int id)
         {
             var sql = "delete from docs where doc_id = @doc_id";
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -551,7 +586,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 throw new DatabaseException(ex.Message);
             }
+            
             GetDocsTableAccess();
+            
             if (!DatabaseSession.SelectGranted)
             {
                 throw new DatabaseException(Resources.NoAccessToLogin);
@@ -600,6 +637,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             var sql = "show grants for current_user";
             string result;
+            
             try
             {
                 using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
@@ -607,15 +645,18 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     using (var command = new MySqlCommand(sql, connection))
                     {
                         connection.Open();
+                        
                         using (var reader = command.ExecuteReader())
                         {
                             DatabaseSession.SelectGranted = false;
                             DatabaseSession.InsertGranted = false;
                             DatabaseSession.UpdateGranted = false;
                             DatabaseSession.DeleteGranted = false;
+                            
                             while (reader.Read())
                             {
                                 result = reader.GetString(0);
+                                
                                 if (result.Contains("pdfkeeper") &&
                                     result.Contains("docs") ||
                                     result.Contains("*"))
@@ -654,6 +695,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 {
                     connStrBuilder.Clear();
                 }
+
                 disposedValue = true;
             }
         }

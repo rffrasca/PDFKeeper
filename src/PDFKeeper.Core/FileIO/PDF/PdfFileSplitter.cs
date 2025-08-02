@@ -33,12 +33,14 @@ namespace PDFKeeper.Core.FileIO.PDF
         private int pageNumber = 1;
 
         /// <summary>
-        /// Initializes a new instance of the PdfFileSplitter class.
+        /// Initializes a new instance of the <see cref="PdfFileSplitter"/> class.
         /// </summary>
-        /// <param name="pdfDocument">The PdfDocument object.</param>
-        /// <param name="destination">The destination DirectoryInfo object.</param>
+        /// <param name="pdfDocument">The <see cref="PdfDocument"/> object.</param>
+        /// <param name="destination">The destination <see cref="DirectoryInfo"/> object.</param>
         /// <param name="pdfName">The PDF file name.</param>
-        internal PdfFileSplitter(PdfDocument pdfDocument, DirectoryInfo destination,
+        internal PdfFileSplitter(
+            PdfDocument pdfDocument,
+            DirectoryInfo destination,
             string pdfName) : base(pdfDocument)
         {
             this.destination = destination;
@@ -47,8 +49,17 @@ namespace PDFKeeper.Core.FileIO.PDF
 
         protected override PdfWriter GetNextPdfWriter(PageRange pageRange)
         {
-            return new PdfWriter(Path.Combine(destination.FullName, String.Concat(pdfName, "_",
-                Math.Min(Interlocked.Increment(ref pageNumber), pageNumber - 1), ".pdf")));
+            return new PdfWriter(
+                Path.Combine(
+                    destination.FullName,
+                    string.Concat(
+                        pdfName,
+                        "_",
+                        Math.Min(
+                            Interlocked.Increment(
+                                ref pageNumber),
+                            pageNumber - 1),
+                        ".pdf")));
         }
     }
 }

@@ -26,27 +26,28 @@ namespace PDFKeeper.Core.Interop
     internal static class NativeMethods
     {
         /// <summary>
-        /// Adds the window into the clipboard format listener list.
+        /// Adds the window into the Clipboard format listener list.
         /// </summary>
-        /// <param name="hwnd">The handle of the window.</param>
-        /// <returns>Windows added? (true or false)</returns>
+        /// <param name="hwnd">The <c>Handle</c> of the window.</param>
+        /// <returns><c>true</c> or <c>false</c> if window was added.</returns>
         [DllImport("user32.dll", SetLastError = true)]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool AddClipboardFormatListener(IntPtr hwnd);
 
         /// <summary>
-        /// Removes the window from the clipboard format listener list.
+        /// Removes the window from the Clipboard format listener list.
         /// </summary>
-        /// <param name="hwnd">The handle of the window.</param>
-        /// <returns>Windows removed? (true or false)</returns>
+        /// <param name="hwnd">The <c>Handle</c> of the window.</param>
+        /// <returns><c>true</c> or <c>false</c> if window was removed.</returns>
         [DllImport("user32.dll", SetLastError = true)]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool RemoveClipboardFormatListener(IntPtr hwnd);
 
         /// <summary>
-        /// Retrieves the full path of a known folder identified by the folder's KNOWNFOLDERID.
+        /// Retrieves the full path name of a known folder identified by the folder's
+        /// KNOWNFOLDERID.
         /// </summary>
         /// <param name="rfid">
         /// The reference to the KNOWNFOLDERID that identifies the folder.
@@ -56,10 +57,11 @@ namespace PDFKeeper.Core.Interop
         /// or more of the KNOWN_FOLDER_FLAG values.
         /// </param>
         /// <param name="hToken">
-        /// The access token that represents a particular user. If this parameter is null, which is
-        /// the most common usage, the function requests the known folder for the current user.
+        /// The access token that represents a particular user. If this parameter is <c>null</c>,
+        /// which is the most common usage, the function requests the known folder for the current
+        /// user.
         /// </param>
-        /// <returns>The folder path.</returns>
+        /// <returns>The folder path name.</returns>
         [DllImport(
             "shell32.dll",
             CharSet = CharSet.Unicode,

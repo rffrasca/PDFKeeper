@@ -23,11 +23,11 @@ namespace PDFKeeper.Core.Services
     public interface IFileDialogService
     {
         /// <summary>
-        /// Shows an Open or Save FileDialog.
+        /// Shows an <c>OpenFileDialog</c> or <c>SaveFileDialog</c> based on the implementation.
         /// </summary>
-        /// <param name="filter">The file name filter string.</param>
-        /// <param name="fileName">The selected file name or null.</param>
-        /// <returns>The selected file name or null.</returns>
-        string ShowDialog(string filter, string fileName);
+        /// <param name="filter">The file name filter <c>string</c>.</param>
+        /// <param name="fileName">The optional selected file name.</param>
+        /// <returns>The selected file name or <c>null</c> when no file was selected.</returns>
+        string ShowDialog(string filter, string fileName = null);
     }
 }

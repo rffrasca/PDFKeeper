@@ -24,7 +24,9 @@ using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
+using System;
 using System.IO;
+using System.Windows.Input;
 
 namespace PDFKeeper.Core.Commands
 {
@@ -35,12 +37,16 @@ namespace PDFKeeper.Core.Commands
         private readonly FileCache fileCache;
 
         /// <summary>
-        /// Initializes a new instance of the <c>ExportDocumentCommand</c> class that exports the
-        /// PDF and external metadata (XML) when executed.
+        /// Initializes a new instance of the <see cref="ExportDocumentCommand"/> class that that
+        /// exports the PDF and external metadata (XML) when <see cref="Execute(object)"/> is
+        /// invoked.
+        /// <para>
+        /// When invoking <see cref="Execute(object)"/>, set parameter to <c>null</c>.
+        /// </para>
         /// </summary>
         /// <param name="id">The document ID.</param>
-        /// <param name="exportDirectory">The export <c>DirectoryInfo</c> object.</param>
-        /// <param name="fileCache">The <c>FileCache</c> instance.</param>
+        /// <param name="exportDirectory">The export <see cref="DirectoryInfo"/> object.</param>
+        /// <param name="fileCache">The export <see cref="FileCache"/> instance.</param>
         public ExportDocumentCommand(int id, DirectoryInfo exportDirectory, FileCache fileCache)
         {
             this.id = id;
@@ -48,18 +54,26 @@ namespace PDFKeeper.Core.Commands
             this.fileCache = fileCache;
         }
 
-        public void Execute()
+        public event EventHandler CanExecuteChanged { add { } remove { } }
+
+        public bool CanExecute(object parameter)
+        {
+            throw new NotSupportedException();
+        }
+
+        public void Execute(object parameter)
         {
             Document document;
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
             {
                 document = documentRepository.GetDocument(id, null, true);
             }
+            
             fileCache.AddPdf(id, document.Pdf);
             var filesExportDirectoryPath = Path.Combine(
-                    exportDirectory.FullName,
-                    document.Author,
-                    document.Subject).ReplaceInvalidPathChars();
+                exportDirectory.FullName,
+                document.Author,
+                document.Subject).ReplaceInvalidPathChars();
             Directory.CreateDirectory(filesExportDirectoryPath);
             var pdfFileName = string.Concat(
                 "[",
@@ -74,8 +88,9 @@ namespace PDFKeeper.Core.Commands
                         pdfFileName)));
             var xmlFile = pdfFile.ChangeExtension("xml");
             File.WriteAllBytes(pdfFile.FullName, document.Pdf);
-            var pdfMetadata = new PdfMetadata(pdfFile, null);
+            var pdfMetadata = new PdfMetadata(pdfFile);
             var rule = new ExportPdfMetadataRule(pdfMetadata, document);
+            
             if (rule.ViolationFound)
             {
                 pdfMetadata.Title = document.Title;
@@ -83,6 +98,7 @@ namespace PDFKeeper.Core.Commands
                 pdfMetadata.Subject = document.Subject;
                 pdfMetadata.Keywords = document.Keywords;
             }
+
             pdfMetadata.Notes = document.Notes;
             pdfMetadata.Category = document.Category;
             pdfMetadata.TaxYear = document.TaxYear;

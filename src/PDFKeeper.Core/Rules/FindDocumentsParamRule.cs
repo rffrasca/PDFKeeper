@@ -30,25 +30,33 @@ namespace PDFKeeper.Core.Rules
         private readonly FindDocumentsParam findDocumentsParam;
 
         /// <summary>
-        /// <para>Initializes a new instance of the FindDocumentsParamRule class that:</para>
+        /// Initializes a new instance of the <see cref="FindDocumentsParamRule"/> class that
+        /// verifies:
         /// <list type="bullet">
-        /// Verifies that FindBySearchTermChecked, FindBySelectionsChecked, FindByDateAddedChecked,
-        /// FindFlaggedDocumentsChecked, and AllDocumentsChecked are all not set to false.
+        /// <see cref="FindDocumentsParam.FindBySearchTermChecked"/>,
+        /// <see cref="FindDocumentsParam.FindBySelectionsChecked"/>,
+        /// <see cref="FindDocumentsParam.FindByDateAddedChecked"/>,
+        /// <see cref="FindDocumentsParam.FindFlaggedDocumentsChecked"/>, and
+        /// <see cref="FindDocumentsParam.AllDocumentsChecked"/> are not all set to <c>false</c>.
         /// </list>
         /// <list type="bullet">
-        /// Verifies the length of the SearchTerm property is > 0 when the FindBySearchTermChecked
-        /// property is set to true.
+        /// Length of <see cref="FindDocumentsParam.SearchTerm"/> property is > 0 when the
+        /// <see cref="FindDocumentsParam.FindBySearchTermChecked"/> property is set to
+        /// <c>true</c>.
         /// </list>
         /// <list type="bullet">
-        /// Verifies the length of the Author, Subject, Category, and TaxYear properties is > 0
-        /// when the FindBySelectionsChecked property is set to true.
+        /// Length of <see cref="FindDocumentsParam.Author"/>,
+        /// <see cref="FindDocumentsParam.Subject"/>, <see cref="FindDocumentsParam.Category"/>,
+        /// and <see cref="FindDocumentsParam.TaxYear"/> properties is > 0 when the
+        /// <see cref="FindDocumentsParam.FindBySelectionsChecked"/> property is set to
+        /// <c>true</c>.
         /// </list>
         /// <list type="bullet">
-        /// Verifies the length of the DateAdded property is > 0 when the FindByDateAddedChecked
-        /// property is set to true.
+        /// Length of <see cref="FindDocumentsParam.DateAdded"/> property is > 0 when the
+        /// <see cref="FindDocumentsParam.FindByDateAddedChecked"/> property is set to <c>true</c>.
         /// </list>
         /// </summary>
-        /// <param name="findDocumentsParam">The FindDocumentsParam object.</param>
+        /// <param name="findDocumentsParam">The <see cref="FindDocumentsParam"/> object.</param>
         internal FindDocumentsParamRule(FindDocumentsParam findDocumentsParam)
         {
             this.findDocumentsParam = findDocumentsParam;
@@ -61,19 +69,23 @@ namespace PDFKeeper.Core.Rules
                 findDocumentsParam.FindBySelectionsChecked.Equals(false) &&
                 findDocumentsParam.FindByDateAddedChecked.Equals(false) &&
                 findDocumentsParam.FindFlaggedDocumentsChecked.Equals(false) &&
-                findDocumentsParam.AllDocumentsChecked.Equals(false))
+                findDocumentsParam.AllDocumentsChecked.Equals(
+                    false))
             {
                 ViolationFound = true;
                 ViolationMessage = Resources.OneFindFunctionMustBeTrue;
             }
             else if (findDocumentsParam.FindBySearchTermChecked &&
-                string.IsNullOrEmpty(findDocumentsParam.SearchTerm))
+                string.IsNullOrEmpty(
+                    findDocumentsParam.SearchTerm))
             {
                 ViolationFound = true;
                 ViolationMessage = Resources.SearchTermCannotBeBlank;
             }
-            else if (findDocumentsParam.FindBySearchTermChecked && IsSearchTermSyntaxCorrect(
-                findDocumentsParam.SearchTerm).Equals(false))
+            else if (findDocumentsParam.FindBySearchTermChecked &&
+                IsSearchTermSyntaxCorrect(
+                    findDocumentsParam.SearchTerm).Equals(
+                    false))
             {
                 ViolationFound = true;
                 ViolationMessage = Resources.SearchTermSyntaxIncorrect;
@@ -88,7 +100,8 @@ namespace PDFKeeper.Core.Rules
                 ViolationMessage = Resources.CommonFieldsCannotAllBeBlank;
             }
             else if (findDocumentsParam.FindByDateAddedChecked &&
-                string.IsNullOrEmpty(findDocumentsParam.DateAdded))
+                string.IsNullOrEmpty(
+                    findDocumentsParam.DateAdded))
             {
                 ViolationFound = true;
                 ViolationMessage = Resources.DateAddedCannotBeBlank;
@@ -105,7 +118,9 @@ namespace PDFKeeper.Core.Rules
             {
                 return false;
             }
+
             var result = false;
+            
             switch (DatabaseSession.PlatformName)
             {
                 case DatabaseSession.CompatiblePlatformName.Oracle:
@@ -121,6 +136,7 @@ namespace PDFKeeper.Core.Rules
                     result = IsSearchTermSyntaxCorrectForMySql(searchTerm);
                     break;
             }
+
             return result;
         }
 
@@ -173,8 +189,12 @@ namespace PDFKeeper.Core.Rules
 
         private static bool IsSearchTermSyntaxCorrectForSqlite(string searchTerm)
         {
-            if (searchTerm.Contains("&") || searchTerm.Contains("!") || searchTerm.Contains("?") ||
-                searchTerm.Contains("/") || searchTerm.Contains("\"") || searchTerm.Contains(",") ||
+            if (searchTerm.Contains("&") ||
+                searchTerm.Contains("!") ||
+                searchTerm.Contains("?") ||
+                searchTerm.Contains("/") ||
+                searchTerm.Contains("\"") ||
+                searchTerm.Contains(",") ||
                 searchTerm.StartsWith("*", StringComparison.CurrentCulture))
             {
                 return false;

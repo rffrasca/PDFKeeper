@@ -26,15 +26,18 @@ namespace PDFKeeper.Core.Application
     internal class UserProfileFolder
     {
         /// <summary>
-        /// Gets the Desktop folder path.
+        /// Gets the <see cref="Environment.SpecialFolder.Desktop"/> folder path.
         /// </summary>
         internal static string Desktop => Environment.GetFolderPath(
             Environment.SpecialFolder.Desktop);
 
         /// <summary>
-        /// Gets the Downloads folder path.
+        /// Gets the <c>Downloads</c> folder path.
         /// </summary>
         internal static string Downloads => NativeMethods.SHGetKnownFolderPath(
-            new Guid("374DE290-123F-4565-9164-39C4925E467B"), 0, IntPtr.Zero);
+            new Guid(
+                "374DE290-123F-4565-9164-39C4925E467B"),
+            0,
+            IntPtr.Zero);
     }
 }

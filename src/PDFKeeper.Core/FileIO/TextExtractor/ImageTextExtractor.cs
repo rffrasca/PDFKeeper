@@ -36,10 +36,14 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
         private readonly ImageFormat imageFormat;
 
         /// <summary>
-        /// Initializes a new instance of the ImageTextExtractor class.
+        /// Initializes a new instance of the <see cref="ImageTextExtractor"/> class.
         /// </summary>
-        /// <param name="images">The collection of images.</param>
-        /// <param name="imageFormat">The image format of the images.</param>
+        /// <param name="images">
+        /// The <see cref="Collection{T}"/> of images.
+        /// </param>
+        /// <param name="imageFormat">
+        /// The <see cref="ImageFormat"/> of the images in the <see cref="Collection{T}"/>.
+        /// </param>
         internal ImageTextExtractor(Collection<byte[]> images, ImageFormat imageFormat)
         {
             this.images = images;
@@ -47,24 +51,32 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
         }
 
         /// <summary>
-        /// Gets text from a collection of images using Windows OCR.
+        /// Gets text from the <see cref="Collection{T}"/> of images using Windows OCR.
         /// </summary>
         /// <returns>The extracted text.</returns>
         internal async Task<string> GetText()
         {
             var text = new StringBuilder();
+
             foreach (var image in images)
             {
                 try
                 {
-                    var imageFile = Path.Combine(new ApplicationDirectory().GetDirectory(
-                        ApplicationDirectory.SpecialName.Temp).FullName,
-                        String.Concat(Guid.NewGuid(), ".", imageFormat.ToString()));
+                    var imageFile = Path.Combine(
+                        new ApplicationDirectory().GetDirectory(
+                            ApplicationDirectory.SpecialName.Temp).FullName,
+                        string.Concat(
+                            Guid.NewGuid(),
+                            ".",
+                            imageFormat.ToString()));
                     File.WriteAllBytes(imageFile, image);
+
                     using (var stream = File.Open(imageFile, FileMode.Open, FileAccess.Read))
                     {
                         var bmpDecoder = await BitmapDecoder.CreateAsync(
-                            stream.AsRandomAccessStream()).AsTask().ConfigureAwait(false);
+                            stream.AsRandomAccessStream()).AsTask().ConfigureAwait(
+                            false);
+
                         using (var softwareBmp = await bmpDecoder.GetSoftwareBitmapAsync())
                         {
                             if (softwareBmp.PixelWidth <= OcrEngine.MaxImageDimension &&
@@ -72,6 +84,7 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
                             {
                                 var ocrEngine = OcrEngine.TryCreateFromUserProfileLanguages();
                                 var ocrResult = await ocrEngine.RecognizeAsync(softwareBmp);
+                        
                                 foreach (var line in ocrResult.Lines)
                                 {
                                     text.AppendLine(line.Text);
@@ -79,10 +92,12 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
                             }                                
                         }
                     }
+
                     File.Delete(imageFile);
                 }
                 catch (ArithmeticException) { }
             }
+
             return text.ToString();
         }
     }

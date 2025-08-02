@@ -30,45 +30,50 @@ namespace PDFKeeper.Core.Models
     internal class TitleToken
     {
         /// <summary>
-        /// Gets the date token.
+        /// Gets the value of <see cref="Resources.DateToken"/>.
         /// </summary>
         internal static string DateToken => Resources.DateToken;
 
         /// <summary>
-        /// Gets the date and time token.
+        /// Gets the value of <see cref="Resources.DateTimeToken"/>.
         /// </summary>
         internal static string DateTimeToken => Resources.DateTimeToken;
-        
+
         /// <summary>
-        /// Gets the file name token.
+        /// Gets the value of <see cref="Resources.FileNameToken"/>.
         /// </summary>
         internal static string FileNameToken => Resources.FileNameToken;
 
         /// <summary>
-        /// Gets the current date in the format of yyyy-MM-dd.
+        /// Gets the current Date in yyyy-MM-dd format.
         /// </summary>
         internal static string GetDate() =>
-            DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.CurrentCulture);
+            DateTime.Now.ToString(
+                "yyyy-MM-dd",
+                CultureInfo.CurrentCulture);
 
         /// <summary>
-        /// Gets the current date and time in the format of yyyy-MM-dd HH:mm:ss.
+        /// Gets the current Date and Time in yyyy-MM-dd HH:mm:ss format.
         /// </summary>
         internal static string GetDateTime() => 
-            DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CurrentCulture);
+            DateTime.Now.ToString(
+                "yyyy-MM-dd HH:mm:ss",
+                CultureInfo.CurrentCulture);
 
         /// <summary>
         /// Gets the name of a file without the extension.
         /// </summary>
-        /// <param name="file">The FileInfo object.</param>
+        /// <param name="file">The <see cref="FileInfo"/> object.</param>
         /// <returns>The file name without the extension.</returns>
         /// <exception cref="ArgumentNullException"></exception>
         internal static string GetFileName(FileInfo file) =>
-            Path.GetFileNameWithoutExtension(file.FullName);
+            Path.GetFileNameWithoutExtension(
+                file.FullName);
 
         /// <summary>
-        /// Gets all title tokens.
+        /// Gets an array containing all Title Tokens.
         /// </summary>
-        /// <returns>The array of title tokens.</returns>
+        /// <returns>The <c>string[]</c> of Title Tokens.</returns>
         internal static string[] GetTokens() => GetTokensInternal().ToArray();
         
         private static IEnumerable<string> GetTokensInternal()

@@ -27,15 +27,16 @@ namespace PDFKeeper.Core.DataAccess.Repository
     public interface IDocumentRepository : IDisposable
     {
         /// <summary>
-        /// Gets if Search Term Snippets is supported? (true or false) 
+        /// Gets <c>true</c> or <c>false</c> if Search Term Snippets are supported.
         /// </summary>
         bool SearchTermSnippetsSupported { get; }
 
         /// <summary>
-        /// gets the length of the DOC_NOTES column in the DOCS table.
+        /// Gets the length of the DOC_NOTES column in the DOCS table.
         /// </summary>
         /// <returns>
-        /// The length of the column or 0 when the database platform is not Oracle.
+        /// The length of the column or 0 when <see cref="DatabaseSession.PlatformName"/> is not
+        /// <see cref="DatabaseSession.CompatiblePlatformName.Oracle"/>.
         /// </returns>
         int GetNotesColumnDataLength();
 
@@ -43,132 +44,185 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// Gets a list of documents in the database by search term.
         /// </summary>
         /// <param name="searchTerm">The search term.</param>
-        /// <returns>The DataTable object.</returns>
+        /// <returns>The <see cref="DataTable"/> object.</returns>
+        /// <exception cref="DatabaseException"></exception>
         DataTable GetListOfDocumentsBySearchTerm(string searchTerm);
 
         /// <summary>
-        /// Gets a list of documents in the database by author, subject, category, and tax year.
+        /// Gets a list of documents in the database by Author, Subject, Category, and Tax Year.
         /// </summary>
-        /// <param name="author">The author or null.</param>
-        /// <param name="subject">The subject or null.</param>
-        /// <param name="category">The category or null.</param>
-        /// <param name="taxYear">The tax year or null.</param>
-        /// <returns>The DataTable object.</returns>
+        /// <param name="author">The Author or <c>null</c>.</param>
+        /// <param name="subject">The Subject or <c>null</c>.</param>
+        /// <param name="category">The Category or <c>null</c>.</param>
+        /// <param name="taxYear">The Tax Year or <c>null</c>.</param>
+        /// <returns>The <see cref="DataTable"/> object.</returns>
+        /// <exception cref="DatabaseException"></exception>
         DataTable GetListOfDocuments(string author, string subject, string category, string taxYear);
 
         /// <summary>
-        /// Gets a list of documents in the database by date added.
+        /// Gets a list of documents in the database by Date Added.
         /// </summary>
-        /// <param name="dateAdded">The date added in YYYY-MM-DD format.</param>
-        /// <returns>The DataTable object.</returns>
+        /// <param name="dateAdded">The Date Added in YYYY-MM-DD format.</param>
+        /// <returns>The <see cref="DataTable"/> object.</returns>
+        /// <exception cref="DatabaseException"></exception>
         DataTable GetListOfDocumentsByDateAdded(string dateAdded);
 
         /// <summary>
         /// Gets a list of all flagged documents in the database.
         /// </summary>
-        /// <returns>The DataTable object.</returns>
+        /// <returns>The <see cref="DataTable"/> object.</returns>
+        /// <exception cref="DatabaseException"></exception>
         DataTable GetListOfFlaggedDocuments();
 
         /// <summary>
         /// Gets a list of all documents in the database.
         /// </summary>
-        /// <returns>The DataTable object.</returns>
+        /// <returns>The <see cref="DataTable"/> object.</returns>
+        /// <exception cref="DatabaseException"></exception>
         DataTable GetListOfDocuments();
 
         /// <summary>
-        /// Gets authors by subject, category, and tax year from the database.
+        /// Gets Authors by Subject, Category, and Tax Year from the database.
         /// </summary>
-        /// <param name="subject">The subject or null.</param>
-        /// <param name="category">The category or null.</param>
-        /// <param name="taxYear">The tax year or null.</param>
-        /// <returns>The DataTable object.</returns>
+        /// <param name="subject">The Subject or <c>null</c>.</param>
+        /// <param name="category">The Category or <c>null</c>.</param>
+        /// <param name="taxYear">The Tax Year or <c>null</c>.</param>
+        /// <returns>The <see cref="DataTable"/> object.</returns>
+        /// <exception cref="DatabaseException"></exception>
         DataTable GetAuthors(string subject, string category, string taxYear);
 
         /// <summary>
-        /// Gets subjects by author, category, and tax year from the database.
+        /// Gets Subjects by Author, Category, and Tax Year from the database.
         /// </summary>
-        /// <param name="author">The author or null.</param>
-        /// <param name="category">The category or null.</param>
-        /// <param name="taxYear">The tax year or null.</param>
-        /// <returns>The DataTable object.</returns>
+        /// <param name="author">The Author or <c>null</c>.</param>
+        /// <param name="category">The Category or <c>null</c>.</param>
+        /// <param name="taxYear">The Tax Year or <c>null</c>.</param>
+        /// <returns>The <see cref="DataTable"/> object.</returns>
+        /// <exception cref="DatabaseException"></exception>
         DataTable GetSubjects(string author, string category, string taxYear);
 
         /// <summary>
-        /// Gets categories by author, subject, and tax year from the database.
+        /// Gets Categories by Author, Subject, and Tax Year from the database.
         /// </summary>
-        /// <param name="author">The author or null.</param>
-        /// <param name="subject">The subject or null.</param>
-        /// <param name="taxYear">The tax year or null.</param>
-        /// <returns>The DataTable object.</returns>
+        /// <param name="author">The Author or <c>null</c>.</param>
+        /// <param name="subject">The Subject or <c>null</c>.</param>
+        /// <param name="taxYear">The Tax Year or <c>null</c>.</param>
+        /// <returns>The <see cref="DataTable"/> object.</returns>
+        /// <exception cref="DatabaseException"></exception>
         DataTable GetCategories(string author, string subject, string taxYear);
 
         /// <summary>
-        /// Gets tax years by author, subject, and category from the database.
+        /// Gets Tax Years by Author, Subject, and Category from the database.
         /// </summary>
-        /// <param name="author">The author or null.</param>
-        /// <param name="subject">The subject or null.</param>
-        /// <param name="category">The category or null.</param>
-        /// <returns>The DataTable object.</returns>
+        /// <param name="author">The Author or <c>null</c>.</param>
+        /// <param name="subject">The Subject or <c>null</c>.</param>
+        /// <param name="category">The Category or <c>null</c>.</param>
+        /// <returns>The <see cref="DataTable"/> object.</returns>
+        /// <exception cref="DatabaseException"></exception>
         DataTable GetTaxYears(string author, string subject, string category);
 
         /// <summary>
         /// Gets the document from the database.
         /// </summary>
-        /// <param name="id">The document ID.</param>
-        /// <param name="searchTerm">The specified search term or null.</param>
-        /// <param name="includePdf">Include the PDF file contents? (true or false)</param>
-        /// <returns>The <c>Document</c> object with or without the PDF file contents.</returns>
+        /// <param name="id">
+        /// The document ID.
+        /// </param>
+        /// <param name="searchTerm">
+        /// The specified search term or <c>null</c>.
+        /// </param>
+        /// <param name="includePdf">
+        /// <c>true</c> or <c>false</c> to include the PDF file contents.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Document"/> object with or without the PDF file contents.
+        /// </returns>
+        /// <exception cref="DatabaseException"></exception>
         Document GetDocument(int id, string searchTerm, bool includePdf = false);
 
         /// <summary>
-        /// Inserts the document into the database.
+        /// Inserts the <see cref="Document"/> into the database.
         /// </summary>
-        /// <param name="document">The Document object.</param>
+        /// <param name="document">The <see cref="Document"/> object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="DatabaseException"></exception>
         void InsertDocument(Document document);
 
         /// <summary>
-        /// Updates the document in the database. Only the doc_title, doc_author, doc_subject,
-        /// doc_notes, doc_category, doc_tax_year, doc_flag, doc_text_annotations, and doc_text
-        /// columns will be updated.
+        /// Updates the <see cref="Document"/> in the database.
+        /// <para>
+        /// Only the doc_title, doc_author, doc_subject, doc_notes, doc_category, doc_tax_year,
+        /// doc_flag, doc_text_annotations, and doc_text columns will be updated.
+        /// </para>
         /// </summary>
-        /// <param name="document">The Document object.</param>
+        /// <param name="document">The <see cref="Document"/> object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="DatabaseException"></exception>
         void UpdateDocument(Document document);
-        
+
         /// <summary>
-        /// Deletes the document from the database.
+        /// Deletes the <see cref="Document"/> from the database.
         /// </summary>
         /// <param name="id">The document ID.</param>
+        /// <exception cref="DatabaseException"></exception>
         void DeleteDocument(int id);
 
         /// <summary>
-        /// Performs a test connection to the database. NotSupportedException will be thrown by the
-        /// implementing class when the database platform is SQLite.
+        /// Performs a test connection to the database.
+        /// <para>
+        /// NotSupportedException will be thrown by the implementing class when
+        /// <see cref="DatabaseSession.PlatformName"/> is
+        /// <see cref="DatabaseSession.CompatiblePlatformName.Sqlite"/>.
+        /// </para>
         /// </summary>
+        /// <exception cref="DatabaseException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
         void TestConnection();
 
         /// <summary>
-        /// Resets the credential object used for connecting to the database. NotSupportedException
-        /// will be thrown by the implementing class when the database platform does not implement
-        /// a credential object.
+        /// Resets the credential object used for connecting to the database.
+        /// <para>
+        /// NotSupportedException will be thrown by the implementing class when
+        /// <see cref="DatabaseSession.PlatformName"/> does not implement a <c>Credential</c>
+        /// object.
+        /// </para>
         /// </summary>
+        /// <exception cref="NotSupportedException"></exception>
         void ResetCredential();
 
         /// <summary>
-        /// Creates the database. NotSupportedException will be thrown by the implementing class
-        /// when the database platform is not SQLite.
+        /// Creates the database.
+        /// <para>
+        /// NotSupportedException will be thrown by the implementing class when
+        /// <see cref="DatabaseSession.PlatformName"/> is not
+        /// <see cref="DatabaseSession.CompatiblePlatformName.Sqlite" />.
+        /// </para>
         /// </summary>
+        /// <exception cref="DatabaseException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
         void CreateDatabase();
 
         /// <summary>
-        /// Compacts the database. NotSupportedException will be thrown by the implementing class
-        /// when the database platform is not SQLite.
+        /// Compacts the database.
+        /// <para>
+        /// NotSupportedException will be thrown by the implementing class when
+        /// <see cref="DatabaseSession.PlatformName"/> is not
+        /// <see cref="DatabaseSession.CompatiblePlatformName.Sqlite"/>.
+        /// </para>
         /// </summary>
+        /// <exception cref="DatabaseException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
         void CompactDatabase();
 
         /// <summary>
-        /// Upgrades the database. NotSupportedException will be thrown by the implementing class
-        /// when the database platform is not SQLite.
+        /// Upgrades the database.
+        /// <para>
+        /// NotSupportedException will be thrown by the implementing class when
+        /// <see cref="DatabaseSession.PlatformName"/> is not
+        /// <see cref="DatabaseSession.CompatiblePlatformName.Sqlite"/>.
+        /// </para>
         /// </summary>
+        /// <exception cref="DatabaseException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
         void UpgradeDatabase();
     }
 }

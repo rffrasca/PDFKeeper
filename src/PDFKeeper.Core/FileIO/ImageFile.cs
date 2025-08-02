@@ -29,21 +29,21 @@ namespace PDFKeeper.Core.FileIO
         private readonly FileInfo imageFile;
 
         /// <summary>
-        /// Initializes a new instance of the ImageFile class.
+        /// Initializes a new instance of the <see cref="ImageFile"/> class.
         /// </summary>
-        /// <param name="imageFile">The image FileInfo object.</param>
+        /// <param name="imageFile">The image <see cref="FileInfo"/> object.</param>
         internal ImageFile(FileInfo imageFile)
         {
             this.imageFile = imageFile;
         }
 
         /// <summary>
-        /// Does the image file exist? (true or false)
+        /// <c>true</c> or <c>false</c> if the image file exists.
         /// </summary>
         internal bool Exists => imageFile.Exists;
 
         /// <summary>
-        /// Gets the full path of the image file.
+        /// Gets the full path name of the image file.
         /// </summary>
         internal string FullName => imageFile.FullName;
 
@@ -59,7 +59,7 @@ namespace PDFKeeper.Core.FileIO
         /// <summary>
         /// Gets the contents of the image file.
         /// </summary>
-        /// <returns>The contents as an image.</returns>
+        /// <returns>The contents as an <see cref="Image"/>.</returns>
         internal Image GetImage()
         {
             using (var stream = new FileStream(imageFile.FullName, FileMode.Open, FileAccess.Read))

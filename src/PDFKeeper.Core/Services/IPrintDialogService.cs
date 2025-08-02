@@ -25,9 +25,9 @@ namespace PDFKeeper.Core.Services
     public interface IPrintDialogService
     {
         /// <summary>
-        /// Shows the print dialog.
+        /// Shows the <c>PrintDialog</c>.
         /// </summary>
-        /// <param name="printDocument">The PrintDocument object.</param>
+        /// <param name="printDocument">The <see cref="PrintDocument"/> object.</param>
         /// <returns>1 (OK was selected) or 2 (Cancel was selected)</returns>
         int ShowDialog(PrintDocument printDocument);
     }

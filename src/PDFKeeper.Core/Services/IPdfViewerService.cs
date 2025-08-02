@@ -25,8 +25,12 @@ namespace PDFKeeper.Core.Services
         /// <summary>
         /// Shows the PDF with the bundled viewer or default application.
         /// </summary>
-        /// <param name="pdfPath">The PDF path.</param>
-        /// <param name="useDefaultApp">Open PDF with default application. (true or false)</param>
+        /// <param name="pdfPath">
+        /// The PDF path name.
+        /// </param>
+        /// <param name="useDefaultApp">
+        /// <c>true</c> or <c>false</c> to open PDF with default application.
+        /// </param>
         void Show(string pdfPath, bool useDefaultApp);
     }
 }

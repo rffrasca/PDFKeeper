@@ -27,7 +27,7 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
         /// <summary>
         /// Gets text from the PDF.
         /// </summary>
-        /// <param name="pdfFile">The PDF FileInfo object.</param>
+        /// <param name="pdfFile">The PDF <see cref="FileInfo"/> object.</param>
         /// <returns>The extracted text.</returns>
         string GetText(FileInfo pdfFile);
     }
