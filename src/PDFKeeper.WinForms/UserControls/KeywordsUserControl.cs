@@ -23,7 +23,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.UserControls
 {
-    public partial class KeywordsUserControl : UserControl
+    internal partial class KeywordsUserControl : UserControl
     {
         public KeywordsUserControl()
         {

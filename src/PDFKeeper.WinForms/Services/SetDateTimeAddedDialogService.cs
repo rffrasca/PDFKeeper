@@ -24,7 +24,7 @@ using PDFKeeper.WinForms.Dialogs;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class SetDateTimeAddedDialogService : IDialogService
+    internal class SetDateTimeAddedDialogService : IDialogService
     {
         public string ShowDialog(string arg = null)
         {

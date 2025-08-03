@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Dialogs
 {
-    public partial class SetTitleForm : Form
+    internal partial class SetTitleForm : Form
     {
         public SetTitleForm()
         {

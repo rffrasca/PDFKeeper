@@ -25,7 +25,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Components
 {
-    public partial class SecureTextBox : TextBox
+    internal partial class SecureTextBox : TextBox
     {
         public SecureTextBox()
         {

@@ -23,7 +23,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.UserControls
 {
-    public partial class UploadOptionsUserControl : UserControl
+    internal partial class UploadOptionsUserControl : UserControl
     {
         public UploadOptionsUserControl()
         {

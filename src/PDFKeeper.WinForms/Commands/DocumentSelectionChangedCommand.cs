@@ -25,7 +25,7 @@ using System.Windows.Input;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    public class DocumentSelectionChangedCommand : ICommand
+    internal class DocumentSelectionChangedCommand : ICommand
     {
         private readonly MainForm mainForm;
         private readonly MainViewModel viewModel;
@@ -37,7 +37,6 @@ namespace PDFKeeper.WinForms.Commands
         /// </summary>
         /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
         /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-        [CLSCompliant(false)]
         public DocumentSelectionChangedCommand(MainForm mainForm, MainViewModel viewModel)
         {
             this.mainForm = mainForm;

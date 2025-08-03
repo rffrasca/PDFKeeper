@@ -25,7 +25,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Views
 {
-    public partial class SetTaxYearForm : Form
+    internal partial class SetTaxYearForm : Form
     {
         public SetTaxYearForm()
         {

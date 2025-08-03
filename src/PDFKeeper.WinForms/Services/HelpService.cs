@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class HelpService : IHelpService
+    internal class HelpService : IHelpService
     {
         public void ShowHelp<T>(T control, HelpFile.Topic topic)
         {

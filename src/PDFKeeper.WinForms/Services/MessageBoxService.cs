@@ -25,7 +25,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class MessageBoxService : IMessageBoxService
+    internal class MessageBoxService : IMessageBoxService
     {
         private readonly MessageBoxOptions messageBoxOptions;
         private MessageBoxButtons messageBoxButtons;

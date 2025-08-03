@@ -25,7 +25,7 @@ using PDFKeeper.Core.Services;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class FolderExplorerService : IFolderExplorerService
+    internal class FolderExplorerService : IFolderExplorerService
     {
         public void Explore(DirectoryInfo directory)
         {

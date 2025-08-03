@@ -23,7 +23,7 @@ using PDFKeeper.WinForms.Dialogs;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class OptionsDialogService : IDialogService
+    internal class OptionsDialogService : IDialogService
     {
         public string ShowDialog(string arg = null)
         {

@@ -23,7 +23,7 @@ using PDFKeeper.WinForms.Dialogs;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class SetPreviewPixelDensityDialogService : IDialogService
+    internal class SetPreviewPixelDensityDialogService : IDialogService
     {
         public string ShowDialog(string arg = null)
         {

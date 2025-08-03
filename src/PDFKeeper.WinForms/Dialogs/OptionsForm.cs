@@ -25,7 +25,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Dialogs
 {
-    public partial class OptionsForm : Form
+    internal partial class OptionsForm : Form
     {
         public OptionsForm()
         {

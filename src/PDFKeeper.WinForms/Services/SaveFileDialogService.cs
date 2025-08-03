@@ -23,7 +23,7 @@ using PDFKeeper.Core.Services;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class SaveFileDialogService : IFileDialogService
+    internal class SaveFileDialogService : IFileDialogService
     {
         public string ShowDialog(string filter, string fileName = null)
         {

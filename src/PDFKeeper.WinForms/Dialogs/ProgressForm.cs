@@ -22,7 +22,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Dialogs
 {
-    public partial class ProgressForm : Form
+    internal partial class ProgressForm : Form
     {
         public ProgressForm()
         {

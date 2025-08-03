@@ -23,7 +23,7 @@ using PDFKeeper.WinForms.Views;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class UploadProfileEditorDialogService : IDialogService
+    internal class UploadProfileEditorDialogService : IDialogService
     {
         public string ShowDialog(string arg = null)
         {

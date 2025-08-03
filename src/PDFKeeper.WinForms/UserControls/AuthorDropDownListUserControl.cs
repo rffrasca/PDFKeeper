@@ -23,7 +23,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.UserControls
 {
-    public partial class AuthorDropDownListUserControl : UserControl
+    internal partial class AuthorDropDownListUserControl : UserControl
     {
         public AuthorDropDownListUserControl()
         {

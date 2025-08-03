@@ -36,7 +36,7 @@ using static PDFKeeper.Core.ViewModels.MainViewModel;
 
 namespace PDFKeeper.WinForms.Views
 {
-    public partial class MainForm : Form
+    internal partial class MainForm : Form
     {
         private readonly MainViewModel viewModel;
         private readonly IHelpService helpService;

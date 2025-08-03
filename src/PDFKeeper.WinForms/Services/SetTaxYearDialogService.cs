@@ -24,13 +24,14 @@ using PDFKeeper.WinForms.Views;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class SetTaxYearDialogService : IDialogService
+    internal class SetTaxYearDialogService : IDialogService
     {
         public string ShowDialog(string arg = null)
         {
             using (var dialog = new SetTaxYearForm())
             {
                 dialog.ShowDialog();
+
                 if (dialog.DialogResult.Equals(DialogResult.OK))
                 {
                     return dialog.TaxYearDropDownListUserControl.TaxYear;

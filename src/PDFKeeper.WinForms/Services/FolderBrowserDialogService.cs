@@ -23,7 +23,7 @@ using PDFKeeper.Core.Services;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class FolderBrowserDialogService : IFolderBrowserDialogService
+    internal class FolderBrowserDialogService : IFolderBrowserDialogService
     {
         public string ShowDialog(string description)
         {

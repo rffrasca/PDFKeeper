@@ -26,7 +26,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Views
 {
-    public partial class LoginForm : Form
+    internal partial class LoginForm : Form
     {
         private readonly LoginViewModel viewModel;
 

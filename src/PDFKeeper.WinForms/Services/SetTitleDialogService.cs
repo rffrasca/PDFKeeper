@@ -26,7 +26,7 @@ using PDFKeeper.WinForms.Properties;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class SetTitleDialogService : IDialogService
+    internal class SetTitleDialogService : IDialogService
     {
         public string ShowDialog(string arg = null)
         {

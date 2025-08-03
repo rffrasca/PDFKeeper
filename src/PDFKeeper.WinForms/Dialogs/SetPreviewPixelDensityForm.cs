@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Dialogs
 {
-    public partial class SetPreviewPixelDensityForm : Form
+    internal partial class SetPreviewPixelDensityForm : Form
     {
         public SetPreviewPixelDensityForm()
         {

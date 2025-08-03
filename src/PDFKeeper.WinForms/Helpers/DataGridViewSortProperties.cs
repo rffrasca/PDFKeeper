@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    public class DataGridViewSortProperties
+    internal class DataGridViewSortProperties
     {
         private DataGridViewColumn sortedColumn;
         private SortOrder sortOrder;

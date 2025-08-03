@@ -27,7 +27,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Views
 {
-    public partial class UploadProfileEditorForm : Form
+    internal partial class UploadProfileEditorForm : Form
     {
         private readonly UploadProfileEditorViewModel viewModel;
 

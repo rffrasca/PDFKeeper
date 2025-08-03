@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Components
 {
-    public partial class CustomTextBox : TextBox
+    internal partial class CustomTextBox : TextBox
     {
         public CustomTextBox()
         {

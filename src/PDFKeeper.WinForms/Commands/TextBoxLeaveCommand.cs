@@ -25,7 +25,7 @@ using System.Windows.Input;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    public class TextBoxLeaveCommand : TextBoxFocusCommandBase, ICommand
+    internal class TextBoxLeaveCommand : TextBoxFocusCommandBase, ICommand
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TextBoxLeaveCommand"/> class that sets the
@@ -34,7 +34,6 @@ namespace PDFKeeper.WinForms.Commands
         /// </summary>
         /// <param name="textBox">The <see cref="TextBox"/> object.</param>
         /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-        [CLSCompliant(false)]
         public TextBoxLeaveCommand(TextBox textBox, MainViewModel viewModel)
         {
             this.textBox = textBox;

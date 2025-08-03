@@ -27,7 +27,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Views
 {
-    public partial class FindDocumentsForm : Form
+    internal partial class FindDocumentsForm : Form
     {
         private readonly FindDocumentsViewModel viewModel;
         private RadioButton selectedRadioButtonOnOpen;

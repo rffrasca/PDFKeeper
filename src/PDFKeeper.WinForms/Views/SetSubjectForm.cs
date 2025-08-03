@@ -25,7 +25,7 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Views
 {
-    public partial class SetSubjectForm : Form
+    internal partial class SetSubjectForm : Form
     {
         public SetSubjectForm()
         {

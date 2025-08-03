@@ -25,7 +25,7 @@ using static PDFKeeper.Core.FileIO.PDF.PdfFile;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    public class FileExtractAllCommand : ICommand
+    internal class FileExtractAllCommand : ICommand
     {
         private readonly MainViewModel viewModel;
         private readonly AttachedFilesType attachedFilesType;
@@ -41,7 +41,6 @@ namespace PDFKeeper.WinForms.Commands
         /// <param name="attachedFilesType">
         /// The <see cref="PdfFile.AttachedFilesType"/> of attached files in the PDF to extract.
         /// </param>
-        [CLSCompliant(false)]
         public FileExtractAllCommand(MainViewModel viewModel, AttachedFilesType attachedFilesType)
         {
             this.viewModel = viewModel;

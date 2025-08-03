@@ -24,7 +24,7 @@ using PDFKeeper.WinForms.Dialogs;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class PdfOwnerPasswordDialogService : IPasswordDialogService
+    internal class PdfOwnerPasswordDialogService : IPasswordDialogService
     {
         public SecureString ShowDialog()
         {

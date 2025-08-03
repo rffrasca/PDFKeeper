@@ -24,8 +24,7 @@ using Vip.ComboBox;
 
 namespace PDFKeeper.WinForms.Components
 {
-    [CLSCompliant(false)]
-    public partial class CustomComboBox : ComboBoxVip
+    internal partial class CustomComboBox : ComboBoxVip
     {
         public CustomComboBox()
         {

@@ -26,7 +26,7 @@ using System.Windows.Input;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    public class TextBoxSelectedTextCommand : ICommand
+    internal class TextBoxSelectedTextCommand : ICommand
     {
         private readonly TextBox textBox;
         private readonly MainForm mainForm;
@@ -40,7 +40,6 @@ namespace PDFKeeper.WinForms.Commands
         /// <param name="textBox">The <see cref="TextBox"/> object.</param>
         /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
         /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-        [CLSCompliant(false)]
         public TextBoxSelectedTextCommand(
             TextBox textBox,
             MainForm mainForm,

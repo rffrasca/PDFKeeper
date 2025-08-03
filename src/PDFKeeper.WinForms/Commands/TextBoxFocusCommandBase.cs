@@ -19,16 +19,13 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.ViewModels;
-using System;
 using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    public abstract class TextBoxFocusCommandBase
+    internal abstract class TextBoxFocusCommandBase
     {
         protected TextBox textBox;
-
-        [CLSCompliant(false)]
         protected MainViewModel viewModel;
 
         /// <summary>

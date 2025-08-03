@@ -25,7 +25,7 @@ using PDFKeeper.Core.Services;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class PrintDialogService : IPrintDialogService
+    internal class PrintDialogService : IPrintDialogService
     {
         public int ShowDialog(PrintDocument printDocument)
         {

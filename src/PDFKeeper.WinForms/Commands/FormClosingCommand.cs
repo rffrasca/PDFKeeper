@@ -25,7 +25,7 @@ using System.Windows.Input;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    public class FormClosingCommand : ICommand
+    internal class FormClosingCommand : ICommand
     {
         private readonly FormClosingEventArgs e;
         private readonly MainViewModel viewModel;
@@ -36,7 +36,6 @@ namespace PDFKeeper.WinForms.Commands
         /// </summary>
         /// <param name="e">The <see cref="FormClosingEventArgs"/> object.</param>
         /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-        [CLSCompliant(false)]
         public FormClosingCommand(FormClosingEventArgs e, MainViewModel viewModel)
         {
             this.e = e;

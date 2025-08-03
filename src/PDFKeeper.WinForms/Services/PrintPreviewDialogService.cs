@@ -25,7 +25,7 @@ using PDFKeeper.Core.Services;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class PrintPreviewDialogService : IPrintPreviewDialogService
+    internal class PrintPreviewDialogService : IPrintPreviewDialogService
     {
         public void ShowDialog(PrintDocument printDocument, Size printPreviewDialogSize)
         {

@@ -26,7 +26,7 @@ using PDFKeeper.WinForms.Views;
 
 namespace PDFKeeper.WinForms.Services
 {
-    public class SetAuthorDialogService : IDialogService
+    internal class SetAuthorDialogService : IDialogService
     {
         public string ShowDialog(string arg = null)
         {

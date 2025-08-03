@@ -25,7 +25,7 @@ using System.Windows.Input;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    public class UpdateCheckCommand : ICommand
+    internal class UpdateCheckCommand : ICommand
     {
         public event EventHandler CanExecuteChanged { add { } remove { } }
 

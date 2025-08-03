@@ -26,7 +26,7 @@ using System.Windows.Input;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    public class MainFormMouseDownCommand : ICommand
+    internal class MainFormMouseDownCommand : ICommand
     {
         private readonly MouseEventArgs mouseEventArgs;
         private readonly MainForm mainForm;
@@ -40,7 +40,6 @@ namespace PDFKeeper.WinForms.Commands
         /// <param name="mouseEventArgs">The <see cref="MouseEventArgs"/> object.</param>
         /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
         /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-        [CLSCompliant(false)]
         public MainFormMouseDownCommand(
             MouseEventArgs mouseEventArgs,
             MainForm mainForm,
