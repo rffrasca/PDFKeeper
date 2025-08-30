@@ -177,7 +177,7 @@
       <Version>8.0.5</Version>
     </PackageReference>
     <PackageReference Include="Magick.NET-Q16-AnyCPU">
-      <Version>14.8.0</Version>
+      <Version>14.8.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
       <Version>9.0.0</Version>

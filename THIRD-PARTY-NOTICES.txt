@@ -94,12 +94,12 @@ MySql.Data (https://www.nuget.org/packages/MySql.Data/9.1.0)
     -- and --
     Exception: Universal FOSS Exception, full text can be found at http://oss.oracle.com/licenses/universal-foss-exception
 
-Magick.NET-Q16-AnyCPU (https://www.nuget.org/packages/Magick.NET-Q16-AnyCPU/14.8.0)
+Magick.NET-Q16-AnyCPU (https://www.nuget.org/packages/Magick.NET-Q16-AnyCPU/14.8.1)
     Authors: dlemstra
     Copyright: Copyright 2013-2025 Dirk Lemstra
     License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
 
-Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/14.8.0)
+Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/14.8.1)
     Authors: dlemstra
     Copyright: Copyright 2013-2025 Dirk Lemstra
     License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
