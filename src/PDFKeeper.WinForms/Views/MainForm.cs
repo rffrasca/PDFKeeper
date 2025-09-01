@@ -60,7 +60,7 @@ namespace PDFKeeper.WinForms.Views
             findDocumentsForm = new FindDocumentsForm();
             uploadProfilesForm = new UploadProfilesForm();
             progressForm = new ProgressForm();
-            viewModel.PropertyChanged += MainForm_PropertyChanged;
+            viewModel.PropertyChanged += ViewModel_PropertyChanged;
             SetActions();
             SetTags();
         }
@@ -556,7 +556,7 @@ namespace PDFKeeper.WinForms.Views
             TagCommand.Invoke(sender);
         }
 
-        private void MainForm_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
