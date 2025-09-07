@@ -33,9 +33,9 @@ Azure.Identity (https://www.nuget.org/packages/Azure.Identity/1.11.4)
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/Azure/azure-sdk-for-net/blob/main/LICENSE.txt
 
-BouncyCastle.Cryptography (https://www.nuget.org/packages/BouncyCastle.Cryptography/2.3.1)
+BouncyCastle.Cryptography (https://www.nuget.org/packages/BouncyCastle.Cryptography/2.6.2)
     Authors: LegionOfTheBouncyCastle
-    Copyright: Copyright © Legion of the Bouncy Castle Inc. 2000-2024
+    Copyright: Copyright © Legion of the Bouncy Castle Inc. 2000-2025
     License: MIT License, full text can be found at https://github.com/bcgit/bc-csharp/blob/master/LICENSE.md
 
 CommunityToolkit.Mvvm (https://www.nuget.org/packages/CommunityToolkit.Mvvm/8.4.0)
@@ -52,24 +52,24 @@ Google.Protobuf (https://www.nuget.org/packages/Google.Protobuf/3.26.1)
     Copyright: Copyright 2015, Google Inc.
     License: BSD-3-Clause License, full text can be found at https://github.com/protocolbuffers/protobuf/blob/main/LICENSE
 
-itext (https://www.nuget.org/packages/itext/8.0.5)
+itext (https://www.nuget.org/packages/itext/9.3.0)
     Authors: iText
-    Copyright: Copyright (c) 1998-2024 Apryse Group NV
+    Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-itext.bouncy-castle-adapter (https://www.nuget.org/packages/itext.bouncy-castle-adapter/8.0.5)
+itext.bouncy-castle-adapter (https://www.nuget.org/packages/itext.bouncy-castle-adapter/9.3.0)
     Authors: iText
-    Copyright: Copyright (c) 1998-2024 Apryse Group NV
+    Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-itext.commons (https://www.nuget.org/packages/itext.commons/8.0.5)
+itext.commons (https://www.nuget.org/packages/itext.commons/9.3.0)
     Authors: iText
-    Copyright: Copyright (c) 1998-2024 Apryse Group NV
+    Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-itext.font-asian (https://www.nuget.org/packages/itext.font-asian/8.0.5)
+itext.font-asian (https://www.nuget.org/packages/itext.font-asian/9.3.0)
     Authors: iText
-    Copyright: Copyright (c) 1998-2024 Apryse Group NV
+    Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
 K4os.Compression.LZ4 (https://www.nuget.org/packages/K4os.Compression.LZ4/1.3.8)
@@ -282,6 +282,11 @@ System.Security.AccessControl (https://www.nuget.org/packages/System.Security.Ac
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
 System.Security.Cryptography.ProtectedData (https://www.nuget.org/packages/System.Security.Cryptography.ProtectedData/4.7.0)
+    Authors: Microsoft and dotnetframework
+    Copyright: © Microsoft Corporation. All rights reserved.
+    License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
+
+System.Security.Cryptography.Xml (https://www.nuget.org/packages/System.Security.Cryptography.Xml/6.0.2)
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
