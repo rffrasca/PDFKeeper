@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29920.165
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "PDFKeeper.Setup", "PDFKeeper.Setup\PDFKeeper.Setup.wixproj", "{97756C6A-853A-4CBA-8507-D33B20B6DD07}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -17,25 +17,43 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Debug|Any CPU.Build.0 = Debug|x64
+		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Debug|x64.ActiveCfg = Debug|x64
+		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Debug|x64.Build.0 = Debug|x64
 		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Release|Any CPU.ActiveCfg = Release|x64
 		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Release|Any CPU.Build.0 = Release|x64
+		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Release|x64.ActiveCfg = Release|x64
+		{97756C6A-853A-4CBA-8507-D33B20B6DD07}.Release|x64.Build.0 = Release|x64
 		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Debug|x64.ActiveCfg = Debug|x64
+		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Debug|x64.Build.0 = Debug|x64
 		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Release|x64.ActiveCfg = Release|x64
+		{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}.Release|x64.Build.0 = Release|x64
 		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Debug|x64.ActiveCfg = Debug|x64
+		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Debug|x64.Build.0 = Debug|x64
 		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Release|x64.ActiveCfg = Release|x64
+		{854466DF-9FFD-41AD-B22B-6E4DBDD37013}.Release|x64.Build.0 = Release|x64
 		{089191ED-733F-48CA-9F6E-086854A3EB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{089191ED-733F-48CA-9F6E-086854A3EB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{089191ED-733F-48CA-9F6E-086854A3EB10}.Debug|x64.ActiveCfg = Debug|x64
+		{089191ED-733F-48CA-9F6E-086854A3EB10}.Debug|x64.Build.0 = Debug|x64
 		{089191ED-733F-48CA-9F6E-086854A3EB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{089191ED-733F-48CA-9F6E-086854A3EB10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{089191ED-733F-48CA-9F6E-086854A3EB10}.Release|x64.ActiveCfg = Release|x64
+		{089191ED-733F-48CA-9F6E-086854A3EB10}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
