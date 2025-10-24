@@ -48,11 +48,11 @@
     <Condition Message="[ProductName] requires Windows 10 or higher.">
       <![CDATA[Installed OR (WINCURRENTBUILD > 9600)]]>
     </Condition>
-    
-    <PropertyRef Id="WIXNETFX4RELEASEINSTALLED" />
-    <Condition Message="[ProductName] requires .NET Framework 4.8 to be installed.">
-      <![CDATA[Installed OR (WIXNETFX4RELEASEINSTALLED >= "#528040")]]>
-    </Condition>
+
+	<PropertyRef Id="WIXNETFX4RELEASEINSTALLED" />
+	<Condition Message="[ProductName] requires .NET Framework 4.8.1 to be installed.">
+		<![CDATA[Installed OR (WIXNETFX4RELEASEINSTALLED = "#533325")]]>
+	</Condition>
     
     <Feature Id="ProductFeature" Title="PDFKeeper" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
