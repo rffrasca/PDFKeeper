@@ -18,7 +18,7 @@
 # * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 # *****************************************************************************
 
-$folder = "..\..\..\..\vendor"
+$folder = "..\..\..\..\..\vendor"
 $version = "3.5.2"
 $zipFileUrl = "https://www.sumatrapdfreader.org/dl/rel/$version/SumatraPDF-$version-64.zip"
 $zipFile = "$folder\SumatraPDF-$version-64.zip"

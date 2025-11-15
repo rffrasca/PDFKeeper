@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+﻿<!--
 *******************************************************************************
 * PDFKeeper - Open Source PDF Document Management
 * Copyright (C) 2009-2025 Robert F. Frasca
@@ -20,44 +19,50 @@
 * along with PDFKeeper.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************
 -->
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-  <?define PDFKeeper.WinForms_TargetDir=$(var.PDFKeeper.WinForms.TargetDir)?>
-  <Product Id="*" Name="PDFKeeper" Language="1033" Version="11.3.0" Manufacturer="Robert F. Frasca" UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2">
-    
-    <Package InstallerVersion="500" Compressed="yes" InstallScope="perUser" />
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<?define PDFKeeper.WinForms_TargetDir=$(var.PDFKeeper.WinForms.TargetDir)?>
+	<Package Name="PDFKeeper"
+			 Language="1033"
+			 Version="11.3.0"
+			 Manufacturer="Robert F. Frasca"
+			 UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2"
+			 Scope="perUser">
 		
-    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
 		
-    <MediaTemplate EmbedCab="yes" />
-    
-    <Icon Id="PDFKeeper.ico" SourceFile="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.ico" />
-    
-    <Property Id="ARPPRODUCTICON" Value="PDFKeeper.ico" />
-    <Property Id="ARPHELPLINK">https://www.pdfkeeper.org/</Property>
-    <Property Id="ARPURLINFOABOUT">https://www.pdfkeeper.org/</Property>
-    <Property Id="ARPURLUPDATEINFO">https://www.pdfkeeper.org/</Property>
-    <Property Id="ARPNOREPAIR" Value="yes" Secure="yes" /> 
-    <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />
-    <Property Id="ALLUSERS" Value="2" />
-    <Property Id="MSIINSTALLPERUSER" Value="1" />
-    <Property Id="MSIFASTINSTALL" Value="1" />
-
-    <Property Id="WINCURRENTBUILD">
-      <RegistrySearch Id="CheckWinCurrentBuild" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Name="CurrentBuild" Type="raw" />
-    </Property>
-    <Condition Message="[ProductName] requires Windows 10 or higher.">
-      <![CDATA[Installed OR (WINCURRENTBUILD > 9600)]]>
-    </Condition>
-
-	<PropertyRef Id="WIXNETFX4RELEASEINSTALLED" />
-	<Condition Message="[ProductName] requires .NET Framework 4.8.1 to be installed.">
-		<![CDATA[Installed OR (WIXNETFX4RELEASEINSTALLED = "#533325")]]>
-	</Condition>
-    
-    <Feature Id="ProductFeature" Title="PDFKeeper" Level="1">
+		<Icon Id="PDFKeeper.ico"
+			  SourceFile="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.ico" />
+		
+		<Property Id="ARPPRODUCTICON" Value="PDFKeeper.ico" />
+		<Property Id="ARPHELPLINK" Value="https://www.pdfkeeper.org/" />
+        <Property Id="ARPURLINFOABOUT" Value="https://www.pdfkeeper.org/" />
+        <Property Id="ARPURLUPDATEINFO" Value="https://www.pdfkeeper.org/" />
+        <Property Id="ARPNOREPAIR" Value="yes" Secure="yes" /> 
+        <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />
+        <Property Id="ALLUSERS" Value="2" />
+        <Property Id="MSIINSTALLPERUSER" Value="1" />
+        <Property Id="MSIFASTINSTALL" Value="1" />
+		
+		<Property Id="WINCURRENTBUILD">
+			<RegistrySearch Id="CheckWinCurrentBuild"
+							Root="HKLM"
+							Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+							Name="CurrentBuild"
+							Type="raw" />
+		</Property>
+		
+		<Launch Condition="Installed OR (WINCURRENTBUILD &gt; 9600)"
+				Message="[ProductName] requires Windows 10 or higher." />
+		
+		<PropertyRef Id="WIXNETFX4RELEASEINSTALLED" />
+		<Launch Condition="Installed OR (WIXNETFX4RELEASEINSTALLED >= &quot;#533320&quot;)"
+				Message="[ProductName] requires .NET Framework 4.8.1 to be installed." />
+		
+		<Feature Id="ProductFeature" Title="PDFKeeper" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
-      <ComponentRef Id="ApplicationDesktopShortcut" />
-      <ComponentRef Id="ApplicationStartMenuShortcut" />
+			<ComponentRef Id="ApplicationDesktopShortcut" />
+			<ComponentRef Id="ApplicationStartMenuShortcut" />
 			<ComponentGroupRef Id="de_files" />
 			<ComponentGroupRef Id="es_files" />
 			<ComponentGroupRef Id="fr_files" />
@@ -68,370 +73,698 @@
 			<ComponentGroupRef Id="ru_files" />
 			<ComponentGroupRef Id="zh_Hans_files" />
 			<ComponentGroupRef Id="zh_Hant_files" />
-    </Feature>
-
-    <Component Id="ApplicationDesktopShortcut" Guid="72393B8E-4F3C-465E-878F-9EFA5370A559" Directory="DesktopFolder">
-      <Shortcut Id="DesktopShortcut" Name="PDFKeeper" Description="Open Source PDF Document Management" Directory="DesktopFolder" Target="[INSTALLFOLDER]PDFKeeper.exe" WorkingDirectory="INSTALLFOLDER" />
-      <RegistryValue Root="HKCU" Key="Software\Robert F. Frasca\PDFKeeper" Name="installed" Type="integer" Value="1" />
-    </Component>
-
-    <Component Id="ApplicationStartMenuShortcut" Guid="4F68CEB5-6DC4-47DF-B53D-2489C70BFC1F" Directory="StartMenuFolder">
-      <Shortcut Id="StartMenuShortcut" Name="PDFKeeper" Description="Open Source PDF Document Management" Directory="StartMenuFolder" Target="[INSTALLFOLDER]PDFKeeper.exe" WorkingDirectory="INSTALLFOLDER" />
-      <RegistryValue Root="HKCU" Key="Software\Robert F. Frasca\PDFKeeper" Name="installed" Type="integer" Value="1" />
-    </Component>
-  </Product>
- 
-  <Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="DesktopFolder" SourceName="Desktop" />
-      <Directory Id="StartMenuFolder" SourceName="StartMenu" />
-      <Directory Id="ProgramFiles64Folder">
-        <Directory Id="INSTALLFOLDER" Name="PDFKeeper">
-        <Directory Id="de" Name="de" />
-        <Directory Id="es" Name="es" />
-        <Directory Id="fr" Name="fr" />
-        <Directory Id="it" Name="it" />
-        <Directory Id="ja" Name="ja" />
-        <Directory Id="ko" Name="ko" />
-        <Directory Id="pt_BR" Name="pt-BR" />
-        <Directory Id="ru" Name="ru" />
-        <Directory Id="zh_Hans" Name="zh-Hans" />
-        <Directory Id="zh_Hant" Name="zh-Hant" />
-        </Directory>
-      </Directory>
-		</Directory>
+		</Feature>
+		
+		<Component Id="ApplicationDesktopShortcut"
+				   Guid="72393B8E-4F3C-465E-878F-9EFA5370A559"
+				   Directory="DesktopFolder">
+			<Shortcut Id="DesktopShortcut"
+					  Name="PDFKeeper"
+					  Description="Open Source PDF Document Management"
+					  Directory="DesktopFolder"
+					  Target="[INSTALLFOLDER]PDFKeeper.exe"
+					  WorkingDirectory="INSTALLFOLDER" />
+			<RegistryValue Root="HKCU"
+						   Key="Software\Robert F. Frasca\PDFKeeper" 
+						   Name="installed" 
+						   Type="integer" 
+						   Value="1" />
+		</Component>
+		
+		<Component Id="ApplicationStartMenuShortcut"
+				   Guid="4F68CEB5-6DC4-47DF-B53D-2489C70BFC1F"
+				   Directory="StartMenuFolder">
+			<Shortcut Id="StartMenuShortcut"
+					  Name="PDFKeeper"
+					  Description="Open Source PDF Document Management"
+					  Directory="StartMenuFolder"
+					  Target="[INSTALLFOLDER]PDFKeeper.exe"
+					  WorkingDirectory="INSTALLFOLDER" />
+			<RegistryValue Root="HKCU"
+						   Key="Software\Robert F. Frasca\PDFKeeper"
+						   Name="installed"
+						   Type="integer"
+						   Value="1" />
+        </Component>
+    </Package>
+	
+	<Fragment>
+		<StandardDirectory Id="DesktopFolder" />
+        <StandardDirectory Id="StartMenuFolder" />
+        <StandardDirectory Id="ProgramFiles64Folder">
+			<Directory Id="INSTALLFOLDER" Name="PDFKeeper">
+				<Directory Id="de" Name="de" />
+				<Directory Id="es" Name="es" />
+				<Directory Id="fr" Name="fr" />
+                <Directory Id="it" Name="it" />
+                <Directory Id="ja" Name="ja" />
+                <Directory Id="ko" Name="ko" />
+                <Directory Id="pt_BR" Name="pt-BR" />
+                <Directory Id="ru" Name="ru" />
+                <Directory Id="zh_Hans" Name="zh-Hans" />
+                <Directory Id="zh_Hant" Name="zh-Hant" />
+			</Directory>
+		</StandardDirectory>
 	</Fragment>
-
-  <Fragment>
+	
+	<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-      <Component Id="COPYING" Guid="fb2756c9-2b56-49ab-aa77-b79303d52016">
-			  <File Id="COPYING" Name="COPYING" Source="..\..\..\..\COPYING" />
+			<Component Id="COPYING"
+					   Guid="fb2756c9-2b56-49ab-aa77-b79303d52016">
+				<File Id="COPYING"
+					  Name="COPYING"
+					  Source="..\..\..\..\..\COPYING" />
 			</Component>
-      <Component Id="THIRD_PARTY_NOTICES" Guid="f19f49ec-b6f6-449f-9fc8-927b474c240b">
-			  <File Id="THIRD_PARTY_NOTICES" Name="THIRD-PARTY-NOTICES.txt" Source="..\..\..\..\THIRD-PARTY-NOTICES.txt" />
+		    <Component Id="THIRD_PARTY_NOTICES"
+					   Guid="f19f49ec-b6f6-449f-9fc8-927b474c240b">
+				<File Id="THIRD_PARTY_NOTICES"
+					  Name="THIRD-PARTY-NOTICES.txt"
+					  Source="..\..\..\..\..\THIRD-PARTY-NOTICES.txt" />
+		    </Component>
+			<Component Id="ClearHideAllDocumentsPolicy.reg"
+					  Guid="3ee0a57f-49a5-41c2-8e8a-760ab3e55e12">
+				<File Id="ClearHideAllDocumentsPolicy.reg"
+					  Name="ClearHideAllDocumentsPolicy.reg"
+					  Source="..\..\..\..\Config\ClearHideAllDocumentsPolicy.reg" />
 			</Component>
-      <Component Id="PDFKeeper.ico" Guid="27f9fd6f-53f6-42cf-acbd-9e13061e25b8">
-        <File Id="PDFKeeper.ico" Name="PDFKeeper.ico" Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.ico" />
-      </Component>
-			<Component Id="PDFKeeper.exe" Guid="5f73ddef-5a96-4219-a496-eb844afcff3d">
-			  <File Id="PDFKeeper.exe" Name="PDFKeeper.exe" Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.exe" />
+			<Component Id="SetHideAllDocumentsPolicy.reg"
+					   Guid="6127b400-4ac1-4a1e-83ae-5947215b4c57">
+				<File Id="SetHideAllDocumentsPolicy.reg"
+					  Name="SetHideAllDocumentsPolicy.reg"
+					  Source="..\..\..\..\Config\SetHideAllDocumentsPolicy.reg" />
 			</Component>
-			<Component Id="PDFKeeper.exe.config" Guid="e3d211cb-43d4-4fe3-987c-2a4e63e4e12a">
-			  <File Id="PDFKeeper.exe.config" Name="PDFKeeper.exe.config" Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.exe.config" />
+			<Component Id="ClearBlockingUploadPolicy.reg"
+					   Guid="54152E9B-6815-4EA0-8457-520EA8F52745">
+				<File Id="ClearBlockingUploadPolicy.reg"
+					  Name="ClearBlockingUploadPolicy.reg"
+					  Source="..\..\..\..\Config\ClearBlockingUploadPolicy.reg" />
 			</Component>
-      <Component Id="PDFKeeper.en_US.chm" Guid="df6a5fd4-7f93-4541-80ab-2018dc64d0b7">
-        <File Id="PDFKeeper.en_US.chm" Name="PDFKeeper.en-US.chm" Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.en-US.chm" />
-      </Component>
-			<Component Id="AutoUpdater.NET.dll" Guid="934e759b-4d49-43d0-b49c-bfa2896192c5">
-			  <File Id="AutoUpdater.NET.dll" Name="AutoUpdater.NET.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)AutoUpdater.NET.dll" />
+			<Component Id="SetBlockingUploadPolicy.reg"
+					   Guid="7B32C222-D0A9-4D7B-865F-FA492E678682">
+				<File Id="SetBlockingUploadPolicy.reg"
+					  Name="SetBlockingUploadPolicy.reg"
+					  Source="..\..\..\..\Config\SetBlockingUploadPolicy.reg" />
 			</Component>
-      <Component Id="SumatraPDF_settings.txt" Guid="6a6d167b-3b87-495a-b17f-68b5cedf5cc9">
-        <File Id="SumatraPDF_settings.txt" Name="SumatraPDF-settings.txt" Source="$(var.PDFKeeper.WinForms_TargetDir)SumatraPDF-settings.txt" />
-      </Component>
-			<Component Id="sumatrapdfrestrict.ini" Guid="16a0b917-b9c6-42f3-bfa4-e514b36547a8">
-			  <File Id="sumatrapdfrestrict.ini" Name="sumatrapdfrestrict.ini" Source="$(var.PDFKeeper.WinForms_TargetDir)sumatrapdfrestrict.ini" />
+			<Component Id="AutoUpdater.NET.dll"
+					   Guid="934e759b-4d49-43d0-b49c-bfa2896192c5">
+				<File Id="AutoUpdater.NET.dll"
+					  Name="AutoUpdater.NET.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)AutoUpdater.NET.dll" />
 			</Component>
-      <Component Id="ClearHideAllDocumentsPolicy.reg" Guid="3ee0a57f-49a5-41c2-8e8a-760ab3e55e12">
-        <File Id="ClearHideAllDocumentsPolicy.reg" Name="ClearHideAllDocumentsPolicy.reg" Source="..\..\..\Config\ClearHideAllDocumentsPolicy.reg" />
-      </Component>
-      <Component Id="SetHideAllDocumentsPolicy.reg" Guid="6127b400-4ac1-4a1e-83ae-5947215b4c57">
-        <File Id="SetHideAllDocumentsPolicy.reg" Name="SetHideAllDocumentsPolicy.reg" Source="..\..\..\Config\SetHideAllDocumentsPolicy.reg" />
-      </Component>
-      <Component Id="ClearBlockingUploadPolicy.reg" Guid="54152E9B-6815-4EA0-8457-520EA8F52745">
-        <File Id="ClearBlockingUploadPolicy.reg" Name="ClearBlockingUploadPolicy.reg" Source="..\..\..\Config\ClearBlockingUploadPolicy.reg" />
-      </Component>
-      <Component Id="SetBlockingUploadPolicy.reg" Guid="7B32C222-D0A9-4D7B-865F-FA492E678682">
-        <File Id="SetBlockingUploadPolicy.reg" Name="SetBlockingUploadPolicy.reg" Source="..\..\..\Config\SetBlockingUploadPolicy.reg" />
-      </Component>
-      <Component Id="OracleDatabaseSchemaSetup.sql" Guid="0c018a44-7840-4ef4-92a7-ce0432f9e27f">
-        <File Id="OracleDatabaseSchemaSetup.sql" Name="OracleDatabaseSchemaSetup.sql" Source="$(var.PDFKeeper.WinForms_TargetDir)OracleDatabaseSchemaSetup.sql" />
-      </Component>
-      <Component Id="gsdll64.dll" Guid="72df3d61-ee4f-45f5-928f-d8bf4e6bb36b">
-        <File Id="gsdll64.dll" Name="gsdll64.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)gsdll64.dll" />
-      </Component>
-      <Component Id="Magick.NET.Core.dll" Guid="7f85d8a9-f147-4e18-bb2e-fc418c024429">
-        <File Id="Magick.NET.Core.dll" Name="Magick.NET.Core.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.NET.Core.dll" />
-      </Component>
-      <Component Id="Magick.NET_Q16_AnyCPU.dll" Guid="7cc046ba-2263-48df-a63b-d54b1193c6da">
-        <File Id="Magick.NET_Q16_AnyCPU.dll" Name="Magick.NET-Q16-AnyCPU.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.NET-Q16-AnyCPU.dll" />
-      </Component>      
-      <Component Id="System.Data.SQLite.dll" Guid="8cd4cef8-1ee3-45b8-b99e-aabb64574f66">
-        <File Id="System.Data.SQLite.dll" Name="System.Data.SQLite.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Data.SQLite.dll" />
-      </Component>
-      <Component Id="SQLite.Interop.dll" Guid="be550a2c-6467-441c-bdd9-e5d1bc9a45e1">
-        <File Id="SQLite.Interop.dll" Name="SQLite.Interop.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)x64\SQLite.Interop.dll" />
-      </Component>
-      <Component Id="gswin64c.exe" Guid="6428a10e-504d-4521-8d93-28f25fc824bd">
-        <File Id="gswin64c.exe" Name="gswin64c.exe" Source="$(var.PDFKeeper.WinForms_TargetDir)gswin64c.exe" />
-      </Component>
-      <Component Id="itext.kernel.dll" Guid="08d6a4ec-371d-4530-bf26-f1dd38207559">
-        <File Id="itext.kernel.dll" Name="itext.kernel.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)itext.kernel.dll" />
-      </Component>
-      <Component Id="itext.io.dll" Guid="d4075a7f-2f07-4da5-bed5-b2ee0889c7ef">
-        <File Id="itext.io.dll" Name="itext.io.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)itext.io.dll" />
-      </Component>
-      <Component Id="itext.font_asian.dll" Guid="56331123-8c8d-4428-b8cf-299e8ddb25dc">
-        <File Id="itext.font_asian.dll" Name="itext.font_asian.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)itext.font_asian.dll" />
-      </Component>
-      <Component Id="Magick.Native_Q16_x86.dll" Guid="8e694e0d-2a8f-4373-a121-34ded217baa0">
-        <File Id="Magick.Native_Q16_x86.dll" Name="Magick.Native-Q16-x86.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.Native-Q16-x86.dll" />
-      </Component>
-      <Component Id="Magick.Native_Q16_x64.dll" Guid="7f0202a9-9a49-4801-88f8-98e9ed1671dc">
-        <File Id="Magick.Native_Q16_x64.dll" Name="Magick.Native-Q16-x64.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.Native-Q16-x64.dll" />
-      </Component>
-      <Component Id="Magick.Native_Q16_arm64.dll" Guid="5bdfc96d-941a-400f-bf8e-4bdedd45c3df">
-        <File Id="Magick.Native_Q16_arm64.dll" Name="Magick.Native-Q16-arm64.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.Native-Q16-arm64.dll" />
-      </Component>
-      <Component Id="System.Memory.dll" Guid="928b678d-1408-4fbf-bd7f-793fe032fda5">
-        <File Id="System.Memory.dll" Name="System.Memory.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Memory.dll" />
-      </Component>
-      <Component Id="Microsoft.Extensions.DependencyInjection.dll" Guid="998a0190-ed12-4286-aa29-45e515887d22">
-        <File Id="Microsoft.Extensions.DependencyInjection.dll" Name="Microsoft.Extensions.DependencyInjection.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.DependencyInjection.dll" />
-      </Component>
-      <Component Id="System.Buffers.dll" Guid="0c879bb8-0d1f-4fbd-becf-a95a93246f55">
-        <File Id="System.Buffers.dll" Name="System.Buffers.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Buffers.dll" />
-      </Component>
-      <Component Id="System.Runtime.CompilerServices.Unsafe.dll" Guid="a80407e0-a121-4719-b054-8a71e5e2a798">
-        <File Id="System.Runtime.CompilerServices.Unsafe.dll" Name="System.Runtime.CompilerServices.Unsafe.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Runtime.CompilerServices.Unsafe.dll" />
-      </Component>
-      <Component Id="System.Numerics.Vectors.dll" Guid="86f4c432-e5b1-4e82-b633-5b083a29dbb6">
-        <File Id="System.Numerics.Vectors.dll" Name="System.Numerics.Vectors.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Numerics.Vectors.dll" />
-      </Component>
-      <Component Id="System.ValueTuple.dll" Guid="77c8bb09-e94e-41b2-9245-e2a9e661d675">
-        <File Id="System.ValueTuple.dll" Name="System.ValueTuple.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.ValueTuple.dll" />
-      </Component>
-      <Component Id="Microsoft.Extensions.Primitives.dll" Guid="77e2f959-b056-401a-b8a0-60a699a068d3">
-        <File Id="Microsoft.Extensions.Primitives.dll" Name="Microsoft.Extensions.Primitives.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.Primitives.dll" />
-      </Component>
-      <Component Id="Microsoft.Extensions.Options.dll" Guid="2f2d59db-11bf-4f81-9db8-4c1cd87b362b">
-        <File Id="Microsoft.Extensions.Options.dll" Name="Microsoft.Extensions.Options.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.Options.dll" />
-      </Component>
-      <Component Id="System.Threading.Tasks.Extensions.dll" Guid="e9b6ff88-f867-475c-97fa-f615b400ceb7">
-        <File Id="System.Threading.Tasks.Extensions.dll" Name="System.Threading.Tasks.Extensions.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Threading.Tasks.Extensions.dll" />
-      </Component>
-      <Component Id="System.Diagnostics.DiagnosticSource.dll" Guid="b82bbe7e-73b1-40f7-ba40-004098a8aeb9">
-        <File Id="System.Diagnostics.DiagnosticSource.dll" Name="System.Diagnostics.DiagnosticSource.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Diagnostics.DiagnosticSource.dll" />
-      </Component>
-      <Component Id="Microsoft.Bcl.AsyncInterfaces.dll" Guid="e41f38fe-6222-4a0d-91d4-d05accf51fe1">
-        <File Id="Microsoft.Bcl.AsyncInterfaces.dll" Name="Microsoft.Bcl.AsyncInterfaces.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Bcl.AsyncInterfaces.dll" />
-      </Component>
-      <Component Id="itext.commons.dll" Guid="57d9dbe7-de8e-461a-8c7d-80b246b92070">
-        <File Id="itext.commons.dll" Name="itext.commons.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)itext.commons.dll" />
-      </Component>
-      <Component Id="Microsoft.Extensions.Logging.Abstractions.dll" Guid="d6502dd0-c34c-4010-8f71-6cc5b8bd6aed">
-        <File Id="Microsoft.Extensions.Logging.Abstractions.dll" Name="Microsoft.Extensions.Logging.Abstractions.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.Logging.Abstractions.dll" />
-      </Component>
-      <Component Id="Newtonsoft.Json.dll" Guid="85345b02-5265-4839-9f38-4f05eee1c3a0">
-        <File Id="Newtonsoft.Json.dll" Name="Newtonsoft.Json.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Newtonsoft.Json.dll" />
-      </Component>
-      <Component Id="Microsoft.Extensions.Logging.dll" Guid="87a0c49b-945f-41c5-8514-5ff269684621">
-        <File Id="Microsoft.Extensions.Logging.dll" Name="Microsoft.Extensions.Logging.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.Logging.dll" />
-      </Component>
-      <Component Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Guid="c0d45ceb-d797-4140-a24a-6b69e53703e9">
-        <File Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
-      </Component>      
-      <Component Id="PDFKeeper.Core.dll" Guid="35a76400-b870-4541-bc9c-8b17219dbb47">
-        <File Id="PDFKeeper.Core.dll" Name="PDFKeeper.Core.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.Core.dll" />
-      </Component>
-      <Component Id="PDFKeeper.PDFViewer.dll" Guid="523123e8-544a-43d1-b2c6-6b258e93d263">
-        <File Id="PDFKeeper.PDFViewer.dll" Name="PDFKeeper.PDFViewer.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.PDFViewer.dll" />
-      </Component>
-      <Component Id="SumatraPDF_3.5.2_64.exe" Guid="f620ba5d-79e6-4d69-bc46-8379f55e2e9e">
-        <File Id="SumatraPDF_3.5.2_64.exe" Name="SumatraPDF-3.5.2-64.exe" Source="$(var.PDFKeeper.WinForms_TargetDir)SumatraPDF-3.5.2-64.exe" />
-      </Component>
-      <Component Id="itext.bouncy_castle_connector.dll" Guid="3aadbc87-5d62-45dc-a478-1a9e2ee3082d">
-        <File Id="itext.bouncy_castle_connector.dll" Name="itext.bouncy-castle-connector.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)itext.bouncy-castle-connector.dll" />
-      </Component>
-      <Component Id="itext.bouncy_castle_adapter.dll" Guid="d36c53c8-d8b1-4ba8-9855-14de3d4b52b2">
-        <File Id="itext.bouncy_castle_adapter.dll" Name="itext.bouncy-castle-adapter.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)itext.bouncy-castle-adapter.dll" />
-      </Component>
-      <Component Id="BouncyCastle.Cryptography.dll" Guid="5ba5c46f-096e-40ca-b0fc-71e3cea143fb">
-        <File Id="BouncyCastle.Cryptography.dll" Name="BouncyCastle.Cryptography.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)BouncyCastle.Cryptography.dll" />
-      </Component>
-      <Component Id="ConnectionSettingManager.cmd" Guid="b2c65832-fe92-4933-a929-e154d68fc1cb">
-        <File Id="ConnectionSettingManager.cmd" Name="ConnectionSettingManager.cmd" Source="$(var.PDFKeeper.WinForms_TargetDir)ConnectionSettingManager.cmd" />
-      </Component>
-      <Component Id="Azure.Core.dll" Guid="96cec355-6ddd-41b8-a60d-2aa8f693a0cb">
-        <File Id="Azure.Core.dll" Name="Azure.Core.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Azure.Core.dll" />
-      </Component>
-      <Component Id="Azure.Identity.dll" Guid="a239f271-4c5d-46b3-bdc9-ebb08f46731d">
-        <File Id="Azure.Identity.dll" Name="Azure.Identity.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Azure.Identity.dll" />
-      </Component>
-      <Component Id="Microsoft.Data.SqlClient.dll" Guid="02ac370c-6328-4d49-83be-a613408147ae">
-        <File Id="Microsoft.Data.SqlClient.dll" Name="Microsoft.Data.SqlClient.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Data.SqlClient.dll" />
-      </Component>
-      <Component Id="Microsoft.Identity.Client.dll" Guid="7938fc60-6404-407e-8d1d-e5638d4d0582">
-        <File Id="Microsoft.Identity.Client.dll" Name="Microsoft.Identity.Client.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Identity.Client.dll" />
-      </Component>
-      <Component Id="Microsoft.Identity.Client.Extensions.Msal.dll" Guid="75a1c610-835f-4d4b-99cd-8eb67ede8525">
-        <File Id="Microsoft.Identity.Client.Extensions.Msal.dll" Name="Microsoft.Identity.Client.Extensions.Msal.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Identity.Client.Extensions.Msal.dll" />
-      </Component>
-      <Component Id="Microsoft.IdentityModel.Abstractions.dll" Guid="97dec213-caf9-4130-9038-06016375e95d">
-        <File Id="Microsoft.IdentityModel.Abstractions.dll" Name="Microsoft.IdentityModel.Abstractions.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.Abstractions.dll" />
-      </Component>
-      <Component Id="Microsoft.IdentityModel.JsonWebTokens.dll" Guid="cfa6de79-0e53-4f55-b4f8-ba361d822da9">
-        <File Id="Microsoft.IdentityModel.JsonWebTokens.dll" Name="Microsoft.IdentityModel.JsonWebTokens.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.JsonWebTokens.dll" />
-      </Component>
-      <Component Id="Microsoft.IdentityModel.Logging.dll" Guid="b9a4321d-20ef-46f1-ad7a-de1c25ec6095">
-        <File Id="Microsoft.IdentityModel.Logging.dll" Name="Microsoft.IdentityModel.Logging.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.Logging.dll" />
-      </Component>
-      <Component Id="Microsoft.IdentityModel.Protocols.dll" Guid="de53a61a-f56d-43fd-a39c-3f27e32c474e">
-        <File Id="Microsoft.IdentityModel.Protocols.dll" Name="Microsoft.IdentityModel.Protocols.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.Protocols.dll" />
-      </Component>
-      <Component Id="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" Guid="5be46f00-1a61-4db2-a6b0-61134a44750c">
-        <File Id="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" Name="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" />
-      </Component>
-      <Component Id="Microsoft.IdentityModel.Tokens.dll" Guid="88785000-ef29-40e3-af50-6cd9b6279a19">
-        <File Id="Microsoft.IdentityModel.Tokens.dll" Name="Microsoft.IdentityModel.Tokens.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.Tokens.dll" />
-      </Component>
-      <Component Id="System.ClientModel.dll" Guid="62bfd48d-7fb3-4fee-8950-6067d98eded9">
-        <File Id="System.ClientModel.dll" Name="System.ClientModel.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.ClientModel.dll" />
-      </Component>
-      <Component Id="Microsoft.Data.SqlClient.SNI.arm64.dll" Guid="552184A4-1EED-4D9F-A202-BF79C4CDB55B">
-        <File Id="Microsoft.Data.SqlClient.SNI.arm64.dll" Name="Microsoft.Data.SqlClient.SNI.arm64.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Data.SqlClient.SNI.arm64.dll" />
-      </Component>
-      <Component Id="Microsoft.Data.SqlClient.SNI.x64.dll" Guid="A683E7C3-57DE-4F75-BD02-D4E4336A690E">
-        <File Id="Microsoft.Data.SqlClient.SNI.x64.dll" Name="Microsoft.Data.SqlClient.SNI.x64.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Data.SqlClient.SNI.x64.dll" />
-      </Component>
-      <Component Id="Microsoft.Data.SqlClient.SNI.x86.dll" Guid="3CA77D17-B433-4134-B09D-F7EC00ED4EA6">
-        <File Id="Microsoft.Data.SqlClient.SNI.x86.dll" Name="Microsoft.Data.SqlClient.SNI.x86.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Data.SqlClient.SNI.x86.dll" />
-      </Component>
-      <Component Id="System.Configuration.ConfigurationManager.dll" Guid="0B63F211-6CB6-4999-B11D-4316F1421E16">
-        <File Id="System.Configuration.ConfigurationManager.dll" Name="System.Configuration.ConfigurationManager.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Configuration.ConfigurationManager.dll" />
-      </Component>
-      <Component Id="System.IdentityModel.Tokens.Jwt.dll" Guid="494a90a7-06d5-4684-83cf-1f6583877418">
-        <File Id="System.IdentityModel.Tokens.Jwt.dll" Name="System.IdentityModel.Tokens.Jwt.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.IdentityModel.Tokens.Jwt.dll" />
-      </Component>
-      <Component Id="System.IO.FileSystem.AccessControl.dll" Guid="6449e6a8-bfdf-4e9f-9cbe-9660cab76fb8">
-        <File Id="System.IO.FileSystem.AccessControl.dll" Name="System.IO.FileSystem.AccessControl.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.IO.FileSystem.AccessControl.dll" />
-      </Component>
-      <Component Id="System.Memory.Data.dll" Guid="14aa1c2b-5ee6-41ad-8987-f1816bc22105">
-        <File Id="System.Memory.Data.dll" Name="System.Memory.Data.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Memory.Data.dll" />
-      </Component>
-      <Component Id="System.Security.AccessControl.dll" Guid="de52a969-e69a-4c35-b03b-56a4a33804d8">
-        <File Id="System.Security.AccessControl.dll" Name="System.Security.AccessControl.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Security.AccessControl.dll" />
-      </Component>
-      <Component Id="System.Security.Cryptography.ProtectedData.dll" Guid="dd7c3eb4-d655-4a62-b46d-48bd8cb258a7">
-        <File Id="System.Security.Cryptography.ProtectedData.dll" Name="System.Security.Cryptography.ProtectedData.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Security.Cryptography.ProtectedData.dll" />
-      </Component>
-      <Component Id="System.Security.Principal.Windows.dll" Guid="3a23f22b-0c72-4d45-91ab-a8c98994c59f">
-        <File Id="System.Security.Principal.Windows.dll" Name="System.Security.Principal.Windows.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Security.Principal.Windows.dll" />
-      </Component>
-      <Component Id="System.Text.Encodings.Web.dll" Guid="73ebad34-872e-4bd4-a0cc-3eff1ddfa227">
-        <File Id="System.Text.Encodings.Web.dll" Name="System.Text.Encodings.Web.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Text.Encodings.Web.dll" />
-      </Component>
-      <Component Id="System.Text.Json.dll" Guid="fe049255-82cc-42ef-96d8-08eb8790a9c7">
-        <File Id="System.Text.Json.dll" Name="System.Text.Json.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.Text.Json.dll" />
-      </Component>
-      <Component Id="FullTextSearchQuery.dll" Guid="7f77d3a6-fd86-4b78-a86b-bbf2611e3456">
-        <File Id="FullTextSearchQuery.dll" Name="FullTextSearchQuery.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)FullTextSearchQuery.dll" />
-      </Component>
-      <Component Id="SqlServerDatabaseSetup.sql" Guid="968e673d-1c1d-4d75-8329-21a944820264">
-        <File Id="SqlServerDatabaseSetup.sql" Name="SqlServerDatabaseSetup.sql" Source="$(var.PDFKeeper.WinForms_TargetDir)SqlServerDatabaseSetup.sql" />
-      </Component>
-      <Component Id="MySqlDatabaseSetup.sql" Guid="46e6cb14-eda7-4a23-80ef-5821ea85ee88">
-        <File Id="MySqlDatabaseSetup.sql" Name="MySqlDatabaseSetup.sql" Source="$(var.PDFKeeper.WinForms_TargetDir)MySqlDatabaseSetup.sql" />
-      </Component>
-      <Component Id="System.IO.Pipelines.dll" Guid="85fd88a4-cc47-4942-a394-7f40c668f57b">
-        <File Id="System.IO.Pipelines.dll" Name="System.IO.Pipelines.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.IO.Pipelines.dll" />
-      </Component>
-      <Component Id="MySql.Data.dll" Guid="851269ed-76fe-4ec2-81b4-64992a29f257">
-        <File Id="MySql.Data.dll" Name="MySql.Data.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)MySql.Data.dll" />
-      </Component>
-      <Component Id="Google.Protobuf.dll" Guid="cb0efd92-fe4f-4f6d-976c-260b1ee6cf6d">
-        <File Id="Google.Protobuf.dll" Name="Google.Protobuf.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Google.Protobuf.dll" />
-      </Component>
-      <Component Id="K4os.Hash.xxHash.dll" Guid="ecda38fd-a8df-4f83-8f78-1c08a8deb6b8">
-        <File Id="K4os.Hash.xxHash.dll" Name="K4os.Hash.xxHash.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)K4os.Hash.xxHash.dll" />
-      </Component>
-      <Component Id="K4os.Compression.LZ4.dll" Guid="c6c8047c-103e-482d-9d2e-c35a3d5c29f8">
-        <File Id="K4os.Compression.LZ4.dll" Name="K4os.Compression.LZ4.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)K4os.Compression.LZ4.dll" />
-      </Component>
-      <Component Id="K4os.Compression.LZ4.Streams.dll" Guid="ce479822-2ee4-401a-b137-426b60064912">
-        <File Id="K4os.Compression.LZ4.Streams.dll" Name="K4os.Compression.LZ4.Streams.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)K4os.Compression.LZ4.Streams.dll" />
-      </Component>
-      <Component Id="ZstdSharp.dll" Guid="b8d53de2-5dd7-4b1d-99d8-62b44c1d9175">
-        <File Id="ZstdSharp.dll" Name="ZstdSharp.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)ZstdSharp.dll" />
-      </Component>
-      <Component Id="Vip.ComboBox.dll" Guid="6c1a7b11-a5a0-49c7-b3eb-6dfb89587128">
-        <File Id="Vip.ComboBox.dll" Name="Vip.ComboBox.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)Vip.ComboBox.dll" />
-      </Component>
-      <Component Id="CommunityToolkit.Mvvm.dll" Guid="80366637-b819-4baf-8a61-afef5acce067">
-        <File Id="CommunityToolkit.Mvvm.dll" Name="CommunityToolkit.Mvvm.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)CommunityToolkit.Mvvm.dll" />
-      </Component>
-      <Component Id="System.ComponentModel.Annotations.dll" Guid="6bcd9748-25c8-40b0-ba3c-fd3bdb57deab">
-        <File Id="System.ComponentModel.Annotations.dll" Name="System.ComponentModel.Annotations.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)System.ComponentModel.Annotations.dll" />
-      </Component>      
-  	</ComponentGroup>
+			<Component Id="Azure.Core.dll"
+					   Guid="96cec355-6ddd-41b8-a60d-2aa8f693a0cb">
+				<File Id="Azure.Core.dll"
+					  Name="Azure.Core.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Azure.Core.dll" />
+			</Component>
+			<Component Id="Azure.Identity.dll"
+					   Guid="a239f271-4c5d-46b3-bdc9-ebb08f46731d">
+				<File Id="Azure.Identity.dll"
+					  Name="Azure.Identity.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Azure.Identity.dll" />
+			</Component>
+			<Component Id="BouncyCastle.Cryptography.dll"
+					   Guid="5ba5c46f-096e-40ca-b0fc-71e3cea143fb">
+				<File Id="BouncyCastle.Cryptography.dll"
+					  Name="BouncyCastle.Cryptography.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)BouncyCastle.Cryptography.dll" />
+			</Component>
+			<Component Id="CommunityToolkit.Mvvm.dll"
+					   Guid="80366637-b819-4baf-8a61-afef5acce067">
+				<File Id="CommunityToolkit.Mvvm.dll"
+					  Name="CommunityToolkit.Mvvm.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)CommunityToolkit.Mvvm.dll" />
+			</Component>
+			<Component Id="ConnectionSettingManager.cmd"
+					   Guid="b2c65832-fe92-4933-a929-e154d68fc1cb">
+				<File Id="ConnectionSettingManager.cmd"
+					  Name="ConnectionSettingManager.cmd"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)ConnectionSettingManager.cmd" />
+			</Component>
+			<Component Id="FullTextSearchQuery.dll"
+					   Guid="7f77d3a6-fd86-4b78-a86b-bbf2611e3456">
+				<File Id="FullTextSearchQuery.dll"
+					  Name="FullTextSearchQuery.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)FullTextSearchQuery.dll" />
+			</Component>
+			<Component Id="Google.Protobuf.dll"
+					   Guid="cb0efd92-fe4f-4f6d-976c-260b1ee6cf6d">
+				<File Id="Google.Protobuf.dll"
+					  Name="Google.Protobuf.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Google.Protobuf.dll" />
+			</Component>
+			<Component Id="gsdll64.dll"
+					   Guid="72df3d61-ee4f-45f5-928f-d8bf4e6bb36b">
+				<File Id="gsdll64.dll"
+					  Name="gsdll64.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)gsdll64.dll" />
+			</Component>
+			<Component Id="gswin64c.exe"
+					   Guid="6428a10e-504d-4521-8d93-28f25fc824bd">
+				<File Id="gswin64c.exe"
+					  Name="gswin64c.exe"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)gswin64c.exe" />
+			</Component>			
+			<Component Id="itext.bouncy_castle_adapter.dll"
+					   Guid="d36c53c8-d8b1-4ba8-9855-14de3d4b52b2">
+				<File Id="itext.bouncy_castle_adapter.dll"
+					  Name="itext.bouncy-castle-adapter.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)itext.bouncy-castle-adapter.dll" />
+			</Component>
+			<Component Id="itext.bouncy_castle_connector.dll"
+					   Guid="3aadbc87-5d62-45dc-a478-1a9e2ee3082d">
+				<File Id="itext.bouncy_castle_connector.dll"
+					  Name="itext.bouncy-castle-connector.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)itext.bouncy-castle-connector.dll" />
+			</Component>
+			<Component Id="itext.commons.dll"
+					  Guid="57d9dbe7-de8e-461a-8c7d-80b246b92070">
+				<File Id="itext.commons.dll"
+					  Name="itext.commons.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)itext.commons.dll" />
+			</Component>
+			<Component Id="itext.font_asian.dll"
+					   Guid="56331123-8c8d-4428-b8cf-299e8ddb25dc">
+				<File Id="itext.font_asian.dll"
+					  Name="itext.font_asian.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)itext.font_asian.dll" />
+			</Component>
+			<Component Id="itext.io.dll"
+					   Guid="d4075a7f-2f07-4da5-bed5-b2ee0889c7ef">
+				<File Id="itext.io.dll"
+					  Name="itext.io.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)itext.io.dll" />
+			</Component>
+			<Component Id="itext.kernel.dll"
+					   Guid="08d6a4ec-371d-4530-bf26-f1dd38207559">
+				<File Id="itext.kernel.dll"
+					  Name="itext.kernel.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)itext.kernel.dll" />
+			</Component>
+			<Component Id="K4os.Compression.LZ4.dll"
+					   Guid="c6c8047c-103e-482d-9d2e-c35a3d5c29f8">
+				<File Id="K4os.Compression.LZ4.dll"
+					  Name="K4os.Compression.LZ4.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)K4os.Compression.LZ4.dll" />
+			</Component>
+			<Component Id="K4os.Compression.LZ4.Streams.dll"
+					   Guid="ce479822-2ee4-401a-b137-426b60064912">
+				<File Id="K4os.Compression.LZ4.Streams.dll"
+					  Name="K4os.Compression.LZ4.Streams.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)K4os.Compression.LZ4.Streams.dll" />
+			</Component>
+			<Component Id="K4os.Hash.xxHash.dll"
+					   Guid="ecda38fd-a8df-4f83-8f78-1c08a8deb6b8">
+				<File Id="K4os.Hash.xxHash.dll"
+					  Name="K4os.Hash.xxHash.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)K4os.Hash.xxHash.dll" />
+			</Component>
+			<Component Id="Magick.Native_Q16_arm64.dll"
+					   Guid="5bdfc96d-941a-400f-bf8e-4bdedd45c3df">
+				<File Id="Magick.Native_Q16_arm64.dll"
+					  Name="Magick.Native-Q16-arm64.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.Native-Q16-arm64.dll" />
+			</Component>
+			<Component Id="Magick.Native_Q16_x64.dll"
+					   Guid="7f0202a9-9a49-4801-88f8-98e9ed1671dc">
+				<File Id="Magick.Native_Q16_x64.dll"
+					  Name="Magick.Native-Q16-x64.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.Native-Q16-x64.dll" />
+			</Component>
+			<Component Id="Magick.Native_Q16_x86.dll"
+					   Guid="8e694e0d-2a8f-4373-a121-34ded217baa0">
+				<File Id="Magick.Native_Q16_x86.dll"
+					  Name="Magick.Native-Q16-x86.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.Native-Q16-x86.dll" />
+			</Component>
+			<Component Id="Magick.NET.Core.dll"
+					   Guid="7f85d8a9-f147-4e18-bb2e-fc418c024429">
+				<File Id="Magick.NET.Core.dll"
+					  Name="Magick.NET.Core.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.NET.Core.dll" />
+			</Component>
+			<Component Id="Magick.NET_Q16_AnyCPU.dll"
+					   Guid="7cc046ba-2263-48df-a63b-d54b1193c6da">
+				<File Id="Magick.NET_Q16_AnyCPU.dll"
+					  Name="Magick.NET-Q16-AnyCPU.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.NET-Q16-AnyCPU.dll" />
+			</Component>
+			<Component Id="Microsoft.Bcl.AsyncInterfaces.dll"
+					   Guid="e41f38fe-6222-4a0d-91d4-d05accf51fe1">
+				<File Id="Microsoft.Bcl.AsyncInterfaces.dll"
+					  Name="Microsoft.Bcl.AsyncInterfaces.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Bcl.AsyncInterfaces.dll" />
+			</Component>
+			<Component Id="Microsoft.Data.SqlClient.dll"
+					   Guid="02ac370c-6328-4d49-83be-a613408147ae">
+				<File Id="Microsoft.Data.SqlClient.dll"
+					  Name="Microsoft.Data.SqlClient.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Data.SqlClient.dll" />
+			</Component>
+			<Component Id="Microsoft.Data.SqlClient.SNI.arm64.dll"
+					   Guid="552184A4-1EED-4D9F-A202-BF79C4CDB55B">
+				<File Id="Microsoft.Data.SqlClient.SNI.arm64.dll"
+					  Name="Microsoft.Data.SqlClient.SNI.arm64.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Data.SqlClient.SNI.arm64.dll" />
+			</Component>
+			<Component Id="Microsoft.Data.SqlClient.SNI.x64.dll"
+					   Guid="A683E7C3-57DE-4F75-BD02-D4E4336A690E">
+				<File Id="Microsoft.Data.SqlClient.SNI.x64.dll"
+					  Name="Microsoft.Data.SqlClient.SNI.x64.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Data.SqlClient.SNI.x64.dll" />
+			</Component>
+			<Component Id="Microsoft.Data.SqlClient.SNI.x86.dll"
+					   Guid="3CA77D17-B433-4134-B09D-F7EC00ED4EA6">
+				<File Id="Microsoft.Data.SqlClient.SNI.x86.dll"
+					  Name="Microsoft.Data.SqlClient.SNI.x86.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Data.SqlClient.SNI.x86.dll" />
+			</Component>
+			<Component Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll"
+					   Guid="c0d45ceb-d797-4140-a24a-6b69e53703e9">
+				<File Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll"
+					  Name="Microsoft.Extensions.DependencyInjection.Abstractions.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+			</Component>
+			<Component Id="Microsoft.Extensions.DependencyInjection.dll"
+					   Guid="998a0190-ed12-4286-aa29-45e515887d22">
+				<File Id="Microsoft.Extensions.DependencyInjection.dll"
+					  Name="Microsoft.Extensions.DependencyInjection.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.DependencyInjection.dll" />
+			</Component>
+			<Component Id="Microsoft.Extensions.Logging.Abstractions.dll"
+					   Guid="d6502dd0-c34c-4010-8f71-6cc5b8bd6aed">
+				<File Id="Microsoft.Extensions.Logging.Abstractions.dll"
+					  Name="Microsoft.Extensions.Logging.Abstractions.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.Logging.Abstractions.dll" />
+			</Component>
+			<Component Id="Microsoft.Extensions.Logging.dll"
+					   Guid="87a0c49b-945f-41c5-8514-5ff269684621">
+				<File Id="Microsoft.Extensions.Logging.dll"
+					  Name="Microsoft.Extensions.Logging.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.Logging.dll" />
+			</Component>
+			<Component Id="Microsoft.Extensions.Options.dll"
+					   Guid="2f2d59db-11bf-4f81-9db8-4c1cd87b362b">
+				<File Id="Microsoft.Extensions.Options.dll"
+					  Name="Microsoft.Extensions.Options.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.Options.dll" />
+			</Component>
+			<Component Id="Microsoft.Extensions.Primitives.dll"
+					   Guid="77e2f959-b056-401a-b8a0-60a699a068d3">
+				<File Id="Microsoft.Extensions.Primitives.dll"
+					  Name="Microsoft.Extensions.Primitives.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.Primitives.dll" />
+			</Component>
+			<Component Id="Microsoft.Identity.Client.dll"
+					   Guid="7938fc60-6404-407e-8d1d-e5638d4d0582">
+				<File Id="Microsoft.Identity.Client.dll"
+					  Name="Microsoft.Identity.Client.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Identity.Client.dll" />
+			</Component>
+			<Component Id="Microsoft.Identity.Client.Extensions.Msal.dll"
+					   Guid="75a1c610-835f-4d4b-99cd-8eb67ede8525">
+				<File Id="Microsoft.Identity.Client.Extensions.Msal.dll"
+					  Name="Microsoft.Identity.Client.Extensions.Msal.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Identity.Client.Extensions.Msal.dll" />
+			</Component>
+			<Component Id="Microsoft.IdentityModel.Abstractions.dll"
+					   Guid="97dec213-caf9-4130-9038-06016375e95d">
+				<File Id="Microsoft.IdentityModel.Abstractions.dll"
+					  Name="Microsoft.IdentityModel.Abstractions.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.Abstractions.dll" />
+			</Component>
+			<Component Id="Microsoft.IdentityModel.JsonWebTokens.dll"
+					   Guid="cfa6de79-0e53-4f55-b4f8-ba361d822da9">
+				<File Id="Microsoft.IdentityModel.JsonWebTokens.dll"
+					  Name="Microsoft.IdentityModel.JsonWebTokens.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.JsonWebTokens.dll" />
+			</Component>
+			<Component Id="Microsoft.IdentityModel.Logging.dll"
+					   Guid="b9a4321d-20ef-46f1-ad7a-de1c25ec6095">
+				<File Id="Microsoft.IdentityModel.Logging.dll"
+					  Name="Microsoft.IdentityModel.Logging.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.Logging.dll" />
+			</Component>
+			<Component Id="Microsoft.IdentityModel.Protocols.dll"
+					   Guid="de53a61a-f56d-43fd-a39c-3f27e32c474e">
+				<File Id="Microsoft.IdentityModel.Protocols.dll"
+					  Name="Microsoft.IdentityModel.Protocols.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.Protocols.dll" />
+			</Component>
+			<Component Id="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll"
+					   Guid="5be46f00-1a61-4db2-a6b0-61134a44750c">
+				<File Id="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll"
+					  Name="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" />
+			</Component>
+			<Component Id="Microsoft.IdentityModel.Tokens.dll"
+					   Guid="88785000-ef29-40e3-af50-6cd9b6279a19">
+				<File Id="Microsoft.IdentityModel.Tokens.dll"
+					  Name="Microsoft.IdentityModel.Tokens.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.IdentityModel.Tokens.dll" />
+			</Component>
+			<Component Id="MySql.Data.dll"
+					   Guid="851269ed-76fe-4ec2-81b4-64992a29f257">
+				<File Id="MySql.Data.dll"
+					  Name="MySql.Data.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)MySql.Data.dll" />
+			</Component>
+			<Component Id="MySqlDatabaseSetup.sql"
+					   Guid="46e6cb14-eda7-4a23-80ef-5821ea85ee88">
+				<File Id="MySqlDatabaseSetup.sql"
+					  Name="MySqlDatabaseSetup.sql"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)MySqlDatabaseSetup.sql" />
+			</Component>
+			<Component Id="Newtonsoft.Json.dll"
+					   Guid="85345b02-5265-4839-9f38-4f05eee1c3a0">
+				<File Id="Newtonsoft.Json.dll"
+					  Name="Newtonsoft.Json.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Newtonsoft.Json.dll" />
+			</Component>
+			<Component Id="OracleDatabaseSchemaSetup.sql"
+					   Guid="0c018a44-7840-4ef4-92a7-ce0432f9e27f">
+				<File Id="OracleDatabaseSchemaSetup.sql"
+					  Name="OracleDatabaseSchemaSetup.sql"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)OracleDatabaseSchemaSetup.sql" />
+			</Component>
+			<Component Id="PDFKeeper.Core.dll"
+					  Guid="35a76400-b870-4541-bc9c-8b17219dbb47">
+				<File Id="PDFKeeper.Core.dll"
+					  Name="PDFKeeper.Core.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.Core.dll" />
+			</Component>
+			<Component Id="PDFKeeper.en_US.chm"
+					   Guid="df6a5fd4-7f93-4541-80ab-2018dc64d0b7">
+				<File Id="PDFKeeper.en_US.chm"
+					  Name="PDFKeeper.en-US.chm"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.en-US.chm" />
+			</Component>
+			<Component Id="PDFKeeper.exe"
+					   Guid="5f73ddef-5a96-4219-a496-eb844afcff3d">
+				<File Id="PDFKeeper.exe"
+					  Name="PDFKeeper.exe"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.exe" />
+			</Component>
+			<Component Id="PDFKeeper.exe.config"
+					   Guid="e3d211cb-43d4-4fe3-987c-2a4e63e4e12a">
+				<File Id="PDFKeeper.exe.config"
+					  Name="PDFKeeper.exe.config"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.exe.config" />
+			</Component>
+			<Component Id="PDFKeeper.ico"
+					   Guid="27f9fd6f-53f6-42cf-acbd-9e13061e25b8">
+                <File Id="PDFKeeper.ico"
+					  Name="PDFKeeper.ico"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.ico" />
+            </Component>
+			<Component Id="PDFKeeper.PDFViewer.dll"
+					   Guid="523123e8-544a-43d1-b2c6-6b258e93d263">
+				<File Id="PDFKeeper.PDFViewer.dll"
+					  Name="PDFKeeper.PDFViewer.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.PDFViewer.dll" />
+			</Component>
+			<Component Id="SQLite.Interop.dll"
+					   Guid="be550a2c-6467-441c-bdd9-e5d1bc9a45e1">
+				<File Id="SQLite.Interop.dll"
+					  Name="SQLite.Interop.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)x64\SQLite.Interop.dll" />
+			</Component>
+			<Component Id="SqlServerDatabaseSetup.sql"
+					   Guid="968e673d-1c1d-4d75-8329-21a944820264">
+				<File Id="SqlServerDatabaseSetup.sql"
+					  Name="SqlServerDatabaseSetup.sql"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)SqlServerDatabaseSetup.sql" />
+			</Component>
+			<Component Id="SumatraPDF_3.5.2_64.exe"
+					   Guid="f620ba5d-79e6-4d69-bc46-8379f55e2e9e">
+				<File Id="SumatraPDF_3.5.2_64.exe"
+					  Name="SumatraPDF-3.5.2-64.exe"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)SumatraPDF-3.5.2-64.exe" />
+			</Component>
+			<Component Id="sumatrapdfrestrict.ini" 
+					   Guid="16a0b917-b9c6-42f3-bfa4-e514b36547a8">
+			    <File Id="sumatrapdfrestrict.ini"
+					  Name="sumatrapdfrestrict.ini"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)sumatrapdfrestrict.ini" />
+			</Component>
+			<Component Id="SumatraPDF_settings.txt"
+					   Guid="6a6d167b-3b87-495a-b17f-68b5cedf5cc9">
+				<File Id="SumatraPDF_settings.txt"
+					  Name="SumatraPDF-settings.txt"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)SumatraPDF-settings.txt" />
+			</Component>
+			<Component Id="System.Buffers.dll"
+					   Guid="0c879bb8-0d1f-4fbd-becf-a95a93246f55">
+				<File Id="System.Buffers.dll"
+					  Name="System.Buffers.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Buffers.dll" />
+			</Component>
+			<Component Id="System.ClientModel.dll"
+					   Guid="62bfd48d-7fb3-4fee-8950-6067d98eded9">
+				<File Id="System.ClientModel.dll"
+					  Name="System.ClientModel.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.ClientModel.dll" />
+			</Component>
+			<Component Id="System.ComponentModel.Annotations.dll"
+					   Guid="6bcd9748-25c8-40b0-ba3c-fd3bdb57deab">
+				<File Id="System.ComponentModel.Annotations.dll"
+					  Name="System.ComponentModel.Annotations.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.ComponentModel.Annotations.dll" />
+			</Component>
+			<Component Id="System.Configuration.ConfigurationManager.dll"
+					   Guid="0B63F211-6CB6-4999-B11D-4316F1421E16">
+				<File Id="System.Configuration.ConfigurationManager.dll"
+					  Name="System.Configuration.ConfigurationManager.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Configuration.ConfigurationManager.dll" />
+			</Component>
+			<Component Id="System.Data.SQLite.dll" 
+					   Guid="8cd4cef8-1ee3-45b8-b99e-aabb64574f66">
+                <File Id="System.Data.SQLite.dll"
+					  Name="System.Data.SQLite.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Data.SQLite.dll" />
+            </Component>
+			<Component Id="System.Diagnostics.DiagnosticSource.dll"
+					   Guid="b82bbe7e-73b1-40f7-ba40-004098a8aeb9">
+				<File Id="System.Diagnostics.DiagnosticSource.dll"
+					  Name="System.Diagnostics.DiagnosticSource.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Diagnostics.DiagnosticSource.dll" />
+			</Component>
+			<Component Id="System.IdentityModel.Tokens.Jwt.dll"
+					   Guid="494a90a7-06d5-4684-83cf-1f6583877418">
+				<File Id="System.IdentityModel.Tokens.Jwt.dll"
+					  Name="System.IdentityModel.Tokens.Jwt.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.IdentityModel.Tokens.Jwt.dll" />
+			</Component>
+			<Component Id="System.IO.FileSystem.AccessControl.dll"
+					   Guid="6449e6a8-bfdf-4e9f-9cbe-9660cab76fb8">
+				<File Id="System.IO.FileSystem.AccessControl.dll"
+					  Name="System.IO.FileSystem.AccessControl.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.IO.FileSystem.AccessControl.dll" />
+			</Component>
+			<Component Id="System.IO.Pipelines.dll"
+					   Guid="85fd88a4-cc47-4942-a394-7f40c668f57b">
+				<File Id="System.IO.Pipelines.dll"
+					  Name="System.IO.Pipelines.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.IO.Pipelines.dll" />
+			</Component>
+			<Component Id="System.Memory.Data.dll"
+					   Guid="14aa1c2b-5ee6-41ad-8987-f1816bc22105">
+				<File Id="System.Memory.Data.dll"
+					  Name="System.Memory.Data.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Memory.Data.dll" />
+			</Component>
+			<Component Id="System.Memory.dll"
+					   Guid="928b678d-1408-4fbf-bd7f-793fe032fda5">
+				<File Id="System.Memory.dll"
+					  Name="System.Memory.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Memory.dll" />
+			</Component>
+			<Component Id="System.Numerics.Vectors.dll"
+					   Guid="86f4c432-e5b1-4e82-b633-5b083a29dbb6">
+				<File Id="System.Numerics.Vectors.dll"
+					  Name="System.Numerics.Vectors.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Numerics.Vectors.dll" />
+			</Component>
+			<Component Id="System.Runtime.CompilerServices.Unsafe.dll"
+					  Guid="a80407e0-a121-4719-b054-8a71e5e2a798">
+				<File Id="System.Runtime.CompilerServices.Unsafe.dll"
+					  Name="System.Runtime.CompilerServices.Unsafe.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Runtime.CompilerServices.Unsafe.dll" />
+			</Component>
+			<Component Id="System.Security.AccessControl.dll"
+					   Guid="de52a969-e69a-4c35-b03b-56a4a33804d8">
+				<File Id="System.Security.AccessControl.dll"
+					  Name="System.Security.AccessControl.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Security.AccessControl.dll" />
+			</Component>
+			<Component Id="System.Security.Cryptography.ProtectedData.dll"
+					   Guid="dd7c3eb4-d655-4a62-b46d-48bd8cb258a7">
+				<File Id="System.Security.Cryptography.ProtectedData.dll"
+					  Name="System.Security.Cryptography.ProtectedData.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Security.Cryptography.ProtectedData.dll" />
+			</Component>
+			<Component Id="System.Security.Principal.Windows.dll"
+					   Guid="3a23f22b-0c72-4d45-91ab-a8c98994c59f">
+				<File Id="System.Security.Principal.Windows.dll"
+					  Name="System.Security.Principal.Windows.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Security.Principal.Windows.dll" />
+			</Component>
+			<Component Id="System.Text.Encodings.Web.dll"
+					   Guid="73ebad34-872e-4bd4-a0cc-3eff1ddfa227">
+				<File Id="System.Text.Encodings.Web.dll"
+					  Name="System.Text.Encodings.Web.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Text.Encodings.Web.dll" />
+			</Component>
+			<Component Id="System.Text.Json.dll"
+					   Guid="fe049255-82cc-42ef-96d8-08eb8790a9c7">
+				<File Id="System.Text.Json.dll"
+					  Name="System.Text.Json.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Text.Json.dll" />
+			</Component>
+			<Component Id="System.Threading.Tasks.Extensions.dll"
+					   Guid="e9b6ff88-f867-475c-97fa-f615b400ceb7">
+				<File Id="System.Threading.Tasks.Extensions.dll"
+					  Name="System.Threading.Tasks.Extensions.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Threading.Tasks.Extensions.dll" />
+			</Component>
+			<Component Id="System.ValueTuple.dll"
+					   Guid="77c8bb09-e94e-41b2-9245-e2a9e661d675">
+				<File Id="System.ValueTuple.dll"
+					  Name="System.ValueTuple.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.ValueTuple.dll" />
+			</Component>
+			<Component Id="Vip.ComboBox.dll"
+					   Guid="6c1a7b11-a5a0-49c7-b3eb-6dfb89587128">
+				<File Id="Vip.ComboBox.dll"
+					  Name="Vip.ComboBox.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Vip.ComboBox.dll" />
+			</Component>
+			<Component Id="ZstdSharp.dll"
+					   Guid="b8d53de2-5dd7-4b1d-99d8-62b44c1d9175">
+				<File Id="ZstdSharp.dll"
+					  Name="ZstdSharp.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)ZstdSharp.dll" />
+			</Component>
+		</ComponentGroup>
 	</Fragment>
-  <Fragment>
-    <ComponentGroup Id="de_files" Directory="de">
-      <Component Id="de_Microsoft.Data.SqlClient.resources.dll" Guid="14fa5943-3160-440d-8a53-a43d8a43318f">
-        <File Id="de_Microsoft.Data.SqlClient.resources.dll" Name="Microsoft.Data.SqlClient.resources.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)de\Microsoft.Data.SqlClient.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-  <Fragment>
-    <ComponentGroup Id="es_files" Directory="es">
-      <Component Id="es_Microsoft.Data.SqlClient.resources.dll" Guid="c3b106c4-cbeb-4549-aec3-c5b240cc7e2b">
-        <File Id="es_Microsoft.Data.SqlClient.resources.dll" Name="Microsoft.Data.SqlClient.resources.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)es\Microsoft.Data.SqlClient.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-  <Fragment>
-    <ComponentGroup Id="fr_files" Directory="fr">
-      <Component Id="fr_Microsoft.Data.SqlClient.resources.dll" Guid="6443a4f6-e18c-438e-9f95-3d0a756bc446">
-        <File Id="fr_Microsoft.Data.SqlClient.resources.dll" Name="Microsoft.Data.SqlClient.resources.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)fr\Microsoft.Data.SqlClient.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-  <Fragment>
-    <ComponentGroup Id="it_files" Directory="it">
-      <Component Id="it_Microsoft.Data.SqlClient.resources.dll" Guid="a7661793-8269-4dd1-8b16-e906615b2cf1">
-        <File Id="it_Microsoft.Data.SqlClient.resources.dll" Name="Microsoft.Data.SqlClient.resources.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)it\Microsoft.Data.SqlClient.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-  <Fragment>
-    <ComponentGroup Id="ja_files" Directory="ja">
-      <Component Id="ja_Microsoft.Data.SqlClient.resources.dll" Guid="20fcd5aa-4c0e-4dbc-bbf2-56bfb8790f7b">
-        <File Id="ja_Microsoft.Data.SqlClient.resources.dll" Name="Microsoft.Data.SqlClient.resources.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)ja\Microsoft.Data.SqlClient.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-  <Fragment>
-    <ComponentGroup Id="ko_files" Directory="ko">
-      <Component Id="ko_Microsoft.Data.SqlClient.resources.dll" Guid="1eb4bc0e-3b0c-43fa-8f3a-357bd2f1b98a">
-        <File Id="ko_Microsoft.Data.SqlClient.resources.dll" Name="Microsoft.Data.SqlClient.resources.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)ko\Microsoft.Data.SqlClient.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-  <Fragment>
-    <ComponentGroup Id="pt_BR_files" Directory="pt_BR">
-      <Component Id="pt_BR_Microsoft.Data.SqlClient.resources.dll" Guid="d69b242c-2043-4f78-8ded-b725da7180d5">
-        <File Id="pt_BR_Microsoft.Data.SqlClient.resources.dll" Name="Microsoft.Data.SqlClient.resources.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)pt-BR\Microsoft.Data.SqlClient.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-  <Fragment>
-    <ComponentGroup Id="ru_files" Directory="ru">
-      <Component Id="ru_Microsoft.Data.SqlClient.resources.dll" Guid="edaa9342-20b0-4569-9d6d-246f9f064823">
-        <File Id="ru_Microsoft.Data.SqlClient.resources.dll" Name="Microsoft.Data.SqlClient.resources.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)ru\Microsoft.Data.SqlClient.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-  <Fragment>
-    <ComponentGroup Id="zh_Hans_files" Directory="zh_Hans">
-      <Component Id="zh_Hans_Microsoft.Data.SqlClient.resources.dll" Guid="a9cedf58-5773-40fd-9c5c-c29a64d02ea7">
-        <File Id="zh_Hans_Microsoft.Data.SqlClient.resources.dll" Name="Microsoft.Data.SqlClient.resources.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)zh-Hans\Microsoft.Data.SqlClient.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
-  <Fragment>
-    <ComponentGroup Id="zh_Hant_files" Directory="zh_Hant">
-      <Component Id="zh_Hant_Microsoft.Data.SqlClient.resources.dll" Guid="4cfe0734-1e6a-40d3-94f7-d24f1c835e84">
-        <File Id="zh_Hant_Microsoft.Data.SqlClient.resources.dll" Name="Microsoft.Data.SqlClient.resources.dll" Source="$(var.PDFKeeper.WinForms_TargetDir)zh-Hant\Microsoft.Data.SqlClient.resources.dll" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
+	
+	<Fragment>
+		<ComponentGroup Id="de_files"
+						Directory="de">
+			<Component Id="de_Microsoft.Data.SqlClient.resources.dll"
+					   Guid="14fa5943-3160-440d-8a53-a43d8a43318f">
+				<File Id="de_Microsoft.Data.SqlClient.resources.dll"
+					  Name="Microsoft.Data.SqlClient.resources.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)de\Microsoft.Data.SqlClient.resources.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+  
+	<Fragment>
+		<ComponentGroup Id="es_files"
+						Directory="es">
+			<Component Id="es_Microsoft.Data.SqlClient.resources.dll"
+					   Guid="c3b106c4-cbeb-4549-aec3-c5b240cc7e2b">
+				<File Id="es_Microsoft.Data.SqlClient.resources.dll"
+					  Name="Microsoft.Data.SqlClient.resources.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)es\Microsoft.Data.SqlClient.resources.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+  
+	<Fragment>
+		<ComponentGroup Id="fr_files"
+						Directory="fr">
+			<Component Id="fr_Microsoft.Data.SqlClient.resources.dll"
+					   Guid="6443a4f6-e18c-438e-9f95-3d0a756bc446">
+				<File Id="fr_Microsoft.Data.SqlClient.resources.dll"
+					  Name="Microsoft.Data.SqlClient.resources.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)fr\Microsoft.Data.SqlClient.resources.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+	
+	<Fragment>
+		<ComponentGroup Id="it_files"
+						Directory="it">
+			<Component Id="it_Microsoft.Data.SqlClient.resources.dll"
+					   Guid="a7661793-8269-4dd1-8b16-e906615b2cf1">
+				<File Id="it_Microsoft.Data.SqlClient.resources.dll"
+					  Name="Microsoft.Data.SqlClient.resources.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)it\Microsoft.Data.SqlClient.resources.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+	
+	<Fragment>
+		<ComponentGroup Id="ja_files"
+						Directory="ja">
+			<Component Id="ja_Microsoft.Data.SqlClient.resources.dll"
+					   Guid="20fcd5aa-4c0e-4dbc-bbf2-56bfb8790f7b">
+				<File Id="ja_Microsoft.Data.SqlClient.resources.dll"
+					  Name="Microsoft.Data.SqlClient.resources.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)ja\Microsoft.Data.SqlClient.resources.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+	
+	<Fragment>
+		<ComponentGroup Id="ko_files" 
+						Directory="ko">
+			<Component Id="ko_Microsoft.Data.SqlClient.resources.dll"
+					   Guid="1eb4bc0e-3b0c-43fa-8f3a-357bd2f1b98a">
+				<File Id="ko_Microsoft.Data.SqlClient.resources.dll"
+					  Name="Microsoft.Data.SqlClient.resources.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)ko\Microsoft.Data.SqlClient.resources.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+	
+	<Fragment>
+		<ComponentGroup Id="pt_BR_files"
+						Directory="pt_BR">
+			<Component Id="pt_BR_Microsoft.Data.SqlClient.resources.dll"
+					   Guid="d69b242c-2043-4f78-8ded-b725da7180d5">
+				<File Id="pt_BR_Microsoft.Data.SqlClient.resources.dll" 
+					  Name="Microsoft.Data.SqlClient.resources.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)pt-BR\Microsoft.Data.SqlClient.resources.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+	
+	<Fragment>
+		<ComponentGroup Id="ru_files"
+						Directory="ru">
+			<Component Id="ru_Microsoft.Data.SqlClient.resources.dll"
+					   Guid="edaa9342-20b0-4569-9d6d-246f9f064823">
+				<File Id="ru_Microsoft.Data.SqlClient.resources.dll"
+					  Name="Microsoft.Data.SqlClient.resources.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)ru\Microsoft.Data.SqlClient.resources.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+	
+	<Fragment>
+		<ComponentGroup Id="zh_Hans_files"
+						Directory="zh_Hans">
+			<Component Id="zh_Hans_Microsoft.Data.SqlClient.resources.dll"
+					   Guid="a9cedf58-5773-40fd-9c5c-c29a64d02ea7">
+				<File Id="zh_Hans_Microsoft.Data.SqlClient.resources.dll"
+					  Name="Microsoft.Data.SqlClient.resources.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)zh-Hans\Microsoft.Data.SqlClient.resources.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+	
+	<Fragment>
+		<ComponentGroup Id="zh_Hant_files"
+						Directory="zh_Hant">
+			<Component Id="zh_Hant_Microsoft.Data.SqlClient.resources.dll"
+					   Guid="4cfe0734-1e6a-40d3-94f7-d24f1c835e84">
+				<File Id="zh_Hant_Microsoft.Data.SqlClient.resources.dll"
+					  Name="Microsoft.Data.SqlClient.resources.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)zh-Hant\Microsoft.Data.SqlClient.resources.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
 </Wix>
