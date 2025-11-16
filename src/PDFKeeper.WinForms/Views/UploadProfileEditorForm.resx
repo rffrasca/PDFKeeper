@@ -154,7 +154,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SetNameToAuthorSubjectLinkLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="MandatoryFieldLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -172,7 +172,7 @@
     <value>99, 15</value>
   </data>
   <data name="MandatoryFieldLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="MandatoryFieldLabel.Text" xml:space="preserve">
     <value>* Mandatory field</value>
@@ -187,7 +187,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MandatoryFieldLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="TableLayoutPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -274,7 +274,7 @@
     <value>170, 33</value>
   </data>
   <data name="TableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel.Name" xml:space="preserve">
     <value>TableLayoutPanel</value>
@@ -286,10 +286,43 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="TableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Cancel_Button" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="SetNameToSubjectLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SetNameToSubjectLinkLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SetNameToSubjectLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 239</value>
+  </data>
+  <data name="SetNameToSubjectLinkLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SetNameToSubjectLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 15</value>
+  </data>
+  <data name="SetNameToSubjectLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="SetNameToSubjectLinkLabel.Text" xml:space="preserve">
+    <value>Set Name to Subject</value>
+  </data>
+  <data name="&gt;&gt;SetNameToSubjectLinkLabel.Name" xml:space="preserve">
+    <value>SetNameToSubjectLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;SetNameToSubjectLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SetNameToSubjectLinkLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SetNameToSubjectLinkLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="NameUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -316,13 +349,13 @@
     <value>NameUserControl</value>
   </data>
   <data name="&gt;&gt;NameUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.NameUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.NameUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;NameUserControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;NameUserControl.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="TitleUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -346,13 +379,13 @@
     <value>TitleUserControl</value>
   </data>
   <data name="&gt;&gt;TitleUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.TitleUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.TitleUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TitleUserControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TitleUserControl.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="AuthorUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -376,13 +409,13 @@
     <value>AuthorUserControl</value>
   </data>
   <data name="&gt;&gt;AuthorUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.AuthorUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.AuthorUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;AuthorUserControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AuthorUserControl.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="SubjectUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -406,13 +439,13 @@
     <value>SubjectUserControl</value>
   </data>
   <data name="&gt;&gt;SubjectUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.SubjectUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.SubjectUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;SubjectUserControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SubjectUserControl.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="KeywordsUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -430,19 +463,19 @@
     <value>479, 49</value>
   </data>
   <data name="KeywordsUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;KeywordsUserControl.Name" xml:space="preserve">
     <value>KeywordsUserControl</value>
   </data>
   <data name="&gt;&gt;KeywordsUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.KeywordsUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.KeywordsUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;KeywordsUserControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;KeywordsUserControl.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="CategoryUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -460,19 +493,19 @@
     <value>369, 49</value>
   </data>
   <data name="CategoryUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;CategoryUserControl.Name" xml:space="preserve">
     <value>CategoryUserControl</value>
   </data>
   <data name="&gt;&gt;CategoryUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.CategoryUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.CategoryUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CategoryUserControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CategoryUserControl.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="TaxYearDropDownListUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -490,19 +523,19 @@
     <value>103, 49</value>
   </data>
   <data name="TaxYearDropDownListUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.Name" xml:space="preserve">
     <value>TaxYearDropDownListUserControl</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.TaxYearDropDownListUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.TaxYearDropDownListUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="UploadOptionsUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -517,22 +550,22 @@
     <value>12, 379</value>
   </data>
   <data name="UploadOptionsUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 52</value>
+    <value>306, 52</value>
   </data>
   <data name="UploadOptionsUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;UploadOptionsUserControl.Name" xml:space="preserve">
     <value>UploadOptionsUserControl</value>
   </data>
   <data name="&gt;&gt;UploadOptionsUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.UploadOptionsUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.UploadOptionsUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;UploadOptionsUserControl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;UploadOptionsUserControl.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

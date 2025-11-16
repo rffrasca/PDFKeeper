@@ -62,6 +62,7 @@ namespace PDFKeeper.Core.ViewModels
         public ICommand GetCollectionsCommand { get; private set; }
         public ICommand GetSubjectsCommand { get; private set; }
         public ICommand SetNameToAuthorAndSubjectCommand { get; private set; }
+        public ICommand SetNameToSubjectCommand { get; private set; }
 
         /// <summary>
         /// Saves the upload profile.
@@ -155,6 +156,7 @@ namespace PDFKeeper.Core.ViewModels
             GetCollectionsCommand = new RelayCommand(GetCollections);
             GetSubjectsCommand = new RelayCommand(GetSubjects);
             SetNameToAuthorAndSubjectCommand = new RelayCommand(SetNameToAuthorAndSubject);
+            SetNameToSubjectCommand = new RelayCommand(SetNameToSubject);
             SaveUploadProfileCommand = new RelayCommand(SaveUploadProfile);
             CancelCommand = new RelayCommand(Cancel);
         }
@@ -205,6 +207,12 @@ namespace PDFKeeper.Core.ViewModels
         {
             OnApplyPendingChanges?.Invoke();
             Name = string.Concat(Author, " ", Subject);
+        }
+
+        private void SetNameToSubject()
+        {
+            OnApplyPendingChanges?.Invoke();
+            Name = Subject;
         }
 
         private void SaveUploadProfile()

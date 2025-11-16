@@ -56,6 +56,7 @@ namespace PDFKeeper.WinForms.Views
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.OK_Button = new System.Windows.Forms.Button();
             this.Cancel_Button = new System.Windows.Forms.Button();
+            this.SetNameToSubjectLinkLabel = new System.Windows.Forms.LinkLabel();
             this.NameUserControl = new PDFKeeper.WinForms.UserControls.NameUserControl();
             this.UploadProfileEditorViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TitleUserControl = new PDFKeeper.WinForms.UserControls.TitleUserControl();
@@ -75,7 +76,7 @@ namespace PDFKeeper.WinForms.Views
             this.SetNameToAuthorSubjectLinkLabel.Name = "SetNameToAuthorSubjectLinkLabel";
             this.HelpProvider.SetShowHelp(this.SetNameToAuthorSubjectLinkLabel, ((bool)(resources.GetObject("SetNameToAuthorSubjectLinkLabel.ShowHelp"))));
             this.SetNameToAuthorSubjectLinkLabel.TabStop = true;
-            this.SetNameToAuthorSubjectLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SetNameToAuthorSubjectLinkLabel_LinkClicked);
+            this.SetNameToAuthorSubjectLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel_LinkClicked);
             // 
             // MandatoryFieldLabel
             // 
@@ -105,6 +106,14 @@ namespace PDFKeeper.WinForms.Views
             this.Cancel_Button.Name = "Cancel_Button";
             this.HelpProvider.SetShowHelp(this.Cancel_Button, ((bool)(resources.GetObject("Cancel_Button.ShowHelp"))));
             this.Cancel_Button.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // SetNameToSubjectLinkLabel
+            // 
+            resources.ApplyResources(this.SetNameToSubjectLinkLabel, "SetNameToSubjectLinkLabel");
+            this.SetNameToSubjectLinkLabel.Name = "SetNameToSubjectLinkLabel";
+            this.HelpProvider.SetShowHelp(this.SetNameToSubjectLinkLabel, ((bool)(resources.GetObject("SetNameToSubjectLinkLabel.ShowHelp"))));
+            this.SetNameToSubjectLinkLabel.TabStop = true;
+            this.SetNameToSubjectLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel_LinkClicked);
             // 
             // NameUserControl
             // 
@@ -182,6 +191,7 @@ namespace PDFKeeper.WinForms.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.Cancel_Button;
             this.ControlBox = false;
+            this.Controls.Add(this.SetNameToSubjectLinkLabel);
             this.Controls.Add(this.TableLayoutPanel);
             this.Controls.Add(this.MandatoryFieldLabel);
             this.Controls.Add(this.UploadOptionsUserControl);
@@ -227,5 +237,6 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.Button OK_Button;
         internal System.Windows.Forms.Button Cancel_Button;
         private System.Windows.Forms.BindingSource UploadProfileEditorViewModelBindingSource;
+        internal System.Windows.Forms.LinkLabel SetNameToSubjectLinkLabel;
     }
 }

@@ -76,6 +76,8 @@ namespace PDFKeeper.WinForms.Views
 
         private void SetTags()
         {
+            SetNameToAuthorSubjectLinkLabel.Tag = viewModel.SetNameToAuthorAndSubjectCommand;
+            SetNameToSubjectLinkLabel.Tag = viewModel.SetNameToSubjectCommand;
             OK_Button.Tag = viewModel.SaveUploadProfileCommand;
             Cancel_Button.Tag = viewModel.CancelCommand;
         }
@@ -90,9 +92,9 @@ namespace PDFKeeper.WinForms.Views
             viewModel.GetSubjectsCommand.Execute(null);
         }
 
-        private void SetNameToAuthorSubjectLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            viewModel.SetNameToAuthorAndSubjectCommand.Execute(null);
+            TagCommand.Invoke(sender);
         }
 
         private void UploadOptionsUserControl_Leave(object sender, EventArgs e)
