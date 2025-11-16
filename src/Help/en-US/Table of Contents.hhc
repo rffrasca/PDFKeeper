@@ -36,7 +36,7 @@
 				<param name="ImageNumber" value="9">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Oracle Database (On-Prem)">
+				<param name="Name" value="Oracle Database (On-Premises)">
 				<param name="Local" value="Oracle Database (On-Prem).html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
@@ -116,7 +116,7 @@
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Oracle Database (On-Prem)">
+				<param name="Name" value="Oracle Database (On-Premises)">
 				<param name="Local" value="Oracle Database (On-Prem)-Client.html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
