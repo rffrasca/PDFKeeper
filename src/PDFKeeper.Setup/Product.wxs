@@ -189,6 +189,12 @@
 					  Name="BouncyCastle.Cryptography.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)BouncyCastle.Cryptography.dll" />
 			</Component>
+			<Component Id="comerr64.dll"
+					   Guid="74692B9E-5965-4FA1-8011-A93086CE29A0">
+				<File Id="comerr64.dll"
+					  Name="comerr64.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)comerr64.dll" />
+			</Component>	
 			<Component Id="CommunityToolkit.Mvvm.dll"
 					   Guid="80366637-b819-4baf-8a61-afef5acce067">
 				<File Id="CommunityToolkit.Mvvm.dll"
@@ -218,6 +224,12 @@
 				<File Id="gsdll64.dll"
 					  Name="gsdll64.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)gsdll64.dll" />
+			</Component>
+			<Component Id="gssapi64.dll"
+					   Guid="7223FB25-4960-45BD-8EB1-3A3786BBA059">
+				<File Id="gssapi64.dll"
+					  Name="gssapi64.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)gssapi64.dll" />
 			</Component>
 			<Component Id="gswin64c.exe"
 					   Guid="6428a10e-504d-4521-8d93-28f25fc824bd">
@@ -278,6 +290,24 @@
 				<File Id="K4os.Hash.xxHash.dll"
 					  Name="K4os.Hash.xxHash.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)K4os.Hash.xxHash.dll" />
+			</Component>
+			<Component Id="k5sprt64.dll"
+					   Guid="d3f3e2b3-1f4e-4f2a-8f7b-5e3e1c6e4f4a">
+				<File Id="k5sprt64.dll"
+					  Name="k5sprt64.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)k5sprt64.dll" />
+			</Component>
+			<Component Id="krb5_64.dll"
+					   Guid="d3b5e1e4-3c4f-4f2a-9f7b-6e3e1c6e4f4b">
+				<File Id="krb5_64.dll"
+					  Name="krb5_64.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)krb5_64.dll" />
+			</Component>
+			<Component Id="krbcc64.dll"
+					   Guid="d4e5f6a7-b8c9-0a1b-2c3d-4e5f6a7b8c9d">
+				<File Id="krbcc64.dll"
+					  Name="krbcc64.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)krbcc64.dll" />
 			</Component>
 			<Component Id="Magick.Native_Q16_arm64.dll"
 					   Guid="5bdfc96d-941a-400f-bf8e-4bdedd45c3df">
@@ -603,6 +633,12 @@
 					  Name="System.Security.Cryptography.ProtectedData.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Security.Cryptography.ProtectedData.dll" />
 			</Component>
+			<Component Id="System.Security.Cryptography.Xml.dll"
+					   Guid="3f1e3b2a-5c4d-4f7e-8e2d-1c3b5f6a7b8c">
+				<File Id="System.Security.Cryptography.Xml.dll"
+					  Name="System.Security.Cryptography.Xml.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Security.Cryptography.Xml.dll" />
+			</Component>				
 			<Component Id="System.Security.Principal.Windows.dll"
 					   Guid="3a23f22b-0c72-4d45-91ab-a8c98994c59f">
 				<File Id="System.Security.Principal.Windows.dll"
