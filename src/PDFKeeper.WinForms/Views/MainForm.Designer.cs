@@ -178,6 +178,7 @@ namespace PDFKeeper.WinForms.Views
             this.UpdateCheckTimer = new System.Windows.Forms.Timer(this.components);
             this.CheckForFlaggedDocumentsTimer = new System.Windows.Forms.Timer(this.components);
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ToolStrip.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -974,7 +975,9 @@ namespace PDFKeeper.WinForms.Views
             this.DocumentsDataGridView.Name = "DocumentsDataGridView";
             this.DocumentsDataGridView.RowHeadersVisible = false;
             this.DocumentsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DocumentsDataGridView.ShowCellToolTips = false;
             this.DocumentsDataGridView.StandardTab = true;
+            this.ToolTip.SetToolTip(this.DocumentsDataGridView, resources.GetString("DocumentsDataGridView.ToolTip"));
             this.DocumentsDataGridView.DataSourceChanged += new System.EventHandler(this.DocumentsDataGridView_DataSourceChanged);
             this.DocumentsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DocumentsDataGridView_CellDoubleClick);
             this.DocumentsDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DocumentsDataGridView_CellValueChanged);
@@ -1172,6 +1175,11 @@ namespace PDFKeeper.WinForms.Views
             this.CheckForFlaggedDocumentsTimer.Interval = 5000;
             this.CheckForFlaggedDocumentsTimer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
+            // ToolTip
+            // 
+            this.ToolTip.IsBalloon = true;
+            this.ToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -1350,6 +1358,7 @@ namespace PDFKeeper.WinForms.Views
         private System.Windows.Forms.DataGridViewCheckBoxColumn SelectionColumn;
         private System.Windows.Forms.DataGridViewImageColumn FlagColumn;
         private System.Windows.Forms.HelpProvider HelpProvider;
+        private System.Windows.Forms.ToolTip ToolTip;
     }
 }
 

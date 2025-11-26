@@ -138,7 +138,11 @@ namespace PDFKeeper.WinForms.Views
                 }
             };
 
-            viewModel.OnFindDocuments = () => findDocumentsForm.ShowDialog();
+            viewModel.OnFindDocuments = () =>
+            {
+                ToolTip.Active = false;
+                findDocumentsForm.ShowDialog();
+            };
 
             viewModel.OnSelectAllDocuments = (selection) =>
             {
