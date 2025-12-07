@@ -211,6 +211,9 @@ PDFKeeper will need to be restarted after completing the install of Oracle ODP.N
   <data name="PdfOwnerPasswordRequired" xml:space="preserve">
     <value>PDF Owner password required.</value>
   </data>
+  <data name="ReplacePdf" xml:space="preserve">
+    <value>Replace PDF</value>
+  </data>
   <data name="SearchTermCannotBeBlank" xml:space="preserve">
     <value>Search Term cannot be blank!</value>
   </data>

@@ -482,7 +482,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public void UpdateDocument(Document document)
+        public void UpdateDocument(Document document, bool updatePdf = false)
         {
             if (document is null)
             {
@@ -492,15 +492,24 @@ namespace PDFKeeper.Core.DataAccess.Repository
             var sql = "update pdfkeeper.docs set " +
                       "doc_title = :doc_title," +
                       "doc_author = :doc_author," +
-                      "doc_subject = :doc_subject," +
-                      "doc_added = :doc_added," +
-                      "doc_notes = :doc_notes," +
-                      "doc_dummy = ''," +
-                      "doc_category = :doc_category," +
-                      "doc_tax_year = :doc_tax_year," +
-                      "doc_flag = :doc_flag," +
-                      "doc_text_annotations = :doc_text_annotations," +
-                      "doc_text = :doc_text where doc_id = :doc_id";
+                      "doc_subject = :doc_subject,";
+
+            if (!updatePdf)
+            {
+                sql += "doc_added = :doc_added," +
+                       "doc_notes = :doc_notes,";
+            }
+            else
+            {
+                sql += "doc_pdf = :doc_pdf,";
+            }
+
+            sql += "doc_dummy = ''," +
+                   "doc_category = :doc_category," +
+                   "doc_tax_year = :doc_tax_year," +
+                   "doc_flag = :doc_flag," +
+                   "doc_text_annotations = :doc_text_annotations," +
+                   "doc_text = :doc_text where doc_id = :doc_id";
 
             try
             {
@@ -516,6 +525,16 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.Add("doc_subject", document.Subject);
                         command.Parameters.Add("doc_added", document.Added);
                         command.Parameters.Add("doc_notes", document.Notes);
+
+                        if (updatePdf)
+                        {
+                            command.Parameters.Add(
+                                "doc_pdf",
+                                OracleDbType.Blob,
+                                document.Pdf,
+                                ParameterDirection.Input);
+                        }
+                        
                         command.Parameters.Add("doc_category", document.Category);
                         command.Parameters.Add("doc_tax_year", document.TaxYear);
                         command.Parameters.Add("doc_flag", document.Flag);

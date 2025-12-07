@@ -324,6 +324,11 @@
 					<param name="ImageNumber" value="9">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Replace PDF Document in a Database Record">
+					<param name="Local" value="Replace PDF Document in a Database Record.html">
+					<param name="ImageNumber" value="9">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
 					<param name="Name" value="Change Document Flag State">
 					<param name="Local" value="Change Document Flag State.html">
 					<param name="ImageNumber" value="9">

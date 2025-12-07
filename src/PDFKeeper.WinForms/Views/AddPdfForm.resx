@@ -130,7 +130,7 @@
     <value>12, 104</value>
   </data>
   <data name="TitleLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 15</value>
+    <value>38, 15</value>
   </data>
   <data name="TitleLabel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -190,7 +190,7 @@
     <value>12, 72</value>
   </data>
   <data name="SetTitleToPdfFileNameLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 15</value>
+    <value>143, 15</value>
   </data>
   <data name="SetTitleToPdfFileNameLinkLabel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -234,6 +234,9 @@
   <data name="&gt;&gt;SelectedPdfTextBox.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <metadata name="AddPdfViewModelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>139, 17</value>
+  </metadata>
   <data name="SelectedPdfLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -280,7 +283,7 @@
     <value>TitleTextBox</value>
   </data>
   <data name="&gt;&gt;TitleTextBox.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.Components.CustomTextBox, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.Components.CustomTextBox, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TitleTextBox.Parent" xml:space="preserve">
     <value>$this</value>
@@ -288,9 +291,6 @@
   <data name="&gt;&gt;TitleTextBox.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="Cancel_Button.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -299,9 +299,6 @@
   </data>
   <data name="Cancel_Button.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 3</value>
-  </data>
-  <data name="Cancel_Button.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="Cancel_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 27</value>
@@ -333,9 +330,6 @@
   <data name="MandatoryFieldLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 477</value>
   </data>
-  <data name="MandatoryFieldLabel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="MandatoryFieldLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 15</value>
   </data>
@@ -363,27 +357,6 @@
   <data name="TableLayoutPanel.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="OK_Button.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="OK_Button.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="OK_Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="OK_Button.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="OK_Button.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 27</value>
-  </data>
-  <data name="OK_Button.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="OK_Button.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
   <data name="&gt;&gt;OK_Button.Name" xml:space="preserve">
     <value>OK_Button</value>
   </data>
@@ -401,9 +374,6 @@
   </data>
   <data name="TableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="TableLayoutPanel.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="TableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 33</value>
@@ -426,6 +396,36 @@
   <data name="TableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Cancel_Button" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <data name="OK_Button.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="OK_Button.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="OK_Button.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="OK_Button.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 27</value>
+  </data>
+  <data name="OK_Button.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="OK_Button.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;OK_Button.Name" xml:space="preserve">
+    <value>OK_Button</value>
+  </data>
+  <data name="&gt;&gt;OK_Button.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OK_Button.Parent" xml:space="preserve">
+    <value>TableLayoutPanel</value>
+  </data>
+  <data name="&gt;&gt;OK_Button.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="DeleteSelectedPdfWhenAddedCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -434,9 +434,6 @@
   </data>
   <data name="DeleteSelectedPdfWhenAddedCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 431</value>
-  </data>
-  <data name="DeleteSelectedPdfWhenAddedCheckBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="DeleteSelectedPdfWhenAddedCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>197, 19</value>
@@ -481,7 +478,7 @@
     <value>AuthorUserControl</value>
   </data>
   <data name="&gt;&gt;AuthorUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.AuthorUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.AuthorUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;AuthorUserControl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -511,7 +508,7 @@
     <value>SubjectUserControl</value>
   </data>
   <data name="&gt;&gt;SubjectUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.SubjectUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.SubjectUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;SubjectUserControl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -541,7 +538,7 @@
     <value>KeywordsUserControl</value>
   </data>
   <data name="&gt;&gt;KeywordsUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.KeywordsUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.KeywordsUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;KeywordsUserControl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -571,7 +568,7 @@
     <value>CategoryUserControl</value>
   </data>
   <data name="&gt;&gt;CategoryUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.CategoryUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.CategoryUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;CategoryUserControl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -601,7 +598,7 @@
     <value>TaxYearDropDownListUserControl</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.TaxYearDropDownListUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.TaxYearDropDownListUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -622,7 +619,7 @@
     <value>12, 375</value>
   </data>
   <data name="UploadOptionsUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 52</value>
+    <value>306, 52</value>
   </data>
   <data name="UploadOptionsUserControl.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -631,7 +628,7 @@
     <value>UploadOptionsUserControl</value>
   </data>
   <data name="&gt;&gt;UploadOptionsUserControl.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.UserControls.UploadOptionsUserControl, PDFKeeper, Version=9.2.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.UserControls.UploadOptionsUserControl, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;UploadOptionsUserControl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -639,6 +636,9 @@
   <data name="&gt;&gt;UploadOptionsUserControl.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>21, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

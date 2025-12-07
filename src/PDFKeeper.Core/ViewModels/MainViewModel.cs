@@ -90,6 +90,7 @@ namespace PDFKeeper.Core.ViewModels
         private bool editRestoreMenuEnabled;
         private bool editAppendDateTimeMenuEnabled;
         private bool editAppendTextMenuEnabled;
+        private bool editReplacePdfMenuEnabled;
         private bool editFlagDocumentMenuEnabled;
         private bool editFlagDocumentMenuChecked;
         private bool documentsFindMenuEnabled;
@@ -227,6 +228,7 @@ namespace PDFKeeper.Core.ViewModels
         public ICommand RestoreNotesCommand { get; private set; }
         public ICommand AppendDateTimeIntoNotesCommand { get; private set; }
         public ICommand AppendTextFromFileIntoNotesCommand { get; private set; }
+        public ICommand ReplaceCurrentDocumentPdfCommand { get; private set; }
         public ICommand UpdateCurrentDocumentFlagStateCommand { get; private set; }
         public ICommand FindDocumentsCommand { get; private set; }
         public ICommand SelectAllDocumentsCommand { get; private set; }
@@ -524,6 +526,16 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
+        public bool EditReplacePdfMenuEnabled
+        {
+            get => editReplacePdfMenuEnabled;
+            set
+            {
+                editReplacePdfMenuEnabled = VerifyUpdateGranted(value);
+                OnPropertyChanged();
+            }
+        }
+
         public bool EditFlagDocumentMenuEnabled
         {
             get => editFlagDocumentMenuEnabled;
@@ -729,6 +741,7 @@ namespace PDFKeeper.Core.ViewModels
                 FileSaveAsMenuEnabled = documentDataEnabled;
                 FileBurstMenuEnabled = documentDataEnabled;
                 FileCopyPdfToClipboardEnabled = documentDataEnabled;
+                EditReplacePdfMenuEnabled = documentDataEnabled;
                 EditFlagDocumentMenuEnabled = documentDataEnabled;
                 ViewSetPreviewPixelDensityMenuEnabled = documentDataEnabled;
             }
@@ -1002,6 +1015,8 @@ namespace PDFKeeper.Core.ViewModels
                 AppendDateTimeIntoNotes);
             AppendTextFromFileIntoNotesCommand = new RelayCommand(
                 AppendTextFromFileIntoNotes);
+            ReplaceCurrentDocumentPdfCommand = new RelayCommand(
+                ReplaceCurrentDocumentPdf);
             UpdateCurrentDocumentFlagStateCommand = new RelayCommand(
                 UpdateCurrentDocumentFlagState);
             FindDocumentsCommand = new RelayCommand(
@@ -1453,6 +1468,15 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
+        private void ReplaceCurrentDocumentPdf()
+        {
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                var document = documentRepository.GetDocument(CurrentDocumentId, null);
+                addPdfDialogService.ShowDialog(null, document);
+            }
+        }
+
         private void UpdateCurrentDocumentFlagState()
         {
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
@@ -1888,7 +1912,8 @@ namespace PDFKeeper.Core.ViewModels
                         UploadProgressBarVisible = true;
                     }
 
-                    await Task.Run(() => pdfUploader.ExecuteUpload()).ConfigureAwait(true);
+                    await Task.Run(() => pdfUploader.ExecuteUpload(
+                        fileCache)).ConfigureAwait(true);
                 }
                 catch (ArgumentException ex)
                 {
@@ -1982,6 +2007,7 @@ namespace PDFKeeper.Core.ViewModels
             EditRestoreMenuEnabled = false;
             EditAppendDateTimeMenuEnabled = false;
             EditAppendTextMenuEnabled = false;
+            EditReplacePdfMenuEnabled = false;
             EditFlagDocumentMenuEnabled = false;
             DocumentsSelectMenuEnabled = false;
             DocumentsSetTitleMenuEnabled = false;

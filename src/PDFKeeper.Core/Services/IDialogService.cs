@@ -18,15 +18,27 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using PDFKeeper.Core.Models;
+
 namespace PDFKeeper.Core.Services
 {
     public interface IDialogService
     {
         /// <summary>
-        /// Shows a dialog.
+        /// Displays a dialog to the user and returns the result as a string.
         /// </summary>
-        /// <param name="arg">The optional <c>string</c> argument.</param>
-        /// <returns>The <c>string</c> or <c>null</c> when dialog is cancelled.</returns>
-        string ShowDialog(string arg = null);
+        /// <param name="arg">
+        /// An optional argument that specifies the initial input or context for the dialog. Can be
+        /// <see langword="null"/>.
+        /// </param>
+        /// <param name="document">
+        /// An optional <see cref="Document"/> object that provides additional context or data for
+        /// the dialog. Can be <see langword="null"/>.
+        /// </param>
+        /// <returns>
+        /// A string representing the result of the dialog interaction. The return value may vary
+        /// depending on the user's input or the dialog's configuration.
+        /// </returns>
+        string ShowDialog(string arg = null, Document document = null);
     }
 }

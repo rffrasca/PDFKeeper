@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Replace PDF Document in a Database Record</title>
+	<meta name="generator" content="LibreOffice 25.8.3.2 (Windows)"/>
+	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
+	<meta name="changed" content="2025-12-07T12:26:13.171790800"/>
+	<meta name="description" content="
+*******************************************************************************
+* PDFKeeper -- Open Source PDF Document Management
+* Copyright (C) 2009-2025 Robert F. Frasca
+*
+* This file is part of PDFKeeper.
+*
+* PDFKeeper is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* PDFKeeper is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+*******************************************************************************"/>
+</head>
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Replace
+PDF Document in a Database Record</b></font></h1>
+<p><font face="Segoe UI, sans-serif">This topic explains how to
+replace an existing PDF file stored in a database record with a new
+version.</font></p>
+<p><font face="Segoe UI, sans-serif"><b>Steps to Replace a PDF
+Document:</b></font></p>
+<ol>
+	<li><p><font face="Segoe UI, sans-serif">From the </font><font face="Segoe UI, sans-serif"><b>PDFKeeper</b></font>
+	<font face="Segoe UI, sans-serif">main form, select the </font><font face="Segoe UI, sans-serif">document
+	record that contains the PDF you want to replace.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Open the </font><font face="Segoe UI, sans-serif"><b>Edit</b></font>
+	<font face="Segoe UI, sans-serif">menu, </font><font face="Segoe UI, sans-serif">t</font><font face="Segoe UI, sans-serif">hen
+	select </font><font face="Segoe UI, sans-serif"><b>Replace PDF</b></font><font face="Segoe UI, sans-serif">,
+	or press </font><font face="Segoe UI, sans-serif"><b>Ctrl</b></font>
+	<font face="Segoe UI, sans-serif">+ </font><font face="Segoe UI, sans-serif"><b>E</b></font>
+	<font face="Segoe UI, sans-serif">on the keyboard.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Browse
+	to the PDF you want to upload, select it, and then click </span><b>Open</b><span style="font-weight: normal">
+	or press </span><b>Enter</b><span style="font-weight: normal">.</span></font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">If
+	the selected PDF is protected with an OWNER password, you will be
+	prompted to enter the correct password. If you do not know the
+	password but have the legal right to remove it, you can find
+	guidance online.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">The
+	</span></font><font face="Segoe UI, sans-serif"><b>Replace PDF</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">
+	form </span></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">will
+	open.</span></font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">To
+	view the selected PDF, select <b>View</b> or press <b>Alt</b> + <b>V</b>
+	to open the PDF in the bundled viewer.</font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Type
+	a <b>T</b><b>itle</b> for the PDF. To automatically set the title to
+	the file name, select <b>Set Title to PDF File Name</b>.</font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Use
+	the <b>Author</b> combo box to type a new author or select one from
+	the database.</font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Use
+	the <b>Subject</b> combo box to type a new subject or select one
+	from the database.</font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Add
+	<b>K</b><b>eywords</b> if needed.</font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Use
+	the <b>Category</b> combo box to type a new category or select one
+	from the database if required.</font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Use
+	the <b>Tax Year </b>combo box to choose the applicable tax year if
+	required.</font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Check
+	or uncheck <b>Flag Document</b>. Example: Flagging a bill makes it
+	easy to list documents that require payment.</font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Check
+	or uncheck <b>OCR PDF pages containing both text and image data</b>.
+	When checked, pages with embedded images are processed by OCR to
+	extract text that would otherwise be ignored.</font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Check
+	or uncheck <b>D</b><b>elete selected PDF when added</b>. When
+	checked, the original PDF is moved to the Windows Recycle Bin after
+	being added.</font></p></li>
+	<li><p style="font-weight: normal"><font face="Segoe UI, sans-serif">Select
+	<b>OK</b> or press <b>Enter</b> to save the modified PDF with the
+	specified Information Properties and external metadata XML to
+	<b>%APPDATA%\Robert F. Frasca\PDFKeeper\UploadStaging</b>. Note: If
+	the selected PDF contained an <b>OWNER password</b>, it will not be
+	written to the modified PDF. To cancel, select <b>Cancel</b> or
+	press <b>Esc</b>.</font></p></li>
+</ol>
+<p><font face="Segoe UI, sans-serif"><b>Additional Information:</b></font></p>
+<ul>
+	<li><p><font face="Segoe UI, sans-serif">In a multi-user database
+	environment, the controls referenced in step 2 will be disabled if
+	your database user account has not been granted <b>update</b> access
+	to the <b>docs</b> table.</font></p></li>
+</ul>
+</body>
+</html>

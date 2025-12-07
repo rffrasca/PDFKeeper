@@ -179,6 +179,8 @@ namespace PDFKeeper.WinForms.Views
             this.CheckForFlaggedDocumentsTimer = new System.Windows.Forms.Timer(this.components);
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.EditReplacePdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStrip.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -593,6 +595,8 @@ namespace PDFKeeper.WinForms.Views
             this.EditAppendDateTimeToolStripMenuItem,
             this.EditAppendTextToolStripMenuItem,
             this.EditToolStripSeparator5,
+            this.EditReplacePdfToolStripMenuItem,
+            this.EditToolStripSeparator6,
             this.EditFlagDocumentToolStripMenuItem});
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
             resources.ApplyResources(this.EditToolStripMenuItem, "EditToolStripMenuItem");
@@ -1180,6 +1184,17 @@ namespace PDFKeeper.WinForms.Views
             this.ToolTip.IsBalloon = true;
             this.ToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // EditReplacePdfToolStripMenuItem
+            // 
+            this.EditReplacePdfToolStripMenuItem.Name = "EditReplacePdfToolStripMenuItem";
+            resources.ApplyResources(this.EditReplacePdfToolStripMenuItem, "EditReplacePdfToolStripMenuItem");
+            this.EditReplacePdfToolStripMenuItem.Click += new System.EventHandler(this.ToolStripItem_Click);
+            // 
+            // EditToolStripSeparator6
+            // 
+            this.EditToolStripSeparator6.Name = "EditToolStripSeparator6";
+            resources.ApplyResources(this.EditToolStripSeparator6, "EditToolStripSeparator6");
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -1359,6 +1374,8 @@ namespace PDFKeeper.WinForms.Views
         private System.Windows.Forms.DataGridViewImageColumn FlagColumn;
         private System.Windows.Forms.HelpProvider HelpProvider;
         private System.Windows.Forms.ToolTip ToolTip;
+        private System.Windows.Forms.ToolStripMenuItem EditReplacePdfToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator EditToolStripSeparator6;
     }
 }
 

@@ -22,6 +22,7 @@ namespace PDFKeeper.Core.Models
 {
     public interface IPdfExternalMetadata
     {
+        int Id { get; set; }
         string Notes { get; set; }
         string Category { get; set; }
         int Flag { get; set; }

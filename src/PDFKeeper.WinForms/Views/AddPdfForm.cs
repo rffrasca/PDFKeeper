@@ -19,6 +19,7 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.ViewModels;
 using System;
 using System.ComponentModel;
@@ -30,10 +31,17 @@ namespace PDFKeeper.WinForms.Views
     {
         private readonly AddPdfViewModel viewModel;
 
-        public AddPdfForm()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddPdfForm"/> class.
+        /// </summary>
+        /// <param name="document">
+        /// The <see cref="Document"/> instance to associate with the form. This parameter is
+        /// optional and can be <see langword="null"/>.
+        /// </param>
+        public AddPdfForm(Document document = null)
         {
             InitializeComponent();
-            viewModel = new AddPdfViewModel();
+            viewModel = new AddPdfViewModel(document);
             AddPdfViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
@@ -106,6 +114,12 @@ namespace PDFKeeper.WinForms.Views
         {
             switch (e.PropertyName)
             {
+                case nameof(viewModel.ViewText):
+                    Text = viewModel.ViewText;
+                    HelpProvider.SetHelpKeyword(
+                        this,
+                        "Replace PDF Document in a Database Record.html");
+                    break;
                 case nameof(viewModel.Authors):
                     AuthorUserControl.Authors = viewModel.Authors;
                     break;

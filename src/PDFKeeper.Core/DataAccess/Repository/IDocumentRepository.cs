@@ -148,16 +148,26 @@ namespace PDFKeeper.Core.DataAccess.Repository
         void InsertDocument(Document document);
 
         /// <summary>
-        /// Updates the <see cref="Document"/> in the database.
+        /// Updates the specified <see cref="Document"/> in the database.
         /// <para>
-        /// Only the doc_title, doc_author, doc_subject, doc_notes, doc_category, doc_tax_year,
-        /// doc_flag, doc_text_annotations, and doc_text columns will be updated.
+        /// By default, only the doc_title, doc_author, doc_subject, doc_notes, doc_category,
+        /// doc_tax_year, doc_flag, doc_text_annotations, and doc_text columns will be updated.
+        /// The doc_pdf column will only be updated when <paramref name="updatePdf"/> is
+        /// <see langword="true"/>.
         /// </para>
         /// </summary>
-        /// <param name="document">The <see cref="Document"/> object.</param>
+        /// <param name="document">
+        /// The <see cref="Document"/> object containing the updated data. This parameter cannot be
+        /// <see langword="null"/>.
+        /// </param>
+        /// <param name="updatePdf">
+        /// A value indicating whether the PDF content of the document should also be updated. If
+        /// <see langword="true"/>, the PDF content will be included in the update; otherwise, it
+        /// will be ignored.
+        /// </param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="DatabaseException"></exception>
-        void UpdateDocument(Document document);
+        void UpdateDocument(Document document, bool updatePdf = false);
 
         /// <summary>
         /// Deletes the <see cref="Document"/> from the database.

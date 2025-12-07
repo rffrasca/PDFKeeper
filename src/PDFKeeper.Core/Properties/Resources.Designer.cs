@@ -329,6 +329,15 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replace PDF.
+        /// </summary>
+        internal static string ReplacePdf {
+            get {
+                return ResourceManager.GetString("ReplacePdf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search Term cannot be blank!.
         /// </summary>
         internal static string SearchTermCannotBeBlank {

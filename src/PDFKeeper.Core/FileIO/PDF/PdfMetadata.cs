@@ -69,6 +69,7 @@ namespace PDFKeeper.Core.FileIO.PDF
             GetMetadata();
         }
 
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public string Subject { get; set; }
@@ -78,7 +79,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         public int Flag { get; set; }
         public string TaxYear { get; set; }
         public bool OcrPdfTextAndImageDataPages { get; set; }
-
+        
         /// <summary>
         /// Exports <see cref="PdfMetadata"/> object properties to an <see cref="UploadProfile"/>
         /// object.
@@ -239,6 +240,7 @@ namespace PDFKeeper.Core.FileIO.PDF
             if (xmlFile.Exists)
             {
                 var metaData = XmlSerializer.Deserialize<PdfExternalMetadata>(xmlFile);
+                Id = metaData.Id;
                 Notes = metaData.Notes;
                 Category = metaData.Category;
                 TaxYear = metaData.TaxYear;
@@ -289,6 +291,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         {
             var metaData = new PdfExternalMetadata
             {
+                Id = Id,
                 Notes = Notes,
                 Category = Category,
                 TaxYear = TaxYear,

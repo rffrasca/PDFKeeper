@@ -324,6 +324,8 @@ namespace PDFKeeper.WinForms.Views
                 viewModel.AppendTextFromFileIntoNotesCommand;
             EditAppendTextToolStripButton.Tag = 
                 viewModel.AppendTextFromFileIntoNotesCommand;
+            EditReplacePdfToolStripMenuItem.Tag =
+                viewModel.ReplaceCurrentDocumentPdfCommand;
             EditFlagDocumentToolStripMenuItem.Tag =
                 viewModel.UpdateCurrentDocumentFlagStateCommand;
             DocumentsFindToolStripMenuItem.Tag =
@@ -653,6 +655,10 @@ namespace PDFKeeper.WinForms.Views
                 case nameof(viewModel.EditAppendTextMenuEnabled):
                     EditAppendTextToolStripMenuItem.Enabled = viewModel.EditAppendTextMenuEnabled;
                     EditAppendTextToolStripButton.Enabled = viewModel.EditAppendTextMenuEnabled;
+                    break;
+                case nameof(viewModel.EditReplacePdfMenuEnabled):
+                        EditReplacePdfToolStripMenuItem.Enabled =
+                        viewModel.EditReplacePdfMenuEnabled;
                     break;
                 case nameof(viewModel.EditFlagDocumentMenuEnabled):
                     EditFlagDocumentToolStripMenuItem.Enabled =

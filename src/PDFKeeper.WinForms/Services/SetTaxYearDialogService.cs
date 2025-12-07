@@ -19,6 +19,7 @@
 // *****************************************************************************
 
 using System.Windows.Forms;
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
 
@@ -26,7 +27,7 @@ namespace PDFKeeper.WinForms.Services
 {
     internal class SetTaxYearDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null)
+        public string ShowDialog(string arg = null, Document document = null)
         {
             using (var dialog = new SetTaxYearForm())
             {

@@ -111,20 +111,20 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Executes PDF Upload tasks:
-        /// <list type="table">
-        /// 1. Stages all PDF files in <see cref="ApplicationDirectory.SpecialName.Upload"/>
-        /// directories for uploading.
-        /// </list>
-        /// <list type="table">
-        /// 2. Uploads all PDF files in
-        /// <see cref="ApplicationDirectory.SpecialName.UploadStaging"/> to the database.
-        /// </list>
+        /// Executes the upload process by staging PDF files and uploading them to the repository.
         /// </summary>
-        internal void ExecuteUpload()
+        /// <remarks>
+        /// This method performs two main operations: staging PDF files in the upload directory and
+        /// uploading the staged files. Ensure that the file cache is properly initialized before
+        /// calling this method.
+        /// </remarks>
+        /// <param name="fileCache">
+        /// The file cache used to manage cached files associated with documents.
+        /// </param>
+        internal void ExecuteUpload(FileCache fileCache)
         {
             StagePdfFilesInUploadDirectory();
-            UploadStagedPdfFiles();
+            UploadStagedPdfFiles(fileCache);
         }
 
         private static Collection<FileInfo> GetPdfFiles(DirectoryInfo directory)
@@ -286,21 +286,41 @@ namespace PDFKeeper.Core.FileIO.PDF
             }
         }
 
-        private void UploadStagedPdfFiles()
+        /// <summary>
+        /// Processes and uploads staged PDF files from the staging directory to the document
+        /// repository.
+        /// </summary>
+        /// <remarks>
+        /// This method retrieves PDF files from the staging directory, extracts metadata and
+        /// content from each file, and creates or updates corresponding document records in the
+        /// repository. If a document already exists, its cached files are deleted before updating
+        /// the record. After processing, the original PDF files and their associated XML metadata
+        /// files (if present) are deleted from the staging directory.
+        /// </remarks>
+        /// <param name="fileCache">
+        /// The file cache used to manage and delete cached files associated with documents.
+        /// </param>
+        private void UploadStagedPdfFiles(FileCache fileCache)
         {
             foreach (var pdfFile in GetPdfFiles(uploadStagingDirectory))
             {
                 var pdf = new PdfFile(pdfFile);
                 var document = new Document();
                 var pdfMetadata = new PdfMetadata(pdf);
+                document.Id = pdfMetadata.Id;
                 document.Title = pdfMetadata.Title;
                 document.Author = pdfMetadata.Author;
                 document.Subject = pdfMetadata.Subject;
                 document.Keywords = pdfMetadata.Keywords;
-                document.Added = DateTime.Now.ToString(
-                    "yyyy-MM-dd HH:mm:ss",
-                    CultureInfo.CurrentCulture);
-                document.Notes = string.Empty;
+                
+                if (document.Id.Equals(0))
+                {
+                    document.Added = DateTime.Now.ToString(
+                        "yyyy-MM-dd HH:mm:ss",
+                        CultureInfo.CurrentCulture);
+                    document.Notes = string.Empty;
+                }
+
                 document.Pdf = pdfFile.ReadAllBytes();
                 document.Category = pdfMetadata.Category;
                 document.Flag = pdfMetadata.Flag;
@@ -310,7 +330,15 @@ namespace PDFKeeper.Core.FileIO.PDF
 
                 using (var documentRepository = DatabaseSession.GetDocumentRepository())
                 {
-                    documentRepository.InsertDocument(document);
+                    if (document.Id.Equals(0))
+                    {
+                        documentRepository.InsertDocument(document);
+                    }
+                    else
+                    {
+                        fileCache.Delete(document.Id);
+                        documentRepository.UpdateDocument(document, true);
+                    }
                 }
                 
                 pdfFile.Delete();

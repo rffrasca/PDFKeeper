@@ -25,6 +25,7 @@ namespace PDFKeeper.Core.Models
     [Serializable()]
     public class PdfExternalMetadata : IPdfExternalMetadata
     {
+        public int Id { get; set; }
         public string Notes { get; set; }
         public string Category { get; set; }
         public int Flag { get; set; }

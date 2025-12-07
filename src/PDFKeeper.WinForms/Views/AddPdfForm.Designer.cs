@@ -57,7 +57,6 @@ namespace PDFKeeper.WinForms.Views
             this.AddPdfViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SelectedPdfLabel = new System.Windows.Forms.Label();
             this.TitleTextBox = new PDFKeeper.WinForms.Components.CustomTextBox(this.components);
-            this.HelpProvider = new System.Windows.Forms.HelpProvider();
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.MandatoryFieldLabel = new System.Windows.Forms.Label();
             this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -69,6 +68,7 @@ namespace PDFKeeper.WinForms.Views
             this.CategoryUserControl = new PDFKeeper.WinForms.UserControls.CategoryUserControl();
             this.TaxYearDropDownListUserControl = new PDFKeeper.WinForms.UserControls.TaxYearDropDownListUserControl();
             this.UploadOptionsUserControl = new PDFKeeper.WinForms.UserControls.UploadOptionsUserControl();
+            this.HelpProvider = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.AddPdfViewModelBindingSource)).BeginInit();
             this.TableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -121,14 +121,12 @@ namespace PDFKeeper.WinForms.Views
             this.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.Cancel_Button, "Cancel_Button");
             this.Cancel_Button.Name = "Cancel_Button";
-            this.HelpProvider.SetShowHelp(this.Cancel_Button, ((bool)(resources.GetObject("Cancel_Button.ShowHelp"))));
             this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
             // MandatoryFieldLabel
             // 
             resources.ApplyResources(this.MandatoryFieldLabel, "MandatoryFieldLabel");
             this.MandatoryFieldLabel.Name = "MandatoryFieldLabel";
-            this.HelpProvider.SetShowHelp(this.MandatoryFieldLabel, ((bool)(resources.GetObject("MandatoryFieldLabel.ShowHelp"))));
             // 
             // TableLayoutPanel
             // 
@@ -136,13 +134,11 @@ namespace PDFKeeper.WinForms.Views
             this.TableLayoutPanel.Controls.Add(this.OK_Button, 0, 0);
             this.TableLayoutPanel.Controls.Add(this.Cancel_Button, 1, 0);
             this.TableLayoutPanel.Name = "TableLayoutPanel";
-            this.HelpProvider.SetShowHelp(this.TableLayoutPanel, ((bool)(resources.GetObject("TableLayoutPanel.ShowHelp"))));
             // 
             // OK_Button
             // 
             resources.ApplyResources(this.OK_Button, "OK_Button");
             this.OK_Button.Name = "OK_Button";
-            this.HelpProvider.SetShowHelp(this.OK_Button, ((bool)(resources.GetObject("OK_Button.ShowHelp"))));
             this.OK_Button.Click += new System.EventHandler(this.OK_Button_Click);
             // 
             // DeleteSelectedPdfWhenAddedCheckBox
@@ -151,7 +147,6 @@ namespace PDFKeeper.WinForms.Views
             this.DeleteSelectedPdfWhenAddedCheckBox.Checked = global::PDFKeeper.WinForms.Properties.Settings.Default.AddPdfDeleteSelectedPdfWhenAdded;
             this.DeleteSelectedPdfWhenAddedCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::PDFKeeper.WinForms.Properties.Settings.Default, "AddPdfDeleteSelectedPdfWhenAdded", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.DeleteSelectedPdfWhenAddedCheckBox.Name = "DeleteSelectedPdfWhenAddedCheckBox";
-            this.HelpProvider.SetShowHelp(this.DeleteSelectedPdfWhenAddedCheckBox, ((bool)(resources.GetObject("DeleteSelectedPdfWhenAddedCheckBox.ShowHelp"))));
             this.DeleteSelectedPdfWhenAddedCheckBox.UseVisualStyleBackColor = true;
             // 
             // AuthorUserControl
@@ -250,7 +245,6 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.TextBox SelectedPdfTextBox;
         internal System.Windows.Forms.Label SelectedPdfLabel;
         internal Components.CustomTextBox TitleTextBox;
-        internal System.Windows.Forms.HelpProvider HelpProvider;
         private System.Windows.Forms.BindingSource AddPdfViewModelBindingSource;
         internal UserControls.AuthorUserControl AuthorUserControl;
         internal UserControls.SubjectUserControl SubjectUserControl;
@@ -263,5 +257,6 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel;
         internal System.Windows.Forms.Button OK_Button;
         internal System.Windows.Forms.CheckBox DeleteSelectedPdfWhenAddedCheckBox;
+        private System.Windows.Forms.HelpProvider HelpProvider;
     }
 }

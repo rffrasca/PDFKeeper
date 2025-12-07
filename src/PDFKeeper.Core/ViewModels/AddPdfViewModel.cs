@@ -35,17 +35,27 @@ namespace PDFKeeper.Core.ViewModels
     [CLSCompliant(false)]
     public class AddPdfViewModel : ColumnDataListsViewModel, IUploadProfile
     {
+        private Document document;
         private IFileDialogService openFileDialogService;
         private IMessageBoxService messageBoxService;
         private IPasswordDialogService passwordDialogService;
         private IRestrictedPdfViewerService restrictedPdfViewerService;
         private UploadProfile uploadProfile;
+        private string viewText;
         private string selectedPdf;
         private PdfFile pdfFile;
         private PdfMetadata pdfMetadata;
 
-        public AddPdfViewModel()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddPdfViewModel"/> class.
+        /// </summary>
+        /// <param name="document">
+        /// The <see cref="Document"/> instance to associate with the view model. This parameter is
+        /// optional and can be <see langword="null"/>.
+        /// </param>
+        public AddPdfViewModel(Document document = null)
         {
+            this.document = document;
             GetServices(ServiceLocator.Services);
             InitializeCommands();            
         }
@@ -80,6 +90,12 @@ namespace PDFKeeper.Core.ViewModels
             get => uploadProfile;
             // On a set, trigger all model properties bound to the view to update.
             set => SetProperty(ref uploadProfile, value, nameof(Title));
+        }
+
+        public string ViewText
+        {
+            get => viewText;
+            set => SetProperty(ref viewText, value);
         }
 
         public string SelectedPdf
@@ -184,7 +200,7 @@ namespace PDFKeeper.Core.ViewModels
                     {
                         pdfMetadata = new PdfMetadata(pdfFile);
                         SelectedPdf = pdfFile.FullName;
-                        UploadProfile = pdfMetadata.ExportUploadProfile();
+                        SetUploadProfile();
                         GetCollections();
                     }
                     else if (passwordType.Equals(PdfFile.PasswordType.Owner))
@@ -198,7 +214,7 @@ namespace PDFKeeper.Core.ViewModels
                                 {
                                     pdfMetadata = new PdfMetadata(pdfFile, pdfOwnerPassword);
                                     SelectedPdf = pdfFile.FullName;
-                                    UploadProfile = pdfMetadata.ExportUploadProfile();
+                                    SetUploadProfile();
                                     GetCollections();
                                 }
                                 catch (ArgumentException)
@@ -327,6 +343,29 @@ namespace PDFKeeper.Core.ViewModels
             catch (DatabaseException ex)
             {
                 messageBoxService.ShowMessage(ex.Message, true);
+            }
+        }
+
+        private void SetUploadProfile()
+        {
+            if (document != null)
+            {
+                ViewText = Resources.ReplacePdf;
+                pdfMetadata.Id = document.Id;
+                UploadProfile = new UploadProfile
+                {
+                    Title = document.Title,
+                    Author = document.Author,
+                    Subject = document.Subject,
+                    Keywords = document.Keywords,
+                    Category = document.Category,
+                    TaxYear = document.TaxYear,
+                    FlagDocument = Convert.ToBoolean(document.Flag),
+                };
+            }
+            else
+            {
+                UploadProfile = pdfMetadata.ExportUploadProfile();
             }
         }
     }

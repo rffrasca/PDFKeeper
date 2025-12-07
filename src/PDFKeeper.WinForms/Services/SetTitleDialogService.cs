@@ -20,6 +20,7 @@
 
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
 using PDFKeeper.WinForms.Properties;
@@ -28,7 +29,7 @@ namespace PDFKeeper.WinForms.Services
 {
     internal class SetTitleDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null)
+        public string ShowDialog(string arg = null, Document document = null)
         {
             var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
 
