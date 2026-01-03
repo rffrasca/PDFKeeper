@@ -37,7 +37,7 @@ When available, download the source code for a v12 release from [here](https://g
 
 1. Open src\\Help\\en-US\\PDFKeeper.hhp with HTML Help Workshop and compile.
 2. If src\\Help\\PDFKeeper.en-US.chm resides on a network/remote drive, copy to a local drive.
-3. Open PDFKeeper.en-US.chm. If the help file fails to open, as an Administrator, execute *regsvr32 C:\\Windows\\System32\\hhctrl.ocx* and then repeat the compile and test again.
+3. Open PDFKeeper.en-US.chm. If the help file fails to open, close Visual Studio, and then repeat the compile and test again.
 4. Open "PDFKeeper.sln" with Visual Studio.
 5. Set configuration to Release, and then Build the Solution.
 
