@@ -238,5 +238,17 @@ namespace PDFKeeper.WinForms.Properties {
                 this["CompactLocalDatabaseAfterDelete"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("pdfkeeper")]
+        public string Schemaname {
+            get {
+                return ((string)(this["Schemaname"]));
+            }
+            set {
+                this["Schemaname"] = value;
+            }
+        }
     }
 }

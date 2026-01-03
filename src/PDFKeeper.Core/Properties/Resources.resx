@@ -230,6 +230,9 @@ PDF file names will be prefixed with: PDFKeeper&lt;ID&gt;_</value>
   <data name="SelectExtractFolder" xml:space="preserve">
     <value>Select the folder location where to extract all PDF attachments for the selected document:</value>
   </data>
+  <data name="SqliteFilter" xml:space="preserve">
+    <value>SQLite DB files|*.sqlite</value>
+  </data>
   <data name="StackTraceLogged" xml:space="preserve">
     <value>Stack Trace has been logged to {0}</value>
   </data>

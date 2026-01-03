@@ -68,6 +68,7 @@ namespace PDFKeeper.Core.ViewModels
         private IPrintDialogService printDialogService;
         private IPrintPreviewDialogService printPreviewDialogService;
         private readonly FileCache fileCache;
+        private string viewTitleText;
         private bool toolStripVisible;
         private bool statusStripVisible;
         private bool fileAddMenuEnabled;
@@ -81,6 +82,9 @@ namespace PDFKeeper.Core.ViewModels
         private bool fileCopyPdfToClipboardEnabled;
         private bool filePrintMenuEnabled;
         private bool filePrintPreviewMenuEnabled;
+        private bool fileDatabaseMenuVisible;
+        private bool fileDatabaseNewMenuVisible;
+        private bool fileDatabaseOpenMenuVisible;
         private bool fileExportMenuEnabled;
         private bool editUndoMenuEnabled;
         private bool editCutMenuEnabled;
@@ -158,9 +162,10 @@ namespace PDFKeeper.Core.ViewModels
                 ApplicationDirectory.SpecialName.UploadRejected);
             executingAssembly = new ExecutingAssembly();
             printDocument.PrintPage += PrintDocument_PrintPage;
-            FindDocumentsViewState.OnFindDocumentsParamChanged = () => GetListOfDocuments(false);
-            checkedDocumentIds = new Collection<int>();
+            SetActions();
+            checkedDocumentIds = [];
             InitializeCommands();
+            SetViewTitleText();
         }
 
         public Action OnSettingsChanged { get; set; }
@@ -218,6 +223,8 @@ namespace PDFKeeper.Core.ViewModels
         public ICommand CopyCurrentDocumentPdfToClipboardCommand { get; private set; }
         public ICommand PrintDocumentDataTextCommand { get; private set; }
         public ICommand PrintDocumentDataTextWithPreviewCommand { get; private set; }
+        public ICommand AddLocalDatabaseCommand { get; private set; }
+        public ICommand OpenLocalDatabaseCommand { get; private set; }
         public ICommand ExportEachSelectedDocumentCommand { get; private set; }
         public ICommand CloseCommand { get; private set; }
         public ICommand UndoNotesCommand { get; private set; }
@@ -302,6 +309,11 @@ namespace PDFKeeper.Core.ViewModels
         public decimal PreviewPixelDensity { get; set; }
         public bool ShowPdfWithDefaultApplication { get; set; }
         
+        public string ViewTitleText
+        {
+            get => viewTitleText; set => viewTitleText = value;
+        }
+
         public bool ToolStripVisible
         {
             get => toolStripVisible;
@@ -415,7 +427,7 @@ namespace PDFKeeper.Core.ViewModels
                 OnPropertyChanged();
             }
         }
-
+        
         public bool FilePrintMenuEnabled
         {
             get => filePrintMenuEnabled;
@@ -432,6 +444,36 @@ namespace PDFKeeper.Core.ViewModels
             set
             {
                 filePrintPreviewMenuEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool FileDatabaseMenuVisible
+        {
+            get => fileDatabaseMenuVisible;
+            set
+            {
+                fileDatabaseMenuVisible = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool FileDatabaseNewMenuVisible
+        {
+            get => fileDatabaseNewMenuVisible;
+            set
+            {
+                fileDatabaseNewMenuVisible = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool FileDatabaseOpenMenuVisible
+        {
+            get => fileDatabaseOpenMenuVisible;
+            set
+            {
+                fileDatabaseOpenMenuVisible = value;
                 OnPropertyChanged();
             }
         }
@@ -970,6 +1012,12 @@ namespace PDFKeeper.Core.ViewModels
             printPreviewDialogService = serviceProvider.GetService<IPrintPreviewDialogService>();
         }
 
+        private void SetActions()
+        {
+            DatabaseSession.OnLocalDatabasePathChanged = () => SetViewTitleText();
+            FindDocumentsViewState.OnFindDocumentsParamChanged = () => GetListOfDocuments(false);
+        }
+
         private void InitializeCommands()
         {
             ClipboardUpdateCommand = new RelayCommand(
@@ -995,6 +1043,10 @@ namespace PDFKeeper.Core.ViewModels
                 PrintDocumentDataText);
             PrintDocumentDataTextWithPreviewCommand = new RelayCommand(
                 PrintDocumentDataTextWithPreview);
+            AddLocalDatabaseCommand = new RelayCommand(
+                AddLocalDatabase);
+            OpenLocalDatabaseCommand = new RelayCommand(
+                OpenLocalDatabase);
             ExportEachSelectedDocumentCommand = new RelayCommand(
                 ExportEachSelectedDocument);
             CloseCommand = new RelayCommand(
@@ -1390,6 +1442,56 @@ namespace PDFKeeper.Core.ViewModels
             printPreviewDialogService.ShowDialog(printDocument, ViewSize);
         }
 
+        private void AddLocalDatabase()
+        {
+            var targetFilePath = saveFileDialogService.ShowDialog(
+                Resources.SqliteFilter,
+                $"{executingAssembly.ProductName}-New.sqlite");
+            if (targetFilePath != null)
+            {
+                try
+                {
+                    OnLongOperationStarted?.Invoke();
+                    WaitForUploadToFinish();
+                    DatabaseSession.SetLocalDatabasePath(targetFilePath);
+                    using var repository = DatabaseSession.GetDocumentRepository();
+                    repository.CreateDatabase();
+                }
+                catch (DatabaseException ex)
+                {
+                    messageBoxService.ShowMessage(ex.Message, true);
+                }
+                finally
+                {
+                    OnLongOperationFinished?.Invoke();
+                }
+            }
+        }
+
+        private void OpenLocalDatabase()
+        {
+            var selectedFilePath = openFileDialogService.ShowDialog(Resources.SqliteFilter);
+            if (!string.IsNullOrEmpty(selectedFilePath))
+            {
+                try
+                {
+                    OnLongOperationStarted?.Invoke();
+                    WaitForUploadToFinish();
+                    DatabaseSession.SetLocalDatabasePath(selectedFilePath, true);
+                }
+                catch (Exception ex) when (
+                    ex is FileNotFoundException ||
+                    ex is InvalidDataException)
+                {
+                    messageBoxService.ShowMessage(ex.Message, true);
+                }
+                finally
+                {
+                    OnLongOperationFinished?.Invoke();
+                }
+            }
+        }
+
         private void ExportEachSelectedDocument()
         {
             var selectedPath = folderBrowserDialogService.ShowDialog(Resources.SelectExportFolder);
@@ -1470,41 +1572,37 @@ namespace PDFKeeper.Core.ViewModels
 
         private void ReplaceCurrentDocumentPdf()
         {
-            using (var documentRepository = DatabaseSession.GetDocumentRepository())
-            {
-                var document = documentRepository.GetDocument(CurrentDocumentId, null);
-                addPdfDialogService.ShowDialog(null, document);
-            }
+            using var documentRepository = DatabaseSession.GetDocumentRepository();
+            var document = documentRepository.GetDocument(CurrentDocumentId, null);
+            addPdfDialogService.ShowDialog(null, document);
         }
 
         private void UpdateCurrentDocumentFlagState()
         {
-            using (var documentRepository = DatabaseSession.GetDocumentRepository())
-            {
-                var document = documentRepository.GetDocument(CurrentDocumentId, null);
-                document.Flag = Convert.ToInt32(!EditFlagDocumentMenuChecked);
+            using var documentRepository = DatabaseSession.GetDocumentRepository();
+            var document = documentRepository.GetDocument(CurrentDocumentId, null);
+            document.Flag = Convert.ToInt32(!EditFlagDocumentMenuChecked);
 
-                try
-                {
-                    OnLongOperationStarted?.Invoke();
-                    documentRepository.UpdateDocument(document);
-                }
-                catch (IndexOutOfRangeException ex)
-                {
-                    var message = ResourceHelper.GetString(
-                        Resources.ResourceManager,
-                        "DocumentMayHaveBeenDeletedException",
-                        ex.Message);
-                    messageBoxService.ShowMessage(message, true);
-                }
-                catch (DatabaseException ex)
-                {
-                    messageBoxService.ShowMessage(ex.Message, true);
-                }
-                finally
-                {
-                    OnLongOperationFinished?.Invoke();
-                }
+            try
+            {
+                OnLongOperationStarted?.Invoke();
+                documentRepository.UpdateDocument(document);
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                var message = ResourceHelper.GetString(
+                    Resources.ResourceManager,
+                    "DocumentMayHaveBeenDeletedException",
+                    ex.Message);
+                messageBoxService.ShowMessage(message, true);
+            }
+            catch (DatabaseException ex)
+            {
+                messageBoxService.ShowMessage(ex.Message, true);
+            }
+            finally
+            {
+                OnLongOperationFinished?.Invoke();
             }
         }
 
@@ -1588,10 +1686,8 @@ namespace PDFKeeper.Core.ViewModels
                 {
                     try
                     {
-                        using (var documentRepository = DatabaseSession.GetDocumentRepository())
-                        {
-                            documentRepository.CompactDatabase();
-                        }
+                        using var documentRepository = DatabaseSession.GetDocumentRepository();
+                        documentRepository.CompactDatabase();
                     }
                     catch (NotSupportedException) { }
                     catch (DatabaseException ex)
@@ -1622,19 +1718,21 @@ namespace PDFKeeper.Core.ViewModels
 
         private void MoveLocalDatabase()
         {
-            var selectedPath = folderBrowserDialogService.ShowDialog(Resources.SelectExportFolder);
-            if (selectedPath.Length > 0)
+            var selectedFolderPath = folderBrowserDialogService.ShowDialog(
+                Resources.SelectExportFolder);
+            if (selectedFolderPath.Length > 0)
             {
                 try
                 {
                     OnLongOperationStarted?.Invoke();
                     WaitForUploadToFinish();
-                    var databasePath = Path.Combine(selectedPath,
-                        string.Concat(executingAssembly.ProductName, ".sqlite"));
-                    File.Move(DatabaseSession.LocalDatabasePath, databasePath);
-                    DatabaseSession.LocalDatabasePath = databasePath;
+                    var targetDbPath = Path.Combine(
+                        selectedFolderPath,
+                        Path.GetFileName(DatabaseSession.GetLocalDatabasePath()));
+                    File.Move(DatabaseSession.GetLocalDatabasePath(), targetDbPath);
+                    DatabaseSession.SetLocalDatabasePath(targetDbPath);
                 }
-                catch (IOException ex)
+                catch (Exception ex) when (ex is FileNotFoundException || ex is IOException)
                 {
                     messageBoxService.ShowMessage(ex.Message, true);
                 }
@@ -2019,22 +2117,25 @@ namespace PDFKeeper.Core.ViewModels
             DocumentsDeleteMenuEnabled = false;
             ViewSetPreviewPixelDensityMenuEnabled = false;
             ToolsUploadProfilesMenuEnabled = true;
+            DocumentsEnabled = true;
 
             if (DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Sqlite))
             {
+                FileDatabaseMenuVisible = true;
+                FileDatabaseNewMenuVisible = true;
+                FileDatabaseOpenMenuVisible = true;
                 ToolsMoveDatabaseMenuVisible = true;
             }
             else
             {
+                FileDatabaseMenuVisible = false;
+                FileDatabaseNewMenuVisible = false;
+                FileDatabaseOpenMenuVisible = false;
                 ToolsMoveDatabaseMenuVisible = false;
             }
 
-            DocumentsEnabled = true;
-
-            using (var documentRepository = DatabaseSession.GetDocumentRepository())
-            {
-                SearchTermSnippetsVisible = documentRepository.SearchTermSnippetsSupported;
-            }
+            using var documentRepository = DatabaseSession.GetDocumentRepository();
+            SearchTermSnippetsVisible = documentRepository.SearchTermSnippetsSupported;
         }
 
         private static bool VerifyInsertGranted(bool value)
@@ -2075,24 +2176,22 @@ namespace PDFKeeper.Core.ViewModels
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            using (var font = new Font("Lucida Console", 10))
-            {
-                e.Graphics.MeasureString(
-                    textToPrint,
-                    font,
-                    e.MarginBounds.Size,
-                    StringFormat.GenericTypographic,
-                    out int charactersOnPage,
-                    out int linesPerPage);
-                e.Graphics.DrawString(
-                    textToPrint,
-                    font,
-                    Brushes.Black,
-                    e.MarginBounds,
-                    StringFormat.GenericTypographic);
-                textToPrint = textToPrint.Substring(charactersOnPage);
-                e.HasMorePages = textToPrint.Length > 0;
-            }
+            using var font = new Font("Lucida Console", 10);
+            e.Graphics.MeasureString(
+                textToPrint,
+                font,
+                e.MarginBounds.Size,
+                StringFormat.GenericTypographic,
+                out int charactersOnPage,
+                out int linesPerPage);
+            e.Graphics.DrawString(
+                textToPrint,
+                font,
+                Brushes.Black,
+                e.MarginBounds,
+                StringFormat.GenericTypographic);
+            textToPrint = textToPrint.Substring(charactersOnPage);
+            e.HasMorePages = textToPrint.Length > 0;
         }
 
         private void OnDocumentSelectionChanged()
@@ -2489,6 +2588,22 @@ namespace PDFKeeper.Core.ViewModels
                     break;
             }
             return result;
+        }
+
+        private void SetViewTitleText()
+        {
+            var appName = executingAssembly.ProductName;
+
+            if (DatabaseSession.PlatformName.Equals(
+                DatabaseSession.CompatiblePlatformName.Sqlite))
+            {
+                var databaseName = DatabaseSession.GetLocalDatabasePath();
+                ViewTitleText = $"{appName} - {databaseName}";
+            }
+            else
+            {
+                ViewTitleText = appName;
+            }
         }
 
         private void WaitForUploadToFinish()

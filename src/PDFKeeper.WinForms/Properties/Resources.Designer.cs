@@ -247,9 +247,9 @@ namespace PDFKeeper.WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap database_save {
+        internal static System.Drawing.Bitmap database_go {
             get {
-                object obj = ResourceManager.GetObject("database_save", resourceCulture);
+                object obj = ResourceManager.GetObject("database_go", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -454,6 +454,36 @@ namespace PDFKeeper.WinForms.Properties {
         internal static string SubjectCannotBeBlank {
             get {
                 return ResourceManager.GetString("SubjectCannotBeBlank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap table_add {
+            get {
+                object obj = ResourceManager.GetObject("table_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap table_delete {
+            get {
+                object obj = ResourceManager.GetObject("table_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap table_save {
+            get {
+                object obj = ResourceManager.GetObject("table_save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

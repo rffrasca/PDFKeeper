@@ -38,7 +38,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             connStrBuilder = new SQLiteConnectionStringBuilder
             {
-                DataSource = DatabaseSession.LocalDatabasePath,
+                DataSource = DatabaseSession.GetLocalDatabasePath(),
                 Version = 3
             };
         }
@@ -59,16 +59,12 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_dummy", searchTerm);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("doc_dummy", searchTerm);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                return ExecuteQuery(command);
             }
             catch (SQLiteException ex)
             {
@@ -107,19 +103,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_author", author);
-                        command.Parameters.AddWithValue("doc_subject", subject);
-                        command.Parameters.AddWithValue("doc_category", category);
-                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("doc_author", author);
+                command.Parameters.AddWithValue("doc_subject", subject);
+                command.Parameters.AddWithValue("doc_category", category);
+                command.Parameters.AddWithValue("doc_tax_year", taxYear);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                return ExecuteQuery(command);
             }
             catch (SQLiteException ex)
             {
@@ -135,16 +127,12 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_added", dateAdded);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("doc_added", dateAdded);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                return ExecuteQuery(command);
             }
             catch (SQLiteException ex)
             {
@@ -159,15 +147,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                return ExecuteQuery(command);
             }
             catch (SQLiteException ex)
             {
@@ -182,15 +166,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                return ExecuteQuery(command);
             }
             catch (SQLiteException ex)
             {
@@ -223,18 +203,14 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_subject", subject);
-                        command.Parameters.AddWithValue("doc_category", category);
-                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("doc_subject", subject);
+                command.Parameters.AddWithValue("doc_category", category);
+                command.Parameters.AddWithValue("doc_tax_year", taxYear);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                return ExecuteQuery(command);
             }
             catch (SQLiteException ex)
             {
@@ -267,18 +243,14 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_author", author);
-                        command.Parameters.AddWithValue("doc_category", category);
-                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("doc_author", author);
+                command.Parameters.AddWithValue("doc_category", category);
+                command.Parameters.AddWithValue("doc_tax_year", taxYear);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                return ExecuteQuery(command);
             }
             catch (SQLiteException ex)
             {
@@ -311,18 +283,14 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_author", author);
-                        command.Parameters.AddWithValue("doc_subject", subject);
-                        command.Parameters.AddWithValue("doc_tax_year", taxYear);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("doc_author", author);
+                command.Parameters.AddWithValue("doc_subject", subject);
+                command.Parameters.AddWithValue("doc_tax_year", taxYear);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                return ExecuteQuery(command);
             }
             catch (SQLiteException ex)
             {
@@ -355,18 +323,14 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_author", author);
-                        command.Parameters.AddWithValue("doc_subject", subject);
-                        command.Parameters.AddWithValue("doc_category", category);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        return ExecuteQuery(command);
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("doc_author", author);
+                command.Parameters.AddWithValue("doc_subject", subject);
+                command.Parameters.AddWithValue("doc_category", category);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                return ExecuteQuery(command);
             }
             catch (SQLiteException ex)
             {
@@ -376,10 +340,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public Document GetDocument(int id, string searchTerm, bool includePdf)
         {
-            if (searchTerm is null)
-            {
-                searchTerm = string.Empty;
-            }
+            searchTerm ??= string.Empty;
 
             string sql;
             if (includePdf)
@@ -397,40 +358,36 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        var document = new Document();
-                        command.Parameters.AddWithValue("doc_id", id);
-                        connection.Open();
-                        
-                        using (var reader = command.ExecuteReader())
-                        {
-                            reader.Read();
-                            document.Id = id;
-                            document.Title = reader["doc_title"].ToString();
-                            document.Author = reader["doc_author"].ToString();
-                            document.Subject = reader["doc_subject"].ToString();
-                            document.Keywords = reader["doc_keywords"].ToString();
-                            document.Added = reader["doc_added"].ToString();
-                            document.Notes = reader["doc_notes"].ToString();
-                            
-                            if (includePdf)
-                            {
-                                document.Pdf = (byte[])reader["doc_pdf"];
-                            }
-                            
-                            document.Category = reader["doc_category"].ToString();
-                            document.Flag = Convert.ToInt32(reader["doc_flag"]);
-                            document.TaxYear = reader["doc_tax_year"].ToString();
-                            document.Text = reader["doc_text"].ToString();
-                            document.SearchTermSnippets = GetSearchTermSnippets(id, searchTerm);
-                        }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                var document = new Document();
+                command.Parameters.AddWithValue("doc_id", id);
+                connection.Open();
 
-                        return document;
+                using (var reader = command.ExecuteReader())
+                {
+                    reader.Read();
+                    document.Id = id;
+                    document.Title = reader["doc_title"].ToString();
+                    document.Author = reader["doc_author"].ToString();
+                    document.Subject = reader["doc_subject"].ToString();
+                    document.Keywords = reader["doc_keywords"].ToString();
+                    document.Added = reader["doc_added"].ToString();
+                    document.Notes = reader["doc_notes"].ToString();
+
+                    if (includePdf)
+                    {
+                        document.Pdf = (byte[])reader["doc_pdf"];
                     }
+
+                    document.Category = reader["doc_category"].ToString();
+                    document.Flag = Convert.ToInt32(reader["doc_flag"]);
+                    document.TaxYear = reader["doc_tax_year"].ToString();
+                    document.Text = reader["doc_text"].ToString();
+                    document.SearchTermSnippets = GetSearchTermSnippets(id, searchTerm);
                 }
+
+                return document;
             }
             catch (SQLiteException ex)
             {
@@ -461,29 +418,25 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue(":doc_title", document.Title);
-                        command.Parameters.AddWithValue(":doc_author", document.Author);
-                        command.Parameters.AddWithValue(":doc_subject", document.Subject);
-                        command.Parameters.AddWithValue(":doc_keywords", document.Keywords);
-                        command.Parameters.AddWithValue(":doc_added", document.Added);
-                        command.Parameters.AddWithValue(":doc_notes", document.Notes);
-                        command.Parameters.Add(":doc_pdf", DbType.Binary).Value = document.Pdf;
-                        command.Parameters.AddWithValue(":doc_category", document.Category);
-                        command.Parameters.AddWithValue(":doc_flag", document.Flag);
-                        command.Parameters.AddWithValue(":doc_tax_year", document.TaxYear);
-                        command.Parameters.AddWithValue(
-                            ":doc_text_annotations",
-                            document.TextAnnotations);
-                        command.Parameters.AddWithValue(":doc_text", document.Text);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        command.ExecuteNonQuery();
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue(":doc_title", document.Title);
+                command.Parameters.AddWithValue(":doc_author", document.Author);
+                command.Parameters.AddWithValue(":doc_subject", document.Subject);
+                command.Parameters.AddWithValue(":doc_keywords", document.Keywords);
+                command.Parameters.AddWithValue(":doc_added", document.Added);
+                command.Parameters.AddWithValue(":doc_notes", document.Notes);
+                command.Parameters.Add(":doc_pdf", DbType.Binary).Value = document.Pdf;
+                command.Parameters.AddWithValue(":doc_category", document.Category);
+                command.Parameters.AddWithValue(":doc_flag", document.Flag);
+                command.Parameters.AddWithValue(":doc_tax_year", document.TaxYear);
+                command.Parameters.AddWithValue(
+                    ":doc_text_annotations",
+                    document.TextAnnotations);
+                command.Parameters.AddWithValue(":doc_text", document.Text);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                command.ExecuteNonQuery();
             }
             catch (SQLiteException ex)
             {
@@ -525,34 +478,30 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_title", document.Title);
-                        command.Parameters.AddWithValue("doc_author", document.Author);
-                        command.Parameters.AddWithValue("doc_subject", document.Subject);
-                        command.Parameters.AddWithValue("doc_added", document.Added);
-                        command.Parameters.AddWithValue("doc_notes", document.Notes);
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("doc_title", document.Title);
+                command.Parameters.AddWithValue("doc_author", document.Author);
+                command.Parameters.AddWithValue("doc_subject", document.Subject);
+                command.Parameters.AddWithValue("doc_added", document.Added);
+                command.Parameters.AddWithValue("doc_notes", document.Notes);
 
-                        if (updatePdf)
-                        {
-                            command.Parameters.Add("doc_pdf", DbType.Binary).Value = document.Pdf;
-                        }
-                       
-                        command.Parameters.AddWithValue("doc_category", document.Category);
-                        command.Parameters.AddWithValue("doc_tax_year", document.TaxYear);
-                        command.Parameters.AddWithValue("doc_flag", document.Flag);
-                        command.Parameters.AddWithValue(
-                            "doc_text_annotations",
-                            document.TextAnnotations);
-                        command.Parameters.AddWithValue("doc_text", document.Text);
-                        command.Parameters.AddWithValue("doc_id", document.Id);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        command.ExecuteNonQuery();
-                    }
+                if (updatePdf)
+                {
+                    command.Parameters.Add("doc_pdf", DbType.Binary).Value = document.Pdf;
                 }
+
+                command.Parameters.AddWithValue("doc_category", document.Category);
+                command.Parameters.AddWithValue("doc_tax_year", document.TaxYear);
+                command.Parameters.AddWithValue("doc_flag", document.Flag);
+                command.Parameters.AddWithValue(
+                    "doc_text_annotations",
+                    document.TextAnnotations);
+                command.Parameters.AddWithValue("doc_text", document.Text);
+                command.Parameters.AddWithValue("doc_id", document.Id);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                command.ExecuteNonQuery();
             }
             catch (SQLiteException ex)
             {
@@ -570,16 +519,12 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_id", id);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                        command.ExecuteNonQuery();
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("doc_id", id);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                command.ExecuteNonQuery();
             }
             catch (SQLiteException ex)
             {
@@ -603,122 +548,118 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         public void CreateDatabase()
         {
-            if (!File.Exists(DatabaseSession.LocalDatabasePath))
+            if (!File.Exists(DatabaseSession.GetLocalDatabasePath()))
             {
-                SQLiteConnection.CreateFile(DatabaseSession.LocalDatabasePath);
+                SQLiteConnection.CreateFile(DatabaseSession.GetLocalDatabasePath());
                 
                 try
-                {                    
-                    using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                    {
-                        using (var command = new SQLiteCommand(connection))
-                        {
-                            connection.Open();
-                            LoadExtensionLibrary(connection);
-                            command.CommandText =
-                                "create table docs(" +
-                                "doc_id integer primary key not null," +
-                                "doc_title text not null," +
-                                "doc_author text not null," +
-                                "doc_subject text not null," +
-                                "doc_keywords text," +
-                                "doc_added text not null," +
-                                "doc_notes text," +
-                                "doc_pdf blob not null," +
-                                "doc_category text," +
-                                "doc_flag integer default 0 check(doc_flag = 0 or doc_flag = 1)," +
-                                "doc_tax_year text," +
-                                "doc_text_annotations text," +
-                                "doc_text text);";
-                            command.ExecuteNonQuery();
-                            command.CommandText =
-                                "create virtual table docs_index using fts5(" +
-                                "doc_title," +
-                                "doc_author," +
-                                "doc_subject," +
-                                "doc_keywords," +
-                                "doc_added," +
-                                "doc_notes," +
-                                "doc_category," +
-                                "doc_tax_year," +
-                                "doc_text_annotations," +
-                                "doc_text," +
-                                "content='docs'," +
-                                "content_rowid='doc_id'," +
-                                "tokenize=porter);";
-                            command.ExecuteNonQuery();
-                            command.CommandText =
-                                "create trigger docs_after_insert after insert on docs " +
-                                "begin " +
-                                "insert into docs_index(" +
-                                "rowid," +
-                                "doc_title," +
-                                "doc_author," +
-                                "doc_subject," +
-                                "doc_keywords," +
-                                "doc_added," +
-                                "doc_notes," +
-                                "doc_category," +
-                                "doc_tax_year," +
-                                "doc_text_annotations," +
-                                "doc_text) " +
-                                "values(" +
-                                "new.doc_id," +
-                                "new.doc_title," +
-                                "new.doc_author," +
-                                "new.doc_subject," +
-                                "new.doc_keywords," +
-                                "new.doc_added," +
-                                "new.doc_notes," +
-                                "new.doc_category," +
-                                "new.doc_tax_year," +
-                                "new.doc_text_annotations," +
-                                "new.doc_text);" +
-                                "end;";
-                            command.ExecuteNonQuery();
-                            command.CommandText =
-                                "create trigger docs_before_update before update on docs " +
-                                "begin " +
-                                "delete from docs_index where rowid = old.doc_id;" +
-                                "end;";
-                            command.ExecuteNonQuery();
-                            command.CommandText =
-                                "create trigger docs_after_update after update on docs " +
-                                "begin " +
-                                "insert into docs_index(" +
-                                "rowid," +
-                                "doc_title," +
-                                "doc_author," +
-                                "doc_subject," +
-                                "doc_keywords," +
-                                "doc_added," +
-                                "doc_notes," +
-                                "doc_category," +
-                                "doc_tax_year," +
-                                "doc_text_annotations," +
-                                "doc_text) " +
-                                "values(" +
-                                "new.doc_id," +
-                                "new.doc_title," +
-                                "new.doc_author," +
-                                "new.doc_subject," +
-                                "new.doc_keywords," +
-                                "new.doc_added," +
-                                "new.doc_notes," +
-                                "new.doc_category," +
-                                "new.doc_tax_year," +
-                                "new.doc_text_annotations," +
-                                "new.doc_text);" +
-                                "end;";
-                            command.ExecuteNonQuery();
-                            command.CommandText =
-                                "create trigger docs_before_delete before delete on docs " +
-                                "begin " +
-                                "delete from docs_index where rowid = old.doc_id;" +
-                                "end;";
-                            command.ExecuteNonQuery();
-                        }
-                    }
+                {
+                    using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                    using var command = new SQLiteCommand(connection);
+                    connection.Open();
+                    LoadExtensionLibrary(connection);
+                    command.CommandText =
+                        "create table docs(" +
+                        "doc_id integer primary key not null," +
+                        "doc_title text not null," +
+                        "doc_author text not null," +
+                        "doc_subject text not null," +
+                        "doc_keywords text," +
+                        "doc_added text not null," +
+                        "doc_notes text," +
+                        "doc_pdf blob not null," +
+                        "doc_category text," +
+                        "doc_flag integer default 0 check(doc_flag = 0 or doc_flag = 1)," +
+                        "doc_tax_year text," +
+                        "doc_text_annotations text," +
+                        "doc_text text);";
+                    command.ExecuteNonQuery();
+                    command.CommandText =
+                        "create virtual table docs_index using fts5(" +
+                        "doc_title," +
+                        "doc_author," +
+                        "doc_subject," +
+                        "doc_keywords," +
+                        "doc_added," +
+                        "doc_notes," +
+                        "doc_category," +
+                        "doc_tax_year," +
+                        "doc_text_annotations," +
+                        "doc_text," +
+                        "content='docs'," +
+                        "content_rowid='doc_id'," +
+                        "tokenize=porter);";
+                    command.ExecuteNonQuery();
+                    command.CommandText =
+                        "create trigger docs_after_insert after insert on docs " +
+                        "begin " +
+                        "insert into docs_index(" +
+                        "rowid," +
+                        "doc_title," +
+                        "doc_author," +
+                        "doc_subject," +
+                        "doc_keywords," +
+                        "doc_added," +
+                        "doc_notes," +
+                        "doc_category," +
+                        "doc_tax_year," +
+                        "doc_text_annotations," +
+                        "doc_text) " +
+                        "values(" +
+                        "new.doc_id," +
+                        "new.doc_title," +
+                        "new.doc_author," +
+                        "new.doc_subject," +
+                        "new.doc_keywords," +
+                        "new.doc_added," +
+                        "new.doc_notes," +
+                        "new.doc_category," +
+                        "new.doc_tax_year," +
+                        "new.doc_text_annotations," +
+                        "new.doc_text);" +
+                        "end;";
+                    command.ExecuteNonQuery();
+                    command.CommandText =
+                        "create trigger docs_before_update before update on docs " +
+                        "begin " +
+                        "delete from docs_index where rowid = old.doc_id;" +
+                        "end;";
+                    command.ExecuteNonQuery();
+                    command.CommandText =
+                        "create trigger docs_after_update after update on docs " +
+                        "begin " +
+                        "insert into docs_index(" +
+                        "rowid," +
+                        "doc_title," +
+                        "doc_author," +
+                        "doc_subject," +
+                        "doc_keywords," +
+                        "doc_added," +
+                        "doc_notes," +
+                        "doc_category," +
+                        "doc_tax_year," +
+                        "doc_text_annotations," +
+                        "doc_text) " +
+                        "values(" +
+                        "new.doc_id," +
+                        "new.doc_title," +
+                        "new.doc_author," +
+                        "new.doc_subject," +
+                        "new.doc_keywords," +
+                        "new.doc_added," +
+                        "new.doc_notes," +
+                        "new.doc_category," +
+                        "new.doc_tax_year," +
+                        "new.doc_text_annotations," +
+                        "new.doc_text);" +
+                        "end;";
+                    command.ExecuteNonQuery();
+                    command.CommandText =
+                        "create trigger docs_before_delete before delete on docs " +
+                        "begin " +
+                        "delete from docs_index where rowid = old.doc_id;" +
+                        "end;";
+                    command.ExecuteNonQuery();
                 }
                 catch (SQLiteException ex)
                 {
@@ -731,15 +672,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             try
             {
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(connection))
-                    {
-                        connection.Open();
-                        command.CommandText = "vacuum";
-                        command.ExecuteNonQuery();
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(connection);
+                connection.Open();
+                command.CommandText = "vacuum";
+                command.ExecuteNonQuery();
             }
             catch (SQLiteException ex)
             {
@@ -759,17 +696,13 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 
                 using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
                 {
-                    using (var command = new SQLiteCommand(sql, connection))
+                    using var command = new SQLiteCommand(sql, connection);
+                    connection.Open();
+                    using var reader = command.ExecuteReader();
+
+                    while (reader.Read())
                     {
-                        connection.Open();
-                        
-                        using (var reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                result = reader.GetString(0);
-                            }
-                        }
+                        result = reader.GetString(0);
                     }
                 }
 
@@ -780,37 +713,29 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     
                     using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
                     {
-                        using (var command = new SQLiteCommand(sql, connection))
+                        using var command = new SQLiteCommand(sql, connection);
+                        connection.Open();
+                        using var reader = command.ExecuteReader();
+                        
+                        while (reader.Read())
                         {
-                            connection.Open();
-
-                            using (var reader = command.ExecuteReader())
-                            {
-                                while (reader.Read())
-                                {
-                                    result = reader.GetString(0);
-                                }
-                            }
+                            result = reader.GetString(0);
                         }
                     }
 
                     if (result is null)
                     {
-                        using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                        {
-                            using (var command = new SQLiteCommand(connection))
-                            {
-                                connection.Open();
-                                LoadExtensionLibrary(connection);
-                                command.CommandText =
-                                    "create trigger docs_after_delete after delete on docs " +
-                                    "begin " +
-                                    "update sqlite_sequence set seq = (select max(doc_id) from docs) " +
-                                    "where name = 'docs';" +
-                                    "end;";
-                                command.ExecuteNonQuery();
-                            }
-                        }
+                        using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                        using var command = new SQLiteCommand(connection);
+                        connection.Open();
+                        LoadExtensionLibrary(connection);
+                        command.CommandText =
+                            "create trigger docs_after_delete after delete on docs " +
+                            "begin " +
+                            "update sqlite_sequence set seq = (select max(doc_id) from docs) " +
+                            "where name = 'docs';" +
+                            "end;";
+                        command.ExecuteNonQuery();
                     }
                 }
 
@@ -824,15 +749,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         protected override DataTable ExecuteQuery(SQLiteCommand command)
         {
-            using (var adapter = new SQLiteDataAdapter(command))
-            {
-                using (var table = new DataTable())
-                {
-                    table.Locale = CultureInfo.InvariantCulture;
-                    adapter.Fill(table);
-                    return table;
-                }
-            }
+            using var adapter = new SQLiteDataAdapter(command);
+            using var table = new DataTable();
+            table.Locale = CultureInfo.InvariantCulture;
+            adapter.Fill(table);
+            return table;
         }
 
         protected override string GetSearchTermSnippets(int id, string searchTerm)
@@ -848,23 +769,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 var sql = "select snippet(docs_index, 9, '[', ']', '', 32) from docs_index " +
                     "where rowid = :doc_id and docs_index match :doc_dummy";
-            
-                using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
-                {
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("doc_id", id);
-                        command.Parameters.AddWithValue("doc_dummy", searchTerm);
-                        connection.Open();
-                        LoadExtensionLibrary(connection);
-                
-                        using (var reader = command.ExecuteReader())
-                        {
-                            reader.Read();
-                            result = reader.GetString(0);
-                        }
-                    }
-                }
+                using var connection = new SQLiteConnection(connStrBuilder.ConnectionString);
+                using var command = new SQLiteCommand(sql, connection);
+                command.Parameters.AddWithValue("doc_id", id);
+                command.Parameters.AddWithValue("doc_dummy", searchTerm);
+                connection.Open();
+                LoadExtensionLibrary(connection);
+                using var reader = command.ExecuteReader();
+                reader.Read();
+                result = reader.GetString(0);
             }
 
             return result;

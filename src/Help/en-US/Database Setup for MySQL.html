@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>Database Setup for MySQL</title>
-	<meta name="generator" content="LibreOffice 24.8.3.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 25.8.4.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2024-12-29T12:54:16.682000000"/>
+	<meta name="changed" content="2025-12-21T14:55:18.199192300"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -40,6 +40,11 @@ perform the database setup. As an alternative, you can copy
 <b>MySqlDatabaseSetup.sql </b><span style="font-weight: normal">from
 </span><b>%LOCALAPPDATA%\Programs\PDFKeeper</b> <span style="font-weight: normal">to
 the computer hosting MySQL Server.</span></font></p>
+<p style="font-weight: normal"><font face="Segoe UI, sans-serif">The
+database created by <i><span style="text-decoration: none"><b>MySqlDatabaseSetup.sql</b></span></i><i><u>
+</u></i>is named <b>pdfkeeper</b>. To use a different database name,
+replace all occurrences of <b>pdfkeeper</b> in <i><span style="text-decoration: none"><b>MySqlDatabaseSetup.sql</b></span></i>
+with your preferred name.</font></p>
 <p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Perform
 the following steps to setup the database. Note, these instructions
 assume that the MySQL Server version is </span><b>8.4</b> <span style="font-weight: normal">and
@@ -50,14 +55,15 @@ being used for MySQL administration.</span></font></p>
 	Prompt</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">.</span></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Execute
 	</span></font><font face="Segoe UI, sans-serif"><b>&quot;C:\Program
-	Files\MySQL\MySQL Server </b></font><font face="Segoe UI, sans-serif"><b>8</b></font><font face="Segoe UI, sans-serif"><b>.</b></font><font face="Segoe UI, sans-serif"><b>4</b></font><font face="Segoe UI, sans-serif"><b>\bin\mysql.exe&quot;
-	-u root -p &lt; “&lt;ABSOLUTE_PATH&gt;</b></font><font face="Segoe UI, sans-serif"><b>\</b></font><font face="Segoe UI, sans-serif"><b>MySqlDatabaseSetup.sql”</b></font></p></li>
+	Files\MySQL\MySQL Server 8.4\bin\mysql.exe&quot; -u root -p &lt;
+	“&lt;ABSOLUTE_PATH&gt;\MySqlDatabaseSetup.sql”</b></font></p></li>
 </ol>
 <ul>
 	<ul>
 		<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Replace
-		</span></font><font face="Segoe UI, sans-serif"><b>&lt;ABSOLUTE_PATH&gt;</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">
-		with </span></font><font face="Segoe UI, sans-serif"><b>%LOCALAPPDATA%\Programs\PDFKeeper
+		</span></font><font face="Segoe UI, sans-serif"><b>&lt;ABSOLUTE_PATH&gt;</b></font>
+		<font face="Segoe UI, sans-serif"><span style="font-weight: normal">with
+		</span></font><font face="Segoe UI, sans-serif"><b>%LOCALAPPDATA%\Programs\PDFKeeper
 		</b></font><font face="Segoe UI, sans-serif"><span style="font-weight: normal">if
 		PDFKeeper is installed on the same computer as MySQL Server or the
 		folder path where </span></font><font face="Segoe UI, sans-serif"><b>MySqlDatabaseSetup.sql
@@ -66,7 +72,7 @@ being used for MySQL administration.</span></font></p>
 	</ul>
 </ul>
 <ol start="3">
-	<li><p style="font-variant: normal; font-style: normal; font-weight: normal">
+	<li><p style="font-weight: normal; font-style: normal; font-variant: normal">
 	<font face="Segoe UI, sans-serif">Enter the password when prompted.</font></p></li>
 </ol>
 </body>

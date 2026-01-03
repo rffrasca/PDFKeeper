@@ -49,7 +49,7 @@
     <NoWarn>MVVMTKCFG0001</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>PDFKeeper.PDFViewer.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -60,7 +60,7 @@
     <NoWarn>MVVMTKCFG0001</NoWarn>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>PDFKeeper.PDFViewer.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>

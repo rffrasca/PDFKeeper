@@ -50,25 +50,21 @@ namespace PDFKeeper.WinForms
             Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(
                 HandleThreadException);
 
-            using (var mutex = new Mutex(true, Application.ProductName))
+            using var mutex = new Mutex(true, Application.ProductName);
+            if (mutex.WaitOne(TimeSpan.Zero, true))
             {
-                if (mutex.WaitOne(TimeSpan.Zero, true))
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+
+                ServiceLocator.Services = ConfigureServices();
+
+                if (!Startup())
                 {
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
-
-                    ServiceLocator.Services = ConfigureServices();
-
-                    if (!Startup())
-                    {
-                        using (var form = new MainForm())
-                        {
-                            Application.Run(form);
-                        }
-                    }
-
-                    Shutdown();
+                    using var form = new MainForm();
+                    Application.Run(form);
                 }
+
+                Shutdown();
             }
         }
 
@@ -140,7 +136,7 @@ namespace PDFKeeper.WinForms
 
             if (Settings.Default.DbManagementSystem.Length.Equals(0))
             {
-                if (File.Exists(DatabaseSession.LocalDatabasePath))
+                if (File.Exists(DatabaseSession.GetLocalDatabasePath()))
                 {
                     Settings.Default.DbManagementSystem = 
                         DatabaseSession.CompatiblePlatformName.Sqlite.ToString();
@@ -157,10 +153,8 @@ namespace PDFKeeper.WinForms
                             
                             try
                             {
-                                using (var repository = DatabaseSession.GetDocumentRepository())
-                                {
-                                    repository.CreateDatabase();
-                                }
+                                using var repository = DatabaseSession.GetDocumentRepository();
+                                repository.CreateDatabase();
                             }
                             catch (DatabaseException ex)
                             {
@@ -173,7 +167,7 @@ namespace PDFKeeper.WinForms
                             var message = ResourceHelper.GetString(
                                 Resources.ResourceManager,
                                 "DatabaseCreated",
-                                DatabaseSession.LocalDatabasePath);
+                                DatabaseSession.GetLocalDatabasePath());
                             messageBoxService.ShowMessage(message);
                             helpFile.ShowHelp(HelpFile.Topic.SetupSingleUserDatabase);
                             break;
@@ -226,12 +220,11 @@ namespace PDFKeeper.WinForms
                 DatabaseSession.CompatiblePlatformName.Sqlite.ToString(),
                 StringComparison.Ordinal))
             {
-                using (var form = new LoginForm())
+                using var form = new LoginForm();
+
+                if (form.ShowDialog().Equals(DialogResult.Cancel))
                 {
-                    if (form.ShowDialog().Equals(DialogResult.Cancel))
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
             else
@@ -240,10 +233,8 @@ namespace PDFKeeper.WinForms
                 
                 try
                 {
-                    using (var repository = DatabaseSession.GetDocumentRepository())
-                    {
-                        repository.UpgradeDatabase();
-                    }
+                    using var repository = DatabaseSession.GetDocumentRepository();
+                    repository.UpgradeDatabase();
                 }
                 catch (DatabaseException ex)
                 {

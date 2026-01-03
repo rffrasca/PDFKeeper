@@ -62,6 +62,8 @@ namespace PDFKeeper.WinForms.Views
             this.FileExtractAllEmbeddedFilesToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.FileCopyPdfToClipboardToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.FilePrintToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.FileDatabaseNewToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.FileDatabaseOpenToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ToolBarToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.EditUndoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.EditCutToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -97,8 +99,12 @@ namespace PDFKeeper.WinForms.Views
             this.FilePrintToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FilePrintPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FileToolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.FileExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FileDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FileDatabaseNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FileDatabaseOpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FileToolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.FileExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FileToolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.FileExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditUndoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,6 +120,8 @@ namespace PDFKeeper.WinForms.Views
             this.EditAppendDateTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditAppendTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.EditReplacePdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.EditFlagDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DocumentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DocumentsFindToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -179,8 +187,6 @@ namespace PDFKeeper.WinForms.Views
             this.CheckForFlaggedDocumentsTimer = new System.Windows.Forms.Timer(this.components);
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.EditReplacePdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.EditToolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStrip.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.StatusStrip.SuspendLayout();
@@ -218,6 +224,8 @@ namespace PDFKeeper.WinForms.Views
             this.FileExtractAllEmbeddedFilesToolStripButton,
             this.FileCopyPdfToClipboardToolStripButton,
             this.FilePrintToolStripButton,
+            this.FileDatabaseNewToolStripButton,
+            this.FileDatabaseOpenToolStripButton,
             this.ToolBarToolStripSeparator1,
             this.EditUndoToolStripButton,
             this.EditCutToolStripButton,
@@ -241,7 +249,7 @@ namespace PDFKeeper.WinForms.Views
             // FileAddToolStripButton
             // 
             this.FileAddToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.FileAddToolStripButton.Image = global::PDFKeeper.WinForms.Properties.Resources.database_add;
+            this.FileAddToolStripButton.Image = global::PDFKeeper.WinForms.Properties.Resources.table_add;
             resources.ApplyResources(this.FileAddToolStripButton, "FileAddToolStripButton");
             this.FileAddToolStripButton.Name = "FileAddToolStripButton";
             this.FileAddToolStripButton.Tag = "";
@@ -258,7 +266,7 @@ namespace PDFKeeper.WinForms.Views
             // FileSaveToolStripButton
             // 
             this.FileSaveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.FileSaveToolStripButton.Image = global::PDFKeeper.WinForms.Properties.Resources.database_save;
+            this.FileSaveToolStripButton.Image = global::PDFKeeper.WinForms.Properties.Resources.table_save;
             resources.ApplyResources(this.FileSaveToolStripButton, "FileSaveToolStripButton");
             this.FileSaveToolStripButton.Name = "FileSaveToolStripButton";
             this.FileSaveToolStripButton.Click += new System.EventHandler(this.ToolStripItem_Click);
@@ -302,6 +310,22 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.FilePrintToolStripButton, "FilePrintToolStripButton");
             this.FilePrintToolStripButton.Name = "FilePrintToolStripButton";
             this.FilePrintToolStripButton.Click += new System.EventHandler(this.ToolStripItem_Click);
+            // 
+            // FileDatabaseNewToolStripButton
+            // 
+            this.FileDatabaseNewToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.FileDatabaseNewToolStripButton.Image = global::PDFKeeper.WinForms.Properties.Resources.database_add;
+            resources.ApplyResources(this.FileDatabaseNewToolStripButton, "FileDatabaseNewToolStripButton");
+            this.FileDatabaseNewToolStripButton.Name = "FileDatabaseNewToolStripButton";
+            this.FileDatabaseNewToolStripButton.Click += new System.EventHandler(this.ToolStripItem_Click);
+            // 
+            // FileDatabaseOpenToolStripButton
+            // 
+            this.FileDatabaseOpenToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.FileDatabaseOpenToolStripButton.Image = global::PDFKeeper.WinForms.Properties.Resources.database_go;
+            resources.ApplyResources(this.FileDatabaseOpenToolStripButton, "FileDatabaseOpenToolStripButton");
+            this.FileDatabaseOpenToolStripButton.Name = "FileDatabaseOpenToolStripButton";
+            this.FileDatabaseOpenToolStripButton.Click += new System.EventHandler(this.ToolStripItem_Click);
             // 
             // ToolBarToolStripSeparator1
             // 
@@ -380,7 +404,7 @@ namespace PDFKeeper.WinForms.Views
             // DocumentsDeleteToolStripButton
             // 
             this.DocumentsDeleteToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DocumentsDeleteToolStripButton.Image = global::PDFKeeper.WinForms.Properties.Resources.database_delete;
+            this.DocumentsDeleteToolStripButton.Image = global::PDFKeeper.WinForms.Properties.Resources.table_delete;
             resources.ApplyResources(this.DocumentsDeleteToolStripButton, "DocumentsDeleteToolStripButton");
             this.DocumentsDeleteToolStripButton.Name = "DocumentsDeleteToolStripButton";
             this.DocumentsDeleteToolStripButton.Click += new System.EventHandler(this.ToolStripItem_Click);
@@ -449,15 +473,17 @@ namespace PDFKeeper.WinForms.Views
             this.FilePrintToolStripMenuItem,
             this.FilePrintPreviewToolStripMenuItem,
             this.FileToolStripSeparator6,
-            this.FileExportToolStripMenuItem,
+            this.FileDatabaseToolStripMenuItem,
             this.FileToolStripSeparator7,
+            this.FileExportToolStripMenuItem,
+            this.FileToolStripSeparator8,
             this.FileExitToolStripMenuItem});
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
             resources.ApplyResources(this.FileToolStripMenuItem, "FileToolStripMenuItem");
             // 
             // FileAddToolStripMenuItem
             // 
-            this.FileAddToolStripMenuItem.Image = global::PDFKeeper.WinForms.Properties.Resources.database_add;
+            this.FileAddToolStripMenuItem.Image = global::PDFKeeper.WinForms.Properties.Resources.table_add;
             this.FileAddToolStripMenuItem.Name = "FileAddToolStripMenuItem";
             resources.ApplyResources(this.FileAddToolStripMenuItem, "FileAddToolStripMenuItem");
             this.FileAddToolStripMenuItem.Tag = "";
@@ -482,7 +508,7 @@ namespace PDFKeeper.WinForms.Views
             // 
             // FileSaveToolStripMenuItem
             // 
-            this.FileSaveToolStripMenuItem.Image = global::PDFKeeper.WinForms.Properties.Resources.database_save;
+            this.FileSaveToolStripMenuItem.Image = global::PDFKeeper.WinForms.Properties.Resources.table_save;
             this.FileSaveToolStripMenuItem.Name = "FileSaveToolStripMenuItem";
             resources.ApplyResources(this.FileSaveToolStripMenuItem, "FileSaveToolStripMenuItem");
             this.FileSaveToolStripMenuItem.Click += new System.EventHandler(this.ToolStripItem_Click);
@@ -562,16 +588,43 @@ namespace PDFKeeper.WinForms.Views
             this.FileToolStripSeparator6.Name = "FileToolStripSeparator6";
             resources.ApplyResources(this.FileToolStripSeparator6, "FileToolStripSeparator6");
             // 
+            // FileDatabaseToolStripMenuItem
+            // 
+            this.FileDatabaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileDatabaseNewToolStripMenuItem,
+            this.FileDatabaseOpenToolStripMenuItem});
+            this.FileDatabaseToolStripMenuItem.Name = "FileDatabaseToolStripMenuItem";
+            resources.ApplyResources(this.FileDatabaseToolStripMenuItem, "FileDatabaseToolStripMenuItem");
+            // 
+            // FileDatabaseNewToolStripMenuItem
+            // 
+            this.FileDatabaseNewToolStripMenuItem.Image = global::PDFKeeper.WinForms.Properties.Resources.database_add;
+            this.FileDatabaseNewToolStripMenuItem.Name = "FileDatabaseNewToolStripMenuItem";
+            resources.ApplyResources(this.FileDatabaseNewToolStripMenuItem, "FileDatabaseNewToolStripMenuItem");
+            this.FileDatabaseNewToolStripMenuItem.Click += new System.EventHandler(this.ToolStripItem_Click);
+            // 
+            // FileDatabaseOpenToolStripMenuItem
+            // 
+            this.FileDatabaseOpenToolStripMenuItem.Image = global::PDFKeeper.WinForms.Properties.Resources.database_go;
+            this.FileDatabaseOpenToolStripMenuItem.Name = "FileDatabaseOpenToolStripMenuItem";
+            resources.ApplyResources(this.FileDatabaseOpenToolStripMenuItem, "FileDatabaseOpenToolStripMenuItem");
+            this.FileDatabaseOpenToolStripMenuItem.Click += new System.EventHandler(this.ToolStripItem_Click);
+            // 
+            // FileToolStripSeparator7
+            // 
+            this.FileToolStripSeparator7.Name = "FileToolStripSeparator7";
+            resources.ApplyResources(this.FileToolStripSeparator7, "FileToolStripSeparator7");
+            // 
             // FileExportToolStripMenuItem
             // 
             this.FileExportToolStripMenuItem.Name = "FileExportToolStripMenuItem";
             resources.ApplyResources(this.FileExportToolStripMenuItem, "FileExportToolStripMenuItem");
             this.FileExportToolStripMenuItem.Click += new System.EventHandler(this.ToolStripItem_Click);
             // 
-            // FileToolStripSeparator7
+            // FileToolStripSeparator8
             // 
-            this.FileToolStripSeparator7.Name = "FileToolStripSeparator7";
-            resources.ApplyResources(this.FileToolStripSeparator7, "FileToolStripSeparator7");
+            this.FileToolStripSeparator8.Name = "FileToolStripSeparator8";
+            resources.ApplyResources(this.FileToolStripSeparator8, "FileToolStripSeparator8");
             // 
             // FileExitToolStripMenuItem
             // 
@@ -683,6 +736,17 @@ namespace PDFKeeper.WinForms.Views
             this.EditToolStripSeparator5.Name = "EditToolStripSeparator5";
             resources.ApplyResources(this.EditToolStripSeparator5, "EditToolStripSeparator5");
             // 
+            // EditReplacePdfToolStripMenuItem
+            // 
+            this.EditReplacePdfToolStripMenuItem.Name = "EditReplacePdfToolStripMenuItem";
+            resources.ApplyResources(this.EditReplacePdfToolStripMenuItem, "EditReplacePdfToolStripMenuItem");
+            this.EditReplacePdfToolStripMenuItem.Click += new System.EventHandler(this.ToolStripItem_Click);
+            // 
+            // EditToolStripSeparator6
+            // 
+            this.EditToolStripSeparator6.Name = "EditToolStripSeparator6";
+            resources.ApplyResources(this.EditToolStripSeparator6, "EditToolStripSeparator6");
+            // 
             // EditFlagDocumentToolStripMenuItem
             // 
             this.EditFlagDocumentToolStripMenuItem.CheckOnClick = true;
@@ -788,7 +852,7 @@ namespace PDFKeeper.WinForms.Views
             // 
             // DocumentsDeleteToolStripMenuItem
             // 
-            this.DocumentsDeleteToolStripMenuItem.Image = global::PDFKeeper.WinForms.Properties.Resources.database_delete;
+            this.DocumentsDeleteToolStripMenuItem.Image = global::PDFKeeper.WinForms.Properties.Resources.table_delete;
             this.DocumentsDeleteToolStripMenuItem.Name = "DocumentsDeleteToolStripMenuItem";
             resources.ApplyResources(this.DocumentsDeleteToolStripMenuItem, "DocumentsDeleteToolStripMenuItem");
             this.DocumentsDeleteToolStripMenuItem.Click += new System.EventHandler(this.ToolStripItem_Click);
@@ -1184,17 +1248,6 @@ namespace PDFKeeper.WinForms.Views
             this.ToolTip.IsBalloon = true;
             this.ToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // EditReplacePdfToolStripMenuItem
-            // 
-            this.EditReplacePdfToolStripMenuItem.Name = "EditReplacePdfToolStripMenuItem";
-            resources.ApplyResources(this.EditReplacePdfToolStripMenuItem, "EditReplacePdfToolStripMenuItem");
-            this.EditReplacePdfToolStripMenuItem.Click += new System.EventHandler(this.ToolStripItem_Click);
-            // 
-            // EditToolStripSeparator6
-            // 
-            this.EditToolStripSeparator6.Name = "EditToolStripSeparator6";
-            resources.ApplyResources(this.EditToolStripSeparator6, "EditToolStripSeparator6");
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -1203,6 +1256,7 @@ namespace PDFKeeper.WinForms.Views
             this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.ToolStrip);
             this.Controls.Add(this.MenuStrip);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MainViewModelBindingSource, "ViewTitleText", true));
             this.HelpProvider.SetHelpKeyword(this, resources.GetString("$this.HelpKeyword"));
             this.HelpProvider.SetHelpNavigator(this, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("$this.HelpNavigator"))));
             this.Name = "MainForm";
@@ -1287,7 +1341,7 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.ToolStripMenuItem FilePrintPreviewToolStripMenuItem;
         internal System.Windows.Forms.ToolStripSeparator FileToolStripSeparator6;
         internal System.Windows.Forms.ToolStripMenuItem FileExportToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripSeparator FileToolStripSeparator7;
+        internal System.Windows.Forms.ToolStripSeparator FileToolStripSeparator8;
         internal System.Windows.Forms.ToolStripMenuItem FileExitToolStripMenuItem;
         internal System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
         internal System.Windows.Forms.ToolStripMenuItem EditUndoToolStripMenuItem;
@@ -1376,6 +1430,12 @@ namespace PDFKeeper.WinForms.Views
         private System.Windows.Forms.ToolTip ToolTip;
         private System.Windows.Forms.ToolStripMenuItem EditReplacePdfToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator EditToolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem FileDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator FileToolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem FileDatabaseNewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FileDatabaseOpenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton FileDatabaseNewToolStripButton;
+        private System.Windows.Forms.ToolStripButton FileDatabaseOpenToolStripButton;
     }
 }
 

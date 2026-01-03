@@ -52,6 +52,7 @@ namespace PDFKeeper.Core.ViewModels
         public string UserName { get; set; }
         public SecureString Password { get; set; }
         public string DataSource { get; set; }
+        public string SchemaName { get; set; }
         public string DbManagementSystem { get; set; }
         
         protected override void GetServices(IServiceProvider serviceProvider)
@@ -67,6 +68,7 @@ namespace PDFKeeper.Core.ViewModels
             DatabaseSession.UserName = UserName;
             DatabaseSession.Password = Password;
             DatabaseSession.DataSource = DataSource;
+            DatabaseSession.SchemaName = SchemaName;
 
             IDocumentRepository documentRepository = null;
             try

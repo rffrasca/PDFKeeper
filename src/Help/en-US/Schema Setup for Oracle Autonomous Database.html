@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>Schema Setup for Oracle Autonomous Database</title>
-	<meta name="generator" content="LibreOffice 24.8.1.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 25.8.4.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2024-09-22T13:49:28.731000000"/>
+	<meta name="changed" content="2025-12-21T15:54:50.164144600"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -33,6 +33,11 @@ Setup for Oracle Autonomous Database</b></font></h1>
 that need to be performed by the individual responsible for the
 administration of the Oracle Autonomous Database to setup the schema
 for PDFKeeper.</font></p>
+<p style="font-weight: normal"><font face="Segoe UI, sans-serif">The
+schema created by <i><b>OracleDatabaseSchemaSetup.sql</b></i> is
+named <b>pdfkeeper</b>. To use a different schema name, replace all
+occurrences of <b>pdfkeeper</b> in <i><b>OracleDatabaseSchemaSetup.sql</b></i>
+with your preferred name.</font></p>
 <ol>
 	<li><p><font face="Segoe UI, sans-serif">Download <a href="http://www.oracle.com/technetwork/database/database-technologies/instant-client/downloads/index.html" target="_blank">Oracle
 	Instant Client Basic or Basic Lite and SQL*Plus packages</a> to this
@@ -53,9 +58,9 @@ for PDFKeeper.</font></p>
 	change <b>?/network/admin</b> to the absolute path name of the
 	Oracle Wallet folder.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">Open a <b>Command Prompt.</b></font></p></li>
-	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">E</span><span style="font-weight: normal">xecute
-	</span><b>sqlplus admin@</b><i><b>TNS_name</b></i><b>
-	@&quot;%LOCALAPPDATA%\Programs\PDFKeeper\OracleDatabaseSchemaSetup.sql&quot;</b></font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Execute
+	</span><b>sqlplus admin@</b><i><b>TNS_name</b></i>
+	<b>@&quot;%LOCALAPPDATA%\Programs\PDFKeeper\OracleDatabaseSchemaSetup.sql&quot;</b></font></p></li>
 </ol>
 <ul>
 	<ul>

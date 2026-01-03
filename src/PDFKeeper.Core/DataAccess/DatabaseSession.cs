@@ -21,6 +21,7 @@
 using Microsoft.Win32;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess.Repository;
+using PDFKeeper.Core.Extensions;
 using System;
 using System.Collections;
 using System.IO;
@@ -35,8 +36,8 @@ namespace PDFKeeper.Core.DataAccess
         private static string userName;
         private static SecureString password;
         private static string dataSource;
+        private static string schemaName;
         private static string oracleWalletPath;
-        private static string localDatabasePath;
         private static uint mySqlPort;
         private static bool oracleOdpNetHandlerEnabled;
 
@@ -63,32 +64,7 @@ namespace PDFKeeper.Core.DataAccess
                 OnCompatiblePlatformNameChanged();
             }
         }
-
-        /// <summary>
-        /// Gets or sets the local SQLite database path.
-        /// </summary>
-        public static string LocalDatabasePath
-        {
-            get
-            {
-                localDatabasePath = Registry.GetValue(
-                    ApplicationRegistry.UserKeyPath,
-                    "LocalDatabasePath",
-                    new ApplicationDirectory().GetDirectory(
-                        ApplicationDirectory.SpecialName.ApplicationData)).ToString();
-                var filePath = new FileInfo(
-                    Path.Combine(localDatabasePath,
-                    string.Concat(
-                        new ExecutingAssembly().ProductName,
-                        ".sqlite")));
-                return filePath.FullName;
-            }
-            internal set => Registry.SetValue(
-                ApplicationRegistry.UserKeyPath,
-                "LocalDatabasePath",
-                Path.GetDirectoryName(value));
-        }
-
+        
         /// <summary>
         /// Gets a <see cref="IDocumentRepository"/> instance.
         /// </summary>
@@ -99,6 +75,43 @@ namespace PDFKeeper.Core.DataAccess
         {
             return DocumentRepositoryFactory.Create();
         }
+
+        /// <summary>
+        /// Retrieves the full file system path to the local database file as configured in the
+        /// application registry.
+        /// </summary>
+        /// <remarks>
+        /// If the required registry values are not set, default values are used for the directory
+        /// and file name. The returned path may not correspond to an existing file if the database
+        /// has not been created.
+        /// </remarks>
+        /// <returns>
+        /// A string containing the absolute path to the local database file. The path is
+        /// constructed from registry values specifying the directory and file name.
+        /// </returns>
+        public static string GetLocalDatabasePath()
+        {
+            var localDatabasePath = Registry.GetValue(
+                ApplicationRegistry.UserKeyPath,
+                "LocalDatabasePath",
+                new ApplicationDirectory().GetDirectory(
+                    ApplicationDirectory.SpecialName.ApplicationData)).ToString();
+            var localDatabaseFileName = Registry.GetValue(
+                ApplicationRegistry.UserKeyPath,
+                "LocalDatabaseFileName",
+                $"{new ExecutingAssembly().ProductName}.sqlite").ToString();
+            return Path.Combine(localDatabasePath, localDatabaseFileName);
+        }
+
+        /// <summary>
+        /// Gets or sets the callback that is invoked when the local database path changes.
+        /// </summary>
+        /// <remarks>
+        /// Assign a method to this property to execute custom logic in response to changes in the
+        /// local database path. Only one callback can be assigned at a time; assigning a new value
+        /// replaces any existing callback.
+        /// </remarks>
+        internal static Action OnLocalDatabasePathChanged { get; set; }
 
         /// <summary>
         /// Gets or sets the database user name.
@@ -178,6 +191,29 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
+        /// Gets or sets the name of the database schema to use for operations.
+        /// </summary>
+        /// <remarks>
+        /// On platforms that do not support database schemas, such as SQLite, this property
+        /// returns <see langword="null"/> regardless of its value.
+        /// </remarks>
+        internal static string SchemaName
+        {
+            get
+            {
+                if (PlatformName.Equals(CompatiblePlatformName.Sqlite))
+                {
+                    return null;
+                }
+                else
+                {
+                    return schemaName;
+                }
+            }
+            set => schemaName = value;
+        }
+
+        /// <summary>
         /// Gets or sets if user has Select access granted to the DOCS table.
         /// </summary>
         internal static bool SelectGranted { get; set; }
@@ -233,6 +269,62 @@ namespace PDFKeeper.Core.DataAccess
         /// <c>true</c> or <c>false</c> if the documents list has changes.
         /// </summary>
         internal static bool DocumentsListHasChanges { get; set; }
+
+        /// <summary>
+        /// Sets the path to the local database file and updates the application registry with the
+        /// specified location.
+        /// </summary>
+        /// <remarks>
+        /// This method updates the application's registry settings to reflect the new database
+        /// location. If validation is enabled, the method checks for the existence of the file and
+        /// verifies that it is a valid database before updating the registry. After the path is
+        /// set, any registered listeners are notified of the change.
+        /// </remarks>
+        /// <param name="path">
+        /// The full file system path to the local database file. This value is used to update the
+        /// registry and, if validation is enabled, must refer to an existing and valid database
+        /// file.
+        /// </param>
+        /// <param name="validate">
+        /// true to validate that the specified path exists and points to a valid database file;
+        /// otherwise, false to set the path without validation. The default is false.
+        /// </param>
+        /// <exception cref="FileNotFoundException">
+        /// Thrown if validate is set to true and the file specified by path does not exist.
+        /// </exception>
+        /// <exception cref="InvalidDataException">
+        /// Thrown if validate is set to true and the file specified by path does not represent a
+        /// valid database file.
+        /// </exception>
+        internal static void SetLocalDatabasePath(string path, bool validate = false)
+        {
+            if (validate)
+            {
+                if (!File.Exists(path))
+                {
+                    throw new FileNotFoundException(path);
+                }
+
+                var dbBytes = File.ReadAllBytes(path);
+                
+                if (!dbBytes.ContainsUtf8String("CREATE TABLE docs"))
+                {
+                    throw new InvalidDataException(
+                        "The specified file is not a valid database file.");
+                }
+            }
+
+            Registry.SetValue(
+                ApplicationRegistry.UserKeyPath,
+                "LocalDatabasePath",
+                Path.GetDirectoryName(path));
+            Registry.SetValue(
+                ApplicationRegistry.UserKeyPath,
+                "LocalDatabaseFileName",
+                Path.GetFileName(path));
+            DocumentsListHasChanges = true;
+            OnLocalDatabasePathChanged?.Invoke();
+        }
 
         /// <summary>
         /// Sets <see cref="PlatformName"/> to the <see cref="CompatiblePlatformName"/> that

@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>Setup Single-User Database</title>
-	<meta name="generator" content="LibreOffice 24.2.5.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 25.8.4.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.014152628"/>
-	<meta name="changed" content="2024-08-03T17:51:05.179000000"/>
+	<meta name="changed" content="2026-01-03T10:20:59.212309200"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -39,25 +39,72 @@ contained in a file named <b>PDFKeeper.sqlite</b> that is located in
 to be backed up regularly in the event the database needs to be
 restored due to corruption or accidental data loss.</font></p>
 <p><font face="Segoe UI, sans-serif"><i><b>You are fully responsible
-for this database!</b></i></font></p>
+for this database and any additional databases you create!</b></i></font></p>
 <p><font face="Segoe UI, sans-serif">The default location for the
 database may not be ideal for</font> <font face="Segoe UI, sans-serif">some</font>
 <font face="Segoe UI, sans-serif">system configurations</font> <font face="Segoe UI, sans-serif">and
 can be moved to an alternate location.</font></p>
-<p><font face="Segoe UI, sans-serif">To move the database, perform
-the following steps from the PDFKeeper main form:</font></p>
+<h2><strong><font face="Segoe UI, sans-serif"><font size="4" style="font-size: 14pt">Create
+a New Single&#8209;User Database</font></font></strong></h2>
+<p><font face="Segoe UI, sans-serif">You can create additional
+single&#8209;user databases—for example, to separate personal and
+work documents or to start a fresh archive.</font></p>
+<p><font face="Segoe UI, sans-serif">To create a new database:</font></p>
 <ol>
-	<li><p><font face="Segoe UI, sans-serif">Select the </font><font face="Segoe UI, sans-serif"><b>Tools</b></font>
-	<font face="Segoe UI, sans-serif">menu, and then select </font><font face="Segoe UI, sans-serif"><b>Move
-	Database</b></font><font face="Segoe UI, sans-serif">; or press </font><font face="Segoe UI, sans-serif"><b>Alt</b></font>
-	<font face="Segoe UI, sans-serif">+ </font><font face="Segoe UI, sans-serif"><b>T</b></font><font face="Segoe UI, sans-serif">,
-	and then </font><font face="Segoe UI, sans-serif"><b>M</b></font> <font face="Segoe UI, sans-serif">on
-	the keyboard.</font></p></li>
-	<li><p><font face="Segoe UI, sans-serif">Select the folder location
-	where to move the database.</font></p></li>
-	<li><p><font face="Segoe UI, sans-serif">Select </font><font face="Segoe UI, sans-serif"><b>OK</b></font><font face="Segoe UI, sans-serif">
-	or press </font><font face="Segoe UI, sans-serif"><b>Enter</b></font><font face="Segoe UI, sans-serif">
-	on the keyboard to perform the move.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">From the PDFKeeper main
+	form, select </font><strong><font face="Segoe UI, sans-serif">File →
+	Database → New Database</font></strong><font face="Segoe UI, sans-serif">,
+	or press </font><strong><font face="Segoe UI, sans-serif">Ctrl +
+	Shift</font></strong><font face="Segoe UI, sans-serif">, then </font><strong><font face="Segoe UI, sans-serif">N</font></strong><font face="Segoe UI, sans-serif">.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Select the folder where the
+	new database should be created.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Accept the default or enter
+	a different name for the database file.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Select </font><strong><font face="Segoe UI, sans-serif">Save</font></strong>
+	<font face="Segoe UI, sans-serif">or press </font><strong><font face="Segoe UI, sans-serif">Enter</font></strong>
+	<font face="Segoe UI, sans-serif">to create the new database.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">PDFKeeper will
+	automatically switch to the newly created database.</font></p></li>
+</ol>
+<h2><strong><font face="Segoe UI, sans-serif"><font size="4" style="font-size: 14pt">Open
+an Existing Single&#8209;User Database</font></font></strong></h2>
+<p><font face="Segoe UI, sans-serif">If you have an existing
+PDFKeeper (SQLite) database—either previously created or restored
+from backup—you can open it at any time.</font></p>
+<p><font face="Segoe UI, sans-serif">To open an existing database:</font></p>
+<ol>
+	<li><p><font face="Segoe UI, sans-serif">From the PDFKeeper main
+	form, select </font><strong><font face="Segoe UI, sans-serif">File →
+	Database → Open Database</font></strong><font face="Segoe UI, sans-serif">,
+	or press </font><strong><font face="Segoe UI, sans-serif">Ctrl +
+	Shift</font></strong><font face="Segoe UI, sans-serif">, then </font><strong><font face="Segoe UI, sans-serif">O</font></strong><font face="Segoe UI, sans-serif">.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Browse to the folder
+	containing the database file.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Select the </font><strong><font face="Segoe UI, sans-serif">PDFKeeper.sqlite</font></strong>
+	<font face="Segoe UI, sans-serif">file (or another valid PDFKeeper
+	(SQLite) database file).</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Select </font><strong><font face="Segoe UI, sans-serif">Open</font></strong>
+	<font face="Segoe UI, sans-serif">or press </font><strong><font face="Segoe UI, sans-serif">Enter</font></strong>
+	<font face="Segoe UI, sans-serif">to reference the selected
+	database.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">PDFKeeper will
+	automatically switch to the selected database.</font></p></li>
+</ol>
+<h2><strong><font face="Segoe UI, sans-serif"><font size="4" style="font-size: 14pt">Move
+the Database</font></font></strong></h2>
+<p><font face="Segoe UI, sans-serif">To move the current database to
+a different location:</font></p>
+<ol>
+	<li><p><font face="Segoe UI, sans-serif">From the PDFKeeper main
+	form, select </font><strong><font face="Segoe UI, sans-serif">Tools
+	→ Move Database</font></strong><font face="Segoe UI, sans-serif">,
+	or press </font><strong><font face="Segoe UI, sans-serif">Alt + T</font></strong><font face="Segoe UI, sans-serif">,
+	then </font><strong><font face="Segoe UI, sans-serif">M</font></strong><font face="Segoe UI, sans-serif">.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Select the folder where the
+	database should be moved.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif">Select </font><strong><font face="Segoe UI, sans-serif">OK</font></strong>
+	<font face="Segoe UI, sans-serif">or press </font><strong><font face="Segoe UI, sans-serif">Enter</font></strong>
+	<font face="Segoe UI, sans-serif">to perform the move.</font></p></li>
 </ol>
 </body>
 </html>

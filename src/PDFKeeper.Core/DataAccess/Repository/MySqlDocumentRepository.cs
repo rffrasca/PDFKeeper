@@ -46,7 +46,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     DatabaseSession.Password.GetAsByteArray()),
                 Server = DatabaseSession.DataSource,
                 Port = DatabaseSession.MySqlPort,
-                Database = "pdfkeeper",
+                Database = DatabaseSession.SchemaName,
                 SslMode = MySqlSslMode.Required,
                 ConnectionTimeout = 30
             };

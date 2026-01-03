@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title>User Administration for MySQL</title>
-	<meta name="generator" content="LibreOffice 24.8.3.2 (Windows)"/>
+	<meta name="generator" content="LibreOffice 25.8.4.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2024-12-29T12:45:31.626000000"/>
+	<meta name="changed" content="2025-12-21T13:59:44.288221300"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -38,7 +38,7 @@ Reference Manual</a>.</font></p>
 instructions for performing the setup on the same computer as MySQL
 since remote administrative access is disabled by default. All
 instructions <span style="font-weight: normal">assume that the MySQL
-Server version is </span><b>8</b><b>.</b><b>4</b><b> </b><span style="font-weight: normal">and
+Server version is </span><b>8.4</b> <span style="font-weight: normal">and
 the </span><b>root</b> account is being used for MySQL
 administration.</font></p>
 <p><font face="Segoe UI, sans-serif">Perform the following steps for
@@ -46,12 +46,14 @@ any user that will need access to the <b>pdfkeeper</b> database.
 Substitute the user name, host name, and password for <i><b>user_name</b></i>,
 <i><b>host_name</b></i><span style="font-variant: normal"><span style="font-style: normal"><span style="font-weight: normal">,</span></span></span>
 <i><b>password</b></i><span style="font-variant: normal"><span style="font-style: normal">.</span></span></font></p>
+<p style="font-style: normal"><font face="Segoe UI, sans-serif"><u><b><span style="font-variant: normal">If
+the database you want to administer has a name other than pdfkeeper,
+substitute that name in step 5.</span></b></u></font></p>
 <ol>
 	<li><p><font face="Segoe UI, sans-serif">Open a <b>Command Prompt</b><span style="font-weight: normal">.</span></font></p></li>
 	<li><p><font face="Segoe UI, sans-serif"><span style="font-weight: normal">Execute
 	</span></font><font face="Segoe UI, sans-serif"><b>&quot;C:\Program
-	Files\MySQL\MySQL Server </b></font><font face="Segoe UI, sans-serif"><b>8</b></font><font face="Segoe UI, sans-serif"><b>.</b></font><font face="Segoe UI, sans-serif"><b>4</b></font><font face="Segoe UI, sans-serif"><b>\bin\mysql.exe&quot;
-	-u root -p</b></font></p></li>
+	Files\MySQL\MySQL Server 8.4\bin\mysql.exe&quot; -u root -p</b></font></p></li>
 	<li><p><span style="font-variant: normal"><font face="Segoe UI, sans-serif"><span style="font-style: normal">Enter
 	the password w</span></font></span><span style="font-variant: normal"><font face="Segoe UI, sans-serif"><span style="font-style: normal"><span style="font-weight: normal">hen
 	prompted</span></span></font></span><span style="font-variant: normal"><font face="Segoe UI, sans-serif"><span style="font-style: normal">.</span></font></span></p></li>

@@ -42,7 +42,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             {
                 // Encrypt does not need to be set since the default value is Mandatory.
                 DataSource = DatabaseSession.DataSource,
-                InitialCatalog = "pdfkeeper",
+                InitialCatalog = DatabaseSession.SchemaName,
                 ConnectTimeout = 60,
                 TrustServerCertificate = true
             };

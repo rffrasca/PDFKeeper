@@ -384,6 +384,15 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SQLite DB files|*.sqlite.
+        /// </summary>
+        internal static string SqliteFilter {
+            get {
+                return ResourceManager.GetString("SqliteFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stack Trace has been logged to {0}.
         /// </summary>
         internal static string StackTraceLogged {

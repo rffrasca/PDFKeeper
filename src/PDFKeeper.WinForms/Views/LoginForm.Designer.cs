@@ -61,6 +61,8 @@ namespace PDFKeeper.WinForms.Views
             this.PasswordSecureTextBox = new PDFKeeper.WinForms.Components.SecureTextBox(this.components);
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
             this.HelpLabel = new System.Windows.Forms.Label();
+            this.SchemanameLabel = new System.Windows.Forms.Label();
+            this.SchemanameTextBox = new PDFKeeper.WinForms.Components.CustomTextBox(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,12 +127,28 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.HelpLabel, "HelpLabel");
             this.HelpLabel.Name = "HelpLabel";
             // 
+            // SchemanameLabel
+            // 
+            resources.ApplyResources(this.SchemanameLabel, "SchemanameLabel");
+            this.SchemanameLabel.Name = "SchemanameLabel";
+            this.HelpProvider.SetShowHelp(this.SchemanameLabel, ((bool)(resources.GetObject("SchemanameLabel.ShowHelp"))));
+            // 
+            // SchemanameTextBox
+            // 
+            this.SchemanameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::PDFKeeper.WinForms.Properties.Settings.Default, "SchemaName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.SchemanameTextBox, "SchemanameTextBox");
+            this.SchemanameTextBox.Name = "SchemanameTextBox";
+            this.HelpProvider.SetShowHelp(this.SchemanameTextBox, ((bool)(resources.GetObject("SchemanameTextBox.ShowHelp"))));
+            this.SchemanameTextBox.Text = global::PDFKeeper.WinForms.Properties.Settings.Default.Schemaname;
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.OK_Button;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.Cancel_Button;
+            this.Controls.Add(this.SchemanameTextBox);
+            this.Controls.Add(this.SchemanameLabel);
             this.Controls.Add(this.HelpLabel);
             this.Controls.Add(this.Cancel_Button);
             this.Controls.Add(this.OK_Button);
@@ -169,5 +187,7 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.Button OK_Button;
         private System.Windows.Forms.HelpProvider HelpProvider;
         private System.Windows.Forms.Label HelpLabel;
+        internal System.Windows.Forms.Label SchemanameLabel;
+        internal Components.CustomTextBox SchemanameTextBox;
     }
 }

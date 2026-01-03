@@ -126,7 +126,7 @@
     <value>0, 0</value>
   </data>
   <data name="pictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 234</value>
+    <value>195, 284</value>
   </data>
   <data name="pictureBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>CenterImage</value>
@@ -145,7 +145,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pictureBox.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="UsernameTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 39</value>
@@ -166,7 +166,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;UsernameTextBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="UsernameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -196,7 +196,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;UsernameLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="PasswordLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -226,7 +226,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PasswordLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="DatasourceLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -256,7 +256,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DatasourceLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="Cancel_Button.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -265,13 +265,13 @@
     <value>NoControl</value>
   </data>
   <data name="Cancel_Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>433, 194</value>
+    <value>433, 244</value>
   </data>
   <data name="Cancel_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
   <data name="Cancel_Button.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="Cancel_Button.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -286,7 +286,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Cancel_Button.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="OK_Button.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -295,13 +295,13 @@
     <value>NoControl</value>
   </data>
   <data name="OK_Button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 194</value>
+    <value>349, 244</value>
   </data>
   <data name="OK_Button.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
   <data name="OK_Button.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="OK_Button.Text" xml:space="preserve">
     <value>OK</value>
@@ -316,7 +316,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;OK_Button.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="DatasourceTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -334,13 +334,13 @@
     <value>DatasourceTextBox</value>
   </data>
   <data name="&gt;&gt;DatasourceTextBox.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.Components.CustomTextBox, PDFKeeper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.Components.CustomTextBox, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;DatasourceTextBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DatasourceTextBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="PasswordSecureTextBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -358,13 +358,13 @@
     <value>PasswordSecureTextBox</value>
   </data>
   <data name="&gt;&gt;PasswordSecureTextBox.Type" xml:space="preserve">
-    <value>PDFKeeper.WinForms.Components.SecureTextBox, PDFKeeper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=0d56efefe668ebbc</value>
+    <value>PDFKeeper.WinForms.Components.SecureTextBox, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;PasswordSecureTextBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PasswordSecureTextBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -373,13 +373,13 @@
     <value>True</value>
   </data>
   <data name="HelpLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 200</value>
+    <value>205, 250</value>
   </data>
   <data name="HelpLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 15</value>
   </data>
   <data name="HelpLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="HelpLabel.Text" xml:space="preserve">
     <value>Press F1 for help</value>
@@ -394,6 +394,66 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;HelpLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="SchemanameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="SchemanameLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 177</value>
+  </data>
+  <data name="SchemanameLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SchemanameLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 27</value>
+  </data>
+  <data name="SchemanameLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="SchemanameLabel.Text" xml:space="preserve">
+    <value>&amp;Schema name</value>
+  </data>
+  <data name="SchemanameLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;SchemanameLabel.Name" xml:space="preserve">
+    <value>SchemanameLabel</value>
+  </data>
+  <data name="&gt;&gt;SchemanameLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SchemanameLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SchemanameLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="SchemanameTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="SchemanameTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 207</value>
+  </data>
+  <data name="SchemanameTextBox.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SchemanameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 23</value>
+  </data>
+  <data name="SchemanameTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;SchemanameTextBox.Name" xml:space="preserve">
+    <value>SchemanameTextBox</value>
+  </data>
+  <data name="&gt;&gt;SchemanameTextBox.Type" xml:space="preserve">
+    <value>PDFKeeper.WinForms.Components.CustomTextBox, PDFKeeper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;SchemanameTextBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SchemanameTextBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -406,7 +466,7 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>523, 233</value>
+    <value>523, 283</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

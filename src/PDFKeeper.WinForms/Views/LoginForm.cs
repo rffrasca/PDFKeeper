@@ -48,6 +48,7 @@ namespace PDFKeeper.WinForms.Views
                 viewModel.UserName = Settings.Default.Username;
                 viewModel.Password = PasswordSecureTextBox.SecureText;
                 viewModel.DataSource = Settings.Default.Datasource;
+                viewModel.SchemaName = Settings.Default.Schemaname;
                 viewModel.DbManagementSystem = Settings.Default.DbManagementSystem;
             };
             
