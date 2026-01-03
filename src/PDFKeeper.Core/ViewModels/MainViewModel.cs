@@ -83,8 +83,6 @@ namespace PDFKeeper.Core.ViewModels
         private bool filePrintMenuEnabled;
         private bool filePrintPreviewMenuEnabled;
         private bool fileDatabaseMenuVisible;
-        private bool fileDatabaseNewMenuVisible;
-        private bool fileDatabaseOpenMenuVisible;
         private bool fileExportMenuEnabled;
         private bool editUndoMenuEnabled;
         private bool editCutMenuEnabled;
@@ -110,7 +108,6 @@ namespace PDFKeeper.Core.ViewModels
         private bool viewToolBarChecked;
         private bool viewStatusBarChecked;
         private bool toolsUploadProfilesMenuEnabled;
-        private bool toolsMoveDatabaseMenuVisible;
         private DataTable documents;
         private readonly Collection<int> checkedDocumentIds;
         private bool documentsEnabled;
@@ -225,6 +222,7 @@ namespace PDFKeeper.Core.ViewModels
         public ICommand PrintDocumentDataTextWithPreviewCommand { get; private set; }
         public ICommand AddLocalDatabaseCommand { get; private set; }
         public ICommand OpenLocalDatabaseCommand { get; private set; }
+        public ICommand MoveLocalDatabaseCommand { get; private set; }
         public ICommand ExportEachSelectedDocumentCommand { get; private set; }
         public ICommand CloseCommand { get; private set; }
         public ICommand UndoNotesCommand { get; private set; }
@@ -253,7 +251,6 @@ namespace PDFKeeper.Core.ViewModels
         public ICommand ToggleStatusStripVisibleStateCommand { get; private set; }
         public ICommand ShowOptionsCommand { get; private set; }
         public ICommand ManageUploadProfilesCommand { get; private set; }
-        public ICommand MoveLocalDatabaseCommand { get; private set; }
         public ICommand ShowHelpCommand { get; private set; }
         public ICommand ShowAboutBoxCommand { get; private set; }
 
@@ -454,26 +451,6 @@ namespace PDFKeeper.Core.ViewModels
             set
             {
                 fileDatabaseMenuVisible = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool FileDatabaseNewMenuVisible
-        {
-            get => fileDatabaseNewMenuVisible;
-            set
-            {
-                fileDatabaseNewMenuVisible = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool FileDatabaseOpenMenuVisible
-        {
-            get => fileDatabaseOpenMenuVisible;
-            set
-            {
-                fileDatabaseOpenMenuVisible = value;
                 OnPropertyChanged();
             }
         }
@@ -720,16 +697,6 @@ namespace PDFKeeper.Core.ViewModels
             set
             {
                 toolsUploadProfilesMenuEnabled = VerifyInsertGranted(value);
-                OnPropertyChanged();
-            }
-        }
-
-        public bool ToolsMoveDatabaseMenuVisible
-        {
-            get => toolsMoveDatabaseMenuVisible;
-            set
-            {
-                toolsMoveDatabaseMenuVisible = value;
                 OnPropertyChanged();
             }
         }
@@ -1047,6 +1014,8 @@ namespace PDFKeeper.Core.ViewModels
                 AddLocalDatabase);
             OpenLocalDatabaseCommand = new RelayCommand(
                 OpenLocalDatabase);
+            MoveLocalDatabaseCommand = new RelayCommand(
+                MoveLocalDatabase);
             ExportEachSelectedDocumentCommand = new RelayCommand(
                 ExportEachSelectedDocument);
             CloseCommand = new RelayCommand(
@@ -1101,8 +1070,6 @@ namespace PDFKeeper.Core.ViewModels
                 ShowOptions);
             ManageUploadProfilesCommand = new RelayCommand(
                 ManageUploadProfiles);
-            MoveLocalDatabaseCommand = new RelayCommand(
-                MoveLocalDatabase);
             ShowHelpCommand = new RelayCommand(
                 ShowHelp);
             ShowAboutBoxCommand = new RelayCommand(
@@ -1492,6 +1459,33 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
+        private void MoveLocalDatabase()
+        {
+            var selectedFolderPath = folderBrowserDialogService.ShowDialog(
+                Resources.SelectDatabaseDestFolder);
+            if (selectedFolderPath.Length > 0)
+            {
+                try
+                {
+                    OnLongOperationStarted?.Invoke();
+                    WaitForUploadToFinish();
+                    var targetDbPath = Path.Combine(
+                        selectedFolderPath,
+                        Path.GetFileName(DatabaseSession.GetLocalDatabasePath()));
+                    File.Move(DatabaseSession.GetLocalDatabasePath(), targetDbPath);
+                    DatabaseSession.SetLocalDatabasePath(targetDbPath);
+                }
+                catch (Exception ex) when (ex is FileNotFoundException || ex is IOException)
+                {
+                    messageBoxService.ShowMessage(ex.Message, true);
+                }
+                finally
+                {
+                    OnLongOperationFinished?.Invoke();
+                }
+            }
+        }
+
         private void ExportEachSelectedDocument()
         {
             var selectedPath = folderBrowserDialogService.ShowDialog(Resources.SelectExportFolder);
@@ -1715,34 +1709,6 @@ namespace PDFKeeper.Core.ViewModels
         }
 
         private void ManageUploadProfiles() => OnManageUploadProfiles?.Invoke();
-
-        private void MoveLocalDatabase()
-        {
-            var selectedFolderPath = folderBrowserDialogService.ShowDialog(
-                Resources.SelectExportFolder);
-            if (selectedFolderPath.Length > 0)
-            {
-                try
-                {
-                    OnLongOperationStarted?.Invoke();
-                    WaitForUploadToFinish();
-                    var targetDbPath = Path.Combine(
-                        selectedFolderPath,
-                        Path.GetFileName(DatabaseSession.GetLocalDatabasePath()));
-                    File.Move(DatabaseSession.GetLocalDatabasePath(), targetDbPath);
-                    DatabaseSession.SetLocalDatabasePath(targetDbPath);
-                }
-                catch (Exception ex) when (ex is FileNotFoundException || ex is IOException)
-                {
-                    messageBoxService.ShowMessage(ex.Message, true);
-                }
-                finally
-                {
-                    OnLongOperationFinished?.Invoke();
-                }
-            }
-        }
-
         private void ShowHelp() => OnShowHelp?.Invoke();
         private void ShowAboutBox() => aboutBoxDialogService.ShowDialog();
 
@@ -2118,22 +2084,8 @@ namespace PDFKeeper.Core.ViewModels
             ViewSetPreviewPixelDensityMenuEnabled = false;
             ToolsUploadProfilesMenuEnabled = true;
             DocumentsEnabled = true;
-
-            if (DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Sqlite))
-            {
-                FileDatabaseMenuVisible = true;
-                FileDatabaseNewMenuVisible = true;
-                FileDatabaseOpenMenuVisible = true;
-                ToolsMoveDatabaseMenuVisible = true;
-            }
-            else
-            {
-                FileDatabaseMenuVisible = false;
-                FileDatabaseNewMenuVisible = false;
-                FileDatabaseOpenMenuVisible = false;
-                ToolsMoveDatabaseMenuVisible = false;
-            }
-
+            FileDatabaseMenuVisible = DatabaseSession.PlatformName.Equals(
+                DatabaseSession.CompatiblePlatformName.Sqlite);
             using var documentRepository = DatabaseSession.GetDocumentRepository();
             SearchTermSnippetsVisible = documentRepository.SearchTermSnippetsSupported;
         }

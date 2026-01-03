@@ -366,6 +366,15 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select the destination folder for the database:.
+        /// </summary>
+        internal static string SelectDatabaseDestFolder {
+            get {
+                return ResourceManager.GetString("SelectDatabaseDestFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select the folder location where the export folder structure will be created:.
         /// </summary>
         internal static string SelectExportFolder {

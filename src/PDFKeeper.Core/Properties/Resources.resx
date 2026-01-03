@@ -224,6 +224,9 @@ PDFKeeper will need to be restarted after completing the install of Oracle ODP.N
     <value>Select the folder location where to burst the PDF for the selected document:
 PDF file names will be prefixed with: PDFKeeper&lt;ID&gt;_</value>
   </data>
+  <data name="SelectDatabaseDestFolder" xml:space="preserve">
+    <value>Select the destination folder for the database:</value>
+  </data>
   <data name="SelectExportFolder" xml:space="preserve">
     <value>Select the folder location where the export folder structure will be created:</value>
   </data>

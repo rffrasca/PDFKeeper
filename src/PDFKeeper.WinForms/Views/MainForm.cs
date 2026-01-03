@@ -298,6 +298,8 @@ namespace PDFKeeper.WinForms.Views
                 viewModel.OpenLocalDatabaseCommand;
             FileDatabaseOpenToolStripButton.Tag = 
                 viewModel.OpenLocalDatabaseCommand;
+            FileDatabaseMoveToolStripMenuItem.Tag =
+                viewModel.MoveLocalDatabaseCommand;
             FileExportToolStripMenuItem.Tag =
                 viewModel.ExportEachSelectedDocumentCommand;
             FileExitToolStripMenuItem.Tag =
@@ -374,8 +376,6 @@ namespace PDFKeeper.WinForms.Views
                 viewModel.ManageUploadProfilesCommand;
             ToolsUploadProfilesToolStripButton.Tag =
                 viewModel.ManageUploadProfilesCommand;
-            ToolsMoveDatabaseToolStripMenuItem.Tag =
-                viewModel.MoveLocalDatabaseCommand;
             HelpContentsToolStripMenuItem.Tag =
                 viewModel.ShowHelpCommand;
             HelpContentsToolStripButton.Tag =
@@ -634,18 +634,6 @@ namespace PDFKeeper.WinForms.Views
                     FileDatabaseToolStripMenuItem.Visible =
                         viewModel.FileDatabaseMenuVisible;
                     break;
-                case nameof(viewModel.FileDatabaseNewMenuVisible):
-                    FileDatabaseNewToolStripMenuItem.Visible =
-                        viewModel.FileDatabaseNewMenuVisible;
-                    FileDatabaseNewToolStripButton.Visible =
-                        viewModel.FileDatabaseNewMenuVisible;
-                    break;
-                case nameof(viewModel.FileDatabaseOpenMenuVisible):
-                    FileDatabaseOpenToolStripMenuItem.Visible =
-                        viewModel.FileDatabaseOpenMenuVisible;
-                    FileDatabaseOpenToolStripButton.Visible =
-                       viewModel.FileDatabaseOpenMenuVisible;
-                    break;
                 case nameof(viewModel.FileExportMenuEnabled):
                     FileExportToolStripMenuItem.Enabled = viewModel.FileExportMenuEnabled;
                     break;
@@ -747,10 +735,6 @@ namespace PDFKeeper.WinForms.Views
                         viewModel.ToolsUploadProfilesMenuEnabled;
                     ToolsUploadProfilesToolStripButton.Enabled =
                         viewModel.ToolsUploadProfilesMenuEnabled;
-                    break;
-                case nameof(viewModel.ToolsMoveDatabaseMenuVisible):
-                    ToolsMoveDatabaseToolStripMenuItem.Visible =
-                        viewModel.ToolsMoveDatabaseMenuVisible;
                     break;
                 case nameof(viewModel.Documents):
                     DocumentsDataGridView.DataSource = viewModel.Documents;

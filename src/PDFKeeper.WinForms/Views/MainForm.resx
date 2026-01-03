@@ -469,19 +469,28 @@
     <value>Ctrl+Shift+N</value>
   </data>
   <data name="FileDatabaseNewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+    <value>190, 22</value>
   </data>
   <data name="FileDatabaseNewToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;New</value>
+    <value>&amp;New...</value>
   </data>
   <data name="FileDatabaseOpenToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+O</value>
   </data>
   <data name="FileDatabaseOpenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+    <value>190, 22</value>
   </data>
   <data name="FileDatabaseOpenToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Open</value>
+    <value>&amp;Open...</value>
+  </data>
+  <data name="FileDatabaseMoveToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+M</value>
+  </data>
+  <data name="FileDatabaseMoveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 22</value>
+  </data>
+  <data name="FileDatabaseMoveToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Move...</value>
   </data>
   <data name="FileDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>260, 22</value>
@@ -760,22 +769,16 @@
     <value>&amp;View</value>
   </data>
   <data name="ToolsOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="ToolsOptionsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Options</value>
   </data>
   <data name="ToolsUploadProfilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="ToolsUploadProfilesToolStripMenuItem.Text" xml:space="preserve">
     <value>Upload &amp;Profiles</value>
-  </data>
-  <data name="ToolsMoveDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="ToolsMoveDatabaseToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Move Database...</value>
   </data>
   <data name="ToolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 20</value>
@@ -2275,6 +2278,12 @@
   <data name="&gt;&gt;FileDatabaseOpenToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;FileDatabaseMoveToolStripMenuItem.Name" xml:space="preserve">
+    <value>FileDatabaseMoveToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;FileDatabaseMoveToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;FileToolStripSeparator7.Name" xml:space="preserve">
     <value>FileToolStripSeparator7</value>
   </data>
@@ -2537,12 +2546,6 @@
     <value>ToolsUploadProfilesToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;ToolsUploadProfilesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolsMoveDatabaseToolStripMenuItem.Name" xml:space="preserve">
-    <value>ToolsMoveDatabaseToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;ToolsMoveDatabaseToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;HelpToolStripMenuItem.Name" xml:space="preserve">
