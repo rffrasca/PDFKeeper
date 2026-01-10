@@ -136,6 +136,12 @@ namespace PDFKeeper.WinForms
 
             if (Settings.Default.DbManagementSystem.Length.Equals(0))
             {
+                var localDatabasePath = OneDriveHelper.ReadLocalDatabasePathIfapplicable();
+                if (!string.IsNullOrEmpty(localDatabasePath))
+                {
+                    DatabaseSession.SetLocalDatabasePath(localDatabasePath);
+                }
+
                 if (File.Exists(DatabaseSession.GetLocalDatabasePath()))
                 {
                     Settings.Default.DbManagementSystem = 
@@ -143,6 +149,7 @@ namespace PDFKeeper.WinForms
                 }
                 else
                 {
+                    ApplicationRegistry.DeleteLocalDatabaseKeys();
                     var choice = messageBoxService.ShowQuestion(Resources.DatabaseSetup, true);
 
                     switch (choice)
@@ -153,8 +160,8 @@ namespace PDFKeeper.WinForms
                             
                             try
                             {
-                                using var repository = DatabaseSession.GetDocumentRepository();
-                                repository.CreateDatabase();
+                                DatabaseSession.SetLocalDatabasePath(
+                                    DatabaseSession.GetLocalDatabasePath());
                             }
                             catch (DatabaseException ex)
                             {

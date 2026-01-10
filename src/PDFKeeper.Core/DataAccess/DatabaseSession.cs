@@ -22,6 +22,8 @@ using Microsoft.Win32;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess.Repository;
 using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Properties;
 using System;
 using System.Collections;
 using System.IO;
@@ -53,6 +55,16 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
+        /// Gets or sets the callback that is invoked when the local database path changes.
+        /// </summary>
+        /// <remarks>
+        /// Assign a method to this property to execute custom logic in response to changes in the
+        /// local database path. Only one callback can be assigned at a time; assigning a new value
+        /// replaces any existing callback.
+        /// </remarks>
+        public static Action OnLocalDatabasePathChanged { get; set; }
+
+        /// <summary>
         /// Gets or sets a <see cref="CompatiblePlatformName"/> as the database platform name.
         /// </summary>
         public static CompatiblePlatformName PlatformName
@@ -77,17 +89,17 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Retrieves the full file system path to the local database file as configured in the
-        /// application registry.
+        /// Retrieves the full file system path to the application's local database file, using
+        /// values stored in the user registry or default locations as needed.
         /// </summary>
         /// <remarks>
-        /// If the required registry values are not set, default values are used for the directory
-        /// and file name. The returned path may not correspond to an existing file if the database
-        /// has not been created.
+        /// If the registry does not contain values for the local database path or file name,
+        /// default values based on the application's data directory and product name are used.
         /// </remarks>
         /// <returns>
         /// A string containing the absolute path to the local database file. The path is
-        /// constructed from registry values specifying the directory and file name.
+        /// constructed from registry values if present, or from default application data locations
+        /// and file names if not.
         /// </returns>
         public static string GetLocalDatabasePath()
         {
@@ -104,14 +116,71 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Gets or sets the callback that is invoked when the local database path changes.
+        /// Sets the path to the local database file and updates the application registry with the
+        /// specified location.
         /// </summary>
         /// <remarks>
-        /// Assign a method to this property to execute custom logic in response to changes in the
-        /// local database path. Only one callback can be assigned at a time; assigning a new value
-        /// replaces any existing callback.
+        /// This method updates the application's registry settings to reflect the new database
+        /// location. If the specified path does not exist and <paramref name="moveExistingDb"/> is
+        /// true, the existing database is moved to the new location. If the path does not exist
+        /// and <paramref name="moveExistingDb"/> is false, a new database is created at the
+        /// specified path. If the path is within the user's OneDrive directory, a text file
+        /// containing the database path is also created in OneDrive. After the path is set, any
+        /// registered listeners are notified of the change.
         /// </remarks>
-        internal static Action OnLocalDatabasePathChanged { get; set; }
+        /// <param name="path">
+        /// The full file system path to the local database file. If the file does not exist and
+        /// <paramref name="moveExistingDb"/> is true, the existing database will be moved to this
+        /// location. If the file does not exist and <paramref name="moveExistingDb"/> is false, a
+        /// new database will be created at this location. If the file exists, it must be a valid
+        /// database file.
+        /// </param>
+        /// <param name="moveExistingDb">
+        /// true to move the existing local database to the specified path if the file does not
+        /// already exist; otherwise, false to set the path without moving the database. When false
+        /// and the path does not exist, a new database will be created. The default is false.
+        /// </param>
+        /// <exception cref="InvalidDataException">
+        /// Thrown if the file specified by <paramref name="path"/> exists but does not represent a
+        /// valid database file.
+        /// </exception>
+        public static void SetLocalDatabasePath(string path, bool moveExistingDb = false)
+        {
+            if (File.Exists(path))
+            {
+                var dbBytes = File.ReadAllBytes(path);
+                if (!dbBytes.ContainsUtf8String("CREATE TABLE docs"))
+                {
+                    throw new InvalidDataException(Resources.InvalidDatabaseFile);
+                }
+            }
+            else
+            {
+                if (moveExistingDb)
+                {
+                    File.Move(GetLocalDatabasePath(), path);
+                }
+            }
+
+            Registry.SetValue(
+                ApplicationRegistry.UserKeyPath,
+                "LocalDatabasePath",
+                Path.GetDirectoryName(path));
+            Registry.SetValue(
+                ApplicationRegistry.UserKeyPath,
+                "LocalDatabaseFileName",
+                Path.GetFileName(path));
+
+            if (!File.Exists(path))
+            {
+                using var repository = GetDocumentRepository();
+                repository.CreateDatabase();
+            }
+
+            DocumentsListHasChanges = true;
+            OnLocalDatabasePathChanged?.Invoke();
+            OneDriveHelper.WriteLocalDatabasePathIfapplicable(path);
+        }
 
         /// <summary>
         /// Gets or sets the database user name.
@@ -269,62 +338,6 @@ namespace PDFKeeper.Core.DataAccess
         /// <c>true</c> or <c>false</c> if the documents list has changes.
         /// </summary>
         internal static bool DocumentsListHasChanges { get; set; }
-
-        /// <summary>
-        /// Sets the path to the local database file and updates the application registry with the
-        /// specified location.
-        /// </summary>
-        /// <remarks>
-        /// This method updates the application's registry settings to reflect the new database
-        /// location. If validation is enabled, the method checks for the existence of the file and
-        /// verifies that it is a valid database before updating the registry. After the path is
-        /// set, any registered listeners are notified of the change.
-        /// </remarks>
-        /// <param name="path">
-        /// The full file system path to the local database file. This value is used to update the
-        /// registry and, if validation is enabled, must refer to an existing and valid database
-        /// file.
-        /// </param>
-        /// <param name="validate">
-        /// true to validate that the specified path exists and points to a valid database file;
-        /// otherwise, false to set the path without validation. The default is false.
-        /// </param>
-        /// <exception cref="FileNotFoundException">
-        /// Thrown if validate is set to true and the file specified by path does not exist.
-        /// </exception>
-        /// <exception cref="InvalidDataException">
-        /// Thrown if validate is set to true and the file specified by path does not represent a
-        /// valid database file.
-        /// </exception>
-        internal static void SetLocalDatabasePath(string path, bool validate = false)
-        {
-            if (validate)
-            {
-                if (!File.Exists(path))
-                {
-                    throw new FileNotFoundException(path);
-                }
-
-                var dbBytes = File.ReadAllBytes(path);
-                
-                if (!dbBytes.ContainsUtf8String("CREATE TABLE docs"))
-                {
-                    throw new InvalidDataException(
-                        "The specified file is not a valid database file.");
-                }
-            }
-
-            Registry.SetValue(
-                ApplicationRegistry.UserKeyPath,
-                "LocalDatabasePath",
-                Path.GetDirectoryName(path));
-            Registry.SetValue(
-                ApplicationRegistry.UserKeyPath,
-                "LocalDatabaseFileName",
-                Path.GetFileName(path));
-            DocumentsListHasChanges = true;
-            OnLocalDatabasePathChanged?.Invoke();
-        }
 
         /// <summary>
         /// Sets <see cref="PlatformName"/> to the <see cref="CompatiblePlatformName"/> that

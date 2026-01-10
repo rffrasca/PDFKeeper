@@ -164,6 +164,9 @@ To extract to a folder, select No.</value>
   <data name="FileNameToken" xml:space="preserve">
     <value>&lt;FileName&gt;</value>
   </data>
+  <data name="InvalidDatabaseFile" xml:space="preserve">
+    <value>The specified file is not a valid database file.</value>
+  </data>
   <data name="MandatoryFieldsAreBlank" xml:space="preserve">
     <value>One or more mandatory fields are blank!</value>
   </data>

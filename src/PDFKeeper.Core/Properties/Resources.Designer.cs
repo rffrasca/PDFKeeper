@@ -198,6 +198,15 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified file is not a valid database file..
+        /// </summary>
+        internal static string InvalidDatabaseFile {
+            get {
+                return ResourceManager.GetString("InvalidDatabaseFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to One or more mandatory fields are blank!.
         /// </summary>
         internal static string MandatoryFieldsAreBlank {

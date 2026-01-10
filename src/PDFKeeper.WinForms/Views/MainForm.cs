@@ -69,6 +69,7 @@ namespace PDFKeeper.WinForms.Views
         {
             viewModel.OnLongOperationStarted = () => Cursor = Cursors.WaitCursor;
             viewModel.OnLongOperationFinished = () => Cursor = Cursors.Default;
+            viewModel.OnResetBindings = () => MainViewModelBindingSource.ResetBindings(false);
             viewModel.OnCloseView = () => Close();
             viewModel.OnCheckForUpdate = () => TagCommand.Invoke(UpdateCheckTimer);
 
@@ -76,7 +77,8 @@ namespace PDFKeeper.WinForms.Views
             {
                 if (Settings.Default.MainFormLocation != null)
                 {
-                    // Workaround for rare bug that can cause this form to be positioned off the screen.
+                    // Workaround for rare bug that can cause this form to be positioned off the
+                    // screen.
                     if (Settings.Default.MainFormLocation.Equals(new Point(-32000, -32000)))
                     {
                         Location = new Point(0, 0);

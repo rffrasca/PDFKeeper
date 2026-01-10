@@ -981,7 +981,11 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SetActions()
         {
-            DatabaseSession.OnLocalDatabasePathChanged = () => SetViewTitleText();
+            DatabaseSession.OnLocalDatabasePathChanged = () =>
+            {
+                SetViewTitleText();
+                OnResetBindings?.Invoke();
+            };
             FindDocumentsViewState.OnFindDocumentsParamChanged = () => GetListOfDocuments(false);
         }
 
@@ -1421,10 +1425,8 @@ namespace PDFKeeper.Core.ViewModels
                     OnLongOperationStarted?.Invoke();
                     WaitForUploadToFinish();
                     DatabaseSession.SetLocalDatabasePath(targetFilePath);
-                    using var repository = DatabaseSession.GetDocumentRepository();
-                    repository.CreateDatabase();
                 }
-                catch (DatabaseException ex)
+                catch (Exception ex) when (ex is DatabaseException || ex is IOException)
                 {
                     messageBoxService.ShowMessage(ex.Message, true);
                 }
@@ -1444,11 +1446,9 @@ namespace PDFKeeper.Core.ViewModels
                 {
                     OnLongOperationStarted?.Invoke();
                     WaitForUploadToFinish();
-                    DatabaseSession.SetLocalDatabasePath(selectedFilePath, true);
+                    DatabaseSession.SetLocalDatabasePath(selectedFilePath);
                 }
-                catch (Exception ex) when (
-                    ex is FileNotFoundException ||
-                    ex is InvalidDataException)
+                catch (InvalidDataException ex)
                 {
                     messageBoxService.ShowMessage(ex.Message, true);
                 }
@@ -1472,8 +1472,7 @@ namespace PDFKeeper.Core.ViewModels
                     var targetDbPath = Path.Combine(
                         selectedFolderPath,
                         Path.GetFileName(DatabaseSession.GetLocalDatabasePath()));
-                    File.Move(DatabaseSession.GetLocalDatabasePath(), targetDbPath);
-                    DatabaseSession.SetLocalDatabasePath(targetDbPath);
+                    DatabaseSession.SetLocalDatabasePath(targetDbPath, true);
                 }
                 catch (Exception ex) when (ex is FileNotFoundException || ex is IOException)
                 {
