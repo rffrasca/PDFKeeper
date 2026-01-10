@@ -1245,7 +1245,6 @@ namespace PDFKeeper.WinForms.Views
             // 
             // ToolTip
             // 
-            this.ToolTip.IsBalloon = true;
             this.ToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // MainForm

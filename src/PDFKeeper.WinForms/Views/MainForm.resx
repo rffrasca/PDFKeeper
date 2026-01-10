@@ -121,28 +121,6 @@
     <value>243, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ToolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
-  </data>
-  <data name="ToolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>984, 25</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ToolStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.Name" xml:space="preserve">
-    <value>ToolStrip</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ToolStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="FileAddToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -353,43 +331,32 @@
   <data name="HelpContentsToolStripButton.ToolTipText" xml:space="preserve">
     <value>Help</value>
   </data>
+  <data name="ToolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="ToolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>984, 25</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ToolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.Name" xml:space="preserve">
+    <value>ToolStrip</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ToolStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="MenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>344, 17</value>
   </metadata>
-  <data name="MenuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="MenuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>7, 2, 0, 2</value>
-  </data>
-  <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>984, 24</value>
-  </data>
-  <data name="MenuStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Name" xml:space="preserve">
-    <value>MenuStrip</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="FileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="FileToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
-  <data name="FileToolStripMenuItem.ToolTipText" xml:space="preserve">
-    <value>New</value>
-  </data>
   <data name="FileAddToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+A</value>
   </data>
@@ -441,12 +408,6 @@
   <data name="FileBurstToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Burst...</value>
   </data>
-  <data name="FileExtractToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 22</value>
-  </data>
-  <data name="FileExtractToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ext&amp;ract</value>
-  </data>
   <data name="FileExtractAllAttachmentsToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Alt+A</value>
   </data>
@@ -464,6 +425,12 @@
   </data>
   <data name="FileExtractAllEmbeddedFilesToolStripMenuItem.Text" xml:space="preserve">
     <value>All &amp;Embedded Files...</value>
+  </data>
+  <data name="FileExtractToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 22</value>
+  </data>
+  <data name="FileExtractToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ext&amp;ract</value>
   </data>
   <data name="FileToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 6</value>
@@ -498,12 +465,6 @@
   <data name="FileToolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 6</value>
   </data>
-  <data name="FileDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 22</value>
-  </data>
-  <data name="FileDatabaseToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Database</value>
-  </data>
   <data name="FileDatabaseNewToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Shift+N</value>
   </data>
@@ -531,6 +492,12 @@
   <data name="FileDatabaseMoveToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Move...</value>
   </data>
+  <data name="FileDatabaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 22</value>
+  </data>
+  <data name="FileDatabaseToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Database</value>
+  </data>
   <data name="FileToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 6</value>
   </data>
@@ -549,11 +516,14 @@
   <data name="FileExitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
-  <data name="EditToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
+  <data name="FileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
   </data>
-  <data name="EditToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Edit</value>
+  <data name="FileToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="FileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>New</value>
   </data>
   <data name="EditUndoToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Z</value>
@@ -660,11 +630,11 @@
   <data name="EditFlagDocumentToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Flag Document</value>
   </data>
-  <data name="DocumentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 20</value>
+  <data name="EditToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
   </data>
-  <data name="DocumentsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Documents</value>
+  <data name="EditToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
   </data>
   <data name="DocumentsFindToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+F</value>
@@ -678,12 +648,6 @@
   <data name="DocumentsToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>267, 6</value>
   </data>
-  <data name="DocumentsSelectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 22</value>
-  </data>
-  <data name="DocumentsSelectToolStripMenuItem.Text" xml:space="preserve">
-    <value>Se&amp;lect</value>
-  </data>
   <data name="DocumentsSelectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 22</value>
   </data>
@@ -695,6 +659,12 @@
   </data>
   <data name="DocumentsSelectNoneToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;None</value>
+  </data>
+  <data name="DocumentsSelectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 22</value>
+  </data>
+  <data name="DocumentsSelectToolStripMenuItem.Text" xml:space="preserve">
+    <value>Se&amp;lect</value>
   </data>
   <data name="DocumentsToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>267, 6</value>
@@ -765,11 +735,11 @@
   <data name="DocumentsDeleteToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Delete...</value>
   </data>
-  <data name="ViewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+  <data name="DocumentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
   </data>
-  <data name="ViewToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;View</value>
+  <data name="DocumentsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Documents</value>
   </data>
   <data name="ViewSetPreviewPixelDensityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>212, 22</value>
@@ -792,11 +762,11 @@
   <data name="ViewStatusBarToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Status Bar</value>
   </data>
-  <data name="ToolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 20</value>
+  <data name="ViewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
   </data>
-  <data name="ToolsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Tools</value>
+  <data name="ViewToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;View</value>
   </data>
   <data name="ToolsOptionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 22</value>
@@ -810,11 +780,11 @@
   <data name="ToolsUploadProfilesToolStripMenuItem.Text" xml:space="preserve">
     <value>Upload &amp;Profiles</value>
   </data>
-  <data name="HelpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+  <data name="ToolsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 20</value>
   </data>
-  <data name="HelpToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Help</value>
+  <data name="ToolsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Tools</value>
   </data>
   <data name="HelpContentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 22</value>
@@ -831,33 +801,39 @@
   <data name="HelpAboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About PDFKeeper</value>
   </data>
+  <data name="HelpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="HelpToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="MenuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MenuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>7, 2, 0, 2</value>
+  </data>
+  <data name="MenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>984, 24</value>
+  </data>
+  <data name="MenuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.Name" xml:space="preserve">
+    <value>MenuStrip</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MenuStrip.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="StatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>452, 17</value>
   </metadata>
-  <data name="StatusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 739</value>
-  </data>
-  <data name="StatusStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 16, 0</value>
-  </data>
-  <data name="StatusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>984, 22</value>
-  </data>
-  <data name="StatusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;StatusStrip.Name" xml:space="preserve">
-    <value>StatusStrip</value>
-  </data>
-  <data name="&gt;&gt;StatusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;StatusStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;StatusStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="DocumentsLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 17</value>
   </data>
@@ -915,6 +891,30 @@
   <data name="UploadRejectedImageLabel.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="StatusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 739</value>
+  </data>
+  <data name="StatusStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 0, 16, 0</value>
+  </data>
+  <data name="StatusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>984, 22</value>
+  </data>
+  <data name="StatusStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;StatusStrip.Name" xml:space="preserve">
+    <value>StatusStrip</value>
+  </data>
+  <data name="&gt;&gt;StatusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StatusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;StatusStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="MainViewModelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>562, 17</value>
   </metadata>
@@ -945,18 +945,18 @@
   <data name="&gt;&gt;PreviewPictureBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="MainViewModelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>562, 17</value>
-  </metadata>
   <metadata name="SelectionColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="SelectionColumn.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <metadata name="FlagColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>770, 53</value>
-  </metadata>
+  <data name="FlagColumn.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="DocumentsDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -969,6 +969,9 @@
   <data name="DocumentsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>770, 53</value>
+  </metadata>
   <data name="DocumentsDataGridView.ToolTip" xml:space="preserve">
     <value>To list documents, initiate a search using the 'Find' menu item or the toolbar button.</value>
   </data>
@@ -984,88 +987,22 @@
   <data name="&gt;&gt;DocumentsDataGridView.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="SelectionColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="SelectionColumn.HeaderText" xml:space="preserve">
-    <value />
-  </data>
-  <metadata name="FlagColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="FlagColumn.HeaderText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;NotesTabPage.Name" xml:space="preserve">
-    <value>NotesTabPage</value>
-  </data>
-  <data name="&gt;&gt;NotesTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NotesTabPage.Parent" xml:space="preserve">
-    <value>DocumentDataTabControl</value>
-  </data>
-  <data name="&gt;&gt;NotesTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTabPage.Name" xml:space="preserve">
-    <value>KeywordsTabPage</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTabPage.Parent" xml:space="preserve">
-    <value>DocumentDataTabControl</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTabPage.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;TextTabPage.Name" xml:space="preserve">
-    <value>TextTabPage</value>
-  </data>
-  <data name="&gt;&gt;TextTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextTabPage.Parent" xml:space="preserve">
-    <value>DocumentDataTabControl</value>
-  </data>
-  <data name="&gt;&gt;TextTabPage.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTabPage.Name" xml:space="preserve">
-    <value>SearchTermSnippetsTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTabPage.Parent" xml:space="preserve">
-    <value>DocumentDataTabControl</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTabPage.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="DocumentDataTabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="NotesTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="DocumentDataTabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="NotesTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <data name="DocumentDataTabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>488, 310</value>
+  <data name="NotesTextBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="DocumentDataTabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="NotesTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
   </data>
-  <data name="&gt;&gt;DocumentDataTabControl.Name" xml:space="preserve">
-    <value>DocumentDataTabControl</value>
+  <data name="NotesTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 276</value>
   </data>
-  <data name="&gt;&gt;DocumentDataTabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DocumentDataTabControl.Parent" xml:space="preserve">
-    <value>VerticalSplitContainer.Panel1</value>
-  </data>
-  <data name="&gt;&gt;DocumentDataTabControl.ZOrder" xml:space="preserve">
+  <data name="NotesTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;NotesTextBox.Name" xml:space="preserve">
@@ -1107,35 +1044,23 @@
   <data name="&gt;&gt;NotesTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="NotesTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="KeywordsTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="NotesTextBox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="KeywordsTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="NotesTextBox.Multiline" type="System.Boolean, mscorlib">
+  <data name="KeywordsTextBox.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="NotesTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+  <data name="KeywordsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="NotesTextBox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="KeywordsTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>474, 276</value>
   </data>
-  <data name="NotesTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;NotesTextBox.Name" xml:space="preserve">
-    <value>NotesTextBox</value>
-  </data>
-  <data name="&gt;&gt;NotesTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NotesTextBox.Parent" xml:space="preserve">
-    <value>NotesTabPage</value>
-  </data>
-  <data name="&gt;&gt;NotesTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="KeywordsTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;KeywordsTextBox.Name" xml:space="preserve">
     <value>KeywordsTextBox</value>
@@ -1176,35 +1101,23 @@
   <data name="&gt;&gt;KeywordsTabPage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="KeywordsTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="TextTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="KeywordsTextBox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="TextTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="KeywordsTextBox.Multiline" type="System.Boolean, mscorlib">
+  <data name="TextTextBox.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="KeywordsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+  <data name="TextTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="KeywordsTextBox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="TextTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>474, 276</value>
   </data>
-  <data name="KeywordsTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.Name" xml:space="preserve">
-    <value>KeywordsTextBox</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.Parent" xml:space="preserve">
-    <value>KeywordsTabPage</value>
-  </data>
-  <data name="&gt;&gt;KeywordsTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="TextTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;TextTextBox.Name" xml:space="preserve">
     <value>TextTextBox</value>
@@ -1245,35 +1158,23 @@
   <data name="&gt;&gt;TextTabPage.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="TextTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="SearchTermSnippetsTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="TextTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="SearchTermSnippetsTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="TextTextBox.Multiline" type="System.Boolean, mscorlib">
+  <data name="SearchTermSnippetsTextBox.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="TextTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+  <data name="SearchTermSnippetsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="TextTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 276</value>
+  <data name="SearchTermSnippetsTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>480, 282</value>
   </data>
-  <data name="TextTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.Name" xml:space="preserve">
-    <value>TextTextBox</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.Parent" xml:space="preserve">
-    <value>TextTabPage</value>
-  </data>
-  <data name="&gt;&gt;TextTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="SearchTermSnippetsTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;SearchTermSnippetsTextBox.Name" xml:space="preserve">
     <value>SearchTermSnippetsTextBox</value>
@@ -1311,34 +1212,28 @@
   <data name="&gt;&gt;SearchTermSnippetsTabPage.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="SearchTermSnippetsTextBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="DocumentDataTabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="SearchTermSnippetsTextBox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="DocumentDataTabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="SearchTermSnippetsTextBox.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="DocumentDataTabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>488, 310</value>
   </data>
-  <data name="SearchTermSnippetsTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
+  <data name="DocumentDataTabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="SearchTermSnippetsTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>480, 282</value>
+  <data name="&gt;&gt;DocumentDataTabControl.Name" xml:space="preserve">
+    <value>DocumentDataTabControl</value>
   </data>
-  <data name="SearchTermSnippetsTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;DocumentDataTabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.Name" xml:space="preserve">
-    <value>SearchTermSnippetsTextBox</value>
+  <data name="&gt;&gt;DocumentDataTabControl.Parent" xml:space="preserve">
+    <value>VerticalSplitContainer.Panel1</value>
   </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.Parent" xml:space="preserve">
-    <value>SearchTermSnippetsTabPage</value>
-  </data>
-  <data name="&gt;&gt;SearchTermSnippetsTextBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;DocumentDataTabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="HorizontalSplitContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -1403,6 +1298,48 @@
   </data>
   <data name="&gt;&gt;VerticalSplitContainer.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="PreviewPanel.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="PreviewPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="PreviewPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="PreviewPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>476, 276</value>
+  </data>
+  <data name="PreviewPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;PreviewPanel.Name" xml:space="preserve">
+    <value>PreviewPanel</value>
+  </data>
+  <data name="&gt;&gt;PreviewPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PreviewPanel.Parent" xml:space="preserve">
+    <value>PreviewTabPage</value>
+  </data>
+  <data name="&gt;&gt;PreviewPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PreviewTabPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="PreviewTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="PreviewTabPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 282</value>
+  </data>
+  <data name="PreviewTabPage.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="PreviewTabPage.Text" xml:space="preserve">
+    <value>Preview</value>
   </data>
   <data name="&gt;&gt;PreviewTabPage.Name" xml:space="preserve">
     <value>PreviewTabPage</value>
@@ -1509,72 +1446,6 @@
   <data name="&gt;&gt;HorizontalSplitContainer.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;PreviewPanel.Name" xml:space="preserve">
-    <value>PreviewPanel</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.Parent" xml:space="preserve">
-    <value>PreviewTabPage</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PreviewTabPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="PreviewTabPage.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="PreviewTabPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 282</value>
-  </data>
-  <data name="PreviewTabPage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="PreviewTabPage.Text" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="&gt;&gt;PreviewTabPage.Name" xml:space="preserve">
-    <value>PreviewTabPage</value>
-  </data>
-  <data name="&gt;&gt;PreviewTabPage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PreviewTabPage.Parent" xml:space="preserve">
-    <value>PreviewTabControl</value>
-  </data>
-  <data name="&gt;&gt;PreviewTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PreviewPanel.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="PreviewPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="PreviewPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="PreviewPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>476, 276</value>
-  </data>
-  <data name="PreviewPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.Name" xml:space="preserve">
-    <value>PreviewPanel</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.Parent" xml:space="preserve">
-    <value>PreviewTabPage</value>
-  </data>
-  <data name="&gt;&gt;PreviewPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="DocumentsListTimedRefreshTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>21, 16</value>
   </metadata>
@@ -1592,9 +1463,6 @@
   </metadata>
   <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>288, 53</value>
-  </metadata>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>770, 53</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
