@@ -19,7 +19,6 @@
 // *****************************************************************************
 
 using System.Windows.Forms;
-using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
 
@@ -27,20 +26,18 @@ namespace PDFKeeper.WinForms.Services
 {
     internal class SetDateTimeAddedDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null, Document document = null)
+        public string ShowDialog(string arg = null)
         {
-            using (var dialog = new SetDateTimeAddedForm())
-            {
-                dialog.ShowDialog();
+            using var dialog = new SetDateTimeAddedForm();
+            dialog.ShowDialog();
 
-                if (dialog.DialogResult.Equals(DialogResult.OK))
-                {
-                    return dialog.DateTimeAdded;
-                }
-                else
-                {
-                    return null;
-                }
+            if (dialog.DialogResult.Equals(DialogResult.OK))
+            {
+                return dialog.DateTimeAdded;
+            }
+            else
+            {
+                return null;
             }
         }
     }

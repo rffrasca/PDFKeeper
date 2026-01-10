@@ -29,19 +29,24 @@ namespace PDFKeeper.WinForms.Views
 {
     internal partial class AddPdfForm : Form
     {
+        private readonly string pdfPath;
         private readonly AddPdfViewModel viewModel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AddPdfForm"/> class.
+        /// Initializes a new instance of the AddPdfForm class, setting up the view model,
+        /// data binding, help provider, and event handlers.
         /// </summary>
-        /// <param name="document">
-        /// The <see cref="Document"/> instance to associate with the form. This parameter is
-        /// optional and can be <see langword="null"/>.
+        /// <param name="pdfPath">
+        /// The file path of the PDF to add, or null to specify no initial PDF.
         /// </param>
-        public AddPdfForm(Document document = null)
+        /// <param name="document">
+        /// The Document object to associate with the form, or null if not applicable.
+        /// </param>
+        public AddPdfForm(string pdfPath = null, Document document = null)
         {
             InitializeComponent();
-            viewModel = new AddPdfViewModel(document);
+            this.pdfPath = pdfPath;
+            viewModel = new AddPdfViewModel(Handle, document);
             AddPdfViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
@@ -82,7 +87,7 @@ namespace PDFKeeper.WinForms.Views
 
         private void AddPdfForm_Load(object sender, EventArgs e)
         {
-            viewModel.SelectPdfCommand.Execute(null);
+            viewModel.SelectPdfCommand.Execute(pdfPath);
         }
 
         private void ViewButton_Click(object sender, EventArgs e)

@@ -18,7 +18,6 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
 
@@ -26,7 +25,7 @@ namespace PDFKeeper.WinForms.Services
 {
     internal class UploadProfileEditorDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null, Document document = null)
+        public string ShowDialog(string arg = null)
         {
             using (var dialog = new UploadProfileEditorForm(arg))
             {

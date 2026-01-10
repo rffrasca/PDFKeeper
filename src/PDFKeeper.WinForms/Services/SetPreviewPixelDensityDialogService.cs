@@ -18,7 +18,6 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
 
@@ -26,13 +25,10 @@ namespace PDFKeeper.WinForms.Services
 {
     internal class SetPreviewPixelDensityDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null, Document document = null)
+        public string ShowDialog(string arg = null)
         {
-            using (var dialog = new SetPreviewPixelDensityForm())
-            {
-                dialog.ShowDialog();
-            }
-
+            using var dialog = new SetPreviewPixelDensityForm();
+            dialog.ShowDialog();
             return null;
         }
     }

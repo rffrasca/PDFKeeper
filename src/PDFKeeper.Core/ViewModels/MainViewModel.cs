@@ -49,7 +49,7 @@ namespace PDFKeeper.Core.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private readonly IntPtr viewHandle;
-        private IDialogService addPdfDialogService;
+        private IChildDialogService addPdfDialogService;
         private IDialogService setTitleDialogService;
         private IDialogService setAuthorDialogService;
         private IDialogService setSubjectDialogService;
@@ -201,8 +201,15 @@ namespace PDFKeeper.Core.ViewModels
         /// </para>
         /// </summary>
         public ICommand ViewLoadCommand { get; private set; }
-        
+
+        /// <summary>
+        /// Gets the command used to add a PDF.
+        /// <para>
+        /// <see cref="ICommand.Execute(string)"/>: The optional file path of the PDF to add.
+        /// </para>
+        /// </summary>
         public ICommand AddPdfCommand { get; private set; }
+
         public ICommand OpenPdfForEachSelectedDocumentCommand { get; private set; }
         public ICommand SaveNotesCommand { get; private set; }
         public ICommand PdfOrTextSaveAsCommand { get; private set; }
@@ -921,13 +928,12 @@ namespace PDFKeeper.Core.ViewModels
 
         protected override void GetServices(IServiceProvider serviceProvider)
         {
+            addPdfDialogService = serviceProvider.GetService<IChildDialogService>();
+
             foreach (var service in serviceProvider.GetServices<IDialogService>())
             {
                 switch (service.GetType().Name)
                 {
-                    case "AddPdfDialogService":
-                        addPdfDialogService = service;
-                        break;
                     case "SetTitleDialogService":
                         setTitleDialogService = service;
                         break;
@@ -995,7 +1001,7 @@ namespace PDFKeeper.Core.ViewModels
                 OnClipboardUpdate);
             ViewLoadCommand = new RelayCommand<StartupAction>(
                 OnViewLoad);
-            AddPdfCommand = new RelayCommand(
+            AddPdfCommand = new RelayCommand<string>(
                 AddPdf);
             OpenPdfForEachSelectedDocumentCommand = new RelayCommand(
                 OpenPdfForEachSelectedDocument);
@@ -1167,9 +1173,13 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
-        private void AddPdf()
+        /// <summary>
+        /// Opens a dialog to add a PDF file.
+        /// </summary>
+        /// <param name="pdfPath">The optional file path of the PDF to add.</param>
+        private void AddPdf(string pdfPath = null)
         {
-            addPdfDialogService.ShowDialog();
+            addPdfDialogService.ShowDialog(viewHandle, pdfPath);
         }
 
         private void OpenPdfForEachSelectedDocument()
@@ -1567,7 +1577,7 @@ namespace PDFKeeper.Core.ViewModels
         {
             using var documentRepository = DatabaseSession.GetDocumentRepository();
             var document = documentRepository.GetDocument(CurrentDocumentId, null);
-            addPdfDialogService.ShowDialog(null, document);
+            addPdfDialogService.ShowDialog(viewHandle, null, document);
         }
 
         private void UpdateCurrentDocumentFlagState()

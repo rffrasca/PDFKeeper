@@ -18,21 +18,21 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using System.Security;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
+using System;
+using System.Security;
+using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
     internal class PdfOwnerPasswordDialogService : IPasswordDialogService
     {
-        public SecureString ShowDialog()
+        public SecureString ShowDialog(IntPtr parent)
         {
-            using (var dialog = new PdfOwnerPasswordForm())
-            {
-                dialog.ShowDialog();
-                return dialog.PasswordSecureTextBox.SecureText;
-            }
+            using var dialog = new PdfOwnerPasswordForm();
+            dialog.ShowDialog(NativeWindow.FromHandle(parent));
+            return dialog.PasswordSecureTextBox.SecureText;
         }
     }
 }

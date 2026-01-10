@@ -19,7 +19,6 @@
 // *****************************************************************************
 
 using System.Windows.Forms;
-using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
 
@@ -27,20 +26,18 @@ namespace PDFKeeper.WinForms.Services
 {
     internal class SetTaxYearDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null, Document document = null)
+        public string ShowDialog(string arg = null)
         {
-            using (var dialog = new SetTaxYearForm())
-            {
-                dialog.ShowDialog();
+            using var dialog = new SetTaxYearForm();
+            dialog.ShowDialog();
 
-                if (dialog.DialogResult.Equals(DialogResult.OK))
-                {
-                    return dialog.TaxYearDropDownListUserControl.TaxYear;
-                }
-                else
-                {
-                    return null;
-                }
+            if (dialog.DialogResult.Equals(DialogResult.OK))
+            {
+                return dialog.TaxYearDropDownListUserControl.TaxYear;
+            }
+            else
+            {
+                return null;
             }
         }
     }

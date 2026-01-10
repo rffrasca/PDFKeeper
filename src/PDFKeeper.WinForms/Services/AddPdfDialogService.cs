@@ -21,18 +21,17 @@
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
+using System;
+using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
-    internal class AddPdfDialogService : IDialogService
+    internal class AddPdfDialogService : IChildDialogService
     {
-        public string ShowDialog(string arg = null, Document document = null)
+        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
-            using (var dialog = new AddPdfForm(document))
-            {
-                dialog.ShowDialog();
-            }
-
+            using var dialog = new AddPdfForm(arg, document);
+            dialog.ShowDialog(NativeWindow.FromHandle(parent));
             return null;
         }
     }

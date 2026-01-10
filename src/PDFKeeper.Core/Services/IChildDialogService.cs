@@ -18,19 +18,26 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using PDFKeeper.Core.Models;
 using System;
-using System.Security;
 
 namespace PDFKeeper.Core.Services
 {
-    public interface IPasswordDialogService
+    public interface IChildDialogService
     {
         /// <summary>
-        /// Displays a dialog box with the specified parent window and returns the entered secure
-        /// string.
+        /// Displays a dialog with the specified parent window, optional argument, and document.
         /// </summary>
-        /// <param name="parent">A handle to the parent window for the dialog box.</param>
-        /// <returns>A SecureString containing the user input from the dialog.</returns>
-        SecureString ShowDialog(IntPtr parent);
+        /// <param name="parent">
+        /// A handle to the parent window for the dialog.
+        /// </param>
+        /// <param name="arg">
+        /// An optional argument that specifies the input or context for the dialog.
+        /// </param>
+        /// <param name="document">
+        /// An optional document to be used in the dialog.
+        /// </param>
+        /// <returns>A string result from the dialog.</returns>
+        string ShowDialog(IntPtr parent, string arg = null, Document document = null);
     }
 }

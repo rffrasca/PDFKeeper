@@ -23,13 +23,12 @@ using System.Windows.Forms;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Views;
-using PDFKeeper.Core.Models;
 
 namespace PDFKeeper.WinForms.Services
 {
     internal class SetSubjectDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null, Document document = null)
+        public string ShowDialog(string arg = null)
         {
             var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
 

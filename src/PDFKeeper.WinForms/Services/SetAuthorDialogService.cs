@@ -23,36 +23,33 @@ using System.Windows.Forms;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Views;
-using PDFKeeper.Core.Models;
 
 namespace PDFKeeper.WinForms.Services
 {
     internal class SetAuthorDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null, Document document = null)
+        public string ShowDialog(string arg = null)
         {
             var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
 
-            using (var dialog = new SetAuthorForm())
-            {
-                dialog.ShowDialog();
+            using var dialog = new SetAuthorForm();
+            dialog.ShowDialog();
 
-                if (dialog.DialogResult.Equals(DialogResult.OK))
+            if (dialog.DialogResult.Equals(DialogResult.OK))
+            {
+                if (dialog.AuthorUserControl.Author.Length > 0)
                 {
-                    if (dialog.AuthorUserControl.Author.Length > 0)
-                    {
-                        return dialog.AuthorUserControl.Author;
-                    }
-                    else
-                    {
-                        messageBoxService.ShowMessage(Resources.AuthorCannotBeBlank, true);
-                        return null;
-                    }
+                    return dialog.AuthorUserControl.Author;
                 }
                 else
                 {
+                    messageBoxService.ShowMessage(Resources.AuthorCannotBeBlank, true);
                     return null;
                 }
+            }
+            else
+            {
+                return null;
             }
         }
     }

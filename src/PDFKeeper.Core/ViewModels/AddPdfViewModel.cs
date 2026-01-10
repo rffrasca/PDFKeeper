@@ -35,7 +35,8 @@ namespace PDFKeeper.Core.ViewModels
     [CLSCompliant(false)]
     public class AddPdfViewModel : ColumnDataListsViewModel, IUploadProfile
     {
-        private Document document;
+        private readonly IntPtr viewHandle;
+        private readonly Document document;
         private IFileDialogService openFileDialogService;
         private IMessageBoxService messageBoxService;
         private IPasswordDialogService passwordDialogService;
@@ -49,12 +50,15 @@ namespace PDFKeeper.Core.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="AddPdfViewModel"/> class.
         /// </summary>
-        /// <param name="document">
-        /// The <see cref="Document"/> instance to associate with the view model. This parameter is
-        /// optional and can be <see langword="null"/>.
+        /// <param name="viewHandle">
+        /// The <c>Handle</c> of the view.
         /// </param>
-        public AddPdfViewModel(Document document = null)
+        /// <param name="document">
+        /// The optional <see cref="Document"/> instance to associate with the view model.
+        /// </param>
+        public AddPdfViewModel(IntPtr viewHandle, Document document = null)
         {
+            this.viewHandle = viewHandle;
             this.document = document;
             GetServices(ServiceLocator.Services);
             InitializeCommands();            
@@ -65,6 +69,10 @@ namespace PDFKeeper.Core.ViewModels
         /// <summary>
         /// Prompts the user to select the PDF from the file system. If the PDF contains an
         /// <c>Owner</c> password, the user will be prompted to enter it.
+        /// <para>
+        /// <see cref="ICommand.Execute(string)"/>: Optional initial path for the PDF file to
+        /// select.
+        /// </para>
         /// </summary>
         public ICommand SelectPdfCommand { get; private set; }
 
@@ -179,7 +187,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void InitializeCommands()
         {
-            SelectPdfCommand = new RelayCommand(SelectPdf);
+            SelectPdfCommand = new RelayCommand<string>(SelectPdf);
             ViewPdfCommand = new RelayCommand(ViewPdf);
             SetTitleToPdfFileNameCommand = new RelayCommand(SetTitleToPdfFileName);
             GetSubjectsCommand = new RelayCommand(GetSubjects);
@@ -187,9 +195,24 @@ namespace PDFKeeper.Core.ViewModels
             CancelCommand = new RelayCommand(Cancel);
         }
 
-        private void SelectPdf()
+        /// <summary>
+        /// Opens a dialog to select a PDF file, handles password protection if present, loads PDF
+        /// metadata, and updates related properties and collections.
+        /// </summary>
+        /// <param name="pdfPath">Optional initial path for the PDF file to select.</param>
+        private void SelectPdf(string pdfPath = null)
         {
-            var selectedPdfPath = openFileDialogService.ShowDialog(Resources.PdfFilter);
+            string selectedPdfPath;
+            
+            if (!string.IsNullOrEmpty(pdfPath))
+            {
+                selectedPdfPath = pdfPath;
+            }
+            else
+            {
+                selectedPdfPath = openFileDialogService.ShowDialog(Resources.PdfFilter);
+            }
+
             if (selectedPdfPath.Length > 0)
             {
                 try
@@ -205,7 +228,7 @@ namespace PDFKeeper.Core.ViewModels
                     }
                     else if (passwordType.Equals(PdfFile.PasswordType.Owner))
                     {
-                        var pdfOwnerPassword = passwordDialogService.ShowDialog();
+                        var pdfOwnerPassword = passwordDialogService.ShowDialog(viewHandle);
                         if (pdfOwnerPassword != null)
                         {
                             if (pdfOwnerPassword.Length > 0)
