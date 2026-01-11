@@ -31,7 +31,7 @@ namespace PDFKeeper.PDFViewer.Services
 
         public RestrictedPdfViewerService()
         {
-            pidList = new List<int>();
+            pidList = [];
         }
 
         public void Close()

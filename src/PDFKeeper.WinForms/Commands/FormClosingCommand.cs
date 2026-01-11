@@ -25,22 +25,16 @@ using System.Windows.Input;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    internal class FormClosingCommand : ICommand
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FormClosingCommand"/> class that performs
+    /// <c>FormClosing</c> event methods when executed.
+    /// </summary>
+    /// <param name="e">The <see cref="FormClosingEventArgs"/> object.</param>
+    /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
+    internal class FormClosingCommand(FormClosingEventArgs e, MainViewModel viewModel) : ICommand
     {
-        private readonly FormClosingEventArgs e;
-        private readonly MainViewModel viewModel;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FormClosingCommand"/> class that performs
-        /// <c>FormClosing</c> event methods when executed.
-        /// </summary>
-        /// <param name="e">The <see cref="FormClosingEventArgs"/> object.</param>
-        /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-        public FormClosingCommand(FormClosingEventArgs e, MainViewModel viewModel)
-        {
-            this.e = e;
-            this.viewModel = viewModel;
-        }
+        private readonly FormClosingEventArgs e = e;
+        private readonly MainViewModel viewModel = viewModel;
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 

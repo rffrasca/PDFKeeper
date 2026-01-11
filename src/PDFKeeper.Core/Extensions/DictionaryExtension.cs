@@ -55,11 +55,8 @@ namespace PDFKeeper.Core.Extensions
                     foreach (var key in keyValuePairs.ToArray())
                     {
                         var zipEntry = zipArchive.CreateEntry(key.Key);
-                        
-                        using (Stream stream = zipEntry.Open())
-                        {
-                            stream.Write(key.Value, 0, key.Value.Length);
-                        }
+                        using Stream stream = zipEntry.Open();
+                        stream.Write(key.Value, 0, key.Value.Length);
                     }
                 }
 

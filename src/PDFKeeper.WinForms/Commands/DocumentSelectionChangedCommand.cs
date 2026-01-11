@@ -25,23 +25,19 @@ using System.Windows.Input;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    internal class DocumentSelectionChangedCommand : ICommand
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DocumentSelectionChangedCommand"/> class
+    /// that sets <see cref="MainViewModel.CurrentDocumentId"/> to the ID of the selected
+    /// document in <see cref="MainForm.DocumentsDataGridView"/>.
+    /// </summary>
+    /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
+    /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
+    internal class DocumentSelectionChangedCommand(
+        MainForm mainForm, 
+        MainViewModel viewModel) : ICommand
     {
-        private readonly MainForm mainForm;
-        private readonly MainViewModel viewModel;
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DocumentSelectionChangedCommand"/> class
-        /// that sets <see cref="MainViewModel.CurrentDocumentId"/> to the ID of the selected
-        /// document in <see cref="MainForm.DocumentsDataGridView"/>.
-        /// </summary>
-        /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
-        /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-        public DocumentSelectionChangedCommand(MainForm mainForm, MainViewModel viewModel)
-        {
-            this.mainForm = mainForm;
-            this.viewModel = viewModel;
-        }
+        private readonly MainForm mainForm = mainForm;
+        private readonly MainViewModel viewModel = viewModel;
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 

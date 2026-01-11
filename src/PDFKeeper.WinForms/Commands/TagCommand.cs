@@ -36,24 +36,13 @@ namespace PDFKeeper.WinForms.Commands
         /// </param>
         internal static void Invoke(object sender)
         {
-            ICommand command;
-
-            switch (sender.GetType().Name)
+            ICommand command = sender.GetType().Name switch
             {
-                case "Timer":
-                    command = ((Timer)sender).Tag as ICommand;
-                    break;
-                case "ToolStripMenuItem":
-                    command = ((ToolStripMenuItem)sender).Tag as ICommand;
-                    break;
-                case "ToolStripButton":
-                    command = ((ToolStripButton)sender).Tag as ICommand;
-                    break;
-                default:
-                    command = ((Control)sender).Tag as ICommand;
-                    break;
-            }
-            
+                "Timer" => ((Timer)sender).Tag as ICommand,
+                "ToolStripMenuItem" => ((ToolStripMenuItem)sender).Tag as ICommand,
+                "ToolStripButton" => ((ToolStripButton)sender).Tag as ICommand,
+                _ => ((Control)sender).Tag as ICommand,
+            };
             command.Execute(null);
         }
     }

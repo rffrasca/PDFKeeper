@@ -62,10 +62,8 @@ namespace PDFKeeper.Core.FileIO
         /// <returns>The contents as an <see cref="Image"/>.</returns>
         internal Image GetImage()
         {
-            using (var stream = new FileStream(imageFile.FullName, FileMode.Open, FileAccess.Read))
-            {
-                return Image.FromStream(stream);
-            }
+            using var stream = new FileStream(imageFile.FullName, FileMode.Open, FileAccess.Read);
+            return Image.FromStream(stream);
         }
     }
 }

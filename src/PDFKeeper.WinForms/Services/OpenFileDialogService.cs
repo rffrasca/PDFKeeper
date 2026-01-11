@@ -27,13 +27,11 @@ namespace PDFKeeper.WinForms.Services
     {
         public string ShowDialog(string filter, string fileName = null)
         {
-            using (var dialog = new OpenFileDialog())
-            {
-                dialog.Filter = filter;
-                dialog.FileName = fileName;
-                dialog.ShowDialog();
-                return dialog.FileName;
-            }
+            using var dialog = new OpenFileDialog();
+            dialog.Filter = filter;
+            dialog.FileName = fileName;
+            dialog.ShowDialog();
+            return dialog.FileName;
         }
     }
 }

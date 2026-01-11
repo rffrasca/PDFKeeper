@@ -30,29 +30,25 @@ using System.Windows.Input;
 
 namespace PDFKeeper.Core.Commands
 {
-    public class ExportDocumentCommand : ICommand
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ExportDocumentCommand"/> class that that
+    /// exports the PDF and external metadata (XML) when <see cref="Execute(object)"/> is
+    /// invoked.
+    /// <para>
+    /// When invoking <see cref="Execute(object)"/>, set parameter to <c>null</c>.
+    /// </para>
+    /// </summary>
+    /// <param name="id">The document ID.</param>
+    /// <param name="exportDirectory">The export <see cref="DirectoryInfo"/> object.</param>
+    /// <param name="fileCache">The export <see cref="FileCache"/> instance.</param>
+    public class ExportDocumentCommand(
+        int id,
+        DirectoryInfo exportDirectory,
+        FileCache fileCache) : ICommand
     {
-        private readonly int id;
-        private readonly DirectoryInfo exportDirectory;
-        private readonly FileCache fileCache;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ExportDocumentCommand"/> class that that
-        /// exports the PDF and external metadata (XML) when <see cref="Execute(object)"/> is
-        /// invoked.
-        /// <para>
-        /// When invoking <see cref="Execute(object)"/>, set parameter to <c>null</c>.
-        /// </para>
-        /// </summary>
-        /// <param name="id">The document ID.</param>
-        /// <param name="exportDirectory">The export <see cref="DirectoryInfo"/> object.</param>
-        /// <param name="fileCache">The export <see cref="FileCache"/> instance.</param>
-        public ExportDocumentCommand(int id, DirectoryInfo exportDirectory, FileCache fileCache)
-        {
-            this.id = id;
-            this.exportDirectory = exportDirectory;
-            this.fileCache = fileCache;
-        }
+        private readonly int id = id;
+        private readonly DirectoryInfo exportDirectory = exportDirectory;
+        private readonly FileCache fileCache = fileCache;
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 

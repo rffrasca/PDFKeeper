@@ -76,20 +76,18 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
                         var bmpDecoder = await BitmapDecoder.CreateAsync(
                             stream.AsRandomAccessStream()).AsTask().ConfigureAwait(
                             false);
+                        using var softwareBmp = await bmpDecoder.GetSoftwareBitmapAsync();
 
-                        using (var softwareBmp = await bmpDecoder.GetSoftwareBitmapAsync())
+                        if (softwareBmp.PixelWidth <= OcrEngine.MaxImageDimension &&
+                            softwareBmp.PixelHeight <= OcrEngine.MaxImageDimension)
                         {
-                            if (softwareBmp.PixelWidth <= OcrEngine.MaxImageDimension &&
-                                softwareBmp.PixelHeight <= OcrEngine.MaxImageDimension)
+                            var ocrEngine = OcrEngine.TryCreateFromUserProfileLanguages();
+                            var ocrResult = await ocrEngine.RecognizeAsync(softwareBmp);
+
+                            foreach (var line in ocrResult.Lines)
                             {
-                                var ocrEngine = OcrEngine.TryCreateFromUserProfileLanguages();
-                                var ocrResult = await ocrEngine.RecognizeAsync(softwareBmp);
-                        
-                                foreach (var line in ocrResult.Lines)
-                                {
-                                    text.AppendLine(line.Text);
-                                }
-                            }                                
+                                text.AppendLine(line.Text);
+                            }
                         }
                     }
 

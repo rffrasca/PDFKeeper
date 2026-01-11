@@ -18,8 +18,6 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Models;
-
 namespace PDFKeeper.Core.Services
 {
     public interface IDialogService

@@ -19,7 +19,6 @@
 // ****************************************************************************
 
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PDFKeeper.Core.Models
 {
@@ -29,7 +28,7 @@ namespace PDFKeeper.Core.Models
 
         internal SearchTermHistory()
         {
-            searchTerms = new List<string>();
+            searchTerms = [];
         }
 
         /// <summary>
@@ -48,7 +47,7 @@ namespace PDFKeeper.Core.Models
         /// Gets an array of previously entered Search Terms.
         /// </summary>
         /// <returns>The <c>string[]</c> of Search Terms.</returns>
-        internal string[] GetSearchTerms() => GetSearchTermsInternal().ToArray();
+        internal string[] GetSearchTerms() => [.. GetSearchTermsInternal()];
 
         private IEnumerable<string> GetSearchTermsInternal()
         {

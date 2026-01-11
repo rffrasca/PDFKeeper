@@ -23,7 +23,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 
 namespace PDFKeeper.Core.Models
 {
@@ -74,7 +73,7 @@ namespace PDFKeeper.Core.Models
         /// Gets an array containing all Title Tokens.
         /// </summary>
         /// <returns>The <c>string[]</c> of Title Tokens.</returns>
-        internal static string[] GetTokens() => GetTokensInternal().ToArray();
+        internal static string[] GetTokens() => [.. GetTokensInternal()];
         
         private static IEnumerable<string> GetTokensInternal()
         {

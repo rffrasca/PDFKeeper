@@ -35,7 +35,7 @@ namespace PDFKeeper.Core.FileIO
 
         public FileCache()
         {
-            fileHashes = new Dictionary<string, string>();
+            fileHashes = [];
             cacheDirectory = new ApplicationDirectory().GetDirectory(
                 ApplicationDirectory.SpecialName.Cache);
             executingAssembly = new ExecutingAssembly();

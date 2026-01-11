@@ -29,14 +29,12 @@ namespace PDFKeeper.WinForms.Services
     {
         public void ShowDialog(PrintDocument printDocument, Size printPreviewDialogSize)
         {
-            using (var dialog = new PrintPreviewDialog())
-            {
-                dialog.Document = printDocument;
-                dialog.ClientSize = printPreviewDialogSize;
-                dialog.ShowIcon = false;
-                dialog.UseAntiAlias = true;
-                dialog.ShowDialog();
-            }
+            using var dialog = new PrintPreviewDialog();
+            dialog.Document = printDocument;
+            dialog.ClientSize = printPreviewDialogSize;
+            dialog.ShowIcon = false;
+            dialog.UseAntiAlias = true;
+            dialog.ShowDialog();
         }
     }
 }

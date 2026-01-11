@@ -29,12 +29,10 @@ namespace PDFKeeper.WinForms.Services
     {
         public int ShowDialog(PrintDocument printDocument)
         {
-            using (var dialog = new PrintDialog())
-            {
-                dialog.Document = printDocument;
-                dialog.UseEXDialog = true;
-                return Convert.ToInt32((int)dialog.ShowDialog());
-            }
+            using var dialog = new PrintDialog();
+            dialog.Document = printDocument;
+            dialog.UseEXDialog = true;
+            return Convert.ToInt32((int)dialog.ShowDialog());
         }
     }
 }

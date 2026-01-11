@@ -101,7 +101,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void GetUploadProfileNames()
         {
-            UploadProfileNames = uploadProfileManager.GetUploadProfileNames().ToArray();
+            UploadProfileNames = [.. uploadProfileManager.GetUploadProfileNames()];
             if (UploadProfileNames.Any())
             {
                 EditEnabled = true;

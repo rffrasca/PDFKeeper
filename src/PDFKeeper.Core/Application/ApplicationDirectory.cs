@@ -73,32 +73,22 @@ namespace PDFKeeper.Core.Application
         /// <returns>The <see cref="DirectoryInfo"/> object.</returns>
         public DirectoryInfo GetDirectory(SpecialName specialName)
         {
-            DirectoryInfo directory;
-            switch (specialName)
+            DirectoryInfo directory = specialName switch
             {
-                case SpecialName.ApplicationData:
-                    directory = new DirectoryInfo(GetApplicationDataPath());
-                    break;
-                case SpecialName.Log:
-                    directory = new DirectoryInfo(
-                        Path.Combine(
-                            GetApplicationDataPath(),
-                            executingAssembly.Version));
-                    break;
-                case SpecialName.Temp:
-                    directory = new DirectoryInfo(
-                        Path.Combine(
-                            Path.GetTempPath(),
-                            executingAssembly.ProductName));
-                    break;
-                default:
-                    directory = new DirectoryInfo(
-                        Path.Combine(
-                            GetApplicationDataPath(),
-                            specialName.ToString()));
-                    break;
-            }
-           
+                SpecialName.ApplicationData => new DirectoryInfo(GetApplicationDataPath()),
+                SpecialName.Log => new DirectoryInfo(
+                                        Path.Combine(
+                                            GetApplicationDataPath(),
+                                            executingAssembly.Version)),
+                SpecialName.Temp => new DirectoryInfo(
+                                        Path.Combine(
+                                            Path.GetTempPath(),
+                                            executingAssembly.ProductName)),
+                _ => new DirectoryInfo(
+                                        Path.Combine(
+                                            GetApplicationDataPath(),
+                                            specialName.ToString())),
+            };
             directory.Create();
 
             if (specialName.Equals(SpecialName.Upload))

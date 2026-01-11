@@ -27,12 +27,10 @@ namespace PDFKeeper.WinForms.Services
     {
         public string ShowDialog(string description)
         {
-            using (var dialog = new FolderBrowserDialog())
-            {
-                dialog.Description = description;
-                dialog.ShowDialog();
-                return dialog.SelectedPath;
-            }
+            using var dialog = new FolderBrowserDialog();
+            dialog.Description = description;
+            dialog.ShowDialog();
+            return dialog.SelectedPath;
         }
     }
 }

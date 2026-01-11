@@ -26,29 +26,22 @@ using System.Windows.Input;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    internal class TextBoxSelectedTextCommand : ICommand
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TextBoxSelectedTextCommand"/> class that
+    /// synchronizes the <see cref="TextBox.SelectedText"/> and sets the state in
+    /// <see cref="MainViewModel"/> when executed.
+    /// </summary>
+    /// <param name="textBox">The <see cref="TextBox"/> object.</param>
+    /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
+    /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
+    internal class TextBoxSelectedTextCommand(
+        TextBox textBox,
+        MainForm mainForm,
+        MainViewModel viewModel) : ICommand
     {
-        private readonly TextBox textBox;
-        private readonly MainForm mainForm;
-        private readonly MainViewModel viewModel;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TextBoxSelectedTextCommand"/> class that
-        /// synchronizes the <see cref="TextBox.SelectedText"/> and sets the state in
-        /// <see cref="MainViewModel"/> when executed.
-        /// </summary>
-        /// <param name="textBox">The <see cref="TextBox"/> object.</param>
-        /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
-        /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-        public TextBoxSelectedTextCommand(
-            TextBox textBox,
-            MainForm mainForm,
-            MainViewModel viewModel)
-        {
-            this.textBox = textBox;
-            this.mainForm = mainForm;
-            this.viewModel = viewModel;
-        }
+        private readonly TextBox textBox = textBox;
+        private readonly MainForm mainForm = mainForm;
+        private readonly MainViewModel viewModel = viewModel;
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 

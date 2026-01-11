@@ -26,26 +26,21 @@ using System.Windows.Input;
 
 namespace PDFKeeper.Core.Commands
 {
-    public class UploadStagingCommand : ICommand
+    /// <summary>
+    /// Initializes a new instance of the <see cref="UploadStagingCommand"/> class that stages
+    /// the PDF and corresponding XML for uploading when <see cref="Execute(object)"/> is
+    /// invoked.
+    /// <para>
+    /// When invoking <see cref="Execute(object)"/>, set parameter to <c>null</c>.
+    /// </para>
+    /// </summary>
+    /// <param name="pdfFile">The PDF <see cref="FileInfo"/> object.</param>
+    /// <exception cref="ArgumentNullException"></exception>
+    public class UploadStagingCommand(FileInfo pdfFile) : ICommand
     {
-        private readonly FileInfo pdfFile;
-        private readonly FileInfo xmlFile;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UploadStagingCommand"/> class that stages
-        /// the PDF and corresponding XML for uploading when <see cref="Execute(object)"/> is
-        /// invoked.
-        /// <para>
-        /// When invoking <see cref="Execute(object)"/>, set parameter to <c>null</c>.
-        /// </para>
-        /// </summary>
-        /// <param name="pdfFile">The PDF <see cref="FileInfo"/> object.</param>
-        /// <exception cref="ArgumentNullException"></exception>
-        public UploadStagingCommand(FileInfo pdfFile)
-        {
-            this.pdfFile = pdfFile ?? throw new ArgumentNullException(nameof(pdfFile));
-            xmlFile = pdfFile.ChangeExtension("xml");
-        }
+        private readonly FileInfo pdfFile = pdfFile ?? throw new ArgumentNullException(
+            nameof(pdfFile));
+        private readonly FileInfo xmlFile = pdfFile.ChangeExtension("xml");
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 

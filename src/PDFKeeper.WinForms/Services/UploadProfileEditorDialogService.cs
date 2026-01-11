@@ -27,11 +27,8 @@ namespace PDFKeeper.WinForms.Services
     {
         public string ShowDialog(string arg = null)
         {
-            using (var dialog = new UploadProfileEditorForm(arg))
-            {
-                dialog.ShowDialog();
-            }
-
+            using var dialog = new UploadProfileEditorForm(arg);
+            dialog.ShowDialog();
             return null;
         }
     }

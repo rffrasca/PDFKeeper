@@ -31,46 +31,44 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
     {
         public string GetText(FileInfo pdfFile)
         {
-            using (var reader = new PdfReader(pdfFile))
-            {
-                var text = new StringBuilder();
-                
-                using (var document = new PdfDocument(reader))
-                {
-                    for (int page = 1,
-                        loopTo = document.GetNumberOfPages();
-                        page <= loopTo;
-                        page++)
-                    {
-                        try
-                        {
-                            ITextExtractionStrategy strategy = new LocationTextExtractionStrategy();
-                        
-                            var pageText =
-                                iText.Kernel.Pdf.Canvas.Parser.PdfTextExtractor.GetTextFromPage(
-                                    document.GetPage(
-                                        page),
-                                    strategy);
-                            var lines = pageText.Split('\n');
+            using var reader = new PdfReader(pdfFile);
+            var text = new StringBuilder();
 
-                            foreach (var line in lines)
-                            {
-                                text.AppendLine(line);
-                            }
-                        }
-                        catch (ArgumentException)   // PDF contains an invalid encoding.
+            using (var document = new PdfDocument(reader))
+            {
+                for (int page = 1,
+                    loopTo = document.GetNumberOfPages();
+                    page <= loopTo;
+                    page++)
+                {
+                    try
+                    {
+                        ITextExtractionStrategy strategy = new LocationTextExtractionStrategy();
+
+                        var pageText =
+                            iText.Kernel.Pdf.Canvas.Parser.PdfTextExtractor.GetTextFromPage(
+                                document.GetPage(
+                                    page),
+                                strategy);
+                        var lines = pageText.Split('\n');
+
+                        foreach (var line in lines)
                         {
-                            return null;
-                        }
-                        catch (InlineImageParseException)
-                        {
-                            return null;
+                            text.AppendLine(line);
                         }
                     }
+                    catch (ArgumentException)   // PDF contains an invalid encoding.
+                    {
+                        return null;
+                    }
+                    catch (InlineImageParseException)
+                    {
+                        return null;
+                    }
                 }
-
-                return text.ToString();
             }
+
+            return text.ToString();
         }
     }
 }

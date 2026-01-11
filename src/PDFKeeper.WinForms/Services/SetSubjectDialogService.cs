@@ -31,27 +31,24 @@ namespace PDFKeeper.WinForms.Services
         public string ShowDialog(string arg = null)
         {
             var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
+            using var dialog = new SetSubjectForm();
+            dialog.ShowDialog();
 
-            using (var dialog = new SetSubjectForm())
+            if (dialog.DialogResult.Equals(DialogResult.OK))
             {
-                dialog.ShowDialog();
-                
-                if (dialog.DialogResult.Equals(DialogResult.OK))
+                if (dialog.SubjectUserControl.Subject.Length > 0)
                 {
-                    if (dialog.SubjectUserControl.Subject.Length > 0)
-                    {
-                        return dialog.SubjectUserControl.Subject;
-                    }
-                    else
-                    {
-                        messageBoxService.ShowMessage(Resources.SubjectCannotBeBlank, true);
-                        return null;
-                    }
+                    return dialog.SubjectUserControl.Subject;
                 }
                 else
                 {
+                    messageBoxService.ShowMessage(Resources.SubjectCannotBeBlank, true);
                     return null;
                 }
+            }
+            else
+            {
+                return null;
             }
         }
     }

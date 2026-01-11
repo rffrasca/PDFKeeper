@@ -47,12 +47,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 TrustServerCertificate = true
             };
 
-            if (sqlCredential is null)
-            {
-                sqlCredential = new SqlCredential(
-                    DatabaseSession.UserName,
-                    DatabaseSession.Password);
-            }
+            sqlCredential ??= new SqlCredential(
+                DatabaseSession.UserName,
+                DatabaseSession.Password);
         }
 
         public bool SearchTermSnippetsSupported => false;
@@ -69,20 +66,14 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        var ftsQuery = new FtsQuery();
-                        command.Parameters.AddWithValue(
-                            "@doc_dummy",
-                            ftsQuery.Transform(searchTerm));
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                var ftsQuery = new FtsQuery();
+                command.Parameters.AddWithValue("@doc_dummy", ftsQuery.Transform(searchTerm));
+                connection.Open();
+                return ExecuteQuery(command);
             }
             catch (SqlException ex)
             {
@@ -121,28 +112,16 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue(
-                            "@doc_author",
-                            author ?? (object)DBNull.Value);
-                        command.Parameters.AddWithValue(
-                            "@doc_subject",
-                            subject ?? (object)DBNull.Value);
-                        command.Parameters.AddWithValue(
-                            "@doc_category",
-                            category ?? (object)DBNull.Value);
-                        command.Parameters.AddWithValue(
-                            "@doc_tax_year",
-                            taxYear ?? (object)DBNull.Value);
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@doc_author", author ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@doc_subject", subject ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@doc_category", category ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@doc_tax_year", taxYear ?? (object)DBNull.Value);
+                connection.Open();
+                return ExecuteQuery(command);
             }
             catch (SqlException ex)
             {
@@ -158,17 +137,13 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@doc_added", dateAdded + "%");
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@doc_added", dateAdded + "%");
+                connection.Open();
+                return ExecuteQuery(command);
             }
             catch (SqlException ex)
             {
@@ -183,16 +158,12 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                connection.Open();
+                return ExecuteQuery(command);
             }
             catch (SqlException ex)
             {
@@ -207,16 +178,12 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                connection.Open();
+                return ExecuteQuery(command);
             }
             catch (SqlException ex)
             {
@@ -249,25 +216,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue(
-                            "@doc_subject",
-                            subject ?? (object)DBNull.Value);
-                        command.Parameters.AddWithValue(
-                            "@doc_category",
-                            category ?? (object)DBNull.Value);
-                        command.Parameters.AddWithValue(
-                            "@doc_tax_year",
-                            taxYear ?? (object)DBNull.Value);
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@doc_subject", subject ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@doc_category", category ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@doc_tax_year", taxYear ?? (object)DBNull.Value);
+                connection.Open();
+                return ExecuteQuery(command);
             }
             catch (SqlException ex)
             {
@@ -300,25 +257,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue(
-                            "@doc_author",
-                            author ?? (object)DBNull.Value);
-                        command.Parameters.AddWithValue(
-                            "@doc_category",
-                            category ?? (object)DBNull.Value);
-                        command.Parameters.AddWithValue(
-                            "@doc_tax_year",
-                            taxYear ?? (object)DBNull.Value);
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@doc_author", author ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@doc_category", category ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@doc_tax_year", taxYear ?? (object)DBNull.Value);
+                connection.Open();
+                return ExecuteQuery(command);
             }
             catch (SqlException ex)
             {
@@ -351,25 +298,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue(
-                            "@doc_author",
-                            author ?? (object)DBNull.Value);
-                        command.Parameters.AddWithValue(
-                            "@doc_subject",
-                            subject ?? (object)DBNull.Value);
-                        command.Parameters.AddWithValue(
-                            "@doc_tax_year",
-                            taxYear ?? (object)DBNull.Value);
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@doc_author", author ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@doc_subject", subject ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@doc_tax_year", taxYear ?? (object)DBNull.Value);
+                connection.Open();
+                return ExecuteQuery(command);
             }
             catch (SqlException ex)
             {
@@ -402,25 +339,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue(
-                            "@doc_author",
-                            author ?? (object)DBNull.Value);
-                        command.Parameters.AddWithValue(
-                            "@doc_subject",
-                            subject ?? (object)DBNull.Value);
-                        command.Parameters.AddWithValue(
-                            "@doc_category",
-                            category ?? (object)DBNull.Value);
-                        connection.Open();
-                        return ExecuteQuery(command);
-                    }
-                }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@doc_author", author ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@doc_subject", subject ?? (object)DBNull.Value);
+                command.Parameters.AddWithValue("@doc_category", category ?? (object)DBNull.Value);
+                connection.Open();
+                return ExecuteQuery(command);
             }
             catch (SqlException ex)
             {
@@ -446,43 +373,39 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        var document = new Document();
-                        command.Parameters.AddWithValue("@doc_id", id);
-                        connection.Open();
-            
-                        using (var reader = command.ExecuteReader())
-                        {
-                            reader.Read();
-                            document.Id = id;
-                            document.Title = reader["doc_title"].ToString();
-                            document.Author = reader["doc_author"].ToString();
-                            document.Subject = reader["doc_subject"].ToString();
-                            document.Keywords = reader["doc_keywords"].ToString();
-                            document.Added = reader["doc_added"].ToString();
-                            document.Notes = reader["doc_notes"].ToString();
-                            
-                            if (includePdf)
-                            {
-                                document.Pdf = (byte[])reader["doc_pdf"];
-                            }
-                            
-                            document.Category = reader["doc_category"].ToString();
-                            document.Flag = Convert.ToInt32(reader["doc_flag"]);
-                            document.TaxYear = reader["doc_tax_year"].ToString();
-                            document.TextAnnotations = reader["doc_text_annotations"].ToString();
-                            document.Text = reader["doc_text"].ToString();
-                            document.SearchTermSnippets = string.Empty; // Not available in SQL Server.
-                        }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                var document = new Document();
+                command.Parameters.AddWithValue("@doc_id", id);
+                connection.Open();
 
-                        return document;
+                using (var reader = command.ExecuteReader())
+                {
+                    reader.Read();
+                    document.Id = id;
+                    document.Title = reader["doc_title"].ToString();
+                    document.Author = reader["doc_author"].ToString();
+                    document.Subject = reader["doc_subject"].ToString();
+                    document.Keywords = reader["doc_keywords"].ToString();
+                    document.Added = reader["doc_added"].ToString();
+                    document.Notes = reader["doc_notes"].ToString();
+
+                    if (includePdf)
+                    {
+                        document.Pdf = (byte[])reader["doc_pdf"];
                     }
+
+                    document.Category = reader["doc_category"].ToString();
+                    document.Flag = Convert.ToInt32(reader["doc_flag"]);
+                    document.TaxYear = reader["doc_tax_year"].ToString();
+                    document.TextAnnotations = reader["doc_text_annotations"].ToString();
+                    document.Text = reader["doc_text"].ToString();
+                    document.SearchTermSnippets = string.Empty; // Not available in SQL Server.
                 }
+
+                return document;
             }
             catch (SqlException ex)
             {
@@ -513,32 +436,24 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@doc_title", document.Title);
-                        command.Parameters.AddWithValue("@doc_author", document.Author);
-                        command.Parameters.AddWithValue("@doc_subject", document.Subject);
-                        command.Parameters.AddWithValue("@doc_keywords", document.Keywords);
-                        command.Parameters.AddWithValue("@doc_added", document.Added);
-                        command.Parameters.AddWithValue("@doc_notes", document.Notes);
-                        command.Parameters.AddWithValue(
-                            "@doc_pdf",
-                            SqlDbType.Binary).Value = document.Pdf;
-                        command.Parameters.AddWithValue("@doc_category", document.Category);
-                        command.Parameters.AddWithValue("@doc_flag", document.Flag);
-                        command.Parameters.AddWithValue("@doc_tax_year", document.TaxYear);
-                        command.Parameters.AddWithValue(
-                            "@doc_text_annotations",
-                            document.TextAnnotations);
-                        command.Parameters.AddWithValue("@doc_text", document.Text);
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                    }
-                }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@doc_title", document.Title);
+                command.Parameters.AddWithValue("@doc_author", document.Author);
+                command.Parameters.AddWithValue("@doc_subject", document.Subject);
+                command.Parameters.AddWithValue("@doc_keywords", document.Keywords);
+                command.Parameters.AddWithValue("@doc_added", document.Added);
+                command.Parameters.AddWithValue("@doc_notes", document.Notes);
+                command.Parameters.AddWithValue("@doc_pdf", SqlDbType.Binary).Value = document.Pdf;
+                command.Parameters.AddWithValue("@doc_category", document.Category);
+                command.Parameters.AddWithValue("@doc_flag", document.Flag);
+                command.Parameters.AddWithValue("@doc_tax_year", document.TaxYear);
+                command.Parameters.AddWithValue("@doc_text_annotations", document.TextAnnotations);
+                command.Parameters.AddWithValue("@doc_text", document.Text);
+                connection.Open();
+                command.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
@@ -580,37 +495,31 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@doc_title", document.Title);
-                        command.Parameters.AddWithValue("@doc_author", document.Author);
-                        command.Parameters.AddWithValue("@doc_subject", document.Subject);
-                        command.Parameters.AddWithValue("@doc_added", document.Added);
-                        command.Parameters.AddWithValue("@doc_notes", document.Notes);
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@doc_title", document.Title);
+                command.Parameters.AddWithValue("@doc_author", document.Author);
+                command.Parameters.AddWithValue("@doc_subject", document.Subject);
+                command.Parameters.AddWithValue("@doc_added", document.Added);
+                command.Parameters.AddWithValue("@doc_notes", document.Notes);
 
-                        if (updatePdf)
-                        {
-                            command.Parameters.AddWithValue(
-                                "@doc_pdf",
-                                SqlDbType.Binary).Value = document.Pdf;
-                        }
-                        
-                        command.Parameters.AddWithValue("@doc_category", document.Category);
-                        command.Parameters.AddWithValue("@doc_tax_year", document.TaxYear);
-                        command.Parameters.AddWithValue("@doc_flag", document.Flag);
-                        command.Parameters.AddWithValue(
-                            "@doc_text_annotations",
-                            document.TextAnnotations);
-                        command.Parameters.AddWithValue("@doc_text", document.Text);
-                        command.Parameters.AddWithValue("@doc_id", document.Id);
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                    }
+                if (updatePdf)
+                {
+                    command.Parameters.AddWithValue(
+                        "@doc_pdf",
+                        SqlDbType.Binary).Value = document.Pdf;
                 }
+
+                command.Parameters.AddWithValue("@doc_category", document.Category);
+                command.Parameters.AddWithValue("@doc_tax_year", document.TaxYear);
+                command.Parameters.AddWithValue("@doc_flag", document.Flag);
+                command.Parameters.AddWithValue("@doc_text_annotations", document.TextAnnotations);
+                command.Parameters.AddWithValue("@doc_text", document.Text);
+                command.Parameters.AddWithValue("@doc_id", document.Id);
+                connection.Open();
+                command.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
@@ -628,17 +537,13 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    using (var command = new SqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@doc_id", id);
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                    }
-                }
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@doc_id", id);
+                connection.Open();
+                command.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
@@ -654,12 +559,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             try
             {
-                using (var connection = new SqlConnection(
+                using var connection = new SqlConnection(
                     connStrBuilder.ConnectionString,
-                    sqlCredential))
-                {
-                    connection.Open();
-                }
+                    sqlCredential);
+                connection.Open();
             }
             catch (SqlException ex)
             {
@@ -698,15 +601,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         protected override DataTable ExecuteQuery(SqlCommand command)
         {
-            using (var adapter = new SqlDataAdapter(command))
-            {
-                using (var table = new DataTable())
-                {
-                    table.Locale = CultureInfo.InvariantCulture;
-                    adapter.Fill(table);
-                    return table;
-                }
-            }
+            using var adapter = new SqlDataAdapter(command);
+            using var table = new DataTable();
+            table.Locale = CultureInfo.InvariantCulture;
+            adapter.Fill(table);
+            return table;
         }
 
         protected override string GetSearchTermSnippets(int id, string searchTerm)
@@ -721,40 +620,33 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using (var connection = new SqlConnection(
-                     connStrBuilder.ConnectionString,
-                     sqlCredential))
+                using var connection = new SqlConnection(
+                    connStrBuilder.ConnectionString,
+                    sqlCredential);
+                using var command = new SqlCommand(sql, connection);
+                connection.Open();
+                using var reader = command.ExecuteReader();
+                DatabaseSession.SelectGranted = false;
+                DatabaseSession.InsertGranted = false;
+                DatabaseSession.UpdateGranted = false;
+                DatabaseSession.DeleteGranted = false;
+
+                while (reader.Read())
                 {
-                    using (var command = new SqlCommand(sql, connection))
+                    switch (reader.GetString(0))
                     {
-                        connection.Open();
-            
-                        using (var reader = command.ExecuteReader())
-                        {
-                            DatabaseSession.SelectGranted = false;
-                            DatabaseSession.InsertGranted = false;
-                            DatabaseSession.UpdateGranted = false;
-                            DatabaseSession.DeleteGranted = false;
-                            
-                            while (reader.Read())
-                            {
-                                switch (reader.GetString(0))
-                                {
-                                    case "SELECT":
-                                        DatabaseSession.SelectGranted = true;
-                                        break;
-                                    case "INSERT":
-                                        DatabaseSession.InsertGranted = true;
-                                        break;
-                                    case "UPDATE":
-                                        DatabaseSession.UpdateGranted = true;
-                                        break;
-                                    case "DELETE":
-                                        DatabaseSession.DeleteGranted = true;
-                                        break;
-                                }
-                            }
-                        }
+                        case "SELECT":
+                            DatabaseSession.SelectGranted = true;
+                            break;
+                        case "INSERT":
+                            DatabaseSession.InsertGranted = true;
+                            break;
+                        case "UPDATE":
+                            DatabaseSession.UpdateGranted = true;
+                            break;
+                        case "DELETE":
+                            DatabaseSession.DeleteGranted = true;
+                            break;
                     }
                 }
             }

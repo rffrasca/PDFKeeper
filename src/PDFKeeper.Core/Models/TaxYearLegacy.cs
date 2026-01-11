@@ -20,7 +20,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PDFKeeper.Core.Models
 {
@@ -30,7 +29,7 @@ namespace PDFKeeper.Core.Models
         /// Gets an array of Tax Years starting with the last 25 years and 1 year into the future.
         /// </summary>
         /// <returns>The <c>string[]</c> of Tax Years.</returns>
-        internal static string[] GetYearRange() => GetYearRangeInternal().ToArray();
+        internal static string[] GetYearRange() => [.. GetYearRangeInternal()];
 
         private static IEnumerable<string> GetYearRangeInternal()
         {

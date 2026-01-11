@@ -25,27 +25,23 @@ using static PDFKeeper.Core.FileIO.PDF.PdfFile;
 
 namespace PDFKeeper.WinForms.Commands
 {
-    internal class FileExtractAllCommand : ICommand
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FileExtractAllCommand"/> class that
+    /// extracts all attached files from the PDF for the selected document to a directory or
+    /// ZIP file when executed.
+    /// </summary>
+    /// <param name="viewModel">
+    /// The <see cref="MainViewModel"/> instance.
+    /// </param>
+    /// <param name="attachedFilesType">
+    /// The <see cref="PdfFile.AttachedFilesType"/> of attached files in the PDF to extract.
+    /// </param>
+    internal class FileExtractAllCommand(
+        MainViewModel viewModel,
+        AttachedFilesType attachedFilesType) : ICommand
     {
-        private readonly MainViewModel viewModel;
-        private readonly AttachedFilesType attachedFilesType;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FileExtractAllCommand"/> class that
-        /// extracts all attached files from the PDF for the selected document to a directory or
-        /// ZIP file when executed.
-        /// </summary>
-        /// <param name="viewModel">
-        /// The <see cref="MainViewModel"/> instance.
-        /// </param>
-        /// <param name="attachedFilesType">
-        /// The <see cref="PdfFile.AttachedFilesType"/> of attached files in the PDF to extract.
-        /// </param>
-        public FileExtractAllCommand(MainViewModel viewModel, AttachedFilesType attachedFilesType)
-        {
-            this.viewModel = viewModel;
-            this.attachedFilesType = attachedFilesType;
-        }
+        private readonly MainViewModel viewModel = viewModel;
+        private readonly AttachedFilesType attachedFilesType = attachedFilesType;
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 
