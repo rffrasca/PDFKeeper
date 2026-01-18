@@ -61,6 +61,15 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;Author&gt;.
+        /// </summary>
+        internal static string AuthorToken {
+            get {
+                return ResourceManager.GetString("AuthorToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to cancel?.
         /// </summary>
         internal static string CancelQuestion {
@@ -203,6 +212,15 @@ namespace PDFKeeper.Core.Properties {
         internal static string InvalidDatabaseFile {
             get {
                 return ResourceManager.GetString("InvalidDatabaseFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;Keywords&gt;.
+        /// </summary>
+        internal static string KeywordsToken {
+            get {
+                return ResourceManager.GetString("KeywordsToken", resourceCulture);
             }
         }
         
@@ -420,6 +438,15 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;Subject&gt;.
+        /// </summary>
+        internal static string SubjectToken {
+            get {
+                return ResourceManager.GetString("SubjectToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Text files|*.txt.
         /// </summary>
         internal static string TextFilter {
@@ -434,6 +461,15 @@ namespace PDFKeeper.Core.Properties {
         internal static string ThreadException {
             get {
                 return ResourceManager.GetString("ThreadException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;Title&gt;.
+        /// </summary>
+        internal static string TitleToken {
+            get {
+                return ResourceManager.GetString("TitleToken", resourceCulture);
             }
         }
         

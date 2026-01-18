@@ -76,8 +76,11 @@ namespace PDFKeeper.WinForms.Views
 
         private void SetTags()
         {
+            UseExistingAuthorFromPdfLinkLabel.Tag = viewModel.SetAuthorToTokenCommand;
+            UseExistingSubjectFromPdfLinkLabel.Tag = viewModel.SetSubjectToTokenCommand;
             SetNameToAuthorSubjectLinkLabel.Tag = viewModel.SetNameToAuthorAndSubjectCommand;
             SetNameToSubjectLinkLabel.Tag = viewModel.SetNameToSubjectCommand;
+            UseExistingKeywordsFromPdfLinkLabel.Tag = viewModel.SetKeywordsToTokenCommand;
             OK_Button.Tag = viewModel.SaveUploadProfileCommand;
             Cancel_Button.Tag = viewModel.CancelCommand;
         }

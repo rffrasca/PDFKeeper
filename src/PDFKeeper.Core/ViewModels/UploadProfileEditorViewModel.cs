@@ -30,6 +30,7 @@ using PDFKeeper.Core.Rules;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.DataAccess;
+using PDFKeeper.Core.Helpers;
 
 namespace PDFKeeper.Core.ViewModels
 {
@@ -61,8 +62,11 @@ namespace PDFKeeper.Core.ViewModels
 
         public ICommand GetCollectionsCommand { get; private set; }
         public ICommand GetSubjectsCommand { get; private set; }
+        public ICommand SetAuthorToTokenCommand { get; private set; }
+        public ICommand SetSubjectToTokenCommand { get; private set; }
         public ICommand SetNameToAuthorAndSubjectCommand { get; private set; }
         public ICommand SetNameToSubjectCommand { get; private set; }
+        public ICommand SetKeywordsToTokenCommand { get; private set; }
 
         /// <summary>
         /// Saves the upload profile.
@@ -127,7 +131,11 @@ namespace PDFKeeper.Core.ViewModels
         public string Author
         {
             get => uploadProfile.Author;
-            set => uploadProfile.Author = value;
+            set
+            {
+                uploadProfile.Author = value;
+                OnPropertyChanged();
+            }
         }
 
         public string Subject
@@ -143,7 +151,11 @@ namespace PDFKeeper.Core.ViewModels
         public string Keywords
         {
             get => uploadProfile.Keywords;
-            set => uploadProfile.Keywords = value;
+            set
+            {
+                uploadProfile.Keywords = value;
+                OnPropertyChanged();
+            }
         }
 
         protected override void GetServices(IServiceProvider serviceProvider)
@@ -155,8 +167,11 @@ namespace PDFKeeper.Core.ViewModels
         {
             GetCollectionsCommand = new RelayCommand(GetCollections);
             GetSubjectsCommand = new RelayCommand(GetSubjects);
+            SetAuthorToTokenCommand = new RelayCommand(SetAuthorToToken);
+            SetSubjectToTokenCommand = new RelayCommand(SetSubjectToToken);
             SetNameToAuthorAndSubjectCommand = new RelayCommand(SetNameToAuthorAndSubject);
             SetNameToSubjectCommand = new RelayCommand(SetNameToSubject);
+            SetKeywordsToTokenCommand = new RelayCommand(SetKeywordsToToken);
             SaveUploadProfileCommand = new RelayCommand(SaveUploadProfile);
             CancelCommand = new RelayCommand(Cancel);
         }
@@ -177,7 +192,7 @@ namespace PDFKeeper.Core.ViewModels
         {
             try
             {
-                TitleTokens = TitleToken.GetTokens();
+                TitleTokens = UploadProfileTokenHelper.GetTitleTokens();
                 Authors = ColumnData.GetAuthors(null, null, null);
                 Categories = ColumnData.GetCategories(null, null, null);
                 TaxYears = ColumnData.GetRangeOfTaxYears();
@@ -203,16 +218,37 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
+        private void SetAuthorToToken()
+        {
+            OnApplyPendingChanges?.Invoke();
+            Author = UploadProfileToken.AuthorToken;
+        }
+
+        private void SetSubjectToToken()
+        {
+            OnApplyPendingChanges?.Invoke();
+            Subject = UploadProfileToken.SubjectToken;
+        }
+
         private void SetNameToAuthorAndSubject()
         {
             OnApplyPendingChanges?.Invoke();
-            Name = string.Concat(Author, " ", Subject);
+            Name = string.Concat(
+                Author.RemoveInvalidFileNameChars(),
+                " ",
+                Subject.RemoveInvalidFileNameChars());
         }
 
         private void SetNameToSubject()
         {
             OnApplyPendingChanges?.Invoke();
-            Name = Subject;
+            Name = Subject.RemoveInvalidFileNameChars();
+        }
+
+        private void SetKeywordsToToken()
+        {
+            OnApplyPendingChanges?.Invoke();
+            Keywords = UploadProfileToken.KeywordsToken;
         }
 
         private void SaveUploadProfile()

@@ -95,6 +95,8 @@
     <Compile Include="Extensions\ByteExtension.cs" />
     <Compile Include="Extensions\ExceptionExtension.cs" />
     <Compile Include="Helpers\OneDriveHelper.cs" />
+    <Compile Include="Helpers\UploadProfileTokenHelper.cs" />
+    <Compile Include="Models\UploadProfileToken.cs" />
     <Compile Include="Services\IChildDialogService.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Application\UserProfileFolder.cs" />
@@ -143,7 +145,6 @@
     <Compile Include="Application\ApplicationUri.cs" />
     <Compile Include="Services\IPdfViewerService.cs" />
     <Compile Include="DataAccess\DatabaseSession.cs" />
-    <Compile Include="Models\TitleToken.cs" />
     <Compile Include="Application\ApplicationPolicy.cs" />
     <Compile Include="Models\IFindDocumentsParam.cs" />
     <Compile Include="Models\FindDocumentsParam.cs" />

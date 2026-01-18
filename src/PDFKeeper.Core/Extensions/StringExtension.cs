@@ -98,6 +98,26 @@ namespace PDFKeeper.Core.Extensions
         }
 
         /// <summary>
+        /// Removes any characters from the provided string that are not valid for use in a file
+        /// name on the current operating system.
+        /// </summary>
+        /// <param name="value">
+        /// The string to sanitize by filtering out invalid file name characters.
+        /// </param>
+        /// <returns>
+        /// A new string containing only characters permitted in file names.
+        /// </returns>
+        /// <remarks>
+        /// This method uses <see cref="Path.GetInvalidFileNameChars"/> to determine which
+        /// characters are disallowed and excludes them from the result.
+        /// </remarks>
+        public static string RemoveInvalidFileNameChars(this string value)
+        {
+            var invalidChars = Path.GetInvalidFileNameChars();
+            return string.Concat(value.Where(c => !invalidChars.Contains(c)));
+        }
+
+        /// <summary>
         /// Replaces each invalid file name character in the string with an '_'.
         /// </summary>
         /// <param name="value">The <see cref="string"/>.</param>

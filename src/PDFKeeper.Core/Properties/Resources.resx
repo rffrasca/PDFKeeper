@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AuthorToken" xml:space="preserve">
+    <value>&lt;Author&gt;</value>
+  </data>
   <data name="CancelQuestion" xml:space="preserve">
     <value>Are you sure you want to cancel?</value>
   </data>
@@ -166,6 +169,9 @@ To extract to a folder, select No.</value>
   </data>
   <data name="InvalidDatabaseFile" xml:space="preserve">
     <value>The specified file is not a valid database file.</value>
+  </data>
+  <data name="KeywordsToken" xml:space="preserve">
+    <value>&lt;Keywords&gt;</value>
   </data>
   <data name="MandatoryFieldsAreBlank" xml:space="preserve">
     <value>One or more mandatory fields are blank!</value>
@@ -242,11 +248,17 @@ PDF file names will be prefixed with: PDFKeeper&lt;ID&gt;_</value>
   <data name="StackTraceLogged" xml:space="preserve">
     <value>Stack Trace has been logged to {0}</value>
   </data>
+  <data name="SubjectToken" xml:space="preserve">
+    <value>&lt;Subject&gt;</value>
+  </data>
   <data name="TextFilter" xml:space="preserve">
     <value>Text files|*.txt</value>
   </data>
   <data name="ThreadException" xml:space="preserve">
     <value>Application UI ThreadException has occurred!</value>
+  </data>
+  <data name="TitleToken" xml:space="preserve">
+    <value>&lt;Title&gt;</value>
   </data>
   <data name="UnableToSaveNotes" xml:space="preserve">
     <value>The changes you made to the Notes text box cannot be saved and have been lost because another user has updated the Notes for the same record.

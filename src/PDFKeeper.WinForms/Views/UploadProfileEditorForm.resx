@@ -130,7 +130,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="SetNameToAuthorSubjectLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 239</value>
+    <value>12, 310</value>
   </data>
   <data name="SetNameToAuthorSubjectLinkLabel.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -139,7 +139,7 @@
     <value>177, 15</value>
   </data>
   <data name="SetNameToAuthorSubjectLinkLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="SetNameToAuthorSubjectLinkLabel.Text" xml:space="preserve">
     <value>Set Name to Author and Subject</value>
@@ -154,7 +154,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SetNameToAuthorSubjectLinkLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="MandatoryFieldLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -163,7 +163,7 @@
     <value>NoControl</value>
   </data>
   <data name="MandatoryFieldLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 466</value>
+    <value>12, 565</value>
   </data>
   <data name="MandatoryFieldLabel.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -172,7 +172,7 @@
     <value>99, 15</value>
   </data>
   <data name="MandatoryFieldLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="MandatoryFieldLabel.Text" xml:space="preserve">
     <value>* Mandatory field</value>
@@ -187,7 +187,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MandatoryFieldLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="TableLayoutPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -262,7 +262,7 @@
     <value>1</value>
   </data>
   <data name="TableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>325, 452</value>
+    <value>325, 551</value>
   </data>
   <data name="TableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -274,7 +274,7 @@
     <value>170, 33</value>
   </data>
   <data name="TableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel.Name" xml:space="preserve">
     <value>TableLayoutPanel</value>
@@ -286,7 +286,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="TableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="Cancel_Button" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -298,7 +298,7 @@
     <value>NoControl</value>
   </data>
   <data name="SetNameToSubjectLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 239</value>
+    <value>377, 310</value>
   </data>
   <data name="SetNameToSubjectLinkLabel.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -307,7 +307,7 @@
     <value>114, 15</value>
   </data>
   <data name="SetNameToSubjectLinkLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="SetNameToSubjectLinkLabel.Text" xml:space="preserve">
     <value>Set Name to Subject</value>
@@ -322,6 +322,105 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SetNameToSubjectLinkLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="UseExistingAuthorFromPdfLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="UseExistingAuthorFromPdfLinkLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="UseExistingAuthorFromPdfLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 131</value>
+  </data>
+  <data name="UseExistingAuthorFromPdfLinkLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="UseExistingAuthorFromPdfLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 15</value>
+  </data>
+  <data name="UseExistingAuthorFromPdfLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="UseExistingAuthorFromPdfLinkLabel.Text" xml:space="preserve">
+    <value>Use existing Author from PDF</value>
+  </data>
+  <data name="&gt;&gt;UseExistingAuthorFromPdfLinkLabel.Name" xml:space="preserve">
+    <value>UseExistingAuthorFromPdfLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;UseExistingAuthorFromPdfLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UseExistingAuthorFromPdfLinkLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;UseExistingAuthorFromPdfLinkLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="UseExistingSubjectFromPdfLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="UseExistingSubjectFromPdfLinkLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="UseExistingSubjectFromPdfLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 221</value>
+  </data>
+  <data name="UseExistingSubjectFromPdfLinkLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="UseExistingSubjectFromPdfLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 15</value>
+  </data>
+  <data name="UseExistingSubjectFromPdfLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="UseExistingSubjectFromPdfLinkLabel.Text" xml:space="preserve">
+    <value>Use existing Subject from PDF</value>
+  </data>
+  <data name="&gt;&gt;UseExistingSubjectFromPdfLinkLabel.Name" xml:space="preserve">
+    <value>UseExistingSubjectFromPdfLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;UseExistingSubjectFromPdfLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UseExistingSubjectFromPdfLinkLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;UseExistingSubjectFromPdfLinkLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="UseExistingKeywordsFromPdfLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="UseExistingKeywordsFromPdfLinkLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="UseExistingKeywordsFromPdfLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 343</value>
+  </data>
+  <data name="UseExistingKeywordsFromPdfLinkLabel.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="UseExistingKeywordsFromPdfLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 15</value>
+  </data>
+  <data name="UseExistingKeywordsFromPdfLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="UseExistingKeywordsFromPdfLinkLabel.Text" xml:space="preserve">
+    <value>Use existing Keywords from PDF</value>
+  </data>
+  <data name="&gt;&gt;UseExistingKeywordsFromPdfLinkLabel.Name" xml:space="preserve">
+    <value>UseExistingKeywordsFromPdfLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;UseExistingKeywordsFromPdfLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UseExistingKeywordsFromPdfLinkLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;UseExistingKeywordsFromPdfLinkLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="NameUserControl.AutoSize" type="System.Boolean, mscorlib">
@@ -355,7 +454,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;NameUserControl.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="TitleUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -385,7 +484,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TitleUserControl.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="AuthorUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -397,13 +496,13 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="AuthorUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 123</value>
+    <value>12, 159</value>
   </data>
   <data name="AuthorUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>479, 49</value>
   </data>
   <data name="AuthorUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;AuthorUserControl.Name" xml:space="preserve">
     <value>AuthorUserControl</value>
@@ -415,7 +514,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AuthorUserControl.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="SubjectUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -427,13 +526,13 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="SubjectUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 178</value>
+    <value>12, 249</value>
   </data>
   <data name="SubjectUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>479, 49</value>
   </data>
   <data name="SubjectUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;SubjectUserControl.Name" xml:space="preserve">
     <value>SubjectUserControl</value>
@@ -445,7 +544,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SubjectUserControl.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="KeywordsUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -457,13 +556,13 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="KeywordsUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 269</value>
+    <value>12, 370</value>
   </data>
   <data name="KeywordsUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>479, 49</value>
   </data>
   <data name="KeywordsUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;KeywordsUserControl.Name" xml:space="preserve">
     <value>KeywordsUserControl</value>
@@ -475,7 +574,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;KeywordsUserControl.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="CategoryUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -487,13 +586,13 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="CategoryUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 324</value>
+    <value>12, 425</value>
   </data>
   <data name="CategoryUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>369, 49</value>
   </data>
   <data name="CategoryUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;CategoryUserControl.Name" xml:space="preserve">
     <value>CategoryUserControl</value>
@@ -505,7 +604,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CategoryUserControl.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="TaxYearDropDownListUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -517,13 +616,13 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="TaxYearDropDownListUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>388, 324</value>
+    <value>388, 425</value>
   </data>
   <data name="TaxYearDropDownListUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 49</value>
   </data>
   <data name="TaxYearDropDownListUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.Name" xml:space="preserve">
     <value>TaxYearDropDownListUserControl</value>
@@ -535,7 +634,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TaxYearDropDownListUserControl.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="UploadOptionsUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -547,13 +646,13 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="UploadOptionsUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 379</value>
+    <value>12, 480</value>
   </data>
   <data name="UploadOptionsUserControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>306, 52</value>
   </data>
   <data name="UploadOptionsUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;UploadOptionsUserControl.Name" xml:space="preserve">
     <value>UploadOptionsUserControl</value>
@@ -565,7 +664,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;UploadOptionsUserControl.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -577,7 +676,7 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>507, 497</value>
+    <value>507, 596</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

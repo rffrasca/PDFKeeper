@@ -57,6 +57,9 @@ namespace PDFKeeper.WinForms.Views
             this.OK_Button = new System.Windows.Forms.Button();
             this.Cancel_Button = new System.Windows.Forms.Button();
             this.SetNameToSubjectLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.UseExistingAuthorFromPdfLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.UseExistingSubjectFromPdfLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.UseExistingKeywordsFromPdfLinkLabel = new System.Windows.Forms.LinkLabel();
             this.NameUserControl = new PDFKeeper.WinForms.UserControls.NameUserControl();
             this.UploadProfileEditorViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TitleUserControl = new PDFKeeper.WinForms.UserControls.TitleUserControl();
@@ -114,6 +117,30 @@ namespace PDFKeeper.WinForms.Views
             this.HelpProvider.SetShowHelp(this.SetNameToSubjectLinkLabel, ((bool)(resources.GetObject("SetNameToSubjectLinkLabel.ShowHelp"))));
             this.SetNameToSubjectLinkLabel.TabStop = true;
             this.SetNameToSubjectLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel_LinkClicked);
+            // 
+            // UseExistingAuthorFromPdfLinkLabel
+            // 
+            resources.ApplyResources(this.UseExistingAuthorFromPdfLinkLabel, "UseExistingAuthorFromPdfLinkLabel");
+            this.UseExistingAuthorFromPdfLinkLabel.Name = "UseExistingAuthorFromPdfLinkLabel";
+            this.HelpProvider.SetShowHelp(this.UseExistingAuthorFromPdfLinkLabel, ((bool)(resources.GetObject("UseExistingAuthorFromPdfLinkLabel.ShowHelp"))));
+            this.UseExistingAuthorFromPdfLinkLabel.TabStop = true;
+            this.UseExistingAuthorFromPdfLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel_LinkClicked);
+            // 
+            // UseExistingSubjectFromPdfLinkLabel
+            // 
+            resources.ApplyResources(this.UseExistingSubjectFromPdfLinkLabel, "UseExistingSubjectFromPdfLinkLabel");
+            this.UseExistingSubjectFromPdfLinkLabel.Name = "UseExistingSubjectFromPdfLinkLabel";
+            this.HelpProvider.SetShowHelp(this.UseExistingSubjectFromPdfLinkLabel, ((bool)(resources.GetObject("UseExistingSubjectFromPdfLinkLabel.ShowHelp"))));
+            this.UseExistingSubjectFromPdfLinkLabel.TabStop = true;
+            this.UseExistingSubjectFromPdfLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel_LinkClicked);
+            // 
+            // UseExistingKeywordsFromPdfLinkLabel
+            // 
+            resources.ApplyResources(this.UseExistingKeywordsFromPdfLinkLabel, "UseExistingKeywordsFromPdfLinkLabel");
+            this.UseExistingKeywordsFromPdfLinkLabel.Name = "UseExistingKeywordsFromPdfLinkLabel";
+            this.HelpProvider.SetShowHelp(this.UseExistingKeywordsFromPdfLinkLabel, ((bool)(resources.GetObject("UseExistingKeywordsFromPdfLinkLabel.ShowHelp"))));
+            this.UseExistingKeywordsFromPdfLinkLabel.TabStop = true;
+            this.UseExistingKeywordsFromPdfLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel_LinkClicked);
             // 
             // NameUserControl
             // 
@@ -191,6 +218,9 @@ namespace PDFKeeper.WinForms.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.Cancel_Button;
             this.ControlBox = false;
+            this.Controls.Add(this.UseExistingKeywordsFromPdfLinkLabel);
+            this.Controls.Add(this.UseExistingSubjectFromPdfLinkLabel);
+            this.Controls.Add(this.UseExistingAuthorFromPdfLinkLabel);
             this.Controls.Add(this.SetNameToSubjectLinkLabel);
             this.Controls.Add(this.TableLayoutPanel);
             this.Controls.Add(this.MandatoryFieldLabel);
@@ -238,5 +268,8 @@ namespace PDFKeeper.WinForms.Views
         internal System.Windows.Forms.Button Cancel_Button;
         private System.Windows.Forms.BindingSource UploadProfileEditorViewModelBindingSource;
         internal System.Windows.Forms.LinkLabel SetNameToSubjectLinkLabel;
+        internal System.Windows.Forms.LinkLabel UseExistingAuthorFromPdfLinkLabel;
+        internal System.Windows.Forms.LinkLabel UseExistingSubjectFromPdfLinkLabel;
+        internal System.Windows.Forms.LinkLabel UseExistingKeywordsFromPdfLinkLabel;
     }
 }

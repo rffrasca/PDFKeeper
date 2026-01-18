@@ -22,6 +22,7 @@ using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Commands;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
 using System;
@@ -213,33 +214,72 @@ namespace PDFKeeper.Core.FileIO.PDF
                         if (uploadProfileManager.GetUploadProfile(dirName) != null)
                         {
                             var uploadProfile = uploadProfileManager.GetUploadProfile(dirName);
-                            
-                            if (uploadProfile.Title.Equals(
-                                TitleToken.DateToken,
+
+                            if (!uploadProfile.Title.Equals(
+                                UploadProfileToken.TitleToken,
                                 StringComparison.Ordinal))
                             {
-                                pdfMetadata.Title = TitleToken.GetDate();
-                            }
-                            else if (uploadProfile.Title.Equals(
-                                TitleToken.DateTimeToken,
+                                if (uploadProfile.Title.Equals(
+                                UploadProfileToken.DateToken,
                                 StringComparison.Ordinal))
-                            {
-                                pdfMetadata.Title = TitleToken.GetDateTime();
-                            }
-                            else if (uploadProfile.Title.Equals(
-                                TitleToken.FileNameToken,
-                                StringComparison.Ordinal))
-                            {
-                                pdfMetadata.Title = TitleToken.GetFileName(pdfFile);
+                                {
+                                    pdfMetadata.Title = UploadProfileTokenHelper.GetDate();
+                                }
+                                else if (uploadProfile.Title.Equals(
+                                    UploadProfileToken.DateTimeToken,
+                                    StringComparison.Ordinal))
+                                {
+                                    pdfMetadata.Title = UploadProfileTokenHelper.GetDateTime();
+                                }
+                                else if (uploadProfile.Title.Equals(
+                                    UploadProfileToken.FileNameToken,
+                                    StringComparison.Ordinal))
+                                {
+                                    pdfMetadata.Title = UploadProfileTokenHelper.GetFileName(pdfFile);
+                                }
+                                else
+                                {
+                                    pdfMetadata.Title = uploadProfile.Title;
+                                }
                             }
                             else
                             {
-                                pdfMetadata.Title = uploadProfile.Title;
+                                pdfMetadata.Title ??= string.Empty;
                             }
-                            
-                            pdfMetadata.Author = uploadProfile.Author;
-                            pdfMetadata.Subject = uploadProfile.Subject;
-                            pdfMetadata.Keywords = uploadProfile.Keywords;
+
+                            if (!uploadProfile.Author.Equals(
+                                UploadProfileToken.AuthorToken,
+                                StringComparison.Ordinal))
+                            {
+                                pdfMetadata.Author = uploadProfile.Author;
+                            }
+                            else
+                            {
+                                pdfMetadata.Author ??= string.Empty;
+                            }
+
+                            if (!uploadProfile.Subject.Equals(
+                                UploadProfileToken.SubjectToken,
+                                StringComparison.Ordinal))
+                            {
+                                pdfMetadata.Subject = uploadProfile.Subject;
+                            }
+                            else
+                            {
+                                pdfMetadata.Subject ??= string.Empty;
+                            }
+
+                            if (!uploadProfile.Keywords.Equals(
+                                UploadProfileToken.KeywordsToken,
+                                StringComparison.Ordinal))
+                            {
+                                pdfMetadata.Keywords = uploadProfile.Keywords;
+                            }
+                            else
+                            {
+                                pdfMetadata.Keywords ??= string.Empty;
+                            }
+
                             pdfMetadata.Category = uploadProfile.Category;
                             pdfMetadata.Flag = Convert.ToInt32(uploadProfile.FlagDocument);
                             pdfMetadata.TaxYear = uploadProfile.TaxYear;
@@ -256,10 +296,11 @@ namespace PDFKeeper.Core.FileIO.PDF
                                     xmlFile.DeleteToRecycleBin();
                                 }
                             }
-                            catch (iText.IO.Exceptions.IOException)
+                            catch (Exception ex) when (
+                                ex is iText.IO.Exceptions.IOException ||
+                                ex is NullReferenceException)
                             {
                                 MoveFileToUploadRejected(pdfFile);
-                                throw;
                             }
                         }
                         else
