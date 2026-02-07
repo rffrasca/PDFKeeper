@@ -61,6 +61,24 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Added.
+        /// </summary>
+        internal static string Added {
+            get {
+                return ResourceManager.GetString("Added", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author.
+        /// </summary>
+        internal static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;Author&gt;.
         /// </summary>
         internal static string AuthorToken {
@@ -75,6 +93,15 @@ namespace PDFKeeper.Core.Properties {
         internal static string CancelQuestion {
             get {
                 return ResourceManager.GetString("CancelQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category.
+        /// </summary>
+        internal static string Category {
+            get {
+                return ResourceManager.GetString("Category", resourceCulture);
             }
         }
         
@@ -203,6 +230,15 @@ namespace PDFKeeper.Core.Properties {
         internal static string FileNameToken {
             get {
                 return ResourceManager.GetString("FileNameToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        internal static string ID {
+            get {
+                return ResourceManager.GetString("ID", resourceCulture);
             }
         }
         
@@ -438,11 +474,29 @@ namespace PDFKeeper.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Subject.
+        /// </summary>
+        internal static string Subject {
+            get {
+                return ResourceManager.GetString("Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;Subject&gt;.
         /// </summary>
         internal static string SubjectToken {
             get {
                 return ResourceManager.GetString("SubjectToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tax Year.
+        /// </summary>
+        internal static string TaxYear {
+            get {
+                return ResourceManager.GetString("TaxYear", resourceCulture);
             }
         }
         
@@ -461,6 +515,15 @@ namespace PDFKeeper.Core.Properties {
         internal static string ThreadException {
             get {
                 return ResourceManager.GetString("ThreadException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        internal static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

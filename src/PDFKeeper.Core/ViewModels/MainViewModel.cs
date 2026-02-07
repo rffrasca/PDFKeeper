@@ -49,6 +49,7 @@ namespace PDFKeeper.Core.ViewModels
     public class MainViewModel : ViewModelBase
     {
         private readonly IntPtr viewHandle;
+        private IAliasService aliasService;
         private IChildDialogService addPdfDialogService;
         private IDialogService setTitleDialogService;
         private IDialogService setAuthorDialogService;
@@ -108,6 +109,13 @@ namespace PDFKeeper.Core.ViewModels
         private bool viewToolBarChecked;
         private bool viewStatusBarChecked;
         private bool toolsUploadProfilesMenuEnabled;
+        private string idColumnHeaderValue;
+        private string titleColumnHeaderValue;
+        private string authorColumnHeaderValue;
+        private string subjectColumnHeaderValue;
+        private string categoryColumnHeaderValue;
+        private string taxYearColumnHeaderValue;
+        private string addedColumnHeaderValue;
         private DataTable documents;
         private readonly Collection<int> checkedDocumentIds;
         private bool documentsEnabled;
@@ -260,6 +268,7 @@ namespace PDFKeeper.Core.ViewModels
         public ICommand ManageUploadProfilesCommand { get; private set; }
         public ICommand ShowHelpCommand { get; private set; }
         public ICommand ShowAboutBoxCommand { get; private set; }
+        public ICommand SetHeaderValueOnColumnsCommand { get; private set; }
 
         /// <summary>
         /// Sets a collection of checked document ID's and sets menu state on applicable menu items.
@@ -708,6 +717,76 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
+        public string IdColumnHeaderValue
+        {
+            get => idColumnHeaderValue;
+            set
+            {
+                idColumnHeaderValue = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string TitleColumnHeaderValue
+        {
+            get => titleColumnHeaderValue;
+            set
+            {
+                titleColumnHeaderValue = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string AuthorColumnHeaderValue
+        {
+            get => authorColumnHeaderValue;
+            set
+            {
+                authorColumnHeaderValue = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string SubjectColumnHeaderValue
+        {
+            get => subjectColumnHeaderValue;
+            set
+            {
+                subjectColumnHeaderValue = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string CategoryColumnHeaderValue
+        {
+            get => categoryColumnHeaderValue;
+            set
+            {
+                categoryColumnHeaderValue = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string TaxYearColumnHeaderValue
+        {
+            get => taxYearColumnHeaderValue;
+            set
+            {
+                taxYearColumnHeaderValue = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string AddedColumnHeaderValue
+        {
+            get => addedColumnHeaderValue;
+            set
+            {
+                addedColumnHeaderValue = value;
+                OnPropertyChanged();
+            }
+        }
+
         public DataTable Documents
         {
             get => documents;
@@ -928,6 +1007,7 @@ namespace PDFKeeper.Core.ViewModels
 
         protected override void GetServices(IServiceProvider serviceProvider)
         {
+            aliasService = serviceProvider.GetService<IAliasService>();
             addPdfDialogService = serviceProvider.GetService<IChildDialogService>();
 
             foreach (var service in serviceProvider.GetServices<IDialogService>())
@@ -1084,6 +1164,8 @@ namespace PDFKeeper.Core.ViewModels
                 ShowHelp);
             ShowAboutBoxCommand = new RelayCommand(
                 ShowAboutBox);
+            SetHeaderValueOnColumnsCommand = new RelayCommand(
+                SetHeaderValueOnColumns);
             SetCheckedDocumentIdsCommand = new RelayCommand<Collection<int>>(
                 SetCheckedDocumentIds);
             OpenPdfForCurrentDocumentCommand = new RelayCommand<bool>(
@@ -1714,12 +1796,24 @@ namespace PDFKeeper.Core.ViewModels
         private void ShowOptions()
         {
             optionsDialogService.ShowDialog();
+            SetHeaderValueOnColumns();
             OnSettingsChanged?.Invoke();
         }
 
         private void ManageUploadProfiles() => OnManageUploadProfiles?.Invoke();
         private void ShowHelp() => OnShowHelp?.Invoke();
         private void ShowAboutBox() => aboutBoxDialogService.ShowDialog();
+
+        private void SetHeaderValueOnColumns()
+        {
+            IdColumnHeaderValue = Resources.ID;
+            TitleColumnHeaderValue = Resources.Title;
+            AuthorColumnHeaderValue = aliasService.GetAlias("Author");
+            SubjectColumnHeaderValue = aliasService.GetAlias("Subject");
+            CategoryColumnHeaderValue = aliasService.GetAlias("Category");
+            TaxYearColumnHeaderValue = aliasService.GetAlias("Tax Year");
+            AddedColumnHeaderValue = Resources.Added;
+        }
 
         /// <summary>
         /// Sets a collection of checked document ID's in the <see cref="CheckedDocumentIds"/>

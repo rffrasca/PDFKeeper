@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ShowAllDocumentsOnStartupCheckBox.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="FindFlaggedDocumentsOnStartupCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -208,7 +208,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FindFlaggedDocumentsOnStartupCheckBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="ShowPdfWithDefaultApplicationCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -238,7 +238,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ShowPdfWithDefaultApplicationCheckBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="SelectLastRowWhenListingDocumentsCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -268,7 +268,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SelectLastRowWhenListingDocumentsCheckBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="tableLayoutPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -277,7 +277,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 151</value>
+    <value>262, 291</value>
   </data>
   <data name="tableLayoutPanel.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -286,7 +286,7 @@
     <value>85, 33</value>
   </data>
   <data name="tableLayoutPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel.Name" xml:space="preserve">
     <value>tableLayoutPanel</value>
@@ -298,7 +298,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="tableLayoutPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="OK_Button" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -337,6 +337,264 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="DocumentsViewColumnHeaderAliasesGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="TaxYearTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="TaxYearTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 112</value>
+  </data>
+  <data name="TaxYearTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 23</value>
+  </data>
+  <data name="TaxYearTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;TaxYearTextBox.Name" xml:space="preserve">
+    <value>TaxYearTextBox</value>
+  </data>
+  <data name="&gt;&gt;TaxYearTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TaxYearTextBox.Parent" xml:space="preserve">
+    <value>DocumentsViewColumnHeaderAliasesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;TaxYearTextBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TaxYearLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TaxYearLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 112</value>
+  </data>
+  <data name="TaxYearLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="TaxYearLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="TaxYearLabel.Text" xml:space="preserve">
+    <value>Tax Year</value>
+  </data>
+  <data name="&gt;&gt;TaxYearLabel.Name" xml:space="preserve">
+    <value>TaxYearLabel</value>
+  </data>
+  <data name="&gt;&gt;TaxYearLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TaxYearLabel.Parent" xml:space="preserve">
+    <value>DocumentsViewColumnHeaderAliasesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;TaxYearLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="CategoryTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="CategoryTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 82</value>
+  </data>
+  <data name="CategoryTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 23</value>
+  </data>
+  <data name="CategoryTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;CategoryTextBox.Name" xml:space="preserve">
+    <value>CategoryTextBox</value>
+  </data>
+  <data name="&gt;&gt;CategoryTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CategoryTextBox.Parent" xml:space="preserve">
+    <value>DocumentsViewColumnHeaderAliasesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;CategoryTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="CategoryLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="CategoryLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 82</value>
+  </data>
+  <data name="CategoryLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 15</value>
+  </data>
+  <data name="CategoryLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="CategoryLabel.Text" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="&gt;&gt;CategoryLabel.Name" xml:space="preserve">
+    <value>CategoryLabel</value>
+  </data>
+  <data name="&gt;&gt;CategoryLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CategoryLabel.Parent" xml:space="preserve">
+    <value>DocumentsViewColumnHeaderAliasesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;CategoryLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="SubjectTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="SubjectTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 52</value>
+  </data>
+  <data name="SubjectTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 23</value>
+  </data>
+  <data name="SubjectTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;SubjectTextBox.Name" xml:space="preserve">
+    <value>SubjectTextBox</value>
+  </data>
+  <data name="&gt;&gt;SubjectTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SubjectTextBox.Parent" xml:space="preserve">
+    <value>DocumentsViewColumnHeaderAliasesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;SubjectTextBox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="SubjectLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="SubjectLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 53</value>
+  </data>
+  <data name="SubjectLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 15</value>
+  </data>
+  <data name="SubjectLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="SubjectLabel.Text" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="&gt;&gt;SubjectLabel.Name" xml:space="preserve">
+    <value>SubjectLabel</value>
+  </data>
+  <data name="&gt;&gt;SubjectLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SubjectLabel.Parent" xml:space="preserve">
+    <value>DocumentsViewColumnHeaderAliasesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;SubjectLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="AuthorTextBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="AuthorTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 23</value>
+  </data>
+  <data name="AuthorTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>261, 23</value>
+  </data>
+  <data name="AuthorTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;AuthorTextBox.Name" xml:space="preserve">
+    <value>AuthorTextBox</value>
+  </data>
+  <data name="&gt;&gt;AuthorTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AuthorTextBox.Parent" xml:space="preserve">
+    <value>DocumentsViewColumnHeaderAliasesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;AuthorTextBox.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="AuthorLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="AuthorLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 23</value>
+  </data>
+  <data name="AuthorLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 15</value>
+  </data>
+  <data name="AuthorLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="AuthorLabel.Text" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="&gt;&gt;AuthorLabel.Name" xml:space="preserve">
+    <value>AuthorLabel</value>
+  </data>
+  <data name="&gt;&gt;AuthorLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AuthorLabel.Parent" xml:space="preserve">
+    <value>DocumentsViewColumnHeaderAliasesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;AuthorLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="DocumentsViewColumnHeaderAliasesGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 140</value>
+  </data>
+  <data name="DocumentsViewColumnHeaderAliasesGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 145</value>
+  </data>
+  <data name="DocumentsViewColumnHeaderAliasesGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="DocumentsViewColumnHeaderAliasesGroupBox.Text" xml:space="preserve">
+    <value>Documents View Column Header Aliases</value>
+  </data>
+  <data name="&gt;&gt;DocumentsViewColumnHeaderAliasesGroupBox.Name" xml:space="preserve">
+    <value>DocumentsViewColumnHeaderAliasesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;DocumentsViewColumnHeaderAliasesGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DocumentsViewColumnHeaderAliasesGroupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DocumentsViewColumnHeaderAliasesGroupBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ResetAliasesLinkLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ResetAliasesLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 307</value>
+  </data>
+  <data name="ResetAliasesLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 15</value>
+  </data>
+  <data name="ResetAliasesLinkLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="ResetAliasesLinkLabel.Text" xml:space="preserve">
+    <value>Reset Aliases</value>
+  </data>
+  <data name="&gt;&gt;ResetAliasesLinkLabel.Name" xml:space="preserve">
+    <value>ResetAliasesLinkLabel</value>
+  </data>
+  <data name="&gt;&gt;ResetAliasesLinkLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ResetAliasesLinkLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ResetAliasesLinkLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -349,7 +607,7 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>359, 196</value>
+    <value>359, 336</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

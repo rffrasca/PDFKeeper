@@ -76,6 +76,8 @@ namespace PDFKeeper.WinForms
         {
             var serviceCollection = new ServiceCollection();
 
+            serviceCollection.AddSingleton<IAliasService,
+                AliasService>();
             serviceCollection.AddSingleton<IChildDialogService,
                 AddPdfDialogService>();
             serviceCollection.AddSingleton<IDialogService,

@@ -57,7 +57,18 @@ namespace PDFKeeper.WinForms.Dialogs
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.HelpProvider = new System.Windows.Forms.HelpProvider();
             this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox = new System.Windows.Forms.CheckBox();
+            this.DocumentsViewColumnHeaderAliasesGroupBox = new System.Windows.Forms.GroupBox();
+            this.TaxYearTextBox = new System.Windows.Forms.TextBox();
+            this.TaxYearLabel = new System.Windows.Forms.Label();
+            this.CategoryTextBox = new System.Windows.Forms.TextBox();
+            this.CategoryLabel = new System.Windows.Forms.Label();
+            this.SubjectTextBox = new System.Windows.Forms.TextBox();
+            this.SubjectLabel = new System.Windows.Forms.Label();
+            this.AuthorTextBox = new System.Windows.Forms.TextBox();
+            this.AuthorLabel = new System.Windows.Forms.Label();
+            this.ResetAliasesLinkLabel = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel.SuspendLayout();
+            this.DocumentsViewColumnHeaderAliasesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // OK_Button
@@ -115,12 +126,75 @@ namespace PDFKeeper.WinForms.Dialogs
             this.HelpProvider.SetShowHelp(this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox, ((bool)(resources.GetObject("CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.ShowHelp"))));
             this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.UseVisualStyleBackColor = true;
             // 
+            // DocumentsViewColumnHeaderAliasesGroupBox
+            // 
+            resources.ApplyResources(this.DocumentsViewColumnHeaderAliasesGroupBox, "DocumentsViewColumnHeaderAliasesGroupBox");
+            this.DocumentsViewColumnHeaderAliasesGroupBox.Controls.Add(this.TaxYearTextBox);
+            this.DocumentsViewColumnHeaderAliasesGroupBox.Controls.Add(this.TaxYearLabel);
+            this.DocumentsViewColumnHeaderAliasesGroupBox.Controls.Add(this.CategoryTextBox);
+            this.DocumentsViewColumnHeaderAliasesGroupBox.Controls.Add(this.CategoryLabel);
+            this.DocumentsViewColumnHeaderAliasesGroupBox.Controls.Add(this.SubjectTextBox);
+            this.DocumentsViewColumnHeaderAliasesGroupBox.Controls.Add(this.SubjectLabel);
+            this.DocumentsViewColumnHeaderAliasesGroupBox.Controls.Add(this.AuthorTextBox);
+            this.DocumentsViewColumnHeaderAliasesGroupBox.Controls.Add(this.AuthorLabel);
+            this.DocumentsViewColumnHeaderAliasesGroupBox.Name = "DocumentsViewColumnHeaderAliasesGroupBox";
+            this.DocumentsViewColumnHeaderAliasesGroupBox.TabStop = false;
+            // 
+            // TaxYearTextBox
+            // 
+            resources.ApplyResources(this.TaxYearTextBox, "TaxYearTextBox");
+            this.TaxYearTextBox.Name = "TaxYearTextBox";
+            // 
+            // TaxYearLabel
+            // 
+            resources.ApplyResources(this.TaxYearLabel, "TaxYearLabel");
+            this.TaxYearLabel.Name = "TaxYearLabel";
+            // 
+            // CategoryTextBox
+            // 
+            resources.ApplyResources(this.CategoryTextBox, "CategoryTextBox");
+            this.CategoryTextBox.Name = "CategoryTextBox";
+            // 
+            // CategoryLabel
+            // 
+            resources.ApplyResources(this.CategoryLabel, "CategoryLabel");
+            this.CategoryLabel.Name = "CategoryLabel";
+            // 
+            // SubjectTextBox
+            // 
+            resources.ApplyResources(this.SubjectTextBox, "SubjectTextBox");
+            this.SubjectTextBox.Name = "SubjectTextBox";
+            // 
+            // SubjectLabel
+            // 
+            resources.ApplyResources(this.SubjectLabel, "SubjectLabel");
+            this.SubjectLabel.Name = "SubjectLabel";
+            // 
+            // AuthorTextBox
+            // 
+            resources.ApplyResources(this.AuthorTextBox, "AuthorTextBox");
+            this.AuthorTextBox.Name = "AuthorTextBox";
+            // 
+            // AuthorLabel
+            // 
+            resources.ApplyResources(this.AuthorLabel, "AuthorLabel");
+            this.AuthorLabel.Name = "AuthorLabel";
+            // 
+            // ResetAliasesLinkLabel
+            // 
+            resources.ApplyResources(this.ResetAliasesLinkLabel, "ResetAliasesLinkLabel");
+            this.ResetAliasesLinkLabel.Name = "ResetAliasesLinkLabel";
+            this.ResetAliasesLinkLabel.TabStop = true;
+            this.ResetAliasesLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ResetAliasesLinkLabel_LinkClicked);
+            // 
             // OptionsForm
             // 
             this.AcceptButton = this.OK_Button;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ControlBox = false;
+            this.Controls.Add(this.ResetAliasesLinkLabel);
+            this.Controls.Add(this.DocumentsViewColumnHeaderAliasesGroupBox);
             this.Controls.Add(this.CompactDatabaseAfterDeletingSelectedDocumentsCheckBox);
             this.Controls.Add(this.ShowAllDocumentsOnStartupCheckBox);
             this.Controls.Add(this.FindFlaggedDocumentsOnStartupCheckBox);
@@ -136,6 +210,8 @@ namespace PDFKeeper.WinForms.Dialogs
             this.HelpProvider.SetShowHelp(this, ((bool)(resources.GetObject("$this.ShowHelp"))));
             this.ShowInTaskbar = false;
             this.tableLayoutPanel.ResumeLayout(false);
+            this.DocumentsViewColumnHeaderAliasesGroupBox.ResumeLayout(false);
+            this.DocumentsViewColumnHeaderAliasesGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,5 +227,15 @@ namespace PDFKeeper.WinForms.Dialogs
         internal System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         internal System.Windows.Forms.HelpProvider HelpProvider;
         private System.Windows.Forms.CheckBox CompactDatabaseAfterDeletingSelectedDocumentsCheckBox;
+        private System.Windows.Forms.GroupBox DocumentsViewColumnHeaderAliasesGroupBox;
+        private System.Windows.Forms.Label AuthorLabel;
+        private System.Windows.Forms.Label SubjectLabel;
+        private System.Windows.Forms.TextBox AuthorTextBox;
+        private System.Windows.Forms.TextBox SubjectTextBox;
+        private System.Windows.Forms.Label CategoryLabel;
+        private System.Windows.Forms.TextBox CategoryTextBox;
+        private System.Windows.Forms.Label TaxYearLabel;
+        private System.Windows.Forms.TextBox TaxYearTextBox;
+        private System.Windows.Forms.LinkLabel ResetAliasesLinkLabel;
     }
 }

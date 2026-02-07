@@ -94,9 +94,12 @@
     <Compile Include="DataAccess\OracleConnectionFactory.cs" />
     <Compile Include="Extensions\ByteExtension.cs" />
     <Compile Include="Extensions\ExceptionExtension.cs" />
+    <Compile Include="FileIO\Serializers\JsonSerializer.cs" />
     <Compile Include="Helpers\OneDriveHelper.cs" />
     <Compile Include="Helpers\UploadProfileTokenHelper.cs" />
     <Compile Include="Models\UploadProfileToken.cs" />
+    <Compile Include="Services\AliasService.cs" />
+    <Compile Include="Services\IAliasService.cs" />
     <Compile Include="Services\IChildDialogService.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Application\UserProfileFolder.cs" />
@@ -174,7 +177,7 @@
     <Compile Include="Models\PdfExternalMetadata.cs" />
     <Compile Include="Models\UploadProfile.cs" />
     <Compile Include="Extensions\FileInfoExtension.cs" />
-    <Compile Include="FileIO\XmlSerializer.cs" />
+    <Compile Include="FileIO\Serializers\XmlSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

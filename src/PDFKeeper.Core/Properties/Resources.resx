@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Added" xml:space="preserve">
+    <value>Added</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
   <data name="AuthorToken" xml:space="preserve">
     <value>&lt;Author&gt;</value>
   </data>
   <data name="CancelQuestion" xml:space="preserve">
     <value>Are you sure you want to cancel?</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
   </data>
   <data name="CommonFieldsCannotAllBeBlank" xml:space="preserve">
     <value>Author, Subject, Category, and Tax Year cannot all be blank!</value>
@@ -166,6 +175,9 @@ To extract to a folder, select No.</value>
   </data>
   <data name="FileNameToken" xml:space="preserve">
     <value>&lt;FileName&gt;</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
   </data>
   <data name="InvalidDatabaseFile" xml:space="preserve">
     <value>The specified file is not a valid database file.</value>
@@ -248,14 +260,23 @@ PDF file names will be prefixed with: PDFKeeper&lt;ID&gt;_</value>
   <data name="StackTraceLogged" xml:space="preserve">
     <value>Stack Trace has been logged to {0}</value>
   </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
   <data name="SubjectToken" xml:space="preserve">
     <value>&lt;Subject&gt;</value>
+  </data>
+  <data name="TaxYear" xml:space="preserve">
+    <value>Tax Year</value>
   </data>
   <data name="TextFilter" xml:space="preserve">
     <value>Text files|*.txt</value>
   </data>
   <data name="ThreadException" xml:space="preserve">
     <value>Application UI ThreadException has occurred!</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="TitleToken" xml:space="preserve">
     <value>&lt;Title&gt;</value>

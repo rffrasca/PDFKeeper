@@ -23,6 +23,7 @@ using iText.Kernel.Pdf;
 using iText.Kernel.XMP;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.FileIO.Serializers;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Rules;
@@ -226,7 +227,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         {
             if (xmlFile.Exists)
             {
-                var metaData = XmlSerializer.Deserialize<PdfExternalMetadata>(xmlFile);
+                var metaData = XmlSerializer.DeserializeFromFile<PdfExternalMetadata>(xmlFile);
                 Id = metaData.Id;
                 Notes = metaData.Notes;
                 Category = metaData.Category;
@@ -282,7 +283,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                 OcrPdfTextAndImageDataPages = OcrPdfTextAndImageDataPages
             };
 
-            XmlSerializer.Serialize(metaData, targetPdfFile.ChangeExtension("xml"));
+            XmlSerializer.SerializeToFile(metaData, targetPdfFile.ChangeExtension("xml"));
         }
     }
 }

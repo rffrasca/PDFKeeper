@@ -474,21 +474,15 @@ namespace PDFKeeper.WinForms.Views
             DocumentsDataGridView.Columns[1].DefaultCellStyle.NullValue = null;
             DocumentsDataGridView.Columns[1].AutoSizeMode =
                 DataGridViewAutoSizeColumnMode.AllCells;
-            DocumentsDataGridView.Columns[2].HeaderCell.Value = Resources.ID;
+            viewModel.SetHeaderValueOnColumnsCommand.Execute(null);
             DocumentsDataGridView.Columns[2].DefaultCellStyle.Alignment =
                 DataGridViewContentAlignment.MiddleRight;
             DocumentsDataGridView.Columns[2].ReadOnly = true;
-            DocumentsDataGridView.Columns[3].HeaderCell.Value = Resources.Title;
             DocumentsDataGridView.Columns[3].ReadOnly = true;
-            DocumentsDataGridView.Columns[4].HeaderCell.Value = Resources.Author;
             DocumentsDataGridView.Columns[4].ReadOnly = true;
-            DocumentsDataGridView.Columns[5].HeaderCell.Value = Resources.Subject;
             DocumentsDataGridView.Columns[5].ReadOnly = true;
-            DocumentsDataGridView.Columns[6].HeaderCell.Value = Resources.Category;
             DocumentsDataGridView.Columns[6].ReadOnly = true;
-            DocumentsDataGridView.Columns[7].HeaderCell.Value = Resources.TaxYear;
             DocumentsDataGridView.Columns[7].ReadOnly = true;
-            DocumentsDataGridView.Columns[8].HeaderCell.Value = Resources.Added;
             DocumentsDataGridView.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DocumentsDataGridView.Columns[8].ReadOnly = true;
             DocumentsDataGridView.Columns[9].Visible = false;
@@ -761,6 +755,34 @@ namespace PDFKeeper.WinForms.Views
                         viewModel.ToolsUploadProfilesMenuEnabled;
                     ToolsUploadProfilesToolStripButton.Enabled =
                         viewModel.ToolsUploadProfilesMenuEnabled;
+                    break;
+                case nameof(viewModel.IdColumnHeaderValue):
+                    DocumentsDataGridView.Columns[2].HeaderCell.Value =
+                        viewModel.IdColumnHeaderValue;
+                    break;
+                case nameof(viewModel.TitleColumnHeaderValue):
+                    DocumentsDataGridView.Columns[3].HeaderCell.Value =
+                        viewModel.TitleColumnHeaderValue;
+                    break;
+                case nameof(viewModel.AuthorColumnHeaderValue):
+                    DocumentsDataGridView.Columns[4].HeaderCell.Value =
+                        viewModel.AuthorColumnHeaderValue;
+                    break;
+                case nameof(viewModel.SubjectColumnHeaderValue):
+                    DocumentsDataGridView.Columns[5].HeaderCell.Value =
+                        viewModel.SubjectColumnHeaderValue;
+                    break;
+                case nameof(viewModel.CategoryColumnHeaderValue):
+                    DocumentsDataGridView.Columns[6].HeaderCell.Value =
+                        viewModel.CategoryColumnHeaderValue;
+                    break;
+                case nameof(viewModel.TaxYearColumnHeaderValue):
+                    DocumentsDataGridView.Columns[7].HeaderCell.Value =
+                        viewModel.TaxYearColumnHeaderValue;
+                    break;
+                case nameof(viewModel.AddedColumnHeaderValue):
+                    DocumentsDataGridView.Columns[8].HeaderCell.Value =
+                        viewModel.AddedColumnHeaderValue;
                     break;
                 case nameof(viewModel.Documents):
                     DocumentsDataGridView.DataSource = viewModel.Documents;

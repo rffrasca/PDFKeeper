@@ -21,17 +21,20 @@
 using System.IO;
 using System.Xml;
 
-namespace PDFKeeper.Core.FileIO
+namespace PDFKeeper.Core.FileIO.Serializers
 {
+    /// <summary>
+    /// Provides static methods for serializing and deserializing objects to and from XML files.
+    /// </summary>
     internal static class XmlSerializer
     {
         /// <summary>
-        /// Deserializes an XML file into an object of the specified type.
+        /// Deserializes an object of type T from the specified XML file.
         /// </summary>
-        /// <typeparam name="T">The type.</typeparam>
-        /// <param name="xmlFile">The XML <see cref="FileInfo"/> object.</param>
-        /// <returns>The object.</returns>
-        internal static T Deserialize<T>(FileInfo xmlFile)
+        /// <typeparam name="T">The type of object to deserialize.</typeparam>
+        /// <param name="xmlFile">The XML file containing the serialized object.</param>
+        /// <returns>The deserialized object of type T.</returns>
+        internal static T DeserializeFromFile<T>(FileInfo xmlFile)
         {
             var settings = new XmlReaderSettings()
             {
@@ -44,12 +47,13 @@ namespace PDFKeeper.Core.FileIO
         }
 
         /// <summary>
-        /// Serializes the object of the specified type to an XML file.
+        /// Serializes the specified object to an XML file using indentation and entitized new
+        /// lines.
         /// </summary>
-        /// <typeparam name="T">The type.</typeparam>
-        /// <param name="obj">The object.</param>
-        /// <param name="xmlFile">The XML <see cref="FileInfo"/> object.</param>
-        internal static void Serialize<T>(T obj, FileInfo xmlFile)
+        /// <typeparam name="T">The type of the object to serialize.</typeparam>
+        /// <param name="obj">The object to serialize to XML.</param>
+        /// <param name="xmlFile">The file to which the XML will be written.</param>
+        internal static void SerializeToFile<T>(T obj, FileInfo xmlFile)
         {
             var settings = new XmlWriterSettings()
             {

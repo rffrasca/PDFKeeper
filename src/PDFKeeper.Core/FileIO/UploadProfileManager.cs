@@ -20,6 +20,7 @@
 
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.FileIO.Serializers;
 using PDFKeeper.Core.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -65,7 +66,7 @@ namespace PDFKeeper.Core.FileIO
         {
             try
             {
-                return XmlSerializer.Deserialize<UploadProfile>(GetUploadProfileInfo(name));
+                return XmlSerializer.DeserializeFromFile<UploadProfile>(GetUploadProfileInfo(name));
             }
             catch (FileNotFoundException)
             {
@@ -95,7 +96,7 @@ namespace PDFKeeper.Core.FileIO
                 GetUploadProfileInfo(formerName).Delete();
             }
 
-            XmlSerializer.Serialize(uploadProfile, GetUploadProfileInfo(name));
+            XmlSerializer.SerializeToFile(uploadProfile, GetUploadProfileInfo(name));
         }
 
         /// <summary>
