@@ -309,23 +309,11 @@
 					  Name="krbcc64.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)krbcc64.dll" />
 			</Component>
-			<Component Id="Magick.Native_Q16_arm64.dll"
-					   Guid="5bdfc96d-941a-400f-bf8e-4bdedd45c3df">
-				<File Id="Magick.Native_Q16_arm64.dll"
-					  Name="Magick.Native-Q16-arm64.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.Native-Q16-arm64.dll" />
-			</Component>
 			<Component Id="Magick.Native_Q16_x64.dll"
 					   Guid="7f0202a9-9a49-4801-88f8-98e9ed1671dc">
 				<File Id="Magick.Native_Q16_x64.dll"
 					  Name="Magick.Native-Q16-x64.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.Native-Q16-x64.dll" />
-			</Component>
-			<Component Id="Magick.Native_Q16_x86.dll"
-					   Guid="8e694e0d-2a8f-4373-a121-34ded217baa0">
-				<File Id="Magick.Native_Q16_x86.dll"
-					  Name="Magick.Native-Q16-x86.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.Native-Q16-x86.dll" />
 			</Component>
 			<Component Id="Magick.NET.Core.dll"
 					   Guid="7f85d8a9-f147-4e18-bb2e-fc418c024429">
@@ -333,11 +321,11 @@
 					  Name="Magick.NET.Core.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.NET.Core.dll" />
 			</Component>
-			<Component Id="Magick.NET_Q16_AnyCPU.dll"
-					   Guid="7cc046ba-2263-48df-a63b-d54b1193c6da">
-				<File Id="Magick.NET_Q16_AnyCPU.dll"
-					  Name="Magick.NET-Q16-AnyCPU.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.NET-Q16-AnyCPU.dll" />
+			<Component Id="Magick.NET_Q16_x64.dll"
+					   Guid="5A5FF95C-48FA-4DFA-8B4E-D8146DB92405">
+				<File Id="Magick.NET_Q16_x64.dll"
+					  Name="Magick.NET-Q16-x64.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.NET-Q16-x64.dll" />
 			</Component>
 			<Component Id="Microsoft.Bcl.AsyncInterfaces.dll"
 					   Guid="e41f38fe-6222-4a0d-91d4-d05accf51fe1">

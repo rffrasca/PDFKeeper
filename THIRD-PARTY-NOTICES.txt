@@ -87,21 +87,14 @@ K4os.Hash.xxHash (https://www.nuget.org/packages/K4os.Hash.xxHash/1.0.8)
     Copyright: Copyright (c) 2017 Milosz Krajewski
     License: MIT License, full text can be found at https://raw.githubusercontent.com/MiloszKrajewski/K4os.Hash.xxHash/master/LICENSE
 
-MySql.Data (https://www.nuget.org/packages/MySql.Data/9.1.0)
-    Authors: MySQL
-    Copyright: Copyright © 2016, 2024, Oracle and/or its affiliates.
-    License: GPLv2 License, full text can be found at https://github.com/mysql/mysql-connector-net/blob/8.x/LICENSE
-    -- and --
-    Exception: Universal FOSS Exception, full text can be found at http://oss.oracle.com/licenses/universal-foss-exception
-
-Magick.NET-Q16-AnyCPU (https://www.nuget.org/packages/Magick.NET-Q16-AnyCPU/14.8.2)
+Magick.NET-Q16-x64 (https://www.nuget.org/packages/Magick.NET-Q16-x64/14.10.2)
     Authors: dlemstra
-    Copyright: Copyright 2013-2025 Dirk Lemstra
+    Copyright: Copyright 2013-2026 Dirk Lemstra
     License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
 
-Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/14.8.2)
+Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/14.10.2)
     Authors: dlemstra
-    Copyright: Copyright 2013-2025 Dirk Lemstra
+    Copyright: Copyright 2013-2026 Dirk Lemstra
     License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
 
 Microsoft.Bcl.AsyncInterfaces (https://www.nuget.org/packages/Microsoft.Bcl.AsyncInterfaces/9.0.8)
@@ -188,6 +181,13 @@ Microsoft.IdentityModel.Tokens (https://www.nuget.org/packages/Microsoft.Identit
     Authors: Microsoft and AzureAD
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/dev/LICENSE.txt
+
+MySql.Data (https://www.nuget.org/packages/MySql.Data/9.1.0)
+    Authors: MySQL
+    Copyright: Copyright © 2016, 2024, Oracle and/or its affiliates.
+    License: GPLv2 License, full text can be found at https://github.com/mysql/mysql-connector-net/blob/8.x/LICENSE
+    -- and --
+    Exception: Universal FOSS Exception, full text can be found at http://oss.oracle.com/licenses/universal-foss-exception
 
 Newtonsoft.Json (https://www.nuget.org/packages/Newtonsoft.Json/13.0.1)
     Authors: jamesnk, newtonsoft, and dotnetfoundation
