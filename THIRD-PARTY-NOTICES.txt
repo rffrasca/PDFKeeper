@@ -47,7 +47,7 @@ Ghostscript 10.05.1 (https://www.ghostscript.com/)
     Copyright: Copyright (C) 2025 Artifex Software, Inc.  All rights reserved.
     License: AGPLv3 License, full text can be found at https://artifex.com/licensing/
 
-Google.Protobuf (https://www.nuget.org/packages/Google.Protobuf/3.26.1)
+Google.Protobuf (https://www.nuget.org/packages/Google.Protobuf/3.32.0)
     Authors: protobuf-packages
     Copyright: Copyright 2015, Google Inc.
     License: BSD-3-Clause License, full text can be found at https://github.com/protocolbuffers/protobuf/blob/main/LICENSE
@@ -192,10 +192,10 @@ Microsoft.IdentityModel.Tokens (https://www.nuget.org/packages/Microsoft.Identit
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/dev/LICENSE.txt
 
-MySql.Data (https://www.nuget.org/packages/MySql.Data/9.1.0)
+MySql.Data (https://www.nuget.org/packages/MySql.Data/9.6.0)
     Authors: MySQL
-    Copyright: Copyright © 2016, 2024, Oracle and/or its affiliates.
-    License: GPLv2 License, full text can be found at https://github.com/mysql/mysql-connector-net/blob/8.x/LICENSE
+    Copyright: Copyright © 2004, 2026, Oracle and/or its affiliates.
+    License: GPLv2 License, full text can be found at https://github.com/mysql/mysql-connector-net/blob/9.x/LICENSE
     -- and --
     Exception: Universal FOSS Exception, full text can be found at http://oss.oracle.com/licenses/universal-foss-exception
 
@@ -341,7 +341,7 @@ Vip.ComboBox (https://www.nuget.org/packages/Vip.ComboBox/1.0.0)
     Copyright: Copyright (c) 2019 Leandro Ferreira
     License: MIT License, full text can be found at https://github.com/leandrovip/Vip.ComboBox/blob/master/LICENSE
 
-ZstdSharp.Port (https://www.nuget.org/packages/ZstdSharp.Port/0.8.0)
+ZstdSharp.Port (https://www.nuget.org/packages/ZstdSharp.Port/0.8.6)
     Authors: oleg-st
-    Copyright: Copyright Oleg Stepanischev 2024
+    Copyright: Copyright Oleg Stepanischev 2025
     License: MIT License, full text can be found at https://github.com/oleg-st/ZstdSharp/blob/master/LICENSE
