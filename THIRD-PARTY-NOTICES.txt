@@ -52,22 +52,22 @@ Google.Protobuf (https://www.nuget.org/packages/Google.Protobuf/3.26.1)
     Copyright: Copyright 2015, Google Inc.
     License: BSD-3-Clause License, full text can be found at https://github.com/protocolbuffers/protobuf/blob/main/LICENSE
 
-itext (https://www.nuget.org/packages/itext/9.3.0)
+itext (https://www.nuget.org/packages/itext/9.5.0)
     Authors: iText
     Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-itext.bouncy-castle-adapter (https://www.nuget.org/packages/itext.bouncy-castle-adapter/9.3.0)
+itext.bouncy-castle-adapter (https://www.nuget.org/packages/itext.bouncy-castle-adapter/9.5.0)
     Authors: iText
     Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-itext.commons (https://www.nuget.org/packages/itext.commons/9.3.0)
+itext.commons (https://www.nuget.org/packages/itext.commons/9.5.0)
     Authors: iText
     Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-itext.font-asian (https://www.nuget.org/packages/itext.font-asian/9.3.0)
+itext.font-asian (https://www.nuget.org/packages/itext.font-asian/9.5.0)
     Authors: iText
     Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
