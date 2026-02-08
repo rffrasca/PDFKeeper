@@ -222,7 +222,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Data.SqlClient">
-      <Version>5.2.2</Version>
+      <Version>6.1.4</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection">
       <Version>10.0.2</Version>
@@ -247,9 +247,6 @@
     </PackageReference>
     <PackageReference Include="System.Security.AccessControl">
       <Version>6.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Text.Json">
-      <Version>8.0.5</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
