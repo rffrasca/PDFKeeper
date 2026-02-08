@@ -489,7 +489,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection">
-      <Version>9.0.8</Version>
+      <Version>10.0.2</Version>
     </PackageReference>
     <PackageReference Include="Vip.ComboBox">
       <Version>1.0.0</Version>
