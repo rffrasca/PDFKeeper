@@ -26,7 +26,7 @@ When available, download the source code for a v12 release from [here](https://g
   8. Select the vendor folder in the PDFKeeper solution.
   9. Select OK.
 
-* Oracle ODP.NET 23.5.1 - https://www.nuget.org/packages/Oracle.ManagedDataAccess/23.5.1
+* Oracle ODP.NET 23.26.100 - https://www.nuget.org/packages/Oracle.ManagedDataAccess/23.26.100
 
   1. Open in NuGet Package Explorer.
   2. Under Contents expand lib, and then expand net472.
