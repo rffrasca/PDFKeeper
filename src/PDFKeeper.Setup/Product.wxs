@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 *******************************************************************************
 * PDFKeeper - Open Source PDF Document Management
 * Copyright (C) 2009-2025 Robert F. Frasca
@@ -23,7 +23,7 @@
 	<?define PDFKeeper.WinForms_TargetDir=$(var.PDFKeeper.WinForms.TargetDir)?>
 	<Package Name="PDFKeeper"
 			 Language="1033"
-			 Version="11.3.0"
+			 Version="12.0.0"
 			 Manufacturer="Robert F. Frasca"
 			 UpgradeCode="39fe1920-3da7-48d1-9682-5c0c328f01b2"
 			 Scope="perUser">

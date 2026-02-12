@@ -1,5 +1,5 @@
 THIRD-PARTY SOFTWARE NOTICES AND LICENSE INFORMATION
-Applicable to PDFKeeper Version 11.3.0
+Applicable to PDFKeeper Version 12.0.0
 
 All third-party components included with this software are redistributed under their respective licenses.
 

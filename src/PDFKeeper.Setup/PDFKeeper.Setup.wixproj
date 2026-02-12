@@ -1,7 +1,7 @@
 <Project Sdk="WixToolset.Sdk/6.0.2">
   <PropertyGroup>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <OutputName>PDFKeeper-11.3.0</OutputName>
+    <OutputName>PDFKeeper-12.0.0</OutputName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DefineConstants>Debug</DefineConstants>
