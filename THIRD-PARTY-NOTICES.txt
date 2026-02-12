@@ -10,12 +10,12 @@ A subset of the icons from the following packages are compiled into PDFKeeper.ex
 Mini Icons
     https://github.com/legacy-icons/famfamfam-mini
     Authors: Mark James
-    License: https://github.com/legacy-icons/famfamfam-mini/blob/master/LICENSE.md
+    License: License, full text can be found at https://github.com/legacy-icons/famfamfam-mini/blob/master/LICENSE.md
 
 Silk Icons 1.3
     https://github.com/legacy-icons/famfamfam-silk
     Authors: Mark James
-    License: https://github.com/legacy-icons/famfamfam-silk/blob/master/LICENSE.md
+    License: CC-BY-2.5 License, full text can be found at https://github.com/legacy-icons/famfamfam-silk/blob/master/LICENSE.md
 
 **********************************************************************************************
 
