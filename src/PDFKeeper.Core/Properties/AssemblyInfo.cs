@@ -1,7 +1,7 @@
 using System.Resources;
 // ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
-// * Copyright (C) 2009-2025 Robert F. Frasca
+// * Copyright (C) 2009-2026 Robert F. Frasca
 // *
 // * This file is part of PDFKeeper.
 // *
@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Robert F. Frasca")]
 [assembly: AssemblyProduct("PDFKeeper")]
-[assembly: AssemblyCopyright("Copyright © 2009-2025 Robert F. Frasca")]
+[assembly: AssemblyCopyright("Copyright © 2009-2026 Robert F. Frasca")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,6 +1,6 @@
 # *****************************************************************************
 # * PDFKeeper -- Open Source PDF Document Management
-# * Copyright (C) 2009-2025 Robert F. Frasca
+# * Copyright (C) 2009-2026 Robert F. Frasca
 # *
 # * This file is part of PDFKeeper.
 # *
@@ -19,7 +19,7 @@
 # *****************************************************************************
 
 $previousRange="2009-2025"
-$currentRange="2009-2025"
+$currentRange="2009-2026"
 
 (Get-ChildItem -Include *.cs,*.ps1,*.sql,*.html,*.cmd,*.reg,Product.wxs -Recurse ) | 
 Foreach-Object {
