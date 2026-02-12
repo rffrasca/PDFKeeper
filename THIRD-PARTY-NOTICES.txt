@@ -1,347 +1,415 @@
-PDFKeeper 11.3.0
+THIRD-PARTY SOFTWARE NOTICES AND LICENSE INFORMATION
+Applicable to PDFKeeper Version 11.3.0
 
-THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+All third-party components included with this software are redistributed under their respective licenses.
 
 **********************************************************************************************
 
-A subset of the icons from the following packages are compiled into PDFKeeper.exe:
+A subset of the icons from the following packages are compiled into PDFKeeper.exe.
 
-Mini Icons (https://github.com/legacy-icons/famfamfam-mini)
+Mini Icons
+    https://github.com/legacy-icons/famfamfam-mini
     Authors: Mark James
     License: https://github.com/legacy-icons/famfamfam-mini/blob/master/LICENSE.md
 
-Silk Icons 1.3 (https://github.com/legacy-icons/famfamfam-silk)
+Silk Icons 1.3
+    https://github.com/legacy-icons/famfamfam-silk
     Authors: Mark James
     License: https://github.com/legacy-icons/famfamfam-silk/blob/master/LICENSE.md
 
 **********************************************************************************************
 
-The following components or a subset thereof are included in the binary release:
+Each component, or any subset thereof, is included in the binary release in its original, unmodified form.
 
-Autoupdater.NET.Official (https://www.nuget.org/packages/Autoupdater.NET.Official/1.7.0)
+Autoupdater.NET.Official
+    https://www.nuget.org/packages/Autoupdater.NET.Official/1.7.0
     Authors: rbsoft
     Copyright: Copyright © 2012-2021 RBSoft
     License: MIT License, full text can be found at https://github.com/ravibpatel/AutoUpdater.NET/blob/master/LICENSE
 
-Azure.Core (https://www.nuget.org/packages/Azure.Core/1.50.0)
+Azure.Core
+    https://www.nuget.org/packages/Azure.Core/1.50.0
     Authors: Microsoft and azure-sdk
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/Azure/azure-sdk-for-net/blob/main/LICENSE.txt
 
-Azure.Identity (https://www.nuget.org/packages/Azure.Identity/1.17.1)
+Azure.Identity
+    https://www.nuget.org/packages/Azure.Identity/1.17.1
     Authors: Microsoft and azure-sdk
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/Azure/azure-sdk-for-net/blob/main/LICENSE.txt
 
-BouncyCastle.Cryptography (https://www.nuget.org/packages/BouncyCastle.Cryptography/2.6.2)
+BouncyCastle.Cryptography
+    https://www.nuget.org/packages/BouncyCastle.Cryptography/2.6.2
     Authors: LegionOfTheBouncyCastle
     Copyright: Copyright © Legion of the Bouncy Castle Inc. 2000-2025
     License: MIT License, full text can be found at https://github.com/bcgit/bc-csharp/blob/master/LICENSE.md
 
-CommunityToolkit.Mvvm (https://www.nuget.org/packages/CommunityToolkit.Mvvm/8.4.0)
+CommunityToolkit.Mvvm
+    https://www.nuget.org/packages/CommunityToolkit.Mvvm/8.4.0
     Authors: Microsoft.Toolkit and dotnetfoundation
     Copyright: (c) .NET Foundation and Contributors. All rights reserved.
     License: MIT License, full text can be found at https://github.com/CommunityToolkit/dotnet/blob/main/License.md
 
-Ghostscript 10.06.0 (https://www.ghostscript.com/)
+Ghostscript 10.06.0
+    https://www.ghostscript.com/
     Copyright: Copyright (C) 2025 Artifex Software, Inc.  All rights reserved.
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl-3.0.html
 
-Google.Protobuf (https://www.nuget.org/packages/Google.Protobuf/3.32.0)
+Google.Protobuf
+    https://www.nuget.org/packages/Google.Protobuf/3.32.0
     Authors: protobuf-packages
     Copyright: Copyright 2015, Google Inc.
     License: BSD-3-Clause License, full text can be found at https://github.com/protocolbuffers/protobuf/blob/main/LICENSE
 
-itext (https://www.nuget.org/packages/itext/9.5.0)
+itext
+    https://www.nuget.org/packages/itext/9.5.0
     Authors: iText
     Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-itext.bouncy-castle-adapter (https://www.nuget.org/packages/itext.bouncy-castle-adapter/9.5.0)
+itext.bouncy-castle-adapter
+    https://www.nuget.org/packages/itext.bouncy-castle-adapter/9.5.0
     Authors: iText
     Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-itext.commons (https://www.nuget.org/packages/itext.commons/9.5.0)
+itext.commons
+    https://www.nuget.org/packages/itext.commons/9.5.0
     Authors: iText
     Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-itext.font-asian (https://www.nuget.org/packages/itext.font-asian/9.5.0)
+itext.font-asian
+    https://www.nuget.org/packages/itext.font-asian/9.5.0
     Authors: iText
     Copyright: Copyright (c) 1998-2025 Apryse Group NV
     License: AGPLv3 License, full text can be found at https://www.gnu.org/licenses/agpl.html
 
-K4os.Compression.LZ4 (https://www.nuget.org/packages/K4os.Compression.LZ4/1.3.8)
+K4os.Compression.LZ4
+    https://www.nuget.org/packages/K4os.Compression.LZ4/1.3.8
     Authors: Krashan
     Copyright: Copyright (c) 2017 Milosz Krajewski
     License: MIT License, full text can be found at https://raw.githubusercontent.com/MiloszKrajewski/K4os.Compression.LZ4/master/LICENSE
 
-K4os.Compression.LZ4.Streams (https://www.nuget.org/packages/K4os.Compression.LZ4.Streams/1.3.8)
+K4os.Compression.LZ4.Streams
+    https://www.nuget.org/packages/K4os.Compression.LZ4.Streams/1.3.8
     Authors: Krashan
     Copyright: Copyright (c) 2017 Milosz Krajewski
     License: MIT License, full text can be found at https://raw.githubusercontent.com/MiloszKrajewski/K4os.Compression.LZ4/master/LICENSE
 
-K4os.Hash.xxHash (https://www.nuget.org/packages/K4os.Hash.xxHash/1.0.8)
+K4os.Hash.xxHash
+    https://www.nuget.org/packages/K4os.Hash.xxHash/1.0.8
     Authors: Krashan
     Copyright: Copyright (c) 2017 Milosz Krajewski
     License: MIT License, full text can be found at https://raw.githubusercontent.com/MiloszKrajewski/K4os.Hash.xxHash/master/LICENSE
 
-Magick.NET-Q16-x64 (https://www.nuget.org/packages/Magick.NET-Q16-x64/14.10.2)
+Magick.NET-Q16-x64
+    https://www.nuget.org/packages/Magick.NET-Q16-x64/14.10.2
     Authors: dlemstra
     Copyright: Copyright 2013-2026 Dirk Lemstra
     License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
 
-Magick.NET.Core (https://www.nuget.org/packages/Magick.NET.Core/14.10.2)
+Magick.NET.Core
+    https://www.nuget.org/packages/Magick.NET.Core/14.10.2
     Authors: dlemstra
     Copyright: Copyright 2013-2026 Dirk Lemstra
     License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
 
-Microsoft.Bcl.AsyncInterfaces (https://www.nuget.org/packages/Microsoft.Bcl.AsyncInterfaces/10.0.3)
+Microsoft.Bcl.AsyncInterfaces
+    https://www.nuget.org/packages/Microsoft.Bcl.AsyncInterfaces/10.0.3
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-Microsoft.Data.SqlClient (https://www.nuget.org/packages/Microsoft.Data.SqlClient/6.1.4)
+Microsoft.Data.SqlClient
+    https://www.nuget.org/packages/Microsoft.Data.SqlClient/6.1.4
     Authors: Microsoft and nugetsqltools
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/SqlClient/blob/main/LICENSE
 
-Microsoft.Data.SqlClient.SNI (https://www.nuget.org/packages/Microsoft.Data.SqlClient.SNI/6.0.2)
+Microsoft.Data.SqlClient.SNI
+    https://www.nuget.org/packages/Microsoft.Data.SqlClient.SNI/6.0.2
     Authors: Microsoft and nugetsqltools
     Copyright: © Microsoft Corporation. All rights reserved.
     License: License, full text can be found at https://www.nuget.org/packages/Microsoft.Data.SqlClient.SNI/6.0.2/License
 
-Microsoft.Extensions.Caching.Abstractions (https://www.nuget.org/packages/Microsoft.Extensions.Caching.Abstractions/8.0.0)
+Microsoft.Extensions.Caching.Abstractions
+    https://www.nuget.org/packages/Microsoft.Extensions.Caching.Abstractions/8.0.0
     Authors: Microsoft, aspnet, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-Microsoft.Extensions.Caching.Memory (https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/8.0.1)
+Microsoft.Extensions.Caching.Memory
+    https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/8.0.1
     Authors: Microsoft, aspnet, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-Microsoft.Extensions.DependencyInjection (https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/10.0.3)
+Microsoft.Extensions.DependencyInjection
+    https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/10.0.3
     Authors: Microsoft, aspnet, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-Microsoft.Extensions.DependencyInjection.Abstractions (https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection.Abstractions/10.0.3)
+Microsoft.Extensions.DependencyInjection.Abstractions
+    https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection.Abstractions/10.0.3
     Authors: Microsoft, aspnet, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-Microsoft.Extensions.Logging (https://www.nuget.org/packages/Microsoft.Extensions.Logging/5.0.0)
+Microsoft.Extensions.Logging
+    https://www.nuget.org/packages/Microsoft.Extensions.Logging/5.0.0
     Authors: Microsoft, aspnet, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-Microsoft.Extensions.Logging.Abstractions (https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/8.0.3)
+Microsoft.Extensions.Logging.Abstractions
+    https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/8.0.3
     Authors: Microsoft, aspnet, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-Microsoft.Extensions.Options (https://www.nuget.org/packages/Microsoft.Extensions.Options/8.0.2)
+Microsoft.Extensions.Options
+    https://www.nuget.org/packages/Microsoft.Extensions.Options/8.0.2
     Authors: Microsoft, aspnet, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-Microsoft.Extensions.Primitives (https://www.nuget.org/packages/Microsoft.Extensions.Primitives/8.0.0)
+Microsoft.Extensions.Primitives
+    https://www.nuget.org/packages/Microsoft.Extensions.Primitives/8.0.0
     Authors: Microsoft, aspnet, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-Microsoft.Identity.Client (https://www.nuget.org/packages/Microsoft.Identity.Client/4.80.0)
+Microsoft.Identity.Client
+    https://www.nuget.org/packages/Microsoft.Identity.Client/4.80.0
     Authors: Microsoft and AzureAD
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/main/LICENSE
 
-Microsoft.Identity.Client.Extensions.Msal (https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/4.78.0)
+Microsoft.Identity.Client.Extensions.Msal
+    https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/4.78.0
     Authors: Microsoft and AzureAD
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/main/LICENSE
 
-Microsoft.IdentityModel.Abstractions (https://www.nuget.org/packages/Microsoft.IdentityModel.Abstractions/8.14.0)
+Microsoft.IdentityModel.Abstractions
+    https://www.nuget.org/packages/Microsoft.IdentityModel.Abstractions/8.14.0
     Authors: Microsoft and AzureAD
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/dev/LICENSE.txt
 
-Microsoft.IdentityModel.JsonWebTokens (https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/7.7.1)
+Microsoft.IdentityModel.JsonWebTokens
+    https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/7.7.1
     Authors: Microsoft and AzureAD
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/dev/LICENSE.txt
 
-Microsoft.IdentityModel.Logging (https://www.nuget.org/packages/Microsoft.IdentityModel.Logging/7.7.1)
+Microsoft.IdentityModel.Logging
+    https://www.nuget.org/packages/Microsoft.IdentityModel.Logging/7.7.1
     Authors: Microsoft and AzureAD
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/dev/LICENSE.txt
 
-Microsoft.IdentityModel.Protocols (https://www.nuget.org/packages/Microsoft.IdentityModel.Protocols/7.7.1)
+Microsoft.IdentityModel.Protocols
+    https://www.nuget.org/packages/Microsoft.IdentityModel.Protocols/7.7.1
     Authors: Microsoft and AzureAD
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/dev/LICENSE.txt
 
-Microsoft.IdentityModel.Protocols.OpenIdConnect (https://www.nuget.org/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect/7.7.1)
+Microsoft.IdentityModel.Protocols.OpenIdConnect
+    https://www.nuget.org/packages/Microsoft.IdentityModel.Protocols.OpenIdConnect/7.7.1
     Authors: Microsoft and AzureAD
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/dev/LICENSE.txt
 
-Microsoft.IdentityModel.Tokens (https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/7.7.1)
+Microsoft.IdentityModel.Tokens
+    https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/7.7.1
     Authors: Microsoft and AzureAD
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/dev/LICENSE.txt
 
-MySql.Data (https://www.nuget.org/packages/MySql.Data/9.6.0)
+MySql.Data
+    https://www.nuget.org/packages/MySql.Data/9.6.0
     Authors: MySQL
     Copyright: Copyright © 2004, 2026, Oracle and/or its affiliates.
     License: GPLv2 License, full text can be found at https://github.com/mysql/mysql-connector-net/blob/9.x/LICENSE
     -- and --
     Exception: Universal FOSS Exception, full text can be found at http://oss.oracle.com/licenses/universal-foss-exception
 
-Newtonsoft.Json (https://www.nuget.org/packages/Newtonsoft.Json/13.0.1)
+Newtonsoft.Json
+    https://www.nuget.org/packages/Newtonsoft.Json/13.0.1
     Authors: jamesnk, newtonsoft, and dotnetfoundation
     Copyright: Copyright © James Newton-King 2008
     License: MIT License, full text can be found at https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md
 
-SoftCircuits.FullTextSearchQuery (https://www.nuget.org/packages/SoftCircuits.FullTextSearchQuery/2.3.0)
+SoftCircuits.FullTextSearchQuery
+    https://www.nuget.org/packages/SoftCircuits.FullTextSearchQuery/2.3.0
     Authors: SoftCircuits
     Copyright: Copyright © 2019-2024 SoftCircuits
     License: MIT License, full text can be found at https://github.com/SoftCircuits/FullTextSearchQuery/blob/master/License.txt
 
-Sumatra PDF 3.5.2 (https://www.sumatrapdfreader.org/free-pdf-reader)
+Sumatra PDF 3.5.2
+    https://www.sumatrapdfreader.org/free-pdf-reader
     Authors: https://github.com/sumatrapdfreader/sumatrapdf/blob/master/AUTHORS
     Copyright: Copyright 2006-2022 all authors
     License: GPLv3 License, full text can be found at https://github.com/sumatrapdfreader/sumatrapdf/blob/master/COPYING
     -- and --
     License: BSD License, full text can be found at https://github.com/sumatrapdfreader/sumatrapdf/blob/master/COPYING.BSD
 
-System.Buffers (https://www.nuget.org/packages/System.Buffers/4.6.1)
+System.Buffers
+    https://www.nuget.org/packages/System.Buffers/4.6.1
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/corefx/blob/master/LICENSE.TXT
 
-System.ClientModel (https://www.nuget.org/packages/System.ClientModel/1.8.0)
+System.ClientModel
+    https://www.nuget.org/packages/System.ClientModel/1.8.0
     Authors: Microsoft, azure-sdk, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/Azure/azure-sdk-for-net/blob/main/LICENSE.txt
 
-System.ComponentModel.Annotations (https://www.nuget.org/packages/System.ComponentModel.Annotations/5.0.0)
+System.ComponentModel.Annotations
+    https://www.nuget.org/packages/System.ComponentModel.Annotations/5.0.0
     Authors: Microsoft, aspnet, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Configuration.ConfigurationManager (https://www.nuget.org/packages/System.Configuration.ConfigurationManager/8.0.0)
+System.Configuration.ConfigurationManager
+    https://www.nuget.org/packages/System.Configuration.ConfigurationManager/8.0.0
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Data.SQLite.Core (https://www.nuget.org/packages/System.Data.SQLite.Core/1.0.119)
+System.Data.SQLite.Core
+    https://www.nuget.org/packages/System.Data.SQLite.Core/1.0.119
     Authors: SQLite
     Copyright: Copyright © 2004-2008 Hipp, Wyrick & Company, Inc.
     License: Public Domain, full text can be found at https://www.sqlite.org/copyright.html
 
-Stub.System.Data.SQLite.Core.NetFramework (https://www.nuget.org/packages/Stub.System.Data.SQLite.Core.NetFramework/1.0.119)
+Stub.System.Data.SQLite.Core.NetFramework
+    https://www.nuget.org/packages/Stub.System.Data.SQLite.Core.NetFramework/1.0.119
     Authors: SQLite
     Copyright: Copyright © 2004-2008 Hipp, Wyrick & Company, Inc.
     License: Public Domain, full text can be found at https://www.sqlite.org/copyright.html
 
-System.Diagnostics.DiagnosticSource (https://www.nuget.org/packages/System.Diagnostics.DiagnosticSource/9.0.0)
+System.Diagnostics.DiagnosticSource
+    https://www.nuget.org/packages/System.Diagnostics.DiagnosticSource/9.0.0
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Formats.Asn1 (https://www.nuget.org/packages/System.Formats.Asn1/8.0.1)
+System.Formats.Asn1
+    https://www.nuget.org/packages/System.Formats.Asn1/8.0.1
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.IdentityModel.Tokens.Jwt (https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/7.7.1)
+System.IdentityModel.Tokens.Jwt
+    https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/7.7.1
     Authors: Microsoft and AzureAD
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/dev/LICENSE.txt
 
-System.IO.FileSystem.AccessControl (https://www.nuget.org/packages/System.IO.FileSystem.AccessControl/5.0.0)
+System.IO.FileSystem.AccessControl
+    https://www.nuget.org/packages/System.IO.FileSystem.AccessControl/5.0.0
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.IO.Pipelines (https://www.nuget.org/packages/System.IO.Pipelines/5.0.2)
+System.IO.Pipelines
+    https://www.nuget.org/packages/System.IO.Pipelines/5.0.2
     Authors: Microsoft, aspnet, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Memory (https://www.nuget.org/packages/System.Memory/4.6.3)
+System.Memory
+    https://www.nuget.org/packages/System.Memory/4.6.3
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/corefx/blob/master/LICENSE.TXT
 
-System.Memory.Data (https://www.nuget.org/packages/System.Memory.Data/8.0.1)
+System.Memory.Data
+    https://www.nuget.org/packages/System.Memory.Data/8.0.1
     Authors: Microsoft, azure-sdk, and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/Azure/azure-sdk-for-net/blob/main/LICENSE.txt
 
-System.Numerics.Vectors (https://www.nuget.org/packages/System.Numerics.Vectors/4.6.1)
+System.Numerics.Vectors
+    https://www.nuget.org/packages/System.Numerics.Vectors/4.6.1
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation.  All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/corefx/blob/master/LICENSE.TXT
 
-System.Runtime.CompilerServices.Unsafe (https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe/6.1.2)
+System.Runtime.CompilerServices.Unsafe
+    https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe/6.1.2
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Security.AccessControl (https://www.nuget.org/packages/System.Security.AccessControl/6.0.1)
+System.Security.AccessControl
+    https://www.nuget.org/packages/System.Security.AccessControl/6.0.1
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Security.Cryptography.Pkcs (https://www.nuget.org/packages/System.Security.Cryptography.Pkcs/8.0.1)
+System.Security.Cryptography.Pkcs
+    https://www.nuget.org/packages/System.Security.Cryptography.Pkcs/8.0.1
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Security.Cryptography.ProtectedData (https://www.nuget.org/packages/System.Security.Cryptography.ProtectedData/4.5.0)
+System.Security.Cryptography.ProtectedData
+    https://www.nuget.org/packages/System.Security.Cryptography.ProtectedData/4.5.0
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Security.Cryptography.Xml (https://www.nuget.org/packages/System.Security.Cryptography.Xml/6.0.2)
+System.Security.Cryptography.Xml
+    https://www.nuget.org/packages/System.Security.Cryptography.Xml/6.0.2
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Security.Principal.Windows (https://www.nuget.org/packages/System.Security.Principal.Windows/5.0.0)
+System.Security.Principal.Windows
+    https://www.nuget.org/packages/System.Security.Principal.Windows/5.0.0
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Text.Encodings.Web (https://www.nuget.org/packages/System.Text.Encodings.Web/8.0.0)
+System.Text.Encodings.Web
+    https://www.nuget.org/packages/System.Text.Encodings.Web/8.0.0
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Text.Json (https://www.nuget.org/packages/System.Text.Json/8.0.6)
+System.Text.Json
+    https://www.nuget.org/packages/System.Text.Json/8.0.6
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-System.Threading.Tasks.Extensions (https://www.nuget.org/packages/System.Threading.Tasks.Extensions/4.6.3)
+System.Threading.Tasks.Extensions
+    https://www.nuget.org/packages/System.Threading.Tasks.Extensions/4.6.3
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/corefx/blob/master/LICENSE.TXT
 
-System.ValueTuple (https://www.nuget.org/packages/System.ValueTuple/4.5.0)
+System.ValueTuple
+    https://www.nuget.org/packages/System.ValueTuple/4.5.0
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation.  All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/corefx/blob/master/LICENSE.TXT
 
-Vip.ComboBox (https://www.nuget.org/packages/Vip.ComboBox/1.0.0)
+Vip.ComboBox
+    https://www.nuget.org/packages/Vip.ComboBox/1.0.0
     Authors: leandrovip
     Copyright: Copyright (c) 2019 Leandro Ferreira
     License: MIT License, full text can be found at https://github.com/leandrovip/Vip.ComboBox/blob/master/LICENSE
 
-ZstdSharp.Port (https://www.nuget.org/packages/ZstdSharp.Port/0.8.6)
+ZstdSharp.Port
+    https://www.nuget.org/packages/ZstdSharp.Port/0.8.6
     Authors: oleg-st
     Copyright: Copyright Oleg Stepanischev 2025
     License: MIT License, full text can be found at https://github.com/oleg-st/ZstdSharp/blob/master/LICENSE
