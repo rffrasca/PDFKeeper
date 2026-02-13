@@ -587,37 +587,41 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 throw new ArgumentNullException(nameof(searchTerm));
             }
 
-            string result = string.Empty;
-
-            if (searchTerm.Length > 0)
+            if (searchTerm.Length.Equals(0))
             {
-                var sql = "select ctx_doc.snippet('docs_idx', :doc_id, :doc_dummy, " +
-                    "'[', ']', :translate, '||') from dual";
-                try
-                {
-                    using var connection = OracleConnectionFactory.Create(
-                        connStrBuilder.ConnectionString,
-                        oracleCredential,
-                        DatabaseSession.SchemaName);
-                    using var command = new OracleCommand(sql, connection);
-                    command.Parameters.Add("doc_id", id);
-                    command.Parameters.Add("doc_dummy", searchTerm);
-                    command.Parameters.Add(
-                        "translate",
-                        OracleDbType.Boolean,
-                        false,
-                        ParameterDirection.Input);
-                    connection.Open();
-                    using var reader = command.ExecuteReader();
-                    reader.Read();
-                    result = reader.GetString(0);
-                }
-                catch (OracleException ex)
-                {
-                    throw new DatabaseException(ex.Message);
-                }
+                return string.Empty;
             }
-            return result;
+
+            var indexName = $"{DatabaseSession.SchemaName}.docs_idx";
+            const string sql = "select ctx_doc.snippet(:index_name, :doc_id, :doc_dummy," +
+                " '[', ']', :translate, '||') " + "from dual";
+
+            try
+            {
+                using var connection = OracleConnectionFactory.Create(
+                    connStrBuilder.ConnectionString,
+                    oracleCredential,
+                    DatabaseSession.SchemaName);
+                using var command = new OracleCommand(sql, connection);
+                command.Parameters.Add(
+                    "index_name",
+                    OracleDbType.Varchar2,
+                    indexName,
+                    ParameterDirection.Input);
+                command.Parameters.Add("doc_id", id);
+                command.Parameters.Add("doc_dummy", searchTerm);
+                command.Parameters.Add(
+                    "translate",
+                    OracleDbType.Boolean,
+                    false,
+                    ParameterDirection.Input);
+                using var reader = command.ExecuteReader();
+                return reader.Read() ? reader.GetString(0) : string.Empty;
+            }
+            catch (OracleException ex)
+            {
+                throw new DatabaseException(ex.Message);
+            }
         }
 
         protected override void GetDocsTableAccess()
