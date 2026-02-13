@@ -298,7 +298,11 @@ namespace PDFKeeper.Core.ViewModels
             if (FindDocumentsViewState.FindDocumentsParam != null)
             {
                 FindDocumentsParam = FindDocumentsViewState.FindDocumentsParam.Clone();
-            }            
+            }
+            else
+            {
+                SetFindActionSelection();
+            }
         }
 
         private void GetSearchTermHistory()
