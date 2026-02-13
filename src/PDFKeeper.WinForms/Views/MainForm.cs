@@ -32,6 +32,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static PDFKeeper.Core.ViewModels.MainViewModel;
 
@@ -428,10 +429,11 @@ namespace PDFKeeper.WinForms.Views
             }
         }
 
-        private void MainForm_DragDrop(object sender, DragEventArgs e)
+        private async void MainForm_DragDrop(object sender, DragEventArgs e)
         {
             var files = (string[])e.Data.GetData(DataFormats.FileDrop);
             var file = files[0];
+            await Task.Yield();
             viewModel.AddPdfCommand.Execute(file);
         }
 
