@@ -51,6 +51,7 @@ namespace PDFKeeper.WinForms.Views
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
             SetActions();
+            BringToFront();
         }
 
         private void SetActions()

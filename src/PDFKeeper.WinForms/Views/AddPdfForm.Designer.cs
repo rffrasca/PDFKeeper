@@ -228,7 +228,6 @@ namespace PDFKeeper.WinForms.Views
             this.Name = "AddPdfForm";
             this.HelpProvider.SetShowHelp(this, ((bool)(resources.GetObject("$this.ShowHelp"))));
             this.ShowInTaskbar = false;
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddPdfForm_FormClosing);
             this.Load += new System.EventHandler(this.AddPdfForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AddPdfViewModelBindingSource)).EndInit();
