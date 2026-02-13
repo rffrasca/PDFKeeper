@@ -144,7 +144,6 @@ namespace PDFKeeper.WinForms.Views
 
             viewModel.OnFindDocuments = () =>
             {
-                ToolTip.Active = false;
                 findDocumentsForm.ShowDialog();
             };
 
@@ -518,6 +517,8 @@ namespace PDFKeeper.WinForms.Views
             {
                 DocumentsDataGridView.Select();
             }
+
+            ToolTip.Active = false;
         }
 
         private void DocumentsDataGridView_MouseDown(object sender, MouseEventArgs e)
