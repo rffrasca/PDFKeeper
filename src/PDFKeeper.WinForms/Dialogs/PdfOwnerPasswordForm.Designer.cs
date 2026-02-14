@@ -103,6 +103,7 @@ namespace PDFKeeper.WinForms.Dialogs
             this.MinimizeBox = false;
             this.Name = "PdfOwnerPasswordForm";
             this.ShowInTaskbar = false;
+            this.Load += new System.EventHandler(this.PdfOwnerPasswordForm_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

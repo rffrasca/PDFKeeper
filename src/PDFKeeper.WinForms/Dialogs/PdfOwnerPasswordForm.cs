@@ -30,6 +30,11 @@ namespace PDFKeeper.WinForms.Dialogs
             InitializeComponent();
         }
 
+        private void PdfOwnerPasswordForm_Load(object sender, EventArgs e)
+        {
+            Activate();
+        }
+
         private void OK_Button_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;

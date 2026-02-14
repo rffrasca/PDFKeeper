@@ -51,7 +51,6 @@ namespace PDFKeeper.WinForms.Views
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
             SetActions();
-            BringToFront();
         }
 
         private void SetActions()
@@ -89,6 +88,7 @@ namespace PDFKeeper.WinForms.Views
         private void AddPdfForm_Load(object sender, EventArgs e)
         {
             viewModel.SelectPdfCommand.Execute(pdfPath);
+            Activate();
         }
 
         private void ViewButton_Click(object sender, EventArgs e)
