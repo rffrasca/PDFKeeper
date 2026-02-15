@@ -652,10 +652,10 @@ namespace PDFKeeper.WinForms.Views
                         viewModel.FilePrintPreviewMenuEnabled;
                     break;
                 case nameof(viewModel.FileDatabaseMenuVisible):
-                    FileToolStripSeparator7.Visible =
-                        viewModel.FileDatabaseMenuVisible;
-                    FileDatabaseToolStripMenuItem.Visible =
-                        viewModel.FileDatabaseMenuVisible;
+                    FileToolStripSeparator7.Visible = viewModel.FileDatabaseMenuVisible;
+                    FileDatabaseToolStripMenuItem.Visible = viewModel.FileDatabaseMenuVisible;
+                    FileDatabaseNewToolStripButton.Visible = viewModel.FileDatabaseMenuVisible;
+                    FileDatabaseOpenToolStripButton.Visible = viewModel.FileDatabaseMenuVisible;
                     break;
                 case nameof(viewModel.FileExportMenuEnabled):
                     FileExportToolStripMenuItem.Enabled = viewModel.FileExportMenuEnabled;
