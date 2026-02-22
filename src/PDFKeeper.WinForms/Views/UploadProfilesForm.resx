@@ -131,12 +131,6 @@
   <data name="UploadProfileNamesListBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
-  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="UploadProfileNamesListBox.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="UploadProfileNamesListBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>459, 394</value>
   </data>
@@ -164,9 +158,6 @@
   </data>
   <data name="DeleteButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>397, 426</value>
-  </data>
-  <data name="DeleteButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="DeleteButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -201,9 +192,6 @@
   <data name="EditButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>316, 426</value>
   </data>
-  <data name="EditButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="EditButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
@@ -236,9 +224,6 @@
   </data>
   <data name="AddButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>235, 426</value>
-  </data>
-  <data name="AddButton.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="AddButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -282,6 +267,9 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <metadata name="HelpProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>22, 15</value>
+  </metadata>
   <data name="$this.HelpKeyword" xml:space="preserve">
     <value>Adding, Editing, and Deleting Upload Profiles.html</value>
   </data>
