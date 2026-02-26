@@ -105,13 +105,13 @@ K4os.Hash.xxHash
     License: MIT License, full text can be found at https://raw.githubusercontent.com/MiloszKrajewski/K4os.Hash.xxHash/master/LICENSE
 
 Magick.NET-Q16-x64
-    https://www.nuget.org/packages/Magick.NET-Q16-x64/14.10.2
+    https://www.nuget.org/packages/Magick.NET-Q16-x64/14.10.3
     Authors: dlemstra
     Copyright: Copyright 2013-2026 Dirk Lemstra
     License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
 
 Magick.NET.Core
-    https://www.nuget.org/packages/Magick.NET.Core/14.10.2
+    https://www.nuget.org/packages/Magick.NET.Core/14.10.3
     Authors: dlemstra
     Copyright: Copyright 2013-2026 Dirk Lemstra
     License: Apache License 2.0, full text can be found at https://github.com/dlemstra/Magick.NET/blob/main/License.txt
