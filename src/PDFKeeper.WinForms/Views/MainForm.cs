@@ -739,32 +739,67 @@ namespace PDFKeeper.WinForms.Views
                         viewModel.ToolsUploadProfilesMenuEnabled;
                     break;
                 case nameof(viewModel.IdColumnHeaderValue):
-                    DocumentsDataGridView.Columns[2].HeaderCell.Value =
-                        viewModel.IdColumnHeaderValue;
+                    try
+                    {
+                        DocumentsDataGridView.Columns[2].HeaderCell.Value =
+                            viewModel.IdColumnHeaderValue;
+                    }
+                    catch (ArgumentOutOfRangeException) { }
+                                        
                     break;
                 case nameof(viewModel.TitleColumnHeaderValue):
-                    DocumentsDataGridView.Columns[3].HeaderCell.Value =
-                        viewModel.TitleColumnHeaderValue;
+                    try
+                    {
+                        DocumentsDataGridView.Columns[3].HeaderCell.Value =
+                            viewModel.TitleColumnHeaderValue;
+                    }
+                    catch (ArgumentOutOfRangeException) { }
+                                        
                     break;
                 case nameof(viewModel.AuthorColumnHeaderValue):
-                    DocumentsDataGridView.Columns[4].HeaderCell.Value =
-                        viewModel.AuthorColumnHeaderValue;
+                    try
+                    {
+                        DocumentsDataGridView.Columns[4].HeaderCell.Value =
+                            viewModel.AuthorColumnHeaderValue;
+                    }
+                    catch (ArgumentOutOfRangeException) { }
+                                        
                     break;
                 case nameof(viewModel.SubjectColumnHeaderValue):
-                    DocumentsDataGridView.Columns[5].HeaderCell.Value =
-                        viewModel.SubjectColumnHeaderValue;
+                    try
+                    {
+                        DocumentsDataGridView.Columns[5].HeaderCell.Value =
+                            viewModel.SubjectColumnHeaderValue;
+                    }
+                    catch (ArgumentOutOfRangeException) { }
+                                        
                     break;
                 case nameof(viewModel.CategoryColumnHeaderValue):
-                    DocumentsDataGridView.Columns[6].HeaderCell.Value =
-                        viewModel.CategoryColumnHeaderValue;
+                    try
+                    {
+                        DocumentsDataGridView.Columns[6].HeaderCell.Value =
+                            viewModel.CategoryColumnHeaderValue;
+                    }
+                    catch (ArgumentOutOfRangeException) { }
+                                        
                     break;
                 case nameof(viewModel.TaxYearColumnHeaderValue):
-                    DocumentsDataGridView.Columns[7].HeaderCell.Value =
-                        viewModel.TaxYearColumnHeaderValue;
+                    try
+                    {
+                        DocumentsDataGridView.Columns[7].HeaderCell.Value =
+                            viewModel.TaxYearColumnHeaderValue;
+                    }
+                    catch (ArgumentOutOfRangeException) { }
+                                        
                     break;
                 case nameof(viewModel.AddedColumnHeaderValue):
-                    DocumentsDataGridView.Columns[8].HeaderCell.Value =
-                        viewModel.AddedColumnHeaderValue;
+                    try
+                    {
+                        DocumentsDataGridView.Columns[8].HeaderCell.Value =
+                            viewModel.AddedColumnHeaderValue;
+                    }
+                    catch (ArgumentOutOfRangeException) { }
+                                        
                     break;
                 case nameof(viewModel.Documents):
                     DocumentsDataGridView.DataSource = viewModel.Documents;
