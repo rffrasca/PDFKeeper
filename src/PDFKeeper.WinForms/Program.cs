@@ -121,6 +121,7 @@ namespace PDFKeeper.WinForms
                 PrintPreviewDialogService>();
             serviceCollection.AddSingleton<IRestrictedPdfViewerService,
                 RestrictedPdfViewerService>();
+            serviceCollection.AddSingleton<IVirtualKeyService, VirtualKeyService>();
             return serviceCollection.BuildServiceProvider();
         }
 

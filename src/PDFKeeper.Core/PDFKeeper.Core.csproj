@@ -101,6 +101,7 @@
     <Compile Include="Services\AliasService.cs" />
     <Compile Include="Services\IAliasService.cs" />
     <Compile Include="Services\IChildDialogService.cs" />
+    <Compile Include="Services\IVirtualKeyService.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Application\UserProfileFolder.cs" />
     <Compile Include="Commands\ExportDocumentCommand.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Services\IHelpService.cs" />
     <Compile Include="Services\IPrintDialogService.cs" />
     <Compile Include="Services\IPrintPreviewDialogService.cs" />
+    <Compile Include="Services\VirtualKeyService.cs" />
     <Compile Include="ViewModels\ColumnDataListsViewModel.cs" />
     <Compile Include="ViewModels\ColumnDataListViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\FormClosingCommand.cs" />
+    <Compile Include="Commands\MainFormDragEnterCommand.cs" />
     <Compile Include="Commands\UpdateCheckCommand.cs" />
     <Compile Include="Commands\FileExtractAllCommand.cs" />
     <Compile Include="Commands\DocumentSelectionChangedCommand.cs" />

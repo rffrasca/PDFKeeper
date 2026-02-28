@@ -46,6 +46,21 @@ namespace PDFKeeper.Core.Interop
         internal static extern bool RemoveClipboardFormatListener(IntPtr hwnd);
 
         /// <summary>
+        /// Retrieves the status of the specified virtual key.
+        /// </summary>
+        /// <remarks>
+        /// For more information about virtual key codes, see the Windows API documentation.
+        /// </remarks>
+        /// <param name="nVirtKey">The virtual key code for which to retrieve the status.</param>
+        /// <returns>
+        /// A short value indicating the status of the specified virtual key. If the high-order bit
+        /// is set, the key is down; if the low-order bit is set, the key is toggled.
+        /// </returns>
+        [DllImport("user32.dll")]
+        [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
+        internal static extern short GetKeyState(int nVirtKey);
+
+        /// <summary>
         /// Retrieves the full path name of a known folder identified by the folder's
         /// KNOWNFOLDERID.
         /// </summary>
