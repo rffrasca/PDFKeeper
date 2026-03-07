@@ -535,6 +535,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     connStrBuilder.ConnectionString,
                     oracleCredential,
                     DatabaseSession.SchemaName);
+                connection.Close();
             }
             catch (OracleException ex)
             {
