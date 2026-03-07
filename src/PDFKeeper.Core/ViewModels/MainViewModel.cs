@@ -1840,6 +1840,8 @@ namespace PDFKeeper.Core.ViewModels
                 }
             }
 
+            EditReplacePdfMenuEnabled = !enabled;
+            EditFlagDocumentMenuEnabled = !enabled;
             DocumentsSetTitleMenuEnabled = enabled;
             DocumentsSetAuthorMenuEnabled = enabled;
             DocumentsSetSubjectMenuEnabled = enabled;
