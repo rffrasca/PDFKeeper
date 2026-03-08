@@ -233,16 +233,19 @@ namespace PDFKeeper.Core.FileIO.PDF
         {
             try
             {
-                using var reader = new PdfReader(pdfFile);
-                using var document = new PdfDocument(reader);
-
-                if (reader.IsOpenedWithFullPermission())
+                using (var reader = new PdfReader(pdfFile))
                 {
-                    return PasswordType.None;
-                }
-                else
-                {
-                    return PasswordType.Owner;
+                    using (var document = new PdfDocument(reader))
+                    {
+                        if (reader.IsOpenedWithFullPermission())
+                        {
+                            return PasswordType.None;
+                        }
+                        else
+                        {
+                            return PasswordType.Owner;
+                        }
+                    }
                 }
             }
             catch (BadPasswordException)
@@ -267,19 +270,23 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// </returns>
         public byte[] CreatePreviewImage(decimal pixelDensity)
         {
-            using var image = new MagickImageCollection();
-
-            var settings = new MagickReadSettings
+            using (var image = new MagickImageCollection())
             {
-                Density = new Density(((double)pixelDensity)),
-                FrameIndex = 0,
-                FrameCount = 1
-            };
+                var settings = new MagickReadSettings
+                {
+                    Density = new Density((double)pixelDensity),
+                    FrameIndex = 0,
+                    FrameCount = 1
+                };
 
-            image.Read(pdfFile, settings);
-            using var stream = new MemoryStream();
-            image.Write(stream, MagickFormat.Png);
-            return stream.ToArray();
+                image.Read(pdfFile, settings);
+
+                using (var stream = new MemoryStream())
+                {
+                    image.Write(stream, MagickFormat.Png);
+                    return stream.ToArray();
+                }
+            }
         }
 
         /// <summary>
@@ -393,9 +400,11 @@ namespace PDFKeeper.Core.FileIO.PDF
                 
                 foreach (var image in images)
                 {
-                    using var output = new MemoryStream();
-                    image.Write(output, MagickFormat.Tiff);
-                    imageList.Add(output.ToArray());
+                    using (var output = new MemoryStream())
+                    {
+                        image.Write(output, MagickFormat.Tiff);
+                        imageList.Add(output.ToArray());
+                    }
                 }
             }
 
@@ -408,33 +417,35 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// <returns>The text annotations.</returns>
         public string GetTextAnnot()
         {
-            using var reader = new PdfReader(pdfFile);
-            var output = new StringBuilder();
-
-            using (var document = new PdfDocument(reader))
+            using (var reader = new PdfReader(pdfFile))
             {
-                for (int pageCounter = 1,
-                    loopTo = document.GetNumberOfPages();
-                    pageCounter <= loopTo;
-                    pageCounter++)
+                var output = new StringBuilder();
+
+                using (var document = new PdfDocument(reader))
                 {
-                    var page = document.GetPage(pageCounter);
-                    var annotations = page.GetAnnotations();
-
-                    foreach (var annotation in annotations)
+                    for (int pageCounter = 1,
+                        loopTo = document.GetNumberOfPages();
+                        pageCounter <= loopTo;
+                        pageCounter++)
                     {
-                        var dict = annotation.GetPdfObject();
-                        var text = dict.GetAsString(PdfName.Contents);
+                        var page = document.GetPage(pageCounter);
+                        var annotations = page.GetAnnotations();
 
-                        if (text != null)
+                        foreach (var annotation in annotations)
                         {
-                            output.AppendLine(text.ToUnicodeString());
+                            var dict = annotation.GetPdfObject();
+                            var text = dict.GetAsString(PdfName.Contents);
+
+                            if (text != null)
+                            {
+                                output.AppendLine(text.ToUnicodeString());
+                            }
                         }
                     }
                 }
-            }
 
-            return output.ToString();
+                return output.ToString();
+            }
         }
 
         /// <summary>
@@ -506,12 +517,14 @@ namespace PDFKeeper.Core.FileIO.PDF
             
             using (var reader = new PdfReader(pdfFile))
             {
-                using var document = new PdfDocument(reader);
-                var splitter = new PdfFileSplitter(document, destination, pdfFile.Name);
-
-                foreach (var splittedDocument in splitter.SplitByPageCount(1))
+                using (var document = new PdfDocument(reader))
                 {
-                    splittedDocument.Close();
+                    var splitter = new PdfFileSplitter(document, destination, pdfFile.Name);
+
+                    foreach (var splittedDocument in splitter.SplitByPageCount(1))
+                    {
+                        splittedDocument.Close();
+                    }
                 }
             }
 
@@ -537,27 +550,30 @@ namespace PDFKeeper.Core.FileIO.PDF
 
             using (var reader = new PdfReader(pdfFile))
             {
-                using var document = new PdfDocument(reader);
-                for (int page = 1, loopTo = document.GetNumberOfPages(); page <= loopTo; page++)
+                using (var document = new PdfDocument(reader))
                 {
-                    try
+                    for (int page = 1, 
+                        loopTo = document.GetNumberOfPages(); page <= loopTo; page++)
                     {
-                        var imageDetector = new PdfImageDetector();
-                        var canvasProcessor = new PdfCanvasProcessor(imageDetector);
-                        canvasProcessor.ProcessPageContent(document.GetPage(1));
-
-                        if (imageDetector.ImagesDetected)
+                        try
                         {
-                            result = true;
+                            var imageDetector = new PdfImageDetector();
+                            var canvasProcessor = new PdfCanvasProcessor(imageDetector);
+                            canvasProcessor.ProcessPageContent(document.GetPage(1));
+
+                            if (imageDetector.ImagesDetected)
+                            {
+                                result = true;
+                            }
                         }
-                    }
-                    catch (ArgumentException)   // PDF contains an invalid encoding.
-                    {
-                        return result;
-                    }
-                    catch (InlineImageParseException)
-                    {
-                        return result;
+                        catch (ArgumentException)   // PDF contains an invalid encoding.
+                        {
+                            return result;
+                        }
+                        catch (InlineImageParseException)
+                        {
+                            return result;
+                        }
                     }
                 }
             }
@@ -578,37 +594,41 @@ namespace PDFKeeper.Core.FileIO.PDF
 
             using (var reader = new PdfReader(pdfFile))
             {
-                using var document = new PdfDocument(reader);
-                try
+                using (var document = new PdfDocument(reader))
                 {
-                    var catalog = document.GetCatalog().GetPdfObject();
-                    var names = catalog.GetAsDictionary(PdfName.Names);
-                    var filespecs = names.GetAsDictionary(
-                        PdfName.EmbeddedFiles).GetAsArray(
-                        PdfName.Names);
-
-                    for (int i = 1; i < filespecs.Size(); i++)
+                    try
                     {
-                        var filespec = filespecs.GetAsDictionary(i);
+                        var catalog = document.GetCatalog().GetPdfObject();
+                        var names = catalog.GetAsDictionary(PdfName.Names);
+                        var filespecs = names.GetAsDictionary(
+                            PdfName.EmbeddedFiles).GetAsArray(
+                            PdfName.Names);
 
-                        try
+                        for (int i = 1; i < filespecs.Size(); i++)
                         {
-                            var file = filespec.GetAsDictionary(PdfName.EF);
+                            var filespec = filespecs.GetAsDictionary(i);
 
-                            foreach (PdfName key in file.KeySet())
+                            try
                             {
-                                var filename = filespec.GetAsString(key).ToString();
+                                var file = filespec.GetAsDictionary(PdfName.EF);
 
-                                if (!attachments.ContainsKey(filename))
+                                foreach (PdfName key in file.KeySet())
                                 {
-                                    attachments.Add(filename, file.GetAsStream(key).GetBytes());
+                                    var filename = filespec.GetAsString(key).ToString();
+
+                                    if (!attachments.ContainsKey(filename))
+                                    {
+                                        attachments.Add(
+                                            filename,
+                                            file.GetAsStream(key).GetBytes());
+                                    }
                                 }
                             }
+                            catch (NullReferenceException) { }
                         }
-                        catch (NullReferenceException) { }
                     }
+                    catch (NullReferenceException) { }
                 }
-                catch (NullReferenceException) { }
             }
 
             return attachments;
@@ -626,31 +646,38 @@ namespace PDFKeeper.Core.FileIO.PDF
             var embeddedFiles = new Dictionary<string, byte[]>();
             using (var reader = new PdfReader(pdfFile))
             {
-                using var document = new PdfDocument(reader);
-                for (int i = 1; i <= document.GetNumberOfPages(); i++)
+                using (var document = new PdfDocument(reader))
                 {
-                    var pdfArray = document.GetPage(i).GetPdfObject().GetAsArray(PdfName.Annots);
-
-                    if (pdfArray != null)
+                    for (int i = 1; i <= document.GetNumberOfPages(); i++)
                     {
-                        for (int j = 0; j < pdfArray.Size(); j++)
+                        var pdfArray = document.GetPage(i).GetPdfObject().GetAsArray(
+                            PdfName.Annots);
+
+                        if (pdfArray != null)
                         {
-                            var annot = pdfArray.GetAsDictionary(j);
-
-                            if (PdfName.FileAttachment.Equals(annot.GetAsName(PdfName.Subtype)))
+                            for (int j = 0; j < pdfArray.Size(); j++)
                             {
-                                var filespec = annot.GetAsDictionary(PdfName.FS);
-                                var refs = filespec.GetAsDictionary(PdfName.EF);
+                                var annot = pdfArray.GetAsDictionary(j);
 
-                                foreach (PdfName key in refs.KeySet())
+                                if (PdfName.FileAttachment.Equals(
+                                    annot.GetAsName(PdfName.Subtype)))
                                 {
-                                    var filename = filespec.GetAsString(key).ToString().Replace(
-                                        Path.AltDirectorySeparatorChar,
-                                        Path.DirectorySeparatorChar).Substring(3);
+                                    var filespec = annot.GetAsDictionary(PdfName.FS);
+                                    var refs = filespec.GetAsDictionary(PdfName.EF);
 
-                                    if (!embeddedFiles.ContainsKey(filename))
+                                    foreach (PdfName key in refs.KeySet())
                                     {
-                                        embeddedFiles.Add(filename, refs.GetAsStream(key).GetBytes());
+                                        var filename = filespec.GetAsString(
+                                            key).ToString().Replace(
+                                            Path.AltDirectorySeparatorChar,
+                                            Path.DirectorySeparatorChar).Substring(3);
+
+                                        if (!embeddedFiles.ContainsKey(filename))
+                                        {
+                                            embeddedFiles.Add(
+                                                filename,
+                                                refs.GetAsStream(key).GetBytes());
+                                        }
                                     }
                                 }
                             }

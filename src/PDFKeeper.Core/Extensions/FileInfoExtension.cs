@@ -76,10 +76,14 @@ namespace PDFKeeper.Core.Extensions
         /// <returns>The SHA512 hash value of the file.</returns>
         internal static string ComputeHash(this FileInfo file)
         {
-            using var algorithm = HashAlgorithm.Create("SHA512");
-            using var stream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read);
-            var hash = algorithm.ComputeHash(stream);
-            return BitConverter.ToString(hash);
+            using (var algorithm = HashAlgorithm.Create("SHA512"))
+            {
+                using (var stream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
+                {
+                    var hash = algorithm.ComputeHash(stream);
+                    return BitConverter.ToString(hash);
+                }
+            }
         }
 
         /// <summary>
@@ -125,11 +129,11 @@ namespace PDFKeeper.Core.Extensions
             {
                 try
                 {
-                    using var stream = new FileStream(
+                    using (var stream = new FileStream(
                         file.FullName,
                         FileMode.Open,
                         FileAccess.ReadWrite,
-                        FileShare.None);
+                        FileShare.None)) { }
                 }
                 catch (IOException)
                 {

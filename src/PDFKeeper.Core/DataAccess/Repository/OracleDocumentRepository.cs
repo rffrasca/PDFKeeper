@@ -70,14 +70,20 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                using var reader = command.ExecuteReader();
-                reader.Read();
-                return reader.GetInt32(0);
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+                            return reader.GetInt32(0);
+                        }
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -93,14 +99,18 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("doc_dummy", searchTerm);
-                return ExecuteQuery(command);
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("doc_dummy", searchTerm);
+                        return ExecuteQuery(command);
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -108,7 +118,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public DataTable GetListOfDocuments(string author, string subject, string category, string taxYear)
+        public DataTable GetListOfDocuments(
+            string author,
+            string subject,
+            string category,
+            string taxYear)
         {
             var sql = "select doc_id,doc_title,doc_author,doc_subject,doc_category, " +
                 "doc_tax_year,doc_added,doc_flag from docs " +
@@ -119,17 +133,21 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("doc_author", author);
-                command.Parameters.Add("doc_subject", subject);
-                command.Parameters.Add("doc_category", category);
-                command.Parameters.Add("doc_tax_year", taxYear);
-                return ExecuteQuery(command);
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("doc_author", author);
+                        command.Parameters.Add("doc_subject", subject);
+                        command.Parameters.Add("doc_category", category);
+                        command.Parameters.Add("doc_tax_year", taxYear);
+                        return ExecuteQuery(command);
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -145,14 +163,18 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("doc_added", dateAdded);
-                return ExecuteQuery(command);
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("doc_added", dateAdded);
+                        return ExecuteQuery(command);
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -167,12 +189,16 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                return ExecuteQuery(command);
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        return ExecuteQuery(command);
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -187,12 +213,16 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                return ExecuteQuery(command);
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        return ExecuteQuery(command);
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -210,16 +240,20 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("doc_subject", subject);
-                command.Parameters.Add("doc_category", category);
-                command.Parameters.Add("doc_tax_year", taxYear);
-                return ExecuteQuery(command);
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("doc_subject", subject);
+                        command.Parameters.Add("doc_category", category);
+                        command.Parameters.Add("doc_tax_year", taxYear);
+                        return ExecuteQuery(command);
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -237,16 +271,20 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("doc_author", author);
-                command.Parameters.Add("doc_category", category);
-                command.Parameters.Add("doc_tax_year", taxYear);
-                return ExecuteQuery(command);
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("doc_author", author);
+                        command.Parameters.Add("doc_category", category);
+                        command.Parameters.Add("doc_tax_year", taxYear);
+                        return ExecuteQuery(command);
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -264,16 +302,20 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("doc_author", author);
-                command.Parameters.Add("doc_subject", subject);
-                command.Parameters.Add("doc_tax_year", taxYear);
-                return ExecuteQuery(command);
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("doc_author", author);
+                        command.Parameters.Add("doc_subject", subject);
+                        command.Parameters.Add("doc_tax_year", taxYear);
+                        return ExecuteQuery(command);
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -291,16 +333,20 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("doc_author", author);
-                command.Parameters.Add("doc_subject", subject);
-                command.Parameters.Add("doc_category", category);
-                return ExecuteQuery(command);
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("doc_author", author);
+                        command.Parameters.Add("doc_subject", subject);
+                        command.Parameters.Add("doc_category", category);
+                        return ExecuteQuery(command);
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -328,40 +374,50 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("doc_id", id);
-                using var reader = command.ExecuteReader();
-                reader.Read();
-
-                var document = new Document
+                    DatabaseSession.SchemaName))
                 {
-                    Id = id,
-                    Title = reader["doc_title"].ToString(),
-                    Author = reader["doc_author"].ToString(),
-                    Subject = reader["doc_subject"].ToString(),
-                    Keywords = reader["doc_keywords"].ToString(),
-                    Added = reader["doc_added"].ToString(),
-                    Notes = reader["doc_notes"].ToString(),
-                    Category = reader["doc_category"].ToString(),
-                    Flag = Convert.ToInt32(reader["doc_flag"]),
-                    TaxYear = reader["doc_tax_year"].ToString(),
-                    Text = reader["doc_text"].ToString(),
-                    SearchTermSnippets = GetSearchTermSnippets(id, searchTerm)
-                };
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("doc_id", id);
 
-                if (includePdf)
-                {
-                    var blob = reader.GetOracleBlob(6);
-                    using var memoryStream = new MemoryStream(blob.Value);
-                    document.Pdf = memoryStream.ToArray();
+                        using (var reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+
+                            var document = new Document
+                            {
+                                Id = id,
+                                Title = reader["doc_title"].ToString(),
+                                Author = reader["doc_author"].ToString(),
+                                Subject = reader["doc_subject"].ToString(),
+                                Keywords = reader["doc_keywords"].ToString(),
+                                Added = reader["doc_added"].ToString(),
+                                Notes = reader["doc_notes"].ToString(),
+                                Category = reader["doc_category"].ToString(),
+                                Flag = Convert.ToInt32(reader["doc_flag"]),
+                                TaxYear = reader["doc_tax_year"].ToString(),
+                                Text = reader["doc_text"].ToString(),
+                                SearchTermSnippets = GetSearchTermSnippets(id, searchTerm)
+                            };
+
+                            if (includePdf)
+                            {
+                                var blob = reader.GetOracleBlob(6);
+
+                                using (var memoryStream = new MemoryStream(blob.Value))
+                                {
+                                    document.Pdf = memoryStream.ToArray();
+                                }
+                            }
+
+                            return document;
+                        }
+                    }
                 }
-
-                return document;
             }
             catch (InvalidOperationException ex)
             {
@@ -398,29 +454,33 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("doc_title", document.Title);
-                command.Parameters.Add("doc_author", document.Author);
-                command.Parameters.Add("doc_subject", document.Subject);
-                command.Parameters.Add("doc_keywords", document.Keywords);
-                command.Parameters.Add("doc_added", document.Added);
-                command.Parameters.Add("doc_notes", document.Notes);
-                command.Parameters.Add(
-                    "doc_pdf",
-                    OracleDbType.Blob,
-                    document.Pdf,
-                    ParameterDirection.Input);
-                command.Parameters.Add("doc_category", document.Category);
-                command.Parameters.Add("doc_flag", document.Flag);
-                command.Parameters.Add("doc_tax_year", document.TaxYear);
-                command.Parameters.Add("doc_text_annotations", document.TextAnnotations);
-                command.Parameters.Add("doc_text", document.Text);
-                command.ExecuteNonQuery();
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("doc_title", document.Title);
+                        command.Parameters.Add("doc_author", document.Author);
+                        command.Parameters.Add("doc_subject", document.Subject);
+                        command.Parameters.Add("doc_keywords", document.Keywords);
+                        command.Parameters.Add("doc_added", document.Added);
+                        command.Parameters.Add("doc_notes", document.Notes);
+                        command.Parameters.Add(
+                            "doc_pdf",
+                            OracleDbType.Blob,
+                            document.Pdf,
+                            ParameterDirection.Input);
+                        command.Parameters.Add("doc_category", document.Category);
+                        command.Parameters.Add("doc_flag", document.Flag);
+                        command.Parameters.Add("doc_tax_year", document.TaxYear);
+                        command.Parameters.Add("doc_text_annotations", document.TextAnnotations);
+                        command.Parameters.Add("doc_text", document.Text);
+                        command.ExecuteNonQuery();
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -463,34 +523,38 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("doc_title", document.Title);
-                command.Parameters.Add("doc_author", document.Author);
-                command.Parameters.Add("doc_subject", document.Subject);
-                command.Parameters.Add("doc_added", document.Added);
-                command.Parameters.Add("doc_notes", document.Notes);
-
-                if (updatePdf)
+                    DatabaseSession.SchemaName))
                 {
-                    command.Parameters.Add(
-                        "doc_pdf",
-                        OracleDbType.Blob,
-                        document.Pdf,
-                        ParameterDirection.Input);
-                }
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("doc_title", document.Title);
+                        command.Parameters.Add("doc_author", document.Author);
+                        command.Parameters.Add("doc_subject", document.Subject);
+                        command.Parameters.Add("doc_added", document.Added);
+                        command.Parameters.Add("doc_notes", document.Notes);
 
-                command.Parameters.Add("doc_category", document.Category);
-                command.Parameters.Add("doc_tax_year", document.TaxYear);
-                command.Parameters.Add("doc_flag", document.Flag);
-                command.Parameters.Add("doc_text_annotations", document.TextAnnotations);
-                command.Parameters.Add("doc_text", document.Text);
-                command.Parameters.Add("doc_id", document.Id);
-                command.ExecuteNonQuery();
+                        if (updatePdf)
+                        {
+                            command.Parameters.Add(
+                                "doc_pdf",
+                                OracleDbType.Blob,
+                                document.Pdf,
+                                ParameterDirection.Input);
+                        }
+
+                        command.Parameters.Add("doc_category", document.Category);
+                        command.Parameters.Add("doc_tax_year", document.TaxYear);
+                        command.Parameters.Add("doc_flag", document.Flag);
+                        command.Parameters.Add("doc_text_annotations", document.TextAnnotations);
+                        command.Parameters.Add("doc_text", document.Text);
+                        command.Parameters.Add("doc_id", document.Id);
+                        command.ExecuteNonQuery();
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -508,14 +572,18 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("doc_id", id);
-                command.ExecuteNonQuery();
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.BindByName = true;
+                        command.Parameters.Add("doc_id", id);
+                        command.ExecuteNonQuery();
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -531,11 +599,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
         {
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                connection.Close();
+                    DatabaseSession.SchemaName)) { }
             }
             catch (OracleException ex)
             {
@@ -574,11 +641,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         protected override DataTable ExecuteQuery(OracleCommand command)
         {
-            using var adapter = new OracleDataAdapter(command);
-            using var table = new DataTable();
-            table.Locale = CultureInfo.InvariantCulture;
-            adapter.Fill(table);
-            return table;
+            using (var adapter = new OracleDataAdapter(command))
+            {
+                using (var table = new DataTable())
+                {
+                    table.Locale = CultureInfo.InvariantCulture;
+                    adapter.Fill(table);
+                    return table;
+                }
+            }
         }
 
         protected override string GetSearchTermSnippets(int id, string searchTerm)
@@ -599,25 +670,32 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.Parameters.Add(
-                    "index_name",
-                    OracleDbType.Varchar2,
-                    indexName,
-                    ParameterDirection.Input);
-                command.Parameters.Add("doc_id", id);
-                command.Parameters.Add("doc_dummy", searchTerm);
-                command.Parameters.Add(
-                    "translate",
-                    OracleDbType.Boolean,
-                    false,
-                    ParameterDirection.Input);
-                using var reader = command.ExecuteReader();
-                return reader.Read() ? reader.GetString(0) : string.Empty;
+                    DatabaseSession.SchemaName))
+                {
+                    using (var command = new OracleCommand(sql, connection))
+                    {
+                        command.Parameters.Add(
+                            "index_name",
+                            OracleDbType.Varchar2,
+                            indexName,
+                            ParameterDirection.Input);
+                        command.Parameters.Add("doc_id", id);
+                        command.Parameters.Add("doc_dummy", searchTerm);
+                        command.Parameters.Add(
+                            "translate",
+                            OracleDbType.Boolean,
+                            false,
+                            ParameterDirection.Input);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            return reader.Read() ? reader.GetString(0) : string.Empty;
+                        }
+                    }
+                }
             }
             catch (OracleException ex)
             {
@@ -634,36 +712,43 @@ namespace PDFKeeper.Core.DataAccess.Repository
             
             try
             {
-                using var connection = OracleConnectionFactory.Create(
+                using (var connection = OracleConnectionFactory.Create(
                     connStrBuilder.ConnectionString,
                     oracleCredential,
-                    DatabaseSession.SchemaName);
-                using var command = new OracleCommand(sql, connection);
-                command.BindByName = true;
-                command.Parameters.Add("grantor", DatabaseSession.SchemaName.ToUpper());
-                command.Parameters.Add("grantee", DatabaseSession.UserName.ToUpper());
-                using var reader = command.ExecuteReader();
-                DatabaseSession.SelectGranted = false;
-                DatabaseSession.InsertGranted = false;
-                DatabaseSession.UpdateGranted = false;
-                DatabaseSession.DeleteGranted = false;
-
-                while (reader.Read())
+                    DatabaseSession.SchemaName))
                 {
-                    switch (reader.GetString(0))
+                    using (var command = new OracleCommand(sql, connection))
                     {
-                        case "SELECT":
-                            DatabaseSession.SelectGranted = true;
-                            break;
-                        case "INSERT":
-                            DatabaseSession.InsertGranted = true;
-                            break;
-                        case "UPDATE":
-                            DatabaseSession.UpdateGranted = true;
-                            break;
-                        case "DELETE":
-                            DatabaseSession.DeleteGranted = true;
-                            break;
+                        command.BindByName = true;
+                        command.Parameters.Add("grantor", DatabaseSession.SchemaName.ToUpper());
+                        command.Parameters.Add("grantee", DatabaseSession.UserName.ToUpper());
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            DatabaseSession.SelectGranted = false;
+                            DatabaseSession.InsertGranted = false;
+                            DatabaseSession.UpdateGranted = false;
+                            DatabaseSession.DeleteGranted = false;
+
+                            while (reader.Read())
+                            {
+                                switch (reader.GetString(0))
+                                {
+                                    case "SELECT":
+                                        DatabaseSession.SelectGranted = true;
+                                        break;
+                                    case "INSERT":
+                                        DatabaseSession.InsertGranted = true;
+                                        break;
+                                    case "UPDATE":
+                                        DatabaseSession.UpdateGranted = true;
+                                        break;
+                                    case "DELETE":
+                                        DatabaseSession.DeleteGranted = true;
+                                        break;
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -24,20 +24,26 @@ using PDFKeeper.WinForms.Dialogs;
 
 namespace PDFKeeper.WinForms.Services
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Performance",
+    "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Instantiated via dependency injection or reflection.")]
     internal class SetDateTimeAddedDialogService : IDialogService
     {
         public string ShowDialog(string arg = null)
         {
-            using var dialog = new SetDateTimeAddedForm();
-            dialog.ShowDialog();
+            using (var dialog = new SetDateTimeAddedForm())
+            {
+                dialog.ShowDialog();
 
-            if (dialog.DialogResult.Equals(DialogResult.OK))
-            {
-                return dialog.DateTimeAdded;
-            }
-            else
-            {
-                return null;
+                if (dialog.DialogResult.Equals(DialogResult.OK))
+                {
+                    return dialog.DateTimeAdded;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }

@@ -25,16 +25,22 @@ using PDFKeeper.Core.Services;
 
 namespace PDFKeeper.WinForms.Services
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Performance",
+        "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Instantiated via dependency injection or reflection.")]
     internal class PrintPreviewDialogService : IPrintPreviewDialogService
     {
         public void ShowDialog(PrintDocument printDocument, Size printPreviewDialogSize)
         {
-            using var dialog = new PrintPreviewDialog();
-            dialog.Document = printDocument;
-            dialog.ClientSize = printPreviewDialogSize;
-            dialog.ShowIcon = false;
-            dialog.UseAntiAlias = true;
-            dialog.ShowDialog();
+            using (var dialog = new PrintPreviewDialog())
+            {
+                dialog.Document = printDocument;
+                dialog.ClientSize = printPreviewDialogSize;
+                dialog.ShowIcon = false;
+                dialog.UseAntiAlias = true;
+                dialog.ShowDialog();
+            }
         }
     }
 }

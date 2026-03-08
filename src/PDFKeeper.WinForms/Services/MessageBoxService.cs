@@ -25,6 +25,10 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Performance",
+    "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Instantiated via dependency injection or reflection.")]
     internal class MessageBoxService : IMessageBoxService
     {
         private readonly MessageBoxOptions messageBoxOptions;

@@ -26,30 +26,36 @@ using PDFKeeper.WinForms.Views;
 
 namespace PDFKeeper.WinForms.Services
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Performance",
+    "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Instantiated via dependency injection or reflection.")]
     internal class SetAuthorDialogService : IDialogService
     {
         public string ShowDialog(string arg = null)
         {
             var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
 
-            using var dialog = new SetAuthorForm();
-            dialog.ShowDialog();
-
-            if (dialog.DialogResult.Equals(DialogResult.OK))
+            using (var dialog = new SetAuthorForm())
             {
-                if (dialog.AuthorUserControl.Author.Length > 0)
+                dialog.ShowDialog();
+
+                if (dialog.DialogResult.Equals(DialogResult.OK))
                 {
-                    return dialog.AuthorUserControl.Author;
+                    if (dialog.AuthorUserControl.Author.Length > 0)
+                    {
+                        return dialog.AuthorUserControl.Author;
+                    }
+                    else
+                    {
+                        messageBoxService.ShowMessage(Resources.AuthorCannotBeBlank, true);
+                        return null;
+                    }
                 }
                 else
                 {
-                    messageBoxService.ShowMessage(Resources.AuthorCannotBeBlank, true);
                     return null;
                 }
-            }
-            else
-            {
-                return null;
             }
         }
     }

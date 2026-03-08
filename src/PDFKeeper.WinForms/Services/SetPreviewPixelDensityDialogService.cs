@@ -23,12 +23,19 @@ using PDFKeeper.WinForms.Dialogs;
 
 namespace PDFKeeper.WinForms.Services
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Performance",
+    "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Instantiated via dependency injection or reflection.")]
     internal class SetPreviewPixelDensityDialogService : IDialogService
     {
         public string ShowDialog(string arg = null)
         {
-            using var dialog = new SetPreviewPixelDensityForm();
-            dialog.ShowDialog();
+            using (var dialog = new SetPreviewPixelDensityForm())
+            {
+                dialog.ShowDialog();
+            }
+
             return null;
         }
     }

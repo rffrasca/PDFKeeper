@@ -94,18 +94,20 @@ namespace PDFKeeper.Core.Application
         /// <param name="topic">The <see cref="Topic"/>.</param>
         public void ShowHelp(Topic topic)
         {
-            using var process = new Process();
-            process.StartInfo.FileName = Path.Combine(
-                Environment.GetFolderPath(
-                    Environment.SpecialFolder.Windows),
-                "hh.exe");
-            process.StartInfo.Arguments = string.Concat(
+            using (var process = new Process())
+            {
+                process.StartInfo.FileName = Path.Combine(
+                    Environment.GetFolderPath(
+                        Environment.SpecialFolder.Windows),
+                    "hh.exe");
+                process.StartInfo.Arguments = string.Concat(
                 "ms-its:",
                 FullName,
                 "::",
                 GetTopicFileName(topic));
-            process.Start();
-            process.WaitForExit();
+                process.Start();
+                process.WaitForExit();
+            }            
         }
     }
 }

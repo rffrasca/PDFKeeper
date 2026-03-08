@@ -60,6 +60,7 @@ namespace PDFKeeper.Core.Commands
         public void Execute(object parameter)
         {
             Document document;
+
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
             {
                 document = documentRepository.GetDocument(id, null, true);

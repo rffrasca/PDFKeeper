@@ -26,13 +26,19 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Performance",
+    "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Instantiated via dependency injection or reflection.")]
     internal class PdfOwnerPasswordDialogService : IPasswordDialogService
     {
         public SecureString ShowDialog(IntPtr parent)
         {
-            using var dialog = new PdfOwnerPasswordForm();
-            dialog.ShowDialog(NativeWindow.FromHandle(parent));
-            return dialog.PasswordSecureTextBox.SecureText;
+            using (var dialog = new PdfOwnerPasswordForm())
+            {
+                dialog.ShowDialog(NativeWindow.FromHandle(parent));
+                return dialog.PasswordSecureTextBox.SecureText;
+            }
         }
     }
 }

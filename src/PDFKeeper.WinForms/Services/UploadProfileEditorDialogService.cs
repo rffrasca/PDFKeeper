@@ -23,12 +23,19 @@ using PDFKeeper.WinForms.Views;
 
 namespace PDFKeeper.WinForms.Services
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Performance",
+        "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Instantiated via dependency injection or reflection.")]
     internal class UploadProfileEditorDialogService : IDialogService
     {
         public string ShowDialog(string arg = null)
         {
-            using var dialog = new UploadProfileEditorForm(arg);
-            dialog.ShowDialog();
+            using (var dialog = new UploadProfileEditorForm(arg))
+            {
+                dialog.ShowDialog();
+            }
+
             return null;
         }
     }

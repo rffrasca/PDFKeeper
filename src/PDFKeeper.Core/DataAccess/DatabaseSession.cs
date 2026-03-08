@@ -173,8 +173,10 @@ namespace PDFKeeper.Core.DataAccess
 
             if (!File.Exists(path))
             {
-                using var repository = GetDocumentRepository();
-                repository.CreateDatabase();
+                using (var repository = GetDocumentRepository())
+                {
+                    repository.CreateDatabase();
+                }
             }
 
             DocumentsListHasChanges = true;

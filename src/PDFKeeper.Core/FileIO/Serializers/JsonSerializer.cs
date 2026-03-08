@@ -45,8 +45,11 @@ namespace PDFKeeper.Core.FileIO.Serializers
                 AllowTrailingCommas = true,
                 PropertyNameCaseInsensitive = true
             };
-            using var stream = jsonFile.OpenRead();
-            return System.Text.Json.JsonSerializer.Deserialize<T>(stream, options)!;
+
+            using (var stream = jsonFile.OpenRead())
+            {
+                return System.Text.Json.JsonSerializer.Deserialize<T>(stream, options)!;
+            }
         }
 
         /// <summary>
@@ -61,8 +64,11 @@ namespace PDFKeeper.Core.FileIO.Serializers
             {
                 WriteIndented = true
             };
-            using var stream = jsonFile.Open(FileMode.Create, FileAccess.Write, FileShare.None);
-            System.Text.Json.JsonSerializer.Serialize(stream, obj, options);
+
+            using (var stream = jsonFile.Open(FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                System.Text.Json.JsonSerializer.Serialize(stream, obj, options);
+            }
         }
     }
 }

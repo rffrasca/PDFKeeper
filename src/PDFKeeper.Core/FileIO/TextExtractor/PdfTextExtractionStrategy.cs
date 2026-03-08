@@ -31,44 +31,46 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
     {
         public string GetText(FileInfo pdfFile)
         {
-            using var reader = new PdfReader(pdfFile);
-            var text = new StringBuilder();
-
-            using (var document = new PdfDocument(reader))
+            using (var reader = new PdfReader(pdfFile))
             {
-                for (int page = 1,
-                    loopTo = document.GetNumberOfPages();
-                    page <= loopTo;
-                    page++)
+                var text = new StringBuilder();
+
+                using (var document = new PdfDocument(reader))
                 {
-                    try
+                    for (int page = 1,
+                        loopTo = document.GetNumberOfPages();
+                        page <= loopTo;
+                        page++)
                     {
-                        ITextExtractionStrategy strategy = new LocationTextExtractionStrategy();
-
-                        var pageText =
-                            iText.Kernel.Pdf.Canvas.Parser.PdfTextExtractor.GetTextFromPage(
-                                document.GetPage(
-                                    page),
-                                strategy);
-                        var lines = pageText.Split('\n');
-
-                        foreach (var line in lines)
+                        try
                         {
-                            text.AppendLine(line);
+                            ITextExtractionStrategy strategy =
+                                new LocationTextExtractionStrategy();
+                            var pageText =
+                                iText.Kernel.Pdf.Canvas.Parser.PdfTextExtractor.GetTextFromPage(
+                                    document.GetPage(
+                                        page),
+                                    strategy);
+                            var lines = pageText.Split('\n');
+
+                            foreach (var line in lines)
+                            {
+                                text.AppendLine(line);
+                            }
+                        }
+                        catch (ArgumentException)   // PDF contains an invalid encoding.
+                        {
+                            return null;
+                        }
+                        catch (InlineImageParseException)
+                        {
+                            return null;
                         }
                     }
-                    catch (ArgumentException)   // PDF contains an invalid encoding.
-                    {
-                        return null;
-                    }
-                    catch (InlineImageParseException)
-                    {
-                        return null;
-                    }
                 }
-            }
 
-            return text.ToString();
+                return text.ToString();
+            }
         }
     }
 }

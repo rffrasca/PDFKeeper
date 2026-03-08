@@ -41,9 +41,11 @@ namespace PDFKeeper.Core.FileIO.Serializers
                 DtdProcessing = DtdProcessing.Prohibit
             };
 
-            using var reader = XmlReader.Create(xmlFile.FullName, settings);
-            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-            return (T)serializer.Deserialize(reader);
+            using (var reader = XmlReader.Create(xmlFile.FullName, settings))
+            {
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+                return (T)serializer.Deserialize(reader);
+            }
         }
 
         /// <summary>
@@ -61,9 +63,11 @@ namespace PDFKeeper.Core.FileIO.Serializers
                 Indent = true
             };
 
-            using var writer = XmlWriter.Create(xmlFile.FullName, settings);
-            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-            serializer.Serialize(writer, obj);
+            using (var writer = XmlWriter.Create(xmlFile.FullName, settings))
+            {
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+                serializer.Serialize(writer, obj);
+            }
         }
     }
 }

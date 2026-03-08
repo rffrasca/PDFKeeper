@@ -50,21 +50,24 @@ namespace PDFKeeper.WinForms
             Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(
                 HandleThreadException);
 
-            using var mutex = new Mutex(true, Application.ProductName);
-            if (mutex.WaitOne(TimeSpan.Zero, true))
+            using (var mutex = new Mutex(true, Application.ProductName))
             {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-
-                ServiceLocator.Services = ConfigureServices();
-
-                if (!Startup())
+                if (mutex.WaitOne(TimeSpan.Zero, true))
                 {
-                    using var form = new MainForm();
-                    Application.Run(form);
-                }
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    ServiceLocator.Services = ConfigureServices();
 
-                Shutdown();
+                    if (!Startup())
+                    {
+                        using (var form = new MainForm())
+                        {
+                            Application.Run(form);
+                        }
+                    }
+
+                    Shutdown();
+                }
             }
         }
 
@@ -230,11 +233,12 @@ namespace PDFKeeper.WinForms
                 DatabaseSession.CompatiblePlatformName.Sqlite.ToString(),
                 StringComparison.Ordinal))
             {
-                using var form = new LoginForm();
-
-                if (form.ShowDialog().Equals(DialogResult.Cancel))
+                using (var form = new LoginForm())
                 {
-                    return true;
+                    if (form.ShowDialog().Equals(DialogResult.Cancel))
+                    {
+                        return true;
+                    }
                 }
             }
             else
@@ -243,8 +247,10 @@ namespace PDFKeeper.WinForms
                 
                 try
                 {
-                    using var repository = DatabaseSession.GetDocumentRepository();
-                    repository.UpgradeDatabase();
+                    using (var repository = DatabaseSession.GetDocumentRepository())
+                    {
+                        repository.UpgradeDatabase();
+                    }
                 }
                 catch (DatabaseException ex)
                 {

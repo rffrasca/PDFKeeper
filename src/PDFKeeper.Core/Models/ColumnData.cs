@@ -37,12 +37,14 @@ namespace PDFKeeper.Core.Models
         /// <returns>The <c>string[]</c> of Authors in ascending order.</returns>
         internal static string[] GetAuthors(string subject, string category, string taxYear)
         {
-            using var documentRepository = DatabaseSession.GetDocumentRepository();
-            return [.. GetColumnData(
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                return [.. GetColumnData(
                     documentRepository.GetAuthors(
                         subject,
                         category,
                         taxYear)).OrderBy(author => author)];
+            }
         }
 
         /// <summary>
@@ -54,12 +56,14 @@ namespace PDFKeeper.Core.Models
         /// <returns>The <c>string[]</c> of Subjects in ascending order.</returns>
         internal static string[] GetSubjects(string author, string category, string taxYear)
         {
-            using var documentRepository = DatabaseSession.GetDocumentRepository();
-            return [.. GetColumnData(
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                return [.. GetColumnData(
                     documentRepository.GetSubjects(
                         author,
                         category,
                         taxYear)).OrderBy(subject => subject)];
+            }
         }
 
         /// <summary>
@@ -71,12 +75,14 @@ namespace PDFKeeper.Core.Models
         /// <returns>The <c>string[]</c> of Categories in ascending order.</returns>
         internal static string[] GetCategories(string author, string subject, string taxYear)
         {
-            using var documentRepository = DatabaseSession.GetDocumentRepository();
-            return [.. GetColumnData(
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                return [.. GetColumnData(
                     documentRepository.GetCategories(
                         author,
                         subject,
                         taxYear)).OrderBy(category => category)];
+            }
         }
 
         /// <summary>
@@ -88,12 +94,14 @@ namespace PDFKeeper.Core.Models
         /// <returns>The <c>string[]</c> of Tax Years in ascending order.</returns>
         internal static string[] GetTaxYears(string author, string subject, string category)
         {
-            using var documentRepository = DatabaseSession.GetDocumentRepository();
-            return [.. GetColumnData(
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                return [.. GetColumnData(
                     documentRepository.GetTaxYears(
                         author,
                         subject,
                         category)).OrderBy(taxYear => taxYear)];
+            }
         }
 
         /// <summary>
@@ -131,7 +139,6 @@ namespace PDFKeeper.Core.Models
             }
             
             tempYears.Reverse();
-            
             yield return string.Empty;
             
             foreach (string year in tempYears)

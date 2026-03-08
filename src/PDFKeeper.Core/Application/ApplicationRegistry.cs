@@ -55,12 +55,15 @@ namespace PDFKeeper.Core.Application
                 StringComparison.OrdinalIgnoreCase)
                 ? UserKeyPath.Substring(hivePrefix.Length)
                 : UserKeyPath;
-            using var key = Registry.CurrentUser.OpenSubKey(strippedUserKeyPath, writable: true);
-            if (key != null)
+
+            using (var key = Registry.CurrentUser.OpenSubKey(strippedUserKeyPath, writable: true))
             {
-                key.DeleteValue("LocalDatabasePath", throwOnMissingValue: false);
-                key.DeleteValue("LocalDatabaseFileName", throwOnMissingValue: false);
-            }
+                if (key != null)
+                {
+                    key.DeleteValue("LocalDatabasePath", throwOnMissingValue: false);
+                    key.DeleteValue("LocalDatabaseFileName", throwOnMissingValue: false);
+                }
+            }                
         }
 
         /// <summary>

@@ -26,12 +26,19 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Performance",
+    "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Instantiated via dependency injection or reflection.")]
     internal class AddPdfDialogService : IChildDialogService
     {
         public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
-            using var dialog = new AddPdfForm(arg, document);
-            dialog.ShowDialog(NativeWindow.FromHandle(parent));
+            using (var dialog = new AddPdfForm(arg, document))
+            {
+                dialog.ShowDialog(NativeWindow.FromHandle(parent));
+            }
+
             return null;
         }
     }

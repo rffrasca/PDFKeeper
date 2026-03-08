@@ -1278,6 +1278,7 @@ namespace PDFKeeper.Core.ViewModels
                         try
                         {
                             Document currentDocument;
+
                             using (var documentRepository =
                                 DatabaseSession.GetDocumentRepository())
                             {
@@ -1657,37 +1658,41 @@ namespace PDFKeeper.Core.ViewModels
 
         private void ReplaceCurrentDocumentPdf()
         {
-            using var documentRepository = DatabaseSession.GetDocumentRepository();
-            var document = documentRepository.GetDocument(CurrentDocumentId, null);
-            addPdfDialogService.ShowDialog(viewHandle, null, document);
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                var document = documentRepository.GetDocument(CurrentDocumentId, null);
+                addPdfDialogService.ShowDialog(viewHandle, null, document);
+            }
         }
 
         private void UpdateCurrentDocumentFlagState()
         {
-            using var documentRepository = DatabaseSession.GetDocumentRepository();
-            var document = documentRepository.GetDocument(CurrentDocumentId, null);
-            document.Flag = Convert.ToInt32(!EditFlagDocumentMenuChecked);
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                var document = documentRepository.GetDocument(CurrentDocumentId, null);
+                document.Flag = Convert.ToInt32(!EditFlagDocumentMenuChecked);
 
-            try
-            {
-                OnLongOperationStarted?.Invoke();
-                documentRepository.UpdateDocument(document);
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                var message = ResourceHelper.GetString(
-                    Resources.ResourceManager,
-                    "DocumentMayHaveBeenDeletedException",
-                    ex.Message);
-                messageBoxService.ShowMessage(message, true);
-            }
-            catch (DatabaseException ex)
-            {
-                messageBoxService.ShowMessage(ex.Message, true);
-            }
-            finally
-            {
-                OnLongOperationFinished?.Invoke();
+                try
+                {
+                    OnLongOperationStarted?.Invoke();
+                    documentRepository.UpdateDocument(document);
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    var message = ResourceHelper.GetString(
+                        Resources.ResourceManager,
+                        "DocumentMayHaveBeenDeletedException",
+                        ex.Message);
+                    messageBoxService.ShowMessage(message, true);
+                }
+                catch (DatabaseException ex)
+                {
+                    messageBoxService.ShowMessage(ex.Message, true);
+                }
+                finally
+                {
+                    OnLongOperationFinished?.Invoke();
+                }
             }
         }
 
@@ -1771,8 +1776,10 @@ namespace PDFKeeper.Core.ViewModels
                 {
                     try
                     {
-                        using var documentRepository = DatabaseSession.GetDocumentRepository();
-                        documentRepository.CompactDatabase();
+                        using (var documentRepository = DatabaseSession.GetDocumentRepository())
+                        {
+                            documentRepository.CompactDatabase();
+                        }
                     }
                     catch (NotSupportedException) { }
                     catch (DatabaseException ex)
@@ -2021,6 +2028,7 @@ namespace PDFKeeper.Core.ViewModels
                 try
                 {
                     int count;
+
                     using (var documentRepository = DatabaseSession.GetDocumentRepository())
                     {
                         count = await Task.Run(() => documentRepository
@@ -2028,6 +2036,7 @@ namespace PDFKeeper.Core.ViewModels
                             .Rows.Count)
                             .ConfigureAwait(true);
                     }
+
                     if (count > 0)
                     {
                         FlagImageVisible = true;
@@ -2191,8 +2200,11 @@ namespace PDFKeeper.Core.ViewModels
             DocumentsEnabled = true;
             FileDatabaseMenuVisible = DatabaseSession.PlatformName.Equals(
                 DatabaseSession.CompatiblePlatformName.Sqlite);
-            using var documentRepository = DatabaseSession.GetDocumentRepository();
-            SearchTermSnippetsVisible = documentRepository.SearchTermSnippetsSupported;
+
+            using (var documentRepository = DatabaseSession.GetDocumentRepository())
+            {
+                SearchTermSnippetsVisible = documentRepository.SearchTermSnippetsSupported;
+            }
         }
 
         private static bool VerifyInsertGranted(bool value)
@@ -2233,22 +2245,24 @@ namespace PDFKeeper.Core.ViewModels
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            using var font = new Font("Lucida Console", 10);
-            e.Graphics.MeasureString(
-                textToPrint,
-                font,
-                e.MarginBounds.Size,
-                StringFormat.GenericTypographic,
-                out int charactersOnPage,
-                out int linesPerPage);
-            e.Graphics.DrawString(
-                textToPrint,
-                font,
-                Brushes.Black,
-                e.MarginBounds,
-                StringFormat.GenericTypographic);
-            textToPrint = textToPrint.Substring(charactersOnPage);
-            e.HasMorePages = textToPrint.Length > 0;
+            using (var font = new Font("Lucida Console", 10))
+            {
+                e.Graphics.MeasureString(
+                    textToPrint,
+                    font,
+                    e.MarginBounds.Size,
+                    StringFormat.GenericTypographic,
+                    out int charactersOnPage,
+                    out int linesPerPage);
+                e.Graphics.DrawString(
+                    textToPrint,
+                    font,
+                    Brushes.Black,
+                    e.MarginBounds,
+                    StringFormat.GenericTypographic);
+                textToPrint = textToPrint.Substring(charactersOnPage);
+                e.HasMorePages = textToPrint.Length > 0;
+            }
         }
 
         private void OnDocumentSelectionChanged()
@@ -2386,6 +2400,7 @@ namespace PDFKeeper.Core.ViewModels
                     RefreshingDocumentsImageVisible = true;
                     
                     DataTable documents = null;
+
                     using (var documentRepository = DatabaseSession.GetDocumentRepository())
                     {
                         if (findDocumentsParam.FindBySearchTermChecked)

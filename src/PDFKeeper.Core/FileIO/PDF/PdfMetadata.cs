@@ -146,16 +146,20 @@ namespace PDFKeeper.Core.FileIO.PDF
 
             if (pdfOwnerPassword is null)
             {
-                using var reader = new PdfReader(pdfFile.FullName);
-                WritePdf(reader, targetPdfFile);
+                using (var reader = new PdfReader(pdfFile.FullName))
+                {
+                    WritePdf(reader, targetPdfFile);
+                }
             }
             else
             {
-                using var reader = new PdfReader(
+                using (var reader = new PdfReader(
                     pdfFile.FullName,
                     new ReaderProperties().SetPassword(
-                        pdfOwnerPassword.GetAsByteArray()));
-                WritePdf(reader, targetPdfFile);
+                        pdfOwnerPassword.GetAsByteArray())))
+                {
+                    WritePdf(reader, targetPdfFile);
+                }
             }
 
             WriteXml(targetPdfFile);
@@ -170,11 +174,14 @@ namespace PDFKeeper.Core.FileIO.PDF
         {
             try
             {
-                using var reader = new PdfReader(
+                using (var reader = new PdfReader(
                     pdfFile.FullName,
                     new ReaderProperties().SetPassword(
-                        pdfOwnerPassword.GetAsByteArray()));
-                using var document = new PdfDocument(reader);
+                        pdfOwnerPassword.GetAsByteArray())))
+                {
+                    using (var document = new PdfDocument(reader)) { }
+                }
+                    
                 return true;
             }
             catch (BadPasswordException)
@@ -190,16 +197,20 @@ namespace PDFKeeper.Core.FileIO.PDF
         {
             if (pdfOwnerPassword is null)
             {
-                using var reader = new PdfReader(pdfFile.FullName);
-                GetInfoMetadata(reader);
+                using (var reader = new PdfReader(pdfFile.FullName))
+                {
+                    GetInfoMetadata(reader);
+                }
             }
             else
             {
-                using var reader = new PdfReader(
+                using (var reader = new PdfReader(
                     pdfFile.FullName,
                     new ReaderProperties().SetPassword(
-                        pdfOwnerPassword.GetAsByteArray()));
-                GetInfoMetadata(reader);
+                        pdfOwnerPassword.GetAsByteArray())))
+                {
+                    GetInfoMetadata(reader);
+                }
             }
 
             GetExternalMetadata();
@@ -211,12 +222,14 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// <param name="pdfReader">The <see cref="PdfReader"/> object.</param>
         private void GetInfoMetadata(PdfReader pdfReader)
         {
-            using var document = new PdfDocument(pdfReader);
-            var info = document.GetDocumentInfo();
-            Title = info.GetTitle();
-            Author = info.GetAuthor();
-            Subject = info.GetSubject();
-            Keywords = info.GetKeywords();
+            using (var document = new PdfDocument(pdfReader))
+            {
+                var info = document.GetDocumentInfo();
+                Title = info.GetTitle();
+                Author = info.GetAuthor();
+                Subject = info.GetSubject();
+                Keywords = info.GetKeywords();
+            }
         }
 
         /// <summary>
@@ -246,22 +259,26 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// <exception cref="NullReferenceException"></exception>
         private void WritePdf(PdfReader pdfReader, FileInfo targetPdfFile)
         {
-            using var writer = new PdfWriter(targetPdfFile);
-            using var document = new PdfDocument(pdfReader, writer);
-            var info = document.GetDocumentInfo();
-            info.SetTitle(Title);
-            info.SetAuthor(Author);
-            info.SetSubject(Subject);
-            info.SetKeywords(Keywords);
-            var rule = new PdfMetadataRule(info);
+            using (var writer = new PdfWriter(targetPdfFile))
+            {
+                using (var document = new PdfDocument(pdfReader, writer))
+                {
+                    var info = document.GetDocumentInfo();
+                    info.SetTitle(Title);
+                    info.SetAuthor(Author);
+                    info.SetSubject(Subject);
+                    info.SetKeywords(Keywords);
+                    var rule = new PdfMetadataRule(info);
 
-            if (rule.ViolationFound)
-            {
-                throw new NullReferenceException(rule.ViolationMessage);
-            }
-            else
-            {
-                document.SetXmpMetadata(XMPMetaFactory.Create());
+                    if (rule.ViolationFound)
+                    {
+                        throw new NullReferenceException(rule.ViolationMessage);
+                    }
+                    else
+                    {
+                        document.SetXmpMetadata(XMPMetaFactory.Create());
+                    }
+                }
             }
         }
 

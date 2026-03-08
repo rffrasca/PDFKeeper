@@ -65,9 +65,11 @@ namespace PDFKeeper.Core.DataAccess
             Justification = "alter session does not accept bind variables")]
         private static void SetDefaultSchema(OracleConnection connection, string owner)
         {
-            using var command = connection.CreateCommand();
-            command.CommandText = $"alter session set current_schema = {owner}";
-            command.ExecuteNonQuery();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = $"alter session set current_schema = {owner}";
+                command.ExecuteNonQuery();
+            }
         }
     }
 }

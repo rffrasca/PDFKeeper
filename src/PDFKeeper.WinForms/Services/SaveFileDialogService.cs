@@ -23,21 +23,27 @@ using PDFKeeper.Core.Services;
 
 namespace PDFKeeper.WinForms.Services
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Performance",
+    "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Instantiated via dependency injection or reflection.")]
     internal class SaveFileDialogService : IFileDialogService
     {
         public string ShowDialog(string filter, string fileName = null)
         {
-            using var dialog = new SaveFileDialog();
-            dialog.Filter = filter;
-            dialog.FileName = fileName;
+            using (var dialog = new SaveFileDialog())
+            {
+                dialog.Filter = filter;
+                dialog.FileName = fileName;
 
-            if (dialog.ShowDialog().Equals(DialogResult.OK))
-            {
-                return dialog.FileName;
-            }
-            else
-            {
-                return null;
+                if (dialog.ShowDialog().Equals(DialogResult.OK))
+                {
+                    return dialog.FileName;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
     }

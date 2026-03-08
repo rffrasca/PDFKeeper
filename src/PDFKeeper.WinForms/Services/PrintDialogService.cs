@@ -25,14 +25,20 @@ using PDFKeeper.Core.Services;
 
 namespace PDFKeeper.WinForms.Services
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Performance",
+    "CA1812:Avoid uninstantiated internal classes",
+    Justification = "Instantiated via dependency injection or reflection.")]
     internal class PrintDialogService : IPrintDialogService
     {
         public int ShowDialog(PrintDocument printDocument)
         {
-            using var dialog = new PrintDialog();
-            dialog.Document = printDocument;
-            dialog.UseEXDialog = true;
-            return Convert.ToInt32((int)dialog.ShowDialog());
+            using (var dialog = new PrintDialog())
+            {
+                dialog.Document = printDocument;
+                dialog.UseEXDialog = true;
+                return Convert.ToInt32((int)dialog.ShowDialog());
+            }
         }
     }
 }
