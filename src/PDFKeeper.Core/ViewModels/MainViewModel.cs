@@ -1847,8 +1847,6 @@ namespace PDFKeeper.Core.ViewModels
                 }
             }
 
-            EditReplacePdfMenuEnabled = !enabled;
-            EditFlagDocumentMenuEnabled = !enabled;
             DocumentsSetTitleMenuEnabled = enabled;
             DocumentsSetAuthorMenuEnabled = enabled;
             DocumentsSetSubjectMenuEnabled = enabled;
@@ -1857,6 +1855,17 @@ namespace PDFKeeper.Core.ViewModels
             DocumentsSetDateTimeAddedMenuEnabled = enabled;
             DocumentsDeleteMenuEnabled = enabled;
             FileExportMenuEnabled = enabled;
+
+            if (CheckedDocumentIds.Contains(CurrentDocumentId))
+            {
+                EditReplacePdfMenuEnabled = false;
+                EditFlagDocumentMenuEnabled = false;
+            }
+            else if (CurrentDocumentId > 0)
+            {
+                EditReplacePdfMenuEnabled = true;
+                EditFlagDocumentMenuEnabled = true;
+            }
         }
 
         /// <summary>
