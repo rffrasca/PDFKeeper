@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "PDFKeeper.Setup", "PDFKeeper.Setup\PDFKeeper.Setup.wixproj", "{97756C6A-853A-4CBA-8507-D33B20B6DD07}"
+Project("{B7DD6F7E-DEF8-4E67-B5B7-07EF123DB6F0}") = "PDFKeeper.Setup", "PDFKeeper.Setup\PDFKeeper.Setup.wixproj", "{97756C6A-853A-4CBA-8507-D33B20B6DD07}"
 	ProjectSection(ProjectDependencies) = postProject
 		{089191ED-733F-48CA-9F6E-086854A3EB10} = {089191ED-733F-48CA-9F6E-086854A3EB10}
 	EndProjectSection
