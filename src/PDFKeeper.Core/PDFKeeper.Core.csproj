@@ -25,6 +25,7 @@
     <CodeAnalysisRuleSet>PDFKeeper.Core.ruleset</CodeAnalysisRuleSet>
     <NoWarn>MVVMTKCFG0001</NoWarn>
     <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>PDFKeeper.Core.ruleset</CodeAnalysisRuleSet>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <NoWarn>MVVMTKCFG0001</NoWarn>
     <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
   </PropertyGroup>
