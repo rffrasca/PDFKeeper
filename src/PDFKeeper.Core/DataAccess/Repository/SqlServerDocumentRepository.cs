@@ -591,10 +591,13 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.AddWithValue("@doc_title", document.Title);
                         command.Parameters.AddWithValue("@doc_author", document.Author);
                         command.Parameters.AddWithValue("@doc_subject", document.Subject);
-                        command.Parameters.AddWithValue("@doc_added", document.Added);
-                        command.Parameters.AddWithValue("@doc_notes", document.Notes);
-
-                        if (updatePdf)
+                        
+                        if (!updatePdf)
+                        {
+                            command.Parameters.AddWithValue("@doc_added", document.Added);
+                            command.Parameters.AddWithValue("@doc_notes", document.Notes);
+                        }
+                        else
                         {
                             command.Parameters.AddWithValue(
                                 "@doc_pdf",
