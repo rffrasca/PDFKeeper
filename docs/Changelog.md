@@ -79,8 +79,8 @@ All notable changes to PDFKeeper will be documented in this file.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.0.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.0.0).
 ### Added
-* Added SQL Server and SQL Server Express 2019 and higher compatibility. [#37](https://github.com/rffrasca/PDFKeeper/issues/37)
-* Added MySQL Community Server 8.4.3 LTS and higher compatibility. [#41](https://github.com/rffrasca/PDFKeeper/issues/41)
+* Added SQL Server and SQL Server Express 2019 and later compatibility. [#37](https://github.com/rffrasca/PDFKeeper/issues/37)
+* Added MySQL Community Server 8.4.3 LTS and later compatibility. [#41](https://github.com/rffrasca/PDFKeeper/issues/41)
 * Added image and shortcut keys to "Copy PDF to Clipboard" menu item.
 * Added "Copy PDF to Clipboard" tool strip button.
 ### Fixed
@@ -348,7 +348,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.0.0).
 - Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v8.0.0).
 ### Added
-- Added condition requiring Windows 10 or higher for PDFKeeper to install.
+- Added condition requiring Windows 10 or later for PDFKeeper to install.
 - Added Oracle Database 21c (including Express Edition) compatibility.
 - Added Oracle Cloud Autonomous Database compatibility (TLS authentication only).
 - Added opening of PDF documents for all selected (checked) documents in the Documents list up to a maximum of 12.
@@ -390,7 +390,7 @@ All notable changes to PDFKeeper will be documented in this file.
 - Updated System.Data.SQLite to 1.0.116.
 ### Removed
 - Dropped Oracle Database 11g Express Edition compatibility.
-- Removed Oracle Database 11g and lower support from OracleDatabaseSchemaSetup.sql and OracleDatabaseSchemaUpgrade.sql.
+- Removed Oracle Database 11g and earlier support from OracleDatabaseSchemaSetup.sql and OracleDatabaseSchemaUpgrade.sql.
 - Removed Alternate Text Extraction Strategy from PDF Text Extractor. OCR will be performed when iText is unable to extract text from a PDF page.
 - Removed unnecessary task completion messages.
 ### Changed (Development)
@@ -769,7 +769,7 @@ When Search Results is refreshed, the previously selected document record will b
 - HTML Converter menu item does not enable on 64-bit Windows even though the correct version of wkhtmltopdf is installed.
 ### Fixed
 - Unhandled Exception when renaming a PDF that is selected in Document Capture.
-- Simplify HTML Converter setup by requiring wkhtmltopdf 0.12.1 or higher.
+- Simplify HTML Converter setup by requiring wkhtmltopdf 0.12.1 or later.
 - Document Search: number of checked list view items should be displayed on status bar.
 - Document Capture: if selected document does not contain a Title in Information Properties, the filename should be displayed in Title text box.
 - Direct Upload Configuration: unable to scroll horizontally when folder name exceeds width of list box.
