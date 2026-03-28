@@ -1,5 +1,5 @@
 # PDFKeeper Changelog
-All notable changes to PDFKeeper will be documented in this file.
+All notable changes to PDFKeeper are documented in this file.
 
 ## v11.3.0 - 2025-06-16
 - This is a minor release.
