@@ -58,7 +58,7 @@
 ## About The Project
 
 ### Description
-PDFKeeper is free, open source software that provides a storage and management solution for PDF documents.
+PDFKeeper is a free, open‑source application that stores and organizes PDF documents in a searchable database.
 
 ![Product Name Screen Shot][product-screenshot]
 
@@ -106,7 +106,7 @@ Build Instructions for v10 is available [here](https://github.com/rffrasca/PDFKe
 <!-- LICENSE -->
 ## License
 
-PDFKeeper is distributed under the terms of the [GNU General Public License (GPL) Version 3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
+PDFKeeper is distributed under the terms of the [GNU General Public License (GPL) version 3](https://github.com/robertfrasca/PDFKeeper/blob/master/COPYING).
 
 [![Logo](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)](https://www.gnu.org/licenses/gpl-3.0.html)
 
