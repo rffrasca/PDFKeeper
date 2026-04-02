@@ -1,6 +1,43 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper are documented in this file.
 
+## v12.0.0 - 2026-04-01
+- This is a major release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v12.0.0).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v12.0.0).
+### Added
+* Added the ability to replace the PDF associated with a selected document. [#52](https://github.com/rffrasca/PDFKeeper/issues/52)
+* Added support for custom column header aliases in the Documents View for Author, Subject, Category, and Tax Year. [#79](https://github.com/rffrasca/PDFKeeper/issues/79)
+* Added "Set Name to Subject" Link to Upload Profile Editor. [#83](https://github.com/rffrasca/PDFKeeper/issues/83)
+* Added a tooltip to the Documents DataGridView that guides the user to perform a search using the Find feature to list documents. [#81](https://github.com/rffrasca/PDFKeeper/issues/81)
+* Added support for additional databases across all compatible database platforms. [#44](https://github.com/rffrasca/PDFKeeper/issues/44)
+* Added support for storing the local SQLite database in OneDrive, making it the default database for new PDFKeeper installations using that OneDrive account. [#78](https://github.com/rffrasca/PDFKeeper/issues/78)
+* Introduced drag‑and‑drop functionality for adding individual PDFs. [#87](https://github.com/rffrasca/PDFKeeper/issues/87)
+* Added support for using existing PDF metadata (Title, Author, Subject, Keywords) in Upload Profiles via new metadata tokens. [#82](https://github.com/rffrasca/PDFKeeper/issues/82)
+### Changed
+* Upgraded target framework to .NET Framework 4.8.1.
+* Replaced all instances of "on-prem" with "on-premises" in help file content. [#84](https://github.com/rffrasca/PDFKeeper/issues/84)
+* Moved and renamed the "Move Database" menu item from Tools → Move Database to File → Database → Move. [#44](https://github.com/rffrasca/PDFKeeper/issues/44)
+* Updated itext to 9.5.0.
+* Updated itext.bouncy-castle-adapter to 9.5.0.
+* Updated itext.font-asian to 9.5.0.
+* Updated Magick.NET to 14.11.1.
+* Updated Microsoft.Data.SqlClient to 6.1.4.
+* Updated MySql.Data to 9.6.0.
+* Updated SoftCircuits.FullTextSearchQuery to 2.3.0.
+* Updated System.Data.SQLite.Core to 1.0.119.
+* Updated Ghostscript to 10.06.0.
+* Updated version of Oracle ODP.NET (Oracle.ManagedDataAccess) referenced in the help file to 23.26.100.
+### Changed (Development)
+* Migrated solution to Visual Studio 2022 and changed platform target to x64.
+* Upgraded Setup to WiX Toolset 6.0.2.
+* Implemented Model-View-ViewModel pattern using CommunityToolkit.Mvvm 8.4.0.
+* Improved Dependency Injection using Microsoft.Extensions.DependencyInjection 10.0.5.
+* Converted some Events to Action Delegates.
+* Reviewed entire codebase and refactored where needed.
+* Updated Microsoft.CodeAnalysis.NetAnalyzers to 10.0.201.
+* Fixed and suppressed Code Analysis warnings.
+
 ## v11.3.0 - 2025-06-16
 - This is a minor release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v11.3.0).
