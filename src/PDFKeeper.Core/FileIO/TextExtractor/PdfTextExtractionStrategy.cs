@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -27,7 +27,7 @@ using static iText.Kernel.Pdf.Canvas.Parser.Util.InlineImageParsingUtils;
 
 namespace PDFKeeper.Core.FileIO.TextExtractor
 {
-    public class PdfTextExtractionStrategy : IPdfTextExtractionStrategy
+    public sealed class PdfTextExtractionStrategy : IPdfTextExtractionStrategy
     {
         public string GetText(FileInfo pdfFile)
         {
@@ -48,8 +48,7 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
                                 new LocationTextExtractionStrategy();
                             var pageText =
                                 iText.Kernel.Pdf.Canvas.Parser.PdfTextExtractor.GetTextFromPage(
-                                    document.GetPage(
-                                        page),
+                                    document.GetPage(page),
                                     strategy);
                             var lines = pageText.Split('\n');
 
@@ -58,11 +57,16 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
                                 text.AppendLine(line);
                             }
                         }
-                        catch (ArgumentException)   // PDF contains an invalid encoding.
-                        {
-                            return null;
-                        }
-                        catch (InlineImageParseException)
+                        // ArgumentException ->
+                        //      PDF contains an invalid encoding
+                        // InlineImageParseException ->
+                        //      PDF contains malformed inline image data
+                        // InvalidOperationException ->
+                        //      PDF contains malformed or non‑standard content
+                        catch (Exception ex) when (
+                            ex is ArgumentException ||
+                            ex is InlineImageParseException ||
+                            ex is InvalidOperationException)
                         {
                             return null;
                         }
