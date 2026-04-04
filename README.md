@@ -65,16 +65,16 @@ PDFKeeper is a free, open‑source application that stores and organizes PDF doc
 User Interface in version 11.2.0 and later.
 
 ### Features
-* Store and manage PDF documents in a single-user or compatible, multi-user (on-premises or cloud) database where they’re indexed to provide full-text search functionality.
-* Upload PDF documents individually or in bulk. In addition, Upload Profile folders can be setup to allow for integration and automation.
-* Apply a Title, Author, Subject, Category, and Tax Year to selected documents and when PDF documents are uploaded. In addition, Keywords can be applied when PDF documents are uploaded.
-* Set flag state on a selected document and when PDF documents are uploaded to mark for follow-up.
-* Add notes to a selected document that can include the date, time, and user account name. All notes can be edited and are indexed by the database.
-* Find documents by Search Term, Selections (Author, Subject, Category, and/or Tax Year), or Date Added. In addition, Flagged Documents or All Documents can be listed.
-* With PDFKeeper, the following functions can be performed on a selected document: PDF viewing with the bundled or default viewer; PDF bursting; PDF attachments and embedded files extraction; PDF copying to the Clipboard and Drag and Drop to other applications; Flag Document state management; Notes viewing and editing; Keywords, PDF preview, PDF Text, and Search Term Snippets (when applicable) are also displayed for viewing.
-* Export selected PDF documents with their category, tax year, notes, and flag state from the database for easy importing.
+* Store and manage PDF documents in a single‑user or compatible multi‑user (on‑premises or cloud) database, where they are indexed to provide full‑text search functionality.
+* Upload PDF documents individually or in bulk. In addition, Upload Profile folders can be set up to support integration and automation workflows.
+* Apply a Title, Author, Subject, Category, and Tax Year to selected documents or automatically during upload. Keywords can also be applied during upload.
+* Set the flag state on a selected document—or automatically during upload—to mark items for follow‑up.
+* Add notes to a selected document, including date, time, and user account name. All notes can be edited and are indexed by the database.
+* Find documents by Search Term, by Selections (Author, Subject, Category, and/or Tax Year), or by Date Added. You can also list Flagged Documents or All Documents.
+* With PDFKeeper, you can perform the following functions on a selected document: view the PDF with the bundled or default viewer; burst the PDF; extract attachments and embedded files from the PDF; copy the PDF to the Clipboard or drag and drop it into other applications; replace the PDF; manage the document’s flag state; view and edit notes; and display keywords, a PDF preview, extracted text, and search‑term snippets (when applicable).
+* Export selected PDF documents—including their category, tax year, notes, and flag state—from the database for easy importing.
 
-These features are available in version 11.3.0.
+These features are available in version 12.0.0.
 
 ### Release History
 Full release history is available in the [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md).
@@ -88,13 +88,13 @@ Full release history is available in the [Changelog](https://github.com/rffrasca
 ### Installation
 
 - Client prerequisites and compatible Database Management Systems are listed on the [release page](https://github.com/rffrasca/PDFKeeper/releases/latest).
-- Download and install the latest version of PDFKeeper from [here](https://github.com/rffrasca/PDFKeeper/releases/latest) or install using Windows Package Manager (winget install pdfkeeper).
+- Download and install the latest version of PDFKeeper from [here](https://github.com/rffrasca/PDFKeeper/releases/latest) or install using Windows Package Manager (winget install pdfkeeper --source=winget).
 - PDFKeeper is installed per-user.
 - Database setup instructions are available in the Help file that can be viewed post-install.
 
 ### Building from Source
 
-Build Instructions for v12 (in development) is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-v12.md).
+Build Instructions for v12 is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-v12.md).
 
 Build Instructions for v11 is available [here](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Build-Instructions-v11.md).
 
