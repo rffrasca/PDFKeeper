@@ -206,7 +206,18 @@ namespace PDFKeeper.Core.ViewModels
         /// Opens a dialog to select a PDF file, handles password protection if present, loads PDF
         /// metadata, and updates related properties and collections.
         /// </summary>
-        /// <param name="pdfPath">Optional initial path for the PDF file to select.</param>
+        /// <param name="pdfPath">
+        /// Optional initial path for the PDF file to select.
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// Thrown when the selected PDF file path is invalid.
+        /// </exception>
+        /// <exception cref="IOException">
+        /// Thrown when an I/O error occurs while accessing the PDF file.
+        /// </exception>
+        /// <exception cref="UnauthorizedAccessException">
+        /// Thrown when access to the PDF file is denied.
+        /// </exception>
         private void SelectPdf(string pdfPath = null)
         {
             var selectedPdfPath = !string.IsNullOrEmpty(pdfPath)
@@ -277,6 +288,7 @@ namespace PDFKeeper.Core.ViewModels
                 }
                 catch (Exception ex) when (
                     ex is ArgumentException ||
+                    ex is IOException ||
                     ex is UnauthorizedAccessException)
                 {
                     messageBoxService.ShowMessage(
