@@ -21,6 +21,7 @@
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Properties;
+using PDFKeeper.WinForms.Services;
 using System;
 using System.Windows.Forms;
 
@@ -33,7 +34,7 @@ namespace PDFKeeper.WinForms.Views
         public LoginForm()
         {
             InitializeComponent();
-            viewModel = new LoginViewModel(Handle);
+            viewModel = new LoginViewModel(new FormHandleProvider(this));
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             SetActions();
         }

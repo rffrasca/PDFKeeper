@@ -21,6 +21,7 @@
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.ViewModels;
+using PDFKeeper.WinForms.Services;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -46,7 +47,7 @@ namespace PDFKeeper.WinForms.Views
         {
             InitializeComponent();
             this.pdfPath = pdfPath;
-            viewModel = new AddPdfViewModel(Handle, document);
+            viewModel = new AddPdfViewModel(new FormHandleProvider(this), document);
             AddPdfViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;

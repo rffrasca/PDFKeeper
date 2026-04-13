@@ -20,6 +20,7 @@
 
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.ViewModels;
+using PDFKeeper.WinForms.Services;
 using System;
 using System.Windows.Forms;
 
@@ -31,6 +32,7 @@ namespace PDFKeeper.WinForms.Views
         {
             InitializeComponent();
             var viewModel = new ColumnDataListViewModel(
+                new FormHandleProvider(this),
                 ColumnDataListViewModel.ColumnName.Category);
             ColumnDataListViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;

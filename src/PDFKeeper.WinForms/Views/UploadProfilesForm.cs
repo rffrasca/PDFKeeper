@@ -21,6 +21,7 @@
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
+using PDFKeeper.WinForms.Services;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -34,7 +35,7 @@ namespace PDFKeeper.WinForms.Views
         public UploadProfilesForm()
         {
             InitializeComponent();
-            viewModel = new UploadProfilesViewModel();
+            viewModel = new UploadProfilesViewModel(new FormHandleProvider(this));
             UploadProfilesViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             UploadProfilesFileSystemWatcher.Path = viewModel.UploadProfilesDirectoryPath;

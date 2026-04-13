@@ -18,25 +18,31 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using System.Windows.Forms;
 using PDFKeeper.Core.Services;
+using PDFKeeper.WinForms.Helpers;
+using System;
+using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
+    /// <summary>
+    /// Provides functionality to display a Save File dialog and retrieve the selected file path.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
-    "Performance",
-    "CA1812:Avoid uninstantiated internal classes",
-    Justification = "Instantiated via dependency injection or reflection.")]
-    internal class SaveFileDialogService : IFileDialogService
+        "Performance",
+        "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Instantiated via dependency injection or reflection.")]
+    internal sealed class SaveFileDialogService : IFileDialogService
     {
-        public string ShowDialog(string filter, string fileName = null)
+        public string ShowDialog(IntPtr parent, string filter, string fileName = null)
         {
             using (var dialog = new SaveFileDialog())
             {
+                DialogCenteringHelper.InstallCenteringHook(parent);
                 dialog.Filter = filter;
                 dialog.FileName = fileName;
 
-                if (dialog.ShowDialog().Equals(DialogResult.OK))
+                if (dialog.ShowDialog(NativeWindow.FromHandle(parent)) == DialogResult.OK)
                 {
                     return dialog.FileName;
                 }

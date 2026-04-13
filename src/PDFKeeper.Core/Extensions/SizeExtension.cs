@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -19,22 +19,27 @@
 // ****************************************************************************
 
 using System;
-using System.Drawing.Printing;
+using System.Drawing;
 
-namespace PDFKeeper.Core.Services
+namespace PDFKeeper.Core.Extensions
 {
     /// <summary>
-    /// Provides an abstraction for displaying a print dialog and initiating print operations.
+    /// Provides extension methods for working with System.Drawing.Size structures.
     /// </summary>
-    public interface IPrintDialogService
+    internal static class SizeExtension
     {
         /// <summary>
-        /// Displays a print dialog for the specified print document with the given parent window
-        /// handle.
+        /// Reduces the size by a specified percentage.
         /// </summary>
-        /// <param name="parent">A handle to the parent window for the dialog.</param>
-        /// <param name="printDocument">The print document to configure and print.</param>
-        /// <returns>1 (OK) or 2 (Cancel) indicating the result of the dialog.</returns>
-        int ShowDialog(IntPtr parent, PrintDocument printDocument);
+        /// <param name="size">The original size.</param>
+        /// <param name="percentage">The percentage by which to reduce the size.</param>
+        /// <returns>A new Size structure with the reduced dimensions.</returns>
+        public static Size ReduceByPercentage(this Size size, float percentage)
+        {
+            return new Size(
+                (int)Math.Round(size.Width * (1f - percentage / 100f)),
+                (int)Math.Round(size.Height * (1f - percentage / 100f))
+            );
+        }
     }
 }

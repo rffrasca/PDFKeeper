@@ -19,28 +19,32 @@
 // *****************************************************************************
 
 using Microsoft.Extensions.DependencyInjection;
-using System.Windows.Forms;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Views;
+using System;
+using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
+    /// <summary>
+    /// Service for displaying the Set Author dialog.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
-    "Performance",
-    "CA1812:Avoid uninstantiated internal classes",
-    Justification = "Instantiated via dependency injection or reflection.")]
-    internal class SetAuthorDialogService : IDialogService
+        "Performance",
+        "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Instantiated via dependency injection or reflection.")]
+    internal sealed class SetAuthorDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null)
+        public string ShowDialog(IntPtr parent, string arg = null)
         {
             var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
 
             using (var dialog = new SetAuthorForm())
             {
-                dialog.ShowDialog();
+                dialog.ShowDialog(NativeWindow.FromHandle(parent));
 
-                if (dialog.DialogResult.Equals(DialogResult.OK))
+                if (dialog.DialogResult == DialogResult.OK)
                 {
                     if (dialog.AuthorUserControl.Author.Length > 0)
                     {
@@ -48,7 +52,7 @@ namespace PDFKeeper.WinForms.Services
                     }
                     else
                     {
-                        messageBoxService.ShowMessage(Resources.AuthorCannotBeBlank, true);
+                        messageBoxService.ShowMessage(parent, Resources.AuthorCannotBeBlank, true);
                         return null;
                     }
                 }

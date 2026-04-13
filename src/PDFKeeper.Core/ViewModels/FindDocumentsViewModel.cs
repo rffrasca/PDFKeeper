@@ -32,9 +32,13 @@ using System.Windows.Input;
 
 namespace PDFKeeper.Core.ViewModels
 {
+    /// <summary>
+    /// View model for managing the parameters and actions related to finding documents.
+    /// </summary>
     [CLSCompliant(false)]
-    public class FindDocumentsViewModel : ColumnDataListsViewModel, IFindDocumentsParam
+    public sealed class FindDocumentsViewModel : ColumnDataListsViewModel, IFindDocumentsParam
     {
+        private readonly IWindowHandleProvider windowHandleProvider;
         private IMessageBoxService messageBoxService;
         private FindDocumentsParam findDocumentsParam;
         private readonly SearchTermHistory searchTermHistory;
@@ -57,13 +61,21 @@ namespace PDFKeeper.Core.ViewModels
             AllDocuments
         }
 
-        public FindDocumentsViewModel()
+        /// <summary>
+        /// Initializes a new instance of the FindDocumentsViewModel class with the specified
+        /// window handle provider.
+        /// </summary>
+        /// <param name="windowHandleProvider">
+        /// An object that provides a handle to the window associated with this view model.
+        /// </param>
+        public FindDocumentsViewModel(IWindowHandleProvider windowHandleProvider)
         {
+            this.windowHandleProvider = windowHandleProvider;
             GetServices(ServiceLocator.Services);
             findDocumentsParam = new FindDocumentsParam();
             searchTermHistory = new SearchTermHistory();
             ApplyPolicy();
-            InitializeCommands();
+            InitializeCommands();            
         }
 
         public Action OnRelaySelectedFindAction { get; set; }
@@ -331,7 +343,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
             }
             finally
             {
@@ -350,7 +362,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
             }
             finally
             {
@@ -369,7 +381,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
             }
             finally
             {
@@ -388,7 +400,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
             }
             finally
             {
@@ -400,8 +412,8 @@ namespace PDFKeeper.Core.ViewModels
         {
             CancelViewClosing = false;
             OnApplyPendingChanges?.Invoke();
-
             var rule = new FindDocumentsParamRule(FindDocumentsParam);
+            
             if (!rule.ViolationFound)
             {
                 FindDocumentsViewState.FindDocumentsParam = FindDocumentsParam.Clone();
@@ -415,7 +427,10 @@ namespace PDFKeeper.Core.ViewModels
             }
             else
             {
-                messageBoxService.ShowMessage(rule.ViolationMessage, true);
+                messageBoxService.ShowMessage(
+                    windowHandleProvider.GetHandle(),
+                    rule.ViolationMessage,
+                    true);
                 OnCancelCloseView?.Invoke();
             }
         }

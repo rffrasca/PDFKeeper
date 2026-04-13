@@ -23,6 +23,10 @@ using System;
 
 namespace PDFKeeper.Core.Services
 {
+    /// <summary>
+    /// Provides functionality to display dialogs with a specified parent window and optional
+    /// parameters.
+    /// </summary>
     public interface IChildDialogService
     {
         /// <summary>

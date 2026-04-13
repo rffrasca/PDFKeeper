@@ -18,28 +18,38 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.Services;
+using PDFKeeper.WinForms.Helpers;
+using System;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
-using PDFKeeper.Core.Services;
 
 namespace PDFKeeper.WinForms.Services
 {
+    /// <summary>
+    /// Provides functionality to display a print preview dialog for a specified print document.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
         "Performance",
         "CA1812:Avoid uninstantiated internal classes",
         Justification = "Instantiated via dependency injection or reflection.")]
     internal class PrintPreviewDialogService : IPrintPreviewDialogService
     {
-        public void ShowDialog(PrintDocument printDocument, Size printPreviewDialogSize)
+        public void ShowDialog(
+            IntPtr parent,
+            PrintDocument printDocument,
+            Size printPreviewDialogSize)
         {
             using (var dialog = new PrintPreviewDialog())
             {
+                DialogCenteringHelper.InstallCenteringHook(parent);
                 dialog.Document = printDocument;
-                dialog.ClientSize = printPreviewDialogSize;
+                dialog.ClientSize = printPreviewDialogSize.ReduceByPercentage(10);
                 dialog.ShowIcon = false;
                 dialog.UseAntiAlias = true;
-                dialog.ShowDialog();
+                dialog.ShowDialog(NativeWindow.FromHandle(parent));
             }
         }
     }

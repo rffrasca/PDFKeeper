@@ -20,20 +20,25 @@
 
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
+using System;
+using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
+    /// <summary>
+    /// Service for displaying the Upload Profile Editor dialog.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
         "Performance",
         "CA1812:Avoid uninstantiated internal classes",
         Justification = "Instantiated via dependency injection or reflection.")]
-    internal class UploadProfileEditorDialogService : IDialogService
+    internal sealed class UploadProfileEditorDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null)
+        public string ShowDialog(IntPtr parent, string arg = null)
         {
             using (var dialog = new UploadProfileEditorForm(arg))
             {
-                dialog.ShowDialog();
+                dialog.ShowDialog(NativeWindow.FromHandle(parent));
             }
 
             return null;

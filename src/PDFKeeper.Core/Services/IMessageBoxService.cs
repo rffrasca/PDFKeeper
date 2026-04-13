@@ -22,35 +22,73 @@ using System;
 
 namespace PDFKeeper.Core.Services
 {
+    /// <summary>
+    /// Provides methods for displaying message and question dialogs to the user.
+    /// </summary>
     public interface IMessageBoxService
     {
         /// <summary>
-        /// Shows the specified message in a <c>MessageBox</c>.
+        /// Displays a message to the user, optionally indicating an error.
         /// </summary>
-        /// <param name="message">The message to display.</param>
-        /// <param name="isError"><c>true</c> or <c>false</c> if the message an error.</param>
+        /// <param name="message">
+        /// The message to display.
+        /// </param>
+        /// <param name="isError">
+        /// true to indicate the message is an error; otherwise, false.
+        /// </param>
         void ShowMessage(string message, bool isError = false);
 
         /// <summary>
-        /// Shows the specified message in a <c>MessageBox</c>.
+        /// Displays a message dialog with the specified text and parent window.
         /// </summary>
-        /// <param name="owner">The window <c>Handle</c> of the owner.</param>
-        /// <param name="message">The message to display.</param>
-        /// <param name="isError"><c>true</c> or <c>false</c> if the message an error.</param>
-        void ShowMessage(IntPtr owner, string message, bool isError = false);
+        /// <param name="parent">
+        /// A handle to the parent window for the message dialog.
+        /// </param>
+        /// <param name="message">
+        /// The text to display in the message dialog.
+        /// </param>
+        /// <param name="isError">
+        /// true to display the message as an error; otherwise, false.
+        /// </param>
+        void ShowMessage(IntPtr parent, string message, bool isError = false);
 
         /// <summary>
-        /// Shows the specified question in a <c>MessageBox</c>.
+        /// Displays a question dialog with the specified message and optional Cancel button.
         /// </summary>
         /// <param name="message">
-        /// The question to display.
+        /// The message to display in the dialog.
         /// </param>
         /// <param name="showCancel">
-        /// <c>true</c> or <c>false</c> to show <c>Cancel</c> button.
+        /// true to display a Cancel button; otherwise, false.
         /// </param>
         /// <returns>
-        /// 6 = <c>Yes</c>, 7 = <c>No</c>, or 2 = <c>Cancel</c>.
+        /// An integer indicating the user's response. 
+        /// Valid values are:
+        ///   6 = <c>Yes</c>
+        ///   7 = <c>No</c>
+        ///   2 = <c>Cancel</c>
         /// </returns>
         int ShowQuestion(string message, bool showCancel = false);
+
+        /// <summary>
+        /// Displays a question dialog with the specified message and optional Cancel button.
+        /// </summary>
+        /// <param name="parent">
+        /// A handle to the parent window for the message dialog.
+        /// </param>
+        /// <param name="message">
+        /// The message to display in the dialog.
+        /// </param>
+        /// <param name="showCancel">
+        /// true to display a Cancel button; otherwise, false.
+        /// </param>
+        /// <returns>
+        /// An integer indicating the user's response. 
+        /// Valid values are:
+        ///   6 = <c>Yes</c>
+        ///   7 = <c>No</c>
+        ///   2 = <c>Cancel</c>
+        /// </returns>
+        int ShowQuestion(IntPtr parent, string message, bool showCancel = false);
     }
 }

@@ -18,18 +18,22 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using System;
+
 namespace PDFKeeper.Core.Services
 {
+    /// <summary>
+    /// Provides an abstraction for displaying a folder browser dialog and retrieving the user's
+    /// selection.
+    /// </summary>
     public interface IFolderBrowserDialogService
     {
         /// <summary>
-        /// Shows a <c>FolderBrowserDialog</c>.
+        /// Displays a dialog box with the specified parent window and description.
         /// </summary>
-        /// <param name="description">
-        /// The descriptive text displayed above the treeview control in the
-        /// <c>FolderBrowserDialog</c>.
-        /// </param>
-        /// <returns>The full path of the selected folder.</returns>
-        string ShowDialog(string description);
+        /// <param name="parent">A handle to the parent window for the dialog box.</param>
+        /// <param name="description">A description to display in the dialog box.</param>
+        /// <returns>The user input or selection from the dialog box.</returns>
+        string ShowDialog(IntPtr parent, string description);
     }
 }

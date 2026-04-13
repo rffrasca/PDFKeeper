@@ -19,28 +19,33 @@
 // *****************************************************************************
 
 using Microsoft.Extensions.DependencyInjection;
-using System.Windows.Forms;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Views;
+using System;
+using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
+    /// <summary>
+    /// Provides dialog functionality for setting a subject, including validation and user
+    /// feedback.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
-    "Performance",
-    "CA1812:Avoid uninstantiated internal classes",
-    Justification = "Instantiated via dependency injection or reflection.")]
-    internal class SetSubjectDialogService : IDialogService
+        "Performance",
+        "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Instantiated via dependency injection or reflection.")]
+    internal sealed class SetSubjectDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null)
+        public string ShowDialog(IntPtr parent, string arg = null)
         {
             var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
 
             using (var dialog = new SetSubjectForm())
             {
-                dialog.ShowDialog();
+                dialog.ShowDialog(NativeWindow.FromHandle(parent));
 
-                if (dialog.DialogResult.Equals(DialogResult.OK))
+                if (dialog.DialogResult == DialogResult.OK)
                 {
                     if (dialog.SubjectUserControl.Subject.Length > 0)
                     {
@@ -48,7 +53,10 @@ namespace PDFKeeper.WinForms.Services
                     }
                     else
                     {
-                        messageBoxService.ShowMessage(Resources.SubjectCannotBeBlank, true);
+                        messageBoxService.ShowMessage(
+                            parent,
+                            Resources.SubjectCannotBeBlank,
+                            true);
                         return null;
                     }
                 }

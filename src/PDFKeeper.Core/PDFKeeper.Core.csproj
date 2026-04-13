@@ -95,6 +95,7 @@
     <Compile Include="DataAccess\OracleConnectionFactory.cs" />
     <Compile Include="Extensions\ByteExtension.cs" />
     <Compile Include="Extensions\ExceptionExtension.cs" />
+    <Compile Include="Extensions\SizeExtension.cs" />
     <Compile Include="FileIO\Serializers\JsonSerializer.cs" />
     <Compile Include="Helpers\OneDriveHelper.cs" />
     <Compile Include="Helpers\UploadProfileTokenHelper.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Services\IAliasService.cs" />
     <Compile Include="Services\IChildDialogService.cs" />
     <Compile Include="Services\IVirtualKeyService.cs" />
+    <Compile Include="Services\IWindowHandleProvider.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Application\UserProfileFolder.cs" />
     <Compile Include="Commands\ExportDocumentCommand.cs" />

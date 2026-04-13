@@ -27,9 +27,13 @@ using System.Collections.Generic;
 
 namespace PDFKeeper.Core.ViewModels
 {
+    /// <summary>
+    /// View model for managing a list of column data.
+    /// </summary>
     [CLSCompliant(false)]
-    public class ColumnDataListViewModel : ViewModelBase
+    public sealed class ColumnDataListViewModel : ViewModelBase
     {
+        private readonly IWindowHandleProvider windowHandleProvider;
         private readonly ColumnName columnName;
         private IMessageBoxService messageBoxService;
         private IEnumerable<string> items;
@@ -44,8 +48,21 @@ namespace PDFKeeper.Core.ViewModels
         /// </summary>
         public enum ColumnName { Author, Subject, Category, TaxYear }
 
-        public ColumnDataListViewModel(ColumnName columnName)
+        /// <summary>
+        /// Initializes a new instance of the ColumnDataListViewModel class with the specified
+        /// window handle provider and column name.
+        /// </summary>
+        /// <param name="windowHandleProvider">
+        /// An object that provides a handle to the window associated with this view model.
+        /// </param>
+        /// <param name="columnName">
+        /// The name of the column to be managed by the view model.
+        /// </param>
+        public ColumnDataListViewModel(
+            IWindowHandleProvider windowHandleProvider,
+            ColumnName columnName)
         {
+            this.windowHandleProvider = windowHandleProvider;
             this.columnName = columnName;
             GetServices(ServiceLocator.Services);
             GetColumnData();
@@ -84,7 +101,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
             }
         }
     }

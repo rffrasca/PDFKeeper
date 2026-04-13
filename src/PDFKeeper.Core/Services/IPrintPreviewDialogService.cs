@@ -18,22 +18,24 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using System;
 using System.Drawing;
 using System.Drawing.Printing;
 
 namespace PDFKeeper.Core.Services
 {
+    /// <summary>
+    /// Provides functionality to display a print preview dialog for a specified print document.
+    /// </summary>
     public interface IPrintPreviewDialogService
     {
         /// <summary>
-        /// Shows the <c>PrintPreviewDialog</c>.
+        /// Displays a print preview dialog for the specified print document with the given parent
+        /// window and dialog size.
         /// </summary>
-        /// <param name="printDocument">
-        /// The <see cref="PrintDocument"/> object.
-        /// </param>
-        /// <param name="printPreviewDialogSize">
-        /// The <see cref="Size"/> of the <c>PrintPreviewDialog</c>.
-        /// </param>
-        void ShowDialog(PrintDocument printDocument, Size printPreviewDialogSize);
+        /// <param name="parent">A handle to the parent window for the dialog.</param>
+        /// <param name="printDocument">The print document to preview.</param>
+        /// <param name="printPreviewDialogSize">The size of the print preview dialog.</param>
+        void ShowDialog(IntPtr parent, PrintDocument printDocument, Size printPreviewDialogSize);
     }
 }

@@ -154,7 +154,9 @@
       <DependentUpon>SetPreviewPixelDensityForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Commands\TagCommand.cs" />
+    <Compile Include="Helpers\DialogCenteringHelper.cs" />
     <Compile Include="Services\AboutBoxDialogService.cs" />
+    <Compile Include="Services\FormHandleProvider.cs" />
     <Compile Include="Services\OptionsDialogService.cs" />
     <Compile Include="Services\SetPreviewPixelDensityDialogService.cs" />
     <Compile Include="Services\AddPdfDialogService.cs" />

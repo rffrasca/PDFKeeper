@@ -32,10 +32,14 @@ using System.Windows.Input;
 
 namespace PDFKeeper.Core.ViewModels
 {
+    /// <summary>
+    /// View model for adding a PDF document, including functionality for selecting, viewing,
+    /// and adding PDFs with metadata.
+    /// </summary>
     [CLSCompliant(false)]
-    public class AddPdfViewModel : ColumnDataListsViewModel, IUploadProfile
+    public sealed class AddPdfViewModel : ColumnDataListsViewModel, IUploadProfile
     {
-        private readonly IntPtr viewHandle;
+        private readonly IWindowHandleProvider windowHandleProvider;
         private readonly Document document;
         private IFileDialogService openFileDialogService;
         private IMessageBoxService messageBoxService;
@@ -48,17 +52,20 @@ namespace PDFKeeper.Core.ViewModels
         private PdfMetadata pdfMetadata;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AddPdfViewModel"/> class.
+        /// Initializes a new instance of the AddPdfViewModel class with the specified window
+        /// handle provider and optional document.
         /// </summary>
-        /// <param name="viewHandle">
-        /// The <c>Handle</c> of the view.
+        /// <param name="windowHandleProvider">
+        /// An object that provides a handle to the window associated with this view model.
         /// </param>
-        /// <param name="document">
-        /// The optional <see cref="Document"/> instance to associate with the view model.
+        /// <param name = "document" >
+        /// An optional Document to associate with the view model.
         /// </param>
-        public AddPdfViewModel(IntPtr viewHandle, Document document = null)
+        public AddPdfViewModel(
+            IWindowHandleProvider windowHandleProvider,
+            Document document = null)
         {
-            this.viewHandle = viewHandle;
+            this.windowHandleProvider = windowHandleProvider;
             this.document = document;
             GetServices(ServiceLocator.Services);
             InitializeCommands();            
@@ -210,7 +217,9 @@ namespace PDFKeeper.Core.ViewModels
             }
             else
             {
-                selectedPdfPath = openFileDialogService.ShowDialog(Resources.PdfFilter);
+                selectedPdfPath = openFileDialogService.ShowDialog(
+                    windowHandleProvider.GetHandle(),
+                    Resources.PdfFilter);
             }
 
             if (selectedPdfPath.Length > 0)
@@ -219,16 +228,19 @@ namespace PDFKeeper.Core.ViewModels
                 {
                     pdfFile = new PdfFile(new FileInfo(selectedPdfPath));
                     var passwordType = pdfFile.GetPasswordType();
-                    if (passwordType.Equals(PdfFile.PasswordType.None))
+
+                    if (passwordType == PdfFile.PasswordType.None)
                     {
                         pdfMetadata = new PdfMetadata(pdfFile);
                         SelectedPdf = pdfFile.FullName;
                         SetUploadProfile();
                         GetCollections();
                     }
-                    else if (passwordType.Equals(PdfFile.PasswordType.Owner))
+                    else if (passwordType == PdfFile.PasswordType.Owner)
                     {
-                        var pdfOwnerPassword = passwordDialogService.ShowDialog(viewHandle);
+                        var pdfOwnerPassword = passwordDialogService.ShowDialog(
+                            windowHandleProvider.GetHandle());
+                        
                         if (pdfOwnerPassword != null)
                         {
                             if (pdfOwnerPassword.Length > 0)
@@ -243,15 +255,18 @@ namespace PDFKeeper.Core.ViewModels
                                 catch (ArgumentException)
                                 {
                                     messageBoxService.ShowMessage(
+                                        windowHandleProvider.GetHandle(),
                                         Resources.PdfOwnerPasswordIncorrect,
                                         true);
                                     OnCloseView?.Invoke();
                                 }
+
                                 pdfOwnerPassword.MakeReadOnly();
                             }
                             else
                             {
                                 messageBoxService.ShowMessage(
+                                    windowHandleProvider.GetHandle(),
                                     Resources.PdfOwnerPasswordRequired,
                                     true);
                                 OnCloseView?.Invoke();
@@ -262,20 +277,28 @@ namespace PDFKeeper.Core.ViewModels
                             OnCloseView?.Invoke();
                         }
                     }
-                    else if (passwordType.Equals(PdfFile.PasswordType.User))
+                    else if (passwordType == PdfFile.PasswordType.User)
                     {
-                        messageBoxService.ShowMessage(Resources.PdfContainsUserPassword, true);
+                        messageBoxService.ShowMessage(
+                            windowHandleProvider.GetHandle(),
+                            Resources.PdfContainsUserPassword,
+                            true);
                         OnCloseView?.Invoke();
                     }
-                    else if (passwordType.Equals(PdfFile.PasswordType.Unknown))
+                    else if (passwordType == PdfFile.PasswordType.Unknown)
                     {
-                        messageBoxService.ShowMessage(Resources.PdfInvalid, true);
+                        messageBoxService.ShowMessage(
+                            windowHandleProvider.GetHandle(),
+                            Resources.PdfInvalid,
+                            true);
                         OnCloseView?.Invoke();
                     }
                 }
                 catch (ArgumentException ex)
                 {
-                    messageBoxService.ShowMessage(ex.Message, true);
+                    messageBoxService.ShowMessage(
+                        windowHandleProvider.GetHandle(),
+                        ex.Message, true);
                     OnCloseView?.Invoke();
                 }
             }
@@ -304,7 +327,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
             }
         }
 
@@ -329,12 +352,12 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (NullReferenceException ex)
             {
-                messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
                 OnCancelCloseView?.Invoke();
             }
             catch (iText.IO.Exceptions.IOException ex)
             {
-                messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
                 OnCancelCloseView?.Invoke();
             }
         }
@@ -343,7 +366,9 @@ namespace PDFKeeper.Core.ViewModels
         {
             CancelViewClosing = false;
 
-            if (messageBoxService.ShowQuestion(Resources.CancelQuestion).Equals(6))
+            if (messageBoxService.ShowQuestion(
+                windowHandleProvider.GetHandle(),
+                Resources.CancelQuestion) == 6)
             {
                 restrictedPdfViewerService.Close();
                 OnCloseViewCancelResult?.Invoke();
@@ -365,7 +390,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(ex.Message, true);
+                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
             }
         }
 

@@ -18,23 +18,30 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using System.Windows.Forms;
 using PDFKeeper.Core.Services;
+using PDFKeeper.WinForms.Helpers;
+using System;
+using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
+    /// <summary>
+    /// Provides functionality to display a folder browser dialog and retrieve the selected folder
+    /// path.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
-    "Performance",
-    "CA1812:Avoid uninstantiated internal classes",
-    Justification = "Instantiated via dependency injection or reflection.")]
-    internal class FolderBrowserDialogService : IFolderBrowserDialogService
+        "Performance",
+        "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Instantiated via dependency injection or reflection.")]
+    internal sealed class FolderBrowserDialogService : IFolderBrowserDialogService
     {
-        public string ShowDialog(string description)
+        public string ShowDialog(IntPtr parent, string description)
         {
             using (var dialog = new FolderBrowserDialog())
             {
+                DialogCenteringHelper.InstallCenteringHook(parent);
                 dialog.Description = description;
-                dialog.ShowDialog();
+                dialog.ShowDialog(NativeWindow.FromHandle(parent));
                 return dialog.SelectedPath;
             }
         }

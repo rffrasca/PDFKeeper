@@ -27,6 +27,7 @@ using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
 using PDFKeeper.WinForms.Dialogs;
 using PDFKeeper.WinForms.Properties;
+using PDFKeeper.WinForms.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -52,7 +53,7 @@ namespace PDFKeeper.WinForms.Views
         public MainForm()
         {
             InitializeComponent();
-            viewModel = new MainViewModel(Handle);
+            viewModel = new MainViewModel(new FormHandleProvider(this));
             MainViewModelBindingSource.DataSource = viewModel;
             helpService = ServiceLocator.Services.GetService<IHelpService>();
             dataGridViewSortProperties = new DataGridViewSortProperties();

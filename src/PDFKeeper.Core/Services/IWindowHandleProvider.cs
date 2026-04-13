@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -19,22 +19,18 @@
 // ****************************************************************************
 
 using System;
-using System.Drawing.Printing;
 
 namespace PDFKeeper.Core.Services
 {
     /// <summary>
-    /// Provides an abstraction for displaying a print dialog and initiating print operations.
+    /// Provides a method to retrieve the handle of a window.
     /// </summary>
-    public interface IPrintDialogService
+    public interface IWindowHandleProvider
     {
         /// <summary>
-        /// Displays a print dialog for the specified print document with the given parent window
-        /// handle.
+        /// Gets the handle of the window.
         /// </summary>
-        /// <param name="parent">A handle to the parent window for the dialog.</param>
-        /// <param name="printDocument">The print document to configure and print.</param>
-        /// <returns>1 (OK) or 2 (Cancel) indicating the result of the dialog.</returns>
-        int ShowDialog(IntPtr parent, PrintDocument printDocument);
+        /// <returns>The handle of the window.</returns>
+        IntPtr GetHandle();
     }
 }

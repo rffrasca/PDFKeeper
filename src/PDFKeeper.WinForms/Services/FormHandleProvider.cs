@@ -1,4 +1,4 @@
-// *****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -16,32 +16,27 @@
 // *
 // * You should have received a copy of the GNU General Public License along
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
-// *****************************************************************************
+// ****************************************************************************
 
 using PDFKeeper.Core.Services;
-using PDFKeeper.WinForms.Dialogs;
 using System;
 using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
     /// <summary>
-    /// Service for displaying the About Box dialog.
+    /// Provides a window handle for a given form.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
-    internal sealed class AboutBoxDialogService : IDialogService
+    /// <param name="form">The form for which to provide a window handle.</param>
+    internal sealed class FormHandleProvider(Form form) : IWindowHandleProvider
     {
-        public string ShowDialog(IntPtr parent, string arg = null)
+        /// <summary>
+        /// Gets the window handle of the form.
+        /// </summary>
+        /// <returns>The window handle of the form.</returns>
+        public IntPtr GetHandle()
         {
-            using (var dialog = new AboutBox())
-            {
-                dialog.ShowDialog(NativeWindow.FromHandle(parent));
-            }
-
-            return null;
+            return form.Handle;
         }
     }
 }

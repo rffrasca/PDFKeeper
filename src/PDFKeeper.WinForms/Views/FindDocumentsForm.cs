@@ -21,6 +21,7 @@
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
+using PDFKeeper.WinForms.Services;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -35,7 +36,7 @@ namespace PDFKeeper.WinForms.Views
         public FindDocumentsForm()
         {
             InitializeComponent();
-            viewModel = new FindDocumentsViewModel();
+            viewModel = new FindDocumentsViewModel(new FormHandleProvider(this));
             FindDocumentsViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;

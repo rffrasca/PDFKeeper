@@ -18,22 +18,21 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using System;
+
 namespace PDFKeeper.Core.Services
 {
+    /// <summary>
+    /// Provides functionality to display dialogs and retrieve user input.
+    /// </summary>
     public interface IDialogService
     {
         /// <summary>
-        /// Displays a dialog associated with the specified parent, using optional arguments and
-        /// document, and returns a result string.
+        /// Displays a dialog box with the specified parent window and optional argument.
         /// </summary>
-        /// <typeparam name="T">The type of the parent window or control.</typeparam>
-        /// <param name="parent">
-        /// The parent window or control for the dialog.
-        /// </param>
-        /// <param name="arg">
-        /// An optional argument that specifies the input or context for the dialog.
-        /// </param>
-        /// <returns>A string representing the result of the dialog.</returns>
-        string ShowDialog(string arg = null);
+        /// <param name="parent">A handle to the parent window for the dialog box.</param>
+        /// <param name="arg">An optional argument to customize the dialog box.</param>
+        /// <returns>A string result from the dialog box.</returns>
+        string ShowDialog(IntPtr parent, string arg = null);
     }
 }

@@ -31,9 +31,13 @@ using System.Windows.Input;
 
 namespace PDFKeeper.Core.ViewModels
 {
+    /// <summary>
+    /// View model for managing upload profiles, providing functionality to add, edit, and delete.
+    /// </summary>
     [CLSCompliant(false)]
-    public class UploadProfilesViewModel : ViewModelBase
+    public sealed class UploadProfilesViewModel : ViewModelBase
     {
+        private readonly IWindowHandleProvider windowHandleProvider;
         private IDialogService dialogService;
         private IMessageBoxService messageBoxService;
         private readonly UploadProfileManager uploadProfileManager;
@@ -41,8 +45,16 @@ namespace PDFKeeper.Core.ViewModels
         private bool editEnabled;
         private bool deleteEnabled;
 
-        public UploadProfilesViewModel()
+        /// <summary>
+        /// Initializes a new instance of the UploadProfilesViewModel class with the specified
+        /// window handle provider.
+        /// </summary>
+        /// <param name="windowHandleProvider">
+        /// An object that provides a handle to the window associated with this view model.
+        /// </param>
+        public UploadProfilesViewModel(IWindowHandleProvider windowHandleProvider)
         {
+            this.windowHandleProvider = windowHandleProvider;
             GetServices(ServiceLocator.Services);
             uploadProfileManager = new UploadProfileManager();
             UploadProfilesDirectoryPath = uploadProfileManager.UploadProfilesDirectoryPath;
@@ -114,8 +126,11 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
-        private void AddUploadProfile() => dialogService.ShowDialog();
-        private void EditUploadProfile() => dialogService.ShowDialog(CurrentUploadProfileName);
+        private void AddUploadProfile() => dialogService.ShowDialog(
+            windowHandleProvider.GetHandle());
+        private void EditUploadProfile() => dialogService.ShowDialog(
+            windowHandleProvider.GetHandle(),
+            CurrentUploadProfileName);
 
         private void DeleteUploadProfile()
         {
@@ -123,7 +138,8 @@ namespace PDFKeeper.Core.ViewModels
                 Resources.ResourceManager,
                 "DeleteToRecycleBin",
                 CurrentUploadProfileName);
-            if (messageBoxService.ShowQuestion(message).Equals(6))
+
+            if (messageBoxService.ShowQuestion(windowHandleProvider.GetHandle(), message) == 6)
             {
                 uploadProfileManager.DeleteUploadProfile(CurrentUploadProfileName);
             }

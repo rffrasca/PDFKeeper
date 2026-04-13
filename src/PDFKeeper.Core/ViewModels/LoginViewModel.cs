@@ -31,19 +31,25 @@ using System.Windows.Input;
 
 namespace PDFKeeper.Core.ViewModels
 {
+    /// <summary>
+    /// View model for managing the login process and related parameters.
+    /// </summary>
     [CLSCompliant(false)]
-    public class LoginViewModel : ViewModelBase
+    public sealed class LoginViewModel : ViewModelBase
     {
-        private readonly IntPtr viewHandle;
+        private readonly IWindowHandleProvider windowHandleProvider;
         private IMessageBoxService messageBoxService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoginViewModel"/> class.
+        /// Initializes a new instance of the LoginViewModel class with the specified window handle
+        /// provider.
         /// </summary>
-        /// <param name="viewHandle">The <c>Handle</c> of the view.</param>
-        public LoginViewModel(IntPtr viewHandle)
+        /// <param name="windowHandleProvider">
+        /// An object that provides a handle to the window associated with this view model.
+        /// </param>
+        public LoginViewModel(IWindowHandleProvider windowHandleProvider)
         {
-            this.viewHandle = viewHandle;
+            this.windowHandleProvider = windowHandleProvider;
             GetServices(ServiceLocator.Services);
             LoginCommand = new RelayCommand(Login);
         }
@@ -69,8 +75,8 @@ namespace PDFKeeper.Core.ViewModels
             DatabaseSession.Password = Password;
             DatabaseSession.DataSource = DataSource;
             DatabaseSession.SchemaName = SchemaName;
-
             IDocumentRepository documentRepository = null;
+
             try
             {
                 using (documentRepository = DatabaseSession.GetDocumentRepository())
@@ -81,12 +87,12 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (ArgumentException ex)
             {
-                messageBoxService.ShowMessage(viewHandle, ex.Message, true);
+                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
                 OnResetView?.Invoke();
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(viewHandle, ex.Message, true);
+                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
 
                 try
                 {
@@ -98,7 +104,10 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (FileNotFoundException)
             {
-                messageBoxService.ShowMessage(viewHandle, Resources.OracleOdpNetMissing, true);
+                messageBoxService.ShowMessage(
+                    windowHandleProvider.GetHandle(),
+                    Resources.OracleOdpNetMissing,
+                    true);
                 OnResetView?.Invoke();
             }
             finally

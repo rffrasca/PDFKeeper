@@ -18,29 +18,33 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
 using PDFKeeper.WinForms.Properties;
+using System;
+using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
+    /// <summary>
+    /// Provides a dialog service for setting a title, including validation and user feedback.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
-    "Performance",
-    "CA1812:Avoid uninstantiated internal classes",
-    Justification = "Instantiated via dependency injection or reflection.")]
-    internal class SetTitleDialogService : IDialogService
+        "Performance",
+        "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Instantiated via dependency injection or reflection.")]
+    internal sealed class SetTitleDialogService : IDialogService
     {
-        public string ShowDialog(string arg = null)
+        public string ShowDialog(IntPtr parent, string arg = null)
         {
             var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
 
             using (var dialog = new SetTitleForm())
             {
-                dialog.ShowDialog();
+                dialog.ShowDialog(NativeWindow.FromHandle(parent));
 
-                if (dialog.DialogResult.Equals(DialogResult.OK))
+                if (dialog.DialogResult == DialogResult.OK)
                 {
                     if (dialog.Title.Length > 0)
                     {
@@ -48,7 +52,7 @@ namespace PDFKeeper.WinForms.Services
                     }
                     else
                     {
-                        messageBoxService.ShowMessage(Resources.TitleCannotBeBlank, true);
+                        messageBoxService.ShowMessage(parent, Resources.TitleCannotBeBlank, true);
                         return null;
                     }
                 }

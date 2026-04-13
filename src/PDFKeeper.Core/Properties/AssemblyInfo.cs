@@ -1,4 +1,3 @@
-using System.Resources;
 // ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
@@ -21,6 +20,8 @@ using System.Resources;
 
 using System;
 using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
@@ -58,3 +59,4 @@ using System.Runtime.InteropServices;
 
 [assembly: CLSCompliant(true)]
 [assembly: NeutralResourcesLanguage("en-US")]
+[assembly: InternalsVisibleTo("PDFKeeper")]

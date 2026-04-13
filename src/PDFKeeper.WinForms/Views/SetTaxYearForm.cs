@@ -20,6 +20,7 @@
 
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.ViewModels;
+using PDFKeeper.WinForms.Services;
 using System;
 using System.Windows.Forms;
 
@@ -30,7 +31,9 @@ namespace PDFKeeper.WinForms.Views
         public SetTaxYearForm()
         {
             InitializeComponent();
-            var viewModel = new ColumnDataListViewModel(ColumnDataListViewModel.ColumnName.TaxYear);
+            var viewModel = new ColumnDataListViewModel(
+                new FormHandleProvider(this),
+                ColumnDataListViewModel.ColumnName.TaxYear);
             ColumnDataListViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
         }

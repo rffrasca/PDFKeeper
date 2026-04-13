@@ -18,16 +18,31 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using System;
+
 namespace PDFKeeper.Core.Services
 {
+    /// <summary>
+    /// Provides an abstraction for displaying file dialog boxes to select or save files.
+    /// </summary>
     public interface IFileDialogService
     {
         /// <summary>
-        /// Shows an <c>OpenFileDialog</c> or <c>SaveFileDialog</c> based on the implementation.
+        /// Displays a file dialog with the specified parent window, filter, and optional initial
+        /// file name.
         /// </summary>
-        /// <param name="filter">The file name filter <c>string</c>.</param>
-        /// <param name="fileName">The optional selected file name.</param>
-        /// <returns>The selected file name or <c>null</c> when no file was selected.</returns>
-        string ShowDialog(string filter, string fileName = null);
+        /// <param name="parent">
+        /// A handle to the parent window for the dialog.
+        /// </param>
+        /// <param name="filter">
+        /// The file type filter string that determines which files are displayed.
+        /// </param>
+        /// <param name="fileName">
+        /// The initial file name to display in the dialog, or null to leave blank.
+        /// </param>
+        /// <returns>
+        /// The selected file path, or null if the dialog is canceled.
+        /// </returns>
+        string ShowDialog(IntPtr parent, string filter, string fileName = null);
     }
 }

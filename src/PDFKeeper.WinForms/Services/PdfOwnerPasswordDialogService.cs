@@ -26,11 +26,14 @@ using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
+    /// <summary>
+    /// Provides a dialog service for securely obtaining an owner password for PDF documents.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
-    "Performance",
-    "CA1812:Avoid uninstantiated internal classes",
-    Justification = "Instantiated via dependency injection or reflection.")]
-    internal class PdfOwnerPasswordDialogService : IPasswordDialogService
+        "Performance",
+        "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Instantiated via dependency injection or reflection.")]
+    internal sealed class PdfOwnerPasswordDialogService : IPasswordDialogService
     {
         public SecureString ShowDialog(IntPtr parent)
         {

@@ -18,26 +18,29 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Services;
 using System;
 using System.Drawing.Printing;
 using System.Windows.Forms;
-using PDFKeeper.Core.Services;
 
 namespace PDFKeeper.WinForms.Services
 {
+    /// <summary>
+    /// Provides functionality to display a print dialog and manage print operations.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
-    "Performance",
-    "CA1812:Avoid uninstantiated internal classes",
-    Justification = "Instantiated via dependency injection or reflection.")]
-    internal class PrintDialogService : IPrintDialogService
+        "Performance",
+        "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Instantiated via dependency injection or reflection.")]
+    internal sealed class PrintDialogService : IPrintDialogService
     {
-        public int ShowDialog(PrintDocument printDocument)
+        public int ShowDialog(IntPtr parent, PrintDocument printDocument)
         {
             using (var dialog = new PrintDialog())
             {
                 dialog.Document = printDocument;
                 dialog.UseEXDialog = true;
-                return Convert.ToInt32((int)dialog.ShowDialog());
+                return Convert.ToInt32((int)dialog.ShowDialog(NativeWindow.FromHandle(parent)));
             }
         }
     }

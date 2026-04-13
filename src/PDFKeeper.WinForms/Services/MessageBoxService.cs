@@ -19,17 +19,22 @@
 // ****************************************************************************
 
 using PDFKeeper.Core.Services;
+using PDFKeeper.WinForms.Helpers;
 using System;
 using System.Globalization;
 using System.Windows.Forms;
 
 namespace PDFKeeper.WinForms.Services
 {
+    /// <summary>
+    /// Provides methods for displaying message boxes and questions to the user, supporting
+    /// right-to-left languages and error indication.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
-    "Performance",
-    "CA1812:Avoid uninstantiated internal classes",
-    Justification = "Instantiated via dependency injection or reflection.")]
-    internal class MessageBoxService : IMessageBoxService
+        "Performance",
+        "CA1812:Avoid uninstantiated internal classes",
+        Justification = "Instantiated via dependency injection or reflection.")]
+    internal sealed class MessageBoxService : IMessageBoxService
     {
         private readonly MessageBoxOptions messageBoxOptions;
         private MessageBoxButtons messageBoxButtons;
@@ -49,15 +54,7 @@ namespace PDFKeeper.WinForms.Services
 
         public void ShowMessage(string message, bool isError = false)
         {            
-            if (isError)
-            {
-                messageBoxIcon = MessageBoxIcon.Error;
-            }
-            else
-            {
-                messageBoxIcon = MessageBoxIcon.Information;
-            }
-
+            messageBoxIcon = isError ? MessageBoxIcon.Error : MessageBoxIcon.Information;
             MessageBox.Show(
                 message,
                 Application.ProductName,
@@ -67,19 +64,12 @@ namespace PDFKeeper.WinForms.Services
                 messageBoxOptions);
         }
 
-        public void ShowMessage(IntPtr owner, string message, bool isError = false)
+        public void ShowMessage(IntPtr parent, string message, bool isError = false)
         {
-            if (isError)
-            {
-                messageBoxIcon = MessageBoxIcon.Error;
-            }
-            else
-            {
-                messageBoxIcon = MessageBoxIcon.Information;
-            }
-
+            messageBoxIcon = isError ? MessageBoxIcon.Error : MessageBoxIcon.Information;
+            DialogCenteringHelper.InstallCenteringHook(parent);
             MessageBox.Show(
-                NativeWindow.FromHandle(owner),
+                NativeWindow.FromHandle(parent),
                 message,
                 Application.ProductName,
                 MessageBoxButtons.OK,
@@ -90,17 +80,28 @@ namespace PDFKeeper.WinForms.Services
 
         public int ShowQuestion(string message, bool showCancel = false)
         {
-            if (showCancel)
-            {
-                messageBoxButtons = MessageBoxButtons.YesNoCancel;
-            }
-            else
-            {
-                messageBoxButtons = MessageBoxButtons.YesNo;
-            }
-
+            messageBoxButtons = showCancel 
+                ? MessageBoxButtons.YesNoCancel
+                : MessageBoxButtons.YesNo;
             return Convert.ToInt32(
                 MessageBox.Show(
+                    message,
+                    Application.ProductName,
+                    messageBoxButtons,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1,
+                    messageBoxOptions));
+        }
+
+        public int ShowQuestion(IntPtr parent, string message, bool showCancel = false)
+        {
+            messageBoxButtons = showCancel
+                ? MessageBoxButtons.YesNoCancel
+                : MessageBoxButtons.YesNo;
+            DialogCenteringHelper.InstallCenteringHook(parent);
+            return Convert.ToInt32(
+                MessageBox.Show(
+                    NativeWindow.FromHandle(parent),
                     message,
                     Application.ProductName,
                     messageBoxButtons,

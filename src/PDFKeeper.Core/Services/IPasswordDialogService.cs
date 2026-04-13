@@ -23,14 +23,22 @@ using System.Security;
 
 namespace PDFKeeper.Core.Services
 {
+    /// <summary>
+    /// Defines a service for displaying a password input dialog and retrieving the entered secure
+    /// string.
+    /// </summary>
     public interface IPasswordDialogService
     {
         /// <summary>
         /// Displays a dialog box with the specified parent window and returns the entered secure
         /// string.
         /// </summary>
-        /// <param name="parent">A handle to the parent window for the dialog box.</param>
-        /// <returns>A SecureString containing the user input from the dialog.</returns>
+        /// <param name="parent">
+        /// A handle to the parent window for the dialog box.
+        /// </param>
+        /// <returns>
+        /// A SecureString containing the user input, or null if the dialog is canceled.
+        /// </returns>
         SecureString ShowDialog(IntPtr parent);
     }
 }
