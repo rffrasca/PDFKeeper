@@ -1727,8 +1727,19 @@ namespace PDFKeeper.Core.ViewModels
         {
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
             {
-                var document = documentRepository.GetDocument(CurrentDocumentId, null);
-                addPdfDialogService.ShowDialog(windowHandleProvider.GetHandle(), null, document);
+                try
+                {
+                    var document = documentRepository.GetDocument(CurrentDocumentId, null);
+                    addPdfDialogService.ShowDialog(windowHandleProvider.GetHandle(), null, document);
+                }
+                catch (DatabaseException ex)
+                {
+                    messageBoxService.ShowMessage(
+                        windowHandleProvider.GetHandle(),
+                        ex.Message,
+                        true);
+                    return;
+                }
             }
         }
 
