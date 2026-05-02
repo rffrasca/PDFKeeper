@@ -46,7 +46,7 @@ BouncyCastle.Cryptography
     License: MIT License, full text can be found at https://github.com/bcgit/bc-csharp/blob/master/LICENSE.md
 
 CommunityToolkit.Mvvm
-    https://www.nuget.org/packages/CommunityToolkit.Mvvm/8.4.0
+    https://www.nuget.org/packages/CommunityToolkit.Mvvm/8.4.2
     Authors: Microsoft.Toolkit and dotnetfoundation
     Copyright: (c) .NET Foundation and Contributors. All rights reserved.
     License: MIT License, full text can be found at https://github.com/CommunityToolkit/dotnet/blob/main/License.md
