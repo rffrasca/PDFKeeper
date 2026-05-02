@@ -78,7 +78,7 @@ namespace PDFKeeper.Core.Extensions
                 shortcut.Save();
             }
         }
-
+        
         /// <summary>
         /// Gets all PDF files in the directory, including all sub-directories, ordered by last
         /// write time.

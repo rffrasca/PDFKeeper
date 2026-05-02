@@ -97,7 +97,7 @@ namespace PDFKeeper.Core.Interop
         [DllImport("user32.dll")]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         internal static extern short GetKeyState(int nVirtKey);
-
+        
         /// <summary>
         /// Retrieves the dimensions of the bounding rectangle of the specified window.
         /// </summary>
@@ -113,6 +113,28 @@ namespace PDFKeeper.Core.Interop
         [DllImport("user32.dll")]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         internal static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        /// <summary>
+        /// Moves the specified window to the specified position and size.
+        /// </summary>
+        /// <param name="hWnd">The handle of the window.</param>
+        /// <param name="X">The new X-coordinate of the window.</param>
+        /// <param name="Y">The new Y-coordinate of the window.</param>
+        /// <param name="nWidth">The new width of the window.</param>
+        /// <param name="nHeight">The new height of the window.</param>
+        /// <param name="repaint">Indicates whether the window should be repainted.</param>
+        /// <returns>
+        /// <c>true</c> if the window was moved successfully; otherwise, <c>false</c>.
+        /// </returns>
+        [DllImport("user32.dll")]
+        [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
+        internal static extern bool MoveWindow(
+            IntPtr hWnd,
+            int X,
+            int Y,
+            int nWidth,
+            int nHeight,
+            bool repaint);
 
         /// <summary>
         /// Removes the window from the Clipboard format listener list.
@@ -190,27 +212,5 @@ namespace PDFKeeper.Core.Interop
         [DllImport("user32.dll")]
         [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
         internal static extern bool UnhookWindowsHookEx(IntPtr hhk);
-
-        /// <summary>
-        /// Moves the specified window to the specified position and size.
-        /// </summary>
-        /// <param name="hWnd">The handle of the window.</param>
-        /// <param name="X">The new X-coordinate of the window.</param>
-        /// <param name="Y">The new Y-coordinate of the window.</param>
-        /// <param name="nWidth">The new width of the window.</param>
-        /// <param name="nHeight">The new height of the window.</param>
-        /// <param name="repaint">Indicates whether the window should be repainted.</param>
-        /// <returns>
-        /// <c>true</c> if the window was moved successfully; otherwise, <c>false</c>.
-        /// </returns>
-        [DllImport("user32.dll")]
-        [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
-        internal static extern bool MoveWindow(
-            IntPtr hWnd,
-            int X,
-            int Y,
-            int nWidth,
-            int nHeight,
-            bool repaint);
     }
 }

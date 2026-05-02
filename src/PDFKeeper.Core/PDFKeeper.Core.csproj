@@ -93,9 +93,13 @@
   <ItemGroup>
     <Compile Include="Application\HelpFile.cs" />
     <Compile Include="DataAccess\OracleConnectionFactory.cs" />
+    <Compile Include="DataAccess\Repository\DocumentCache.cs" />
+    <Compile Include="DataAccess\Repository\DocumentCacheEntry.cs" />
+    <Compile Include="DataAccess\Repository\IDocumentCache.cs" />
     <Compile Include="Extensions\ByteExtension.cs" />
     <Compile Include="Extensions\ExceptionExtension.cs" />
     <Compile Include="Extensions\SizeExtension.cs" />
+    <Compile Include="FileIO\IFileCache.cs" />
     <Compile Include="FileIO\Serializers\JsonSerializer.cs" />
     <Compile Include="Helpers\OneDriveHelper.cs" />
     <Compile Include="Helpers\UploadProfileTokenHelper.cs" />

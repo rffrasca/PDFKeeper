@@ -24,7 +24,7 @@ using PDFKeeper.Core.Properties;
 using System;
 using System.Data;
 using System.Globalization;
-using System.IO;
+using System.Security.Cryptography;
 
 namespace PDFKeeper.Core.DataAccess.Repository
 {
@@ -36,7 +36,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
         private static OracleCredential oracleCredential;
         private bool disposedValue;
 
-        public OracleDocumentRepository()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OracleDocumentRepository"/> class.
+        /// </summary>
+        /// <param name="documentCache">The document cache instance.</param>
+        public OracleDocumentRepository(IDocumentCache documentCache) : base(documentCache)
         {
             connStrBuilder = new OracleConnectionStringBuilder
             {
@@ -354,24 +358,18 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public Document GetDocument(int id, string searchTerm, bool includePdf)
+        public Document GetDocument(int id, string searchTerm)
         {
             searchTerm ??= string.Empty;
-            string sql;
-            
-            if (includePdf)
+            const string sql =
+                "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
+                "doc_category,doc_flag,doc_tax_year,doc_text from docs where doc_id = :doc_id";
+
+            var document = new Document
             {
-                sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
-                    "doc_pdf,doc_category,doc_flag,doc_tax_year,doc_text " +
-                    "from docs where doc_id = :doc_id";
-            }
-            else
-            {
-                sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
-                    "doc_category,doc_flag,doc_tax_year,doc_text " +
-                    "from docs where doc_id = :doc_id";
-            }
-            
+                Id = id
+            };
+                        
             try
             {
                 using (var connection = OracleConnectionFactory.Create(
@@ -387,37 +385,24 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         using (var reader = command.ExecuteReader())
                         {
                             reader.Read();
-
-                            var document = new Document
-                            {
-                                Id = id,
-                                Title = reader["doc_title"].ToString(),
-                                Author = reader["doc_author"].ToString(),
-                                Subject = reader["doc_subject"].ToString(),
-                                Keywords = reader["doc_keywords"].ToString(),
-                                Added = reader["doc_added"].ToString(),
-                                Notes = reader["doc_notes"].ToString(),
-                                Category = reader["doc_category"].ToString(),
-                                Flag = Convert.ToInt32(reader["doc_flag"]),
-                                TaxYear = reader["doc_tax_year"].ToString(),
-                                Text = reader["doc_text"].ToString(),
-                                SearchTermSnippets = GetSearchTermSnippets(id, searchTerm)
-                            };
-
-                            if (includePdf)
-                            {
-                                var blob = reader.GetOracleBlob(6);
-
-                                using (var memoryStream = new MemoryStream(blob.Value))
-                                {
-                                    document.Pdf = memoryStream.ToArray();
-                                }
-                            }
-
-                            return document;
+                            document.Id = id;
+                            document.Title = reader["doc_title"].ToString();
+                            document.Author = reader["doc_author"].ToString();
+                            document.Subject = reader["doc_subject"].ToString();
+                            document.Keywords = reader["doc_keywords"].ToString();
+                            document.Added = reader["doc_added"].ToString();
+                            document.Notes = reader["doc_notes"].ToString();
+                            document.Category = reader["doc_category"].ToString();
+                            document.Flag = Convert.ToInt32(reader["doc_flag"]);
+                            document.TaxYear = reader["doc_tax_year"].ToString();
+                            document.Text = reader["doc_text"].ToString();
+                            document.SearchTermSnippets = GetSearchTermSnippets(id, searchTerm);
                         }
                     }
                 }
+
+                document.Pdf = GetPdfWithCache(id, GetPdfHash, GetPdfBytes);
+                return document;
             }
             catch (InvalidOperationException ex)
             {
@@ -584,6 +569,8 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.ExecuteNonQuery();
                     }
                 }
+
+                documentCache.Remove(id);
             }
             catch (OracleException ex)
             {
@@ -648,6 +635,47 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     table.Locale = CultureInfo.InvariantCulture;
                     adapter.Fill(table);
                     return table;
+                }
+            }
+        }
+
+        protected override byte[] GetPdfHash(int documentId)
+        {
+            const string sql = "select doc_pdf from docs where doc_id = :doc_id";
+
+            using (var connection = OracleConnectionFactory.Create(
+                connStrBuilder.ConnectionString,
+                oracleCredential,
+                DatabaseSession.SchemaName))
+            {
+                using (var command = new OracleCommand(sql, connection))
+                {
+                    command.Parameters.Add(new OracleParameter("doc_id", documentId));
+                    var table = ExecuteQuery(command);
+                    var pdfBytes = (byte[])table.Rows[0][0];
+
+                    using (var sha = SHA256.Create())
+                    {
+                        return sha.ComputeHash(pdfBytes);
+                    }
+                }
+            }
+        }
+
+        protected override byte[] GetPdfBytes(int documentId)
+        {
+            const string sql = "select doc_pdf from docs where doc_id = :doc_id";
+
+            using (var connection = OracleConnectionFactory.Create(
+                connStrBuilder.ConnectionString,
+                oracleCredential,
+                DatabaseSession.SchemaName))
+            {
+                using (var command = new OracleCommand(sql, connection))
+                {
+                    command.Parameters.Add(new OracleParameter("doc_id", documentId));
+                    var table = ExecuteQuery(command);
+                    return (byte[])table.Rows[0][0];
                 }
             }
         }

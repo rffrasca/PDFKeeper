@@ -36,7 +36,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
         private static SqlCredential sqlCredential;
         private bool disposedValue;
 
-        public SqlServerDocumentRepository()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SqlServerDocumentRepository"/> class.
+        /// </summary>
+        /// <param name="documentCache">The document cache instance.</param>
+        public SqlServerDocumentRepository(IDocumentCache documentCache) : base(documentCache)
         {
             connStrBuilder = new SqlConnectionStringBuilder
             {
@@ -429,23 +433,17 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public Document GetDocument(int id, string searchTerm, bool includePdf)
+        public Document GetDocument(int id, string searchTerm)
         {
-            string sql;
+            const string sql =
+                "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
+                "doc_category,doc_flag,doc_tax_year,doc_text from docs where doc_id = @doc_id";
 
-            if (includePdf)
+            var document = new Document
             {
-                sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
-                    "doc_pdf,doc_category,doc_flag,doc_tax_year,doc_text_annotations,doc_text " +
-                    "from docs where doc_id = @doc_id";
-            }
-            else
-            {
-                sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
-                    "doc_category,doc_flag,doc_tax_year,doc_text_annotations,doc_text " +
-                    "from docs where doc_id = @doc_id";
-            }
-            
+                Id = id
+            };
+
             try
             {
                 using (var connection = new SqlConnection(
@@ -454,7 +452,6 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 {
                     using (var command = new SqlCommand(sql, connection))
                     {
-                        var document = new Document();
                         command.Parameters.AddWithValue("@doc_id", id);
                         connection.Open();
 
@@ -468,23 +465,17 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             document.Keywords = reader["doc_keywords"].ToString();
                             document.Added = reader["doc_added"].ToString();
                             document.Notes = reader["doc_notes"].ToString();
-
-                            if (includePdf)
-                            {
-                                document.Pdf = (byte[])reader["doc_pdf"];
-                            }
-
                             document.Category = reader["doc_category"].ToString();
                             document.Flag = Convert.ToInt32(reader["doc_flag"]);
                             document.TaxYear = reader["doc_tax_year"].ToString();
-                            document.TextAnnotations = reader["doc_text_annotations"].ToString();
                             document.Text = reader["doc_text"].ToString();
                             document.SearchTermSnippets = string.Empty; // Not available.
                         }
-
-                        return document;
                     }
                 }
+
+                document.Pdf = GetPdfWithCache(id, GetPdfHash, GetPdfBytes);
+                return document;
             }
             catch (SqlException ex)
             {
@@ -644,6 +635,8 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.ExecuteNonQuery();
                     }
                 }
+
+                documentCache.Remove(id);
             }
             catch (SqlException ex)
             {
@@ -710,6 +703,42 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     table.Locale = CultureInfo.InvariantCulture;
                     adapter.Fill(table);
                     return table;
+                }
+            }
+        }
+
+        protected override byte[] GetPdfHash(int documentId)
+        {
+            const string sql =
+                "select HASHBYTES('SHA2_256', doc_pdf) " +
+                "from docs where doc_id = @doc_id";
+
+            using (var connection = new SqlConnection(
+                connStrBuilder.ConnectionString,
+                sqlCredential))
+            {
+                using (var command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@doc_id", documentId);
+                    var table = ExecuteQuery(command);
+                    return (byte[])table.Rows[0][0];
+                }
+            }
+        }
+
+        protected override byte[] GetPdfBytes(int documentId)
+        {
+            const string sql = "select doc_pdf from docs where doc_id = @doc_id";
+
+            using (var connection = new SqlConnection(
+                connStrBuilder.ConnectionString,
+                sqlCredential))
+            {
+                using (var command = new SqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@doc_id", documentId);
+                    var table = ExecuteQuery(command);
+                    return (byte[])table.Rows[0][0];
                 }
             }
         }

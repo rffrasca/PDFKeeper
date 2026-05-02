@@ -31,24 +31,19 @@ using System.Windows.Input;
 namespace PDFKeeper.Core.Commands
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ExportDocumentCommand"/> class that that
-    /// exports the PDF and external metadata (XML) when <see cref="Execute(object)"/> is
-    /// invoked.
-    /// <para>
-    /// When invoking <see cref="Execute(object)"/>, set parameter to <c>null</c>.
-    /// </para>
+    /// Implements the ICommand interface to export a document's PDF file and metadata to a specified directory.
     /// </summary>
     /// <param name="id">The document ID.</param>
     /// <param name="exportDirectory">The export <see cref="DirectoryInfo"/> object.</param>
-    /// <param name="fileCache">The export <see cref="FileCache"/> instance.</param>
+    /// <param name="fileCache">The export <see cref="IFileCache"/> instance.</param>
     public class ExportDocumentCommand(
         int id,
         DirectoryInfo exportDirectory,
-        FileCache fileCache) : ICommand
+        IFileCache fileCache) : ICommand
     {
         private readonly int id = id;
         private readonly DirectoryInfo exportDirectory = exportDirectory;
-        private readonly FileCache fileCache = fileCache;
+        private readonly IFileCache fileCache = fileCache;
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 
@@ -63,7 +58,7 @@ namespace PDFKeeper.Core.Commands
 
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
             {
-                document = documentRepository.GetDocument(id, null, true);
+                document = documentRepository.GetDocument(id, null);
             }
             
             fileCache.AddPdf(id, document.Pdf);

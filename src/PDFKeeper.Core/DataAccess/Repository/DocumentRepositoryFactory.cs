@@ -25,26 +25,27 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// <summary>
         /// Factory method that gets an <see cref="IDocumentRepository"/> instance.
         /// </summary>
+        /// <param name="documentCache">The document cache to be used by the repository.</param>
         /// <returns>
         /// The <see cref="IDocumentRepository"/> instance.
         /// </returns>
-        internal static IDocumentRepository Create()
+        internal static IDocumentRepository Create(IDocumentCache documentCache)
         {
             IDocumentRepository instance = null;
 
             switch (DatabaseSession.PlatformName)
             {
                 case DatabaseSession.CompatiblePlatformName.Oracle:
-                    instance = GetOracleInstance();
+                    instance = GetOracleInstance(documentCache);
                     break;
                 case DatabaseSession.CompatiblePlatformName.Sqlite:
-                    instance = GetSqliteInstance();
+                    instance = GetSqliteInstance(documentCache);
                     break;
                 case DatabaseSession.CompatiblePlatformName.SqlServer:
-                    instance = GetSqlServerInstance();
+                    instance = GetSqlServerInstance(documentCache);
                     break;
                 case DatabaseSession.CompatiblePlatformName.MySql:
-                    instance = GetMySqlInstance();
+                    instance = GetMySqlInstance(documentCache);
                     break;
             }
 
@@ -55,24 +56,24 @@ namespace PDFKeeper.Core.DataAccess.Repository
         // avoid an InvalidOperationException from being thrown when the database platform is
         // SQLite.
 
-        private static IDocumentRepository GetOracleInstance()
+        private static IDocumentRepository GetOracleInstance(IDocumentCache documentCache)
         {
-            return new OracleDocumentRepository();
+            return new OracleDocumentRepository(documentCache);
         }
 
-        private static IDocumentRepository GetSqliteInstance()
+        private static IDocumentRepository GetSqliteInstance(IDocumentCache documentCache)
         {
-            return new SqliteDocumentRepository();
+            return new SqliteDocumentRepository(documentCache);
         }
 
-        private static IDocumentRepository GetSqlServerInstance()
+        private static IDocumentRepository GetSqlServerInstance(IDocumentCache documentCache)
         {
-            return new SqlServerDocumentRepository();
+            return new SqlServerDocumentRepository(documentCache);
         }
 
-        private static IDocumentRepository GetMySqlInstance()
+        private static IDocumentRepository GetMySqlInstance(IDocumentCache documentCache)
         {
-            return new MySqlDocumentRepository();
+            return new MySqlDocumentRepository(documentCache);
         }
     }
 }

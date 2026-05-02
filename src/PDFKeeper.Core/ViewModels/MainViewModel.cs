@@ -63,6 +63,7 @@ namespace PDFKeeper.Core.ViewModels
         private IDialogService setPreviewPixelDensityDialogService;
         private IDialogService optionsDialogService;
         private IDialogService aboutBoxDialogService;
+        private IFileCache fileCache;
         private IFileDialogService openFileDialogService;
         private IFileDialogService saveFileDialogService;
         private IFolderBrowserDialogService folderBrowserDialogService;
@@ -71,7 +72,6 @@ namespace PDFKeeper.Core.ViewModels
         private IPdfViewerService pdfViewerService;
         private IPrintDialogService printDialogService;
         private IPrintPreviewDialogService printPreviewDialogService;
-        private readonly FileCache fileCache;
         private string viewTitleText;
         private bool toolStripVisible;
         private bool statusStripVisible;
@@ -168,7 +168,6 @@ namespace PDFKeeper.Core.ViewModels
             GetServices(ServiceLocator.Services);
             printDocument = new PrintDocument();
             pdfUploader = new PdfUploader();
-            fileCache = new FileCache();
             uploadRejectedDirectory = new ApplicationDirectory().GetDirectory(
                 ApplicationDirectory.SpecialName.UploadRejected);
             executingAssembly = new ExecutingAssembly();
@@ -1050,6 +1049,8 @@ namespace PDFKeeper.Core.ViewModels
                 }
             }
 
+            fileCache = serviceProvider.GetService<IFileCache>();
+
             foreach (var service in serviceProvider.GetServices<IFileDialogService>())
             {
                 switch (service.GetType().Name)
@@ -1290,15 +1291,12 @@ namespace PDFKeeper.Core.ViewModels
                             using (var documentRepository =
                                 DatabaseSession.GetDocumentRepository())
                             {
-                                currentDocument = documentRepository.GetDocument(
-                                    id,
-                                    null,
-                                    !fileCache.IsPdfCached(id));
+                                currentDocument = documentRepository.GetDocument(id, null);
                             }
 
                             fileCache.AddPdf(currentDocument.Id, currentDocument.Pdf);
                             pdfViewerService.Show(
-                                fileCache.GetPdfFile(id).FullName,
+                                fileCache.GetPdfFile(currentDocument.Id).FullName,
                                 ShowPdfWithDefaultApplication);
                         }
                         catch (DatabaseException ex)
@@ -2192,8 +2190,7 @@ namespace PDFKeeper.Core.ViewModels
                         UploadProgressBarVisible = true;
                     }
 
-                    await Task.Run(() => pdfUploader.ExecuteUpload(
-                        fileCache)).ConfigureAwait(true);
+                    await Task.Run(() => pdfUploader.ExecuteUpload()).ConfigureAwait(true);
                 }
                 catch (Exception ex) when (
                     ex is ArgumentException ||
@@ -2384,15 +2381,13 @@ namespace PDFKeeper.Core.ViewModels
                         {
                             currentDocument = documentRepository.GetDocument(
                                 CurrentDocumentId,
-                                FindDocumentsViewState.FindDocumentsParam.SearchTerm,
-                                !fileCache.IsPdfCached(CurrentDocumentId));
+                                FindDocumentsViewState.FindDocumentsParam.SearchTerm);
                         }
                         else
                         {
                             currentDocument = documentRepository.GetDocument(
                                 CurrentDocumentId,
-                                null,
-                                !fileCache.IsPdfCached(CurrentDocumentId));
+                                null);
                         }
                     }
 

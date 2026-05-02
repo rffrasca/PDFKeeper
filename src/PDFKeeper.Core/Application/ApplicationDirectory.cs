@@ -47,19 +47,11 @@ namespace PDFKeeper.Core.Application
         public ApplicationDirectory()
         {
             executingAssembly = new ExecutingAssembly();
-            uploadShortcutName = string.Concat(
-                executingAssembly.ProductName,
-                " ",
-                Resources.Upload,
-                ".lnk");
+            uploadShortcutName = $"{executingAssembly.ProductName} {Resources.Upload}.lnk";
             desktopLinkFile = new FileInfo(
-                Path.Combine(
-                    UserProfileFolder.Desktop,
-                    uploadShortcutName));
+                Path.Combine(UserProfileFolder.Desktop, uploadShortcutName));
             downloadsLinkFile = new FileInfo(
-                Path.Combine(
-                    UserProfileFolder.Downloads,
-                    uploadShortcutName));
+                Path.Combine(UserProfileFolder.Downloads, uploadShortcutName));
         }
 
         /// <summary>
@@ -77,21 +69,16 @@ namespace PDFKeeper.Core.Application
             {
                 SpecialName.ApplicationData => new DirectoryInfo(GetApplicationDataPath()),
                 SpecialName.Log => new DirectoryInfo(
-                                        Path.Combine(
-                                            GetApplicationDataPath(),
-                                            executingAssembly.Version)),
+                    Path.Combine(GetApplicationDataPath(), executingAssembly.Version)),
                 SpecialName.Temp => new DirectoryInfo(
-                                        Path.Combine(
-                                            Path.GetTempPath(),
-                                            executingAssembly.ProductName)),
+                    Path.Combine(Path.GetTempPath(), executingAssembly.ProductName)),
                 _ => new DirectoryInfo(
-                                        Path.Combine(
-                                            GetApplicationDataPath(),
-                                            specialName.ToString())),
+                    Path.Combine(GetApplicationDataPath(), specialName.ToString())),
             };
+
             directory.Create();
 
-            if (specialName.Equals(SpecialName.Upload))
+            if (specialName == SpecialName.Upload)
             {
                 directory.CreateShortcut(desktopLinkFile);
                 directory.CreateShortcut(downloadsLinkFile);

@@ -34,6 +34,7 @@ namespace PDFKeeper.Core.DataAccess
 {
     public static class DatabaseSession
     {
+        private static readonly IDocumentCache documentCache = new DocumentCache();
         private static CompatiblePlatformName platformName;
         private static string userName;
         private static SecureString password;
@@ -42,7 +43,7 @@ namespace PDFKeeper.Core.DataAccess
         private static string oracleWalletPath;
         private static uint mySqlPort;
         private static bool oracleOdpNetHandlerEnabled;
-
+        
         /// <summary>
         /// Compatible database platform name.
         /// </summary>
@@ -76,16 +77,14 @@ namespace PDFKeeper.Core.DataAccess
                 OnCompatiblePlatformNameChanged();
             }
         }
-        
+
         /// <summary>
         /// Gets a <see cref="IDocumentRepository"/> instance.
         /// </summary>
-        /// <returns>
-        /// The <see cref="IDocumentRepository"/> instance.
-        /// </returns>
+        /// <returns>The <see cref="IDocumentRepository"/> instance.</returns>
         public static IDocumentRepository GetDocumentRepository()
         {
-            return DocumentRepositoryFactory.Create();
+            return DocumentRepositoryFactory.Create(documentCache);
         }
 
         /// <summary>

@@ -119,13 +119,10 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// uploading the staged files. Ensure that the file cache is properly initialized before
         /// calling this method.
         /// </remarks>
-        /// <param name="fileCache">
-        /// The file cache used to manage cached files associated with documents.
-        /// </param>
-        internal void ExecuteUpload(FileCache fileCache)
+        internal void ExecuteUpload()
         {
             StagePdfFilesInUploadDirectory();
-            UploadStagedPdfFiles(fileCache);
+            UploadStagedPdfFiles();
         }
 
         private static Collection<FileInfo> GetPdfFiles(DirectoryInfo directory)
@@ -338,10 +335,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// the record. After processing, the original PDF files and their associated XML metadata
         /// files (if present) are deleted from the staging directory.
         /// </remarks>
-        /// <param name="fileCache">
-        /// The file cache used to manage and delete cached files associated with documents.
-        /// </param>
-        private void UploadStagedPdfFiles(FileCache fileCache)
+        private void UploadStagedPdfFiles()
         {
             foreach (var pdfFile in GetPdfFiles(uploadStagingDirectory))
             {
@@ -377,7 +371,6 @@ namespace PDFKeeper.Core.FileIO.PDF
                     }
                     else
                     {
-                        fileCache.Delete(document.Id);
                         documentRepository.UpdateDocument(document, true);
                     }
                 }

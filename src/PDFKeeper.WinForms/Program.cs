@@ -22,6 +22,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Services;
 using PDFKeeper.PDFViewer.Services;
@@ -103,6 +104,7 @@ namespace PDFKeeper.WinForms
                 UploadProfileEditorDialogService>();
             serviceCollection.AddSingleton<IDialogService,
                 AboutBoxDialogService>();
+            serviceCollection.AddSingleton<IFileCache, FileCache>();
             serviceCollection.AddSingleton<IFileDialogService,
                 OpenFileDialogService>();
             serviceCollection.AddSingleton<IFileDialogService,

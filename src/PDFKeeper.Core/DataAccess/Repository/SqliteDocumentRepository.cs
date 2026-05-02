@@ -24,6 +24,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Globalization;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace PDFKeeper.Core.DataAccess.Repository
 {
@@ -34,7 +35,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
     {
         private bool disposedValue;
 
-        public SqliteDocumentRepository()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SqliteDocumentRepository"/> class.
+        /// </summary>
+        /// <param name="documentCache">The document cache instance.</param>
+        public SqliteDocumentRepository(IDocumentCache documentCache) : base(documentCache)
         {
             connStrBuilder = new SQLiteConnectionStringBuilder
             {
@@ -379,23 +384,17 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public Document GetDocument(int id, string searchTerm, bool includePdf)
+        public Document GetDocument(int id, string searchTerm)
         {
             searchTerm ??= string.Empty;
-            string sql;
-            
-            if (includePdf)
+            const string sql =
+                "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
+                "doc_category,doc_flag,doc_tax_year,doc_text from docs where doc_id = :doc_id";
+
+            var document = new Document
             {
-                sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
-                    "doc_pdf,doc_category,doc_flag,doc_tax_year,doc_text " +
-                    "from docs where doc_id = :doc_id";
-            }
-            else
-            {
-                sql = "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
-                    "doc_category,doc_flag,doc_tax_year,doc_text " +
-                    "from docs where doc_id = :doc_id";
-            }
+                Id = id
+            };
 
             try
             {
@@ -403,7 +402,6 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 {
                     using (var command = new SQLiteCommand(sql, connection))
                     {
-                        var document = new Document();
                         command.Parameters.AddWithValue("doc_id", id);
                         connection.Open();
 
@@ -417,22 +415,17 @@ namespace PDFKeeper.Core.DataAccess.Repository
                             document.Keywords = reader["doc_keywords"].ToString();
                             document.Added = reader["doc_added"].ToString();
                             document.Notes = reader["doc_notes"].ToString();
-
-                            if (includePdf)
-                            {
-                                document.Pdf = (byte[])reader["doc_pdf"];
-                            }
-
                             document.Category = reader["doc_category"].ToString();
                             document.Flag = Convert.ToInt32(reader["doc_flag"]);
                             document.TaxYear = reader["doc_tax_year"].ToString();
                             document.Text = reader["doc_text"].ToString();
                             document.SearchTermSnippets = GetSearchTermSnippets(id, searchTerm);
                         }
-
-                        return document;
                     }
                 }
+
+                document.Pdf = GetPdfWithCache(id, GetPdfHash, GetPdfBytes);
+                return document;
             }
             catch (SQLiteException ex)
             {
@@ -582,6 +575,8 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.ExecuteNonQuery();
                     }
                 }
+
+                documentCache.Remove(id);
             }
             catch (SQLiteException ex)
             {
@@ -835,6 +830,42 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     table.Locale = CultureInfo.InvariantCulture;
                     adapter.Fill(table);
                     return table;
+                }
+            }
+        }
+
+        protected override byte[] GetPdfHash(int documentId)
+        {
+            const string sql = "select doc_pdf from docs where doc_id = @doc_id";
+
+            using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
+            {
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@doc_id", documentId);
+                    var table = ExecuteQuery(command);
+                    var pdfBytes = (byte[])table.Rows[0][0];
+
+                    using (var sha = SHA256.Create())
+                    {
+                        return sha.ComputeHash(pdfBytes);
+                    }
+
+                }
+            }
+        }
+
+        protected override byte[] GetPdfBytes(int documentId)
+        {
+            const string sql = "select doc_pdf from docs where doc_id = @doc_id";
+
+            using (var connection = new SQLiteConnection(connStrBuilder.ConnectionString))
+            {
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@doc_id", documentId);
+                    var table = ExecuteQuery(command);
+                    return (byte[])table.Rows[0][0];
                 }
             }
         }
