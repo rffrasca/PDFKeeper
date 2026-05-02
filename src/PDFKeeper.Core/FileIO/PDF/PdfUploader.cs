@@ -392,6 +392,12 @@ namespace PDFKeeper.Core.FileIO.PDF
                     uploadDirectory.FullName,
                     uploadRejectedDirectory.FullName));
             destFile.Directory.Create();
+
+            if (destFile.Exists)
+            {
+                destFile = destFile.AppendGuidToFileName();
+            }
+
             file.MoveTo(destFile.FullName);
         }
     }
