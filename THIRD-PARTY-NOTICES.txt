@@ -289,7 +289,7 @@ Stub.System.Data.SQLite.Core.NetFramework
     License: Public Domain, full text can be found at https://www.sqlite.org/copyright.html
 
 System.Diagnostics.DiagnosticSource
-    https://www.nuget.org/packages/System.Diagnostics.DiagnosticSource/9.0.0
+    https://www.nuget.org/packages/System.Diagnostics.DiagnosticSource/10.0.3
     Authors: Microsoft and dotnetframework
     Copyright: © Microsoft Corporation. All rights reserved.
     License: MIT License, full text can be found at https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
