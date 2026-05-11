@@ -171,18 +171,6 @@
 					  Name="AutoUpdater.NET.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)AutoUpdater.NET.dll" />
 			</Component>
-			<Component Id="Azure.Core.dll"
-					   Guid="96cec355-6ddd-41b8-a60d-2aa8f693a0cb">
-				<File Id="Azure.Core.dll"
-					  Name="Azure.Core.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)Azure.Core.dll" />
-			</Component>
-			<Component Id="Azure.Identity.dll"
-					   Guid="a239f271-4c5d-46b3-bdc9-ebb08f46731d">
-				<File Id="Azure.Identity.dll"
-					  Name="Azure.Identity.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)Azure.Identity.dll" />
-			</Component>
 			<Component Id="BouncyCastle.Cryptography.dll"
 					   Guid="5ba5c46f-096e-40ca-b0fc-71e3cea143fb">
 				<File Id="BouncyCastle.Cryptography.dll"
@@ -333,11 +321,35 @@
 					  Name="Microsoft.Bcl.AsyncInterfaces.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Bcl.AsyncInterfaces.dll" />
 			</Component>
+			<Component Id="Microsoft.Bcl.Cryptography.dll"
+					   Guid="e41f38fe-6222-4a0d-91d4-d05accf51fe2">
+				<File Id="Microsoft.Bcl.Cryptography.dll"
+					  Name="Microsoft.Bcl.Cryptography.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Bcl.Cryptography.dll" />
+			</Component>
+			<Component Id="Microsoft.Bcl.TimeProvider.dll"
+					   Guid="e41f38fe-6222-4a0d-91d4-d05accf51fe3">
+				<File Id="Microsoft.Bcl.TimeProvider.dll"
+					  Name="Microsoft.Bcl.TimeProvider.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Bcl.TimeProvider.dll" />
+			</Component>
 			<Component Id="Microsoft.Data.SqlClient.dll"
 					   Guid="02ac370c-6328-4d49-83be-a613408147ae">
 				<File Id="Microsoft.Data.SqlClient.dll"
 					  Name="Microsoft.Data.SqlClient.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Data.SqlClient.dll" />
+			</Component>
+			<Component Id="Microsoft.Data.SqlClient.Extensions.Abstractions.dll"
+					   Guid="e41f38fe-6222-4a0d-91d4-d05accf51fe4">
+				<File Id="Microsoft.Data.SqlClient.Extensions.Abstractions.dll"
+					  Name="Microsoft.Data.SqlClient.Extensions.Abstractions.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Data.SqlClient.Extensions.Abstractions.dll" />
+			</Component>
+			<Component Id="Microsoft.Data.SqlClient.Internal.Logging.dll"
+					   Guid="e41f38fe-6222-4a0d-91d4-d05accf51fe5">
+				<File Id="Microsoft.Data.SqlClient.Internal.Logging.dll"
+					  Name="Microsoft.Data.SqlClient.Internal.Logging.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Data.SqlClient.Internal.Logging.dll" />
 			</Component>
 			<Component Id="Microsoft.Data.SqlClient.SNI.arm64.dll"
 					   Guid="552184A4-1EED-4D9F-A202-BF79C4CDB55B">
@@ -404,18 +416,6 @@
 				<File Id="Microsoft.Extensions.Primitives.dll"
 					  Name="Microsoft.Extensions.Primitives.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Extensions.Primitives.dll" />
-			</Component>
-			<Component Id="Microsoft.Identity.Client.dll"
-					   Guid="7938fc60-6404-407e-8d1d-e5638d4d0582">
-				<File Id="Microsoft.Identity.Client.dll"
-					  Name="Microsoft.Identity.Client.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Identity.Client.dll" />
-			</Component>
-			<Component Id="Microsoft.Identity.Client.Extensions.Msal.dll"
-					   Guid="75a1c610-835f-4d4b-99cd-8eb67ede8525">
-				<File Id="Microsoft.Identity.Client.Extensions.Msal.dll"
-					  Name="Microsoft.Identity.Client.Extensions.Msal.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)Microsoft.Identity.Client.Extensions.Msal.dll" />
 			</Component>
 			<Component Id="Microsoft.IdentityModel.Abstractions.dll"
 					   Guid="97dec213-caf9-4130-9038-06016375e95d">
@@ -549,12 +549,6 @@
 					  Name="System.Buffers.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Buffers.dll" />
 			</Component>
-			<Component Id="System.ClientModel.dll"
-					   Guid="62bfd48d-7fb3-4fee-8950-6067d98eded9">
-				<File Id="System.ClientModel.dll"
-					  Name="System.ClientModel.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.ClientModel.dll" />
-			</Component>
 			<Component Id="System.ComponentModel.Annotations.dll"
 					   Guid="6bcd9748-25c8-40b0-ba3c-fd3bdb57deab">
 				<File Id="System.ComponentModel.Annotations.dll"
@@ -579,35 +573,17 @@
 					  Name="System.Diagnostics.DiagnosticSource.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Diagnostics.DiagnosticSource.dll" />
 			</Component>
-			<Component Id="System.Formats.Asn1.dll"
-					   Guid="d1e2f3a4-5b6c-7d8e-9f0a-1b2c3d4e5f6b">
-				<File Id="System.Formats.Asn1.dll"
-					  Name="System.Formats.Asn1.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Formats.Asn1.dll" />
-			</Component>
 			<Component Id="System.IdentityModel.Tokens.Jwt.dll"
 					   Guid="494a90a7-06d5-4684-83cf-1f6583877418">
 				<File Id="System.IdentityModel.Tokens.Jwt.dll"
 					  Name="System.IdentityModel.Tokens.Jwt.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.IdentityModel.Tokens.Jwt.dll" />
 			</Component>
-			<Component Id="System.IO.FileSystem.AccessControl.dll"
-					   Guid="6449e6a8-bfdf-4e9f-9cbe-9660cab76fb8">
-				<File Id="System.IO.FileSystem.AccessControl.dll"
-					  Name="System.IO.FileSystem.AccessControl.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.IO.FileSystem.AccessControl.dll" />
-			</Component>
 			<Component Id="System.IO.Pipelines.dll"
 					   Guid="85fd88a4-cc47-4942-a394-7f40c668f57b">
 				<File Id="System.IO.Pipelines.dll"
 					  Name="System.IO.Pipelines.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.IO.Pipelines.dll" />
-			</Component>
-			<Component Id="System.Memory.Data.dll"
-					   Guid="14aa1c2b-5ee6-41ad-8987-f1816bc22105">
-				<File Id="System.Memory.Data.dll"
-					  Name="System.Memory.Data.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Memory.Data.dll" />
 			</Component>
 			<Component Id="System.Memory.dll"
 					   Guid="928b678d-1408-4fbf-bd7f-793fe032fda5">
@@ -639,12 +615,6 @@
 					  Name="System.Security.Cryptography.Pkcs.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Security.Cryptography.Pkcs.dll" />
 			</Component>
-			<Component Id="System.Security.Cryptography.ProtectedData.dll"
-					   Guid="dd7c3eb4-d655-4a62-b46d-48bd8cb258a7">
-				<File Id="System.Security.Cryptography.ProtectedData.dll"
-					  Name="System.Security.Cryptography.ProtectedData.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Security.Cryptography.ProtectedData.dll" />
-			</Component>
 			<Component Id="System.Security.Cryptography.Xml.dll"
 					   Guid="3f1e3b2a-5c4d-4f7e-8e2d-1c3b5f6a7b8c">
 				<File Id="System.Security.Cryptography.Xml.dll"
@@ -669,17 +639,17 @@
 					  Name="System.Text.Json.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Text.Json.dll" />
 			</Component>
+			<Component Id="System.Threading.Channels.dll"
+					   Guid="9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d">
+				<File Id="System.Threading.Channels.dll"
+					  Name="System.Threading.Channels.dll"
+					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Threading.Channels.dll" />
+			</Component>
 			<Component Id="System.Threading.Tasks.Extensions.dll"
 					   Guid="e9b6ff88-f867-475c-97fa-f615b400ceb7">
 				<File Id="System.Threading.Tasks.Extensions.dll"
 					  Name="System.Threading.Tasks.Extensions.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.Threading.Tasks.Extensions.dll" />
-			</Component>
-			<Component Id="System.ValueTuple.dll"
-					   Guid="77c8bb09-e94e-41b2-9245-e2a9e661d675">
-				<File Id="System.ValueTuple.dll"
-					  Name="System.ValueTuple.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)System.ValueTuple.dll" />
 			</Component>
 			<Component Id="Vip.ComboBox.dll"
 					   Guid="6c1a7b11-a5a0-49c7-b3eb-6dfb89587128">
