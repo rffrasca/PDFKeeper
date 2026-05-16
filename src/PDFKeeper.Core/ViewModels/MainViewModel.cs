@@ -2190,7 +2190,8 @@ namespace PDFKeeper.Core.ViewModels
                         UploadProgressBarVisible = true;
                     }
 
-                    await Task.Run(() => pdfUploader.ExecuteUpload()).ConfigureAwait(true);
+                    await Task.Run(()
+                        => pdfUploader.ExecuteUpload(fileCache)).ConfigureAwait(true);
                 }
                 catch (Exception ex) when (
                     ex is ArgumentException ||

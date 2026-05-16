@@ -114,15 +114,18 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// <summary>
         /// Executes the upload process by staging PDF files and uploading them to the repository.
         /// </summary>
+        /// <param name="fileCache">
+        /// The file cache used to manage cached PDF files and previews.
+        /// </param>
         /// <remarks>
         /// This method performs two main operations: staging PDF files in the upload directory and
         /// uploading the staged files. Ensure that the file cache is properly initialized before
         /// calling this method.
         /// </remarks>
-        internal void ExecuteUpload()
+        internal void ExecuteUpload(IFileCache fileCache)
         {
             StagePdfFilesInUploadDirectory();
-            UploadStagedPdfFiles();
+            UploadStagedPdfFiles(fileCache);
         }
 
         private static Collection<FileInfo> GetPdfFiles(DirectoryInfo directory)
@@ -328,6 +331,9 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// Processes and uploads staged PDF files from the staging directory to the document
         /// repository.
         /// </summary>
+        /// <param name="fileCache">
+        /// The file cache used to manage cached PDF files and previews.
+        /// </param>
         /// <remarks>
         /// This method retrieves PDF files from the staging directory, extracts metadata and
         /// content from each file, and creates or updates corresponding document records in the
@@ -335,7 +341,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// the record. After processing, the original PDF files and their associated XML metadata
         /// files (if present) are deleted from the staging directory.
         /// </remarks>
-        private void UploadStagedPdfFiles()
+        private void UploadStagedPdfFiles(IFileCache fileCache)
         {
             foreach (var pdfFile in GetPdfFiles(uploadStagingDirectory))
             {
@@ -371,6 +377,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                     }
                     else
                     {
+                        fileCache.Delete(document.Id);
                         documentRepository.UpdateDocument(document, true);
                     }
                 }
