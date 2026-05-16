@@ -645,7 +645,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
         protected override byte[] GetPdfHash(int documentId)
         {
-            const string sql = "select sha2(doc_pdf, 256) from docs where doc_id = @doc_id";
+            const string sql = "select UNHEX(SHA2(doc_pdf, 256)) from docs where doc_id = @doc_id";
 
             using (var connection = new MySqlConnection(connStrBuilder.ConnectionString))
             {
