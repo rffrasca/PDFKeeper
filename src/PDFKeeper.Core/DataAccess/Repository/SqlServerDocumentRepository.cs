@@ -598,9 +598,16 @@ namespace PDFKeeper.Core.DataAccess.Repository
                         command.Parameters.AddWithValue("@doc_category", document.Category);
                         command.Parameters.AddWithValue("@doc_tax_year", document.TaxYear);
                         command.Parameters.AddWithValue("@doc_flag", document.Flag);
-                        command.Parameters.AddWithValue(
-                            "@doc_text_annotations",
-                            document.TextAnnotations);
+
+                        if (document.TextAnnotations == null)
+                        {
+                            command.Parameters.AddWithValue("@doc_text_annotations", DBNull.Value);
+                        }
+                        else
+                        {
+                            command.Parameters.AddWithValue("@doc_text_annotations", document.TextAnnotations);
+                        }
+
                         command.Parameters.AddWithValue("@doc_text", document.Text);
                         command.Parameters.AddWithValue("@doc_id", document.Id);
                         connection.Open();
