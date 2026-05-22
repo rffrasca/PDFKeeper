@@ -236,6 +236,9 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection">
       <Version>10.0.8</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions">
+      <Version>8.0.3</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
       <Version>10.0.19041.1</Version>
     </PackageReference>
