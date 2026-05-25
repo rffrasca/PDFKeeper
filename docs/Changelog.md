@@ -1,6 +1,36 @@
 # PDFKeeper Changelog
 All notable changes to PDFKeeper are documented in this file.
 
+## v12.0.1 - 2026-05-25
+- This is a maintenance release.
+- Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v12.0.1).
+- Binary release is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v12.0.1).
+### Added
+* Redesigned the PDF caching system with SHA‑256 validation and encrypted in‑memory storage for improved accuracy and performance. [#98](https://github.com/rffrasca/PDFKeeper/issues/98)
+### Changed
+* Updated the Uninstalling PDFKeeper help topic. [#93](https://github.com/rffrasca/PDFKeeper/issues/93)
+* Updated the About box and help file topics to align with the content on the PDFKeeper website. [#101](https://github.com/rffrasca/PDFKeeper/issues/101)
+* Updated CommunityToolkit.Mvvm to 8.4.2.
+* Updated Ghostscript to 10.07.1.
+* Updated itext to 9.6.0.
+* Updated itext.bouncy-castle-adapter to 9.6.0.
+* Updated itext.font-asian to 9.6.0.
+* Updated Magick.NET to 14.13.1.
+* Updated Microsoft.Extensions.DependencyInjection to 10.0.8.
+* Updated Microsoft.Data.SqlClient to 7.0.1.
+* Updated MySql.Data to 9.7.0.
+### Fixed
+* Fixed unhandled System.InvalidOperationException (“Stack empty”) during text extraction for malformed PDFs. [#92](https://github.com/rffrasca/PDFKeeper/issues/92)
+* Corrected common dialogs so they now appear centered over their parent form. [#94](https://github.com/rffrasca/PDFKeeper/issues/94)
+* Fixed unhandled System.UnauthorizedAccessException in AddPdfViewModel.SelectPdf to display a clear access‑denied message. [#95](https://github.com/rffrasca/PDFKeeper/issues/95)
+* Fixed unhandled System.IO.IOException in AddPdfViewModel.SelectPdf to display a clear PDF is locked or otherwise inaccessible message. [#102](https://github.com/rffrasca/PDFKeeper/issues/102)
+* Fixed unhandled PDFKeeper.Core.DataAccess.DatabaseException in MainViewModel.ReplaceCurrentDocumentPdf to display a clear
+database network-related or instance-specific error message. [#96](https://github.com/rffrasca/PDFKeeper/issues/96)
+* Fixed unhandled System.IO.IOException when rejecting a PDF whose filename already exists in UploadRejected by generating a unique filename. [#100](https://github.com/rffrasca/PDFKeeper/issues/100)
+### Changed (Development)
+* Updated Microsoft.CodeAnalysis.NetAnalyzers to 10.0.300.
+* Updated WixToolset.Netfx.wixext to 7.0.0.
+
 ## v12.0.0 - 2026-04-01
 - This is a major release.
 - Source code is available [here](https://github.com/rffrasca/PDFKeeper/releases/tag/v12.0.0).
