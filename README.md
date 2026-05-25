@@ -74,7 +74,7 @@ User Interface in version 11.2.0 and later.
 * With PDFKeeper, you can perform the following functions on a selected document: view the PDF with the bundled or default viewer; burst the PDF; extract attachments and embedded files from the PDF; copy the PDF to the Clipboard or drag and drop it into other applications; replace the PDF; manage the document’s flag state; view and edit notes; and display keywords, a PDF preview, extracted text, and search‑term snippets (when applicable).
 * Export selected PDF documents—including their category, tax year, notes, and flag state—from the database for easy importing.
 
-These features are available in version 12.0.0.
+These features are available in version 12.0.0 and later.
 
 ### Release History
 Full release history is available in the [Changelog](https://github.com/rffrasca/PDFKeeper/blob/master/docs/Changelog.md).
