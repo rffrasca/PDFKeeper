@@ -41,5 +41,5 @@ Download the source code for a v12 release from [here](https://github.com/rffras
 4. Open "PDFKeeper.sln" with Visual Studio.
 5. Set configuration to Release, and then Build the Solution.
 
-   After a successful build, "PDFKeeper-12.0.0.msi" will exist in "PDFKeeper\\src\\PDFKeeper.Setup\\bin\\x64\\Release".
+   After a successful build, "PDFKeeper-12.0.x.msi" will exist in "PDFKeeper\\src\\PDFKeeper.Setup\\bin\\x64\\Release".
 
