@@ -28,10 +28,6 @@ namespace PDFKeeper.WinForms.Services
     /// <summary>
     /// Provides functionality to display an open file dialog and retrieve the selected file path.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class OpenFileDialogService : IFileDialogService
     {
         public string ShowDialog(IntPtr parent, string filter, string fileName = null)

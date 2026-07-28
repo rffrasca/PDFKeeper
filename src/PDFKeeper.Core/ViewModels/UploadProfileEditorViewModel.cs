@@ -18,7 +18,6 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using PDFKeeper.Core.Models;
@@ -40,32 +39,29 @@ namespace PDFKeeper.Core.ViewModels
     [CLSCompliant(false)]
     public sealed class UploadProfileEditorViewModel : ColumnDataListsViewModel, IUploadProfile
     {
-        private readonly IWindowHandleProvider windowHandleProvider;
+        private readonly IMessageBoxService messageBoxService;
         private readonly string uploadProfileName;
         private string name;
-        private IMessageBoxService messageBoxService;
         private readonly UploadProfileManager uploadProfileManager;
         private UploadProfile uploadProfile;
         private IEnumerable<string> titleTokens;
 
         /// <summary>
-        /// Initializes a new instance of the UploadProfileEditorViewModel class with the specified
-        /// window handle provider and optional upload profile name.
+        /// Initializes a new instance of the <see cref="UploadProfileEditorViewModel"/> class.
         /// </summary>
-        /// <param name="windowHandleProvider">
-        /// An object that provides a handle to the window associated with this view model.
+        /// <param name="messageBoxService">
+        /// A dialog service that displays messages.
         /// </param>
         /// <param name="uploadProfileName">
         /// The name of the upload profile to edit, or null to create a new profile.
         /// </param>
         public UploadProfileEditorViewModel(
-            IWindowHandleProvider windowHandleProvider,
+            IMessageBoxService messageBoxService,
             string uploadProfileName = null)
         {
-            this.windowHandleProvider = windowHandleProvider;
+            this.messageBoxService = messageBoxService;
             this.uploadProfileName = uploadProfileName;
             name = uploadProfileName;
-            GetServices(ServiceLocator.Services);
             uploadProfileManager = new UploadProfileManager();
             SetUploadProfile();
             InitializeCommands();            
@@ -169,11 +165,6 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
-        protected override void GetServices(IServiceProvider serviceProvider)
-        {
-            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
-        }
-
         private void InitializeCommands()
         {
             GetCollectionsCommand = new RelayCommand(GetCollections);
@@ -211,7 +202,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
+                messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
             }
         }
 
@@ -225,7 +216,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
+                messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
             }
         }
 
@@ -273,7 +264,7 @@ namespace PDFKeeper.Core.ViewModels
             {
                 error = true;
                 messageBoxService.ShowMessage(
-                    windowHandleProvider.GetHandle(),
+                    GetWindowHandle.Invoke(),
                     Resources.NameCannotBeBlank,
                     true);
             }
@@ -281,7 +272,7 @@ namespace PDFKeeper.Core.ViewModels
             {
                 error = true;
                 messageBoxService.ShowMessage(
-                    windowHandleProvider.GetHandle(),
+                    GetWindowHandle.Invoke(),
                     rule.ViolationMessage,
                     true);
             }
@@ -289,7 +280,7 @@ namespace PDFKeeper.Core.ViewModels
             {
                 error = true;
                 messageBoxService.ShowMessage(
-                    windowHandleProvider.GetHandle(),
+                    GetWindowHandle.Invoke(),
                     Resources.NameContainsCharsNotAllowed,
                     true);
             }
@@ -298,7 +289,7 @@ namespace PDFKeeper.Core.ViewModels
             {
                 error = true;
                 messageBoxService.ShowMessage(
-                    windowHandleProvider.GetHandle(),
+                    GetWindowHandle.Invoke(),
                     Resources.UploadProfileExists,
                     true);
             }
@@ -319,7 +310,7 @@ namespace PDFKeeper.Core.ViewModels
             CancelViewClosing = false;
 
             if (messageBoxService.ShowQuestion(
-                windowHandleProvider.GetHandle(),
+                GetWindowHandle.Invoke(),
                 Resources.CancelQuestion) == 6)
             {
                 OnCloseViewCancelResult?.Invoke();

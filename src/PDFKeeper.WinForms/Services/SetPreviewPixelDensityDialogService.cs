@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
 using System;
@@ -28,13 +29,9 @@ namespace PDFKeeper.WinForms.Services
     /// <summary>
     /// Service for displaying the Set Preview Pixel Density dialog.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class SetPreviewPixelDensityDialogService : IDialogService
     {
-        public string ShowDialog(IntPtr parent, string arg = null)
+        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
             using (var dialog = new SetPreviewPixelDensityForm())
             {

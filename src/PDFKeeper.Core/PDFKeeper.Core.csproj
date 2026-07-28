@@ -96,8 +96,10 @@
     <Compile Include="DataAccess\Repository\DocumentCache.cs" />
     <Compile Include="DataAccess\Repository\DocumentCacheEntry.cs" />
     <Compile Include="DataAccess\Repository\IDocumentCache.cs" />
+    <Compile Include="Enums\DialogServiceKey.cs" />
+    <Compile Include="Enums\ExceptionType.cs" />
+    <Compile Include="Enums\FileDialogServiceKey.cs" />
     <Compile Include="Extensions\ByteExtension.cs" />
-    <Compile Include="Extensions\ExceptionExtension.cs" />
     <Compile Include="Extensions\SizeExtension.cs" />
     <Compile Include="FileIO\IFileCache.cs" />
     <Compile Include="FileIO\Serializers\JsonSerializer.cs" />
@@ -105,11 +107,12 @@
     <Compile Include="Helpers\UploadProfileTokenHelper.cs" />
     <Compile Include="Models\UploadProfileToken.cs" />
     <Compile Include="Services\AliasService.cs" />
+    <Compile Include="Services\ExceptionHandler.cs" />
     <Compile Include="Services\IAliasService.cs" />
-    <Compile Include="Services\IChildDialogService.cs" />
+    <Compile Include="Services\IExceptionHandler.cs" />
+    <Compile Include="Services\IKeyedServiceResolver.cs" />
     <Compile Include="Services\IVirtualKeyService.cs" />
-    <Compile Include="Services\IWindowHandleProvider.cs" />
-    <Compile Include="Services\ServiceLocator.cs" />
+    <Compile Include="Services\KeyedServiceResolver.cs" />
     <Compile Include="Application\UserProfileFolder.cs" />
     <Compile Include="Commands\ExportDocumentCommand.cs" />
     <Compile Include="DataAccess\Repository\DocumentRepositoryFactory.cs" />

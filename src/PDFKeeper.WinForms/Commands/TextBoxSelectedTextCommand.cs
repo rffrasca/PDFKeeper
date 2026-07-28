@@ -31,17 +31,27 @@ namespace PDFKeeper.WinForms.Commands
     /// synchronizes the <see cref="TextBox.SelectedText"/> and sets the state in
     /// <see cref="MainViewModel"/> when executed.
     /// </summary>
-    /// <param name="textBox">The <see cref="TextBox"/> object.</param>
-    /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
-    /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-    internal class TextBoxSelectedTextCommand(
-        TextBox textBox,
-        MainForm mainForm,
-        MainViewModel viewModel) : ICommand
+    internal class TextBoxSelectedTextCommand : ICommand
     {
-        private readonly TextBox textBox = textBox;
-        private readonly MainForm mainForm = mainForm;
-        private readonly MainViewModel viewModel = viewModel;
+        private readonly MainForm mainForm;
+        private readonly MainViewModel mainViewModel;
+        private readonly TextBox textBox;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TextBoxSelectedTextCommand"/> class.
+        /// </summary>
+        /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
+        /// <param name="mainViewModel">The <see cref="MainViewModel"/> instance.</param>
+        /// <param name="textBox">The <see cref="TextBox"/> object.</param>
+        internal TextBoxSelectedTextCommand(
+            MainForm mainForm,
+            MainViewModel mainViewModel,
+            TextBox textBox)
+        {
+            this.mainForm = mainForm;
+            this.mainViewModel = mainViewModel;
+            this.textBox = textBox;
+        }
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 
@@ -53,26 +63,26 @@ namespace PDFKeeper.WinForms.Commands
         public void Execute(object parameter)
         {
             SyncSelectedTextWithViewModel();
-            viewModel.SetStateForTextBoxSelectedTextCommand.Execute(null);
+            mainViewModel.SetStateForTextBoxSelectedTextCommand.Execute(null);
         }
 
         private void SyncSelectedTextWithViewModel()
         {
             if (textBox.Equals(mainForm.NotesTextBox))
             {
-                viewModel.SelectedNotes = mainForm.NotesTextBox.SelectedText;
+                mainViewModel.SelectedNotes = mainForm.NotesTextBox.SelectedText;
             }
             else if (textBox.Equals(mainForm.KeywordsTextBox))
             {
-                viewModel.SelectedKeywords = mainForm.KeywordsTextBox.SelectedText;
+                mainViewModel.SelectedKeywords = mainForm.KeywordsTextBox.SelectedText;
             }
             else if (textBox.Equals(mainForm.TextTextBox))
             {
-                viewModel.SelectedText = mainForm.TextTextBox.SelectedText;
+                mainViewModel.SelectedText = mainForm.TextTextBox.SelectedText;
             }
             else if (textBox.Equals(mainForm.SearchTermSnippetsTextBox))
             {
-                viewModel.SelectedSearchTermSnippets =
+                mainViewModel.SelectedSearchTermSnippets =
                     mainForm.SearchTermSnippetsTextBox.SelectedText;
             }
         }

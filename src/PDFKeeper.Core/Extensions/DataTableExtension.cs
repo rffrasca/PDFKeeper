@@ -49,7 +49,7 @@ namespace PDFKeeper.Core.Extensions
                     ",",
                     row.ItemArray)));
                 set1.Except(set2).ToList().ForEach(diff => diffsExist = true);
-                set2.Except(set2).ToList().ForEach(diff => diffsExist = true);
+                set2.Except(set1).ToList().ForEach(diff => diffsExist = true);
             }
             else
             {

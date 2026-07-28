@@ -18,25 +18,34 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Services;
+using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Windows.Forms;
 
-namespace PDFKeeper.WinForms.Services
+namespace PDFKeeper.Core.Services
 {
     /// <summary>
-    /// Provides a window handle for a given form.
+    /// Default implementation of the <see cref="IKeyedServiceResolver"/> interface.
     /// </summary>
-    /// <param name="form">The form for which to provide a window handle.</param>
-    internal sealed class FormHandleProvider(Form form) : IWindowHandleProvider
+    public sealed class KeyedServiceResolver : IKeyedServiceResolver
     {
+        private readonly IServiceProvider serviceProvider;
+
         /// <summary>
-        /// Gets the window handle of the form.
+        /// Initializes a new instance of the <see cref="KeyedServiceAccessor"/> class.
         /// </summary>
-        /// <returns>The window handle of the form.</returns>
-        public IntPtr GetHandle()
+        /// <param name="serviceProvider">
+        /// The <see cref="IServiceProvider"/> containing application services.
+        /// </param>
+#pragma warning disable IDE0290 // Use primary constructor
+        public KeyedServiceResolver(IServiceProvider serviceProvider)
+#pragma warning restore IDE0290 // Use primary constructor
         {
-            return form.Handle;
+            this.serviceProvider = serviceProvider;
+        }
+
+        public T GetRequiredKeyedService<T>(object key)
+        {
+            return serviceProvider.GetRequiredKeyedService<T>(key);
         }
     }
 }

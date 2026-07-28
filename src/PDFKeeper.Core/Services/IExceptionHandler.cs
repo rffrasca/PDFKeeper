@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,16 +18,22 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using PDFKeeper.Core.Enums;
 using System;
 
 namespace PDFKeeper.Core.Services
 {
-    public static class ServiceLocator
+    /// <summary>
+    /// Provides centralized exception handling for the application, including
+    /// logging and displaying formatted exception details to the user.
+    /// </summary>
+    public interface IExceptionHandler
     {
         /// <summary>
-        /// Gets or sets the <see cref="IServiceProvider"/> container that contains all configured
-        /// services.
+        /// Logs the exception and displays a formatted error message to the user.
         /// </summary>
-        public static IServiceProvider Services { get; set; }
+        /// <param name="exception">The exception to handle.</param>
+        /// <param name="exceptionType">The type of exception.</param>
+        void Handle(Exception exception, ExceptionType exceptionType);
     }
 }

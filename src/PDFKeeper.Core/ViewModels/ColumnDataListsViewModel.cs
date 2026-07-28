@@ -54,10 +54,5 @@ namespace PDFKeeper.Core.ViewModels
             get => taxYears;
             set => SetProperty(ref taxYears, value);
         }
-
-        protected override void GetServices(IServiceProvider serviceProvider)
-        {
-            throw new NotSupportedException();
-        }
     }
 }

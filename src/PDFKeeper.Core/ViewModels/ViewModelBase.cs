@@ -26,6 +26,7 @@ namespace PDFKeeper.Core.ViewModels
     [CLSCompliant(false)]
     public abstract class ViewModelBase : ObservableObject
     {
+        public Func<IntPtr> GetWindowHandle { get; set; }
         public Action OnLongOperationStarted { get; set; }
         public Action OnLongOperationFinished { get; set; }
         public Action OnApplyPendingChanges { get; set; }
@@ -36,7 +37,5 @@ namespace PDFKeeper.Core.ViewModels
         public Action OnCancelCloseView { get; set; }
         public Action OnResetView { get; set; }
         public bool CancelViewClosing { get; set; }
-
-        protected abstract void GetServices(IServiceProvider serviceProvider);
     }
 }

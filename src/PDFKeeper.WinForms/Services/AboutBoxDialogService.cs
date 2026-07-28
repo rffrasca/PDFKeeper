@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
 using System;
@@ -28,15 +29,22 @@ namespace PDFKeeper.WinForms.Services
     /// <summary>
     /// Service for displaying the About Box dialog.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class AboutBoxDialogService : IDialogService
     {
-        public string ShowDialog(IntPtr parent, string arg = null)
+        private readonly IHelpService helpService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AboutBoxDialogService"/> class.
+        /// </summary>
+        /// <param name="helpService">A service that shows a Help file topic modelessly.</param>
+        public AboutBoxDialogService(IHelpService helpService)
         {
-            using (var dialog = new AboutBox())
+            this.helpService = helpService;
+        }
+
+        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
+        {
+            using (var dialog = new AboutBox(helpService))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
             }

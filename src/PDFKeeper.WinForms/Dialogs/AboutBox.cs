@@ -18,11 +18,9 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
-using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
@@ -33,17 +31,21 @@ namespace PDFKeeper.WinForms.Dialogs
     {
         private readonly IHelpService helpService;
 
-        public AboutBox()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AboutBox"/> class.
+        /// </summary>
+        /// <param name="helpService">A service that shows a Help file topic modelessly.</param>
+        public AboutBox(IHelpService helpService)
         {
             InitializeComponent();
-            Text = String.Format("About {0}", AssemblyTitle);
+            this.helpService = helpService;
+            Text = string.Format("About {0}", AssemblyTitle);
             labelProductName.Text = AssemblyProduct;
-            labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
+            labelVersion.Text = string.Format("Version {0}", AssemblyVersion);
             labelCopyright.Text = AssemblyCopyright;
             labelCompanyName.Text = AssemblyCompany;
             //textBoxDescription.Text = AssemblyDescription;
             textBoxDescription.Text = Resources.AboutDescription;
-            helpService = ServiceLocator.Services.GetService<IHelpService>();
         }
 
         #region Assembly Attribute Accessors

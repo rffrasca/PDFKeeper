@@ -30,10 +30,6 @@ namespace PDFKeeper.WinForms.Services
     /// Provides methods for displaying message boxes and questions to the user, supporting
     /// right-to-left languages and error indication.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class MessageBoxService : IMessageBoxService
     {
         private readonly MessageBoxOptions messageBoxOptions;

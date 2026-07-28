@@ -28,10 +28,6 @@ namespace PDFKeeper.WinForms.Services
     /// <summary>
     /// Provides functionality to display a print dialog and manage print operations.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class PrintDialogService : IPrintDialogService
     {
         public int ShowDialog(IntPtr parent, PrintDocument printDocument)

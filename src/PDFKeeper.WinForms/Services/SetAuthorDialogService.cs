@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Views;
@@ -30,17 +30,22 @@ namespace PDFKeeper.WinForms.Services
     /// <summary>
     /// Service for displaying the Set Author dialog.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class SetAuthorDialogService : IDialogService
     {
-        public string ShowDialog(IntPtr parent, string arg = null)
-        {
-            var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
+        private readonly IMessageBoxService messageBoxService;
 
-            using (var dialog = new SetAuthorForm())
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetAuthorDialogService"/> class.
+        /// </summary>
+        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+        public SetAuthorDialogService(IMessageBoxService messageBoxService)
+        {
+            this.messageBoxService = messageBoxService;
+        }
+
+        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
+        {
+            using (var dialog = new SetAuthorForm(messageBoxService))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
 

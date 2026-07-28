@@ -19,8 +19,8 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.Windows.Forms;
 
@@ -28,14 +28,19 @@ namespace PDFKeeper.WinForms.Views
 {
     internal partial class SetCategoryForm : Form
     {
-        public SetCategoryForm()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetCategoryForm"/> class.
+        /// </summary>
+        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+        public SetCategoryForm(IMessageBoxService messageBoxService)
         {
             InitializeComponent();
             var viewModel = new ColumnDataListViewModel(
-                new FormHandleProvider(this),
+                messageBoxService,
                 ColumnDataListViewModel.ColumnName.Category);
             ColumnDataListViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
+            viewModel.GetWindowHandle = () => Handle;
         }
 
         private void OK_Button_Click(object sender, EventArgs e)

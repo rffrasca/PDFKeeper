@@ -21,7 +21,6 @@
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -32,13 +31,18 @@ namespace PDFKeeper.WinForms.Views
     {
         private readonly UploadProfilesViewModel viewModel;
 
-        public UploadProfilesForm()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UploadProfilesForm"/> class.
+        /// </summary>
+        /// <param name="viewModel">The view model to be used by this form.</param>
+        public UploadProfilesForm(UploadProfilesViewModel viewModel)
         {
             InitializeComponent();
-            viewModel = new UploadProfilesViewModel(new FormHandleProvider(this));
+            this.viewModel = viewModel;
             UploadProfilesViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             UploadProfilesFileSystemWatcher.Path = viewModel.UploadProfilesDirectoryPath;
+            viewModel.GetWindowHandle = () => Handle;
             SetTags();            
         }
 
@@ -48,7 +52,7 @@ namespace PDFKeeper.WinForms.Views
             EditButton.Tag = viewModel.EditUploadProfileCommand;
             DeleteButton.Tag = viewModel.DeleteUploadProfileCommand;
         }
-
+        
         private void UploadProfileNamesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             UploadProfileNamesListBox.Select();
@@ -59,7 +63,9 @@ namespace PDFKeeper.WinForms.Views
             TagCommand.Invoke(sender);
         }
 
-        private void UploadProfilesFileSystemWatcher_CreatedDeleted(object sender, FileSystemEventArgs e)
+        private void UploadProfilesFileSystemWatcher_CreatedDeleted(
+            object sender,
+            FileSystemEventArgs e)
         {
             viewModel.GetUploadProfileNamesCommand.Execute(null);
         }

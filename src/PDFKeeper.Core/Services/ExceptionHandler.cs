@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,64 +18,56 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Properties;
-using PDFKeeper.Core.Services;
 using System;
 using System.IO;
 
-namespace PDFKeeper.Core.Extensions
+namespace PDFKeeper.Core.Services
 {
-    public static class ExceptionExtension
+    /// <summary>
+    /// Default implementation of the <see cref="IExceptionHandler"/> interface.
+    /// </summary>
+    public sealed class ExceptionHandler : IExceptionHandler
     {
-        private static string headerText;
-        private static string logPath;
-
-        public enum ExceptionType
-        {
-            UnhandledException,
-            ThreadException
-        }
+        private readonly IMessageBoxService messageBoxService;
 
         /// <summary>
-        /// Handles the <see cref="Exception"/> of <see cref="ExceptionType"/> by logging and
-        /// showing the <see cref="Exception"/> in a <c>MessageBox</c>.
+        /// Initializes a new instance of the <see cref="ExceptionHandler"/> class.
         /// </summary>
-        /// <param name="exception">The <see cref="Exception"/> object.</param>
-        /// <param name="exceptionType">The <see cref="ExceptionType"/>.</param>
-        /// <exception cref="ArgumentNullException"></exception>
-        public static void HandleException(this Exception exception, ExceptionType exceptionType)
+        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+#pragma warning disable IDE0290 // Use primary constructor
+        public ExceptionHandler(IMessageBoxService messageBoxService)
+#pragma warning restore IDE0290 // Use primary constructor
+        {
+            this.messageBoxService = messageBoxService;
+        }
+
+        public void Handle(Exception exception, ExceptionType exceptionType)
         {
             if (exception is null)
             {
                 throw new ArgumentNullException(nameof(exception));
             }
 
-            if (exceptionType.Equals(ExceptionType.UnhandledException))
-            {
-                headerText = Resources.UnhandledException;
-            }
-            else if (exceptionType.Equals(ExceptionType.ThreadException))
-            {
-                headerText = Resources.ThreadException;
-            }
-
-            var applicationDirectory = new ApplicationDirectory();
-            logPath = Path.Combine(
-                applicationDirectory.GetDirectory(
+            var headerText = exceptionType == ExceptionType.UnhandledException
+                ? Resources.UnhandledException
+                : Resources.ThreadException;
+            var logPath = Path.Combine(
+                new ApplicationDirectory().GetDirectory(
                     ApplicationDirectory.SpecialName.Log).FullName,
                 "PDFKeeper.log");
-            LogException(exception);
-            ShowException(exception);
+
+            LogException(exception, headerText, logPath);
+            ShowException(exception, headerText, logPath);
         }
 
         /// <summary>
-        /// Logs the <see cref="Exception"/>. 
+        /// Logs the exception to the PDFKeeper.log file.
         /// </summary>
-        /// <param name="exception">The <see cref="Exception"/> object.</param>
-        private static void LogException(Exception exception)
+        private static void LogException(Exception exception, string headerText, string logPath)
         {
             var message = string.Concat(
                 "================================================================================",
@@ -86,16 +78,15 @@ namespace PDFKeeper.Core.Extensions
                 Environment.NewLine,
                 exception.ToString(),
                 Environment.NewLine);
+
             File.AppendAllText(logPath, message);
         }
 
         /// <summary>
-        /// Shows the <see cref="Exception"/> in a <c>MessageBox</c>.
+        /// Displays the formatted exception message to the user.
         /// </summary>
-        /// <param name="exception">The <see cref="Exception"/> object.</param>
-        private static void ShowException(Exception exception)
+        private void ShowException(Exception exception, string headerText, string logPath)
         {
-            var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
             var message = string.Concat(
                 headerText,
                 Environment.NewLine,
@@ -110,6 +101,7 @@ namespace PDFKeeper.Core.Extensions
                     Resources.ResourceManager,
                     "StackTraceLogged",
                     logPath));
+
             messageBoxService.ShowMessage(message, true);
         }
     }

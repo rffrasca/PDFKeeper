@@ -30,14 +30,21 @@ namespace PDFKeeper.WinForms.Commands
     /// that sets <see cref="MainViewModel.CurrentDocumentId"/> to the ID of the selected
     /// document in <see cref="MainForm.DocumentsDataGridView"/>.
     /// </summary>
-    /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
-    /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-    internal class DocumentSelectionChangedCommand(
-        MainForm mainForm, 
-        MainViewModel viewModel) : ICommand
+    internal class DocumentSelectionChangedCommand : ICommand
     {
-        private readonly MainForm mainForm = mainForm;
-        private readonly MainViewModel viewModel = viewModel;
+        private readonly MainForm mainForm;
+        private readonly MainViewModel mainViewModel;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DocumentSelectionChangedCommand"/> class.
+        /// </summary>
+        /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
+        /// <param name="mainViewModel">The <see cref="MainViewModel"/> instance.</param>
+        public DocumentSelectionChangedCommand(MainForm mainForm, MainViewModel mainViewModel)
+        {
+            this.mainForm = mainForm;
+            this.mainViewModel = mainViewModel;
+        }
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 
@@ -48,12 +55,12 @@ namespace PDFKeeper.WinForms.Commands
 
         public void Execute(object parameter)
         {
-            viewModel.CurrentDocumentId = 0;    // No row is selected.
+            mainViewModel.CurrentDocumentId = 0;    // No row is selected.
 
             // Prevent an empty DataGridView.
             if (mainForm.DocumentsDataGridView.SelectedRows.Count > 0)
             {
-                viewModel.CurrentDocumentId = Convert.ToInt32(
+                mainViewModel.CurrentDocumentId = Convert.ToInt32(
                     mainForm.DocumentsDataGridView.SelectedRows[0].Cells[2].Value);
             }
         }

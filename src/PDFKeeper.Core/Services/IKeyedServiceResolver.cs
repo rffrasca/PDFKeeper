@@ -18,19 +18,19 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using System;
-
 namespace PDFKeeper.Core.Services
 {
     /// <summary>
-    /// Provides a method to retrieve the handle of a window.
+    /// Resolves services registered in the dependency injection container using a key.
     /// </summary>
-    public interface IWindowHandleProvider
+    public interface IKeyedServiceResolver
     {
         /// <summary>
-        /// Gets the handle of the window.
+        /// Resolves a service of the specified type using the provided key.
         /// </summary>
-        /// <returns>The handle of the window.</returns>
-        IntPtr GetHandle();
+        /// <typeparam name="T">The type of service to resolve.</typeparam>
+        /// <param name="key">The key associated with the desired service.</param>
+        /// <returns>The resolved service instance.</returns>
+        T GetRequiredKeyedService<T>(object key);
     }
 }

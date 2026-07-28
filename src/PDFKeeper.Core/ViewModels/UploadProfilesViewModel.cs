@@ -19,7 +19,7 @@
 // ****************************************************************************
 
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Properties;
@@ -37,25 +37,30 @@ namespace PDFKeeper.Core.ViewModels
     [CLSCompliant(false)]
     public sealed class UploadProfilesViewModel : ViewModelBase
     {
-        private readonly IWindowHandleProvider windowHandleProvider;
-        private IDialogService dialogService;
-        private IMessageBoxService messageBoxService;
+        private readonly IMessageBoxService messageBoxService;
+        private readonly IDialogService uploadProfileEditorDialogService;
         private readonly UploadProfileManager uploadProfileManager;
         private IEnumerable<string> uploadProfileNames;
         private bool editEnabled;
         private bool deleteEnabled;
 
         /// <summary>
-        /// Initializes a new instance of the UploadProfilesViewModel class with the specified
-        /// window handle provider.
+        /// Initializes a new instance of the <see cref="UploadProfilesViewModel"/> class.
         /// </summary>
-        /// <param name="windowHandleProvider">
-        /// An object that provides a handle to the window associated with this view model.
-        /// </param>
-        public UploadProfilesViewModel(IWindowHandleProvider windowHandleProvider)
+        /// <param name="keyedServiceResolver">A service that resolves keyed services.</param>
+        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+        public UploadProfilesViewModel(
+            IKeyedServiceResolver keyedServiceResolver,
+            IMessageBoxService messageBoxService)
         {
-            this.windowHandleProvider = windowHandleProvider;
-            GetServices(ServiceLocator.Services);
+            if (keyedServiceResolver is null)
+            {
+                throw new ArgumentNullException(nameof(keyedServiceResolver));
+            }
+
+            this.messageBoxService = messageBoxService;
+            uploadProfileEditorDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IDialogService>(DialogServiceKey.UploadProfileEditor);
             uploadProfileManager = new UploadProfileManager();
             UploadProfilesDirectoryPath = uploadProfileManager.UploadProfilesDirectoryPath;
             InitializeCommands();
@@ -87,21 +92,6 @@ namespace PDFKeeper.Core.ViewModels
             get => deleteEnabled;
             set => SetProperty(ref deleteEnabled, value);
         }
-        
-        protected override void GetServices(IServiceProvider serviceProvider)
-        {
-            foreach (var service in serviceProvider.GetServices<IDialogService>())
-            {
-                switch (service.GetType().Name)
-                {
-                    case "UploadProfileEditorDialogService":
-                        dialogService = service;
-                        break;
-                }
-            }
-
-            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
-        }
 
         private void InitializeCommands()
         {
@@ -126,10 +116,11 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
-        private void AddUploadProfile() => dialogService.ShowDialog(
-            windowHandleProvider.GetHandle());
-        private void EditUploadProfile() => dialogService.ShowDialog(
-            windowHandleProvider.GetHandle(),
+        private void AddUploadProfile() => 
+            uploadProfileEditorDialogService.ShowDialog(GetWindowHandle.Invoke());
+
+        private void EditUploadProfile() => uploadProfileEditorDialogService.ShowDialog(
+            GetWindowHandle.Invoke(),
             CurrentUploadProfileName);
 
         private void DeleteUploadProfile()
@@ -139,7 +130,7 @@ namespace PDFKeeper.Core.ViewModels
                 "DeleteToRecycleBin",
                 CurrentUploadProfileName);
 
-            if (messageBoxService.ShowQuestion(windowHandleProvider.GetHandle(), message) == 6)
+            if (messageBoxService.ShowQuestion(GetWindowHandle.Invoke(), message) == 6)
             {
                 uploadProfileManager.DeleteUploadProfile(CurrentUploadProfileName);
             }

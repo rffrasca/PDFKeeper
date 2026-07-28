@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
@@ -29,16 +30,26 @@ namespace PDFKeeper.WinForms.Services
     /// <summary>
     /// Service for displaying the Add PDF dialog.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
-    internal class AddPdfDialogService : IChildDialogService
+    internal class AddPdfDialogService : IDialogService
     {
+        private readonly IServiceProvider serviceProvider;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddPdfDialogService"/> class.
+        /// </summary>
+        /// <param name="serviceProvider">
+        /// The <see cref="IServiceProvider"/> containing services required by the application.
+        /// </param>
+        public AddPdfDialogService(IServiceProvider serviceProvider)
+        {
+            this.serviceProvider = serviceProvider;
+        }
+
         public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
-            using (var dialog = new AddPdfForm(arg, document))
+            using (var dialog = serviceProvider.GetRequiredService<AddPdfForm>())
             {
+                dialog.Initialize(arg, document);
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
             }
 

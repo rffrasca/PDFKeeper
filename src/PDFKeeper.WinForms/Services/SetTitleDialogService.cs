@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
 using PDFKeeper.WinForms.Properties;
@@ -30,16 +30,21 @@ namespace PDFKeeper.WinForms.Services
     /// <summary>
     /// Provides a dialog service for setting a title, including validation and user feedback.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class SetTitleDialogService : IDialogService
     {
-        public string ShowDialog(IntPtr parent, string arg = null)
-        {
-            var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
+        private readonly IMessageBoxService messageBoxService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetTitleDialogService"/> class.
+        /// </summary>
+        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+        public SetTitleDialogService(IMessageBoxService messageBoxService)
+        {
+            this.messageBoxService = messageBoxService;
+        }
+
+        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
+        {
             using (var dialog = new SetTitleForm())
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));

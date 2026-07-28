@@ -31,17 +31,27 @@ namespace PDFKeeper.WinForms.Commands
     /// execution initiates a drag and drop of the PDF for the selected document when the right
     /// mouse button is pressed.
     /// </summary>
-    /// <param name="mouseEventArgs">The <see cref="MouseEventArgs"/> object.</param>
-    /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
-    /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-    internal class MainFormMouseDownCommand(
-        MouseEventArgs mouseEventArgs,
-        MainForm mainForm,
-        MainViewModel viewModel) : ICommand
+    internal class MainFormMouseDownCommand : ICommand
     {
-        private readonly MouseEventArgs mouseEventArgs = mouseEventArgs;
-        private readonly MainForm mainForm = mainForm;
-        private readonly MainViewModel viewModel = viewModel;
+        private readonly MainForm mainForm;
+        private readonly MainViewModel mainViewModel;
+        private readonly MouseEventArgs mouseEventArgs;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainFormMouseDownCommand"/> class.
+        /// </summary>
+        /// <param name="mainForm">The <see cref="MainForm"/> instance.</param>
+        /// <param name="mainViewModel">The <see cref="MainViewModel"/> instance.</param>
+        /// <param name="mouseEventArgs">The <see cref="MouseEventArgs"/> object.</param>
+        internal MainFormMouseDownCommand(
+            MainForm mainForm,
+            MainViewModel mainViewModel,
+            MouseEventArgs mouseEventArgs)
+        {
+            this.mainForm = mainForm;
+            this.mainViewModel = mainViewModel;
+            this.mouseEventArgs = mouseEventArgs;
+        }
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 
@@ -62,7 +72,7 @@ namespace PDFKeeper.WinForms.Commands
                 {
                     var rowIndex = mainForm.DocumentsDataGridView.Rows[hitTest.RowIndex];
                     rowIndex.Selected = true;
-                    viewModel.DoDragDropPdfForCurrentDocumentCommand.Execute(null);
+                    mainViewModel.DoDragDropPdfForCurrentDocumentCommand.Execute(null);
                 }
             }
         }

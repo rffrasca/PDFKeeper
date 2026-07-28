@@ -1,4 +1,4 @@
-// *****************************************************************************
+﻿// *****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,7 +18,6 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.FileIO.PDF;
@@ -27,7 +26,6 @@ using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
 using PDFKeeper.WinForms.Dialogs;
 using PDFKeeper.WinForms.Properties;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -39,27 +37,52 @@ namespace PDFKeeper.WinForms.Views
 {
     internal partial class MainForm : Form
     {
-        private readonly MainViewModel viewModel;
         private readonly IHelpService helpService;
-        private readonly DataGridViewSortProperties dataGridViewSortProperties;
-        private int dataGridViewScrollPosition;
+        private readonly IVirtualKeyService virtualKeyService;
+        private readonly MainViewModel viewModel;
         private readonly FindDocumentsForm findDocumentsForm;
         private readonly UploadProfilesForm uploadProfilesForm;
+        private readonly DataGridViewSortProperties dataGridViewSortProperties;
+        private int dataGridViewScrollPosition;
         private readonly ProgressForm progressForm;
 
         // Message that is sent when the contents of the clipboard have changed.
         private const int WM_CLIPBOARDUPDATE = 0x31D;
 
-        public MainForm()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainForm"/> class.
+        /// </summary>
+        /// <param name="helpService">
+        /// A service that shows a Help file topic modelessly.
+        /// </param>
+        /// <param name="virtualKeyService">
+        /// A service used to determine the state of mouse buttons during the drag‑enter operation.
+        /// </param>
+        /// <param name="viewModel">
+        /// The view model used by this form.
+        /// </param>
+        /// <param name="findDocumentsForm">
+        /// The form used for finding documents.
+        /// </param>
+        /// <param name="uploadProfilesForm">
+        /// The form used to manage upload profiles.
+        /// </param>
+        public MainForm(
+            IHelpService helpService,
+            IVirtualKeyService virtualKeyService,
+            MainViewModel viewModel,
+            FindDocumentsForm findDocumentsForm,
+            UploadProfilesForm uploadProfilesForm)
         {
             InitializeComponent();
-            viewModel = new MainViewModel(new FormHandleProvider(this));
+            this.helpService = helpService;
+            this.virtualKeyService = virtualKeyService;
+            this.viewModel = viewModel;
+            this.findDocumentsForm = findDocumentsForm;
+            this.uploadProfilesForm = uploadProfilesForm;
             MainViewModelBindingSource.DataSource = viewModel;
-            helpService = ServiceLocator.Services.GetService<IHelpService>();
             dataGridViewSortProperties = new DataGridViewSortProperties();
             HelpProvider.HelpNamespace = new HelpFile().FullName;
-            findDocumentsForm = new FindDocumentsForm();
-            uploadProfilesForm = new UploadProfilesForm();
             progressForm = new ProgressForm();
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
             SetActions();
@@ -68,10 +91,11 @@ namespace PDFKeeper.WinForms.Views
 
         private void SetActions()
         {
+            viewModel.GetWindowHandle = () => Handle;
             viewModel.OnLongOperationStarted = () => Cursor = Cursors.WaitCursor;
             viewModel.OnLongOperationFinished = () => Cursor = Cursors.Default;
             viewModel.OnResetBindings = () => MainViewModelBindingSource.ResetBindings(false);
-            viewModel.OnCloseView = () => Close();
+            viewModel.OnCloseView = Close;
             viewModel.OnCheckForUpdate = () => TagCommand.Invoke(UpdateCheckTimer);
 
             viewModel.OnGetViewState = () =>
@@ -104,11 +128,13 @@ namespace PDFKeeper.WinForms.Views
                     WindowState = Settings.Default.MainFormState;
                 }
 
-                HorizontalSplitContainer.SplitterDistance = Settings.Default.HorizontalSplitterDistance;
-                VerticalSplitContainer.SplitterDistance = Settings.Default.VerticalSplitterDistance;                
+                HorizontalSplitContainer.SplitterDistance = 
+                    Settings.Default.HorizontalSplitterDistance;
+                VerticalSplitContainer.SplitterDistance = 
+                    Settings.Default.VerticalSplitterDistance;
             };
 
-            viewModel.OnUndoNotes = () => NotesTextBox.Undo();
+            viewModel.OnUndoNotes = NotesTextBox.Undo;
 
             viewModel.OnCutNotes = () =>
             {
@@ -117,7 +143,7 @@ namespace PDFKeeper.WinForms.Views
             };
 
             viewModel.OnCopyText = () => GetTextBoxWithFocus().Copy();
-            viewModel.OnPasteNotes = () => NotesTextBox.Paste();
+            viewModel.OnPasteNotes = NotesTextBox.Paste;
 
             viewModel.OnSelectAllText = () =>
             {
@@ -202,7 +228,7 @@ namespace PDFKeeper.WinForms.Views
                 });
             };
 
-            viewModel.OnBlockingUploadFinished = () => progressForm.Close();
+            viewModel.OnBlockingUploadFinished = progressForm.Close;
 
             viewModel.OnProgressBarPerformStep = () =>
             {
@@ -212,22 +238,16 @@ namespace PDFKeeper.WinForms.Views
 
             viewModel.OnCheckedDocumentsProcessed = ()
                 => ToolStripItem_Click(DocumentsSelectNoneToolStripMenuItem, null);
-            viewModel.OnCheckForFlaggedDocumentsStarted = ()
-                => CheckForFlaggedDocumentsTimer.Stop();
-            viewModel.OnCheckForFlaggedDocumentsFinished = ()
-                => CheckForFlaggedDocumentsTimer.Start();
-            viewModel.OnCheckForDocumentsListChangesStarted = ()
-                => CheckForDocumentsListChangesTimer.Stop();
-            viewModel.OnCheckForDocumentsListChangesFinished = ()
-                => CheckForDocumentsListChangesTimer.Start();
-            viewModel.OnUploadPdfFilesStarted = ()
-                => UploadTimer.Stop();
-            viewModel.OnUploadPdfFilesFinished = ()
-                => UploadTimer.Start();
-            viewModel.OnSetDocumentsListHasChangesStarted = ()
-                => DocumentsListTimedRefreshTimer.Stop();
-            viewModel.OnSetDocumentsListHasChangesFinished = ()
-                => DocumentsListTimedRefreshTimer.Start();
+            viewModel.OnCheckForFlaggedDocumentsStarted = CheckForFlaggedDocumentsTimer.Stop;
+            viewModel.OnCheckForFlaggedDocumentsFinished = CheckForFlaggedDocumentsTimer.Start;
+            viewModel.OnCheckForDocumentsListChangesStarted = 
+                CheckForDocumentsListChangesTimer.Stop;
+            viewModel.OnCheckForDocumentsListChangesFinished =
+                CheckForDocumentsListChangesTimer.Start;
+            viewModel.OnUploadPdfFilesStarted = UploadTimer.Stop;
+            viewModel.OnUploadPdfFilesFinished = UploadTimer.Start;
+            viewModel.OnSetDocumentsListHasChangesStarted = DocumentsListTimedRefreshTimer.Stop;
+            viewModel.OnSetDocumentsListHasChangesFinished = DocumentsListTimedRefreshTimer.Start;
 
             viewModel.OnSetViewState = () =>
             {
@@ -413,7 +433,7 @@ namespace PDFKeeper.WinForms.Views
 
         private void MainForm_DragEnter(object sender, DragEventArgs e)
         {
-            new MainFormDragEnterCommand(e, viewModel).Execute(null);
+            new MainFormDragEnterCommand(virtualKeyService, viewModel, e).Execute(null);
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -503,7 +523,7 @@ namespace PDFKeeper.WinForms.Views
 
         private void DocumentsDataGridView_MouseDown(object sender, MouseEventArgs e)
         {
-            new MainFormMouseDownCommand(e, this, viewModel).Execute(null);
+            new MainFormMouseDownCommand(this, viewModel, e).Execute(null);
         }
 
         private void DocumentsDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -550,12 +570,12 @@ namespace PDFKeeper.WinForms.Views
 
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            new TextBoxSelectedTextCommand((TextBox)sender, this, viewModel).Execute(null);
+            new TextBoxSelectedTextCommand(this, viewModel, (TextBox)sender).Execute(null);
         }
 
         private void TextBox_MouseUp(object sender, MouseEventArgs e)
         {
-            new TextBoxSelectedTextCommand((TextBox)sender, this, viewModel).Execute(null);
+            new TextBoxSelectedTextCommand(this, viewModel, (TextBox)sender).Execute(null);
         }
 
         private void TextBox_Leave(object sender, EventArgs e)
@@ -876,7 +896,7 @@ namespace PDFKeeper.WinForms.Views
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            new FormClosingCommand(e, viewModel).Execute(null);
+            new FormClosingCommand(viewModel, e).Execute(null);
         }
 
         /// <summary>

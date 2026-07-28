@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -19,8 +19,8 @@
 // ****************************************************************************
 
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.DataAccess;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Models;
@@ -39,12 +39,11 @@ namespace PDFKeeper.Core.ViewModels
     [CLSCompliant(false)]
     public sealed class AddPdfViewModel : ColumnDataListsViewModel, IUploadProfile
     {
-        private readonly IWindowHandleProvider windowHandleProvider;
-        private readonly Document document;
-        private IFileDialogService openFileDialogService;
-        private IMessageBoxService messageBoxService;
-        private IPasswordDialogService passwordDialogService;
-        private IRestrictedPdfViewerService restrictedPdfViewerService;
+        private readonly IMessageBoxService messageBoxService;
+        private readonly IPasswordDialogService passwordDialogService;
+        private readonly IRestrictedPdfViewerService restrictedPdfViewerService;
+        private readonly IFileDialogService openFileDialogService;
+        private Document document;
         private UploadProfile uploadProfile;
         private string viewText;
         private string selectedPdf;
@@ -52,22 +51,37 @@ namespace PDFKeeper.Core.ViewModels
         private PdfMetadata pdfMetadata;
 
         /// <summary>
-        /// Initializes a new instance of the AddPdfViewModel class with the specified window
-        /// handle provider and optional document.
+        /// Initializes a new instance of the <see cref="AddPdfViewModel"/> class.
         /// </summary>
-        /// <param name="windowHandleProvider">
-        /// An object that provides a handle to the window associated with this view model.
+        /// <param name="keyedServiceResolver">
+        /// A service that resolves keyed dialog services.
         /// </param>
-        /// <param name = "document" >
-        /// An optional Document to associate with the view model.
+        /// <param name="messageBoxService">
+        /// A dialog service that displays messages.
+        /// </param>
+        /// <param name="passwordDialogService">
+        /// A service that displays a dialog for entering an owner password when opening
+        /// password‑protected PDF files.
+        /// </param>
+        /// <param name="restrictedPdfViewerService">
+        /// A service that opens and displays PDF documents in a restricted viewer.
         /// </param>
         public AddPdfViewModel(
-            IWindowHandleProvider windowHandleProvider,
-            Document document = null)
+            IKeyedServiceResolver keyedServiceResolver,
+            IMessageBoxService messageBoxService,
+            IPasswordDialogService passwordDialogService,
+            IRestrictedPdfViewerService restrictedPdfViewerService)
         {
-            this.windowHandleProvider = windowHandleProvider;
-            this.document = document;
-            GetServices(ServiceLocator.Services);
+            if (keyedServiceResolver is null)
+            {
+                throw new ArgumentNullException(nameof(keyedServiceResolver));
+            }
+
+            this.messageBoxService = messageBoxService;
+            this.passwordDialogService = passwordDialogService;
+            this.restrictedPdfViewerService = restrictedPdfViewerService;
+            openFileDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IFileDialogService>(FileDialogServiceKey.OpenFile);
             InitializeCommands();            
         }
 
@@ -175,21 +189,17 @@ namespace PDFKeeper.Core.ViewModels
             set => uploadProfile.Keywords = value;
         }
 
-        protected override void GetServices(IServiceProvider serviceProvider)
+        /// <summary>
+        /// Sets the <see cref="Document"/> representing the document being replaced.
+        /// This method is called only when the PDF in an existing database record is
+        /// being replaced.
+        /// </summary>
+        /// <param name="document">
+        /// The <see cref="Document"/> instance that represents the document being replaced.
+        /// </param>
+        public void SetDocument(Document document)
         {
-            foreach (var service in serviceProvider.GetServices<IFileDialogService>())
-            {
-                switch (service.GetType().Name)
-                {
-                    case "OpenFileDialogService":
-                        openFileDialogService = service;
-                        break;
-                }
-            }
-
-            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
-            passwordDialogService = serviceProvider.GetService<IPasswordDialogService>();
-            restrictedPdfViewerService = serviceProvider.GetService<IRestrictedPdfViewerService>();
+            this.document = document;
         }
 
         private void InitializeCommands()
@@ -222,9 +232,7 @@ namespace PDFKeeper.Core.ViewModels
         {
             var selectedPdfPath = !string.IsNullOrEmpty(pdfPath)
                 ? pdfPath
-                : openFileDialogService.ShowDialog(
-                    windowHandleProvider.GetHandle(),
-                    Resources.PdfFilter);
+                : openFileDialogService.ShowDialog(GetWindowHandle.Invoke(), Resources.PdfFilter);
 
             if (selectedPdfPath.Length > 0)
             {
@@ -243,7 +251,7 @@ namespace PDFKeeper.Core.ViewModels
                             break;
                         case PdfFile.PasswordType.Owner:
                             var pdfOwnerPassword = passwordDialogService.ShowDialog(
-                                windowHandleProvider.GetHandle());
+                                GetWindowHandle.Invoke());
 
                             if (pdfOwnerPassword != null)
                             {
@@ -258,7 +266,7 @@ namespace PDFKeeper.Core.ViewModels
                                 else
                                 {
                                     messageBoxService.ShowMessage(
-                                        windowHandleProvider.GetHandle(),
+                                        GetWindowHandle.Invoke(),
                                         Resources.PdfOwnerPasswordRequired,
                                         true);
                                     OnCloseView?.Invoke();
@@ -272,14 +280,14 @@ namespace PDFKeeper.Core.ViewModels
                             break;
                         case PdfFile.PasswordType.User:
                             messageBoxService.ShowMessage(
-                                windowHandleProvider.GetHandle(),
+                                GetWindowHandle.Invoke(),
                                 Resources.PdfContainsUserPassword,
                                 true);
                             OnCloseView?.Invoke();
                             break;
                         case PdfFile.PasswordType.Unknown:
                             messageBoxService.ShowMessage(
-                                windowHandleProvider.GetHandle(),
+                                GetWindowHandle.Invoke(),
                                 Resources.PdfInvalid,
                                 true);
                             OnCloseView?.Invoke();
@@ -291,10 +299,7 @@ namespace PDFKeeper.Core.ViewModels
                     ex is IOException ||
                     ex is UnauthorizedAccessException)
                 {
-                    messageBoxService.ShowMessage(
-                        windowHandleProvider.GetHandle(),
-                        ex.Message,
-                        true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                     OnCloseView?.Invoke();
                 }
             }
@@ -323,7 +328,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
+                messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
             }
         }
 
@@ -350,7 +355,7 @@ namespace PDFKeeper.Core.ViewModels
                 ex is NullReferenceException ||
                 ex is iText.IO.Exceptions.IOException)
             {
-                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
+                messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                 OnCloseView?.Invoke();
             }
         }
@@ -360,7 +365,7 @@ namespace PDFKeeper.Core.ViewModels
             CancelViewClosing = false;
 
             if (messageBoxService.ShowQuestion(
-                windowHandleProvider.GetHandle(),
+                GetWindowHandle.Invoke(),
                 Resources.CancelQuestion) == 6)
             {
                 restrictedPdfViewerService.Close();
@@ -383,7 +388,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
+                messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
             }
         }
 

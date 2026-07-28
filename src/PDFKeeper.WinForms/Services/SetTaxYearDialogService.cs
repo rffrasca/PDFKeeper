@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
 using System;
@@ -28,15 +29,22 @@ namespace PDFKeeper.WinForms.Services
     /// <summary>
     /// Provides a dialog service for selecting a tax year using the SetTaxYearForm.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class SetTaxYearDialogService : IDialogService
     {
-        public string ShowDialog(IntPtr parent, string arg = null)
+        private readonly IMessageBoxService messageBoxService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetTaxYearDialogService"/> class.
+        /// </summary>
+        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+        public SetTaxYearDialogService(IMessageBoxService messageBoxService)
         {
-            using (var dialog = new SetTaxYearForm())
+            this.messageBoxService = messageBoxService;
+        }
+
+        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
+        {
+            using (var dialog = new SetTaxYearForm(messageBoxService))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
 

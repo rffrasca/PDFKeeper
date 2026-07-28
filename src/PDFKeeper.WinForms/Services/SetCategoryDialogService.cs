@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
 using System;
@@ -28,15 +29,22 @@ namespace PDFKeeper.WinForms.Services
     /// <summary>
     /// Service for displaying the Set Category dialog.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class SetCategoryDialogService : IDialogService
     {
-        public string ShowDialog(IntPtr parent, string arg = null)
+        private readonly IMessageBoxService messageBoxService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetCategoryDialogService"/> class.
+        /// </summary>
+        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+        public SetCategoryDialogService(IMessageBoxService messageBoxService)
         {
-            using (var dialog = new SetCategoryForm())
+            this.messageBoxService = messageBoxService;
+        }
+
+        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
+        {
+            using (var dialog = new SetCategoryForm(messageBoxService))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
 

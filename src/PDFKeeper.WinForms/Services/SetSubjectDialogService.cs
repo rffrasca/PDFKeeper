@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
 using PDFKeeper.WinForms.Views;
@@ -31,17 +31,22 @@ namespace PDFKeeper.WinForms.Services
     /// Provides dialog functionality for setting a subject, including validation and user
     /// feedback.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class SetSubjectDialogService : IDialogService
     {
-        public string ShowDialog(IntPtr parent, string arg = null)
-        {
-            var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
+        private readonly IMessageBoxService messageBoxService;
 
-            using (var dialog = new SetSubjectForm())
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetSubjectDialogService"/> class.
+        /// </summary>
+        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+        public SetSubjectDialogService(IMessageBoxService messageBoxService)
+        {
+            this.messageBoxService = messageBoxService;
+        }
+
+        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
+        {
+            using (var dialog = new SetSubjectForm(messageBoxService))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
 
@@ -54,7 +59,7 @@ namespace PDFKeeper.WinForms.Services
                     else
                     {
                         messageBoxService.ShowMessage(
-                            parent,
+                            parent, 
                             Resources.SubjectCannotBeBlank,
                             true);
                         return null;

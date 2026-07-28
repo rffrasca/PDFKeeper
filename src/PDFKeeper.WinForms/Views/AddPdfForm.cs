@@ -21,7 +21,6 @@
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.ViewModels;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -29,34 +28,51 @@ using System.Windows.Forms;
 namespace PDFKeeper.WinForms.Views
 {
     internal partial class AddPdfForm : Form
-    {
-        private readonly string pdfPath;
+    {        
         private readonly AddPdfViewModel viewModel;
+        private string pdfPath;
 
         /// <summary>
-        /// Initializes a new instance of the AddPdfForm class, setting up the view model,
-        /// data binding, help provider, and event handlers.
+        /// Initializes a new instance of the <see cref="AddPdfForm"/> class.
         /// </summary>
-        /// <param name="pdfPath">
-        /// The file path of the PDF to add, or null to specify no initial PDF.
-        /// </param>
-        /// <param name="document">
-        /// The Document object to associate with the form, or null if not applicable.
-        /// </param>
-        public AddPdfForm(string pdfPath = null, Document document = null)
+        /// <param name="viewModel">The view model used by this form.</param>
+        public AddPdfForm(AddPdfViewModel viewModel)
         {
             InitializeComponent();
-            this.pdfPath = pdfPath;
-            viewModel = new AddPdfViewModel(new FormHandleProvider(this), document);
+            this.viewModel = viewModel;
             AddPdfViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
             SetActions();
         }
 
+        /// <summary>
+        /// Applies runtime parameters to the form after it has been constructed. This method
+        /// supplies the optional PDF path and <see cref="Document"/> used when replacing the PDF
+        /// in an existing document record.
+        /// </summary>
+        /// <param name="pdfPath">
+        /// The file path of the PDF to load when the form opens, or <c>null</c>
+        /// when no initial PDF is provided.
+        /// </param>
+        /// <param name="document">
+        /// The <see cref="Document"/> representing an existing document for PDF replacement, or
+        /// <c>null</c> when adding a new PDF.
+        /// </param>
+        public void Initialize(string pdfPath, Document document)
+        {
+            this.pdfPath = pdfPath;
+
+            if (document != null)
+            {
+                viewModel.SetDocument(document);
+            }
+        }
+
         private void SetActions()
         {
-            viewModel.OnApplyPendingChanges = () => AddPdfViewModelBindingSource.EndEdit();
+            viewModel.GetWindowHandle = () => Handle;
+            viewModel.OnApplyPendingChanges = AddPdfViewModelBindingSource.EndEdit;
             viewModel.OnResetBindings = () => AddPdfViewModelBindingSource.ResetBindings(false);
 
             viewModel.OnCloseViewOKResult = () =>
@@ -83,7 +99,7 @@ namespace PDFKeeper.WinForms.Views
                 Close();
             };
 
-            viewModel.OnSelectTitleControl = () => TitleTextBox.Select();
+            viewModel.OnSelectTitleControl = TitleTextBox.Select;
         }
 
         private void AddPdfForm_Load(object sender, EventArgs e)

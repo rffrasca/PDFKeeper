@@ -19,7 +19,6 @@
 // ****************************************************************************
 
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
@@ -38,8 +37,7 @@ namespace PDFKeeper.Core.ViewModels
     [CLSCompliant(false)]
     public sealed class FindDocumentsViewModel : ColumnDataListsViewModel, IFindDocumentsParam
     {
-        private readonly IWindowHandleProvider windowHandleProvider;
-        private IMessageBoxService messageBoxService;
+        private readonly IMessageBoxService messageBoxService;
         private FindDocumentsParam findDocumentsParam;
         private readonly SearchTermHistory searchTermHistory;
         private bool searchTermEnabled;
@@ -62,16 +60,12 @@ namespace PDFKeeper.Core.ViewModels
         }
 
         /// <summary>
-        /// Initializes a new instance of the FindDocumentsViewModel class with the specified
-        /// window handle provider.
+        /// Initializes a new instance of the <see cref="FindDocumentsViewModel"/> class.
         /// </summary>
-        /// <param name="windowHandleProvider">
-        /// An object that provides a handle to the window associated with this view model.
-        /// </param>
-        public FindDocumentsViewModel(IWindowHandleProvider windowHandleProvider)
+        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+        public FindDocumentsViewModel(IMessageBoxService messageBoxService)
         {
-            this.windowHandleProvider = windowHandleProvider;
-            GetServices(ServiceLocator.Services);
+            this.messageBoxService = messageBoxService;
             findDocumentsParam = new FindDocumentsParam();
             searchTermHistory = new SearchTermHistory();
             ApplyPolicy();
@@ -283,11 +277,6 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
-        protected override void GetServices(IServiceProvider serviceProvider)
-        {
-            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
-        }
-
         private void ApplyPolicy() =>
             AllDocumentsEnabled = !ApplicationPolicy.GetPolicyValue(
                 ApplicationPolicy.PolicyName.HideAllDocuments);
@@ -343,7 +332,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
+                messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
             }
             finally
             {
@@ -362,7 +351,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
+                messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
             }
             finally
             {
@@ -381,7 +370,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
+                messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
             }
             finally
             {
@@ -400,7 +389,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
+                messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
             }
             finally
             {
@@ -428,7 +417,7 @@ namespace PDFKeeper.Core.ViewModels
             else
             {
                 messageBoxService.ShowMessage(
-                    windowHandleProvider.GetHandle(),
+                    GetWindowHandle.Invoke(),
                     rule.ViolationMessage,
                     true);
                 OnCancelCloseView?.Invoke();

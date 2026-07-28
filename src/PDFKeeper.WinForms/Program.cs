@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -21,25 +21,25 @@
 using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
-using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Services;
-using PDFKeeper.PDFViewer.Services;
+using PDFKeeper.WinForms.Composition;
 using PDFKeeper.WinForms.Properties;
-using PDFKeeper.WinForms.Services;
 using PDFKeeper.WinForms.Views;
 using System;
 using System.Configuration;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using static PDFKeeper.Core.Extensions.ExceptionExtension;
 
 namespace PDFKeeper.WinForms
 {
     static class Program
     {
+        private static IExceptionHandler exceptionHandler;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -48,8 +48,7 @@ namespace PDFKeeper.WinForms
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(
                 HandleUnhandledException);
-            Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(
-                HandleThreadException);
+            Application.ThreadException += new ThreadExceptionEventHandler(HandleThreadException);
 
             using (var mutex = new Mutex(true, Application.ProductName))
             {
@@ -57,11 +56,13 @@ namespace PDFKeeper.WinForms
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    ServiceLocator.Services = ConfigureServices();
 
-                    if (!Startup())
+                    var serviceProvider = CompositionRoot.BuildServiceProvider();
+                    exceptionHandler = serviceProvider.GetRequiredService<IExceptionHandler>();
+
+                    if (!Startup(serviceProvider))
                     {
-                        using (var form = new MainForm())
+                        using (var form = serviceProvider.GetRequiredService<MainForm>())
                         {
                             Application.Run(form);
                         }
@@ -71,75 +72,20 @@ namespace PDFKeeper.WinForms
                 }
             }
         }
-
-        /// <summary>
-        /// Configures services for the application.
-        /// </summary>
-        /// <returns>The <see cref="ServiceProvider"/> instance.</returns>
-        static ServiceProvider ConfigureServices()
-        {
-            var serviceCollection = new ServiceCollection();
-
-            serviceCollection.AddSingleton<IAliasService,
-                AliasService>();
-            serviceCollection.AddSingleton<IChildDialogService,
-                AddPdfDialogService>();
-            serviceCollection.AddSingleton<IDialogService,
-                SetTitleDialogService>();
-            serviceCollection.AddSingleton<IDialogService,
-                SetAuthorDialogService>();
-            serviceCollection.AddSingleton<IDialogService,
-                SetSubjectDialogService>();
-            serviceCollection.AddSingleton<IDialogService,
-                SetCategoryDialogService>();
-            serviceCollection.AddSingleton<IDialogService,
-                SetTaxYearDialogService>();
-            serviceCollection.AddSingleton<IDialogService,
-                SetDateTimeAddedDialogService>();
-            serviceCollection.AddSingleton<IDialogService,
-                SetPreviewPixelDensityDialogService>();
-            serviceCollection.AddSingleton<IDialogService,
-                OptionsDialogService>();
-            serviceCollection.AddSingleton<IDialogService,
-                UploadProfileEditorDialogService>();
-            serviceCollection.AddSingleton<IDialogService,
-                AboutBoxDialogService>();
-            serviceCollection.AddSingleton<IFileCache, FileCache>();
-            serviceCollection.AddSingleton<IFileDialogService,
-                OpenFileDialogService>();
-            serviceCollection.AddSingleton<IFileDialogService,
-                SaveFileDialogService>();
-            serviceCollection.AddSingleton<IFolderBrowserDialogService,
-                FolderBrowserDialogService>();
-            serviceCollection.AddSingleton<IFolderExplorerService,
-                FolderExplorerService>();
-            serviceCollection.AddSingleton<IHelpService, HelpService>();
-            serviceCollection.AddSingleton<IMessageBoxService,
-                MessageBoxService>();
-            serviceCollection.AddSingleton<IPasswordDialogService,
-                PdfOwnerPasswordDialogService>();
-            serviceCollection.AddSingleton<IPdfViewerService,
-                PdfViewerService>();
-            serviceCollection.AddSingleton<IPrintDialogService,
-                PrintDialogService>();
-            serviceCollection.AddSingleton<IPrintPreviewDialogService,
-                PrintPreviewDialogService>();
-            serviceCollection.AddSingleton<IRestrictedPdfViewerService,
-                RestrictedPdfViewerService>();
-            serviceCollection.AddSingleton<IVirtualKeyService, VirtualKeyService>();
-            return serviceCollection.BuildServiceProvider();
-        }
-
+        
         /// <summary>
         /// Performs application startup actions.
         /// </summary>
+        /// <param name="serviceProvider">
+        /// The <see cref="IServiceProvider"/> containing services required by the application.
+        /// /param>
         /// <returns>
         /// <c>true</c> or <c>false</c> if user cancelled or startup encountered an exception.
         /// </returns>
-        static bool Startup()
+        static bool Startup(IServiceProvider serviceProvider)
         {
+            var messageBoxService = serviceProvider.GetRequiredService<IMessageBoxService>();
             var helpFile = new HelpFile();
-            var messageBoxService = ServiceLocator.Services.GetService<IMessageBoxService>();
             UpgradeUserSettings();
 
             if (Settings.Default.DbManagementSystem.Length.Equals(0))
@@ -235,7 +181,7 @@ namespace PDFKeeper.WinForms
                 DatabaseSession.CompatiblePlatformName.Sqlite.ToString(),
                 StringComparison.Ordinal))
             {
-                using (var form = new LoginForm())
+                using (var form = serviceProvider.GetRequiredService<LoginForm>())
                 {
                     if (form.ShowDialog().Equals(DialogResult.Cancel))
                     {
@@ -265,6 +211,25 @@ namespace PDFKeeper.WinForms
         }
 
         /// <summary>
+        /// Upgrades user settings.
+        /// </summary>
+        static void UpgradeUserSettings()
+        {
+            var configuration = ConfigurationManager.OpenExeConfiguration(
+                ConfigurationUserLevel.PerUserRoamingAndLocal);
+
+            if (!configuration.HasFile)
+            {
+                if (Settings.Default.UpgradeSettings)
+                {
+                    Settings.Default.Upgrade();
+                    Settings.Default.UpgradeSettings = false;
+                    Settings.Default.Save();
+                }
+            }
+        }
+
+        /// <summary>
         /// Performs application shutdown actions.
         /// </summary>
         static void Shutdown()
@@ -277,33 +242,34 @@ namespace PDFKeeper.WinForms
         }
 
         /// <summary>
-        /// Upgrades user settings.
+        /// Handles unhandled exceptions raised on non‑UI threads.
         /// </summary>
-        static void UpgradeUserSettings()
-        {
-            var configuration = ConfigurationManager.OpenExeConfiguration(
-                ConfigurationUserLevel.PerUserRoamingAndLocal);
-            
-            if (!configuration.HasFile)
-            {
-                if (Settings.Default.UpgradeSettings)
-                {
-                    Settings.Default.Upgrade();
-                    Settings.Default.UpgradeSettings = false;
-                    Settings.Default.Save();
-                }
-            }
-        }
-
+        /// <param name="sender">
+        /// The source of the unhandled exception event.
+        /// </param>
+        /// <param name="e">
+        /// The <see cref="UnhandledExceptionEventArgs"/> containing the exception object.
+        /// </param>
         static void HandleUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            ((Exception)e.ExceptionObject).HandleException(ExceptionType.UnhandledException);
+            exceptionHandler.Handle(
+                (Exception)e.ExceptionObject,
+                ExceptionType.UnhandledException);
             Application.Exit();
         }
 
+        /// <summary>
+        /// Handles exceptions raised on the UI thread.
+        /// </summary>
+        /// <param name="sender">
+        /// The source of the thread exception event.
+        /// </param>
+        /// <param name="e">
+        /// The <see cref="ThreadExceptionEventArgs"/> containing the exception.
+        /// </param>
         static void HandleThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            e.Exception.HandleException(ExceptionType.ThreadException);
+            exceptionHandler.Handle(e.Exception, ExceptionType.ThreadException);
             Application.Exit();
         }
     }

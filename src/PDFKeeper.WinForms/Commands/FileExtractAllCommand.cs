@@ -27,21 +27,30 @@ namespace PDFKeeper.WinForms.Commands
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="FileExtractAllCommand"/> class that
-    /// extracts all attached files from the PDF for the selected document to a directory or
-    /// ZIP file when executed.
+    /// extracts all attached files from the PDF for the selected document to a directory
+    /// or ZIP file when executed.
     /// </summary>
-    /// <param name="viewModel">
-    /// The <see cref="MainViewModel"/> instance.
-    /// </param>
-    /// <param name="attachedFilesType">
-    /// The <see cref="PdfFile.AttachedFilesType"/> of attached files in the PDF to extract.
-    /// </param>
-    internal class FileExtractAllCommand(
-        MainViewModel viewModel,
-        AttachedFilesType attachedFilesType) : ICommand
+    internal class FileExtractAllCommand : ICommand
     {
-        private readonly MainViewModel viewModel = viewModel;
-        private readonly AttachedFilesType attachedFilesType = attachedFilesType;
+        private readonly MainViewModel mainViewModel;
+        private readonly AttachedFilesType attachedFilesType;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileExtractAllCommand"/> class.
+        /// </summary>
+        /// <param name="mainViewModel">
+        /// The <see cref="MainViewModel"/> instance.
+        /// </param>
+        /// <param name="attachedFilesType">
+        /// The <see cref="PdfFile.AttachedFilesType"/> of attached files in the PDF to extract.
+        /// </param>
+        internal FileExtractAllCommand(
+            MainViewModel mainViewModel,
+            AttachedFilesType attachedFilesType)
+        {
+            this.mainViewModel = mainViewModel;
+            this.attachedFilesType = attachedFilesType;
+        }
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 
@@ -52,7 +61,8 @@ namespace PDFKeeper.WinForms.Commands
 
         public void Execute(object parameter)
         {
-            viewModel.ExtractAllAttachedFromCurrentDocumentPdfCommand.Execute(attachedFilesType);
+            mainViewModel.ExtractAllAttachedFromCurrentDocumentPdfCommand.Execute(
+                attachedFilesType);
         }
     }
 }

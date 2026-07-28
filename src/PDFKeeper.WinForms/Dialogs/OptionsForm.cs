@@ -18,7 +18,6 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Services;
@@ -32,13 +31,20 @@ namespace PDFKeeper.WinForms.Dialogs
     {
         private readonly IAliasService aliasService;
 
-        public OptionsForm()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OptionsForm"/> class.
+        /// </summary>
+        /// <param name="aliasService">
+        /// A service that retrieves and assigns aliases to keys.
+        /// </param>
+        public OptionsForm(IAliasService aliasService)
         {
             InitializeComponent();
-            aliasService = ServiceLocator.Services.GetService<IAliasService>();
+            this.aliasService = aliasService;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
 
-            if (!DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Sqlite))
+            if (!DatabaseSession.PlatformName.Equals(
+                DatabaseSession.CompatiblePlatformName.Sqlite))
             {
                 ShowAllDocumentsOnStartupCheckBox.Visible = false;
                 CompactDatabaseAfterDeletingSelectedDocumentsCheckBox.Visible = false;
@@ -47,7 +53,9 @@ namespace PDFKeeper.WinForms.Dialogs
             GetAliases();
         }
         
-        private void FindFlaggedDocumentsOnStartupCheckBox_CheckStateChanged(object sender, EventArgs e)
+        private void FindFlaggedDocumentsOnStartupCheckBox_CheckStateChanged(
+            object sender,
+            EventArgs e)
         {
             if (FindFlaggedDocumentsOnStartupCheckBox.Checked)
             {
@@ -55,7 +63,9 @@ namespace PDFKeeper.WinForms.Dialogs
             }
         }
 
-        private void ShowAllDocumentsOnStartupCheckBox_CheckStateChanged(object sender, EventArgs e)
+        private void ShowAllDocumentsOnStartupCheckBox_CheckStateChanged(
+            object sender,
+            EventArgs e)
         {
             if (ShowAllDocumentsOnStartupCheckBox.Checked)
             {
@@ -63,7 +73,9 @@ namespace PDFKeeper.WinForms.Dialogs
             }
         }
 
-        private void ResetAliasesLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ResetAliasesLinkLabel_LinkClicked(
+            object sender,
+            LinkLabelLinkClickedEventArgs e)
         {
             AuthorTextBox.Text = Resources.Author;
             SubjectTextBox.Text = Resources.Subject;

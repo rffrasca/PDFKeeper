@@ -29,10 +29,6 @@ namespace PDFKeeper.WinForms.Services
     /// Provides functionality to display a folder browser dialog and retrieve the selected folder
     /// path.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class FolderBrowserDialogService : IFolderBrowserDialogService
     {
         public string ShowDialog(IntPtr parent, string description)

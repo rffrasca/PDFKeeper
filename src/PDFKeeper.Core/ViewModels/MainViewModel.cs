@@ -19,9 +19,9 @@
 // ****************************************************************************
 
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.FileIO.PDF;
@@ -51,9 +51,16 @@ namespace PDFKeeper.Core.ViewModels
     [CLSCompliant(false)]
     public sealed class MainViewModel : ViewModelBase
     {
-        private readonly IWindowHandleProvider windowHandleProvider;
-        private IAliasService aliasService;
-        private IChildDialogService addPdfDialogService;
+        private readonly IAliasService aliasService;
+        private readonly IFileCache fileCache;
+        private readonly IFolderBrowserDialogService folderBrowserDialogService;
+        private readonly IFolderExplorerService folderExplorerService;
+        private readonly IKeyedServiceResolver keyedServiceResolver;
+        private readonly IMessageBoxService messageBoxService;
+        private readonly IPdfViewerService pdfViewerService;
+        private readonly IPrintDialogService printDialogService;
+        private readonly IPrintPreviewDialogService printPreviewDialogService;
+        private IDialogService addPdfDialogService;
         private IDialogService setTitleDialogService;
         private IDialogService setAuthorDialogService;
         private IDialogService setSubjectDialogService;
@@ -63,15 +70,8 @@ namespace PDFKeeper.Core.ViewModels
         private IDialogService setPreviewPixelDensityDialogService;
         private IDialogService optionsDialogService;
         private IDialogService aboutBoxDialogService;
-        private IFileCache fileCache;
         private IFileDialogService openFileDialogService;
         private IFileDialogService saveFileDialogService;
-        private IFolderBrowserDialogService folderBrowserDialogService;
-        private IFolderExplorerService folderExplorerService;
-        private IMessageBoxService messageBoxService;
-        private IPdfViewerService pdfViewerService;
-        private IPrintDialogService printDialogService;
-        private IPrintPreviewDialogService printPreviewDialogService;
         private string viewTitleText;
         private bool toolStripVisible;
         private bool statusStripVisible;
@@ -156,16 +156,57 @@ namespace PDFKeeper.Core.ViewModels
         public enum StartupAction { None, FindFlaggedDocuments, ShowAllDocuments }
 
         /// <summary>
-        /// Initializes a new instance of the MainViewModel class with the specified window handle
-        /// provider.
+        /// Initializes a new instance of the <see cref="MainViewModel"/> class.
         /// </summary>
-        /// <param name="windowHandleProvider">
-        /// An object that provides a handle to the window associated with this view model.
+        /// <param name="aliasService">
+        /// A service that retrieves and assigns aliases to keys.
         /// </param>
-        public MainViewModel(IWindowHandleProvider windowHandleProvider)
+        /// <param name="fileCache">
+        /// A service that caches PDF documents and generated PNG preview images to disk.
+        /// </param>
+        /// <param name="folderBrowserDialogService">
+        /// A dialog service that allows the user to select a folder from the file system.
+        /// </param>
+        /// <param name="folderExplorerService">
+        /// A service that provides folder exploration using the operating system UI.
+        /// </param>
+        /// <param name="keyedServiceResolver">
+        /// A service that resolves keyed dialog services.
+        /// </param>
+        /// <param name="messageBoxService">
+        /// A dialog service that displays messages.
+        /// </param>
+        /// <param name="pdfViewerService">
+        /// A service that opens and displays PDF documents in the associated viewer.
+        /// </param>
+        /// <param name="printDialogService">
+        /// A dialog service that displays the system print dialog.
+        /// </param>
+        /// <param name="printPreviewDialogService">
+        /// A dialog service that displays the system print preview dialog.
+        /// </param>
+        public MainViewModel(
+            IAliasService aliasService,
+            IFileCache fileCache,
+            IFolderBrowserDialogService folderBrowserDialogService,
+            IFolderExplorerService folderExplorerService,
+            IKeyedServiceResolver keyedServiceResolver,
+            IMessageBoxService messageBoxService,
+            IPdfViewerService pdfViewerService,
+            IPrintDialogService printDialogService,
+            IPrintPreviewDialogService printPreviewDialogService)
         {
-            this.windowHandleProvider = windowHandleProvider;
-            GetServices(ServiceLocator.Services);
+            this.aliasService = aliasService;
+            this.fileCache = fileCache;
+            this.folderBrowserDialogService = folderBrowserDialogService;
+            this.folderExplorerService = folderExplorerService;
+            this.keyedServiceResolver = keyedServiceResolver;
+            this.messageBoxService = messageBoxService;
+            this.pdfViewerService = pdfViewerService;
+            this.printDialogService = printDialogService;
+            this.printPreviewDialogService = printPreviewDialogService;
+
+            ResolveKeyedServices();
             printDocument = new PrintDocument();
             pdfUploader = new PdfUploader();
             uploadRejectedDirectory = new ApplicationDirectory().GetDirectory(
@@ -175,7 +216,7 @@ namespace PDFKeeper.Core.ViewModels
             SetActions();
             checkedDocumentIds = [];
             InitializeCommands();
-            SetViewTitleText();
+            SetViewTitleText();            
         }
 
         public Action OnSettingsChanged { get; set; }
@@ -1010,66 +1051,32 @@ namespace PDFKeeper.Core.ViewModels
             set => SetProperty(ref uploadRejectedImageVisible, value);
         }
 
-        protected override void GetServices(IServiceProvider serviceProvider)
+        private void ResolveKeyedServices()
         {
-            aliasService = serviceProvider.GetService<IAliasService>();
-            addPdfDialogService = serviceProvider.GetService<IChildDialogService>();
-
-            foreach (var service in serviceProvider.GetServices<IDialogService>())
-            {
-                switch (service.GetType().Name)
-                {
-                    case "SetTitleDialogService":
-                        setTitleDialogService = service;
-                        break;
-                    case "SetAuthorDialogService":
-                        setAuthorDialogService = service;
-                        break;
-                    case "SetSubjectDialogService":
-                        setSubjectDialogService = service;
-                        break;
-                    case "SetCategoryDialogService":
-                        setCategoryDialogService = service;
-                        break;
-                    case "SetTaxYearDialogService":
-                        setTaxYearDialogService = service;
-                        break;
-                    case "SetDateTimeAddedDialogService":
-                        setDateTimeAddedDialogService = service;
-                        break;
-                    case "SetPreviewPixelDensityDialogService":
-                        setPreviewPixelDensityDialogService = service;
-                        break;
-                    case "OptionsDialogService":
-                        optionsDialogService = service;
-                        break;
-                    case "AboutBoxDialogService":
-                        aboutBoxDialogService = service;
-                        break;
-                }
-            }
-
-            fileCache = serviceProvider.GetService<IFileCache>();
-
-            foreach (var service in serviceProvider.GetServices<IFileDialogService>())
-            {
-                switch (service.GetType().Name)
-                {
-                    case "OpenFileDialogService":
-                        openFileDialogService = service;
-                        break;
-                    case "SaveFileDialogService":
-                        saveFileDialogService = service;
-                        break;
-                }
-            }
-
-            folderBrowserDialogService = serviceProvider.GetService<IFolderBrowserDialogService>();
-            folderExplorerService = serviceProvider.GetService<IFolderExplorerService>();
-            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
-            pdfViewerService = serviceProvider.GetService<IPdfViewerService>();
-            printDialogService = serviceProvider.GetService<IPrintDialogService>();
-            printPreviewDialogService = serviceProvider.GetService<IPrintPreviewDialogService>();
+            addPdfDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IDialogService>(DialogServiceKey.AddPdf);
+            setTitleDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IDialogService>(DialogServiceKey.SetTitle);
+            setAuthorDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IDialogService>(DialogServiceKey.SetAuthor);
+            setSubjectDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IDialogService>(DialogServiceKey.SetSubject);
+            setCategoryDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IDialogService>(DialogServiceKey.SetCategory);
+            setTaxYearDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IDialogService>(DialogServiceKey.SetTaxYear);
+            setDateTimeAddedDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IDialogService>(DialogServiceKey.SetDateTimeAdded);
+            setPreviewPixelDensityDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IDialogService>(DialogServiceKey.SetPreviewPixelDensity);
+            optionsDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IDialogService>(DialogServiceKey.Options);
+            aboutBoxDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IDialogService>(DialogServiceKey.AboutBox);
+            openFileDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IFileDialogService>(FileDialogServiceKey.OpenFile);
+            saveFileDialogService = keyedServiceResolver.GetRequiredKeyedService<
+                IFileDialogService>(FileDialogServiceKey.SaveFile);
         }
 
         private void SetActions()
@@ -1238,7 +1245,7 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="startupAction">The <see cref="StartupAction"/>.</param>
         private void OnViewLoad(StartupAction startupAction)
         {
-            NativeMethods.AddClipboardFormatListener(windowHandleProvider.GetHandle());
+            NativeMethods.AddClipboardFormatListener(GetWindowHandle.Invoke());
             OnSettingsChanged?.Invoke();
             OnCheckForUpdate?.Invoke();
             OnGetViewState?.Invoke();
@@ -1268,7 +1275,7 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="pdfPath">The optional file path of the PDF to add.</param>
         private void AddPdf(string pdfPath = null)
         {
-            addPdfDialogService.ShowDialog(windowHandleProvider.GetHandle(), pdfPath);
+            addPdfDialogService.ShowDialog(GetWindowHandle.Invoke(), pdfPath);
         }
 
         private void OpenPdfForEachSelectedDocument()
@@ -1306,9 +1313,7 @@ namespace PDFKeeper.Core.ViewModels
                                 "DefaultDocumentException",
                                 ex.Message,
                                 id.ToString());
-                            messageBoxService.ShowMessage(
-                                windowHandleProvider.GetHandle(),
-                                message, true);
+                            messageBoxService.ShowMessage(GetWindowHandle.Invoke(), message, true);
                         }
                     }
                 }
@@ -1319,7 +1324,7 @@ namespace PDFKeeper.Core.ViewModels
                         Resources.ResourceManager,
                         "OpenCheckedDocumentsMaximumReached",
                         openMaximum.ToString());
-                    messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), message);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), message);
                 }
 
                 OnCheckedDocumentsProcessed();
@@ -1362,17 +1367,16 @@ namespace PDFKeeper.Core.ViewModels
                                 Resources.ResourceManager,
                                 "DocumentMayHaveBeenDeletedException",
                                 ex.Message);
-                            messageBoxService.ShowMessage(
-                                windowHandleProvider.GetHandle(),
-                                message, true);
+                            messageBoxService.ShowMessage(GetWindowHandle.Invoke(), message, true);
                         }
                         catch (DatabaseException ex)
                         {
                             PreviousNotes = Notes;
                             Notes = notesInDatabase;
                             messageBoxService.ShowMessage(
-                                windowHandleProvider.GetHandle(),
-                                ex.Message, true);
+                                GetWindowHandle.Invoke(),
+                                ex.Message,
+                                true);
                         }
                         finally
                         {
@@ -1387,7 +1391,7 @@ namespace PDFKeeper.Core.ViewModels
                         PreviousNotes = Notes;
                         Notes = notesInDatabase;
                         messageBoxService.ShowMessage(
-                            windowHandleProvider.GetHandle(),
+                            GetWindowHandle.Invoke(),
                             Resources.UnableToSaveNotes,
                             true);
                     }
@@ -1398,7 +1402,7 @@ namespace PDFKeeper.Core.ViewModels
             else
             {
                 messageBoxService.ShowMessage(
-                    windowHandleProvider.GetHandle(),
+                    GetWindowHandle.Invoke(),
                     rule.ViolationMessage,
                     true);
             }
@@ -1419,7 +1423,7 @@ namespace PDFKeeper.Core.ViewModels
             }
 
             var targetFilePath = saveFileDialogService.ShowDialog(
-                windowHandleProvider.GetHandle(),
+                GetWindowHandle.Invoke(),
                 filter,
                 currentDocument.Title);
             
@@ -1439,7 +1443,7 @@ namespace PDFKeeper.Core.ViewModels
         private async Task BurstCurrentDocumentPdf()
         {
             var selectedPath = folderBrowserDialogService.ShowDialog(
-                windowHandleProvider.GetHandle(), 
+                GetWindowHandle.Invoke(), 
                 Resources.SelectBurstFolder);
 
             if (selectedPath.Length > 0)
@@ -1454,9 +1458,7 @@ namespace PDFKeeper.Core.ViewModels
                 }
                 catch (UnauthorizedAccessException ex)
                 {
-                    messageBoxService.ShowMessage(
-                        windowHandleProvider.GetHandle(),
-                        ex.Message, true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                 }
             }
         }
@@ -1486,13 +1488,11 @@ namespace PDFKeeper.Core.ViewModels
             {
                 var pdfFile = fileCache.GetPdfFile(CurrentDocumentId);
 
-                switch (messageBoxService.ShowQuestion(
-                    windowHandleProvider.GetHandle(),
-                    resource, true))
+                switch (messageBoxService.ShowQuestion(GetWindowHandle.Invoke(), resource, true))
                 {
                     case 6:
                         var zipFilePath = saveFileDialogService.ShowDialog(
-                            windowHandleProvider.GetHandle(),
+                            GetWindowHandle.Invoke(),
                             Resources.ZipFilter,
                             currentDocument.Title);
 
@@ -1506,7 +1506,7 @@ namespace PDFKeeper.Core.ViewModels
                         break;
                     case 7:
                         var selectedPath = folderBrowserDialogService.ShowDialog(
-                            windowHandleProvider.GetHandle(),
+                            GetWindowHandle.Invoke(),
                             Resources.SelectExtractFolder);
                         
                         if (selectedPath.Length > 0)
@@ -1521,7 +1521,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (UnauthorizedAccessException ex)
             {
-                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
+                messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
             }
         }
 
@@ -1535,9 +1535,7 @@ namespace PDFKeeper.Core.ViewModels
         {
             textToPrint = GetDocumentDataText(GetFocusedDocumentDataType());
 
-            if (printDialogService.ShowDialog(
-                windowHandleProvider.GetHandle(),
-                printDocument) == 1)
+            if (printDialogService.ShowDialog(GetWindowHandle.Invoke(), printDocument) == 1)
             {
                 printDocument.Print();
             }
@@ -1547,14 +1545,15 @@ namespace PDFKeeper.Core.ViewModels
         {
             textToPrint = GetDocumentDataText(GetFocusedDocumentDataType());
             printPreviewDialogService.ShowDialog(
-                windowHandleProvider.GetHandle(),
-                printDocument, ViewSize);
+                GetWindowHandle.Invoke(),
+                printDocument,
+                ViewSize);
         }
 
         private void AddLocalDatabase()
         {
             var targetFilePath = saveFileDialogService.ShowDialog(
-                windowHandleProvider.GetHandle(),
+                GetWindowHandle.Invoke(),
                 Resources.SqliteFilter,
                 $"{executingAssembly.ProductName}-New.sqlite");
 
@@ -1568,9 +1567,7 @@ namespace PDFKeeper.Core.ViewModels
                 }
                 catch (Exception ex) when (ex is DatabaseException || ex is IOException)
                 {
-                    messageBoxService.ShowMessage(
-                        windowHandleProvider.GetHandle(),
-                        ex.Message, true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                 }
                 finally
                 {
@@ -1582,7 +1579,7 @@ namespace PDFKeeper.Core.ViewModels
         private void OpenLocalDatabase()
         {
             var selectedFilePath = openFileDialogService.ShowDialog(
-                windowHandleProvider.GetHandle(),
+                GetWindowHandle.Invoke(),
                 Resources.SqliteFilter);
 
             if (!string.IsNullOrEmpty(selectedFilePath))
@@ -1595,9 +1592,7 @@ namespace PDFKeeper.Core.ViewModels
                 }
                 catch (InvalidDataException ex)
                 {
-                    messageBoxService.ShowMessage(
-                        windowHandleProvider.GetHandle(),
-                        ex.Message, true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                 }
                 finally
                 {
@@ -1609,7 +1604,7 @@ namespace PDFKeeper.Core.ViewModels
         private void MoveLocalDatabase()
         {
             var selectedFolderPath = folderBrowserDialogService.ShowDialog(
-                windowHandleProvider.GetHandle(),
+                GetWindowHandle.Invoke(),
                 Resources.SelectDatabaseDestFolder);
 
             if (selectedFolderPath.Length > 0)
@@ -1625,9 +1620,7 @@ namespace PDFKeeper.Core.ViewModels
                 }
                 catch (Exception ex) when (ex is FileNotFoundException || ex is IOException)
                 {
-                    messageBoxService.ShowMessage(
-                        windowHandleProvider.GetHandle(),
-                        ex.Message, true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                 }
                 finally
                 {
@@ -1639,7 +1632,7 @@ namespace PDFKeeper.Core.ViewModels
         private void ExportEachSelectedDocument()
         {
             var selectedPath = folderBrowserDialogService.ShowDialog(
-                windowHandleProvider.GetHandle(),
+                GetWindowHandle.Invoke(),
                 Resources.SelectExportFolder);
 
             if (selectedPath.Length > 0)
@@ -1698,7 +1691,7 @@ namespace PDFKeeper.Core.ViewModels
         private void AppendTextFromFileIntoNotes()
         {
             var textFilePath = openFileDialogService.ShowDialog(
-                windowHandleProvider.GetHandle(),
+                GetWindowHandle.Invoke(),
                 Resources.TextFilter);
 
             if (textFilePath.Length > 0)
@@ -1708,7 +1701,7 @@ namespace PDFKeeper.Core.ViewModels
                 Notes = Notes.AppendTextFile(textFile);
 
                 if (messageBoxService.ShowQuestion(
-                    windowHandleProvider.GetHandle(),
+                    GetWindowHandle.Invoke(),
                     ResourceHelper.GetString(
                         Resources.ResourceManager,
                         "DeleteToRecycleBin",
@@ -1728,14 +1721,11 @@ namespace PDFKeeper.Core.ViewModels
                 try
                 {
                     var document = documentRepository.GetDocument(CurrentDocumentId, null);
-                    addPdfDialogService.ShowDialog(windowHandleProvider.GetHandle(), null, document);
+                    addPdfDialogService.ShowDialog(GetWindowHandle.Invoke(), null, document);
                 }
                 catch (DatabaseException ex)
                 {
-                    messageBoxService.ShowMessage(
-                        windowHandleProvider.GetHandle(),
-                        ex.Message,
-                        true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                     return;
                 }
             }
@@ -1759,13 +1749,11 @@ namespace PDFKeeper.Core.ViewModels
                         Resources.ResourceManager,
                         "DocumentMayHaveBeenDeletedException",
                         ex.Message);
-                    messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), message, true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), message, true);
                 }
                 catch (DatabaseException ex)
                 {
-                    messageBoxService.ShowMessage(
-                        windowHandleProvider.GetHandle(),
-                        ex.Message, true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                 }
                 finally
                 {
@@ -1792,7 +1780,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SetTitleOnEachSelectedDocument()
         {
-            var value = setTitleDialogService.ShowDialog(windowHandleProvider.GetHandle());
+            var value = setTitleDialogService.ShowDialog(GetWindowHandle.Invoke());
 
             if (value != null)
             {
@@ -1802,7 +1790,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SetAuthorOnEachSelectedDocument()
         {
-            var value = setAuthorDialogService.ShowDialog(windowHandleProvider.GetHandle());
+            var value = setAuthorDialogService.ShowDialog(GetWindowHandle.Invoke());
 
             if (value != null)
             {
@@ -1812,7 +1800,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SetSubjectOnEachSelectedDocument()
         {
-            var value = setSubjectDialogService.ShowDialog(windowHandleProvider.GetHandle());
+            var value = setSubjectDialogService.ShowDialog(GetWindowHandle.Invoke());
 
             if (value != null)
             {
@@ -1822,7 +1810,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SetCategoryOnEachSelectedDocument()
         {
-            var value = setCategoryDialogService.ShowDialog(windowHandleProvider.GetHandle());
+            var value = setCategoryDialogService.ShowDialog(GetWindowHandle.Invoke());
 
             if (value != null)
             {
@@ -1832,7 +1820,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SetTaxYearOnEachSelectedDocument()
         {
-            var value = setTaxYearDialogService.ShowDialog(windowHandleProvider.GetHandle());
+            var value = setTaxYearDialogService.ShowDialog(GetWindowHandle.Invoke());
             
             if (value != null)
             {
@@ -1842,7 +1830,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SetDateTimeAddedOnEachSelectedDocument()
         {
-            var value = setDateTimeAddedDialogService.ShowDialog(windowHandleProvider.GetHandle());
+            var value = setDateTimeAddedDialogService.ShowDialog(GetWindowHandle.Invoke());
 
             if (value != null)
             {
@@ -1853,7 +1841,7 @@ namespace PDFKeeper.Core.ViewModels
         private void DeleteEachSelectedDocument()
         {
             if (messageBoxService.ShowQuestion(
-                windowHandleProvider.GetHandle(),
+                GetWindowHandle.Invoke(),
                 Resources.DeleteSelectedDocuments) == 6)
             {
                 ProcessEachCheckedDocument(CheckedDocumentAction.Delete, null);
@@ -1870,9 +1858,7 @@ namespace PDFKeeper.Core.ViewModels
                     catch (NotSupportedException) { }
                     catch (DatabaseException ex)
                     {
-                        messageBoxService.ShowMessage(
-                            windowHandleProvider.GetHandle(),
-                            ex.Message, true);
+                        messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                     }
                 }
             }
@@ -1880,7 +1866,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SetPreviewPixelDensity()
         {
-            setPreviewPixelDensityDialogService.ShowDialog(windowHandleProvider.GetHandle());
+            setPreviewPixelDensityDialogService.ShowDialog(GetWindowHandle.Invoke());
             OnSettingsChanged?.Invoke();
             SetPreviewImageForCurrentDocument();
         }
@@ -1890,15 +1876,14 @@ namespace PDFKeeper.Core.ViewModels
 
         private void ShowOptions()
         {
-            optionsDialogService.ShowDialog(windowHandleProvider.GetHandle());
+            optionsDialogService.ShowDialog(GetWindowHandle.Invoke());
             SetHeaderValueOnColumns();
             OnSettingsChanged?.Invoke();
         }
 
         private void ManageUploadProfiles() => OnManageUploadProfiles?.Invoke();
         private void ShowHelp() => OnShowHelp?.Invoke();
-        private void ShowAboutBox() => aboutBoxDialogService.ShowDialog(
-            windowHandleProvider.GetHandle());
+        private void ShowAboutBox() => aboutBoxDialogService.ShowDialog(GetWindowHandle.Invoke());
 
         private void SetHeaderValueOnColumns()
         {
@@ -2146,9 +2131,7 @@ namespace PDFKeeper.Core.ViewModels
                 }
                 catch (DatabaseException ex)
                 {
-                    messageBoxService.ShowMessage(
-                        windowHandleProvider.GetHandle(),
-                        ex.Message, true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                 }
 
                 OnCheckForFlaggedDocumentsFinished?.Invoke();
@@ -2172,9 +2155,7 @@ namespace PDFKeeper.Core.ViewModels
         private async Task UploadPdfFiles()
         {
             OnUploadPdfFilesStarted?.Invoke();
-            await Task.Run(() => pdfUploader
-                .ExecuteUploadDirectoryMaintenance())
-                .ConfigureAwait(true);
+            await Task.Run(pdfUploader.ExecuteUploadDirectoryMaintenance).ConfigureAwait(true);
 
             if (pdfUploader.PdfFilesReadyToUpload)
             {
@@ -2198,9 +2179,7 @@ namespace PDFKeeper.Core.ViewModels
                     ex is DatabaseException ||
                     ex is iText.IO.Exceptions.IOException)
                 {
-                    messageBoxService.ShowMessage(
-                        windowHandleProvider.GetHandle(),
-                        ex.Message, true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                 }
                 finally
                 {
@@ -2236,7 +2215,7 @@ namespace PDFKeeper.Core.ViewModels
             if (NotesChanged)
             {
                 var choice = messageBoxService.ShowQuestion(
-                    windowHandleProvider.GetHandle(),
+                    GetWindowHandle.Invoke(),
                     Resources.NotesModified,
                     true);
 
@@ -2260,7 +2239,7 @@ namespace PDFKeeper.Core.ViewModels
         private void OnViewClosing()
         {
             WaitForUploadToFinish();
-            NativeMethods.RemoveClipboardFormatListener(windowHandleProvider.GetHandle());
+            NativeMethods.RemoveClipboardFormatListener(GetWindowHandle.Invoke());
             OnSetViewState?.Invoke();
         }
         
@@ -2412,9 +2391,7 @@ namespace PDFKeeper.Core.ViewModels
                 }
                 catch (DatabaseException ex)
                 {
-                    messageBoxService.ShowMessage(
-                        windowHandleProvider.GetHandle(),
-                        ex.Message, true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                 }
                 finally
                 {
@@ -2542,9 +2519,7 @@ namespace PDFKeeper.Core.ViewModels
                 }
                 catch (DatabaseException ex)
                 {
-                    messageBoxService.ShowMessage(
-                        windowHandleProvider.GetHandle(),
-                        ex.Message, true);
+                    messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
                 }
                 finally
                 {
@@ -2648,9 +2623,7 @@ namespace PDFKeeper.Core.ViewModels
                             "DocumentMayHaveBeenDeletedException",
                             ex.Message,
                             id.ToString());
-                        messageBoxService.ShowMessage(
-                            windowHandleProvider.GetHandle(),
-                            message, true);
+                        messageBoxService.ShowMessage(GetWindowHandle.Invoke(), message, true);
                     }
                     catch (IndexOutOfRangeException ex)
                     {
@@ -2661,9 +2634,7 @@ namespace PDFKeeper.Core.ViewModels
                             "DocumentMayHaveBeenDeletedException",
                             ex.Message,
                             id.ToString());
-                        messageBoxService.ShowMessage(
-                            windowHandleProvider.GetHandle(),
-                            message, true);
+                        messageBoxService.ShowMessage(GetWindowHandle.Invoke(), message, true);
                     }
                     catch (DatabaseException ex)
                     {
@@ -2674,9 +2645,7 @@ namespace PDFKeeper.Core.ViewModels
                             "DefaultDocumentException",
                             ex.Message,
                             id.ToString());
-                        messageBoxService.ShowMessage(
-                            windowHandleProvider.GetHandle(),
-                            message, true);
+                        messageBoxService.ShowMessage(GetWindowHandle.Invoke(), message, true);
                     }
                     finally
                     {

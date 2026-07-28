@@ -21,7 +21,6 @@
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -33,10 +32,14 @@ namespace PDFKeeper.WinForms.Views
         private readonly FindDocumentsViewModel viewModel;
         private RadioButton selectedRadioButtonOnOpen;
 
-        public FindDocumentsForm()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FindDocumentsForm"/> class.
+        /// </summary>
+        /// <param name="viewModel">The view model used by this form.</param>
+        public FindDocumentsForm(FindDocumentsViewModel viewModel)
         {
             InitializeComponent();
-            viewModel = new FindDocumentsViewModel(new FormHandleProvider(this));
+            this.viewModel = viewModel;
             FindDocumentsViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
@@ -46,9 +49,10 @@ namespace PDFKeeper.WinForms.Views
 
         private void SetActions()
         {
+            viewModel.GetWindowHandle = () => Handle;
             viewModel.OnLongOperationStarted = () => Cursor = Cursors.WaitCursor;
             viewModel.OnLongOperationFinished = () => Cursor = Cursors.Default;
-            viewModel.OnApplyPendingChanges = () => FindDocumentsViewModelBindingSource.EndEdit();
+            viewModel.OnApplyPendingChanges = FindDocumentsViewModelBindingSource.EndEdit;
 
             viewModel.OnCloseViewOKResult = () =>
             {

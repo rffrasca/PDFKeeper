@@ -53,7 +53,7 @@ namespace PDFKeeper.Core.Services
 
             if (!aliasesJsonFile.Exists)
             {
-                JsonSerializer.SerializeToFile<Dictionary<string, string>>(
+                JsonSerializer.SerializeToFile(
                     defaultAliases,
                     aliasesJsonFile);
                 aliases = new Dictionary<string, string>(defaultAliases);
@@ -80,7 +80,7 @@ namespace PDFKeeper.Core.Services
         public void SetAlias(string key, string alias)
         {
             aliases[key] = alias;
-            JsonSerializer.SerializeToFile<Dictionary<string, string>>(aliases, aliasesJsonFile);
+            JsonSerializer.SerializeToFile(aliases, aliasesJsonFile);
         }
     }
 }

@@ -19,9 +19,9 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Properties;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.Windows.Forms;
 
@@ -31,16 +31,21 @@ namespace PDFKeeper.WinForms.Views
     {
         private readonly LoginViewModel viewModel;
 
-        public LoginForm()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginForm"/> class.
+        /// </summary>
+        /// <param name="viewModel">The view model used by this form.</param>
+        public LoginForm(LoginViewModel viewModel)
         {
             InitializeComponent();
-            viewModel = new LoginViewModel(new FormHandleProvider(this));
+            this.viewModel = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             SetActions();
         }
 
         private void SetActions()
         {
+            viewModel.GetWindowHandle = () => Handle;
             viewModel.OnLongOperationStarted = () => Cursor = Cursors.WaitCursor;
             viewModel.OnLongOperationFinished = () => Cursor = Cursors.Default;
 

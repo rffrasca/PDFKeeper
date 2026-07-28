@@ -19,9 +19,9 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
-using PDFKeeper.WinForms.Services;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -35,15 +35,18 @@ namespace PDFKeeper.WinForms.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadProfileEditorForm"/> class.
         /// </summary>
+        /// <param name="messageBoxService">
+        /// A dialog service that displays messages.
+        /// </param>
         /// <param name="uploadProfileName">
         /// The Upload Profile name only when editing an existing upload profile.
         /// </param>
-        public UploadProfileEditorForm(string uploadProfileName = null)
+        public UploadProfileEditorForm(
+            IMessageBoxService messageBoxService,
+            string uploadProfileName = null)
         {
             InitializeComponent();
-            viewModel = new UploadProfileEditorViewModel(
-                new FormHandleProvider(this),
-                uploadProfileName);
+            viewModel = new UploadProfileEditorViewModel(messageBoxService, uploadProfileName);
             UploadProfileEditorViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = new HelpFile().FullName;
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
@@ -53,8 +56,8 @@ namespace PDFKeeper.WinForms.Views
 
         private void SetActions()
         {
-            viewModel.OnApplyPendingChanges = ()
-                => UploadProfileEditorViewModelBindingSource.EndEdit();
+            viewModel.GetWindowHandle = () => Handle;
+            viewModel.OnApplyPendingChanges = UploadProfileEditorViewModelBindingSource.EndEdit;
             viewModel.OnResetBindings = ()
                 => UploadProfileEditorViewModelBindingSource.ResetBindings(false);
 

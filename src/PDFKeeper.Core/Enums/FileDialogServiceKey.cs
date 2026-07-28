@@ -1,4 +1,4 @@
-// *****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -16,28 +16,26 @@
 // *
 // * You should have received a copy of the GNU General Public License along
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
-// *****************************************************************************
+// ****************************************************************************
 
-using PDFKeeper.Core.Services;
-using PDFKeeper.WinForms.Dialogs;
-using System;
-using System.Security;
-using System.Windows.Forms;
-
-namespace PDFKeeper.WinForms.Services
+namespace PDFKeeper.Core.Enums
 {
     /// <summary>
-    /// Provides a dialog service for securely obtaining an owner password for PDF documents.
+    /// Defines the unique keys used to resolve specific <see cref="IFileDialogService"/>
+    /// implementations from the dependency injection container. Each file dialog service is
+    /// registered under one of these keys, allowing ViewModels and other components to explicitly
+    /// request the correct file dialog implementation.
     /// </summary>
-    internal sealed class PdfOwnerPasswordDialogService : IPasswordDialogService
+    public enum FileDialogServiceKey
     {
-        public SecureString ShowDialog(IntPtr parent)
-        {
-            using (var dialog = new PdfOwnerPasswordForm())
-            {
-                dialog.ShowDialog(NativeWindow.FromHandle(parent));
-                return dialog.PasswordSecureTextBox.SecureText;
-            }
-        }
+        /// <summary>
+        /// File dialog used for selecting an existing file to open.
+        /// </summary>
+        OpenFile,
+
+        /// <summary>
+        /// File dialog used for selecting a file path to save or export data.
+        /// </summary>
+        SaveFile
     }
 }

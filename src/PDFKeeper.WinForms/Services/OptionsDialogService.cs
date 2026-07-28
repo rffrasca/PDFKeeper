@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
 using System;
@@ -28,15 +29,24 @@ namespace PDFKeeper.WinForms.Services
     /// <summary>
     /// Service for displaying the Options dialog.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Performance",
-        "CA1812:Avoid uninstantiated internal classes",
-        Justification = "Instantiated via dependency injection or reflection.")]
     internal sealed class OptionsDialogService : IDialogService
     {
-        public string ShowDialog(IntPtr parent, string arg = null)
+        private readonly IAliasService aliasService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OptionsDialogService"/> class.
+        /// </summary>
+        /// <param name="aliasService">
+        /// A service that retrieves and assigns aliases to keys.
+        /// </param>
+        public OptionsDialogService(IAliasService aliasService)
         {
-            using (var dialog = new OptionsForm())
+            this.aliasService = aliasService;
+        }
+
+        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
+        {
+            using (var dialog = new OptionsForm(aliasService))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
             }

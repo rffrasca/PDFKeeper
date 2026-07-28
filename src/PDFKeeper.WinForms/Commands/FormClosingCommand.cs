@@ -29,12 +29,21 @@ namespace PDFKeeper.WinForms.Commands
     /// Initializes a new instance of the <see cref="FormClosingCommand"/> class that performs
     /// <c>FormClosing</c> event methods when executed.
     /// </summary>
-    /// <param name="e">The <see cref="FormClosingEventArgs"/> object.</param>
-    /// <param name="viewModel">The <see cref="MainViewModel"/> instance.</param>
-    internal class FormClosingCommand(FormClosingEventArgs e, MainViewModel viewModel) : ICommand
+    internal class FormClosingCommand : ICommand
     {
-        private readonly FormClosingEventArgs e = e;
-        private readonly MainViewModel viewModel = viewModel;
+        private readonly MainViewModel mainViewModel;
+        private readonly FormClosingEventArgs e;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FormClosingCommand"/> class.
+        /// </summary>
+        /// <param name="mainViewModel">The <see cref="MainViewModel"/> instance.</param>
+        /// <param name="e">The <see cref="FormClosingEventArgs"/> object.</param>
+        internal FormClosingCommand(MainViewModel mainViewModel, FormClosingEventArgs e)
+        {            
+            this.mainViewModel = mainViewModel;
+            this.e = e;
+        }
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
 
@@ -45,9 +54,9 @@ namespace PDFKeeper.WinForms.Commands
 
         public void Execute(object parameter)
         {
-            viewModel.BeforeViewClosingCommand.Execute(null);
-            e.Cancel = viewModel.CancelViewClosing;
-            viewModel.ViewClosingCommand.Execute(null);
+            mainViewModel.BeforeViewClosingCommand.Execute(null);
+            e.Cancel = mainViewModel.CancelViewClosing;
+            mainViewModel.ViewClosingCommand.Execute(null);
         }
     }
 }

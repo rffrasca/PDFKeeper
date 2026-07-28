@@ -18,7 +18,6 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
@@ -33,9 +32,8 @@ namespace PDFKeeper.Core.ViewModels
     [CLSCompliant(false)]
     public sealed class ColumnDataListViewModel : ViewModelBase
     {
-        private readonly IWindowHandleProvider windowHandleProvider;
+        private readonly IMessageBoxService messageBoxService;
         private readonly ColumnName columnName;
-        private IMessageBoxService messageBoxService;
         private IEnumerable<string> items;
 
         /// <summary>
@@ -49,22 +47,18 @@ namespace PDFKeeper.Core.ViewModels
         public enum ColumnName { Author, Subject, Category, TaxYear }
 
         /// <summary>
-        /// Initializes a new instance of the ColumnDataListViewModel class with the specified
-        /// window handle provider and column name.
+        /// Initializes a new instance of the <see cref="ColumnDataListViewModel"/> class.
         /// </summary>
-        /// <param name="windowHandleProvider">
-        /// An object that provides a handle to the window associated with this view model.
+        /// <param name="messageBoxService">
+        /// A dialog service that displays messages.
         /// </param>
         /// <param name="columnName">
         /// The name of the column to be managed by the view model.
         /// </param>
-        public ColumnDataListViewModel(
-            IWindowHandleProvider windowHandleProvider,
-            ColumnName columnName)
+        public ColumnDataListViewModel(IMessageBoxService messageBoxService, ColumnName columnName)
         {
-            this.windowHandleProvider = windowHandleProvider;
+            this.messageBoxService = messageBoxService;
             this.columnName = columnName;
-            GetServices(ServiceLocator.Services);
             GetColumnData();
         }
         
@@ -72,11 +66,6 @@ namespace PDFKeeper.Core.ViewModels
         {
             get => items;
             set => SetProperty(ref items, value);
-        }
-
-        protected override void GetServices(IServiceProvider serviceProvider)
-        {
-            messageBoxService = serviceProvider.GetService<IMessageBoxService>();
         }
 
         private void GetColumnData()
@@ -101,7 +90,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             catch (DatabaseException ex)
             {
-                messageBoxService.ShowMessage(windowHandleProvider.GetHandle(), ex.Message, true);
+                messageBoxService.ShowMessage(GetWindowHandle.Invoke(), ex.Message, true);
             }
         }
     }
