@@ -257,38 +257,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                 return PasswordType.Unknown;
             }
         }
-
-        /// <summary>
-        /// Creates a preview image containing the first page of the PDF.
-        /// </summary>
-        /// <param name="pixelDensity">
-        /// The pixel density (pixels per inch) of the PDF preview image.
-        /// </param>
-        /// <returns>
-        /// The preview image in <see cref="MagickFormat.Png"/> format as a <see cref="byte"/>
-        /// array.
-        /// </returns>
-        public byte[] CreatePreviewImage(decimal pixelDensity)
-        {
-            using (var image = new MagickImageCollection())
-            {
-                var settings = new MagickReadSettings
-                {
-                    Density = new Density((double)pixelDensity),
-                    FrameIndex = 0,
-                    FrameCount = 1
-                };
-
-                image.Read(pdfFile, settings);
-
-                using (var stream = new MemoryStream())
-                {
-                    image.Write(stream, MagickFormat.Png);
-                    return stream.ToArray();
-                }
-            }
-        }
-
+        
         /// <summary>
         /// Extracts all attached files from the PDF to a directory.
         /// </summary>

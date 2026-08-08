@@ -20,6 +20,7 @@
 
 using PDFKeeper.Core.Application;
 using PDFKeeper.Core.FileIO.PDF;
+using PDFKeeper.Core.Interfaces.Services.Pdf;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -35,6 +36,7 @@ namespace PDFKeeper.Core.FileIO
     /// </summary>
     public sealed class FileCache : IFileCache
     {
+        private readonly IPdfPreviewService pdfPreviewService;
         private readonly Dictionary<string, string> fileHashes;
         private readonly DirectoryInfo cacheDirectory;
         private readonly ExecutingAssembly executingAssembly;
@@ -43,8 +45,14 @@ namespace PDFKeeper.Core.FileIO
         /// Initializes a new instance of the <see cref="FileCache"/> class and prepares
         /// the cache directory and internal hash tracking.
         /// </summary>
-        public FileCache()
+        /// <param name="pdfPreviewService">
+        /// The service that generates preview images for PDF files.
+        /// </param>
+#pragma warning disable IDE0290 // Use primary constructor
+        public FileCache(IPdfPreviewService pdfPreviewService)
+#pragma warning restore IDE0290 // Use primary constructor
         {
+            this.pdfPreviewService = pdfPreviewService;
             fileHashes = [];
             cacheDirectory = new ApplicationDirectory().GetDirectory(
                 ApplicationDirectory.SpecialName.Cache);
@@ -108,7 +116,10 @@ namespace PDFKeeper.Core.FileIO
 
             if (!cached)
             {
-                File.WriteAllBytes(imageFile.FullName, pdfFile.CreatePreviewImage(pixelDensity));
+                var image = pdfPreviewService.CreatePreviewImageAsync(
+                    pdfFile.FullName,
+                    pixelDensity).GetAwaiter().GetResult();
+                File.WriteAllBytes(imageFile.FullName, image);
                 fileHashes.Add(imageFile.FullName, imageFile.ComputeHash());
             }
         }

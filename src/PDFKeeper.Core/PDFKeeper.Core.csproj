@@ -105,6 +105,8 @@
     <Compile Include="FileIO\Serializers\JsonSerializer.cs" />
     <Compile Include="Helpers\OneDriveHelper.cs" />
     <Compile Include="Helpers\UploadProfileTokenHelper.cs" />
+    <Compile Include="Interfaces\Services\Pdf\IPdfImageService.cs" />
+    <Compile Include="Interfaces\Services\Pdf\IPdfPreviewService.cs" />
     <Compile Include="Models\UploadProfileToken.cs" />
     <Compile Include="Services\AliasService.cs" />
     <Compile Include="Services\ExceptionHandler.cs" />
@@ -142,6 +144,8 @@
     <Compile Include="Services\IHelpService.cs" />
     <Compile Include="Services\IPrintDialogService.cs" />
     <Compile Include="Services\IPrintPreviewDialogService.cs" />
+    <Compile Include="Services\Pdf\PdfImageService.cs" />
+    <Compile Include="Services\Pdf\PdfPreviewService.cs" />
     <Compile Include="Services\VirtualKeyService.cs" />
     <Compile Include="ViewModels\ColumnDataListsViewModel.cs" />
     <Compile Include="ViewModels\ColumnDataListViewModel.cs" />
@@ -295,6 +299,7 @@
   <ItemGroup>
     <None Include="PDFKeeper.Core.ruleset" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
