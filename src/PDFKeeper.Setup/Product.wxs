@@ -213,24 +213,12 @@
 					  Name="Google.Protobuf.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)Google.Protobuf.dll" />
 			</Component>
-			<Component Id="gsdll64.dll"
-					   Guid="72df3d61-ee4f-45f5-928f-d8bf4e6bb36b">
-				<File Id="gsdll64.dll"
-					  Name="gsdll64.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)gsdll64.dll" />
-			</Component>
 			<Component Id="gssapi64.dll"
 					   Guid="7223FB25-4960-45BD-8EB1-3A3786BBA059">
 				<File Id="gssapi64.dll"
 					  Name="gssapi64.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)gssapi64.dll" />
 			</Component>
-			<Component Id="gswin64c.exe"
-					   Guid="6428a10e-504d-4521-8d93-28f25fc824bd">
-				<File Id="gswin64c.exe"
-					  Name="gswin64c.exe"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)gswin64c.exe" />
-			</Component>			
 			<Component Id="itext.bouncy_castle_adapter.dll"
 					   Guid="d36c53c8-d8b1-4ba8-9855-14de3d4b52b2">
 				<File Id="itext.bouncy_castle_adapter.dll"
@@ -302,24 +290,6 @@
 				<File Id="krbcc64.dll"
 					  Name="krbcc64.dll"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)krbcc64.dll" />
-			</Component>
-			<Component Id="Magick.Native_Q16_x64.dll"
-					   Guid="7f0202a9-9a49-4801-88f8-98e9ed1671dc">
-				<File Id="Magick.Native_Q16_x64.dll"
-					  Name="Magick.Native-Q16-x64.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.Native-Q16-x64.dll" />
-			</Component>
-			<Component Id="Magick.NET.Core.dll"
-					   Guid="7f85d8a9-f147-4e18-bb2e-fc418c024429">
-				<File Id="Magick.NET.Core.dll"
-					  Name="Magick.NET.Core.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.NET.Core.dll" />
-			</Component>
-			<Component Id="Magick.NET_Q16_x64.dll"
-					   Guid="5A5FF95C-48FA-4DFA-8B4E-D8146DB92405">
-				<File Id="Magick.NET_Q16_x64.dll"
-					  Name="Magick.NET-Q16-x64.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)Magick.NET-Q16-x64.dll" />
 			</Component>
 			<Component Id="Microsoft.Bcl.AsyncInterfaces.dll"
 					   Guid="e41f38fe-6222-4a0d-91d4-d05accf51fe1">
