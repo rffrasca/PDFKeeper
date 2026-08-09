@@ -18,7 +18,6 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using ImageMagick;
 using iText.Kernel.Exceptions;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas.Parser;
@@ -27,6 +26,7 @@ using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO.TextExtractor;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Properties;
+using PDFKeeper.Core.Services.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -102,8 +102,6 @@ namespace PDFKeeper.Core.FileIO.PDF
             this.pdfFile = pdfFile;
             tempDirectory = new ApplicationDirectory().GetDirectory(
                 ApplicationDirectory.SpecialName.Temp);
-            MagickNET.SetGhostscriptDirectory(new ExecutingAssembly().DirectoryPath);
-            MagickNET.SetTempDirectory(tempDirectory.FullName);
         }
 
         /// <summary>
@@ -347,40 +345,6 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Gets a <see cref="Collection{T}"/> containing each page of the PDF as a
-        /// <see cref="MagickFormat.Tiff"/> image.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="Collection{T}"/> of <see cref="MagickFormat.Tiff"/> images.
-        /// </returns>
-        public Collection<byte[]> GetAllPagesAsTiffImages()
-        {
-            var imageList = new Collection<byte[]>();
-
-            using (var images = new MagickImageCollection())
-            {
-                var settings = new MagickReadSettings
-                {
-                    Density = new Density(600, 600),
-                    Compression = CompressionMethod.LZW
-                };
-            
-                images.Read(pdfFile, settings);
-                
-                foreach (var image in images)
-                {
-                    using (var output = new MemoryStream())
-                    {
-                        image.Write(output, MagickFormat.Tiff);
-                        imageList.Add(output.ToArray());
-                    }
-                }
-            }
-
-            return imageList;
-        }
-
-        /// <summary>
         /// Gets text Annotations from the PDF.
         /// </summary>
         /// <returns>The text annotations.</returns>
@@ -438,6 +402,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// <returns>The extracted text.</returns>
         public string GetText(bool ocrImageDataPages)
         {
+            var pdfImageService = new PdfImageService();
             var pdfText = new StringBuilder();
             IPdfTextExtractionStrategy strategy;
 
@@ -447,7 +412,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                 
                 if (ocrImageDataPages && CheckForImageData())
                 {
-                    strategy = new PdfOcrTextExtractionStrategy();
+                    strategy = new PdfOcrTextExtractionStrategy(pdfImageService);
                     text = strategy.GetText(pdf);
                 }
                 else
@@ -457,7 +422,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                 
                     if (string.IsNullOrEmpty(text) || text.Trim().Length.Equals(0))
                     {
-                        strategy = new PdfOcrTextExtractionStrategy();
+                        strategy = new PdfOcrTextExtractionStrategy(pdfImageService);
                         text = strategy.GetText(pdf);
                     }
                 }
