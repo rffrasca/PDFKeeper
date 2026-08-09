@@ -51,7 +51,9 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
 
             var images = pdfImageService.GetAllPagesAsTiffImagesAsync(
                 pdfFile.FullName).GetAwaiter().GetResult();
+#pragma warning disable IDE0305 // Simplify collection initialization
             var imageCollection = new Collection<byte[]>(images.ToList());
+#pragma warning restore IDE0305 // Simplify collection initialization
             var ocr = new ImageTextExtractor(imageCollection, ImageFormat.Tiff);
             var result = ocr.GetText();
             return result.Result;
