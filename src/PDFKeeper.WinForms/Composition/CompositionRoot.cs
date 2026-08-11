@@ -21,6 +21,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.FileIO;
+using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.Services.Pdf;
@@ -45,6 +46,7 @@ namespace PDFKeeper.WinForms.Composition
         internal static IServiceProvider BuildServiceProvider()
         {
             var services = new ServiceCollection();
+            services.AddMemoryCache();
             AddSingletonServices(services);
             AddKeyedSingletonServices(services);
             AddTransientServices(services);
@@ -63,6 +65,7 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IFolderBrowserDialogService, FolderBrowserDialogService>();
             services.AddSingleton<IFolderExplorerService, FolderExplorerService>();
             services.AddSingleton<IHelpService, HelpService>();
+            services.AddSingleton<IImageConverterService, ImageConverterService>();
             services.AddSingleton<IKeyedServiceResolver, KeyedServiceResolver>();
             services.AddSingleton<IMessageBoxService, MessageBoxService>();
             services.AddSingleton<IPasswordDialogService, PdfOwnerPasswordDialogService>();

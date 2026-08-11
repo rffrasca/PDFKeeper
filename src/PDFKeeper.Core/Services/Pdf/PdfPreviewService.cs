@@ -18,8 +18,10 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using Microsoft.Extensions.Caching.Memory;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
 using System;
+using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Data.Pdf;
@@ -33,12 +35,41 @@ namespace PDFKeeper.Core.Services.Pdf
     /// </summary>
     public sealed class PdfPreviewService : IPdfPreviewService
     {
+        private readonly IMemoryCache memoryCache;
+        private static readonly TimeSpan CacheDuration = TimeSpan.FromHours(1);
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PdfPreviewService"/> class.
+        /// </summary>
+        /// <param name="memoryCache">
+        /// The memory cache instance to use for caching preview images.
+        /// </param>
+#pragma warning disable IDE0290 // Use primary constructor
+        public PdfPreviewService(IMemoryCache memoryCache)
+#pragma warning restore IDE0290 // Use primary constructor
+        {
+            this.memoryCache = memoryCache;
+        }
+
         public async Task<byte[]> CreatePreviewImageAsync(string pdfPath, decimal pixelDensity)
         {
+            if (pdfPath is null)
+            {
+                throw new ArgumentNullException(nameof(pdfPath));
+            }
+
+            var cacheKey = BuildCacheKey(pdfPath, pixelDensity);
+            
+            if (memoryCache.TryGetValue(cacheKey, out byte[] cachedPreview))
+            {
+                return cachedPreview;
+            }
+
             var pdfFile = await StorageFile.GetFileFromPathAsync(
                 pdfPath).AsTask().ConfigureAwait(false);
             var pdfDocument = await PdfDocument.LoadFromFileAsync(
                 pdfFile).AsTask().ConfigureAwait(false);
+            byte[] previewImage;
 
             using (var page = pdfDocument.GetPage(0))
             {
@@ -61,9 +92,27 @@ namespace PDFKeeper.Core.Services.Pdf
                         buffer,
                         (uint)stream.Size,
                         InputStreamOptions.None).AsTask().ConfigureAwait(false);
-                    return buffer.ToArray();
+                    previewImage = buffer.ToArray();
                 }
             }
+
+            var cacheOptions = new MemoryCacheEntryOptions()
+                .SetSlidingExpiration(CacheDuration)
+                .SetSize(previewImage.Length);
+            memoryCache.Set(cacheKey, previewImage, cacheOptions);
+            return previewImage;
+        }
+
+        /// <summary>
+        /// Builds a unique cache key for the given PDF path and pixel density.
+        /// </summary>
+        /// <param name="pdfPath">The path to the PDF file.</param>
+        /// <param name="pixelDensity">The pixel density for the preview image.</param>
+        /// <returns>A unique cache key string.</returns>
+        private static string BuildCacheKey(string pdfPath, decimal pixelDensity)
+        {
+            var lastWriteTime = File.GetLastWriteTimeUtc(pdfPath);
+            return $"PdfPreview_{pdfPath.ToUpperInvariant()}_{pixelDensity}_{lastWriteTime.Ticks}";
         }
     }
 }

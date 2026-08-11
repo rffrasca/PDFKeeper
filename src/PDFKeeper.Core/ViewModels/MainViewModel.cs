@@ -26,6 +26,8 @@ using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Interfaces.Services;
+using PDFKeeper.Core.Interfaces.Services.Pdf;
 using PDFKeeper.Core.Interop;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
@@ -55,8 +57,10 @@ namespace PDFKeeper.Core.ViewModels
         private readonly IFileCache fileCache;
         private readonly IFolderBrowserDialogService folderBrowserDialogService;
         private readonly IFolderExplorerService folderExplorerService;
+        private readonly IImageConverterService imageConverterService;
         private readonly IKeyedServiceResolver keyedServiceResolver;
         private readonly IMessageBoxService messageBoxService;
+        private readonly IPdfPreviewService pdfPreviewService;
         private readonly IPdfViewerService pdfViewerService;
         private readonly IPrintDialogService printDialogService;
         private readonly IPrintPreviewDialogService printPreviewDialogService;
@@ -170,11 +174,17 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="folderExplorerService">
         /// A service that provides folder exploration using the operating system UI.
         /// </param>
+        /// <param name="imageConverterService">
+        /// A service that converts images to different formats.
+        /// </param>
         /// <param name="keyedServiceResolver">
         /// A service that resolves keyed dialog services.
         /// </param>
         /// <param name="messageBoxService">
         /// A dialog service that displays messages.
+        /// </param>
+        /// <param name="pdfPreviewService">
+        /// A service that generates preview images for PDF documents.
         /// </param>
         /// <param name="pdfViewerService">
         /// A service that opens and displays PDF documents in the associated viewer.
@@ -190,8 +200,10 @@ namespace PDFKeeper.Core.ViewModels
             IFileCache fileCache,
             IFolderBrowserDialogService folderBrowserDialogService,
             IFolderExplorerService folderExplorerService,
+            IImageConverterService imageConverterService,
             IKeyedServiceResolver keyedServiceResolver,
             IMessageBoxService messageBoxService,
+            IPdfPreviewService pdfPreviewService,
             IPdfViewerService pdfViewerService,
             IPrintDialogService printDialogService,
             IPrintPreviewDialogService printPreviewDialogService)
@@ -200,8 +212,10 @@ namespace PDFKeeper.Core.ViewModels
             this.fileCache = fileCache;
             this.folderBrowserDialogService = folderBrowserDialogService;
             this.folderExplorerService = folderExplorerService;
+            this.imageConverterService = imageConverterService;
             this.keyedServiceResolver = keyedServiceResolver;
             this.messageBoxService = messageBoxService;
+            this.pdfPreviewService = pdfPreviewService;
             this.pdfViewerService = pdfViewerService;
             this.printDialogService = printDialogService;
             this.printPreviewDialogService = printPreviewDialogService;
@@ -2417,8 +2431,10 @@ namespace PDFKeeper.Core.ViewModels
         private void SetPreviewImageForCurrentDocument()
         {
             OnLongOperationStarted?.Invoke();
-            fileCache.CreatePreview(CurrentDocumentId, PreviewPixelDensity);
-            Preview = fileCache.GetPreview(CurrentDocumentId, PreviewPixelDensity);
+            var imageBytes = pdfPreviewService.CreatePreviewImageAsync(
+                fileCache.GetPdfFile(CurrentDocumentId).FullName,
+                PreviewPixelDensity).GetAwaiter().GetResult();
+            Preview = imageConverterService.ToImage(imageBytes);
             OnLongOperationFinished?.Invoke();
         }
 

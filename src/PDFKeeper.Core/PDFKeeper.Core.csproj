@@ -105,6 +105,7 @@
     <Compile Include="FileIO\Serializers\JsonSerializer.cs" />
     <Compile Include="Helpers\OneDriveHelper.cs" />
     <Compile Include="Helpers\UploadProfileTokenHelper.cs" />
+    <Compile Include="Interfaces\Services\IImageConverterService.cs" />
     <Compile Include="Interfaces\Services\Pdf\IPdfImageService.cs" />
     <Compile Include="Interfaces\Services\Pdf\IPdfPreviewService.cs" />
     <Compile Include="Models\UploadProfileToken.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Services\IAliasService.cs" />
     <Compile Include="Services\IExceptionHandler.cs" />
     <Compile Include="Services\IKeyedServiceResolver.cs" />
+    <Compile Include="Services\ImageConverterService.cs" />
     <Compile Include="Services\IVirtualKeyService.cs" />
     <Compile Include="Services\KeyedServiceResolver.cs" />
     <Compile Include="Application\UserProfileFolder.cs" />
@@ -125,7 +127,6 @@
     <Compile Include="Extensions\DirectoryInfoExtension.cs" />
     <Compile Include="Extensions\GenericExtension.cs" />
     <Compile Include="FileIO\FileCache.cs" />
-    <Compile Include="FileIO\ImageFile.cs" />
     <Compile Include="FileIO\PDF\PdfFileSplitter.cs" />
     <Compile Include="FileIO\PDF\PdfImageDetector.cs" />
     <Compile Include="FileIO\PDF\PdfUploader.cs" />
@@ -236,6 +237,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Data.SqlClient">
       <Version>7.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory">
+      <Version>8.0.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection">
       <Version>10.0.8</Version>
