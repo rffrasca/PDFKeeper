@@ -23,7 +23,7 @@ using System.Threading.Tasks;
 namespace PDFKeeper.Core.Interfaces.Services.Pdf
 {
     /// <summary>
-    /// Provides functionality to create preview images from PDF files.
+    /// Defines a service for generating preview images from PDF documents.
     /// </summary>
     public interface IPdfPreviewService
     {

@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace PDFKeeper.Core.Interfaces.Services.Pdf
 {
     /// <summary>
-    /// Provides functionality to extract images from PDF files.
+    /// Defines a service for converting PDF documents to TIFF images.
     /// </summary>
     public interface IPdfImageService
     {
