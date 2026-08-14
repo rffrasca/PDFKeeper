@@ -483,12 +483,6 @@
 					  Name="PDFKeeper.ico"
 					  Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.ico" />
             </Component>
-			<Component Id="PDFKeeper.PDFViewer.dll"
-					   Guid="523123e8-544a-43d1-b2c6-6b258e93d263">
-				<File Id="PDFKeeper.PDFViewer.dll"
-					  Name="PDFKeeper.PDFViewer.dll"
-					  Source="$(var.PDFKeeper.WinForms_TargetDir)PDFKeeper.PDFViewer.dll" />
-			</Component>
 			<Component Id="SQLite.Interop.dll"
 					   Guid="be550a2c-6467-441c-bdd9-e5d1bc9a45e1">
 				<File Id="SQLite.Interop.dll"

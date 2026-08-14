@@ -26,7 +26,6 @@ using PDFKeeper.Core.Interfaces.Services.Pdf;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.Services.Pdf;
 using PDFKeeper.Core.ViewModels;
-using PDFKeeper.PDFViewer.Services;
 using PDFKeeper.WinForms.Services;
 using PDFKeeper.WinForms.Views;
 using System;
@@ -73,7 +72,7 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IPdfViewerService, PdfViewerService>();
             services.AddSingleton<IPrintDialogService, PrintDialogService>();
             services.AddSingleton<IPrintPreviewDialogService, PrintPreviewDialogService>();
-            services.AddSingleton<IRestrictedPdfViewerService, RestrictedPdfViewerService>();
+            services.AddSingleton<IProcessService, ProcessService>();
             services.AddSingleton<IVirtualKeyService, VirtualKeyService>();
         }
 

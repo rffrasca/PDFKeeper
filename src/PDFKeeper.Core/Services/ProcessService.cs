@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,18 +18,18 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using PDFKeeper.Core.Interfaces.Services;
 using System;
 using System.Diagnostics;
 
-namespace PDFKeeper.Core.Helpers
+namespace PDFKeeper.Core.Services
 {
-    public static class ProcessHelper
+    /// <summary>
+    /// Default implementation of the <see cref="IProcessService"/> interface.
+    /// </summary>
+    public sealed class ProcessService : IProcessService
     {
-        /// <summary>
-        /// Closes the process by ID.
-        /// </summary>
-        /// <param name="pid">The process ID.</param>
-        public static void Close(int pid)
+        public void Close(int pid)
         {
             try
             {
@@ -40,6 +40,18 @@ namespace PDFKeeper.Core.Helpers
                 }
             }
             catch (ArgumentException) { }
+        }
+
+        public int Start(string filePath, string args = null)
+        {
+            using (var process = new Process())
+            {
+                process.StartInfo.FileName = filePath;
+                process.StartInfo.Arguments = args ?? string.Empty;
+                process.StartInfo.UseShellExecute = false;
+                process.Start();
+                return process.Id;
+            }
         }
     }
 }

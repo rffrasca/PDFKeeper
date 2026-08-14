@@ -505,10 +505,6 @@
       <Project>{2F3D6A07-A88A-4B91-A28D-3CCECC3486F9}</Project>
       <Name>PDFKeeper.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PDFKeeper.PDFViewer\PDFKeeper.PDFViewer.csproj">
-      <Project>{854466DF-9FFD-41AD-B22B-6E4DBDD37013}</Project>
-      <Name>PDFKeeper.PDFViewer</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

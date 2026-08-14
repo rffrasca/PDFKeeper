@@ -106,8 +106,10 @@
     <Compile Include="Helpers\OneDriveHelper.cs" />
     <Compile Include="Helpers\UploadProfileTokenHelper.cs" />
     <Compile Include="Interfaces\Services\IImageConverterService.cs" />
+    <Compile Include="Interfaces\Services\IProcessService.cs" />
     <Compile Include="Interfaces\Services\Pdf\IPdfImageService.cs" />
     <Compile Include="Interfaces\Services\Pdf\IPdfPreviewService.cs" />
+    <Compile Include="Interfaces\Services\Pdf\IPdfViewerService.cs" />
     <Compile Include="Models\UploadProfileToken.cs" />
     <Compile Include="Services\AliasService.cs" />
     <Compile Include="Services\ExceptionHandler.cs" />
@@ -147,6 +149,8 @@
     <Compile Include="Services\IPrintPreviewDialogService.cs" />
     <Compile Include="Services\Pdf\PdfImageService.cs" />
     <Compile Include="Services\Pdf\PdfPreviewService.cs" />
+    <Compile Include="Services\Pdf\PdfViewerService.cs" />
+    <Compile Include="Services\ProcessService.cs" />
     <Compile Include="Services\VirtualKeyService.cs" />
     <Compile Include="ViewModels\ColumnDataListsViewModel.cs" />
     <Compile Include="ViewModels\ColumnDataListViewModel.cs" />
@@ -163,7 +167,6 @@
     <Compile Include="Application\FindDocumentsViewState.cs" />
     <Compile Include="Application\ApplicationRegistry.cs" />
     <Compile Include="Application\ApplicationUri.cs" />
-    <Compile Include="Services\IPdfViewerService.cs" />
     <Compile Include="DataAccess\DatabaseSession.cs" />
     <Compile Include="Application\ApplicationPolicy.cs" />
     <Compile Include="Models\IFindDocumentsParam.cs" />
@@ -190,7 +193,6 @@
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\ResourceHelper.cs" />
-    <Compile Include="Services\IRestrictedPdfViewerService.cs" />
     <Compile Include="Models\PdfExternalMetadata.cs" />
     <Compile Include="Models\UploadProfile.cs" />
     <Compile Include="Extensions\FileInfoExtension.cs" />
@@ -204,6 +206,10 @@
     <Compile Include="ViewModels\UploadProfilesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\vendor\SumatraPDF-3.5.2-64.exe">
+      <Link>SumatraPDF-3.5.2-64.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\Config\ConnectionSettingManager.cmd">
       <Link>ConnectionSettingManager.cmd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -214,6 +220,10 @@
     </Content>
     <Content Include="..\Config\SqlServerDatabaseSetup.sql">
       <Link>SqlServerDatabaseSetup.sql</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Config\SumatraPDF-settings.txt">
+      <Link>SumatraPDF-settings.txt</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -290,12 +300,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Config\sumatrapdfrestrict.ini">
+      <Link>sumatrapdfrestrict.ini</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="PDFKeeper.Core.ruleset" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent>powershell.exe -ExecutionPolicy Bypass -file "..\..\..\..\Build\GetSumatraPDF.ps1"</PreBuildEvent>
   </PropertyGroup>
 </Project>

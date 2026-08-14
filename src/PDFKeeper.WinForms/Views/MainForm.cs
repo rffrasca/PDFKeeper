@@ -188,7 +188,7 @@ namespace PDFKeeper.WinForms.Views
                     Settings.Default.CompactLocalDatabaseAfterDelete;
                 viewModel.PreviewPixelDensity =
                     Settings.Default.PreviewPixelDensity;
-                viewModel.ShowPdfWithDefaultApplication =
+                viewModel.OpenPdfWithDefaultApplication =
                     Settings.Default.ShowPdfWithDefaultApplication;
                 viewModel.ViewSize =
                     Settings.Default.MainFormSize;

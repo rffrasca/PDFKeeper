@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,19 +18,27 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-namespace PDFKeeper.Core.Services
+namespace PDFKeeper.Core.Interfaces.Services
 {
-    public interface IRestrictedPdfViewerService
+    /// <summary>
+    /// Defines an interface for a service that manages processes, allowing for
+    /// starting and closing processes by their process ID (PID).
+    /// </summary>
+    public interface IProcessService
     {
         /// <summary>
-        /// Shows the PDF with the bundled viewer in restricted mode.
+        /// Starts a process using the specified file path and optional
+        /// arguments, returning the process ID (PID) of the started process.
         /// </summary>
-        /// <param name="pdfPath">The PDF path name.</param>
-        void Show(string pdfPath);
+        /// <param name="filePath">The path to the executable file to start.</param>
+        /// <param name="args">Optional arguments to pass to the process.</param>
+        /// <returns>The process ID (PID) of the started process.</returns>
+        int Start(string filePath, string args = null);
 
         /// <summary>
-        /// Closes all instances of the restricted PDF viewer.
+        /// Closes the process with the specified process ID (PID).
         /// </summary>
-        void Close();
+        /// <param name="pid">The process ID (PID) of the process to close.</param>
+        void Close(int pid);
     }
 }

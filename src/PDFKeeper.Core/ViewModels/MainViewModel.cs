@@ -163,37 +163,37 @@ namespace PDFKeeper.Core.ViewModels
         /// Initializes a new instance of the <see cref="MainViewModel"/> class.
         /// </summary>
         /// <param name="aliasService">
-        /// A service that retrieves and assigns aliases to keys.
+        /// The service that retrieves and assigns aliases to keys.
         /// </param>
         /// <param name="fileCache">
-        /// A service that caches PDF documents and generated PNG preview images to disk.
+        /// The service that caches PDF documents and generated PNG preview images to disk.
         /// </param>
         /// <param name="folderBrowserDialogService">
-        /// A dialog service that allows the user to select a folder from the file system.
+        /// The dialog service that allows the user to select a folder from the file system.
         /// </param>
         /// <param name="folderExplorerService">
-        /// A service that provides folder exploration using the operating system UI.
+        /// The service that provides folder exploration using the operating system UI.
         /// </param>
         /// <param name="imageConverterService">
-        /// A service that converts images to different formats.
+        /// The service that converts images to different formats.
         /// </param>
         /// <param name="keyedServiceResolver">
-        /// A service that resolves keyed dialog services.
+        /// The service that resolves keyed dialog services.
         /// </param>
         /// <param name="messageBoxService">
-        /// A dialog service that displays messages.
+        /// The dialog service that displays messages.
         /// </param>
         /// <param name="pdfPreviewService">
-        /// A service that generates preview images for PDF documents.
+        /// The service that generates preview images for PDF documents.
         /// </param>
         /// <param name="pdfViewerService">
-        /// A service that opens and displays PDF documents in the associated viewer.
+        /// The service that opens and displays PDF documents in the associated viewer.
         /// </param>
         /// <param name="printDialogService">
-        /// A dialog service that displays the system print dialog.
+        /// The dialog service that displays the system print dialog.
         /// </param>
         /// <param name="printPreviewDialogService">
-        /// A dialog service that displays the system print preview dialog.
+        /// The dialog service that displays the system print preview dialog.
         /// </param>
         public MainViewModel(
             IAliasService aliasService,
@@ -380,7 +380,7 @@ namespace PDFKeeper.Core.ViewModels
         public bool ViewMinimized { get; set; }
         public bool CompactLocalDatabaseAfterDelete { get; set; }
         public decimal PreviewPixelDensity { get; set; }
-        public bool ShowPdfWithDefaultApplication { get; set; }
+        public bool OpenPdfWithDefaultApplication { get; set; }
         
         public string ViewTitleText
         {
@@ -1316,9 +1316,9 @@ namespace PDFKeeper.Core.ViewModels
                             }
 
                             fileCache.AddPdf(currentDocument.Id, currentDocument.Pdf);
-                            pdfViewerService.Show(
-                                fileCache.GetPdfFile(currentDocument.Id).FullName,
-                                ShowPdfWithDefaultApplication);
+                            pdfViewerService.OpenPdf(
+                                currentDocument.Id,
+                                OpenPdfWithDefaultApplication);
                         }
                         catch (DatabaseException ex)
                         {
@@ -1345,7 +1345,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             else
             {
-                OpenPdfForCurrentDocument(ShowPdfWithDefaultApplication);
+                OpenPdfForCurrentDocument(OpenPdfWithDefaultApplication);
             }
         }
 
@@ -1959,14 +1959,11 @@ namespace PDFKeeper.Core.ViewModels
         /// <summary>
         /// Opens the PDF for the current document.
         /// </summary>
-        /// <param name="showPdfWithDefaultApplication">
-        /// <c>true</c> or <c>false</c> to show PDF with default application.
+        /// <param name="openPdfWithDefaultApplication">
+        /// <c>true</c> or <c>false</c> to open PDF with default application.
         /// </param>
-        private void OpenPdfForCurrentDocument(bool showPdfWithDefaultApplication) =>
-            pdfViewerService.Show(
-                fileCache.GetPdfFile(
-                    CurrentDocumentId).FullName,
-                showPdfWithDefaultApplication);
+        private void OpenPdfForCurrentDocument(bool openPdfWithDefaultApplication) =>
+            pdfViewerService.OpenPdf(CurrentDocumentId, openPdfWithDefaultApplication);
 
         private void DoDragDropPdfForCurrentDocument()
         {

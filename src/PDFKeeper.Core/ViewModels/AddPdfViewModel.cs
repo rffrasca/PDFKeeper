@@ -23,6 +23,7 @@ using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO.PDF;
+using PDFKeeper.Core.Interfaces.Services.Pdf;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Services;
@@ -41,7 +42,7 @@ namespace PDFKeeper.Core.ViewModels
     {
         private readonly IMessageBoxService messageBoxService;
         private readonly IPasswordDialogService passwordDialogService;
-        private readonly IRestrictedPdfViewerService restrictedPdfViewerService;
+        private readonly IPdfViewerService pdfViewerService;
         private readonly IFileDialogService openFileDialogService;
         private Document document;
         private UploadProfile uploadProfile;
@@ -54,23 +55,23 @@ namespace PDFKeeper.Core.ViewModels
         /// Initializes a new instance of the <see cref="AddPdfViewModel"/> class.
         /// </summary>
         /// <param name="keyedServiceResolver">
-        /// A service that resolves keyed dialog services.
+        /// The service that resolves keyed dialog services.
         /// </param>
         /// <param name="messageBoxService">
-        /// A dialog service that displays messages.
+        /// The dialog service that displays messages.
         /// </param>
         /// <param name="passwordDialogService">
-        /// A service that displays a dialog for entering an owner password when opening
-        /// password‑protected PDF files.
+        /// The service that displays a dialog for entering an owner password when
+        /// opening password‑protected PDF files.
         /// </param>
-        /// <param name="restrictedPdfViewerService">
-        /// A service that opens and displays PDF documents in a restricted viewer.
+        /// <param name="pdfViewerService">
+        /// The service that opens and displays PDF documents.
         /// </param>
         public AddPdfViewModel(
             IKeyedServiceResolver keyedServiceResolver,
             IMessageBoxService messageBoxService,
             IPasswordDialogService passwordDialogService,
-            IRestrictedPdfViewerService restrictedPdfViewerService)
+            IPdfViewerService pdfViewerService)
         {
             if (keyedServiceResolver is null)
             {
@@ -79,7 +80,7 @@ namespace PDFKeeper.Core.ViewModels
 
             this.messageBoxService = messageBoxService;
             this.passwordDialogService = passwordDialogService;
-            this.restrictedPdfViewerService = restrictedPdfViewerService;
+            this.pdfViewerService = pdfViewerService;
             openFileDialogService = keyedServiceResolver.GetRequiredKeyedService<
                 IFileDialogService>(FileDialogServiceKey.OpenFile);
             InitializeCommands();            
@@ -309,7 +310,7 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
-        private void ViewPdf() => restrictedPdfViewerService.Show(SelectedPdf);
+        private void ViewPdf() => pdfViewerService.OpenPdfInRestrictedViewer(SelectedPdf);
 
         private void SetTitleToPdfFileName()
         {
@@ -337,7 +338,7 @@ namespace PDFKeeper.Core.ViewModels
             CancelViewClosing = false;
             OnApplyPendingChanges?.Invoke();
             pdfMetadata.ImportUploadProfile(UploadProfile);
-            restrictedPdfViewerService.Close();
+            pdfViewerService.CloseRestrictedViewer();
 
             try
             {
@@ -368,7 +369,7 @@ namespace PDFKeeper.Core.ViewModels
                 GetWindowHandle.Invoke(),
                 Resources.CancelQuestion) == 6)
             {
-                restrictedPdfViewerService.Close();
+                pdfViewerService.CloseRestrictedViewer();
                 OnCloseViewCancelResult?.Invoke();
             }
             else
