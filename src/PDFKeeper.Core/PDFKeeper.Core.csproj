@@ -191,7 +191,6 @@
     <Compile Include="Commands\UploadStagingCommand.cs" />
     <Compile Include="Extensions\SecureStringExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
-    <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\ResourceHelper.cs" />
     <Compile Include="Models\PdfExternalMetadata.cs" />
     <Compile Include="Models\UploadProfile.cs" />
