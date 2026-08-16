@@ -57,7 +57,6 @@ namespace PDFKeeper.Core.ViewModels
         private readonly IFileCache fileCache;
         private readonly IFolderBrowserDialogService folderBrowserDialogService;
         private readonly IFolderExplorerService folderExplorerService;
-        private readonly IImageConverterService imageConverterService;
         private readonly IKeyedServiceResolver keyedServiceResolver;
         private readonly IMessageBoxService messageBoxService;
         private readonly IPdfPreviewService pdfPreviewService;
@@ -142,7 +141,7 @@ namespace PDFKeeper.Core.ViewModels
         private string selectedSearchTermSnippets;
         private bool searchTermSnippetsFocused;
         private bool searchTermSnippetsVisible;
-        private Image preview;
+        private byte[] preview;
         private bool documentsProgressBarVisible;
         private int documentsProgressBarMinimum;
         private int documentsProgressBarMaximum;
@@ -174,9 +173,6 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="folderExplorerService">
         /// The service that provides folder exploration using the operating system UI.
         /// </param>
-        /// <param name="imageConverterService">
-        /// The service that converts images to different formats.
-        /// </param>
         /// <param name="keyedServiceResolver">
         /// The service that resolves keyed dialog services.
         /// </param>
@@ -200,7 +196,6 @@ namespace PDFKeeper.Core.ViewModels
             IFileCache fileCache,
             IFolderBrowserDialogService folderBrowserDialogService,
             IFolderExplorerService folderExplorerService,
-            IImageConverterService imageConverterService,
             IKeyedServiceResolver keyedServiceResolver,
             IMessageBoxService messageBoxService,
             IPdfPreviewService pdfPreviewService,
@@ -212,7 +207,6 @@ namespace PDFKeeper.Core.ViewModels
             this.fileCache = fileCache;
             this.folderBrowserDialogService = folderBrowserDialogService;
             this.folderExplorerService = folderExplorerService;
-            this.imageConverterService = imageConverterService;
             this.keyedServiceResolver = keyedServiceResolver;
             this.messageBoxService = messageBoxService;
             this.pdfPreviewService = pdfPreviewService;
@@ -1013,7 +1007,11 @@ namespace PDFKeeper.Core.ViewModels
             }
         }
 
-        public Image Preview
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Performance",
+            "CA1819:Properties should not return arrays",
+            Justification = "Required for UI binding and binary buffer compatibility.")]
+        public byte[] Preview
         {
             get => preview;
             set => SetProperty(ref preview, value);
@@ -2428,10 +2426,9 @@ namespace PDFKeeper.Core.ViewModels
         private void SetPreviewImageForCurrentDocument()
         {
             OnLongOperationStarted?.Invoke();
-            var imageBytes = pdfPreviewService.CreatePreviewImageAsync(
+            Preview = pdfPreviewService.CreatePreviewImageAsync(
                 fileCache.GetPdfFile(CurrentDocumentId).FullName,
                 PreviewPixelDensity).GetAwaiter().GetResult();
-            Preview = imageConverterService.ToImage(imageBytes);
             OnLongOperationFinished?.Invoke();
         }
 

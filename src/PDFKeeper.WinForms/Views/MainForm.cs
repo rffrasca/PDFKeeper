@@ -25,6 +25,7 @@ using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
 using PDFKeeper.WinForms.Dialogs;
+using PDFKeeper.WinForms.Extensions;
 using PDFKeeper.WinForms.Properties;
 using System;
 using System.Collections.ObjectModel;
@@ -128,9 +129,9 @@ namespace PDFKeeper.WinForms.Views
                     WindowState = Settings.Default.MainFormState;
                 }
 
-                HorizontalSplitContainer.SplitterDistance = 
+                HorizontalSplitContainer.SplitterDistance =
                     Settings.Default.HorizontalSplitterDistance;
-                VerticalSplitContainer.SplitterDistance = 
+                VerticalSplitContainer.SplitterDistance =
                     Settings.Default.VerticalSplitterDistance;
             };
 
@@ -178,7 +179,7 @@ namespace PDFKeeper.WinForms.Views
                 {
                     row.Cells[0].Value = selection;
                 }
-                
+
                 DocumentsDataGridView.RefreshEdit();
             };
 
@@ -240,7 +241,7 @@ namespace PDFKeeper.WinForms.Views
                 => ToolStripItem_Click(DocumentsSelectNoneToolStripMenuItem, null);
             viewModel.OnCheckForFlaggedDocumentsStarted = CheckForFlaggedDocumentsTimer.Stop;
             viewModel.OnCheckForFlaggedDocumentsFinished = CheckForFlaggedDocumentsTimer.Start;
-            viewModel.OnCheckForDocumentsListChangesStarted = 
+            viewModel.OnCheckForDocumentsListChangesStarted =
                 CheckForDocumentsListChangesTimer.Stop;
             viewModel.OnCheckForDocumentsListChangesFinished =
                 CheckForDocumentsListChangesTimer.Start;
@@ -270,7 +271,7 @@ namespace PDFKeeper.WinForms.Views
         {
             FileAddToolStripMenuItem.Tag =
                 viewModel.AddPdfCommand;
-            FileAddToolStripButton.Tag = 
+            FileAddToolStripButton.Tag =
                 viewModel.AddPdfCommand;
             FileOpenToolStripMenuItem.Tag =
                 viewModel.OpenPdfForEachSelectedDocumentCommand;
@@ -278,7 +279,7 @@ namespace PDFKeeper.WinForms.Views
                 viewModel.OpenPdfForEachSelectedDocumentCommand;
             FileSaveToolStripMenuItem.Tag =
                 viewModel.SaveNotesCommand;
-            FileSaveToolStripButton.Tag = 
+            FileSaveToolStripButton.Tag =
                 viewModel.SaveNotesCommand;
             FileSaveAsToolStripMenuItem.Tag =
                 viewModel.PdfOrTextSaveAsCommand;
@@ -312,13 +313,13 @@ namespace PDFKeeper.WinForms.Views
                 viewModel.PrintDocumentDataTextCommand;
             FilePrintPreviewToolStripMenuItem.Tag =
                 viewModel.PrintDocumentDataTextWithPreviewCommand;
-            FileDatabaseNewToolStripMenuItem.Tag = 
+            FileDatabaseNewToolStripMenuItem.Tag =
                 viewModel.AddLocalDatabaseCommand;
-            FileDatabaseNewToolStripButton.Tag = 
+            FileDatabaseNewToolStripButton.Tag =
                 viewModel.AddLocalDatabaseCommand;
-            FileDatabaseOpenToolStripMenuItem.Tag = 
+            FileDatabaseOpenToolStripMenuItem.Tag =
                 viewModel.OpenLocalDatabaseCommand;
-            FileDatabaseOpenToolStripButton.Tag = 
+            FileDatabaseOpenToolStripButton.Tag =
                 viewModel.OpenLocalDatabaseCommand;
             FileDatabaseMoveToolStripMenuItem.Tag =
                 viewModel.MoveLocalDatabaseCommand;
@@ -354,7 +355,7 @@ namespace PDFKeeper.WinForms.Views
                 viewModel.AppendDateTimeIntoNotesCommand;
             EditAppendTextToolStripMenuItem.Tag =
                 viewModel.AppendTextFromFileIntoNotesCommand;
-            EditAppendTextToolStripButton.Tag = 
+            EditAppendTextToolStripButton.Tag =
                 viewModel.AppendTextFromFileIntoNotesCommand;
             EditReplacePdfToolStripMenuItem.Tag =
                 viewModel.ReplaceCurrentDocumentPdfCommand;
@@ -487,12 +488,12 @@ namespace PDFKeeper.WinForms.Views
             DocumentsDataGridView.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DocumentsDataGridView.Columns[8].ReadOnly = true;
             DocumentsDataGridView.Columns[9].Visible = false;
-            
+
             if (DocumentsDataGridView.RowCount > 0)
             {
                 DocumentsDataGridView.Columns[8].AutoSizeMode =
                     DataGridViewAutoSizeColumnMode.DisplayedCells;
-                
+
                 if (DocumentsDataGridView.Columns[8].Displayed)
                 {
                     DocumentsDataGridView.Columns[8].AutoSizeMode =
@@ -504,7 +505,7 @@ namespace PDFKeeper.WinForms.Views
                 DocumentsDataGridView.Sort(
                     DocumentsDataGridView.Columns[dataGridViewSortProperties.SortColumnIndex],
                     dataGridViewSortProperties.SortDirection);
-                
+
                 if (Settings.Default.SelectLastDocumentRow)
                 {
                     DocumentsDataGridView.Rows[DocumentsDataGridView.Rows.Count - 1].Selected =
@@ -694,8 +695,8 @@ namespace PDFKeeper.WinForms.Views
                     EditAppendTextToolStripButton.Enabled = viewModel.EditAppendTextMenuEnabled;
                     break;
                 case nameof(viewModel.EditReplacePdfMenuEnabled):
-                        EditReplacePdfToolStripMenuItem.Enabled =
-                        viewModel.EditReplacePdfMenuEnabled;
+                    EditReplacePdfToolStripMenuItem.Enabled =
+                    viewModel.EditReplacePdfMenuEnabled;
                     break;
                 case nameof(viewModel.EditFlagDocumentMenuEnabled):
                     EditFlagDocumentToolStripMenuItem.Enabled =
@@ -766,7 +767,7 @@ namespace PDFKeeper.WinForms.Views
                             viewModel.IdColumnHeaderValue;
                     }
                     catch (ArgumentOutOfRangeException) { }
-                                        
+
                     break;
                 case nameof(viewModel.TitleColumnHeaderValue):
                     try
@@ -775,7 +776,7 @@ namespace PDFKeeper.WinForms.Views
                             viewModel.TitleColumnHeaderValue;
                     }
                     catch (ArgumentOutOfRangeException) { }
-                                        
+
                     break;
                 case nameof(viewModel.AuthorColumnHeaderValue):
                     try
@@ -784,7 +785,7 @@ namespace PDFKeeper.WinForms.Views
                             viewModel.AuthorColumnHeaderValue;
                     }
                     catch (ArgumentOutOfRangeException) { }
-                                        
+
                     break;
                 case nameof(viewModel.SubjectColumnHeaderValue):
                     try
@@ -793,7 +794,7 @@ namespace PDFKeeper.WinForms.Views
                             viewModel.SubjectColumnHeaderValue;
                     }
                     catch (ArgumentOutOfRangeException) { }
-                                        
+
                     break;
                 case nameof(viewModel.CategoryColumnHeaderValue):
                     try
@@ -802,7 +803,7 @@ namespace PDFKeeper.WinForms.Views
                             viewModel.CategoryColumnHeaderValue;
                     }
                     catch (ArgumentOutOfRangeException) { }
-                                        
+
                     break;
                 case nameof(viewModel.TaxYearColumnHeaderValue):
                     try
@@ -811,7 +812,7 @@ namespace PDFKeeper.WinForms.Views
                             viewModel.TaxYearColumnHeaderValue;
                     }
                     catch (ArgumentOutOfRangeException) { }
-                                        
+
                     break;
                 case nameof(viewModel.AddedColumnHeaderValue):
                     try
@@ -820,7 +821,7 @@ namespace PDFKeeper.WinForms.Views
                             viewModel.AddedColumnHeaderValue;
                     }
                     catch (ArgumentOutOfRangeException) { }
-                                        
+
                     break;
                 case nameof(viewModel.Documents):
                     DocumentsDataGridView.DataSource = viewModel.Documents;
@@ -862,6 +863,9 @@ namespace PDFKeeper.WinForms.Views
                     {
                         DocumentDataTabControl.TabPages.Remove(SearchTermSnippetsTabPage);
                     }
+                    break;
+                case nameof(viewModel.Preview):
+                    UpdatePreviewImage();
                     break;
                 case nameof(viewModel.DocumentsProgressBarVisible):
                     DocumentsProgressBar.Visible = viewModel.DocumentsProgressBarVisible;
@@ -941,7 +945,7 @@ namespace PDFKeeper.WinForms.Views
                 }
             }
             catch (NullReferenceException) { }
-            
+
             return ids;
         }
 
@@ -952,7 +956,7 @@ namespace PDFKeeper.WinForms.Views
         private TextBox GetTextBoxWithFocus()
         {
             TextBox result = null;
-            
+
             if (NotesTextBox.Focused)
             {
                 result = NotesTextBox;
@@ -969,8 +973,20 @@ namespace PDFKeeper.WinForms.Views
             {
                 result = SearchTermSnippetsTextBox;
             }
-            
+
             return result;
+        }
+
+        /// <summary>
+        /// Updates the preview image in <see cref="PreviewPictureBox"/> with the
+        /// current preview from the view model.
+        /// </summary>
+        private void UpdatePreviewImage()
+        {
+            var previousImage = PreviewPictureBox.Image;
+            PreviewPictureBox.Image = null;
+            PreviewPictureBox.Image = viewModel.Preview?.ToImage();
+            previousImage?.Dispose();
         }
     }
 }

@@ -52,6 +52,7 @@ namespace PDFKeeper.WinForms.Views
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            PDFKeeper.WinForms.Properties.Settings settings1 = new PDFKeeper.WinForms.Properties.Settings();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
             this.FileAddToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -214,7 +215,31 @@ namespace PDFKeeper.WinForms.Views
             // 
             // ToolStrip
             // 
-            this.ToolStrip.DataBindings.Add(new System.Windows.Forms.Binding("Visible", global::PDFKeeper.WinForms.Properties.Settings.Default, "ToolBarVisible", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            settings1.AddPdfDeleteSelectedPdfWhenAdded = false;
+            settings1.CompactLocalDatabaseAfterDelete = false;
+            settings1.Datasource = "";
+            settings1.DbManagementSystem = "";
+            settings1.FindFlaggedDocumentsOnStartup = false;
+            settings1.HorizontalSplitterDistance = 373;
+            settings1.MainFormLocation = new System.Drawing.Point(0, 0);
+            settings1.MainFormSize = new System.Drawing.Size(1000, 800);
+            settings1.MainFormState = System.Windows.Forms.FormWindowState.Normal;
+            settings1.PreviewPixelDensity = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            settings1.Schemaname = "pdfkeeper";
+            settings1.SelectLastDocumentRow = false;
+            settings1.SettingsKey = "";
+            settings1.ShowAllDocumentsOnStartup = false;
+            settings1.ShowPdfWithDefaultApplication = false;
+            settings1.StatusBarVisible = true;
+            settings1.ToolBarVisible = true;
+            settings1.UpgradeSettings = true;
+            settings1.Username = "";
+            settings1.VerticalSplitterDistance = 488;
+            this.ToolStrip.DataBindings.Add(new System.Windows.Forms.Binding("Visible", settings1, "ToolBarVisible", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileAddToolStripButton,
             this.FileOpenToolStripButton,
@@ -244,7 +269,6 @@ namespace PDFKeeper.WinForms.Views
             this.HelpContentsToolStripButton});
             resources.ApplyResources(this.ToolStrip, "ToolStrip");
             this.ToolStrip.Name = "ToolStrip";
-            this.ToolStrip.Visible = global::PDFKeeper.WinForms.Properties.Settings.Default.ToolBarVisible;
             // 
             // FileAddToolStripButton
             // 
@@ -952,7 +976,7 @@ namespace PDFKeeper.WinForms.Views
             // 
             // StatusStrip
             // 
-            this.StatusStrip.DataBindings.Add(new System.Windows.Forms.Binding("Visible", global::PDFKeeper.WinForms.Properties.Settings.Default, "StatusBarVisible", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.StatusStrip.DataBindings.Add(new System.Windows.Forms.Binding("Visible", settings1, "StatusBarVisible", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DocumentsLabel,
             this.DocumentsCountLabel,
@@ -965,7 +989,6 @@ namespace PDFKeeper.WinForms.Views
             resources.ApplyResources(this.StatusStrip, "StatusStrip");
             this.StatusStrip.Name = "StatusStrip";
             this.StatusStrip.ShowItemToolTips = true;
-            this.StatusStrip.Visible = global::PDFKeeper.WinForms.Properties.Settings.Default.StatusBarVisible;
             // 
             // DocumentsLabel
             // 
@@ -1016,7 +1039,6 @@ namespace PDFKeeper.WinForms.Views
             // 
             // PreviewPictureBox
             // 
-            this.PreviewPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.MainViewModelBindingSource, "Preview", true));
             resources.ApplyResources(this.PreviewPictureBox, "PreviewPictureBox");
             this.PreviewPictureBox.Name = "PreviewPictureBox";
             this.PreviewPictureBox.TabStop = false;

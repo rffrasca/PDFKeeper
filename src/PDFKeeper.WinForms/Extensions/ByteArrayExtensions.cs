@@ -18,22 +18,29 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Interfaces.Services;
 using System.Drawing;
 using System.IO;
 
-namespace PDFKeeper.Core.Services
+namespace PDFKeeper.WinForms.Extensions
 {
     /// <summary>
-    /// Default implementation of the <see cref="IImageConverterService"/> interface.
+    /// Extension methods for converting byte arrays to Image objects.
     /// </summary>
-    public sealed class ImageConverterService : IImageConverterService
+    internal static class ByteArrayExtensions
     {
-        public Image ToImage(byte[] bytes)
+        /// <summary>
+        /// Converts a byte array containing image data to an Image instance.
+        /// </summary>
+        /// <param name="bytes">The byte array that contains the image data.</param>
+        /// <returns>An Image instance created from the specified byte array.</returns>
+        public static Image ToImage(this byte[] bytes)
         {
             using (var stream = new MemoryStream(bytes))
             {
-                return Image.FromStream(stream);
+                using (var clonedImage = Image.FromStream(stream))
+                {
+                    return new Bitmap(clonedImage);
+                }
             }
         }
     }

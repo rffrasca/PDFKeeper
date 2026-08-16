@@ -64,7 +64,6 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IFolderBrowserDialogService, FolderBrowserDialogService>();
             services.AddSingleton<IFolderExplorerService, FolderExplorerService>();
             services.AddSingleton<IHelpService, HelpService>();
-            services.AddSingleton<IImageConverterService, ImageConverterService>();
             services.AddSingleton<IKeyedServiceResolver, KeyedServiceResolver>();
             services.AddSingleton<IMessageBoxService, MessageBoxService>();
             services.AddSingleton<IPasswordDialogService, PdfOwnerPasswordDialogService>();

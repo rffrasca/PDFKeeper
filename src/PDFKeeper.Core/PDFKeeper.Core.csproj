@@ -105,7 +105,6 @@
     <Compile Include="FileIO\Serializers\JsonSerializer.cs" />
     <Compile Include="Helpers\OneDriveHelper.cs" />
     <Compile Include="Helpers\UploadProfileTokenHelper.cs" />
-    <Compile Include="Interfaces\Services\IImageConverterService.cs" />
     <Compile Include="Interfaces\Services\IProcessService.cs" />
     <Compile Include="Interfaces\Services\Pdf\IPdfImageService.cs" />
     <Compile Include="Interfaces\Services\Pdf\IPdfPreviewService.cs" />
@@ -116,7 +115,6 @@
     <Compile Include="Services\IAliasService.cs" />
     <Compile Include="Services\IExceptionHandler.cs" />
     <Compile Include="Services\IKeyedServiceResolver.cs" />
-    <Compile Include="Services\ImageConverterService.cs" />
     <Compile Include="Services\IVirtualKeyService.cs" />
     <Compile Include="Services\KeyedServiceResolver.cs" />
     <Compile Include="Application\UserProfileFolder.cs" />
