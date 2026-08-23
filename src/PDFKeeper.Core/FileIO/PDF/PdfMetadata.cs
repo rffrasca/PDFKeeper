@@ -128,7 +128,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         }
 
         /// <summary>
-        /// Writes the target PDF in <see cref="ApplicationDirectory.SpecialName.Temp"/> with the
+        /// Writes the target PDF in <see cref="ApplicationFolder.Temp"/> with the
         /// contents from the source PDF with the values of the Title, Author, Subject, and
         /// Keywords properties applied; and then calls <see cref="WriteXml(FileInfo)"/> to Write
         /// the external metadata for the PDF (Notes, Category, TaxYear, FlagDocument, and

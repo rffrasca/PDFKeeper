@@ -63,6 +63,10 @@ namespace PDFKeeper.WinForms
 
                     if (!Startup(serviceProvider))
                     {
+                        var uploadFolderShortcutService = serviceProvider.GetRequiredService<
+                            IUploadFolderShortcutService>();
+                        uploadFolderShortcutService.CreateShortcuts();
+
                         using (var form = serviceProvider.GetRequiredService<MainForm>())
                         {
                             Application.Run(form);
@@ -243,6 +247,9 @@ namespace PDFKeeper.WinForms
         {
             var applicationFolderCleaner = serviceProvider.GetRequiredService<
                 IApplicationFolderCleaner>();
+            var uploadFolderShortcutService = serviceProvider.GetRequiredService<
+                IUploadFolderShortcutService>();
+            uploadFolderShortcutService.DeleteShortcuts();
             applicationFolderCleaner.CleanFolder(ApplicationFolder.Cache);
             applicationFolderCleaner.CleanFolder(ApplicationFolder.Temp);
             Settings.Default.Save();
