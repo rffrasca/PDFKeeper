@@ -18,13 +18,16 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Commands;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Interfaces.Services.Upload;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
+using PDFKeeper.Core.Services;
+using PDFKeeper.Core.Services.Upload;
+using PDFKeeper.Core.Storage;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -34,6 +37,7 @@ namespace PDFKeeper.Core.FileIO.PDF
 {
     internal class PdfUploader
     {
+        private readonly IPdfUploadStagingService pdfUploadStagingService;
         private readonly UploadProfileManager uploadProfileManager;
         private readonly DirectoryInfo uploadDirectory;
         private readonly DirectoryInfo uploadRejectedDirectory;
@@ -41,6 +45,8 @@ namespace PDFKeeper.Core.FileIO.PDF
 
         internal PdfUploader()
         {
+            pdfUploadStagingService = new PdfUploadStagingService(
+                new ApplicationFolderManager(new ApplicationInfoService()));
             uploadProfileManager = new UploadProfileManager();
             uploadDirectory = new DirectoryInfo(
                 ApplicationFolderHelper.GetApplicationFolderPath(
@@ -289,7 +295,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                             
                             try
                             {
-                                new UploadStagingCommand(pdfMetadata.Write()).Execute(null);
+                                pdfUploadStagingService.StagePdf(pdfMetadata.Write().FullName);
                                 pdfFile.DeleteToRecycleBin();
                                 
                                 if (xmlFile.Exists)
@@ -312,7 +318,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                             }
                             else
                             {
-                                new UploadStagingCommand(pdfFile).Execute(null);
+                                pdfUploadStagingService.StagePdf(pdfFile.FullName);
                             }
                         }
                     }

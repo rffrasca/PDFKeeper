@@ -26,10 +26,12 @@ using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Interfaces.Navigation;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
+using PDFKeeper.Core.Interfaces.Services.Upload;
 using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Navigation;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.Services.Pdf;
+using PDFKeeper.Core.Services.Upload;
 using PDFKeeper.Core.Storage;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.HelpSystem;
@@ -72,6 +74,7 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IApplicationInfoService, ApplicationInfoService>();
             services.AddSingleton<IApplicationPolicyService, ApplicationPolicyService>();
             services.AddSingleton<IApplicationRegistryProvider, ApplicationRegistryProvider>();
+            services.AddSingleton<IDocumentExportService, DocumentExportService>();
             services.AddSingleton<IExceptionHandler, ExceptionHandler>();
             services.AddSingleton<IFileCache, FileCache>();
             services.AddSingleton<IFolderBrowserDialogService, FolderBrowserDialogService>();
@@ -81,6 +84,7 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IMessageBoxService, MessageBoxService>();
             services.AddSingleton<IPasswordDialogService, PdfOwnerPasswordDialogService>();
             services.AddSingleton<IPdfPreviewService, PdfPreviewService>();
+            services.AddSingleton<IPdfUploadStagingService, PdfUploadStagingService>();
             services.AddSingleton<IPdfViewerService, PdfViewerService>();
             services.AddSingleton<IPrintDialogService, PrintDialogService>();
             services.AddSingleton<IPrintPreviewDialogService, PrintPreviewDialogService>();

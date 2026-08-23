@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -22,67 +22,56 @@ using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.FileIO.PDF;
+using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
-using System;
 using System.IO;
-using System.Windows.Input;
 
-namespace PDFKeeper.Core.Commands
+namespace PDFKeeper.Core.Services
 {
     /// <summary>
-    /// Implements the ICommand interface to export a document's PDF file and metadata to a specified directory.
+    /// Default implementation of the <see cref="IDocumentExportService"/> interface.
     /// </summary>
-    /// <param name="id">The document ID.</param>
-    /// <param name="exportDirectory">The export <see cref="DirectoryInfo"/> object.</param>
-    /// <param name="fileCache">The export <see cref="IFileCache"/> instance.</param>
-    public class ExportDocumentCommand(
-        int id,
-        DirectoryInfo exportDirectory,
-        IFileCache fileCache) : ICommand
+    public sealed class DocumentExportService : IDocumentExportService
     {
-        private readonly int id = id;
-        private readonly DirectoryInfo exportDirectory = exportDirectory;
-        private readonly IFileCache fileCache = fileCache;
+        private readonly IFileCache fileCache;
 
-        public event EventHandler CanExecuteChanged { add { } remove { } }
-
-        public bool CanExecute(object parameter)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DocumentExportService"/> class.
+        /// </summary>
+        /// <param name="fileCache">
+        /// The <see cref="IFileCache"/> instance.
+        /// </param>
+#pragma warning disable IDE0290 // Use primary constructor
+        public DocumentExportService(IFileCache fileCache)
+#pragma warning restore IDE0290 // Use primary constructor
         {
-            throw new NotSupportedException();
+            this.fileCache = fileCache;
         }
 
-        public void Execute(object parameter)
+        public void ExportDocument(int documentId, string baseExportFolderPath)
         {
             Document document;
 
             using (var documentRepository = DatabaseSession.GetDocumentRepository())
             {
-                document = documentRepository.GetDocument(id, null);
+                document = documentRepository.GetDocument(documentId, null);
             }
-            
-            fileCache.AddPdf(id, document.Pdf);
-            var filesExportDirectoryPath = Path.Combine(
-                exportDirectory.FullName,
+
+            fileCache.AddPdf(documentId, document.Pdf);
+            var exportFolderPath = Path.Combine(
+                baseExportFolderPath,
                 document.Author,
                 document.Subject).ReplaceInvalidPathChars();
-            Directory.CreateDirectory(filesExportDirectoryPath);
-            var pdfFileName = string.Concat(
-                "[",
-                id,
-                "]",
-                document.Title,
-                ".pdf").ReplaceInvalidFileNameChars();
-            var pdfFile = new PdfFile(
-                new FileInfo(
-                    Path.Combine(
-                        filesExportDirectoryPath,
-                        pdfFileName)));
-            var xmlFile = pdfFile.ChangeExtension("xml");
-            File.WriteAllBytes(pdfFile.FullName, document.Pdf);
-            var pdfMetadata = new PdfMetadata(pdfFile);
+            Directory.CreateDirectory(exportFolderPath);
+            var pdfFileName = $"[{documentId}]{document.Title}.pdf";
+            pdfFileName = pdfFileName.ReplaceInvalidFileNameChars();
+            var pdfPath = Path.Combine(exportFolderPath, pdfFileName);
+            var xmlPath = Path.ChangeExtension(pdfPath, "xml");
+            File.WriteAllBytes(pdfPath, document.Pdf);
+            var pdfMetadata = new PdfMetadata(new PdfFile(new FileInfo(pdfPath)));
             var rule = new ExportPdfMetadataRule(pdfMetadata, document);
-            
+
             if (rule.ViolationFound)
             {
                 pdfMetadata.Title = document.Title;
@@ -97,9 +86,9 @@ namespace PDFKeeper.Core.Commands
             pdfMetadata.Flag = document.Flag;
             var tempPdfFile = pdfMetadata.Write();
             var tempXmlFile = tempPdfFile.ChangeExtension("xml");
-            pdfFile.Delete();
-            tempPdfFile.MoveTo(pdfFile.FullName);
-            tempXmlFile.MoveTo(xmlFile.FullName);
+            File.Delete(pdfPath);
+            tempPdfFile.MoveTo(pdfPath);
+            tempXmlFile.MoveTo(xmlPath);
         }
     }
 }

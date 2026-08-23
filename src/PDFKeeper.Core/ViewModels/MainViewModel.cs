@@ -28,7 +28,6 @@ using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Interfaces.Navigation;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
-using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Interop;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
@@ -58,6 +57,7 @@ namespace PDFKeeper.Core.ViewModels
         private readonly IAliasService aliasService;
         private readonly IApplicationFolderExplorer applicationFolderExplorer;
         private readonly IApplicationPolicyService applicationPolicyService;
+        private readonly IDocumentExportService documentExportService;
         private readonly IFileCache fileCache;
         private readonly IFolderBrowserDialogService folderBrowserDialogService;
         private readonly IKeyedServiceResolver keyedServiceResolver;
@@ -164,43 +164,43 @@ namespace PDFKeeper.Core.ViewModels
         /// Initializes a new instance of the <see cref="MainViewModel"/> class.
         /// </summary>
         /// <param name="aliasService">
-        /// The service that retrieves and assigns aliases to keys.
+        /// The <see cref="IAliasService"/> instance.
         /// </param>
         /// <param name="applicationFolderExplorer">
-        /// The service that explores application folders.
+        /// The <see cref="IApplicationFolderExplorer"/> instance.
         /// </param>
         /// <param name="applicationInfoService">
-        /// The service that provides information about the application.
+        /// The <see cref="IApplicationInfoService"/> instance.
         /// </param>
         /// <param name="applicationPolicyService">
         /// The <see cref="IApplicationPolicyService"/> instance.
         /// </param>
+        /// <param name="documentExportService">
+        /// The <see cref="IDocumentExportService"/> instance.
+        /// </param>
         /// <param name="fileCache">
-        /// The service that caches PDF documents and generated PNG preview images to disk.
+        /// The <see cref="IFileCache"/> instance.
         /// </param>
         /// <param name="folderBrowserDialogService">
-        /// The dialog service that allows the user to select a folder from the file system.
-        /// </param>
-        /// <param name="folderExplorerService">
-        /// The service that provides folder exploration using the operating system UI.
+        /// The <see cref="IFolderBrowserDialogService"/> instance.
         /// </param>
         /// <param name="keyedServiceResolver">
-        /// The service that resolves keyed dialog services.
+        /// The <see cref="IKeyedServiceResolver"/> instance.
         /// </param>
         /// <param name="messageBoxService">
-        /// The dialog service that displays messages.
+        /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
         /// <param name="pdfPreviewService">
-        /// The service that generates preview images for PDF documents.
+        /// The <see cref="IPdfPreviewService"/> instance.
         /// </param>
         /// <param name="pdfViewerService">
-        /// The service that opens and displays PDF documents in the associated viewer.
+        /// The <see cref="IPdfViewerService"/> instance.
         /// </param>
         /// <param name="printDialogService">
-        /// The dialog service that displays the system print dialog.
+        /// The <see cref="IPrintDialogService"/> instance.
         /// </param>
         /// <param name="printPreviewDialogService">
-        /// The dialog service that displays the system print preview dialog.
+        /// The <see cref="IPrintPreviewDialogService"/> instance.
         /// </param>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="applicationInfoService"/> is null.
@@ -210,6 +210,7 @@ namespace PDFKeeper.Core.ViewModels
             IApplicationFolderExplorer applicationFolderExplorer,
             IApplicationInfoService applicationInfoService,
             IApplicationPolicyService applicationPolicyService,
+            IDocumentExportService documentExportService,
             IFileCache fileCache,
             IFolderBrowserDialogService folderBrowserDialogService,
             IKeyedServiceResolver keyedServiceResolver,
@@ -222,6 +223,7 @@ namespace PDFKeeper.Core.ViewModels
             this.aliasService = aliasService;
             this.applicationFolderExplorer = applicationFolderExplorer;
             this.applicationPolicyService = applicationPolicyService;
+            this.documentExportService = documentExportService;
             this.fileCache = fileCache;
             this.folderBrowserDialogService = folderBrowserDialogService;
             this.keyedServiceResolver = keyedServiceResolver;
@@ -2633,10 +2635,7 @@ namespace PDFKeeper.Core.ViewModels
                                 fileCache.Delete(id);
                                 break;
                             case CheckedDocumentAction.Export:
-                                new Commands.ExportDocumentCommand(
-                                    id,
-                                    new DirectoryInfo(value),
-                                    fileCache).Execute(null);
+                                documentExportService.ExportDocument(id, value);
                                 break;
                         }
                     }

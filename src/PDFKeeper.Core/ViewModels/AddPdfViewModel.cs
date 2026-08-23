@@ -25,6 +25,7 @@ using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
+using PDFKeeper.Core.Interfaces.Services.Upload;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Services;
@@ -43,6 +44,7 @@ namespace PDFKeeper.Core.ViewModels
     {
         private readonly IMessageBoxService messageBoxService;
         private readonly IPasswordDialogService passwordDialogService;
+        private readonly IPdfUploadStagingService pdfUploadStagingService;
         private readonly IPdfViewerService pdfViewerService;
         private readonly IFileDialogService openFileDialogService;
         private Document document;
@@ -56,22 +58,25 @@ namespace PDFKeeper.Core.ViewModels
         /// Initializes a new instance of the <see cref="AddPdfViewModel"/> class.
         /// </summary>
         /// <param name="keyedServiceResolver">
-        /// The service that resolves keyed dialog services.
+        /// The <see cref="IKeyedServiceResolver"/> instance.
         /// </param>
         /// <param name="messageBoxService">
-        /// The dialog service that displays messages.
+        /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
         /// <param name="passwordDialogService">
-        /// The service that displays a dialog for entering an owner password when
-        /// opening password‑protected PDF files.
+        /// The <see cref="IPasswordDialogService"/> instance.
+        /// </param>
+        /// <param name="pdfUploadStagingService">
+        /// The <see cref="IPdfUploadStagingService"/> instance.
         /// </param>
         /// <param name="pdfViewerService">
-        /// The service that opens and displays PDF documents.
+        /// The <see cref="IPdfViewerService"/> instance.
         /// </param>
         public AddPdfViewModel(
             IKeyedServiceResolver keyedServiceResolver,
             IMessageBoxService messageBoxService,
             IPasswordDialogService passwordDialogService,
+            IPdfUploadStagingService pdfUploadStagingService,
             IPdfViewerService pdfViewerService)
         {
             if (keyedServiceResolver is null)
@@ -81,6 +86,7 @@ namespace PDFKeeper.Core.ViewModels
 
             this.messageBoxService = messageBoxService;
             this.passwordDialogService = passwordDialogService;
+            this.pdfUploadStagingService = pdfUploadStagingService;
             this.pdfViewerService = pdfViewerService;
             openFileDialogService = keyedServiceResolver.GetRequiredKeyedService<
                 IFileDialogService>(FileDialogServiceKey.OpenFile);
@@ -344,7 +350,7 @@ namespace PDFKeeper.Core.ViewModels
             try
             {
                 var targetPdfFile = pdfMetadata.Write();
-                new Commands.UploadStagingCommand(targetPdfFile).Execute(null);
+                pdfUploadStagingService.StagePdf(targetPdfFile.FullName);
 
                 if (deleteSourcePdf)
                 {

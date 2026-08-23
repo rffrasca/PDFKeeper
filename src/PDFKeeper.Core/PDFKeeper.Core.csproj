@@ -115,11 +115,13 @@
     <Compile Include="Interfaces\Services\IApplicationInfoService.cs" />
     <Compile Include="Interfaces\Services\IApplicationPolicyService.cs" />
     <Compile Include="Interfaces\Services\IApplicationRegistryProvider.cs" />
+    <Compile Include="Interfaces\Services\IDocumentExportService.cs" />
     <Compile Include="Interfaces\Services\IProcessService.cs" />
     <Compile Include="Interfaces\Services\IUploadFolderShortcutService.cs" />
     <Compile Include="Interfaces\Services\Pdf\IPdfImageService.cs" />
     <Compile Include="Interfaces\Services\Pdf\IPdfPreviewService.cs" />
     <Compile Include="Interfaces\Services\Pdf\IPdfViewerService.cs" />
+    <Compile Include="Interfaces\Services\Upload\IPdfUploadStagingService.cs" />
     <Compile Include="Interfaces\Storage\IApplicationFolderCleaner.cs" />
     <Compile Include="Interfaces\Navigation\IApplicationFolderExplorer.cs" />
     <Compile Include="Interfaces\Storage\IApplicationFolderManager.cs" />
@@ -129,13 +131,13 @@
     <Compile Include="Services\ApplicationInfoService.cs" />
     <Compile Include="Services\ApplicationPolicyService.cs" />
     <Compile Include="Services\ApplicationRegistryProvider.cs" />
+    <Compile Include="Services\DocumentExportService.cs" />
     <Compile Include="Services\ExceptionHandler.cs" />
     <Compile Include="Interfaces\Services\IAliasService.cs" />
     <Compile Include="Interfaces\Services\IExceptionHandler.cs" />
     <Compile Include="Interfaces\Services\IKeyedServiceResolver.cs" />
     <Compile Include="Interfaces\Services\IVirtualKeyService.cs" />
     <Compile Include="Services\KeyedServiceResolver.cs" />
-    <Compile Include="Commands\ExportDocumentCommand.cs" />
     <Compile Include="DataAccess\Repository\DocumentRepositoryFactory.cs" />
     <Compile Include="DataAccess\Repository\MySqlDocumentRepository.cs" />
     <Compile Include="DataAccess\Repository\SqlServerDocumentRepository.cs" />
@@ -165,6 +167,7 @@
     <Compile Include="Services\Pdf\PdfViewerService.cs" />
     <Compile Include="Services\ProcessService.cs" />
     <Compile Include="Services\UploadFolderShortcutService.cs" />
+    <Compile Include="Services\Upload\PdfUploadStagingService.cs" />
     <Compile Include="Services\VirtualKeyService.cs" />
     <Compile Include="Storage\ApplicationFolderCleaner.cs" />
     <Compile Include="Navigation\ApplicationFolderExplorer.cs" />
@@ -200,7 +203,6 @@
     <Compile Include="FileIO\PDF\IPdfMetadata.cs" />
     <Compile Include="Models\IPdfExternalMetadata.cs" />
     <Compile Include="Models\IUploadProfile.cs" />
-    <Compile Include="Commands\UploadStagingCommand.cs" />
     <Compile Include="Extensions\SecureStringExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Helpers\ResourceHelper.cs" />
