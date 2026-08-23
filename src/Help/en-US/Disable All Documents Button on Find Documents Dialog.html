@@ -2,10 +2,10 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>Hide All Documents Button on Find Documents Dialog</title>
-	<meta name="generator" content="LibreOffice 25.2.1.2 (Windows)"/>
+	<title>Disable All Documents Button on Find Documents Dialog</title>
+	<meta name="generator" content="LibreOffice 26.2.4.2 (Windows)"/>
 	<meta name="created" content="2018-01-15T00:00:00.013124628"/>
-	<meta name="changed" content="2025-03-23T10:13:28.616895500"/>
+	<meta name="changed" content="2026-07-18T15:22:02.277359500"/>
 	<meta name="description" content="
 *******************************************************************************
 * PDFKeeper -- Open Source PDF Document Management
@@ -27,24 +27,25 @@
 * along with PDFKeeper.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
 *******************************************************************************"/>
 </head>
-<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Hide
+<body lang="en-US" dir="ltr"><h1><font face="Segoe UI, sans-serif"><b>Disable
 All Documents Button on Find Documents Dialog</b></font></h1>
 <p><font face="Segoe UI, sans-serif">In a multi-user environment with
 a database that contains thousands of documents, it may be necessary
 to limit who can find all documents.</font></p>
 <ul>
-	<li><p><font face="Segoe UI, sans-serif">To hide the <b>All
+	<li><p><font face="Segoe UI, sans-serif">To disable the <b>All
 	Documents</b> button on the <b>Find Documents</b> dialog, apply
-	<b>SetHideAllDocumentsPolicy.reg</b> to the targeted computers.</font></p></li>
+	<b>SetDisableAllDocumentsViewingPolicy</b><b>.reg</b> to the
+	targeted computers.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">To clear the policy, apply
-	</font><font face="Segoe UI, sans-serif"><b>ClearHideAllDocumentsPolicy.reg</b></font>
+	</font><font face="Segoe UI, sans-serif"><b>ClearDisableAllDocumentsViewingPolicy</b></font><font face="Segoe UI, sans-serif"><b>.reg</b></font>
 	<font face="Segoe UI, sans-serif">to the targeted computers.</font></p></li>
 </ul>
 <p><font face="Segoe UI, sans-serif"><b>Additional Information:</b></font></p>
 <ul>
-	<li><p><font face="Segoe UI, sans-serif"><b>SetHideAllDocumentsPolicy.reg</b>
-	and <b>ClearHideAllDocumentsPolicy.reg</b> can be found in
-	<b>%LOCALAPPDATA%\Programs\PDFKeeper</b>.</font></p></li>
+	<li><p><font face="Segoe UI, sans-serif"><b>SetDisableAllDocumentsViewingPolicy</b><b>.reg</b>
+	and <b>ClearDisableAllDocumentsViewingPolicy</b><b>.reg</b> can be
+	found in <b>%LOCALAPPDATA%\Programs\PDFKeeper</b>.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">Elevated privileges are
 	required to set or clear this policy.</font></p></li>
 	<li><p><font face="Segoe UI, sans-serif">PDFKeeper will need to be
