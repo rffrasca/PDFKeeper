@@ -19,19 +19,22 @@
 // ****************************************************************************
 
 using CommunityToolkit.Mvvm.Input;
-using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Interfaces.Navigation;
+using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
+using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Interop;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Rules;
 using PDFKeeper.Core.Services;
+using PDFKeeper.Core.State;
 using System;
 using System.Collections.ObjectModel;
 using System.Data;
@@ -53,15 +56,17 @@ namespace PDFKeeper.Core.ViewModels
     public sealed class MainViewModel : ViewModelBase
     {
         private readonly IAliasService aliasService;
+        private readonly IApplicationFolderExplorer applicationFolderExplorer;
+        private readonly IApplicationPolicyService applicationPolicyService;
         private readonly IFileCache fileCache;
         private readonly IFolderBrowserDialogService folderBrowserDialogService;
-        private readonly IFolderExplorerService folderExplorerService;
         private readonly IKeyedServiceResolver keyedServiceResolver;
         private readonly IMessageBoxService messageBoxService;
         private readonly IPdfPreviewService pdfPreviewService;
         private readonly IPdfViewerService pdfViewerService;
         private readonly IPrintDialogService printDialogService;
         private readonly IPrintPreviewDialogService printPreviewDialogService;
+        private readonly ApplicationInfoDto applicationInfo;
         private IDialogService addPdfDialogService;
         private IDialogService setTitleDialogService;
         private IDialogService setAuthorDialogService;
@@ -150,8 +155,6 @@ namespace PDFKeeper.Core.ViewModels
         private bool uploadRejectedImageVisible;
         private readonly PrintDocument printDocument;
         private readonly PdfUploader pdfUploader;
-        private readonly DirectoryInfo uploadRejectedDirectory;
-        private readonly ExecutingAssembly executingAssembly;
         private Document currentDocument;
         private string textToPrint;
 
@@ -162,6 +165,15 @@ namespace PDFKeeper.Core.ViewModels
         /// </summary>
         /// <param name="aliasService">
         /// The service that retrieves and assigns aliases to keys.
+        /// </param>
+        /// <param name="applicationFolderExplorer">
+        /// The service that explores application folders.
+        /// </param>
+        /// <param name="applicationInfoService">
+        /// The service that provides information about the application.
+        /// </param>
+        /// <param name="applicationPolicyService">
+        /// The <see cref="IApplicationPolicyService"/> instance.
         /// </param>
         /// <param name="fileCache">
         /// The service that caches PDF documents and generated PNG preview images to disk.
@@ -190,11 +202,16 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="printPreviewDialogService">
         /// The dialog service that displays the system print preview dialog.
         /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="applicationInfoService"/> is null.
+        /// </exception>
         public MainViewModel(
             IAliasService aliasService,
+            IApplicationFolderExplorer applicationFolderExplorer,
+            IApplicationInfoService applicationInfoService,
+            IApplicationPolicyService applicationPolicyService,
             IFileCache fileCache,
             IFolderBrowserDialogService folderBrowserDialogService,
-            IFolderExplorerService folderExplorerService,
             IKeyedServiceResolver keyedServiceResolver,
             IMessageBoxService messageBoxService,
             IPdfPreviewService pdfPreviewService,
@@ -203,22 +220,21 @@ namespace PDFKeeper.Core.ViewModels
             IPrintPreviewDialogService printPreviewDialogService)
         {
             this.aliasService = aliasService;
+            this.applicationFolderExplorer = applicationFolderExplorer;
+            this.applicationPolicyService = applicationPolicyService;
             this.fileCache = fileCache;
             this.folderBrowserDialogService = folderBrowserDialogService;
-            this.folderExplorerService = folderExplorerService;
             this.keyedServiceResolver = keyedServiceResolver;
             this.messageBoxService = messageBoxService;
             this.pdfPreviewService = pdfPreviewService;
             this.pdfViewerService = pdfViewerService;
             this.printDialogService = printDialogService;
             this.printPreviewDialogService = printPreviewDialogService;
-
-            ResolveKeyedServices();
+            applicationInfo = applicationInfoService?.GetApplicationInfo() ??
+                throw new ArgumentNullException(nameof(applicationInfoService));
+            ResolveKeyedServices();            
             printDocument = new PrintDocument();
             pdfUploader = new PdfUploader();
-            uploadRejectedDirectory = new ApplicationDirectory().GetDirectory(
-                ApplicationDirectory.SpecialName.UploadRejected);
-            executingAssembly = new ExecutingAssembly();
             printDocument.PrintPage += PrintDocument_PrintPage;
             SetActions();
             checkedDocumentIds = [];
@@ -1097,7 +1113,8 @@ namespace PDFKeeper.Core.ViewModels
                 SetViewTitleText();
                 OnResetBindings?.Invoke();
             };
-            FindDocumentsViewState.OnFindDocumentsParamChanged = () => GetListOfDocuments(false);
+
+            FindDocumentsState.OnFindDocumentsParamChanged = () => GetListOfDocuments(false);
         }
 
         private void InitializeCommands()
@@ -1274,7 +1291,7 @@ namespace PDFKeeper.Core.ViewModels
                         findDocumentsParam.AllDocumentsChecked = true;
                         break;
                 }
-                FindDocumentsViewState.FindDocumentsParam = findDocumentsParam;
+                FindDocumentsState.FindDocumentsParam = findDocumentsParam;
 
                 GetListOfDocuments(false);
             }
@@ -1566,7 +1583,7 @@ namespace PDFKeeper.Core.ViewModels
             var targetFilePath = saveFileDialogService.ShowDialog(
                 GetWindowHandle.Invoke(),
                 Resources.SqliteFilter,
-                $"{executingAssembly.ProductName}-New.sqlite");
+                $"{applicationInfo.ProductName}-New.sqlite");
 
             if (targetFilePath != null)
             {
@@ -1651,7 +1668,7 @@ namespace PDFKeeper.Core.ViewModels
                 selectedPath = Path.Combine(
                     selectedPath,
                     string.Concat(
-                        executingAssembly.ProductName,
+                        applicationInfo.ProductName,
                         "-",
                         Resources.Export,
                         "_",
@@ -2107,7 +2124,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void ExploreUploadRejectedFolder()
         {
-            folderExplorerService.Explore(uploadRejectedDirectory);
+            applicationFolderExplorer.ExploreFolder(ApplicationFolder.UploadRejected);
         }
 
         private async Task CheckForFlaggedDocuments()
@@ -2169,8 +2186,8 @@ namespace PDFKeeper.Core.ViewModels
             {
                 try
                 {
-                    if (ApplicationPolicy.GetPolicyValue(
-                        ApplicationPolicy.PolicyName.BlockingUpload))
+                    if (applicationPolicyService.GetPolicyValue(
+                        ApplicationPolicy.BlockUIDuringUpload))
                     {
                         OnBlockingUploadStarted?.Invoke();
                     }
@@ -2191,8 +2208,8 @@ namespace PDFKeeper.Core.ViewModels
                 }
                 finally
                 {
-                    if (ApplicationPolicy.GetPolicyValue(
-                        ApplicationPolicy.PolicyName.BlockingUpload))
+                    if (applicationPolicyService.GetPolicyValue(
+                        ApplicationPolicy.BlockUIDuringUpload))
                     {
                         OnBlockingUploadFinished?.Invoke();
                     }
@@ -2365,11 +2382,11 @@ namespace PDFKeeper.Core.ViewModels
 
                     using (var documentRepository = DatabaseSession.GetDocumentRepository())
                     {
-                        if (FindDocumentsViewState.FindDocumentsParam.FindBySearchTermChecked)
+                        if (FindDocumentsState.FindDocumentsParam.FindBySearchTermChecked)
                         {
                             currentDocument = documentRepository.GetDocument(
                                 CurrentDocumentId,
-                                FindDocumentsViewState.FindDocumentsParam.SearchTerm);
+                                FindDocumentsState.FindDocumentsParam.SearchTerm);
                         }
                         else
                         {
@@ -2476,7 +2493,7 @@ namespace PDFKeeper.Core.ViewModels
         /// </param>
         private void GetListOfDocuments(bool selectCurrentDocument)
         {
-            var findDocumentsParam = FindDocumentsViewState.FindDocumentsParam;
+            var findDocumentsParam = FindDocumentsState.FindDocumentsParam;
 
             if (findDocumentsParam != null)
             {
@@ -2755,7 +2772,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SetViewTitleText()
         {
-            var appName = executingAssembly.ProductName;
+            var appName = applicationInfo.ProductName;
 
             if (DatabaseSession.PlatformName.Equals(
                 DatabaseSession.CompatiblePlatformName.Sqlite))

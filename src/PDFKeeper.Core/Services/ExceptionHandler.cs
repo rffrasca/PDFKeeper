@@ -18,10 +18,12 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Interfaces.Services;
+using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Properties;
+using PDFKeeper.Core.Storage;
 using System;
 using System.IO;
 
@@ -32,20 +34,29 @@ namespace PDFKeeper.Core.Services
     /// </summary>
     public sealed class ExceptionHandler : IExceptionHandler
     {
+        private readonly IApplicationFolderManager applicationFolderManager;
         private readonly IMessageBoxService messageBoxService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExceptionHandler"/> class.
         /// </summary>
-        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+        /// <param name="applicationFolderManager">
+        /// The <see cref="IApplicationFolderManager"/> instance.
+        /// </param>
+        /// <param name="messageBoxService">
+        /// The <see cref="IMessageBoxService"/> instance.
+        /// </param>
 #pragma warning disable IDE0290 // Use primary constructor
-        public ExceptionHandler(IMessageBoxService messageBoxService)
+        public ExceptionHandler(
+            IApplicationFolderManager applicationFolderManager,
+            IMessageBoxService messageBoxService)
 #pragma warning restore IDE0290 // Use primary constructor
         {
+            this.applicationFolderManager = applicationFolderManager;
             this.messageBoxService = messageBoxService;
         }
 
-        public void Handle(Exception exception, ExceptionType exceptionType)
+        public void HandleException(Exception exception, ExceptionType exceptionType)
         {
             if (exception is null)
             {
@@ -56,10 +67,8 @@ namespace PDFKeeper.Core.Services
                 ? Resources.UnhandledException
                 : Resources.ThreadException;
             var logPath = Path.Combine(
-                new ApplicationDirectory().GetDirectory(
-                    ApplicationDirectory.SpecialName.Log).FullName,
+                applicationFolderManager.GetOrCreateFolderPath(ApplicationFolder.Log),
                 "PDFKeeper.log");
-
             LogException(exception, headerText, logPath);
             ShowException(exception, headerText, logPath);
         }

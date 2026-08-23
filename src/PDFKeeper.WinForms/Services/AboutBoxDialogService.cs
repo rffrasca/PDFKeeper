@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
@@ -27,24 +28,26 @@ using System.Windows.Forms;
 namespace PDFKeeper.WinForms.Services
 {
     /// <summary>
-    /// Service for displaying the About Box dialog.
-    /// </summary>
+    /// <see cref="AboutBox"/> implementation of the <see cref="IDialogService"/> interface.
+    /// </summary> 
     internal sealed class AboutBoxDialogService : IDialogService
     {
-        private readonly IHelpService helpService;
+        private readonly IHelpViewer helpViewer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AboutBoxDialogService"/> class.
         /// </summary>
-        /// <param name="helpService">A service that shows a Help file topic modelessly.</param>
-        public AboutBoxDialogService(IHelpService helpService)
+        /// <param name="helpViewer">
+        /// The <see cref="IHelpViewer"/> instance.
+        /// </param>
+        public AboutBoxDialogService(IHelpViewer helpViewer)
         {
-            this.helpService = helpService;
+            this.helpViewer = helpViewer;
         }
 
         public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
-            using (var dialog = new AboutBox(helpService))
+            using (var dialog = new AboutBox(helpViewer))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
             }

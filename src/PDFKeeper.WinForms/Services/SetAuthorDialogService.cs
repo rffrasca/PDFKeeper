@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
@@ -28,24 +29,33 @@ using System.Windows.Forms;
 namespace PDFKeeper.WinForms.Services
 {
     /// <summary>
-    /// Service for displaying the Set Author dialog.
-    /// </summary>
+    /// <see cref="SetAuthorForm"/> implementation of the <see cref="IDialogService"/> interface.
+    /// </summary> 
     internal sealed class SetAuthorDialogService : IDialogService
     {
+        private readonly IHelpFileResolver helpFileResolver;
         private readonly IMessageBoxService messageBoxService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SetAuthorDialogService"/> class.
         /// </summary>
-        /// <param name="messageBoxService">A dialog service that displays messages.</param>
-        public SetAuthorDialogService(IMessageBoxService messageBoxService)
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        /// <param name="messageBoxService">
+        /// The <see cref="IMessageBoxService"/> instance.
+        /// </param>
+        public SetAuthorDialogService(
+            IHelpFileResolver helpFileResolver,
+            IMessageBoxService messageBoxService)
         {
+            this.helpFileResolver = helpFileResolver;
             this.messageBoxService = messageBoxService;
         }
 
         public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
-            using (var dialog = new SetAuthorForm(messageBoxService))
+            using (var dialog = new SetAuthorForm(helpFileResolver, messageBoxService))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
 

@@ -18,41 +18,33 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using Microsoft.Win32;
-using PDFKeeper.Core.DataAccess;
-using System;
-
-namespace PDFKeeper.Core.Application
+namespace PDFKeeper.Core.Interfaces.Services
 {
-    internal class ApplicationPolicy
+    /// <summary>
+    /// Defines a service that retrieves and assigns aliases for specified keys.
+    /// </summary>
+    public interface IAliasService
     {
-        internal enum PolicyName
-        {
-            HideAllDocuments,
-            BlockingUpload
-        }
-
         /// <summary>
-        /// Gets the application policy applied state.
+        /// Retrieves the alias associated with the specified key.
         /// </summary>
-        /// <param name="policy">The <see cref="PolicyName"/>.</param>
+        /// <param name="key">
+        /// The key for which to retrieve the alias.
+        /// </param>
         /// <returns>
-        /// <c>true</c> or <c>false</c> if policy is applied. When
-        /// <see cref="DatabaseSession.PlatformName"/> is
-        /// <see cref="DatabaseSession.CompatiblePlatformName.Sqlite"/>, <c>false</c> will be
-        /// returned.
+        /// The alias corresponding to the given key.
         /// </returns>
-        internal static bool GetPolicyValue(PolicyName policy)
-        {
-            if (DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Sqlite))
-            {
-                return false;               
-            }
-            else
-            {
-                return Convert.ToBoolean(Registry.GetValue(ApplicationRegistry.PoliciesKeyPath,
-                    policy.ToString(), 0) is 1);
-            }
-        }
+        string GetAlias(string key);
+        
+        /// <summary>
+        /// Associates an alias with the specified key.
+        /// </summary>
+        /// <param name="key">
+        /// The key to associate with an alias.
+        /// </param>
+        /// <param name="alias">
+        /// The alias to assign to the key.
+        /// </param>
+        void SetAlias(string key, string alias);
     }
 }

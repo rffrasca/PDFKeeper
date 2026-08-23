@@ -18,7 +18,8 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Enums;
+using PDFKeeper.Core.Helpers;
 using System;
 using System.Collections.ObjectModel;
 using System.Drawing.Imaging;
@@ -62,16 +63,12 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
             {
                 try
                 {
-                    var imageFile = Path.Combine(
-                        new ApplicationDirectory().GetDirectory(
-                            ApplicationDirectory.SpecialName.Temp).FullName,
-                        string.Concat(
-                            Guid.NewGuid(),
-                            ".",
-                            imageFormat.ToString()));
-                    File.WriteAllBytes(imageFile, image);
+                    var imageFilePath = Path.Combine(
+                        ApplicationFolderHelper.GetApplicationFolderPath(ApplicationFolder.Temp),
+                        $"{Guid.NewGuid()}.{imageFormat}");
+                    File.WriteAllBytes(imageFilePath, image);
 
-                    using (var stream = File.Open(imageFile, FileMode.Open, FileAccess.Read))
+                    using (var stream = File.Open(imageFilePath, FileMode.Open, FileAccess.Read))
                     {
                         var bmpDecoder = await BitmapDecoder.CreateAsync(
                             stream.AsRandomAccessStream()).AsTask().ConfigureAwait(
@@ -93,7 +90,7 @@ namespace PDFKeeper.Core.FileIO.TextExtractor
                         }
                     }
 
-                    File.Delete(imageFile);
+                    File.Delete(imageFilePath);
                 }
                 catch (ArithmeticException) { }
             }

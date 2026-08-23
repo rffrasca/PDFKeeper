@@ -18,18 +18,18 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interop;
 
 namespace PDFKeeper.Core.Services
 {
     /// <summary>
-    /// Provides functionality for querying the state of virtual keys.
+    /// Default implementation of the <see cref="IVirtualKeyService"/> interface.
     /// </summary>
-    public class VirtualKeyService : IVirtualKeyService
+    public sealed class VirtualKeyService : IVirtualKeyService
     {
         private const int VK_LBUTTON = 0x01;
 
-        /// <inheritdoc/>
         public bool IsLeftButtonDown()
         {
             return (NativeMethods.GetKeyState(VK_LBUTTON) & 0x8000) != 0;

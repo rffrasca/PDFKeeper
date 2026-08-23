@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,23 +18,19 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using Microsoft.VisualBasic.ApplicationServices;
-using System.Reflection;
-
-namespace PDFKeeper.Core.Application
+namespace PDFKeeper.Core.Interfaces.Services
 {
-    public class ExecutingAssembly
+    /// <summary>
+    /// Defines a service for querying the state of virtual keys.
+    /// </summary>
+    public interface IVirtualKeyService
     {
-        private readonly AssemblyInfo assembly;
-
-        public ExecutingAssembly()
-        {
-            assembly = new AssemblyInfo(Assembly.GetExecutingAssembly());
-        }
-
-        public string DirectoryPath => assembly.DirectoryPath;
-        public string CompanyName => assembly.CompanyName;
-        public string ProductName => assembly.ProductName;
-        public string Version => assembly.Version.ToString();
+        /// <summary>
+        /// Determines whether the left mouse button is currently pressed.
+        /// </summary>
+        /// <returns>
+        /// true if the left mouse button is pressed; otherwise, false.
+        /// </returns>
+        bool IsLeftButtonDown();
     }
 }

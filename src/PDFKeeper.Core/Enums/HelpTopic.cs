@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,25 +18,41 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-namespace PDFKeeper.Core.Services
+namespace PDFKeeper.Core.Enums
 {
     /// <summary>
-    /// Provides methods to retrieve and assign aliases for specified keys.
+    /// Defines the available help topics within the application's compiled HTML help file (.chm).
     /// </summary>
-    public interface IAliasService
+    public enum HelpTopic
     {
         /// <summary>
-        /// Retrieves the alias associated with the specified key.
+        /// The donation information topic.
         /// </summary>
-        /// <param name="key">The key for which to retrieve the alias.</param>
-        /// <returns>The alias corresponding to the given key.</returns>
-        string GetAlias(string key);
-        
+        Donate,
+
         /// <summary>
-        /// Associates an alias with the specified key.
+        /// The software license topic.
         /// </summary>
-        /// <param name="key">The key to associate with an alias.</param>
-        /// <param name="alias">The alias to assign to the key.</param>
-        void SetAlias(string key, string alias);
+        License,
+
+        /// <summary>
+        /// The instructions for configuring a multi-user database.
+        /// </summary>
+        SetupMultiUserDatabase,
+
+        /// <summary>
+        /// The instructions for configuring a single-user database.
+        /// </summary>
+        SetupSingleUserDatabase,
+
+        /// <summary>
+        /// The notices for third-party components used by the application.
+        /// </summary>
+        ThirdPartyNotices,
+
+        /// <summary>
+        /// The general usage instructions for PDFKeeper.
+        /// </summary>
+        UsingPDFKeeper
     }
 }

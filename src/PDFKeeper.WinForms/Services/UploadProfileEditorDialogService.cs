@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
@@ -27,24 +28,36 @@ using System.Windows.Forms;
 namespace PDFKeeper.WinForms.Services
 {
     /// <summary>
-    /// Service for displaying the Upload Profile Editor dialog.
+    /// <see cref="UploadProfileEditorForm"/> implementation of the
+    /// <see cref="IDialogService"/> interface.
     /// </summary>
     internal sealed class UploadProfileEditorDialogService : IDialogService
     {
+        private readonly IHelpFileResolver helpFileResolver;
         private readonly IMessageBoxService messageBoxService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadProfileEditorDialogService"/> class.
         /// </summary>
-        /// <param name="messageBoxService">A dialog service that displays messages.</param>
-        public UploadProfileEditorDialogService(IMessageBoxService messageBoxService)
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        /// <param name="messageBoxService">
+        /// The <see cref="IMessageBoxService"/> instance.
+        /// </param>
+        public UploadProfileEditorDialogService(
+            IHelpFileResolver helpFileResolver,
+            IMessageBoxService messageBoxService)
         {
+            this.helpFileResolver = helpFileResolver;
             this.messageBoxService = messageBoxService;
         }
 
         public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
-            using (var dialog = new UploadProfileEditorForm(messageBoxService, arg))
+            using (var dialog = new UploadProfileEditorForm(
+                helpFileResolver,
+                messageBoxService, arg))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
             }

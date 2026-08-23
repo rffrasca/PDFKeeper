@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
 using System;
@@ -34,13 +34,21 @@ namespace PDFKeeper.WinForms.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadProfilesForm"/> class.
         /// </summary>
-        /// <param name="viewModel">The view model to be used by this form.</param>
-        public UploadProfilesForm(UploadProfilesViewModel viewModel)
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        /// <param name="viewModel">
+        /// The view model to be used by this form.
+        /// The <see cref="UploadProfilesViewModel"/> instance.
+        /// </param>
+        public UploadProfilesForm(
+            IHelpFileResolver helpFileResolver,
+            UploadProfilesViewModel viewModel)
         {
             InitializeComponent();
             this.viewModel = viewModel;
             UploadProfilesViewModelBindingSource.DataSource = viewModel;
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
+            HelpProvider.HelpNamespace = helpFileResolver.GetHelpFilePath();
             UploadProfilesFileSystemWatcher.Path = viewModel.UploadProfilesDirectoryPath;
             viewModel.GetWindowHandle = () => Handle;
             SetTags();            

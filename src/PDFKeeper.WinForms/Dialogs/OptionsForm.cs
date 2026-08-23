@@ -18,9 +18,9 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
-using PDFKeeper.Core.Services;
+using PDFKeeper.Core.Interfaces.HelpSystem;
+using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.WinForms.Properties;
 using System;
 using System.Windows.Forms;
@@ -35,13 +35,16 @@ namespace PDFKeeper.WinForms.Dialogs
         /// Initializes a new instance of the <see cref="OptionsForm"/> class.
         /// </summary>
         /// <param name="aliasService">
-        /// A service that retrieves and assigns aliases to keys.
+        /// The <see cref="IAliasService"/> instance.
         /// </param>
-        public OptionsForm(IAliasService aliasService)
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        public OptionsForm(IAliasService aliasService, IHelpFileResolver helpFileResolver)
         {
             InitializeComponent();
             this.aliasService = aliasService;
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
+            HelpProvider.HelpNamespace = helpFileResolver.GetHelpFilePath();
 
             if (!DatabaseSession.PlatformName.Equals(
                 DatabaseSession.CompatiblePlatformName.Sqlite))

@@ -39,7 +39,8 @@ namespace PDFKeeper.Core.Interfaces.Services.Pdf
         /// The resolution in DPI for the output TIFF images. Defaults to 600.
         /// </param>
         /// <returns>
-        /// A read-only list of byte arrays, each representing a TIFF image of a PDF page.
+        /// The list of byte arrays in a read-only collection, each representing a TIFF image
+        /// of a PDF page.
         /// </returns>
         Task<IReadOnlyList<byte[]>> GetAllPagesAsTiffImagesAsync(
             string pdfPath,

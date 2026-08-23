@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
 using System;
@@ -35,13 +35,20 @@ namespace PDFKeeper.WinForms.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="FindDocumentsForm"/> class.
         /// </summary>
-        /// <param name="viewModel">The view model used by this form.</param>
-        public FindDocumentsForm(FindDocumentsViewModel viewModel)
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        /// <param name="viewModel">
+        /// The <see cref="FindDocumentsViewModel"/> instance.
+        /// </param>
+        public FindDocumentsForm(
+            IHelpFileResolver helpFileResolver,
+            FindDocumentsViewModel viewModel)
         {
             InitializeComponent();
             this.viewModel = viewModel;
             FindDocumentsViewModelBindingSource.DataSource = viewModel;
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
+            HelpProvider.HelpNamespace = helpFileResolver.GetHelpFilePath();
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
             SetActions();
             SetTags();

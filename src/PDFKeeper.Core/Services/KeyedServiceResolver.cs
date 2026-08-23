@@ -19,6 +19,7 @@
 // ****************************************************************************
 
 using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Interfaces.Services;
 using System;
 
 namespace PDFKeeper.Core.Services
@@ -34,7 +35,7 @@ namespace PDFKeeper.Core.Services
         /// Initializes a new instance of the <see cref="KeyedServiceAccessor"/> class.
         /// </summary>
         /// <param name="serviceProvider">
-        /// The <see cref="IServiceProvider"/> containing application services.
+        /// The <see cref="IServiceProvider"/> instance.
         /// </param>
 #pragma warning disable IDE0290 // Use primary constructor
         public KeyedServiceResolver(IServiceProvider serviceProvider)

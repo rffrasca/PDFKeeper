@@ -18,10 +18,11 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.FileIO.PDF;
-using PDFKeeper.Core.Services;
+using PDFKeeper.Core.Interfaces.HelpSystem;
+using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
 using PDFKeeper.WinForms.Dialogs;
@@ -38,7 +39,8 @@ namespace PDFKeeper.WinForms.Views
 {
     internal partial class MainForm : Form
     {
-        private readonly IHelpService helpService;
+        private readonly IHelpFileResolver helpFileResolver;
+        private readonly IHelpViewer helpViewer;
         private readonly IVirtualKeyService virtualKeyService;
         private readonly MainViewModel viewModel;
         private readonly FindDocumentsForm findDocumentsForm;
@@ -53,37 +55,42 @@ namespace PDFKeeper.WinForms.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="MainForm"/> class.
         /// </summary>
-        /// <param name="helpService">
-        /// A service that shows a Help file topic modelessly.
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        /// <param name="helpViewer">
+        /// The <see cref="IHelpViewer"/> instance.
         /// </param>
         /// <param name="virtualKeyService">
-        /// A service used to determine the state of mouse buttons during the drag‑enter operation.
+        /// The <see cref="IVirtualKeyService"/> instance.
         /// </param>
         /// <param name="viewModel">
-        /// The view model used by this form.
+        /// The <see cref="MainViewModel"/> instance.
         /// </param>
         /// <param name="findDocumentsForm">
-        /// The form used for finding documents.
+        /// The <see cref="FindDocumentsForm"/> instance.
         /// </param>
         /// <param name="uploadProfilesForm">
-        /// The form used to manage upload profiles.
+        /// The <see cref="UploadProfilesForm"/> instance.
         /// </param>
         public MainForm(
-            IHelpService helpService,
+            IHelpFileResolver helpFileResolver,
+            IHelpViewer helpViewer,
             IVirtualKeyService virtualKeyService,
             MainViewModel viewModel,
             FindDocumentsForm findDocumentsForm,
             UploadProfilesForm uploadProfilesForm)
         {
             InitializeComponent();
-            this.helpService = helpService;
+            this.helpFileResolver = helpFileResolver;
+            this.helpViewer = helpViewer;
             this.virtualKeyService = virtualKeyService;
             this.viewModel = viewModel;
             this.findDocumentsForm = findDocumentsForm;
             this.uploadProfilesForm = uploadProfilesForm;
             MainViewModelBindingSource.DataSource = viewModel;
             dataGridViewSortProperties = new DataGridViewSortProperties();
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
+            HelpProvider.HelpNamespace = helpFileResolver.GetHelpFilePath();
             progressForm = new ProgressForm();
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
             SetActions();
@@ -202,7 +209,7 @@ namespace PDFKeeper.WinForms.Views
             viewModel.OnManageUploadProfiles = ()
                 => uploadProfilesForm.ShowDialog();
             viewModel.OnShowHelp = ()
-                => helpService.ShowHelp<Control>(this, HelpFile.Topic.UsingPDFKeeper);
+                => helpViewer.ShowHelp(HelpTopic.UsingPDFKeeper, this);
 
             viewModel.OnPdfDoDragDrop = (pdfFile) =>
             {

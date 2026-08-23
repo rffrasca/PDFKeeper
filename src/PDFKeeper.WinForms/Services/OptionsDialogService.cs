@@ -18,6 +18,8 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Interfaces.HelpSystem;
+using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
@@ -27,26 +29,31 @@ using System.Windows.Forms;
 namespace PDFKeeper.WinForms.Services
 {
     /// <summary>
-    /// Service for displaying the Options dialog.
-    /// </summary>
+    /// <see cref="OptionsForm"/> implementation of the <see cref="IDialogService"/> interface.
+    /// </summary> 
     internal sealed class OptionsDialogService : IDialogService
     {
         private readonly IAliasService aliasService;
+        private readonly IHelpFileResolver helpFileResolver;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OptionsDialogService"/> class.
         /// </summary>
         /// <param name="aliasService">
-        /// A service that retrieves and assigns aliases to keys.
+        /// The <see cref="IAliasService"/> instance.
         /// </param>
-        public OptionsDialogService(IAliasService aliasService)
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        public OptionsDialogService(IAliasService aliasService, IHelpFileResolver helpFileResolver)
         {
             this.aliasService = aliasService;
+            this.helpFileResolver = helpFileResolver;
         }
 
         public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
-            using (var dialog = new OptionsForm(aliasService))
+            using (var dialog = new OptionsForm(aliasService, helpFileResolver))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
             }

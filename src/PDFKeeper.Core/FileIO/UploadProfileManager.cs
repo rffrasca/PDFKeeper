@@ -18,9 +18,10 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO.Serializers;
+using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -33,8 +34,9 @@ namespace PDFKeeper.Core.FileIO
 
         internal UploadProfileManager()
         {
-            uploadProfilesDirectory = new ApplicationDirectory().GetDirectory(
-                ApplicationDirectory.SpecialName.UploadProfiles);
+            uploadProfilesDirectory = new DirectoryInfo(
+                ApplicationFolderHelper.GetApplicationFolderPath(
+                    ApplicationFolder.UploadProfiles));
         }
 
         /// <summary>

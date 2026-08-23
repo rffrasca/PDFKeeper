@@ -21,7 +21,7 @@
 namespace PDFKeeper.Core.Enums
 {
     /// <summary>
-    /// Specifies the category of exception encountered during application execution.
+    /// Defines exception categories that can occur during application execution.
     /// </summary>
     public enum ExceptionType
     {

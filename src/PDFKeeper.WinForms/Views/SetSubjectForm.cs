@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
 using System;
@@ -31,15 +31,22 @@ namespace PDFKeeper.WinForms.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="SetSubjectForm"/> class.
         /// </summary>
-        /// <param name="messageBoxService">A dialog service that displays messages.</param>
-        public SetSubjectForm(IMessageBoxService messageBoxService)
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        /// <param name="messageBoxService">
+        /// The <see cref="IMessageBoxService"/> instance.
+        /// </param>
+        public SetSubjectForm(
+            IHelpFileResolver helpFileResolver,
+            IMessageBoxService messageBoxService)
         {
             InitializeComponent();
             var viewModel = new ColumnDataListViewModel(
                 messageBoxService,
                 ColumnDataListViewModel.ColumnName.Subject);
             ColumnDataListViewModelBindingSource.DataSource = viewModel;
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
+            HelpProvider.HelpNamespace = helpFileResolver.GetHelpFilePath();
             viewModel.GetWindowHandle = () => Handle;
         }
 

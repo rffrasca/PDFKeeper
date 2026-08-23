@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using System;
 using System.Windows.Forms;
 
@@ -26,10 +26,16 @@ namespace PDFKeeper.WinForms.Dialogs
 {
     internal partial class SetTitleForm : Form
     {
-        public SetTitleForm()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetTitleForm"/> class.
+        /// </summary>
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        public SetTitleForm(IHelpFileResolver helpFileResolver)
         {
             InitializeComponent();
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
+            HelpProvider.HelpNamespace = helpFileResolver.GetHelpFilePath();
         }
 
         public string Title => TitleTextBox.Text;

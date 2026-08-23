@@ -21,9 +21,10 @@
 using iText.Kernel.Exceptions;
 using iText.Kernel.Pdf;
 using iText.Kernel.XMP;
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO.Serializers;
+using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Rules;
@@ -139,10 +140,8 @@ namespace PDFKeeper.Core.FileIO.PDF
         {
             var targetPdfFile = new FileInfo(
                 Path.Combine(
-                    new ApplicationDirectory().GetDirectory(
-                        ApplicationDirectory.SpecialName.Temp).FullName,
-                    Path.GetFileName(
-                        pdfFile.FullName)));
+                    ApplicationFolderHelper.GetApplicationFolderPath(ApplicationFolder.Temp),
+                    Path.GetFileName(pdfFile.FullName)));
 
             if (pdfOwnerPassword is null)
             {

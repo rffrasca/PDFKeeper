@@ -29,6 +29,30 @@ namespace PDFKeeper.Core.Services
     /// </summary>
     public sealed class ProcessService : IProcessService
     {
+        public int Start(string filePath, string args = null)
+        {
+            using (var process = new Process())
+            {
+                process.StartInfo.FileName = filePath;
+                process.StartInfo.Arguments = args ?? string.Empty;
+                process.StartInfo.UseShellExecute = false;
+                process.Start();
+                return process.Id;
+            }
+        }
+
+        public void StartAndWaitForExit(string filePath, string args = null)
+        {
+            using (var process = new Process())
+            {
+                process.StartInfo.FileName = filePath;
+                process.StartInfo.Arguments = args ?? string.Empty;
+                process.StartInfo.UseShellExecute = false;
+                process.Start();
+                process.WaitForExit();
+            }
+        }
+
         public void Close(int pid)
         {
             try
@@ -40,18 +64,6 @@ namespace PDFKeeper.Core.Services
                 }
             }
             catch (ArgumentException) { }
-        }
-
-        public int Start(string filePath, string args = null)
-        {
-            using (var process = new Process())
-            {
-                process.StartInfo.FileName = filePath;
-                process.StartInfo.Arguments = args ?? string.Empty;
-                process.StartInfo.UseShellExecute = false;
-                process.Start();
-                return process.Id;
-            }
         }
     }
 }

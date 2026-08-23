@@ -18,22 +18,32 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Enums;
-using System;
-
-namespace PDFKeeper.Core.Services
+namespace PDFKeeper.Core.Models
 {
     /// <summary>
-    /// Provides centralized exception handling for the application, including
-    /// logging and displaying formatted exception details to the user.
+    /// Application information data transfer object (DTO) that encapsulates details about the
+    /// application, such as its base directory, company name, product name, and product version.
     /// </summary>
-    public interface IExceptionHandler
+    public sealed class ApplicationInfoDto
     {
         /// <summary>
-        /// Logs the exception and displays a formatted error message to the user.
+        /// The base directory of the application, typically where the executable is located.
         /// </summary>
-        /// <param name="exception">The exception to handle.</param>
-        /// <param name="exceptionType">The type of exception.</param>
-        void Handle(Exception exception, ExceptionType exceptionType);
+        public string BaseDirectory { get; set; }
+
+        /// <summary>
+        /// The name of the company that developed the application.
+        /// </summary>
+        public string CompanyName { get; set; }
+
+        /// <summary>
+        /// The name of the product/application.
+        /// </summary>
+        public string ProductName { get; set; }
+
+        /// <summary>
+        /// The version of the product/application.
+        /// </summary>
+        public string ProductVersion { get; set; }
     }
 }

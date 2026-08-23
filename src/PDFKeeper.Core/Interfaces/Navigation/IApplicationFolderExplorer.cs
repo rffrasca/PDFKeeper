@@ -1,4 +1,4 @@
-// *****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -16,25 +16,23 @@
 // *
 // * You should have received a copy of the GNU General Public License along
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
-// *****************************************************************************
+// ****************************************************************************
 
-using System;
-using System.Diagnostics;
-using System.IO;
-using PDFKeeper.Core.Services;
+using PDFKeeper.Core.Enums;
 
-namespace PDFKeeper.WinForms.Services
+namespace PDFKeeper.Core.Interfaces.Navigation
 {
-    internal class FolderExplorerService : IFolderExplorerService
+    /// <summary>
+    /// Defines an interface for exploring application folders in the system file explorer.
+    /// </summary>
+    public interface IApplicationFolderExplorer
     {
-        public void Explore(DirectoryInfo directory)
-        {
-            if (directory is null)
-            {
-                throw new ArgumentNullException(nameof(directory));
-            }
-
-            Process.Start(directory.FullName);
-        }
+        /// <summary>
+        /// Opens the specified application folder in the system file explorer.
+        /// </summary>
+        /// <param name="applicationFolder">
+        /// The application folder to open.
+        /// </param>
+        void ExploreFolder(ApplicationFolder applicationFolder);
     }
 }

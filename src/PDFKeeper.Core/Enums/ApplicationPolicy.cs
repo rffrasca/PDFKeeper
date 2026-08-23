@@ -18,17 +18,23 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-namespace PDFKeeper.Core.Services
+namespace PDFKeeper.Core.Enums
 {
     /// <summary>
-    /// Provides functionality to query the state of virtual keys.
+    /// Defines the names of optional policies used by the application to control
+    /// state and behavior.
     /// </summary>
-    public interface IVirtualKeyService
+    public enum ApplicationPolicy
     {
         /// <summary>
-        /// Determines whether the left mouse button is currently pressed.
+        /// Disables the ability to list all documents in the user interface.
         /// </summary>
-        /// <returns>true if the left mouse button is pressed; otherwise, false.</returns>
-        bool IsLeftButtonDown();
+        DisableAllDocumentsListing,
+
+        /// <summary>
+        /// Forces a modal, blocking UI dialog during the upload, preventing the user from
+        /// interacting with the application until the upload completes.
+        /// </summary>
+        BlockUIDuringUpload
     }
 }

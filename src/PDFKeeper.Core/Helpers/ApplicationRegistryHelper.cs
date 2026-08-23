@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,22 +18,28 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Services;
 
-namespace PDFKeeper.Core.Services
+namespace PDFKeeper.Core.Helpers
 {
-    public interface IHelpService
+    /// <summary>
+    /// Helper class that provides access to the full registry key path under HKEY_CURRENT_USER
+    /// where application-specific configuration values are stored.
+    /// </summary>
+    internal static class ApplicationRegistryHelper
     {
         /// <summary>
-        /// Shows a Help file topic modelessly.
+        /// Retrieves the full registry key path under HKEY_CURRENT_USER
+        /// where application-specific configuration values are stored.
         /// </summary>
-        /// <typeparam name="T">
-        /// The parent control type. Can be <c>Form</c> or <c>Control</c>.
-        /// </typeparam>
-        /// <param name="control">
-        /// The parent <c>Form</c> or <c>Control</c> of the Help dialog.
-        /// </param>
-        /// <param name="topic">The <see cref="HelpFile.Topic"/>.</param>
-        void ShowHelp<T>(T control, HelpFile.Topic topic);
+        /// <returns>
+        /// The full path to the registry key.
+        /// </returns>
+        internal static string GetUserKeyPath()
+        {
+            var applicationRegistryProvider = new ApplicationRegistryProvider(
+                new ApplicationInfoService());
+            return applicationRegistryProvider.UserKeyPath;
+        }
     }
 }

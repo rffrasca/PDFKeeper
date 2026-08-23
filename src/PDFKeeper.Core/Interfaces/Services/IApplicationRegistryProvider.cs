@@ -18,19 +18,30 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-namespace PDFKeeper.Core.Services
+namespace PDFKeeper.Core.Interfaces.Services
 {
     /// <summary>
-    /// Resolves services registered in the dependency injection container using a key.
+    /// Defines an interface that provides access to application-specific registry key paths and
+    /// operations used for managing user-level and policy-level configuration entries.
     /// </summary>
-    public interface IKeyedServiceResolver
+    public interface IApplicationRegistryProvider
     {
         /// <summary>
-        /// Resolves a service of the specified type using the provided key.
+        /// Gets the full registry key path under HKEY_CURRENT_USER where
+        /// application-specific configuration values are stored.
         /// </summary>
-        /// <typeparam name="T">The type of service to resolve.</typeparam>
-        /// <param name="key">The key associated with the desired service.</param>
-        /// <returns>The resolved service instance.</returns>
-        T GetRequiredKeyedService<T>(object key);
+        string UserKeyPath { get; }
+
+        /// <summary>
+        /// Gets the full registry key path under HKEY_LOCAL_MACHINE where
+        /// application policy configuration values are stored.
+        /// </summary>
+        string PoliciesKeyPath { get; }
+
+        /// <summary>
+        /// Deletes the local database path and file name values from the
+        /// application's user-level registry key, if they exist.
+        /// </summary>
+        void DeleteLocalDatabaseKeys();
     }
 }

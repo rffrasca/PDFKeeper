@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -26,10 +26,16 @@ namespace PDFKeeper.WinForms.Dialogs
 {
     internal partial class SetDateTimeAddedForm : Form
     {
-        public SetDateTimeAddedForm()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetDateTimeAddedForm"/> class.
+        /// </summary>
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        public SetDateTimeAddedForm(IHelpFileResolver helpFileResolver)
         {
             InitializeComponent();
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
+            HelpProvider.HelpNamespace = helpFileResolver.GetHelpFilePath();
         }
 
         public string DateTimeAdded => DateTimePicker.Value.ToString(

@@ -21,7 +21,7 @@
 using iText.Kernel.Exceptions;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas.Parser;
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO.TextExtractor;
 using PDFKeeper.Core.Helpers;
@@ -100,8 +100,8 @@ namespace PDFKeeper.Core.FileIO.PDF
             }
 
             this.pdfFile = pdfFile;
-            tempDirectory = new ApplicationDirectory().GetDirectory(
-                ApplicationDirectory.SpecialName.Temp);
+            tempDirectory = new DirectoryInfo(
+                ApplicationFolderHelper.GetApplicationFolderPath(ApplicationFolder.Temp));
         }
 
         /// <summary>

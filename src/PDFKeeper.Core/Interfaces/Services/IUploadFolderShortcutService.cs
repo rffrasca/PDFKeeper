@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,20 +18,24 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Application;
-using PDFKeeper.Core.Services;
-using System.Windows.Forms;
-
-namespace PDFKeeper.WinForms.Services
+namespace PDFKeeper.Core.Interfaces.Services
 {
-    internal class HelpService : IHelpService
+    /// <summary>
+    /// Defines a service for creating and deleting shortcuts for the upload folder
+    /// in the user's Downloads folder and on the desktop.
+    /// </summary>
+    public interface IUploadFolderShortcutService
     {
-        public void ShowHelp<T>(T control, HelpFile.Topic topic)
-        {
-            Help.ShowHelp(
-                control as Control,
-                new HelpFile().FullName,
-                HelpFile.GetTopicFileName(topic));
-        }
+        /// <summary>
+        /// Creates the shortcuts for the upload folder in the user's Downloads folder and
+        /// on the desktop.
+        /// </summary>
+        void CreateShortcuts();
+
+        /// <summary>
+        /// Deletes the shortcuts for the upload folder from the user's Downloads folder and
+        /// from the desktop.
+        /// </summary>
+        void DeleteShortcuts();
     }
 }

@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,26 +18,26 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Interop;
-using System;
-
-namespace PDFKeeper.Core.Application
+namespace PDFKeeper.Core.Interfaces.Services
 {
-    internal class UserProfileFolder
+    /// <summary>
+    /// Defines an interface for resolving services registered in the dependency injection
+    /// container using a key.
+    /// </summary>
+    public interface IKeyedServiceResolver
     {
         /// <summary>
-        /// Gets the <see cref="Environment.SpecialFolder.Desktop"/> folder path.
+        /// Resolves a service of the specified type using the provided key.
         /// </summary>
-        internal static string Desktop => Environment.GetFolderPath(
-            Environment.SpecialFolder.Desktop);
-
-        /// <summary>
-        /// Gets the <c>Downloads</c> folder path.
-        /// </summary>
-        internal static string Downloads => NativeMethods.SHGetKnownFolderPath(
-            new Guid(
-                "374DE290-123F-4565-9164-39C4925E467B"),
-            0,
-            IntPtr.Zero);
+        /// <typeparam name="T">
+        /// The type of service to resolve.
+        /// </typeparam>
+        /// <param name="key">
+        /// The key associated with the desired service.
+        /// </param>
+        /// <returns>
+        /// The resolved service instance.
+        /// </returns>
+        T GetRequiredKeyedService<T>(object key);
     }
 }

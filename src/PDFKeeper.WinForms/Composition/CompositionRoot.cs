@@ -21,11 +21,18 @@
 using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.FileIO;
+using PDFKeeper.Core.HelpSystem;
+using PDFKeeper.Core.Interfaces.HelpSystem;
+using PDFKeeper.Core.Interfaces.Navigation;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
+using PDFKeeper.Core.Interfaces.Storage;
+using PDFKeeper.Core.Navigation;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.Services.Pdf;
+using PDFKeeper.Core.Storage;
 using PDFKeeper.Core.ViewModels;
+using PDFKeeper.WinForms.HelpSystem;
 using PDFKeeper.WinForms.Services;
 using PDFKeeper.WinForms.Views;
 using System;
@@ -59,11 +66,17 @@ namespace PDFKeeper.WinForms.Composition
         internal static void AddSingletonServices(IServiceCollection services)
         {
             services.AddSingleton<IAliasService, AliasService>();
+            services.AddSingleton<IApplicationFolderCleaner, ApplicationFolderCleaner>();
+            services.AddSingleton<IApplicationFolderExplorer, ApplicationFolderExplorer>();
+            services.AddSingleton<IApplicationFolderManager, ApplicationFolderManager>();
+            services.AddSingleton<IApplicationInfoService, ApplicationInfoService>();
+            services.AddSingleton<IApplicationPolicyService, ApplicationPolicyService>();
+            services.AddSingleton<IApplicationRegistryProvider, ApplicationRegistryProvider>();
             services.AddSingleton<IExceptionHandler, ExceptionHandler>();
             services.AddSingleton<IFileCache, FileCache>();
             services.AddSingleton<IFolderBrowserDialogService, FolderBrowserDialogService>();
-            services.AddSingleton<IFolderExplorerService, FolderExplorerService>();
-            services.AddSingleton<IHelpService, HelpService>();
+            services.AddSingleton<IHelpFileResolver, HelpFileResolver>();
+            services.AddSingleton<IHelpViewer, HelpViewer>();
             services.AddSingleton<IKeyedServiceResolver, KeyedServiceResolver>();
             services.AddSingleton<IMessageBoxService, MessageBoxService>();
             services.AddSingleton<IPasswordDialogService, PdfOwnerPasswordDialogService>();
@@ -72,6 +85,7 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IPrintDialogService, PrintDialogService>();
             services.AddSingleton<IPrintPreviewDialogService, PrintPreviewDialogService>();
             services.AddSingleton<IProcessService, ProcessService>();
+            services.AddSingleton<IUploadFolderShortcutService, UploadFolderShortcutService>();
             services.AddSingleton<IVirtualKeyService, VirtualKeyService>();
         }
 

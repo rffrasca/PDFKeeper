@@ -159,11 +159,11 @@
     <Compile Include="Commands\TagCommand.cs" />
     <Compile Include="Extensions\ByteArrayExtensions.cs" />
     <Compile Include="Helpers\DialogCenteringHelper.cs" />
+    <Compile Include="HelpSystem\HelpViewer.cs" />
     <Compile Include="Services\AboutBoxDialogService.cs" />
     <Compile Include="Services\OptionsDialogService.cs" />
     <Compile Include="Services\SetPreviewPixelDensityDialogService.cs" />
     <Compile Include="Services\AddPdfDialogService.cs" />
-    <Compile Include="Services\HelpService.cs" />
     <Compile Include="Services\SetDateTimeAddedDialogService.cs" />
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
@@ -175,7 +175,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FolderBrowserDialogService.cs" />
-    <Compile Include="Services\FolderExplorerService.cs" />
     <Compile Include="Services\MessageBoxService.cs" />
     <Compile Include="Services\OpenFileDialogService.cs" />
     <Compile Include="Services\PdfOwnerPasswordDialogService.cs" />

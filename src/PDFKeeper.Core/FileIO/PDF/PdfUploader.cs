@@ -18,9 +18,9 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Application;
 using PDFKeeper.Core.Commands;
 using PDFKeeper.Core.DataAccess;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Models;
@@ -34,7 +34,6 @@ namespace PDFKeeper.Core.FileIO.PDF
 {
     internal class PdfUploader
     {
-        private readonly ApplicationDirectory applicationDirectory;
         private readonly UploadProfileManager uploadProfileManager;
         private readonly DirectoryInfo uploadDirectory;
         private readonly DirectoryInfo uploadRejectedDirectory;
@@ -42,14 +41,16 @@ namespace PDFKeeper.Core.FileIO.PDF
 
         internal PdfUploader()
         {
-            applicationDirectory = new ApplicationDirectory();
             uploadProfileManager = new UploadProfileManager();
-            uploadDirectory = applicationDirectory.GetDirectory(
-                ApplicationDirectory.SpecialName.Upload);
-            uploadRejectedDirectory = applicationDirectory.GetDirectory(
-                ApplicationDirectory.SpecialName.UploadRejected);
-            uploadStagingDirectory = applicationDirectory.GetDirectory(
-                ApplicationDirectory.SpecialName.UploadStaging);
+            uploadDirectory = new DirectoryInfo(
+                ApplicationFolderHelper.GetApplicationFolderPath(
+                    ApplicationFolder.Upload));
+            uploadRejectedDirectory = new DirectoryInfo(
+                ApplicationFolderHelper.GetApplicationFolderPath(
+                    ApplicationFolder.UploadRejected));
+            uploadStagingDirectory = new DirectoryInfo(
+                ApplicationFolderHelper.GetApplicationFolderPath(
+                    ApplicationFolder.UploadStaging));
         }
 
         /// <summary>

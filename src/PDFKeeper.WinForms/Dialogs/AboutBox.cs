@@ -18,8 +18,8 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Application;
-using PDFKeeper.Core.Services;
+using PDFKeeper.Core.Enums;
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.WinForms.Properties;
 using System.Diagnostics;
 using System.Reflection;
@@ -29,16 +29,18 @@ namespace PDFKeeper.WinForms.Dialogs
 {
     partial class AboutBox : Form
     {
-        private readonly IHelpService helpService;
+        private readonly IHelpViewer helpViewer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AboutBox"/> class.
         /// </summary>
-        /// <param name="helpService">A service that shows a Help file topic modelessly.</param>
-        public AboutBox(IHelpService helpService)
+        /// <param name="helpViewer">
+        /// The <see cref="IHelpViewer"/> instance.
+        /// </param>
+        public AboutBox(IHelpViewer helpViewer)
         {
             InitializeComponent();
-            this.helpService = helpService;
+            this.helpViewer = helpViewer;
             Text = string.Format("About {0}", AssemblyTitle);
             labelProductName.Text = AssemblyProduct;
             labelVersion.Text = string.Format("Version {0}", AssemblyVersion);
@@ -130,22 +132,22 @@ namespace PDFKeeper.WinForms.Dialogs
 
         private void WebsiteLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(ApplicationUri.HomePage.AbsoluteUri);
+            Process.Start("https://www.pdfkeeper.org/");
         }
 
         private void DonateLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            helpService.ShowHelp<Control>(this, HelpFile.Topic.Donate);
+            helpViewer.ShowHelp(HelpTopic.Donate, this);
         }
         
         private void LicenseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            helpService.ShowHelp<Control>(this, HelpFile.Topic.License);
+            helpViewer.ShowHelp(HelpTopic.License, this);
         }
 
         private void ThirdPartyNoticesLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            helpService.ShowHelp<Control>(this, HelpFile.Topic.ThirdPartyNotices);
+            helpViewer.ShowHelp(HelpTopic.ThirdPartyNotices, this);
         }
     }
 }

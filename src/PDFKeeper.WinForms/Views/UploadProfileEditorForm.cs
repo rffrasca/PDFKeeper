@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
@@ -35,20 +35,24 @@ namespace PDFKeeper.WinForms.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadProfileEditorForm"/> class.
         /// </summary>
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
         /// <param name="messageBoxService">
-        /// A dialog service that displays messages.
+        /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
         /// <param name="uploadProfileName">
         /// The Upload Profile name only when editing an existing upload profile.
         /// </param>
         public UploadProfileEditorForm(
+            IHelpFileResolver helpFileResolver,
             IMessageBoxService messageBoxService,
             string uploadProfileName = null)
         {
             InitializeComponent();
             viewModel = new UploadProfileEditorViewModel(messageBoxService, uploadProfileName);
             UploadProfileEditorViewModelBindingSource.DataSource = viewModel;
-            HelpProvider.HelpNamespace = new HelpFile().FullName;
+            HelpProvider.HelpNamespace = helpFileResolver.GetHelpFilePath();
             viewModel.PropertyChanged += ViewModel_PropertyChanged;
             SetActions();
             SetTags();

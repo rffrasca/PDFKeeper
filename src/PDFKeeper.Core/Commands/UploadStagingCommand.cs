@@ -18,8 +18,9 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.Helpers;
 using System;
 using System.IO;
 using System.Windows.Input;
@@ -53,8 +54,9 @@ namespace PDFKeeper.Core.Commands
         {
             var targetPdfFile = pdfFile.AppendGuidToFileName();
             targetPdfFile = targetPdfFile.ChangeDirectory(
-                new ApplicationDirectory().GetDirectory(
-                    ApplicationDirectory.SpecialName.UploadStaging));
+                new DirectoryInfo(
+                    ApplicationFolderHelper.GetApplicationFolderPath(
+                        ApplicationFolder.UploadStaging)));
             pdfFile.MoveTo(targetPdfFile.FullName);
 
             if (xmlFile.Exists)

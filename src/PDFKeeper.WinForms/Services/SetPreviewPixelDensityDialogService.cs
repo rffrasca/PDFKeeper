@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
@@ -27,13 +28,28 @@ using System.Windows.Forms;
 namespace PDFKeeper.WinForms.Services
 {
     /// <summary>
-    /// Service for displaying the Set Preview Pixel Density dialog.
-    /// </summary>
+    /// <see cref="SetPreviewPixelDensityForm"/> implementation of the
+    /// <see cref="IDialogService"/> interface.
+    /// </summary>   
     internal sealed class SetPreviewPixelDensityDialogService : IDialogService
     {
+        private readonly IHelpFileResolver helpFileResolver;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetPreviewPixelDensityDialogService"/>
+        /// class.
+        /// </summary>
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        public SetPreviewPixelDensityDialogService(IHelpFileResolver helpFileResolver)
+        {
+            this.helpFileResolver = helpFileResolver;
+        }
+
         public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
-            using (var dialog = new SetPreviewPixelDensityForm())
+            using (var dialog = new SetPreviewPixelDensityForm(helpFileResolver))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
             }

@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Properties;
@@ -28,25 +29,33 @@ using System.Windows.Forms;
 namespace PDFKeeper.WinForms.Services
 {
     /// <summary>
-    /// Provides dialog functionality for setting a subject, including validation and user
-    /// feedback.
-    /// </summary>
+    /// <see cref="SetSubjectForm"/> implementation of the <see cref="IDialogService"/> interface.
+    /// </summary>  
     internal sealed class SetSubjectDialogService : IDialogService
     {
+        private readonly IHelpFileResolver helpFileResolver;
         private readonly IMessageBoxService messageBoxService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SetSubjectDialogService"/> class.
         /// </summary>
-        /// <param name="messageBoxService">A dialog service that displays messages.</param>
-        public SetSubjectDialogService(IMessageBoxService messageBoxService)
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        /// <param name="messageBoxService">
+        /// The <see cref="IMessageBoxService"/> instance.
+        /// </param>
+        public SetSubjectDialogService(
+            IHelpFileResolver helpFileResolver,
+            IMessageBoxService messageBoxService)
         {
+            this.helpFileResolver = helpFileResolver;
             this.messageBoxService = messageBoxService;
         }
 
         public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
-            using (var dialog = new SetSubjectForm(messageBoxService))
+            using (var dialog = new SetSubjectForm(helpFileResolver, messageBoxService))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
 

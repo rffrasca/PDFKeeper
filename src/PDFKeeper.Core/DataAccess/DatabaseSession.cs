@@ -19,11 +19,12 @@
 // ****************************************************************************
 
 using Microsoft.Win32;
-using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess.Repository;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Properties;
+using PDFKeeper.Core.Services;
 using System;
 using System.Collections;
 using System.IO;
@@ -102,15 +103,16 @@ namespace PDFKeeper.Core.DataAccess
         /// </returns>
         public static string GetLocalDatabasePath()
         {
+            var applicationInfo = new ApplicationInfoService().GetApplicationInfo();
             var localDatabasePath = Registry.GetValue(
-                ApplicationRegistry.UserKeyPath,
+                ApplicationRegistryHelper.GetUserKeyPath(),
                 "LocalDatabasePath",
-                new ApplicationDirectory().GetDirectory(
-                    ApplicationDirectory.SpecialName.ApplicationData)).ToString();
+                ApplicationFolderHelper.GetApplicationFolderPath(
+                    ApplicationFolder.ApplicationData)).ToString();
             var localDatabaseFileName = Registry.GetValue(
-                ApplicationRegistry.UserKeyPath,
+                ApplicationRegistryHelper.GetUserKeyPath(),
                 "LocalDatabaseFileName",
-                $"{new ExecutingAssembly().ProductName}.sqlite").ToString();
+                $"{applicationInfo.ProductName}.sqlite").ToString();
             return Path.Combine(localDatabasePath, localDatabaseFileName);
         }
 
@@ -162,11 +164,11 @@ namespace PDFKeeper.Core.DataAccess
             }
 
             Registry.SetValue(
-                ApplicationRegistry.UserKeyPath,
+                ApplicationRegistryHelper.GetUserKeyPath(),
                 "LocalDatabasePath",
                 Path.GetDirectoryName(path));
             Registry.SetValue(
-                ApplicationRegistry.UserKeyPath,
+                ApplicationRegistryHelper.GetUserKeyPath(),
                 "LocalDatabaseFileName",
                 Path.GetFileName(path));
 
@@ -312,7 +314,7 @@ namespace PDFKeeper.Core.DataAccess
             get
             {
                 oracleWalletPath = (string)Registry.GetValue(
-                    ApplicationRegistry.UserKeyPath,
+                    ApplicationRegistryHelper.GetUserKeyPath(),
                     "OracleWalletPath",
                     null);
                 return oracleWalletPath;
@@ -328,7 +330,7 @@ namespace PDFKeeper.Core.DataAccess
             {
                 mySqlPort = Convert.ToUInt32(
                     Registry.GetValue(
-                        ApplicationRegistry.UserKeyPath,
+                        ApplicationRegistryHelper.GetUserKeyPath(),
                         "MySqlPort",
                         3306));
                 return mySqlPort;
@@ -373,7 +375,7 @@ namespace PDFKeeper.Core.DataAccess
         {
             var assemblyPath = Path.Combine(
                 (string)Registry.GetValue(
-                    ApplicationRegistry.UserKeyPath,
+                    ApplicationRegistryHelper.GetUserKeyPath(),
                     "OracleOdpNetPath",
                     string.Empty),
                 "Oracle.ManagedDataAccess.dll");

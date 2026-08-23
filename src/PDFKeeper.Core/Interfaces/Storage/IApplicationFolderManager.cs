@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,16 +18,26 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using System;
+using PDFKeeper.Core.Enums;
 
-namespace PDFKeeper.Core.Application
+namespace PDFKeeper.Core.Interfaces.Storage
 {
-    public static class ApplicationUri
+    /// <summary>
+    /// Defines an interface for managing application folders, including retrieving their paths
+    /// and ensuring they exist on disk.
+    /// </summary>
+    public interface IApplicationFolderManager
     {
-        public static Uri HomePage => new("https://www.pdfkeeper.org/");
-        public static Uri AutoUpdaterConfig => new(
-            string.Concat(
-                "https://raw.githubusercontent.com/rffrasca/PDFKeeper/master/config",
-                "/PDFKeeper.AutoUpdater.config.xml"));
+        /// <summary>
+        /// Retrieves the file system path for the specified application folder,
+        /// creating the directory on disk if it does not already exist.
+        /// </summary>
+        /// <param name="applicationFolder">
+        /// The application folder whose path to retrieve.
+        /// </param>
+        /// <returns>
+        /// The full path of the specified application folder.
+        /// </returns>
+        string GetOrCreateFolderPath(ApplicationFolder applicationFolder);
     }
 }

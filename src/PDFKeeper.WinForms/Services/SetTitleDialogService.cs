@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
@@ -28,24 +29,33 @@ using System.Windows.Forms;
 namespace PDFKeeper.WinForms.Services
 {
     /// <summary>
-    /// Provides a dialog service for setting a title, including validation and user feedback.
-    /// </summary>
+    /// <see cref="SetTitleForm"/> implementation of the <see cref="IDialogService"/> interface.
+    /// </summary>    
     internal sealed class SetTitleDialogService : IDialogService
     {
+        private readonly IHelpFileResolver helpFileResolver;
         private readonly IMessageBoxService messageBoxService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SetTitleDialogService"/> class.
         /// </summary>
-        /// <param name="messageBoxService">A dialog service that displays messages.</param>
-        public SetTitleDialogService(IMessageBoxService messageBoxService)
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        /// <param name="messageBoxService">
+        /// The <see cref="IMessageBoxService"/> instance.
+        /// </param>
+        public SetTitleDialogService(
+            IHelpFileResolver helpFileResolver,
+            IMessageBoxService messageBoxService)
         {
+            this.helpFileResolver = helpFileResolver;
             this.messageBoxService = messageBoxService;
         }
 
         public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
-            using (var dialog = new SetTitleForm())
+            using (var dialog = new SetTitleForm(helpFileResolver))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
 

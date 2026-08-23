@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
-using PDFKeeper.Core.Services;
+using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.ViewModels;
 using System;
 using System.IO;

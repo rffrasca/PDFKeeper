@@ -19,12 +19,14 @@
 // ****************************************************************************
 
 using CommunityToolkit.Mvvm.Input;
-using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
 using PDFKeeper.Core.Services;
+using PDFKeeper.Core.State;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -37,6 +39,7 @@ namespace PDFKeeper.Core.ViewModels
     [CLSCompliant(false)]
     public sealed class FindDocumentsViewModel : ColumnDataListsViewModel, IFindDocumentsParam
     {
+        private readonly IApplicationPolicyService applicationPolicyService;
         private readonly IMessageBoxService messageBoxService;
         private FindDocumentsParam findDocumentsParam;
         private readonly SearchTermHistory searchTermHistory;
@@ -62,9 +65,17 @@ namespace PDFKeeper.Core.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="FindDocumentsViewModel"/> class.
         /// </summary>
-        /// <param name="messageBoxService">A dialog service that displays messages.</param>
-        public FindDocumentsViewModel(IMessageBoxService messageBoxService)
+        /// <param name="applicationPolicyService">
+        /// The <see cref="IApplicationPolicyService"/> instance.
+        /// </param>
+        /// <param name="messageBoxService">
+        /// The <see cref="IMessageBoxService"/> instance.
+        /// </param>
+        public FindDocumentsViewModel(
+            IApplicationPolicyService applicationPolicyService,
+            IMessageBoxService messageBoxService)
         {
+            this.applicationPolicyService = applicationPolicyService;
             this.messageBoxService = messageBoxService;
             findDocumentsParam = new FindDocumentsParam();
             searchTermHistory = new SearchTermHistory();
@@ -278,8 +289,8 @@ namespace PDFKeeper.Core.ViewModels
         }
 
         private void ApplyPolicy() =>
-            AllDocumentsEnabled = !ApplicationPolicy.GetPolicyValue(
-                ApplicationPolicy.PolicyName.HideAllDocuments);
+            AllDocumentsEnabled = !applicationPolicyService.GetPolicyValue(
+                ApplicationPolicy.DisableAllDocumentsListing);
 
         private void InitializeCommands()
         {
@@ -296,9 +307,9 @@ namespace PDFKeeper.Core.ViewModels
 
         private void ApplyFindDocumentsParamObject()
         {
-            if (FindDocumentsViewState.FindDocumentsParam != null)
+            if (FindDocumentsState.FindDocumentsParam != null)
             {
-                FindDocumentsParam = FindDocumentsViewState.FindDocumentsParam.Clone();
+                FindDocumentsParam = FindDocumentsState.FindDocumentsParam.Clone();
             }
             else
             {
@@ -405,7 +416,7 @@ namespace PDFKeeper.Core.ViewModels
             
             if (!rule.ViolationFound)
             {
-                FindDocumentsViewState.FindDocumentsParam = FindDocumentsParam.Clone();
+                FindDocumentsState.FindDocumentsParam = FindDocumentsParam.Clone();
 
                 if (FindBySearchTermChecked)
                 {

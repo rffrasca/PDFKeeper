@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,16 +18,28 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using System.IO;
+using PDFKeeper.Core.Enums;
+using System;
 
-namespace PDFKeeper.Core.Services
+namespace PDFKeeper.Core.Interfaces.Services
 {
-    public interface IFolderExplorerService
+    /// <summary>
+    /// Defines an interface that provides centralized exception handling for the application.
+    /// </summary>
+    public interface IExceptionHandler
     {
         /// <summary>
-        /// Shows the contents of a directory using the Operating System Explorer.
+        /// Logs the exception and displays a formatted error message to the user.
         /// </summary>
-        /// <param name="directory">The <see cref="DirectoryInfo"/> object.</param>
-        void Explore(DirectoryInfo directory);
+        /// <param name="exception">
+        /// The exception to handle.
+        /// </param>
+        /// <param name="exceptionType">
+        /// The type of exception.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="exception"/> is null.
+        /// </exception>
+        void HandleException(Exception exception, ExceptionType exceptionType);
     }
 }

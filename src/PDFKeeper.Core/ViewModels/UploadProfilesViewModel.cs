@@ -22,6 +22,7 @@ using CommunityToolkit.Mvvm.Input;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Services;
 using System;

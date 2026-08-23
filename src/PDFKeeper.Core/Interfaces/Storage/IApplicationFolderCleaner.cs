@@ -1,4 +1,4 @@
-// ****************************************************************************
+﻿// ****************************************************************************
 // * PDFKeeper -- Open Source PDF Document Management
 // * Copyright (C) 2009-2026 Robert F. Frasca
 // *
@@ -18,28 +18,22 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Models;
-using System;
+using PDFKeeper.Core.Enums;
 
-namespace PDFKeeper.Core.Application
+namespace PDFKeeper.Core.Interfaces.Storage
 {
-    internal static class FindDocumentsViewState
+    /// <summary>
+    /// Defines an interface for cleaning application folders by removing unnecessary
+    /// files and directories.
+    /// </summary>
+    public interface IApplicationFolderCleaner
     {
-        private static FindDocumentsParam findDocumentsParam;
-
-        internal static Action OnFindDocumentsParamChanged { get; set; }
-
         /// <summary>
-        /// Gets or sets the <see cref="FindDocumentsParam"/> object.
+        /// Cleans the specified application folder by removing unnecessary files and directories.
         /// </summary>
-        internal static FindDocumentsParam FindDocumentsParam
-        {
-            get => findDocumentsParam;
-            set
-            {
-                findDocumentsParam = value;
-                OnFindDocumentsParamChanged?.Invoke();
-            }
-        }
+        /// <param name="applicationFolder">
+        /// The application folder to clean.
+        /// </param>
+        void CleanFolder(ApplicationFolder applicationFolder);
     }
 }

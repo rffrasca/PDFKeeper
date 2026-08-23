@@ -19,11 +19,12 @@
 // ****************************************************************************
 
 using Microsoft.Extensions.DependencyInjection;
-using PDFKeeper.Core.Application;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Enums;
-using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Interfaces.HelpSystem;
+using PDFKeeper.Core.Interfaces.Services;
+using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Composition;
 using PDFKeeper.WinForms.Properties;
@@ -68,7 +69,7 @@ namespace PDFKeeper.WinForms
                         }
                     }
 
-                    Shutdown();
+                    Shutdown(serviceProvider);
                 }
             }
         }
@@ -84,8 +85,11 @@ namespace PDFKeeper.WinForms
         /// </returns>
         static bool Startup(IServiceProvider serviceProvider)
         {
-            var messageBoxService = serviceProvider.GetRequiredService<IMessageBoxService>();
-            var helpFile = new HelpFile();
+            var applicationRegistryProvider = serviceProvider.GetRequiredService<
+                IApplicationRegistryProvider>();
+            var helpViewer = serviceProvider.GetRequiredService<IHelpViewer>();
+            var messageBoxService = serviceProvider.GetRequiredService<
+                IMessageBoxService>();
             UpgradeUserSettings();
 
             if (Settings.Default.DbManagementSystem.Length.Equals(0))
@@ -103,7 +107,7 @@ namespace PDFKeeper.WinForms
                 }
                 else
                 {
-                    ApplicationRegistry.DeleteLocalDatabaseKeys();
+                    applicationRegistryProvider.DeleteLocalDatabaseKeys();
                     var choice = messageBoxService.ShowQuestion(Resources.DatabaseSetup, true);
 
                     switch (choice)
@@ -130,11 +134,11 @@ namespace PDFKeeper.WinForms
                                 "DatabaseCreated",
                                 DatabaseSession.GetLocalDatabasePath());
                             messageBoxService.ShowMessage(message);
-                            helpFile.ShowHelp(HelpFile.Topic.SetupSingleUserDatabase);
+                            helpViewer.ShowHelp(HelpTopic.SetupSingleUserDatabase);
                             break;
                         case 7:
                             messageBoxService.ShowMessage(Resources.MultiUserDatabaseSetup);
-                            helpFile.ShowHelp(HelpFile.Topic.SetupMultiUserDatabase);
+                            helpViewer.ShowHelp(HelpTopic.SetupMultiUserDatabase);
                             var choice2 = messageBoxService.ShowQuestion(
                                 Resources.ConnectingToOracle);
                             
@@ -232,12 +236,15 @@ namespace PDFKeeper.WinForms
         /// <summary>
         /// Performs application shutdown actions.
         /// </summary>
-        static void Shutdown()
+        /// <param name="serviceProvider">
+        /// The <see cref="IServiceProvider"/> containing services required by the application.
+        /// </param>
+        static void Shutdown(IServiceProvider serviceProvider)
         {
-            var applicationDirectory = new ApplicationDirectory();
-            applicationDirectory.DeleteUploadDirectoryShortcuts();
-            applicationDirectory.GetDirectory(ApplicationDirectory.SpecialName.Cache).Empty();
-            applicationDirectory.GetDirectory(ApplicationDirectory.SpecialName.Temp).Empty();
+            var applicationFolderCleaner = serviceProvider.GetRequiredService<
+                IApplicationFolderCleaner>();
+            applicationFolderCleaner.CleanFolder(ApplicationFolder.Cache);
+            applicationFolderCleaner.CleanFolder(ApplicationFolder.Temp);
             Settings.Default.Save();
         }
 
@@ -252,7 +259,7 @@ namespace PDFKeeper.WinForms
         /// </param>
         static void HandleUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            exceptionHandler.Handle(
+            exceptionHandler.HandleException(
                 (Exception)e.ExceptionObject,
                 ExceptionType.UnhandledException);
             Application.Exit();
@@ -269,7 +276,7 @@ namespace PDFKeeper.WinForms
         /// </param>
         static void HandleThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            exceptionHandler.Handle(e.Exception, ExceptionType.ThreadException);
+            exceptionHandler.HandleException(e.Exception, ExceptionType.ThreadException);
             Application.Exit();
         }
     }

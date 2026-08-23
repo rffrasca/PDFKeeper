@@ -45,7 +45,9 @@ namespace PDFKeeper.Core.Interfaces.Services.Pdf
         /// <summary>
         /// Opens the specified PDF file in a restricted PDF viewer application.
         /// </summary>
-        /// <param name="pdfPath">The full path to the PDF file to be opened.</param>
+        /// <param name="pdfPath">
+        /// The full path to the PDF file to be opened.
+        /// </param>
         void OpenPdfInRestrictedViewer(string pdfPath);
     }
 }

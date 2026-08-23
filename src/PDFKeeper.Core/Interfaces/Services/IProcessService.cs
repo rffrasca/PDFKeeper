@@ -21,8 +21,7 @@
 namespace PDFKeeper.Core.Interfaces.Services
 {
     /// <summary>
-    /// Defines an interface for a service that manages processes, allowing for
-    /// starting and closing processes by their process ID (PID).
+    /// Defines a service for managing processes.
     /// </summary>
     public interface IProcessService
     {
@@ -30,15 +29,35 @@ namespace PDFKeeper.Core.Interfaces.Services
         /// Starts a process using the specified file path and optional
         /// arguments, returning the process ID (PID) of the started process.
         /// </summary>
-        /// <param name="filePath">The path to the executable file to start.</param>
-        /// <param name="args">Optional arguments to pass to the process.</param>
-        /// <returns>The process ID (PID) of the started process.</returns>
+        /// <param name="filePath">
+        /// The path to the executable file to start.
+        /// </param>
+        /// <param name="args">
+        /// The optional arguments to pass to the process.
+        /// </param>
+        /// <returns>
+        /// The process ID (PID) of the started process.
+        /// </returns>
         int Start(string filePath, string args = null);
+
+        /// <summary>
+        /// Starts a process using the specified file path and optional
+        /// arguments, and then waits for the process to exit.
+        /// </summary>
+        /// <param name="filePath">
+        /// The path to the executable file to start.
+        /// </param>
+        /// <param name="args">
+        /// The optional arguments to pass to the process.
+        /// </param>
+        void StartAndWaitForExit(string filePath, string args = null);
 
         /// <summary>
         /// Closes the process with the specified process ID (PID).
         /// </summary>
-        /// <param name="pid">The process ID (PID) of the process to close.</param>
+        /// <param name="pid">
+        /// The process ID (PID) of the process to close.
+        /// </param>
         void Close(int pid);
     }
 }

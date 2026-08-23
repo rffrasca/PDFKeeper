@@ -18,10 +18,11 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Application;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
+using PDFKeeper.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -35,24 +36,39 @@ namespace PDFKeeper.Core.Services.Pdf
     {
         private readonly IFileCache fileCache;
         private readonly IProcessService processService;
+        private readonly ApplicationInfoDto applicationInfo;
         private readonly List<int> restrictedViewerPids;
         private readonly string bundledViewerPath;
 
         /// <summary>
-        /// Creates a new instance of the <see cref="PdfViewerService"/> class.
+        /// Initializes a new instance of the <see cref="PdfViewerService"/> class.
         /// </summary>
-        /// <param name="fileCache">The file cache.</param>
-        /// <param name="processService">The process service.</param>
-        public PdfViewerService(IFileCache fileCache, IProcessService processService)
+        /// <param name="applicationInfoService">
+        /// The service that provides information about the application.
+        /// </param>
+        /// <param name="fileCache">
+        /// The file cache.
+        /// </param>
+        /// <param name="processService">
+        /// The process service.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="applicationInfoService"/> is null.
+        /// </exception>
+        public PdfViewerService(
+            IApplicationInfoService applicationInfoService,
+            IFileCache fileCache,
+            IProcessService processService)
         {
             this.fileCache = fileCache;
             this.processService = processService;
-            var executingAssembly = new ExecutingAssembly();
+            applicationInfo = applicationInfoService?.GetApplicationInfo() ??
+                throw new ArgumentNullException(nameof(applicationInfoService));
 #pragma warning disable IDE0028 // Simplify collection initialization
             restrictedViewerPids = new List<int>();
 #pragma warning restore IDE0028 // Simplify collection initialization
             bundledViewerPath = Path.Combine(
-                executingAssembly.DirectoryPath,
+                applicationInfo.BaseDirectory,
                 "SumatraPDF-3.5.2-64.exe");
         }
 

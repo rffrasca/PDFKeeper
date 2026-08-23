@@ -19,7 +19,6 @@
 // *****************************************************************************
 
 using AutoUpdaterDotNET;
-using PDFKeeper.Core.Application;
 using System;
 using System.Windows.Input;
 
@@ -36,8 +35,11 @@ namespace PDFKeeper.WinForms.Commands
 
         public void Execute(object parameter)
         {
+            var config =
+                $"https://raw.githubusercontent.com/rffrasca/PDFKeeper/master/config" +
+                $"/PDFKeeper.AutoUpdater.config.xml";
             AutoUpdater.RunUpdateAsAdmin = false;
-            AutoUpdater.Start(ApplicationUri.AutoUpdaterConfig.AbsoluteUri);
+            AutoUpdater.Start(config);
         }
     }
 }

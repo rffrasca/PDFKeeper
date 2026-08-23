@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Dialogs;
@@ -27,13 +28,27 @@ using System.Windows.Forms;
 namespace PDFKeeper.WinForms.Services
 {
     /// <summary>
-    /// Provides a dialog service for setting the date and time an item was added.
-    /// </summary>
+    /// <see cref="SetDateTimeAddedForm"/> implementation of the
+    /// <see cref="IDialogService"/> interface.
+    /// </summary> 
     internal sealed class SetDateTimeAddedDialogService : IDialogService
     {
+        private readonly IHelpFileResolver helpFileResolver;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SetDateTimeAddedDialogService"/> class.
+        /// </summary>
+        /// <param name="helpFileResolver">
+        /// The <see cref="IHelpFileResolver"/> instance.
+        /// </param>
+        public SetDateTimeAddedDialogService(IHelpFileResolver helpFileResolver)
+        {
+            this.helpFileResolver = helpFileResolver;
+        }
+
         public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
-            using (var dialog = new SetDateTimeAddedForm())
+            using (var dialog = new SetDateTimeAddedForm(helpFileResolver))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
 

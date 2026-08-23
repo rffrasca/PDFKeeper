@@ -106,9 +106,15 @@ namespace PDFKeeper.Core.Services.Pdf
         /// <summary>
         /// Builds a unique cache key for the given PDF path and pixel density.
         /// </summary>
-        /// <param name="pdfPath">The path to the PDF file.</param>
-        /// <param name="pixelDensity">The pixel density for the preview image.</param>
-        /// <returns>A unique cache key string.</returns>
+        /// <param name="pdfPath">
+        /// The path to the PDF file.
+        /// </param>
+        /// <param name="pixelDensity">
+        /// The pixel density for the preview image.
+        /// </param>
+        /// <returns>
+        /// The unique cache key string.
+        /// </returns>
         private static string BuildCacheKey(string pdfPath, decimal pixelDensity)
         {
             var lastWriteTime = File.GetLastWriteTimeUtc(pdfPath);

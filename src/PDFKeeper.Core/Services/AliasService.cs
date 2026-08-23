@@ -18,8 +18,10 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.FileIO.Serializers;
+using PDFKeeper.Core.Interfaces.Services;
+using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Properties;
 using System;
 using System.Collections.Generic;
@@ -27,17 +29,30 @@ using System.IO;
 
 namespace PDFKeeper.Core.Services
 {
-    public class AliasService : IAliasService
+    /// <summary>
+    /// Default implementation of the <see cref="IAliasService"/> interface.
+    /// </summary>
+    public sealed class AliasService : IAliasService
     {
         private readonly FileInfo aliasesJsonFile;
         private readonly Dictionary<string, string> aliases;
-        
+
         /// <summary>
-        /// Initializes a new instance of the AliasService class, loading alias mappings from a
-        /// JSON file or creating the file with default values if it does not exist.
+        /// Initializes a new instance of the <see cref="AliasService"/> class.
         /// </summary>
-        public AliasService()
+        /// <param name="applicationFolderManager">
+        /// The <see cref="IApplicationFolderManager"/> instance.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="applicationFolderManager"/> is null.
+        /// </exception>
+        public AliasService(IApplicationFolderManager applicationFolderManager)
         {
+            if (applicationFolderManager is null)
+            {
+                throw new ArgumentNullException(nameof(applicationFolderManager));
+            }
+
             var defaultAliases = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
                 { "Author", Resources.Author },
@@ -45,17 +60,16 @@ namespace PDFKeeper.Core.Services
                 { "Category", Resources.Category },
                 { "Tax Year", Resources.TaxYear }
             };
+
             aliasesJsonFile = new FileInfo(
                 Path.Combine(
-                    new ApplicationDirectory().GetDirectory(
-                        ApplicationDirectory.SpecialName.ApplicationData).FullName,
+                    applicationFolderManager.GetOrCreateFolderPath(
+                        ApplicationFolder.ApplicationData),
                     "aliases.json"));
 
             if (!aliasesJsonFile.Exists)
             {
-                JsonSerializer.SerializeToFile(
-                    defaultAliases,
-                    aliasesJsonFile);
+                JsonSerializer.SerializeToFile(defaultAliases, aliasesJsonFile);
                 aliases = new Dictionary<string, string>(defaultAliases);
             }
             else

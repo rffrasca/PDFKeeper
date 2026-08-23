@@ -18,8 +18,12 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Application;
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.FileIO.PDF;
+using PDFKeeper.Core.Interfaces.Services;
+using PDFKeeper.Core.Interfaces.Storage;
+using PDFKeeper.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,19 +35,31 @@ namespace PDFKeeper.Core.FileIO
     /// </summary>
     public sealed class FileCache : IFileCache
     {
+        private readonly IApplicationFolderManager applicationFolderManager;
+        private readonly ApplicationInfoDto applicationInfo;
         private readonly Dictionary<string, string> fileHashes;
-        private readonly DirectoryInfo cacheDirectory;
-        private readonly ExecutingAssembly executingAssembly;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FileCache"/> class.
         /// </summary>
-        public FileCache()
+        /// <param name="applicationFolderManager">
+        /// The <see cref="IApplicationFolderManager"/> instance used to manage application
+        /// folders.
+        /// </param>
+        /// <param name="applicationInfoService">
+        /// The service that provides information about the application.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="applicationInfoService"/> is null.
+        /// </exception>
+        public FileCache(
+            IApplicationFolderManager applicationFolderManager,
+            IApplicationInfoService applicationInfoService)
         {
+            this.applicationFolderManager = applicationFolderManager;
+            applicationInfo = applicationInfoService?.GetApplicationInfo() ??
+                throw new ArgumentNullException(nameof(applicationInfoService));
             fileHashes = [];
-            cacheDirectory = new ApplicationDirectory().GetDirectory(
-                ApplicationDirectory.SpecialName.Cache);
-            executingAssembly = new ExecutingAssembly();
         }
 
         public void AddPdf(int id, byte[] pdf)
@@ -56,7 +72,7 @@ namespace PDFKeeper.Core.FileIO
                 {
                     if (!pdfFile.ComputeHash().Equals(
                         fileHashes[pdfFile.FullName],
-                        System.StringComparison.Ordinal))
+                        StringComparison.Ordinal))
                     {
                         File.WriteAllBytes(pdfFile.FullName, pdf);
                     }
@@ -92,8 +108,8 @@ namespace PDFKeeper.Core.FileIO
             return new PdfFile(
                 new FileInfo(
                     Path.Combine(
-                        cacheDirectory.FullName,
-                        $"{executingAssembly.ProductName}{id}.pdf")));
+                        applicationFolderManager.GetOrCreateFolderPath(ApplicationFolder.Cache),
+                        $"{applicationInfo.ProductName}{id}.pdf")));
         }
     }
 }
