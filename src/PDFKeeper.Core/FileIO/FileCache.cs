@@ -52,7 +52,9 @@ namespace PDFKeeper.Core.FileIO
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="applicationInfoService"/> is null.
         /// </exception>
+#pragma warning disable IDE0290 // Use primary constructor
         public FileCache(
+#pragma warning restore IDE0290 // Use primary constructor
             IApplicationFolderManager applicationFolderManager,
             IApplicationInfoService applicationInfoService)
         {

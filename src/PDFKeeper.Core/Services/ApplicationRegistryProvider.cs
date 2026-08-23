@@ -41,7 +41,9 @@ namespace PDFKeeper.Core.Services
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="applicationInfoService"/> is null.
         /// </exception>
+#pragma warning disable IDE0290 // Use primary constructor
         public ApplicationRegistryProvider(IApplicationInfoService applicationInfoService)
+#pragma warning restore IDE0290 // Use primary constructor
         {
             applicationInfo = applicationInfoService?.GetApplicationInfo() ??
                 throw new ArgumentNullException(nameof(applicationInfoService));
