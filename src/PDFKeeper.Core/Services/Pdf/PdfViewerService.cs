@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.FileIO;
+using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
 using PDFKeeper.Core.Models;
@@ -34,7 +34,7 @@ namespace PDFKeeper.Core.Services.Pdf
     /// </summary>
     public sealed class PdfViewerService : IPdfViewerService
     {
-        private readonly IFileCache fileCache;
+        private readonly IPdfFileCache pdfFileCache;
         private readonly IProcessService processService;
         private readonly ApplicationInfoDto applicationInfo;
         private readonly List<int> restrictedViewerPids;
@@ -44,23 +44,23 @@ namespace PDFKeeper.Core.Services.Pdf
         /// Initializes a new instance of the <see cref="PdfViewerService"/> class.
         /// </summary>
         /// <param name="applicationInfoService">
-        /// The service that provides information about the application.
+        /// The <see cref="IApplicationInfoService"/> instance.
         /// </param>
-        /// <param name="fileCache">
-        /// The file cache.
+        /// <param name="pdfFileCache">
+        /// The <see cref="IPdfFileCache"/> instance.
         /// </param>
         /// <param name="processService">
-        /// The process service.
+        /// The <see cref="IProcessService"/> instance.
         /// </param>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="applicationInfoService"/> is null.
         /// </exception>
         public PdfViewerService(
             IApplicationInfoService applicationInfoService,
-            IFileCache fileCache,
+            IPdfFileCache pdfFileCache,
             IProcessService processService)
         {
-            this.fileCache = fileCache;
+            this.pdfFileCache = pdfFileCache;
             this.processService = processService;
             applicationInfo = applicationInfoService?.GetApplicationInfo() ??
                 throw new ArgumentNullException(nameof(applicationInfoService));
@@ -83,7 +83,7 @@ namespace PDFKeeper.Core.Services.Pdf
 
         public void OpenPdf(int documentId, bool openPdfWithDefaultApplication)
         {
-            var pdfPath = fileCache.GetPdfFile(documentId).FullName;
+            var pdfPath = pdfFileCache.GetPdfPath(documentId);
             
             if (openPdfWithDefaultApplication)
             {

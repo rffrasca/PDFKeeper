@@ -18,36 +18,42 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using System;
-
-namespace PDFKeeper.Core.DataAccess.Repository
+namespace PDFKeeper.Core.Interfaces.Caching
 {
     /// <summary>
-    /// Represents a cached PDF document and its associated hash value.
+    /// Defines an interface for a PDF file cache.
     /// </summary>
-    /// <remarks>
-    /// Provides immutable, read‑only access to the stored hash and PDF content
-    /// using <see cref="ReadOnlyMemory{T}"/> to satisfy CA1819 and prevent
-    /// external mutation of the underlying arrays.
-    /// </remarks>
-    /// <param name="hash">
-    /// The hash value of the document as a byte array. The data is exposed as
-    /// <see cref="ReadOnlyMemory{T}"/> to ensure immutability.
-    /// </param>
-    /// <param name="pdf">
-    /// The PDF file content as a byte array. The data is exposed as
-    /// <see cref="ReadOnlyMemory{T}"/> to ensure immutability.
-    /// </param>
-    public sealed class DocumentCacheEntry(byte[] hash, byte[] pdf)
+    public interface IPdfFileCache
     {
         /// <summary>
-        /// Gets the hash value of the document as read‑only memory.
+        /// Gets the absolute file path of the cached PDF associated with the specified
+        /// document ID.
         /// </summary>
-        public ReadOnlyMemory<byte> Hash { get; } = hash;
+        /// <param name="id">
+        /// The unique document ID.
+        /// </param>
+        /// <returns>
+        /// The absolute file path of the cached PDF.
+        /// </returns>
+        string GetPdfPath(int id);
 
         /// <summary>
-        /// Gets the PDF content as read‑only memory.
+        /// Stores or updates the cached PDF file for the specified document ID.
         /// </summary>
-        public ReadOnlyMemory<byte> Pdf { get; } = pdf;
+        /// <param name="id">
+        /// The document ID.
+        /// </param>
+        /// <param name="pdf">
+        /// The PDF file bytes.
+        /// </param>
+        void StorePdf(int id, byte[] pdfBytes);
+
+        /// <summary>
+        /// Deletes the cached PDF file for the specified document ID.
+        /// </summary>
+        /// <param name="id">
+        /// The document ID.
+        /// </param>
+        void DeletePdf(int id);
     }
 }

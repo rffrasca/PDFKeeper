@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Models;
 using System;
 using System.Data;
@@ -38,8 +39,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// <summary>
         /// Initializes a new instance of the <see cref="SqliteDocumentRepository"/> class.
         /// </summary>
-        /// <param name="documentCache">The document cache instance.</param>
-        public SqliteDocumentRepository(IDocumentCache documentCache) : base(documentCache)
+        /// <param name="pdfMemoryCache">
+        /// The <see cref="IPdfMemoryCache"/> instance.
+        /// </param>
+        public SqliteDocumentRepository(IPdfMemoryCache pdfMemoryCache) : base(pdfMemoryCache)
         {
             connStrBuilder = new SQLiteConnectionStringBuilder
             {
@@ -576,7 +579,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     }
                 }
 
-                documentCache.Remove(id);
+                pdfMemoryCache.RemovePdf(id);
             }
             catch (SQLiteException ex)
             {

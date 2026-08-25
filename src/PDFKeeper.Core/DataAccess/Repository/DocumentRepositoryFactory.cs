@@ -18,6 +18,8 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using PDFKeeper.Core.Interfaces.Caching;
+
 namespace PDFKeeper.Core.DataAccess.Repository
 {
     internal class DocumentRepositoryFactory
@@ -25,55 +27,57 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// <summary>
         /// Factory method that gets an <see cref="IDocumentRepository"/> instance.
         /// </summary>
-        /// <param name="documentCache">The document cache to be used by the repository.</param>
+        /// <param name="pdfMemoryCache">
+        /// The <see cref="IPdfMemoryCache"/> instance.
+        /// </param>
         /// <returns>
         /// The <see cref="IDocumentRepository"/> instance.
         /// </returns>
-        internal static IDocumentRepository Create(IDocumentCache documentCache)
+        internal static IDocumentRepository Create(IPdfMemoryCache pdfMemoryCache)
         {
             IDocumentRepository instance = null;
 
             switch (DatabaseSession.PlatformName)
             {
                 case DatabaseSession.CompatiblePlatformName.Oracle:
-                    instance = GetOracleInstance(documentCache);
+                    instance = GetOracleInstance(pdfMemoryCache);
                     break;
                 case DatabaseSession.CompatiblePlatformName.Sqlite:
-                    instance = GetSqliteInstance(documentCache);
+                    instance = GetSqliteInstance(pdfMemoryCache);
                     break;
                 case DatabaseSession.CompatiblePlatformName.SqlServer:
-                    instance = GetSqlServerInstance(documentCache);
+                    instance = GetSqlServerInstance(pdfMemoryCache);
                     break;
                 case DatabaseSession.CompatiblePlatformName.MySql:
-                    instance = GetMySqlInstance(documentCache);
+                    instance = GetMySqlInstance(pdfMemoryCache);
                     break;
             }
 
             return instance;
         }
 
-        // Repository object creation has to occur outside of the GetDocumentRepository method to
-        // avoid an InvalidOperationException from being thrown when the database platform is
-        // SQLite.
+        // Repository object creation has to occur outside of the GetDocumentRepository method
+        // to avoid an InvalidOperationException from being thrown when the database platform
+        // is SQLite.
 
-        private static IDocumentRepository GetOracleInstance(IDocumentCache documentCache)
+        private static IDocumentRepository GetOracleInstance(IPdfMemoryCache pdfMemoryCache)
         {
-            return new OracleDocumentRepository(documentCache);
+            return new OracleDocumentRepository(pdfMemoryCache);
         }
 
-        private static IDocumentRepository GetSqliteInstance(IDocumentCache documentCache)
+        private static IDocumentRepository GetSqliteInstance(IPdfMemoryCache pdfMemoryCache)
         {
-            return new SqliteDocumentRepository(documentCache);
+            return new SqliteDocumentRepository(pdfMemoryCache);
         }
 
-        private static IDocumentRepository GetSqlServerInstance(IDocumentCache documentCache)
+        private static IDocumentRepository GetSqlServerInstance(IPdfMemoryCache pdfMemoryCache)
         {
-            return new SqlServerDocumentRepository(documentCache);
+            return new SqlServerDocumentRepository(pdfMemoryCache);
         }
 
-        private static IDocumentRepository GetMySqlInstance(IDocumentCache documentCache)
+        private static IDocumentRepository GetMySqlInstance(IPdfMemoryCache pdfMemoryCache)
         {
-            return new MySqlDocumentRepository(documentCache);
+            return new MySqlDocumentRepository(pdfMemoryCache);
         }
     }
 }

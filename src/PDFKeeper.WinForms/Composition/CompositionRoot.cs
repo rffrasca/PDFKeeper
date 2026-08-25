@@ -19,9 +19,11 @@
 // ****************************************************************************
 
 using Microsoft.Extensions.DependencyInjection;
+using PDFKeeper.Core.Caching;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.HelpSystem;
+using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Interfaces.Navigation;
 using PDFKeeper.Core.Interfaces.Services;
@@ -76,13 +78,13 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IApplicationRegistryProvider, ApplicationRegistryProvider>();
             services.AddSingleton<IDocumentExportService, DocumentExportService>();
             services.AddSingleton<IExceptionHandler, ExceptionHandler>();
-            services.AddSingleton<IFileCache, FileCache>();
             services.AddSingleton<IFolderBrowserDialogService, FolderBrowserDialogService>();
             services.AddSingleton<IHelpFileResolver, HelpFileResolver>();
             services.AddSingleton<IHelpViewer, HelpViewer>();
             services.AddSingleton<IKeyedServiceResolver, KeyedServiceResolver>();
             services.AddSingleton<IMessageBoxService, MessageBoxService>();
             services.AddSingleton<IPasswordDialogService, PdfOwnerPasswordDialogService>();
+            services.AddSingleton<IPdfFileCache, PdfFileCache>();
             services.AddSingleton<IPdfPreviewService, PdfPreviewService>();
             services.AddSingleton<IPdfUploadStagingService, PdfUploadStagingService>();
             services.AddSingleton<IPdfViewerService, PdfViewerService>();

@@ -22,6 +22,7 @@ using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Interfaces.Services.Upload;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
@@ -121,18 +122,18 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// <summary>
         /// Executes the upload process by staging PDF files and uploading them to the repository.
         /// </summary>
-        /// <param name="fileCache">
-        /// The file cache used to manage cached PDF files and previews.
+        /// <param name="pdfFileCache">
+        /// The <see cref="IPdfFileCache"/> instance.
         /// </param>
         /// <remarks>
         /// This method performs two main operations: staging PDF files in the upload directory and
         /// uploading the staged files. Ensure that the file cache is properly initialized before
         /// calling this method.
         /// </remarks>
-        internal void ExecuteUpload(IFileCache fileCache)
+        internal void ExecuteUpload(IPdfFileCache pdfFileCache)
         {
             StagePdfFilesInUploadDirectory();
-            UploadStagedPdfFiles(fileCache);
+            UploadStagedPdfFiles(pdfFileCache);
         }
 
         private static Collection<FileInfo> GetPdfFiles(DirectoryInfo directory)
@@ -338,8 +339,8 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// Processes and uploads staged PDF files from the staging directory to the document
         /// repository.
         /// </summary>
-        /// <param name="fileCache">
-        /// The file cache used to manage cached PDF files and previews.
+        /// <param name="pdfFileCache">
+        /// The <see cref="IPdfFileCache"/> instance.
         /// </param>
         /// <remarks>
         /// This method retrieves PDF files from the staging directory, extracts metadata and
@@ -348,7 +349,7 @@ namespace PDFKeeper.Core.FileIO.PDF
         /// the record. After processing, the original PDF files and their associated XML metadata
         /// files (if present) are deleted from the staging directory.
         /// </remarks>
-        private void UploadStagedPdfFiles(IFileCache fileCache)
+        private void UploadStagedPdfFiles(IPdfFileCache pdfFileCache)
         {
             foreach (var pdfFile in GetPdfFiles(uploadStagingDirectory))
             {
@@ -384,7 +385,7 @@ namespace PDFKeeper.Core.FileIO.PDF
                     }
                     else
                     {
-                        fileCache.Delete(document.Id);
+                        pdfFileCache.DeletePdf(document.Id);
                         documentRepository.UpdateDocument(document, true);
                     }
                 }

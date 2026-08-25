@@ -19,7 +19,8 @@
 // ****************************************************************************
 
 using PDFKeeper.Core.Enums;
-using PDFKeeper.Core.FileIO.PDF;
+using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Models;
@@ -28,32 +29,31 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace PDFKeeper.Core.FileIO
+namespace PDFKeeper.Core.Caching
 {
     /// <summary>
-    /// Default implementation of the <see cref="IFileCache"/> interface.
+    /// Default implementation of the <see cref="IPdfFileCache"/> interface.
     /// </summary>
-    public sealed class FileCache : IFileCache
+    public sealed class PdfFileCache : IPdfFileCache
     {
         private readonly IApplicationFolderManager applicationFolderManager;
         private readonly ApplicationInfoDto applicationInfo;
         private readonly Dictionary<string, string> fileHashes;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileCache"/> class.
+        /// Initializes a new instance of the <see cref="PdfFileCache"/> class.
         /// </summary>
         /// <param name="applicationFolderManager">
-        /// The <see cref="IApplicationFolderManager"/> instance used to manage application
-        /// folders.
+        /// The <see cref="IApplicationFolderManager"/> instance.
         /// </param>
         /// <param name="applicationInfoService">
-        /// The service that provides information about the application.
+        /// The <see cref="IApplicationInfoService"/> instance.
         /// </param>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="applicationInfoService"/> is null.
         /// </exception>
 #pragma warning disable IDE0290 // Use primary constructor
-        public FileCache(
+        public PdfFileCache(
 #pragma warning restore IDE0290 // Use primary constructor
             IApplicationFolderManager applicationFolderManager,
             IApplicationInfoService applicationInfoService)
@@ -61,39 +61,49 @@ namespace PDFKeeper.Core.FileIO
             this.applicationFolderManager = applicationFolderManager;
             applicationInfo = applicationInfoService?.GetApplicationInfo() ??
                 throw new ArgumentNullException(nameof(applicationInfoService));
-            fileHashes = [];
+#pragma warning disable IDE0028 // Simplify collection initialization
+            fileHashes = new Dictionary<string, string>();
+#pragma warning restore IDE0028 // Simplify collection initialization
         }
 
-        public void AddPdf(int id, byte[] pdf)
+        public string GetPdfPath(int id)
         {
-            var pdfFile = GetPdfFile(id);
+            return Path.Combine(
+                applicationFolderManager.GetOrCreateFolderPath(ApplicationFolder.Cache),
+                $"{applicationInfo.ProductName}{id}.pdf");
+        }
 
-            if (fileHashes.ContainsKey(pdfFile.FullName))
+        public void StorePdf(int id, byte[] pdfBytes)
+        {
+            var pdfPath = GetPdfPath(id);
+            var pdfFile = new FileInfo(pdfPath);
+
+            if (fileHashes.ContainsKey(pdfPath))
             {
-                if (pdfFile.Exists)
+                if (File.Exists(pdfPath))
                 {
                     if (!pdfFile.ComputeHash().Equals(
                         fileHashes[pdfFile.FullName],
                         StringComparison.Ordinal))
                     {
-                        File.WriteAllBytes(pdfFile.FullName, pdf);
+                        File.WriteAllBytes(pdfPath, pdfBytes);
                     }
                 }
                 else
                 {
-                    File.WriteAllBytes(pdfFile.FullName, pdf);           
+                    File.WriteAllBytes(pdfPath, pdfBytes);
                 }
 
-                fileHashes[pdfFile.FullName] = pdfFile.ComputeHash();
+                fileHashes[pdfPath] = pdfFile.ComputeHash();
             }
             else
             {
-                File.WriteAllBytes(pdfFile.FullName, pdf);
-                fileHashes.Add(pdfFile.FullName, pdfFile.ComputeHash());
+                File.WriteAllBytes(pdfPath, pdfBytes);
+                fileHashes.Add(pdfPath, pdfFile.ComputeHash());
             }
         }
 
-        public void Delete(int id)
+        public void DeletePdf(int id)
         {
             foreach (var key in fileHashes.Keys.ToList())
             {
@@ -103,15 +113,6 @@ namespace PDFKeeper.Core.FileIO
                     fileHashes.Remove(key);
                 }
             }
-        }
-
-        public PdfFile GetPdfFile(int id)
-        {
-            return new PdfFile(
-                new FileInfo(
-                    Path.Combine(
-                        applicationFolderManager.GetOrCreateFolderPath(ApplicationFolder.Cache),
-                        $"{applicationInfo.ProductName}{id}.pdf")));
         }
     }
 }

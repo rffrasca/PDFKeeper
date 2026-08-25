@@ -19,6 +19,7 @@
 // ****************************************************************************
 
 using Microsoft.Data.SqlClient;
+using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
 using SoftCircuits.FullTextSearchQuery;
@@ -39,8 +40,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// <summary>
         /// Initializes a new instance of the <see cref="SqlServerDocumentRepository"/> class.
         /// </summary>
-        /// <param name="documentCache">The document cache instance.</param>
-        public SqlServerDocumentRepository(IDocumentCache documentCache) : base(documentCache)
+        /// <param name="pdfMemoryCache">
+        /// The <see cref="IPdfMemoryCache"/> instance.
+        /// </param>
+        public SqlServerDocumentRepository(IPdfMemoryCache pdfMemoryCache) : base(pdfMemoryCache)
         {
             connStrBuilder = new SqlConnectionStringBuilder
             {
@@ -643,7 +646,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     }
                 }
 
-                documentCache.Remove(id);
+                pdfMemoryCache.RemovePdf(id);
             }
             catch (SqlException ex)
             {

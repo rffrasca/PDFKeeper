@@ -18,33 +18,31 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using PDFKeeper.Core.Interfaces.Caching;
+using PDFKeeper.Core.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Security.Cryptography;
 
-namespace PDFKeeper.Core.DataAccess.Repository
+namespace PDFKeeper.Core.Caching
 {
     /// <summary>
-    /// Provides an in‑memory cache for document data, keyed by document ID.
-    /// Stores both the document hash and encrypted PDF content to avoid
-    /// unnecessary database reads when the document has not changed.
+    /// Default implementation of the <see cref="IPdfMemoryCache"/> interface.
     /// </summary>
-    public sealed class DocumentCache : IDocumentCache
+    public sealed class PdfMemoryCache : IPdfMemoryCache
     {
         private readonly ConcurrentDictionary<int, (byte[] Hash, byte[] EncryptedPdf)> cache;
         private readonly byte[] key;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DocumentCache"/> class.
-        /// Generates a unique AES‑256 encryption key used to encrypt and decrypt
-        /// PDF content stored in the in‑memory cache.
+        /// Initializes a new instance of the <see cref="PdfMemoryCache"/> class.
         /// </summary>
         /// <remarks>
         /// A single encryption key is created per cache instance. Initialization vectors (IVs)
         /// are generated per encryption operation and embedded in the encrypted payload, ensuring
-        /// secure and CA5401‑compliant handling without requiring persistent IV storage.
+        /// secure and compliant handling without requiring persistent IV storage.
         /// </remarks>
-        public DocumentCache()
+        public PdfMemoryCache()
         {
             cache = new ConcurrentDictionary<int, (byte[] Hash, byte[] EncryptedPdf)>();
 
@@ -55,42 +53,45 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public bool TryGet(int documentId, out DocumentCacheEntry documentCacheEntry)
+        public bool TryGetPdf(int documentId, out PdfCacheEntry pdfCacheEntry)
         {
             if (cache.TryGetValue(documentId, out var entry))
             {
                 var decryptedPdf = Decrypt(entry.EncryptedPdf);
-                documentCacheEntry = new DocumentCacheEntry(entry.Hash, decryptedPdf);
+                pdfCacheEntry = new PdfCacheEntry(entry.Hash, decryptedPdf);
                 return true;
             }
 
-            documentCacheEntry = null;
+            pdfCacheEntry = null;
             return false;
         }
 
-        public void Set(int documentId, byte[] hash, byte[] pdf)
+        public void StorePdf(int documentId, byte[] hash, byte[] pdfBytes)
         {
-            if (pdf is null)
+            if (pdfBytes is null)
             {
-                throw new ArgumentNullException(nameof(pdf));
+                throw new ArgumentNullException(nameof(pdfBytes));
             }
 
-            var encryptedPdf = Encrypt(pdf);
+            var encryptedPdf = Encrypt(pdfBytes);
             cache[documentId] = (hash, encryptedPdf);
         }
 
-        public void Remove(int documentId) => cache.TryRemove(documentId, out _);
+        public void RemovePdf(int documentId)
+        {
+            cache.TryRemove(documentId, out _);
+        }
 
         /// <summary>
-        /// Encrypts the specified PDF data using AES‑256 in CBC mode.
+        /// Encrypts the specified data using AES‑256 in CBC mode.
         /// A new random initialization vector (IV) is generated for each
         /// encryption operation to ensure security and CA5401 compliance.
         /// </summary>
         /// <param name="data">
-        /// The plaintext PDF content to encrypt.
+        /// The content to encrypt.
         /// </param>
         /// <returns>
-        /// A byte array containing the IV followed by the encrypted PDF data.
+        /// A byte array containing the IV followed by the encrypted data.
         /// The IV is stored in cleartext as the first <c>BlockSize / 8</c>
         /// bytes of the returned array.
         /// </returns>
@@ -120,15 +121,15 @@ namespace PDFKeeper.Core.DataAccess.Repository
         }
 
         /// <summary>
-        /// Decrypts PDF data previously encrypted by <see cref="Encrypt(byte[])"/>.
+        /// Decrypts data previously encrypted by <see cref="Encrypt(byte[])"/>.
         /// Extracts the initialization vector (IV) from the beginning of the
         /// encrypted payload and uses it to perform AES‑256 decryption.
         /// </summary>
         /// <param name="data">
-        /// The encrypted PDF content, consisting of the IV followed by the ciphertext.
+        /// The encrypted content, consisting of the IV followed by the ciphertext.
         /// </param>
         /// <returns>
-        /// The decrypted plaintext PDF content.
+        /// The decrypted content.
         /// </returns>
         /// <remarks>
         /// The first <c>BlockSize / 8</c> bytes of <paramref name="data"/> contain the IV

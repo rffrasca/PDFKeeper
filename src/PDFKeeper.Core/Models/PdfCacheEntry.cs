@@ -18,46 +18,42 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.FileIO.PDF;
+using System;
 
-namespace PDFKeeper.Core.FileIO
+namespace PDFKeeper.Core.Models
 {
     /// <summary>
-    /// Defines the interface for a file cache that manages cached PDF files.
+    /// Represents a cached PDF document and its associated hash value.
     /// </summary>
-    public interface IFileCache
+    public sealed class PdfCacheEntry
     {
         /// <summary>
-        /// Adds or updates the cached PDF file for the specified document ID.
-        /// If the file already exists, its hash is compared to determine whether
-        /// the cached file should be overwritten.
+        /// Initializes a new instance of the <see cref="PdfCacheEntry"/> class.
         /// </summary>
-        /// <param name="id">
-        /// The document ID associated with the PDF file.
+        /// <param name="hash">
+        /// The hash value of the document as a byte array. The data is exposed as
+        /// <see cref="ReadOnlyMemory{T}"/> to ensure immutability.
         /// </param>
         /// <param name="pdf">
-        /// The raw PDF file bytes to cache.
+        /// The PDF file content as a byte array. The data is exposed as
+        /// <see cref="ReadOnlyMemory{T}"/> to ensure immutability.
         /// </param>
-        void AddPdf(int id, byte[] pdf);
+#pragma warning disable IDE0290 // Use primary constructor
+        public PdfCacheEntry(byte[] hash, byte[] pdfBytes)
+#pragma warning restore IDE0290 // Use primary constructor
+        {
+            Hash = hash;
+            Pdf = pdfBytes;
+        }
+        
+        /// <summary>
+        /// Gets the hash value of the document as read‑only memory.
+        /// </summary>
+        public ReadOnlyMemory<byte> Hash { get; }
 
         /// <summary>
-        /// Deletes the cached PDF file associated with the specified document ID.
+        /// Gets the PDF content as read‑only memory.
         /// </summary>
-        /// <param name="id">
-        /// The document ID whose cached PDF file should be removed.
-        /// </param>
-        void Delete(int id);
-
-        /// <summary>
-        /// Gets the <see cref="PdfFile"/> object representing the cached PDF file
-        /// for the specified document ID. The file may or may not exist on disk.
-        /// </summary>
-        /// <param name="id">
-        /// The document ID of the PDF file.
-        /// </param>
-        /// <returns>
-        /// A <see cref="PdfFile"/> object representing the cached PDF file.
-        /// </returns>
-        PdfFile GetPdfFile(int id);
+        public ReadOnlyMemory<byte> Pdf { get; }
     }
 }

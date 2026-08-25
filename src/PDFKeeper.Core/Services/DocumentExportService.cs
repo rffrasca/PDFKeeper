@@ -20,8 +20,8 @@
 
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
-using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.FileIO.PDF;
+using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
@@ -34,19 +34,19 @@ namespace PDFKeeper.Core.Services
     /// </summary>
     public sealed class DocumentExportService : IDocumentExportService
     {
-        private readonly IFileCache fileCache;
+        private readonly IPdfFileCache pdfFileCache;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentExportService"/> class.
         /// </summary>
-        /// <param name="fileCache">
-        /// The <see cref="IFileCache"/> instance.
+        /// <param name="pdfFileCache">
+        /// The <see cref="IPdfFileCache"/> instance.
         /// </param>
 #pragma warning disable IDE0290 // Use primary constructor
-        public DocumentExportService(IFileCache fileCache)
+        public DocumentExportService(IPdfFileCache pdfFileCache)
 #pragma warning restore IDE0290 // Use primary constructor
         {
-            this.fileCache = fileCache;
+            this.pdfFileCache = pdfFileCache;
         }
 
         public void ExportDocument(int documentId, string baseExportFolderPath)
@@ -58,7 +58,7 @@ namespace PDFKeeper.Core.Services
                 document = documentRepository.GetDocument(documentId, null);
             }
 
-            fileCache.AddPdf(documentId, document.Pdf);
+            pdfFileCache.StorePdf(documentId, document.Pdf);
             var exportFolderPath = Path.Combine(
                 baseExportFolderPath,
                 document.Author,

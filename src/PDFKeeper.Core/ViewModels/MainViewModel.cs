@@ -25,6 +25,7 @@ using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Interfaces.Navigation;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
@@ -58,10 +59,10 @@ namespace PDFKeeper.Core.ViewModels
         private readonly IApplicationFolderExplorer applicationFolderExplorer;
         private readonly IApplicationPolicyService applicationPolicyService;
         private readonly IDocumentExportService documentExportService;
-        private readonly IFileCache fileCache;
         private readonly IFolderBrowserDialogService folderBrowserDialogService;
         private readonly IKeyedServiceResolver keyedServiceResolver;
         private readonly IMessageBoxService messageBoxService;
+        private readonly IPdfFileCache pdfFileCache;
         private readonly IPdfPreviewService pdfPreviewService;
         private readonly IPdfViewerService pdfViewerService;
         private readonly IPrintDialogService printDialogService;
@@ -178,9 +179,6 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="documentExportService">
         /// The <see cref="IDocumentExportService"/> instance.
         /// </param>
-        /// <param name="fileCache">
-        /// The <see cref="IFileCache"/> instance.
-        /// </param>
         /// <param name="folderBrowserDialogService">
         /// The <see cref="IFolderBrowserDialogService"/> instance.
         /// </param>
@@ -189,6 +187,9 @@ namespace PDFKeeper.Core.ViewModels
         /// </param>
         /// <param name="messageBoxService">
         /// The <see cref="IMessageBoxService"/> instance.
+        /// </param>
+        /// <param name="pdfFileCache">
+        /// The <see cref="IPdfFileCache"/> instance.
         /// </param>
         /// <param name="pdfPreviewService">
         /// The <see cref="IPdfPreviewService"/> instance.
@@ -211,10 +212,10 @@ namespace PDFKeeper.Core.ViewModels
             IApplicationInfoService applicationInfoService,
             IApplicationPolicyService applicationPolicyService,
             IDocumentExportService documentExportService,
-            IFileCache fileCache,
             IFolderBrowserDialogService folderBrowserDialogService,
             IKeyedServiceResolver keyedServiceResolver,
             IMessageBoxService messageBoxService,
+            IPdfFileCache pdfFileCache,
             IPdfPreviewService pdfPreviewService,
             IPdfViewerService pdfViewerService,
             IPrintDialogService printDialogService,
@@ -224,10 +225,10 @@ namespace PDFKeeper.Core.ViewModels
             this.applicationFolderExplorer = applicationFolderExplorer;
             this.applicationPolicyService = applicationPolicyService;
             this.documentExportService = documentExportService;
-            this.fileCache = fileCache;
             this.folderBrowserDialogService = folderBrowserDialogService;
             this.keyedServiceResolver = keyedServiceResolver;
             this.messageBoxService = messageBoxService;
+            this.pdfFileCache = pdfFileCache;
             this.pdfPreviewService = pdfPreviewService;
             this.pdfViewerService = pdfViewerService;
             this.printDialogService = printDialogService;
@@ -1331,7 +1332,7 @@ namespace PDFKeeper.Core.ViewModels
                                 currentDocument = documentRepository.GetDocument(id, null);
                             }
 
-                            fileCache.AddPdf(currentDocument.Id, currentDocument.Pdf);
+                            pdfFileCache.StorePdf(currentDocument.Id, currentDocument.Pdf);
                             pdfViewerService.OpenPdf(
                                 currentDocument.Id,
                                 OpenPdfWithDefaultApplication);
@@ -1461,7 +1462,7 @@ namespace PDFKeeper.Core.ViewModels
             {
                 if (string.IsNullOrEmpty(text))
                 {
-                    fileCache.GetPdfFile(currentDocument.Id).CopyTo(targetFilePath, true);
+                    File.Copy(pdfFileCache.GetPdfPath(currentDocument.Id), targetFilePath, true);
                 }
                 else
                 {
@@ -1478,7 +1479,8 @@ namespace PDFKeeper.Core.ViewModels
 
             if (selectedPath.Length > 0)
             {
-                var pdfFile = fileCache.GetPdfFile(CurrentDocumentId);
+                var pdfFile = new PdfFile(
+                    new FileInfo(pdfFileCache.GetPdfPath(CurrentDocumentId)));
             
                 try
                 {
@@ -1516,7 +1518,8 @@ namespace PDFKeeper.Core.ViewModels
 
             try
             {
-                var pdfFile = fileCache.GetPdfFile(CurrentDocumentId);
+                var pdfFile = new PdfFile(
+                    new FileInfo(pdfFileCache.GetPdfPath(CurrentDocumentId)));
 
                 switch (messageBoxService.ShowQuestion(GetWindowHandle.Invoke(), resource, true))
                 {
@@ -1557,7 +1560,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void CopyCurrentDocumentPdfToClipboard()
         {
-            var pdfFile = fileCache.GetPdfFile(CurrentDocumentId);
+            var pdfFile = new PdfFile(new FileInfo(pdfFileCache.GetPdfPath(CurrentDocumentId)));
             pdfFile.CopyToClipboard();
         }
 
@@ -1983,7 +1986,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void DoDragDropPdfForCurrentDocument()
         {
-            var pdfFile = fileCache.GetPdfFile(CurrentDocumentId);
+            var pdfFile = new PdfFile(new FileInfo(pdfFileCache.GetPdfPath(CurrentDocumentId)));
             OnPdfDoDragDrop?.Invoke(pdfFile);
         }
 
@@ -2199,7 +2202,7 @@ namespace PDFKeeper.Core.ViewModels
                     }
 
                     await Task.Run(()
-                        => pdfUploader.ExecuteUpload(fileCache)).ConfigureAwait(true);
+                        => pdfUploader.ExecuteUpload(pdfFileCache)).ConfigureAwait(true);
                 }
                 catch (Exception ex) when (
                     ex is ArgumentException ||
@@ -2398,7 +2401,7 @@ namespace PDFKeeper.Core.ViewModels
                         }
                     }
 
-                    var cachePdfTask = Task.Run(() => fileCache.AddPdf(
+                    var cachePdfTask = Task.Run(() => pdfFileCache.StorePdf(
                         currentDocument.Id,
                         currentDocument.Pdf));
                     EditFlagDocumentMenuChecked = Convert.ToBoolean(currentDocument.Flag);
@@ -2409,7 +2412,8 @@ namespace PDFKeeper.Core.ViewModels
                     SearchTermSnippets = currentDocument.SearchTermSnippets;
                     DocumentDataEnabled = true;
                     cachePdfTask.Wait();
-                    var pdfFile = fileCache.GetPdfFile(currentDocument.Id);
+                    var pdfFile = new PdfFile(
+                        new FileInfo(pdfFileCache.GetPdfPath(currentDocument.Id)));
                     FileExtractMenuEnabled = pdfFile.ContainsAttachments ||
                         pdfFile.ContainsEmbeddedFiles;
                     FileExtractAllAttachmentsMenuEnabled = pdfFile.ContainsAttachments;
@@ -2445,7 +2449,7 @@ namespace PDFKeeper.Core.ViewModels
         {
             OnLongOperationStarted?.Invoke();
             Preview = pdfPreviewService.CreatePreviewImageAsync(
-                fileCache.GetPdfFile(CurrentDocumentId).FullName,
+                pdfFileCache.GetPdfPath(CurrentDocumentId),
                 PreviewPixelDensity).GetAwaiter().GetResult();
             OnLongOperationFinished?.Invoke();
         }
@@ -2632,7 +2636,7 @@ namespace PDFKeeper.Core.ViewModels
                                 break;
                             case CheckedDocumentAction.Delete:
                                 documentRepository.DeleteDocument(id);
-                                fileCache.Delete(id);
+                                pdfFileCache.DeletePdf(id);
                                 break;
                             case CheckedDocumentAction.Export:
                                 documentExportService.ExportDocument(id, value);

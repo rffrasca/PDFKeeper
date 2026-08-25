@@ -19,6 +19,7 @@
 // ****************************************************************************
 
 using Oracle.ManagedDataAccess.Client;
+using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
 using System;
@@ -39,8 +40,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// <summary>
         /// Initializes a new instance of the <see cref="OracleDocumentRepository"/> class.
         /// </summary>
-        /// <param name="documentCache">The document cache instance.</param>
-        public OracleDocumentRepository(IDocumentCache documentCache) : base(documentCache)
+        /// <param name="pdfMemoryCache">
+        /// The <see cref="IPdfMemoryCache"/> instance.
+        /// </param>
+        public OracleDocumentRepository(IPdfMemoryCache pdfMemoryCache) : base(pdfMemoryCache)
         {
             connStrBuilder = new OracleConnectionStringBuilder
             {
@@ -570,7 +573,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
                     }
                 }
 
-                documentCache.Remove(id);
+                pdfMemoryCache.RemovePdf(id);
             }
             catch (OracleException ex)
             {

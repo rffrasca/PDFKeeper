@@ -42,7 +42,7 @@ namespace PDFKeeper.Core.Services.Pdf
         /// Initializes a new instance of the <see cref="PdfPreviewService"/> class.
         /// </summary>
         /// <param name="memoryCache">
-        /// The memory cache instance to use for caching preview images.
+        /// The <see cref="IMemoryCache"/> instance.
         /// </param>
 #pragma warning disable IDE0290 // Use primary constructor
         public PdfPreviewService(IMemoryCache memoryCache)

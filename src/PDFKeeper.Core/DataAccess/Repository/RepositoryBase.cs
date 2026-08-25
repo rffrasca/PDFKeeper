@@ -18,6 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
+using PDFKeeper.Core.Interfaces.Caching;
 using System;
 using System.Data;
 using System.Linq;
@@ -34,13 +35,13 @@ namespace PDFKeeper.Core.DataAccess.Repository
     /// <typeparam name="T2">
     /// The type of the command used for executing queries against the database.
     /// </typeparam>
-    /// <param name="documentCache">
-    /// The document cache used for storing and retrieving PDF documents efficiently.
+    /// <param name="pdfMemoryCache">
+    /// The <see cref="IPdfMemoryCache"/> instance.
     /// </param>
-    public abstract class RepositoryBase<T1, T2>(IDocumentCache documentCache)
+    public abstract class RepositoryBase<T1, T2>(IPdfMemoryCache pdfMemoryCache)
     {
         protected T1 connStrBuilder;
-        protected IDocumentCache documentCache = documentCache;
+        protected IPdfMemoryCache pdfMemoryCache = pdfMemoryCache;
 
         /// <summary>
         /// Executes the specified query command and returns the results as a DataTable.
@@ -99,7 +100,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
 
             var dbHash = getHashFromDb(documentId);
 
-            if (documentCache.TryGet(documentId, out var entry))
+            if (pdfMemoryCache.TryGetPdf(documentId, out var entry))
             {
                 if (!entry.Hash.IsEmpty &&
                     !entry.Pdf.IsEmpty &&
@@ -110,7 +111,7 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
 
             var pdf = getPdfFromDb(documentId);
-            documentCache.Set(documentId, dbHash, pdf);
+            pdfMemoryCache.StorePdf(documentId, dbHash, pdf);
             return pdf;
         }
 

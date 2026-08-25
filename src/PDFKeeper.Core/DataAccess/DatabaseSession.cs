@@ -19,10 +19,12 @@
 // ****************************************************************************
 
 using Microsoft.Win32;
+using PDFKeeper.Core.Caching;
 using PDFKeeper.Core.DataAccess.Repository;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Services;
 using System;
@@ -35,7 +37,7 @@ namespace PDFKeeper.Core.DataAccess
 {
     public static class DatabaseSession
     {
-        private static readonly IDocumentCache documentCache = new DocumentCache();
+        private static readonly IPdfMemoryCache pdfMemoryCache = new PdfMemoryCache();
         private static CompatiblePlatformName platformName;
         private static string userName;
         private static SecureString password;
@@ -85,7 +87,7 @@ namespace PDFKeeper.Core.DataAccess
         /// <returns>The <see cref="IDocumentRepository"/> instance.</returns>
         public static IDocumentRepository GetDocumentRepository()
         {
-            return DocumentRepositoryFactory.Create(documentCache);
+            return DocumentRepositoryFactory.Create(pdfMemoryCache);
         }
 
         /// <summary>

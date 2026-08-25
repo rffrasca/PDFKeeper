@@ -18,33 +18,33 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-namespace PDFKeeper.Core.DataAccess.Repository
+using PDFKeeper.Core.Models;
+
+namespace PDFKeeper.Core.Interfaces.Caching
 {
     /// <summary>
-    /// Defines an in‑memory cache for storing document metadata and PDF content,
-    /// keyed by document ID. Implementations may apply encryption or other
-    /// protections transparently while preserving the public API.
+    /// Defines an interface that provides secure, in-memory caching for PDF
+    /// content, keyed by document ID.
     /// </summary>
-    public interface IDocumentCache
+    public interface IPdfMemoryCache
     {
         /// <summary>
-        /// Attempts to retrieve the cached document entry for the specified
-        /// document ID.
+        /// Attempts to retrieve the cached PDF document entry for the specified document ID.
         /// </summary>
         /// <param name="documentId">
         /// The unique identifier of the document.
         /// </param>
-        /// <param name="documentCacheEntry">
-        /// When this method returns <c>true</c>, contains the cached document
-        /// hash and PDF content. When <c>false</c>, the value is <c>null</c>.
+        /// <param name="pdfCacheEntry">
+        /// When this method returns <c>true</c>, this out parameter will contain the cached
+        /// document hash and PDF content. When <c>false</c>, the value is <c>null</c>.
         /// </param>
         /// <returns>
         /// <c>true</c> if the document exists in the cache; otherwise, <c>false</c>.
         /// </returns>
-        bool TryGet(int documentId, out DocumentCacheEntry documentCacheEntry);
+        bool TryGetPdf(int documentId, out PdfCacheEntry pdfCacheEntry);
 
         /// <summary>
-        /// Adds or updates the cached entry for the specified document ID.
+        /// Adds or updates the cached PDF entry for the specified document ID.
         /// </summary>
         /// <param name="documentId">
         /// The unique identifier of the document.
@@ -52,18 +52,20 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// <param name="hash">
         /// The SHA‑256 hash of the PDF content, used to detect changes.
         /// </param>
-        /// <param name="pdf">
-        /// The PDF file content. Implementations may encrypt this value before
-        /// storing it in the cache.
+        /// <param name="pdfBytes">
+        /// The PDF file content that will be encrypted before storing it in memory.
         /// </param>
-        void Set(int documentId, byte[] hash, byte[] pdf);
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="pdfBytes"/> is <c>null</c>.
+        /// </exception>
+        void StorePdf(int documentId, byte[] hash, byte[] pdfBytes);
 
         /// <summary>
-        /// Removes the cached entry for the specified document ID, if present.
+        /// Removes the cached PDF entry for the specified document ID, if present.
         /// </summary>
         /// <param name="documentId">
-        /// The unique identifier of the document to remove.
+        /// The unique identifier of the PDF document to remove.
         /// </param>
-        void Remove(int documentId);
+        void RemovePdf(int documentId);
     }
 }
