@@ -26,7 +26,6 @@ using PDFKeeper.Core.Services;
 using System;
 using System.IO;
 using System.Security;
-using System.Windows.Input;
 
 namespace PDFKeeper.Core.ViewModels
 {
@@ -41,14 +40,16 @@ namespace PDFKeeper.Core.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginViewModel"/> class.
         /// </summary>
-        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+        /// <param name="messageBoxService">
+        /// The <see cref="IMessageBoxService"/> instance.
+        /// </param>
         public LoginViewModel(IMessageBoxService messageBoxService)
         {
             this.messageBoxService = messageBoxService;
             LoginCommand = new RelayCommand(Login);
         }
 
-        public ICommand LoginCommand { get; }
+        public IRelayCommand LoginCommand { get; }
         public string UserName { get; set; }
         public SecureString Password { get; set; }
         public string DataSource { get; set; }

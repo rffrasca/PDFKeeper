@@ -22,7 +22,6 @@ using CommunityToolkit.Mvvm.Input;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
-using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Interfaces.Caching;
@@ -44,13 +43,13 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Windows.ApplicationModel.DataTransfer;
 
 namespace PDFKeeper.Core.ViewModels
 {
     /// <summary>
-    /// View model for managing the main application window and its associated commands and services.
+    /// View model for managing the main application window and its associated commands and
+    /// services.
     /// </summary>
     [CLSCompliant(false)]
     public sealed class MainViewModel : ViewModelBase
@@ -272,123 +271,126 @@ namespace PDFKeeper.Core.ViewModels
         public Action OnSetDocumentsListHasChangesStarted { get; set; }
         public Action OnSetDocumentsListHasChangesFinished { get; set; }
         public Action OnSetViewState { get; set; }
-        public ICommand ClipboardUpdateCommand { get; private set; }
+        public IRelayCommand ClipboardUpdateCommand { get; private set; }
 
         /// <summary>
         /// Performs actions that need to happen during the loading of the view.
         /// <para>
-        /// <see cref="ICommand.Execute(StartupAction)"/>: The <see cref="StartupAction"/> to perform.
+        /// <see cref="IRelayCommand.Execute(StartupAction)"/>: The <see cref="StartupAction"/>
+        /// to perform.
         /// </para>
         /// </summary>
-        public ICommand ViewLoadCommand { get; private set; }
+        public IRelayCommand ViewLoadCommand { get; private set; }
 
         /// <summary>
         /// Gets the command used to add a PDF.
         /// <para>
-        /// <see cref="ICommand.Execute(string)"/>: The optional file path of the PDF to add.
+        /// <see cref="IRelayCommand.Execute(string)"/>: The optional file path of the PDF to add.
         /// </para>
         /// </summary>
-        public ICommand AddPdfCommand { get; private set; }
+        public IRelayCommand AddPdfCommand { get; private set; }
 
-        public ICommand OpenPdfForEachSelectedDocumentCommand { get; private set; }
-        public ICommand SaveNotesCommand { get; private set; }
-        public ICommand PdfOrTextSaveAsCommand { get; private set; }
-        public ICommand BurstCurrentDocumentPdfCommand { get; private set; }
+        public IRelayCommand OpenPdfForEachSelectedDocumentCommand { get; private set; }
+        public IRelayCommand SaveNotesCommand { get; private set; }
+        public IRelayCommand PdfOrTextSaveAsCommand { get; private set; }
+        public IAsyncRelayCommand BurstCurrentDocumentPdfCommand { get; private set; }
 
         /// <summary>
         /// Extracts all attached files from the PDF of the selected document.
         /// <para>
-        /// <see cref="ICommand.Execute(PdfFile.AttachedFilesType)"/>: The
+        /// <see cref="IRelayCommand.Execute(PdfFile.AttachedFilesType)"/>: The
         /// <see cref="PdfFile.AttachedFilesType"/> to extract from the PDF.
         /// </para>
         /// </summary>
-        public ICommand ExtractAllAttachedFromCurrentDocumentPdfCommand { get; private set; }
+        public IAsyncRelayCommand ExtractAllAttachedFromCurrentDocumentPdfCommand
+        { get; private set; }
 
-        public ICommand CopyCurrentDocumentPdfToClipboardCommand { get; private set; }
-        public ICommand PrintDocumentDataTextCommand { get; private set; }
-        public ICommand PrintDocumentDataTextWithPreviewCommand { get; private set; }
-        public ICommand AddLocalDatabaseCommand { get; private set; }
-        public ICommand OpenLocalDatabaseCommand { get; private set; }
-        public ICommand MoveLocalDatabaseCommand { get; private set; }
-        public ICommand ExportEachSelectedDocumentCommand { get; private set; }
-        public ICommand CloseCommand { get; private set; }
-        public ICommand UndoNotesCommand { get; private set; }
-        public ICommand CutNotesCommand { get; private set; }
-        public ICommand CopyTextCommand { get; private set; }
-        public ICommand PasteNotesCommand { get; private set; }
-        public ICommand SelectAllTextCommand { get; private set; }
-        public ICommand RestoreNotesCommand { get; private set; }
-        public ICommand AppendDateTimeIntoNotesCommand { get; private set; }
-        public ICommand AppendTextFromFileIntoNotesCommand { get; private set; }
-        public ICommand ReplaceCurrentDocumentPdfCommand { get; private set; }
-        public ICommand UpdateCurrentDocumentFlagStateCommand { get; private set; }
-        public ICommand FindDocumentsCommand { get; private set; }
-        public ICommand SelectAllDocumentsCommand { get; private set; }
-        public ICommand SelectNoDocumentsCommand { get; private set; }
-        public ICommand SetTitleOnEachSelectedDocumentCommand { get; private set; }
-        public ICommand SetAuthorOnEachSelectedDocumentCommand { get; private set; }
-        public ICommand SetSubjectOnEachSelectedDocumentCommand { get; private set; }
-        public ICommand SetCategoryOnEachSelectedDocumentCommand { get; private set; }
-        public ICommand SetTaxYearOnEachSelectedDocumentCommand { get; private set; }
-        public ICommand SetDateTimeAddedOnEachSelectedDocumentCommand { get; private set; }
-        public ICommand DeleteEachSelectedDocumentCommand { get; private set; }
-        public ICommand SetViewMenuItemsCheckedStateCommand { get; private set; }
-        public ICommand SetPreviewPixelDensityCommand { get; private set; }
-        public ICommand ToggleToolStripVisibleStateCommand { get; private set; }
-        public ICommand ToggleStatusStripVisibleStateCommand { get; private set; }
-        public ICommand ShowOptionsCommand { get; private set; }
-        public ICommand ManageUploadProfilesCommand { get; private set; }
-        public ICommand ShowHelpCommand { get; private set; }
-        public ICommand ShowAboutBoxCommand { get; private set; }
-        public ICommand SetHeaderValueOnColumnsCommand { get; private set; }
+        public IRelayCommand CopyCurrentDocumentPdfToClipboardCommand { get; private set; }
+        public IRelayCommand PrintDocumentDataTextCommand { get; private set; }
+        public IRelayCommand PrintDocumentDataTextWithPreviewCommand { get; private set; }
+        public IRelayCommand AddLocalDatabaseCommand { get; private set; }
+        public IRelayCommand OpenLocalDatabaseCommand { get; private set; }
+        public IRelayCommand MoveLocalDatabaseCommand { get; private set; }
+        public IRelayCommand ExportEachSelectedDocumentCommand { get; private set; }
+        public IRelayCommand CloseCommand { get; private set; }
+        public IRelayCommand UndoNotesCommand { get; private set; }
+        public IRelayCommand CutNotesCommand { get; private set; }
+        public IRelayCommand CopyTextCommand { get; private set; }
+        public IRelayCommand PasteNotesCommand { get; private set; }
+        public IRelayCommand SelectAllTextCommand { get; private set; }
+        public IRelayCommand RestoreNotesCommand { get; private set; }
+        public IRelayCommand AppendDateTimeIntoNotesCommand { get; private set; }
+        public IRelayCommand AppendTextFromFileIntoNotesCommand { get; private set; }
+        public IRelayCommand ReplaceCurrentDocumentPdfCommand { get; private set; }
+        public IRelayCommand UpdateCurrentDocumentFlagStateCommand { get; private set; }
+        public IRelayCommand FindDocumentsCommand { get; private set; }
+        public IRelayCommand SelectAllDocumentsCommand { get; private set; }
+        public IRelayCommand SelectNoDocumentsCommand { get; private set; }
+        public IRelayCommand SetTitleOnEachSelectedDocumentCommand { get; private set; }
+        public IRelayCommand SetAuthorOnEachSelectedDocumentCommand { get; private set; }
+        public IRelayCommand SetSubjectOnEachSelectedDocumentCommand { get; private set; }
+        public IRelayCommand SetCategoryOnEachSelectedDocumentCommand { get; private set; }
+        public IRelayCommand SetTaxYearOnEachSelectedDocumentCommand { get; private set; }
+        public IRelayCommand SetDateTimeAddedOnEachSelectedDocumentCommand { get; private set; }
+        public IRelayCommand DeleteEachSelectedDocumentCommand { get; private set; }
+        public IRelayCommand SetViewMenuItemsCheckedStateCommand { get; private set; }
+        public IRelayCommand SetPreviewPixelDensityCommand { get; private set; }
+        public IRelayCommand ToggleToolStripVisibleStateCommand { get; private set; }
+        public IRelayCommand ToggleStatusStripVisibleStateCommand { get; private set; }
+        public IRelayCommand ShowOptionsCommand { get; private set; }
+        public IRelayCommand ManageUploadProfilesCommand { get; private set; }
+        public IRelayCommand ShowHelpCommand { get; private set; }
+        public IRelayCommand ShowAboutBoxCommand { get; private set; }
+        public IRelayCommand SetHeaderValueOnColumnsCommand { get; private set; }
 
         /// <summary>
-        /// Sets a collection of checked document ID's and sets menu state on applicable menu items.
+        /// Sets a collection of checked document ID's and sets menu state on applicable menu
+        /// items.
         /// <para>
-        /// <see cref="ICommand.Execute(Collection{T})"/>: The <see cref="Collection{T}"/> of
+        /// <see cref="IRelayCommand.Execute(Collection{T})"/>: The <see cref="Collection{T}"/> of
         /// document ID's, where <c>T</c> is <see cref="int"/>.
         /// </para>
         /// </summary>
-        public ICommand SetCheckedDocumentIdsCommand { get; private set; }
+        public IRelayCommand SetCheckedDocumentIdsCommand { get; private set; }
 
         /// <summary>
         /// Opens the PDF for the current document.
         /// <para>
-        /// <see cref="ICommand.Execute(bool)"/>: <c>true</c> or <c>false</c> to show PDF with
+        /// <see cref="IRelayCommand.Execute(bool)"/>: <c>true</c> or <c>false</c> to show PDF with
         /// default application.
         /// </para>
         /// </summary>
-        public ICommand OpenPdfForCurrentDocumentCommand { get; private set; }
+        public IRelayCommand OpenPdfForCurrentDocumentCommand { get; private set; }
 
-        public ICommand DoDragDropPdfForCurrentDocumentCommand { get; private set; }
+        public IRelayCommand DoDragDropPdfForCurrentDocumentCommand { get; private set; }
 
         /// <summary>
         /// Sets the state for a text box enter event.
         /// <para>
-        /// <see cref="ICommand.Execute(bool)"/>: <c>true</c> or <c>false</c> if the user can undo
-        /// the previous operation.
+        /// <see cref="IRelayCommand.Execute(bool)"/>: <c>true</c> or <c>false</c> if the user can
+        /// undo the previous operation.
         /// </para>
         /// </summary>
-        public ICommand SetStateOnTextBoxEnterEventCommand { get; private set; }
+        public IRelayCommand SetStateOnTextBoxEnterEventCommand { get; private set; }
 
         /// <summary>
         /// Method that is to be called when the Notes text changes.
         /// <para>
-        /// <see cref="ICommand.Execute(bool)"/>: <c>true</c> or <c>false</c> if the user can undo
-        /// the previous operation.
+        /// <see cref="IRelayCommand.Execute(bool)"/>: <c>true</c> or <c>false</c> if the user can
+        /// undo the previous operation.
         /// </para>
         /// </summary>
-        public ICommand NotesTextChangedCommand { get; private set; }
+        public IRelayCommand NotesTextChangedCommand { get; private set; }
 
-        public ICommand SetStateForTextBoxSelectedTextCommand { get; private set; }
-        public ICommand SetStateOnTextBoxLeaveEventCommand { get; private set; }
-        public ICommand ExploreUploadRejectedFolderCommand { get; private set; }
-        public ICommand CheckForFlaggedDocumentsCommand { get; private set; }
-        public ICommand CheckForDocumentsListChangesCommand { get; private set; }
-        public ICommand UploadPdfFilesCommand { get; private set; }
-        public ICommand SetDocumentsListHasChangesCommand { get; private set; }
-        public ICommand BeforeViewClosingCommand { get; private set; }
-        public ICommand ViewClosingCommand { get; private set; }
+        public IRelayCommand SetStateForTextBoxSelectedTextCommand { get; private set; }
+        public IRelayCommand SetStateOnTextBoxLeaveEventCommand { get; private set; }
+        public IRelayCommand ExploreUploadRejectedFolderCommand { get; private set; }
+        public IAsyncRelayCommand CheckForFlaggedDocumentsCommand { get; private set; }
+        public IRelayCommand CheckForDocumentsListChangesCommand { get; private set; }
+        public IAsyncRelayCommand UploadPdfFilesCommand { get; private set; }
+        public IRelayCommand SetDocumentsListHasChangesCommand { get; private set; }
+        public IRelayCommand BeforeViewClosingCommand { get; private set; }
+        public IRelayCommand ViewClosingCommand { get; private set; }
         public bool ViewMinimized { get; set; }
         public bool CompactLocalDatabaseAfterDelete { get; set; }
         public decimal PreviewPixelDensity { get; set; }

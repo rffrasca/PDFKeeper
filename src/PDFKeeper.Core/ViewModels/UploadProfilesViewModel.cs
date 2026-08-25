@@ -28,7 +28,6 @@ using PDFKeeper.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Input;
 
 namespace PDFKeeper.Core.ViewModels
 {
@@ -48,8 +47,12 @@ namespace PDFKeeper.Core.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadProfilesViewModel"/> class.
         /// </summary>
-        /// <param name="keyedServiceResolver">A service that resolves keyed services.</param>
-        /// <param name="messageBoxService">A dialog service that displays messages.</param>
+        /// <param name="keyedServiceResolver">
+        /// The <see cref="IKeyedServiceResolver"/> instance.
+        /// </param>
+        /// <param name="messageBoxService">
+        /// The <see cref="IMessageBoxService"/> instance.
+        /// </param>
         public UploadProfilesViewModel(
             IKeyedServiceResolver keyedServiceResolver,
             IMessageBoxService messageBoxService)
@@ -68,10 +71,10 @@ namespace PDFKeeper.Core.ViewModels
             GetUploadProfileNames();
         }
 
-        public ICommand GetUploadProfileNamesCommand { get; private set; }
-        public ICommand AddUploadProfileCommand { get; private set; }
-        public ICommand EditUploadProfileCommand { get; private set; }
-        public ICommand DeleteUploadProfileCommand { get; private set; }
+        public IRelayCommand GetUploadProfileNamesCommand { get; private set; }
+        public IRelayCommand AddUploadProfileCommand { get; private set; }
+        public IRelayCommand EditUploadProfileCommand { get; private set; }
+        public IRelayCommand DeleteUploadProfileCommand { get; private set; }
         public string UploadProfilesDirectoryPath { get; set; }
 
         public IEnumerable<string> UploadProfileNames

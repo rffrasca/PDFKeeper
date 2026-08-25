@@ -22,7 +22,6 @@ using System;
 using System.Collections.Generic;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
-using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Rules;
@@ -50,7 +49,7 @@ namespace PDFKeeper.Core.ViewModels
         /// Initializes a new instance of the <see cref="UploadProfileEditorViewModel"/> class.
         /// </summary>
         /// <param name="messageBoxService">
-        /// A dialog service that displays messages.
+        /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
         /// <param name="uploadProfileName">
         /// The name of the upload profile to edit, or null to create a new profile.
@@ -67,13 +66,13 @@ namespace PDFKeeper.Core.ViewModels
             InitializeCommands();            
         }
 
-        public ICommand GetCollectionsCommand { get; private set; }
-        public ICommand GetSubjectsCommand { get; private set; }
-        public ICommand SetAuthorToTokenCommand { get; private set; }
-        public ICommand SetSubjectToTokenCommand { get; private set; }
-        public ICommand SetNameToAuthorAndSubjectCommand { get; private set; }
-        public ICommand SetNameToSubjectCommand { get; private set; }
-        public ICommand SetKeywordsToTokenCommand { get; private set; }
+        public IRelayCommand GetCollectionsCommand { get; private set; }
+        public IRelayCommand GetSubjectsCommand { get; private set; }
+        public IRelayCommand SetAuthorToTokenCommand { get; private set; }
+        public IRelayCommand SetSubjectToTokenCommand { get; private set; }
+        public IRelayCommand SetNameToAuthorAndSubjectCommand { get; private set; }
+        public IRelayCommand SetNameToSubjectCommand { get; private set; }
+        public IRelayCommand SetKeywordsToTokenCommand { get; private set; }
 
         /// <summary>
         /// Saves the upload profile.
@@ -82,15 +81,16 @@ namespace PDFKeeper.Core.ViewModels
         /// <c>Name</c>, <c>Title</c>, <c>Author</c>, and <c>Subject</c> cannot be blank.
         /// </list>
         /// <list type="bullet">
-        /// <c>Name</c> cannot contain invalid file name characters as defined by the operating system.
+        /// <c>Name</c> cannot contain invalid file name characters as defined by the
+        /// operating system.
         /// </list>
         /// <list type="bullet">
         /// <c>Name</c> cannot already exist when saving a new profile.
         /// </list>
         /// </summary>
-        public ICommand SaveUploadProfileCommand { get; private set; }
+        public IRelayCommand SaveUploadProfileCommand { get; private set; }
 
-        public ICommand CancelCommand { get; private set; }
+        public IRelayCommand CancelCommand { get; private set; }
         public UploadProfile UploadProfile => uploadProfile;
 
         public IEnumerable<string> TitleTokens

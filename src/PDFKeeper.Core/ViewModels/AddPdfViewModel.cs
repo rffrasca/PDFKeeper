@@ -31,7 +31,6 @@ using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Services;
 using System;
 using System.IO;
-using System.Windows.Input;
 
 namespace PDFKeeper.Core.ViewModels
 {
@@ -99,28 +98,28 @@ namespace PDFKeeper.Core.ViewModels
         /// Prompts the user to select the PDF from the file system. If the PDF contains an
         /// <c>Owner</c> password, the user will be prompted to enter it.
         /// <para>
-        /// <see cref="ICommand.Execute(string)"/>: Optional initial path for the PDF file to
+        /// <see cref="IRelayCommand.Execute(string)"/>: Optional initial path for the PDF file to
         /// select.
         /// </para>
         /// </summary>
-        public ICommand SelectPdfCommand { get; private set; }
+        public IRelayCommand SelectPdfCommand { get; private set; }
 
-        public ICommand ViewPdfCommand { get; private set; }
-        public ICommand SetTitleToPdfFileNameCommand { get; private set; }
-        public ICommand GetSubjectsCommand { get; private set; }
+        public IRelayCommand ViewPdfCommand { get; private set; }
+        public IRelayCommand SetTitleToPdfFileNameCommand { get; private set; }
+        public IRelayCommand GetSubjectsCommand { get; private set; }
 
         /// <summary>
         /// Adds a copy of the PDF with the specified information metadata applied and the
         /// corresponding XML containing the specified external metadata to the
         /// <c>UploadStaging</c> folder.
         /// <para>
-        /// <see cref="ICommand.Execute(bool)"/>: true or false to delete the source PDF to the
-        /// Operating System Recycle Bin.
+        /// <see cref="IRelayCommand.Execute(bool)"/>: true or false to delete the source PDF to
+        /// the Operating System Recycle Bin.
         /// </para>
         /// </summary>
-        public ICommand AddPdfCommand { get; private set; }
+        public IRelayCommand AddPdfCommand { get; private set; }
 
-        public ICommand CancelCommand { get; private set; }
+        public IRelayCommand CancelCommand { get; private set; }
 
         public UploadProfile UploadProfile
         {

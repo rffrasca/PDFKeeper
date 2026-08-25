@@ -29,7 +29,6 @@ using PDFKeeper.Core.Services;
 using PDFKeeper.Core.State;
 using System;
 using System.Collections.Generic;
-using System.Windows.Input;
 
 namespace PDFKeeper.Core.ViewModels
 {
@@ -84,15 +83,15 @@ namespace PDFKeeper.Core.ViewModels
         }
 
         public Action OnRelaySelectedFindAction { get; set; }
-        public ICommand ApplyFindDocumentsParamObjectCommand { get; private set; }
-        public ICommand GetSearchTermHistoryCommand { get; private set; }
-        public ICommand ClearSelectionsCommand { get; private set; }
-        public ICommand GetAuthorsCommand { get; private set; }
-        public ICommand GetSubjectsCommand { get; private set; }
-        public ICommand GetCategoriesCommand { get; private set; }
-        public ICommand GetTaxYearsCommand { get; private set; }
-        public ICommand FindDocumentsCommand { get; private set; }
-        public ICommand CancelCommand { get; private set; }
+        public IRelayCommand ApplyFindDocumentsParamObjectCommand { get; private set; }
+        public IRelayCommand GetSearchTermHistoryCommand { get; private set; }
+        public IRelayCommand ClearSelectionsCommand { get; private set; }
+        public IRelayCommand GetAuthorsCommand { get; private set; }
+        public IRelayCommand GetSubjectsCommand { get; private set; }
+        public IRelayCommand GetCategoriesCommand { get; private set; }
+        public IRelayCommand GetTaxYearsCommand { get; private set; }
+        public IRelayCommand FindDocumentsCommand { get; private set; }
+        public IRelayCommand CancelCommand { get; private set; }
         
         public FindDocumentsParam FindDocumentsParam
         {
