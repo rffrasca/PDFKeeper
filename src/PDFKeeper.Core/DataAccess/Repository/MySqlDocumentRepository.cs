@@ -19,14 +19,14 @@
 // ****************************************************************************
 
 using MySql.Data.MySqlClient;
-using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Interfaces.Caching;
+using PDFKeeper.Core.Interfaces.Services.Security;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
+using PDFKeeper.Core.Services.Security;
 using System;
 using System.Data;
 using System.Globalization;
-using System.Text;
 
 namespace PDFKeeper.Core.DataAccess.Repository
 {
@@ -46,17 +46,28 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// </param>
         public MySqlDocumentRepository(IPdfMemoryCache pdfMemoryCache) : base(pdfMemoryCache)
         {
-            connStrBuilder = new MySqlConnectionStringBuilder
+            IPinnedBytes pinnedBytes = null;
+            
+            try
             {
-                UserID = DatabaseSession.UserName,
-                Password = Encoding.UTF8.GetString(
-                    DatabaseSession.Password.GetAsByteArray()),
-                Server = DatabaseSession.DataSource,
-                Port = DatabaseSession.MySqlPort,
-                Database = DatabaseSession.SchemaName,
-                SslMode = MySqlSslMode.Required,
-                ConnectionTimeout = 30
-            };
+                var secureDataService = new SecureDataService();
+                pinnedBytes = secureDataService.ToPinnedByteArray(DatabaseSession.Password);
+
+                connStrBuilder = new MySqlConnectionStringBuilder
+                {
+                    UserID = DatabaseSession.UserName,
+                    Password = pinnedBytes.GetString(),
+                    Server = DatabaseSession.DataSource,
+                    Port = DatabaseSession.MySqlPort,
+                    Database = DatabaseSession.SchemaName,
+                    SslMode = MySqlSslMode.Required,
+                    ConnectionTimeout = 30
+                };
+            }
+            finally
+            {
+                pinnedBytes?.Dispose();
+            }
         }
 
         public bool SearchTermSnippetsSupported => false;

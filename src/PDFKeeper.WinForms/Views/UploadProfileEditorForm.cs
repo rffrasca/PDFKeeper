@@ -19,6 +19,7 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Interfaces.HelpSystem;
+using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
@@ -41,16 +42,23 @@ namespace PDFKeeper.WinForms.Views
         /// <param name="messageBoxService">
         /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
+        /// <param name="uploadProfileManager">
+        /// The <see cref="IUploadProfileManager"/> instance.
+        /// </param>
         /// <param name="uploadProfileName">
         /// The Upload Profile name only when editing an existing upload profile.
         /// </param>
         public UploadProfileEditorForm(
             IHelpFileResolver helpFileResolver,
             IMessageBoxService messageBoxService,
+            IUploadProfileManager uploadProfileManager,
             string uploadProfileName = null)
         {
             InitializeComponent();
-            viewModel = new UploadProfileEditorViewModel(messageBoxService, uploadProfileName);
+            viewModel = new UploadProfileEditorViewModel(
+                messageBoxService,
+                uploadProfileManager,
+                uploadProfileName);
             UploadProfileEditorViewModelBindingSource.DataSource = viewModel;
             HelpProvider.HelpNamespace = helpFileResolver.GetHelpFilePath();
             viewModel.PropertyChanged += ViewModel_PropertyChanged;

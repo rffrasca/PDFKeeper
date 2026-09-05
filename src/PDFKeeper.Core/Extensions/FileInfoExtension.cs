@@ -48,28 +48,6 @@ namespace PDFKeeper.Core.Extensions
         }
 
         /// <summary>
-        /// Changes the directory path name of the file.
-        /// </summary>
-        /// <param name="file">The <see cref="FileInfo"/> object.</param>
-        /// <param name="directory">The input <see cref="DirectoryInfo"/> object.</param>
-        /// <returns>The modified <see cref="FileInfo"/> object.</returns>
-        internal static FileInfo ChangeDirectory(this FileInfo file, DirectoryInfo directory)
-        {
-            return new FileInfo(Path.Combine(directory.FullName, file.Name));
-        }
-
-        /// <summary>
-        /// Changes the extension of the file.
-        /// </summary>
-        /// <param name="file">The <see cref="FileInfo"/> object.</param>
-        /// <param name="extension">The new extension.</param>
-        /// <returns>The modified <see cref="FileInfo"/> object.</returns>
-        internal static FileInfo ChangeExtension(this FileInfo file, string extension)
-        {
-            return new FileInfo(Path.ChangeExtension(file.FullName, extension));
-        }
-
-        /// <summary>
         /// Computes the hash value of the file.
         /// </summary>
         /// <param name="file">The <see cref="FileInfo"/> object.</param>
@@ -109,16 +87,6 @@ namespace PDFKeeper.Core.Extensions
         }
 
         /// <summary>
-        /// Checks if the name of the file is invalid, contains % and/or + in the name.
-        /// </summary>
-        /// <param name="file">The <see cref="FileInfo"/> object.</param>
-        /// <returns><c>true</c> or <c>false</c> if the name of the file is invalid.</returns>
-        internal static bool IsFileNameInvalid(this FileInfo file)
-        {
-            return file.Name.Contains("%") || file.Name.Contains("+");
-        }
-
-        /// <summary>
         /// Checks if the file is locked.
         /// </summary>
         /// <param name="file">The <see cref="FileInfo"/> object.</param>
@@ -146,19 +114,6 @@ namespace PDFKeeper.Core.Extensions
             }
 
             return false;
-        }
-
-        /// <summary>
-        /// Gets the contents of the file.
-        /// </summary>
-        /// <param name="file">The <see cref="FileInfo"/> object.</param>
-        /// <returns>
-        /// The <see cref="byte"/> array containing the contents of the <see cref="FileInfo"/>
-        /// object.
-        /// </returns>
-        internal static byte[] ReadAllBytes(this FileInfo file)
-        {
-            return File.ReadAllBytes(file.FullName);
         }
 
         /// <summary>

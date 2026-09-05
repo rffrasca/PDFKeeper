@@ -35,13 +35,12 @@ namespace PDFKeeper.Core.Extensions
         /// <param name="keyValuePairs">
         /// The <see cref="Dictionary{TKey, TValue}"/> object.
         /// </param>
-        /// <param name="zipFile">
-        /// The <see cref="FileInfo"/> object of the ZIP file. If the file referenced in the
-        /// <see cref="FileInfo"/> object exists, it will be overwritten.
+        /// <param name="zipPath">
+        /// The full path of the ZIP file. If the file exists, it will be overwritten.
         /// </param>
         internal static void ToZipFile(
             this Dictionary<string, byte[]> keyValuePairs,
-            FileInfo zipFile)
+            string zipPath)
         {
             byte[] zipContents;
 
@@ -63,7 +62,7 @@ namespace PDFKeeper.Core.Extensions
                 zipContents = memoryStream.ToArray();
             }
 
-            File.WriteAllBytes(zipFile.FullName, zipContents);
+            File.WriteAllBytes(zipPath, zipContents);
         }
     }
 }

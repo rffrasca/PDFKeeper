@@ -33,7 +33,7 @@ namespace PDFKeeper.Core.Interfaces.Services
         /// company name, product name, and product version.
         /// </summary>
         /// <returns>
-        /// The <see cref="ApplicationInfoDto"/> Data Transfer Object (DTO) containing the
+        /// A <see cref="ApplicationInfoDto"/> Data Transfer Object (DTO) containing the
         /// application information.
         /// </returns>
         ApplicationInfoDto GetApplicationInfo();

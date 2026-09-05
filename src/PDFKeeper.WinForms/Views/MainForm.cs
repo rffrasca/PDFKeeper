@@ -20,7 +20,6 @@
 
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Enums;
-using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.ViewModels;
@@ -39,7 +38,6 @@ namespace PDFKeeper.WinForms.Views
 {
     internal partial class MainForm : Form
     {
-        private readonly IHelpFileResolver helpFileResolver;
         private readonly IHelpViewer helpViewer;
         private readonly IVirtualKeyService virtualKeyService;
         private readonly MainViewModel viewModel;
@@ -82,7 +80,6 @@ namespace PDFKeeper.WinForms.Views
             UploadProfilesForm uploadProfilesForm)
         {
             InitializeComponent();
-            this.helpFileResolver = helpFileResolver;
             this.helpViewer = helpViewer;
             this.virtualKeyService = virtualKeyService;
             this.viewModel = viewModel;
@@ -211,12 +208,12 @@ namespace PDFKeeper.WinForms.Views
             viewModel.OnShowHelp = ()
                 => helpViewer.ShowHelp(HelpTopic.UsingPDFKeeper, this);
 
-            viewModel.OnPdfDoDragDrop = (pdfFile) =>
+            viewModel.OnPdfDoDragDrop = (pdfPath) =>
             {
                 DocumentsDataGridView.DoDragDrop(
                     new DataObject(
                         DataFormats.FileDrop,
-                        new string[] { pdfFile.FullName }),
+                        new string[] { pdfPath }),
                     DragDropEffects.Copy);
             };
 
@@ -295,21 +292,13 @@ namespace PDFKeeper.WinForms.Views
             FileBurstToolStripButton.Tag =
                 viewModel.BurstCurrentDocumentPdfCommand;
             FileExtractAllAttachmentsToolStripMenuItem.Tag =
-                new FileExtractAllCommand(
-                    viewModel,
-                    PdfFile.AttachedFilesType.Attachment);
+                new FileExtractAllCommand(viewModel, PdfAttachmentType.Attachment);
             FileExtractAllAttachmentsToolStripButton.Tag =
-                new FileExtractAllCommand(
-                    viewModel,
-                    PdfFile.AttachedFilesType.Attachment);
+                new FileExtractAllCommand(viewModel, PdfAttachmentType.Attachment);
             FileExtractAllEmbeddedFilesToolStripMenuItem.Tag =
-                new FileExtractAllCommand(
-                    viewModel,
-                    PdfFile.AttachedFilesType.EmbeddedFile);
+                new FileExtractAllCommand(viewModel, PdfAttachmentType.EmbeddedFile);
             FileExtractAllEmbeddedFilesToolStripButton.Tag =
-                new FileExtractAllCommand(
-                    viewModel,
-                    PdfFile.AttachedFilesType.EmbeddedFile);
+                new FileExtractAllCommand(viewModel, PdfAttachmentType.EmbeddedFile);
             FileCopyPdfToClipboardToolStripMenuItem.Tag =
                 viewModel.CopyCurrentDocumentPdfToClipboardCommand;
             FileCopyPdfToClipboardToolStripButton.Tag =

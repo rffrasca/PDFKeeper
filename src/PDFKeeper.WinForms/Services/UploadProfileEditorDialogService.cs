@@ -19,6 +19,7 @@
 // *****************************************************************************
 
 using PDFKeeper.Core.Interfaces.HelpSystem;
+using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
@@ -35,6 +36,7 @@ namespace PDFKeeper.WinForms.Services
     {
         private readonly IHelpFileResolver helpFileResolver;
         private readonly IMessageBoxService messageBoxService;
+        private readonly IUploadProfileManager uploadProfileManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadProfileEditorDialogService"/> class.
@@ -45,19 +47,26 @@ namespace PDFKeeper.WinForms.Services
         /// <param name="messageBoxService">
         /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
+        /// <param name="uploadProfileManager">
+        /// The <see cref="IUploadProfileManager"/> instance.
+        /// </param>
         public UploadProfileEditorDialogService(
             IHelpFileResolver helpFileResolver,
-            IMessageBoxService messageBoxService)
+            IMessageBoxService messageBoxService,
+            IUploadProfileManager uploadProfileManager)
         {
             this.helpFileResolver = helpFileResolver;
             this.messageBoxService = messageBoxService;
+            this.uploadProfileManager = uploadProfileManager;
         }
 
         public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
         {
             using (var dialog = new UploadProfileEditorForm(
                 helpFileResolver,
-                messageBoxService, arg))
+                messageBoxService,
+                uploadProfileManager,
+                arg))
             {
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
             }

@@ -19,10 +19,10 @@
 // ****************************************************************************
 
 using PDFKeeper.Core.Enums;
-using PDFKeeper.Core.FileIO.Serializers;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Properties;
+using PDFKeeper.Core.Serializers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,7 +34,7 @@ namespace PDFKeeper.Core.Services
     /// </summary>
     public sealed class AliasService : IAliasService
     {
-        private readonly FileInfo aliasesJsonFile;
+        private readonly string aliasesJsonFilePath;
         private readonly Dictionary<string, string> aliases;
 
         /// <summary>
@@ -61,21 +61,19 @@ namespace PDFKeeper.Core.Services
                 { "Tax Year", Resources.TaxYear }
             };
 
-            aliasesJsonFile = new FileInfo(
-                Path.Combine(
-                    applicationFolderManager.GetOrCreateFolderPath(
-                        ApplicationFolder.ApplicationData),
-                    "aliases.json"));
+            aliasesJsonFilePath = Path.Combine(
+                applicationFolderManager.GetOrCreateFolderPath(ApplicationFolder.ApplicationData),
+                "aliases.json");
 
-            if (!aliasesJsonFile.Exists)
+            if (!File.Exists(aliasesJsonFilePath))
             {
-                JsonSerializer.SerializeToFile(defaultAliases, aliasesJsonFile);
+                JsonSerializer.SerializeToFile(defaultAliases, aliasesJsonFilePath);
                 aliases = new Dictionary<string, string>(defaultAliases);
             }
             else
             {
                 var loadedAliases = JsonSerializer.DeserializeFromFile<Dictionary<string, string>>(
-                    aliasesJsonFile);
+                    aliasesJsonFilePath);
                 aliases = new Dictionary<string, string>(defaultAliases);
 
                 if (loadedAliases != null)
@@ -88,13 +86,13 @@ namespace PDFKeeper.Core.Services
             }
         }
 
-        public string GetAlias(string key)
-            => aliases.TryGetValue(key, out var alias) ? alias : key;
+        public string GetAlias(string key) =>
+            aliases.TryGetValue(key, out var alias) ? alias : key;
 
         public void SetAlias(string key, string alias)
         {
             aliases[key] = alias;
-            JsonSerializer.SerializeToFile(aliases, aliasesJsonFile);
+            JsonSerializer.SerializeToFile(aliases, aliasesJsonFilePath);
         }
     }
 }

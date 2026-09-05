@@ -35,7 +35,7 @@ namespace PDFKeeper.Core.Interfaces.Services
         /// The exception to handle.
         /// </param>
         /// <param name="exceptionType">
-        /// The type of exception.
+        /// The type of the exception.
         /// </param>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="exception"/> is null.

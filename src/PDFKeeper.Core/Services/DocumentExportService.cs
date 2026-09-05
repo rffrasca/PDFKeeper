@@ -20,9 +20,9 @@
 
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
-using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Interfaces.Services;
+using PDFKeeper.Core.Interfaces.Services.Pdf;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
 using System.IO;
@@ -35,6 +35,7 @@ namespace PDFKeeper.Core.Services
     public sealed class DocumentExportService : IDocumentExportService
     {
         private readonly IPdfFileCache pdfFileCache;
+        private readonly IPdfMetadataService pdfMetadataService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentExportService"/> class.
@@ -42,11 +43,17 @@ namespace PDFKeeper.Core.Services
         /// <param name="pdfFileCache">
         /// The <see cref="IPdfFileCache"/> instance.
         /// </param>
+        /// <param name="pdfMetadataService">
+        /// The <see cref="IPdfMetadataService"/> instance.
+        /// </param>
 #pragma warning disable IDE0290 // Use primary constructor
-        public DocumentExportService(IPdfFileCache pdfFileCache)
+        public DocumentExportService(
+            IPdfFileCache pdfFileCache,
+            IPdfMetadataService pdfMetadataService)
 #pragma warning restore IDE0290 // Use primary constructor
         {
             this.pdfFileCache = pdfFileCache;
+            this.pdfMetadataService = pdfMetadataService;
         }
 
         public void ExportDocument(int documentId, string baseExportFolderPath)
@@ -69,26 +76,26 @@ namespace PDFKeeper.Core.Services
             var pdfPath = Path.Combine(exportFolderPath, pdfFileName);
             var xmlPath = Path.ChangeExtension(pdfPath, "xml");
             File.WriteAllBytes(pdfPath, document.Pdf);
-            var pdfMetadata = new PdfMetadata(new PdfFile(new FileInfo(pdfPath)));
-            var rule = new ExportPdfMetadataRule(pdfMetadata, document);
+            var pdfMetadataDto = pdfMetadataService.Read(pdfPath);
+            var rule = new ExportPdfMetadataRule(pdfMetadataDto, document);
 
             if (rule.ViolationFound)
             {
-                pdfMetadata.Title = document.Title;
-                pdfMetadata.Author = document.Author;
-                pdfMetadata.Subject = document.Subject;
-                pdfMetadata.Keywords = document.Keywords;
+                pdfMetadataDto.Title = document.Title;
+                pdfMetadataDto.Author = document.Author;
+                pdfMetadataDto.Subject = document.Subject;
+                pdfMetadataDto.Keywords = document.Keywords;
             }
 
-            pdfMetadata.Notes = document.Notes;
-            pdfMetadata.Category = document.Category;
-            pdfMetadata.TaxYear = document.TaxYear;
-            pdfMetadata.Flag = document.Flag;
-            var tempPdfFile = pdfMetadata.Write();
-            var tempXmlFile = tempPdfFile.ChangeExtension("xml");
+            pdfMetadataDto.Notes = document.Notes;
+            pdfMetadataDto.Category = document.Category;
+            pdfMetadataDto.TaxYear = document.TaxYear;
+            pdfMetadataDto.Flag = document.Flag;
+            var tempPdfPath = pdfMetadataService.Write(pdfPath, pdfMetadataDto);
+            var tempXmlPath = Path.ChangeExtension(tempPdfPath, "xml");
             File.Delete(pdfPath);
-            tempPdfFile.MoveTo(pdfPath);
-            tempXmlFile.MoveTo(xmlPath);
+            File.Move(tempPdfPath, pdfPath);
+            File.Move(tempXmlPath, xmlPath);
         }
     }
 }

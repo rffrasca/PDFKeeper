@@ -18,35 +18,39 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Models;
 
 namespace PDFKeeper.Core.Rules
 {
     internal class ExportPdfMetadataRule : RuleBase
     {
-        private readonly PdfMetadata pdfMetadata;
+        private readonly PdfMetadataDto pdfMetadataDto;
         private readonly Document document;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExportPdfMetadataRule"/> class that
-        /// verifies the properties in the <see cref="PdfMetadata"/> object match the cooresponding
-        /// properties in the <see cref="Document"/> object.
+        /// Initializes a new instance of the <see cref="ExportPdfMetadataRule"/> class
+        /// that verifies the properties in the <see cref="PdfMetadataDto"/> instance match
+        /// the cooresponding properties in the <see cref="Document"/> instance.
         /// </summary>
-        /// <param name="pdfMetadata">The <see cref="PdfMetadata"/> object.</param>
-        /// <param name="document">The <see cref="Document"/> object.</param>
-        internal ExportPdfMetadataRule(PdfMetadata pdfMetadata, Document document)
+        /// <param name="pdfMetadataDto">
+        /// The <see cref="PdfMetadataDto"/> instance.
+        /// </param>
+        /// <param name="document">
+        /// The <see cref="Document"/> instance.
+        /// </param>
+        internal ExportPdfMetadataRule(PdfMetadataDto pdfMetadataDto, Document document)
         {
-            this.pdfMetadata = pdfMetadata;
+            this.pdfMetadataDto = pdfMetadataDto;
             this.document = document;
             CheckForViolation();
         }
 
         protected override void CheckForViolation()
         {
-            if (pdfMetadata.Title != document.Title || pdfMetadata.Author != document.Author ||
-                pdfMetadata.Subject != document.Subject ||
-                pdfMetadata.Keywords != document.Keywords)
+            if (pdfMetadataDto.Title != document.Title ||
+                pdfMetadataDto.Author != document.Author ||
+                pdfMetadataDto.Subject != document.Subject ||
+                pdfMetadataDto.Keywords != document.Keywords)
             {
                 ViolationFound = true;
             }

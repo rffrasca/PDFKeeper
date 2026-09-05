@@ -74,7 +74,7 @@ namespace PDFKeeper.Core.Helpers
         /// database is stored in a OneDrive location. If the path does not reside within the
         /// OneDrive directory, any previously stored local database path file will be deleted.
         /// </remarks>
-        /// <param name="path">The full file system path to the database. Must not be null.</param>
+        /// <param name="path">The full path to the database. Must not be null.</param>
         /// <exception cref="ArgumentNullException">
         /// Thrown if <paramref name="path"/> is null.
         /// </exception>

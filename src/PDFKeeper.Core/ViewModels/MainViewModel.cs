@@ -22,12 +22,12 @@ using CommunityToolkit.Mvvm.Input;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
-using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Interfaces.Navigation;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
+using PDFKeeper.Core.Interfaces.Services.Upload;
 using PDFKeeper.Core.Interop;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
@@ -43,7 +43,6 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.DataTransfer;
 
 namespace PDFKeeper.Core.ViewModels
 {
@@ -57,15 +56,21 @@ namespace PDFKeeper.Core.ViewModels
         private readonly IAliasService aliasService;
         private readonly IApplicationFolderExplorer applicationFolderExplorer;
         private readonly IApplicationPolicyService applicationPolicyService;
+        private readonly IClipboardService clipboardService;
         private readonly IDocumentExportService documentExportService;
         private readonly IFolderBrowserDialogService folderBrowserDialogService;
         private readonly IKeyedServiceResolver keyedServiceResolver;
         private readonly IMessageBoxService messageBoxService;
+        private readonly IPdfAttachmentService pdfAttachmentService;
         private readonly IPdfFileCache pdfFileCache;
         private readonly IPdfPreviewService pdfPreviewService;
+        private readonly IPdfSplitterService pdfSplitterService;
+        private readonly IPdfUploadQueryService pdfUploadQueryService;
+        private readonly IPdfUploadService pdfUploadService;
         private readonly IPdfViewerService pdfViewerService;
         private readonly IPrintDialogService printDialogService;
         private readonly IPrintPreviewDialogService printPreviewDialogService;
+        private readonly IUploadFolderMaintenanceService uploadFolderMaintenanceService;
         private readonly ApplicationInfoDto applicationInfo;
         private IDialogService addPdfDialogService;
         private IDialogService setTitleDialogService;
@@ -154,7 +159,6 @@ namespace PDFKeeper.Core.ViewModels
         private bool flagImageVisible;
         private bool uploadRejectedImageVisible;
         private readonly PrintDocument printDocument;
-        private readonly PdfUploader pdfUploader;
         private Document currentDocument;
         private string textToPrint;
 
@@ -172,6 +176,9 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="applicationInfoService">
         /// The <see cref="IApplicationInfoService"/> instance.
         /// </param>
+        /// <param name="clipboardService">
+        /// The <see cref="IClipboardService"/> instance.
+        /// </param>
         /// <param name="applicationPolicyService">
         /// The <see cref="IApplicationPolicyService"/> instance.
         /// </param>
@@ -187,11 +194,23 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="messageBoxService">
         /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
+        /// <param name="pdfAttachmentService">
+        /// The <see cref="IPdfAttachmentService"/> instance.
+        /// </param>
         /// <param name="pdfFileCache">
         /// The <see cref="IPdfFileCache"/> instance.
         /// </param>
         /// <param name="pdfPreviewService">
         /// The <see cref="IPdfPreviewService"/> instance.
+        /// </param>
+        /// <param name="pdfSplitterService">
+        /// The <see cref="IPdfSplitterService"/> instance.
+        /// </param>
+        /// <param name="pdfUploadQueryService">
+        /// The <see cref="IPdfUploadQueryService"/> instance.
+        /// </param>
+        /// <param name="pdfUploadService">
+        /// The <see cref="IPdfUploadService"/> instance.
         /// </param>
         /// <param name="pdfViewerService">
         /// The <see cref="IPdfViewerService"/> instance.
@@ -202,6 +221,9 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="printPreviewDialogService">
         /// The <see cref="IPrintPreviewDialogService"/> instance.
         /// </param>
+        /// <param name="uploadFolderMaintenanceService">
+        /// The <see cref="IUploadFolderMaintenanceService"/> instance.
+        /// </param>
         /// <exception cref="ArgumentNullException">
         /// Thrown when <paramref name="applicationInfoService"/> is null.
         /// </exception>
@@ -210,33 +232,44 @@ namespace PDFKeeper.Core.ViewModels
             IApplicationFolderExplorer applicationFolderExplorer,
             IApplicationInfoService applicationInfoService,
             IApplicationPolicyService applicationPolicyService,
+            IClipboardService clipboardService,
             IDocumentExportService documentExportService,
             IFolderBrowserDialogService folderBrowserDialogService,
             IKeyedServiceResolver keyedServiceResolver,
             IMessageBoxService messageBoxService,
+            IPdfAttachmentService pdfAttachmentService,
             IPdfFileCache pdfFileCache,
             IPdfPreviewService pdfPreviewService,
+            IPdfSplitterService pdfSplitterService,
+            IPdfUploadQueryService pdfUploadQueryService,
+            IPdfUploadService pdfUploadService,
             IPdfViewerService pdfViewerService,
             IPrintDialogService printDialogService,
-            IPrintPreviewDialogService printPreviewDialogService)
+            IPrintPreviewDialogService printPreviewDialogService,
+            IUploadFolderMaintenanceService uploadFolderMaintenanceService)
         {
             this.aliasService = aliasService;
             this.applicationFolderExplorer = applicationFolderExplorer;
             this.applicationPolicyService = applicationPolicyService;
+            this.clipboardService = clipboardService;
             this.documentExportService = documentExportService;
             this.folderBrowserDialogService = folderBrowserDialogService;
             this.keyedServiceResolver = keyedServiceResolver;
             this.messageBoxService = messageBoxService;
+            this.pdfAttachmentService = pdfAttachmentService;
             this.pdfFileCache = pdfFileCache;
             this.pdfPreviewService = pdfPreviewService;
+            this.pdfSplitterService = pdfSplitterService;
+            this.pdfUploadQueryService = pdfUploadQueryService;
+            this.pdfUploadService = pdfUploadService;
             this.pdfViewerService = pdfViewerService;
             this.printDialogService = printDialogService;
             this.printPreviewDialogService = printPreviewDialogService;
+            this.uploadFolderMaintenanceService = uploadFolderMaintenanceService;
             applicationInfo = applicationInfoService?.GetApplicationInfo() ??
                 throw new ArgumentNullException(nameof(applicationInfoService));
             ResolveKeyedServices();            
             printDocument = new PrintDocument();
-            pdfUploader = new PdfUploader();
             printDocument.PrintPage += PrintDocument_PrintPage;
             SetActions();
             checkedDocumentIds = [];
@@ -256,7 +289,7 @@ namespace PDFKeeper.Core.ViewModels
         public Action<bool> OnSelectAllDocuments { get; set; }
         public Action OnManageUploadProfiles { get; set; }
         public Action OnShowHelp { get; set; }
-        public Action<PdfFile> OnPdfDoDragDrop { get; set; }
+        public Action<string> OnPdfDoDragDrop { get; set; }
         public Action OnScrollToEndOfNotesText { get; set; }        
         public Action OnBlockingUploadStarted { get; set; }
         public Action OnBlockingUploadFinished { get; set; }
@@ -1139,7 +1172,7 @@ namespace PDFKeeper.Core.ViewModels
             BurstCurrentDocumentPdfCommand = new AsyncRelayCommand(
                 BurstCurrentDocumentPdf);
             ExtractAllAttachedFromCurrentDocumentPdfCommand = 
-                new AsyncRelayCommand<PdfFile.AttachedFilesType>(
+                new AsyncRelayCommand<PdfAttachmentType>(
                     ExtractAllAttachedFromCurrentDocumentPdf);
             CopyCurrentDocumentPdfToClipboardCommand = new RelayCommand(
                 CopyCurrentDocumentPdfToClipboard);
@@ -1268,7 +1301,7 @@ namespace PDFKeeper.Core.ViewModels
         {
             if (NotesFocused)
             {
-                EditPasteMenuEnabled = Clipboard.GetContent().Contains(StandardDataFormats.Text);
+                EditPasteMenuEnabled = clipboardService.ContainsText();
             }
         }
 
@@ -1418,9 +1451,7 @@ namespace PDFKeeper.Core.ViewModels
                     }
                     else
                     {
-                        var dataPackage = new DataPackage();
-                        dataPackage.SetText(Notes);
-                        Clipboard.SetContent(dataPackage);
+                        clipboardService.SetText(Notes);
                         PreviousNotes = Notes;
                         Notes = notesInDatabase;
                         messageBoxService.ShowMessage(
@@ -1481,14 +1512,13 @@ namespace PDFKeeper.Core.ViewModels
 
             if (selectedPath.Length > 0)
             {
-                var pdfFile = new PdfFile(
-                    new FileInfo(pdfFileCache.GetPdfPath(CurrentDocumentId)));
+                var pdfPath = pdfFileCache.GetPdfPath(CurrentDocumentId);
             
                 try
                 {
-                    await Task.Run(() => pdfFile.Split(
-                        new DirectoryInfo(
-                            selectedPath))).ConfigureAwait(true);
+                    await Task.Run(() => pdfSplitterService.SplitPdf(
+                        pdfPath,
+                        selectedPath)).ConfigureAwait(true);
                 }
                 catch (UnauthorizedAccessException ex)
                 {
@@ -1504,38 +1534,38 @@ namespace PDFKeeper.Core.ViewModels
         /// The type of attachment in the PDF to extract.
         /// </param>
         private async Task ExtractAllAttachedFromCurrentDocumentPdf(
-            PdfFile.AttachedFilesType attachedFilesType)
+            PdfAttachmentType pdfAttachmentType)
         {
             string resource = null;
 
-            switch (attachedFilesType)
+            switch (pdfAttachmentType)
             {
-                case PdfFile.AttachedFilesType.Attachment:
+                case PdfAttachmentType.Attachment:
                     resource = Resources.ExtractAttachments;
                     break;
-                case PdfFile.AttachedFilesType.EmbeddedFile:
+                case PdfAttachmentType.EmbeddedFile:
                     resource = Resources.ExtractEmbeddedFiles;
                     break;
             }
 
             try
             {
-                var pdfFile = new PdfFile(
-                    new FileInfo(pdfFileCache.GetPdfPath(CurrentDocumentId)));
+                var pdfPath = pdfFileCache.GetPdfPath(CurrentDocumentId);
 
                 switch (messageBoxService.ShowQuestion(GetWindowHandle.Invoke(), resource, true))
                 {
                     case 6:
-                        var zipFilePath = saveFileDialogService.ShowDialog(
+                        var zipPath = saveFileDialogService.ShowDialog(
                             GetWindowHandle.Invoke(),
                             Resources.ZipFilter,
                             currentDocument.Title);
 
-                        if (!string.IsNullOrEmpty(zipFilePath))
+                        if (!string.IsNullOrEmpty(zipPath))
                         {
-                            await Task.Run(() => pdfFile.ExtractAllAttachedFiles(
-                                attachedFilesType,
-                                new FileInfo(zipFilePath))).ConfigureAwait(true);
+                            await Task.Run(() => pdfAttachmentService.ExtractAllToZip(
+                                pdfPath,
+                                pdfAttachmentType,
+                                zipPath)).ConfigureAwait(true);
                         }
                         
                         break;
@@ -1546,9 +1576,10 @@ namespace PDFKeeper.Core.ViewModels
                         
                         if (selectedPath.Length > 0)
                         {
-                            await Task.Run(() => pdfFile.ExtractAllAttachedFiles(
-                                attachedFilesType,
-                                new DirectoryInfo(selectedPath))).ConfigureAwait(true);
+                            await Task.Run(() => pdfAttachmentService.ExtractAllToFolder(
+                                pdfPath,
+                                pdfAttachmentType,
+                                selectedPath)).ConfigureAwait(true);
                         }
 
                         break;
@@ -1562,8 +1593,8 @@ namespace PDFKeeper.Core.ViewModels
 
         private void CopyCurrentDocumentPdfToClipboard()
         {
-            var pdfFile = new PdfFile(new FileInfo(pdfFileCache.GetPdfPath(CurrentDocumentId)));
-            pdfFile.CopyToClipboard();
+            var pdfPath = pdfFileCache.GetPdfPath(CurrentDocumentId);
+            clipboardService.CopyFile(pdfPath);
         }
 
         private void PrintDocumentDataText()
@@ -1988,8 +2019,7 @@ namespace PDFKeeper.Core.ViewModels
 
         private void DoDragDropPdfForCurrentDocument()
         {
-            var pdfFile = new PdfFile(new FileInfo(pdfFileCache.GetPdfPath(CurrentDocumentId)));
-            OnPdfDoDragDrop?.Invoke(pdfFile);
+            OnPdfDoDragDrop?.Invoke(pdfFileCache.GetPdfPath(CurrentDocumentId));
         }
 
         /// <summary>
@@ -2033,7 +2063,7 @@ namespace PDFKeeper.Core.ViewModels
             {
                 EditAppendDateTimeMenuEnabled = true;
                 EditAppendTextMenuEnabled = true;
-                EditPasteMenuEnabled = Clipboard.GetContent().Contains(StandardDataFormats.Text);
+                EditPasteMenuEnabled = clipboardService.ContainsText();
                 SetStateForNotesChanged(NotesChanged, canUndo);
             }
             else
@@ -2187,9 +2217,9 @@ namespace PDFKeeper.Core.ViewModels
         private async Task UploadPdfFiles()
         {
             OnUploadPdfFilesStarted?.Invoke();
-            await Task.Run(pdfUploader.ExecuteUploadDirectoryMaintenance).ConfigureAwait(true);
+            await Task.Run(uploadFolderMaintenanceService.PerformMaintenance).ConfigureAwait(true);
 
-            if (pdfUploader.PdfFilesReadyToUpload)
+            if (pdfUploadQueryService.HasPendingUploads())
             {
                 try
                 {
@@ -2203,8 +2233,7 @@ namespace PDFKeeper.Core.ViewModels
                         UploadProgressBarVisible = true;
                     }
 
-                    await Task.Run(()
-                        => pdfUploader.ExecuteUpload(pdfFileCache)).ConfigureAwait(true);
+                    await Task.Run(pdfUploadService.Upload).ConfigureAwait(true);
                 }
                 catch (Exception ex) when (
                     ex is ArgumentException ||
@@ -2227,7 +2256,7 @@ namespace PDFKeeper.Core.ViewModels
                 }
             }
 
-            UploadRejectedImageVisible = pdfUploader.UploadRejectedContainsPdfFiles;
+            UploadRejectedImageVisible = pdfUploadQueryService.HasRejectedUploads();
             OnUploadPdfFilesFinished?.Invoke();
         }
 
@@ -2414,12 +2443,14 @@ namespace PDFKeeper.Core.ViewModels
                     SearchTermSnippets = currentDocument.SearchTermSnippets;
                     DocumentDataEnabled = true;
                     cachePdfTask.Wait();
-                    var pdfFile = new PdfFile(
-                        new FileInfo(pdfFileCache.GetPdfPath(currentDocument.Id)));
-                    FileExtractMenuEnabled = pdfFile.ContainsAttachments ||
-                        pdfFile.ContainsEmbeddedFiles;
-                    FileExtractAllAttachmentsMenuEnabled = pdfFile.ContainsAttachments;
-                    FileExtractAllEmbeddedFilesMenuEnabled = pdfFile.ContainsEmbeddedFiles;
+                    var pdfPath = pdfFileCache.GetPdfPath(currentDocument.Id);
+                    FileExtractMenuEnabled = 
+                        pdfAttachmentService.GetAttachmentCount(pdfPath) > 0 ||
+                        pdfAttachmentService.GetEmbeddedFileCount(pdfPath) > 0;
+                    FileExtractAllAttachmentsMenuEnabled = pdfAttachmentService.GetAttachmentCount(
+                        pdfPath) > 0;
+                    FileExtractAllEmbeddedFilesMenuEnabled =
+                        pdfAttachmentService.GetEmbeddedFileCount(pdfPath) > 0;
                     SetPreviewImageForCurrentDocument();
                 }
                 catch (DatabaseException ex)

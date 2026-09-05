@@ -22,7 +22,6 @@ using CommunityToolkit.Mvvm.Input;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
-using PDFKeeper.Core.FileIO.PDF;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
 using PDFKeeper.Core.Interfaces.Services.Upload;
@@ -31,6 +30,7 @@ using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Services;
 using System;
 using System.IO;
+using System.Security;
 
 namespace PDFKeeper.Core.ViewModels
 {
@@ -39,10 +39,12 @@ namespace PDFKeeper.Core.ViewModels
     /// and adding PDFs with metadata.
     /// </summary>
     [CLSCompliant(false)]
-    public sealed class AddPdfViewModel : ColumnDataListsViewModel, IUploadProfile
+    public sealed class AddPdfViewModel : ColumnDataListsViewModel
     {
         private readonly IMessageBoxService messageBoxService;
         private readonly IPasswordDialogService passwordDialogService;
+        private readonly IPdfMetadataService pdfMetadataService;
+        private readonly IPdfSecurityService pdfSecurityService;
         private readonly IPdfUploadStagingService pdfUploadStagingService;
         private readonly IPdfViewerService pdfViewerService;
         private readonly IFileDialogService openFileDialogService;
@@ -50,8 +52,8 @@ namespace PDFKeeper.Core.ViewModels
         private UploadProfile uploadProfile;
         private string viewText;
         private string selectedPdf;
-        private PdfFile pdfFile;
-        private PdfMetadata pdfMetadata;
+        private PdfMetadataDto pdfMetadataDto;
+        private SecureString pdfOwnerPassword;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AddPdfViewModel"/> class.
@@ -65,6 +67,12 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="passwordDialogService">
         /// The <see cref="IPasswordDialogService"/> instance.
         /// </param>
+        /// <param name="pdfMetadataService">
+        /// The <see cref="IPdfMetadataService"/> instance.
+        /// </param>
+        /// <param name="pdfSecurityService">
+        /// The <see cref="IPdfSecurityService"/> instance.
+        /// </param>
         /// <param name="pdfUploadStagingService">
         /// The <see cref="IPdfUploadStagingService"/> instance.
         /// </param>
@@ -75,6 +83,8 @@ namespace PDFKeeper.Core.ViewModels
             IKeyedServiceResolver keyedServiceResolver,
             IMessageBoxService messageBoxService,
             IPasswordDialogService passwordDialogService,
+            IPdfMetadataService pdfMetadataService,
+            IPdfSecurityService pdfSecurityService,
             IPdfUploadStagingService pdfUploadStagingService,
             IPdfViewerService pdfViewerService)
         {
@@ -85,6 +95,8 @@ namespace PDFKeeper.Core.ViewModels
 
             this.messageBoxService = messageBoxService;
             this.passwordDialogService = passwordDialogService;
+            this.pdfMetadataService = pdfMetadataService;
+            this.pdfSecurityService = pdfSecurityService;
             this.pdfUploadStagingService = pdfUploadStagingService;
             this.pdfViewerService = pdfViewerService;
             openFileDialogService = keyedServiceResolver.GetRequiredKeyedService<
@@ -245,27 +257,28 @@ namespace PDFKeeper.Core.ViewModels
             {
                 try
                 {
-                    pdfFile = new PdfFile(new FileInfo(selectedPdfPath));
-                    var passwordType = pdfFile.GetPasswordType();
-
+                    var passwordType = pdfSecurityService.GetPasswordType(selectedPdfPath);
+    
                     switch (passwordType)
                     {
-                        case PdfFile.PasswordType.None:
-                            pdfMetadata = new PdfMetadata(pdfFile);
-                            SelectedPdf = pdfFile.FullName;
+                        case PdfPasswordType.None:
+                            pdfMetadataDto = pdfMetadataService.Read(selectedPdfPath);
+                            SelectedPdf = selectedPdfPath;
                             SetUploadProfile();
                             GetCollections();
                             break;
-                        case PdfFile.PasswordType.Owner:
-                            var pdfOwnerPassword = passwordDialogService.ShowDialog(
+                        case PdfPasswordType.Owner:
+                            pdfOwnerPassword = passwordDialogService.ShowDialog(
                                 GetWindowHandle.Invoke());
 
                             if (pdfOwnerPassword != null)
                             {
                                 if (pdfOwnerPassword.Length > 0)
                                 {
-                                    pdfMetadata = new PdfMetadata(pdfFile, pdfOwnerPassword);
-                                    SelectedPdf = pdfFile.FullName;
+                                    pdfMetadataDto = pdfMetadataService.Read(
+                                        selectedPdfPath,
+                                        pdfOwnerPassword);
+                                    SelectedPdf = selectedPdfPath;
                                     SetUploadProfile();
                                     GetCollections();
                                     pdfOwnerPassword.MakeReadOnly();
@@ -285,14 +298,14 @@ namespace PDFKeeper.Core.ViewModels
                             }
 
                             break;
-                        case PdfFile.PasswordType.User:
+                        case PdfPasswordType.User:
                             messageBoxService.ShowMessage(
                                 GetWindowHandle.Invoke(),
                                 Resources.PdfContainsUserPassword,
                                 true);
                             OnCloseView?.Invoke();
                             break;
-                        case PdfFile.PasswordType.Unknown:
+                        case PdfPasswordType.Unknown:
                             messageBoxService.ShowMessage(
                                 GetWindowHandle.Invoke(),
                                 Resources.PdfInvalid,
@@ -343,17 +356,21 @@ namespace PDFKeeper.Core.ViewModels
         {
             CancelViewClosing = false;
             OnApplyPendingChanges?.Invoke();
-            pdfMetadata.ImportUploadProfile(UploadProfile);
+            var pdfMetadataDto = new PdfMetadataDto();
+            pdfMetadataDto.ToPdfMetadataDto(UploadProfile);
             pdfViewerService.CloseRestrictedViewer();
 
             try
             {
-                var targetPdfFile = pdfMetadata.Write();
-                pdfUploadStagingService.StagePdf(targetPdfFile.FullName);
+                var modifiedPdfPath = pdfMetadataService.Write(
+                    SelectedPdf,
+                    pdfMetadataDto,
+                    pdfOwnerPassword);
+                pdfUploadStagingService.StagePdf(modifiedPdfPath);
 
                 if (deleteSourcePdf)
                 {
-                    new FileInfo(pdfFile.FullName).DeleteToRecycleBin();
+                    new FileInfo(SelectedPdf).DeleteToRecycleBin();
                 }
 
                 OnCloseViewOKResult?.Invoke();
@@ -404,7 +421,7 @@ namespace PDFKeeper.Core.ViewModels
             if (document != null)
             {
                 ViewText = Resources.ReplacePdf;
-                pdfMetadata.Id = document.Id;
+                pdfMetadataDto.Id = document.Id;
                 
                 UploadProfile = new UploadProfile
                 {
@@ -419,7 +436,7 @@ namespace PDFKeeper.Core.ViewModels
             }
             else
             {
-                UploadProfile = pdfMetadata.ExportUploadProfile();
+                UploadProfile = pdfMetadataDto.ToUploadProfile();
             }
         }
     }

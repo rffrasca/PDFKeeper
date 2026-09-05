@@ -21,18 +21,23 @@
 using Microsoft.Extensions.DependencyInjection;
 using PDFKeeper.Core.Caching;
 using PDFKeeper.Core.Enums;
-using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.HelpSystem;
 using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Interfaces.Navigation;
+using PDFKeeper.Core.Interfaces.Rules;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
+using PDFKeeper.Core.Interfaces.Services.Pdf.TextExtraction;
+using PDFKeeper.Core.Interfaces.Services.Security;
 using PDFKeeper.Core.Interfaces.Services.Upload;
 using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Navigation;
+using PDFKeeper.Core.Rules;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.Services.Pdf;
+using PDFKeeper.Core.Services.Pdf.TextExtraction;
+using PDFKeeper.Core.Services.Security;
 using PDFKeeper.Core.Services.Upload;
 using PDFKeeper.Core.Storage;
 using PDFKeeper.Core.ViewModels;
@@ -76,6 +81,7 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IApplicationInfoService, ApplicationInfoService>();
             services.AddSingleton<IApplicationPolicyService, ApplicationPolicyService>();
             services.AddSingleton<IApplicationRegistryProvider, ApplicationRegistryProvider>();
+            services.AddSingleton<IClipboardService, ClipboardService>();
             services.AddSingleton<IDocumentExportService, DocumentExportService>();
             services.AddSingleton<IExceptionHandler, ExceptionHandler>();
             services.AddSingleton<IFolderBrowserDialogService, FolderBrowserDialogService>();
@@ -83,16 +89,33 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IHelpViewer, HelpViewer>();
             services.AddSingleton<IKeyedServiceResolver, KeyedServiceResolver>();
             services.AddSingleton<IMessageBoxService, MessageBoxService>();
-            services.AddSingleton<IPasswordDialogService, PdfOwnerPasswordDialogService>();
+            services.AddSingleton<IPdfAnnotationService, PdfAnnotationService>();
+            services.AddSingleton<IPdfAttachmentService, PdfAttachmentService>();
             services.AddSingleton<IPdfFileCache, PdfFileCache>();
+            services.AddSingleton<IPdfImageService, PdfImageService>();
+            services.AddSingleton<IPdfListingService, PdfListingService>();
+            services.AddSingleton<IPdfMetadataService, PdfMetadataService>();
+            services.AddSingleton<IPasswordDialogService, PdfOwnerPasswordDialogService>();
             services.AddSingleton<IPdfPreviewService, PdfPreviewService>();
+            services.AddSingleton<IPdfSecurityService, PdfSecurityService>();
+            services.AddSingleton<IPdfSplitterService, PdfSplitterService>();
+            services.AddSingleton<IPdfTextExtractionService, PdfTextExtractionService>();
+            services.AddSingleton<IPdfUploadQueryService, PdfUploadQueryService>();
+            services.AddSingleton<IPdfUploadService, PdfUploadService>();
             services.AddSingleton<IPdfUploadStagingService, PdfUploadStagingService>();
             services.AddSingleton<IPdfViewerService, PdfViewerService>();
             services.AddSingleton<IPrintDialogService, PrintDialogService>();
             services.AddSingleton<IPrintPreviewDialogService, PrintPreviewDialogService>();
             services.AddSingleton<IProcessService, ProcessService>();
+            services.AddSingleton<IRule<string>, FilenameCharacterRule>();
+            services.AddSingleton<ISecureDataService, SecureDataService>();
+            services.AddSingleton<IUploadFolderMaintenanceService,
+                UploadFolderMaintenanceService>();
             services.AddSingleton<IUploadFolderShortcutService, UploadFolderShortcutService>();
+            services.AddSingleton<IUploadProfileManager, UploadProfileManager>();
             services.AddSingleton<IVirtualKeyService, VirtualKeyService>();
+            services.AddSingleton<PdfTextExtractionStrategy>();
+            services.AddSingleton<PdfOcrTextExtractionStrategy>();
         }
 
         /// <summary>

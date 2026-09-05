@@ -91,7 +91,7 @@ namespace PDFKeeper.Core.DataAccess
         }
 
         /// <summary>
-        /// Retrieves the full file system path to the application's local database file, using
+        /// Retrieves the full path to the application's local database file, using
         /// values stored in the user registry or default locations as needed.
         /// </summary>
         /// <remarks>
@@ -132,11 +132,11 @@ namespace PDFKeeper.Core.DataAccess
         /// registered listeners are notified of the change.
         /// </remarks>
         /// <param name="path">
-        /// The full file system path to the local database file. If the file does not exist and
-        /// <paramref name="moveExistingDb"/> is true, the existing database will be moved to this
-        /// location. If the file does not exist and <paramref name="moveExistingDb"/> is false, a
-        /// new database will be created at this location. If the file exists, it must be a valid
-        /// database file.
+        /// The full path to the local database file. If the file does not exist and
+        /// <paramref name="moveExistingDb"/> is true, the existing database will be
+        /// moved to this location. If the file does not exist and
+        /// <paramref name="moveExistingDb"/> is false, a new database will be created
+        /// at this location. If the file exists, it must be a valid database file.
         /// </param>
         /// <param name="moveExistingDb">
         /// true to move the existing local database to the specified path if the file does not

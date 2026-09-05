@@ -26,6 +26,7 @@
     <NoWarn>MVVMTKCFG0001</NoWarn>
     <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
     <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,6 +39,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <NoWarn>MVVMTKCFG0001</NoWarn>
     <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -57,6 +59,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>PDFKeeper.Core.ruleset</CodeAnalysisRuleSet>
     <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>..\PDFKeeper.WinForms\bin\x64\Release\</OutputPath>
@@ -71,6 +74,7 @@
     <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
     <DocumentationFile>
     </DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -93,6 +97,25 @@
   <ItemGroup>
     <Compile Include="DataAccess\OracleConnectionFactory.cs" />
     <Compile Include="Caching\PdfMemoryCache.cs" />
+    <Compile Include="Enums\PdfAttachmentType.cs" />
+    <Compile Include="Enums\PdfPasswordType.cs" />
+    <Compile Include="Extensions\PdfMetadataExtensions.cs" />
+    <Compile Include="Interfaces\Rules\IRule.cs" />
+    <Compile Include="Interfaces\Services\IClipboardService.cs" />
+    <Compile Include="Interfaces\Services\Security\IPinnedBytes.cs" />
+    <Compile Include="Interfaces\Services\Security\ISecureDataService.cs" />
+    <Compile Include="Interfaces\Services\Pdf\IPdfAnnotationService.cs" />
+    <Compile Include="Interfaces\Services\Pdf\IPdfAttachmentService.cs" />
+    <Compile Include="Interfaces\Services\Pdf\IPdfListingService.cs" />
+    <Compile Include="Interfaces\Services\Pdf\IPdfMetadataService.cs" />
+    <Compile Include="Interfaces\Services\Pdf\IPdfSecurityService.cs" />
+    <Compile Include="Interfaces\Services\Pdf\IPdfSplitterService.cs" />
+    <Compile Include="Interfaces\Services\Pdf\TextExtraction\IPdfTextExtractionService.cs" />
+    <Compile Include="Interfaces\Services\Pdf\TextExtraction\IPdfTextExtractionStrategy.cs" />
+    <Compile Include="Interfaces\Services\Upload\IPdfUploadQueryService.cs" />
+    <Compile Include="Interfaces\Services\Upload\IPdfUploadService.cs" />
+    <Compile Include="Interfaces\Services\Upload\IUploadFolderMaintenanceService.cs" />
+    <Compile Include="Interfaces\Storage\IUploadProfileManager.cs" />
     <Compile Include="Models\PdfCacheEntry.cs" />
     <Compile Include="Interfaces\Caching\IPdfMemoryCache.cs" />
     <Compile Include="Enums\ApplicationFolder.cs" />
@@ -104,7 +127,10 @@
     <Compile Include="Extensions\ByteExtension.cs" />
     <Compile Include="Extensions\SizeExtension.cs" />
     <Compile Include="Interfaces\Caching\IPdfFileCache.cs" />
-    <Compile Include="FileIO\Serializers\JsonSerializer.cs" />
+    <Compile Include="Models\PdfMetadataDto.cs" />
+    <Compile Include="Models\RuleResult.cs" />
+    <Compile Include="Rules\FilenameCharacterRule.cs" />
+    <Compile Include="Serializers\JsonSerializer.cs" />
     <Compile Include="Helpers\ApplicationFolderHelper.cs" />
     <Compile Include="Helpers\ApplicationRegistryHelper.cs" />
     <Compile Include="Helpers\OneDriveHelper.cs" />
@@ -143,16 +169,10 @@
     <Compile Include="DataAccess\Repository\SqlServerDocumentRepository.cs" />
     <Compile Include="Extensions\DataTableExtension.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
-    <Compile Include="Extensions\DirectoryInfoExtension.cs" />
     <Compile Include="Extensions\GenericExtension.cs" />
     <Compile Include="Caching\PdfFileCache.cs" />
-    <Compile Include="FileIO\PDF\PdfFileSplitter.cs" />
-    <Compile Include="FileIO\PDF\PdfImageDetector.cs" />
-    <Compile Include="FileIO\PDF\PdfUploader.cs" />
-    <Compile Include="FileIO\TextExtractor\ImageTextExtractor.cs" />
-    <Compile Include="FileIO\TextExtractor\IPdfTextExtractionStrategy.cs" />
-    <Compile Include="FileIO\TextExtractor\PdfOcrTextExtractionStrategy.cs" />
-    <Compile Include="FileIO\TextExtractor\PdfTextExtractionStrategy.cs" />
+    <Compile Include="Custom\Pdf\PdfSplitter.cs" />
+    <Compile Include="Custom\Pdf\PdfImageDetector.cs" />
     <Compile Include="Interop\NativeMethods.cs" />
     <Compile Include="Models\ColumnData.cs" />
     <Compile Include="Rules\ExportPdfMetadataRule.cs" />
@@ -162,13 +182,28 @@
     <Compile Include="Services\IFileDialogService.cs" />
     <Compile Include="Services\IPrintDialogService.cs" />
     <Compile Include="Services\IPrintPreviewDialogService.cs" />
+    <Compile Include="Services\Pdf\PdfAnnotationService.cs" />
+    <Compile Include="Services\Pdf\PdfAttachmentService.cs" />
     <Compile Include="Services\Pdf\PdfImageService.cs" />
+    <Compile Include="Services\Pdf\PdfListingService.cs" />
+    <Compile Include="Services\Pdf\PdfMetadataService.cs" />
     <Compile Include="Services\Pdf\PdfPreviewService.cs" />
+    <Compile Include="Services\Pdf\PdfSecurityService.cs" />
+    <Compile Include="Services\Pdf\PdfSplitterService.cs" />
     <Compile Include="Services\Pdf\PdfViewerService.cs" />
+    <Compile Include="Services\Pdf\TextExtraction\PdfOcrTextExtractionStrategy.cs" />
+    <Compile Include="Services\Pdf\TextExtraction\PdfTextExtractionService.cs" />
+    <Compile Include="Services\Pdf\TextExtraction\PdfTextExtractionStrategy.cs" />
     <Compile Include="Services\ProcessService.cs" />
+    <Compile Include="Services\Security\PinnedBytes.cs" />
+    <Compile Include="Services\Security\SecureDataService.cs" />
     <Compile Include="Services\UploadFolderShortcutService.cs" />
+    <Compile Include="Services\Upload\PdfUploadQueryService.cs" />
+    <Compile Include="Services\Upload\PdfUploadService.cs" />
     <Compile Include="Services\Upload\PdfUploadStagingService.cs" />
+    <Compile Include="Services\Upload\UploadFolderMaintenanceService.cs" />
     <Compile Include="Services\VirtualKeyService.cs" />
+    <Compile Include="Services\ClipboardService.cs" />
     <Compile Include="Storage\ApplicationFolderCleaner.cs" />
     <Compile Include="Navigation\ApplicationFolderExplorer.cs" />
     <Compile Include="Storage\ApplicationFolderManager.cs" />
@@ -183,33 +218,27 @@
     <Compile Include="DataAccess\Repository\IDocumentRepository.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\TaxYearLegacy.cs" />
-    <Compile Include="FileIO\UploadProfileManager.cs" />
+    <Compile Include="Storage\UploadProfileManager.cs" />
     <Compile Include="State\FindDocumentsState.cs" />
     <Compile Include="DataAccess\DatabaseSession.cs" />
     <Compile Include="Models\IFindDocumentsParam.cs" />
     <Compile Include="Models\FindDocumentsParam.cs" />
     <Compile Include="Models\SearchTermHistory.cs" />
     <Compile Include="Services\IDialogService.cs" />
-    <Compile Include="FileIO\PDF\PdfFile.cs" />
     <Compile Include="Services\IMessageBoxService.cs" />
     <Compile Include="Services\IPasswordDialogService.cs" />
-    <Compile Include="FileIO\PDF\PdfMetadata.cs" />
     <Compile Include="Rules\PdfMetadataRule.cs" />
     <Compile Include="ViewModels\AddPdfViewModel.cs" />
     <Compile Include="ViewModels\FindDocumentsViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\UploadProfileEditorViewModel.cs" />
-    <Compile Include="FileIO\PDF\IPdfMetadata.cs" />
-    <Compile Include="Models\IPdfExternalMetadata.cs" />
-    <Compile Include="Models\IUploadProfile.cs" />
-    <Compile Include="Extensions\SecureStringExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Helpers\ResourceHelper.cs" />
     <Compile Include="Models\PdfExternalMetadata.cs" />
     <Compile Include="Models\UploadProfile.cs" />
     <Compile Include="Extensions\FileInfoExtension.cs" />
-    <Compile Include="FileIO\Serializers\XmlSerializer.cs" />
+    <Compile Include="Serializers\XmlSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

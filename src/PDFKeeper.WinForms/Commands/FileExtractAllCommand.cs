@@ -18,10 +18,10 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // *****************************************************************************
 
+using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.ViewModels;
 using System;
 using System.Windows.Input;
-using static PDFKeeper.Core.FileIO.PDF.PdfFile;
 
 namespace PDFKeeper.WinForms.Commands
 {
@@ -33,7 +33,7 @@ namespace PDFKeeper.WinForms.Commands
     internal class FileExtractAllCommand : ICommand
     {
         private readonly MainViewModel mainViewModel;
-        private readonly AttachedFilesType attachedFilesType;
+        private readonly PdfAttachmentType pdfAttachmentType;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FileExtractAllCommand"/> class.
@@ -41,15 +41,15 @@ namespace PDFKeeper.WinForms.Commands
         /// <param name="mainViewModel">
         /// The <see cref="MainViewModel"/> instance.
         /// </param>
-        /// <param name="attachedFilesType">
-        /// The <see cref="PdfFile.AttachedFilesType"/> of attached files in the PDF to extract.
+        /// <param name="pdfAttachmentType">
+        /// The type of attached files in the PDF to extract.
         /// </param>
         internal FileExtractAllCommand(
             MainViewModel mainViewModel,
-            AttachedFilesType attachedFilesType)
+            PdfAttachmentType pdfAttachmentType)
         {
             this.mainViewModel = mainViewModel;
-            this.attachedFilesType = attachedFilesType;
+            this.pdfAttachmentType = pdfAttachmentType;
         }
 
         public event EventHandler CanExecuteChanged { add { } remove { } }
@@ -62,7 +62,7 @@ namespace PDFKeeper.WinForms.Commands
         public void Execute(object parameter)
         {
             mainViewModel.ExtractAllAttachedFromCurrentDocumentPdfCommand.Execute(
-                attachedFilesType);
+                pdfAttachmentType);
         }
     }
 }

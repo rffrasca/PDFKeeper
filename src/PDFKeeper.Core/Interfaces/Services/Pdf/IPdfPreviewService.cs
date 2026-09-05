@@ -37,7 +37,7 @@ namespace PDFKeeper.Core.Interfaces.Services.Pdf
         /// The pixel density to use for the generated preview image.
         /// </param>
         /// <returns>
-        /// The task that represents the asynchronous operation, containing the byte array of the
+        /// A task that represents the asynchronous operation, containing the byte array of the
         /// generated preview image.
         /// </returns>
         Task<byte[]> CreatePreviewImageAsync(string pdfPath, decimal pixelDensity);

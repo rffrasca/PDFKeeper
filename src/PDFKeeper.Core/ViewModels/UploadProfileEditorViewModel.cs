@@ -18,17 +18,17 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using System;
-using System.Collections.Generic;
-using PDFKeeper.Core.Models;
-using PDFKeeper.Core.Services;
 using CommunityToolkit.Mvvm.Input;
+using PDFKeeper.Core.DataAccess;
+using PDFKeeper.Core.Extensions;
+using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Interfaces.Storage;
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Rules;
-using PDFKeeper.Core.Extensions;
-using PDFKeeper.Core.FileIO;
-using PDFKeeper.Core.DataAccess;
-using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Services;
+using System;
+using System.Collections.Generic;
 
 namespace PDFKeeper.Core.ViewModels
 {
@@ -36,12 +36,12 @@ namespace PDFKeeper.Core.ViewModels
     /// View model for managing the upload profile editor and its associated commands and services.
     /// </summary>
     [CLSCompliant(false)]
-    public sealed class UploadProfileEditorViewModel : ColumnDataListsViewModel, IUploadProfile
+    public sealed class UploadProfileEditorViewModel : ColumnDataListsViewModel
     {
         private readonly IMessageBoxService messageBoxService;
+        private readonly IUploadProfileManager uploadProfileManager;
         private readonly string uploadProfileName;
         private string name;
-        private readonly UploadProfileManager uploadProfileManager;
         private UploadProfile uploadProfile;
         private IEnumerable<string> titleTokens;
 
@@ -51,17 +51,21 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="messageBoxService">
         /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
+        /// <param name="uploadProfileManager">
+        /// The <see cref="IUploadProfileManager"/> instance.
+        /// </param>
         /// <param name="uploadProfileName">
         /// The name of the upload profile to edit, or null to create a new profile.
         /// </param>
         public UploadProfileEditorViewModel(
             IMessageBoxService messageBoxService,
+            IUploadProfileManager uploadProfileManager,
             string uploadProfileName = null)
         {
             this.messageBoxService = messageBoxService;
+            this.uploadProfileManager = uploadProfileManager;
             this.uploadProfileName = uploadProfileName;
             name = uploadProfileName;
-            uploadProfileManager = new UploadProfileManager();
             SetUploadProfile();
             InitializeCommands();            
         }

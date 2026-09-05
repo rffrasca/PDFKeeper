@@ -20,9 +20,9 @@
 
 using CommunityToolkit.Mvvm.Input;
 using PDFKeeper.Core.Enums;
-using PDFKeeper.Core.FileIO;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Interfaces.Services;
+using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Services;
 using System;
@@ -37,9 +37,10 @@ namespace PDFKeeper.Core.ViewModels
     [CLSCompliant(false)]
     public sealed class UploadProfilesViewModel : ViewModelBase
     {
+        private readonly IApplicationFolderManager applicationFolderManager;
         private readonly IMessageBoxService messageBoxService;
         private readonly IDialogService uploadProfileEditorDialogService;
-        private readonly UploadProfileManager uploadProfileManager;
+        private readonly IUploadProfileManager uploadProfileManager;
         private IEnumerable<string> uploadProfileNames;
         private bool editEnabled;
         private bool deleteEnabled;
@@ -47,26 +48,34 @@ namespace PDFKeeper.Core.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadProfilesViewModel"/> class.
         /// </summary>
+        /// <param name="applicationFolderManager">
+        /// The <see cref="IApplicationFolderManager"/> instance.
+        /// </param>
         /// <param name="keyedServiceResolver">
         /// The <see cref="IKeyedServiceResolver"/> instance.
         /// </param>
         /// <param name="messageBoxService">
         /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
+        /// <param name="uploadProfileManager">
+        /// The <see cref="IUploadProfileManager"/> instance.
+        /// </param>
         public UploadProfilesViewModel(
+            IApplicationFolderManager applicationFolderManager,
             IKeyedServiceResolver keyedServiceResolver,
-            IMessageBoxService messageBoxService)
+            IMessageBoxService messageBoxService,
+            IUploadProfileManager uploadProfileManager)
         {
             if (keyedServiceResolver is null)
             {
                 throw new ArgumentNullException(nameof(keyedServiceResolver));
             }
 
+            this.applicationFolderManager = applicationFolderManager;
             this.messageBoxService = messageBoxService;
+            this.uploadProfileManager = uploadProfileManager;
             uploadProfileEditorDialogService = keyedServiceResolver.GetRequiredKeyedService<
                 IDialogService>(DialogServiceKey.UploadProfileEditor);
-            uploadProfileManager = new UploadProfileManager();
-            UploadProfilesDirectoryPath = uploadProfileManager.UploadProfilesDirectoryPath;
             InitializeCommands();
             GetUploadProfileNames();
         }
@@ -75,7 +84,9 @@ namespace PDFKeeper.Core.ViewModels
         public IRelayCommand AddUploadProfileCommand { get; private set; }
         public IRelayCommand EditUploadProfileCommand { get; private set; }
         public IRelayCommand DeleteUploadProfileCommand { get; private set; }
-        public string UploadProfilesDirectoryPath { get; set; }
+
+        public string UploadProfilesDirectoryPath => 
+            applicationFolderManager.GetOrCreateFolderPath(ApplicationFolder.UploadProfiles);
 
         public IEnumerable<string> UploadProfileNames
         {

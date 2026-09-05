@@ -22,8 +22,12 @@ using System;
 
 namespace PDFKeeper.Core.Models
 {
+    /// <summary>
+    /// Represents the external metadata stored in the XML file associated with a PDF document.
+    /// This class is used exclusively for XML serialization and deserialization.
+    /// </summary>
     [Serializable()]
-    public class PdfExternalMetadata : IPdfExternalMetadata
+    public class PdfExternalMetadata
     {
         public int Id { get; set; }
         public string Notes { get; set; }
