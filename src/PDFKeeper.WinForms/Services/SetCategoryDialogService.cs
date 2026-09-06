@@ -52,7 +52,7 @@ namespace PDFKeeper.WinForms.Services
             this.messageBoxService = messageBoxService;
         }
 
-        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
+        public string ShowDialog(IntPtr parent, string arg = null, DocumentDto documentDto = null)
         {
             using (var dialog = new SetCategoryForm(helpFileResolver, messageBoxService))
             {

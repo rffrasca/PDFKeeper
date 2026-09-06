@@ -20,6 +20,9 @@
 
 using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Interfaces.Storage;
+using PDFKeeper.Core.Models;
+using PDFKeeper.Core.Rules;
+using PDFKeeper.Core.Rules.PdfMetadata;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.ViewModels;
 using PDFKeeper.WinForms.Commands;
@@ -42,6 +45,9 @@ namespace PDFKeeper.WinForms.Views
         /// <param name="messageBoxService">
         /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
+        /// <param name="pdfMetadataRule">
+        /// The <see cref="IRule{PdfMetadataRuleInput}"/> instance.
+        /// </param>
         /// <param name="uploadProfileManager">
         /// The <see cref="IUploadProfileManager"/> instance.
         /// </param>
@@ -51,12 +57,14 @@ namespace PDFKeeper.WinForms.Views
         public UploadProfileEditorForm(
             IHelpFileResolver helpFileResolver,
             IMessageBoxService messageBoxService,
+            IRule<PdfMetadataRuleInput> pdfMetadataRule,
             IUploadProfileManager uploadProfileManager,
             string uploadProfileName = null)
         {
             InitializeComponent();
             viewModel = new UploadProfileEditorViewModel(
                 messageBoxService,
+                pdfMetadataRule,
                 uploadProfileManager,
                 uploadProfileName);
             UploadProfileEditorViewModelBindingSource.DataSource = viewModel;

@@ -45,11 +45,11 @@ namespace PDFKeeper.WinForms.Services
             this.serviceProvider = serviceProvider;
         }
 
-        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
+        public string ShowDialog(IntPtr parent, string arg = null, DocumentDto documentDto = null)
         {
             using (var dialog = serviceProvider.GetRequiredService<AddPdfForm>())
             {
-                dialog.Initialize(arg, document);
+                dialog.Initialize(arg, documentDto);
                 dialog.ShowDialog(NativeWindow.FromHandle(parent));
             }
 

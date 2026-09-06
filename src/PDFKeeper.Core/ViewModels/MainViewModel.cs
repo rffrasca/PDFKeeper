@@ -84,6 +84,7 @@ namespace PDFKeeper.Core.ViewModels
         private IDialogService aboutBoxDialogService;
         private IFileDialogService openFileDialogService;
         private IFileDialogService saveFileDialogService;
+        private IRule<string> notesSizeRule;
         private string viewTitleText;
         private bool toolStripVisible;
         private bool statusStripVisible;
@@ -159,7 +160,7 @@ namespace PDFKeeper.Core.ViewModels
         private bool flagImageVisible;
         private bool uploadRejectedImageVisible;
         private readonly PrintDocument printDocument;
-        private Document currentDocument;
+        private DocumentDto currentDocument;
         private string textToPrint;
 
         public enum StartupAction { None, FindFlaggedDocuments, ShowAllDocuments }
@@ -1142,6 +1143,8 @@ namespace PDFKeeper.Core.ViewModels
                 IFileDialogService>(FileDialogServiceKey.OpenFile);
             saveFileDialogService = keyedServiceResolver.GetRequiredKeyedService<
                 IFileDialogService>(FileDialogServiceKey.SaveFile);
+            notesSizeRule = keyedServiceResolver.GetRequiredKeyedService<
+                IRule<string>>(StringRuleKey.Notes);
         }
 
         private void SetActions()
@@ -1359,7 +1362,7 @@ namespace PDFKeeper.Core.ViewModels
                     {
                         try
                         {
-                            Document currentDocument;
+                            DocumentDto currentDocument;
 
                             using (var documentRepository =
                                 DatabaseSession.GetDocumentRepository())
@@ -1407,9 +1410,9 @@ namespace PDFKeeper.Core.ViewModels
             Justification = "Needed to trigger Notes update on the view.")]
         private void SaveNotes()
         {
-            var rule = new NotesSizeRule(Notes);
+            var ruleResult = notesSizeRule.Evaluate(Notes);
 
-            if (!rule.ViolationFound)
+            if (!ruleResult.ViolationFound)
             {
                 using (var documentRepository = DatabaseSession.GetDocumentRepository())
                 {
@@ -1467,7 +1470,7 @@ namespace PDFKeeper.Core.ViewModels
             {
                 messageBoxService.ShowMessage(
                     GetWindowHandle.Invoke(),
-                    rule.ViolationMessage,
+                    ruleResult.ViolationMessage,
                     true);
             }
         }

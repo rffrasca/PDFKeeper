@@ -21,6 +21,8 @@
 using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Models;
+using PDFKeeper.Core.Rules;
+using PDFKeeper.Core.Rules.PdfMetadata;
 using PDFKeeper.Core.Services;
 using PDFKeeper.WinForms.Views;
 using System;
@@ -36,6 +38,7 @@ namespace PDFKeeper.WinForms.Services
     {
         private readonly IHelpFileResolver helpFileResolver;
         private readonly IMessageBoxService messageBoxService;
+        private readonly IRule<PdfMetadataRuleInput> pdfMetadataRule;
         private readonly IUploadProfileManager uploadProfileManager;
 
         /// <summary>
@@ -47,24 +50,30 @@ namespace PDFKeeper.WinForms.Services
         /// <param name="messageBoxService">
         /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
+        /// <param name="pdfMetadataRule">
+        /// The <see cref="IRule{PdfMetadataRuleInput}"/> instance.
+        /// </param>
         /// <param name="uploadProfileManager">
         /// The <see cref="IUploadProfileManager"/> instance.
         /// </param>
         public UploadProfileEditorDialogService(
             IHelpFileResolver helpFileResolver,
             IMessageBoxService messageBoxService,
+            IRule<PdfMetadataRuleInput> pdfMetadataRule,
             IUploadProfileManager uploadProfileManager)
         {
             this.helpFileResolver = helpFileResolver;
             this.messageBoxService = messageBoxService;
+            this.pdfMetadataRule = pdfMetadataRule;
             this.uploadProfileManager = uploadProfileManager;
         }
 
-        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
+        public string ShowDialog(IntPtr parent, string arg = null, DocumentDto documentDto = null)
         {
             using (var dialog = new UploadProfileEditorForm(
                 helpFileResolver,
                 messageBoxService,
+                pdfMetadataRule,
                 uploadProfileManager,
                 arg))
             {

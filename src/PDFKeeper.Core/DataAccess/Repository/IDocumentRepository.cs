@@ -127,21 +127,23 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// <param name="id">The document ID.</param>
         /// <param name="searchTerm">The specified search term or <c>null</c>.</param>
         /// <returns>
-        /// The <see cref="Document"/> object with or without the PDF file contents.
+        /// The <see cref="DocumentDto"/> instance with or without the PDF file contents.
         /// </returns>
         /// <exception cref="DatabaseException"></exception>
-        Document GetDocument(int id, string searchTerm);
+        DocumentDto GetDocument(int id, string searchTerm);
 
         /// <summary>
-        /// Inserts the <see cref="Document"/> into the database.
+        /// Inserts the <see cref="DocumentDto"/> into the database.
         /// </summary>
-        /// <param name="document">The <see cref="Document"/> object.</param>
+        /// <param name="documentDto">
+        /// The <see cref="DocumentDto"/> instance.
+        /// </param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="DatabaseException"></exception>
-        void InsertDocument(Document document);
+        void InsertDocument(DocumentDto documentDto);
 
         /// <summary>
-        /// Updates the specified <see cref="Document"/> in the database.
+        /// Updates the specified <see cref="DocumentDto"/> in the database.
         /// <para>
         /// By default, only the doc_title, doc_author, doc_subject, doc_notes, doc_category,
         /// doc_tax_year, doc_flag, doc_text_annotations, and doc_text columns will be updated.
@@ -149,9 +151,9 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// <see langword="true"/>.
         /// </para>
         /// </summary>
-        /// <param name="document">
-        /// The <see cref="Document"/> object containing the updated data. This parameter cannot be
-        /// <see langword="null"/>.
+        /// <param name="documentDto">
+        /// The <see cref="DocumentDto"/> instance containing the updated data. This parameter
+        /// cannot be <see langword="null"/>.
         /// </param>
         /// <param name="updatePdf">
         /// A value indicating whether the PDF content of the document should also be updated. If
@@ -160,10 +162,10 @@ namespace PDFKeeper.Core.DataAccess.Repository
         /// </param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="DatabaseException"></exception>
-        void UpdateDocument(Document document, bool updatePdf = false);
+        void UpdateDocument(DocumentDto documentDto, bool updatePdf = false);
 
         /// <summary>
-        /// Deletes the <see cref="Document"/> from the database.
+        /// Deletes the <see cref="DocumentDto"/> from the database.
         /// </summary>
         /// <param name="id">The document ID.</param>
         /// <exception cref="DatabaseException"></exception>

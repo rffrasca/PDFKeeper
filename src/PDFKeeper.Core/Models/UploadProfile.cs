@@ -25,15 +25,15 @@ namespace PDFKeeper.Core.Models
     /// <summary>
     /// Represents the settings associated with an Upload Profile, including metadata
     /// fields and processing options applied when uploading a document.
-    ///
-    /// NOTE: This class defines the XML‑serialized Upload Profile format. Its structure
-    /// and property names must remain unchanged to preserve backward compatibility with
-    /// existing Upload Profile XML files.
-    ///
-    /// This type is intended for use exclusively by <see cref="IUploadProfileManager"/>
-    /// for loading and saving Upload Profiles, and by <see cref="UploadProfileEditorViewModel"/>
-    /// for editing them. It should not be referenced by any other application logic.
     /// </summary>
+    /// <remarks>
+    /// This class defines the XML‑serialized Upload Profile format. Its structure and
+    /// property names must remain unchanged to preserve backward compatibility with existing
+    /// Upload Profile XML files. It is intended for use exclusively by
+    /// <see cref="IUploadProfileManager"/> for loading and saving Upload Profiles, and by
+    /// <see cref="UploadProfileEditorViewModel"/> for editing them. It should not be referenced
+    /// by any other application logic.
+    /// </remarks>
     [Serializable()]
     public class UploadProfile
     {

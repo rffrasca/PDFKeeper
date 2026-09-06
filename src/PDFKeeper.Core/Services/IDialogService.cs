@@ -37,10 +37,10 @@ namespace PDFKeeper.Core.Services
         /// <param name="arg">
         /// An optional argument that specifies the input or context for the dialog.
         /// </param>
-        /// <param name="document">
-        /// An optional document to be used in the dialog.
+        /// <param name="documentDto">
+        /// An optional <see cref="DocumentDto"/> instance to be used in the dialog.
         /// </param>
         /// <returns>A string result from the dialog.</returns>
-        string ShowDialog(IntPtr parent, string arg = null, Document document = null);
+        string ShowDialog(IntPtr parent, string arg = null, DocumentDto documentDto = null);
     }
 }

@@ -18,7 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-namespace PDFKeeper.Core.Models
+namespace PDFKeeper.Core.Rules
 {
     /// <summary>
     /// Represents the result of evaluating a validation rule, including whether a

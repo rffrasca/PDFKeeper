@@ -23,13 +23,14 @@ using PDFKeeper.Core.Enums;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Interfaces.Caching;
-using PDFKeeper.Core.Interfaces.Rules;
+using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
 using PDFKeeper.Core.Interfaces.Services.Pdf.TextExtraction;
 using PDFKeeper.Core.Interfaces.Services.Upload;
 using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Rules;
+using PDFKeeper.Core.Rules.PdfMetadata;
 using System;
 using System.Globalization;
 using System.IO;
@@ -45,6 +46,7 @@ namespace PDFKeeper.Core.Services.Upload
         private readonly IPdfAnnotationService pdfAnnotationService;
         private readonly IPdfFileCache pdfFileCache;
         private readonly IPdfListingService pdfListingService;
+        private readonly IRule<PdfMetadataRuleInput> pdfMetadataRule;
         private readonly IPdfMetadataService pdfMetadataService;
         private readonly IPdfSecurityService pdfSecurityService;
         private readonly IPdfTextExtractionService pdfTextExtractionService;
@@ -60,7 +62,11 @@ namespace PDFKeeper.Core.Services.Upload
         /// The <see cref="IApplicationFolderManager"/> instance.
         /// </param>
         /// <param name="filenameCharacterRule">
-        /// The <see cref="IRule"/> instance that implements <see cref="FilenameCharacterRule"/>.
+        /// The <see cref="IRule<string>"/> instance that implements
+        /// <see cref="FilenameCharacterRule"/>.
+        /// </param>
+        /// <param name="keyedServiceResolver">
+        /// The <see cref="IKeyedServiceResolver"/> instance.
         /// </param>
         /// <param name="pdfAnnotationService">
         /// The <see cref="IPdfAnnotationService"/> instance.
@@ -70,6 +76,9 @@ namespace PDFKeeper.Core.Services.Upload
         /// </param>
         /// <param name="pdfListingService">
         /// The <see cref="IPdfListingService"/> instance.
+        /// </param>
+        /// <param name="pdfMetadataRule">
+        /// The <see cref="IRule{PdfMetadataRuleInput}"/> instance.
         /// </param>
         /// <param name="pdfMetadataService">
         /// The <see cref="IPdfMetadataService"/> instance.
@@ -87,14 +96,16 @@ namespace PDFKeeper.Core.Services.Upload
         /// The <see cref="IUploadProfileManager"/> instance.
         /// </param>
         /// <exception cref="ArgumentNullException">
-        /// Thrown when <paramref name="applicationFolderManager"/> is null.
+        /// Thrown when <paramref name="applicationFolderManager"/> or
+        /// <paramref name="keyedServiceResolver"/> is null.
         /// </exception>
         public PdfUploadService(
             IApplicationFolderManager applicationFolderManager,
-            IRule<string> filenameCharacterRule,
+            IKeyedServiceResolver keyedServiceResolver,
             IPdfAnnotationService pdfAnnotationService,
             IPdfFileCache pdfFileCache,
             IPdfListingService pdfListingService,
+            IRule<PdfMetadataRuleInput> pdfMetadataRule,
             IPdfMetadataService pdfMetadataService,
             IPdfSecurityService pdfSecurityService,
             IPdfTextExtractionService pdfTextExtractionService,
@@ -106,10 +117,17 @@ namespace PDFKeeper.Core.Services.Upload
                 throw new ArgumentNullException(nameof(applicationFolderManager));
             }
 
-            this.filenameCharacterRule = filenameCharacterRule;
+            if (keyedServiceResolver is null)
+            {
+                throw new ArgumentNullException(nameof(keyedServiceResolver));
+            }
+
+            filenameCharacterRule = keyedServiceResolver.GetRequiredKeyedService<
+                IRule<string>>(StringRuleKey.Filename);
             this.pdfAnnotationService = pdfAnnotationService;
             this.pdfFileCache = pdfFileCache;
             this.pdfListingService = pdfListingService;
+            this.pdfMetadataRule = pdfMetadataRule;
             this.pdfMetadataService = pdfMetadataService;
             this.pdfSecurityService = pdfSecurityService;
             this.pdfTextExtractionService = pdfTextExtractionService;
@@ -277,7 +295,10 @@ namespace PDFKeeper.Core.Services.Upload
             }
             else
             {
-                if (new PdfMetadataRule(pdfMetadataDto.ToUploadProfile()).ViolationFound)
+                var ruleResult = pdfMetadataRule.Evaluate(
+                    PdfMetadataRuleFactory.Create(pdfMetadataDto.ToUploadProfile()));
+
+                if (ruleResult.ViolationFound)
                 {
                     MoveFileToUploadRejected(pdfPath);
                 }
@@ -316,7 +337,7 @@ namespace PDFKeeper.Core.Services.Upload
         {
             foreach (var pdfPath in pdfListingService.GetPdfPaths(ApplicationFolder.UploadStaging))
             {
-                var document = new Document();
+                var document = new DocumentDto();
                 var pdfMetadataDto = pdfMetadataService.Read(pdfPath);
                 document.Id = pdfMetadataDto.Id;
                 document.Title = pdfMetadataDto.Title;

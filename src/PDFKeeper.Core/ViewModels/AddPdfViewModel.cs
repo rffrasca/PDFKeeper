@@ -48,7 +48,7 @@ namespace PDFKeeper.Core.ViewModels
         private readonly IPdfUploadStagingService pdfUploadStagingService;
         private readonly IPdfViewerService pdfViewerService;
         private readonly IFileDialogService openFileDialogService;
-        private Document document;
+        private DocumentDto documentDto;
         private UploadProfile uploadProfile;
         private string viewText;
         private string selectedPdf;
@@ -209,16 +209,16 @@ namespace PDFKeeper.Core.ViewModels
         }
 
         /// <summary>
-        /// Sets the <see cref="Document"/> representing the document being replaced.
+        /// Sets the <see cref="DocumentDto"/> representing the document being replaced.
         /// This method is called only when the PDF in an existing database record is
         /// being replaced.
         /// </summary>
-        /// <param name="document">
-        /// The <see cref="Document"/> instance that represents the document being replaced.
+        /// <param name="documentDto">
+        /// The <see cref="DocumentDto"/> instance that represents the document being replaced.
         /// </param>
-        public void SetDocument(Document document)
+        public void SetDocument(DocumentDto documentDto)
         {
-            this.document = document;
+            this.documentDto = documentDto;
         }
 
         private void InitializeCommands()
@@ -418,20 +418,20 @@ namespace PDFKeeper.Core.ViewModels
 
         private void SetUploadProfile()
         {
-            if (document != null)
+            if (documentDto != null)
             {
                 ViewText = Resources.ReplacePdf;
-                pdfMetadataDto.Id = document.Id;
+                pdfMetadataDto.Id = documentDto.Id;
                 
                 UploadProfile = new UploadProfile
                 {
-                    Title = document.Title,
-                    Author = document.Author,
-                    Subject = document.Subject,
-                    Keywords = document.Keywords,
-                    Category = document.Category,
-                    TaxYear = document.TaxYear,
-                    FlagDocument = Convert.ToBoolean(document.Flag),
+                    Title = documentDto.Title,
+                    Author = documentDto.Author,
+                    Subject = documentDto.Subject,
+                    Keywords = documentDto.Keywords,
+                    Category = documentDto.Category,
+                    TaxYear = documentDto.TaxYear,
+                    FlagDocument = Convert.ToBoolean(documentDto.Flag),
                 };
             }
             else

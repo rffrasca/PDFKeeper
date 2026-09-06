@@ -19,15 +19,13 @@
 // ****************************************************************************
 
 using PDFKeeper.Core.Helpers;
-using PDFKeeper.Core.Interfaces.Rules;
-using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
 using System;
 
 namespace PDFKeeper.Core.Rules
 {
     /// <summary>
-    /// Specific implementation of the <see cref="IRule"/> interface that
+    /// Specific implementation of the <see cref="IRule{T}"/> interface that
     /// detects if a file contains '%' or '+' in the filename.
     /// </summary>
     public sealed class FilenameCharacterRule : IRule<string>

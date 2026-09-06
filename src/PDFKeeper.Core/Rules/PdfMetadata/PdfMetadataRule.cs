@@ -18,25 +18,33 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-namespace PDFKeeper.Core.Models
+using PDFKeeper.Core.Properties;
+using System;
+
+namespace PDFKeeper.Core.Rules.PdfMetadata
 {
-    public class Document
+    /// <summary>
+    /// Specific implementation of the <see cref="IRule{T}"/> interface
+    /// that detects if the Title, Author, and Subject properties are
+    /// blank in the <see cref="PdfMetadataRuleInput"/> instance.
+    /// </summary>
+    public sealed class PdfMetadataRule : IRule<PdfMetadataRuleInput>
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public string Subject { get; set; }
-        public string Keywords { get; set; }
-        public string Added { get; set; }
-        public string Notes { get; set; }
-#pragma warning disable CA1819 // Properties should not return arrays
-        public byte[] Pdf { get; set; }
-#pragma warning restore CA1819 // Properties should not return arrays
-        public string Category { get; set; }
-        public int Flag { get; set; }
-        public string TaxYear { get; set; }
-        public string TextAnnotations { get; set; }
-        public string Text { get; set; }
-        public string SearchTermSnippets { get; set; }
+        public RuleResult Evaluate(PdfMetadataRuleInput value)
+        {
+            if (value is null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            if (string.IsNullOrEmpty(value.Title) ||
+                string.IsNullOrEmpty(value.Author) ||
+                string.IsNullOrEmpty(value.Subject))
+            {
+                return new RuleResult(true, Resources.MandatoryFieldsAreBlank);
+            }
+
+            return new RuleResult(false);
+        }
     }
 }

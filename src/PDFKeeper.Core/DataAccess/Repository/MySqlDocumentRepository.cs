@@ -399,13 +399,13 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public Document GetDocument(int id, string searchTerm)
+        public DocumentDto GetDocument(int id, string searchTerm)
         {
             const string sql =
                 "select doc_title,doc_author,doc_subject,doc_keywords,doc_added,doc_notes," +
                 "doc_category,doc_flag,doc_tax_year,doc_text from docs where doc_id = @doc_id";
 
-            var document = new Document
+            var document = new DocumentDto
             {
                 Id = id
             };
@@ -446,11 +446,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public void InsertDocument(Document document)
+        public void InsertDocument(DocumentDto documentDto)
         {
-            if (document is null)
+            if (documentDto is null)
             {
-                throw new ArgumentNullException(nameof(document));
+                throw new ArgumentNullException(nameof(documentDto));
             }
 
             var sql = "insert into docs values(null," +
@@ -473,22 +473,22 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@doc_title", document.Title);
-                        command.Parameters.AddWithValue("@doc_author", document.Author);
-                        command.Parameters.AddWithValue("@doc_subject", document.Subject);
-                        command.Parameters.AddWithValue("@doc_keywords", document.Keywords);
-                        command.Parameters.AddWithValue("@doc_added", document.Added);
-                        command.Parameters.AddWithValue("@doc_notes", document.Notes);
+                        command.Parameters.AddWithValue("@doc_title", documentDto.Title);
+                        command.Parameters.AddWithValue("@doc_author", documentDto.Author);
+                        command.Parameters.AddWithValue("@doc_subject", documentDto.Subject);
+                        command.Parameters.AddWithValue("@doc_keywords", documentDto.Keywords);
+                        command.Parameters.AddWithValue("@doc_added", documentDto.Added);
+                        command.Parameters.AddWithValue("@doc_notes", documentDto.Notes);
                         command.Parameters.Add(
                             "@doc_pdf",
-                            MySqlDbType.Binary).Value = document.Pdf;
-                        command.Parameters.AddWithValue("@doc_category", document.Category);
-                        command.Parameters.AddWithValue("@doc_flag", document.Flag);
-                        command.Parameters.AddWithValue("@doc_tax_year", document.TaxYear);
+                            MySqlDbType.Binary).Value = documentDto.Pdf;
+                        command.Parameters.AddWithValue("@doc_category", documentDto.Category);
+                        command.Parameters.AddWithValue("@doc_flag", documentDto.Flag);
+                        command.Parameters.AddWithValue("@doc_tax_year", documentDto.TaxYear);
                         command.Parameters.AddWithValue(
                             "@doc_text_annotations",
-                            document.TextAnnotations);
-                        command.Parameters.AddWithValue("@doc_text", document.Text);
+                            documentDto.TextAnnotations);
+                        command.Parameters.AddWithValue("@doc_text", documentDto.Text);
                         connection.Open();
                         command.ExecuteNonQuery();
                     }
@@ -504,11 +504,11 @@ namespace PDFKeeper.Core.DataAccess.Repository
             }
         }
 
-        public void UpdateDocument(Document document, bool updatePdf = false)
+        public void UpdateDocument(DocumentDto documentDto, bool updatePdf = false)
         {
-            if (document is null)
+            if (documentDto is null)
             {
-                throw new ArgumentNullException(nameof(document));
+                throw new ArgumentNullException(nameof(documentDto));
             }
 
             var sql = "update docs set " +
@@ -538,27 +538,27 @@ namespace PDFKeeper.Core.DataAccess.Repository
                 {
                     using (var command = new MySqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("doc_title", document.Title);
-                        command.Parameters.AddWithValue("doc_author", document.Author);
-                        command.Parameters.AddWithValue("doc_subject", document.Subject);
-                        command.Parameters.AddWithValue("doc_added", document.Added);
-                        command.Parameters.AddWithValue("doc_notes", document.Notes);
+                        command.Parameters.AddWithValue("doc_title", documentDto.Title);
+                        command.Parameters.AddWithValue("doc_author", documentDto.Author);
+                        command.Parameters.AddWithValue("doc_subject", documentDto.Subject);
+                        command.Parameters.AddWithValue("doc_added", documentDto.Added);
+                        command.Parameters.AddWithValue("doc_notes", documentDto.Notes);
 
                         if (updatePdf)
                         {
                             command.Parameters.Add(
                                 "doc_pdf",
-                                MySqlDbType.Binary).Value = document.Pdf;
+                                MySqlDbType.Binary).Value = documentDto.Pdf;
                         }
 
-                        command.Parameters.AddWithValue("doc_category", document.Category);
-                        command.Parameters.AddWithValue("doc_tax_year", document.TaxYear);
-                        command.Parameters.AddWithValue("doc_flag", document.Flag);
+                        command.Parameters.AddWithValue("doc_category", documentDto.Category);
+                        command.Parameters.AddWithValue("doc_tax_year", documentDto.TaxYear);
+                        command.Parameters.AddWithValue("doc_flag", documentDto.Flag);
                         command.Parameters.AddWithValue(
                             "doc_text_annotations",
-                            document.TextAnnotations);
-                        command.Parameters.AddWithValue("doc_text", document.Text);
-                        command.Parameters.AddWithValue("doc_id", document.Id);
+                            documentDto.TextAnnotations);
+                        command.Parameters.AddWithValue("doc_text", documentDto.Text);
+                        command.Parameters.AddWithValue("doc_id", documentDto.Id);
                         connection.Open();
                         command.ExecuteNonQuery();
                     }

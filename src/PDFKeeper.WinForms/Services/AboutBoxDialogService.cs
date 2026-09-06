@@ -45,7 +45,7 @@ namespace PDFKeeper.WinForms.Services
             this.helpViewer = helpViewer;
         }
 
-        public string ShowDialog(IntPtr parent, string arg = null, Document document = null)
+        public string ShowDialog(IntPtr parent, string arg = null, DocumentDto documentDto = null)
         {
             using (var dialog = new AboutBox(helpViewer))
             {

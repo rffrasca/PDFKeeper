@@ -25,15 +25,17 @@ using PDFKeeper.Core.HelpSystem;
 using PDFKeeper.Core.Interfaces.Caching;
 using PDFKeeper.Core.Interfaces.HelpSystem;
 using PDFKeeper.Core.Interfaces.Navigation;
-using PDFKeeper.Core.Interfaces.Rules;
 using PDFKeeper.Core.Interfaces.Services;
 using PDFKeeper.Core.Interfaces.Services.Pdf;
 using PDFKeeper.Core.Interfaces.Services.Pdf.TextExtraction;
 using PDFKeeper.Core.Interfaces.Services.Security;
 using PDFKeeper.Core.Interfaces.Services.Upload;
 using PDFKeeper.Core.Interfaces.Storage;
+using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Navigation;
 using PDFKeeper.Core.Rules;
+using PDFKeeper.Core.Rules.ExportPdfMetadata;
+using PDFKeeper.Core.Rules.PdfMetadata;
 using PDFKeeper.Core.Services;
 using PDFKeeper.Core.Services.Pdf;
 using PDFKeeper.Core.Services.Pdf.TextExtraction;
@@ -84,6 +86,8 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IClipboardService, ClipboardService>();
             services.AddSingleton<IDocumentExportService, DocumentExportService>();
             services.AddSingleton<IExceptionHandler, ExceptionHandler>();
+            services.AddSingleton<IRule<ExportPdfMetadataRuleInput>, ExportPdfMetadataRule>();
+            services.AddSingleton<IRule<FindDocumentsParam>, FindDocumentsParamRule>();
             services.AddSingleton<IFolderBrowserDialogService, FolderBrowserDialogService>();
             services.AddSingleton<IHelpFileResolver, HelpFileResolver>();
             services.AddSingleton<IHelpViewer, HelpViewer>();
@@ -94,6 +98,7 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IPdfFileCache, PdfFileCache>();
             services.AddSingleton<IPdfImageService, PdfImageService>();
             services.AddSingleton<IPdfListingService, PdfListingService>();
+            services.AddSingleton<IRule<PdfMetadataRuleInput>, PdfMetadataRule>();
             services.AddSingleton<IPdfMetadataService, PdfMetadataService>();
             services.AddSingleton<IPasswordDialogService, PdfOwnerPasswordDialogService>();
             services.AddSingleton<IPdfPreviewService, PdfPreviewService>();
@@ -107,7 +112,6 @@ namespace PDFKeeper.WinForms.Composition
             services.AddSingleton<IPrintDialogService, PrintDialogService>();
             services.AddSingleton<IPrintPreviewDialogService, PrintPreviewDialogService>();
             services.AddSingleton<IProcessService, ProcessService>();
-            services.AddSingleton<IRule<string>, FilenameCharacterRule>();
             services.AddSingleton<ISecureDataService, SecureDataService>();
             services.AddSingleton<IUploadFolderMaintenanceService,
                 UploadFolderMaintenanceService>();
@@ -150,6 +154,10 @@ namespace PDFKeeper.WinForms.Composition
                 FileDialogServiceKey.OpenFile);
             services.AddKeyedSingleton<IFileDialogService, SaveFileDialogService>(
                 FileDialogServiceKey.SaveFile);
+            services.AddKeyedSingleton<IRule<string>, FilenameCharacterRule>(
+                StringRuleKey.Filename);
+            services.AddKeyedSingleton<IRule<string>, NotesSizeRule>(
+                StringRuleKey.Notes);
         }
 
         /// <summary>

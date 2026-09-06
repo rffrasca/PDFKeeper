@@ -27,6 +27,7 @@ using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
 using PDFKeeper.Core.Rules;
+using PDFKeeper.Core.Rules.PdfMetadata;
 using PDFKeeper.Core.Serializers;
 using System;
 using System.IO;
@@ -40,6 +41,7 @@ namespace PDFKeeper.Core.Services.Pdf
     public sealed class PdfMetadataService : IPdfMetadataService
     {
         private readonly IApplicationFolderManager applicationFolderManager;
+        private readonly IRule<PdfMetadataRuleInput> pdfMetadataRule;
         private readonly IPdfSecurityService pdfSecurityService;
         private readonly ISecureDataService secureDataService;
 
@@ -48,6 +50,9 @@ namespace PDFKeeper.Core.Services.Pdf
         /// </summary>
         /// <param name="applicationFolderManager">
         /// The <see cref="IApplicationFolderManager"/> instance.
+        /// </param>
+        /// <param name="pdfMetadataRule">
+        /// The <see cref="IRule{PdfMetadataRuleInput}"/> instance.
         /// </param>
         /// <param name="pdfSecurityService">
         /// The <see cref="IPdfSecurityService"/> instance.
@@ -58,11 +63,13 @@ namespace PDFKeeper.Core.Services.Pdf
 #pragma warning disable IDE0290 // Use primary constructor
         public PdfMetadataService(
             IApplicationFolderManager applicationFolderManager,
+            IRule<PdfMetadataRuleInput> pdfMetadataRule,
             IPdfSecurityService pdfSecurityService,
             ISecureDataService secureDataService)
 #pragma warning restore IDE0290 // Use primary constructor
         {
             this.applicationFolderManager = applicationFolderManager;
+            this.pdfMetadataRule = pdfMetadataRule;
             this.pdfSecurityService = pdfSecurityService;
             this.secureDataService = secureDataService;
         }
@@ -147,11 +154,12 @@ namespace PDFKeeper.Core.Services.Pdf
                             documentInfo.SetAuthor(pdfMetadataDto.Author);
                             documentInfo.SetSubject(pdfMetadataDto.Subject);
                             documentInfo.SetKeywords(pdfMetadataDto.Keywords);
-                            var rule = new PdfMetadataRule(documentInfo);
+                            var ruleResult = pdfMetadataRule.Evaluate(
+                                PdfMetadataRuleFactory.Create(pdfMetadataDto));
 
-                            if (rule.ViolationFound)
+                            if (ruleResult.ViolationFound)
                             {
-                                throw new NullReferenceException(rule.ViolationMessage);
+                                throw new NullReferenceException(ruleResult.ViolationMessage);
                             }
                             else
                             {

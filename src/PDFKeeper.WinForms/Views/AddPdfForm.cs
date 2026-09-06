@@ -53,24 +53,24 @@ namespace PDFKeeper.WinForms.Views
 
         /// <summary>
         /// Applies runtime parameters to the form after it has been constructed. This method
-        /// supplies the optional PDF path and <see cref="Document"/> used when replacing the PDF
+        /// supplies the optional PDF path and <see cref="DocumentDto"/> used when replacing the PDF
         /// in an existing document record.
         /// </summary>
         /// <param name="pdfPath">
         /// The file path of the PDF to load when the form opens, or <c>null</c>
         /// when no initial PDF is provided.
         /// </param>
-        /// <param name="document">
-        /// The <see cref="Document"/> representing an existing document for PDF replacement, or
+        /// <param name="documentDto">
+        /// The <see cref="DocumentDto"/> representing an existing document for PDF replacement, or
         /// <c>null</c> when adding a new PDF.
         /// </param>
-        public void Initialize(string pdfPath, Document document)
+        public void Initialize(string pdfPath, DocumentDto documentDto)
         {
             this.pdfPath = pdfPath;
 
-            if (document != null)
+            if (documentDto != null)
             {
-                viewModel.SetDocument(document);
+                viewModel.SetDocument(documentDto);
             }
         }
 

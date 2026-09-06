@@ -18,12 +18,25 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-namespace PDFKeeper.Core.Rules
+namespace PDFKeeper.Core.Models
 {
-    public abstract class RuleBase
+    public class DocumentDto
     {
-        public bool ViolationFound { get; protected set; }
-        public string ViolationMessage { get; protected set; }
-        protected abstract void CheckForViolation();
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public string Subject { get; set; }
+        public string Keywords { get; set; }
+        public string Added { get; set; }
+        public string Notes { get; set; }
+#pragma warning disable CA1819 // Properties should not return arrays
+        public byte[] Pdf { get; set; }
+#pragma warning restore CA1819 // Properties should not return arrays
+        public string Category { get; set; }
+        public int Flag { get; set; }
+        public string TaxYear { get; set; }
+        public string TextAnnotations { get; set; }
+        public string Text { get; set; }
+        public string SearchTermSnippets { get; set; }
     }
 }

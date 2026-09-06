@@ -18,9 +18,7 @@
 // * with PDFKeeper. If not, see <https://www.gnu.org/licenses/>.
 // ****************************************************************************
 
-using PDFKeeper.Core.Models;
-
-namespace PDFKeeper.Core.Interfaces.Rules
+namespace PDFKeeper.Core.Rules
 {
     /// <summary>
     /// Defines a contract for validation rules that evaluate input values and return

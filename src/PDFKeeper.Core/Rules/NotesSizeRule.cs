@@ -22,52 +22,48 @@ using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
 using PDFKeeper.Core.Properties;
+using System;
 
 namespace PDFKeeper.Core.Rules
 {
-    internal class NotesSizeRule : RuleBase
+    /// <summary>
+    /// Specific implementation of the <see cref="IRule{T}"/> interface that verifies the size of
+    /// the specified notes string does not exceed the data length of the <c>DOC_NOTES</c> column
+    /// in the database when the <see cref="DatabaseSession.PlatformName"/> is
+    /// <see cref="DatabaseSession.CompatiblePlatformName.Oracle"/>.
+    /// </summary>
+    public sealed class NotesSizeRule : IRule<string>
     {
-        private readonly string notes;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NotesSizeRule"/> class that verifies the
-        /// size of <see cref="notes"/> does not exceed the data length of the DOC_NOTES column in
-        /// the database when the <see cref="DatabaseSession.PlatformName"/> is
-        /// <see cref="DatabaseSession.CompatiblePlatformName.Oracle"/>.
-        /// </summary>
-        /// <param name="notes">The Notes string.</param>
-        internal NotesSizeRule(string notes)
+        public RuleResult Evaluate(string value)
         {
-            this.notes = notes;
-            CheckForViolation();
-        }
-
-        protected override void CheckForViolation()
-        {
-            ViolationFound = false;
-            ViolationMessage = null;
+            if (value is null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
 
             if (DatabaseSession.PlatformName.Equals(DatabaseSession.CompatiblePlatformName.Oracle))
             {
                 int columnLength;
-            
+
                 using (var documentRepository = DatabaseSession.GetDocumentRepository())
                 {
                     columnLength = documentRepository.GetNotesColumnDataLength();
                 }
-                
-                var size = notes.GetByteCount();
-                
+
+                var size = value.GetByteCount();
+
                 if (size > columnLength)
                 {
-                    ViolationFound = true;
-                    ViolationMessage = ResourceHelper.GetString(
+                    var message = ResourceHelper.GetString(
                         Resources.ResourceManager,
                         "NotesSizeTooLarge",
                         size.ToString(),
                         columnLength.ToString());
+                    return new RuleResult(true, message);
                 }
             }
+
+            return new RuleResult(false);
         }
     }
 }

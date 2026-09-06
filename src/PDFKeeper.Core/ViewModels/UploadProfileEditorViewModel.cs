@@ -22,13 +22,14 @@ using CommunityToolkit.Mvvm.Input;
 using PDFKeeper.Core.DataAccess;
 using PDFKeeper.Core.Extensions;
 using PDFKeeper.Core.Helpers;
+using PDFKeeper.Core.Rules;
 using PDFKeeper.Core.Interfaces.Storage;
 using PDFKeeper.Core.Models;
 using PDFKeeper.Core.Properties;
-using PDFKeeper.Core.Rules;
 using PDFKeeper.Core.Services;
 using System;
 using System.Collections.Generic;
+using PDFKeeper.Core.Rules.PdfMetadata;
 
 namespace PDFKeeper.Core.ViewModels
 {
@@ -39,6 +40,7 @@ namespace PDFKeeper.Core.ViewModels
     public sealed class UploadProfileEditorViewModel : ColumnDataListsViewModel
     {
         private readonly IMessageBoxService messageBoxService;
+        private readonly IRule<PdfMetadataRuleInput> pdfMetadataRule;
         private readonly IUploadProfileManager uploadProfileManager;
         private readonly string uploadProfileName;
         private string name;
@@ -51,6 +53,9 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="messageBoxService">
         /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
+        /// <param name="pdfMetadataRule">
+        /// The <see cref="IRule{PdfMetadataRuleInput}"/> instance.
+        /// </param>
         /// <param name="uploadProfileManager">
         /// The <see cref="IUploadProfileManager"/> instance.
         /// </param>
@@ -59,10 +64,12 @@ namespace PDFKeeper.Core.ViewModels
         /// </param>
         public UploadProfileEditorViewModel(
             IMessageBoxService messageBoxService,
+            IRule<PdfMetadataRuleInput> pdfMetadataRule,
             IUploadProfileManager uploadProfileManager,
             string uploadProfileName = null)
         {
             this.messageBoxService = messageBoxService;
+            this.pdfMetadataRule = pdfMetadataRule;
             this.uploadProfileManager = uploadProfileManager;
             this.uploadProfileName = uploadProfileName;
             name = uploadProfileName;
@@ -262,7 +269,8 @@ namespace PDFKeeper.Core.ViewModels
             var error = false;
             CancelViewClosing = false;
             OnApplyPendingChanges?.Invoke();
-            var rule = new PdfMetadataRule(UploadProfile);
+            var ruleResult = pdfMetadataRule.Evaluate(
+                PdfMetadataRuleFactory.Create(UploadProfile));
 
             if (string.IsNullOrEmpty(Name))
             {
@@ -272,12 +280,12 @@ namespace PDFKeeper.Core.ViewModels
                     Resources.NameCannotBeBlank,
                     true);
             }
-            else if (rule.ViolationFound)
+            else if (ruleResult.ViolationFound)
             {
                 error = true;
                 messageBoxService.ShowMessage(
                     GetWindowHandle.Invoke(),
-                    rule.ViolationMessage,
+                    ruleResult.ViolationMessage,
                     true);
             }
             else if (Name.ContainInvalidFileNameChars())

@@ -39,6 +39,7 @@ namespace PDFKeeper.Core.ViewModels
     public sealed class FindDocumentsViewModel : ColumnDataListsViewModel, IFindDocumentsParam
     {
         private readonly IApplicationPolicyService applicationPolicyService;
+        private readonly IRule<FindDocumentsParam> findDocumentsParamRule;
         private readonly IMessageBoxService messageBoxService;
         private FindDocumentsParam findDocumentsParam;
         private readonly SearchTermHistory searchTermHistory;
@@ -67,14 +68,19 @@ namespace PDFKeeper.Core.ViewModels
         /// <param name="applicationPolicyService">
         /// The <see cref="IApplicationPolicyService"/> instance.
         /// </param>
+        /// <param name="findDocumentsParamRule">
+        /// The <see cref="IRule{FindDocumentsParam}"/> instance.
+        /// </param>
         /// <param name="messageBoxService">
         /// The <see cref="IMessageBoxService"/> instance.
         /// </param>
         public FindDocumentsViewModel(
             IApplicationPolicyService applicationPolicyService,
+            IRule<FindDocumentsParam> findDocumentsParamRule,
             IMessageBoxService messageBoxService)
         {
             this.applicationPolicyService = applicationPolicyService;
+            this.findDocumentsParamRule = findDocumentsParamRule;
             this.messageBoxService = messageBoxService;
             findDocumentsParam = new FindDocumentsParam();
             searchTermHistory = new SearchTermHistory();
@@ -411,9 +417,9 @@ namespace PDFKeeper.Core.ViewModels
         {
             CancelViewClosing = false;
             OnApplyPendingChanges?.Invoke();
-            var rule = new FindDocumentsParamRule(FindDocumentsParam);
+            var ruleResult = findDocumentsParamRule.Evaluate(FindDocumentsParam);
             
-            if (!rule.ViolationFound)
+            if (!ruleResult.ViolationFound)
             {
                 FindDocumentsState.FindDocumentsParam = FindDocumentsParam.Clone();
 
@@ -428,7 +434,7 @@ namespace PDFKeeper.Core.ViewModels
             {
                 messageBoxService.ShowMessage(
                     GetWindowHandle.Invoke(),
-                    rule.ViolationMessage,
+                    ruleResult.ViolationMessage,
                     true);
                 OnCancelCloseView?.Invoke();
             }

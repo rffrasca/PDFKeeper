@@ -99,8 +99,9 @@
     <Compile Include="Caching\PdfMemoryCache.cs" />
     <Compile Include="Enums\PdfAttachmentType.cs" />
     <Compile Include="Enums\PdfPasswordType.cs" />
+    <Compile Include="Enums\StringRuleKey.cs" />
     <Compile Include="Extensions\PdfMetadataExtensions.cs" />
-    <Compile Include="Interfaces\Rules\IRule.cs" />
+    <Compile Include="Rules\IRule.cs" />
     <Compile Include="Interfaces\Services\IClipboardService.cs" />
     <Compile Include="Interfaces\Services\Security\IPinnedBytes.cs" />
     <Compile Include="Interfaces\Services\Security\ISecureDataService.cs" />
@@ -128,8 +129,11 @@
     <Compile Include="Extensions\SizeExtension.cs" />
     <Compile Include="Interfaces\Caching\IPdfFileCache.cs" />
     <Compile Include="Models\PdfMetadataDto.cs" />
-    <Compile Include="Models\RuleResult.cs" />
+    <Compile Include="Rules\PdfMetadata\PdfMetadataRuleInput.cs" />
+    <Compile Include="Rules\RuleResult.cs" />
     <Compile Include="Rules\FilenameCharacterRule.cs" />
+    <Compile Include="Rules\PdfMetadata\PdfMetadataRuleFactory.cs" />
+    <Compile Include="Rules\ExportPdfMetadata\ExportPdfMetadataRuleInput.cs" />
     <Compile Include="Serializers\JsonSerializer.cs" />
     <Compile Include="Helpers\ApplicationFolderHelper.cs" />
     <Compile Include="Helpers\ApplicationRegistryHelper.cs" />
@@ -175,7 +179,7 @@
     <Compile Include="Custom\Pdf\PdfImageDetector.cs" />
     <Compile Include="Interop\NativeMethods.cs" />
     <Compile Include="Models\ColumnData.cs" />
-    <Compile Include="Rules\ExportPdfMetadataRule.cs" />
+    <Compile Include="Rules\ExportPdfMetadata\ExportPdfMetadataRule.cs" />
     <Compile Include="Rules\FindDocumentsParamRule.cs" />
     <Compile Include="Rules\NotesSizeRule.cs" />
     <Compile Include="Services\IFolderBrowserDialogService.cs" />
@@ -211,12 +215,11 @@
     <Compile Include="ViewModels\ColumnDataListViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="DataAccess\Repository\RepositoryBase.cs" />
-    <Compile Include="Rules\RuleBase.cs" />
     <Compile Include="DataAccess\Repository\OracleDocumentRepository.cs" />
     <Compile Include="DataAccess\Repository\SqliteDocumentRepository.cs" />
     <Compile Include="DataAccess\DatabaseException.cs" />
     <Compile Include="DataAccess\Repository\IDocumentRepository.cs" />
-    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\DocumentDto.cs" />
     <Compile Include="Models\TaxYearLegacy.cs" />
     <Compile Include="Storage\UploadProfileManager.cs" />
     <Compile Include="State\FindDocumentsState.cs" />
@@ -227,7 +230,7 @@
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Services\IMessageBoxService.cs" />
     <Compile Include="Services\IPasswordDialogService.cs" />
-    <Compile Include="Rules\PdfMetadataRule.cs" />
+    <Compile Include="Rules\PdfMetadata\PdfMetadataRule.cs" />
     <Compile Include="ViewModels\AddPdfViewModel.cs" />
     <Compile Include="ViewModels\FindDocumentsViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
